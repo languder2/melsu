@@ -32,13 +32,13 @@
             <div>
                 <div class="flex flex-row-reverse text-white">
                     <div class="flex-none w-14">
-                        <a href="#" class="bg-green-950 py-2 px-4">
-                            <i class="far fa-edit w-4 h-4"></i>
+                        <a href="#" class="bg-red-950 py-2 px-4 rounded-md hover:bg-red-700 active:bg-gray-700">
+                            <i class="fas fa-user-slash w-4 h-4"></i>
                         </a>
                     </div>
                     <div class="flex-none w-14">
-                        <a href="#" class="bg-red-950 py-2 px-4 ">
-                            <i class="fas fa-user-slash w-4 h-4"></i>
+                        <a href="#" class="bg-green-950 py-2 px-4 rounded-md hover:bg-green-700 active:bg-gray-700">
+                            <i class="far fa-edit w-4 h-4"></i>
                         </a>
                     </div>
                 </div>
