@@ -57,6 +57,12 @@ return [
             'throw' => false,
         ],
 
+        'images'    => [
+            'driver' => 'local',
+            'root' => storage_path('app/private'),
+
+        ]
+
     ],
 
     /*
@@ -69,9 +75,5 @@ return [
     | the locations of the links and the values should be their targets.
     |
     */
-
-    'links' => [
-        public_path('storage') => storage_path('app/public'),
-    ],
 
 ];

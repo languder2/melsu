@@ -18,6 +18,12 @@
         />
 
         <x-admin.sidebar-li
+            link="{{route('admin:news')}}"
+            ico="fas fa-rss"
+            text="новости"
+        />
+
+        <x-admin.sidebar-li
             link="{{route('admin:logout')}}"
             ico="fas fa-sign-out-alt"
             text="выход"

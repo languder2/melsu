@@ -15,12 +15,37 @@ class suStructure extends Model
         'id',
         'ssu_group',
         'department',
-        'fio',
+        'lastname',
+        'firstname',
+        'middlename',
         'post',
         'address',
         'email',
         'phone',
         'display',
+        'link',
+        'sort',
+    ];
+
+    public static $FormRules = [
+        'id'                => '',
+        'ssu_group'         => 'required',
+        'lastname'          => '',
+        'firstname'         => '',
+        'middlename'        => '',
+        'department'        => '',
+        'post'              => '',
+        'address'           => '',
+        'email'             => '',
+        'phone'             => '',
+        'link'              => '',
+        'sort'              => '',
+    ];
+    public static $FormMessage = [
+        'ssu_group'         => 'Выберите группу',
+        'lastname'          => 'Укажите фамилию',
+        'firstname'         => 'Укажите имя',
+        'post'              => 'Укажите должность',
     ];
 
     public static function CreateGroup(array $arr):void
@@ -32,6 +57,17 @@ class suStructure extends Model
     public static function getGroups():array
     {
         return DB::table('su_structure_group')->orderBy('sort')->get(['id','name','sort'])->toArray();
+    }
+    public static function getGroupsForSelect():array
+    {
+        $response = [];
+
+        $list= self::getGroups();
+
+        foreach ($list as $record)
+            $response[$record->id] = $record->name;
+
+        return $response;
     }
 
     public static function getListByGroups(?int $gid = null):object

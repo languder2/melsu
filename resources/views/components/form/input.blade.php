@@ -15,10 +15,12 @@
             w-full
             py-2
             mt-2
-            text-center
+
             peer
             autofill:text-pink-800
             focus:text-blue-700
+            focus:border-blue-700
+
             {{@$class}}
         "
         @required(@$required)
@@ -38,13 +40,14 @@
 
                 peer-focus:text-xs
                 peer-focus:top-0
+                peer-focus:text-blue-700
                 peer-placeholder-shown:top-4
                 peer-placeholder-shown:text-base
                 peer-autofill:text-xs
                 peer-autofill:top-0
             "
         >
-            {{$label}}
+            {{$label}}@if(isset($required))*@endif
         </label>
     @endif
 </div>

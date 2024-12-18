@@ -1,9 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\{AdminController,suStrucureController};
-
-use App\Models\suStructure;
+use App\Http\Controllers\{AdminController,suStrucureController,NewsController};
 
 Route::get('/', function () {
     return view('pages.main');
@@ -26,14 +24,32 @@ Route::get('exit', function (){
 
 
 Route::middleware('auth.check')
-->controller(suStrucureController::class)
-->prefix('structure')
-->group(function () {
+    ->controller(suStrucureController::class)
+    ->prefix('admin/structure')
+    ->group(function () {
 
-    Route::get('', 'adminList')->name('admin:structure');
-    Route::get('add', 'adminAdd')->name('admin:structure:add');
+        Route::get('', 'adminList')->name('admin:structure');
+        Route::get('add', 'form')->name('admin:structure:add');
+        Route::get('edit/{id}', 'form')->name('admin:structure:edit');
+        Route::post('save', 'save')->name('admin:structure:save');
+        Route::get('delete/{id}', 'delete')->name('admin:structure:delete');
 
-});
+    });
+
+
+
+Route::middleware('auth.check')
+    ->controller(NewsController::class)
+    ->prefix('admin/news')
+    ->group(function () {
+
+        Route::get('', 'adminList')->name('admin:news');
+        Route::get('add', 'form')->name('admin:news:add');
+        Route::get('edit/{id}', 'form')->name('admin:news:edit');
+        Route::post('save', 'save')->name('admin:news:save');
+        Route::get('delete/{id}', 'delete')->name('admin:news:delete');
+
+    });
 
 
 

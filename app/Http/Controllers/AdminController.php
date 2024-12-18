@@ -23,10 +23,7 @@ class AdminController extends Controller
             ]
         );
 
-
-
         $user = User::where("name",$form->username)->orWhere("email",$form->username)->first();
-
 
         if(is_null($user))
             return redirect()->back()->withInput()->withErrors('Пользователь не найден');

@@ -27,7 +27,9 @@ return new class extends Migration
             $table->string('link')->nullable();
             $table->enum('display', ['show', 'hide'])->default('show');
             $table->string('department')->nullable();
-            $table->string('fio')->nullable();
+            $table->string('firstname')->nullable();
+            $table->string('middlename')->nullable();
+            $table->string('lastname')->nullable();
             $table->string('post')->nullable();
             $table->string('address')->nullable();
             $table->string('email')->nullable();
@@ -47,7 +49,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('su_structure_group');
         Schema::dropIfExists('su_structure');
+        Schema::dropIfExists('su_structure_group');
     }
 };
