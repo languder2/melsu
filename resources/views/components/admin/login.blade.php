@@ -30,7 +30,7 @@
         <hr>
         <div class="text-right px-4 py-2">
             <x-form.btn-base
-                name="Войти"
+                text="Войти"
             />
         </div>
     </form>

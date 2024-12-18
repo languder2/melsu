@@ -17,7 +17,7 @@
         <x-admin.login />
     @endguest
     @auth
-        <div class="ml-14 p-4">
+        <div class="mr-14 p-4">
             <section>
 
                 @yield('content')

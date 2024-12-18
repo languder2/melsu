@@ -27,15 +27,12 @@ Route::get('exit', function (){
 
 Route::middleware('auth.check')
 ->controller(suStrucureController::class)
+->prefix('structure')
 ->group(function () {
 
-    Route::view('structure', 'pages.admin',[
-        'contents'  => [
-            view('admin.structure.list',[
-                'list'          => suStructure::getListByGroups(),
-            ])->render(),
-        ]
-    ])->name('admin:structure');
+    Route::get('', 'adminList')->name('admin:structure');
+    Route::get('add', 'adminAdd')->name('admin:structure:add');
+
 });
 
 

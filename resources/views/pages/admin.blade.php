@@ -3,7 +3,7 @@
 @section('title', 'ФГБОУ ВО "МелГУ"')
 
 @section('content')
-    @if(is_array($contents))
+    @if(is_array(@$contents))
         @foreach($contents as $content)
             {!! $content !!}
         @endforeach

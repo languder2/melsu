@@ -7,5 +7,5 @@
                 active:bg-gray-700
                 {{@$class}}
             ">
-    {{@$name}}
+    {{@$text}}
 </button>

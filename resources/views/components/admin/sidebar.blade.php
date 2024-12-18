@@ -1,13 +1,13 @@
 <div class="
-    bg-blue-900
+    bg-blue-950
     duration-300
 
     fixed z-50
-    left-0 top-0 bottom-0
+    right-0 top-0 bottom-0
     w-14 p-4
 
-    hover:w-60
-    hover:bg-blue-700
+    hover:w-72
+    hover:bg-blue-800
 ">
     <ul class="text-2xl">
 

@@ -1,9 +1,9 @@
-<li class="text-white hover:text-green-200 py-2" >
+<li class="text-white hover:text-blue-300 my-4 block first:mt-0" >
     <a href="{{$link??'#'}}" class="block overflow-hidden text-nowrap">
         @if(isset($ico))
-            <i class="{{$ico}} mr-2 w-6"></i>
+            <i class="{{$ico}} w-6 float-left mt-1"></i>
         @endif
-        <span class="">
+        <span class="block ml-8 text-right">
             {{@$text}}
         </span>
     </a>
