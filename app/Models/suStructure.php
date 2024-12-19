@@ -28,7 +28,6 @@ class suStructure extends Model
     ];
 
     public static $FormRules = [
-        'id'                => '',
         'ssu_group'         => 'required',
         'lastname'          => '',
         'firstname'         => '',

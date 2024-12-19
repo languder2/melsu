@@ -73,8 +73,8 @@
     />
 
     <x-form.editor
-        name="full"
-        id="full"
+        name="news"
+        id="news"
         label="Новость"
         borderTop
     />

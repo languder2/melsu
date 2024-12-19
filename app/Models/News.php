@@ -24,13 +24,11 @@ class News extends NewsCategory
     ];
 
     public static $FormRules = [
-        'id'                => '',
         'category'          => 'required',
         'title'             => 'required',
         'short'             => '',
         'full'              => '',
         'news'              => '',
-        'image'             => '',
         'author'            => '',
         'sort'              => '',
         'publication_at'    => '',

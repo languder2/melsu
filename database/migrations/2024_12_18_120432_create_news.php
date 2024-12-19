@@ -25,8 +25,8 @@ return new class extends Migration
             $table->unsignedBigInteger('category')->nullable();
             $table->string('title');
             $table->string('short')->nullable();
-            $table->text('description')->nullable();
-            $table->longtext('news');
+            $table->text('full')->nullable();
+            $table->longtext('news')->nullable();
             $table->string('image')->nullable();
             $table->unsignedBigInteger('author')->nullable();
             $table->integer('sort')->default(10000);
@@ -36,7 +36,7 @@ return new class extends Migration
             $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
 
-            $table->foreign('category')->references('id')->on('news_category')
+            $table->foreign('category')->references('id')->on('news_categories')
                 ->onUpdate('cascade')
                 ->onDelete('set null');
 
