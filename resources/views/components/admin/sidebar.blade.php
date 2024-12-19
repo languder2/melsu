@@ -24,11 +24,21 @@
         />
 
         <x-admin.sidebar-li
+            link="{{route('admin:events')}}"
+            ico="far fa-calendar-check"
+            text="мероприятия"
+        />
+
+        <x-admin.sidebar-li
+            link="{{route('admin:menu')}}"
+            ico="fas fa-bars"
+            text="меню"
+        />
+
+        <x-admin.sidebar-li
             link="{{route('admin:logout')}}"
             ico="fas fa-sign-out-alt"
             text="выход"
         />
-
-
     </ul>
 </div>

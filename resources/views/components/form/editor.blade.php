@@ -16,7 +16,7 @@
     name="{{$name}}"
 
     @if(!isset($editor))
-        class="editor"
+        class="editor {{@$class}}"
     @else
         class=""
     @endif
@@ -24,7 +24,7 @@
     @required(@$required)
     placeholder="Введите текст"
 >
-    {{@$value}}
+    {!! @$value !!}
 </textarea>
 
 @if(isset($borderBottom))

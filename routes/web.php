@@ -1,14 +1,20 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\{AdminController,suStrucureController,NewsController};
+use App\Http\Controllers\{AdminController,suStructureController,NewsController};
+use App\Http\Controllers\EventsController;
+use App\Http\Controllers\WishTreeController;
+use App\Http\Controllers\MenuController;
 
 Route::get('/', function () {
     return view('pages.main');
 })->name('pages:main');
 
-Route::view('about-us', 'pages.about')->name('pages:about');
+Route::view('wish-tree', 'pages.wish-tree.form')->name('wish-tree');
+Route::post('wish-tree/save',  [WishTreeController::class, 'save'])->name('wish-tree:save');
 
+
+Route::view('about-us', 'pages.about')->name('pages:about');
 
 
 Route::view('admin', 'pages.admin')->name('admin:main');
@@ -22,9 +28,8 @@ Route::get('exit', function (){
 
 })->name('admin:logout');
 
-
 Route::middleware('auth.check')
-    ->controller(suStrucureController::class)
+    ->controller(suStructureController::class)
     ->prefix('admin/structure')
     ->group(function () {
 
@@ -35,8 +40,6 @@ Route::middleware('auth.check')
         Route::get('delete/{id}', 'delete')->name('admin:structure:delete');
 
     });
-
-
 
 Route::middleware('auth.check')
     ->controller(NewsController::class)
@@ -51,5 +54,36 @@ Route::middleware('auth.check')
 
     });
 
+Route::controller(NewsController::class)
+    ->prefix('news')
+    ->group(function () {
 
+        Route::get('show/{id}', 'show')->name('news:show');
 
+    });
+
+Route::middleware('auth.check')
+    ->controller(EventsController::class)
+    ->prefix('admin/events')
+    ->group(function () {
+
+        Route::get('', 'adminList')->name('admin:events');
+        Route::get('add', 'form')->name('admin:events:add');
+        Route::get('edit/{id}', 'form')->name('admin:events:edit');
+        Route::post('save', 'save')->name('admin:events:save');
+        Route::get('delete/{id}', 'delete')->name('admin:events:delete');
+
+    });
+
+Route::middleware('auth.check')
+    ->controller(MenuController::class)
+    ->prefix('admin/menu')
+    ->group(function () {
+
+        Route::get('', 'list')->name('admin:menu');
+        Route::get('add', 'form')->name('admin:menu:add');
+//        Route::get('edit/{id}', 'form')->name('admin:events:edit');
+//        Route::post('save', 'save')->name('admin:events:save');
+//        Route::get('delete/{id}', 'delete')->name('admin:events:delete');
+
+    });

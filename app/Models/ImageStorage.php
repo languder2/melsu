@@ -8,11 +8,11 @@ use Intervention\Image\ImageManager;
 class ImageStorage extends Model
 {
     public static $FormRules = [
-        'image'             => "nullable|image|mimes:jpeg,png,jpg,gif|max:2048"
+        'image'             => "nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048"
     ];
     public static $FormMessage = [
-        'image.image'       => 'В изображении должен быть выбрать файл-картинка с расширениями jpeg,png,jpg,gif',
-        'image.mimes'       => 'Изображении должен быть выбрать файл-картинка с расширениями jpeg,png,jpg,gif',
+        'image.image'       => 'В изображении должен быть выбрать файл-картинка с расширениями jpeg,png,jpg,gif,webp',
+        'image.mimes'       => 'Изображении должен быть выбрать файл-картинка с расширениями jpeg,png,jpg,gif,webp',
         'max'               => 'Максимальный размер загружаемого изображения ограничен 2MB',
     ];
     public static function saveImage($image, $path, $width, $height):void
@@ -35,7 +35,9 @@ class ImageStorage extends Model
             if(!is_array($resolve))
                 $resolve = explode(":",$resolve);
 
-            $path = storage_path('app/public/images')."/{$to}/{$resolve[0]}x{$resolve[1]}_{$name}.jpg";
+            $path = public_path('images')."/{$to}/{$resolve[0]}x{$resolve[1]}_{$name}.jpg";
+
+            //$path = storage_path('app/public/images')."/{$to}/{$resolve[0]}x{$resolve[1]}_{$name}.jpg";
 
             self::saveImage($image,$path,$resolve[0],$resolve[1]);
         }

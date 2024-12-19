@@ -4,11 +4,15 @@
         class="
             grid gap-4 items-center
             grid-cols-1
-            md:grid-cols-[repeat(7,minmax(0,_1fr))_200px]
+            md:grid-cols-[repeat(8,minmax(0,_1fr))_200px]
         "
     >
         <div class="font-semibold">
             ID
+        </div>
+
+        <div class="font-semibold">
+            Type
         </div>
 
         <div class="font-semibold">
@@ -31,7 +35,11 @@
             </div>
 
             <div>
-                <img src="{{asset("images/news/600x600_{$record->image}.jpg")}}" class="max-w-12" alt=""/>
+                    <?=$record->type?>
+            </div>
+
+            <div>
+                <img src="{{asset("images/events/600x600_{$record->image}.jpg")}}" class="max-w-12" alt=""/>
             </div>
 
             <div>
@@ -46,7 +54,7 @@
                 <div class="flex flex-row-reverse text-white w-full">
                     <div class="flex-none w-14">
                         <a
-                            href="{{route('admin:news:delete',$record->id)}}"
+                            href="{{route('admin:events:delete',$record->id)}}"
                             class="
                                 py-2 px-4 rounded-md
                                 bg-red-950
@@ -59,7 +67,7 @@
                     </div>
                     <div class="flex-none w-14">
                         <a
-                            href="{{route('admin:news:edit',$record->id)}}"
+                            href="{{route('admin:events:edit',$record->id)}}"
                             class="
                                 py-2 px-4 rounded-md
                                 bg-green-950
@@ -73,7 +81,7 @@
 
                         <div class="flex-none w-14">
                             <a
-                                href="{{route('news:show',$record->id)}}"
+                                href="#"
                                 target="_blank"
                                 class="
                                     py-2 px-4 rounded-md
@@ -88,7 +96,7 @@
 
                 </div>
             </div>
-            <hr class="md:col-span-8 last:hidden">
+            <hr class="md:col-span-9 last:hidden">
         @endforeach
     </div>
 

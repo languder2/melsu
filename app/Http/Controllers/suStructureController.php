@@ -9,7 +9,7 @@ use App\Models\suStructure;
 use App\View\Components\admin\structure\form as structureForm;
 
 
-class suStrucureController extends Controller
+class suStructureController extends Controller
 {
     public function adminList()
     {

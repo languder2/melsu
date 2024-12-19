@@ -1,6 +1,6 @@
 <x-head.tinymce-config />
 <form
-    action="{{route('admin:news:save')}}"
+    action="{{route('admin:events:save')}}"
     method="POST"
     enctype="multipart/form-data"
     class="
@@ -26,13 +26,16 @@
     <x-form.input type="hidden" name="id" value="{{$current->id??null}}"/>
 
     <x-form.select
-        id="category"
-        name="category"
+        id="type"
+        name="type"
         nullDisabled
-        old="{{old('category')}}"
-        value="{{@$current->category}}"
-        null="Выберите категорию"
-        :list="$categories??[]"
+        old="{{old('type')}}"
+        value="{{@$current->type}}"
+        null="Выберите тип"
+        :list="[
+            'preview'       => 'Анонс',
+            'report'        => 'Отчет',
+        ]"
         required
     />
 
@@ -80,7 +83,6 @@
         label="Новость"
         value="{{old('news')??@$current->news}}"
         borderTop
-        class="min-h-screen"
     />
 
     <x-form.submit
@@ -89,4 +91,3 @@
     />
 
 </form>
-

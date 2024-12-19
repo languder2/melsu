@@ -8,5 +8,6 @@ import './news-section-main-page.js';
 import './search-in-box.js';
 import './slider.js';
 import './uisearch.js';
+import './select-component.js';
 
 

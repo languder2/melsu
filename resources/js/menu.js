@@ -96,9 +96,30 @@ btnsFilterSearch.forEach((point, index) => {
     });
 });
 closeSeachBox.addEventListener('click', () => {
-    searchBox.classList.remove('active');
-    content.classList.remove('opacit');
-    document.body.classList.remove('no-scroll');
+    if(searchBox.classList.contains('active')){
+        searchBox.classList.remove('active');
+        content.classList.remove('opacit');
+        document.body.classList.remove('no-scroll');
+    }
 });
+document.addEventListener('click', (event) => {
+    if (searchBox.classList.contains('active') && !searchBox.contains(event.target) && !Array.from(btnSearch).includes(event.target)) {
+        closeAllSearch();
+    }
+});
+
+function closeAllSearch () {
+    if(searchBox.classList.contains('active')){
+        searchBox.classList.remove('active');
+        content.classList.remove('opacit');
+        document.body.classList.remove('no-scroll');
+        for (let i = 0; i < dropDownMenus.length; i++) {
+            if (dropDownMenus[i]) {
+                dropDownMenus[i].classList.remove('opened');
+            }
+        }
+    }
+    navBar.classList.remove('opened');
+}
 checkScreenWidth();
 window.addEventListener('resize', checkScreenWidth);

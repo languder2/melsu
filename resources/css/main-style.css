@@ -1,3 +1,5 @@
+@import "root-style.css";
+@import "font-import.css";
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
 *{
     margin: 0;
@@ -224,6 +226,7 @@ body{
         display: none;
     }
     .navbar-collapse{
+        z-index: 70;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -474,7 +477,7 @@ body{
             }
         }
         .navbar-collapse.opened{
-            height: 30%;
+            height: 45%;
         }
         .navbar-toggler{
             display: block;
@@ -1026,7 +1029,7 @@ body{
 .melsu-today-section{
     z-index: 1;
     position: relative;
-    background-image: url("../../public_html/img/lines-vector-map.jpg");
+    background-image: url("../../assets/img/lines-vector-map.jpg");
     background-size: 100%;
     .overlay-section{
         top: 0;
@@ -1218,7 +1221,7 @@ body{
     position: relative;
     z-index: 0;
     padding: 200px 80px;
-    background-image: url(../../public_html/img/honeycombs1.png);
+    background-image: url(../../assets/img/honeycombs1.png);
     background-position: bottom center;
     background-size: cover;
     .dark-background-overlay{
@@ -1909,7 +1912,7 @@ body{
 /* map section style*/
 .map-section{
     padding-top: 40px;
-    background-image: url(../../public_html/img/bg-map.png);
+    background-image: url(../../assets/img/bg-map.png);
     background-position: bottom center;
     background-size: cover;
     min-height: 647px;
@@ -2220,7 +2223,7 @@ footer{
 
 /*getting melsu section style*/
 .getting-melsu-section{
-    background-image: url("../../public_html/img/static-bg.jpg");
+    background-image: url("../img/static-bg.jpg");
     background-attachment: fixed;
     background-position: 0px 100%;
     background-repeat: repeat;
@@ -2257,7 +2260,7 @@ footer{
 
 /*wrapper news only news*/
 .box-nav-btns.only-news{
-    justify-content: end;
+
 }
 .wrapper-news.only-news{
     min-height: 374px !important;
@@ -2456,6 +2459,14 @@ td.today.active.start-date.active.end-date.available,
     /*END data range picker style*/
     /*search news style*/
 
+.search-btn {
+    transition: var(--transition-link);
+}
+.search-field:focus + .search-btn {
+    border-radius: 15px;
+    background-color: #FFFFFF;
+    color: var(--primary-color);
+}
     /*END search news style*/
 .news-wrapper{
     .first-news-box {
@@ -2506,4 +2517,36 @@ td.today.active.start-date.active.end-date.available,
         }
     }
 }
+.pagination a.current{
+    opacity: 0.8;
+}
 /*END news page style*/
+.under-list{
+    list-style-type: circle;
+}
+.value-list{
+    transition: .3s ease-in-out !important;
+    &.open {
+        max-height: 320px !important;
+        overflow: auto !important;
+    }
+}
+/*single news page style*/
+.content-news{
+    p{
+        margin-bottom: 12px;
+        line-height: 2rem;
+        font-size: 18px;
+    }
+    img{
+        display: inline !important;
+    }
+    ul{
+        font-size: 18px;
+        margin-bottom: 12px;
+        list-style: disc !important;
+        line-height: 2rem;
+        list-style-position: inside !important;
+    }
+}
+/*END single news page style*/
