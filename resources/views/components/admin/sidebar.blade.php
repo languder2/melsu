@@ -30,6 +30,12 @@
         />
 
         <x-admin.sidebar-li
+            link="{{route('admin:staff')}}"
+            ico="fas fa-users"
+            text="сотрудники"
+        />
+
+        <x-admin.sidebar-li
             link="{{route('admin:menu')}}"
             ico="fas fa-bars"
             text="меню"

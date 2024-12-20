@@ -59,29 +59,13 @@
     "file": "assets/fa-solid-900-BUswJgRo.woff2",
     "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2"
   },
-  "public_html/img/bg-map.png": {
-    "file": "assets/bg-map-_MI7dOr-.png",
-    "src": "public_html/img/bg-map.png"
-  },
-  "public_html/img/honeycombs1.png": {
-    "file": "assets/honeycombs1-CPdL7dPm.png",
-    "src": "public_html/img/honeycombs1.png"
-  },
-  "public_html/img/lines-vector-map.jpg": {
-    "file": "assets/lines-vector-map-FAeUJzyq.jpg",
-    "src": "public_html/img/lines-vector-map.jpg"
-  },
-  "public_html/img/static-bg.jpg": {
-    "file": "assets/static-bg-GvhJmoz4.jpg",
-    "src": "public_html/img/static-bg.jpg"
-  },
   "resources/css/app.css": {
-    "file": "assets/app-8S6XfOPT.css",
+    "file": "assets/app-DPvD0jMT.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
   "resources/js/app.js": {
-    "file": "assets/app-BC3WE_TO.js",
+    "file": "assets/app-DZp0lfCd.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true

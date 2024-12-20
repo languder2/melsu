@@ -5,6 +5,7 @@ use App\Http\Controllers\{AdminController,suStructureController,NewsController};
 use App\Http\Controllers\EventsController;
 use App\Http\Controllers\WishTreeController;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\StaffController;
 
 Route::get('/', function () {
     return view('pages.main');
@@ -85,5 +86,18 @@ Route::middleware('auth.check')
 //        Route::get('edit/{id}', 'form')->name('admin:events:edit');
 //        Route::post('save', 'save')->name('admin:events:save');
 //        Route::get('delete/{id}', 'delete')->name('admin:events:delete');
+
+    });
+
+Route::middleware('auth.check')
+    ->controller(StaffController::class)
+    ->prefix('admin/staff')
+    ->group(function () {
+
+        Route::get('', 'adminList')->name('admin:staff');
+        Route::get('add', 'form')->name('admin:staff:add');
+        Route::get('edit/{id}', 'form')->name('admin:staff:edit');
+        Route::post('save', 'save')->name('admin:staff:save');
+        Route::get('delete/{id}', 'delete')->name('admin:staff:delete');
 
     });

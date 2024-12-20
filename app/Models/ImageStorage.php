@@ -42,6 +42,24 @@ class ImageStorage extends Model
             self::saveImage($image,$path,$resolve[0],$resolve[1]);
         }
         return true;
-
     }
+
+    public static function getValidateRules(string $filed):array
+    {
+
+        return  [
+                    "$filed"             => "nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048"
+                ];
+    }
+
+    public static function getValidateMessages(string $filed):array
+    {
+
+        return  [
+            "$filed.image"  => 'В изображении должен быть выбрать файл-картинка с расширениями jpeg,png,jpg,gif,webp',
+            "$filed.mimes"  => 'Изображении должен быть выбрать файл-картинка с расширениями jpeg,png,jpg,gif,webp',
+            "$filed"        => 'Максимальный размер загружаемого изображения ограничен 2MB',
+        ];
+    }
+
 }
