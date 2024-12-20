@@ -6,6 +6,9 @@ use App\Http\Controllers\EventsController;
 use App\Http\Controllers\WishTreeController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\StaffController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\DepartmentController;
+
 
 Route::get('/', function () {
     return view('pages.main');
@@ -95,9 +98,41 @@ Route::middleware('auth.check')
     ->group(function () {
 
         Route::get('', 'adminList')->name('admin:staff');
+        Route::get('works/add-line', function(){})->name('admin:staff:works:add-line');
+        Route::get('works/add-line/{i}', 'worksAddLine')->name('admin:staff:works:add-line-num');
         Route::get('add', 'form')->name('admin:staff:add');
         Route::get('edit/{id}', 'form')->name('admin:staff:edit');
         Route::post('save', 'save')->name('admin:staff:save');
         Route::get('delete/{id}', 'delete')->name('admin:staff:delete');
+
+    });
+
+Route::controller(StaffController::class)
+    ->prefix('staff')
+    ->group(function () {
+
+        Route::get('show/{id}', 'show')->name('staff:show');
+
+    });
+
+Route::middleware('auth.check')
+    ->controller(UserController::class)
+    ->prefix('admin/users')
+    ->group(function () {
+        Route::get('add', 'add')->name('admin:user:add');
+    });
+
+Route::middleware('auth.check')
+    ->controller(DepartmentController::class)
+    ->prefix('admin/department')
+    ->group(function () {
+
+        Route::get('', 'adminList')->name('admin:department');
+        Route::get('works/add-line', function(){})->name('admin:department:works:add-line');
+        Route::get('works/add-line/{i}', 'worksAddLine')->name('admin:department:works:add-line-num');
+        Route::get('add', 'form')->name('admin:department:add');
+        Route::get('edit/{id}', 'form')->name('admin:department:edit');
+        Route::post('save', 'save')->name('admin:department:save');
+        Route::get('delete/{id}', 'delete')->name('admin:department:delete');
 
     });

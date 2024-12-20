@@ -17,7 +17,7 @@ class StaffController extends Controller
                 View::make('components.admin.staff.header')->with([])->render(),
 
                 View::make('components.admin.staff.list')->with([
-                    'list' => [],
+                    'list' => Staff::orderBy('id','desc')->paginate(1000),
                 ])->render(),
             ]
         ]);
@@ -29,7 +29,7 @@ class StaffController extends Controller
         return view('pages.admin', [
             'contents' => [
                 View::make('components.admin.staff.form')->with([
-                    'current' => Staff::find($id),
+                    'current' => Staff::getByID($id),
                 ])->render(),
             ]
         ]);
@@ -37,13 +37,25 @@ class StaffController extends Controller
 
     public function save(Request $request)
     {
-
         $form = $request->validate(Staff::$FormRules,Staff::$FormMessage);
 
         if (empty($request->get('id')))
             $record = new Staff();
         else
             $record = Staff::find($request->get('id'));
+
+        if(is_array($form['works']))
+            $form['works'] =
+                array_values(array_filter($form['works'],function ($work){return !empty($work['post']);}));
+
+        if(count($form['works']))
+            $form['works'] = json_encode(
+                $form['works'],
+                JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES|JSON_NUMERIC_CHECK|JSON_PRETTY_PRINT
+            );
+
+        else
+            $form['works'] = null;
 
         $record->fill($form);
 
@@ -69,12 +81,30 @@ class StaffController extends Controller
         $photo->storeAS('images/photo', 'original.' . $photo->extension(), 'public');
 
         ImageStorage::saveResizedImageToStorage('photo', $photo->path(), 'photo-' . $record->id, [
-            [200, 200],
-            [600, 600],
-            [800, 800],
             [1200, 1200],
+            [800, 800],
+            [600, 600],
+            [200, 200],
         ]);
 
         return redirect()->route('admin:staff');
     }
+
+    public function worksAddLine($i= 0)
+    {
+        return View::make('components.admin.staff.work')->with([
+                    'i' => $i,
+                ])->render();
+    }
+
+    public function delete(int $id)
+    {
+        $record = Staff::find($id);
+
+        if (!is_null($record))
+            $record->delete();
+
+        return redirect()->route('admin:staff');
+    }
+
 }

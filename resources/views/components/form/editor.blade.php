@@ -3,8 +3,10 @@
 @endif
 
 @if(isset($id))
-    <label for="{{$id}}" class="mb-2 mt-4 block text-center font-semibold uppercase text-xl">
-        {{$label??$name}}@if(isset($required))*@endif
+    <label for="{{$id}}" class="mb-2 mt-4 block text-center font-semibold uppercase">
+        @if(!isset($hideLabel))
+            {{$label??$name}}@if(isset($required))*@endif
+        @endif
     </label>
 @endif
 

@@ -12,7 +12,7 @@
             <nav class="nav flex align-center">
                 <a class="nav-link" href="#">Студенту</a>
                 <a class="nav-link" href="#">Поступающим</a>
-                <a class="nav-link" href="views/view-aspirantam.html">Аспирантам</a>
+                <a class="nav-link" href="../views/view-aspirantam.html">Аспирантам</a>
                 <a class="nav-link" href="#">Выпустникам</a>
                 <a class="nav-link" href="#">Партнерам</a>
                 <a class="nav-link btn-search cursor-pointer flex items-center">
@@ -65,6 +65,37 @@
                 <div class="navbar-collapse">
                     <ul class="navbar-nav">
                         <li class="nav-item point-menu flex items-center">
+                            <a class="nav-link flex justify-between lg:inline" href="#">О МелГУ  <i class="bi bi-chevron-right inline lg:hidden font-[600]"></i></a>
+                        </li>
+                        <li class="nav-item point-menu flex items-center">
+                            <a class="nav-link flex justify-between lg:inline" href="#">Образование <i class="bi bi-chevron-right inline lg:hidden font-[600]"></i></a>
+                        </li>
+                        <li class="nav-item point-menu flex items-center">
+                            <a class="nav-link flex justify-between lg:inline" href="#">Наука <i class="bi bi-chevron-right inline lg:hidden font-[600]"></i></a>
+                        </li>
+                        <li class="nav-item point-menu flex items-center">
+                            <a class="nav-link flex justify-between lg:inline" href="#">Молодежная политика <i class="bi bi-chevron-right inline lg:hidden font-[600]"></i></a>
+                        </li>
+                        <li class="nav-item point-menu flex items-center">
+                            <a class="nav-link flex justify-between lg:inline" href="#">Доступная среда <i class="bi bi-chevron-right inline lg:hidden font-[600]"></i></a>
+                        </li>
+                        <li class="nav-item point-menu flex items-center">
+                            <a class="nav-link flex justify-between lg:inline" href="#">Новости <i class="bi bi-chevron-right inline lg:hidden font-[600]"></i></a>
+                        </li>
+                    </ul>
+                    <div class="search-and-btn-box">
+                        <div class="personal-account-box">
+                            <button class="personal-account-btn flex align-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0z"/>
+                                    <path fill-rule="evenodd" d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"/>
+                                </svg>
+                                <span>Личный кабинет</span>
+                            </button>
+                        </div>
+                    </div>
+                    <ul class="under-navbar-nav flex flex-col w-full lg:hidden">
+                        <li class="nav-item point-menu flex items-center">
                             <a class="nav-link" href="#">О МелГУ</a>
                         </li>
                         <li class="nav-item point-menu flex items-center">
@@ -83,25 +114,6 @@
                             <a class="nav-link" href="#">Новости</a>
                         </li>
                     </ul>
-                    <div class="search-and-btn-box">
-                        <!-- <form class="search-form">
-                             <input class="form-control rounded-none" type="search" placeholder="Поиск" aria-label="Search">
-                             <button class="btn rounded-none border-0" type="button">
-                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                                     <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
-                                 </svg>
-                             </button>
-                         </form>-->
-                        <div class="personal-account-box">
-                            <button class="personal-account-btn flex align-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0z"/>
-                                    <path fill-rule="evenodd" d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"/>
-                                </svg>
-                                <span>Личный кабинет</span>
-                            </button>
-                        </div>
-                    </div>
                 </div>
             </nav>
             <div class="about-melsu-menu new-menu hidde">
@@ -113,7 +125,7 @@
                         </a>
                     </div>
                     <div class="box-transit-btn">
-                        <a class="transit-btn" href="template/menu-page.html">
+                        <a class="transit-btn" href="../template/menu-page.html">
                             О МелГУ
                             <i class="bi bi-arrow-right"></i>
                         </a>

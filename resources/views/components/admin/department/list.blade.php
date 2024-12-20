@@ -107,5 +107,5 @@
 
     <hr class="my-4">
 
-    {{@$list->links()}}
+{{--    @$list->links()--}}
 </div>

@@ -424,6 +424,9 @@ body{
         padding-left: 12px;
         height: 64px;
         align-items: center;
+        .nav-item{
+            padding-top: 8px;
+        }
         .nav-link{
             font-size: 15px;
         }
@@ -469,9 +472,22 @@ body{
                 flex-direction: column;
 
                 li {
-                    padding: 8px 10px;
                     a {
                         width: 100%;
+                        padding-bottom: 8px;
+                        border-bottom: 1px solid lightgray;
+                    }
+                }
+            }
+            .under-navbar-nav{
+                & li:first-child{
+                    padding-top: 5px;
+                }
+                & li{
+
+                    a{
+                        color: #820000BD;
+                        padding-bottom: 10px;
                     }
                 }
             }
@@ -518,7 +534,9 @@ body{
             }
         }
         .personal-account-box{
+            height: auto;
             .personal-account-btn{
+                height: auto;
                 padding: 8px 10px;
                 background: none;
                 color: var(--primary-color);
@@ -534,6 +552,7 @@ body{
 
         }
         .search-and-btn-box{
+            height: auto;
             width: 100%;
             margin-right: 0;
             flex-direction: column-reverse;
@@ -545,7 +564,8 @@ body{
             display: block;
         }
         position: fixed;
-        height: 100vh;
+        max-height: 93vh;
+        overflow: scroll;
         min-width: 100%;
         z-index: 9998;
         top: 70px;

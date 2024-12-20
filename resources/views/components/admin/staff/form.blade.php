@@ -86,13 +86,6 @@
     />
 
     <x-form.input
-        id="education"
-        name="education"
-        label="Образование"
-        value="{{old('education')??@$current->education}}"
-    />
-
-    <x-form.input
         id="awards"
         name="awards"
         label="Награды, поощрение"
@@ -156,18 +149,58 @@
     />
 
     <x-form.input
-        id="address"
-        name="address"
-        label="Образование"
-        value="{{old('address')??@$current->address}}"
-    />
-
-    <x-form.input
         id="alias"
         name="alias"
         label="alias (для использования в ссылке, или не заполнено или уникально)"
         value="{{old('alias')??@$current->alias}}"
     />
+
+    <div class="bg-white rounded-md py-4 mb-0 flex">
+        <h2 class="flex-1 text-xl font-semibold">
+            Трудовая деятельность
+        </h2>
+        <div>
+            <a
+                href="{{route('admin:staff:works:add-line')}}"
+                class="
+                    addLine
+                    py-2 px-4
+                    rounded-md
+                    text-white
+                    bg-blue-950 hover:bg-blue-700 active:bg-gray-700
+                "
+                data-ident="work-line"
+                data-block="works"
+            >
+                <i class="fas fa-plus w-4 py-2"></i>
+            </a>
+        </div>
+    </div>
+
+    <hr>
+
+    <div id="works" class="grid grid-cols-1 md:grid-cols-[1fr,1fr,4fr] gap-4">
+
+        @if(is_array(old('works')))
+            @php $works = array_filter(old('works'),function ($work){return !empty($work['post']);}); @endphp
+
+            @foreach($works as $key=>$work)
+                <x-admin.staff.work :i="$key" :work="$work" />
+            @endforeach
+
+            @if(count($works) === 0)
+                <x-admin.staff.work :i="0" />
+            @endif
+
+        @elseif(isset($current->works))
+            @foreach($current->works as $key=>$work)
+                <x-admin.staff.work :i="$key" :work="$work" />
+            @endforeach
+
+        @else
+            <x-admin.staff.work :i="0" />
+        @endif
+    </div>
 
     <x-form.submit
         class="uppercase"
@@ -175,5 +208,3 @@
     />
 
 </form>
-
-@dump($current)

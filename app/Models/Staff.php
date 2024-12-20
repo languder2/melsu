@@ -12,7 +12,6 @@ class Staff extends Model
     use SoftDeletes;
 
     protected $table        = 'staffs';
-
     protected $fillable     = [
         'id',
         'photo',
@@ -66,5 +65,14 @@ class Staff extends Model
         'firstname'         => 'Укажите имя',
     ];
 
+    public static function getByID($id): ?Staff
+    {
+        $staff = self::find($id);
+
+        if(isset($staff->works) && !is_null($staff->works))
+            $staff->works = json_decode($staff->works);
+
+        return $staff;
+    }
 
 }

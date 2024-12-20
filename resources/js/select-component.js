@@ -1,62 +1,41 @@
-const inputField = document.querySelector('.chosen-value');
-const dropdown = document.querySelector('.value-list');
-const dropdownArray = [... document.querySelectorAll('li')];
-console.log(typeof dropdownArray)
+function initSelect(selectWrapper) {
+    const inputField = selectWrapper.querySelector('.chosen-value');
+    const inputHiddenField = selectWrapper.querySelector('.input-hidden');
+    const dropdown = selectWrapper.querySelector('.value-list');
+    const dropdownItems = [...dropdown.querySelectorAll('.drop-li')];
 
-let valueArray = [];
-dropdownArray.forEach(item => {
-    valueArray.push(item.textContent);
-});
+    const filterItems = (inputValue) => {
+        dropdownItems.forEach(item => {
+            const itemText = item.textContent.toLowerCase();
+            item.classList.toggle('closed', !itemText.startsWith(inputValue.toLowerCase()));
+        });
+    };
 
-const closeDropdown = () => {
-    dropdown.classList.remove('open');
-}
+    inputField.addEventListener('input', () => {
+        filterItems(inputField.value);
+        dropdown.classList.add('open');
+    });
 
-inputField.addEventListener('input', () => {
-    dropdown.classList.add('open');
-    let inputValue = inputField.value.toLowerCase();
-    let valueSubstring;
-    if (inputValue.length > 0) {
-        for (let j = 0; j < valueArray.length; j++) {
-            if (!(inputValue.substring(0, inputValue.length) === valueArray[j].substring(0, inputValue.length).toLowerCase())) {
-                dropdownArray[j].classList.add('closed');
-            } else {
-                dropdownArray[j].classList.remove('closed');
-            }
-        }
-    } else {
-        for (let i = 0; i < dropdownArray.length; i++) {
-            dropdownArray[i].classList.remove('closed');
-        }
-    }
-});
-
-dropdownArray.forEach(item => {
-    item.addEventListener('click', (evt) => {
-        inputField.value = item.textContent;
-        dropdownArray.forEach(dropdown => {
-            dropdown.classList.add('closed');
+    dropdownItems.forEach(item => {
+        item.addEventListener('click', () => {
+            inputField.value = item.textContent;
+            inputHiddenField.value = item.dataset.id;
+            dropdown.classList.remove('open');
+            filterItems('');
         });
     });
-})
 
-inputField.addEventListener('focus', () => {
-    inputField.placeholder = 'Поиск...';
-    dropdown.classList.add('open');
-    dropdownArray.forEach(dropdown => {
-        dropdown.classList.remove('closed');
+    inputField.addEventListener('focus', () => {
+        inputField.placeholder = 'Поиск...';
+        dropdown.classList.add('open');
+        filterItems('');
     });
-});
 
-inputField.addEventListener('blur', () => {
-    inputField.placeholder = 'Выбирите категорию';
-    dropdown.classList.remove('open');
-});
-
-document.addEventListener('click', (evt) => {
-    const isDropdown = dropdown.contains(evt.target);
-    const isInput = inputField.contains(evt.target);
-    if (!isDropdown && !isInput) {
+    inputField.addEventListener('blur', () => {
+        inputField.placeholder = 'Выберите категорию';
         dropdown.classList.remove('open');
-    }
-});
+    });
+}
+
+const selectWrappers = document.querySelectorAll('.select-wrapper');
+selectWrappers.forEach(initSelect);

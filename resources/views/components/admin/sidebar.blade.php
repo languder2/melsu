@@ -3,7 +3,7 @@
     duration-300
 
     fixed z-50
-    right-0 top-0 bottom-0
+    left-0 top-0 bottom-0
     w-14 p-4
 
     hover:w-72
@@ -31,8 +31,14 @@
 
         <x-admin.sidebar-li
             link="{{route('admin:staff')}}"
-            ico="fas fa-users"
+            ico="fas fa-users text-lg"
             text="сотрудники"
+        />
+
+        <x-admin.sidebar-li
+            link="{{route('admin:department')}}"
+            ico="fas fa-align-left"
+            text="департаменты"
         />
 
         <x-admin.sidebar-li
@@ -47,4 +53,11 @@
             text="выход"
         />
     </ul>
+
+    <i class="fas fa-outdent"></i>
+    <i class="fas fa-indent"></i>
+
+    <i class="fab fa-squarespace"></i>
 </div>
+
+
