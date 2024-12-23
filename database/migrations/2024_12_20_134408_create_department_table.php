@@ -16,7 +16,8 @@ return new class extends Migration
 
             $table->string('name')->unique();
             $table->unsignedBigInteger('chief')->nullable();
-            $table->string('alias')->unique()->nullable();
+            $table->text('chief_post')->nullable();
+            $table->text('alias')->unique()->nullable();
             $table->integer('sort')->default(100000);
             $table->timestamp('deleted_at')->nullable();
             $table->timestamps();

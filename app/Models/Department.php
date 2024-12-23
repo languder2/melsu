@@ -24,8 +24,12 @@ class Department extends Model
 //        'name'              => 'required|unique:departments,name,NULL,id,deleted_at,NULL',
         'name'              => 'required|unique:departments,name',
         'chief'             => '',
+        'chief_post'        => '',
         'alias'             => '',
         'sort'              => '',
+        'sections'          => '',
+        'staffs'            => '',
+        'documents'         => '',
     ];
 
     public static $FormMessage = [

@@ -3,6 +3,7 @@
     tinymce.init({
         selector: 'textarea.editor', // Replace this CSS selector to match the placeholder element for TinyMCE
         plugins: 'code table lists image',
-        toolbar: 'undo redo | blocks | bold italic | alignleft aligncenter alignright | indent outdent | bullist numlist | code | table'
+        toolbar: 'undo redo | blocks | bold italic | alignleft aligncenter alignright | indent outdent | bullist numlist | code | table',
+        license_key: 'gpl'
     });
 </script>

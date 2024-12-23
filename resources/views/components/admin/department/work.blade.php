@@ -1,4 +1,4 @@
-<div data-ident="work-line" data-last="{{$i}}">
+<div data-ident="work-line" data-ordinal="{{$i}}">
     <x-form.input
         id="works_{{$i}}_employment"
         type="date"

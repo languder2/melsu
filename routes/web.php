@@ -128,8 +128,16 @@ Route::middleware('auth.check')
     ->group(function () {
 
         Route::get('', 'adminList')->name('admin:department');
-        Route::get('works/add-line', function(){})->name('admin:department:works:add-line');
-        Route::get('works/add-line/{i}', 'worksAddLine')->name('admin:department:works:add-line-num');
+
+        Route::get('contents/add', function(){})->name('admin:department:content:add');
+        Route::get('contents/add/{i}', 'addContentSection');
+
+        Route::get('staff/add', function(){})->name('admin:department:staff:add');
+        Route::get('staff/add/{i}', 'addStaff');
+
+        Route::get('document/add', function(){})->name('admin:department:document:add');
+        Route::get('document/add/{i}', 'addDocument2Form');
+
         Route::get('add', 'form')->name('admin:department:add');
         Route::get('edit/{id}', 'form')->name('admin:department:edit');
         Route::post('save', 'save')->name('admin:department:save');

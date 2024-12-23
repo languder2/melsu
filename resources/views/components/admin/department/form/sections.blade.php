@@ -1,4 +1,5 @@
-<div class="p-4 bg-white rounded-md">
+<div class="p-4 bg-white rounded-md mb-4">
+
     <h3 class="pb-2 font-semibold text  -xl uppercase text-center">
         @if(isset($current->id))
             Внести изменения в карточку отдела
@@ -7,25 +8,42 @@
         @endif
     </h3>
 
-    <x-admin.department.form.content
-        :i="0"
-        :current="[]"
-    />
+
+    <div id="content-sections">
+        @if(!empty(old('sections')))
+            @foreach(old('sections') as $code=>$sections)
+                <x-admin.department.form.content
+                    :i="$code"
+                    :current="(object)$sections"
+                />
+        @endforeach
+        @else
+            <x-admin.department.form.content
+                :i="now()->getTimestamp()"
+                :current="[]"
+            />
+        @endif
+    </div>
 
     <div class="flex">
+
         <div class="flex-1 pt-4">
-            <a href="#" class="
-                bg-blue-900
-                px-4 py-2
-                text-white
-                rounded-md
-                hover:bg-blue-700
-                active:bg-gray-700
-                uppercase
-            ">
+            <a href="{{route('admin:department:content:add')}}"
+               class="
+                    addLine
+                    py-2 px-4
+                    rounded-md
+                    text-white
+                    bg-blue-950 hover:bg-blue-700 active:bg-gray-700
+                "
+               data-ident="department-section"
+               data-block="content-sections"
+            >
+                <i class="fas fa-plus w-4 py-2"></i>
                 Добавить секцию
             </a>
         </div>
+
         <div class="flex-1">
             <x-form.submit
                 class="uppercase"

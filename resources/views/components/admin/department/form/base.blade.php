@@ -28,8 +28,6 @@
         value="{{old('alias')??@$current->alias}}"
     />
 
-    <x-form.select-search />
-
     <x-form.submit
         class="uppercase"
         value="сохранить"

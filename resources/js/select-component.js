@@ -1,13 +1,13 @@
-function initSelect(selectWrapper) {
-    const inputField = selectWrapper.querySelector('.chosen-value');
-    const inputHiddenField = selectWrapper.querySelector('.input-hidden');
-    const dropdown = selectWrapper.querySelector('.value-list');
-    const dropdownItems = [...dropdown.querySelectorAll('.drop-li')];
+export function initSelect(selectWrapper) {
+    let inputField = selectWrapper.querySelector('.chosen-value');
+    let inputHiddenField = selectWrapper.querySelector('.input-hidden');
+    let dropdown = selectWrapper.querySelector('.value-list');
+    let dropdownItems = [...dropdown.querySelectorAll('.drop-li')];
 
-    const filterItems = (inputValue) => {
+    let filterItems = (inputValue) => {
         dropdownItems.forEach(item => {
-            const itemText = item.textContent.toLowerCase();
-            item.classList.toggle('closed', !itemText.startsWith(inputValue.toLowerCase()));
+            let itemText = item.textContent.toLowerCase();
+            item.classList.toggle('closed', !itemText.includes(inputValue.toLowerCase()));
         });
     };
 
@@ -32,10 +32,17 @@ function initSelect(selectWrapper) {
     });
 
     inputField.addEventListener('blur', () => {
-        inputField.placeholder = 'Выберите категорию';
+        inputField.placeholder = inputField.getAttribute('data-placeholder');
         dropdown.classList.remove('open');
     });
 }
 
-const selectWrappers = document.querySelectorAll('.select-wrapper');
+let selectWrappers = document.querySelectorAll('.select-wrapper');
 selectWrappers.forEach(initSelect);
+
+
+export function callAddSelect(args,id){
+    let el = document.getElementById(args[3]+id);
+    console.log(el,args[3]+id);
+    initSelect(el);
+}

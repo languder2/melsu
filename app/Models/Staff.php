@@ -5,8 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Carbon\Carbon;
-
+use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\Collection;
 class Staff extends Model
 {
     use SoftDeletes;
@@ -73,6 +73,16 @@ class Staff extends Model
             $staff->works = json_decode($staff->works);
 
         return $staff;
+    }
+
+    public static function getListForSelect():Collection
+    {
+        return self::orderBy('lastname')
+            ->orderBy('firstname')
+            ->orderBy('middle_name')
+            ->select('id',DB::raw('CONCAT(lastname, " ", firstname, " ", middle_name ) as fio'))
+            ->get();
+
     }
 
 }

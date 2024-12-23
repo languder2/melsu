@@ -1,7 +1,7 @@
 <x-head.tinymce-config />
 
 <form
-    action="{{route('admin:staff:save')}}"
+    action="{{route('admin:department:save')}}"
     method="POST"
     enctype="multipart/form-data"
     class="
@@ -14,6 +14,13 @@
 
     <x-admin.department.form.base :current="$current??(object)[]" />
 
-    <x-admin.department.form.sections :current="$current??(object)[]" />
+    <x-admin.department.form.staffs
+        :staffs="$staffs??[]"
+    />
 
+    <x-admin.department.form.sections
+        :current="$current??(object)[]"
+    />
+
+    <x-admin.department.form.documents/>
 </form>

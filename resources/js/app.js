@@ -1,7 +1,5 @@
 import './bootstrap';
 
-import './add-line.js';
-import './select-component.js';
 import './accordion-script.js';
 import './classie.js';
 import './counter-script.js';
@@ -10,4 +8,13 @@ import './search-in-box.js';
 import './slider.js';
 import './uisearch.js';
 
+
 import './menu.js';
+
+
+import * as AddLine from "./add-line.js";
+window.AddLine = AddLine;
+
+import * as SearchSelect from './select-component.js';
+window.SearchSelect = SearchSelect;
+
