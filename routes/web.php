@@ -16,6 +16,7 @@ Route::get('/', function () {
 
 Route::view('wish-tree', 'pages.wish-tree.form')->name('wish-tree');
 Route::post('wish-tree/save',  [WishTreeController::class, 'save'])->name('wish-tree:save');
+Route::get('wish-tree/list',  [WishTreeController::class, 'list'])->name('wish-tree:list');
 
 
 Route::view('about-us', 'pages.about')->name('pages:about');
@@ -111,7 +112,7 @@ Route::controller(StaffController::class)
     ->prefix('staff')
     ->group(function () {
 
-        Route::get('show/{id}', 'show')->name('staff:show');
+        Route::get('{id}', 'show')->name('staff:show');
 
     });
 
@@ -142,5 +143,13 @@ Route::middleware('auth.check')
         Route::get('edit/{id}', 'form')->name('admin:department:edit');
         Route::post('save', 'save')->name('admin:department:save');
         Route::get('delete/{id}', 'delete')->name('admin:department:delete');
+
+    });
+
+Route::controller(StaffController::class)
+    ->prefix('department')
+    ->group(function () {
+
+        Route::get('{id}', 'show')->name('department:show');
 
     });

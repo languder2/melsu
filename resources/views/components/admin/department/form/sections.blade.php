@@ -11,12 +11,19 @@
 
     <div id="content-sections">
         @if(!empty(old('sections')))
-            @foreach(old('sections') as $code=>$sections)
+            @foreach(old('sections') as $code=>$section)
                 <x-admin.department.form.content
                     :i="$code"
-                    :current="(object)$sections"
+                    :current="(object)$section"
                 />
-        @endforeach
+            @endforeach
+        @elseif(!empty($current->sections) and count($current->sections))
+            @foreach($current->sections as $section)
+                <x-admin.department.form.content
+                    :i="$section->id"
+                    :current="(object)$section"
+                />
+            @endforeach
         @else
             <x-admin.department.form.content
                 :i="now()->getTimestamp()"

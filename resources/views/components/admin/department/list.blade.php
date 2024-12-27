@@ -12,54 +12,55 @@
         </div>
 
         <div class="font-semibold">
-            Фото
+            Название
         </div>
 
         <div class="font-semibold">
             Должность
         </div>
 
-        <div class="font-semibold md:col-span-2">
-            ФИО
+        <div class="md:col-span-2 font-semibold">
+            Начальник
         </div>
 
-        <div class="font-semibold md:col-span-2">
-            Links
+        <div class="md:col-span-2 font-semibold">
+            ссылки
         </div>
 
         <div></div>
 
         @foreach($list as $record)
             <div>
-                    <?=$record->id?>
+               <?=$record->id?>
             </div>
 
             <div>
-                <img src="{{asset("images/photo/200x200_{$record->photo}.jpg")}}" class="max-w-12" alt=""/>
+               <?=$record->name?>
             </div>
 
             <div>
-                    <?=$record->post?>
+               <?=$record->chief_post?>
             </div>
 
             <div class="md:col-span-2">
-                    <?=$record->lastname?>
-                    <?=$record->firstname?>
-                    <?=$record->middle_name?>
+               <?=$record->lastname?>
+               <?=$record->firstname?>
+               <?=$record->middle_name?>
             </div>
 
             <div class="md:col-span-2">
-                    {{url(route('staff:show',$record->id))}}
-                    @if(!empty($record->alias))
-                        {{url(route('staff:show',$record->alias))}}
-                    @endif
+               {{url(route('department:show',$record->id))}}
+               @if(!empty($record->alias))
+                    <br>
+                    {{url(route('department:show',$record->alias))}}
+               @endif
             </div>
 
             <div>
                 <div class="flex flex-row-reverse text-white w-full">
                     <div class="flex-none w-14">
                         <a
-                            href="{{route('admin:staff:delete',$record->id)}}"
+                            href="{{route('admin:department:delete',$record->id)}}"
                             class="
                                 py-2 px-4 rounded-md
                                 bg-red-950
@@ -72,7 +73,7 @@
                     </div>
                     <div class="flex-none w-14">
                         <a
-                            href="{{route('admin:staff:edit',$record->id)}}"
+                            href="{{route('admin:department:edit',$record->id)}}"
                             class="
                                 py-2 px-4 rounded-md
                                 bg-green-950
@@ -83,22 +84,6 @@
                             <i class="far fa-edit w-4 h-4"></i>
                         </a>
                     </div>
-
-                        <div class="flex-none w-14">
-                            <a
-                                href="{{route('staff:show',$record->id)}}"
-                                target="_blank"
-                                class="
-                                    py-2 px-4 rounded-md
-                                    bg-blue-950
-                                    hover:bg-blue-700
-                                    active:bg-gray-700
-                                "
-                            >
-                                <i class="fas fa-external-link-alt"></i>
-                            </a>
-                        </div>
-
                 </div>
             </div>
             <hr class="md:col-span-8 last:hidden">
@@ -107,5 +92,5 @@
 
     <hr class="my-4">
 
-{{--    @$list->links()--}}
+    {!! @$list->links() !!}
 </div>

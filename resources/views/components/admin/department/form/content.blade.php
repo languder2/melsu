@@ -41,7 +41,7 @@
             id="sections_{{$i}}_name"
             name="sections[{{$i}}][name]"
             label="Название секции (секция без названия удаляется)"
-            value="{{old('sections.'.$i.'.name')??@$curent->name}}"
+            value="{{old('sections.'.$i.'.name')??@$current->name}}"
         />
 
         <x-form.input
@@ -49,7 +49,7 @@
             type="numeric"
             name="sections[{{$i}}][sort]"
             label="Порядок вывода (числовое, если не указано - будет установлен автоматически)"
-            value="{{old('sections.'.$i.'.sort')??@$curent->sort}}"
+            value="{{old('sections.'.$i.'.sort')??@$current->sort}}"
         />
 
         <x-form.checkbox
@@ -63,9 +63,8 @@
             id="sections_{{$i}}_text"
             name="sections[{{$i}}][text]"
             label="Контент секции"
-            value="{{old('sections.'.$i.'.text')??@$curent->text}}"
+            value="{{old('sections.'.$i.'.text')??@$current->text}}"
             hideLabel
         />
     </div>
 </div>
-

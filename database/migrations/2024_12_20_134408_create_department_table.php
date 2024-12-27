@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('departments', function (Blueprint $table) {
             $table->id();
 
-            $table->string('name')->unique();
+            $table->string('name');
             $table->unsignedBigInteger('chief')->nullable();
             $table->text('chief_post')->nullable();
-            $table->text('alias')->unique()->nullable();
+            $table->text('alias')->nullable();
             $table->integer('sort')->default(100000);
             $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
@@ -58,7 +58,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('staff');
             $table->unsignedBigInteger('department');
-            $table->string('post_alt')->nullable();
+            $table->string('post')->nullable();
             $table->integer('sort')->default(100000);
             $table->timestamp('deleted_at')->nullable();
             $table->timestamps();

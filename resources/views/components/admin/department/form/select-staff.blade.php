@@ -23,7 +23,13 @@
             h-12
         "
             name="staffs[{{$i}}][staff_name]"
-            value="{{old('staffs.'.$i.'.staff_name')??@$current->staff_name}}"
+
+            value=
+                "@if(!empty(old('staffs.'.$i.'.staff_name')))
+                    {{old('staffs.'.$i.'.staff_name')}}
+                @elseif(!empty($current)){{$current->lastname}} {{$current->firstname}} {{$current->middle_name}}@endif"
+
+
             type="text"
             placeholder="{{@$placeholder}}"
             data-placeholder="{{@$placeholder}}"

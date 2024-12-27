@@ -16,11 +16,15 @@
 
     <x-admin.department.form.staffs
         :staffs="$staffs??[]"
+        :current="$current??(object)[]"
+    />
+
+    <x-admin.department.form.documents
+        :current="$current??(object)[]"
     />
 
     <x-admin.department.form.sections
         :current="$current??(object)[]"
     />
 
-    <x-admin.department.form.documents/>
 </form>

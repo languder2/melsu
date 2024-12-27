@@ -11,6 +11,7 @@
         field="fio"
         :list="$staffs??[]"
         placeholder="Выбрать начальника"
+        :current="$current"
     />
 
     <hr class="my-2"/>
@@ -30,6 +31,17 @@
                     field="fio"
                     :list="$staffs??[]"
                     placeholder="Выбрать сотрудника"
+                />
+            @endforeach
+        @elseif(!empty($current->staffs))
+            @foreach($current->staffs as $staff)
+                <x-admin.department.form.select-staff
+                    :i="$staff->id"
+                    keyID="id"
+                    field="fio"
+                    :list="$staffs??[]"
+                    placeholder="Выбрать сотрудника"
+                    :current="$staff"
                 />
             @endforeach
         @else
@@ -59,3 +71,5 @@
             </a>
         </div>
     </div>
+
+

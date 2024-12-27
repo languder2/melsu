@@ -18,7 +18,7 @@
         name="name"
         label="Название"
         value="{{old('name')??@$current->name}}"
-        {{--        required--}}
+        required
     />
 
     <x-form.input

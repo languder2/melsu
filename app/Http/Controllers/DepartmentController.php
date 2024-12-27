@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
-use App\Models\{Department,DepartmentSection,DepartmentDocument,Staff};
+use App\Models\{Department,DepartmentSection,DepartmentDocument,DepartmentStaff};
+use App\Models\Staff;
 
 class DepartmentController extends Controller
 {
@@ -16,7 +17,7 @@ class DepartmentController extends Controller
                 View::make('components.admin.department.header')->with([])->render(),
 
                 View::make('components.admin.department.list')->with([
-                    'list' => [],
+                    'list' => Department::AdminList(),
                 ])->render(),
             ]
         ]);
@@ -28,7 +29,7 @@ class DepartmentController extends Controller
         return view('pages.admin', [
             'contents' => [
                 View::make('components.admin.department.form.form')->with([
-                    'current' => Staff::getByID($id),
+                    'current' => Department::getByID($id),
                     'staffs' => Staff::getListForSelect(),
                 ])->render(),
             ]
@@ -60,38 +61,42 @@ class DepartmentController extends Controller
         ])->render();
     }
 
-
     public function save(Request $request)
     {
 
-
-
-        $form = $request->validate(Department::$FormRules,Department::$FormMessage);
+        $form = $request->validate(Department::FormRules($request->get('id')),Department::$FormMessage);
 
         if (empty($request->get('id')))
-            $record = new Staff();
+            $record = new Department();
         else
-            $record = Staff::find($request->get('id'));
-
-/**
-        if(is_array($form['works']))
-            $form['works'] =
-                array_values(array_filter($form['works'],function ($work){return !empty($work['post']);}));
-
-        if(count($form['works']))
-            $form['works'] = json_encode(
-                $form['works'],
-                JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES|JSON_NUMERIC_CHECK|JSON_PRETTY_PRINT
-            );
-
-        else
-            $form['works'] = null;
-        /**/
+            $record = Department::find($request->get('id'));
 
         $record->fill($form);
 
-//        $record->save();
-        dd($form);
-        return redirect()->route('admin:staff');
+        if(empty($form['chief_name'])){
+            $record->chief_post = null;
+            $record->chief      = null;
+        }
+
+        $record->save();
+
+        if(isset($form['sections']) && is_array($form['sections']))
+            DepartmentSection::AddInDepartment($record->id,$form['sections']);
+
+        if(isset($form['staffs']) && is_array($form['staffs']))
+            DepartmentStaff::AddInDepartment($record->id,$form['staffs']);
+
+        return redirect()->route('admin:department');
     }
+
+    public function delete(int $id)
+    {
+        $record = Department::find($id);
+
+        if (!is_null($record))
+            $record->delete();
+
+        return redirect()->route('admin:department');
+    }
+
 }
