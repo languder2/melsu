@@ -18,7 +18,7 @@
     </h3>
 
     <div class="bg-white p-6 line-h">
-        <ul class="list-decimal ms-6  marker:text-baseRed">
+        <ol class="list-decimal ms-6  marker:text-baseRed">
             <li>
                 Свобода и смелость в расширении границ знаний в приоритетных областях науки для блага человечества при соблюдении профессиональной этики.
             </li>
@@ -40,7 +40,7 @@
             <li>
                 Корпоративная культура, обеспечивающая открытость и комфортную внутреннюю среду.
             </li>
-        </ul>
+        </ol>
     </div>
 
 @endsection
