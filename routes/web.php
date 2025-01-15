@@ -19,9 +19,6 @@ Route::post('wish-tree/save',  [WishTreeController::class, 'save'])->name('wish-
 Route::get('wish-tree/list',  [WishTreeController::class, 'list'])->name('wish-tree:list');
 
 
-Route::view('about-us', 'pages.about')->name('pages:about');
-
-
 Route::view('admin', 'pages.admin')->name('admin:main');
 
 Route::post('login', [AdminController::class, 'login'])->name('admin:login');
@@ -149,7 +146,13 @@ Route::middleware('auth.check')
 Route::controller(StaffController::class)
     ->prefix('department')
     ->group(function () {
-
         Route::get('{id}', 'show')->name('department:show');
 
     });
+
+
+
+Route::view('about-us', 'pages.about')->name('pages:about');
+Route::view('history', 'pages.history')->name('pages:history');
+Route::view('mission', 'pages.mission')->name('pages:mission');
+Route::view('education', 'pages.education')->name('pages:education');

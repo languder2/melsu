@@ -18,8 +18,11 @@
 
     <section class="main-section">
 
+        <div class="sidebar"></div>
 
-        @yield('content')
+        <div class="content-block mt-24 ml-96 text-lg leading-8 ">
+            @yield('content')
+        </div>
 
     </section>
 

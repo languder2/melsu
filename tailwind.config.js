@@ -15,6 +15,16 @@ export default {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+            colors:{
+                baseRed: '#820000'
+            },
+            listStyleType: {
+                none: 'none',
+                disc: 'disc',
+                decimal: 'decimal',
+                square: 'square',
+                roman: 'upper-roman',
+            }
         },
     },
     plugins: [],
