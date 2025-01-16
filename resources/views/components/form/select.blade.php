@@ -31,7 +31,7 @@
     @if(!empty($datas) && is_array($datas))
         @foreach($datas as $code=>$data)
             data-{{$code}}="{{$data}}"
-        @endforeach
+    @endforeach
     @endif
 
     @if(isset($dependents) and is_array($dependents))
@@ -48,21 +48,37 @@
             {{$null}}@if(isset($required))* @endif
         </option>
     @endif
-    @foreach($list as $code=>$item)
-        <option
-            value="{{$code}}"
-            @disabled(!$code)
-            @selected(empty($old) && empty($value) && empty($code))
-            @selected(empty($old) && !empty($value) && $value == $code)
-            @selected(!empty($old) && $old == $code)
 
-            @if(!empty($code) && isset($optionData[$code]) && is_array($optionData[$code]))
-                @foreach($optionData[$code] as $dc=>$data)
-                    data-{{$dc}}="{{$data}}"
+
+    @if(isset($collection))
+        @foreach($list as $item)
+            <option
+                value="{{$item->id}}"
+                @disabled(!$item->id)
+                @selected(empty($old) && empty($value) && empty($item->id))
+                @selected(empty($old) && !empty($value) && $value == $item->id)
+                @selected(!empty($old) && $old == $item->id)
+            >
+                {{$item->name}}
+            </option>
+        @endforeach
+    @else
+        @foreach($list as $code=>$item)
+            <option
+                value="{{$code}}"
+                @disabled(!$code)
+                @selected(empty($old) && empty($value) && empty($code))
+                @selected(empty($old) && !empty($value) && $value == $code)
+                @selected(!empty($old) && $old == $code)
+
+                @if(!empty($code) && isset($optionData[$code]) && is_array($optionData[$code]))
+                    @foreach($optionData[$code] as $dc=>$data)
+                        data-{{$dc}}="{{$data}}"
                 @endforeach
-            @endif
-        >
-            {{$item}}
-        </option>
-    @endforeach
+                @endif
+            >
+                {{$item}}
+            </option>
+        @endforeach
+    @endif
 </select>

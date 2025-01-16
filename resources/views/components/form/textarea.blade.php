@@ -3,8 +3,8 @@
         @if(isset($id))
             id="{{$id}}"
         @endif
-        name="{{$name}}"
 
+        name="{{$name}}"
     >{{@$value}}</textarea>
     @if(isset($label) && isset($id))
         <label

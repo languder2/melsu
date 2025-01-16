@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{AdminController,suStructureController,NewsController};
 use App\Http\Controllers\EventsController;
 use App\Http\Controllers\WishTreeController;
-use App\Http\Controllers\MenuController;
+use App\Http\Controllers\{MenuController,MenuCategoriesController};
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DepartmentController;
@@ -84,9 +84,22 @@ Route::middleware('auth.check')
 
         Route::get('', 'list')->name('admin:menu');
         Route::get('add', 'form')->name('admin:menu:add');
-//        Route::get('edit/{id}', 'form')->name('admin:events:edit');
-//        Route::post('save', 'save')->name('admin:events:save');
-//        Route::get('delete/{id}', 'delete')->name('admin:events:delete');
+        Route::get('edit/{id}', 'form')->name('admin:menu:edit');
+        Route::post('save', 'save')->name('admin:menu:save');
+        Route::get('delete/{id}', 'delete')->name('admin:menu:delete');
+
+    });
+
+Route::middleware('auth.check')
+    ->controller(MenuCategoriesController::class)
+    ->prefix('admin/menu-categories')
+    ->group(function () {
+
+        Route::get('', 'list')->name('admin:menu-categories');
+        Route::get('add', 'form')->name('admin:menu-categories:add');
+        Route::get('edit/{id}', 'form')->name('admin:menu-categories:edit');
+        Route::post('save', 'save')->name('admin:menu-categories:save');
+        Route::get('delete/{id}', 'delete')->name('admin:menu-categories:delete');
 
     });
 

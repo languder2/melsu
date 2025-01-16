@@ -1,6 +1,5 @@
-<x-head.tinymce-config />
 <form
-    action="{{route('admin:news:save')}}"
+    action="{{route('admin:menu:save')}}"
     method="POST"
     enctype="multipart/form-data"
     class="
@@ -11,11 +10,11 @@
 >
     @csrf
 
-    <h3 class="pb-2 font-semibold text  -xl uppercase text-center">
+    <h3 class="pb-2 font-semibold text-xl uppercase text-center">
         @if(isset($current->id))
             Внести изменения
         @else
-            Добавить новость
+            Добавить пункт меню
         @endif
     </h3>
 
@@ -33,54 +32,54 @@
         value="{{@$current->category}}"
         null="Выберите категорию"
         :list="$categories??[]"
+        collection
         required
     />
 
     <x-form.input
-        id="publication_at"
-        type="datetime-local"
-        name="publication_at"
-        label="Дата публикация"
-        value="{{old('post')??($current->publication_at??now())}}"
-    />
-
-    <x-form.input
-        id="image"
-        type="file"
-        name="image"
-        value="{{old('lastname')??@$current->lastname}}"
-    />
-
-    <x-form.input
-        id="title"
-        name="title"
-        label="Заголовок"
-        value="{{old('title')??@$current->title}}"
+        id="name"
+        name="name"
+        label="Наименование"
+        value="{{old('name')??@$current->name}}"
         required
     />
 
-    <x-form.editor
-        name="short"
-        id="short"
-        label="Краткое описание"
-        value="{{old('short')??@$current->short}}"
+    <x-form.input
+        id="comment"
+        name="comment"
+        label="Описание"
+        value="{{old('comment')??@$current->comment}}"
     />
 
-    <x-form.editor
-        name="full"
-        id="full"
-        label="Полное описание"
-        borderTop
-        value="{{old('full')??@$current->full}}"
+    <x-form.select
+        id="parent"
+        name="parent"
+        old="{{old('parent')}}"
+        value="{{@$current->parent}}"
+        null="Родительский пункт"
+        :list="$parent??[]"
     />
 
-    <x-form.editor
-        name="news"
-        id="news"
-        label="Новость"
-        value="{{old('news')??@$current->news}}"
-        borderTop
-        class="min-h-screen"
+    <x-form.input
+        id="route"
+        name="route"
+        label="Route"
+        value="{{old('route')??@$current->route}}"
+    />
+
+    <x-form.input
+        id="link"
+        name="link"
+        label="Link"
+        value="{{old('link')??@$current->link}}"
+    />
+
+    <x-form.input
+        id="sort"
+        type="number"
+        name="sort"
+        label="Sort"
+        value="{{old('sort')??@$current->sort??1000}}"
     />
 
     <x-form.submit
@@ -89,4 +88,3 @@
     />
 
 </form>
-
