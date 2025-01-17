@@ -15,12 +15,22 @@ return new class extends Migration
             $table->id();
 
             $table->string('name');
-            $table->string('link')->nullable();
+            $table->string('alias');
             $table->string('route')->nullable();
+            $table->text('comment')->nullable();
+
             $table->unsignedBigInteger('parent')->nullable();
-            $table->integer('sort')->default(100000);
+
             $table->enum('display', ['show', 'hide'])->default('show');
 
+
+            $table->text('title')->nullable();
+            $table->text('keywords')->nullable();
+            $table->text('description')->nullable();
+
+            $table->longText('content')->nullable();
+
+            $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
 
             $table->foreign('parent')->references('id')->on('pages')

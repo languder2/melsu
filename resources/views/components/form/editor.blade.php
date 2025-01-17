@@ -25,6 +25,11 @@
 
     @required(@$required)
     placeholder="Введите текст"
+
+
+    @if(isset($height))
+        style="height: {!! $height !!}"
+    @endif
 >
     {!! @$value !!}
 </textarea>

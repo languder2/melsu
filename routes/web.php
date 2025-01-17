@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{AdminController,suStructureController,NewsController};
 use App\Http\Controllers\EventsController;
 use App\Http\Controllers\WishTreeController;
-use App\Http\Controllers\{MenuController,MenuCategoriesController};
+use App\Http\Controllers\{MenuController,MenuCategoriesController,PagesController};
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DepartmentController;
@@ -104,6 +104,20 @@ Route::middleware('auth.check')
     });
 
 Route::middleware('auth.check')
+    ->controller(PagesController::class)
+    ->prefix('admin/pages')
+    ->group(function () {
+
+        Route::get('', 'list')->name('admin:pages');
+        Route::get('add', 'form')->name('admin:pages:add');
+        Route::get('edit/{id}', 'form')->name('admin:pages:edit');
+        Route::post('save', 'save')->name('admin:pages:save');
+        Route::get('delete/{id}', 'delete')->name('admin:pages:delete');
+
+    });
+
+
+Route::middleware('auth.check')
     ->controller(StaffController::class)
     ->prefix('admin/staff')
     ->group(function () {
@@ -170,3 +184,6 @@ Route::view('history', 'pages.history')->name('pages:history');
 Route::view('mission', 'pages.mission')->name('pages:mission');
 Route::view('education', 'pages.education')->name('pages:education');
 Route::view('magistracy', 'pages.magistracy')->name('pages:magistracy');
+
+
+Route::get('{alias}', [PagesController::class,'showPage']);

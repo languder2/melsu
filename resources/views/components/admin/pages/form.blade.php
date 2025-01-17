@@ -1,0 +1,105 @@
+<x-head.tinymce-config />
+
+<form
+    action="{{route('admin:pages:save')}}"
+    method="POST"
+    enctype="multipart/form-data"
+    class="
+        p-4 bg-white rounded-md
+        max-w-[1200px]
+        mx-auto
+    "
+>
+    @csrf
+
+    <h3 class="pb-2 font-semibold text-xl uppercase text-center">
+        @if(isset($current->id))
+            Внести изменения
+        @else
+            Добавить страницу
+        @endif
+    </h3>
+
+    <hr>
+
+    <x-form.errors />
+
+    <x-form.input type="hidden" name="id" value="{{$current->id??null}}"/>
+
+    <x-form.input
+        id="name"
+        name="name"
+        label="Наименование"
+        value="{{old('name')??@$current->name}}"
+        required
+    />
+
+    <x-form.input
+        id="alias"
+        name="alias"
+        label="Alias"
+        value="{{old('alias')??@$current->alias}}"
+    />
+
+    <x-form.input
+        id="comment"
+        name="comment"
+        label="Описание"
+        value="{{old('comment')??@$current->comment}}"
+    />
+
+    <x-form.select
+        id="parent"
+        name="parent"
+        old="{{old('parent')}}"
+        value="{{@$current->parent}}"
+        null="Родительский пункт"
+        :list="$parents??[]"
+    />
+
+    <x-form.input
+        id="route"
+        name="route"
+        label="Route"
+        value="{{old('route')??@$current->route}}"
+    />
+
+    <x-form.input
+        id="title"
+        name="title"
+        label="Meta: tile"
+        value="{{old('title')??@$current->title}}"
+    />
+
+    <x-form.input
+        id="keywords"
+        name="keywords"
+        label="Meta: keywords"
+        value="{{old('keywords')??@$current->keywords}}"
+    />
+
+    <x-form.input
+        id="description"
+        name="description"
+        label="Meta: description"
+        value="{{old('description')??@$current->description}}"
+    />
+
+    <x-form.editor
+        id="content"
+        name="content"
+        label="Контент страницы"
+        value="{{old('content')??@$current->content}}"
+        hideLabel
+        height="800px"
+    />
+
+
+
+
+    <x-form.submit
+        class="uppercase"
+        value="сохранить"
+    />
+
+</form>

@@ -14,6 +14,15 @@
         text="Категории меню"
     />
 
+    <span class="inline-block mx-3">
+        /
+    </span>
+
+    <x-html.a-blue
+        href="{{url(route('admin:pages'))}}"
+        text="Страницы"
+    />
+
 </div>
 
 <div class="bg-white rounded-md p-4 mb-4 flex">
