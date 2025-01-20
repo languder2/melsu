@@ -85,6 +85,13 @@
         value="{{old('description')??@$current->description}}"
     />
 
+    <x-form.input
+        id="template"
+        name="template"
+        label="Template"
+        value="{{old('template')??@$current->template}}"
+    />
+
     <x-form.editor
         id="content"
         name="content"

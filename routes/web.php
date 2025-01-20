@@ -180,7 +180,7 @@ Route::controller(StaffController::class)
 
 
 Route::view('about-us', 'pages.about')->name('pages:about');
-Route::view('history', 'pages.history')->name('pages:history');
+Route::view('history', 'pages.content.history')->name('pages:history');
 Route::view('mission', 'pages.mission')->name('pages:mission');
 Route::view('education', 'pages.education')->name('pages:education');
 Route::view('magistracy', 'pages.magistracy')->name('pages:magistracy');

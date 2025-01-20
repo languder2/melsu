@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\View;
 use Illuminate\Http\Request;
 use App\Models\Page;
@@ -57,12 +58,18 @@ class PagesController extends Controller
 
 
 
-    public function showPage($alias)
+    public function showPage($alias) :RedirectResponse|string
     {
+        $page= Page::where('alias',$alias)->first();
 
+        if($page === null)
+            return redirect()->route('pages:main');
 
-
-        dd($alias);
+        return view('pages.page', [
+            'contents' => [
+                $page->content,
+            ]
+        ]);
     }
 
 }

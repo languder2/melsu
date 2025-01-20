@@ -25,6 +25,7 @@ class Page extends Model
         'keywords',
         'description',
 
+        'template',
         'content',
 
         'created_at',
@@ -49,6 +50,7 @@ class Page extends Model
             'title'             => '',
             'keywords'          => '',
             'description'       => '',
+            'template'          => '',
             'content'           => '',
         ];
     }

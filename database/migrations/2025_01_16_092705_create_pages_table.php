@@ -28,6 +28,7 @@ return new class extends Migration
             $table->text('keywords')->nullable();
             $table->text('description')->nullable();
 
+            $table->string('template')->nullable();
             $table->longText('content')->nullable();
 
             $table->timestamp('deleted_at')->nullable();
