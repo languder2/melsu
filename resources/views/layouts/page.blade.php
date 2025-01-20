@@ -7,8 +7,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title', 'ФГБОУ ВО "МелГУ"')</title>
 
-    <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>

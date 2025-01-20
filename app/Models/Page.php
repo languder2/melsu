@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Collection;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Page extends Model
 {
@@ -25,7 +27,8 @@ class Page extends Model
         'keywords',
         'description',
 
-        'template',
+        'sidebar',
+        'view',
         'content',
 
         'created_at',
@@ -50,8 +53,23 @@ class Page extends Model
             'title'             => '',
             'keywords'          => '',
             'description'       => '',
-            'template'          => '',
+            'view'              => '',
+            'sidebar'           => '',
             'content'           => '',
         ];
     }
+    public function parentPage(): BelongsTo
+    {
+        return $this->belongsTo(Page::class, 'parent', 'id');
+    }
+
+    public static function GetList():Collection
+    {
+        return self::orderBy('name')
+            ->with([
+                'parentPage',
+            ])
+            ->get();
+    }
+
 }

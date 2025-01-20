@@ -42,9 +42,9 @@
         />
 
         <x-admin.sidebar-li
-            link="{{route('admin:menu')}}"
+            link="{{route('admin:pages')}}"
             ico="fas fa-bars"
-            text="меню"
+            text="Страницы"
         />
 
         <x-admin.sidebar-li

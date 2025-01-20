@@ -1,4 +1,11 @@
 <header>
+@if(request()->session()->get('show-video'))
+    @php(session(['show-video' => time()]))
+    <video id="intro-video" autoplay muted >
+        <source src="{{asset('video/2kk.webm')}}" type="video/webm">
+    </video>
+@endif
+
     <div class="upper-menu bg-[#FAFAFA] z-[82]">
         <div class="box-header-address bg-[#FAFAFA] z-[82]">
             <h2 class="header-address">
@@ -46,7 +53,7 @@
     </div>
     <div class="main-menu">
         <div class="box-logo">
-            <a href="#">
+            <a href="/">
                 <img src="{{asset('img/white-logo.png')}}" alt="Логотип университета">
             </a>
         </div>

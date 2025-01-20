@@ -1,4 +1,4 @@
-@if(!isset($active))
+@if(!isset($active) || empty($active))
     <a
         href="{{@$href}}"
 

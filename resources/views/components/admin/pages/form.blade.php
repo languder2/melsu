@@ -53,8 +53,10 @@
         name="parent"
         old="{{old('parent')}}"
         value="{{@$current->parent}}"
-        null="Родительский пункт"
-        :list="$parents??[]"
+        null="выбрать"
+        :list="$pages??[]"
+        collection
+        label="Parent"
     />
 
     <x-form.input
@@ -85,11 +87,22 @@
         value="{{old('description')??@$current->description}}"
     />
 
+    <x-form.select
+        id="sidebar"
+        name="sidebar"
+        old="{{old('sidebar')}}"
+        value="{{@$current->sidebar}}"
+        null="выбрать"
+        :list="$sidebars??[]"
+        collection
+        label="Боковое меню"
+    />
+
     <x-form.input
-        id="template"
-        name="template"
-        label="Template"
-        value="{{old('template')??@$current->template}}"
+        id="view"
+        name="view"
+        label="View"
+        value="{{old('view')??@$current->view}}"
     />
 
     <x-form.editor
@@ -100,9 +113,6 @@
         hideLabel
         height="800px"
     />
-
-
-
 
     <x-form.submit
         class="uppercase"

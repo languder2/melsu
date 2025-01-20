@@ -1,8 +1,8 @@
-<label
-    for         = "{{@$id}}"
->
-    {{@$label}}
-</label>
+@if(isset($label))
+    <div class="mt-2 -mb-2">
+        {{@$label}}
+    </div>
+@endif
 <select
     id          = "{{@$id}}"
     name        = "{{@$name}}"
