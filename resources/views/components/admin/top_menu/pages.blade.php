@@ -11,7 +11,7 @@
 
     <x-html.a-blue
         href="{{route('admin:menu')}}"
-        text="Список меню"
+        text="Меню"
         active="{!! ($active==='menu')?true:null !!}"
     />
 
@@ -20,9 +20,9 @@
     </span>
 
     <x-html.a-blue
-        href="{{route('admin:menu-categories')}}"
-        text="Категории меню"
-        active="{!! ($active==='menu-categories')?true:null !!}"
+        href="{{route('admin:menu-items')}}"
+        text="Пункты меню"
+        active="{!! ($active==='menu-items')?true:null !!}"
     />
 
 </div>

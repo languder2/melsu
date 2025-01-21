@@ -49,10 +49,10 @@
     />
 
     <x-form.select
-        id="parent"
-        name="parent"
-        old="{{old('parent')}}"
-        value="{{@$current->parent}}"
+        id="parent_id"
+        name="parent_id"
+        old="{{old('parent_id')}}"
+        value="{{@$current->parent_id}}"
         null="выбрать"
         :list="$pages??[]"
         collection
@@ -88,10 +88,10 @@
     />
 
     <x-form.select
-        id="sidebar"
-        name="sidebar"
-        old="{{old('sidebar')}}"
-        value="{{@$current->sidebar}}"
+        id="menu_id"
+        name="menu_id"
+        old="{{old('menu_id')}}"
+        value="{{@$current->menu_id}}"
         null="выбрать"
         :list="$sidebars??[]"
         collection

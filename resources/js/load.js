@@ -1,31 +1,37 @@
+document.addEventListener('DOMContentLoaded',()=>{
+    function checkScreenWidth() {
+        const video = document.getElementById('intro-video');
+        const videoWrapper = document.querySelector('.wrapper-video');
+        const screenWidth = window.innerWidth;
 
-function checkScreenWidth() {
-    const video = document.getElementById('intro-video');
-    const screenWidth = window.innerWidth;
+        if(video === null) return '';
+        if(videoWrapper === null) return '';
 
-    if (screenWidth >= 1367) {
-        video.addEventListener('play', function () {
-            document.body.style.overflow = 'hidden';
-        });
-        video.addEventListener('ended', () => {
-            video.classList.add('end');
-            document.body.style.overflow = 'auto';
-        }, {once: true})
+        if (screenWidth >= 1367) {
+            video.addEventListener('play', function () {
+                document.body.classList.add('no-scroll');
+            });
+            video.addEventListener('ended', () => {
+                videoWrapper.classList.add('end');
+                document.body.classList.remove('no-scroll');
+            }, {once: true})
+        }
+        else  {
+            video.src = 'video/load-mob.webm';
+            video.addEventListener('play', function () {
+                document.body.classList.add('no-scroll');
+            });
+            video.addEventListener('ended', () => {
+                videoWrapper.classList.add('end');
+                document.body.classList.remove('no-scroll');
+            }, {once: true})
+
+        }
     }
-    else  {
-        video.src = '../assets/video/load-mob.webm';
-        video.addEventListener('play', function () {
-            document.body.style.overflow = 'hidden';
-        });
-        video.addEventListener('ended', () => {
-            video.classList.add('end');
-            document.body.style.overflow = 'auto';
-        }, {once: true})
 
-    }
-}
+    window.onload = checkScreenWidth;
 
-window.onload = checkScreenWidth;
-
-
-window.addEventListener('resize', checkScreenWidth);
+    document.addEventListener("DOMContentLoaded", () => {
+        window.addEventListener('resize', checkScreenWidth);
+    });
+})

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
-use App\Models\MenuCategories;
 use App\Models\Menu;
 
 class MenuController extends Controller
@@ -12,15 +11,16 @@ class MenuController extends Controller
     public function list():string
     {
 
-        $list = Menu::GetListByCategory();
-
         return view('pages.admin', [
             'contents' => [
+                View::make('components.admin.top_menu.pages')->with([
+                    'active'    => 'menu'
+                ])->render(),
 
                 View::make('components.admin.menu.header')->with([])->render(),
 
                 View::make('components.admin.menu.list')->with([
-                    'list' => Menu::GetListByCategory(),
+                    'list' => Menu::GetList(),
                 ])->render(),
             ]
         ]);
@@ -31,13 +31,16 @@ class MenuController extends Controller
     {
         return view('pages.admin', [
             'contents' => [
+                View::make('components.admin.top_menu.pages')->with([
+                    'active'    => 'menu_group'
+                ])->render(),
 
                 View::make('components.admin.menu.form')->with([
-                    'categories'    => MenuCategories::orderBy('name')->get(),
-                    'current'       => Menu::find($id),
+                    'current' => Menu::find($id),
                 ])->render(),
             ]
         ]);
+
     }
 
     public function save(Request $request)
@@ -65,6 +68,5 @@ class MenuController extends Controller
 
         return redirect()->route('admin:menu');
     }
-
 
 }

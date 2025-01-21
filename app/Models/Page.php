@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Facades\Route;
 
 class Page extends Model
 {
@@ -21,13 +22,13 @@ class Page extends Model
         'route',
         'comment',
 
-        'parent',
+        'parent_id',
 
         'title',
         'keywords',
         'description',
 
-        'sidebar',
+        'menu_id',
         'view',
         'content',
 
@@ -58,18 +59,34 @@ class Page extends Model
             'content'           => '',
         ];
     }
-    public function parentPage(): BelongsTo
+    public function parent(): BelongsTo
     {
-        return $this->belongsTo(Page::class, 'parent', 'id');
+        return $this->belongsTo(Page::class, 'parent_id', 'id');
     }
 
     public static function GetList():Collection
     {
         return self::orderBy('name')
             ->with([
-                'parentPage',
+                'parent',
             ])
             ->get();
+    }
+
+    public static function GelLinkByID($id):string|null
+    {
+        $page   = self::find($id);
+
+        if(is_null($page))
+            return null;
+
+        if(!is_null($page->route) && Route::has($page->route))
+            return url($page->route);
+
+        elseif(!is_null($page->alias))
+            return url($page->alias);
+
+        return null;
     }
 
 }

@@ -20,7 +20,7 @@
         </div>
 
         <div class="font-semibold md:col-span-2">
-            Описание
+            Ссылка
         </div>
 
         <div class="font-semibold">
@@ -43,7 +43,11 @@
             </div>
 
             <div class="md:col-span-2">
-                {{$record->comment}}
+                @if(Route::has($record->route))
+                    {{url(route($record->route))}}
+                @elseif(!empty($record->alias))
+                    {{url($record->alias)}}
+                @endif
             </div>
 
             <div>

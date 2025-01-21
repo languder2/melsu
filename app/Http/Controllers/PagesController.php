@@ -6,7 +6,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\View;
 use Illuminate\Http\Request;
 use App\Models\Page;
-use App\Models\{MenuCategories,Menu};
+use App\Models\{Menu,MenuItems};
 
 class PagesController extends Controller
 {
@@ -36,7 +36,7 @@ class PagesController extends Controller
 
                 View::make('components.admin.pages.form')->with([
                     'pages'         => Page::orderBy('name')->get(),
-                    'sidebars'      => MenuCategories::orderBy('name')->get(),
+                    'sidebars'      => Menu::orderBy('name')->get(),
                     'current'       => Page::find($id),
                 ])->render(),
             ]

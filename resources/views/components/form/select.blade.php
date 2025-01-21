@@ -6,6 +6,12 @@
 <select
     id          = "{{@$id}}"
     name        = "{{@$name}}"
+
+    @if(isset($onchange))
+        onchange="{{$onchange}}"
+    @endif
+
+
     class="
             border-b
             border-dashed
@@ -27,16 +33,6 @@
 
     @disabled(@$disabled)
     @required(@$required)
-
-    @if(!empty($datas) && is_array($datas))
-        @foreach($datas as $code=>$data)
-            data-{{$code}}="{{$data}}"
-    @endforeach
-    @endif
-
-    @if(isset($dependents) and is_array($dependents))
-        data-dependents='{!! json_encode($dependents) !!}'
-    @endif
 >
 
     @if(isset($null))
@@ -49,7 +45,6 @@
         </option>
     @endif
 
-
     @if(isset($collection))
         @foreach($list as $item)
             <option
@@ -58,6 +53,12 @@
                 @selected(empty($old) && empty($value) && empty($item->id))
                 @selected(empty($old) && !empty($value) && $value == $item->id)
                 @selected(!empty($old) && $old == $item->id)
+
+                @if(isset($item->attrs) && is_array($item->attrs))
+                    @foreach($item->attrs as $attr=>$attrValue)
+                        {!! "$attr='$attrValue'" !!}
+                    @endforeach
+                @endif
             >
                 {{$item->name}}
             </option>

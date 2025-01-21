@@ -1,106 +1,87 @@
+<div class="bg-white rounded-md p-4 mb-4">
 
-@foreach($list as $category)
-    <div class="bg-white rounded-md p-4 mb-4">
+    <div
+        class="
+            grid gap-4 items-center
+            grid-cols-1
+            md:grid-cols-[repeat(8,minmax(0,_1fr))_200px]
+        "
+    >
+        <div class="font-semibold">
+            ID
+        </div>
 
-        <h4 class="font-semibold uppercase text-lg pb-2">
-            {{$category->detail->name}}
-        </h4>
+        <div class="font-semibold">
+            Code
+        </div>
 
-        <hr>
+        <div class="font-semibold">
+            Наименование
+        </div>
 
-        <div
-            class="
-                grid gap-4 items-center
-                grid-cols-1
-                md:grid-cols-[repeat(6,minmax(0,_1fr))_200px]
-            "
-        >
-            <div class="font-semibold">
-                ID
-            </div>
+        <div class="font-semibold md:col-span-4">
+            Комментарий
+        </div>
 
-            <div class="font-semibold">
-                Название
-            </div>
+        <div class="font-semibold">
+            Пунктов
+        </div>
 
-            <div class="font-semibold">
-                Описание
-            </div>
+        <div></div>
 
-            <div class="font-semibold">
-                Route
-            </div>
-
-            <div class="font-semibold">
-                Link
-            </div>
-
-            <div class="font-semibold">
-                Parent
-            </div>
-
-            <div></div>
-
-            @foreach($category->menu as $record)
-                <div>
+        @foreach($list as $record)
+            <div>
                     {{$record->id}}
-                </div>
+            </div>
 
-                <div>
+            <div>
+                    {{$record->code}}
+            </div>
+
+            <div>
                     {{$record->name}}
-                </div>
+            </div>
 
-                <div>
+            <div class="md:col-span-4">
                     {{$record->comment}}
-                </div>
+            </div>
 
-                <div>
-                    {{$record->route}}
-                </div>
+            <div>
+                    {{count($record->items)}}
+            </div>
 
-                <div>
-                    {{$record->link}}
-                </div>
-
-                <div>
-                    {{$record->parent}}
-                </div>
-
-                <div>
-                    <div class="flex flex-row-reverse text-white w-full">
-                        <div class="flex-none w-14">
-                            <a
-                                href="{{route('admin:menu:delete',$record->id)}}"
-                                class="
+            <div>
+                <div class="flex flex-row-reverse text-white w-full">
+                    <div class="flex-none w-14">
+                        <a
+                            href="{{route('admin:menu:delete',$record->id??0)}}"
+                            class="
                                 py-2 px-4 rounded-md
                                 bg-red-950
                                 hover:bg-red-700
                                 active:bg-gray-700
                             "
-                            >
-                                <i class="fas fa-trash w-4 h-4"></i>
-                            </a>
-                        </div>
-                        <div class="flex-none w-14">
-                            <a
-                                href="{{route('admin:menu:edit',$record->id)}}"
-                                class="
+                        >
+                            <i class="fas fa-trash w-4 h-4"></i>
+                        </a>
+                    </div>
+                    <div class="flex-none w-14">
+                        <a
+                            href="{{route('admin:menu:edit',$record->id??0)}}"
+                            class="
                                 py-2 px-4 rounded-md
                                 bg-green-950
                                 hover:bg-green-700
                                 active:bg-gray-700
                             "
-                            >
-                                <i class="far fa-edit w-4 h-4"></i>
-                            </a>
-                        </div>
-
+                        >
+                            <i class="far fa-edit w-4 h-4"></i>
+                        </a>
                     </div>
                 </div>
-                <hr class="md:col-span-7 last:hidden">
-            @endforeach
-        </div>
-
+            </div>
+            <hr class="md:col-span-9 last:hidden">
+        @endforeach
     </div>
 
-@endforeach
+</div>

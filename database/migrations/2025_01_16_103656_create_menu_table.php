@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('menu_categories', function (Blueprint $table) {
+        Schema::create('menu', function (Blueprint $table) {
             $table->id();
 
             $table->string('name');
@@ -21,27 +21,66 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        Schema::create('menu', function (Blueprint $table) {
+        Schema::create('pages', function (Blueprint $table) {
             $table->id();
 
-            $table->unsignedBigInteger('category')->nullable();
+            $table->string('name');
+            $table->string('alias');
+            $table->string('route')->nullable();
+            $table->text('comment')->nullable();
+
+            $table->unsignedBigInteger('parent_id')->nullable();
+
+            $table->enum('display', ['show', 'hide'])->default('show');
+
+            $table->unsignedBigInteger('menu_id')->nullable();
+
+            $table->text('title')->nullable();
+            $table->text('keywords')->nullable();
+            $table->text('description')->nullable();
+
+            $table->string('view')->nullable();
+            $table->longText('content')->nullable();
+
+            $table->timestamp('deleted_at')->nullable();
+            $table->timestamps();
+
+            $table->foreign('parent_id')->references('id')->on('pages')
+                ->onUpdate('cascade')
+                ->onDelete('SET NULL');
+
+            $table->foreign('menu_id')->references('id')->on('menu')
+                ->cascadeOnUpdate()
+                ->nullOnDelete();
+        });
+
+
+        Schema::create('menu_items', function (Blueprint $table) {
+            $table->id();
+
+            $table->unsignedBigInteger('menu_id')->nullable();
 
             $table->string('name');
             $table->text('comment')->nullable();
 
             $table->string('link')->nullable();
             $table->string('route')->nullable();
+            $table->unsignedBigInteger('page_id')->nullable();
 
-            $table->unsignedBigInteger('parent')->nullable();
+            $table->unsignedBigInteger('parent_id')->nullable();
             $table->integer('sort')->default(100000);
 
+            $table->string('grp')->nullable();
 
-
-            $table->foreign('category')->references('id')->on('menu_categories')
+            $table->foreign('menu_id')->references('id')->on('menu')
                 ->cascadeOnUpdate()
                 ->nullOnDelete();
 
-            $table->foreign('parent')->references('id')->on('menu')
+            $table->foreign('page_id')->references('id')->on('pages')
+                ->cascadeOnUpdate()
+                ->nullOnDelete();
+
+            $table->foreign('parent_id')->references('id')->on('menu_items')
                 ->cascadeOnUpdate()
                 ->nullOnDelete();
 
@@ -54,7 +93,8 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::dropIfExists('menu_items');
+        Schema::dropIfExists('pages');
         Schema::dropIfExists('menu');
-        Schema::dropIfExists('menu_categories');
     }
 };

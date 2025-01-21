@@ -3,88 +3,60 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use App\Models\MenuCategories;
+use App\Models\MenuItems;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Menu extends Model
 {
 
     protected $table = 'menu';
 
+    protected $perPage = 10;
+
     protected $fillable = [
         'id',
-        'category',
+        'code',
         'name',
         'comment',
-        'link',
-        'route',
-        'parent',
-        'sort',
         'created_at',
         'deleted_at',
     ];
 
     public static $FormMessage = [
-        'name'                      => 'Укажите заголовок',
-        'link.required_without'     => 'Link или Route должны быть заполнены',
-        'route.required_without'    => 'Link или Route должны быть заполнены',
+        'name'              => 'Укажите заголовок',
+        'code'              => 'Код уже занят'
     ];
 
-    public static function FormRules($id):array
+    public static function FormRules($id)
     {
-        return [
-            'category'          => '',
+        return  [
+            'code'              => "nullable|unique:menu,code,{$id},id",
             'name'              => 'required',
             'comment'           => '',
-            'link'              => 'required_without:route',
-            'route'             => 'required_without:link',
-            'parent'            => '',
-            'sort'              => 'nullable|numeric',
         ];
     }
 
-    public function categoryRecord(): BelongsTo
+    public function items(): BelongsToMany
     {
-        return $this->belongsTo(MenuCategories::class, 'category', 'id');
+        return $this->BelongsToMany(
+            MenuItems::class,
+            "menu",
+            'id',
+            'id',
+            null,
+            'menu_id',
+        );
     }
 
     public static function GetList():Collection
     {
-        return self::orderBy('sort')
-            ->orderBy('name',)
-            ->with([
-                'categoryRecord',
-            ])
+        return self::orderBy('name')
+            ->with('items')
             ->get();
     }
-
-    public static function GetListByCategory():array
-    {
-        $list= self::orderBy('sort')
-            ->orderBy('name',)
-            ->with([
-                'categoryRecord',
-            ])
-            ->get();
-
-        $response = [];
-
-        foreach ($list as $item){
-            if(!isset($response[$item->categoryRecord->name]))
-                $response[$item->categoryRecord->name] = (object)[
-                    'detail'        => $item->categoryRecord,
-                    'menu'          => []
-                ];
-
-            $response[$item->categoryRecord->name]->menu[] = $item;
-        }
-
-        ksort($response);
-
-        return $response;
-    }
-
-
 
 }
