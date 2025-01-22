@@ -11,10 +11,10 @@
             class="
                 grid gap-4 items-center
                 grid-cols-1
-                md:grid-cols-[repeat(6,minmax(0,_1fr))_200px]
+                md:grid-cols-[50px_repeat(5,minmax(0,_1fr))_200px]
             "
         >
-            <div class="font-semibold">
+            <div class="font-semibold text-right">
                 ID
             </div>
 
@@ -37,7 +37,7 @@
             <div></div>
 
             @foreach($category->menu as $record)
-                <div>
+                <div class="text-right">
                     {{$record->id}}
                 </div>
 

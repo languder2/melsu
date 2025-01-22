@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
 use App\Models\Menu;
 use App\Models\MenuItems;
@@ -58,6 +59,8 @@ class MenuItemsController extends Controller
 
         if(!is_null($form['page_id']))
             $record->link   = Page::GelLinkByID($form['page_id']);
+        elseif($form['route'] && Route::has($form['route']))
+            $record->link   = url(route($form['route']));
 
         $record->save();
 

@@ -383,7 +383,7 @@
 </section>
 <section>
     <div class="container custom">
-        <div class="bg-white bg-[url('../assets/img/bg-logo.png')] bg-no-repeat bg-[97%] bg-[length:340px_290px] p-6 min-h-[339px] flex flex-col justify-between">
+        <div class="bg-white bg-[asset('img/bg-logo.png')] bg-no-repeat bg-[97%] bg-[length:340px_290px] p-6 min-h-[339px] flex flex-col justify-between">
             <div>
                 <h2 class="text-2xl font-[700] mb-3">Поступление в университет</h2>
                 <div class="grid grid-cols-1 lg:grid-cols-[1fr,1fr,1fr] gap-3 lg:w-[40%]">

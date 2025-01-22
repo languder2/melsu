@@ -96,4 +96,23 @@ class NewsController extends Controller
         ]);
     }
 
+    public function showAll()
+    {
+        $list = News::orderBy('publication_at', 'desc')
+            ->select('title','short','full','publication_at','image')
+            ->paginate(11);
+
+        return view('pages.page', [
+            'contents' => [
+                View::make('components.template.breadcrumbs')->with([
+
+                ])->render(),
+
+                View::make('components.news.all')->with([
+                    'list' => $list,
+                ])->render(),
+            ]
+        ]);
+    }
+
 }

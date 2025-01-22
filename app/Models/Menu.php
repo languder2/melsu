@@ -59,4 +59,39 @@ class Menu extends Model
             ->get();
     }
 
+    public static function GetMainMenu():Menu
+    {
+        $menu= self::where('code','main')
+            ->with([
+                'items' => function ($q) {
+                    $q
+                        ->where('parent_id',null)
+                        ->orderBy('sort', 'asc')
+                        ->get();
+                }
+            ])
+            ->first();
+
+        foreach ($menu->items as $item){
+
+            $groups = [];
+
+            $subs = MenuItems::where('parent_id',$item->id)
+                ->orderBy('grp','asc')
+                ->orderBy('sort','asc')
+                ->orderBy('name','asc')
+                ->get();
+
+            foreach ($subs as $sub){
+                $groups[$sub->grp][]= $sub;
+            }
+
+            $item->sub = $groups;
+
+        }
+
+        return $menu;
+    }
+
+
 }

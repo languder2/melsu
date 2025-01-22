@@ -30,26 +30,12 @@
         nullDisabled
         old="{{old('menu_id')}}"
         value="{{@$current->menu_id}}"
-        null="Выберите меню"
+        null="Выбрать"
         :list="$menu??[]"
+        label="Меню"
         collection
         required
         onchange="DependedSelects.LimitList('parent_id','data-menu',this.value)"
-    />
-
-    <x-form.input
-        id="name"
-        name="name"
-        label="Наименование"
-        value="{{old('name')??@$current->name}}"
-        required
-    />
-
-    <x-form.input
-        id="comment"
-        name="comment"
-        label="Описание"
-        value="{{old('comment')??@$current->comment}}"
     />
 
     <x-form.select
@@ -61,7 +47,14 @@
         :list="$parents??[]"
         collection
         label="Родительский пункт"
+    />
 
+    <x-form.input
+        id="name"
+        name="name"
+        label="Наименование"
+        value="{{old('name')??@$current->name}}"
+        required
     />
 
     <x-form.input
@@ -69,6 +62,13 @@
         name="grp"
         label="Группа"
         value="{{old('grp')??@$current->grp}}"
+    />
+
+    <x-form.input
+        id="comment"
+        name="comment"
+        label="Описание"
+        value="{{old('comment')??@$current->comment}}"
     />
 
     <x-form.select

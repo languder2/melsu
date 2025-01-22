@@ -71,13 +71,17 @@
     "file": "assets/lines-vector-map-FAeUJzyq.jpg",
     "src": "public_html/img/lines-vector-map.jpg"
   },
+  "public_html/img/static-bg.jpg": {
+    "file": "assets/static-bg-GvhJmoz4.jpg",
+    "src": "public_html/img/static-bg.jpg"
+  },
   "resources/css/app.css": {
-    "file": "assets/app-hDJgu9Kj.css",
+    "file": "assets/app-afQoeY8d.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
   "resources/js/app.js": {
-    "file": "assets/app-BXSdm7bq.js",
+    "file": "assets/app-CgzwT5Eu.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true
