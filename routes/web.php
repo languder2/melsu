@@ -43,6 +43,12 @@ Route::middleware('auth.check')
 
     });
 
+Route::controller(suStructureController::class)
+    ->prefix('structure')
+    ->group(function () {
+        Route::get('', 'show')->name('structure:show');
+    });
+
 Route::middleware('auth.check')
     ->controller(NewsController::class)
     ->prefix('admin/news')

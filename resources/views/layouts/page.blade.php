@@ -18,7 +18,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 
 
-{{--    @vite(['resources/css/app.css', 'resources/js/app.js'])--}}
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
 <div class="main-wrapper">
@@ -27,14 +27,26 @@
 
     <section class="main-section">
 
-        <div class="sidebar"></div>
+        <section class="container py-5">
 
-        <div class="content-block mt-24 ml-96 text-lg leading-8 ">
-            @yield('content')
-        </div>
+            @yield('breadcrumbs')
 
+            <div class="grid grid-cols-1 lg:grid-cols-[25%_minmax(70%,_1fr)] gap-3">
+                <div class="left-side-menu-box hidden lg:block bg-white p-2.5">
+                    @yield('sidebar')
+                </div>
+                @if(isset($nobg) && $nobg === true)
+                    <div class="main-content">
+                        @yield('content')
+                    </div>
+                @else
+                    <div class="main-content p-5 pt-[1.375rem] bg-white">
+                        @yield('content')
+                    </div>
+                @endif
+            </div>
+        </section>
     </section>
-
 
     <x-template.footer />
 

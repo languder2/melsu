@@ -93,5 +93,17 @@ class Menu extends Model
         return $menu;
     }
 
+    public static function GetMenuForPage($menuID,$pageID)
+    {
+        $current        = MenuItems::where([
+                'menu_id'       => $menuID,
+                'page_id'       => $pageID,
+            ])
+            ->first();
+
+        $first          = MenuItems::getFirstLevel($current->id);
+
+        return $first;
+    }
 
 }

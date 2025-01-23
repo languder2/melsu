@@ -7,6 +7,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Models\suStructure;
 use App\View\Components\admin\structure\form as structureForm;
+use Illuminate\Support\Facades\View;
 
 
 class suStructureController extends Controller
@@ -78,5 +79,26 @@ class suStructureController extends Controller
 
         return redirect()->route('admin:structure');
     }
+
+    public function show()
+    {
+
+        return view('pages.page-with-menu', [
+            'breadcrumbs'   =>  View::make('components.template.breadcrumbs')->with([
+
+            ])->render(),
+
+            'nobg'         => true,
+
+            'contents'      => [
+                View::make('components.structure.page')->with([
+                    'list'      => suStructure::getListByGroups(),
+                ])->render(),
+            ]
+        ]);
+
+    }
+
+
 
 }

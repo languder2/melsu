@@ -148,5 +148,65 @@ class MenuItems extends Model
         return $list;
     }
 
+    public static function getFirstLevel($id)
+    {
+        $item = self::with('parent')->find($id);
 
+        if(!is_null($item->parent))
+            return self::with('parent')->find($item->parent->id);
+
+        return $item;
+    }
+
+
+    public static function getSideMenuForPage($menuID,$pageID)
+    {
+        $current        = self
+            ::where([
+                'menu_id'       => $menuID,
+                'page_id'       => $pageID,
+            ])
+            ->first();
+
+        self::getParents($allActive,$current->id);
+
+        return self::getMenuTree($menuID,$allActive);
+    }
+
+    public static function getParents(&$list,$currentID):void
+    {
+        $item   = MenuItems::find($currentID);
+
+        if($item->parent_id)
+            self::getParents($list,$item->parent_id);
+
+        $list[] = $currentID;
+    }
+
+    public static function getMenuTree($menuID,$allActive,$parentID = null)
+    {
+        $tree           = [];
+
+        $arr            = self
+            ::where([
+                    'menu_id'       => $menuID,
+                    'parent_id'     => $parentID,
+                ])
+            ->orderBy('grp','asc')
+            ->orderBy('sort','asc')
+            ->orderBy('name')
+            ->get();
+
+        if($arr->count() === 0) return null;
+
+        foreach ($arr as $item)
+            $tree[]     = (object)[
+                'name'      => $item->name,
+                'link'      => $item->link,
+                'active'    => (bool)in_array($item->id,$allActive),
+                'subs'      => self::getMenuTree($menuID,$allActive,$item->id),
+            ];
+
+        return $tree;
+    }
 }

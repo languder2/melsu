@@ -15,7 +15,7 @@ return new class extends Migration
 
             $table->id();
             $table->string('name');
-            $table->string('link')->nullable();
+            $table->string('type')->nullable();
             $table->integer('sort')->default(1000);
             $table->timestamps();
 

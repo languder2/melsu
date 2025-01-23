@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Carbon\Carbon;
 class News extends NewsCategory
@@ -54,6 +55,12 @@ class News extends NewsCategory
         'Дек'
     ];
 
+
+    public function getPublicationAtAttribute($value)
+    {
+        return self::$month[Carbon::createFromDate($value)->format('n')-1]
+        .Carbon::createFromDate($value)->format(' j, Y');
+    }
 
     public static function getList(?int $cid = null):object
     {

@@ -25,10 +25,7 @@
     <x-template.header />
 
     <section class="main-section">
-
-
-        @yield('content')
-
+            @yield('content')
     </section>
 
 

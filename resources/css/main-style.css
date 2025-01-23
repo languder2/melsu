@@ -92,7 +92,7 @@ body{
 /*style search*/
 .search-box {
     background-color: #FAFAFA;
-    width: 93%;
+    width: calc(100% - 100px);
     transition: var(--transition-link);
     top: -311px;
     z-index: 81;
@@ -422,8 +422,8 @@ body{
     .search-box {
         background-color: #FFFFFF;
         top: 64px;
-        padding-top: 0px !important;
-        padding-bottom: 0px !important;
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
         height: 0;
         overflow: hidden;
         z-index: 79;
@@ -462,8 +462,8 @@ body{
             justify-content: flex-end;
         }
         ul li{
-            min-height: 0px;
-            padding: 0px 0px;
+            min-height: 0;
+            padding: 0 0;
         }
         .box-main-menu{
             max-height: 100%;
@@ -547,7 +547,7 @@ body{
             background-color: white;
             position: absolute;
             left: -52px;
-            padding: 0 10px 0px 10px;
+            padding: 0 10px 0 10px;
             top: 58px;
         }
         form input{
@@ -679,7 +679,6 @@ body{
             display: none;
             max-height: 955px !important;
             height: auto;
-            max-height: 850px;
             position: absolute;
             width: 100%;
 
@@ -722,7 +721,7 @@ body{
             right: 20px;
             background: #fff;
             height: 1px;
-            width: 0%;
+            width: 0;
             margin-top: 17px;
             transition: var(--transition-link);
             border-radius: 3px;
@@ -895,7 +894,7 @@ body{
                 margin-left: -1px;
                 background: #fff;
                 height: 1px;
-                width: 0%;
+                width: 0;
                 margin-top: 25px;
 
                 transition: all .3s ease;
@@ -1095,7 +1094,7 @@ body{
         position: absolute;
         height: 100%;
         background-color: transparent;
-        background-image: linear-gradient(310deg, #FFFFFFEB 0%, #F6F6F6 100%);
+        background-image: linear-gradient(310deg, #FFFFFFEB 0, #F6F6F6 100%);
         opacity: 0.99;
         transition: background 0.3s, border-radius 0.3s, opacity 0.3s;
     }
@@ -1247,7 +1246,7 @@ body{
             margin-top: 108px;
         }
         .header-today-box{
-            top: 0px;
+            top: 0;
             .heading-title-h2{
                 font-size: 24px;
             }
@@ -1265,7 +1264,7 @@ body{
             }
         }
         .header-today-box{
-            top: 0px;
+            top: 0;
             .heading-title-h2{
                 font-size: 24px;
             }
@@ -1628,7 +1627,7 @@ body{
         display: none;
     }
     #melsu-today{
-        margin-top: 0px !important;
+        margin-top: 0 !important;
     }
 }
 .title-side-nav{
@@ -1667,9 +1666,8 @@ body{
                 background: var(--primary-color);
                 top: 40px;
                 height: 5px;
-                width: 0%;
+                width: 0;
                 margin-top: 17px;
-                transition: var(--transition-link);
                 border-radius: 3px;
                 opacity: 0;
 
@@ -1964,7 +1962,7 @@ body{
                 }
                 .news-box:nth-child(3),
                 .news-box:nth-child(4){
-                    margin-top: 0px;
+                    margin-top: 0;
                 }
             }
 
@@ -1987,10 +1985,10 @@ body{
             }
             .other-news-box:nth-child(1),
             .other-news-box:nth-child(2){
-                margin-bottom: 0px;
+                margin-bottom: 0;
                 span{
                     border-bottom: none;
-                    padding-bottom: 0px;
+                    padding-bottom: 0;
                 }
             }
         }
@@ -2111,7 +2109,7 @@ body{
                     display: flex;
                     min-height: 100%;
                     min-width: 100%;
-                    clip-path: polygon(0% 0%, 100% 100%, 100% 0%);
+                    clip-path: polygon(0% 0, 100% 100%, 100% 0);
                    & .counter-box{
                         width: 100%;
                         .counter-text{
@@ -2143,7 +2141,7 @@ body{
                     position: absolute;
                     min-height: 100%;
                     min-width: 100%;
-                    clip-path: polygon(0% 100%, 100% 100%, 0% 0%);
+                    clip-path: polygon(0% 100%, 100% 100%, 0 0);
                     .counter-box{
                         .counter{
                             text-align: left;
@@ -2376,7 +2374,7 @@ footer{
                 }
                 &:before{
                     top: 2px;
-                    left: 0px;
+                    left: 0;
                     content: "—";
                     opacity: 0.7;
                 }
@@ -2535,7 +2533,7 @@ footer{
     min-height: calc(100vh - 530px);
     display: flex;
     z-index: 0;
-    height: 100vh;
+    height: 100%;
     .left-side-menu{
         li{
             transition: var(--transition-link);
@@ -2554,7 +2552,7 @@ footer{
     position: relative;
 }
 .accordion-content-box{
-    height: 0px;
+    height: 0;
     position: relative;
     transition: all .5s cubic-bezier(.645,.045,.355,1);
 }
@@ -2586,7 +2584,7 @@ footer{
 .getting-melsu-section{
     background-image: url("../../public_html/img/static-bg.jpg");
     background-attachment: fixed;
-    background-position: 0px 100%;
+    background-position: 0 100%;
     background-repeat: repeat;
     background-size: 100% auto;
 }
@@ -2629,7 +2627,7 @@ footer{
 @media screen and (max-width: 1366px){
     .wrapper-news.only-news{
         min-height: 755px !important;
-        padding-top: 0px;
+        padding-top: 0;
     }
 }
 @media screen and (max-width: 425px){
@@ -3267,7 +3265,7 @@ td.today.active.start-date.active.end-date.available,
     top: 50%;
     left: 100%; /* Размещаем справа от точки */
     transform: translateY(-50%);
-    width: 0px;
+    width: 0;
     height: 5px;
     background-color: #ddd;
     overflow: hidden;
@@ -3279,7 +3277,7 @@ td.today.active.start-date.active.end-date.available,
     top: 0;
     left: 0;
     height: 100%;
-    width: 0%;
+    width: 0;
     background-color: #820000;
     transition: width 0.3s ease-in-out;
     z-index: 1;
@@ -3489,7 +3487,7 @@ td.today.active.start-date.active.end-date.available,
     font-size: 1.3rem;
     display: block;
     position:absolute;
-    top: 0px;
+    top: 0;
     left: -24px;
     z-index: 10000;
     height: 100%;
@@ -3503,7 +3501,7 @@ td.today.active.start-date.active.end-date.available,
     font-size: 1.3rem;
     display: block;
     position:absolute;
-    top: 0px;
+    top: 0;
     left: -21px;
     z-index: 10000;
     color: var(--secondary-color);
@@ -3634,8 +3632,8 @@ td.today.active.start-date.active.end-date.available,
 
 /*Modal excursion style*/
 .excursion-btn{
-    box-shadow: 0px 0px 45px 0px rgba(255, 0, 0, 0.5);
-    background: linear-gradient(90deg, #ED303C 0%, #C10F1A 69%);
+    box-shadow: 0 0 45px 0 rgba(255, 0, 0, 0.5);
+    background: linear-gradient(90deg, #ED303C 0, #C10F1A 69%);
     transition: .3s linear;
     position: fixed;
     z-index: 999;
@@ -3644,7 +3642,7 @@ td.today.active.start-date.active.end-date.available,
     bottom: 20px;
 }
 .excursion-btn:hover{
-    box-shadow: 0px 0px 45px 0px rgb(255 0 0);
+    box-shadow: 0 0 45px 0 rgb(255 0 0);
 }
 .excursion-menu-box{
     pointer-events: none;
@@ -3664,14 +3662,14 @@ td.today.active.start-date.active.end-date.available,
             border-bottom: 1px solid white;
             font-size: 24px;
             color: white;
-            padding: 0px 11px;
+            padding: 0 11px;
         }
 
         li {
             border-bottom: 1px solid var(--primary-color);
             background-color: white;
             cursor: pointer;
-            padding: 0px 22px;
+            padding: 0 22px;
             color: var(--secondary-color);
             line-height: 47px;
             transition: .3s linear;
@@ -3743,6 +3741,7 @@ a.modal-open {
     background:#fff;
     transform:translate(-50%, -500%);
     transition:all .5s ease-in-out;
+    perspective: 1000px;
     outline:1px solid transparent;
     opacity:0;
 }

@@ -72,7 +72,7 @@ class suStructure extends Model
     public static function getListByGroups(?int $gid = null):object
     {
         $list = self::join('su_structure_group', 'su_structure_group.id', '=', 'su_structure.ssu_group')
-            ->select('su_structure.*','su_structure_group.name as group_name')
+            ->select('su_structure.*','su_structure_group.name as group_name','su_structure_group.type as type')
             ->orderBy('su_structure_group.sort')
             ->orderBy('su_structure.sort')
         ;
@@ -86,6 +86,7 @@ class suStructure extends Model
             if(!isset($response->{$item->ssu_group}))
                 $response->{$item->ssu_group}  = (object)[
                     'name'      => $item->group_name,
+                    'type'      => $item->type,
                     'list'      => [],
                 ];
 

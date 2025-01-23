@@ -81,16 +81,30 @@ class PagesController extends Controller
         else
             $content    = $page->content;
 
+        if(!is_null($page->menu_id))
+            $menu       = MenuItems::getSideMenuForPage($page->menu_id,$page->id);
+
+        $layout = 'pages.page';
+
+        if(isset($menu))
+            $layout = 'pages.page-with-menu';
+
         if(empty($content))
             return redirect()->route('pages:main');
 
-        return view('pages.page', [
-            'contents' => [
-                View::make('components.template.breadcrumbs')->with([
+        $breadcrumbs = Page::BreadCrumbs($page->id);
 
-                ])->render(),
-                &$content,
-            ]
+        return view($layout, [
+            'breadcrumbs'   => View::make('components.template.breadcrumbs')->with([
+                                'list'      => $breadcrumbs
+                            ])->render(),
+            'sidebar'       => View::make('components.menu.sidebar')->with([
+                                'menu'      => &$menu
+                            ])->render(),
+            'nobg'          => in_array($page->alias,['sved'])?true:false,
+            'contents'      => [
+                                &$content,
+                            ]
         ]);
     }
 

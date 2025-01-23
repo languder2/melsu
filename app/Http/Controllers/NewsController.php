@@ -81,7 +81,7 @@ class NewsController extends Controller
 
     public function show($id): string|RedirectResponse
     {
-        $news = News::getNews((int)$id);
+        $news = News::find((int)$id);
 
         if(is_null($news))
             return redirect()->route('pages:main');
@@ -99,8 +99,8 @@ class NewsController extends Controller
     public function showAll()
     {
         $list = News::orderBy('publication_at', 'desc')
-            ->select('title','short','full','publication_at','image')
-            ->paginate(11);
+            ->select('id','title','short','full','publication_at','image')
+            ->paginate(13);
 
         return view('pages.page', [
             'contents' => [

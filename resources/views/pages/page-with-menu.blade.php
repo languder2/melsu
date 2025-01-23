@@ -1,6 +1,14 @@
-@extends("layouts.main")
+@extends("layouts.page")
 
 @section('title', $title??'ФГБОУ ВО "МелГУ"')
+
+@section('breadcrumbs')
+
+@endsection
+
+@section('sidebar')
+    {!! $sidebar !!}
+@endsection
 
 @section('content')
     @if(is_array(@$contents))
@@ -9,4 +17,3 @@
         @endforeach
     @endif
 @endsection
-

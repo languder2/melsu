@@ -1,0 +1,28 @@
+<div class="news-box border-[1px] max-h-[339px] lg:max-h-[367px]">
+    <a href="{{route('news:show',$news->id)}}">
+        <div class="box-photo-news min-h-[139px] bg-white overflow-hidden">
+            <img src="{{asset('images/news/600x600_'.$news->image.'.jpg')}}" alt="#" class="object-cover max-h-[139px] w-full">
+        </div>
+        <div class="descrip-box-news bg-white text-[var(--primary-color)] lg:min-h-[228px] xl:max-h-[228px]">
+            <div class="descrip-wrapper p-5 lg:max-h-[228px]">
+                <div class="grid grid-cols-[1fr] mb-3 p-[-20px] relative">
+                    <span class="meta-category bg-[var(--primary-color)] absolute text-white text-[12px] left-[-20px] py-[3px] px-[7px] font-[500]">Наука</span>
+                    <div class="text-end">
+                                    <span class="text-[12px] font-[500]">
+                                        <i class="bi bi-calendar2-week"></i>
+                                        {{$news->publication_at}}
+                                    </span>
+                    </div>
+                </div>
+                <div class="mb-6">
+                    <h3 class="text-lg font-[700] line-clamp-3 max-h-[84px]">
+                        {{$news->title}}
+                    </h3>
+                </div>
+                <div class="description-news line-clamp-3 max-h-[72px]">
+                    {!! $news->short !!}
+                </div>
+            </div>
+        </div>
+    </a>
+</div>

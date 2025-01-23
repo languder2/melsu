@@ -50,13 +50,14 @@ class Page extends Model
             'alias'             => "nullable|unique:pages,alias,{$id},id,deleted_at,NULL|required_without:route",
             'comment'           => '',
             'route'             => 'required_without:alias',
-            'parent'            => '',
+            'parent_id'         => '',
             'title'             => '',
             'keywords'          => '',
             'description'       => '',
             'view'              => '',
             'sidebar'           => '',
             'content'           => '',
+            'menu_id'           => '',
         ];
     }
     public function parent(): BelongsTo
@@ -87,6 +88,32 @@ class Page extends Model
             return url($page->alias);
 
         return null;
+    }
+
+    public static function BreadCrumbs($pageID)
+    {
+        $breadcrumbs    = [];
+
+        $page           = self::with('parent')->find($pageID);
+
+        if(!is_null($page->parent))
+            $breadcrumbs    = array_merge($breadcrumbs,self::BreadCrumbs($page->parent->id));
+
+        $link = '#';
+
+        if(Route::has($page->route))
+            $link = url(route($page->route));
+
+        if($page->alias)
+            $link = url($page->alias);
+
+        $breadcrumbs[]  =   (object)[
+            'name'      => $page->name,
+            'link'      => $link
+        ];
+
+        return $breadcrumbs;
+
     }
 
 }
