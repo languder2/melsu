@@ -168,6 +168,9 @@ class MenuItems extends Model
             ])
             ->first();
 
+        if(is_null($current))
+            return null;
+
         self::getParents($allActive,$current->id);
 
         return self::getMenuTree($menuID,$allActive);

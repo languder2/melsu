@@ -92,16 +92,23 @@ class PagesController extends Controller
         if(empty($content))
             return redirect()->route('pages:main');
 
-        $breadcrumbs = Page::BreadCrumbs($page->id);
+        $breadcrumbs = Page::getBreadCrumbs($page->id);
 
         return view($layout, [
             'breadcrumbs'   => View::make('components.template.breadcrumbs')->with([
-                                'list'      => $breadcrumbs
+                                'current'   => array_slice($breadcrumbs, -1)[0],
+                                'last'      => array_slice($breadcrumbs, -2, 1)[0],
+                                'list'      => array_slice($breadcrumbs,0,count($breadcrumbs)-2),
                             ])->render(),
             'sidebar'       => View::make('components.menu.sidebar')->with([
-                                'menu'      => &$menu
+                                'menu'          => &$menu,
+                                'full'          => false,
                             ])->render(),
-            'nobg'          => in_array($page->alias,['sved'])?true:false,
+            'nobg'          => in_array($page->alias,[
+                                    'sved',
+                                    'why-melsu',
+                                    'science',
+                                ]),
             'contents'      => [
                                 &$content,
                             ]

@@ -24,11 +24,25 @@
                             class="nav-item point-menu flex items-center"
                         >
                             <a
-                                class="nav-link"
+                                class="
+                                    nav-link
+                                    hidden lg:block
+                                "
                                 href="{{$menu->link??"#"}}"
                             >
                                 {{$menu->name}}
                             </a>
+
+
+                            <span
+                                class="
+                                    nav-link
+                                    lg:hidden
+                                "
+                            >
+                                {{$menu->name}}
+                            </span>
+
                         </li>
                     @endforeach
                 </ul>

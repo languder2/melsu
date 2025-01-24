@@ -90,14 +90,14 @@ class Page extends Model
         return null;
     }
 
-    public static function BreadCrumbs($pageID)
+    public static function getBreadCrumbs($pageID)
     {
         $breadcrumbs    = [];
 
         $page           = self::with('parent')->find($pageID);
 
         if(!is_null($page->parent))
-            $breadcrumbs    = array_merge($breadcrumbs,self::BreadCrumbs($page->parent->id));
+            $breadcrumbs    = array_merge($breadcrumbs,self::getBreadCrumbs($page->parent->id));
 
         $link = '#';
 

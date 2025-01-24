@@ -1,5 +1,5 @@
 <div class="box-heading container custom">
-    <h2 class="font-bold text-2xl my-6 lg:mt-[7%] lg:mb-[3.5%]">МелГУ — ЭТО</h2>
+    <h2 class="font-bold text-2xl my-6 lg:mt-0 lg:mb-[3.5%]">МелГУ — ЭТО</h2>
 </div>
 <section class="container custom text-lg p-2.5">
     <div class="bg-white p-6">

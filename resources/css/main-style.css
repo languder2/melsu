@@ -234,6 +234,7 @@ body{
         background-color: var(--primary-color);
         max-width: 110px;
         max-height: 110px;
+        margin-right: 10px;
         width: 100%;
         a img{
             width: 110px;

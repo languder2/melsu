@@ -1,5 +1,9 @@
 @if(isset($menu) && is_array($menu))
     @foreach($menu as $item)
+        @if(isset($full) && !$full && !$item->active)
+            @continue
+        @endif
+
         <h3 class="font-bold text-lg pb-3 mx-2.5 mt-3 border-b-[1px] border-[var(--primary-color)]">
             @if($item->active)
                 {{$item->name}}

@@ -3,11 +3,11 @@
 @section('title', $title??'ФГБОУ ВО "МелГУ"')
 
 @section('breadcrumbs')
-
+    {!! @$breadcrumbs !!}
 @endsection
 
 @section('sidebar')
-    {!! $sidebar !!}
+    {!! @$sidebar !!}
 @endsection
 
 @section('content')
