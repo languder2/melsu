@@ -22,7 +22,7 @@ class Topmenu extends Component
                     $q->orderBy('sort', 'asc')->get();
                 }
             ])
-            ->first()->items;
+            ->first()->items??null;
     }
 
     /**

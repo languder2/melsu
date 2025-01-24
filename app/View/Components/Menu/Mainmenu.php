@@ -26,7 +26,7 @@ class Mainmenu extends Component
         $menu   = Menu::GetMainMenu();
 
         return view('components.menu.mainmenu',[
-            'list'      => $menu->items,
+            'list'      => $menu->items??[],
         ]);
     }
 }

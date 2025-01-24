@@ -104,14 +104,17 @@ class PagesController extends Controller
                                 'menu'          => &$menu,
                                 'full'          => false,
                             ])->render(),
+
             'nobg'          => in_array($page->alias,[
-                                    'sved',
-                                    'why-melsu',
-                                    'science',
-                                ]),
+                'sved',
+                'why-melsu',
+                'science',
+            ]),
+
             'contents'      => [
-                                &$content,
-                            ]
+                &$content,
+            ]
+
         ]);
     }
 

@@ -6,23 +6,27 @@
                     Главная
                 </a>
             </span>
-            @foreach($list as $key=>$item)
+            @if(isset($list))
+                @foreach($list as $key=>$item)
                     <span class="crumb-home font-xs after:content-['\2192'] me-2 after:ms-2">
                         <a href="{{$item->link}}" class="font-xs">
                             {{$item->name}}
                         </a>
                     </span>
-            @endforeach
-
-            <span class="crumb font-xs">
-                <a href="{{$last->link??''}}" class="font-xs">
-                    {{$last->name??''}}
-                </a>
-            </span>
-
+                @endforeach
+            @endif
+            @if(isset($last))
+                <span class="crumb font-xs">
+                    <a href="{{$last->link??''}}" class="font-xs">
+                        {{$last->name??''}}
+                    </a>
+                </span>
+            @endif
         </div>
-        <h1 class="text-[32px] sm:text-[55px] font-bold">
-            {{$current->name??''}}
-        </h1>
+        @if(isset($current))
+            <h1 class="text-[32px] sm:text-[55px] font-bold">
+                {{$current->name??''}}
+            </h1>
+        @endif
     </div>
 </section>

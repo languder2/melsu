@@ -59,7 +59,7 @@ class Menu extends Model
             ->get();
     }
 
-    public static function GetMainMenu():Menu
+    public static function GetMainMenu():Menu|null
     {
         $menu= self::where('code','main')
             ->with([
@@ -72,7 +72,7 @@ class Menu extends Model
             ])
             ->first();
 
-        foreach ($menu->items as $item){
+        foreach ($menu->items??[] as $item){
 
             $groups = [];
 
