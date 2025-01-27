@@ -234,8 +234,8 @@ body{
         background-color: var(--primary-color);
         max-width: 110px;
         max-height: 110px;
-        margin-right: 10px;
         width: 100%;
+        margin-right: 10px;
         a img{
             width: 110px;
             height: 110px;
@@ -2535,15 +2535,19 @@ footer{
     display: flex;
     z-index: 0;
     height: 100%;
-    .left-side-menu{
-        li{
-            transition: var(--transition-link);
-            border-bottom: 1px solid white;
-        }
-        li:hover {
-            border-bottom: 1px solid var(--primary-color);
-        }
+    .wrapp-left-side-menu {
 
+        .left-side-menu {
+            li {
+                transition: var(--transition-link);
+                border-bottom: 1px solid white;
+            }
+
+            li:hover {
+                border-bottom: 1px solid var(--primary-color);
+            }
+
+        }
     }
 }
 /*END main template style*/
@@ -2575,8 +2579,31 @@ footer{
     * {
         transition: var(--transition-link);
     }
+    img{
+
+    }
     *:hover img{
         opacity: 0.8;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    }
+    a > span{
+        text-shadow:
+                -0   -1px 2px #000000,
+                0   -1px 2px #000000,
+                -0    1px 2px #000000,
+                0    1px 2px #000000,
+                -1px -0   2px #000000,
+                1px -0   2px #000000,
+                -1px  0   2px #000000,
+                1px  0   2px #000000,
+                -1px -1px 2px #000000,
+                1px -1px 2px #000000,
+                -1px  1px 2px #000000,
+                1px  1px 2px #000000,
+                -1px -1px 2px #000000,
+                1px -1px 2px #000000,
+                -1px  1px 2px #000000,
+                1px  1px 2px #000000;
     }
 }
 /*END menu page style*/
@@ -3483,7 +3510,7 @@ td.today.active.start-date.active.end-date.available,
 
 .cd-timeline-navigation a.prev::before {
     content:  "\1438";
-    font-family: FontAwesome;
+    font-family: FontAwesome, serif;
     color: var(--secondary-color);
     font-size: 1.3rem;
     display: block;
@@ -3498,7 +3525,7 @@ td.today.active.start-date.active.end-date.available,
 
 .cd-timeline-navigation a.next::before {
     content:  "\1433";
-    font-family: FontAwesome;
+    font-family: FontAwesome, serif;
     font-size: 1.3rem;
     display: block;
     position:absolute;
@@ -3722,9 +3749,9 @@ a.modal-open {
     position:fixed;
     width:100%;
     height:100%;
-    top:0px;
-    left:0px;
-    bottom:0px;
+    top:0;
+    left:0;
+    bottom:0;
     transition:all .5s ease-in-out;
     opacity:0;
     z-index:-1;

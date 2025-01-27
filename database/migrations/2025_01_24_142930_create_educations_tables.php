@@ -18,7 +18,7 @@ return new class extends Migration
                 $table->string('code')->unique();
                 $table->longText('description')->nullable();
 
-                $table->string('sort')->default(1000);
+                $table->integer('sort')->default(1000);
                 $table->timestamp('deleted_at')->nullable();
                 $table->timestamps();
             });
@@ -29,7 +29,7 @@ return new class extends Migration
                 $table->string('name');
                 $table->string('code')->unique();
 
-                $table->string('sort')->default(1000);
+                $table->integer('sort')->default(1000);
                 $table->timestamp('deleted_at')->nullable();
                 $table->timestamps();
             });
@@ -45,7 +45,7 @@ return new class extends Migration
                 $table->unsignedBigInteger('parent_id')->nullable();
                 $table->longText('description')->nullable();
 
-                $table->string('sort')->default(1000);
+                $table->integer('sort')->default(1000);
                 $table->timestamp('deleted_at')->nullable();
                 $table->timestamps();
 
@@ -73,6 +73,7 @@ return new class extends Migration
                 $table->id();
 
                 $table->string('name');
+                $table->string('alt_name')->nullable();
                 $table->string('code')->unique();
 
                 $table->integer('sort')->default(10000);
@@ -86,10 +87,11 @@ return new class extends Migration
 
                 $table->string('name');
                 $table->string('code')->unique();
+                $table->string('spec_code')->nullable();
                 $table->string('faculty_code')->nullable();
                 $table->string('department_code')->nullable();
                 $table->string('level_code')->nullable();
-                $table->json('places');
+                $table->json('places')->nullable();
                 $table->longText('description')->nullable();
 
                 $table->integer('sort')->default(10000);
@@ -121,7 +123,9 @@ return new class extends Migration
                 $table->id();
 
                 $table->string('name');
+                $table->string('alt_name')->nullable();
                 $table->string('code')->unique();
+                $table->integer('sort')->default(10000);
 
                 $table->timestamp('deleted_at')->nullable();
                 $table->timestamps();
@@ -133,9 +137,9 @@ return new class extends Migration
 
                 $table->string('name');
                 $table->longText('description')->nullable();
-                $table->string('speciality_code')->nullable();
+                $table->string('speciality_code',20)->nullable();
                 $table->string('type_code')->nullable();
-                $table->decimal('terms', 2, 1)->nullable();
+                $table->decimal('duration', 2, 1)->nullable();
                 $table->json('places')->nullable();
                 $table->json('scores')->nullable();
                 $table->json('exams')->nullable();
