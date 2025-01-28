@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('staffs', function (Blueprint $table) {
             $table->id();
 
-
             $table->text('post')->nullable();
 
             $table->string('photo')->nullable();

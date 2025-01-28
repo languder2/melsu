@@ -1,0 +1,60 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\{Document, FAQ, Link, Staff, StaffAffiliation};
+use App\Models\Education\Profile;
+class TestController extends Controller
+{
+    public function index()
+    {
+        $profile = Profile::find(1);
+//
+//        $profile->faq()->save(
+//            new FAQ([
+//                'question'  => 'test2',
+//                'answer'    => 'test',
+//                'order'     => 200
+//            ])
+//        );
+//
+
+        /**
+
+        $profile->documents()->save(new Document([
+            'title'     => 'test',
+            'filename'  => 'test',
+            'filetype'  => 'test',
+        ]));
+
+        dd($profile->documents()->count());
+        /**/
+//        dd($profile->documents()->where('show',true)->get()->pluck('show'));
+
+//        $profile->documents()->save(new Link([
+//            'name'      => 'test1',
+//            'link'      => 'test1',
+//            'order'     => 100,
+//        ]));
+//
+//        $profile->documents()->save(new Link([
+//            'name'      => 'test2',
+//            'title'     => 'test2',
+//            'order'     => 200,
+//        ]));
+
+//        dump($profile->links()->orderBy('order','desc')->get()->keyBy('id'));
+
+//        $profile->documents()->save(new StaffAffiliation([
+//            'staff_id'  => 1,
+//            'alt_name'  => 'Sultan SV',
+//            'post'      => 'test',
+//            'order'     => 100,
+//        ]));
+
+
+        dump($profile->staffs()->orderBy('order','desc')->first()->staff);
+        dd('--------------------------');
+    }
+}

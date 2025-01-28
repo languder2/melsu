@@ -8,6 +8,7 @@ use App\Http\Controllers\{MenuItemsController,MenuController,PagesController};
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\TestController;
 
 
 Route::get('/', function () {
@@ -17,6 +18,9 @@ Route::get('/', function () {
 Route::view('wish-tree', 'pages.wish-tree.form')->name('wish-tree');
 Route::post('wish-tree/save',  [WishTreeController::class, 'save'])->name('wish-tree:save');
 Route::get('wish-tree/list',  [WishTreeController::class, 'list'])->name('wish-tree:list');
+
+
+Route::get('test',  [TestController::class, 'index']);
 
 
 Route::view('admin', 'pages.admin')->name('admin:main');

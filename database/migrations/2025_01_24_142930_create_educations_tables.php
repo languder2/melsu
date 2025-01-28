@@ -118,8 +118,8 @@ return new class extends Migration
                     ->nullOnDelete();
             });
 
-        if(!Schema::hasTable('education_form_types'))
-            Schema::create('education_form_types', function (Blueprint $table) {
+        if(!Schema::hasTable('education_forms'))
+            Schema::create('education_forms', function (Blueprint $table) {
                 $table->id();
 
                 $table->string('name');
@@ -131,21 +131,22 @@ return new class extends Migration
                 $table->timestamps();
             });
 
-        if(!Schema::hasTable('education_forms'))
-            Schema::create('education_forms', function (Blueprint $table) {
+        if(!Schema::hasTable('education_profiles'))
+            Schema::create('education_profiles', function (Blueprint $table) {
                 $table->id();
 
                 $table->string('name');
+                $table->string('alias')->unique()->nullable();
                 $table->longText('description')->nullable();
                 $table->string('speciality_code',20)->nullable();
-                $table->string('type_code')->nullable();
-                $table->decimal('duration', 2, 1)->nullable();
+                $table->string('form_code')->nullable();
+                $table->decimal('duration', 3, 2)->nullable();
                 $table->json('places')->nullable();
                 $table->json('scores')->nullable();
                 $table->json('exams')->nullable();
                 $table->string('director')->nullable();
                 $table->text('address')->nullable();
-                $table->string('afc')->nullable()
+                $table->boolean('afc')->nullable()
                     ->comment('admission of foreign citizens');
                 $table->integer('price')->nullable();
 
@@ -158,14 +159,13 @@ return new class extends Migration
                     ->cascadeOnUpdate()
                     ->nullOnDelete();
 
-                $table->foreign('type_code')
+                $table->foreign('form_code')
                     ->references('code')
-                    ->on('education_form_types')
+                    ->on('education_forms')
                     ->cascadeOnUpdate()
                     ->nullOnDelete();
 
             });
-
     }
 
     /**
@@ -173,10 +173,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-
-
+        Schema::dropIfExists('education_profiles');
         Schema::dropIfExists('education_forms');
-        Schema::dropIfExists('education_form_types');
         Schema::dropIfExists('education_specialities');
         Schema::dropIfExists('education_levels');
         Schema::dropIfExists('education_departments');

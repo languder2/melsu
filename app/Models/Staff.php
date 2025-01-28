@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 class Staff extends Model
 {
     use SoftDeletes;
@@ -74,6 +75,7 @@ class Staff extends Model
 
         return $staff;
     }
+
 
     public static function getListForSelect():Collection
     {
