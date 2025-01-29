@@ -2,7 +2,10 @@
 
 namespace App\Models\Education;
 
+use App\Models\Education\Department as EducationDepartment;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Department extends Model
@@ -19,7 +22,7 @@ class Department extends Model
         'type_code',
         'parent_id',
         'description',
-        'sort',
+        'order',
         'created_at',
         'deleted_at',
     ];
@@ -34,7 +37,7 @@ class Department extends Model
             'parent_id'         => '',
 
             'description'       => '',
-            'sort'              => 'nullable|numeric',
+            'order'             => 'nullable|numeric',
         ];
     }
 
@@ -48,4 +51,25 @@ class Department extends Model
             'type.required'             => 'Укажите тип подразделения',
         ];
     }
+
+    public function faculty():BelongsTo
+    {
+        return $this->belongsTo(Faculty::class, 'faculty_code', 'code');
+    }
+    public function type():BelongsTo
+    {
+        return $this->belongsTo(DepartmentType::class, 'type_code', 'code');
+    }
+
+    public function getOrderAttribute(?int $value):int|null
+    {
+        return ($value === 10000)?null:$value;
+    }
+
+    public function specialities(): HasMany
+    {
+        return $this->hasMany(Speciality::class, 'department_code', 'code');
+    }
+
+
 }

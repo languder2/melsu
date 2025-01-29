@@ -1,11 +1,12 @@
 <?php
 
 namespace App\Models\Education;
-
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
-use App\Models\{Document, FAQ, Link, StaffAffiliation};
+use App\Models\{Document, Education\Department as Department, FAQ, Link, StaffAffiliation};
+use App\Models\Education\Forms as EducationForm;
 class Profile extends Model
 {
     use SoftDeletes;
@@ -16,10 +17,10 @@ class Profile extends Model
         'id',
         'name',
         'alias',
-        'speciality_code',
+        'spec_code',
         'type_code',
         'duration',
-        'places',
+        'total_places',
         'director',
         'address',
         'afc',
@@ -36,10 +37,10 @@ class Profile extends Model
             'name'              => 'required',
             'alias'             => "required|unique:education_profiles,alias,{$id},id,deleted_at,NULL",
             'description'       => '',
-            'speciality_code'   => '',
+            'spec_code'   => '',
             'form_code'         => '',
             'duration'          => '',
-            'places'            => 'nullable|numeric',
+            'total_places'      => 'nullable|numeric',
             'director'          => '',
             'address'           => '',
             'afc'               => 'boolean',
@@ -142,4 +143,8 @@ class Profile extends Model
         return $object;
     }
 
+    public function form():BelongsTo
+    {
+        return $this->belongsTo(EducationForm::class, 'form_code', 'code');
+    }
 }

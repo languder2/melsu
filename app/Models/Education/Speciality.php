@@ -3,7 +3,10 @@
 namespace App\Models\Education;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\Education\Department as Department;
 
 class Speciality extends Model
 {
@@ -21,9 +24,7 @@ class Speciality extends Model
         'level_code',
         'places',
         'description',
-        'sort',
-        'created_at',
-        'deleted_at',
+        'order',
     ];
 
     public static function FormRules($id):array
@@ -37,7 +38,7 @@ class Speciality extends Model
             'level_code'        => 'required',
             'places'            => '',
             'description'       => '',
-            'sort'              => 'nullable|numeric',
+            'order'             => 'nullable|numeric',
         ];
     }
 
@@ -52,5 +53,20 @@ class Speciality extends Model
             'department_code'           => 'Укажите кафедру',
             'level_code'                => 'Укажите уровень',
         ];
+    }
+
+    public function profiles(): HasMany
+    {
+        return $this->hasMany(Profile::class, 'speciality_code', 'code');
+    }
+
+    public function level():BelongsTo
+    {
+        return $this->belongsTo(Level::class, 'level_code', 'code');
+    }
+
+    public function department():BelongsTo
+    {
+        return $this->belongsTo(Department::class, 'department_code', 'code');
     }
 }

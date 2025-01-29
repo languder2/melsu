@@ -16,7 +16,7 @@ return new class extends Migration
                 $table->id();
                 $table->string('name');
                 $table->string('title')->nullable();
-                $table->longText('link')->default('#');
+                $table->longText('link')->nullable();
                 $table->enum('target',['_self','_target'])->default('_self');
                 $table->enum('show',[true,false])->default(true);
 

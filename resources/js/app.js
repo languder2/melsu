@@ -32,3 +32,6 @@ window.SearchSelect = SearchSelect;
 import * as DependedSelects from './depended-selects.js';
 window.DependedSelects = DependedSelects;
 
+import * as Tabs from './admin/tabs.js';
+window.Tabs = Tabs;
+

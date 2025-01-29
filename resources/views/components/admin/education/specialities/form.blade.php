@@ -1,7 +1,7 @@
 <x-head.tinymce-config />
 
 <form
-    action="{{route('admin:education-faculty:save')}}"
+    action="{{route('admin:education-department:save')}}"
     method="POST"
     enctype="multipart/form-data"
     class="
@@ -25,6 +25,18 @@
     <x-form.errors />
 
     <x-form.input type="hidden" name="id" value="{{$current->id??null}}"/>
+
+    <x-form.select
+        id="form_faculty_code"
+        name="faculty_code"
+        nullDisabled
+        old="{{old('faculty_code')??$add2faculty}}"
+        value="{{@$current->faculty_code}}"
+        null="Выбрать"
+        :list="$faculties"
+        label="Факультет"
+        required
+    />
 
     <x-form.input
         id="form_name"
@@ -64,3 +76,9 @@
     />
 
 </form>
+
+
+@dump($faculties)
+@dump($departments)
+@dump($levels)
+@dump($forms)

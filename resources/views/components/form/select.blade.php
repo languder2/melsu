@@ -1,6 +1,6 @@
 @if(isset($label))
     <div class="mt-2 -mb-2">
-        {{@$label}}
+        {{@$label}}@if(isset($required))* @endif
     </div>
 @endif
 <select
@@ -41,7 +41,7 @@
             @disabled(isset($nullDisabled))
             @selected(empty($old) && empty($value))
         >
-            {{$null}}@if(isset($required))* @endif
+            {{$null}}
         </option>
     @endif
 

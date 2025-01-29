@@ -24,7 +24,7 @@
         </div>
 
         <div class="font-semibold">
-            Parent
+            Departments
         </div>
 
         <div></div>
@@ -43,22 +43,18 @@
             </div>
 
             <div class="md:col-span-2">
-                @if(Route::has($record->route))
-                    {{url(route($record->route))}}
-                @elseif(!empty($record->alias))
-                    {{url($record->alias)}}
-                @endif
+                {{url($record->code)}}
             </div>
 
             <div>
-                {{@$record->parentPage->name}}
+                {{$record->departments->count()}}
             </div>
 
             <div>
                 <div class="flex flex-row-reverse text-white w-full">
                     <div class="flex-none w-14">
                         <a
-                            href="{{route('admin:pages:delete',$record->id??0)}}"
+                            href="{{route('admin:education-faculty:delete',$record->id??0)}}"
                             class="
                                 py-2 px-4 rounded-md
                                 bg-red-950
@@ -71,7 +67,7 @@
                     </div>
                     <div class="flex-none w-14">
                         <a
-                            href="{{route('admin:pages:edit',$record->id??0)}}"
+                            href="{{route('admin:education-faculty:edit',$record->id??0)}}"
                             class="
                                 py-2 px-4 rounded-md
                                 bg-green-950
@@ -85,7 +81,6 @@
                 </div>
             </div>
             <hr class="md:col-span-8 last:hidden">
-            @dump($record->departments)
         @endforeach
     </div>
 

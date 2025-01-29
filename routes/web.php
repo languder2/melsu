@@ -10,7 +10,10 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\Education\{
+    EducationController,
     FacultyController,
+    DepartmentController as EducationDepartmentController,
+    SpecialityController
 };
 
 
@@ -189,20 +192,72 @@ Route::middleware('auth.check')
     ->prefix('admin/faculties')
     ->group(function () {
 
-        Route::get('', 'list')->name('admin:education-faculty');
+        Route::get('', 'list')->name('admin:education-faculty:list');
         Route::get('add', 'form')->name('admin:education-faculty:add');
         Route::get('edit/{id}', 'form')->name('admin:education-faculty:edit');
         Route::post('save', 'save')->name('admin:education-faculty:save');
         Route::get('delete/{id}', 'delete')->name('admin:education-faculty:delete');
 
+    });
+
+Route::middleware('auth.check')
+    ->controller(EducationDepartmentController::class)
+    ->prefix('admin/departments')
+    ->group(function () {
+
+        Route::get('', 'list')->name('admin:education-department:list');
+        Route::get('add', 'form')->name('admin:education-department:add');
+        Route::get('edit/{id}', 'form')->name('admin:education-department:edit');
+        Route::post('save', 'save')->name('admin:education-department:save');
+        Route::get('delete/{id}', 'delete')->name('admin:education-department:delete');
+
+    });
+
+Route::middleware('auth.check')
+    ->controller(SpecialityController::class)
+    ->prefix('admin/specialities')
+    ->group(function () {
+
+        Route::get('', 'list')->name('admin:education-speciality:list');
+        Route::get('add', 'form')->name('admin:education-speciality:add');
+        Route::get('edit/{id}', 'form')->name('admin:education-speciality:edit');
+        Route::post('save', 'save')->name('admin:education-speciality:save');
+        Route::get('delete/{id}', 'delete')->name('admin:education-speciality:delete');
 
     });
 
 Route::controller(StaffController::class)
     ->prefix('department')
     ->group(function () {
-        Route::get('{id}', 'show')->name('department:show');
+        Route::get('{id}', 'list')->name('department:show');
+    });
+
+Route::controller(EducationController::class)
+    ->prefix('faculties')
+    ->group(function () {
+
+        Route::get('', 'faculties')
+            ->name('public:education:faculties');
+
+        Route::get('{faculty}/spec/{speciality}', 'speciality')
+            ->name('public:education:speciality');
+
+        Route::get('{faculty}/departments', 'departments')
+            ->name('public:education:departments');
+
+        Route::get('{faculty}/staffs', 'staffs')
+            ->name('public:education:staffs');
+
+        Route::get('{faculty}/specialities', 'specialities')
+            ->name('public:education:specialities');
+
+        Route::get('{faculty}/{department}', 'department')
+            ->name('public:education:department');
+
+        Route::get('{faculty}', 'faculty')
+            ->name('public:education:faculty');
 
     });
+
 
 Route::get('{alias}', [PagesController::class,'showPage']);
