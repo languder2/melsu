@@ -9,6 +9,9 @@ use App\Http\Controllers\StaffController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\Education\{
+    FacultyController,
+};
 
 
 Route::get('/', function () {
@@ -178,6 +181,20 @@ Route::middleware('auth.check')
         Route::get('edit/{id}', 'form')->name('admin:department:edit');
         Route::post('save', 'save')->name('admin:department:save');
         Route::get('delete/{id}', 'delete')->name('admin:department:delete');
+
+    });
+
+Route::middleware('auth.check')
+    ->controller(FacultyController::class)
+    ->prefix('admin/faculties')
+    ->group(function () {
+
+        Route::get('', 'list')->name('admin:education-faculty');
+        Route::get('add', 'form')->name('admin:education-faculty:add');
+        Route::get('edit/{id}', 'form')->name('admin:education-faculty:edit');
+        Route::post('save', 'save')->name('admin:education-faculty:save');
+        Route::get('delete/{id}', 'delete')->name('admin:education-faculty:delete');
+
 
     });
 

@@ -2,7 +2,10 @@
 
 namespace App\Models\Education;
 
+use App\Models\MenuItems;
+use App\Models\Education\Department as EducationDepartment;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Faculty extends Model
@@ -40,6 +43,13 @@ class Faculty extends Model
             'code.unique'               => 'Код должен быть уникальным',
         ];
     }
+
+
+    public function departments(): HasMany
+    {
+        return $this->HasMany(EducationDepartment::class, 'code','faculty_code');
+    }
+
 
 }
 

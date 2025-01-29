@@ -13,8 +13,13 @@ class NewsController extends Controller
 {
     public function adminList(): string
     {
+
         return view('pages.admin', [
             'contents' => [
+                View::make('components.admin.top_menu.news')->with([
+                    'active'    => 'news'
+                ])->render(),
+
                 View::make('components.admin.news.news')->with([
                     'list' => News::getPaginate(),
                 ])->render(),
@@ -27,6 +32,10 @@ class NewsController extends Controller
 
         return view('pages.admin', [
             'contents' => [
+                View::make('components.admin.top_menu.news')->with([
+                    'active'    => 'news'
+                ])->render(),
+
                 View::make('components.admin.news.form')->with([
                     'categories' => NewsCategory::getListForSelect(),
                     'current' => News::find($id),

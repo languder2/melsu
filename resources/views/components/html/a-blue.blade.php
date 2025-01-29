@@ -18,7 +18,22 @@
         {{@$text}}
     </a>
 @else
-    <span class="text-baseRed">
+    <a
+        href="{{@$href}}"
+
+        class="
+            text-baseRed
+
+            hover:text-red-700
+            hover:underline
+
+            active:text-gray-700
+        "
+
+        @if(isset($blank))
+            target="_blank"
+        @endif
+    >
         {{@$text}}
-    </span>
+    </a>
 @endif

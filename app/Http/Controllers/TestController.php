@@ -54,7 +54,7 @@ class TestController extends Controller
 //        ]));
 
 
-        dump($profile->staffs()->orderBy('order','desc')->first()->staff);
+//        dump($profile->staffs()->orderBy('order','desc')->first()->staff);
         dd('--------------------------');
     }
 }

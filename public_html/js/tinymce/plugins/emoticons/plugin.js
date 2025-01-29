@@ -309,7 +309,7 @@
       animals_and_nature: 'Animals and Nature',
       food_and_drink: 'Food and Drink',
       activity: 'Activity',
-      travel_and_places: 'Travel and Places',
+      travel_and_places: 'Travel and Place',
       objects: 'Objects',
       flags: 'Flags',
       user: 'User Defined'

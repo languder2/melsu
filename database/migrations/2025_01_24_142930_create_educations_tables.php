@@ -142,8 +142,6 @@ return new class extends Migration
                 $table->string('form_code')->nullable();
                 $table->decimal('duration', 3, 2)->nullable();
                 $table->json('places')->nullable();
-                $table->json('scores')->nullable();
-                $table->json('exams')->nullable();
                 $table->string('director')->nullable();
                 $table->text('address')->nullable();
                 $table->boolean('afc')->nullable()

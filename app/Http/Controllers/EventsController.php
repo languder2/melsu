@@ -15,6 +15,10 @@ class EventsController extends Controller
     {
         return view('pages.admin',[
             'contents'  => [
+                View::make('components.admin.top_menu.news')->with([
+                    'active'    => 'events'
+                ])->render(),
+
                 View::make('components.admin.events.events')->with([
                     'list'      => Events::orderBy('publication_at','desc')->get(),
                 ])->render(),
@@ -27,6 +31,10 @@ class EventsController extends Controller
 
         return view('pages.admin',[
             'contents'  => [
+                View::make('components.admin.top_menu.news')->with([
+                    'active'    => 'events'
+                ])->render(),
+
                 View::make('components.admin.events.form')->with([
                     'current'           => Events::find($id),
 

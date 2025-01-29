@@ -20,8 +20,6 @@ class Profile extends Model
         'type_code',
         'duration',
         'places',
-        'scores',
-        'exams',
         'director',
         'address',
         'afc',
@@ -42,8 +40,6 @@ class Profile extends Model
             'form_code'         => '',
             'duration'          => '',
             'places'            => 'nullable|numeric',
-            'scores'            => 'nullable|numeric',
-            'exams'             => '',
             'director'          => '',
             'address'           => '',
             'afc'               => 'boolean',
@@ -118,5 +114,32 @@ class Profile extends Model
         return $object;
     }
 
+    public function exams($all = null,$trashed = null): MorphMany
+    {
+
+        $object = $this->morphMany(Exam::class, 'relation');
+
+        if(is_null($all))
+            $object = $object->where('show', true);
+
+        if(!is_null($trashed))
+            $object = $object->withTrashed();
+
+        return $object;
+    }
+
+    public function places($all = null,$trashed = null): MorphMany
+    {
+
+        $object = $this->morphMany(Place::class, 'relation');
+
+        if(is_null($all))
+            $object = $object->where('show', true);
+
+        if(!is_null($trashed))
+            $object = $object->withTrashed();
+
+        return $object;
+    }
 
 }

@@ -19,14 +19,8 @@
 
         <x-admin.sidebar-li
             link="{{route('admin:news')}}"
-            ico="fas fa-rss"
-            text="новости"
-        />
-
-        <x-admin.sidebar-li
-            link="{{route('admin:events')}}"
             ico="far fa-calendar-check"
-            text="мероприятия"
+            text="новости"
         />
 
         <x-admin.sidebar-li
@@ -45,6 +39,12 @@
             link="{{route('admin:pages')}}"
             ico="fas fa-bars"
             text="Страницы"
+        />
+
+        <x-admin.sidebar-li
+            link="{{route('admin:education-faculty')}}"
+            ico="fas fa-university"
+            text="Обучение"
         />
 
         <x-admin.sidebar-li
