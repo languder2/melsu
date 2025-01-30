@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Education;
 use App\Http\Controllers\Controller;
 use App\Models\Education\Faculty;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 use App\Models\Menu;
 class EducationController extends Controller
