@@ -1,8 +1,9 @@
-document.addEventListener('DOMContentLoaded',()=>{
-
-    const positionAwareElements = document.querySelectorAll('.position-aware');
+const positionAwareElements = document.querySelectorAll('.position-aware')
+if(positionAwareElements){
 
     positionAwareElements.forEach(element => {
+        let isAnimating = false;
+        let animationFrame;
 
         element.addEventListener('mouseenter', (event) => {
             const elementRect = element.getBoundingClientRect();
@@ -10,55 +11,38 @@ document.addEventListener('DOMContentLoaded',()=>{
             const relativeY = event.clientY - elementRect.top;
             const span = element.querySelector('.aware-bg');
 
-            let currentWidth = 2.5; // Начальная ширина
-            const targetWidth = 100; // Целевая ширина
-            let currentHeight = 2.5; // Начальная ширина
-            const targetHeight = 100; // Целевая ширина
-            const increment = 10; // Приращение ширины за один шаг
-            const intervalTime = 10; // Время между шагами в миллисекундах
+            let currentWidth = 2.5;
+            const targetWidth = 100;
+            let currentHeight = 2.5;
+            const targetHeight = 100;
+            const increment = 10;
 
-            function increaseWidth() {
-                currentWidth += increment;
-                span.style.width = currentWidth + 'vw';
-                currentHeight += increment;
-                span.style.height = currentHeight + 'vw';
-                if (currentWidth >= targetWidth && currentHeight >= targetHeight) {
-                    clearInterval(interval);
+            isAnimating = true;
+
+            function animate() {
+                if (!isAnimating) return;
+
+                if (currentWidth < targetWidth || currentHeight < targetHeight) {
+                    currentWidth += increment;
+                    currentHeight += increment;
+                    span.style.width = currentWidth + 'vw';
+                    span.style.height = currentHeight + 'vw';
+                    animationFrame = requestAnimationFrame(animate);
                 }
             }
-            const interval = setInterval(increaseWidth, intervalTime);
 
             span.style.top = `${relativeY}px`;
             span.style.left = `${relativeX}px`;
+            animate();
         });
 
-        element.addEventListener('mouseout', (event) => {
-            const elementRect = element.getBoundingClientRect();
-            const relativeX = event.clientX - elementRect.left;
-            const relativeY = event.clientY - elementRect.top;
+        element.addEventListener('mouseleave', () => {
+            isAnimating = false;
+            cancelAnimationFrame(animationFrame);
+
             const span = element.querySelector('.aware-bg');
-
-            /* let currentWidth = 102.5; // Начальная ширина
-             const targetWidth = 0; // Целевая ширина
-             let currentHeight = 102.5; // Начальная ширина
-             const targetHeight = 0; // Целевая ширина
-             const decrement = 10;
-             const intervalTime = 10;
-
-             function increaseWidth() {
-                 currentWidth -= decrement;
-                 span.style.width = currentWidth + 'vw';
-                 currentHeight -= decrement;
-                 span.style.height = currentHeight + 'vw';
-                 if (currentWidth <= targetWidth && currentHeight <= targetHeight) {
-                     clearInterval(interval);
-                 }
-             }
-             const interval = setInterval(increaseWidth, intervalTime);*/
-            span.style.width = '0'
-            span.style.height = '0'
-            span.style.top = `${relativeY }px`;
-            span.style.left = `${relativeX}px`;
+            span.style.width = '0';
+            span.style.height = '0';
         });
     });
-});
+}

@@ -2,7 +2,10 @@
 
 namespace App\Models;
 
+use App\Models\Education\Department as EducationDepartment;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 class NewsCategory extends Model
 {
@@ -41,5 +44,16 @@ class NewsCategory extends Model
         return $response;
 
     }
+
+    public function news(): HasMany
+    {
+
+        return $this->hasMany(News::class, 'category', 'id')
+//            ->where()
+            ->orderBy('publication_at','desc')
+            ->orderBy('name')
+            ;
+    }
+
 
 }

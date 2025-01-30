@@ -63,6 +63,18 @@
     "file": "assets/bg-map-_MI7dOr-.png",
     "src": "public_html/img/bg-map.png"
   },
+  "public_html/img/book.png": {
+    "file": "assets/book-051inJDp.png",
+    "src": "public_html/img/book.png"
+  },
+  "public_html/img/bpla.png": {
+    "file": "assets/bpla-CD5YQrrr.png",
+    "src": "public_html/img/bpla.png"
+  },
+  "public_html/img/calc.png": {
+    "file": "assets/calc-BOHshExI.png",
+    "src": "public_html/img/calc.png"
+  },
   "public_html/img/honeycombs1.png": {
     "file": "assets/honeycombs1-CPdL7dPm.png",
     "src": "public_html/img/honeycombs1.png"
@@ -71,17 +83,33 @@
     "file": "assets/lines-vector-map-FAeUJzyq.jpg",
     "src": "public_html/img/lines-vector-map.jpg"
   },
+  "public_html/img/microscope.png": {
+    "file": "assets/microscope-CglPIgJH.png",
+    "src": "public_html/img/microscope.png"
+  },
+  "public_html/img/palatka.png": {
+    "file": "assets/palatka-CVbNobjJ.png",
+    "src": "public_html/img/palatka.png"
+  },
   "public_html/img/static-bg.jpg": {
     "file": "assets/static-bg-GvhJmoz4.jpg",
     "src": "public_html/img/static-bg.jpg"
   },
+  "public_html/img/themida.png": {
+    "file": "assets/themida-DuDad1p8.png",
+    "src": "public_html/img/themida.png"
+  },
+  "public_html/img/traktor.png": {
+    "file": "assets/traktor-BX6WZ-i1.png",
+    "src": "public_html/img/traktor.png"
+  },
   "resources/css/app.css": {
-    "file": "assets/app-Cz_XmtCI.css",
+    "file": "assets/app-CMUTBJhT.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
   "resources/js/app.js": {
-    "file": "assets/app-Dge4WSIs.js",
+    "file": "assets/app-BBPwfhoj.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true

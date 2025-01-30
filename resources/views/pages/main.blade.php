@@ -7,7 +7,7 @@
 
     <x-sections.melsu-today />
 
-    <x-sections.melsu-inform />
+    <x-news.short-news />
 
     <x-sections.melsu-numbers />
 

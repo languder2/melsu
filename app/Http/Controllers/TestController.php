@@ -2,14 +2,35 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
-use App\Models\{Document, FAQ, Link, Staff, StaffAffiliation};
+use App\Models\{Document, FAQ, Link, Page, Staff, StaffAffiliation};
 use App\Models\Education\Profile;
+use App\Models\NewsCategory;
+use App\Models\News;
+use Illuminate\Support\Facades\View;
+use App\View\Components\Specialities\AllSpeciality;
+
 class TestController extends Controller
 {
     public function index()
     {
-        $profile = Profile::find(1);
+
+        return view("pages.page-with-menu", [
+            'sidebar'       => View::make('components.menu.sidebar')->with([
+                'menu'          => &$menu,
+                'full'          => false,
+            ])->render(),
+
+            'nobg'          => true,
+
+            'contents'      => [
+                (new AllSpeciality())->render(),
+            ]
+
+        ]);
+
+//        $profile = Profile::find(1);
 //
 //        $profile->faq()->save(
 //            new FAQ([
@@ -55,6 +76,6 @@ class TestController extends Controller
 
 
 //        dump($profile->staffs()->orderBy('order','desc')->first()->staff);
-        dd('--------------------------');
+//        dd('--------------------------');
     }
 }

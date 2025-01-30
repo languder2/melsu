@@ -232,6 +232,11 @@ Route::controller(StaffController::class)
         Route::get('{id}', 'list')->name('department:show');
     });
 
+
+Route::get('specialities', [EducationController::class,'specialities'])
+    ->name('public:education:specialities');
+
+
 Route::controller(EducationController::class)
     ->prefix('faculties')
     ->group(function () {
@@ -247,9 +252,6 @@ Route::controller(EducationController::class)
 
         Route::get('{faculty}/staffs', 'staffs')
             ->name('public:education:staffs');
-
-        Route::get('specialities', 'specialities')
-            ->name('public:education:specialities');
 
         Route::get('{faculty?}/specialities', 'specialities')
             ->name('public:education:specialities');

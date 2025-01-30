@@ -48,6 +48,8 @@
         </section>
     </section>
 
+    @yield('news')
+
     <x-template.footer />
 
     <x-template.left-side-offset />

@@ -113,7 +113,17 @@ class Page extends Model
         ];
 
         return $breadcrumbs;
+    }
 
+    public static function breadcrumbs($pageID):array
+    {
+        $breadcrumbs = self::getBreadCrumbs($pageID);
+
+        return [
+            'current'   => array_slice($breadcrumbs, -1)[0],
+            'last'      => array_slice($breadcrumbs, -2, 1)[0],
+            'list'      => array_slice($breadcrumbs,0,count($breadcrumbs)-2),
+        ];
     }
 
 }

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models\Education;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -129,10 +130,18 @@ class Profile extends Model
         return $object;
     }
 
-    public function places($all = null,$trashed = null): MorphMany
+    public function places($all = null,$trashed = null,$year = null): MorphMany
     {
 
+
+
         $object = $this->morphMany(Place::class, 'relation');
+
+        if(!is_null($year))
+            $object = $object->where('year', $year);
+        else
+            $object = $object->where('year', Carbon::now()->year-1);
+
 
         if(is_null($all))
             $object = $object->where('show', true);
@@ -147,4 +156,15 @@ class Profile extends Model
     {
         return $this->belongsTo(EducationForm::class, 'form_code', 'code');
     }
+
+    public function getBudgetScoreAttribute():int
+    {
+        return $this->exams()->where('type','budget')->where('year',2024)->get()->pluck('score')->sum();
+    }
+
+    public function getBudgetPlacesAttribute():int|string
+    {
+        return $this->places()->where('type','budget')->first()->count??"&nbsp;";
+    }
+
 }

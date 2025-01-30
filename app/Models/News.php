@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Carbon\Carbon;
 class News extends NewsCategory
@@ -62,6 +62,27 @@ class News extends NewsCategory
         .Carbon::createFromDate($value)->format(' j, Y');
     }
 
+    public function getPhotoAttribute()
+    {
+        return asset('images/news/600x600_'.$this->image.'.jpg');
+    }
+
+    public function getLinkAttribute()
+    {
+        return url(route('news:show',[$this->id]));
+    }
+
+    public function getLinkAllAttribute()
+    {
+        return url(route('news:show:all'));
+    }
+
+
+    public function tag(): BelongsTo
+    {
+        return $this->belongsTo(NewsCategory::class,'category', 'id');
+    }
+
     public static function getList(?int $cid = null):object
     {
         $list = self::join('news_categories', 'news_categories.id', '=', 'news.category')
@@ -86,21 +107,6 @@ class News extends NewsCategory
             $list->where('news.category', $cid);
 
         return $list->paginate(self::$adminPerPage);
-    }
-
-
-    public static function getNews(int $id):News|null
-    {
-        $news = News::find($id);
-
-        if(is_null($news))
-            return null;
-
-        $news->publication_at =
-            self::$month[Carbon::createFromDate($news->publication_at)->format('n')-1]
-            .Carbon::createFromDate($news->publication_at)->format(' j, Y');
-
-        return $news;
     }
 
 }

@@ -69,4 +69,10 @@ class Speciality extends Model
     {
         return $this->belongsTo(Department::class, 'department_code', 'code');
     }
+
+    public function faculty():BelongsTo
+    {
+        return $this->belongsTo(Faculty::class, 'faculty_code', 'code');
+    }
+
 }

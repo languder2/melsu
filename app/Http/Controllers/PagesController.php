@@ -92,14 +92,10 @@ class PagesController extends Controller
         if(empty($content))
             return redirect()->route('pages:main');
 
-        $breadcrumbs = Page::getBreadCrumbs($page->id);
-
         return view($layout, [
-            'breadcrumbs'   => View::make('components.template.breadcrumbs')->with([
-                                'current'   => array_slice($breadcrumbs, -1)[0],
-                                'last'      => array_slice($breadcrumbs, -2, 1)[0],
-                                'list'      => array_slice($breadcrumbs,0,count($breadcrumbs)-2),
-                            ])->render(),
+            'breadcrumbs'   => View::make('components.template.breadcrumbs')->with(
+                Page::breadcrumbs($page->id)
+                )->render(),
             'sidebar'       => View::make('components.menu.sidebar')->with([
                                 'menu'          => &$menu,
                                 'full'          => false,
@@ -110,6 +106,8 @@ class PagesController extends Controller
                 'why-melsu',
                 'science',
             ]),
+
+            'news' =>  false,
 
             'contents'      => [
                 &$content,
