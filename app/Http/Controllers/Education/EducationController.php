@@ -7,30 +7,12 @@ use App\Models\Education\Faculty;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
-
+use App\Models\Menu;
 class EducationController extends Controller
 {
     public function faculties():string
     {
         $faculties = Faculty::orderBy('order','desc')->orderBy('name')->get();
-
-        $menu = [
-            (object)[
-                'name'      => "Факультеты",
-                'link'      => url('faculties'),
-                'active'    => true,
-                'subs'      => [],
-            ],
-        ];
-
-        foreach ($faculties as $faculty) {
-            $menu[0]->subs[] = (object)[
-                'name'      => $faculty->name,
-                'link'      => url("faculties/{$faculty->code}"),
-                'active'    => false,
-                'subs'      => [],
-            ];
-        }
 
         return view('pages.page-with-menu', [
 //            'breadcrumbs'   => View::make('components.template.breadcrumbs')->with([
@@ -40,7 +22,7 @@ class EducationController extends Controller
 //            ])->render(),
 
             'sidebar'       => View::make('components.menu.alt_sidebar')->with([
-                'menu'          => &$menu,
+                'menu'          => Menu::GetMenuFaculties($faculties),
             ])->render(),
 
             'contents'      => [
@@ -60,50 +42,7 @@ class EducationController extends Controller
         if($faculty === null)
             return redirect()->to(route('public:education:faculties'));
 
-        $menu = [
-            (object)[
-                'name'      => $faculty->name,
-                'link'      => url("faculties/{$faculty->code}"),
-                'active'    => true,
-                'subs'      => [
-                    (object)[
-                        'name'      => "О факультете",
-                        'link'      => url("faculties/{$faculty->code}"),
-                        'active'    => true,
-                    ],
-                    (object)[
-                        'name'      => "Деканат",
-                        'link'      => url("faculties/{$faculty->code}/staffs"),
-                        'active'    => false,
-                    ],
-                    (object)[
-                        'name'      => "Кафедры",
-                        'link'      => url("faculties/{$faculty->code}/departments"),
-                        'active'    => false,
-                    ],
-                    (object)[
-                        'name'      => "Направление подготовки",
-                        'link'      => url("faculties/{$faculty->code}/specialities"),
-                        'active'    => false,
-                    ],
-                    (object)[
-                        'name'      => "Поступающим",
-                        'link'      => url('incoming'),
-                        'active'    => false,
-                    ],
-                    (object)[
-                        'name'      => "Наука",
-                        'link'      => url('science'),
-                        'active'    => false,
-                    ],
-                    (object)[
-                        'name'      => "Партнеры и выпускники",
-                        'link'      => url('partner'),
-                        'active'    => false,
-                    ],
-                ],
-            ],
-        ];
+        $menu = Menu::GetMenuFaculty($faculty, page: 'about');
 
         return view('pages.page-with-menu', [
 //            'breadcrumbs'   => View::make('components.template.breadcrumbs')->with([
@@ -134,50 +73,7 @@ class EducationController extends Controller
         if($faculty === null)
             return redirect()->to(route('public:education:faculties'));
 
-        $menu = [
-            (object)[
-                'name'      => $faculty->name,
-                'link'      => url("faculties/{$faculty->code}"),
-                'active'    => true,
-                'subs'      => [
-                    (object)[
-                        'name'      => "О факультете",
-                        'link'      => url("faculties/{$faculty->code}"),
-                        'active'    => false,
-                    ],
-                    (object)[
-                        'name'      => "Деканат",
-                        'link'      => url("faculties/{$faculty->code}/staffs"),
-                        'active'    => false,
-                    ],
-                    (object)[
-                        'name'      => "Кафедры",
-                        'link'      => url("faculties/{$faculty->code}/departments"),
-                        'active'    => true,
-                    ],
-                    (object)[
-                        'name'      => "Направление подготовки",
-                        'link'      => url("faculties/{$faculty->code}/specialities"),
-                        'active'    => false,
-                    ],
-                    (object)[
-                        'name'      => "Поступающим",
-                        'link'      => url('incoming'),
-                        'active'    => false,
-                    ],
-                    (object)[
-                        'name'      => "Наука",
-                        'link'      => url('science'),
-                        'active'    => false,
-                    ],
-                    (object)[
-                        'name'      => "Партнеры и выпускники",
-                        'link'      => url('partner'),
-                        'active'    => false,
-                    ],
-                ],
-            ],
-        ];
+        $menu = Menu::GetMenuFaculty($faculty, page: 'departments');
 
         return view('pages.page-with-menu', [
 //            'breadcrumbs'   => View::make('components.template.breadcrumbs')->with([
@@ -210,50 +106,7 @@ class EducationController extends Controller
         if(!$faculty || !$department)
             return redirect()->to(route('public:education:faculties'));
 
-        $menu = [
-            (object)[
-                'name'      => $faculty->name,
-                'link'      => url("faculties/{$faculty->code}"),
-                'active'    => true,
-                'subs'      => [
-                    (object)[
-                        'name'      => "О факультете",
-                        'link'      => url("faculties/{$faculty->code}"),
-                        'active'    => false,
-                    ],
-                    (object)[
-                        'name'      => "Деканат",
-                        'link'      => url("faculties/{$faculty->code}/staffs"),
-                        'active'    => false,
-                    ],
-                    (object)[
-                        'name'      => "Кафедры",
-                        'link'      => url("faculties/{$faculty->code}/departments"),
-                        'active'    => true,
-                    ],
-                    (object)[
-                        'name'      => "Направление подготовки",
-                        'link'      => url("faculties/{$faculty->code}/specialities"),
-                        'active'    => false,
-                    ],
-                    (object)[
-                        'name'      => "Поступающим",
-                        'link'      => url('incoming'),
-                        'active'    => false,
-                    ],
-                    (object)[
-                        'name'      => "Наука",
-                        'link'      => url('science'),
-                        'active'    => false,
-                    ],
-                    (object)[
-                        'name'      => "Партнеры и выпускники",
-                        'link'      => url('partner'),
-                        'active'    => false,
-                    ],
-                ],
-            ],
-        ];
+        $menu = Menu::GetMenuFaculty($faculty, page: 'departments');
 
         return view('pages.page-with-menu', [
 //            'breadcrumbs'   => View::make('components.template.breadcrumbs')->with([
@@ -278,55 +131,16 @@ class EducationController extends Controller
     public function specialities($faculty = null):string|RedirectResponse
     {
 
+        if($faculty !== null){
+
         $faculty = Faculty::where('code',$faculty)->first();
 
         if(!$faculty)
             return redirect()->to(route('public:education:faculties'));
+        }
 
-        $menu = [
-            (object)[
-                'name'      => $faculty->name,
-                'link'      => url("faculties/{$faculty->code}"),
-                'active'    => true,
-                'subs'      => [
-                    (object)[
-                        'name'      => "О факультете",
-                        'link'      => url("faculties/{$faculty->code}"),
-                        'active'    => false,
-                    ],
-                    (object)[
-                        'name'      => "Деканат",
-                        'link'      => url("faculties/{$faculty->code}/staffs"),
-                        'active'    => false,
-                    ],
-                    (object)[
-                        'name'      => "Кафедры",
-                        'link'      => url("faculties/{$faculty->code}/departments"),
-                        'active'    => false,
-                    ],
-                    (object)[
-                        'name'      => "Направление подготовки",
-                        'link'      => url("faculties/{$faculty->code}/specialities"),
-                        'active'    => true,
-                    ],
-                    (object)[
-                        'name'      => "Поступающим",
-                        'link'      => url('incoming'),
-                        'active'    => false,
-                    ],
-                    (object)[
-                        'name'      => "Наука",
-                        'link'      => url('science'),
-                        'active'    => false,
-                    ],
-                    (object)[
-                        'name'      => "Партнеры и выпускники",
-                        'link'      => url('partner'),
-                        'active'    => false,
-                    ],
-                ],
-            ],
-        ];
+
+        $menu = Menu::GetMenuFaculty($faculty, page: 'specialities');
 
         return view('pages.page-with-menu', [
 //            'breadcrumbs'   => View::make('components.template.breadcrumbs')->with([
@@ -342,15 +156,15 @@ class EducationController extends Controller
             'nobg'          => true,
 
             'contents'      => [
-                View::make('components.education.specialities')->with([
+                View::make('components.education.specialities.filter')->with([
                     'faculty'       => $faculty,
-                ])->render()
+                ])->render(),
+                View::make('components.education.specialities.list')->with([
+                    'list'          => $faculty->specialities,
+                    'faculty'       => $faculty,
+                ])->render(),
             ]
         ]);
     }
 
 }
-
-
-
-//$faculty_code = null,$department_code = null,$speciality_code = null

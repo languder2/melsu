@@ -2880,14 +2880,15 @@ footer{
     background-color: white;
     min-height: 340px;
     & a{
+
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         min-height: 100%;
         p{
-            color: #BBBBBB;
+            color: var(--primary-color);
         }
-        h2{
+        span,h2{
             color: var(--primary-color);
         }
     }

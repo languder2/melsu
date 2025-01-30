@@ -106,4 +106,77 @@ class Menu extends Model
         return $first;
     }
 
+
+    public static function GetMenuFaculty($faculty,$page):array
+    {
+        return [
+            (object)[
+                'name'      => $faculty->name,
+                'link'      => url("faculties/{$faculty->code}"),
+                'active'    => true,
+                'subs'      => [
+                    (object)[
+                        'name'      => "О факультете",
+                        'link'      => url("faculties/{$faculty->code}"),
+                        'active'    => (bool)($page === 'about'),
+                    ],
+                    (object)[
+                        'name'      => "Деканат",
+                        'link'      => url("faculties/{$faculty->code}/staffs"),
+                        'active'    => (bool)($page === 'staffs'),
+                    ],
+                    (object)[
+                        'name'      => "Кафедры",
+                        'link'      => url("faculties/{$faculty->code}/departments"),
+                        'active'    => (bool)($page === 'departments'),
+                    ],
+                    (object)[
+                        'name'      => "Направление подготовки",
+                        'link'      => url("faculties/{$faculty->code}/specialities"),
+                        'active'    => (bool)($page === 'specialities'),
+                    ],
+                    (object)[
+                        'name'      => "Поступающим",
+                        'link'      => url('incoming'),
+                        'active'    => false,
+                    ],
+                    (object)[
+                        'name'      => "Наука",
+                        'link'      => url('science'),
+                        'active'    => false,
+                    ],
+                    (object)[
+                        'name'      => "Партнеры и выпускники",
+                        'link'      => url('partner'),
+                        'active'    => false,
+                    ],
+                ],
+            ],
+        ];
+    }
+
+    public static function GetMenuFaculties($list):array
+    {
+
+        $menu = [
+            (object)[
+                'name'      => "Факультеты",
+                'link'      => url('faculties'),
+                'active'    => true,
+                'subs'      => [],
+            ],
+        ];
+
+        foreach ($list as $faculty) {
+            $menu[0]->subs[] = (object)[
+                'name'      => $faculty->name,
+                'link'      => url("faculties/{$faculty->code}"),
+                'active'    => false,
+                'subs'      => [],
+            ];
+        }
+
+        return $menu;
+    }
+
 }

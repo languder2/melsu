@@ -26,3 +26,8 @@ select:-webkit-autofill:focus {
     box-shadow: inherit;
     transition: background-color 5000s ease-in-out 0s;
 }
+
+
+.checked-box:has(:checked){
+    display: block;
+}
