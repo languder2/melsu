@@ -75,4 +75,11 @@ class Speciality extends Model
         return $this->belongsTo(Faculty::class, 'faculty_code', 'code');
     }
 
+    public function getPlacesAttribute():int
+    {
+        dd($this->profiles()->pluck('places'));
+
+        return $this->profiles()->pluck('places')->sum();
+    }
+
 }

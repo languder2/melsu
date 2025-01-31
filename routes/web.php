@@ -233,9 +233,14 @@ Route::controller(StaffController::class)
     });
 
 
-Route::get('specialities', [EducationController::class,'specialities'])
-    ->name('public:education:specialities');
+Route::controller(EducationController::class)
+    ->prefix('specialities')
+    ->group(function(){
+        Route::get('', 'specialities')->name('public:education:specialities:all');
 
+        Route::get('{speciality}', 'speciality')->name('public:education:speciality');
+
+    });
 
 Route::controller(EducationController::class)
     ->prefix('faculties')
@@ -243,9 +248,6 @@ Route::controller(EducationController::class)
 
         Route::get('', 'faculties')
             ->name('public:education:faculties');
-
-        Route::get('{faculty}/spec/{speciality}', 'speciality')
-            ->name('public:education:speciality');
 
         Route::get('{faculty}/departments', 'departments')
             ->name('public:education:departments');

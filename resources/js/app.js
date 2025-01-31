@@ -8,7 +8,7 @@ import './accordion-script.js';
 import './classie.js';
 import './counter-script.js';
 import './news-section-main-page.js';
-import './search-in-box.js';
+// import './search-in-box.js';
 import './uisearch.js';
 
 import './aware-button-animaton.js';

@@ -6,7 +6,7 @@ export function initSelect(selectWrapper) {
 
     let filterItems = (inputValue) => {
         dropdownItems.forEach(item => {
-            let itemText = item.textContent.toLowerCase();
+            let itemText = item.textContent.toLowerCase().trim();
             item.classList.toggle('closed', !itemText.includes(inputValue.toLowerCase()));
         });
     };
@@ -18,10 +18,12 @@ export function initSelect(selectWrapper) {
 
     dropdownItems.forEach(item => {
         item.addEventListener('click', () => {
-            inputField.value = item.textContent;
+
+            inputField.value = item.textContent.trim();
             inputHiddenField.value = item.dataset.id;
             dropdown.classList.remove('open');
             filterItems('');
+            inputHiddenField.dispatchEvent(new Event('change'));
         });
     });
 

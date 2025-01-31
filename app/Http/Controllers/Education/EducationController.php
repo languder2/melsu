@@ -4,7 +4,8 @@ namespace App\Http\Controllers\Education;
 
 use App\Http\Controllers\Controller;
 use App\Models\Education\Faculty;
-use App\View\Components\Specialities\AllSpeciality;
+use App\View\Components\Specialities\{AllSpeciality,Single as SingleSpeciality};
+use App\Models\Education\Speciality;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\View;
 use App\Models\Menu;
@@ -61,6 +62,7 @@ class EducationController extends Controller
                 View::make('components.education.faculty')->with([
                     'faculty'      => $faculty,
                 ])->render()
+                
             ]
         ]);
 
@@ -121,17 +123,22 @@ class EducationController extends Controller
                 'menu'          => &$menu,
             ])->render(),
 
+            'nobg'          => true,
+
             'contents'      => [
                 View::make('components.education.department')->with([
                     'faculty'       => $faculty,
                     'department'    => $department,
-                ])->render()
+                ])->render(),
+                (new AllSpeciality($faculty->code,$department->code))->render(),
             ]
         ]);
     }
 
-    public function specialities($faculty = null):string|RedirectResponse
+    public function specialities($faculty = null,$department = null):string|RedirectResponse
     {
+
+
 //        $menu = Menu::GetMenuFaculty($faculty??[], page: 'specialities');
 
         return view("pages.page-with-menu", [
@@ -143,10 +150,37 @@ class EducationController extends Controller
             'nobg'          => true,
 
             'contents'      => [
-                (new AllSpeciality())->render(),
+                (new AllSpeciality($faculty,$department))->render(),
             ]
 
         ]);
     }
+
+    public function speciality(?string $speciality_code):string|RedirectResponse
+    {
+
+        $speciality = Speciality::where('code',$speciality_code)->first();
+
+        if(!$speciality)
+            return redirect()->to(route('public:education:faculties'));
+
+
+
+
+        return view("pages.page", [
+            'sidebar'       => View::make('components.menu.sidebar')->with([
+                'menu'          => &$menu,
+                'full'          => false,
+            ])->render(),
+
+            'nobg'          => true,
+
+            'contents'      => [
+                (new SingleSpeciality($speciality))->render(),
+            ]
+
+        ]);
+    }
+
 
 }

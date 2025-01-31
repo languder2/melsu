@@ -2775,7 +2775,8 @@ footer{
 
         }
 
-        .btn-filter-card.active, .btn-filter-card:hover {
+        .btn-filter-card:has(:checked),
+        .btn-filter-card:hover {
             border-color: var(--primary-color);
             background-color: var(--primary-color);
             color: #FFFFFF;

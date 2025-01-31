@@ -1,4 +1,4 @@
-<div>
+<div class="main-content p-5 pt-[1.375rem] bg-white mb-3">
     <h3 class="text-xl border-b mb-2 pb-2 font-semibold">
         {{$department->name}}
     </h3>
