@@ -5,8 +5,10 @@ namespace App\Models\Education;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Education\Department as Department;
+use App\Models\Gallery\Image as GalleryImage;
 
 class Speciality extends Model
 {
@@ -22,7 +24,8 @@ class Speciality extends Model
         'faculty_code',
         'department_code',
         'level_code',
-        'places',
+        'total_places',
+        'favorite',
         'description',
         'order',
     ];
@@ -36,7 +39,8 @@ class Speciality extends Model
             'faculty_code'      => 'required',
             'department_code'   => 'required',
             'level_code'        => 'required',
-            'places'            => '',
+            'total_places'      => '',
+            'favorite'          => '',
             'description'       => '',
             'order'             => 'nullable|numeric',
         ];
@@ -80,6 +84,12 @@ class Speciality extends Model
         dd($this->profiles()->pluck('places'));
 
         return $this->profiles()->pluck('places')->sum();
+    }
+
+    public function logo(): MorphMany
+    {
+
+        return $this->morphMany(GalleryImage::class, 'relation')->where('type','logo');
     }
 
 }

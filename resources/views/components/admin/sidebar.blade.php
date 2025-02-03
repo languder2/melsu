@@ -12,6 +12,12 @@
     <ul class="text-2xl">
 
         <x-admin.sidebar-li
+            link="{{url('/')}}"
+            img="bg-white-logo.png"
+            text="Frontend"
+        />
+
+        <x-admin.sidebar-li
             link="{{route('admin:structure')}}"
             ico="fas fa-project-diagram text-lg"
             text="структура"

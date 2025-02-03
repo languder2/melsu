@@ -92,6 +92,7 @@ return new class extends Migration
                 $table->string('department_code')->nullable();
                 $table->string('level_code')->nullable();
                 $table->integer('total_places')->nullable();
+                $table->boolean('favorite')->default(true);
                 $table->longText('description')->nullable();
 
                 $table->integer('order')->default(10000);
