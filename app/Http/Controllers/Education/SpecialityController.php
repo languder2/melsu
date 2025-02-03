@@ -42,12 +42,11 @@ class SpecialityController extends Controller
                 ])->render(),
 
                 View::make('components.admin.education.specialities.form.form')->with([
-                    'current'       => Speciality::find($id),
+                    'current'       => Speciality::find($id)?->toJSON(JSON_UNESCAPED_UNICODE),
                     'add2faculty'   => request()->get('faculty'),
-                    'faculties'     => Faculty::pluck('name','code')->toArray(),
-                    'departments'   => Department::pluck('name','code')->toArray(),
-                    'levels'        => Level::pluck('name','code')->toArray(),
-                    'forms'         => Forms::pluck('name','code')->toArray(),
+                    'faculties'     => Faculty::pluck('name','code')?->toJSON(JSON_UNESCAPED_UNICODE),
+                    'departments'   => Department::pluck('name','code')?->toJSON(JSON_UNESCAPED_UNICODE),
+                    'levels'        => Level::pluck('name','code')?->toJSON(JSON_UNESCAPED_UNICODE),
                 ])->render(),
             ]
         ]);

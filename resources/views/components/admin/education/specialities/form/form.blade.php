@@ -13,6 +13,7 @@
         <x-admin.education.specialities.form.links/>
     </div>
 
+
     <div>
         <x-admin.education.specialities.form.body
             :current="$current"
@@ -20,7 +21,7 @@
             :faculties="$faculties"
             :departments="$departments"
             :levels="$levels"
-            :forms="$forms"
         />
     </div>
 </form>
+

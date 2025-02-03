@@ -7,17 +7,23 @@
 >
     <x-admin.education.specialities.form.header />
 
-    <x-form.errors />
-
+    <x-form.errors :box="true"/>
 
     <x-admin.education.specialities.form.sections.speciality
-        :class="(old('spec_menu') === 'tab_speciality' || empty(old('spec_menu')))?'block':'hidden'"
+        :class="(old('spec_menu') === 'tab_speciality' || empty(old('spec_menu')))?'':'hidden'"
         :current="$current"
         :add2faculty="$add2faculty"
         :faculties="$faculties"
         :departments="$departments"
         :levels="$levels"
-        :forms="$forms"
     />
 
+    <x-admin.education.speciality.form.sections.profiles.profiles
+        :class="(old('spec_menu') === 'tab_profiles')?'':'hidden'"
+        :current="$current"
+    >
+    </x-admin.education.speciality.form.sections.profiles.profiles>
+
+
 </div>
+

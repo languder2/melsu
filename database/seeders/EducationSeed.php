@@ -224,7 +224,7 @@ class EducationSeed extends Seeder
                 $record = new Profile();
 
                 $record->fill([
-                    'name'              => $item->name,
+//                    'name'              => $item->name,
                     'alias'             => "profile-{$i}",
                     'speciality_code'   => $spec->code,
                     'form_code'         => match($form){

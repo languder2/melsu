@@ -136,7 +136,7 @@ return new class extends Migration
             Schema::create('education_profiles', function (Blueprint $table) {
                 $table->id();
 
-                $table->string('name');
+//                $table->string('name');
                 $table->string('alias')->unique()->nullable();
                 $table->longText('description')->nullable();
                 $table->string('speciality_code',20)->nullable();

@@ -5,7 +5,7 @@
         name="spec_menu"
         class="peer hidden"
         value="tab_speciality"
-        onchange="Tabs.showTab(this)"
+        onchange="Tabs.showTab(this,'.speciality-tabs')"
         @if(empty(old('spec_menu')) || old('spec_menu') === 'tab_speciality')
             checked
         @endif
@@ -35,7 +35,7 @@
         name="spec_menu"
         class="peer hidden"
         value="tab_profiles"
-        onchange="Tabs.showTab(this)"
+        onchange="Tabs.showTab(this,'.speciality-tabs')"
         @if(old('spec_menu') === 'tab_profiles')
             checked
         @endif
@@ -52,7 +52,7 @@
                 peer-checked:bg-baseRed
 
                 hover:text-red-700
-                hover:bg-gray-50
+                hover:bg-gray-100
             "
     >
         Профили
@@ -66,7 +66,7 @@
         name="spec_menu"
         class="peer hidden"
         value="tab_documents"
-        onchange="Tabs.showTab(this)"
+        onchange="Tabs.showTab(this,'.speciality-tabs')"
         @if(old('spec_menu') === 'tab_documents')
             checked
         @endif
@@ -83,7 +83,7 @@
                 peer-checked:bg-baseRed
 
                 hover:text-red-700
-                hover:bg-gray-50
+                hover:bg-gray-100
             "
     >
         Документы
@@ -97,7 +97,7 @@
         name="spec_menu"
         class="peer hidden"
         value="tab_links"
-        onchange="Tabs.showTab(this)"
+        onchange="Tabs.showTab(this,'.speciality-tabs')"
         @if(old('spec_menu') === 'tab_links')
             checked
         @endif
@@ -114,7 +114,7 @@
                 peer-checked:bg-baseRed
 
                 hover:text-red-700
-                hover:bg-gray-50
+                hover:bg-gray-100
             "
     >
         Ссылки
@@ -128,7 +128,7 @@
         name="spec_menu"
         class="peer hidden"
         value="tab_faq"
-        onchange="Tabs.showTab(this)"
+        onchange="Tabs.showTab(this,'.speciality-tabs')"
         @if(old('spec_menu') === 'tab_faq')
             checked
         @endif
@@ -145,7 +145,7 @@
                 peer-checked:bg-baseRed
 
                 hover:text-red-700
-                hover:bg-gray-50
+                hover:bg-gray-100
             "
     >
         FAQ

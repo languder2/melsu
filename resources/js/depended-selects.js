@@ -21,3 +21,33 @@ export function LimitList(selectID,attr,value){
 
     select.value = '';
 }
+
+export function DepartmentsByFaculty(selectFaculty,selectDepartment)
+{
+    selectFaculty       = document.getElementById(selectFaculty);
+    selectDepartment    = document.getElementById(selectDepartment);
+
+    if(selectFaculty === null || selectDepartment === null) return false;
+
+    let href = '/api/departments-by-faculty-shorts/'+selectFaculty.value;
+
+    fetch(href,{
+        method: "GET",
+    })
+        .then(response => {return response.text();})
+        .then(data => {
+
+            let options = selectDepartment.querySelectorAll('option:not([value=""])');
+            options.forEach(option=> option.remove());
+
+            options = JSON.parse(data);
+
+            for(let key in options){
+                selectDepartment.appendChild(new Option(options[key], key));
+
+            }
+        });
+
+
+
+}

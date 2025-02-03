@@ -28,10 +28,12 @@
         @if(isset($id))
             for     = "{{$id}}"
         @endif
-        class   = "
-            ms-2 text-sm font-medium text-gray-900
-            cursor-pointer
-        "
+
+        @class([
+            'ms-2 text-sm font-medium text-gray-900',
+            'cursor-pointer',
+            &$class,
+        ])
     >
         @if(isset($text))
             {{$text}}

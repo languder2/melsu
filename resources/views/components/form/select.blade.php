@@ -1,3 +1,9 @@
+@if(!is_array($list))
+    @php
+        $list = json_decode($list)
+    @endphp
+@endif
+
 @if(isset($label))
     <div class="mt-2 -mb-2">
         {{@$label}}@if(isset($required))* @endif
