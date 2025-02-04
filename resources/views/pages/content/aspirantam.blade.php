@@ -231,7 +231,7 @@
     <div class="bg-white p-6 mb-5">
         <h3 class="text-2xl font-[600] mb-3">Отдел аспирантуры и докторантуры</h3>
         <span class="font-[500]">г. Мелитополь, проспект Богдана Хмельницкого, 18,Корпус №9, 3 этаж, кабинет №9.312</span>
-        <div class="grid grid-cols-1 md:grid-cols-[1fr,1fr] lg:grid-cols-[1fr,1fr,1fr] mt-5 mb-10">
+        <div class="grid grid-cols-1 md:grid-cols-[1fr_1fr] lg:grid-cols-[1fr_1fr_1fr] mt-5 mb-10">
             <div class="flex flex-col font-sm mb-3 lg:mb-0">
                 <span class="text-[#B5B8B9] mb-2">Телефон</span>
                 <span class="font-[600]">+7(990) 150-83-61</span>

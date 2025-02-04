@@ -4,7 +4,7 @@
 <section class="card-section container custom p-2.5 xl:p-0">
 
     <x-specialities.filter />
-    <div class="parent grid grid-cols-1 lg:grid-cols-[1fr,1fr] xl:grid-cols-[1fr,1fr,1fr] gap-3">
+    <div class="parent grid grid-cols-1 lg:grid-cols-[1fr_1fr] xl:grid-cols-[1fr_1fr_1fr] gap-3">
         @foreach($specialities as $speciality)
             @foreach($speciality->profiles as $profile)
                 @foreach($profile->places??[] as $place)
@@ -44,7 +44,7 @@
                                     {{$speciality->name}}
                                 </h2>
                             </div>
-                            <div class="grid grid-cols-1 lg:grid-cols-[1fr,1fr] gap-3">
+                            <div class="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-3">
                                 <div class="flex flex-col">
                                     @if($place->type !== 'budget')
                                         <span class="font-[400]">

@@ -1,4 +1,4 @@
-<div class="grid grid-cols-1 lg:grid-cols-[1fr,1fr,1fr] xl:grid-cols-[1fr,1fr,1fr,1fr] mb-3 gap-5">
+<div class="grid grid-cols-1 lg:grid-cols-[1fr_1fr_1fr] xl:grid-cols-[1fr_1fr_1fr_1fr] mb-3 gap-5">
     <div>
         <input type="text" name="daterange" class="dataRange h-[48px] text-center py-3 px-[18px]" value="За все время">
     </div>

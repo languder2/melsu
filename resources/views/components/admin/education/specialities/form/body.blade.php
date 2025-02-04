@@ -1,4 +1,5 @@
 <x-head.tinymce-config />
+
 <div
     class="
         bg-white

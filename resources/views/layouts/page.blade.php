@@ -31,7 +31,7 @@
 
             @yield('breadcrumbs')
 
-            <div class="grid grid-cols-1 lg:grid-cols-[25%_minmax(70%,_1fr)] gap-3">
+            <div class="grid grid-cols-1 lg:grid-cols-[25%_minmax(70%,1fr)] gap-3">
                 <div class="left-side-menu-box hidden lg:block bg-white p-2.5">
                     @yield('sidebar')
                 </div>

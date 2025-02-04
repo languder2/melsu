@@ -7,7 +7,7 @@
     <h3 class="text-xl border-b mb-2 pb-2 font-semibold">
         {{$faculty->name}}
     </h3>
-    <div class="grid grid-cols-[1fr,50px,1fr,50px] gap-2">
+    <div class="grid grid-cols-[1fr_50px_1fr_50px] gap-2">
         <div class="p-2">
             Кол-во кафедр
         </div>

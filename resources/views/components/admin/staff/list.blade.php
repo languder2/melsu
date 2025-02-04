@@ -4,7 +4,7 @@
         class="
             grid gap-4 items-center
             grid-cols-1
-            md:grid-cols-[repeat(7,minmax(0,_1fr))_200px]
+            md:grid-cols-[repeat(7,minmax(0,1fr))_200px]
         "
     >
         <div class="font-semibold">

@@ -5,7 +5,7 @@
         <h2 class="text-[43px] sm:text-[54px] text-white text-shadow-lg lg:mb-12" style="text-shadow: 0px 10px 10px #000000;">
             После выпуска все только начинается
         </h2>
-        <div class="grid grid-cols-1 lg:grid-cols-[1fr,1fr] xl:grid-cols-[1fr,1fr,1fr,1fr] gap-3 lg:gap-5">
+        <div class="grid grid-cols-1 lg:grid-cols-[1fr_1fr] xl:grid-cols-[1fr_1fr_1fr_1fr] gap-3 lg:gap-5">
             <div class="box-info-link bg-[var(--primary-color)] p-2.5 text-white">
                 <a href="#" class="h-[160px] lg:min-h-[200px] flex flex-col justify-between">
                     <h2 class="font-[700] text-lg">Перечень документов для поступления</h2>
@@ -42,7 +42,7 @@
     <div class="container custom p-2.5 bg-left"
          style="background-image: url({{asset('img/bg-section-12.jpg')}})"
     >
-        <div class="grid grid-cols-1 lg:grid-cols-[40%,40%] gap-2.5 lg:gap-5 lg:justify-end">
+        <div class="grid grid-cols-1 lg:grid-cols-[40%_40%] gap-2.5 lg:gap-5 lg:justify-end">
             <div class="box-info-link bg-[#1E1E1E] p-2.5 text-white">
                 <a href="#" class="h-[160px] lg:min-h-[350px] flex flex-col justify-between">
                     <h2 class="font-[700] text-lg">Ассоциация выпускников и амбассадоры МелГУ</h2>
@@ -97,7 +97,7 @@
          style="background-image: url({{asset('img/bg-section-13.jpg')}})"
 >
     <div class="container custom p-2.5 lg:p-5">
-        <div class="grid grid-cols-1  lg:grid-cols-[1fr,1fr,1fr] gap-3 lg:gap-5">
+        <div class="grid grid-cols-1  lg:grid-cols-[1fr_1fr_1fr] gap-3 lg:gap-5">
             <div class="box-info-link bg-[#1E1E1E] p-2.5 text-white">
                 <a href="#" class="h-[160px] lg:min-h-[200px] flex flex-col justify-between">
                     <h2 class="font-[700] text-lg">Дипломы, документы, переводы</h2>

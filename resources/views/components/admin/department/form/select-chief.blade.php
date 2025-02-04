@@ -56,13 +56,15 @@
                         relative
                         p-[1rem]
                         bg-white
+                        opacity-100
                         flex
                         items-center
                         cursor-pointer
                         transition duration-300 ease-in-out
                         max-h-0
-                        hover:bg-[#820000]
+                        hover:bg-red-700
                         hover:text-white
+                        [&.closed]:bg-red-700
                         [&.closed]:max-h-0
                         [&.closed]:overflow-hidden
                         [&.closed]:p-0

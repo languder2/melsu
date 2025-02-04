@@ -5,7 +5,7 @@
             <span class="meta-category bg-[var(--primary-color)] text-white text-[12px] absolute top-[10px] py-[3px] px-[7px] font-[500]">Наука</span>
         </div>
         <div class="bg-[var(--primary-color)] p-5 text-white lg:max-h-[404px] h-auto lg:h-full">
-            <div class="grid grid-cols-[70%,29%] mb-3">
+            <div class="grid grid-cols-[70%_29%] mb-3">
                 <h2 class="text-3xl font-[700]">
                     {{$news->title}}
                 </h2>
@@ -17,7 +17,7 @@
                 </div>
             </div>
             <div>
-                <p class="line-clamp-[10]">
+                <p class="line-clamp-10">
                     {!! $news->full !!}
                 </p>
             </div>

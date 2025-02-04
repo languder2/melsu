@@ -13,7 +13,7 @@
 </section>
 
 <section id="melsu-today" class="container custom lg:p-2.5">
-    <div class="grid lg:grid-cols-[29%,70%] xl:grid-cols-[39%,60%] bg-[var(--primary-color)] w-full lg:gap-x-6 xl:gap-x-3 lg:min-h-[240px] items-end xl:relative mb-6 xl:mb-8">
+    <div class="grid lg:grid-cols-[29%_70%] xl:grid-cols-[39%_60%] bg-[var(--primary-color)] w-full lg:gap-x-6 xl:gap-x-3 lg:min-h-[240px] items-end xl:relative mb-6 xl:mb-8">
         <div class="xl:absolute xl:top-[50px] xl:left-[-50px] xl:py-0">
             <img src="{{asset('img/melsu-unv.jpg')}}" alt="" class="lg:h-[240px] xl:h-[360px] xl:w-[510px]">
         </div>
@@ -24,7 +24,7 @@
             </h2>
         </div>
     </div>
-    <div class="grid lg:grid-cols-[29%,69%] xl:grid-cols-[35.5%,60%] lg:gap-x-6 xl:gap-x-[60px]">
+    <div class="grid lg:grid-cols-[29%_69%] xl:grid-cols-[35.5%_60%] lg:gap-x-6 xl:gap-x-[60px]">
         <div>
             <div class="bg-[var(--primary-color)] xl:mt-[170px] p-6 text-white">
                 <div class="border-b-[1px] border-white pb-3">
@@ -181,7 +181,7 @@
     </div>
 </section>
 <section id="cooperation-melsu" class="container custom lg:p-2.5">
-    <div class="grid lg:grid-cols-[29%,70%] xl:grid-cols-[39%,60%] bg-[var(--primary-color)] w-full lg:gap-x-6 xl:gap-x-3 lg:min-h-[240px] items-end xl:relative mb-6 xl:mb-8">
+    <div class="grid lg:grid-cols-[29%_70%] xl:grid-cols-[39%_60%] bg-[var(--primary-color)] w-full lg:gap-x-6 xl:gap-x-3 lg:min-h-[240px] items-end xl:relative mb-6 xl:mb-8">
         <div class="xl:absolute xl:top-[50px] xl:left-[-50px] xl:py-0">
             <img src="{{asset('img/melsu-unv.jpg')}}" alt="" class="lg:h-[240px] xl:h-[360px] xl:w-[510px]">
         </div>
@@ -192,7 +192,7 @@
             </h2>
         </div>
     </div>
-    <div class="grid lg:grid-cols-[29%,69%] xl:grid-cols-[35.5%,60%] lg:gap-x-6 xl:gap-x-[60px]">
+    <div class="grid lg:grid-cols-[29%_69%] xl:grid-cols-[35.5%_60%] lg:gap-x-6 xl:gap-x-[60px]">
         <div>
 
         </div>
@@ -205,7 +205,7 @@
     </div>
 </section>
 <section id="education-melsu" class="container custom lg:p-2.5">
-    <div class="grid lg:grid-cols-[29%,70%] xl:grid-cols-[39%,60%] bg-[var(--primary-color)] w-full lg:gap-x-6 xl:gap-x-3 lg:min-h-[240px] items-end xl:relative mb-6 xl:mb-8">
+    <div class="grid lg:grid-cols-[29%_70%] xl:grid-cols-[39%_60%] bg-[var(--primary-color)] w-full lg:gap-x-6 xl:gap-x-3 lg:min-h-[240px] items-end xl:relative mb-6 xl:mb-8">
         <div class="xl:absolute xl:top-[50px] xl:left-[-50px] xl:py-0">
             <img src="{{asset('img/melsu-unv.jpg')}}" alt="" class="lg:h-[240px] xl:h-[360px] xl:w-[510px]">
         </div>
@@ -216,7 +216,7 @@
             </h2>
         </div>
     </div>
-    <div class="grid lg:grid-cols-[29%,69%] xl:grid-cols-[35.5%,60%] lg:gap-x-6 xl:gap-x-[60px]">
+    <div class="grid lg:grid-cols-[29%_69%] xl:grid-cols-[35.5%_60%] lg:gap-x-6 xl:gap-x-[60px]">
         <div>
             <div class="bg-[var(--primary-color)] xl:mt-[170px] p-6 text-white">
                 <div class="border-b-[1px] border-white pb-3">
@@ -254,7 +254,7 @@
     </div>
 </section>
 <section id="science-melsu" class="container custom lg:p-2.5">
-    <div class="grid lg:grid-cols-[29%,70%] xl:grid-cols-[39%,60%] bg-[var(--primary-color)] w-full lg:gap-x-6 xl:gap-x-3 lg:min-h-[240px] items-end xl:relative mb-6 xl:mb-8">
+    <div class="grid lg:grid-cols-[29%_70%] xl:grid-cols-[39%_60%] bg-[var(--primary-color)] w-full lg:gap-x-6 xl:gap-x-3 lg:min-h-[240px] items-end xl:relative mb-6 xl:mb-8">
         <div class="xl:absolute xl:top-[50px] xl:left-[-50px] xl:py-0">
             <img src="{{asset('img/melsu-unv.jpg')}}" alt="" class="lg:h-[240px] xl:h-[360px] xl:w-[510px]">
         </div>
@@ -265,7 +265,7 @@
             </h2>
         </div>
     </div>
-    <div class="grid lg:grid-cols-[29%,69%] xl:grid-cols-[35.5%,60%] lg:gap-x-6 xl:gap-x-[60px]">
+    <div class="grid lg:grid-cols-[29%_69%] xl:grid-cols-[35.5%_60%] lg:gap-x-6 xl:gap-x-[60px]">
         <div>
             <div class="bg-[var(--primary-color)] xl:mt-[170px] p-6 text-white">
                 <div class="border-b-[1px] border-white pb-3">
@@ -299,7 +299,7 @@
     </div>
 </section>
 <section id="schoolchildren-melsu" class="container custom lg:p-2.5">
-    <div class="grid lg:grid-cols-[29%,70%] xl:grid-cols-[39%,60%] bg-[var(--primary-color)] w-full lg:gap-x-6 xl:gap-x-3 lg:min-h-[240px] items-end xl:relative mb-6 xl:mb-8">
+    <div class="grid lg:grid-cols-[29%_70%] xl:grid-cols-[39%_60%] bg-[var(--primary-color)] w-full lg:gap-x-6 xl:gap-x-3 lg:min-h-[240px] items-end xl:relative mb-6 xl:mb-8">
         <div class="xl:absolute xl:top-[50px] xl:left-[-50px] xl:py-0">
             <img src="{{asset('img/melsu-unv.jpg')}}" alt="" class="lg:h-[240px] xl:h-[360px] xl:w-[510px]">
         </div>
@@ -310,7 +310,7 @@
             </h2>
         </div>
     </div>
-    <div class="grid lg:grid-cols-[29%,69%] xl:grid-cols-[35.5%,60%] lg:gap-x-6 xl:gap-x-[60px]">
+    <div class="grid lg:grid-cols-[29%_69%] xl:grid-cols-[35.5%_60%] lg:gap-x-6 xl:gap-x-[60px]">
         <div>
 
         </div>
@@ -324,7 +324,7 @@
     </div>
 </section>
 <section id="library-melsu" class="container custom lg:p-2.5">
-    <div class="grid lg:grid-cols-[29%,70%] xl:grid-cols-[39%,60%] bg-[var(--primary-color)] w-full lg:gap-x-6 xl:gap-x-3 lg:min-h-[240px] items-end xl:relative mb-6 xl:mb-8">
+    <div class="grid lg:grid-cols-[29%_70%] xl:grid-cols-[39%_60%] bg-[var(--primary-color)] w-full lg:gap-x-6 xl:gap-x-3 lg:min-h-[240px] items-end xl:relative mb-6 xl:mb-8">
         <div class="xl:absolute xl:top-[50px] xl:left-[-50px] xl:py-0">
             <img src="{{asset('img/melsu-unv.jpg')}}" alt="" class="lg:h-[240px] xl:h-[360px] xl:w-[510px]">
         </div>
@@ -335,7 +335,7 @@
             </h2>
         </div>
     </div>
-    <div class="grid lg:grid-cols-[29%,69%] xl:grid-cols-[35.5%,60%] lg:gap-x-6 xl:gap-x-[60px]">
+    <div class="grid lg:grid-cols-[29%_69%] xl:grid-cols-[35.5%_60%] lg:gap-x-6 xl:gap-x-[60px]">
         <div>
 
         </div>

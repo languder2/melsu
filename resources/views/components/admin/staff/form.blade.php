@@ -179,7 +179,7 @@
 
     <hr>
 
-    <div id="works" class="grid grid-cols-1 md:grid-cols-[1fr,1fr,4fr] gap-4">
+    <div id="works" class="grid grid-cols-1 md:grid-cols-[1fr_1fr_4fr] gap-4">
 
         @if(is_array(old('works')))
             @php $works = array_filter(old('works'),function ($work){return !empty($work['post']);}); @endphp

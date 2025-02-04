@@ -1,16 +1,46 @@
-@import '../css/font-import.css';
-@import '../css/main-style.css';
-@import '../css/new-tailwind.css';
-@import '../css/root-style.css';
-@import '../css/news-detail.css';
-@import '../css/slider-bg-style.css';
+@import '../css/font-import.css' layer(base);
+@import '../css/main-style.css' layer(base);
+@import '../css/new-tailwind.css' layer(base);
+@import '../css/root-style.css' layer(base);
+@import '../css/news-detail.css' layer(base);
+@import '../css/slider-bg-style.css' layer(base);
 
-@import "@fortawesome/fontawesome-free/css/all.css";
+@import '@fortawesome/fontawesome-free/css/all.css' layer(base);
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+
+@theme {
+  --font-sans: Figtree, ui-sans-serif, system-ui, sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+  --color-baseRed: #820000;
+
+  --list-style-type-none: none;
+  --list-style-type-disc: disc;
+  --list-style-type-decimal: decimal;
+  --list-style-type-square: square;
+  --list-style-type-roman: upper-roman;
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
 
 /* Change Autocomplete styles in Chrome*/
 input:-webkit-autofill,

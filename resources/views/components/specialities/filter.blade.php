@@ -2,9 +2,9 @@
     method="post"
     data-group-search=".education-profile"
     data-no-search=".no-search"
-    class="grid grid-cols-1 lg:grid-cols-[1fr,20%,20%] gap-[12px]  lg:gap-3 mb-3 lg:mb-0"
+    class="grid grid-cols-1 lg:grid-cols-[1fr_20%_20%] gap-[12px]  lg:gap-3 mb-3 lg:mb-0"
 >
-    <div class="box-btns-card grid grid-cols-1 lg:grid-cols-[1fr,1fr,1fr] gap-3 text-center lg:mb-8">
+    <div class="box-btns-card grid grid-cols-1 lg:grid-cols-[1fr_1fr_1fr] gap-3 text-center lg:mb-8">
 
         <label class="btn-filter-card active uppercase py-3.5 px-5">
             <input

@@ -56,12 +56,14 @@
                 <li
                     data-id="{!! @$record->{$keyID} !!}"
                     class="
+
                     drop-li
                     min-h-[4rem]
                     opacity-1
                     relative
                     p-[1rem]
                     bg-white
+                    opacity-100
                     flex
                     items-center
                     cursor-pointer

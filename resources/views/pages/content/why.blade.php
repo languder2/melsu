@@ -3,7 +3,7 @@
 </div>
 <section class="container custom text-lg p-2.5">
     <div class="bg-white p-6">
-        <div class="grid grid-cols-1 lg:grid-cols-[auto,422px] gap-3 lg:gap-6">
+        <div class="grid grid-cols-1 lg:grid-cols-[auto_422px] gap-3 lg:gap-6">
             <div class="flex items-center order-2 lg:order-1">
                 <ul class="list-disc list-inside leading-10">
                     <li>
@@ -32,7 +32,7 @@
 <section class="container custom text-lg">
     <div class="bg-white p-6">
         <p class="mb-3 font-[500]">МелГУ — это не только качественное образование, но и комфортные условия для жизни и отдыха.</p>
-        <div class="grid grid-cols-1 lg:grid-cols-[422px,auto] gap-3 lg:gap-6">
+        <div class="grid grid-cols-1 lg:grid-cols-[422px_auto] gap-3 lg:gap-6">
             <div class="flex justify-center lg:justify-end order-1 lg:order-1">
                 <img src="{{asset('img/ph-10.jpg')}}" alt="" class="lg:max-w-[422px] lg:max-h-[422px]">
             </div>
@@ -60,7 +60,7 @@
 </div>
 <section class="container custom text-lg p-2.5">
     <div class="bg-white p-6">
-        <div class="grid grid-cols-1 lg:grid-cols-[auto,422px] gap-3 lg:gap-6">
+        <div class="grid grid-cols-1 lg:grid-cols-[auto_422px] gap-3 lg:gap-6">
             <div class="flex items-center order-2 lg:order-1">
                 <ul class="list-disc list-inside leading-10">
                     <li>
@@ -107,7 +107,7 @@
 <section class="container custom text-lg">
     <div class="bg-white p-6">
         <p class="mb-3 font-[500]">Черешневые сады в Мелитополе — это огромная учебная база для будущих садоводов, агрономов, селекционеров.</p>
-        <div class="grid grid-cols-1 lg:grid-cols-[422px,auto] gap-3 lg:gap-6">
+        <div class="grid grid-cols-1 lg:grid-cols-[422px_auto] gap-3 lg:gap-6">
             <div class="flex justify-center lg:justify-end order-1 lg:order-1">
                 <img src="{{asset('img/ph-12.jpg')}}" alt="" class="lg:max-w-[422px] lg:max-h-[422px]">
             </div>
@@ -134,7 +134,7 @@
 </div>
 <section class="container custom text-lg p-2.5">
     <div class="bg-white p-6">
-        <div class="grid grid-cols-1 lg:grid-cols-[auto,422px] gap-3 lg:gap-6">
+        <div class="grid grid-cols-1 lg:grid-cols-[auto_422px] gap-3 lg:gap-6">
             <div class="flex items-center order-2 lg:order-1">
                 <ul class="list-disc list-inside leading-10">
                     <li>
@@ -182,7 +182,7 @@
         </p>
     </div>
     <div class="bg-white p-6">
-        <div class="grid grid-cols-1 lg:grid-cols-[422px,auto] gap-3 lg:gap-6">
+        <div class="grid grid-cols-1 lg:grid-cols-[422px_auto] gap-3 lg:gap-6">
             <div class="flex justify-center lg:justify-end order-1 lg:order-1">
                 <img src="{{asset('img/ph-14.jpg')}}" alt="" class="lg:max-w-[422px] lg:max-h-[422px]">
             </div>
@@ -202,7 +202,7 @@
         <p class="mb-3 font-[500]">
             Новые направления подготовки на 2025-2026 учебный год:
         </p>
-        <div class="grid grid-cols-1 lg:grid-cols-[auto,422px] gap-3 lg:gap-6">
+        <div class="grid grid-cols-1 lg:grid-cols-[auto_422px] gap-3 lg:gap-6">
             <div class="flex items-center order-2 lg:order-1">
                 <ul class="list-disc list-inside leading-10">
                     <li>
@@ -248,7 +248,7 @@
         <p class="mb-3 font-[500]">
             Новые направления подготовки на 2025-2026 учебный год:
         </p>
-        <div class="grid grid-cols-1 lg:grid-cols-[422px,auto] gap-3 lg:gap-6">
+        <div class="grid grid-cols-1 lg:grid-cols-[422px_auto] gap-3 lg:gap-6">
             <div class="flex justify-center lg:justify-end order-1 lg:order-1">
                 <img src="{{asset('img/ph-16.jpg')}}" alt="" class="lg:max-w-[422px] lg:max-h-[422px]">
             </div>
@@ -278,7 +278,7 @@
         <p class="mb-3 font-[500]">
             Новые направления подготовки на 2025-2026 учебный год:
         </p>
-        <div class="grid grid-cols-1 lg:grid-cols-[auto,422px] gap-3 lg:gap-6">
+        <div class="grid grid-cols-1 lg:grid-cols-[auto_422px] gap-3 lg:gap-6">
             <div class="flex items-center order-2 lg:order-1">
                 <ul class="list-disc list-inside leading-10">
                     <li>
@@ -326,7 +326,7 @@
 </div>
 <section class="container custom text-lg">
     <div class="bg-white p-6">
-        <div class="grid grid-cols-1 lg:grid-cols-[422px,auto] gap-3 lg:gap-6">
+        <div class="grid grid-cols-1 lg:grid-cols-[422px_auto] gap-3 lg:gap-6">
             <div class="flex justify-center lg:justify-end order-1 lg:order-1">
                 <img src="{{asset('img/ph-18.jpg')}}" alt="" class="lg:max-w-[422px] lg:max-h-[422px]">
             </div>
@@ -355,7 +355,7 @@
 </div>
 <section class="container custom text-lg p-2.5">
     <div class="bg-white p-6">
-        <div class="grid grid-cols-1 lg:grid-cols-[auto,422px] gap-3 lg:gap-6">
+        <div class="grid grid-cols-1 lg:grid-cols-[auto_422px] gap-3 lg:gap-6">
             <div class="flex flex-col justify-center order-2 lg:order-1">
                 <p class="font-[500]">
                     Студенты МелГУ — чемпионы мира в 2023 году:
@@ -393,7 +393,7 @@
 </div>
 <section class="container custom text-lg">
     <div class="bg-white p-6">
-        <div class="grid grid-cols-1 lg:grid-cols-[422px,auto] gap-3 lg:gap-6">
+        <div class="grid grid-cols-1 lg:grid-cols-[422px_auto] gap-3 lg:gap-6">
             <div class="flex justify-center lg:justify-end order-1 lg:order-1">
                 <img src="{{asset('img/ph-18.jpg')}}" alt="" class="lg:max-w-[422px] lg:max-h-[422px]">
             </div>
@@ -420,7 +420,7 @@
         </p>
     </div>
     <div class="bg-white p-6">
-        <div class="grid grid-cols-1 lg:grid-cols-[auto,422px] gap-3 lg:gap-6">
+        <div class="grid grid-cols-1 lg:grid-cols-[auto_422px] gap-3 lg:gap-6">
             <div class="flex items-center order-2 lg:order-1">
                 <p>
                     Помимо страусов, в зоопарке обитает более 30 видов животных и птиц, включая медведей, львов, тигров, коз, лошадей, обезьян, дикобразов, енотов, верблюдов.
@@ -443,7 +443,7 @@
         Уникальнейший памятник истории и архитектуры Запорожской области — Усадьба Попова.
     </div>
     <div class="bg-white p-6">
-        <div class="grid grid-cols-1 lg:grid-cols-[422px,auto] gap-3 lg:gap-6">
+        <div class="grid grid-cols-1 lg:grid-cols-[422px_auto] gap-3 lg:gap-6">
             <div class="flex justify-center lg:justify-end order-1 lg:order-1">
                 <img src="{{asset('img/ph-22.jpg')}}" alt="" class="lg:max-w-[422px] lg:max-h-[422px]">
             </div>
@@ -474,7 +474,7 @@
         </p>
     </div>
     <div class="bg-white p-6">
-        <div class="grid grid-cols-1 lg:grid-cols-[auto,422px] gap-3 lg:gap-6">
+        <div class="grid grid-cols-1 lg:grid-cols-[auto_422px] gap-3 lg:gap-6">
             <div class="flex items-center order-2 lg:order-1">
                 <p>
                     Установленная мощность энергостанции составляет 200 МВт.

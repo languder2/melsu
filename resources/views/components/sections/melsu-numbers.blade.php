@@ -1,7 +1,7 @@
 <section class="number-section">
-    <div class="grid grid-cols-1 xl:grid-cols-[70%_minmax(30%,_1fr)]">
+    <div class="grid grid-cols-1 xl:grid-cols-[70%_minmax(30%,1fr)]">
         <div class="w-full">
-            <div class="upper-number-row grid grid-cols-1 xl:grid-cols-[33.333%,33.333%,33.333%]">
+            <div class="upper-number-row grid grid-cols-1 xl:grid-cols-[33.333%_33.333%_33.333%]">
                 <div class="box-number w-full ">
                     <h2>Ведущий</h2>
                 </div>
@@ -26,7 +26,7 @@
                     </div>
                 </div>
             </div>
-            <div class="under-number-row grid grid-cols-1 xl:grid-cols-[33.333%,33.333%,33.333%]">
+            <div class="under-number-row grid grid-cols-1 xl:grid-cols-[33.333%_33.333%_33.333%]">
                 <div class="box-number w-full">
                     <h1>МелГУ</h1>
                 </div>

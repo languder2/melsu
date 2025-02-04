@@ -21,7 +21,7 @@
 
     <section class="container custom lg:p-2.5">
         <div>
-            <div class="grid grid-cols-1 lg:grid-cols-[20%,20%,1fr] bg-white p-6">
+            <div class="grid grid-cols-1 lg:grid-cols-[20%_20%_1fr] bg-white p-6">
                 <div>
                     <div class="mb-3 lg:mb-0">
                         <h2 class="text-[#828282] uppercase font-[700] mb-2">Уровень обучения</h2>
@@ -34,7 +34,7 @@
                     <div class="mb-2">
                         <h2 class="text-[#828282] uppercase font-[700]">Форма обучения</h2>
                     </div>
-                    <div class="grid grid-cols-[auto,auto] gap-3 lg:gap-0 lg:grid-cols-1 justify-start lg:justify-normal">
+                    <div class="grid grid-cols-[auto_auto] gap-3 lg:gap-0 lg:grid-cols-1 justify-start lg:justify-normal">
                         @foreach($speciality->profiles as $profile)
                             <div>
                                 <h2 class="font-[700]">
@@ -58,7 +58,7 @@
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-[1fr,1fr] lg:grid-cols-[1fr,1fr,1fr,1fr,1fr] bg-[var(--primary-color)] p-6 gap-3 sm:text-center lg:text-start lg:gap-0 lg:justify-normal">
+            <div class="grid grid-cols-1 sm:grid-cols-[1fr_1fr] lg:grid-cols-[1fr_1fr_1fr_1fr_1fr] bg-[var(--primary-color)] p-6 gap-3 sm:text-center lg:text-start lg:gap-0 lg:justify-normal">
                 <div>
                     <a href="#" class="text-white font-[700] text-xl hover:opacity-80 transition duration-300 ease-linear">О программе</a>
                 </div>
@@ -83,7 +83,7 @@
     </div>
     <section class="container custom lg:p-2.5">
         <div class="bg-white p-6">
-            <div class="flex flex-col lg:grid lg:grid-cols-[70%,30%]">
+            <div class="flex flex-col lg:grid lg:grid-cols-[70%_30%]">
                 <div class="prog-info order-2 lg:order-1 text-xl line-clamp-4">
                     {{$speciality->description??'not set description'}}
                 </div>
@@ -104,7 +104,7 @@
         <h2 class="font-bold text-3xl my-6">Общая информация о программе</h2>
     </div>
     <section class="container custom lg:p-2.5">
-        <div class="box-info-prog grid grid-cols-1 sm:grid-cols-[1fr,1fr] sm:gap-1">
+        <div class="box-info-prog grid grid-cols-1 sm:grid-cols-[1fr_1fr] sm:gap-1">
             <div class="btn-info-prog bg-white group p-6 cursor-pointer active">
                 <h2 class="text-2xl font-[700] group-hover:text-[var(--primary-color)] transition duration-300 ease-linear">Очная форма</h2>
             </div>
@@ -114,7 +114,7 @@
         </div>
         <div class="relative">
             <div class="content-info-prog bg-white p-6 active">
-                <div class="grid grid-cols-1 md:grid-cols-[1fr,1fr] gap-3">
+                <div class="grid grid-cols-1 md:grid-cols-[1fr_1fr] gap-3">
                     <div class="mb-3 lg:mb-0">
                         <h2 class="text-[#828282] uppercase font-[700] text-lg mb-2">Срок обучения</h2>
                         <h2 class="font-[400] text-xl">5 лет</h2>
@@ -127,7 +127,7 @@
                 <h2 class="uppercase font-[700] text-lg my-4 sm:my-8">
                     Вступительные испытания и минимальные баллы
                 </h2>
-                <div class="grid grid-cols-1 md:grid-cols-[1fr,1fr] gap-3">
+                <div class="grid grid-cols-1 md:grid-cols-[1fr_1fr] gap-3">
                     <div class="mb-3 lg:mb-0">
                         <h2 class="text-[#828282] uppercase font-[700] text-lg mb-2">на бюджет</h2>
                         <h2 class="font-[400] text-xl">Информатика и ИКТ/Физика — 52/44 баллов</h2>
@@ -144,7 +144,7 @@
                 <h2 class="uppercase font-[700] text-lg my-4 sm:my-8">
                     Проходные баллы в прошлом году
                 </h2>
-                <div class="grid grid-cols-1 md:grid-cols-[1fr,1fr] md:gap-3">
+                <div class="grid grid-cols-1 md:grid-cols-[1fr_1fr] md:gap-3">
                     <div class="mb-3 lg:mb-0">
                         <h2 class="text-[#828282] uppercase font-[700] text-lg mb-2">на бюджет</h2>
                         <h2 class="font-[400] text-xl">Проходной балл — 258 (2023)</h2>
@@ -157,7 +157,7 @@
                 <h2 class="uppercase font-[700] text-lg my-4 sm:my-8">
                     Основаня информация
                 </h2>
-                <div class="grid grid-cols-1 md:grid-cols-[1fr,1fr] lg:grid-cols-[1fr,1fr,1fr]">
+                <div class="grid grid-cols-1 md:grid-cols-[1fr_1fr] lg:grid-cols-[1fr_1fr_1fr]">
                     <div class="mb-3 lg:mb-0">
                         <h2 class="text-[#828282] uppercase font-[700] text-lg mb-2">основной корпус</h2>
                         <h2 class="font-[400] text-xl">Мелитополь, Проспект Б. Хмельницкого, 18</h2>
@@ -174,7 +174,7 @@
                 <h2 class="uppercase font-[700] text-lg my-4 sm:my-8">
                     Дополнительная информация и полезные ссылки
                 </h2>
-                <div class="grid grid-cols-[1fr] md:grid-cols-[1fr,1fr] xl:grid-cols-[25%,15%,30%,30%] gap-y-3">
+                <div class="grid grid-cols-[1fr] md:grid-cols-[1fr_1fr] xl:grid-cols-[25%_15%_30%_30%] gap-y-3">
                     <div class="mb-3 lg:mb-0">
                         <a class="font-[400] text-xl text-[var(--primary-color)]">Подготовительные курсы</a>
                     </div>
@@ -190,7 +190,7 @@
                 </div>
             </div>
             <div class="content-info-prog bg-white p-6 hidden">
-                <div class="grid grid-cols-1 md:grid-cols-[1fr,1fr] gap-3">
+                <div class="grid grid-cols-1 md:grid-cols-[1fr_1fr] gap-3">
                     <div class="mb-3 lg:mb-0">
                         <h2 class="text-[#828282] uppercase font-[700] text-lg mb-2">Срок обучения</h2>
                         <h2 class="font-[400] text-xl">5 лет</h2>
@@ -203,7 +203,7 @@
                 <h2 class="uppercase font-[700] text-lg my-4 sm:my-8">
                     Вступительные испытания и минимальные баллы
                 </h2>
-                <div class="grid grid-cols-1 md:grid-cols-[1fr,1fr] gap-3">
+                <div class="grid grid-cols-1 md:grid-cols-[1fr_1fr] gap-3">
                     <div class="mb-3 lg:mb-0">
                         <h2 class="text-[#828282] uppercase font-[700] text-lg mb-2">на бюджет</h2>
                         <h2 class="font-[400] text-xl">Информатика и ИКТ/Физика — 52/44 баллов</h2>
@@ -220,7 +220,7 @@
                 <h2 class="uppercase font-[700] text-lg my-4 sm:my-8">
                     Проходные баллы в прошлом году
                 </h2>
-                <div class="grid grid-cols-1 md:grid-cols-[1fr,1fr] md:gap-3">
+                <div class="grid grid-cols-1 md:grid-cols-[1fr_1fr] md:gap-3">
                     <div class="mb-3 lg:mb-0">
                         <h2 class="text-[#828282] uppercase font-[700] text-lg mb-2">на бюджет</h2>
                         <h2 class="font-[400] text-xl">Проходной балл — 258 (2023)</h2>
@@ -233,7 +233,7 @@
                 <h2 class="uppercase font-[700] text-lg my-4 sm:my-8">
                     Основаня информация
                 </h2>
-                <div class="grid grid-cols-1 md:grid-cols-[1fr,1fr] lg:grid-cols-[1fr,1fr,1fr]">
+                <div class="grid grid-cols-1 md:grid-cols-[1fr_1fr] lg:grid-cols-[1fr_1fr_1fr]">
                     <div class="mb-3 lg:mb-0">
                         <h2 class="text-[#828282] uppercase font-[700] text-lg mb-2">основной корпус</h2>
                         <h2 class="font-[400] text-xl">Мелитополь, Проспект Б. Хмельницкого, 18</h2>
@@ -250,7 +250,7 @@
                 <h2 class="uppercase font-[700] text-lg my-4 sm:my-8">
                     Дополнительная информация и полезные ссылки
                 </h2>
-                <div class="grid grid-cols-[1fr] md:grid-cols-[1fr,1fr] xl:grid-cols-[25%,15%,30%,30%] gap-y-3">
+                <div class="grid grid-cols-[1fr] md:grid-cols-[1fr_1fr] xl:grid-cols-[25%_15%_30%_30%] gap-y-3">
                     <div class="mb-3 lg:mb-0">
                         <a class="font-[400] text-xl text-[var(--primary-color)]">Подготовительные курсы</a>
                     </div>
@@ -354,7 +354,7 @@
         <h2 class="font-bold text-3xl my-6">Карьера после обучения</h2>
     </div>
     <section class="container custom lg:p-2.5">
-        <div class="grid grid-cols-1 md:grid-cols-[1fr,1fr]">
+        <div class="grid grid-cols-1 md:grid-cols-[1fr_1fr]">
             <div class="bg-[var(--primary-color)] p-6 text-white">
                 <div class="flex flex-col lg:flex-row justify-between mb-3">
                     <div>
@@ -463,7 +463,7 @@
         <h2 class="font-bold text-3xl my-6">Сделайте следующий шаг</h2>
     </div>
     <section class="container custom lg:p-2.5">
-        <div class="grid grid-cols-1 lg:grid-cols-[1fr,1fr,2fr]">
+        <div class="grid grid-cols-1 lg:grid-cols-[1fr_1fr_2fr]">
             <div class="jst-block bg-[#252422] p-6 text-white hover:opacity-[0.9]">
                 <a href="#" class="min-h-[160px] lg:min-h-[295px] flex flex-col justify-between">
                     <h2 class="font-[700] text-lg">Узнать, как поступить</h2>
@@ -503,7 +503,7 @@
         <h2 class="font-bold text-3xl my-6">Другие программы</h2>
     </div>
     <section class="container custom lg:p-2.5">
-        <div class="parent grid grid-cols-1 lg:grid-cols-[1fr,1fr] xl:grid-cols-[1fr,1fr,1fr] gap-3">
+        <div class="parent grid grid-cols-1 lg:grid-cols-[1fr_1fr] xl:grid-cols-[1fr_1fr_1fr] gap-3">
             <div class="box-searching card-nap position-aware">
                 <a href="#" class="p-4 w-full">
                     <div>
@@ -512,7 +512,7 @@
                         </p>
                         <h2 class="text-xl font-[600] name mb-6 line-clamp-2">Информационные технологии в креативных индустриях (Информационные системы и технологии)</h2>
                     </div>
-                    <div class="grid grid-cols-1 lg:grid-cols-[1fr,1fr] gap-3">
+                    <div class="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-3">
                         <div class="flex flex-col">
                             <span class="font-[400]">400 тыс</span>
                             <span class="font-[400] text-sm text-[#96918E]">Стоимость, ₽</span>
@@ -541,7 +541,7 @@
                         </p>
                         <h2 class="text-xl font-[600] name mb-6 line-clamp-2">38.02.01 Экономика и бухгалтерский учет (по отраслям)</h2>
                     </div>
-                    <div class="grid grid-cols-1 lg:grid-cols-[1fr,1fr] gap-3">
+                    <div class="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-3">
                         <div class="flex flex-col">
                             <span class="font-[400]">400 тыс</span>
                             <span class="font-[400] text-sm text-[#96918E]">Стоимость, ₽</span>
@@ -570,7 +570,7 @@
                         </p>
                         <h2 class="text-xl font-[600] name mb-6 line-clamp-2">43.02.16 Туризм и гостеприимство</h2>
                     </div>
-                    <div class="grid grid-cols-1 lg:grid-cols-[1fr,1fr] gap-3">
+                    <div class="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-3">
                         <div class="flex flex-col">
                             <span class="font-[400]">400 тыс</span>
                             <span class="font-[400] text-sm text-[#96918E]">Стоимость, ₽</span>

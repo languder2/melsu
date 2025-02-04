@@ -21,7 +21,7 @@
                     <div class="accordion-text py-3">
                         <div class="mb-3">
                             <a href="#" class="relative">
-                                <div class="grid grid-cols-1 lg:grid-cols-[8%,75%,14%] bg-[#F1F3F1] p-2.5 rounded-[15px] items-center lg:text-sm xl:text-lg gap-5 z-[2] relative">
+                                <div class="grid grid-cols-1 lg:grid-cols-[8%_75%_14%] bg-[#F1F3F1] p-2.5 rounded-[15px] items-center lg:text-sm xl:text-lg gap-5 z-2 relative">
                                     <div class="flex justify-center lg:border-e-2 lg:border-[#D0D0D0]">
                                         <img src="{{asset('img/logo-partner.png')}}" alt="">
                                     </div>
@@ -36,13 +36,13 @@
                                 </span>
                                     </div>
                                 </div>
-                                <div class="bg-[#B8B8B8] rounded-[15px] p-2.5 absolute left-[-10px] lg:top-[16px] lg:h-[70%] z-[10] hidden lg:block">
+                                <div class="bg-[#B8B8B8] rounded-[15px] p-2.5 absolute left-[-10px] lg:top-[16px] lg:h-[70%] z-10 hidden lg:block">
                                 </div>
                             </a>
                         </div>
                         <div class="mb-3">
                             <a href="#" class="relative">
-                                <div class="grid grid-cols-1 lg:grid-cols-[8%,75%,14%] bg-[#F1F3F1] p-2.5 rounded-[15px] items-center lg:text-sm xl:text-lg gap-5 z-[2] relative">
+                                <div class="grid grid-cols-1 lg:grid-cols-[8%_75%_14%] bg-[#F1F3F1] p-2.5 rounded-[15px] items-center lg:text-sm xl:text-lg gap-5 z-2 relative">
                                     <div class="flex justify-center lg:border-e-2 lg:border-[#D0D0D0]">
                                         <img src="{{asset('img/logo-partner.png')}}" alt="">
                                     </div>
@@ -57,7 +57,7 @@
                                 </span>
                                     </div>
                                 </div>
-                                <div class="bg-[#B8B8B8] rounded-[15px] p-2.5 absolute left-[-10px] lg:top-[16px] lg:h-[70%] z-[10] hidden lg:block">
+                                <div class="bg-[#B8B8B8] rounded-[15px] p-2.5 absolute left-[-10px] lg:top-[16px] lg:h-[70%] z-10 hidden lg:block">
                                 </div>
                             </a>
                         </div>
@@ -75,7 +75,7 @@
                     <div class="accordion-text py-3">
                         <div class="mb-3">
                             <a href="#" class="relative">
-                                <div class="grid grid-cols-1 lg:grid-cols-[8%,75%,14%] bg-[#F1F3F1] p-2.5 rounded-[15px] items-center lg:text-sm xl:text-lg gap-5 z-[2] relative">
+                                <div class="grid grid-cols-1 lg:grid-cols-[8%_75%_14%] bg-[#F1F3F1] p-2.5 rounded-[15px] items-center lg:text-sm xl:text-lg gap-5 z-2 relative">
                                     <div class="flex justify-center lg:border-e-2 lg:border-[#D0D0D0]">
                                         <img src="{{asset('img/logo-partner.png')}}" alt="">
                                     </div>
@@ -90,13 +90,13 @@
                                 </span>
                                     </div>
                                 </div>
-                                <div class="bg-[#B8B8B8] rounded-[15px] p-2.5 absolute left-[-10px] lg:top-[16px] lg:h-[70%] z-[10] hidden lg:block">
+                                <div class="bg-[#B8B8B8] rounded-[15px] p-2.5 absolute left-[-10px] lg:top-[16px] lg:h-[70%] z-10 hidden lg:block">
                                 </div>
                             </a>
                         </div>
                         <div class="mb-3">
                             <a href="#" class="relative">
-                                <div class="grid grid-cols-1 lg:grid-cols-[8%,75%,14%] bg-[#F1F3F1] p-2.5 rounded-[15px] items-center lg:text-sm xl:text-lg gap-5 z-[2] relative">
+                                <div class="grid grid-cols-1 lg:grid-cols-[8%_75%_14%] bg-[#F1F3F1] p-2.5 rounded-[15px] items-center lg:text-sm xl:text-lg gap-5 z-2 relative">
                                     <div class="flex justify-center lg:border-e-2 lg:border-[#D0D0D0]">
                                         <img src="{{asset('img/logo-partner.png')}}" alt="">
                                     </div>
@@ -111,7 +111,7 @@
                                 </span>
                                     </div>
                                 </div>
-                                <div class="bg-[#B8B8B8] rounded-[15px] p-2.5 absolute left-[-10px] lg:top-[16px] lg:h-[70%] z-[10] hidden lg:block">
+                                <div class="bg-[#B8B8B8] rounded-[15px] p-2.5 absolute left-[-10px] lg:top-[16px] lg:h-[70%] z-10 hidden lg:block">
                                 </div>
                             </a>
                         </div>
@@ -129,7 +129,7 @@
                     <div class="accordion-text py-3">
                         <div class="mb-3">
                             <a href="#" class="relative">
-                                <div class="grid grid-cols-1 lg:grid-cols-[8%,75%,14%] bg-[#F1F3F1] p-2.5 rounded-[15px] items-center lg:text-sm xl:text-lg gap-5 z-[2] relative">
+                                <div class="grid grid-cols-1 lg:grid-cols-[8%_75%_14%] bg-[#F1F3F1] p-2.5 rounded-[15px] items-center lg:text-sm xl:text-lg gap-5 z-2 relative">
                                     <div class="flex justify-center lg:border-e-2 lg:border-[#D0D0D0]">
                                         <img src="{{asset('img/logo-partner.png')}}" alt="">
                                     </div>
@@ -144,13 +144,13 @@
                                 </span>
                                     </div>
                                 </div>
-                                <div class="bg-[#B8B8B8] rounded-[15px] p-2.5 absolute left-[-10px] lg:top-[16px] lg:h-[70%] z-[10] hidden lg:block">
+                                <div class="bg-[#B8B8B8] rounded-[15px] p-2.5 absolute left-[-10px] lg:top-[16px] lg:h-[70%] z-10 hidden lg:block">
                                 </div>
                             </a>
                         </div>
                         <div class="mb-3">
                             <a href="#" class="relative">
-                                <div class="grid grid-cols-1 lg:grid-cols-[8%,75%,14%] bg-[#F1F3F1] p-2.5 rounded-[15px] items-center lg:text-sm xl:text-lg gap-5 z-[2] relative">
+                                <div class="grid grid-cols-1 lg:grid-cols-[8%_75%_14%] bg-[#F1F3F1] p-2.5 rounded-[15px] items-center lg:text-sm xl:text-lg gap-5 z-2 relative">
                                     <div class="flex justify-center lg:border-e-2 lg:border-[#D0D0D0]">
                                         <img src="{{asset('img/logo-partner.png')}}" alt="">
                                     </div>
@@ -165,7 +165,7 @@
                                 </span>
                                     </div>
                                 </div>
-                                <div class="bg-[#B8B8B8] rounded-[15px] p-2.5 absolute left-[-10px] lg:top-[16px] lg:h-[70%] z-[10] hidden lg:block">
+                                <div class="bg-[#B8B8B8] rounded-[15px] p-2.5 absolute left-[-10px] lg:top-[16px] lg:h-[70%] z-10 hidden lg:block">
                                 </div>
                             </a>
                         </div>
@@ -183,7 +183,7 @@
                     <div class="accordion-text py-3">
                         <div class="mb-3">
                             <a href="#" class="relative">
-                                <div class="grid grid-cols-1 lg:grid-cols-[8%,75%,14%] bg-[#F1F3F1] p-2.5 rounded-[15px] items-center lg:text-sm xl:text-lg gap-5 z-[2] relative">
+                                <div class="grid grid-cols-1 lg:grid-cols-[8%_75%_14%] bg-[#F1F3F1] p-2.5 rounded-[15px] items-center lg:text-sm xl:text-lg gap-5 z-2 relative">
                                     <div class="flex justify-center lg:border-e-2 lg:border-[#D0D0D0]">
                                         <img src="{{asset('img/logo-partner.png')}}" alt="">
                                     </div>
@@ -198,13 +198,13 @@
                                 </span>
                                     </div>
                                 </div>
-                                <div class="bg-[#B8B8B8] rounded-[15px] p-2.5 absolute left-[-10px] lg:top-[16px] lg:h-[70%] z-[10] hidden lg:block">
+                                <div class="bg-[#B8B8B8] rounded-[15px] p-2.5 absolute left-[-10px] lg:top-[16px] lg:h-[70%] z-10 hidden lg:block">
                                 </div>
                             </a>
                         </div>
                         <div class="mb-3">
                             <a href="#" class="relative">
-                                <div class="grid grid-cols-1 lg:grid-cols-[8%,75%,14%] bg-[#F1F3F1] p-2.5 rounded-[15px] items-center lg:text-sm xl:text-lg gap-5 z-[2] relative">
+                                <div class="grid grid-cols-1 lg:grid-cols-[8%_75%_14%] bg-[#F1F3F1] p-2.5 rounded-[15px] items-center lg:text-sm xl:text-lg gap-5 z-2 relative">
                                     <div class="flex justify-center lg:border-e-2 lg:border-[#D0D0D0]">
                                         <img src="{{asset('img/logo-partner.png')}}" alt="">
                                     </div>
@@ -219,7 +219,7 @@
                                 </span>
                                     </div>
                                 </div>
-                                <div class="bg-[#B8B8B8] rounded-[15px] p-2.5 absolute left-[-10px] lg:top-[16px] lg:h-[70%] z-[10] hidden lg:block">
+                                <div class="bg-[#B8B8B8] rounded-[15px] p-2.5 absolute left-[-10px] lg:top-[16px] lg:h-[70%] z-10 hidden lg:block">
                                 </div>
                             </a>
                         </div>
@@ -243,7 +243,7 @@
             материально-технические, корпоративные ресурсы и установить долгосрочные стратегические партнерские отношения!
         </p>
         <form action="">
-            <div class="grid grid-cols-1 md:grid-cols-[29%,70%] gap-[1%] mb-3">
+            <div class="grid grid-cols-1 md:grid-cols-[29%_70%] gap-[1%] mb-3">
                 <div>
                     <input type="text" placeholder="Как вас зовут?" class="mb-3 border-2 p-[8px] placeholder:text-[#ACACAC] w-full">
                     <input type="text" placeholder="Название организации" class="mb-3 border-2 p-[8px] placeholder:text-[#ACACAC] w-full">

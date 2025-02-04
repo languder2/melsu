@@ -148,6 +148,7 @@ return new class extends Migration
                 $table->boolean('afc')->nullable()
                     ->comment('admission of foreign citizens');
                 $table->integer('price')->nullable();
+                $table->boolean('show')->default(false);
 
                 $table->timestamp('deleted_at')->nullable();
                 $table->timestamps();

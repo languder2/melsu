@@ -87,4 +87,8 @@ class Staff extends Model
 
     }
 
+    public function getFullNameAttribute():string
+    {
+        return trim("{$this->lastname} {$this->firstname} {$this->middle_name}");
+    }
 }

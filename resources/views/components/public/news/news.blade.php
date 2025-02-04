@@ -20,7 +20,7 @@
             {!! $news->news !!}
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-[1fr,1fr] gap-[1px] bg-[#F1F1F1] p-[1px]">
+        <div class="grid grid-cols-1 md:grid-cols-[1fr_1fr] gap-[1px] bg-[#F1F1F1] p-[1px]">
             <div class="p-6 group/btnnews bg-white">
                 <a href="#">
                     <div class="flex flex-row">

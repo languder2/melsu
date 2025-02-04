@@ -2,7 +2,7 @@
     <h2 class="font-bold text-2xl mb-3 ms-2 my-3">Направления подготовки</h2>
 </div>
 <section class="container custom lg:p-2.5">
-    <div class="parent grid grid-cols-1 lg:grid-cols-[1fr,1fr] xl:grid-cols-[1fr,1fr,1fr] gap-3">
+    <div class="parent grid grid-cols-1 lg:grid-cols-[1fr_1fr] xl:grid-cols-[1fr_1fr_1fr] gap-3">
         @foreach($faculty->specialities as $speciality)
             <div
                 class="
@@ -23,7 +23,7 @@
                             {{$speciality->name}}
                         </h2>
                     </div>
-                    <div class="grid grid-cols-1 lg:grid-cols-[1fr,1fr] gap-3">
+                    <div class="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-3">
                         <div class="flex flex-col">
                             <span class="font-[400]">258</span>
                             <span class="font-[400] text-sm text-[#96918E]">Проходной балл</span>

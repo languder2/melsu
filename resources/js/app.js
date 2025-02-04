@@ -34,3 +34,6 @@ window.DependedSelects = DependedSelects;
 import * as Tabs from './admin/tabs.js';
 window.Tabs = Tabs;
 
+import * as AdminStaff from './admin/staffs.js';
+window.AdminStaff = AdminStaff;
+

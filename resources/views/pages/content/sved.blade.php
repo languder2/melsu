@@ -1,5 +1,5 @@
 <div class="main-sved-box">
-    <div class="grid grid-cols-1 lg:grid-cols-[25%_minmax(70%,_1fr)] gap-1">
+    <div class="grid grid-cols-1 lg:grid-cols-[25%_minmax(70%,1fr)] gap-1">
         <div class="bg-white p-2.5 flex items-center">
             <span class="font-bold">Полное наименование организации:</span>
         </div>
@@ -59,7 +59,7 @@
 <div class="main-sved-box">
     <h2 class="font-bold text-3xl my-6">Учредитель образовательной организации</h2>
     <p class="mb-6">Учредителем МелГУ является Российская Федерация. Функции и полномочия учредителя МелГУ осуществляет Министерство науки и высшего образования Российской Федерации.</p>
-    <div class="grid grid-cols-1 lg:grid-cols-[25%_minmax(70%,_1fr)] gap-1">
+    <div class="grid grid-cols-1 lg:grid-cols-[25%_minmax(70%,1fr)] gap-1">
         <div class="bg-white p-2.5 flex items-center">
             <span class="font-bold">Наименование учредителя:</span>
         </div>
@@ -100,7 +100,7 @@
 </div>
 <div class="filial-box">
     <h2 class="font-bold text-3xl my-6 lg:text-end">Филиалы образовательной организации</h2>
-    <div class="grid grid-cols-1 lg:grid-cols-[25%_minmax(70%,_1fr)] gap-1">
+    <div class="grid grid-cols-1 lg:grid-cols-[25%_minmax(70%,1fr)] gap-1">
         <div class="bg-white p-2.5 flex items-center">
             <span class="font-bold">Наименование филиала:</span>
         </div>
@@ -132,7 +132,7 @@
             <span class="ps-3 lg:ps-0">пн. – пт. 8:00-16:30</span>
         </div>
     </div>
-    <div class="grid grid-cols-1 lg:grid-cols-[25%_minmax(70%,_1fr)] gap-1 mt-6">
+    <div class="grid grid-cols-1 lg:grid-cols-[25%_minmax(70%,1fr)] gap-1 mt-6">
         <div class="bg-white p-2.5 flex items-center">
             <span class="font-bold">Наименование филиала:</span>
         </div>
@@ -164,7 +164,7 @@
             <span class="ps-3 lg:ps-0">пн. – пт. 8:00-16:30</span>
         </div>
     </div>
-    <div class="grid grid-cols-1 lg:grid-cols-[25%_minmax(70%,_1fr)] gap-1 mt-6">
+    <div class="grid grid-cols-1 lg:grid-cols-[25%_minmax(70%,1fr)] gap-1 mt-6">
         <div class="bg-white p-2.5 flex items-center">
             <span class="font-bold">Наименование филиала:</span>
         </div>
@@ -196,7 +196,7 @@
             <span class="ps-3 lg:ps-0">пн. – пт. 8:00-16:30</span>
         </div>
     </div>
-    <div class="grid grid-cols-1 lg:grid-cols-[25%_minmax(70%,_1fr)] gap-1 mt-6">
+    <div class="grid grid-cols-1 lg:grid-cols-[25%_minmax(70%,1fr)] gap-1 mt-6">
         <div class="bg-white p-2.5 flex items-center">
             <span class="font-bold">Наименование филиала:</span>
         </div>
@@ -228,7 +228,7 @@
             <span class="ps-3 lg:ps-0">пн. – пт. 8:00-16:30</span>
         </div>
     </div>
-    <div class="grid grid-cols-1 lg:grid-cols-[25%_minmax(70%,_1fr)] gap-1 mt-6">
+    <div class="grid grid-cols-1 lg:grid-cols-[25%_minmax(70%,1fr)] gap-1 mt-6">
         <div class="bg-white p-2.5 flex items-center">
             <span class="font-bold">Наименование филиала:</span>
         </div>
@@ -263,7 +263,7 @@
 </div>
 <div class="representative-educational-box">
     <h2 class="font-bold text-3xl my-6">Информация о представительствах образовательной организации (в том числе находящихся за пределами Российской Федерации):</h2>
-    <div class="grid grid-cols-1 lg:grid-cols-[25%_minmax(70%,_1fr)] gap-1">
+    <div class="grid grid-cols-1 lg:grid-cols-[25%_minmax(70%,1fr)] gap-1">
         <div class="bg-white p-2.5 flex items-center">
             <span class="font-bold">Наименование представительства:</span>
         </div>
@@ -304,7 +304,7 @@
 </div>
 <div>
     <h2 class="font-bold text-3xl my-6 lg:text-end">Места проведения практики</h2>
-    <div class="grid grid-cols-1 lg:grid-cols-[33%,33%,33%] gap-1 mb-[4px]">
+    <div class="grid grid-cols-1 lg:grid-cols-[33%_33%_33%] gap-1 mb-[4px]">
         <div class="p-2.5 flex lg:justify-center order-0 items-center bg-[var(--primary-color)]">
             <span class="font-bold text-white">Наименование объекта</span>
         </div>
@@ -324,7 +324,7 @@
             <span class="ps-3 lg:ps-0">Учебный корпус</span>
         </div>
     </div>
-    <div class="grid grid-cols-1 lg:grid-cols-[33%,33%,33%] gap-1 mb-[4px]">
+    <div class="grid grid-cols-1 lg:grid-cols-[33%_33%_33%] gap-1 mb-[4px]">
         <div class="bg-white p-2.5 flex lg:hidden lg:justify-center order-0 items-center bg-[var(--primary-color)]">
             <span class="font-bold text-white">Наименование объекта</span>
         </div>
@@ -347,7 +347,7 @@
 </div>
 <div>
     <h2 class="font-bold text-3xl my-6">Места проведения практической подготовки обучающихся</h2>
-    <div class="grid grid-cols-1 lg:grid-cols-[33%,33%,33%] gap-1 mb-[4px]">
+    <div class="grid grid-cols-1 lg:grid-cols-[33%_33%_33%] gap-1 mb-[4px]">
         <div class="p-2.5 flex lg:justify-center order-0 items-center bg-[var(--primary-color)]">
             <span class="font-bold text-white">Наименование объекта</span>
         </div>
@@ -367,7 +367,7 @@
             <span class="ps-3 lg:ps-0">Учебный корпус</span>
         </div>
     </div>
-    <div class="grid grid-cols-1 lg:grid-cols-[33%,33%,33%] gap-1 mb-[4px]">
+    <div class="grid grid-cols-1 lg:grid-cols-[33%_33%_33%] gap-1 mb-[4px]">
         <div class="p-2.5 flex lg:hidden lg:justify-center order-0 items-center bg-[var(--primary-color)]">
             <span class="font-bold text-white">Наименование объекта</span>
         </div>
@@ -390,7 +390,7 @@
 </div>
 <div>
     <h2 class="font-bold text-3xl my-6 lg:text-end">Места проведения государственной итоговой аттестации</h2>
-    <div class="grid grid-cols-1 lg:grid-cols-[33%,33%,33%] gap-1 mb-[4px]">
+    <div class="grid grid-cols-1 lg:grid-cols-[33%_33%_33%] gap-1 mb-[4px]">
         <div class="p-2.5 flex lg:justify-center order-0 items-center bg-[var(--primary-color)]">
             <span class="font-bold text-white">Наименование объекта</span>
         </div>
@@ -410,7 +410,7 @@
             <span class="ps-3 lg:ps-0">Учебный корпус</span>
         </div>
     </div>
-    <div class="grid grid-cols-1 lg:grid-cols-[33%,33%,33%] gap-1 mb-[4px]">
+    <div class="grid grid-cols-1 lg:grid-cols-[33%_33%_33%] gap-1 mb-[4px]">
         <div class="p-2.5 flex lg:hidden lg:justify-center order-0 items-center bg-[var(--primary-color)]">
             <span class="font-bold text-white">Наименование объекта</span>
         </div>
@@ -433,7 +433,7 @@
 </div>
 <div>
     <h2 class="font-bold text-3xl my-6">Места осуществления образовательной деятельности по дополнительным образовательным программам</h2>
-    <div class="grid grid-cols-1 lg:grid-cols-[33%,33%,33%] gap-1 mb-[4px]">
+    <div class="grid grid-cols-1 lg:grid-cols-[33%_33%_33%] gap-1 mb-[4px]">
         <div class="p-2.5 flex lg:justify-center order-0 items-center bg-[var(--primary-color)]">
             <span class="font-bold text-white">Наименование объекта</span>
         </div>
@@ -453,7 +453,7 @@
             <span class="ps-3 lg:ps-0">Учебный корпус</span>
         </div>
     </div>
-    <div class="grid grid-cols-1 lg:grid-cols-[33%,33%,33%] gap-1 mb-[4px]">
+    <div class="grid grid-cols-1 lg:grid-cols-[33%_33%_33%] gap-1 mb-[4px]">
         <div class="p-2.5 flex lg:hidden lg:justify-center order-0 items-center bg-[var(--primary-color)]">
             <span class="font-bold text-white">Наименование объекта</span>
         </div>
@@ -476,7 +476,7 @@
 </div>
 <div>
     <h2 class="font-bold text-3xl my-6 lg:text-end">Места осуществления образовательной деятельности по основным программам профессионального обучения</h2>
-    <div class="grid grid-cols-1 lg:grid-cols-[33%,33%,33%] gap-1 mb-[4px]">
+    <div class="grid grid-cols-1 lg:grid-cols-[33%_33%_33%] gap-1 mb-[4px]">
         <div class="p-2.5 flex lg:justify-center order-0 items-center bg-[var(--primary-color)]">
             <span class="font-bold text-white">Наименование объекта</span>
         </div>
@@ -496,7 +496,7 @@
             <span class="ps-3 lg:ps-0">Учебный корпус</span>
         </div>
     </div>
-    <div class="grid grid-cols-1 lg:grid-cols-[33%,33%,33%] gap-1 mb-[4px]">
+    <div class="grid grid-cols-1 lg:grid-cols-[33%_33%_33%] gap-1 mb-[4px]">
         <div class="p-2.5 flex lg:hidden lg:justify-center order-0 items-center bg-[var(--primary-color)]">
             <span class="font-bold text-white">Наименование объекта</span>
         </div>
@@ -519,7 +519,7 @@
 </div>
 <div>
     <h2 class="font-bold text-3xl my-6">Сетка учебных занятий</h2>
-    <div class="grid grid-cols-[33%,33%,33%] gap-1 mb-[4px]">
+    <div class="grid grid-cols-[33%_33%_33%] gap-1 mb-[4px]">
         <div class="p-2.5 flex justify-center items-center bg-[var(--primary-color)]">
             <span class="font-bold text-white">№ п/п</span>
         </div>

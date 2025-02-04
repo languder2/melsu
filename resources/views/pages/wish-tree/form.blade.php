@@ -12,9 +12,9 @@
 <body class="bg-[gray]">
 <section class="flex items-center min-h-[100vh]">
     <div class="container mx-auto bg-white bg-[url({{asset('images/wish-tree/sneg-5.png')}})] sm:bg-[url({{asset('images/wish-tree/sneg-4.png')}})] md:bg-[url({{asset('images/wish-tree/sneg-3.png')}})] lg:bg-[url({{asset('images/wish-tree/sneg-2.png')}})] xl:bg-[url({{asset('images/wish-tree/sneg-1.png')}})]">
-        <div class="grid grid-cols-1 lg:grid-cols-[1fr,1fr] p-6 xl:p-12">
+        <div class="grid grid-cols-1 lg:grid-cols-[1fr_1fr] p-6 xl:p-12">
             <div class="order-1 sm:order-2 lg:order-1">
-                <div class="grid grid-cols-[1fr,1fr]">
+                <div class="grid grid-cols-[1fr_1fr]">
                     <div class="col-span-2 flex justify-start lg:justify-center xl:justify-end">
                         <img src="{{asset('images/wish-tree/ball.png')}}" alt="" class="w-[220px] sm:w-[320px] xl:w-[650px]">
                     </div>
@@ -33,12 +33,12 @@
                     </div>
                     <form class="" action="{{route('wish-tree:save')}}" method="POST">
                         @csrf
-                        <div class="grd grid grid-cols-[1fr,1fr] md:grid-cols-[1fr,1fr,1fr] gap-6 text-xl mb-6">
+                        <div class="grd grid grid-cols-[1fr_1fr] md:grid-cols-[1fr_1fr_1fr] gap-6 text-xl mb-6">
                             <input type="text" class="border-dotted border-b-2 border-[#C4C4C4] placeholder:text-[#E7E7E7] p-1 font-[400] outline-0 w-[100%]" name="lastname" placeholder="Фамилия" required>
                             <input type="text" class="border-dotted border-b-2 border-[#C4C4C4] placeholder:text-[#E7E7E7] p-1 font-[400] outline-0 w-[100%]" name="firstname" placeholder="Имя" required>
                             <input type="text" class="border-dotted border-b-2 border-[#C4C4C4] placeholder:text-[#E7E7E7] p-1 font-[400] outline-0 col-span-2 md:col-span-1 w-[100%]" name="middlename" placeholder="Отчество">
                         </div>
-                        <div class="grd grid grid-cols-[1fr,1fr] gap-6 text-xl">
+                        <div class="grd grid grid-cols-[1fr_1fr] gap-6 text-xl">
                             <select class="border-dotted border-b-2 border-[#C4C4C4] text-[#E7E7E7] p-1 font-[400] outline-0" name="faculty">
                                 <option value="">Факультет</option>
                                 <option value="Технический">Технический</option>
@@ -77,7 +77,7 @@
                         md:w-[300px] md:right-[-33px] md:bottom-[-291px]
                         sm:w-[300px] sm:right-[-33px] sm:bottom-[-291px]">
                 </div>
-                <div class="grd grid-cols-[1fr,1fr] block sm:hidden mt-3">
+                <div class="grd grid-cols-[1fr_1fr] block sm:hidden mt-3">
                     <div class="flex justify-end pe-12 py-6">
                         <img src="{{asset('images/wish-tree/logo.png')}}" alt="" class="w-[130px] xl:w-[180px]">
                     </div>

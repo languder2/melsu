@@ -1,6 +1,6 @@
 <section class="card-section">
-    <div class="grid grid-cols-1 lg:grid-cols-[65%,25%] xl:grid-cols-[45%,20%] gap-[12px] lg:gap-[10%] xl:gap-[35%] mb-3 lg:mb-0">
-        <div class="box-btns-card grid grid-cols-1 lg:grid-cols-[1fr,1fr,1fr] gap-3 text-center lg:mb-8">
+    <div class="grid grid-cols-1 lg:grid-cols-[65%_25%] xl:grid-cols-[45%_20%] gap-[12px] lg:gap-[10%] xl:gap-[35%] mb-3 lg:mb-0">
+        <div class="box-btns-card grid grid-cols-1 lg:grid-cols-[1fr_1fr_1fr] gap-3 text-center lg:mb-8">
             <a class="btn-filter-card active uppercase py-[15px] px-[20px]">Все</a>
             <a class="btn-filter-card uppercase py-[15px] px-[20px]">Колледжи</a>
             <a class="btn-filter-card uppercase py-[15px] px-[20px]">Бакалавриат</a>
@@ -18,7 +18,7 @@
         </div>
     </div>
 </section>
-<div class="grid grid-cols-1 lg:grid-cols-[1fr,1fr] xl:grid-cols-[1fr,1fr,1fr] gap-3">
+<div class="grid grid-cols-1 lg:grid-cols-[1fr_1fr] xl:grid-cols-[1fr_1fr_1fr] gap-3">
     @foreach($list as $spec)
         <div class="card-naprav p-3 text-baseRed hover:text-white">
         <a href="#">
@@ -31,7 +31,7 @@
                 <span>400 тыс</span>
                 <span>Стоимость в год</span>
             </div>
-            <div class="grid grid-cols-1 lg:grid-cols-[1fr,1fr] gap-3">
+            <div class="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-3">
                 <div class="flex flex-col text-sm">
                     <span>55</span>
                     <span>Бюджетных мест</span>
@@ -51,7 +51,7 @@
                 <span class="font-[400]">400 тыс</span>
                 <span class="font-[400]">Стоимость в год</span>
             </div>
-            <div class="grid grid-cols-1 lg:grid-cols-[1fr,1fr] gap-3">
+            <div class="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-3">
                 <div class="flex flex-col">
                     <span class="font-[400] text-sm">55</span>
                     <span class="font-[400] text-sm">Бюджетных мест</span>
@@ -70,7 +70,7 @@
                 <span class="font-[400]">400 тыс</span>
                 <span class="font-[400]">Стоимость в год</span>
             </div>
-            <div class="grid grid-cols-1 lg:grid-cols-[1fr,1fr] gap-3">
+            <div class="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-3">
                 <div class="flex flex-col">
                     <span class="font-[400] text-sm">55</span>
                     <span class="font-[400] text-sm">Бюджетных мест</span>
@@ -89,7 +89,7 @@
                 <span class="font-[400]">400 тыс</span>
                 <span class="font-[400]">Стоимость в год</span>
             </div>
-            <div class="grid grid-cols-1 lg:grid-cols-[1fr,1fr] gap-3">
+            <div class="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-3">
                 <div class="flex flex-col">
                     <span class="font-[400] text-sm">55</span>
                     <span class="font-[400] text-sm">Бюджетных мест</span>
@@ -108,7 +108,7 @@
                 <span class="font-[400]">400 тыс</span>
                 <span class="font-[400]">Стоимость в год</span>
             </div>
-            <div class="grid grid-cols-1 lg:grid-cols-[1fr,1fr] gap-3">
+            <div class="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-3">
                 <div class="flex flex-col">
                     <span class="font-[400] text-sm">55</span>
                     <span class="font-[400] text-sm">Бюджетных мест</span>
@@ -127,7 +127,7 @@
                 <span class="font-[400]">400 тыс</span>
                 <span class="font-[400]">Стоимость в год</span>
             </div>
-            <div class="grid grid-cols-1 lg:grid-cols-[1fr,1fr] gap-3">
+            <div class="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-3">
                 <div class="flex flex-col">
                     <span class="font-[400] text-sm">55</span>
                     <span class="font-[400] text-sm">Бюджетных мест</span>

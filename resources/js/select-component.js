@@ -33,7 +33,7 @@ export function initSelect(selectWrapper) {
         filterItems('');
     });
 
-    inputField.addEventListener('blur', () => {
+    inputField.addEventListener('blur-sm', () => {
         inputField.placeholder = inputField.getAttribute('data-placeholder');
         dropdown.classList.remove('open');
     });

@@ -4,7 +4,7 @@
         type="radio"
         name="profile_tab"
 
-        @checked($current === "forms_{$code}_tab")
+        @checked($currentTab === "forms_{$code}_tab")
 
         @class([
             'peer',

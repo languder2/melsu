@@ -2,7 +2,7 @@
     <form
         action="{{route('admin:login')}}"
         method="POST"
-        class="max-w-screen-md min-w-[20rem] mx-auto h-auto bg-white rounded-md">
+        class="max-w-(--breakpoint-md) min-w-[20rem] mx-auto h-auto bg-white rounded-md">
         @csrf
         <h3 class="text-lg font-semibold px-4 py-2 text-center">Авторизация</h3>
         <hr>
