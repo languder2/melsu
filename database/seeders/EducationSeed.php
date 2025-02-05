@@ -233,7 +233,7 @@ class EducationSeed extends Seeder
                         'FullPart'  => 'full-part',
                      },
                     'duration'          => (float)$item->duration->{$form},
-                    'total_places'      => (int)$item->places->budget->{$form}+(int)$item->places->contract->{$form},
+//                    'total_places'      => (int)$item->places->budget->{$form}+(int)$item->places->contract->{$form},
                     'director'          => 'John Doe',
                     'address'           => 'City, street, house, auditory',
                     'afc'               => false,
@@ -246,7 +246,7 @@ class EducationSeed extends Seeder
                 if(!empty($item->places->budget->{$form}))
                     $record->places()->save(
                         new Place([
-                            'year'          => 2024,
+//                            'year'          => 2024,
                             'type'          => 'budget',
                             'count'         => (int)$item->places->budget->{$form}
                         ])
@@ -255,7 +255,7 @@ class EducationSeed extends Seeder
                 if(!empty($item->places->contract->{$form}))
                     $record->places()->save(
                         new Place([
-                            'year'          => 2024,
+//                            'year'          => 2024,
                             'type'          => 'contract',
                             'count'         => (int)$item->places->contract->{$form}
                         ])
@@ -271,7 +271,7 @@ class EducationSeed extends Seeder
                             new Exam([
                                 'subject_id'    => $exam->id,
                                 'required'      => true,
-                                'year'          => 2024,
+//                                'year'          => 2024,
                                 'type'          => 'contract',
                                 'score'         => rand(50,80)
                             ])
@@ -281,7 +281,7 @@ class EducationSeed extends Seeder
                             new Exam([
                                 'subject_id'    => $exam->id,
                                 'required'      => true,
-                                'year'          => 2024,
+//                                'year'          => 2024,
                                 'score'         => rand(50,80)
                             ])
                         );

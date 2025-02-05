@@ -16,11 +16,17 @@ class Profiles extends Component
      */
 
     public array $forms;
-    public ?Speciality $current;
-    public function __construct(?Speciality $current = null)
+    public ?Collection $profiles = null;
+    public function __construct($profiles = null)
     {
+
         $this->forms    = Forms::orderBy('order')->get()->pluck('name','code')->toArray();
-        $this->current  = $current;
+
+        if($profiles)
+            $this->profiles  = $profiles->keyBy('form_code');
+
+        foreach ($this->profiles??[] as $profile)
+            $profile->places = $profile->places->pluck('count','type')->toArray();
     }
 
     /**
@@ -28,7 +34,6 @@ class Profiles extends Component
      */
     public function render(): View|Closure|string
     {
-
         return view('components.admin.education.specialities.form.sections.profiles.profiles');
     }
 }

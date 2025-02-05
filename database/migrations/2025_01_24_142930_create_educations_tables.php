@@ -138,17 +138,17 @@ return new class extends Migration
 
 //                $table->string('name');
                 $table->string('alias')->unique()->nullable();
-                $table->longText('description')->nullable();
+//                $table->longText('description')->nullable();
                 $table->string('speciality_code',20)->nullable();
                 $table->string('form_code')->nullable();
                 $table->decimal('duration', 3, 2)->nullable();
-                $table->integer('total_places')->nullable();
+//                $table->integer('total_places')->nullable();
                 $table->string('director')->nullable();
                 $table->text('address')->nullable();
                 $table->boolean('afc')->nullable()
                     ->comment('admission of foreign citizens');
                 $table->integer('price')->nullable();
-                $table->boolean('show')->default(false);
+                $table->boolean('show')->default(true);
 
                 $table->timestamp('deleted_at')->nullable();
                 $table->timestamps();

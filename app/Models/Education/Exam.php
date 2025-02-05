@@ -23,9 +23,8 @@ class Exam extends Model
         'subject_id',
         'score',
         'type',
-        'year',
         'required',
-        'show',
+        'selectable',
         'order',
     ];
 
@@ -35,9 +34,8 @@ class Exam extends Model
             'subject_id'        => 'required',
             'score'             => 'integer|nullable',
             'type',
-            'year',
             'required'          => 'boolean',
-            'show'              => 'boolean',
+            'selectable'        => 'boolean',
             'order'             => 'nullable|numeric',
         ];
     }

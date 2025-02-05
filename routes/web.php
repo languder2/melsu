@@ -153,7 +153,7 @@ Route::controller(StaffController::class)
     ->prefix('staff')
     ->group(function () {
 
-        Route::get('{id}', 'show')->name('staff:show');
+        Route::get('{code}', 'show')->name('staff:show');
 
     });
 

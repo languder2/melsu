@@ -21,10 +21,7 @@
 
     <x-admin.education.speciality.form.sections.profiles.profiles
         :class="(old('spec_menu') === 'tab_profiles')?'':'hidden'"
-        :current="$current"
-    >
-    </x-admin.education.speciality.form.sections.profiles.profiles>
-
-
+        :profiles="@$current->profiles??null"
+    />
 </div>
 

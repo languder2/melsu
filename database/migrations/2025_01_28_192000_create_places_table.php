@@ -16,7 +16,7 @@ return new class extends Migration
                 $table->id();
 
                 $table->enum('type',['budget','contract'])->default('budget');
-                $table->year('year')->nullable();
+//                $table->year('year')->nullable();
                 $table->integer('count')->nullable();
 
                 $table->enum('show',[true,false])->default(true);

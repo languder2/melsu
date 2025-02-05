@@ -41,7 +41,7 @@
         type="datetime-local"
         name="publication_at"
         label="Дата публикация"
-        value="{{old('post')??($current->publication_at??now())}}"
+        value="{{old('post')??($current?->getAttributes()['publication_at']??now())}}"
     />
 
     <x-form.input

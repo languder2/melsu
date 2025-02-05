@@ -15,7 +15,6 @@ class Place extends Model
     protected $fillable = [
         'id',
         'type',
-        'year',
         'count',
         'show',
         'order',
@@ -26,7 +25,6 @@ class Place extends Model
         return [
             'count'             => 'integer|nullable',
             'type',
-            'year',
             'show'              => 'boolean',
             'order'             => 'nullable|numeric',
         ];

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\ImageStorage;
+use App\Models\Page;
 use App\Models\Staff;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 
@@ -37,7 +39,7 @@ class StaffController extends Controller
 
     public function save(Request $request)
     {
-        $form = $request->validate(Staff::$FormRules,Staff::$FormMessage);
+        $form = $request->validate(Staff::FormRules($request->get('id')),Staff::$FormMessage);
 
         if (empty($request->get('id')))
             $record = new Staff();
@@ -105,6 +107,35 @@ class StaffController extends Controller
             $record->delete();
 
         return redirect()->route('admin:staff');
+    }
+
+    public function show($code)
+    {
+        $staff = Staff::where('alias', $code)->first();
+
+        if(!$staff)
+            $staff = Staff::find((int)$code);
+
+        if(!$staff)
+            return redirect()->route('pages:main');
+
+        return view("pages.page-with-menu", [
+            'sidebar'       => View::make('components.menu.sidebar')->with([
+                'menu'          => &$menu,
+                'full'          => false,
+            ])->render(),
+
+            'nobg'          => true,
+
+            'news'          =>  false,
+
+            'contents'      => [
+                View::make('components.staff.single')->with([
+                    'staff' => $staff,
+                ])->render(),
+            ]
+
+        ]);
     }
 
 }

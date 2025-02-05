@@ -7,6 +7,7 @@ use App\Models\Education\Department;
 use App\Models\Education\Level;
 use App\Models\Education\Forms;
 use App\Models\Education\Faculty;
+use App\Models\Education\Place;
 use App\Models\Education\Profile;
 use App\Models\Education\Speciality;
 use Illuminate\Http\Request;
@@ -33,7 +34,7 @@ class SpecialityController extends Controller
         ]);
     }
 
-    public function form($id = null,)
+    public function form(Request $request, $id = null)
     {
 
         return view('pages.admin', [
@@ -43,7 +44,7 @@ class SpecialityController extends Controller
                 ])->render(),
 
                 View::make('components.admin.education.specialities.form.form')->with([
-                    'current'       => Speciality::find($id)?->toJSON(JSON_UNESCAPED_UNICODE),
+                    'current'       => Speciality::find($id),
                     'add2faculty'   => request()->get('faculty'),
                     'faculties'     => Faculty::pluck('name','code')?->toJSON(JSON_UNESCAPED_UNICODE),
                     'departments'   => Department::pluck('name','code')?->toJSON(JSON_UNESCAPED_UNICODE),
@@ -56,9 +57,7 @@ class SpecialityController extends Controller
     public function save(Request $request)
     {
 
-        $id = $request->get('id');
-
-        $id = 119;
+        $id = $request->speciality['id']??null;
 
         $rules = [
             'speciality.name'               => 'required',
@@ -110,24 +109,49 @@ class SpecialityController extends Controller
                     'alias'             => "{$record->code}-{$profileForm['form_code']}",
                 ]);
 
-            if(isset($profileForm['show']))
-                $profileForm['show'] = (boolean)$profileForm['show'];
+            $profileForm['show'] = isset($profileForm['show']);
 
-            if(isset($profileForm['afc']))
-                $profileForm['afc']  = (boolean)$profileForm['afc'];
+            $profileForm['afc']  = isset($profileForm['afc']);
 
             $profile->fill($profileForm);
 
             $profile->save();
+
+            foreach ($profileForm['places'] as $type=>$count){
+                $place = $profile->places->where('type',$type)->first();
+
+                if(!$place)
+                    $place = $profile->places()->create(['type'      => $type]);
+
+                $place->count = $count;
+                $place->save();
+            }
+
+            foreach ($profileForm['exams'] as $type=>$list){
+                foreach ($list as $subject_id=>$item){
+                    $exam = $profile->exams()->where([
+                        'type'          => $type,
+                        'subject_id'    => $subject_id,
+                    ])->first();
+
+                    if(!$exam)
+                        $exam = $profile->exams()->create([
+                            'type'          => $type,
+                            'subject_id'    => $subject_id,
+                        ]);
+
+                    if(!isset($item['required']))
+                        $item['required']   = false;
+
+                    if(!isset($item['selectable']) || $item['required'])
+                        $item['selectable'] = false;
+
+                    $exam->fill($item);
+                    $exam->save();
+
+                }
+            }
         }
-dd(1);
-//        $record->profiles();
-
-
-//        $record->save();
-
-
-        dd($record);
 
         return redirect()->route('admin:education-speciality:list');
     }

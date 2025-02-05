@@ -56,7 +56,7 @@
                                 </div>
                                 <div class="flex flex-col">
                                 <span class="font-[400]">
-                                    {{$profile->budget_score}}
+                                    {{@$profile->budget_scores}}
                                 </span>
                                     <span class="font-[400] text-sm text-[#252422]">Проходной балл</span>
                                 </div>

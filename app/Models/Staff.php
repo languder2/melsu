@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -39,26 +40,29 @@ class Staff extends Model
         'deleted_at'
     ];
 
-    public static $FormRules = [
-        'post'              => 'required',
-        'lastname'          => 'required',
-        'firstname'         => 'required',
-        'middle_name'       => '',
-        'birthday'          => '',
-        'birthplace'        => '',
-        'residence'         => '',
-        'education'         => '',
-        'awards'            => '',
-        'affiliation'       => '',
-        'family_status'     => '',
-        'title'             => '',
-        'reception_time'    => '',
-        'phones'            => '',
-        'emails'            => '',
-        'address'           => '',
-        'works'             => '',
-        'alias'             => 'nullable|unique:staffs,alias',
-    ];
+    public static function FormRules($id):array
+    {
+      return [
+          'post'              => 'required',
+          'lastname'          => 'required',
+          'firstname'         => 'required',
+          'middle_name'       => '',
+          'birthday'          => '',
+          'birthplace'        => '',
+          'residence'         => '',
+          'education'         => '',
+          'awards'            => '',
+          'affiliation'       => '',
+          'family_status'     => '',
+          'title'             => '',
+          'reception_time'    => '',
+          'phones'            => '',
+          'emails'            => '',
+          'address'           => '',
+          'works'             => '',
+          'alias'             => "nullable|unique:staffs,alias,{$id},id,deleted_at,NULL",
+      ];
+    }
 
     public static $FormMessage = [
         'post'              => 'Укажите должность',
@@ -90,5 +94,39 @@ class Staff extends Model
     public function getFullNameAttribute():string
     {
         return trim("{$this->lastname} {$this->firstname} {$this->middle_name}");
+    }
+
+    public function getBirthdayFormatedAttribute():string
+    {
+        Carbon::setLocale('ru');
+        return Carbon::createFromDate($this->birthday)->isoFormat('d MMMM YYYY');
+
+    }
+
+    public function getWorkListAttribute():array|null
+    {
+        Carbon::setLocale('ru');
+
+        if(!$this->works)
+            return null;
+
+        $works = json_decode($this->works);
+
+        foreach($works as $work){
+            $work->years = '';
+
+            if($work->employment)
+                $work->years.= Carbon::createFromDate($work->employment)->format('Y');
+
+            if($work->dismissal){
+
+                if(strlen($work->years)>0)
+                    $work->years .= ' - ';
+
+                $work->years.= Carbon::parse($work->dismissal)->format('Y');
+            }
+        }
+
+        return $works;
     }
 }

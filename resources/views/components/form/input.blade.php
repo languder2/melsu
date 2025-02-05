@@ -23,6 +23,10 @@
 
             {{@$class}}
         "
+        @if(isset($step))
+            step="{{$step}}"
+        @endif
+
         @required(@$required)
         placeholder=""
     >

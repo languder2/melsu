@@ -1,4 +1,4 @@
-@if(!is_array($list))
+@if(is_string($list))
     @php
         $list = json_decode($list)
     @endphp
@@ -16,6 +16,12 @@
     @if(isset($onchange))
         onchange="{{$onchange}}"
     @endif
+
+    @if(isset($onload))
+        onload="{{$onload}}"
+    @endif
+
+    onload="console.log('test')"
 
 
     class="
@@ -52,7 +58,7 @@
     @endif
 
     @if(isset($collection))
-        @foreach($list as $item)
+        @foreach($list??[] as $item)
             <option
                 value="{{$item->id}}"
                 @disabled(!$item->id)
@@ -70,7 +76,7 @@
             </option>
         @endforeach
     @else
-        @foreach($list as $code=>$item)
+        @foreach($list??[] as $code=>$item)
             <option
                 value="{{$code}}"
                 @disabled(!$code)

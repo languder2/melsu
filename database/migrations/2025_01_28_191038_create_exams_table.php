@@ -19,9 +19,9 @@ return new class extends Migration
                 $table->integer('score')->nullable();
                 $table->enum('type',['budget','contract'])->default('budget');
 
-                $table->enum('required',[true,false])->default('');
-                $table->year('year')->nullable();
-                $table->enum('show',[true,false])->default(true);
+                $table->boolean('required')->default(false);
+//                $table->year('year')->nullable();
+                $table->boolean('selectable')->default(false);
                 $table->integer('order')->default(10000);
 
                 $table->integer('relation_id')->nullable();

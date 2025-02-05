@@ -11,6 +11,12 @@
     </h3>
 
     <x-form.input
+        type="hidden"
+        name="speciality[id]"
+        value="{{$current?->id}}"
+    />
+
+    <x-form.input
         id="form_spec_name"
         name="speciality[name]"
         label="Название"
@@ -44,8 +50,7 @@
         :list="$faculties"
         label="Факультет"
         onchange="DependedSelects.DepartmentsByFaculty('form_spec_faculty','form_spec_department')"
-        required1
-    />
+   />
 
     <x-form.select
         id="form_spec_department"

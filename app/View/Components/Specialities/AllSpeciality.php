@@ -26,6 +26,7 @@ class AllSpeciality extends Component
      */
     public function __construct($faculty= null,$department= null)
     {
+
         $this->faculty      = Faculty::where('code',$faculty)->first();
         $this->department   = EducationDepartment::where('code',$department)->first();
     }

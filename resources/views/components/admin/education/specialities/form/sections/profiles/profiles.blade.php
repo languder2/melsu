@@ -21,6 +21,9 @@
             :code="$code"
             :form="$form"
             :currentTab="old('profile_tab')??'forms_'.array_key_first($forms).'_tab'"
+            :profile="@$profiles[$code]"
         />
     @endforeach
 </div>
+
+

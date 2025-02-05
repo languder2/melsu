@@ -6,7 +6,7 @@ use GuzzleHttp\Psr7\Response;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Models\suStructure;
-use App\View\Components\admin\structure\form as structureForm;
+use App\View\Components\Admin\structure\form as structureForm;
 use Illuminate\Support\Facades\View;
 
 

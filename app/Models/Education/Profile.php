@@ -26,7 +26,6 @@ class Profile extends Model
         'afc',
         'price',
         'show',
-        'description',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -35,7 +34,6 @@ class Profile extends Model
     public static function FormRules($id):array
     {
         return [
-            'name'              => 'required',
             'alias'             => "required|unique:education_profiles,alias,{$id},id,deleted_at,NULL",
             'description'       => '',
             'speciality_code'   => '',
@@ -122,27 +120,16 @@ class Profile extends Model
 
         $object = $this->morphMany(Exam::class, 'relation');
 
-        if(is_null($all))
-            $object = $object->where('show', true);
-
         if(!is_null($trashed))
             $object = $object->withTrashed();
 
         return $object;
     }
 
-    public function places($all = null,$trashed = null,$year = null): MorphMany
+    public function places($all = null,$trashed = null): MorphMany
     {
 
-
-
         $object = $this->morphMany(Place::class, 'relation');
-
-        if(!is_null($year))
-            $object = $object->where('year', $year);
-        else
-            $object = $object->where('year', Carbon::now()->year-1);
-
 
         if(is_null($all))
             $object = $object->where('show', true);
@@ -166,6 +153,16 @@ class Profile extends Model
     public function getBudgetPlacesAttribute():int|string
     {
         return $this->places()->where('type','budget')->first()->count??"&nbsp;";
+    }
+
+    public function getBudgetScoresAttribute():int|string
+    {
+        return $this->exams()
+            ->where('type','budget')
+            ->get()
+            ->pluck('score')
+            ->sum()
+            ??"&nbsp;";
     }
 
 }

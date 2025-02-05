@@ -11,7 +11,7 @@
         type="checkbox"
         name="profiles[{{$code}}][show]"
         class="peer w-4 h-4"
-        @checked(old("profiles.{$code}.show"))
+        @checked(old("speciality.name")?old("profiles.{$code}.show"):@$profile?->show)
     >
         <label for="activator_form_{{$code}}" class="pointer">
             Активировать форму обучения
@@ -44,7 +44,7 @@
                 "name"      => "profiles[{$code}][director]",
                 "label"     => "Директор",
                 "id"        => "profiles_{$code}_director",
-                "value"     => old("profiles.{$code}.director")??@$profile1?->director,
+                "value"     => old("profiles.{$code}.director")??@$profile?->director,
             ]'
             />
 
@@ -53,7 +53,7 @@
                     id="form_profiles_{{$code}}_afc"
                     name="profiles[{{$code}}][afc]"
                     type    = "checkbox"
-                    @checked(old("profiles.{$code}.afc"))
+                    @checked(old("profiles.{$code}.afc") || @$profile?->afc)
                     class   = "
                         w-4 h-4 text-baseRed bg-gray-100 border-gray-300 rounded
                         focus:ring-baseRed focus:ring-2
@@ -76,7 +76,7 @@
             id="form_profiles_{{$code}}_address"
             name="profiles[{{$code}}][address]"
             label="Адрес"
-            value='{{old("profiles.{$code}.address")??@$profile1?->prices}}'
+            value='{{old("profiles.{$code}.address")??@$profile?->address}}'
         />
 
         <div class="grid grid-cols-2 gap-x-4 mt-3">
@@ -86,7 +86,7 @@
                 type="number"
                 step="0.01"
                 label="Срок обучения"
-                value='{{old("profiles.{$code}.duration")??@$profile1?->duration}}'
+                value='{{old("profiles.{$code}.duration")??@$profile?->duration}}'
             />
 
             <x-form.input
@@ -94,7 +94,7 @@
                 name="profiles[{{$code}}][price]"
                 type="number"
                 label="Стоимость, р."
-                value='{{old("profiles.{$code}.price")??@$profile1?->price}}'
+                value='{{old("profiles.{$code}.price")??@$profile?->price}}'
             />
 
             <x-form.input
@@ -102,7 +102,7 @@
                 name="profiles[{{$code}}][places][budget]"
                 type="number"
                 label="Кол-во мест, бюджет"
-                value='{{old("profiles.{$code}.places.budget")??@$profile1?->duration}}'
+                :value="old('profiles.'.$code.'.places.budget')??@$profile->places['budget']"
             />
 
             <x-form.input
@@ -110,30 +110,29 @@
                 name="profiles[{{$code}}][places][contract]"
                 type="number"
                 label="Кол-во мест, контракт"
-                value='{{old("profiles.{$code}.places.contract")??@$profile1?->prices}}'
+                :value="old('profiles.'.$code.'.places.contract')??@$profile->places['contract']"
             />
 
             <div>
                 <h3 class="text-lg font-semibold text-center">
                     Экзамены: Бюджет
                 </h3>
-                <x-exam.adminlist
+                <x-exam.admin-list
                     :code="$code"
                     type="budget"
+                    :exams="@$profile->exams"
                 />
             </div>
             <div>
                 <h3 class="text-lg font-semibold text-center">
                     Экзамены: Контракт
                 </h3>
-                <x-exam.adminlist
+                <x-exam.admin-list
                     :code="$code"
                     type="contract"
+                    :exams="@$profile->exams"
                 />
             </div>
         </div>
     </div>
-
-
-
 </div>

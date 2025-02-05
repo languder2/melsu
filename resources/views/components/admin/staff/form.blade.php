@@ -100,6 +100,13 @@
     />
 
     <x-form.input
+        id="form_address"
+        name="address"
+        label="Адрес"
+        value="{{old('address')??@$current->address}}"
+    />
+
+    <x-form.input
         id="affiliation"
         name="affiliation"
         label="Партийная принадлежность"

@@ -72,7 +72,6 @@
 
                 <div class="md:col-span-2">
                     {{$record->name}}
-{{--                    @dump($record->toArray())--}}
                 </div>
 
                 <div>
@@ -85,7 +84,7 @@
 
                 <div>
 
-                    @foreach($record->profiles as $profile)
+                    @foreach($record->profiles->where('show',true) as $profile)
                         <p>
                             {{@$profile->form->name}}
                         </p>
@@ -109,13 +108,13 @@
                         </div>
                         <div class="flex-none w-14">
                             <a
-                                href="{{route('admin:education-department:edit',$record->id??0)}}"
+                                href="{{route('admin:education-speciality:edit',$record?->id)}}"
                                 class="
-                                py-2 px-4 rounded-md
-                                bg-green-950
-                                hover:bg-green-700
-                                active:bg-gray-700
-                            "
+                                    py-2 px-4 rounded-md
+                                    bg-green-950
+                                    hover:bg-green-700
+                                    active:bg-gray-700
+                                "
                             >
                                 <i class="far fa-edit w-4 h-4"></i>
                             </a>
