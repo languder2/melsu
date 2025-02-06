@@ -2,33 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use Carbon\Carbon;
-use Illuminate\Http\Request;
-use App\Models\{Document, FAQ, Link, Page, Staff, StaffAffiliation};
-use App\Models\Education\Profile;
-use App\Models\NewsCategory;
-use App\Models\News;
-use Illuminate\Support\Facades\View;
-use App\View\Components\Specialities\AllSpeciality;
-
+use App\Models\Department\Department;
+use App\Models\Department\Section;
+use App\Models\Department\Staff;
 class TestController extends Controller
 {
     public function index()
     {
+        $department = Department::where('alias','rectorate')->first();
 
-        return view("pages.page-with-menu", [
-            'sidebar'       => View::make('components.menu.sidebar')->with([
-                'menu'          => &$menu,
-                'full'          => false,
-            ])->render(),
+        dump($department->chief_card?->link);
+        dump($department->staffs);
+        dump($department->toArray());
 
-            'nobg'          => true,
 
-            'contents'      => [
-                (new AllSpeciality())->render(),
-            ]
-
-        ]);
+        dd('end');
 
 //        $profile = Profile::find(1);
 //

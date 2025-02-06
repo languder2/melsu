@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use GuzzleHttp\Psr7\Response;
+use App\Models\Structure\suStructure;
+use App\View\Components\Admin\structure\form as structureForm;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use App\Models\suStructure;
-use App\View\Components\Admin\structure\form as structureForm;
 use Illuminate\Support\Facades\View;
 
 

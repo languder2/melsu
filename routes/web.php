@@ -28,7 +28,6 @@ Route::get('wish-tree/list',  [WishTreeController::class, 'list'])->name('wish-t
 
 Route::get('test',  [TestController::class, 'index']);
 
-
 Route::view('admin', 'pages.admin')->name('admin:main');
 
 Route::post('login', [AdminController::class, 'login'])->name('admin:login');
@@ -186,6 +185,13 @@ Route::middleware('auth.check')
         Route::get('delete/{id}', 'delete')->name('admin:department:delete');
 
     });
+
+Route::controller(DepartmentController::class)
+    ->group(function () {
+        Route::get('departments', 'showList') ->name('public:department:list');
+        Route::get('department/{code}', 'show')->name('public:department:show');
+    });
+
 
 Route::middleware('auth.check')
     ->controller(FacultyController::class)

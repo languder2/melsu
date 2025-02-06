@@ -108,8 +108,8 @@ class NewsController extends Controller
     public function showAll()
     {
         $list = News::orderBy('publication_at', 'desc')
-            ->select('id','title','short','full','publication_at','image')
-            ->paginate(13);
+            ->select('id','title','short','full','publication_at','image','category')
+                ->paginate(13);
 
         return view('pages.page', [
             'contents' => [

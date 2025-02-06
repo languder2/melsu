@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Structure\suStructure;
 use Illuminate\Database\Seeder;
-use App\Models\suStructure;
+
 class ssuGroupSeed extends Seeder
 {
     /**

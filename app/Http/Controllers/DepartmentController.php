@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 use App\Models\{Department,DepartmentSection,DepartmentDocument,DepartmentStaff};
 use App\Models\Staff;
+use App\Models\Department\Department as Department2;
+
 
 class DepartmentController extends Controller
 {
@@ -97,6 +99,76 @@ class DepartmentController extends Controller
             $record->delete();
 
         return redirect()->route('admin:department');
+    }
+
+
+    public function show($code = null)
+    {
+
+        $department     = Department2::where('alias', $code)->first();
+
+        if(!$department)
+            $department = Department2::find((int)$code);
+
+        if(!$department)
+            return redirect()->route('pages:main');
+
+        if($code === 'rectorate')
+            $pageContent = View::make('components.department.rectorate')->with([
+                'department' => $department,
+            ])->render();
+        else
+            $pageContent = View::make('components.department.single')->with([
+                'department' => $department,
+            ])->render();
+
+
+
+        return view("pages.page-with-menu", [
+            'sidebar'       => View::make('components.menu.sidebar')->with([
+                'menu'          => &$menu,
+                'full'          => false,
+            ])->render(),
+
+            'nobg'          => true,
+
+            'news'          =>  false,
+
+            'contents'      => [
+                $pageContent
+            ]
+        ]);
+    }
+
+    public function showList()
+    {
+
+
+        $departments    = Department2::orderBy('sort')->orderBy('name')->get();
+
+        if(!$departments)
+            return redirect()->route('pages:main');
+
+            $pageContent = View::make('components.department.single')->with([
+                'list' => $departments,
+            ])->render();
+
+
+
+        return view("pages.page-with-menu", [
+            'sidebar'       => View::make('components.menu.sidebar')->with([
+                'menu'          => &$menu,
+                'full'          => false,
+            ])->render(),
+
+            'nobg'          => true,
+
+            'news'          =>  false,
+
+            'contents'      => [
+                $pageContent
+            ]
+        ]);
     }
 
 }

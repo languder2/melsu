@@ -15,7 +15,7 @@ class DepartmentStaff extends Model
         'id',
         'staff',
         'department',
-        'post_alt',
+        'post',
         'sort',
         'deleted_at'
     ];
