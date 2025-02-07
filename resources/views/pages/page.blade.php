@@ -1,6 +1,6 @@
 @extends("layouts.main")
 
-@section('title', $title??'ФГБОУ ВО "МелГУ"')
+{{--@section('title', $title??'ФГБОУ ВО "МелГУ"')--}}
 
 @section('content')
     @if(is_array(@$contents))

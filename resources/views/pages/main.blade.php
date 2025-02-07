@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'ФГБОУ ВО "МелГУ"')
+{{--@section('title', 'ФГБОУ ВО "МелГУ"')--}}
 
 @section('content')
     <x-slider.mainpage />

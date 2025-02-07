@@ -1,6 +1,6 @@
 @extends("layouts.page")
 
-@section('title', $title??'ФГБОУ ВО "МелГУ"')
+{{--@section('title', $title??'ФГБОУ ВО "МелГУ"')--}}
 
 @section('breadcrumbs')
     {!! @$breadcrumbs !!}
