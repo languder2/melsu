@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Carbon\Carbon;
 
 use App\Models\Department\Staff as DepartmentStaff;
+use App\Models\Department\Section as DepartmentSection;
 use App\Models\Staff\Staff;
 
 
@@ -56,9 +57,23 @@ class Department extends Model
             ;
     }
 
+    public function sections(): HasMany
+    {
+        return $this->hasMany(DepartmentSection::class, 'department', 'id')
+            ->orderBy('sort')
+            ;
+    }
+
     public function getChiefCardAttribute():Staff|null
     {
         return Staff::find($this->chief);
+    }
+
+    public function getLinkAttribute():string
+    {
+        return route('public:department:show',[
+            'code'      => $this->alias??$this->id,
+        ]);
     }
 
 }

@@ -96,11 +96,17 @@ class Staff extends Model
         return trim("{$this->lastname} {$this->firstname} {$this->middle_name}");
     }
 
-    public function getBirthdayFormatedAttribute():string
+    public function getBirthdayFormatedAttribute():string|null
     {
-        Carbon::setLocale('ru');
-        return Carbon::createFromDate($this->birthday)->isoFormat('d MMMM YYYY');
 
+        if(!$this->birthday)
+            return null;
+
+        Carbon::setLocale('ru');
+
+        $date = Carbon::createFromFormat('Y-m-d', $this->birthday);
+
+        return $date->isoFormat('D MMMM YYYY');
     }
 
     public function getWorkListAttribute():array|null
@@ -129,4 +135,19 @@ class Staff extends Model
 
         return $works;
     }
+
+    public function getAvatarSrcAttribute():string
+    {
+        $path   = 'images/photo/';
+
+        if(!$this->photo)
+            return asset($path.'avatar.webp');
+
+        return file_exists(asset($path."600x600_{$this->photo}.jpg"))
+            ?asset($path."600x600_{$this->photo}.jpg")
+            :asset($path.'avatar.webp')
+            ;
+
+    }
+
 }

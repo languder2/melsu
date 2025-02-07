@@ -6,7 +6,7 @@
 >
     <div class="box-btns-card grid grid-cols-1 lg:grid-cols-[1fr_1fr_1fr] gap-3 text-center lg:mb-8">
 
-        <label class="btn-filter-card active uppercase py-3.5 px-5">
+        <label class="btn-filter-card uppercase py-3.5 px-5">
             <input
                 type="radio"
                 name="level"
@@ -20,7 +20,7 @@
         </label>
 
         @foreach($levels as $code=>$level)
-            <label class="btn-filter-card active uppercase py-3.5 px-5">
+            <label class="btn-filter-card uppercase py-3.5 px-5">
                 <input
                     type="radio"
                     name="level"
@@ -67,14 +67,24 @@
 
             <input class="chosen-value relative top-0 left-0 w-full min-h-[50px] max-h-[50px] text-lg py-3 px-[18px] bg-white
                              transition duration-300 ease-in-out placeholder:text-[black] focus:border-b-[2px] outline-0 z-20" type="text" value="Очная" data-placeholder="Форма обучения" placeholder="Форма обучения">
-            <ul class="value-list transition duration-300 ease-in-out absolute top-0 left-0 w-full max-h-0 cursor-pointer list-none mt-[48px] shadow-[2px_24px_17px_-13px_rgba(66, 68, 90, 1)] overflow-hidden
-                                    [&.open]:max-h-[320px] [&.open]:overflow-auto z-20">
+            <ul
+                class="
+                    value-list
+                    transition
+                    duration-300
+                    ease-in-out
+                    absolute top-0 left-0 w-full max-h-0 cursor-pointer list-none mt-[48px] shadow-[2px_24px_17px_-13px_rgba(66, 68, 90, 1)] overflow-hidden
+                    z-20
+                    peer-focus:max-h-80
+                    peer-focus:overflow-y-auto
+                "
+            >
 
                 @foreach($forms as $code=>$value)
                     <li
                         data-id="{{$code}}"
                         class="
-                            drop-li min-h-[4rem] opacity-1 relative p-[1rem] bg-white text-lg
+                            drop-li min-h-[4rem] opacity-100 relative p-[1rem] bg-white text-lg
                             flex items-center cursor-pointer transition duration-300 ease-in-out
                             max-h-0 hover:bg-[#820000] hover:text-white
                             [&.closed]:max-h-0 [&.closed]:overflow-hidden [&.closed]:p-0
@@ -98,16 +108,42 @@
                 data-filter-type="check"
             >
 
-            <input class="chosen-value relative top-0 left-0 w-full min-h-[50px] max-h-[50px] text-lg py-3 px-[18px] bg-white
-                             transition duration-300 ease-in-out placeholder:text-[black] focus:border-b-[2px] outline-0 z-10" type="text" value="Бюджет" data-placeholder="Тип обучения" placeholder="Тип обучения">
-            <ul class="value-list transition duration-300 ease-in-out absolute top-0 left-0 w-full max-h-0 cursor-pointer list-none mt-[48px] shadow-[2px_24px_17px_-13px_rgba(66, 68, 90, 1)] overflow-hidden
-                                    [&.open]:max-h-[320px] [&.open]:overflow-auto z-10">
+            <input
+                class="
+                    chosen-value
+                    relative top-0 left-0 w-full min-h-[50px] max-h-[50px] text-lg py-3 px-[18px] bg-white
+                    transition duration-300 ease-in-out placeholder:text-[black]
+                    outline-0 z-10
+                    border-b
+                    border-white
+                    focus:border-gray-200
+                    peer
+                "
+                type="text"
+                value="Бюджет"
+                data-placeholder="Тип обучения"
+                placeholder="Тип обучения"
+            >
+            <ul
+                class="
+                    value-list transition duration-300 ease-in-out
+                    absolute top-0 left-0
+                    w-full max-h-0
+                    cursor-pointer list-none
+                    mt-[50px]
+                    shadow-[2px_24px_17px_-13px_rgba(66, 68, 90, 1)]
+                    overflow-hidden
+                    z-20
+                    peer-focus:max-h-80
+                    peer-focus:overflow-y-auto
+                "
+            >
 
                 @foreach($types as $code=>$value)
                     <li
                         data-id="{{$code}}"
                         class="
-                            drop-li min-h-[4rem] opacity-1 relative p-[1rem] bg-white text-lg
+                            drop-li min-h-[4rem] opacity-100 relative p-[1rem] bg-white text-lg
                             flex items-center cursor-pointer transition duration-300 ease-in-out
                             max-h-0 hover:bg-[#820000] hover:text-white
                             [&.closed]:max-h-0 [&.closed]:overflow-hidden [&.closed]:p-0

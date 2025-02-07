@@ -37,3 +37,4 @@ window.Tabs = Tabs;
 import * as AdminStaff from './admin/staffs.js';
 window.AdminStaff = AdminStaff;
 
+import './search/departments.js';

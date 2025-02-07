@@ -12,3 +12,22 @@ Route::get('departments-by-faculty-shorts/{faculty?}', function (Request $reques
     else
         return Faculty::where('code',$faculty)?->first()->departments->pluck('name','code')->toJson(JSON_UNESCAPED_UNICODE);
 })->name('departments-by-faculty-shorts');
+
+
+Route::get('link-correct', function (Request $request) {
+
+        $from   = $request->get('from');
+        $to     = $request->get('to');
+
+        if(!$from || !$to) return;
+
+        $menu= new \App\Models\MenuItems();
+
+        foreach ($menu::where('link',"!=",'')->get() as $item) {
+            $item->link = str_replace($from,$to,$item->link);
+            $item->save();
+        }
+
+
+
+});

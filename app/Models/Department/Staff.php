@@ -32,7 +32,7 @@ class Staff extends Model
 
     public function getLinkAttribute():string
     {
-        return "staff/".($this->alias??$this->id);
+        return url("staff/".($this->alias??$this->id));
     }
 
     public function card():BelongsTo

@@ -1,12 +1,12 @@
 <div class="bg-white p-6 sm:min-h-[257px] flex flex-col justify-between">
     <div class="grid grid-cols-1 lg:grid-cols-[25%_minmax(70%,_1fr)] gap-5 min-h-[209px]">
         <div class="mx-auto">
-            <img src="{{asset("images/photo/600x600_{$staff->photo}.jpg")}}" alt="" class="">
+            <img src="{{$staff->avatar_src}}" alt="" class="">
         </div>
         <div class="flex flex-col justify-evenly">
             <div class="mb-7 lg:mb-0 sm:flex-row">
                 @if($staff->post)
-                    <div class="grid grid-cols-1 lg:grid-cols-[25%_minmax(70%,_1fr)] mb-7 lg:mb-0">
+                    <div class="grid grid-cols-1 lg:grid-cols-[25%_minmax(70%_1fr)] mb-7 lg:mb-0">
                         <span class="text-[var(--secondary-color)] text-md font-bold">Должность:</span>
                         <div class="flex items-center">
                         <span class="text-[#4C4C4C] text-md pt-3 sm:ps-3 sm:pt-0">

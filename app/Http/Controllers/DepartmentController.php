@@ -104,6 +104,7 @@ class DepartmentController extends Controller
     public function show($code = null)
     {
 
+
         $department     = Department2::where('alias', $code)->first();
 
         if(!$department)
@@ -142,10 +143,7 @@ class DepartmentController extends Controller
     public function showList()
     {
 
-
         $pageContent = (new \App\View\Components\Department\All())->render();
-
-
 
         return view("pages.page-with-menu", [
             'sidebar'       => View::make('components.menu.sidebar')->with([

@@ -24,8 +24,11 @@ class AllSpeciality extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct($faculty= null,$department= null)
+    public function __construct($faculty= null,$department= null,$short = false)
     {
+
+        if($short)
+            $this->short = true;
 
         $this->faculty      = Faculty::where('code',$faculty)->first();
         $this->department   = EducationDepartment::where('code',$department)->first();

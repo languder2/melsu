@@ -62,3 +62,6 @@ select:-webkit-autofill:focus {
 .checked-box:has(:checked){
     display: block;
 }
+.btn-filter-card:has(:checked){
+    background-color: var(--color-baseRed);
+}
