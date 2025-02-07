@@ -282,7 +282,7 @@ header{
         }
     }
     .search-and-btn-box{
-        display: flex;
+        display: none;
         justify-content: space-between;
         margin-right: 3.3%;
         align-items: center;
@@ -290,7 +290,7 @@ header{
     }
     .personal-account-box{
         .personal-account-btn{
-            display: none;
+            display: flex;
             align-items: center;
             background-color: var(--primary-color);
             color: white;
@@ -316,7 +316,7 @@ header{
         flex-direction: column;
         flex-wrap: nowrap;
         top: 159px;
-        left: 0px;
+        left: 0;
         z-index: 80;
         width: 100%;
         .box-back-btn{
@@ -590,6 +590,7 @@ header{
 
         }
         .search-and-btn-box{
+            display: flex;
             height: auto;
             width: 100%;
             margin-right: 0;
@@ -2593,7 +2594,7 @@ footer{
     }
     *:hover img{
         opacity: 0.8;
-        box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
     }
     a > span{
         text-shadow:
@@ -3690,11 +3691,10 @@ td.today.active.start-date.active.end-date.available,
     box-shadow: 0 0 45px 0 rgba(255, 0, 0, 0.5);
     background: linear-gradient(90deg, #ED303C 0, #C10F1A 69%);
     transition: .3s linear;
-    position: fixed;
+    position: relative;
     z-index: 999;
     opacity: 1;
-    right: 100px;
-    bottom: 20px;
+    margin-right: 4%;
 }
 .excursion-btn:hover{
     box-shadow: 0 0 45px 0 rgb(255 0 0);
@@ -3704,12 +3704,12 @@ td.today.active.start-date.active.end-date.available,
     overflow: hidden;
     z-index: 100;
     position: absolute;
-    top: -190px;
-    width: 121%;
+    top: 60px;
+    width: 100%;
     .excursion-menu {
         background-color: #FFFFFF;
         line-height: 47px;
-        transform: translateY(100%);
+        transform: translateY(-100%);
         transition: .3s linear;
         h1 {
             background-color: var(--primary-color);
@@ -3724,7 +3724,8 @@ td.today.active.start-date.active.end-date.available,
             border-bottom: 1px solid var(--primary-color);
             background-color: white;
             cursor: pointer;
-            padding: 0 22px;
+            padding: 0 22px !important;
+            min-height: fit-content !important;
             color: var(--secondary-color);
             line-height: 47px;
             transition: .3s linear;
@@ -3751,15 +3752,16 @@ td.today.active.start-date.active.end-date.available,
     cursor: pointer;
     position: absolute;
     z-index: 999;
-    right: -95px;
-    top: -65px;
-    max-height: 208px;
+    right: -38px;
+    top: -38px;
+    max-height: 114px;
 }
 a.modal-open {
     cursor: pointer;
     color: white;
     font-size: 24px;
-    width: 345px;
+    width: 300px;
+    height: 60px;
     display:flex;
     align-items: center;
     padding: 20px 100px 20px 20px;
@@ -3855,6 +3857,28 @@ a.modal-open {
     background:#fff;
     color:#424242;
 }
+@media screen and (max-width: 1440px){
+    .excursion-menu-box {
+        & .excursion-menu {
+            li{
+                line-height: 37px;
+            }
+            h1 {
+                font-size: 19px;
+            }
+        }
+    }
+    a.modal-open{
+        width: 200px;
+        font-size: 16px;
+        padding-right: 60px;
+    }
+    #anim-logo{
+        right: -34px;
+        top: -22px;
+        max-height: 95px;
+    }
+}
 @media screen and (max-width: 1024px){
     .excursion-btn{
         display: none;
@@ -3877,6 +3901,6 @@ a.modal-open {
 @media screen and (max-width: 1023px){
     .vid-bg{
         width: 100%;
-        right: 0px;
+        right: 0;
     }
 }

@@ -81,6 +81,7 @@ class Staff extends Model
 
     public function getAvatarSrcAttribute():string
     {
+
         $path   = 'images/photo/';
 
         if(!$this->photo)

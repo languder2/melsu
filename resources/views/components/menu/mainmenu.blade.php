@@ -46,6 +46,27 @@
                         </li>
                     @endforeach
                 </ul>
+
+                <div class="excursion-btn">
+                    <div class="excursion-menu-box">
+                        <div class="excursion-menu hidden">
+                            <h1>МелГУ - где это:</h1>
+                            <ul>
+                                <li><a href="#">Новороссия</a></li>
+                                <li><a href="#">Запорожская область</a></li>
+                                <li><a href="#">Мелитополь</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="flex justify-between relative">
+                        <a class="modal-open">Начни с меня</a>
+                        <video id="anim-logo" autoplay loop muted>
+                            <source src="{{asset('video/anim-logo.webm')}}" type="video/webm">
+
+                        </video>
+                    </div>
+                </div>
+
                 <div class="search-and-btn-box">
                     <div class="personal-account-box">
                         <button class="personal-account-btn align-center">

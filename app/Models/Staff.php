@@ -138,12 +138,13 @@ class Staff extends Model
 
     public function getAvatarSrcAttribute():string
     {
+
         $path   = 'images/photo/';
 
         if(!$this->photo)
             return asset($path.'avatar.webp');
 
-        return file_exists(asset($path."600x600_{$this->photo}.jpg"))
+        return file_exists($path."600x600_{$this->photo}.jpg")
             ?asset($path."600x600_{$this->photo}.jpg")
             :asset($path.'avatar.webp')
             ;
