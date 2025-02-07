@@ -8,7 +8,6 @@ use App\Models\{Department,DepartmentSection,DepartmentDocument,DepartmentStaff}
 use App\Models\Staff;
 use App\Models\Department\Department as Department2;
 
-
 class DepartmentController extends Controller
 {
     public function adminList(): string
@@ -144,14 +143,7 @@ class DepartmentController extends Controller
     {
 
 
-        $departments    = Department2::orderBy('sort')->orderBy('name')->get();
-
-        if(!$departments)
-            return redirect()->route('pages:main');
-
-            $pageContent = View::make('components.department.single')->with([
-                'list' => $departments,
-            ])->render();
+        $pageContent = (new \App\View\Components\Department\All())->render();
 
 
 

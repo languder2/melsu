@@ -2,18 +2,18 @@
 
 namespace App\View\Components\Department;
 
+use App\Models\Department\Department;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class List extends Component
+class All extends Component
 {
     /**
      * Create a new component instance.
      */
     public function __construct()
     {
-        //
     }
 
     /**
@@ -21,6 +21,13 @@ class List extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.department.list');
+        $departments    = Department::orderBy('sort')->orderBy('name')->get();
+
+        if(!$departments)
+            return redirect()->route('pages:main');
+
+        return view('components.department.all',[
+            'departments' => $departments,
+        ]);
     }
 }
