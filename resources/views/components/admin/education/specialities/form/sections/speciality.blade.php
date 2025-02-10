@@ -50,7 +50,7 @@
         :list="$faculties"
         label="Факультет"
         onchange="DependedSelects.DepartmentsByFaculty('form_spec_faculty','form_spec_department')"
-   />
+    />
 
     <x-form.select
         id="form_spec_department"

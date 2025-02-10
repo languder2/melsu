@@ -9,9 +9,9 @@ class Staff extends Model
 {
     use SoftDeletes;
 
-    protected $table        = 'staffs';
+    protected $table = 'staffs';
 
-    protected $fillable     = [
+    protected $fillable = [
         'id',
         'photo',
         'post',
@@ -36,61 +36,60 @@ class Staff extends Model
         'alias',
     ];
 
-    public static function FormRules($id):array
+    public static function FormRules($id): array
     {
         return [
-            'post'              => 'required',
-            'lastname'          => 'required',
-            'firstname'         => 'required',
-            'middle_name'       => '',
-            'birthday'          => '',
-            'birthplace'        => '',
-            'residence'         => '',
-            'education'         => '',
-            'awards'            => '',
-            'affiliation'       => '',
-            'family_status'     => '',
-            'title'             => '',
-            'reception_time'    => '',
-            'phones'            => '',
-            'emails'            => '',
-            'address'           => '',
-            'works'             => '',
-            'alias'             => "nullable|unique:staffs,alias,{$id},id,deleted_at,NULL",
+            'post' => 'required',
+            'lastname' => 'required',
+            'firstname' => 'required',
+            'middle_name' => '',
+            'birthday' => '',
+            'birthplace' => '',
+            'residence' => '',
+            'education' => '',
+            'awards' => '',
+            'affiliation' => '',
+            'family_status' => '',
+            'title' => '',
+            'reception_time' => '',
+            'phones' => '',
+            'emails' => '',
+            'address' => '',
+            'works' => '',
+            'alias' => "nullable|unique:staffs,alias,{$id},id,deleted_at,NULL",
         ];
     }
 
-    public static function FormMessage():array
+    public static function FormMessage(): array
     {
         return [
-            'post'              => 'Укажите должность',
-            'lastname'          => 'Укажите фамилию',
-            'firstname'         => 'Укажите имя',
+            'post' => 'Укажите должность',
+            'lastname' => 'Укажите фамилию',
+            'firstname' => 'Укажите имя',
         ];
     }
 
-    public function getLinkAttribute():string
+    public function getLinkAttribute(): string
     {
-        return url("staff/".($this->alias??$this->id));
+        return url("staff/" . ($this->alias ?? $this->id));
     }
 
-    public function getFullNameAttribute():string
+    public function getFullNameAttribute(): string
     {
         return trim("{$this->lastname} {$this->firstname} {$this->middle_name}");
     }
 
-    public function getAvatarSrcAttribute():string
+    public function getAvatarSrcAttribute(): string
     {
 
-        $path   = 'images/photo/';
+        $path = 'images/photo/';
 
-        if(!$this->photo)
-            return asset($path.'avatar.webp');
+        if (!$this->photo)
+            return asset($path . 'avatar.webp');
 
-        return file_exists(asset($path."600x600_{$this->photo}.jpg"))
-            ?asset($path."600x600_{$this->photo}.jpg")
-            :asset($path.'avatar.webp')
-        ;
+        return file_exists(asset($path . "600x600_{$this->photo}.jpg"))
+            ? asset($path . "600x600_{$this->photo}.jpg")
+            : asset($path . 'avatar.webp');
 
     }
 

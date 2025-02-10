@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\View;
 
 class DepartmentController extends Controller
 {
-    public function list():string
+    public function list(): string
     {
         $list = Faculty::first();
 
@@ -19,32 +19,32 @@ class DepartmentController extends Controller
             'contents' => [
 
                 View::make('components.admin.top_menu.education')->with([
-                    'active'    => 'departments'
+                    'active' => 'departments'
                 ])->render(),
 
                 View::make('components.admin.education.departments.header')->with([])->render(),
 
                 View::make('components.admin.education.departments.list')->with([
-                    'list' => Faculty::orderBy('order','desc')->orderBy('name')->get(),
+                    'list' => Faculty::orderBy('order', 'desc')->orderBy('name')->get(),
                 ])->render(),
             ]
         ]);
     }
 
-    public function form($id = null,)
+    public function form($id = null)
     {
 
         return view('pages.admin', [
             'contents' => [
                 View::make('components.admin.top_menu.education')->with([
-                    'active'    => 'departments'
+                    'active' => 'departments'
                 ])->render(),
 
                 View::make('components.admin.education.departments.form')->with([
-                    'current'       => Department::find($id),
-                    'add2faculty'   => request()->get('faculty'),
-                    'faculties'     => Faculty::pluck('name','code')->toArray(),
-                    'types'         => DepartmentType::pluck('name','code')->toArray(),
+                    'current' => Department::find($id),
+                    'add2faculty' => request()->get('faculty'),
+                    'faculties' => Faculty::pluck('name', 'code')->toArray(),
+                    'types' => DepartmentType::pluck('name', 'code')->toArray(),
                 ])->render(),
             ]
         ]);
@@ -52,7 +52,7 @@ class DepartmentController extends Controller
 
     public function save(Request $request)
     {
-        $form = $request->validate(Department::FormRules($request->get('id')),Department::FormMessage());
+        $form = $request->validate(Department::FormRules($request->get('id')), Department::FormMessage());
 
         if (empty($request->get('id')))
             $record = new Department();

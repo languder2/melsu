@@ -13,53 +13,53 @@ class suStructureController extends Controller
 {
     public function adminList()
     {
-        return view('pages.admin',[
-            'contents'  => [
-                view('admin.structure.list',[
-                    'list'          => suStructure::getListByGroups(),
+        return view('pages.admin', [
+            'contents' => [
+                view('admin.structure.list', [
+                    'list' => suStructure::getListByGroups(),
                 ])->render(),
             ]
         ]);
     }
 
-    public function form(?int $id=null)
+    public function form(?int $id = null)
     {
 
-        if(!is_null($id))
+        if (!is_null($id))
             $current = suStructure::find($id);
 
-        $contents       = [];
+        $contents = [];
 
         $form = new structureForm();
 
 
-        $contents[]     = $form->render()->with([
-            'groups'    => suStructure::getGroupsForSelect(),
-            'form'      => @$current,
+        $contents[] = $form->render()->with([
+            'groups' => suStructure::getGroupsForSelect(),
+            'form' => @$current,
         ]);
 
-        return view('pages.admin',[
-            'contents'  => $contents
+        return view('pages.admin', [
+            'contents' => $contents
         ]);
     }
 
-    public function save(Request $request):RedirectResponse
+    public function save(Request $request): RedirectResponse
     {
-        $form = $request->validate(suStructure::$FormRules,suStructure::$FormMessage);
+        $form = $request->validate(suStructure::$FormRules, suStructure::$FormMessage);
 
-        if(empty($form['sort'])){
-            $last           = suStructure::where('ssu_group',$form['ssu_group'])->orderBy('sort','desc')->first();
+        if (empty($form['sort'])) {
+            $last = suStructure::where('ssu_group', $form['ssu_group'])->orderBy('sort', 'desc')->first();
 
-            if(is_null($last))
+            if (is_null($last))
                 $form['sort'] = 10;
 
             else
-                $form['sort']   = $last->sort+10;
+                $form['sort'] = $last->sort + 10;
         }
 
-        if(empty($request->get('id')))
+        if (empty($request->get('id')))
             $record = new suStructure($form);
-        else{
+        else {
             $record = suStructure::find($request->get('id'));
             $record->fill($form);
         }
@@ -69,11 +69,11 @@ class suStructureController extends Controller
         return redirect()->route('admin:structure');
     }
 
-    public function delete(int $id):RedirectResponse
+    public function delete(int $id): RedirectResponse
     {
         $record = suStructure::find($id);
 
-        if(!is_null($record))
+        if (!is_null($record))
             $record->delete();
 
         return redirect()->route('admin:structure');
@@ -83,21 +83,20 @@ class suStructureController extends Controller
     {
 
         return view('pages.page-with-menu', [
-            'breadcrumbs'   =>  View::make('components.template.breadcrumbs')->with([
+            'breadcrumbs' => View::make('components.template.breadcrumbs')->with([
 
             ])->render(),
 
-            'nobg'         => true,
+            'nobg' => true,
 
-            'contents'      => [
+            'contents' => [
                 View::make('components.structure.page')->with([
-                    'list'      => suStructure::getListByGroups(),
+                    'list' => suStructure::getListByGroups(),
                 ])->render(),
             ]
         ]);
 
     }
-
 
 
 }

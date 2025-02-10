@@ -2,21 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\View;
 use App\Models\Menu;
 use App\Models\MenuItems;
 use App\Models\Page;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\View;
 
 class MenuItemsController extends Controller
 {
-    public function list():string
+    public function list(): string
     {
         return view('pages.admin', [
             'contents' => [
                 View::make('components.admin.top_menu.pages')->with([
-                    'active'    => 'menu-items'
+                    'active' => 'menu-items'
                 ])->render(),
 
                 View::make('components.admin.menu_items.header')->with([])->render(),
@@ -33,14 +33,14 @@ class MenuItemsController extends Controller
         return view('pages.admin', [
             'contents' => [
                 View::make('components.admin.top_menu.pages')->with([
-                    'active'    => 'menu-items'
+                    'active' => 'menu-items'
                 ])->render(),
 
                 View::make('components.admin.menu_items.form')->with([
-                    'menu'          => Menu::orderBy('name')->get(),
-                    'pages'         => Page::orderBy('name')->get(),
-                    'parents'       => MenuItems::GelListForForm(),
-                    'current'       => MenuItems::find($id),
+                    'menu' => Menu::orderBy('name')->get(),
+                    'pages' => Page::orderBy('name')->get(),
+                    'parents' => MenuItems::GelListForForm(),
+                    'current' => MenuItems::find($id),
                 ])->render(),
             ]
         ]);
@@ -48,7 +48,7 @@ class MenuItemsController extends Controller
 
     public function save(Request $request)
     {
-        $form = $request->validate(MenuItems::FormRules($request->get('id')),MenuItems::$FormMessage);
+        $form = $request->validate(MenuItems::FormRules($request->get('id')), MenuItems::$FormMessage);
 
         if (empty($request->get('id')))
             $record = new MenuItems();
@@ -57,10 +57,10 @@ class MenuItemsController extends Controller
 
         $record->fill($form);
 
-        if(!is_null($form['page_id']))
-            $record->link   = Page::GelLinkByID($form['page_id']);
-        elseif($form['route'] && Route::has($form['route']))
-            $record->link   = url(route($form['route']));
+        if (!is_null($form['page_id']))
+            $record->link = Page::GelLinkByID($form['page_id']);
+        elseif ($form['route'] && Route::has($form['route']))
+            $record->link = url(route($form['route']));
 
         $record->save();
 

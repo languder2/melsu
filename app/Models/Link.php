@@ -27,22 +27,22 @@ class Link extends Model
         'deleted_at',
     ];
 
-    public static function FormRules($id):array
+    public static function FormRules($id): array
     {
         return [
-            'name'              => 'required',
-            'title'             => '',
-            'link'              => '',
-            'target'            => '',
-            'show'              => 'boolean',
-            'order'             => 'nullable|numeric',
+            'name' => 'required',
+            'title' => '',
+            'link' => '',
+            'target' => '',
+            'show' => 'boolean',
+            'order' => 'nullable|numeric',
         ];
     }
 
-    public static function FormMessage():array
+    public static function FormMessage(): array
     {
         return [
-            'name'              => 'Укажите текст ссылки',
+            'name' => 'Укажите текст ссылки',
         ];
     }
 

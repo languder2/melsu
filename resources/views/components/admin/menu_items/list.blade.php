@@ -44,7 +44,7 @@
                 <div class="md:col-span-2">
                     @if(!is_null($record->parent_id))
                         <span class="inline-block ms-3"></span>
-                        <x-html.arrow-right />
+                        <x-html.arrow-right/>
                     @endif
 
                     {{$record->name}}

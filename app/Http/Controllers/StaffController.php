@@ -3,12 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\ImageStorage;
-use App\Models\Page;
 use App\Models\Staff;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
-
+use Illuminate\Support\Collection;
 class StaffController extends Controller
 {
     public function adminList(): string
@@ -19,7 +17,7 @@ class StaffController extends Controller
                 View::make('components.admin.staff.header')->with([])->render(),
 
                 View::make('components.admin.staff.list')->with([
-                    'list' => Staff::orderBy('id','desc')->paginate(1000),
+                    'list' => Staff::orderBy('id', 'desc')->paginate(1000),
                 ])->render(),
             ]
         ]);
@@ -39,21 +37,23 @@ class StaffController extends Controller
 
     public function save(Request $request)
     {
-        $form = $request->validate(Staff::FormRules($request->get('id')),Staff::$FormMessage);
+        $form = $request->validate(Staff::FormRules($request->get('id')), Staff::$FormMessage);
 
         if (empty($request->get('id')))
             $record = new Staff();
         else
             $record = Staff::find($request->get('id'));
 
-        if(is_array($form['works']))
+        if (is_array($form['works']))
             $form['works'] =
-                array_values(array_filter($form['works'],function ($work){return !empty($work['post']);}));
+                array_values(array_filter($form['works'], function ($work) {
+                    return !empty($work['post']);
+                }));
 
-        if(count($form['works']))
+        if (count($form['works']))
             $form['works'] = json_encode(
                 $form['works'],
-                JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES|JSON_NUMERIC_CHECK|JSON_PRETTY_PRINT
+                JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK | JSON_PRETTY_PRINT
             );
 
         else
@@ -92,11 +92,11 @@ class StaffController extends Controller
         return redirect()->route('admin:staff');
     }
 
-    public function worksAddLine($i= 0)
+    public function worksAddLine($i = 0)
     {
         return View::make('components.admin.staff.work')->with([
-                    'i' => $i,
-                ])->render();
+            'i' => $i,
+        ])->render();
     }
 
     public function delete(int $id)
@@ -109,27 +109,35 @@ class StaffController extends Controller
         return redirect()->route('admin:staff');
     }
 
-    public function show($code)
+    public function show(Request $request, $code)
     {
+//        dd($request->path());
+
         $staff = Staff::where('alias', $code)->first();
 
-        if(!$staff)
+        if (!$staff)
             $staff = Staff::find((int)$code);
 
-        if(!$staff)
+        if (!$staff)
             return redirect()->route('pages:main');
 
         return view("pages.page-with-menu", [
-            'sidebar'       => View::make('components.menu.sidebar')->with([
-                'menu'          => &$menu,
-                'full'          => false,
+            'sidebar' => View::make('components.menu.sidebar')->with([
+                'menu' => &$menu,
+                'full' => false,
             ])->render(),
 
-            'nobg'          => true,
+            'nobg' => true,
 
-            'news'          =>  false,
+            'news' => false,
 
-            'contents'      => [
+            'breadcrumbs' => (object)[
+                'view'      => null,
+                'route'     => 'staffs',
+                'element'   => $staff,
+            ],
+
+            'contents' => [
                 View::make('components.staff.single')->with([
                     'staff' => $staff,
                 ])->render(),

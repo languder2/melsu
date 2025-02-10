@@ -4,95 +4,93 @@ namespace App\Http\Controllers\Education;
 
 use App\Http\Controllers\Controller;
 use App\Models\Education\Faculty;
-use App\View\Components\Specialities\{AllSpeciality,Single as SingleSpeciality};
 use App\Models\Education\Speciality;
+use App\Models\Menu;
+use App\View\Components\Specialities\{AllSpeciality, Single as SingleSpeciality};
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\View;
-use App\Models\Menu;
+
 class EducationController extends Controller
 {
-    public function faculties():string
+    public function faculties(): string
     {
-        $faculties = Faculty::orderBy('order','desc')->orderBy('name')->get();
+        $faculties = Faculty::orderBy('order', 'desc')->orderBy('name')->get();
 
         return view('pages.page-with-menu', [
-            'breadcrumbs'   => View::make('components.template.breadcrumbs')->with([
-                'current'   => (object)[
-                    'name'  => 'Факультеты'
-                ],
-                'last'      => [],
-                'list'      => [],
+            'breadcrumbs' => (object)[
+                'view'      => null,
+                'route'     => 'faculties',
+                'element'   => null,
+            ],
+
+            'sidebar' => View::make('components.menu.alt_sidebar')->with([
+                'menu' => Menu::GetMenuFaculties($faculties),
             ])->render(),
 
-            'sidebar'       => View::make('components.menu.alt_sidebar')->with([
-                'menu'          => Menu::GetMenuFaculties($faculties),
-            ])->render(),
-
-            'contents'      => [
+            'contents' => [
                 View::make('components.education.faculties')->with([
-                    'list'      => $faculties,
+                    'list' => $faculties,
                 ])->render()
             ]
         ]);
 
     }
 
-    public function faculty($faculty = null):string|RedirectResponse
+    public function faculty($faculty = null): string|RedirectResponse
     {
 
-        $faculty = Faculty::where('code',$faculty)->first();
+        $faculty = Faculty::where('code', $faculty)->first();
 
-        if($faculty === null)
+        if ($faculty === null)
             return redirect()->to(route('public:education:faculties'));
 
         $menu = Menu::GetMenuFaculty($faculty, page: 'about');
 
         return view('pages.page-with-menu', [
-//            'breadcrumbs'   => View::make('components.template.breadcrumbs')->with([
-//                'current'   => array_slice($breadcrumbs, -1)[0],
-//                'last'      => array_slice($breadcrumbs, -2, 1)[0],
-//                'list'      => array_slice($breadcrumbs,0,count($breadcrumbs)-2),
-//            ])->render(),
+            'breadcrumbs' => (object)[
+                'view'      => null,
+                'route'     => 'faculty',
+                'element'   => $faculty,
+            ],
 
-            'sidebar'       => View::make('components.menu.alt_sidebar')->with([
-                'menu'          => &$menu,
+            'sidebar' => View::make('components.menu.alt_sidebar')->with([
+                'menu' => &$menu,
             ])->render(),
 
-            'contents'      => [
+            'contents' => [
                 View::make('components.education.faculty')->with([
-                    'faculty'      => $faculty,
+                    'faculty' => $faculty,
                 ])->render()
-                
+
             ]
         ]);
 
-
     }
 
-    public function departments($faculty = null):string|RedirectResponse
+    public function departments($faculty = null): string|RedirectResponse
     {
 
-        $faculty = Faculty::where('code',$faculty)->first();
+        $faculty = Faculty::where('code', $faculty)->first();
 
-        if($faculty === null)
+        if ($faculty === null)
             return redirect()->to(route('public:education:faculties'));
 
         $menu = Menu::GetMenuFaculty($faculty, page: 'departments');
 
         return view('pages.page-with-menu', [
-//            'breadcrumbs'   => View::make('components.template.breadcrumbs')->with([
-//                'current'   => array_slice($breadcrumbs, -1)[0],
-//                'last'      => array_slice($breadcrumbs, -2, 1)[0],
-//                'list'      => array_slice($breadcrumbs,0,count($breadcrumbs)-2),
-//            ])->render(),
+            'breadcrumbs' => (object)[
+                'view'      => null,
+                'route'     => 'departments',
+                'element'   => $faculty,
+            ],
 
-            'sidebar'       => View::make('components.menu.alt_sidebar')->with([
-                'menu'          => &$menu,
+            'sidebar' => View::make('components.menu.alt_sidebar')->with([
+                'menu' => &$menu,
             ])->render(),
 
-            'contents'      => [
+            'contents' => [
                 View::make('components.education.departments')->with([
-                    'faculty'      => $faculty,
+                    'faculty' => $faculty,
                 ])->render()
             ]
         ]);
@@ -100,82 +98,87 @@ class EducationController extends Controller
 
     }
 
-    public function department($faculty = null,$department = null):string|RedirectResponse
+    public function department($faculty = null, $department = null): string|RedirectResponse
     {
 
-        $faculty = Faculty::where('code',$faculty)->first();
+        $faculty = Faculty::where('code', $faculty)->first();
 
-        $department = $faculty->departments()->where('code',$department)->first();
+        $department = $faculty->departments()->where('code', $department)->first();
 
-        if(!$faculty || !$department)
+        if (!$faculty || !$department)
             return redirect()->to(route('public:education:faculties'));
 
         $menu = Menu::GetMenuFaculty($faculty, page: 'departments');
 
         return view('pages.page-with-menu', [
-//            'breadcrumbs'   => View::make('components.template.breadcrumbs')->with([
-//                'current'   => array_slice($breadcrumbs, -1)[0],
-//                'last'      => array_slice($breadcrumbs, -2, 1)[0],
-//                'list'      => array_slice($breadcrumbs,0,count($breadcrumbs)-2),
-//            ])->render(),
+            'breadcrumbs' => (object)[
+                'view'      => null,
+                'route'     => 'faculty',
+                'element'   => $faculty,
+            ],
 
-            'sidebar'       => View::make('components.menu.alt_sidebar')->with([
-                'menu'          => &$menu,
+            'sidebar' => View::make('components.menu.alt_sidebar')->with([
+                'menu' => &$menu,
             ])->render(),
 
-            'nobg'          => true,
+            'nobg' => true,
 
-            'contents'      => [
+            'contents' => [
                 View::make('components.education.department')->with([
-                    'faculty'       => $faculty,
-                    'department'    => $department,
+                    'faculty' => $faculty,
+                    'department' => $department,
                 ])->render(),
-                (new AllSpeciality($faculty->code,$department->code))->render(),
+                (new AllSpeciality($faculty->code, $department->code))->render(),
             ]
         ]);
     }
 
-    public function specialities($faculty = null,$department = null):string|RedirectResponse
+    /* public: specialities | Специальности, список  */
+    public function specialities($faculty = null, $department = null): string|RedirectResponse
     {
 
 
 //        $menu = Menu::GetMenuFaculty($faculty??[], page: 'specialities');
 
         return view("pages.page-with-menu", [
-            'sidebar'       => View::make('components.menu.sidebar')->with([
-                'menu'          => &$menu,
-                'full'          => false,
+            'sidebar' => View::make('components.menu.sidebar')->with([
+                'menu' => &$menu,
+                'full' => false,
             ])->render(),
 
-            'nobg'          => true,
+            'breadcrumbs' => (object)[
+                'view'      => null,
+                'route'     => 'specialities',
+                'element'   => null,
+            ],
 
-            'contents'      => [
-                (new AllSpeciality($faculty,$department))->render(),
+            'nobg' => true,
+
+            'contents' => [
+                (new AllSpeciality($faculty, $department))->render(),
             ]
 
         ]);
     }
 
-    public function speciality(?string $speciality_code):string|RedirectResponse
+    public function speciality(?string $speciality_code): string|RedirectResponse
     {
 
-        $speciality = Speciality::where('code',$speciality_code)->first();
+        $speciality = Speciality::where('code', $speciality_code)->first();
 
-        if(!$speciality)
+        if (!$speciality)
             return redirect()->to(route('public:education:faculties'));
 
 
-
-
         return view("pages.page", [
-            'sidebar'       => View::make('components.menu.sidebar')->with([
-                'menu'          => &$menu,
-                'full'          => false,
+            'sidebar' => View::make('components.menu.sidebar')->with([
+                'menu' => &$menu,
+                'full' => false,
             ])->render(),
 
-            'nobg'          => true,
+            'nobg' => true,
 
-            'contents'      => [
+            'contents' => [
                 (new SingleSpeciality($speciality))->render(),
             ]
 

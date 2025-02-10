@@ -26,24 +26,25 @@ class Document extends Model
         'deleted_at',
     ];
 
-    public static function FormRules($id):array
+    public static function FormRules($id): array
     {
         return [
-            'title'             => 'required',
-            'filename'          => "nullable|unique:documents,filename,{$id},id,deleted_at,NULL",
-            'filetype'          => '',
-            'show'              => 'boolean',
-            'order'             => 'nullable|numeric',
+            'title' => 'required',
+            'filename' => "nullable|unique:documents,filename,{$id},id,deleted_at,NULL",
+            'filetype' => '',
+            'show' => 'boolean',
+            'order' => 'nullable|numeric',
         ];
     }
 
-    public static function FormMessage():array
+    public static function FormMessage(): array
     {
         return [
-            'name'              => 'Укажите имя файла',
-            'filename.unique'   => 'Alias должен быть указан',
+            'name' => 'Укажите имя файла',
+            'filename.unique' => 'Alias должен быть указан',
         ];
     }
+
     public function relation(): MorphTo
     {
         return $this->morphTo();

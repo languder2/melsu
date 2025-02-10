@@ -2,7 +2,8 @@
          style="background-image: url({{asset('img/bg-section-11.jpg')}})"
 >
     <div class="container custom px-2.5">
-        <h2 class="text-[43px] sm:text-[54px] text-white text-shadow-lg lg:mb-12" style="text-shadow: 0px 10px 10px #000000;">
+        <h2 class="text-[43px] sm:text-[54px] text-white text-shadow-lg lg:mb-12"
+            style="text-shadow: 0px 10px 10px #000000;">
             После выпуска все только начинается
         </h2>
         <div class="grid grid-cols-1 lg:grid-cols-[1fr_1fr] xl:grid-cols-[1fr_1fr_1fr_1fr] gap-3 lg:gap-5">

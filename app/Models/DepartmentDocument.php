@@ -9,8 +9,8 @@ class DepartmentDocument extends Model
 {
     use SoftDeletes;
 
-    protected $table        = 'department_documents';
-    protected $fillable     = [
+    protected $table = 'department_documents';
+    protected $fillable = [
         'id',
         'name',
         'file',

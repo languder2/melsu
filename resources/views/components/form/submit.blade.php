@@ -17,7 +17,7 @@
         @if(isset($additional))
             @foreach($additional as $code=>$filed)
                 data-{{$code}}="{{$filed}}"
-            @endforeach
+        @endforeach
         @endif
 
         value="{{$value??"submit"}}"

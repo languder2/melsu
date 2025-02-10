@@ -31,29 +31,29 @@
 
         @foreach($list as $record)
             <div>
-               <?=$record->id?>
+                    <?= $record->id ?>
             </div>
 
             <div>
-               <?=$record->name?>
+                    <?= $record->name ?>
             </div>
 
             <div>
-               <?=$record->chief_post?>
+                    <?= $record->chief_post ?>
             </div>
 
             <div class="md:col-span-2">
-               <?=$record->lastname?>
-               <?=$record->firstname?>
-               <?=$record->middle_name?>
+                    <?= $record->lastname ?>
+                    <?= $record->firstname ?>
+                    <?= $record->middle_name ?>
             </div>
 
             <div class="md:col-span-2">
-               {{url(route('department:show',$record->id))}}
-               @if(!empty($record->alias))
+                {{url(route('department:show',$record->id))}}
+                @if(!empty($record->alias))
                     <br>
                     {{url(route('department:show',$record->alias))}}
-               @endif
+                @endif
             </div>
 
             <div>

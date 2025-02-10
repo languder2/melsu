@@ -1,4 +1,4 @@
-<x-head.tinymce-config />
+<x-head.tinymce-config/>
 <form
     action="{{route('admin:staff:save')}}"
     method="POST"
@@ -21,7 +21,7 @@
 
     <hr>
 
-    <x-form.errors />
+    <x-form.errors/>
 
     <x-form.input type="hidden" name="id" value="{{$current->id??null}}"/>
 
@@ -192,20 +192,20 @@
             @php $works = array_filter(old('works'),function ($work){return !empty($work['post']);}); @endphp
 
             @foreach($works as $key=>$work)
-                <x-admin.staff.work :i="$key" :work="$work" />
+                <x-admin.staff.work :i="$key" :work="$work"/>
             @endforeach
 
             @if(count($works) === 0)
-                <x-admin.staff.work :i="0" />
+                <x-admin.staff.work :i="0"/>
             @endif
 
         @elseif(isset($current->works))
             @foreach($current->works as $key=>$work)
-                <x-admin.staff.work :i="$key" :work="$work" />
+                <x-admin.staff.work :i="$key" :work="$work"/>
             @endforeach
 
         @else
-            <x-admin.staff.work :i="0" />
+            <x-admin.staff.work :i="0"/>
         @endif
     </div>
 

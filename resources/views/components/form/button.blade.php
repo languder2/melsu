@@ -1,26 +1,26 @@
-    <input
-        type="submit"
+<input
+    type="submit"
 
-        @if(isset($id))
-            id="{{$id}}"
-        @endif
+    @if(isset($id))
+        id="{{$id}}"
+    @endif
 
-        @if(isset($name))
-            name="{{$name}}"
-        @endif
+    @if(isset($name))
+        name="{{$name}}"
+    @endif
 
-        @if(isset($onclick))
-            onclick="{{$onclick}}"
-        @endif
+    @if(isset($onclick))
+        onclick="{{$onclick}}"
+    @endif
 
-        @if(isset($additional))
-            @foreach($additional as $code=>$filed)
-                data-{{$code}}="{{$filed}}"
-            @endforeach
-        @endif
+    @if(isset($additional))
+        @foreach($additional as $code=>$filed)
+            data-{{$code}}="{{$filed}}"
+    @endforeach
+    @endif
 
-        value="{{$value??"submit"}}"
-        class="
+    value="{{$value??"submit"}}"
+    class="
                 bg-blue-900
                 px-4 py-2
                 text-white
@@ -29,4 +29,4 @@
                 active:bg-gray-700
                 {{@$class}}
             "
-    >
+>

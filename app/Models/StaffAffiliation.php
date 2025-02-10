@@ -28,21 +28,21 @@ class StaffAffiliation extends Model
         'deleted_at',
     ];
 
-    public static function FormRules($id):array
+    public static function FormRules($id): array
     {
         return [
-            'staff_id'          => 'nullable|int',
-            'alt_name'          => '',
-            'post'              => '',
-            'show'              => 'boolean',
-            'order'             => 'nullable|numeric',
+            'staff_id' => 'nullable|int',
+            'alt_name' => '',
+            'post' => '',
+            'show' => 'boolean',
+            'order' => 'nullable|numeric',
         ];
     }
 
-    public static function FormMessage():array
+    public static function FormMessage(): array
     {
         return [
-            'name'              => 'Укажите текст ссылки',
+            'name' => 'Укажите текст ссылки',
         ];
     }
 

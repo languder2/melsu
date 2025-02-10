@@ -3,11 +3,11 @@
 namespace App\View\Components\Specialities;
 
 use App\Models\Education\Forms;
+use App\Models\Education\Level;
+use App\Models\Education\Place;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
-use App\Models\Education\Level;
-use App\Models\Education\Place;
 
 
 class Filter extends Component
@@ -23,13 +23,13 @@ class Filter extends Component
      */
     public function __construct()
     {
-        $this->levels       = Level::all()->pluck('name','code')->toArray();
-        $this->forms        = Forms::all()->pluck('name','code')->toArray();
-        $this->types        = [
-            'budget'        => 'Бюджет',
-            'contract'      => 'Контракт',
+        $this->levels = Level::all()->pluck('name', 'code')->toArray();
+        $this->forms = Forms::all()->pluck('name', 'code')->toArray();
+        $this->types = [
+            'budget' => 'Бюджет',
+            'contract' => 'Контракт',
         ];
-        $this->current      = (object)[];
+        $this->current = (object)[];
     }
 
     /**

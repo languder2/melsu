@@ -31,23 +31,23 @@
 
         @foreach($list as $record)
             <div>
-                    {{$record->id}}
+                {{$record->id}}
             </div>
 
             <div>
-                    {{$record->code}}
+                {{$record->code}}
             </div>
 
             <div>
-                    {{$record->name}}
+                {{$record->name}}
             </div>
 
             <div class="md:col-span-4">
-                    {{$record->comment}}
+                {{$record->comment}}
             </div>
 
             <div>
-                    {{count($record->items)}}
+                {{count($record->items)}}
             </div>
 
             <div>

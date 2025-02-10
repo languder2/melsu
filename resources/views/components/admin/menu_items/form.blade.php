@@ -20,7 +20,7 @@
 
     <hr>
 
-    <x-form.errors />
+    <x-form.errors/>
 
     <x-form.input type="hidden" name="id" value="{{$current->id??null}}"/>
 
@@ -74,7 +74,7 @@
     <x-form.select
         id="page_id"
         name="page_id"
-{{--        nullDisabled--}}
+        {{--        nullDisabled--}}
         old="{{old('page_id')}}"
         value="{{@$current->page_id}}"
         null="выбрать"

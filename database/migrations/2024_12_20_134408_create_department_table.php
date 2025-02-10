@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -28,7 +27,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('department');
             $table->string('name');
-            $table->enum('show_title',['show','hide'])->default('show');
+            $table->enum('show_title', ['show', 'hide'])->default('show');
             $table->longText('text')->nullable();
             $table->integer('sort')->default(100000);
             $table->timestamp('deleted_at')->nullable();

@@ -4,7 +4,8 @@
     </h2>
 
     @foreach($group->list as $key=>$post)
-        <div class="grid grid-cols-1 lg:grid-cols-[33%_33%_33%] gap-1 mb-[20px] lg:mb-[4px] border  border-[lightgray] lg:border-none">
+        <div
+            class="grid grid-cols-1 lg:grid-cols-[33%_33%_33%] gap-1 mb-[20px] lg:mb-[4px] border  border-[lightgray] lg:border-none">
             <div
                 class="
                     p-2.5

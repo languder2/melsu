@@ -11,4 +11,11 @@ class Image extends Model
     {
         return $this->morphTo();
     }
+
+    public static function test()
+    {
+        return 'test';
+    }
+
+
 }

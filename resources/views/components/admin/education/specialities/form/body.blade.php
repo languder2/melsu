@@ -1,4 +1,4 @@
-<x-head.tinymce-config />
+<x-head.tinymce-config/>
 
 <div
     class="
@@ -6,7 +6,7 @@
         py-4 px-4
     "
 >
-    <x-admin.education.specialities.form.header />
+    <x-admin.education.specialities.form.header/>
 
     <x-form.errors :box="true"/>
 

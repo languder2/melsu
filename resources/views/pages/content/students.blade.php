@@ -1,7 +1,9 @@
 <section class="container custom">
     <div class="my-6 lg:mt-[7%] lg:mb-[3.5%] flex flex-col">
         <p class="text-lg text-[#4C4C4C] mb-2">
-            В разделе собрана полезная информация для студентов МелГУ. Здесь студент узнает, как связаться с деканатом, где и как получить справки, как найти сайты преподавателей, как заселиться в общежитие и оплатить проживание.
+            В разделе собрана полезная информация для студентов МелГУ. Здесь студент узнает, как связаться с деканатом,
+            где и как получить справки, как найти сайты преподавателей, как заселиться в общежитие и оплатить
+            проживание.
         </p>
         <a href="#" class="bg-[var(--primary-color)] transition-[var(--transition-link)]
                 py-[12px] px-[24px] max-w-[162px] text-white
@@ -27,7 +29,8 @@
                         <a href="#"><i class="bi bi-arrow-right me-3"></i>Учебный отдел</a>
                     </li>
                     <li class="hover:*:opacity-[0.8] *:transition-[var(--transition-link)] leading-normal pb-3 lg:pb-0">
-                        <a href="#"><i class="bi bi-arrow-right me-3"></i>Отдел молодежных инициатив и проектной деятельности</a>
+                        <a href="#"><i class="bi bi-arrow-right me-3"></i>Отдел молодежных инициатив и проектной
+                            деятельности</a>
                     </li>
                 </ul>
             </div>
@@ -77,10 +80,12 @@
                         <a href="#"><i class="bi bi-arrow-right me-3"></i>Отдел книгохранения фонда</a>
                     </li>
                     <li class="hover:*:opacity-[0.8] *:transition-[var(--transition-link)] leading-normal pb-3">
-                        <a href="#"><i class="bi bi-arrow-right me-3"></i>Отдел обслуживания пользователей с абонементами и читальными залами</a>
+                        <a href="#"><i class="bi bi-arrow-right me-3"></i>Отдел обслуживания пользователей с
+                            абонементами и читальными залами</a>
                     </li>
                     <li class="hover:*:opacity-[0.8] *:transition-[var(--transition-link)] leading-normal pb-3 lg:pb-0">
-                        <a href="#"><i class="bi bi-arrow-right me-3"></i>Отдел научно-информационной и библиографической работы</a>
+                        <a href="#"><i class="bi bi-arrow-right me-3"></i>Отдел научно-информационной и
+                            библиографической работы</a>
                     </li>
                 </ul>
             </div>
@@ -90,9 +95,11 @@
 <div class="box-heading container custom">
     <h2 class="font-bold text-2xl my-6 lg:mt-[7%] lg:mb-[3.5%]">Обучение</h2>
 </div>
-<section class="struct-rumz-section min-h-[auto] lg:min-h-[370px] bg-[100%]"  style="background-image: url({{asset('img/bg-section-7.jpg')}})">
+<section class="struct-rumz-section min-h-[auto] lg:min-h-[370px] bg-[100%]"
+         style="background-image: url({{asset('img/bg-section-7.jpg')}})">
     <div class="container custom relative min-h-[auto] lg:min-h-[370px]">
-        <div class="sub-box-menu grid grid-cols-1 lg:grid-cols-[1fr_1fr] bg-[var(--primary-color)] text-white text-sm sm:text-lg  p-6 w-[100%] lg:w-[70%] lg:absolute lg:bottom-[10px] lg:right-0 mx-auto lg:mx-none">
+        <div
+            class="sub-box-menu grid grid-cols-1 lg:grid-cols-[1fr_1fr] bg-[var(--primary-color)] text-white text-sm sm:text-lg  p-6 w-[100%] lg:w-[70%] lg:absolute lg:bottom-[10px] lg:right-0 mx-auto lg:mx-none">
             <div>
                 <ul>
                     <li class="hover:*:opacity-[0.8] *:transition-[var(--transition-link)] leading-normal pb-3">
@@ -163,9 +170,11 @@
 <div class="box-heading container custom">
     <h2 class="font-bold text-2xl my-6 lg:mt-[7%] lg:mb-[3.5%]">Объединения и клубы</h2>
 </div>
-<section class="struct-rumz-section min-h-[auto] lg:min-h-[370px] bg-[100%]" style="background-image: url({{asset('img/bg-section-8.jpg')}})">
+<section class="struct-rumz-section min-h-[auto] lg:min-h-[370px] bg-[100%]"
+         style="background-image: url({{asset('img/bg-section-8.jpg')}})">
     <div class="container custom relative min-h-[auto] lg:min-h-[370px]">
-        <div class="sub-box-menu grid grid-cols-1 lg:grid-cols-[1fr_1fr] bg-[var(--primary-color)] text-white text-sm sm:text-lg  p-6 w-[100%] lg:w-[70%] lg:absolute lg:bottom-[10px] lg:right-0 mx-auto lg:mx-none">
+        <div
+            class="sub-box-menu grid grid-cols-1 lg:grid-cols-[1fr_1fr] bg-[var(--primary-color)] text-white text-sm sm:text-lg  p-6 w-[100%] lg:w-[70%] lg:absolute lg:bottom-[10px] lg:right-0 mx-auto lg:mx-none">
             <div>
                 <ul>
                     <li class="hover:*:opacity-[0.8] *:transition-[var(--transition-link)] leading-normal pb-3">

@@ -1,4 +1,4 @@
-<div class="flex mb-4 gap-x-4"  id="SelectWrapper{{$i}}">
+<div class="flex mb-4 gap-x-4" id="SelectWrapper{{$i}}">
     <div class="select-wrapper border-b border-dashed flex-1 relative">
 
         <x-form.input
@@ -79,7 +79,6 @@
                 "
                 >{!! @$record->{$field} !!}</li>
 
-
             @endforeach
         </ul>
     </div>
@@ -103,13 +102,13 @@
         />
     </div>
     <div class="w-8 text-center">
-        <a  href="#"
-            class="
+        <a href="#"
+           class="
                 inline-block mt-6
                 hover:text-red-700
                 active:text-gray-700
             "
-            onClick="return AddLine.RemoveBLock('SelectWrapper{{$i}}');"
+           onClick="return AddLine.RemoveBLock('SelectWrapper{{$i}}');"
         >
             <i class="fas fa-user-minus"></i>
         </a>

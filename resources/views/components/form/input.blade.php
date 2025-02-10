@@ -51,7 +51,9 @@
                 peer-autofill:top-0
             "
         >
-            {{$label}}@if(isset($required))*@endif
+            {{$label}}@if(isset($required))
+                *
+            @endif
         </label>
     @endif
 </div>

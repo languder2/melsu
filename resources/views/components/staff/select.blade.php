@@ -8,7 +8,7 @@
         value="{{$params->value}}"
     >
 
-    <div class="block relative mt-2" >
+    <div class="block relative mt-2">
         <input
             type="text"
             @if(isset($params->id))

@@ -32,29 +32,29 @@
 
         @foreach($department->list as $record)
             <div>
-                <?=$record->department?>
+                    <?= $record->department ?>
             </div>
 
             <div>
-                <?=$record->post?>
+                    <?= $record->post ?>
             </div>
 
             <div>
-                <?=$record->lastname?>
-                <?=$record->firstname?>
-                <?=$record->middlename?>
+                    <?= $record->lastname ?>
+                    <?= $record->firstname ?>
+                    <?= $record->middlename ?>
             </div>
 
             <div>
-                <?=$record->address?>
+                    <?= $record->address ?>
             </div>
 
             <div>
-                <?=$record->email?>
+                    <?= $record->email ?>
             </div>
 
             <div>
-                <?=$record->phone?>
+                    <?= $record->phone ?>
             </div>
 
             <div>

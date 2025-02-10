@@ -4,14 +4,18 @@
     </h2>
 
     @foreach($group->list as $key=>$post)
-        <div class="grid grid-cols-1 lg:grid-cols-[33%_33%_33%] gap-1 mb-[20px] lg:mb-[4px] border  border-[lightgray] lg:border-none">
-            <div class="p-2.5 flex lg:justify-left order-0 items-center bg-[var(--primary-color)] @if($key !== 0) lg:hidden @endif">
+        <div
+            class="grid grid-cols-1 lg:grid-cols-[33%_33%_33%] gap-1 mb-[20px] lg:mb-[4px] border  border-[lightgray] lg:border-none">
+            <div
+                class="p-2.5 flex lg:justify-left order-0 items-center bg-[var(--primary-color)] @if($key !== 0) lg:hidden @endif">
                 <span class="font-bold text-white">Название лаборатории</span>
             </div>
-            <div class="p-2.5 flex lg:justify-left order-2 items-center bg-[var(--primary-color)] @if($key !== 0) lg:hidden @endif">
+            <div
+                class="p-2.5 flex lg:justify-left order-2 items-center bg-[var(--primary-color)] @if($key !== 0) lg:hidden @endif">
                 <span class="font-bold text-white">ФИО Начальника</span>
             </div>
-            <div class="p-2.5 flex lg:justify-left order-3 items-center bg-[var(--primary-color)] @if($key !== 0) lg:hidden @endif">
+            <div
+                class="p-2.5 flex lg:justify-left order-3 items-center bg-[var(--primary-color)] @if($key !== 0) lg:hidden @endif">
                 <span class="font-bold text-white">Адрес</span>
             </div>
             <div class="bg-white p-2.5 flex lg:justify-left items-center order-1 lg:order-4">

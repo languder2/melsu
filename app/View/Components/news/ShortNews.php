@@ -38,7 +38,7 @@ class ShortNews extends Component
 
         $this->reports = Events
             ::where('publication_at', '<=', Carbon::now())
-            ->where('type','report')
+            ->where('type', 'report')
             ->select(
                 'id',
                 'title',
@@ -52,7 +52,7 @@ class ShortNews extends Component
 
         $this->previews = Events
             ::where('publication_at', '<=', Carbon::now())
-            ->where('type','preview')
+            ->where('type', 'preview')
             ->select(
                 'id',
                 'title',
@@ -70,10 +70,10 @@ class ShortNews extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.news.short-news',[
-            'news'      => $this->news,
-            'previews'  => $this->previews,
-            'reports'   => $this->reports,
+        return view('components.news.short-news', [
+            'news' => $this->news,
+            'previews' => $this->previews,
+            'reports' => $this->reports,
         ]);
     }
 }

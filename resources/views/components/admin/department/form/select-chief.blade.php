@@ -73,7 +73,6 @@
                     "
                 >{!! @$record->{$field} !!}</li>
 
-
             @endforeach
         </ul>
     </div>

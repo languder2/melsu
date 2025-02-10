@@ -18,17 +18,17 @@
             <span class="text-[#4C4C4C] text-lg">
                 {{$department->chief_post}}:
             </span>
-            <a
-                href="{{$department->chief_card?->link}}"
-                class="
+                <a
+                    href="{{$department->chief_card?->link}}"
+                    class="
                     text-red-700 text-lg pt-3 sm:pl-3 sm:pt-0 sku
                     font-semibold
                     hover:underline
                 "
-            >
-                {{$department->chief_card?->full_name}}
-            </a>
-        </div>
+                >
+                    {{$department->chief_card?->full_name}}
+                </a>
+            </div>
         @endif
     </div>
     <div class="flex justify-between flex-col sm:flex-row mb-7 sm:mb-0">

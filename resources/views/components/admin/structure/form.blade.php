@@ -19,7 +19,7 @@
 
     <hr>
 
-    <x-form.errors />
+    <x-form.errors/>
 
     <x-form.input type="hidden" name="id" value="{{$form->id??null}}"/>
 

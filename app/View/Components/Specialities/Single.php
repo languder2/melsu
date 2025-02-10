@@ -1,14 +1,17 @@
 <?php
+
 namespace App\View\Components\Specialities;
 
+use App\Models\Education\Speciality;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
-use App\Models\Education\Speciality;
+
 class Single extends Component
 {
 
     public ?Speciality $speciality;
+
     /**
      * Create a new component instance.
      */
@@ -22,7 +25,7 @@ class Single extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.specialities.single',[
+        return view('components.specialities.single', [
             'speciality' => $this->speciality
         ]);
     }

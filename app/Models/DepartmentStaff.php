@@ -9,9 +9,9 @@ class DepartmentStaff extends Model
 {
     use SoftDeletes;
 
-    protected $table        = 'department_staffs';
+    protected $table = 'department_staffs';
 
-    protected $fillable     = [
+    protected $fillable = [
         'id',
         'staff',
         'department',
@@ -20,35 +20,35 @@ class DepartmentStaff extends Model
         'deleted_at'
     ];
 
-    public static function AddInDepartment($id,$staffs):void
+    public static function AddInDepartment($id, $staffs): void
     {
 
-        if(!is_array($staffs)) return;
+        if (!is_array($staffs)) return;
 
-        foreach ($staffs as $key=>$staff)
-            if(empty($staff['staff']))
+        foreach ($staffs as $key => $staff)
+            if (empty($staff['staff']))
                 unset($staffs[$key]);
 
 
-        $list = self::where('department',$id)->get();
+        $list = self::where('department', $id)->get();
 
         foreach ($list as $record)
-            if(!isset($staffs[$record->id]))
+            if (!isset($staffs[$record->id]))
                 $record->delete();
 
-        foreach ($staffs as $key=>$staff){
+        foreach ($staffs as $key => $staff) {
 
             $record = self::find($key);
 
-            if(is_null($record))
+            if (is_null($record))
                 $record = new DepartmentStaff();
 
-            $record->department         = $id;
+            $record->department = $id;
 
             $record->fill($staff);
 
             $record->post = $staff['post'];
-            $record->sort = $staff['sort']??1000;
+            $record->sort = $staff['sort'] ?? 1000;
 
             $record->save();
         }

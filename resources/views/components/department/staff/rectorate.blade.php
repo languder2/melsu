@@ -4,7 +4,7 @@
         class="grid grid-cols-1 lg:grid-cols-[25%_minmax(70%,_1fr)] gap-5 min-h-[209px]"
     >
         <div class="mx-auto">
-            <img src="{{asset("images/photo/600x600_{$staff->photo}.jpg")}}" alt="" class="">
+            <img src="{{$staff->avatar_src   }}" alt="" class="">
         </div>
         <div class="flex flex-col justify-evenly">
             <div class="mb-7 lg:mb-0 sm:flex-row">
@@ -20,7 +20,7 @@
                         group-hover:underline
                     "
                 >
-                        {{$staff->full_name}}
+                    {{$staff->full_name}}
                 </h3>
                 @if($staff->post)
                     <div class="grid grid-cols-1 lg:grid-cols-[25%_minmax(70%,_1fr)] mb-7 lg:mb-0">

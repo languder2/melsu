@@ -4,12 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Department\Department;
 use App\Models\Department\Section;
-use App\Models\Department\Staff;
+
 class TestController extends Controller
 {
     public function index()
     {
-        $department = Department::where('alias','rectorate')->first();
+        $department = Department::where('alias', 'rectorate')->first();
 
         dump($department->chief_card?->link);
         dump($department->staffs);
@@ -30,15 +30,15 @@ class TestController extends Controller
 //
 
         /**
-
-        $profile->documents()->save(new Document([
-            'title'     => 'test',
-            'filename'  => 'test',
-            'filetype'  => 'test',
-        ]));
-
-        dd($profile->documents()->count());
-        /**/
+         *
+         * $profile->documents()->save(new Document([
+         * 'title'     => 'test',
+         * 'filename'  => 'test',
+         * 'filetype'  => 'test',
+         * ]));
+         *
+         * dd($profile->documents()->count());
+         * /**/
 //        dd($profile->documents()->where('show',true)->get()->pluck('show'));
 
 //        $profile->documents()->save(new Link([

@@ -4,20 +4,26 @@
     </h2>
 
     @foreach($group->list as $key=>$post)
-        <div class="grid grid-cols-1 lg:grid-cols-[20%_20%_20%_20%_20%] gap-1 mb-[20px] lg:mb-[4px] border  border-[lightgray] lg:border-none">
-            <div class="p-2.5 flex lg:justify-left order-0 items-center bg-[var(--primary-color)] @if($key !== 0) lg:hidden @endif">
+        <div
+            class="grid grid-cols-1 lg:grid-cols-[20%_20%_20%_20%_20%] gap-1 mb-[20px] lg:mb-[4px] border  border-[lightgray] lg:border-none">
+            <div
+                class="p-2.5 flex lg:justify-left order-0 items-center bg-[var(--primary-color)] @if($key !== 0) lg:hidden @endif">
                 <span class="font-bold text-white">Название департамента</span>
             </div>
-            <div class="p-2.5 flex lg:justify-left order-1 items-center bg-[var(--primary-color)] @if($key !== 0) lg:hidden @endif">
+            <div
+                class="p-2.5 flex lg:justify-left order-1 items-center bg-[var(--primary-color)] @if($key !== 0) lg:hidden @endif">
                 <span class="font-bold text-white">ФИО</span>
             </div>
-            <div class="p-2.5 flex lg:justify-left order-2 items-center bg-[var(--primary-color)] @if($key !== 0) lg:hidden @endif">
+            <div
+                class="p-2.5 flex lg:justify-left order-2 items-center bg-[var(--primary-color)] @if($key !== 0) lg:hidden @endif">
                 <span class="font-bold text-white">Адрес</span>
             </div>
-            <div class="p-2.5 flex lg:justify-left order-3 items-center bg-[var(--primary-color)] @if($key !== 0) lg:hidden @endif">
+            <div
+                class="p-2.5 flex lg:justify-left order-3 items-center bg-[var(--primary-color)] @if($key !== 0) lg:hidden @endif">
                 <span class="font-bold text-white">Должность</span>
             </div>
-            <div class="p-2.5 flex lg:justify-left order-4 items-center bg-[var(--primary-color)] @if($key !== 0) lg:hidden @endif">
+            <div
+                class="p-2.5 flex lg:justify-left order-4 items-center bg-[var(--primary-color)] @if($key !== 0) lg:hidden @endif">
                 <span class="font-bold text-white">Эл. почта</span>
             </div>
 

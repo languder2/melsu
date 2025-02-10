@@ -1,9 +1,11 @@
 <div class="box-heading container custom">
     <h2 class="font-bold text-2xl my-6 lg:mt-[7%] lg:mb-[3.5%]">Уровни и стандарты образования</h2>
 </div>
-<section class="standards-education-section min-h-[auto] lg:min-h-[370px] bg-[length:100%_auto] bg-center" style="background-image: url({{asset('img/bg-section-2.jpg')}})">
+<section class="standards-education-section min-h-[auto] lg:min-h-[370px] bg-[length:100%_auto] bg-center"
+         style="background-image: url({{asset('img/bg-section-2.jpg')}})">
     <div class="container custom relative min-h-[auto] lg:min-h-[370px]">
-        <div class="sub-box-menu grid grid-cols-1 lg:grid-cols-[1fr_1fr] bg-[var(--primary-color)] text-white text-sm sm:text-lg  p-6 w-[100%] lg:w-[70%] lg:absolute lg:bottom-[10px] lg:right-0 mx-auto lg:mx-none">
+        <div
+            class="sub-box-menu grid grid-cols-1 lg:grid-cols-[1fr_1fr] bg-[var(--primary-color)] text-white text-sm sm:text-lg  p-6 w-[100%] lg:w-[70%] lg:absolute lg:bottom-[10px] lg:right-0 mx-auto lg:mx-none">
             <div>
                 <ul>
                     <li class="hover:*:opacity-[0.8] *:transition-[var(--transition-link)] leading-normal pb-3">
@@ -68,9 +70,11 @@
 <div class="box-heading container custom">
     <h2 class="font-bold text-2xl my-6 lg:mt-[7%] lg:mb-[3.5%]">Поступающим</h2>
 </div>
-<section class="incoming-section min-h-[auto] lg:min-h-[370px] bg-[100%]" style="background-image: url({{asset('img/bg-section-3.jpg')}})">
+<section class="incoming-section min-h-[auto] lg:min-h-[370px] bg-[100%]"
+         style="background-image: url({{asset('img/bg-section-3.jpg')}})">
     <div class="container custom relative min-h-[auto] lg:min-h-[370px]">
-        <div class="sub-box-menu grid grid-cols-1 lg:grid-cols-[1fr_1fr] bg-[var(--primary-color)] text-white text-sm sm:text-lg p-6 w-[100%] lg:w-[70%] lg:absolute lg:bottom-[10px] lg:right-0 mx-auto lg:mx-none">
+        <div
+            class="sub-box-menu grid grid-cols-1 lg:grid-cols-[1fr_1fr] bg-[var(--primary-color)] text-white text-sm sm:text-lg p-6 w-[100%] lg:w-[70%] lg:absolute lg:bottom-[10px] lg:right-0 mx-auto lg:mx-none">
             <div>
                 <ul>
                     <li class="hover:*:opacity-[0.8] *:transition-[var(--transition-link)] leading-normal pb-3">
@@ -135,9 +139,11 @@
 <div class="box-heading container custom">
     <h2 class="font-bold text-2xl my-6 lg:mt-[7%] lg:mb-[3.5%]">Дополнительная информация</h2>
 </div>
-<section class="dop-info-section min-h-[auto] lg:min-h-[370px] bg-[100%]" style="background-image: url({{asset('img/bg-section-4.jpg')}})">
+<section class="dop-info-section min-h-[auto] lg:min-h-[370px] bg-[100%]"
+         style="background-image: url({{asset('img/bg-section-4.jpg')}})">
     <div class="container custom relative min-h-[auto] lg:min-h-[370px]">
-        <div class="sub-box-menu grid grid-cols-1 lg:grid-cols-[1fr_1fr] bg-[var(--primary-color)] text-white text-sm sm:text-lg p-6 w-[100%] lg:w-[70%] lg:absolute lg:bottom-[10px] lg:right-0 mx-auto lg:mx-none">
+        <div
+            class="sub-box-menu grid grid-cols-1 lg:grid-cols-[1fr_1fr] bg-[var(--primary-color)] text-white text-sm sm:text-lg p-6 w-[100%] lg:w-[70%] lg:absolute lg:bottom-[10px] lg:right-0 mx-auto lg:mx-none">
             <div>
                 <ul>
                     <li class="hover:*:opacity-[0.8] *:transition-[var(--transition-link)] leading-normal pb-3">

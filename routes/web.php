@@ -1,20 +1,18 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\{AdminController,suStructureController,NewsController};
-use App\Http\Controllers\EventsController;
-use App\Http\Controllers\WishTreeController;
-use App\Http\Controllers\{MenuItemsController,MenuController,PagesController};
-use App\Http\Controllers\StaffController;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\{AdminController, NewsController, suStructureController};
+use App\Http\Controllers\{MenuController, MenuItemsController, PagesController};
 use App\Http\Controllers\DepartmentController;
-use App\Http\Controllers\TestController;
-use App\Http\Controllers\Education\{
+use App\Http\Controllers\Education\{DepartmentController as EducationDepartmentController,
     EducationController,
     FacultyController,
-    DepartmentController as EducationDepartmentController,
-    SpecialityController
-};
+    SpecialityController};
+use App\Http\Controllers\EventsController;
+use App\Http\Controllers\StaffController;
+use App\Http\Controllers\TestController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\WishTreeController;
+use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', function () {
@@ -22,17 +20,17 @@ Route::get('/', function () {
 })->name('pages:main');
 
 Route::view('wish-tree', 'pages.wish-tree.form')->name('wish-tree');
-Route::post('wish-tree/save',  [WishTreeController::class, 'save'])->name('wish-tree:save');
-Route::get('wish-tree/list',  [WishTreeController::class, 'list'])->name('wish-tree:list');
+Route::post('wish-tree/save', [WishTreeController::class, 'save'])->name('wish-tree:save');
+Route::get('wish-tree/list', [WishTreeController::class, 'list'])->name('wish-tree:list');
 
 
-Route::get('test',  [TestController::class, 'index']);
+Route::get('test', [TestController::class, 'index']);
 
 Route::view('admin', 'pages.admin')->name('admin:main');
 
 Route::post('login', [AdminController::class, 'login'])->name('admin:login');
 
-Route::get('exit', function (){
+Route::get('exit', function () {
 
     auth()->logout();
     return redirect()->route('admin:main');
@@ -58,6 +56,8 @@ Route::controller(suStructureController::class)
         Route::get('', 'show')->name('structure:show');
     });
 
+/* News: admin */
+
 Route::middleware('auth.check')
     ->controller(NewsController::class)
     ->prefix('admin/news')
@@ -71,6 +71,8 @@ Route::middleware('auth.check')
 
     });
 
+/* News: public */
+
 Route::controller(NewsController::class)
     ->prefix('news')
     ->group(function () {
@@ -79,6 +81,8 @@ Route::controller(NewsController::class)
         Route::get('show/{id}', 'show')->name('news:show');
 
     });
+
+/* Events: admin */
 
 Route::middleware('auth.check')
     ->controller(EventsController::class)
@@ -139,7 +143,8 @@ Route::middleware('auth.check')
     ->group(function () {
 
         Route::get('', 'adminList')->name('admin:staff');
-        Route::get('works/add-line', function(){})->name('admin:staff:works:add-line');
+        Route::get('works/add-line', function () {
+        })->name('admin:staff:works:add-line');
         Route::get('works/add-line/{i}', 'worksAddLine')->name('admin:staff:works:add-line-num');
         Route::get('add', 'form')->name('admin:staff:add');
         Route::get('edit/{id}', 'form')->name('admin:staff:edit');
@@ -170,13 +175,16 @@ Route::middleware('auth.check')
 
         Route::get('', 'adminList')->name('admin:department');
 
-        Route::get('contents/add', function(){})->name('admin:department:content:add');
+        Route::get('contents/add', function () {
+        })->name('admin:department:content:add');
         Route::get('contents/add/{i}', 'addContentSection');
 
-        Route::get('staff/add', function(){})->name('admin:department:staff:add');
+        Route::get('staff/add', function () {
+        })->name('admin:department:staff:add');
         Route::get('staff/add/{i}', 'addStaff');
 
-        Route::get('document/add', function(){})->name('admin:department:document:add');
+        Route::get('document/add', function () {
+        })->name('admin:department:document:add');
         Route::get('document/add/{i}', 'addDocument2Form');
 
         Route::get('add', 'form')->name('admin:department:add');
@@ -186,9 +194,11 @@ Route::middleware('auth.check')
 
     });
 
+/* Department: public */
+
 Route::controller(DepartmentController::class)
     ->group(function () {
-        Route::get('departments', 'showList') ->name('public:department:list');
+        Route::get('departments', 'showList')->name('public:department:list');
         Route::get('department/{code}', 'show')->name('public:department:show');
     });
 
@@ -241,12 +251,14 @@ Route::controller(StaffController::class)
 
 Route::controller(EducationController::class)
     ->prefix('specialities')
-    ->group(function(){
+    ->group(function () {
         Route::get('', 'specialities')->name('public:education:specialities:all');
 
         Route::get('{speciality}', 'speciality')->name('public:education:speciality');
 
     });
+
+/* Education: public */
 
 Route::controller(EducationController::class)
     ->prefix('faculties')
@@ -267,10 +279,14 @@ Route::controller(EducationController::class)
         Route::get('{faculty}/{department}', 'department')
             ->name('public:education:department');
 
+        Route::get('{faculty}/{department}/specialities', 'specialities')
+            ->name('public:education:specialities:department');
+
         Route::get('{faculty}', 'faculty')
             ->name('public:education:faculty');
 
     });
 
+/* Pages: public */
 
-Route::get('{alias}', [PagesController::class,'showPage']);
+Route::get('{alias}', [PagesController::class, 'showPage']);

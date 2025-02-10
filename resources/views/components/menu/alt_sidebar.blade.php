@@ -14,22 +14,22 @@
             <ul class="left-side-menu @if(!$item->active) hidden @endif">
 
                 @foreach($item->subs as $sub)
-                        @if($sub->active)
-                            <li class="py-3.5 px-5" style="border-bottom: 1px solid var(--primary-color);">
+                    @if($sub->active)
+                        <li class="py-3.5 px-5" style="border-bottom: 1px solid var(--primary-color);">
                                 <span class="text-baseRed">
                                     {{$sub->name}}
                                 </span>
-                            </li>
-                        @else
-                            <li class="py-3.5 px-5">
-                                <a
-                                    href="{{$sub->link}}"
-                                    class="text-[#301428] font-['jost']"
-                                >
-                                    {{$sub->name}}
-                                </a>
-                            </li>
-                        @endif
+                        </li>
+                    @else
+                        <li class="py-3.5 px-5">
+                            <a
+                                href="{{$sub->link}}"
+                                class="text-[#301428] font-['jost']"
+                            >
+                                {{$sub->name}}
+                            </a>
+                        </li>
+                    @endif
                 @endforeach
             </ul>
         @endif

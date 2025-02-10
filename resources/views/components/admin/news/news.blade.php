@@ -1,5 +1,5 @@
-<x-admin.news.header />
+<x-admin.news.header/>
 
-<x-admin.news.list :list="$list??[]" />
+<x-admin.news.list :list="$list??[]"/>
 
 {{@$list->links()}}

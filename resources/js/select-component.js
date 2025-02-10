@@ -43,8 +43,8 @@ let selectWrappers = document.querySelectorAll('.select-wrapper');
 selectWrappers.forEach(initSelect);
 
 
-export function callAddSelect(args,id){
-    let el = document.getElementById(args[3]+id);
-    console.log(el,args[3]+id);
+export function callAddSelect(args, id) {
+    let el = document.getElementById(args[3] + id);
+    console.log(el, args[3] + id);
     initSelect(el);
 }

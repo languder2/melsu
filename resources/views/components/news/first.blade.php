@@ -1,8 +1,10 @@
-<div class="first-news-box col-span-2 row-span-2 border border-[#e5e7eb] sm:max-h-[758px]">
+<div class="first-news-box col-span-2 row-span-2 border border-[#e5e7eb] sm:max-h-[758px] max-w-2xl">
     <a href="{{route('news:show',$news->id)}}">
         <div class="img-news-box xl:max-w-[660px] sm:max-h-[353px] relative">
-            <img src="{{asset('images/news/600x600_'.$news->image.'.jpg')}}" alt="" class="object-cover max-h-[353px] w-full">
-            <span class="meta-category bg-[var(--primary-color)] text-white text-[12px] absolute top-[10px] py-[3px] px-[7px] font-[500]">
+            <img src="{{asset('images/news/600x600_'.$news->image.'.jpg')}}" alt=""
+                 class="object-cover max-h-[353px] w-full">
+            <span
+                class="meta-category bg-[var(--primary-color)] text-white text-[12px] absolute top-[10px] py-[3px] px-[7px] font-[500]">
                 {{@$news->tag->name}}
             </span>
         </div>

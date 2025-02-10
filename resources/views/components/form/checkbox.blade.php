@@ -6,14 +6,14 @@
         @if(isset($name))
             name    = "{{$name}}"
         @endif
-        type    = "checkbox"
+        type="checkbox"
         @if(isset($value))
             value   = "{{$value}}"
         @endif
         @if(isset($checked))
             checked
         @endif
-        class   = "
+        class="
             w-4 h-4 text-baseRed bg-gray-100 border-gray-300 rounded
             focus:ring-baseRed focus:ring-2
             cursor-pointer

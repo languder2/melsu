@@ -4,15 +4,17 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Carbon\Carbon;
-use App\Models\{DepartmentSection,DepartmentDocument,DepartmentStaff};
 
 class Department extends Model
 {
     use SoftDeletes;
 
-    protected $table        = 'departments';
-    protected $fillable     = [
+    public static $FormMessage = [
+        'name.required' => 'Укажите название',
+        'name.unique' => 'Название уже занято',
+    ];
+    protected $table = 'departments';
+    protected $fillable = [
         'id',
         'name',
         'chief',
@@ -24,51 +26,46 @@ class Department extends Model
 
     public static function FormRules($id)
     {
-        return  [
-            'name'              => "required|unique:departments,name,{$id},id,deleted_at,NULL",
-            'alias'             => "nullable|unique:departments,alias,{$id},id,deleted_at,NULL",
-            'chief'             => '',
-            'chief_post'        => '',
-            'chief_name'        => '',
-            'sort'              => '',
-            'sections'          => '',
-            'staffs'            => '',
-            'documents'         => '',
+        return [
+            'name' => "required|unique:departments,name,{$id},id,deleted_at,NULL",
+            'alias' => "nullable|unique:departments,alias,{$id},id,deleted_at,NULL",
+            'chief' => '',
+            'chief_post' => '',
+            'chief_name' => '',
+            'sort' => '',
+            'sections' => '',
+            'staffs' => '',
+            'documents' => '',
         ];
     }
-
-    public static $FormMessage = [
-        'name.required'     => 'Укажите название',
-        'name.unique'       => 'Название уже занято',
-    ];
 
     public static function AdminList()
     {
         return self::orderBy('name')
-            ->join('staffs', 'departments.chief', '=', 'staffs.id','left')
+            ->join('staffs', 'departments.chief', '=', 'staffs.id', 'left')
             ->select('departments.*', 'staffs.firstname', 'staffs.lastname', 'staffs.middle_name')
             ->paginate(20);
     }
 
-    public static function getByID($id):?Department
+    public static function getByID($id): ?Department
     {
-        $department             = self::find($id);
+        $department = self::find($id);
 
-        if(!is_null($department)){
+        if (!is_null($department)) {
 
-            $chief                  = Staff::find($department->chief);
+            $chief = Staff::find($department->chief);
 
-            if(!is_null($chief))
+            if (!is_null($chief))
                 $department->chief_name = "{$chief->lastname} {$chief->firstname} {$chief->middle_name}";
 
-            $department->sections   = DepartmentSection::where('department',$department->id)->get();
+            $department->sections = DepartmentSection::where('department', $department->id)->get();
 
-            $department->staffs     = DepartmentStaff::where('department',$department->id)
+            $department->staffs = DepartmentStaff::where('department', $department->id)
                 ->join('staffs', 'department_staffs.staff', '=', 'staffs.id')
                 ->select('department_staffs.*', 'staffs.firstname', 'staffs.lastname', 'staffs.middle_name')
                 ->get();
 
-            $department->docuiments = DepartmentDocument::where('department',$department->id)->get();
+            $department->docuiments = DepartmentDocument::where('department', $department->id)->get();
         }
 
         return $department;

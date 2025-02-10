@@ -8,7 +8,7 @@
         <hr>
         <div class="px-4 py-2">
 
-            <x-form.errors />
+            <x-form.errors/>
 
             <x-form.input
                 id="username"

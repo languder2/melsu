@@ -25,23 +25,24 @@ class FAQ extends Model
         'deleted_at',
     ];
 
-    public static function FormRules($id):array
+    public static function FormRules($id): array
     {
         return [
-            'question'          => 'required',
-            'answer'            => 'required',
-            'show'              => 'boolean',
-            'order'             => 'nullable|numeric',
+            'question' => 'required',
+            'answer' => 'required',
+            'show' => 'boolean',
+            'order' => 'nullable|numeric',
         ];
     }
 
-    public static function FormMessage():array
+    public static function FormMessage(): array
     {
         return [
-            'question'          => 'Укажите вопрос',
-            'answer'            => 'Заполните ответ',
+            'question' => 'Укажите вопрос',
+            'answer' => 'Заполните ответ',
         ];
     }
+
     public function relation(): MorphTo
     {
         return $this->morphTo();

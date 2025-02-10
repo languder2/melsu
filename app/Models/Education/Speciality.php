@@ -2,13 +2,13 @@
 
 namespace App\Models\Education;
 
+use App\Models\Education\Department as Department;
+use App\Models\Gallery\Image;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use App\Models\Education\Department as Department;
-use App\Models\Gallery\Image as GalleryImage;
 
 class Speciality extends Model
 {
@@ -30,33 +30,53 @@ class Speciality extends Model
         'order',
     ];
 
-    public static function FormRules($id):array
+    public static function FormRules($id): array
     {
         return [
-            'name'              => 'required',
-            'code'              => "required|unique:education_specialities,code,{$id},id,deleted_at,NULL",
-            'spec_code'         => "required",
-            'faculty_code'      => 'required',
-            'department_code'   => 'required',
-            'level_code'        => 'required',
-            'total_places'      => '',
-            'favorite'          => '',
-            'description'       => '',
-            'order'             => 'nullable|numeric',
+            'name' => 'required',
+            'code' => "required|unique:education_specialities,code,$id,id,deleted_at,NULL",
+            'spec_code' => "required",
+            'faculty_code' => 'required',
+            'department_code' => 'required',
+            'level_code' => 'required',
+            'total_places' => '',
+            'favorite' => '',
+            'description' => '',
+            'order' => 'nullable|numeric',
         ];
     }
 
-    public static function FormMessage():array
+    public static function FormMessage(): array
     {
         return [
-            'name'                      => 'Укажите заголовок',
-            'code.required'             => 'Код должен быть указан',
-            'code.unique'               => 'Код должен быть уникальным',
-            'spec_code'                 => "Код специальности должен быть указан",
-            'faculty_code'              => 'Укажите факультет',
-            'department_code'           => 'Укажите кафедру',
-            'level_code'                => 'Укажите уровень',
+            'name' => 'Укажите заголовок',
+            'code.required' => 'Код должен быть указан',
+            'code.unique' => 'Код должен быть уникальным',
+            'spec_code' => "Код специальности должен быть указан",
+            'faculty_code' => 'Укажите факультет',
+            'department_code' => 'Укажите кафедру',
+            'level_code' => 'Укажите уровень',
         ];
+    }
+
+    public function level(): BelongsTo
+    {
+        return $this->belongsTo(Level::class, 'level_code', 'code');
+    }
+
+    public function department(): BelongsTo
+    {
+        return $this->belongsTo(Department::class, 'department_code', 'code');
+    }
+
+    public function faculty(): BelongsTo
+    {
+        return $this->belongsTo(Faculty::class, 'faculty_code', 'code');
+    }
+
+    public function getPlacesAttribute(): int
+    {
+        return $this->profiles()->pluck('places')->sum();
     }
 
     public function profiles(): HasMany
@@ -64,32 +84,9 @@ class Speciality extends Model
         return $this->hasMany(Profile::class, 'speciality_code', 'code');
     }
 
-    public function level():BelongsTo
-    {
-        return $this->belongsTo(Level::class, 'level_code', 'code');
-    }
-
-    public function department():BelongsTo
-    {
-        return $this->belongsTo(Department::class, 'department_code', 'code');
-    }
-
-    public function faculty():BelongsTo
-    {
-        return $this->belongsTo(Faculty::class, 'faculty_code', 'code');
-    }
-
-    public function getPlacesAttribute():int
-    {
-        dd($this->profiles()->pluck('places'));
-
-        return $this->profiles()->pluck('places')->sum();
-    }
-
     public function logo(): MorphMany
     {
-
-        return $this->morphMany(GalleryImage::class, 'relation')->where('type','logo');
+        return $this->morphMany(Image::class, 'relation')->where('type', 'logo');
     }
 
 }

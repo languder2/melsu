@@ -9,9 +9,9 @@ class Section extends Model
 {
     use SoftDeletes;
 
-    protected $table        = 'department_sections';
+    protected $table = 'department_sections';
 
-    protected $fillable     = [
+    protected $fillable = [
         'id',
         'department',
         'name',
@@ -20,15 +20,15 @@ class Section extends Model
         'sort',
     ];
 
-    public static function FormRules($id):array
+    public static function FormRules($id): array
     {
-        return  [];
-    }
-    public static function FormMessage():array
-    {
-        return  [];
+        return [];
     }
 
+    public static function FormMessage(): array
+    {
+        return [];
+    }
 
 
 }

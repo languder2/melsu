@@ -1,18 +1,19 @@
 <div class="container custom p-2.5">
-    <x-news.filter />
+    <x-news.filter/>
 
-    <div class="news-wrapper grid grid-cols-1 lg:grid-cols-[1fr_1fr_1fr] xl:grid-cols-[1fr_1fr_1fr_1fr] gap-0 gap-y-2.5 lg:gap-5">
+    <div
+        class="news-wrapper grid grid-cols-1 lg:grid-cols-[1fr_1fr_1fr] xl:grid-cols-[1fr_1fr_1fr_1fr] gap-0 gap-y-2.5 lg:gap-5">
         @foreach($list as $key=>$news)
             @if($key === 0)
-                <x-news.first :news="$news" />
+                <x-news.first :news="$news"/>
             @else
-                <x-news.second :news="$news" />
+                <x-news.second :news="$news"/>
             @endif
         @endforeach
     </div>
     <br>
     {!! $list->links() !!}
-{{--    <x-news.pagination :list="$list" />--}}
+    {{--    <x-news.pagination :list="$list" />--}}
 </div>
 
 

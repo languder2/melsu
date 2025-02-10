@@ -13,7 +13,8 @@
 </section>
 
 <section id="melsu-today" class="container custom lg:p-2.5">
-    <div class="grid lg:grid-cols-[29%_70%] xl:grid-cols-[39%_60%] bg-[var(--primary-color)] w-full lg:gap-x-6 xl:gap-x-3 lg:min-h-[240px] items-end xl:relative mb-6 xl:mb-8">
+    <div
+        class="grid lg:grid-cols-[29%_70%] xl:grid-cols-[39%_60%] bg-[var(--primary-color)] w-full lg:gap-x-6 xl:gap-x-3 lg:min-h-[240px] items-end xl:relative mb-6 xl:mb-8">
         <div class="xl:absolute xl:top-[50px] xl:left-[-50px] xl:py-0">
             <img src="{{asset('img/melsu-unv.jpg')}}" alt="" class="lg:h-[240px] xl:h-[360px] xl:w-[510px]">
         </div>
@@ -43,20 +44,36 @@
         </div>
         <div class="bg-white p-6 border-[1px]">
             <p class="mb-6">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi aspernatur dignissimos dolor doloribus excepturi fuga, fugit illo ipsa itaque molestiae neque omnis qui quo quod recusandae rem rerum sequi veniam.
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad assumenda ducimus laboriosam minus neque nisi nulla perferendis quis vel. Accusamus aperiam consequatur dignissimos doloremque enim fugit iusto provident reiciendis repellendus!
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi aspernatur dignissimos dolor doloribus
+                excepturi fuga, fugit illo ipsa itaque molestiae neque omnis qui quo quod recusandae rem rerum sequi
+                veniam.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad assumenda ducimus laboriosam minus neque
+                nisi nulla perferendis quis vel. Accusamus aperiam consequatur dignissimos doloremque enim fugit iusto
+                provident reiciendis repellendus!
             </p>
             <p class="mb-6">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi aspernatur dignissimos dolor doloribus excepturi fuga, fugit illo ipsa itaque molestiae neque omnis qui quo quod recusandae rem rerum sequi veniam.
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad assumenda ducimus laboriosam minus neque nisi nulla perferendis quis vel. Accusamus aperiam consequatur dignissimos doloremque enim fugit iusto provident reiciendis repellendus!
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi aspernatur dignissimos dolor doloribus
+                excepturi fuga, fugit illo ipsa itaque molestiae neque omnis qui quo quod recusandae rem rerum sequi
+                veniam.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad assumenda ducimus laboriosam minus neque
+                nisi nulla perferendis quis vel. Accusamus aperiam consequatur dignissimos doloremque enim fugit iusto
+                provident reiciendis repellendus!
             </p>
             <p class="mb-6">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi aspernatur dignissimos dolor doloribus excepturi fuga, fugit illo ipsa itaque molestiae neque omnis qui quo quod recusandae rem rerum sequi veniam.
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad assumenda ducimus laboriosam minus neque nisi nulla perferendis quis vel. Accusamus aperiam consequatur dignissimos doloremque enim fugit iusto provident reiciendis repellendus!
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi aspernatur dignissimos dolor doloribus
+                excepturi fuga, fugit illo ipsa itaque molestiae neque omnis qui quo quod recusandae rem rerum sequi
+                veniam.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad assumenda ducimus laboriosam minus neque
+                nisi nulla perferendis quis vel. Accusamus aperiam consequatur dignissimos doloremque enim fugit iusto
+                provident reiciendis repellendus!
             </p>
             <p class="mb-6">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi aspernatur dignissimos dolor doloribus excepturi fuga, fugit illo ipsa itaque molestiae neque omnis qui quo quod recusandae rem rerum sequi veniam.
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad assumenda ducimus laboriosam minus neque nisi nulla perferendis quis vel. Accusamus aperiam consequatur dignissimos doloremque enim fugit iusto provident reiciendis repellendus!
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi aspernatur dignissimos dolor doloribus
+                excepturi fuga, fugit illo ipsa itaque molestiae neque omnis qui quo quod recusandae rem rerum sequi
+                veniam.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad assumenda ducimus laboriosam minus neque
+                nisi nulla perferendis quis vel. Accusamus aperiam consequatur dignissimos doloremque enim fugit iusto
+                provident reiciendis repellendus!
             </p>
         </div>
     </div>
@@ -69,9 +86,11 @@
         <div class="btn-navigation-timeline">
             <ul class="nav-btn-timeline flex gap-x-2.5">
                 <li><a class="prev bg-[var(--primary-color)] text-white p-4 border-[1px] border-[var(--primary-color)] transition duration-300 ease-linear
-                                        hover:text-[var(--primary-color)] hover:bg-white"><i class="bi bi-chevron-left"></i></a></li>
+                                        hover:text-[var(--primary-color)] hover:bg-white"><i
+                            class="bi bi-chevron-left"></i></a></li>
                 <li><a class="next bg-[var(--primary-color)] text-white p-4 border-[1px] border-[var(--primary-color)] transition duration-300 ease-linear
-                                        hover:text-[var(--primary-color)] hover:bg-white"><i class="bi bi-chevron-right"></i></a></li>
+                                        hover:text-[var(--primary-color)] hover:bg-white"><i
+                            class="bi bi-chevron-right"></i></a></li>
             </ul>
         </div>
         <section class="cd-horizontal-timeline">
@@ -102,86 +121,117 @@
 
         <div class="timeline-carousel__item">
             <div class="timeline-carousel__image">
-                <div class="media-wrapper media-wrapper--overlay main-media-wrapper" style="background: url({{asset('img/melsu-unv.jpg')}}) center center; background-size:cover;"></div>
-                <div class="media-wrapper media-wrapper--overlay" style="background: url({{asset('img/melsu-unv.jpg')}}) center center; background-size:cover;"></div>
-                <div class="media-wrapper media-wrapper--overlay" style="background: url({{asset('img/melsu-unv.jpg')}}) center center; background-size:cover;"></div>
+                <div class="media-wrapper media-wrapper--overlay main-media-wrapper"
+                     style="background: url({{asset('img/melsu-unv.jpg')}}) center center; background-size:cover;"></div>
+                <div class="media-wrapper media-wrapper--overlay"
+                     style="background: url({{asset('img/melsu-unv.jpg')}}) center center; background-size:cover;"></div>
+                <div class="media-wrapper media-wrapper--overlay"
+                     style="background: url({{asset('img/melsu-unv.jpg')}}) center center; background-size:cover;"></div>
             </div>
             <div class="timeline-carousel__item-inner">
                 <span class="year">1874</span>
                 <span class="month">June 28</span>
-                <p>ТГАТУ начинает свою историю с 1874 года, когда было создано Реальное училище города Мелитополя. После революции на базе бывшего Реального училища был создан техникум, который начал готовить специалистов по работе с сельскохозяйственной техникой.</p>
+                <p>ТГАТУ начинает свою историю с 1874 года, когда было создано Реальное училище города Мелитополя. После
+                    революции на базе бывшего Реального училища был создан техникум, который начал готовить специалистов
+                    по работе с сельскохозяйственной техникой.</p>
             </div>
         </div>
 
         <div class="timeline-carousel__item">
             <div class="timeline-carousel__image">
-                <div class="media-wrapper media-wrapper--overlay main-media-wrapper" style="background: url({{asset('img/melsu-unv.jpg')}}) center center; background-size:cover;"></div>
-                <div class="media-wrapper media-wrapper--overlay" style="background: url({{asset('img/melsu-unv.jpg')}}) center center; background-size:cover;"></div>
-                <div class="media-wrapper media-wrapper--overlay" style="background: url({{asset('img/melsu-unv.jpg')}}) center center; background-size:cover;"></div>
+                <div class="media-wrapper media-wrapper--overlay main-media-wrapper"
+                     style="background: url({{asset('img/melsu-unv.jpg')}}) center center; background-size:cover;"></div>
+                <div class="media-wrapper media-wrapper--overlay"
+                     style="background: url({{asset('img/melsu-unv.jpg')}}) center center; background-size:cover;"></div>
+                <div class="media-wrapper media-wrapper--overlay"
+                     style="background: url({{asset('img/melsu-unv.jpg')}}) center center; background-size:cover;"></div>
             </div>
             <div class="timeline-carousel__item-inner">
                 <span class="year">1922</span>
                 <span class="month">June 28</span>
-                <p>ТГАТУ начинает свою историю с 1874 года, когда было создано Реальное училище города Мелитополя. После революции на базе бывшего Реального училища был создан техникум, который начал готовить специалистов по работе с сельскохозяйственной техникой.</p>
+                <p>ТГАТУ начинает свою историю с 1874 года, когда было создано Реальное училище города Мелитополя. После
+                    революции на базе бывшего Реального училища был создан техникум, который начал готовить специалистов
+                    по работе с сельскохозяйственной техникой.</p>
             </div>
         </div>
 
         <div class="timeline-carousel__item">
             <div class="timeline-carousel__image">
-                <div class="media-wrapper media-wrapper--overlay main-media-wrapper" style="background: url({{asset('img/melsu-unv.jpg')}}) center center; background-size:cover;"></div>
-                <div class="media-wrapper media-wrapper--overlay" style="background: url({{asset('img/melsu-unv.jpg')}}) center center; background-size:cover;"></div>
-                <div class="media-wrapper media-wrapper--overlay" style="background: url({{asset('img/melsu-unv.jpg')}}) center center; background-size:cover;"></div>
+                <div class="media-wrapper media-wrapper--overlay main-media-wrapper"
+                     style="background: url({{asset('img/melsu-unv.jpg')}}) center center; background-size:cover;"></div>
+                <div class="media-wrapper media-wrapper--overlay"
+                     style="background: url({{asset('img/melsu-unv.jpg')}}) center center; background-size:cover;"></div>
+                <div class="media-wrapper media-wrapper--overlay"
+                     style="background: url({{asset('img/melsu-unv.jpg')}}) center center; background-size:cover;"></div>
             </div>
             <div class="timeline-carousel__item-inner">
                 <span class="year">1933</span>
                 <span class="month">June 28</span>
-                <p>ТГАТУ начинает свою историю с 1874 года, когда было создано Реальное училище города Мелитополя. После революции на базе бывшего Реального училища был создан техникум, который начал готовить специалистов по работе с сельскохозяйственной техникой.</p>
+                <p>ТГАТУ начинает свою историю с 1874 года, когда было создано Реальное училище города Мелитополя. После
+                    революции на базе бывшего Реального училища был создан техникум, который начал готовить специалистов
+                    по работе с сельскохозяйственной техникой.</p>
             </div>
         </div>
 
         <div class="timeline-carousel__item">
             <div class="timeline-carousel__image">
-                <div class="media-wrapper media-wrapper--overlay main-media-wrapper" style="background: url({{asset('img/melsu-unv.jpg')}}) center center; background-size:cover;"></div>
-                <div class="media-wrapper media-wrapper--overlay" style="background: url({{asset('img/melsu-unv.jpg')}}) center center; background-size:cover;"></div>
-                <div class="media-wrapper media-wrapper--overlay" style="background: url({{asset('img/melsu-unv.jpg')}}) center center; background-size:cover;"></div>
+                <div class="media-wrapper media-wrapper--overlay main-media-wrapper"
+                     style="background: url({{asset('img/melsu-unv.jpg')}}) center center; background-size:cover;"></div>
+                <div class="media-wrapper media-wrapper--overlay"
+                     style="background: url({{asset('img/melsu-unv.jpg')}}) center center; background-size:cover;"></div>
+                <div class="media-wrapper media-wrapper--overlay"
+                     style="background: url({{asset('img/melsu-unv.jpg')}}) center center; background-size:cover;"></div>
             </div>
             <div class="timeline-carousel__item-inner">
                 <span class="year">1933</span>
                 <span class="month">June 28</span>
-                <p>ТГАТУ начинает свою историю с 1874 года, когда было создано Реальное училище города Мелитополя. После революции на базе бывшего Реального училища был создан техникум, который начал готовить специалистов по работе с сельскохозяйственной техникой.</p>
+                <p>ТГАТУ начинает свою историю с 1874 года, когда было создано Реальное училище города Мелитополя. После
+                    революции на базе бывшего Реального училища был создан техникум, который начал готовить специалистов
+                    по работе с сельскохозяйственной техникой.</p>
             </div>
         </div>
 
         <div class="timeline-carousel__item">
             <div class="timeline-carousel__image">
-                <div class="media-wrapper media-wrapper--overlay main-media-wrapper" style="background: url({{asset('img/melsu-unv.jpg')}}) center center; background-size:cover;"></div>
-                <div class="media-wrapper media-wrapper--overlay" style="background: url({{asset('img/melsu-unv.jpg')}}) center center; background-size:cover;"></div>
-                <div class="media-wrapper media-wrapper--overlay" style="background: url({{asset('img/melsu-unv.jpg')}}) center center; background-size:cover;"></div>
+                <div class="media-wrapper media-wrapper--overlay main-media-wrapper"
+                     style="background: url({{asset('img/melsu-unv.jpg')}}) center center; background-size:cover;"></div>
+                <div class="media-wrapper media-wrapper--overlay"
+                     style="background: url({{asset('img/melsu-unv.jpg')}}) center center; background-size:cover;"></div>
+                <div class="media-wrapper media-wrapper--overlay"
+                     style="background: url({{asset('img/melsu-unv.jpg')}}) center center; background-size:cover;"></div>
             </div>
             <div class="timeline-carousel__item-inner">
                 <span class="year">1933</span>
                 <span class="month">June 28</span>
-                <p>ТГАТУ начинает свою историю с 1874 года, когда было создано Реальное училище города Мелитополя. После революции на базе бывшего Реального училища был создан техникум, который начал готовить специалистов по работе с сельскохозяйственной техникой.</p>
+                <p>ТГАТУ начинает свою историю с 1874 года, когда было создано Реальное училище города Мелитополя. После
+                    революции на базе бывшего Реального училища был создан техникум, который начал готовить специалистов
+                    по работе с сельскохозяйственной техникой.</p>
             </div>
         </div>
 
         <div class="timeline-carousel__item">
             <div class="timeline-carousel__image">
-                <div class="media-wrapper media-wrapper--overlay main-media-wrapper" style="background: url({{asset('img/melsu-unv.jpg')}}) center center; background-size:cover;"></div>
-                <div class="media-wrapper media-wrapper--overlay" style="background: url({{asset('img/melsu-unv.jpg')}}) center center; background-size:cover;"></div>
-                <div class="media-wrapper media-wrapper--overlay" style="background: url({{asset('img/melsu-unv.jpg')}}) center center; background-size:cover;"></div>
+                <div class="media-wrapper media-wrapper--overlay main-media-wrapper"
+                     style="background: url({{asset('img/melsu-unv.jpg')}}) center center; background-size:cover;"></div>
+                <div class="media-wrapper media-wrapper--overlay"
+                     style="background: url({{asset('img/melsu-unv.jpg')}}) center center; background-size:cover;"></div>
+                <div class="media-wrapper media-wrapper--overlay"
+                     style="background: url({{asset('img/melsu-unv.jpg')}}) center center; background-size:cover;"></div>
             </div>
             <div class="timeline-carousel__item-inner">
                 <span class="year">1933</span>
                 <span class="month">June 28</span>
-                <p>ТГАТУ начинает свою историю с 1874 года, когда было создано Реальное училище города Мелитополя. После революции на базе бывшего Реального училища был создан техникум, который начал готовить специалистов по работе с сельскохозяйственной техникой.</p>
+                <p>ТГАТУ начинает свою историю с 1874 года, когда было создано Реальное училище города Мелитополя. После
+                    революции на базе бывшего Реального училища был создан техникум, который начал готовить специалистов
+                    по работе с сельскохозяйственной техникой.</p>
             </div>
         </div>
 
     </div>
 </section>
 <section id="cooperation-melsu" class="container custom lg:p-2.5">
-    <div class="grid lg:grid-cols-[29%_70%] xl:grid-cols-[39%_60%] bg-[var(--primary-color)] w-full lg:gap-x-6 xl:gap-x-3 lg:min-h-[240px] items-end xl:relative mb-6 xl:mb-8">
+    <div
+        class="grid lg:grid-cols-[29%_70%] xl:grid-cols-[39%_60%] bg-[var(--primary-color)] w-full lg:gap-x-6 xl:gap-x-3 lg:min-h-[240px] items-end xl:relative mb-6 xl:mb-8">
         <div class="xl:absolute xl:top-[50px] xl:left-[-50px] xl:py-0">
             <img src="{{asset('img/melsu-unv.jpg')}}" alt="" class="lg:h-[240px] xl:h-[360px] xl:w-[510px]">
         </div>
@@ -198,14 +248,18 @@
         </div>
         <div class="bg-white p-6 border-[1px]">
             <p class="mb-6">
-                Мелитопольский государственный университет готовит высококвалифицированные кадры для многих успешных российских предприятий.
-                Ученые вуза работают над передовыми исследованиями в крупных международных научных проектах, а студенты ежегодно участвуют в программах академической мобильности и проходят стажировки и практики в ведущих компаниях.
+                Мелитопольский государственный университет готовит высококвалифицированные кадры для многих успешных
+                российских предприятий.
+                Ученые вуза работают над передовыми исследованиями в крупных международных научных проектах, а студенты
+                ежегодно участвуют в программах академической мобильности и проходят стажировки и практики в ведущих
+                компаниях.
             </p>
         </div>
     </div>
 </section>
 <section id="education-melsu" class="container custom lg:p-2.5">
-    <div class="grid lg:grid-cols-[29%_70%] xl:grid-cols-[39%_60%] bg-[var(--primary-color)] w-full lg:gap-x-6 xl:gap-x-3 lg:min-h-[240px] items-end xl:relative mb-6 xl:mb-8">
+    <div
+        class="grid lg:grid-cols-[29%_70%] xl:grid-cols-[39%_60%] bg-[var(--primary-color)] w-full lg:gap-x-6 xl:gap-x-3 lg:min-h-[240px] items-end xl:relative mb-6 xl:mb-8">
         <div class="xl:absolute xl:top-[50px] xl:left-[-50px] xl:py-0">
             <img src="{{asset('img/melsu-unv.jpg')}}" alt="" class="lg:h-[240px] xl:h-[360px] xl:w-[510px]">
         </div>
@@ -235,26 +289,43 @@
         </div>
         <div class="bg-white p-6 border-[1px]">
             <p class="mb-6">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi aspernatur dignissimos dolor doloribus excepturi fuga, fugit illo ipsa itaque molestiae neque omnis qui quo quod recusandae rem rerum sequi veniam.
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad assumenda ducimus laboriosam minus neque nisi nulla perferendis quis vel. Accusamus aperiam consequatur dignissimos doloremque enim fugit iusto provident reiciendis repellendus!
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi aspernatur dignissimos dolor doloribus
+                excepturi fuga, fugit illo ipsa itaque molestiae neque omnis qui quo quod recusandae rem rerum sequi
+                veniam.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad assumenda ducimus laboriosam minus neque
+                nisi nulla perferendis quis vel. Accusamus aperiam consequatur dignissimos doloremque enim fugit iusto
+                provident reiciendis repellendus!
             </p>
             <p class="mb-6">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi aspernatur dignissimos dolor doloribus excepturi fuga, fugit illo ipsa itaque molestiae neque omnis qui quo quod recusandae rem rerum sequi veniam.
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad assumenda ducimus laboriosam minus neque nisi nulla perferendis quis vel. Accusamus aperiam consequatur dignissimos doloremque enim fugit iusto provident reiciendis repellendus!
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi aspernatur dignissimos dolor doloribus
+                excepturi fuga, fugit illo ipsa itaque molestiae neque omnis qui quo quod recusandae rem rerum sequi
+                veniam.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad assumenda ducimus laboriosam minus neque
+                nisi nulla perferendis quis vel. Accusamus aperiam consequatur dignissimos doloremque enim fugit iusto
+                provident reiciendis repellendus!
             </p>
             <p class="mb-6">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi aspernatur dignissimos dolor doloribus excepturi fuga, fugit illo ipsa itaque molestiae neque omnis qui quo quod recusandae rem rerum sequi veniam.
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad assumenda ducimus laboriosam minus neque nisi nulla perferendis quis vel. Accusamus aperiam consequatur dignissimos doloremque enim fugit iusto provident reiciendis repellendus!
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi aspernatur dignissimos dolor doloribus
+                excepturi fuga, fugit illo ipsa itaque molestiae neque omnis qui quo quod recusandae rem rerum sequi
+                veniam.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad assumenda ducimus laboriosam minus neque
+                nisi nulla perferendis quis vel. Accusamus aperiam consequatur dignissimos doloremque enim fugit iusto
+                provident reiciendis repellendus!
             </p>
             <p class="mb-6">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi aspernatur dignissimos dolor doloribus excepturi fuga, fugit illo ipsa itaque molestiae neque omnis qui quo quod recusandae rem rerum sequi veniam.
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad assumenda ducimus laboriosam minus neque nisi nulla perferendis quis vel. Accusamus aperiam consequatur dignissimos doloremque enim fugit iusto provident reiciendis repellendus!
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi aspernatur dignissimos dolor doloribus
+                excepturi fuga, fugit illo ipsa itaque molestiae neque omnis qui quo quod recusandae rem rerum sequi
+                veniam.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad assumenda ducimus laboriosam minus neque
+                nisi nulla perferendis quis vel. Accusamus aperiam consequatur dignissimos doloremque enim fugit iusto
+                provident reiciendis repellendus!
             </p>
         </div>
     </div>
 </section>
 <section id="science-melsu" class="container custom lg:p-2.5">
-    <div class="grid lg:grid-cols-[29%_70%] xl:grid-cols-[39%_60%] bg-[var(--primary-color)] w-full lg:gap-x-6 xl:gap-x-3 lg:min-h-[240px] items-end xl:relative mb-6 xl:mb-8">
+    <div
+        class="grid lg:grid-cols-[29%_70%] xl:grid-cols-[39%_60%] bg-[var(--primary-color)] w-full lg:gap-x-6 xl:gap-x-3 lg:min-h-[240px] items-end xl:relative mb-6 xl:mb-8">
         <div class="xl:absolute xl:top-[50px] xl:left-[-50px] xl:py-0">
             <img src="{{asset('img/melsu-unv.jpg')}}" alt="" class="lg:h-[240px] xl:h-[360px] xl:w-[510px]">
         </div>
@@ -280,26 +351,43 @@
         </div>
         <div class="bg-white p-6 border-[1px]">
             <p class="mb-6">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi aspernatur dignissimos dolor doloribus excepturi fuga, fugit illo ipsa itaque molestiae neque omnis qui quo quod recusandae rem rerum sequi veniam.
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad assumenda ducimus laboriosam minus neque nisi nulla perferendis quis vel. Accusamus aperiam consequatur dignissimos doloremque enim fugit iusto provident reiciendis repellendus!
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi aspernatur dignissimos dolor doloribus
+                excepturi fuga, fugit illo ipsa itaque molestiae neque omnis qui quo quod recusandae rem rerum sequi
+                veniam.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad assumenda ducimus laboriosam minus neque
+                nisi nulla perferendis quis vel. Accusamus aperiam consequatur dignissimos doloremque enim fugit iusto
+                provident reiciendis repellendus!
             </p>
             <p class="mb-6">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi aspernatur dignissimos dolor doloribus excepturi fuga, fugit illo ipsa itaque molestiae neque omnis qui quo quod recusandae rem rerum sequi veniam.
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad assumenda ducimus laboriosam minus neque nisi nulla perferendis quis vel. Accusamus aperiam consequatur dignissimos doloremque enim fugit iusto provident reiciendis repellendus!
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi aspernatur dignissimos dolor doloribus
+                excepturi fuga, fugit illo ipsa itaque molestiae neque omnis qui quo quod recusandae rem rerum sequi
+                veniam.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad assumenda ducimus laboriosam minus neque
+                nisi nulla perferendis quis vel. Accusamus aperiam consequatur dignissimos doloremque enim fugit iusto
+                provident reiciendis repellendus!
             </p>
             <p class="mb-6">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi aspernatur dignissimos dolor doloribus excepturi fuga, fugit illo ipsa itaque molestiae neque omnis qui quo quod recusandae rem rerum sequi veniam.
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad assumenda ducimus laboriosam minus neque nisi nulla perferendis quis vel. Accusamus aperiam consequatur dignissimos doloremque enim fugit iusto provident reiciendis repellendus!
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi aspernatur dignissimos dolor doloribus
+                excepturi fuga, fugit illo ipsa itaque molestiae neque omnis qui quo quod recusandae rem rerum sequi
+                veniam.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad assumenda ducimus laboriosam minus neque
+                nisi nulla perferendis quis vel. Accusamus aperiam consequatur dignissimos doloremque enim fugit iusto
+                provident reiciendis repellendus!
             </p>
             <p class="mb-6">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi aspernatur dignissimos dolor doloribus excepturi fuga, fugit illo ipsa itaque molestiae neque omnis qui quo quod recusandae rem rerum sequi veniam.
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad assumenda ducimus laboriosam minus neque nisi nulla perferendis quis vel. Accusamus aperiam consequatur dignissimos doloremque enim fugit iusto provident reiciendis repellendus!
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi aspernatur dignissimos dolor doloribus
+                excepturi fuga, fugit illo ipsa itaque molestiae neque omnis qui quo quod recusandae rem rerum sequi
+                veniam.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad assumenda ducimus laboriosam minus neque
+                nisi nulla perferendis quis vel. Accusamus aperiam consequatur dignissimos doloremque enim fugit iusto
+                provident reiciendis repellendus!
             </p>
         </div>
     </div>
 </section>
 <section id="schoolchildren-melsu" class="container custom lg:p-2.5">
-    <div class="grid lg:grid-cols-[29%_70%] xl:grid-cols-[39%_60%] bg-[var(--primary-color)] w-full lg:gap-x-6 xl:gap-x-3 lg:min-h-[240px] items-end xl:relative mb-6 xl:mb-8">
+    <div
+        class="grid lg:grid-cols-[29%_70%] xl:grid-cols-[39%_60%] bg-[var(--primary-color)] w-full lg:gap-x-6 xl:gap-x-3 lg:min-h-[240px] items-end xl:relative mb-6 xl:mb-8">
         <div class="xl:absolute xl:top-[50px] xl:left-[-50px] xl:py-0">
             <img src="{{asset('img/melsu-unv.jpg')}}" alt="" class="lg:h-[240px] xl:h-[360px] xl:w-[510px]">
         </div>
@@ -317,14 +405,17 @@
         <div class="bg-white p-6 border-[1px]">
             <h4 class="mb-3">Для подготовки к поступлению в МелГУ действуют несколько профильных школ</h4>
             <ul class="list-disc list-inside leading-loose">
-                <li class="text-[var(--primary-color)] hover:opacity-80 transition duration-300 ease-linear"><a href="#">Школа юного гения</a></li>
-                <li class="text-[var(--primary-color)] hover:opacity-80 transition duration-300 ease-linear"><a href="#">Университетские субботы</a></li>
+                <li class="text-[var(--primary-color)] hover:opacity-80 transition duration-300 ease-linear"><a
+                        href="#">Школа юного гения</a></li>
+                <li class="text-[var(--primary-color)] hover:opacity-80 transition duration-300 ease-linear"><a
+                        href="#">Университетские субботы</a></li>
             </ul>
         </div>
     </div>
 </section>
 <section id="library-melsu" class="container custom lg:p-2.5">
-    <div class="grid lg:grid-cols-[29%_70%] xl:grid-cols-[39%_60%] bg-[var(--primary-color)] w-full lg:gap-x-6 xl:gap-x-3 lg:min-h-[240px] items-end xl:relative mb-6 xl:mb-8">
+    <div
+        class="grid lg:grid-cols-[29%_70%] xl:grid-cols-[39%_60%] bg-[var(--primary-color)] w-full lg:gap-x-6 xl:gap-x-3 lg:min-h-[240px] items-end xl:relative mb-6 xl:mb-8">
         <div class="xl:absolute xl:top-[50px] xl:left-[-50px] xl:py-0">
             <img src="{{asset('img/melsu-unv.jpg')}}" alt="" class="lg:h-[240px] xl:h-[360px] xl:w-[510px]">
         </div>
@@ -342,8 +433,10 @@
         <div class="bg-white p-6 border-[1px]">
             <p>
                 Научная библиотека нашего университета — одна из крупнейших в Запорожской области.
-                Основана в 1932 году на базе Библиотеки завода техникума, она унаследовала книжные собрания Библиотеки Мелитопольского коммерческого училища, созданного в 1874 году.
-                Здесь вы найдете широкий выбор литературы на любой вкус. У нас представлены как увлекательные художественные произведения, так и информативные научные издания.
+                Основана в 1932 году на базе Библиотеки завода техникума, она унаследовала книжные собрания Библиотеки
+                Мелитопольского коммерческого училища, созданного в 1874 году.
+                Здесь вы найдете широкий выбор литературы на любой вкус. У нас представлены как увлекательные
+                художественные произведения, так и информативные научные издания.
                 Независимо от ваших предпочтений, вы обязательно найдете что-то интересное для себя.
             </p>
         </div>

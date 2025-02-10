@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Menu;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
-use App\Models\Menu;
 
 class MenuController extends Controller
 {
-    public function list():string
+    public function list(): string
     {
 
         return view('pages.admin', [
             'contents' => [
                 View::make('components.admin.top_menu.pages')->with([
-                    'active'    => 'menu'
+                    'active' => 'menu'
                 ])->render(),
 
                 View::make('components.admin.menu.header')->with([])->render(),
@@ -32,7 +32,7 @@ class MenuController extends Controller
         return view('pages.admin', [
             'contents' => [
                 View::make('components.admin.top_menu.pages')->with([
-                    'active'    => 'menu_group'
+                    'active' => 'menu_group'
                 ])->render(),
 
                 View::make('components.admin.menu.form')->with([
@@ -45,7 +45,7 @@ class MenuController extends Controller
 
     public function save(Request $request)
     {
-        $form = $request->validate(Menu::FormRules($request->get('id')),Menu::$FormMessage);
+        $form = $request->validate(Menu::FormRules($request->get('id')), Menu::$FormMessage);
 
         if (empty($request->get('id')))
             $record = new Menu();

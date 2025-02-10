@@ -12,13 +12,15 @@
 
 @if(isset($label))
     <div class="mt-2 -mb-2">
-        {{@$label}}@if(isset($required))* @endif
+        {{@$label}}@if(isset($required))
+            *
+        @endif
     </div>
 @endif
 
 <select
-    id          = "{{@$id}}"
-    name        = "{{@$name}}"
+    id="{{@$id}}"
+    name="{{@$name}}"
 
     @if(isset($onchange))
         onchange="{{$onchange}}"
@@ -55,11 +57,11 @@
             @selected(empty($old) && !empty($value) && $value == $code)
             @selected(!empty($old) && $old == $code)
 
-{{--            @if(!empty($code) && isset($optionData[$code]) && is_array($optionData[$code]))--}}
-{{--                @foreach($optionData[$code] as $dc=>$data)--}}
-{{--                    data-{{$dc}}="{{$data}}"--}}
-{{--                @endforeach--}}
-{{--            @endif--}}
+            {{--            @if(!empty($code) && isset($optionData[$code]) && is_array($optionData[$code]))--}}
+            {{--                @foreach($optionData[$code] as $dc=>$data)--}}
+            {{--                    data-{{$dc}}="{{$data}}"--}}
+            {{--                @endforeach--}}
+            {{--            @endif--}}
         >
             {{$item}}
         </option>

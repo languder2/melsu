@@ -2,10 +2,10 @@
 
 namespace App\View\Components\Staff;
 
+use App\Models\Staff;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
-use App\Models\Staff;
 
 class Select extends Component
 {
@@ -16,6 +16,7 @@ class Select extends Component
     public $current;
     public ?array $staffs;
     public ?object $params;
+
     public function __construct($current = null, ?array $params = null)
     {
 
@@ -23,12 +24,12 @@ class Select extends Component
             ->orderBy('firstname')
             ->orderBy('middle_name')
             ->get()
-            ->pluck('full_name','id')
+            ->pluck('full_name', 'id')
             ->toArray();
 
         $this->current = $current;
 
-        if(!is_null($params))
+        if (!is_null($params))
             $this->params = (object)$params;
     }
 

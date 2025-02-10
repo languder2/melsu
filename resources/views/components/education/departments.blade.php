@@ -28,7 +28,11 @@
         <hr class="mb-3">
         <div>
             {{$department->description}}
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aut beatae dolores, doloribus ducimus earum eveniet laudantium magnam numquam odio perspiciatis placeat porro praesentium, quas tempore veniam vero. Eveniet, explicabo? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur cumque enim incidunt, laborum minima odio perferendis quia quis tempora veniam. Alias autem blanditiis dolor et nam optio quidem quo voluptas?
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aut beatae dolores, doloribus ducimus
+            earum eveniet laudantium magnam numquam odio perspiciatis placeat porro praesentium, quas tempore veniam
+            vero. Eveniet, explicabo? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur cumque enim
+            incidunt, laborum minima odio perferendis quia quis tempora veniam. Alias autem blanditiis dolor et nam
+            optio quidem quo voluptas?
         </div>
         <div class="text-right">
             <a

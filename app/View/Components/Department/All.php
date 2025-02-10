@@ -21,12 +21,12 @@ class All extends Component
      */
     public function render(): View|Closure|string
     {
-        $departments    = Department::orderBy('sort')->orderBy('name')->get();
+        $departments = Department::orderBy('sort')->orderBy('name')->get();
 
-        if(!$departments)
+        if (!$departments)
             return redirect()->route('pages:main');
 
-        return view('components.department.all',[
+        return view('components.department.all', [
             'departments' => $departments,
         ]);
     }

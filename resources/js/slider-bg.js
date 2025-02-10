@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded',()=> {
+document.addEventListener('DOMContentLoaded', () => {
     if (document.querySelector('.background-slider')) {
         const slides = document.querySelectorAll('.slide');
         const slider = document.querySelector('.background-slider');

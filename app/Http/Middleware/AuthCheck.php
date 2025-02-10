@@ -11,11 +11,11 @@ class AuthCheck
     /**
      * Handle an incoming request.
      *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
+     * @param \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response) $next
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(!auth()->check())
+        if (!auth()->check())
             return redirect()->route('pages:main');
 
         return $next($request);

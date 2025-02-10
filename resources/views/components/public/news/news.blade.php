@@ -2,7 +2,7 @@
     <section class="container custom">
         <div class="page-header pt-14 mb-5 xl:mb-14">
 
-            <x-sections.breadcrumbs />
+            {{Breadcrumbs::view('vendor.breadcrumbs.news-item','news-item',$news)}}
 
             <h1 class="text-4xl font-bold block pb-2">
                 {!! @$news->title !!}
@@ -25,7 +25,8 @@
                 <a href="#">
                     <div class="flex flex-row">
                         <div class="w-[80px] h-[80px] relative text-white pointer me-3">
-                            <img src="../assets/img/ph-news.jpg" alt="" class="rounded-[50%] brightness-[40%] group-hover/btnnews:brightness-[80%] transition duration-300 ease-linear">
+                            <img src="../assets/img/ph-news.jpg" alt=""
+                                 class="rounded-[50%] brightness-[40%] group-hover/btnnews:brightness-[80%] transition duration-300 ease-linear">
                             <i class="bi bi-arrow-left text-4xl absolute top-[27%] left-[27%]"></i>
                         </div>
                         <div class="flex flex-col">
@@ -47,7 +48,8 @@
                                     </span>
                         </div>
                         <div class="w-[80px] h-[80px] relative text-white pointer ms-3">
-                            <img src="../assets/img/ph-news.jpg" alt="" class="rounded-[50%] brightness-[40%] group-hover/btnnews:brightness-[80%] transition duration-300 ease-linear">
+                            <img src="../assets/img/ph-news.jpg" alt=""
+                                 class="rounded-[50%] brightness-[40%] group-hover/btnnews:brightness-[80%] transition duration-300 ease-linear">
                             <i class="bi bi-arrow-right text-4xl absolute top-[27%] left-[27%]"></i>
                         </div>
                     </div>

@@ -13,9 +13,9 @@
         class="peer w-4 h-4"
         @checked(old("speciality.name")?old("profiles.{$code}.show"):@$profile?->show)
     >
-        <label for="activator_form_{{$code}}" class="pointer">
-            Активировать форму обучения
-        </label>
+    <label for="activator_form_{{$code}}" class="pointer">
+        Активировать форму обучения
+    </label>
 
     <div
 
@@ -52,16 +52,16 @@
                 <input
                     id="form_profiles_{{$code}}_afc"
                     name="profiles[{{$code}}][afc]"
-                    type    = "checkbox"
+                    type="checkbox"
                     @checked(old("profiles.{$code}.afc") || @$profile?->afc)
-                    class   = "
+                    class="
                         w-4 h-4 text-baseRed bg-gray-100 border-gray-300 rounded
                         focus:ring-baseRed focus:ring-2
                         cursor-pointer
                     "
                 >
                 <label
-                    for     = "form_profiles_{{$code}}_afc"
+                    for="form_profiles_{{$code}}_afc"
                     @class([
                         'ms-2 text-sm font-medium text-gray-900',
                         'cursor-pointer',

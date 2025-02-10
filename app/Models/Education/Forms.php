@@ -22,23 +22,23 @@ class Forms extends Model
         'deleted_at',
     ];
 
-    public static function FormRules($id):array
+    public static function FormRules($id): array
     {
         return [
-            'name'              => 'required',
-            'alt_name'          => '',
-            'code'              => "required|unique:education_forms,code,{$id},id,deleted_at,NULL",
-            'description'       => '',
-            'sort'              => 'nullable|numeric',
+            'name' => 'required',
+            'alt_name' => '',
+            'code' => "required|unique:education_forms,code,{$id},id,deleted_at,NULL",
+            'description' => '',
+            'sort' => 'nullable|numeric',
         ];
     }
 
-    public static function FormMessage():array
+    public static function FormMessage(): array
     {
         return [
-            'name'                      => 'Укажите заголовок',
-            'code.required'             => 'Код должен быть указан',
-            'code.unique'               => 'Код должен быть уникальным',
+            'name' => 'Укажите заголовок',
+            'code.required' => 'Код должен быть указан',
+            'code.unique' => 'Код должен быть уникальным',
         ];
     }
 

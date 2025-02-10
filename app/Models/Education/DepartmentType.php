@@ -20,22 +20,22 @@ class DepartmentType extends Model
         'created_at',
     ];
 
-    public static function FormRules($id):array
+    public static function FormRules($id): array
     {
         return [
-            'name'              => 'required',
-            'code'              => "required|unique:education_department_types,code,{$id},id,deleted_at,NULL",
-            'description'       => '',
-            'sort'              => 'nullable|numeric',
+            'name' => 'required',
+            'code' => "required|unique:education_department_types,code,{$id},id,deleted_at,NULL",
+            'description' => '',
+            'sort' => 'nullable|numeric',
         ];
     }
 
-    public static function FormMessage():array
+    public static function FormMessage(): array
     {
         return [
-            'name'                      => 'Укажите заголовок',
-            'code.required'             => 'Код должен быть указан',
-            'code.unique'               => 'Код должен быть уникальным',
+            'name' => 'Укажите заголовок',
+            'code.required' => 'Код должен быть указан',
+            'code.unique' => 'Код должен быть уникальным',
         ];
     }
 

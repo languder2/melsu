@@ -3,14 +3,29 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
+
 class Events extends NewsCategory
 {
     use SoftDeletes;
 
+    public static int $adminPerPage = 20;
+    public static $FormRules = [
+        'type' => 'required',
+        'title' => 'required',
+        'short' => '',
+        'full' => '',
+        'news' => '',
+        'author' => '',
+        'sort' => '',
+        'publication_at' => '',
+    ];
+    public static $FormMessage = [
+        'type' => 'Укажите тип',
+        'title' => 'Укажите заголовок',
+    ];
     protected $table = 'events';
     protected $primaryKey = 'id';
-    public static int $adminPerPage = 20;
-     protected $fillable = [
+    protected $fillable = [
         'id',
         'type',
         'title',
@@ -23,24 +38,9 @@ class Events extends NewsCategory
         'deleted_at',
     ];
 
-    public static $FormRules = [
-        'type'              => 'required',
-        'title'             => 'required',
-        'short'             => '',
-        'full'              => '',
-        'news'              => '',
-        'author'            => '',
-        'sort'              => '',
-        'publication_at'    => '',
-    ];
-    public static $FormMessage = [
-        'type'              => 'Укажите тип',
-        'title'             => 'Укажите заголовок',
-    ];
-
-    public static function getList():object
+    public static function getList(): object
     {
-        return self::orderBy('publication_at','desc')->get();
+        return self::orderBy('publication_at', 'desc')->get();
     }
 
 }

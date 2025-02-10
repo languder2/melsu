@@ -2,12 +2,11 @@
 
 namespace App\Models\Education;
 
-use App\Models\MenuItems;
 use App\Models\Education\Department as EducationDepartment;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+
 class Faculty extends Model
 {
     use SoftDeletes;
@@ -22,44 +21,42 @@ class Faculty extends Model
         'order',
     ];
 
-    public static function FormRules($id):array
+    public static function FormRules($id): array
     {
         return [
-            'name'              => 'required',
-            'code'              => "required|unique:education_faculties,code,{$id},id,deleted_at,NULL",
-            'description'       => '',
-            'order'             => 'nullable|numeric',
+            'name' => 'required',
+            'code' => "required|unique:education_faculties,code,{$id},id,deleted_at,NULL",
+            'description' => '',
+            'order' => 'nullable|numeric',
         ];
     }
 
-    public static function FormMessage():array
+    public static function FormMessage(): array
     {
         return [
-            'name'                      => 'Укажите заголовок',
-            'code.required'             => 'Код должен быть указан',
-            'code.unique'               => 'Код должен быть уникальным',
+            'name' => 'Укажите заголовок',
+            'code.required' => 'Код должен быть указан',
+            'code.unique' => 'Код должен быть уникальным',
         ];
     }
 
     public function departments(): HasMany
     {
         return $this->hasMany(EducationDepartment::class, 'faculty_code', 'code')
-            ->orderBy('order','desc')
-            ->orderBy('name')
-        ;
+            ->orderBy('order', 'desc')
+            ->orderBy('name');
     }
 
     public function specialities(): HasMany
     {
         return $this->hasMany(Speciality::class, 'faculty_code', 'code')
-            ->orderBy('order','desc')
-            ->orderBy('spec_code')
-            ;
+            ->orderBy('order', 'desc')
+            ->orderBy('spec_code');
     }
 
-    public function getOrderAttribute(?int $value):int|null
+    public function getOrderAttribute(?int $value): int|null
     {
-        return ($value === 10000)?null:$value;
+        return ($value === 10000) ? null : $value;
     }
 
 

@@ -1,5 +1,5 @@
 const positionAwareElements = document.querySelectorAll('.position-aware')
-if(positionAwareElements){
+if (positionAwareElements) {
 
     positionAwareElements.forEach(element => {
         let isAnimating = false;

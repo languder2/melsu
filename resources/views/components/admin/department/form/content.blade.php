@@ -2,15 +2,15 @@
     <div class="flex my-2 py-2 border-b border-t items-center">
 
         <h4 class="text-center font-semibold flex-1">
-            <a  href        = "#"
-                class       = "
+            <a href="#"
+               class="
                     showHideSection
                     text-blue-900
                     hover:text-blue-700
                     active:text-gray-700
                     underline
                 "
-                data-id     = 'department-section-{{$i}}'
+               data-id='department-section-{{$i}}'
             >
                 Секция #{{$i}}
             </a>

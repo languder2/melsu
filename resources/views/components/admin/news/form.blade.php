@@ -1,4 +1,4 @@
-<x-head.tinymce-config />
+<x-head.tinymce-config/>
 <form
     action="{{route('admin:news:save')}}"
     method="POST"
@@ -21,7 +21,7 @@
 
     <hr>
 
-    <x-form.errors />
+    <x-form.errors/>
 
     <x-form.input type="hidden" name="id" value="{{$current->id??null}}"/>
 

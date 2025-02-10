@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Diglactic\Breadcrumbs\Breadcrumbs;
+use App\Models\{News, NewsCategory};
+use App\Models\ImageStorage;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
-
-use App\Models\{News, NewsCategory};
-use App\Models\ImageStorage;
 
 class NewsController extends Controller
 {
@@ -17,7 +17,7 @@ class NewsController extends Controller
         return view('pages.admin', [
             'contents' => [
                 View::make('components.admin.top_menu.news')->with([
-                    'active'    => 'news'
+                    'active' => 'news'
                 ])->render(),
 
                 View::make('components.admin.news.news')->with([
@@ -33,7 +33,7 @@ class NewsController extends Controller
         return view('pages.admin', [
             'contents' => [
                 View::make('components.admin.top_menu.news')->with([
-                    'active'    => 'news'
+                    'active' => 'news'
                 ])->render(),
 
                 View::make('components.admin.news.form')->with([
@@ -92,12 +92,14 @@ class NewsController extends Controller
     {
         $news = News::find((int)$id);
 
-        if(is_null($news))
+        if (is_null($news))
             return redirect()->route('pages:main');
 
         return view('pages.page', [
-            'title'      => 'ФГБОУ ВО "МелГУ": '.$news->title,
-            'contents'   => [
+
+//            'breadcrumbs' => Breadcrumbs::render('news-item',$news),
+            'title' => 'ФГБОУ ВО "МелГУ": ' . $news->title,
+            'contents' => [
                 View::make('components.public.news.news')->with([
                     'news' => $news,
                 ])->render(),
@@ -108,15 +110,18 @@ class NewsController extends Controller
     public function showAll()
     {
         $list = News::orderBy('publication_at', 'desc')
-            ->select('id','title','short','full','publication_at','image','category')
-                ->paginate(13);
+            ->select('id', 'title', 'short', 'full', 'publication_at', 'image', 'category')
+            ->paginate(13);
 
         return view('pages.page', [
+
+            'breadcrumbs' => (object)[
+                'view'      => 'news',
+                'route'     => 'news',
+                'element'   => null,
+            ],
+
             'contents' => [
-                View::make('components.template.breadcrumbs')->with([
-
-                ])->render(),
-
                 View::make('components.news.all')->with([
                     'list' => $list,
                 ])->render(),

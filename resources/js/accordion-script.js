@@ -1,5 +1,5 @@
-document.addEventListener('DOMContentLoaded', function() {
-    if( document.querySelectorAll('.accordion-toggle')) {
+document.addEventListener('DOMContentLoaded', function () {
+    if (document.querySelectorAll('.accordion-toggle')) {
         const accordionItems = document.querySelectorAll('.accordion-toggle');
         const accordionContentBox = document.querySelectorAll('.accordion-content-box');
         const accordionText = document.querySelectorAll('.accordion-text');

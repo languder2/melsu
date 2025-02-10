@@ -13,10 +13,9 @@ btns.forEach((point, index) => {
         contentWrapper.forEach(content => {
             content.classList.remove('active');
         });
-        if(index === 1 || index === 2){
+        if (index === 1 || index === 2) {
             wrapperBox.classList.add('elm');
-        }
-        else{
+        } else {
             wrapperBox.classList.remove('elm');
         }
         point.classList.add('active');

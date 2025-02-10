@@ -27,7 +27,7 @@
 
         @foreach($list as $record)
             <div>
-                    <?=$record->id?>
+                    <?= $record->id ?>
             </div>
 
             <div>
@@ -35,11 +35,11 @@
             </div>
 
             <div>
-                    <?=$record->publication_at?>
+                    <?= $record->publication_at ?>
             </div>
 
             <div class="md:col-span-4">
-                    <?=$record->title?>
+                    <?= $record->title ?>
             </div>
 
             <div>
@@ -71,20 +71,20 @@
                         </a>
                     </div>
 
-                        <div class="flex-none w-14">
-                            <a
-                                href="{{route('news:show',$record->id)}}"
-                                target="_blank"
-                                class="
+                    <div class="flex-none w-14">
+                        <a
+                            href="{{route('news:show',$record->id)}}"
+                            target="_blank"
+                            class="
                                     py-2 px-4 rounded-md
                                     bg-blue-950
                                     hover:bg-blue-700
                                     active:bg-gray-700
                                 "
-                            >
-                                <i class="fas fa-external-link-alt"></i>
-                            </a>
-                        </div>
+                        >
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
 
                 </div>
             </div>

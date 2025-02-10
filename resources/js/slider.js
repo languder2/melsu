@@ -1,4 +1,4 @@
-$('.slider').each(function() {
+$('.slider').each(function () {
     var $this = $(this);
     var $group = $this.find('.slide_group');
     var $slides = $this.find('.slide');
@@ -32,7 +32,7 @@ $('.slider').each(function() {
         });
         $group.animate({
             left: animateLeft
-        }, function() {
+        }, function () {
             $slides.eq(currentIndex).css({
                 display: 'none'
             });
@@ -48,7 +48,7 @@ $('.slider').each(function() {
 
     function advance() {
         clearTimeout(timeout);
-        timeout = setTimeout(function() {
+        timeout = setTimeout(function () {
             if (currentIndex < ($slides.length - 1)) {
                 move(currentIndex + 1);
             } else {
@@ -57,7 +57,7 @@ $('.slider').each(function() {
         }, 4000);
     }
 
-    $('.next_btn').on('click', function() {
+    $('.next_btn').on('click', function () {
         if (currentIndex < ($slides.length - 1)) {
             move(currentIndex + 1);
         } else {
@@ -65,7 +65,7 @@ $('.slider').each(function() {
         }
     });
 
-    $('.previous_btn').on('click', function() {
+    $('.previous_btn').on('click', function () {
         if (currentIndex !== 0) {
             move(currentIndex - 1);
         } else {
@@ -73,13 +73,13 @@ $('.slider').each(function() {
         }
     });
 
-    $.each($slides, function(index) {
-        var $button = $('<a class="slide_btn">'+(index+1)+'</a>');
+    $.each($slides, function (index) {
+        var $button = $('<a class="slide_btn">' + (index + 1) + '</a>');
 
         if (index === currentIndex) {
             $button.addClass('active');
         }
-        $button.on('click', function() {
+        $button.on('click', function () {
             move(index);
         }).appendTo('.slide_buttons');
         bulletArray.push($button);

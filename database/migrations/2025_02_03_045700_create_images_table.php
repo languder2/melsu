@@ -4,14 +4,13 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
     public function up(): void
     {
-        if(!Schema::hasTable('gallery_images'))
+        if (!Schema::hasTable('gallery_images'))
             Schema::create('gallery_images', function (Blueprint $table) {
                 $table->id();
                 $table->string('name');
@@ -19,7 +18,7 @@ return new class extends Migration
                 $table->string('type')->nullable();
                 $table->string('filename')->nullable();
                 $table->string('filetype')->nullable();
-                $table->enum('show',[true,false])->default(true);
+                $table->enum('show', [true, false])->default(true);
 
                 $table->integer('relation_id')->nullable();
                 $table->string('relation_type')->nullable();
@@ -29,13 +28,13 @@ return new class extends Migration
                 $table->timestamps();
             });
 
-        if(!Schema::hasTable('gallery_video'))
+        if (!Schema::hasTable('gallery_video'))
             Schema::create('gallery_video', function (Blueprint $table) {
                 $table->id();
                 $table->string('name');
                 $table->string('filename')->nullable();
                 $table->string('filetype')->nullable();
-                $table->enum('show',[true,false])->default(true);
+                $table->enum('show', [true, false])->default(true);
 
                 $table->integer('relation_id')->nullable();
                 $table->string('relation_type')->nullable();

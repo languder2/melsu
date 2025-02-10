@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\{Department, DepartmentDocument, DepartmentSection, DepartmentStaff};
+use App\Models\Department\Department as Department2;
+use App\Models\Staff;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
-use App\Models\{Department,DepartmentSection,DepartmentDocument,DepartmentStaff};
-use App\Models\Staff;
-use App\Models\Department\Department as Department2;
+use App\Models\Menu;
 
 class DepartmentController extends Controller
 {
@@ -47,25 +48,25 @@ class DepartmentController extends Controller
     public function addStaff($i = null): string
     {
         return View::make('components.admin.department.form.select-staff')->with([
-            'i'             => $i,
-            'list'          => Staff::getListForSelect(),
-            'keyID'         => "id",
-            'field'         => "fio",
-            'placeholder'   => "Выбрать сотрудника"
+            'i' => $i,
+            'list' => Staff::getListForSelect(),
+            'keyID' => "id",
+            'field' => "fio",
+            'placeholder' => "Выбрать сотрудника"
         ])->render();
     }
 
     public function addDocument2Form($i = null): string
     {
         return View::make('components.admin.department.form.document-add-block')->with([
-            'i'             => $i,
+            'i' => $i,
         ])->render();
     }
 
     public function save(Request $request)
     {
 
-        $form = $request->validate(Department::FormRules($request->get('id')),Department::$FormMessage);
+        $form = $request->validate(Department::FormRules($request->get('id')), Department::$FormMessage);
 
         if (empty($request->get('id')))
             $record = new Department();
@@ -74,18 +75,18 @@ class DepartmentController extends Controller
 
         $record->fill($form);
 
-        if(empty($form['chief_name'])){
+        if (empty($form['chief_name'])) {
             $record->chief_post = null;
-            $record->chief      = null;
+            $record->chief = null;
         }
 
         $record->save();
 
-        if(isset($form['sections']) && is_array($form['sections']))
-            DepartmentSection::AddInDepartment($record->id,$form['sections']);
+        if (isset($form['sections']) && is_array($form['sections']))
+            DepartmentSection::AddInDepartment($record->id, $form['sections']);
 
-        if(isset($form['staffs']) && is_array($form['staffs']))
-            DepartmentStaff::AddInDepartment($record->id,$form['staffs']);
+        if (isset($form['staffs']) && is_array($form['staffs']))
+            DepartmentStaff::AddInDepartment($record->id, $form['staffs']);
 
         return redirect()->route('admin:department');
     }
@@ -104,16 +105,15 @@ class DepartmentController extends Controller
     public function show($code = null)
     {
 
+        $department = Department2::where('alias', $code)->first();
 
-        $department     = Department2::where('alias', $code)->first();
-
-        if(!$department)
+        if (!$department)
             $department = Department2::find((int)$code);
 
-        if(!$department)
+        if (!$department)
             return redirect()->route('pages:main');
 
-        if($code === 'rectorate')
+        if ($code === 'rectorate')
             $pageContent = View::make('components.department.rectorate')->with([
                 'department' => $department,
             ])->render();
@@ -123,18 +123,20 @@ class DepartmentController extends Controller
             ])->render();
 
 
-
         return view("pages.page-with-menu", [
-            'sidebar'       => View::make('components.menu.sidebar')->with([
-                'menu'          => &$menu,
-                'full'          => false,
-            ])->render(),
+            'menu' => Menu::getMenuFromMain(route('public:department:list')),
 
-            'nobg'          => true,
+            'breadcrumbs' => (object)[
+                'view'      => null,
+                'route'     => 'department',
+                'element'   => $department,
+            ],
 
-            'news'          =>  false,
+            'nobg' => true,
 
-            'contents'      => [
+            'news' => false,
+
+            'contents' => [
                 $pageContent
             ]
         ]);
@@ -143,19 +145,21 @@ class DepartmentController extends Controller
     public function showList()
     {
 
+        dump(route('public:department:list'));
+
         $pageContent = (new \App\View\Components\Department\All())->render();
 
         return view("pages.page-with-menu", [
-            'sidebar'       => View::make('components.menu.sidebar')->with([
-                'menu'          => &$menu,
-                'full'          => false,
+            'sidebar' => View::make('components.menu.sidebar')->with([
+                'menu' => &$menu,
+                'full' => false,
             ])->render(),
 
-            'nobg'          => true,
+            'nobg' => true,
 
-            'news'          =>  false,
+            'news' => false,
 
-            'contents'      => [
+            'contents' => [
                 $pageContent
             ]
         ]);

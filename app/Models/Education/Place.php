@@ -20,22 +20,22 @@ class Place extends Model
         'order',
     ];
 
-    public static function FormRules($id):array
+    public static function FormRules($id): array
     {
         return [
-            'count'             => 'integer|nullable',
+            'count' => 'integer|nullable',
             'type',
-            'show'              => 'boolean',
-            'order'             => 'nullable|numeric',
+            'show' => 'boolean',
+            'order' => 'nullable|numeric',
         ];
     }
 
-    public static function FormMessage():array
+    public static function FormMessage(): array
     {
         return [
-            'count'             => 'integer|nullable',
-            'show'              => 'boolean',
-            'order'             => 'nullable|numeric',
+            'count' => 'integer|nullable',
+            'show' => 'boolean',
+            'order' => 'nullable|numeric',
         ];
     }
 

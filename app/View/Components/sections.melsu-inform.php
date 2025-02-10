@@ -4,14 +4,14 @@ namespace App\View\Components;
 
 use Closure;
 use Illuminate\Contracts\View\View;
-use Illuminate\View\Component;
 
-class sections.melsu-inform extends Component
+class sections.melsu - inform extends Component
 {
     /**
      * Create a new component instance.
      */
-    public function __construct()
+    public
+    function __construct()
     {
         //
     }
@@ -19,7 +19,8 @@ class sections.melsu-inform extends Component
     /**
      * Get the view / contents that represent the component.
      */
-    public function render(): View|Closure|string
+    public
+    function render(): View|Closure|string
     {
         return view('components.sections.melsu-inform');
     }

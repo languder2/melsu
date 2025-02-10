@@ -1,15 +1,15 @@
 @extends('layouts.main')
 
-{{--@section('title', 'ФГБОУ ВО "МелГУ"')--}}
+@section('title', 'ФГБОУ ВО "Мелитопольский государственный университет"')
 
 @section('content')
-    <x-slider.mainpage />
+    <x-slider.mainpage/>
 
-    <x-sections.melsu-today />
+    <x-sections.melsu-today/>
 
-    <x-news.short-news />
+    <x-news.short-news/>
 
-    <x-sections.melsu-numbers />
+    <x-sections.melsu-numbers/>
 
-    <x-sections.map />
+    <x-sections.map/>
 @endsection

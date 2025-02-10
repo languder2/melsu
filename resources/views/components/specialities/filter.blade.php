@@ -66,7 +66,8 @@
             >
 
             <input class="chosen-value relative top-0 left-0 w-full min-h-[50px] max-h-[50px] text-lg py-3 px-[18px] bg-white
-                             transition duration-300 ease-in-out placeholder:text-[black] focus:border-b-[2px] outline-0 z-20" type="text" value="Очная" data-placeholder="Форма обучения" placeholder="Форма обучения">
+                             transition duration-300 ease-in-out placeholder:text-[black] focus:border-b-[2px] outline-0 z-20"
+                   type="text" value="Очная" data-placeholder="Форма обучения" placeholder="Форма обучения">
             <ul
                 class="
                     value-list

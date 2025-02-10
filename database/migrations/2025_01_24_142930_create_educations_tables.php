@@ -4,14 +4,13 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
     public function up(): void
     {
-        if(!Schema::hasTable('education_faculties'))
+        if (!Schema::hasTable('education_faculties'))
             Schema::create('education_faculties', function (Blueprint $table) {
                 $table->id();
                 $table->string('name');
@@ -23,7 +22,7 @@ return new class extends Migration
                 $table->timestamps();
             });
 
-        if(!Schema::hasTable('education_department_types'))
+        if (!Schema::hasTable('education_department_types'))
             Schema::create('education_department_types', function (Blueprint $table) {
                 $table->id();
                 $table->string('name');
@@ -34,7 +33,7 @@ return new class extends Migration
                 $table->timestamps();
             });
 
-        if(!Schema::hasTable('education_departments'))
+        if (!Schema::hasTable('education_departments'))
             Schema::create('education_departments', function (Blueprint $table) {
 
                 $table->id();
@@ -68,7 +67,7 @@ return new class extends Migration
                     ->nullOnDelete();
             });
 
-        if(!Schema::hasTable('education_levels'))
+        if (!Schema::hasTable('education_levels'))
             Schema::create('education_levels', function (Blueprint $table) {
                 $table->id();
 
@@ -81,7 +80,7 @@ return new class extends Migration
                 $table->timestamps();
             });
 
-        if(!Schema::hasTable('education_specialities'))
+        if (!Schema::hasTable('education_specialities'))
             Schema::create('education_specialities', function (Blueprint $table) {
                 $table->id();
 
@@ -119,7 +118,7 @@ return new class extends Migration
                     ->nullOnDelete();
             });
 
-        if(!Schema::hasTable('education_forms'))
+        if (!Schema::hasTable('education_forms'))
             Schema::create('education_forms', function (Blueprint $table) {
                 $table->id();
 
@@ -132,14 +131,14 @@ return new class extends Migration
                 $table->timestamps();
             });
 
-        if(!Schema::hasTable('education_profiles'))
+        if (!Schema::hasTable('education_profiles'))
             Schema::create('education_profiles', function (Blueprint $table) {
                 $table->id();
 
 //                $table->string('name');
                 $table->string('alias')->unique()->nullable();
 //                $table->longText('description')->nullable();
-                $table->string('speciality_code',20)->nullable();
+                $table->string('speciality_code', 20)->nullable();
                 $table->string('form_code')->nullable();
                 $table->decimal('duration', 3, 2)->nullable();
 //                $table->integer('total_places')->nullable();

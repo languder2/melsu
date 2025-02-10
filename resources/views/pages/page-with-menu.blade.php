@@ -1,13 +1,24 @@
 @extends("layouts.page")
 
-{{--@section('title', $title??'ФГБОУ ВО "МелГУ"')--}}
+@section('title', 'ФГБОУ ВО "Мелитопольский государственный университет"')
 
-@section('breadcrumbs')
-    {!! @$breadcrumbs !!}
-@endsection
+@if(isset($breadcrumbs) && is_object($breadcrumbs))
+    @section('breadcrumbs')
+        {{Breadcrumbs::view(
+            "vendor.breadcrumbs.".($breadcrumbs->view??'base'),
+            $breadcrumbs->route,
+            $breadcrumbs->element
+        )}}
+    @endsection
+@endif
 
 @section('sidebar')
     {!! @$sidebar !!}
+
+    @if(isset($menu) && $menu->count())
+        {{View('menu.sidebar',['menu'=>$menu])}}
+    @endif
+
 @endsection
 
 @section('content')

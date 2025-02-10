@@ -9,9 +9,9 @@ class DepartmentSection extends Model
 {
     use SoftDeletes;
 
-    protected $table        = 'department_sections';
+    protected $table = 'department_sections';
 
-    protected $fillable     = [
+    protected $fillable = [
         'id',
         'department',
         'name',
@@ -21,37 +21,37 @@ class DepartmentSection extends Model
         'deleted_at'
     ];
 
-    public static function AddInDepartment($id,$sections):void
+    public static function AddInDepartment($id, $sections): void
     {
-        if(!is_array($sections)) return;
+        if (!is_array($sections)) return;
 
-        foreach ($sections as $key=>$section)
-            if(empty($section['name']))
+        foreach ($sections as $key => $section)
+            if (empty($section['name']))
                 unset($sections[$key]);
 
-        $list = self::where('department',$id)->get();
+        $list = self::where('department', $id)->get();
 
         foreach ($list as $record)
-            if(!isset($sections[$record->id]))
+            if (!isset($sections[$record->id]))
                 $record->delete();
 
-        foreach ($sections as $key=>$section){
+        foreach ($sections as $key => $section) {
 
             $record = self::find($key);
 
-            if(is_null($record))
+            if (is_null($record))
                 $record = new DepartmentSection();
 
             $record->fill($section);
 
-            $record->department         = $id;
+            $record->department = $id;
 
-            $record->sort               = $record->sort??1000;
+            $record->sort = $record->sort ?? 1000;
 
-            if(isset($section['hide']))
-                $record->show_title     = 'hide';
+            if (isset($section['hide']))
+                $record->show_title = 'hide';
             else
-                $record->show_title     = 'show';
+                $record->show_title = 'show';
 
             $record->save();
         }

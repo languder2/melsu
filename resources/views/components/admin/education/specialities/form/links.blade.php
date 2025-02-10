@@ -11,7 +11,7 @@
         @endif
     >
     <label for="menu_speciality"
-            class="
+           class="
                 block py-4 px-4 mb-1
                 bg-white
                 text-right
@@ -41,7 +41,7 @@
         @endif
     >
     <label for="menu_profiles"
-            class="
+           class="
                 block py-4 px-4 mb-1
                 bg-white
                 text-right
@@ -72,7 +72,7 @@
         @endif
     >
     <label for="menu_documents"
-            class="
+           class="
                 block py-4 px-4 mb-1
                 bg-white
                 text-right
@@ -103,7 +103,7 @@
         @endif
     >
     <label for="menu_links"
-            class="
+           class="
                 block py-4 px-4 mb-1
                 bg-white
                 text-right
@@ -134,7 +134,7 @@
         @endif
     >
     <label for="menu_faq"
-            class="
+           class="
                 block py-4 px-4 mb-1
                 bg-white
                 text-right

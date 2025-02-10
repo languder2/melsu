@@ -1,33 +1,32 @@
 <?php
 
+use App\Models\Education\Department;
+use App\Models\Education\Faculty;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Models\Education\Faculty;
-use App\Models\Education\Department;
 
-Route::get('departments-by-faculty-shorts/{faculty?}', function (Request $request,$faculty = null) {
+Route::get('departments-by-faculty-shorts/{faculty?}', function (Request $request, $faculty = null) {
 
-    if(is_null($faculty))
-        return Department::orderBy('name')->get()->pluck('name','code')->toJson(JSON_UNESCAPED_UNICODE);
+    if (is_null($faculty))
+        return Department::orderBy('name')->get()->pluck('name', 'code')->toJson(JSON_UNESCAPED_UNICODE);
     else
-        return Faculty::where('code',$faculty)?->first()->departments->pluck('name','code')->toJson(JSON_UNESCAPED_UNICODE);
+        return Faculty::where('code', $faculty)?->first()->departments->pluck('name', 'code')->toJson(JSON_UNESCAPED_UNICODE);
 })->name('departments-by-faculty-shorts');
 
 
 Route::get('link-correct', function (Request $request) {
 
-        $from   = $request->get('from');
-        $to     = $request->get('to');
+    $from = $request->get('from');
+    $to = $request->get('to');
 
-        if(!$from || !$to) return;
+    if (!$from || !$to) return;
 
-        $menu= new \App\Models\MenuItems();
+    $menu = new \App\Models\MenuItems();
 
-        foreach ($menu::where('link',"!=",'')->get() as $item) {
-            $item->link = str_replace($from,$to,$item->link);
-            $item->save();
-        }
-
+    foreach ($menu::where('link', "!=", '')->get() as $item) {
+        $item->link = str_replace($from, $to, $item->link);
+        $item->save();
+    }
 
 
 });

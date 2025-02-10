@@ -1,12 +1,3 @@
-<h3
-    class="
-        font-semibold
-        text-2xl
-        mb-3
-    "
->
-    Ректорат
-</h3>
 <x-department.staff.rectorate
     :staff="$department->chief_card"
 />

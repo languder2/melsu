@@ -12,7 +12,7 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"/>
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
@@ -23,12 +23,13 @@
 <body>
 <div class="main-wrapper">
 
-    <x-template.header />
+    <x-template.header/>
 
     <section class="main-section">
 
         <section class="container py-5">
 
+{{--            {{ Breadcrumbs::render('speciality',\App\Models\Education\Speciality::Find(5)) }}--}}
             @yield('breadcrumbs')
 
             <div class="grid grid-cols-1 lg:grid-cols-[25%_minmax(70%,1fr)] gap-3">
@@ -50,9 +51,9 @@
 
     @yield('news')
 
-    <x-template.footer />
+    <x-template.footer/>
 
-    <x-template.left-side-offset />
+    <x-template.left-side-offset/>
 </div>
 </body>
 </html>

@@ -1,4 +1,4 @@
-<x-head.tinymce-config />
+<x-head.tinymce-config/>
 
 <form
     action="{{route('admin:department:save')}}"
@@ -12,7 +12,7 @@
 >
     @csrf
 
-    <x-admin.department.form.base :current="$current??(object)[]" />
+    <x-admin.department.form.base :current="$current??(object)[]"/>
 
     <x-admin.department.form.staffs
         :staffs="$staffs??[]"

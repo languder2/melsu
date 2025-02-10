@@ -6,12 +6,14 @@
 
 @if(isset($label))
     <div class="mt-2 -mb-2">
-        {{@$label}}@if(isset($required))* @endif
+        {{@$label}}@if(isset($required))
+            *
+        @endif
     </div>
 @endif
 <select
-    id          = "{{@$id}}"
-    name        = "{{@$name}}"
+    id="{{@$id}}"
+    name="{{@$name}}"
 
     @if(isset($onchange))
         onchange="{{$onchange}}"
@@ -66,9 +68,9 @@
                 @selected(empty($old) && !empty($value) && $value == $item->id)
                 @selected(!empty($old) && $old == $item->id)
 
-                @if(isset($item->attrs) && is_array($item->attrs))
-                    @foreach($item->attrs as $attr=>$attrValue)
-                        {!! "$attr='$attrValue'" !!}
+            @if(isset($item->attrs) && is_array($item->attrs))
+                @foreach($item->attrs as $attr=>$attrValue)
+                    {!! "$attr='$attrValue'" !!}
                     @endforeach
                 @endif
             >

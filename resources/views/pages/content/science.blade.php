@@ -1,9 +1,11 @@
 <div class="box-heading container custom">
     <h2 class="font-bold text-2xl my-6 lg:mt-[7%] lg:mb-[3.5%]">Департамент научно-исследовательской деятельности</h2>
 </div>
-<section class="standards-education-section min-h-[auto] lg:min-h-[370px] bg-[length:100%_auto] bg-center" style="background-image: url('{{asset('img/bg-section-14.jpg')}}')">
+<section class="standards-education-section min-h-[auto] lg:min-h-[370px] bg-[length:100%_auto] bg-center"
+         style="background-image: url('{{asset('img/bg-section-14.jpg')}}')">
     <div class="container custom relative min-h-[auto] lg:min-h-[370px]">
-        <div class="sub-box-menu grid grid-cols-1 lg:grid-cols-[1fr_1fr] bg-[var(--primary-color)] text-white text-sm sm:text-lg  p-6 w-[100%] lg:w-[70%] lg:absolute lg:bottom-[10px] lg:right-0 mx-auto lg:mx-none">
+        <div
+            class="sub-box-menu grid grid-cols-1 lg:grid-cols-[1fr_1fr] bg-[var(--primary-color)] text-white text-sm sm:text-lg  p-6 w-[100%] lg:w-[70%] lg:absolute lg:bottom-[10px] lg:right-0 mx-auto lg:mx-none">
             <div>
                 <ul>
                     <li class="hover:*:opacity-[0.8] *:transition-[var(--transition-link)] leading-normal pb-3">
@@ -55,7 +57,8 @@
                         <a href="#"><i class="bi bi-arrow-right me-3"></i>[4.1.5] Садоводство, виноградарство</a>
                     </li>
                     <li class="hover:*:opacity-[0.8] *:transition-[var(--transition-link)] leading-normal">
-                        <a href="#"><i class="bi bi-arrow-right me-3"></i>[4.4.1] Сельскохозяйственная биотехнология и пищевая биотехнология</a>
+                        <a href="#"><i class="bi bi-arrow-right me-3"></i>[4.4.1] Сельскохозяйственная биотехнология и
+                            пищевая биотехнология</a>
                     </li>
                 </ul>
             </div>
@@ -65,9 +68,11 @@
 <div class="box-heading container custom">
     <h2 class="font-bold text-2xl my-6 lg:mt-[7%] lg:mb-[3.5%]">Научная деятельность</h2>
 </div>
-<section class="min-h-[auto] lg:min-h-[370px] bg-no-repeat bg-cover bg-[100%]" style="background-image: url('{{asset('img/bg-section-15.jpg')}}')">
+<section class="min-h-[auto] lg:min-h-[370px] bg-no-repeat bg-cover bg-[100%]"
+         style="background-image: url('{{asset('img/bg-section-15.jpg')}}')">
     <div class="container custom relative min-h-[auto] lg:min-h-[370px]">
-        <div class="sub-box-menu grid grid-cols-1 lg:grid-cols-[1fr_1fr] bg-[var(--primary-color)] text-white text-sm sm:text-lg p-6 w-[100%] lg:w-[70%] lg:absolute lg:bottom-[10px] lg:right-0 mx-auto lg:mx-none">
+        <div
+            class="sub-box-menu grid grid-cols-1 lg:grid-cols-[1fr_1fr] bg-[var(--primary-color)] text-white text-sm sm:text-lg p-6 w-[100%] lg:w-[70%] lg:absolute lg:bottom-[10px] lg:right-0 mx-auto lg:mx-none">
             <div>
                 <ul>
                     <li class="hover:*:opacity-[0.8] *:transition-[var(--transition-link)] leading-normal pb-3">

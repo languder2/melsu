@@ -7,7 +7,8 @@
             </h2>
         </div>
 
-        <div class="wrapper-info-box grid sm:grid-cols-[1fr_1fr] gap-y-2.5 sm:gap-[5px] xl:gap-0 xl:grid-cols-[1fr_1fr_1fr_1fr]">
+        <div
+            class="wrapper-info-box grid sm:grid-cols-[1fr_1fr] gap-y-2.5 sm:gap-[5px] xl:gap-0 xl:grid-cols-[1fr_1fr_1fr_1fr]">
             <div class="flex flex-col justify-between w-full info-box">
                 <div class="box-person-icon">
                     <img src="{{asset('img/student.png')}}" alt="">

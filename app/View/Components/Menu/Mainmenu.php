@@ -23,10 +23,10 @@ class Mainmenu extends Component
     public function render(): View|Closure|string
     {
 
-        $menu   = Menu::GetMainMenu();
+        $menu = Menu::GetMainMenu();
 
-        return view('components.menu.mainmenu',[
-            'list'      => $menu->items??[],
+        return view('components.menu.mainmenu', [
+            'list' => $menu->items ?? [],
         ]);
     }
 }

@@ -12,16 +12,16 @@
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 
 @theme {
-  --font-sans: Figtree, ui-sans-serif, system-ui, sans-serif,
+    --font-sans: Figtree, ui-sans-serif, system-ui, sans-serif,
     'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 
-  --color-baseRed: #820000;
+    --color-baseRed: #820000;
 
-  --list-style-type-none: none;
-  --list-style-type-disc: disc;
-  --list-style-type-decimal: decimal;
-  --list-style-type-square: square;
-  --list-style-type-roman: upper-roman;
+    --list-style-type-none: none;
+    --list-style-type-disc: disc;
+    --list-style-type-decimal: decimal;
+    --list-style-type-square: square;
+    --list-style-type-roman: upper-roman;
 }
 
 /*
@@ -33,13 +33,13 @@
   color utility to any element that depends on these defaults.
 */
 @layer base {
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    border-color: var(--color-gray-200, currentColor);
-  }
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+        border-color: var(--color-gray-200, currentColor);
+    }
 }
 
 /* Change Autocomplete styles in Chrome*/
@@ -59,9 +59,10 @@ select:-webkit-autofill:focus {
 }
 
 
-.checked-box:has(:checked){
+.checked-box:has(:checked) {
     display: block;
 }
-.btn-filter-card:has(:checked){
+
+.btn-filter-card:has(:checked) {
     background-color: var(--color-baseRed);
 }

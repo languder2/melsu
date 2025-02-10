@@ -1,4 +1,4 @@
-:root{
+:root {
     /*style text color*/
 
     --primary-color: #820000;
@@ -15,7 +15,7 @@
 
     /*style animation*/
 
-        --transition-link: all .3s linear;
+    --transition-link: all .3s linear;
 
     /* END style animation*/
 }

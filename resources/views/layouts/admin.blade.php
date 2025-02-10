@@ -13,19 +13,19 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="bg-gray-200">
-    @guest
-        <x-admin.login />
-    @endguest
-    @auth
-        <div class="ml-14 p-4">
-            <section>
+@guest
+    <x-admin.login/>
+@endguest
+@auth
+    <div class="ml-14 p-4">
+        <section>
 
-                @yield('content')
+            @yield('content')
 
-            </section>
-        </div>
-        <x-admin.sidebar />
-    @endauth
+        </section>
+    </div>
+    <x-admin.sidebar/>
+@endauth
 
 </body>
 </html>

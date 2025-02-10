@@ -2,10 +2,10 @@
 
 namespace App\View\Components\Menu;
 
+use App\Models\Menu;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
-use App\Models\Menu;
 
 class Topmenu extends Component
 {
@@ -14,15 +14,16 @@ class Topmenu extends Component
      */
 
     public $menu;
+
     public function __construct()
     {
-        $this->menu = Menu::where('code','topmenu')
+        $this->menu = Menu::where('code', 'topmenu')
             ->with([
                 'items' => function ($q) {
                     $q->orderBy('sort', 'asc')->get();
                 }
             ])
-            ->first()->items??null;
+            ->first()->items ?? null;
     }
 
     /**

@@ -23,18 +23,19 @@ import './modal-on-main-page.js'
 
 
 import * as AddLine from "./add-line.js";
+import * as SearchSelect from './select-component.js';
+import * as DependedSelects from './depended-selects.js';
+import * as Tabs from './admin/tabs.js';
+import * as AdminStaff from './admin/staffs.js';
+import './search/departments.js';
+
 window.AddLine = AddLine;
 
-import * as SearchSelect from './select-component.js';
 window.SearchSelect = SearchSelect;
 
-import * as DependedSelects from './depended-selects.js';
 window.DependedSelects = DependedSelects;
 
-import * as Tabs from './admin/tabs.js';
 window.Tabs = Tabs;
 
-import * as AdminStaff from './admin/staffs.js';
 window.AdminStaff = AdminStaff;
 
-import './search/departments.js';

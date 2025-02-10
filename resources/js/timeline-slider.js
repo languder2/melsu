@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded',()=> {
+document.addEventListener('DOMContentLoaded', () => {
     $.js = function (el) {
         return $('[data-js=' + el + ']')
     };

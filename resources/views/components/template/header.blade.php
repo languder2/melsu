@@ -11,13 +11,14 @@
     <div class="upper-menu bg-[#FAFAFA] z-82">
         <div class="box-header-address bg-[#FAFAFA] z-82">
             <h2 class="header-address">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#820000" class="bi bi-geo-alt-fill me-2" viewBox="0 0 16 16">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#820000"
+                     class="bi bi-geo-alt-fill me-2" viewBox="0 0 16 16">
                     <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
                 </svg>
                 г. Мелитополь, пр. Б. Хмельницкого, д. 18
             </h2>
         </div>
-        <x-menu.topmenu />
+        <x-menu.topmenu/>
     </div>
     <div class="search-box py-6">
         <div class="container custom">
@@ -40,5 +41,5 @@
         </div>
     </div>
 
-    <x-menu.mainmenu />
+    <x-menu.mainmenu/>
 </header>

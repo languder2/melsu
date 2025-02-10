@@ -2,19 +2,19 @@
 
 namespace App\View\Components\Specialities;
 
-use App\Models\Department;
-use App\Models\Education\Faculty;
 use App\Models\Education\Department as EducationDepartment;
+use App\Models\Education\Faculty;
 use App\Models\Education\Speciality;
 use Closure;
 use Illuminate\Contracts\View\View;
-use Illuminate\Support\Collection;
 use Illuminate\View\Component;
 
 class AllSpeciality extends Component
 {
 
     public bool $short = false;
+
+    public bool $showHeader = false;
 
     public array $options = [];
 
@@ -24,14 +24,17 @@ class AllSpeciality extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct($faculty= null,$department= null,$short = false)
+    public function __construct($faculty = null, $department = null, $short = false, bool $showHeader = false)
     {
 
-        if($short)
+        if ($short)
             $this->short = true;
 
-        $this->faculty      = Faculty::where('code',$faculty)->first();
-        $this->department   = EducationDepartment::where('code',$department)->first();
+        if ($showHeader)
+            $this->showHeader = true;
+
+        $this->faculty = Faculty::where('code', $faculty)->first();
+        $this->department = EducationDepartment::where('code', $department)->first();
     }
 
     /**
@@ -44,24 +47,31 @@ class AllSpeciality extends Component
         return $this;
     }
 
+    public function showHeader(): AllSpeciality
+    {
+        $this->showHeader = true;
+        return $this;
+    }
+
     public function render(): View|Closure|string
     {
-        $specialities =  new Speciality();
+        $specialities = new Speciality();
 
-        if($this->faculty)
-            $specialities = $specialities->where('faculty_code',$this->faculty->code);
+        if ($this->faculty)
+            $specialities = $specialities->where('faculty_code', $this->faculty->code);
 
-        if($this->department)
-            $specialities = $specialities->where('department_code',$this->department->code);
+        if ($this->department)
+            $specialities = $specialities->where('department_code', $this->department->code);
 
-        if($this->short)
+        if ($this->short)
             $specialities = $specialities->limit(9);
 
-        return view('components.specialities.all-speciality',[
+        return view('components.specialities.all-speciality', [
             'specialities' => $specialities->get(),
-            'short'        => $this->short,
-            'faculty'      => $this->faculty,
-            'department'   => $this->department,
+            'short' => $this->short,
+            'show'  => $this->showHeader,
+            'faculty' => $this->faculty,
+            'department' => $this->department,
         ]);
     }
 }

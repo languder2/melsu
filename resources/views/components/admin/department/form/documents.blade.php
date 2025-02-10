@@ -5,13 +5,13 @@
             Добавить документы
         </h4>
         <div class="w-8 text-center flex-2">
-            <a  href="{{route('admin:department:document:add')}}"
-                class="
+            <a href="{{route('admin:department:document:add')}}"
+               class="
                 inline-block mt-2
                 hover:text-blue-700
                 active:text-blue-700
             "
-                onClick="return AddLine.addLine(this.href,'AddDocuments');"
+               onClick="return AddLine.addLine(this.href,'AddDocuments');"
             >
                 <i class="fas fa-plus"></i>
             </a>
@@ -28,7 +28,6 @@
                 :i="now()->timestamp"
             />
         @endif
-
 
 
     </div>

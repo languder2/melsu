@@ -1,4 +1,3 @@
-
 <section class="container hidden lg:block">
     <div class="page-header pt-14 mb-5 xl:mb-14">
         @if(count($list??[]) || !empty($last??[]))
