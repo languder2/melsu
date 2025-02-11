@@ -71,7 +71,7 @@ class Staff extends Model
 
     public function getLinkAttribute(): string
     {
-        return url("staff/" . ($this->alias ?? $this->id));
+        return url("staffs/" . ($this->alias ?? $this->id));
     }
 
     public function getFullNameAttribute(): string
@@ -87,7 +87,7 @@ class Staff extends Model
         if (!$this->photo)
             return asset($path . 'avatar.webp');
 
-        return file_exists(asset($path . "600x600_{$this->photo}.jpg"))
+        return file_exists(public_path($path . "600x600_{$this->photo}.jpg"))
             ? asset($path . "600x600_{$this->photo}.jpg")
             : asset($path . 'avatar.webp');
 

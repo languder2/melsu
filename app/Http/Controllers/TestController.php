@@ -9,6 +9,12 @@ class TestController extends Controller
 {
     public function index()
     {
+
+        return view('pages.page',[
+            'contents'  => [
+                view('test')
+            ]
+        ]);
         $department = Department::where('alias', 'rectorate')->first();
 
         dump($department->chief_card?->link);

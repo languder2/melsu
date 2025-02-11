@@ -1,35 +1,42 @@
 document.addEventListener('DOMContentLoaded', () => {
     let list = document.querySelectorAll('.specialities_filter');
 
-    if (!list) return false;
+    if (!list) return;
 
     list.forEach((el) => {
-        let form = el.closest('form');
-        let groupSearch = form.getAttribute('data-group-search');
-        let noSearch = form.getAttribute('data-no-search');
-        let cards = document.querySelectorAll(groupSearch);
+        console.log(el);
+        return;
 
-        el.addEventListener('change', () => {
+            let form = el.closest('form');
+            if(!form) return;
 
-            showAll(cards);
+            let groupSearch = form.getAttribute('data-group-search');
+            let noSearch = form.getAttribute('data-no-search');
+            let cards = document.querySelectorAll(groupSearch);
 
-            let formData = new FormData(form);
 
-            formData.forEach((value, field) => {
-                let type = form.querySelector('[name="' + field + '"]')
-                    .getAttribute('data-filter-type');
 
-                if (type === 'check' && value !== '') {
-                    check(cards, field, value);
-                }
+            el.addEventListener('change', () => {
 
-                if (type === 'search' && value !== '') {
-                    search(cards, value);
-                }
-            });
+                showAll(cards);
 
-            checkResults(groupSearch, noSearch)
-        })
+                let formData = new FormData(form);
+
+                formData.forEach((value, field) => {
+                    let type = form.querySelector('[name="' + field + '"]')
+                        .getAttribute('data-filter-type');
+
+                    if (type === 'check' && value !== '') {
+                        check(cards, field, value);
+                    }
+
+                    if (type === 'search' && value !== '') {
+                        search(cards, value);
+                    }
+                });
+
+                checkResults(groupSearch, noSearch)
+            })
     });
 
     function showAll(cards) {
@@ -63,10 +70,11 @@ document.addEventListener('DOMContentLoaded', () => {
             MessageBlock.classList.remove('hidden')
     }
 
-    document.querySelector('.btn-show-filter').addEventListener('click', () => {
-        document.querySelector('.box-show-filter').classList.add('hidde');
-        document.querySelector('.filters-select-box').classList.remove('hidden');
-    })
+    if(document.querySelector('.btn-show-filter'))
+        document.querySelector('.btn-show-filter').addEventListener('click', () => {
+            document.querySelector('.box-show-filter').classList.add('hidde');
+            document.querySelector('.filters-select-box').classList.remove('hidden');
+        })
 
     let searchInput = document.querySelectorAll('[data-filter-type="search"]');
 

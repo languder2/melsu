@@ -173,20 +173,35 @@ class Menu extends Model
 
     public static function getMenuFromMain($link):MenuItems|null
     {
+
         $menu = Menu::where('code', 'main')->first();
+
+        if(!$menu)
+            return null;
 
         $item = MenuItems::where('menu_id', $menu->id)->where('link', $link)->first();
 
         if(!$item)
+            $item = MenuItems::where('menu_id', $menu->id)->where('link', url($link))->first();
+
+        if(!$item)
             return null;
 
-        return self::getMenuItemParent($item);
+        $item->active = !$item->parent;
+
+        $item =  $item->parent?self::getMenuItemParent($item,$link):$item;
+
+        $item->subs->each(function($item) use ($link){
+            $item->active = (bool)($item->link === url($link) || $item->link === $link);
+        });
+
+        return $item;
     }
 
-    public static function getMenuItemParent(MenuItems $item): MenuItems
+    public static function getMenuItemParent(MenuItems $item,$link): MenuItems
     {
         if($item->parent)
-            return self::getMenuItemParent($item->parent);
+            return self::getMenuItemParent($item->parent,$link);
 
         return $item;
     }

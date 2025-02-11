@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\ImageStorage;
+use App\Models\Menu;
 use App\Models\Staff;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Collection;
@@ -83,10 +85,7 @@ class StaffController extends Controller
         $photo->storeAS('images/photo', 'original.' . $photo->extension(), 'public');
 
         ImageStorage::saveResizedImageToStorage('photo', $photo->path(), 'photo-' . $record->id, [
-            [1200, 1200],
-            [800, 800],
             [600, 600],
-            [200, 200],
         ]);
 
         return redirect()->route('admin:staff');
@@ -109,9 +108,38 @@ class StaffController extends Controller
         return redirect()->route('admin:staff');
     }
 
-    public function show(Request $request, $code)
+    public function list(Request $request):string|RedirectResponse
     {
-//        dd($request->path());
+        return view("pages.page-with-menu", [
+            'sidebar' => View::make('components.menu.sidebar')->with([
+                'menu' => &$menu,
+                'full' => false,
+            ])->render(),
+
+            'nobg' => true,
+
+            'news' => false,
+
+            'menu' => Menu::getMenuFromMain(route('public:staff:list')),
+
+            'breadcrumbs' => (object)[
+                'view'      => null,
+                'route'     => 'staffs',
+                'element'   => null,
+            ],
+
+            'contents' => [
+//                View::make('components.staff.single')->with([
+//                    'staff' => $staff,
+//                ])->render(),
+
+                "staffs"
+            ]
+
+        ]);
+    }
+    public function show(Request $request, $code):string|RedirectResponse
+    {
 
         $staff = Staff::where('alias', $code)->first();
 
@@ -131,9 +159,11 @@ class StaffController extends Controller
 
             'news' => false,
 
+            'menu' => Menu::getMenuFromMain(($code==='rector')?$request->path():route('public:staff:list')),
+
             'breadcrumbs' => (object)[
                 'view'      => null,
-                'route'     => 'staffs',
+                'route'     => 'staff',
                 'element'   => $staff,
             ],
 

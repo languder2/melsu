@@ -18,6 +18,7 @@ class Department extends Model
         'name',
         'code',
         'faculty_code',
+        'department_code',
         'type_code',
         'parent_id',
         'description',
@@ -31,10 +32,9 @@ class Department extends Model
         return [
             'name' => 'required',
             'code' => "required|unique:education_departments,code,{$id},id,deleted_at,NULL",
-            'faculty_code' => 'required',
+            'faculty_code' => '',
+            'department_code' => '',
             'type_code' => 'required',
-            'parent_id' => '',
-
             'description' => '',
             'order' => 'nullable|numeric',
         ];

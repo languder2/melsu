@@ -34,6 +34,12 @@ class DepartmentController extends Controller
     public function form($id = null)
     {
 
+        $current= Department::find($id);
+
+        $departments = $current
+                ?$current->faculty->departments->where('type_code','department')->pluck('name', 'code')->toArray()
+                :Department::where('type_code','department')->pluck('name', 'code')?->toArray();
+
         return view('pages.admin', [
             'contents' => [
                 View::make('components.admin.top_menu.education')->with([
@@ -44,6 +50,7 @@ class DepartmentController extends Controller
                     'current' => Department::find($id),
                     'add2faculty' => request()->get('faculty'),
                     'faculties' => Faculty::pluck('name', 'code')->toArray(),
+                    'departments' => $departments,
                     'types' => DepartmentType::pluck('name', 'code')->toArray(),
                 ])->render(),
             ]
@@ -52,6 +59,7 @@ class DepartmentController extends Controller
 
     public function save(Request $request)
     {
+
         $form = $request->validate(Department::FormRules($request->get('id')), Department::FormMessage());
 
         if (empty($request->get('id')))

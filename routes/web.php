@@ -153,14 +153,6 @@ Route::middleware('auth.check')
 
     });
 
-Route::controller(StaffController::class)
-    ->prefix('staff')
-    ->group(function () {
-
-        Route::get('{code}', 'show')->name('staff:show');
-
-    });
-
 Route::middleware('auth.check')
     ->controller(UserController::class)
     ->prefix('admin/users')
@@ -192,14 +184,6 @@ Route::middleware('auth.check')
         Route::post('save', 'save')->name('admin:department:save');
         Route::get('delete/{id}', 'delete')->name('admin:department:delete');
 
-    });
-
-/* Department: public */
-
-Route::controller(DepartmentController::class)
-    ->group(function () {
-        Route::get('departments', 'showList')->name('public:department:list');
-        Route::get('department/{code}', 'show')->name('public:department:show');
     });
 
 
@@ -242,13 +226,6 @@ Route::middleware('auth.check')
 
     });
 
-Route::controller(StaffController::class)
-    ->prefix('department')
-    ->group(function () {
-        Route::get('{id}', 'list')->name('department:show');
-    });
-
-
 Route::controller(EducationController::class)
     ->prefix('specialities')
     ->group(function () {
@@ -287,6 +264,27 @@ Route::controller(EducationController::class)
 
     });
 
+/* Department: public */
+
+Route::controller(DepartmentController::class)
+    ->group(function () {
+        Route::get('departments', 'showList')->name('public:department:list');
+        Route::get('department/{code}', 'show')->name('public:department:show');
+    });
+
+/* Staffs: public */
+
+Route::controller(StaffController::class)
+    ->prefix('staffs')
+    ->group(function () {
+        Route::get('', 'list')->name('public:staff:list');
+        Route::get('{code}', 'show')->name('public:staff:show');
+
+    });
+
+
 /* Pages: public */
 
 Route::get('{alias}', [PagesController::class, 'showPage']);
+
+

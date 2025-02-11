@@ -26,6 +26,13 @@
 
     <x-form.input type="hidden" name="id" value="{{$current->id??null}}"/>
 
+    <x-form.file
+        id="form_photo"
+        name="image"
+        label="Image"
+        value="{{old('image')}}"
+    />
+
     <x-form.input
         id="form_name"
         name="name"

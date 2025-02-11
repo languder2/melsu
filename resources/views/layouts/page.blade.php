@@ -28,13 +28,13 @@
     <section class="main-section">
 
         <section class="container py-5">
-
-{{--            {{ Breadcrumbs::render('speciality',\App\Models\Education\Speciality::Find(5)) }}--}}
             @yield('breadcrumbs')
 
             <div class="grid grid-cols-1 lg:grid-cols-[25%_minmax(70%,1fr)] gap-3">
-                <div class="left-side-menu-box hidden lg:block bg-white p-2.5">
-                    @yield('sidebar')
+                <div class="left-side-menu-box hidden lg:block ">
+                    <div class="sticky top-42 bg-white p-2.5">
+                        @yield('sidebar')
+                    </div>
                 </div>
                 @if(isset($nobg) && $nobg === true)
                     <div class="main-content">

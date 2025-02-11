@@ -102,7 +102,7 @@ class DepartmentController extends Controller
     }
 
 
-    public function show($code = null)
+    public function show(Request $request, $code = null)
     {
 
         $department = Department2::where('alias', $code)->first();
@@ -113,7 +113,7 @@ class DepartmentController extends Controller
         if (!$department)
             return redirect()->route('pages:main');
 
-        if ($code === 'rectorate')
+        if (strtolower($department->alias) === 'rectorate')
             $pageContent = View::make('components.department.rectorate')->with([
                 'department' => $department,
             ])->render();
@@ -124,7 +124,9 @@ class DepartmentController extends Controller
 
 
         return view("pages.page-with-menu", [
-            'menu' => Menu::getMenuFromMain(route('public:department:list')),
+            'menu' => Menu::getMenuFromMain(
+                ($department->alias==='rectorate')?$request->path():route('public:department:list')
+            ),
 
             'breadcrumbs' => (object)[
                 'view'      => null,
@@ -142,10 +144,8 @@ class DepartmentController extends Controller
         ]);
     }
 
-    public function showList()
+    public function showList(Request $request):string
     {
-
-        dump(route('public:department:list'));
 
         $pageContent = (new \App\View\Components\Department\All())->render();
 
@@ -154,6 +154,15 @@ class DepartmentController extends Controller
                 'menu' => &$menu,
                 'full' => false,
             ])->render(),
+
+            'breadcrumbs' => (object)[
+                'view'      => null,
+                'route'     => 'departments',
+                'element'   => null,
+            ],
+
+
+            'menu' => Menu::getMenuFromMain(route('public:department:list')),
 
             'nobg' => true,
 

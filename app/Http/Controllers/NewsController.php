@@ -115,6 +115,11 @@ class NewsController extends Controller
 
         return view('pages.page', [
 
+            'includes'    =>[
+                'jquery',
+                'data-picker',
+            ],
+
             'breadcrumbs' => (object)[
                 'view'      => 'news',
                 'route'     => 'news',

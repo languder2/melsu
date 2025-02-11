@@ -1,21 +1,3 @@
-{{--<div class="excursion-btn">--}}
-{{--    <div class="excursion-menu-box">--}}
-{{--        <div class="excursion-menu">--}}
-{{--            <h1>МелГУ - где это:</h1>--}}
-{{--            <ul>--}}
-{{--                <li><a href="#">Новороссия</a></li>--}}
-{{--                <li><a href="#">Запорожская область</a></li>--}}
-{{--                <li><a href="#">Мелитополь</a></li>--}}
-{{--            </ul>--}}
-{{--        </div>--}}
-{{--    </div>--}}
-{{--    <div class="flex justify-between relative">--}}
-{{--        <a class="modal-open">Начни экскурсию с меня!</a>--}}
-{{--        <video id="anim-logo" autoplay loop muted>--}}
-{{--            <source src="{{asset('video/anim-logo.webm')}}" type="video/webm">--}}
-{{--        </video>--}}
-{{--    </div>--}}
-{{--</div>--}}
 <footer>
     <div class="pt-6 pb-4 bg-[#2E3146]">
         <div class="container custom lg:p-2.5">
@@ -134,4 +116,17 @@
         </div>
     </div>
 </footer>
-
+<!-- Top.Mail.Ru counter -->
+<script type="text/javascript">
+    var _tmr = window._tmr || (window._tmr = []);
+    _tmr.push({id: "3612076", type: "pageView", start: (new Date()).getTime()});
+    (function (d, w, id) {
+        if (d.getElementById(id)) return;
+        var ts = d.createElement("script"); ts.type = "text/javascript"; ts.async = true; ts.id = id;
+        ts.src = "https://top-fwz1.mail.ru/js/code.js";
+        var f = function () {var s = d.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ts, s);};
+        if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); }
+    })(document, window, "tmr-code");
+</script>
+<noscript><div><img src="https://top-fwz1.mail.ru/counter?id=3612076;js=na" style="position:absolute;left:-9999px;" alt="Top.Mail.Ru" /></div></noscript>
+<!-- /Top.Mail.Ru counter -->

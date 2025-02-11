@@ -3,7 +3,6 @@ import './bootstrap';
 import './menu.js';
 import './load.js';
 
-
 import './accordion-script.js';
 import './classie.js';
 import './counter-script.js';
@@ -13,11 +12,10 @@ import './uisearch.js';
 
 import './aware-button-animaton.js';
 import './btn-info-prog.js';
-import './custom-select-navigation.js';
+// import './custom-select-navigation.js';
 import './filter-card.js';
 import './more-prog-btn.js';
 import './slider-bg.js';
-import './timeline-slider.js';
 
 import './modal-on-main-page.js'
 
@@ -38,4 +36,3 @@ window.DependedSelects = DependedSelects;
 window.Tabs = Tabs;
 
 window.AdminStaff = AdminStaff;
-

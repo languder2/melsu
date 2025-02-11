@@ -85,15 +85,17 @@ Breadcrumbs::for('pages', function (BreadcrumbTrail $trail, Page $page) {
         $trail->push($item->title??"", $item->link);
 });
 
-Breadcrumbs::for('staffs', function (BreadcrumbTrail $trail, ?Staff $staff) {
+Breadcrumbs::for('staffs', function (BreadcrumbTrail $trail) {
     $trail->parent('home');
 
-    $trail->push("Кадровый состав", "staffs");
-
-    if($staff)
-        $trail->push($staff->full_name, "#");
+    $trail->push("Кадровый состав", route('public:staff:list'));
 });
 
+Breadcrumbs::for('staff', function (BreadcrumbTrail $trail, ?Staff $staff) {
+    $trail->parent('staffs');
+
+    $trail->push($staff->full_name, route('public:staff:show',[$staff->id??null]));
+});
 
 Breadcrumbs::for('departments', function (BreadcrumbTrail $trail) {
     $trail->parent('home');

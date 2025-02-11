@@ -101,10 +101,15 @@ class PagesController extends Controller
                 'route'     => 'pages',
                 'element'   => $page,
             ],
+
             'sidebar' => View::make('components.menu.sidebar')->with([
                 'menu' => &$menu,
                 'full' => false,
             ])->render(),
+
+            'includes'    =>[
+                'jquery',
+            ],
 
             'nobg' => in_array($page->alias, [
                 'sved',
