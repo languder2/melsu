@@ -5,7 +5,11 @@ namespace App\Models\Gallery;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Drivers\Gd\Driver;
 use Intervention\Image\Image as InterventionImage;
+use Intervention\Image\ImageManager;
 
 class Image extends Model
 {
@@ -18,8 +22,12 @@ class Image extends Model
         'name',
         'alt',
         'filename',
+        'filetype',
+        'type',
         'show',
         'order',
+        'relation_id',
+        'relation_type',
     ];
 
     public static function FormRules($id): array
@@ -47,8 +55,46 @@ class Image extends Model
         return $this->morphTo();
     }
 
-    public static function test()
+    public function saveImage(UploadedFile $file):void
     {
-        return 'test';
+
+        $this->filename = substr($file->hashName(),0,strpos($file->hashName(),'.'));
+
+        if($file->extension() === 'svg'){
+            $this->filetype = 'svg';
+            return;
+        }
+
+        $this->filetype = 'webp';
+
+        $manager = new ImageManager(new Driver());
+        $image = $manager->read($file);
+
+        $width  = ($image->width()  > $image->height()) ?600:600*$image->width()/$image->height();
+        $height = ($image->height() > $image->width())  ?600:600*$image->height()/$image->width();
+
+        Storage::put("images/faculty/$this->filename.webp",(string)$image->toWebp(90));
+        Storage::put("images/faculty/{$this->filename}_thunbnail.webp",(string)$image->resize($width,$height)->toWebp(90));
     }
+
+    public function getSrcAttribute():string
+    {
+
+        $path = match($this->relation_type){
+            'App\Models\Education\Faculty' => 'images/faculty/',
+            default => "",
+        };
+        return Storage::url("$path{$this->filename}.{$this->filetype}");
+    }
+
+    public function getThunbnailAttribute():string
+    {
+
+        $path = match($this->relation_type){
+            'App\Models\Education\Faculty' => 'images/faculty/',
+            default => "",
+        };
+        return Storage::url("$path{$this->filename}_thunbnail.{$this->filetype}");
+    }
+
 }
