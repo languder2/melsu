@@ -198,7 +198,8 @@ Route::middleware('auth.check')
     ->prefix('gallery/images')
     ->group(function () {
         Route::get('', 'list')->name('admin:gallery:image:list');
-        Route::get('form/{id?}', 'list')->name('admin:gallery:image:form');
+        Route::get('form/{id?}', 'form')->name('admin:gallery:image:form');
+        Route::post('save', 'save')->name('admin:gallery:image:save');
     });
 
 

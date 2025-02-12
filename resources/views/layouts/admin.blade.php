@@ -8,8 +8,6 @@
 
     <title>@yield('title', 'ФГБОУ ВО "МелГУ"')</title>
 
-    <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="bg-gray-200">
@@ -26,46 +24,30 @@
     </div>
     <x-admin.sidebar/>
 @endauth
-<div class="flex flex-col-reverse gap-4 fixed bottom-6 right-6">
+
+<div id="adminMessageBox" class="flex flex-col gap-0 fixed bottom-6 right-6 select-none">
     <div
         class="
-            bg-purple-700 text-white rounded-lg
-            w-60 mb-4  overflow-hidden
-            transition-all duration-200
-            max-h-60
+            example
+            bg-black/70 text-white rounded-lg
+            w-96 mt-0 overflow-hidden
+            transition-all duration-500
+            opacity-0
+            max-h-0
+            cursor-pointer
+            hidden
         "
-        onclick="ShowMessage.hide(this)"
     >
-        <div class="p-4">
-            01
-        </div>
-    </div>
-    <div
-        class="
-            bg-purple-700 text-white rounded-lg
-            w-60 mb-4  overflow-hidden
-            transition-all duration-200
-            max-h-60
-        "
-        onclick="ShowMessage.hide(this)"
-    >
-        <div class="p-4">
-            02
-        </div>
-    </div>
-    <div
-        class="
-            bg-purple-700 text-white rounded-lg
-            w-60 mb-4  overflow-hidden
-            transition-all duration-300
-            max-h-60
-        "
-        onclick="ShowMessage.hide(this)"
-    >
-        <div class="p-4">
-            03
+        <div class="text-right">
+            <div class="message-time border-b border-b-gray-50/30 px-4 pt-2 pb-1 text-xs">
+                {{date("H:i:s")}}
+            </div>
+            <div class="message-content p-4 pt-2">
+
+            </div>
         </div>
     </div>
 </div>
+
 </body>
 </html>

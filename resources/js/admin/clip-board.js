@@ -1,4 +1,4 @@
-export async function copyTextToClipboard(text) {
+export async function copyTextToClipboard(text,message) {
     await navigator.clipboard.writeText(text);
-    ShowMessage.message();
+    ShowMessage.message(message);
 }

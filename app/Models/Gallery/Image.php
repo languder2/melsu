@@ -34,9 +34,7 @@ class Image extends Model
     {
         return [
             'name' => 'required',
-            'code' => "required|unique:education_faculties,code,{$id},id,deleted_at,NULL",
-            'description' => '',
-            'order' => 'nullable|numeric',
+            'alt' => '',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
     }
@@ -44,9 +42,9 @@ class Image extends Model
     public static function FormMessage(): array
     {
         return [
-            'name' => 'Укажите заголовок',
-            'code.required' => 'Код должен быть указан',
-            'code.unique' => 'Код должен быть уникальным',
+            'name'          => 'Укажите название',
+            'image.mimes'   => 'Не верный формат изображения',
+            'image.max'     => 'Размер изображения превышает лимит в 2MB',
         ];
     }
 
@@ -55,14 +53,14 @@ class Image extends Model
         return $this->morphTo();
     }
 
-    public function saveImage(UploadedFile $file):void
+    public function saveImage(UploadedFile $file,string $path = 'images/gallery'):void
     {
         $this->filename = substr($file->hashName(),0,strpos($file->hashName(),'.'));
 
         if($file->extension() === 'svg'){
             $this->filetype = 'svg';
 
-            $file->storeAs("images/faculty/$this->filename", 'image.svg');
+            $file->storeAs("$path/$this->filename", 'image.svg');
             return;
         }
 
@@ -74,8 +72,8 @@ class Image extends Model
         $width  = ($image->width()  > $image->height()) ?600:600*$image->width()/$image->height();
         $height = ($image->height() > $image->width())  ?600:600*$image->height()/$image->width();
 
-        Storage::put("images/faculty/$this->filename/image.webp",(string)$image->toWebp(90));
-        Storage::put("images/faculty/{$this->filename}/thumbnail.webp",(string)$image->resize($width,$height)->toWebp(90));
+        Storage::put("$path/$this->filename/image.webp",(string)$image->toWebp(90));
+        Storage::put("$path/{$this->filename}/thumbnail.webp",(string)$image->resize($width,$height)->toWebp(90));
 
     }
 
@@ -83,7 +81,7 @@ class Image extends Model
     {
         $path = match($this->relation_type){
             'App\Models\Education\Faculty' => 'images/faculty/',
-            default => "",
+            default => 'images/gallery/',
         };
 
         $path .= $this->filename;
@@ -98,7 +96,7 @@ class Image extends Model
 
         $path = match($this->relation_type){
             'App\Models\Education\Faculty' => "images/faculty/",
-            default => "",
+            default => 'images/gallery/',
         };
 
         $path .= $this->filename;
@@ -106,6 +104,25 @@ class Image extends Model
         $filepath=  ($this->filetype === 'svg')?"$path/image.svg":"$path/thumbnail.webp";
 
         return Storage::exists($filepath)?Storage::url($filepath):null;
+
+    }
+
+    public function getDetailsAttribute():object|null|string
+    {
+        $manager = new ImageManager(new Driver());
+        $image = $manager->read(public_path($this->src));
+        return (object)[
+            'width' => $image->width(),
+            'height' => $image->height(),
+        ];
+
+    }
+
+    public function getOrientalAttribute():string
+    {
+        $manager = new ImageManager(new Driver());
+        $image = $manager->read(public_path($this->src));
+        return ($image->width()>$image->height())?"horizontal":"vertical";
 
     }
 
