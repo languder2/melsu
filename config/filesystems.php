@@ -32,15 +32,15 @@ return [
 
         'local' => [
             'driver' => 'local',
-            'root' => storage_path('app/private'),
+            'root' => storage_path('app/public'),
             'serve' => true,
             'throw' => false,
         ],
 
         'public' => [
             'driver' => 'local',
-            'root' => public_path('storage'),
-            //'root' => storage_path('app/public'),
+//            'root' => public_path('storage'),
+            'root' => storage_path('app/public'),
             'url' => env('APP_URL') . '/storage',
             'visibility' => 'public',
             'throw' => false,
@@ -77,7 +77,7 @@ return [
     |
     */
     'links' => [
-//        public_path('storage') => storage_path('app/public'),
-        'D:\OSP\home\melsu\public_html\storage' => 'D:\OSP\home\melsu\storage\app\public',
+        base_path('public_html/storage') => storage_path('app/public'),
+//        'D:\OSP\home\melsu\public_html\storage' => 'D:\OSP\home\melsu\storage\app\public',
     ],
 ];

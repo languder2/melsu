@@ -5,8 +5,6 @@
         "
 >
 
-    <img src="{{$faculty->logo->thunbnail}}" alt="{{$faculty->name}}" />
-
     <h3 class="text-xl border-b mb-2 pb-2 font-semibold">
         {{$faculty->name}}
     </h3>

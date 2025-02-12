@@ -21,18 +21,20 @@ import './modal-on-main-page.js'
 
 
 import * as AddLine from "./add-line.js";
+window.AddLine = AddLine;
 import * as SearchSelect from './select-component.js';
+window.SearchSelect = SearchSelect;
 import * as DependedSelects from './depended-selects.js';
+window.DependedSelects = DependedSelects;
 import * as Tabs from './admin/tabs.js';
+window.Tabs = Tabs;
 import * as AdminStaff from './admin/staffs.js';
+window.AdminStaff = AdminStaff;
+
 import './search/departments.js';
 
-window.AddLine = AddLine;
+import * as ShowMessage from './admin/show-message.js';
+window.ShowMessage = ShowMessage;
 
-window.SearchSelect = SearchSelect;
-
-window.DependedSelects = DependedSelects;
-
-window.Tabs = Tabs;
-
-window.AdminStaff = AdminStaff;
+import * as ClipBoard from './admin/clip-board.js';
+window.ClipBoard = ClipBoard;

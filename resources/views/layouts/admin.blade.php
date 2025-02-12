@@ -26,6 +26,46 @@
     </div>
     <x-admin.sidebar/>
 @endauth
-
+<div class="flex flex-col-reverse gap-4 fixed bottom-6 right-6">
+    <div
+        class="
+            bg-purple-700 text-white rounded-lg
+            w-60 mb-4  overflow-hidden
+            transition-all duration-200
+            max-h-60
+        "
+        onclick="ShowMessage.hide(this)"
+    >
+        <div class="p-4">
+            01
+        </div>
+    </div>
+    <div
+        class="
+            bg-purple-700 text-white rounded-lg
+            w-60 mb-4  overflow-hidden
+            transition-all duration-200
+            max-h-60
+        "
+        onclick="ShowMessage.hide(this)"
+    >
+        <div class="p-4">
+            02
+        </div>
+    </div>
+    <div
+        class="
+            bg-purple-700 text-white rounded-lg
+            w-60 mb-4  overflow-hidden
+            transition-all duration-300
+            max-h-60
+        "
+        onclick="ShowMessage.hide(this)"
+    >
+        <div class="p-4">
+            03
+        </div>
+    </div>
+</div>
 </body>
 </html>

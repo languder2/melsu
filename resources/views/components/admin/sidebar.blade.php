@@ -14,31 +14,31 @@
         <x-admin.sidebar-li
             link="{{url('/')}}"
             img="bg-white-logo.png"
-            text="Frontend"
+            text="Главная"
         />
 
         <x-admin.sidebar-li
             link="{{route('admin:structure')}}"
             ico="fas fa-project-diagram text-lg"
-            text="структура"
+            text="Структура"
         />
 
         <x-admin.sidebar-li
             link="{{route('admin:news')}}"
             ico="far fa-calendar-check"
-            text="новости"
+            text="Новости"
         />
 
         <x-admin.sidebar-li
             link="{{route('admin:staff')}}"
             ico="fas fa-users text-lg"
-            text="сотрудники"
+            text="Сотрудники"
         />
 
         <x-admin.sidebar-li
             link="{{route('admin:department')}}"
             ico="fas fa-align-left"
-            text="департаменты"
+            text="Департаменты"
         />
 
         <x-admin.sidebar-li
@@ -54,9 +54,16 @@
         />
 
         <x-admin.sidebar-li
+            link="{{route('admin:gallery:image:list')}}"
+            ico="far fa-images"
+            text="Gallery"
+            class="text-xl"
+        />
+
+        <x-admin.sidebar-li
             link="{{route('admin:logout')}}"
             ico="fas fa-sign-out-alt"
-            text="выход"
+            text="Выход"
         />
     </ul>
 

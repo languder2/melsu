@@ -106,7 +106,6 @@ Breadcrumbs::for('departments', function (BreadcrumbTrail $trail) {
 
 Breadcrumbs::for('department', function (BreadcrumbTrail $trail, \App\Models\Department\Department $department) {
     $trail->parent('departments');
-
     $trail->push($department->name??'отдел', $department->link);
 });
 

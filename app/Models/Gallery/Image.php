@@ -57,11 +57,12 @@ class Image extends Model
 
     public function saveImage(UploadedFile $file):void
     {
-
         $this->filename = substr($file->hashName(),0,strpos($file->hashName(),'.'));
 
         if($file->extension() === 'svg'){
             $this->filetype = 'svg';
+
+            $file->storeAs("images/faculty/$this->filename", 'image.svg');
             return;
         }
 
@@ -73,28 +74,39 @@ class Image extends Model
         $width  = ($image->width()  > $image->height()) ?600:600*$image->width()/$image->height();
         $height = ($image->height() > $image->width())  ?600:600*$image->height()/$image->width();
 
-        Storage::put("images/faculty/$this->filename.webp",(string)$image->toWebp(90));
-        Storage::put("images/faculty/{$this->filename}_thunbnail.webp",(string)$image->resize($width,$height)->toWebp(90));
+        Storage::put("images/faculty/$this->filename/image.webp",(string)$image->toWebp(90));
+        Storage::put("images/faculty/{$this->filename}/thumbnail.webp",(string)$image->resize($width,$height)->toWebp(90));
+
     }
 
-    public function getSrcAttribute():string
+    public function getSrcAttribute():string|null
     {
-
         $path = match($this->relation_type){
             'App\Models\Education\Faculty' => 'images/faculty/',
             default => "",
         };
-        return Storage::url("$path{$this->filename}.{$this->filetype}");
+
+        $path .= $this->filename;
+
+        $filepath=  "$path/image.{$this->filetype}";
+
+        return Storage::exists($filepath)?Storage::url($filepath):null;
     }
 
-    public function getThunbnailAttribute():string
+    public function getThumbnailAttribute():string|null
     {
 
         $path = match($this->relation_type){
-            'App\Models\Education\Faculty' => 'images/faculty/',
+            'App\Models\Education\Faculty' => "images/faculty/",
             default => "",
         };
-        return Storage::url("$path{$this->filename}_thunbnail.{$this->filetype}");
+
+        $path .= $this->filename;
+
+        $filepath=  ($this->filetype === 'svg')?"$path/image.svg":"$path/thumbnail.webp";
+
+        return Storage::exists($filepath)?Storage::url($filepath):null;
+
     }
 
 }
