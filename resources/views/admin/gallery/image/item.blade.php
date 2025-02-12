@@ -4,17 +4,18 @@
         'grayscale hover:grayscale-0',
         'has-checked:grayscale-0',
         'bg-white rounded-lg',
-        'w-full lg:w-auto lg:min-w-60',
+//        'w-full lg:w-auto lg:min-w-60',
         'relative',
         ($image->filetype !== 'svg')?"":"p-4",
         'cursor-pointer',
         'group',
         'select-none',
+        'max-w-[800px] max-h-[400px]'
     ])
 >
     <a
         href="{{route('admin:gallery:image:form',[$image->id])}}"
-        class="fixed right-2 top-2 bg-white text-xl py-2 px-3 rounded-2xl hover:bg-blue-700 hover:text-white"
+        class="fixed right-2 top-2 bg-white text-xl py-2 px-3 rounded-2xl hover:bg-blue-700 hover:text-white max-w-[800px] max-h-[400px]"
     >
         <i class="fas fa-pencil-alt"></i>
     </a>
@@ -22,7 +23,7 @@
     <input type="radio" name="select_image" class="hidden"
            onclick="ClipBoard.copyTextToClipboard('../../..{{$image->src}}','Адрес изображения скопирован\n{{$image->id}} {{$image->name}}')"
     />
-    <img src="{{$image->thumbnail}}" alt="image" class="rounded-lg"  />
+    <img src="{{$image->thumbnail}}" alt="image" class="rounded-lg max-w-[800px] max-h-[400px]"  />
     <span
         class="
             absolute

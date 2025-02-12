@@ -12,7 +12,8 @@ class AdminImageGallery extends Controller
     public function list()
     {
 
-        $list= Image::inRandomOrder()->paginate(60);
+//        $list= Image::inRandomOrder()->paginate(60);
+        $list= Image::orderBy('id','desc')->paginate(60);
 
         return view('pages.admin', [
             'contents' => [
