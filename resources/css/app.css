@@ -66,3 +66,11 @@ select:-webkit-autofill:focus {
 .btn-filter-card:has(:checked) {
     background-color: var(--color-baseRed);
 }
+
+img {
+    user-drag: none; /* Запрещает перетаскивание */
+    -webkit-user-drag: none; /* Для Safari */
+    -khtml-user-drag: none; /* Для Konqueror */
+    -moz-user-drag: none; /* Для Firefox */
+    -o-user-drag: none; /* Для Opera */
+}
