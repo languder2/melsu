@@ -39,6 +39,17 @@
             required
         />
 
+        <x-form.select
+            id="form_faculty_code"
+            name="gallery_code"
+            old="{{old('faculty_code')??@$addTo}}"
+{{--            value="{{$current->faculty_code}}"--}}
+            null="Выбрать"
+            :list="$galleries??[]"
+            label="Добавить в галерею"
+        />
+
+
         <x-form.input
             id="form_alt"
             name="alt"

@@ -52,16 +52,18 @@ class Gallery extends Model
         return $this->MorphOne(Image::class, 'relation')->where('type', 'preview');
     }
 
-    public function images($all = null, $trashed = null): MorphMany
+    public function images($trashed = null): MorphMany
     {
 
         $object = $this->morphMany(Image::class, 'relation');
 
-        if (is_null($all))
-            $object = $object->where('show', true);
+        $object->where(function ($query) {
+            $query->where('type', '!=', 'preview')
+                ->orWhereNull('type');
+        })->where('show', true);
 
-        if (!is_null($trashed))
-            $object = $object->withTrashed();
+//        if (!is_null($trashed))
+//            $object = $object->withTrashed();
 
         return $object;
     }

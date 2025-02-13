@@ -11,23 +11,35 @@
 >
     @csrf
 
-    <div class="flex">
-        <div class="h-60">
-            <img src="{{optional($current)->thumbnail}}" alt="" class="h-60" />
+    <div class="flex gap-3 justify-center items-center">
+        <h3 class="font-semibold text-xl uppercase text-center flex-1">
+            @if(isset($current->id))
+                Измененить галерею
+            @else
+                Создать галерею
+            @endif
+        </h3>
+        <div class="py-2">
+            <x-form.button
+                class="uppercase"
+                value="сохранить"
+            />
+        </div>
+    </div>
+
+    <hr class="opacity-40">
+
+    <x-form.errors/>
+
+    <div class="flex gap-3 mt-3">
+        <div class="h-80">
+            <img
+                src="{{optional($current)->preview->thumbnail}}"
+                alt="{{optional($current)->name}}"
+                class="h-80 rounded-lg"
+            />
         </div>
         <div class="flex-1">
-            <h3 class="pb-2 font-semibold text-xl uppercase text-center">
-                @if(isset($current->id))
-                    Измененить галерею
-                @else
-                    Создать галерею
-                @endif
-            </h3>
-
-            <hr>
-
-            <x-form.errors/>
-
             <x-form.input type="hidden" name="id" value="{{$current->id??null}}"/>
 
             <x-form.input

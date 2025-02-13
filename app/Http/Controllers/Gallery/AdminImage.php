@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Gallery;
 
 use App\Http\Controllers\Controller;
+use App\Models\Gallery\Gallery;
 use App\Models\Gallery\Image;
 use Illuminate\Http\Request;
 
@@ -39,7 +40,9 @@ class AdminImage extends Controller
 
                 view('admin.gallery.menu'),
                 view('admin.gallery.image.form',[
-                    "current"   => Image::find($id)
+                    "current"       => Image::find($id),
+                    'galleries'     => Gallery::orderBy('order')->orderBy('name')->get()->pluck('name','code'),
+                    'addTo'         => $request->get('gallery'),
                 ]),
             ]
         ]);
@@ -50,6 +53,7 @@ class AdminImage extends Controller
     {
         $form = $request->validate(Image::FormRules($request->get('id')), Image::FormMessage());
 
+
         if (empty($request->get('id')))
             $record = new Image();
         else
@@ -59,6 +63,11 @@ class AdminImage extends Controller
             unset($form['order']);
 
         $record->fill($form);
+
+        $gallery = Gallery::where('code',$form['gallery_code'])->first();
+
+        if($gallery)
+            $record->relation()->associate($gallery);
 
         $record->save();
 

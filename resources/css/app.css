@@ -16,6 +16,8 @@
     'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 
     --color-baseRed: #820000;
+    --spacing-1px: 1px;
+    --spacing-2px: 2px;
 
     --list-style-type-none: none;
     --list-style-type-disc: disc;

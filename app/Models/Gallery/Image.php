@@ -38,6 +38,7 @@ class Image extends Model
             'name' => 'required',
             'alt' => '',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'gallery_code'  => '',
         ];
     }
 
@@ -81,7 +82,6 @@ class Image extends Model
     public function getSrcAttribute():string|null
     {
         $record = $this->reference??$this;
-
 
         $path = match($record->relation_type){
             'App\Models\Education\Faculty' => 'images/faculty/',
