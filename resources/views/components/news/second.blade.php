@@ -1,8 +1,22 @@
 <div class="news-box border border-[#e5e7eb] max-h-[339px] lg:max-h-[367px]">
     <a href="{{route('news:show',$news->id)}}">
         <div class="box-photo-news min-h-[139px] bg-white overflow-hidden">
-            <img src="{{asset('images/news/600x600_'.$news->image.'.jpg')}}" alt="#"
-                 class="object-cover max-h-[139px] w-full">
+
+            @if($news->preview && $news->preview->src)
+                <img
+                    src="{{$news->preview->thumbnail}}"
+                    alt="{{$news->preview->alt??$news->preview->name}}"
+                    class="object-cover max-h-[139px] w-full"
+                >
+            @elseif($news->image)
+                <img
+                    src="{{$news->image}}"
+                    alt=""
+                    class="object-cover max-h-[139px] w-full"
+                >
+            @endif
+
+
         </div>
         <div class="descrip-box-news bg-white text-[var(--primary-color)] lg:min-h-[228px] xl:max-h-[228px]">
             <div class="descrip-wrapper p-5 lg:max-h-[228px]">

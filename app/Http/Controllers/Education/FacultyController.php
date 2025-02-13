@@ -71,6 +71,8 @@ class FacultyController extends Controller
                     'type'          => 'logo',
                 ]);
 
+            $record->logo->name = $record->name;
+
             $record->logo->saveImage($request->file('image'),'images/faculty');
 
             $record->logo->save();

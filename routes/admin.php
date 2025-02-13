@@ -202,6 +202,14 @@ Route::middleware('auth.check')
         Route::post('save', 'save')->name('admin:gallery:image:save');
     });
 
+Route::middleware('auth.check')
+    ->controller(\App\Http\Controllers\Gallery\AdminImage::class)
+    ->prefix('images')
+    ->group(function () {
+        Route::get('', 'list')->name('admin:image:list');
+        Route::get('form/{id?}', 'form')->name('admin:image:form');
+        Route::post('save', 'save')->name('admin:image:save');
+    });
 
 Route::middleware('auth.check')
     ->controller(\App\Http\Controllers\Gallery\AdminVideoGallery::class)

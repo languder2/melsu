@@ -1,6 +1,5 @@
-<x-head.tinymce-config/>
 <form
-    action="{{route('admin:gallery:image:save')}}"
+    action="{{route('admin:image:save')}}"
     method="POST"
     enctype="multipart/form-data"
     @class([
@@ -12,9 +11,11 @@
 >
     @csrf
 {{--    <div @class([($current->oriental === 'horizontal')?"w-96":"w-52"])>--}}
-    <div class="max-h-12">
-        <img src="{{$current->thumbnail}}" alt="" class="max-h-64" />
-    </div>
+    @if($current)
+        <div class="max-h-12">
+            <img src="{{$current->thumbnail}}" alt="" class="max-h-64" />
+        </div>
+    @endif
     <div class="flex-1">
         <h3 class="pb-2 font-semibold text-xl uppercase text-center">
             @if(isset($current->id))

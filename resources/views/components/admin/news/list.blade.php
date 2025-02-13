@@ -4,7 +4,7 @@
         class="
             grid gap-4 items-center
             grid-cols-1
-            md:grid-cols-[repeat(7,minmax(0,1fr))_200px]
+            md:grid-cols-[auto_auto_auto_repeat(4,minmax(0,1fr))_auto]
         "
     >
         <div class="font-semibold">
@@ -30,8 +30,12 @@
                     <?= $record->id ?>
             </div>
 
-            <div>
-                <img src="{{asset("images/news/600x600_{$record->image}.jpg")}}" class="max-w-12" alt=""/>
+            <div class="text-center">
+                @if($record->preview && $record->preview->src)
+                    <img src="{{$record->preview->src}}" class="h-10 inline-block" alt=""/>
+                @elseif($record->image)
+                    <img src="{{$record->image}}" class="h-10  inline-block" alt=""/>
+                @endif
             </div>
 
             <div>

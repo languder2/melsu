@@ -2,7 +2,9 @@
 
 namespace App\Models\Gallery;
 
+use App\Models\Education\Faculty;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\UploadedFile;
@@ -76,32 +78,37 @@ class Image extends Model
         Storage::put("$path/{$this->filename}/thumbnail.webp",(string)$image->resize($width,$height)->toWebp(90));
 
     }
-
     public function getSrcAttribute():string|null
     {
-        $path = match($this->relation_type){
+        $record = $this->reference??$this;
+
+
+        $path = match($record->relation_type){
             'App\Models\Education\Faculty' => 'images/faculty/',
+            'App\Models\News' => 'images/news/',
             default => 'images/gallery/',
         };
 
-        $path .= $this->filename;
+        $path .= $record->filename;
 
-        $filepath=  "$path/image.{$this->filetype}";
+        $filepath=  "$path/image.{$record->filetype}";
 
         return Storage::exists($filepath)?Storage::url($filepath):null;
     }
 
     public function getThumbnailAttribute():string|null
     {
+        $record = $this->reference??$this;
 
-        $path = match($this->relation_type){
+        $path = match($record->relation_type){
             'App\Models\Education\Faculty' => "images/faculty/",
+            'App\Models\News' => 'images/news/',
             default => 'images/gallery/',
         };
 
-        $path .= $this->filename;
+        $path .= $record->filename;
 
-        $filepath=  ($this->filetype === 'svg')?"$path/image.svg":"$path/thumbnail.webp";
+        $filepath=  ($record->filetype === 'svg')?"$path/image.svg":"$path/thumbnail.webp";
 
         return Storage::exists($filepath)?Storage::url($filepath):null;
 
@@ -117,7 +124,6 @@ class Image extends Model
         ];
 
     }
-
     public function getOrientalAttribute():string
     {
         $manager = new ImageManager(new Driver());
@@ -125,5 +131,20 @@ class Image extends Model
         return ($image->width()>$image->height())?"horizontal":"vertical";
 
     }
+
+    public function reference(): BelongsTo
+    {
+        return $this->belongsTo(Image::class, 'reference_id', 'id');
+    }
+
+    public function getReferenceID(string $path):void
+    {
+        $path = collect(explode('/', $path));
+
+        $this->reference_id = Image::where('filename', $path->take(-2)->first())->pluck('id')->first();
+
+        $this->save();
+    }
+
 
 }

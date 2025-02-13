@@ -24,7 +24,6 @@
 
     <x-form.input type="hidden" name="id" value="{{$current->id??null}}"/>
 
-
     <x-form.input
         id="name"
         name="name"

@@ -49,7 +49,17 @@
                                     </a>
                                 </div>
                                 <a href="{{$item->link}}">
-                                    <img src="{{$item->photo}}" alt="">
+                                    @if($item->preview && $item->preview->src)
+                                        <img
+                                            src="{{$item->preview->thumbnail}}"
+                                            alt="{{$item->preview->alt??$item->preview->name}}"
+                                        >
+                                    @elseif($item->image)
+                                        <img
+                                            src="{{$item->image}}"
+                                            alt=""
+                                        >
+                                    @endif
                                 </a>
                                 <div class="descrip-meta-wrap">
                                     <div class="meta-box">

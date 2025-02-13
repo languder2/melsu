@@ -10,12 +10,13 @@
         'cursor-pointer',
         'group',
         'select-none',
-        'max-w-[800px] max-h-[400px]'
+        'h-[300px]',
+        'block'
     ])
 >
     <a
-        href="{{route('admin:gallery:image:form',[$image->id])}}"
-        class="fixed right-2 top-2 bg-white text-xl py-2 px-3 rounded-2xl hover:bg-blue-700 hover:text-white max-w-[800px] max-h-[400px]"
+        href="{{route('admin:image:form',[$image->id])}}"
+        class="absolute right-2 top-2 bg-white text-xl py-2 px-3 rounded-2xl hover:bg-blue-800 hover:text-white"
     >
         <i class="fas fa-pencil-alt"></i>
     </a>
@@ -23,7 +24,14 @@
     <input type="radio" name="select_image" class="hidden"
            onclick="ClipBoard.copyTextToClipboard('../../..{{$image->src}}','Адрес изображения скопирован\n{{$image->id}} {{$image->name}}')"
     />
-    <img src="{{$image->thumbnail}}" alt="image" class="rounded-lg max-w-[800px] max-h-[400px]"  />
+
+    <img src="{{$image->thumbnail}}" alt="image"
+        @class([
+            "rounded-lg",
+            ($image->filetype !== 'svg')?'h-[300px]':"h-[268px]",
+        ])
+    />
+
     <span
         class="
             absolute
@@ -32,7 +40,7 @@
             rounded-b-lg
             flex
             items-center
-            group-hover:bg-red-700/50
+            group-hover:bg-orange-700/50
             group-has-checked:bg-green-700/50
         "
     >

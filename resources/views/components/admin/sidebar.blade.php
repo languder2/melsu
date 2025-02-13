@@ -54,7 +54,7 @@
         />
 
         <x-admin.sidebar-li
-            link="{{route('admin:gallery:image:list')}}"
+            link="{{route('admin:image:list')}}"
             ico="far fa-images"
             text="Gallery"
             class="text-xl"

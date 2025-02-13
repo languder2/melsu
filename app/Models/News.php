@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use App\Models\Gallery\Image;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class News extends NewsCategory
@@ -11,6 +13,7 @@ class News extends NewsCategory
     use SoftDeletes;
 
     public static int $adminPerPage = 20;
+
     public static $FormRules = [
         'category' => 'required',
         'title' => 'required',
@@ -20,7 +23,10 @@ class News extends NewsCategory
         'author' => '',
         'sort' => '',
         'publication_at' => '',
+        'image'     => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        'preview'   => 'nullable|string',
     ];
+
     public static $FormMessage = [
         'category' => 'Выберите категорию',
         'title' => 'Укажите заголовок',
@@ -103,5 +109,16 @@ class News extends NewsCategory
     {
         return $this->belongsTo(NewsCategory::class, 'category', 'id');
     }
+
+    public function getImageAttribute($image)
+    {
+        return $image?asset("images/news/600x600_$image.jpg"):null;
+    }
+
+    public function preview(): MorphOne
+    {
+        return $this->MorphOne(Image::class, 'relation')->where('type', 'preview');
+    }
+
 
 }

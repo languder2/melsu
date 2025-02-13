@@ -23,12 +23,6 @@ return new class extends Migration
 
             });
 
-        if (Schema::hasColumn('education_departments','parent_id'))
-            Schema::table('education_departments', function (Blueprint $table) {
-                $table->dropForeign('education_departments_parent_id_foreign');
-                $table->dropIndex('education_departments_parent_id_foreign');
-                $table->dropColumn('parent_id');
-            });
     }
 
     /**

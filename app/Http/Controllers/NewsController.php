@@ -59,20 +59,27 @@ class NewsController extends Controller
 
         $record->save();
 
-        $image = (object)$request->validate(ImageStorage::$FormRules, ImageStorage::$FormMessage);
+        if(!$record->preview)
+            $record->preview = $record->preview()->create([
+                'name'          => $record->title,
+                'type'          => 'preview',
+            ]);
 
-        if (!isset($image->image))
-            return redirect()->route('admin:news');
+        if($request->file('image')){
+            $record->preview->saveImage($request->file('image'),'images/news');
+            $record->preview->reference_id = null;
+        }
+        elseif($form['preview']){
+            $record->preview->name = $record->title;
+            $record->preview->getReferenceID($form['preview']);
+        }
+        else{
+            $record->preview->reference_id = null;
+            $record->preview->filename = null;
+            $record->preview->filetype = null;
+        }
 
-        $record->image = 'news-' . $record->id;
-
-        $record->save();
-
-        $image->image->storeAS('images/news', 'original.' . $image->image->extension(), 'public');
-
-        ImageStorage::saveResizedImageToStorage('news', $image->image->path(), 'news-' . $record->id, [
-            "600:600", '900:900', [1200, 1200]
-        ]);
+        $record->preview->save();
 
         return redirect()->route('admin:news');
     }
