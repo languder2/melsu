@@ -56,7 +56,7 @@ class Image extends Model
         return $this->morphTo();
     }
 
-    public function saveImage(UploadedFile $file,string $path = 'images/gallery'):void
+    public function saveImage(UploadedFile $file,string $path = 'images/uploads'):void
     {
         $this->filename = substr($file->hashName(),0,strpos($file->hashName(),'.'));
 
@@ -79,15 +79,21 @@ class Image extends Model
         Storage::put("$path/{$this->filename}/thumbnail.webp",(string)$image->resize($width,$height)->toWebp(90));
 
     }
+
+    public static function getPath(?string $model = null):string
+    {
+        return match($model){
+            'App\Models\Education\Faculty'      => "images/faculty/",
+            'App\Models\News'                   => 'images/news/',
+            'App\Models\Gallery\Gallery'        => 'images/gallery/',
+            default => 'images/uploads/',
+        };
+    }
     public function getSrcAttribute():string|null
     {
         $record = $this->reference??$this;
 
-        $path = match($record->relation_type){
-            'App\Models\Education\Faculty' => 'images/faculty/',
-            'App\Models\News' => 'images/news/',
-            default => 'images/gallery/',
-        };
+        $path = self::getPath($record->relation_type);
 
         $path .= $record->filename;
 
@@ -100,11 +106,7 @@ class Image extends Model
     {
         $record = $this->reference??$this;
 
-        $path = match($record->relation_type){
-            'App\Models\Education\Faculty' => "images/faculty/",
-            'App\Models\News' => 'images/news/',
-            default => 'images/gallery/',
-        };
+        $path = self::getPath($record->relation_type);
 
         $path .= $record->filename;
 

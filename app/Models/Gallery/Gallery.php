@@ -57,13 +57,14 @@ class Gallery extends Model
 
         $object = $this->morphMany(Image::class, 'relation');
 
-        $object->where(function ($query) {
-            $query->where('type', '!=', 'preview')
-                ->orWhereNull('type');
-        })->where('show', true);
+//        $object->where(function ($query) {
+//            $query->where('type', '!=', 'preview')
+//                ->orWhereNull('type');
+//        });
 
-//        if (!is_null($trashed))
-//            $object = $object->withTrashed();
+        if (!is_null($trashed))
+            $object = $object->withTrashed();
+            $object = $object->withTrashed();
 
         return $object;
     }

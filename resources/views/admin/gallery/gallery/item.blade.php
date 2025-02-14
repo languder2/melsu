@@ -7,10 +7,11 @@
         hover:mb-2px
         hover:drop-shadow-[3px_5px_5px_rgba(0,0,0,.5)]
         select-none
+        min-w-60
     "
 >
     <img
-        src="{{$item->preview->thumbnail}}"
+        src="{{optional($item->preview)->thumbnail}}"
         alt="{{$item->name}}"
         class="
             h-80

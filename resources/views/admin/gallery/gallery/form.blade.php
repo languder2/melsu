@@ -32,13 +32,16 @@
     <x-form.errors/>
 
     <div class="flex gap-3 mt-3">
-        <div class="h-80">
-            <img
-                src="{{optional($current)->preview->thumbnail}}"
-                alt="{{optional($current)->name}}"
-                class="h-80 rounded-lg"
-            />
-        </div>
+        @if(optional($current)->preview && $current->preview->thumbnail)
+            <div class="h-80">
+                <img
+                    src="{{optional($current->preview)->thumbnail}}"
+                    alt="{{optional($current)->name}}"
+                    class="h-80 rounded-lg"
+                />
+            </div>
+        @endif
+
         <div class="flex-1">
             <x-form.input type="hidden" name="id" value="{{$current->id??null}}"/>
 
