@@ -30,6 +30,10 @@ Route::prefix('admin')->group(function () {
     require __DIR__.'/admin.php';
 });
 
+Route::prefix('nomix')->group(function () {
+    require __DIR__.'/nomix.php';
+});
+
 Route::view('wish-tree', 'pages.wish-tree.form')->name('wish-tree');
 Route::post('wish-tree/save', [WishTreeController::class, 'save'])->name('wish-tree:save');
 Route::get('wish-tree/list', [WishTreeController::class, 'list'])->name('wish-tree:list');

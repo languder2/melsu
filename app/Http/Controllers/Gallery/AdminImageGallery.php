@@ -72,7 +72,7 @@ class AdminImageGallery extends Controller
 
 
         if($request->file('image')){
-            $record->preview->saveImage($request->file('image'),'images/news');
+            $record->preview->saveImage($request->file('image'),'images/gallery');
             $record->preview->reference_id = null;
         }
         elseif($form['preview']){
