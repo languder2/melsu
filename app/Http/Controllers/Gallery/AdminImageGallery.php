@@ -121,7 +121,7 @@ class AdminImageGallery extends Controller
 
         return response()->json(
             [
-                'message' => "Галерея удалена\n{$gallery->name}\nГалерея доступна к восстановлению до: "
+                'message' => "Галерея удалена\n{$gallery->name}\n Восстановимо до: "
                     .Carbon::now()->addWeek(2)->format('d.m.Y H:i')
             ]);
     }

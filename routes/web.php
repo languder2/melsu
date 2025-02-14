@@ -9,6 +9,8 @@ use App\Http\Controllers\TestController;
 use App\Http\Controllers\WishTreeController;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\Gallery\PublicGallery;
+
 
 Route::get('/', function () {
     return view('pages.main');
@@ -114,8 +116,17 @@ Route::controller(StaffController::class)
 
     });
 
+/* Gallery */
+
+Route::controller(PublicGallery::class)
+    ->prefix('gallery')
+    ->group(function () {
+        Route::get('', 'list')->name('public:gallery:list');
+        Route::get('{code}', 'show')->name('public:gallery:show');
+
+    });
+
+
 /* Pages: public */
 
 Route::get('{alias}', [PagesController::class, 'showPage']);
-
-

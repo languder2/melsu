@@ -73,6 +73,8 @@ class Gallery extends Model
         if ($trashed === 'only')
             $object = $object->onlyTrashed();
 
+        $object = $object->orderBy('order')->orderBy('name');
+
         return $object;
     }
 

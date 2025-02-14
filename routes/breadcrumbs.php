@@ -111,4 +111,15 @@ Breadcrumbs::for('department', function (BreadcrumbTrail $trail, \App\Models\Dep
     $trail->push($department->name??'отдел', $department->link);
 });
 
+Breadcrumbs::for('galleries', function (BreadcrumbTrail $trail) {
+    $trail->parent('home');
+    $trail->push("Фотоальбом", route('public:gallery:list'));
+});
+
+
+Breadcrumbs::for('gallery', function (BreadcrumbTrail $trail,\App\Models\Gallery\Gallery $gallery) {
+    $trail->parent('galleries');
+    $trail->push($gallery->name, route('public:gallery:show',[$gallery->id??null]));
+});
+
 

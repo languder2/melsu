@@ -2,7 +2,7 @@
     class="
         gallery-item
         relative rounded-lg
-        transition-all duration-1000
+        transition-all duration-200
         hover:-mt-2px
         hover:mb-2px
         hover:drop-shadow-[3px_5px_5px_rgba(0,0,0,.5)]

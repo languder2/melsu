@@ -9,20 +9,11 @@ export async function ToggleShow(el, link) {
 
 export async function DeleteItem(el, link) {
     el.classList.add('pointer-events-none');
-
-    el.style.maxWidth = el.clientWidth;
-    el.classList.remove('min-w-60');
-    el.style.maxWidth = 0;
-    // console.log(el.clientWidth)
-//    el.classList.replace('min-w-60','max-w-0')
-
-//   el.classList.add('scale-0');
-//    setTimeout(()=>{el.classList.replace('min-w-60','max-w-0')},300)
-    // try {
-    //     await galleryFetch(link);
-    // } finally {
-    //     el.classList.toggle('pointer-events-none');
-    // }
+    try {
+        await galleryFetch(link);
+    } finally {
+        el.classList.add('scale-0');
+    }
 }
 
 async function galleryFetch(link) {
