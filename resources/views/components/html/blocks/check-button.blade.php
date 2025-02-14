@@ -8,7 +8,6 @@
         bg-stone-100/90
         rounded-lg
         hover:bg-white
-        hover:{{$hoverColor??"text-green-700"}}
         m-3 mb-0
         {{@$additionalClass}}
     "

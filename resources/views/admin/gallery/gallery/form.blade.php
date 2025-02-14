@@ -33,11 +33,11 @@
 
     <div class="flex gap-3 mt-3">
         @if(optional($current)->preview && $current->preview->thumbnail)
-            <div class="h-80">
+            <div>
                 <img
                     src="{{optional($current->preview)->thumbnail}}"
                     alt="{{optional($current)->name}}"
-                    class="h-80 rounded-lg"
+                    class="h-56 rounded-lg"
                 />
             </div>
         @endif
@@ -50,15 +50,7 @@
                 name="name"
                 label="Название"
                 value="{{ old('name') ?? optional($current)->name }}"
-                required
-            />
-
-            <x-form.input
-                id="form_code"
-                name="code"
-                label="Code"
-                value="{{ old('code') ?? optional($current)->code }}"
-                required
+                required1
             />
 
             <x-form.file
@@ -73,6 +65,32 @@
                 label="Превью из галереи"
                 value="{{old('preview')??optional(optional($current)->preview)->src}}"
             />
+
+            <div class="block md:flex flex-row gap-4 items-center">
+                <div class="flex-1">
+                    <x-form.input
+                        id="form_code"
+                        name="code"
+                        label="Code"
+                        value="{{ old('code') ?? optional($current)->code }}"
+                        required
+                    />
+                </div>
+                <span class="w-full md:w-40">
+                    <x-form.input
+                        id="form_order"
+                        name="order"
+                        type="number"
+                        label="Порядок вывода"
+                        class="text-center"
+                        value="{{old('order')??optional($current)->order}}"
+                    />
+                </span>
+
+                <x-form.on-off
+                    :current="$current"
+                />
+            </div>
         </div>
     </div>
 

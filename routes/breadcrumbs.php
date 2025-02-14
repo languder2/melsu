@@ -66,12 +66,14 @@ Breadcrumbs::for('speciality', function (BreadcrumbTrail $trail, Speciality $spe
             )
         );
 
+
     $trail->push('Направления подготовки', route('public:education:specialities:department',
         [
-            $speciality->faculty->code ?? $speciality->faculty->id??null,
-            $speciality->department->code ?? $speciality->department->id??null
+            $speciality->faculty->code ?? $speciality->faculty->id??"",
+            $speciality->department->code ?? $speciality->department->id??""
         ]
     ));
+
     $trail->push($speciality->name??"-", route('public:education:speciality', [$speciality->code ?? $speciality->id??null]));
 });
 

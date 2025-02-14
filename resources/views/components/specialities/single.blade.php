@@ -90,8 +90,7 @@
             </div>
             <div class="flex lg:items-center flex-col lg:justify-center order-1 lg:order-2 mb-3 lg:mb-0">
                 <h2 class="text-7xl font-[600]">
-                    {{--                        {{$speciality->places}}--}}
-                    @dump($speciality->profiles()->get()->pluck('places'))
+{{--                    {{$speciality->places}}--}}
                 </h2>
                 <span class="text-xl">
                             бюджетных места
@@ -102,6 +101,7 @@
         </div>
     </div>
 </section>
+
 <div class="box-heading container custom lg:p-2.5">
     <h2 class="font-bold text-3xl my-6">Общая информация о программе</h2>
 </div>
@@ -271,6 +271,7 @@
         </div>
     </div>
 </section>
+
 <div class="box-heading container custom lg:p-2.5">
     <h2 class="font-bold text-3xl my-6">Документы</h2>
 </div>
@@ -290,6 +291,7 @@
         </ul>
     </div>
 </section>
+
 <div class="box-heading container custom lg:p-2.5">
     <h2 class="font-bold text-3xl my-6">Вопросы о программе </h2>
 </div>
@@ -398,6 +400,7 @@
             вопросы и ответы</a>
     </div>
 </section>
+
 <div class="box-heading container custom lg:p-2.5">
     <h2 class="font-bold text-3xl my-6">Карьера после обучения</h2>
 </div>
@@ -535,6 +538,7 @@
         </div>
     </div>
 </section>
+
 <div class="box-heading container custom">
     <h2 class="font-bold text-3xl my-6">Сделайте следующий шаг</h2>
 </div>
@@ -575,6 +579,7 @@
         </div>
     </div>
 </section>
+
 <div class="box-heading container custom">
     <h2 class="font-bold text-3xl my-6">Другие программы</h2>
 </div>
@@ -672,5 +677,3 @@
         </div>
     </div>
 </section>
-@dump($speciality->faculty->toArray()??"-")
-@dump($speciality->department->toArray()??"-")

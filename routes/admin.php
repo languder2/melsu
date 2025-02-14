@@ -21,7 +21,9 @@ use App\Http\Controllers\StaffController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware('auth.check')
+use Illuminate\Support\Facades\Auth;
+
+Route::middleware(['auth.check'])
     ->controller(suStructureController::class)
     ->prefix('structure')
     ->group(function () {

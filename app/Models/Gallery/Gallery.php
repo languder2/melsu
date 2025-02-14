@@ -33,8 +33,9 @@ class Gallery extends Model
             'code'          => "required|unique:gallery,code,{$id},id,deleted_at,NULL",
             'description'   => '',
             'order'         => 'nullable|numeric',
-            'image'         => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image'         => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
             'preview'       => '',
+            'show'          => '',
         ];
     }
 
@@ -52,7 +53,7 @@ class Gallery extends Model
         return $this->MorphOne(Image::class, 'relation')->where('type', 'preview');
     }
 
-    public function images($trashed = null): MorphMany
+    public function images(bool $hidden = false, $trashed = null): MorphMany
     {
 
         $object = $this->morphMany(Image::class, 'relation');
@@ -62,10 +63,21 @@ class Gallery extends Model
 //                ->orWhereNull('type');
 //        });
 
-        if (!is_null($trashed))
-            $object = $object->withTrashed();
+        if(!$hidden)
+            $object->where('show',true);
+
+
+        if ($trashed === 'include')
             $object = $object->withTrashed();
 
+        if ($trashed === 'only')
+            $object = $object->onlyTrashed();
+
         return $object;
+    }
+
+    public function getOrderAttribute($order):int|null
+    {
+        return ($order !== 10000) ? $order : null;
     }
 }

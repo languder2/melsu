@@ -3,17 +3,16 @@
 namespace App\Http\Controllers\Gallery;
 
 use App\Http\Controllers\Controller;
-use App\Models\Education\Faculty;
+use Carbon\Carbon;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\View;
-use App\Models\Gallery\Image;
 use App\Models\Gallery\Gallery;
 class AdminImageGallery extends Controller
 {
     public function list()
     {
 
-        $list= Gallery::orderBy('id')
+        $list= Gallery::orderBy('order')
             ->orderBy('name')
             ->get();
 
@@ -62,6 +61,9 @@ class AdminImageGallery extends Controller
             unset($form['order']);
 
         $record->fill($form);
+
+        $record->show = @$form['show']?true:"";
+
         $record->save();
 
         if(!$record->preview)
@@ -90,5 +92,38 @@ class AdminImageGallery extends Controller
         return redirect()->route('admin:gallery:image:list');
     }
 
+
+    public function ApiToggleShow (Request $request,$id): JsonResponse
+    {
+
+        $gallery = Gallery::Find($id);
+
+        if(!$gallery)
+            return response()->json([],204);
+
+        $gallery->show = $gallery->show?'':true;
+        $gallery->save();
+
+        return response()->json(
+            [
+                'message' => ($gallery->show?"Галерея опубликована":'Галерея скрыта')."\n{$gallery->name}"
+            ]);
+    }
+    public function ApiDelete (Request $request,$id): JsonResponse
+    {
+
+        $gallery = Gallery::Find($id);
+
+        if(!$gallery)
+            return response()->json([],204);
+
+        $gallery->delete();
+
+        return response()->json(
+            [
+                'message' => "Галерея удалена\n{$gallery->name}\nГалерея доступна к восстановлению до: "
+                    .Carbon::now()->addWeek(2)->format('d.m.Y H:i')
+            ]);
+    }
 
 }

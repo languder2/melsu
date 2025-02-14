@@ -4,6 +4,7 @@ use App\Models\Education\Department;
 use App\Models\Education\Faculty;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Gallery\AdminImageGallery;
 
 Route::get('departments-by-faculty-shorts/{faculty?}', function (Request $request, $faculty = null) {
 
@@ -28,5 +29,14 @@ Route::get('link-correct', function (Request $request) {
         $item->save();
     }
 
+
+});
+
+Route::middleware(['web','auth.api'])->prefix('gallery')->group(function () {
+    Route::get('toggle-show/{id}', [AdminImageGallery::class, 'ApiToggleShow'])
+    ->name('gallery-toggle-show');
+
+    Route::get('delete/{id}', [AdminImageGallery::class, 'ApiDelete'])
+    ->name('gallery-delete');
 
 });

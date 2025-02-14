@@ -35,6 +35,10 @@ class AdminImage extends Controller
 
     public function form(Request $request, $id = null)
     {
+
+        if($request->get('gallery'))
+            session()->flash('gallery-image-add',$request->get('gallery'));
+
         return view('pages.admin', [
             'contents' => [
 
@@ -79,6 +83,12 @@ class AdminImage extends Controller
             $record->save();
         }
 
-        return redirect()->route('admin:gallery:image:list');
+
+
+        return redirect()->route(
+            (bool)session()->get('gallery-image-add')
+                ?'admin:gallery:image:list'
+                :'admin:image:list'
+        );
     }
 }

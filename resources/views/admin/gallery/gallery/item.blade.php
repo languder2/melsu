@@ -1,8 +1,8 @@
 <div
     class="
-        group
+        gallery-item
         relative rounded-lg
-        transition-all duration-300
+        transition-all duration-1000
         hover:-mt-2px
         hover:mb-2px
         hover:drop-shadow-[3px_5px_5px_rgba(0,0,0,.5)]
@@ -16,8 +16,6 @@
         class="
             h-80
             relative rounded-lg
-            grayscale-30
-            group-hover:grayscale-0
             transition-all duration-300
         "
     >
@@ -26,17 +24,14 @@
         class="
             absolute inset-0 end-0 flex flex-col
             items-end
-
         "
     >
-
         <x-html.blocks.check-button
-            hoverColor="text-blue-700"
-            onclick="console.log('switch'); this.closest('label').classList.add('pointer-events-none')"
+            onclick="Gallery.ToggleShow(this,'{{route('gallery-toggle-show',$item->id)}}')"
             :checked="$item->show"
         >
-            <i class="fas fa-toggle-on hidden text-green-700 group-hover:text-blue-700 group-has-checked:block"></i>
-            <i class="fas fa-toggle-off block text-red-700 group-hover:text-blue-700 group-has-checked:hidden"></i>
+            <i class="fas fa-toggle-on hidden text-green-700 group-has-checked:block"></i>
+            <i class="fas fa-toggle-off block text-red-700 group-has-checked:hidden"></i>
         </x-html.blocks.check-button>
 
         <x-html.blocks.a-button
@@ -47,12 +42,13 @@
         </x-html.blocks.a-button>
 
         <x-html.blocks.a-button
-{{--            :href='route("admin:image:form")."?gallery={$item->code}"'--}}
+            hoverColor="text-blue-700"
         >
             <i class="fas fa-layer-group"></i>
         </x-html.blocks.a-button>
 
         <x-html.blocks.a-button
+            hoverColor="text-blue-700"
             :href='route("admin:image:form")."?gallery={$item->code}"'
         >
             <i class="fas fa-plus"></i>
@@ -63,7 +59,8 @@
 
         <x-html.blocks.a-button
             hoverColor="text-red-700"
-            onclick="this.closest('.group').classList.add('hidden');"
+            onclick="Gallery.DeleteItem(this.closest('.gallery-item'),'{{route('gallery-delete',$item->id)}}')"
+            DeleteItem
         >
             <i class="fas fa-recycle"></i>
         </x-html.blocks.a-button>

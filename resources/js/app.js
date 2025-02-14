@@ -38,3 +38,6 @@ window.ShowMessage = ShowMessage;
 
 import * as ClipBoard from './admin/clip-board.js';
 window.ClipBoard = ClipBoard;
+
+import * as Gallery from './admin/gallery.js';
+window.Gallery = Gallery;

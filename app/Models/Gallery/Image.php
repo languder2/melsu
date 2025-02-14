@@ -37,7 +37,7 @@ class Image extends Model
         return [
             'name' => 'required',
             'alt' => '',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
             'gallery_code'  => '',
         ];
     }
@@ -56,8 +56,11 @@ class Image extends Model
         return $this->morphTo();
     }
 
-    public function saveImage(UploadedFile $file,string $path = 'images/uploads'):void
+    public function saveImage(UploadedFile $file):void
     {
+
+        $path = self::getPath($this->relation_type);
+
         $this->filename = substr($file->hashName(),0,strpos($file->hashName(),'.'));
 
         if($file->extension() === 'svg'){
@@ -99,7 +102,7 @@ class Image extends Model
 
         $filepath=  "$path/image.{$record->filetype}";
 
-        return Storage::exists($filepath)?Storage::url($filepath):null;
+        return Storage::exists($filepath)?Storage::url($filepath):Storage::url('images/placeholder.png');
     }
 
     public function getThumbnailAttribute():string|null
@@ -112,7 +115,7 @@ class Image extends Model
 
         $filepath=  ($record->filetype === 'svg')?"$path/image.svg":"$path/thumbnail.webp";
 
-        return Storage::exists($filepath)?Storage::url($filepath):null;
+        return Storage::exists($filepath)?Storage::url($filepath):Storage::url('images/placeholder.png');
 
     }
 
@@ -148,5 +151,9 @@ class Image extends Model
         $this->save();
     }
 
+    public function getOrderAttribute($order):int|null
+    {
+        return ($order === 10000) ? $order : null;
+    }
 
 }
