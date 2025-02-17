@@ -64,7 +64,7 @@
                         </div>
                     </div>
                     <div class="flex justify-between relative">
-                        <a class="modal-open">Начни с меня</a>
+                        <a href="https://melsu.ru/melsu-this-is" class="modal-open">Начни с меня</a>
                         <video id="anim-logo" autoplay loop muted>
                             <source src="{{asset('video/anim-logo.webm')}}" type="video/webm">
 
