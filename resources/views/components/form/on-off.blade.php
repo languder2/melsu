@@ -3,7 +3,7 @@
         type="checkbox"
         name="{{$name ?? 'show'}}"
         class="hidden"
-        @checked(old('_token') ? old('show') : (optional($current)->show || !$current))
+        @checked(old('_token') ? $old : (optional($current)->show || !$current))
     >
     <span class="text-2xl">
         <i

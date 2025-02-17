@@ -2,7 +2,7 @@
 
 namespace App\View\Components\Staff;
 
-use App\Models\Staff;
+use App\Models\Staff\Staff;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;

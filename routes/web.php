@@ -2,8 +2,9 @@
 
 use App\Http\Controllers\{NewsController, suStructureController};
 use App\Http\Controllers\{AdminController, PagesController};
-use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\Department\DepartmentController;
 use App\Http\Controllers\Education\EducationController;
+use App\Http\Controllers\Gallery\PublicGallery;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\WishTreeController;
@@ -114,8 +115,17 @@ Route::controller(StaffController::class)
 
     });
 
+/* Gallery */
+
+Route::controller(PublicGallery::class)
+    ->prefix('gallery')
+    ->group(function () {
+        Route::get('', 'list')->name('public:gallery:list');
+        Route::get('{code}', 'show')->name('public:gallery:show');
+
+    });
+
+
 /* Pages: public */
 
 Route::get('{alias}', [PagesController::class, 'showPage']);
-
-

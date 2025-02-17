@@ -2,8 +2,12 @@
 
 namespace App\Models\Staff;
 
+use App\Models\Gallery\Image;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\Staff\Post;
 
 class Staff extends Model
 {
@@ -14,7 +18,6 @@ class Staff extends Model
     protected $fillable = [
         'id',
         'photo',
-        'post',
         'lastname',
         'firstname',
         'middle_name',
@@ -31,7 +34,6 @@ class Staff extends Model
         'phones',
         'emails',
         'address',
-        'works',
         'link',
         'alias',
     ];
@@ -39,7 +41,6 @@ class Staff extends Model
     public static function FormRules($id): array
     {
         return [
-            'post' => 'required',
             'lastname' => 'required',
             'firstname' => 'required',
             'middle_name' => '',
@@ -55,7 +56,7 @@ class Staff extends Model
             'phones' => '',
             'emails' => '',
             'address' => '',
-            'works' => '',
+            'posts' => '',
             'alias' => "nullable|unique:staffs,alias,{$id},id,deleted_at,NULL",
         ];
     }
@@ -72,6 +73,12 @@ class Staff extends Model
     public function getLinkAttribute(): string
     {
         return url("staffs/" . ($this->alias ?? $this->id));
+    }
+
+    public function getWorksAttribute($value): array
+    {
+
+        return $value?json_decode($value):[];
     }
 
     public function getFullNameAttribute(): string
@@ -92,5 +99,29 @@ class Staff extends Model
             : asset($path . 'avatar.webp');
 
     }
+    public function avatar(): MorphOne
+    {
+        return $this->MorphOne(Image::class, 'relation')->where('type', 'avatar');
+    }
 
+    public function posts():MorphMany
+    {
+        return $this->MorphMany(Post::class, 'relation');
+    }
+
+    public static function DataTransfer()
+    {
+        $staffs = Staff::whereNotNull('works')->withTrashed()->get();
+
+        foreach ($staffs as $staff)
+            foreach ($staff->works as $work) {
+                $staff->posts()->create([
+                    'post'          => $work->post,
+                    'employment'    => $work->employment,
+                    'dismissal'     => $work->dismissal,
+                ])->save();
+
+            }
+
+    }
 }

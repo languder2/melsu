@@ -1,27 +1,23 @@
 <?php
 
-use App\Http\Controllers\{
-    AdminController,
-    NewsController,
-    suStructureController
+use App\Http\Controllers\{NewsController, suStructureController};
+use App\Http\Controllers\{MenuController, MenuItemsController, PagesController};
+
+use App\Http\Controllers\Department\{
+    DepartmentController,
+    GroupController as DepartmentGroupController
 };
-use App\Http\Controllers\{
-    MenuController,
-    MenuItemsController,
-    PagesController
-};
-use App\Http\Controllers\DepartmentController;
+
 use App\Http\Controllers\Education\{
     DepartmentController as EducationDepartmentController,
     FacultyController,
     SpecialityController
 };
+
 use App\Http\Controllers\EventsController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
-
-use Illuminate\Support\Facades\Auth;
 
 Route::middleware(['auth.check'])
     ->controller(suStructureController::class)
@@ -152,6 +148,15 @@ Route::middleware('auth.check')
         Route::get('edit/{id}', 'form')->name('admin:department:edit');
         Route::post('save', 'save')->name('admin:department:save');
         Route::get('delete/{id}', 'delete')->name('admin:department:delete');
+
+    });
+
+Route::middleware('auth.check')
+    ->controller(DepartmentGroupController::class)
+    ->prefix('department-group')
+    ->group(function () {
+
+        Route::get('', 'list')->name('admin:department-group:list');
 
     });
 

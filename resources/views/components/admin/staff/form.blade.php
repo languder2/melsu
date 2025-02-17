@@ -23,45 +23,52 @@
 
     <x-form.errors/>
 
-    <x-form.input type="hidden" name="id" value="{{$current->id??null}}"/>
 
-    <x-form.input
-        id="photo"
-        type="file"
-        name="photo"
-        value="{{old('photo')}}"
-    />
 
-    <x-form.input
-        id="lastname"
-        name="lastname"
-        label="Фамилия"
-        value="{{old('lastname')??@$current->lastname}}"
-        required
-    />
+    <div class="flex gap-4 mt-2">
+        @if($current && ($current->avatar || $current->photo))
+            <div>
+                <img
+                    src="{{optional($current->avatar)->thumbnail ?? $current->avatar_src}}"
+                    alt=""
+                    class="h-58 rounded-lg"/>
+            </div>
+        @endif
 
-    <x-form.input
-        id="firstname"
-        name="firstname"
-        label="Имя"
-        value="{{old('firstname')??@$current->firstname}}"
-        required
-    />
+        <div class="flex-1">
+            <x-form.input type="hidden" name="id" value="{{$current->id??null}}"/>
 
-    <x-form.input
-        id="middle_name"
-        name="middle_name"
-        label="Отчество"
-        value="{{old('middle_name')??@$current->middle_name}}"
-    />
+            <x-form.input
+                id="photo"
+                type="file"
+                name="photo"
+                value="{{old('photo')}}"
+            />
 
-    <x-form.input
-        id="post"
-        name="post"
-        label="Должность"
-        value="{{old('post')??@$current->post}}"
-        required
-    />
+            <x-form.input
+                id="lastname"
+                name="lastname"
+                label="Фамилия"
+                value="{{old('lastname')??@$current->lastname}}"
+                required
+            />
+
+            <x-form.input
+                id="firstname"
+                name="firstname"
+                label="Имя"
+                value="{{old('firstname')??@$current->firstname}}"
+                required
+            />
+
+            <x-form.input
+                id="middle_name"
+                name="middle_name"
+                label="Отчество"
+                value="{{old('middle_name')??@$current->middle_name}}"
+            />
+        </div>
+    </div>
 
     <x-form.input
         id="birthday"
@@ -168,7 +175,7 @@
         </h2>
         <div>
             <a
-                href="{{route('admin:staff:works:add-line')}}"
+                href="{{route('api-post-add-section')}}"
                 class="
                     addLine
                     py-2 px-4
@@ -176,8 +183,8 @@
                     text-white
                     bg-blue-950 hover:bg-blue-700 active:bg-gray-700
                 "
-                data-ident="work-line"
-                data-block="works"
+                onclick="Actions.addSection(document.getElementById('posts'),this.href); return false;"
+
             >
                 <i class="fas fa-plus w-4 py-2"></i>
             </a>
@@ -186,26 +193,26 @@
 
     <hr>
 
-    <div id="works" class="grid grid-cols-1 md:grid-cols-[1fr_1fr_4fr] gap-4">
+    <div id="posts">
 
-        @if(is_array(old('works')))
-            @php $works = array_filter(old('works'),function ($work){return !empty($work['post']);}); @endphp
-
-            @foreach($works as $key=>$work)
-                <x-admin.staff.work :i="$key" :work="$work"/>
+        @if(is_array(old('posts')))
+            @foreach(old('posts') as $key=>$post)
+                @if($post->post)
+                    <x-admin.staff.post :i="$loop->index" :post="$post"/>
+                @endif
             @endforeach
 
-            @if(count($works) === 0)
-                <x-admin.staff.work :i="0"/>
+            @if(count(old('posts')) === 0)
+                <x-admin.staff.post :i="0" :post="null"/>
             @endif
 
-        @elseif(isset($current->works))
-            @foreach($current->works as $key=>$work)
-                <x-admin.staff.work :i="$key" :work="$work"/>
+        @elseif($current && count($current->posts))
+            @foreach($current->posts as $key=>$post)
+                <x-admin.staff.post :i="$loop->index" :post="$post"/>
             @endforeach
 
         @else
-            <x-admin.staff.work :i="0"/>
+            <x-admin.staff.post :i="0" :post="null"/>
         @endif
     </div>
 
@@ -213,5 +220,4 @@
         class="uppercase"
         value="сохранить"
     />
-
 </form>

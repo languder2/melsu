@@ -49,10 +49,10 @@
             </div>
 
             <div class="md:col-span-2">
-                {{url(route('department:show',$record->id))}}
+                {{url(route('public:department:show',$record->id))}}
                 @if(!empty($record->alias))
                     <br>
-                    {{url(route('department:show',$record->alias))}}
+                    {{url(route('public:department:show',$record->alias))}}
                 @endif
             </div>
 

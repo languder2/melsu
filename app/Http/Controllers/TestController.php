@@ -4,12 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\Department\Department;
 use App\Models\Department\Section;
+use App\Models\Staff\Staff;
 
 class TestController extends Controller
 {
     public function index()
     {
 
+
+        dd(1);
 
         return view('pages.page',[
             'contents'  => [

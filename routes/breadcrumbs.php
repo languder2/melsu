@@ -3,7 +3,7 @@
 use App\Models\Education\Faculty;
 use App\Models\Education\Speciality;
 use App\Models\Page;
-use App\Models\Staff;
+use App\Models\Staff\Staff;
 use Diglactic\Breadcrumbs\Breadcrumbs;
 use Diglactic\Breadcrumbs\Generator as BreadcrumbTrail;
 use App\Models\News;
@@ -109,6 +109,17 @@ Breadcrumbs::for('departments', function (BreadcrumbTrail $trail) {
 Breadcrumbs::for('department', function (BreadcrumbTrail $trail, \App\Models\Department\Department $department) {
     $trail->parent('departments');
     $trail->push($department->name??'отдел', $department->link);
+});
+
+Breadcrumbs::for('galleries', function (BreadcrumbTrail $trail) {
+    $trail->parent('home');
+    $trail->push("Фотоальбом", route('public:gallery:list'));
+});
+
+
+Breadcrumbs::for('gallery', function (BreadcrumbTrail $trail,\App\Models\Gallery\Gallery $gallery) {
+    $trail->parent('galleries');
+    $trail->push($gallery->name, route('public:gallery:show',[$gallery->id??null]));
 });
 
 
