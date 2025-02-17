@@ -2,14 +2,13 @@
 
 use App\Http\Controllers\{NewsController, suStructureController};
 use App\Http\Controllers\{AdminController, PagesController};
-use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\Department\DepartmentController;
 use App\Http\Controllers\Education\EducationController;
+use App\Http\Controllers\Gallery\PublicGallery;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\WishTreeController;
 use Illuminate\Support\Facades\Route;
-
-use App\Http\Controllers\Gallery\PublicGallery;
 
 
 Route::get('/', function () {

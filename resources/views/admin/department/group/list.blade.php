@@ -4,7 +4,7 @@
         class="
             grid gap-4 items-center
             grid-cols-1
-            md:grid-cols-[auto_auto_auto_repeat(4,minmax(0,1fr))_auto]
+            md:grid-cols-[auto_repeat(6,minmax(0,1fr))_auto]
         "
     >
         <div class="font-semibold">
@@ -12,45 +12,55 @@
         </div>
 
         <div class="font-semibold">
-            Preview
+            Название
         </div>
 
         <div class="font-semibold">
-            Дата публикации
+            Должность
         </div>
 
-        <div class="font-semibold md:col-span-4">
-            Заголовок
+        <div class="md:col-span-2 font-semibold">
+            Начальник
+        </div>
+
+        <div class="md:col-span-2 font-semibold">
+            ссылки
         </div>
 
         <div></div>
 
         @foreach($list as $record)
-            <div>
+            <div class="text-right">
                     <?= $record->id ?>
             </div>
 
-            <div class="text-center">
-                @if($record->preview && $record->preview->thumbnail)
-                    <img src="{{$record->preview->thumbnail}}" class="h-10 inline-block" alt=""/>
-                @elseif($record->image)
-                    <img src="{{$record->image}}" class="h-10  inline-block" alt=""/>
-                @endif
+            <div>
+                    <?= $record->name ?>
             </div>
 
             <div>
-                    <?= $record->publication_at ?>
+                    <?= $record->chief_post ?>
             </div>
 
-            <div class="md:col-span-4">
-                    <?= $record->title ?>
+            <div class="md:col-span-2">
+                    <?= $record->lastname ?>
+                    <?= $record->firstname ?>
+                    <?= $record->middle_name ?>
+            </div>
+
+            <div class="md:col-span-2">
+                {{url(route('public:department:show',$record->id))}}
+                @if(!empty($record->alias))
+                    <br>
+                    {{url(route('public:department:show',$record->alias))}}
+                @endif
             </div>
 
             <div>
                 <div class="flex flex-row-reverse text-white w-full">
                     <div class="flex-none w-14">
                         <a
-                            href="{{route('admin:news:delete',$record->id)}}"
+                            href="{{route('admin:department:delete',$record->id)}}"
                             class="
                                 py-2 px-4 rounded-md
                                 bg-red-950
@@ -63,7 +73,7 @@
                     </div>
                     <div class="flex-none w-14">
                         <a
-                            href="{{route('admin:news:edit',$record->id)}}"
+                            href="{{route('admin:department:edit',$record->id)}}"
                             class="
                                 py-2 px-4 rounded-md
                                 bg-green-950
@@ -74,26 +84,13 @@
                             <i class="far fa-edit w-4 h-4"></i>
                         </a>
                     </div>
-
-                    <div class="flex-none w-14">
-                        <a
-                            href="{{route('news:show',$record->id)}}"
-                            target="_blank"
-                            class="
-                                    py-2 px-4 rounded-md
-                                    bg-blue-950
-                                    hover:bg-blue-700
-                                    active:bg-gray-700
-                                "
-                        >
-                            <i class="fas fa-external-link-alt"></i>
-                        </a>
-                    </div>
-
                 </div>
             </div>
             <hr class="md:col-span-8 last:hidden">
         @endforeach
     </div>
 
+    <hr class="my-4">
+
+    {!! @$list->links() !!}
 </div>

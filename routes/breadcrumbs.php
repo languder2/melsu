@@ -3,7 +3,7 @@
 use App\Models\Education\Faculty;
 use App\Models\Education\Speciality;
 use App\Models\Page;
-use App\Models\Staff;
+use App\Models\Staff\Staff;
 use Diglactic\Breadcrumbs\Breadcrumbs;
 use Diglactic\Breadcrumbs\Generator as BreadcrumbTrail;
 use App\Models\News;

@@ -27,7 +27,7 @@
         "
     >
         <x-html.blocks.check-button
-            onclick="Gallery.ToggleShow(this,'{{route('gallery-toggle-show',$item->id)}}')"
+            onclick="Actions.ToggleShow(this,'{{route('gallery-toggle-show',$item->id)}}')"
             :checked="$item->show"
         >
             <i class="fas fa-toggle-on hidden text-green-700 group-has-checked:block"></i>
@@ -59,7 +59,7 @@
 
         <x-html.blocks.a-button
             hoverColor="text-red-700"
-            onclick="Gallery.DeleteItem(this.closest('.gallery-item'),'{{route('gallery-delete',$item->id)}}')"
+            onclick="Actions.DeleteItem(this.closest('.gallery-item'),'{{route('gallery-delete',$item->id)}}')"
             DeleteItem
         >
             <i class="fas fa-recycle"></i>

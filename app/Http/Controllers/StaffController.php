@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Gallery\Gallery;
 use App\Models\ImageStorage;
 use App\Models\Menu;
-use App\Models\Staff;
+use App\Models\Staff\Post;
+use App\Models\Staff\Staff;
+use Carbon\Carbon;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
@@ -13,25 +17,25 @@ class StaffController extends Controller
 {
     public function adminList(): string
     {
+
         return view('pages.admin', [
             'contents' => [
 
                 View::make('components.admin.staff.header')->with([])->render(),
 
                 View::make('components.admin.staff.list')->with([
-                    'list' => Staff::orderBy('id', 'desc')->paginate(1000),
+                    'list' => Staff::orderBy('lastname')->orderBy('firstname')->orderBy('middle_name')->paginate(20),
                 ])->render(),
             ]
         ]);
     }
 
-    public function form($id = null): string
+    public function form(?int $id = null): string
     {
-
         return view('pages.admin', [
             'contents' => [
                 View::make('components.admin.staff.form')->with([
-                    'current' => Staff::getByID($id),
+                    'current' => Staff::find($id),
                 ])->render(),
             ]
         ]);
@@ -39,54 +43,45 @@ class StaffController extends Controller
 
     public function save(Request $request)
     {
-        $form = $request->validate(Staff::FormRules($request->get('id')), Staff::$FormMessage);
+        $form = $request->validate(Staff::FormRules($request->get('id')), Staff::FormMessage());
 
         if (empty($request->get('id')))
             $record = new Staff();
         else
             $record = Staff::find($request->get('id'));
 
-        if (is_array($form['works']))
-            $form['works'] =
-                array_values(array_filter($form['works'], function ($work) {
-                    return !empty($work['post']);
-                }));
-
-        if (count($form['works']))
-            $form['works'] = json_encode(
-                $form['works'],
-                JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK | JSON_PRETTY_PRINT
-            );
-
-        else
-            $form['works'] = null;
-
         $record->fill($form);
 
         $record->save();
 
-        $photo = (object)$request->validate(
-            ImageStorage::getValidateRules('photo'),
-            ImageStorage::getValidateRules('photo')
-        );
+        if($form['posts'])
+            foreach($form['posts'] as $postData){
+                if(!$postData['post']) continue;
 
+                $post = $record->posts()->find($postData['id']);
 
-        if (!isset($photo->photo))
-            return redirect()->route('admin:staff');
+                if(!$post)
+                    $post = $record->posts()->create($postData);
 
-        else
-            $photo = $photo->photo;
+                $post->show =  array_key_exists('show', $postData);;
 
+                $post->save();
+            }
 
-        $record->photo = 'photo-' . $record->id;
+        if($request->file('photo')){
 
-        $record->save();
+            if(!$record->avatar)
+                $record->avatar = $record->avatar()->create([
+                    'name'          => $record->full_name,
+                    'type'          => 'avatar',
+                ]);
+            else
+                $record->avatar->name = $record->full_name;
 
-        $photo->storeAS('images/photo', 'original.' . $photo->extension(), 'public');
+            $record->avatar->saveImage($request->file('photo'));
 
-        ImageStorage::saveResizedImageToStorage('photo', $photo->path(), 'photo-' . $record->id, [
-            [600, 600],
-        ]);
+            $record->avatar->save();
+        }
 
         return redirect()->route('admin:staff');
     }
@@ -106,6 +101,29 @@ class StaffController extends Controller
             $record->delete();
 
         return redirect()->route('admin:staff');
+    }
+
+    public function ApiDelete (Request $request,?int $id = null): JsonResponse
+    {
+
+        if(!$id)
+            return response()->json(
+                [
+                    'message' => "Должность удалена"
+                ]);
+
+        $post = Post::Find($id);
+
+        if(!$post)
+            return response()->json([],204);
+
+        $post->delete();
+
+        return response()->json(
+            [
+                'message' => "Должность удалена\n{$post->post}\n Восстановимо до: "
+                    .Carbon::now()->addWeek(2)->format('d.m.Y H:i')
+            ]);
     }
 
     public function list(Request $request):string|RedirectResponse

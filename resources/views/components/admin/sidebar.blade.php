@@ -36,7 +36,7 @@
         />
 
         <x-admin.sidebar-li
-            link="{{route('admin:department')}}"
+            link="{{route('admin:department-group:list')}}"
             ico="fas fa-align-left"
             text="Департаменты"
         />

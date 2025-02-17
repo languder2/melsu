@@ -88,6 +88,7 @@
                 </span>
 
                 <x-form.on-off
+                    :old="old('show')"
                     :current="$current"
                 />
             </div>

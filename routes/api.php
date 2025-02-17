@@ -5,6 +5,7 @@ use App\Models\Education\Faculty;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Gallery\AdminImageGallery;
+use App\Http\Controllers\StaffController;
 
 Route::get('departments-by-faculty-shorts/{faculty?}', function (Request $request, $faculty = null) {
 
@@ -40,3 +41,17 @@ Route::middleware(['web','auth.api'])->prefix('gallery')->group(function () {
     ->name('gallery-delete');
 
 });
+
+//Route::middleware(['web','auth.api'])->prefix('posts')->group(function () {
+Route::prefix('posts')->group(function () {
+    Route::get('delete/{id?}', [StaffController::class, 'ApiDelete'])
+    ->name('api-post-delete');
+
+    Route::view('add-section', "components.admin.staff.post",[
+        "i"         => microtime(),
+        'post'      => null
+    ])
+    ->name('api-post-add-section');
+});
+
+

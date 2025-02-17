@@ -4,7 +4,7 @@
         class="
             grid gap-4 items-center
             grid-cols-1
-            md:grid-cols-[repeat(7,minmax(0,1fr))_200px]
+            md:grid-cols-[repeat(2,auto)_repeat(3,minmax(0,1fr))_auto]
         "
     >
         <div class="font-semibold">
@@ -19,11 +19,11 @@
             Должность
         </div>
 
-        <div class="font-semibold md:col-span-2">
+        <div class="font-semibold">
             ФИО
         </div>
 
-        <div class="font-semibold md:col-span-2">
+        <div class="font-semibold">
             Links
         </div>
 
@@ -34,24 +34,42 @@
                     <?= $record->id ?>
             </div>
 
-            <div>
-                <img src="{{asset("images/photo/200x200_{$record->photo}.jpg")}}" class="max-w-12" alt=""/>
+            <div class="text-center">
+                @if($record->avatar)
+                    <img
+                        src="{{optional($record->avatar)->thumbnail}}"
+                        alt="{{optional($record->avatar)->name}}"
+                        class="h-20 inline-block"
+                    />
+                @elseif($record->photo)
+                    <img
+                        src="{{asset("images/photo/200x200_{$record->photo}.jpg")}}"
+                        alt=""
+                        class="h-20 inline-block"
+                    />
+                @else
+                    <img
+                        src="{{Storage::url('images/placeholder.png')}}"
+                        alt="placeholder"
+                        class="h-20 inline-block"
+                    />
+                @endif
             </div>
 
             <div>
                     <?= $record->post ?>
             </div>
 
-            <div class="md:col-span-2">
+            <div>
                     <?= $record->lastname ?>
                     <?= $record->firstname ?>
                     <?= $record->middle_name ?>
             </div>
 
-            <div class="md:col-span-2">
-                {{url(route('staff:show',$record->id))}}
+            <div>
+                {{url(route('public:staff:show',$record->id))}}
                 @if(!empty($record->alias))
-                    {{url(route('staff:show',$record->alias))}}
+                    {{url(route('public:staff:show',$record->alias))}}
                 @endif
             </div>
 
@@ -86,7 +104,7 @@
 
                     <div class="flex-none w-14">
                         <a
-                            href="{{route('staff:show',$record->id)}}"
+                            href="{{route('public:staff:show',$record->id)}}"
                             target="_blank"
                             class="
                                     py-2 px-4 rounded-md
@@ -101,7 +119,7 @@
 
                 </div>
             </div>
-            <hr class="md:col-span-8 last:hidden">
+            <hr class="md:col-span-6 last:hidden">
         @endforeach
     </div>
 

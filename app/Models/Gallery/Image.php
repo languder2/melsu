@@ -89,6 +89,7 @@ class Image extends Model
             'App\Models\Education\Faculty'      => "images/faculty/",
             'App\Models\News'                   => 'images/news/',
             'App\Models\Gallery\Gallery'        => 'images/gallery/',
+            'App\Models\Staff\Staff'            => 'images/staffs/',
             default => 'images/uploads/',
         };
     }
@@ -107,6 +108,7 @@ class Image extends Model
 
     public function getThumbnailAttribute():string|null
     {
+
         $record = $this->reference??$this;
 
         $path = self::getPath($record->relation_type);

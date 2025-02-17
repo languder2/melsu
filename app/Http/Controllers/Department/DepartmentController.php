@@ -1,13 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Department;
 
-use App\Models\{Department, DepartmentDocument, DepartmentSection, DepartmentStaff};
-use App\Models\Department\Department as Department2;
-use App\Models\Staff;
+use App\Http\Controllers\Controller;
+use App\Models\{Department as OldDepartment, DepartmentSection, DepartmentStaff};
+use App\Models\Menu;
+use App\Models\Staff\Staff;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
-use App\Models\Menu;
+use App\Models\Department\Department;
+
 
 class DepartmentController extends Controller
 {
@@ -15,12 +17,10 @@ class DepartmentController extends Controller
     {
         return view('pages.admin', [
             'contents' => [
-
-                View::make('components.admin.department.header')->with([])->render(),
-
-                View::make('components.admin.department.list')->with([
-                    'list' => Department::AdminList(),
-                ])->render(),
+                View('admin.department.department.header'),
+                View('admin.department.department.list',[
+                    'list'      => Department::paginate(20),
+                ]),
             ]
         ]);
     }
@@ -31,7 +31,7 @@ class DepartmentController extends Controller
         return view('pages.admin', [
             'contents' => [
                 View::make('components.admin.department.form.form')->with([
-                    'current' => Department::getByID($id),
+                    'current' => OldDepartment::find($id),
                     'staffs' => Staff::getListForSelect(),
                 ])->render(),
             ]
@@ -66,12 +66,12 @@ class DepartmentController extends Controller
     public function save(Request $request)
     {
 
-        $form = $request->validate(Department::FormRules($request->get('id')), Department::$FormMessage);
+        $form = $request->validate(OldDepartment::FormRules($request->get('id')), OldDepartment::$FormMessage);
 
         if (empty($request->get('id')))
             $record = new Department();
         else
-            $record = Department::find($request->get('id'));
+            $record = OldDepartment::find($request->get('id'));
 
         $record->fill($form);
 
@@ -93,7 +93,7 @@ class DepartmentController extends Controller
 
     public function delete(int $id)
     {
-        $record = Department::find($id);
+        $record = OldDepartment::find($id);
 
         if (!is_null($record))
             $record->delete();
