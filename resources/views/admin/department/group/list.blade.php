@@ -4,7 +4,7 @@
         class="
             grid gap-4 items-center
             grid-cols-1
-            md:grid-cols-[auto_repeat(6,minmax(0,1fr))_auto]
+            md:grid-cols-[auto_auto_repeat(5,minmax(0,1fr))_auto]
         "
     >
         <div class="font-semibold">
@@ -35,7 +35,11 @@
             </div>
 
             <div>
-                    <?= $record->name ?>
+                    <img
+                        src="{{optional($record->preview)->thumbnail}}"
+                        alt=""
+                        class="h-40"
+                    />
             </div>
 
             <div>

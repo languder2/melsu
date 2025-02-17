@@ -17,6 +17,7 @@ class DepartmentController extends Controller
     {
         return view('pages.admin', [
             'contents' => [
+                View('admin.department.menu'),
                 View('admin.department.department.header'),
                 View('admin.department.department.list',[
                     'list'      => Department::paginate(20),

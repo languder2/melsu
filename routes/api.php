@@ -42,8 +42,8 @@ Route::middleware(['web','auth.api'])->prefix('gallery')->group(function () {
 
 });
 
-//Route::middleware(['web','auth.api'])->prefix('posts')->group(function () {
-Route::prefix('posts')->group(function () {
+Route::middleware(['web','auth.api'])->prefix('posts')->group(function () {
+//Route::prefix('posts')->group(function () {
     Route::get('delete/{id?}', [StaffController::class, 'ApiDelete'])
     ->name('api-post-delete');
 
