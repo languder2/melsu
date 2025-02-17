@@ -32,7 +32,7 @@
         ])
     />
 
-    <p
+    <span
         class="
             absolute
             bottom-0 left-0 right-0
@@ -51,5 +51,5 @@
         <span class="w-4 text-right">
             <i class="far fa-clone"></i>
         </span>
-    </p>
+    </span>
 </label>

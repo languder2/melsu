@@ -55,3 +55,16 @@ Route::middleware(['web','auth.api'])->prefix('posts')->group(function () {
 });
 
 
+Route::middleware(['web','auth.api'])
+    ->controller(\App\Http\Controllers\Department\GroupController::class)
+    ->prefix('department-groups')
+    ->group(function () {
+        Route::get('delete/{id?}', 'ApiDelete')->name('api:department-groups:delete');
+
+        Route::get('toggle-show/{id}', 'ApiToggleShow')
+            ->name('api:department-groups:toggle-show');
+
+
+    });
+
+

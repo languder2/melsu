@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Department;
 
 use App\Http\Controllers\Controller;
 use App\Models\Department\Group;
+use App\Models\Gallery\Gallery;
+use Carbon\Carbon;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class GroupController extends Controller
@@ -83,6 +86,41 @@ class GroupController extends Controller
 
         return redirect()->route('admin:department-group:list');
     }
+
+    public function ApiDelete (Request $request,$id): JsonResponse
+    {
+
+        $item = Group::Find($id);
+
+        if(!$item)
+            return response()->json([],204);
+
+        $item->delete();
+
+        return response()->json(
+            [
+                'message' => "Группа удалена\n"
+                    ."{$item->name}\n"
+                    ."Восстановимо до: ".Carbon::now()->addWeek(2)->format('d.m.Y H:i')
+            ]);
+    }
+
+    public function ApiToggleShow (Request $request,$id): JsonResponse
+    {
+        $item = Group::Find($id);
+
+        if(!$item)
+            return response()->json([],204);
+
+        $item->show = !(bool)$item->show;
+        $item->save();
+
+        return response()->json(
+            [
+                'message' => ($item->show?"Группа опубликована":'Группа скрыта')."\n{$item->name}"
+            ]);
+    }
+
 
 
 }
