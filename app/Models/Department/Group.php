@@ -2,74 +2,88 @@
 
 namespace App\Models\Department;
 
-use App\Models\Department\Section as DepartmentSection;
-use App\Models\Department\Staff as DepartmentStaff;
-use App\Models\Staff\Staff;
+use App\Models\Gallery\Image;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
-
+use App\Models\Department\Department;
 
 class Group extends Model
 {
     use SoftDeletes;
 
-    protected $table = 'departments';
+    protected $table = 'department_groups';
     protected $fillable = [
         'id',
         'name',
-        'chief',
-        'chief_post',
         'alias',
-        'sort',
-        'deleted_at'
+        'description',
+        'show',
+        'order'
     ];
 
     public static function FormRules($id): array
     {
         return [
-            'name' => "required|unique:departments,name,{$id},id,deleted_at,NULL",
-            'alias' => "nullable|unique:departments,alias,{$id},id,deleted_at,NULL",
-            'chief' => '',
-            'chief_post' => '',
-            'chief_name' => '',
-            'sort' => '',
-            'sections' => '',
-            'staffs' => '',
-            'documents' => '',
+            'name'          => "required|unique:department_groups,name,$id,id,deleted_at,NULL",
+            'alias'         => "nullable|unique:department_groups,alias,$id,id,deleted_at,NULL",
+            'description'   => '',
+            'show'          => '',
+            'order'         => '',
+            'image'         => '',
+            'preview'       => '',
         ];
     }
 
     public static function FormMessage(): array
     {
         return [
-            'name.required' => 'Укажите название',
-            'name.unique' => 'Название уже занято',
+            'name.required'     => 'Укажите название',
+            'name.unique'       => 'Название уже занято',
+            'alias.unique'      => 'Alias уже занят',
         ];
     }
 
-    public function staffs(): HasMany
+    public function setOrderAttribute($value)
     {
-        return $this->hasMany(DepartmentStaff::class, 'department', 'id')
-            ->orderBy('sort');
+        $this->attributes['order'] = $value ?? 10000;
     }
 
-    public function sections(): HasMany
+    public function getOrderAttribute($value)
     {
-        return $this->hasMany(DepartmentSection::class, 'department', 'id')
-            ->orderBy('sort');
+        return $value !== 10000 ? $value : null;
+    }
+    public function preview(): MorphOne
+    {
+        return $this->MorphOne(Image::class, 'relation')->where('type', 'preview');
     }
 
-    public function getChiefCardAttribute(): Staff|null
+    public function departments(bool $hidden = false, $trashed = null): MorphMany
     {
-        return Staff::find($this->chief);
+
+        $object = $this->morphMany(Department::class, 'relation');
+
+//        $object->where(function ($query) {
+//            $query->where('type', '!=', 'preview')
+//                ->orWhereNull('type');
+//        });
+
+        if(!$hidden)
+            $object->where('show',true);
+
+
+        if ($trashed === 'include')
+            $object = $object->withTrashed();
+
+        if ($trashed === 'only')
+            $object = $object->onlyTrashed();
+
+        $object = $object->orderBy('order')->orderBy('name');
+
+        return $object;
     }
 
-    public function getLinkAttribute(): string
-    {
-        return route('public:department:show', [
-            'code' => $this->alias ?? $this->id,
-        ]);
-    }
 
 }

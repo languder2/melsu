@@ -127,7 +127,7 @@ Route::middleware('auth.check')
 
 Route::middleware('auth.check')
     ->controller(DepartmentController::class)
-    ->prefix('department')
+    ->prefix('departments')
     ->group(function () {
 
         Route::get('', 'adminList')->name('admin:department');
@@ -153,10 +153,13 @@ Route::middleware('auth.check')
 
 Route::middleware('auth.check')
     ->controller(DepartmentGroupController::class)
-    ->prefix('department-group')
+    ->prefix('department-groups')
     ->group(function () {
 
         Route::get('', 'list')->name('admin:department-group:list');
+        Route::get('add', 'form')->name('admin:department-group:add');
+        Route::get('edit/{id?}', 'form')->name('admin:department-group:edit');
+        Route::post('save', 'save')->name('admin:department-group:save');
 
     });
 
@@ -176,7 +179,7 @@ Route::middleware('auth.check')
 
 Route::middleware('auth.check')
     ->controller(EducationDepartmentController::class)
-    ->prefix('departments')
+    ->prefix('education-departments')
     ->group(function () {
 
         Route::get('', 'list')->name('admin:education-department:list');

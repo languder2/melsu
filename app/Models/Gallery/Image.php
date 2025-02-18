@@ -90,6 +90,7 @@ class Image extends Model
             'App\Models\News'                   => 'images/news/',
             'App\Models\Gallery\Gallery'        => 'images/gallery/',
             'App\Models\Staff\Staff'            => 'images/staffs/',
+            'App\Models\Department\Group'       => 'images/department/group/',
             default => 'images/uploads/',
         };
     }

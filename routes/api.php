@@ -42,8 +42,8 @@ Route::middleware(['web','auth.api'])->prefix('gallery')->group(function () {
 
 });
 
-//Route::middleware(['web','auth.api'])->prefix('posts')->group(function () {
-Route::prefix('posts')->group(function () {
+Route::middleware(['web','auth.api'])->prefix('posts')->group(function () {
+//Route::prefix('posts')->group(function () {
     Route::get('delete/{id?}', [StaffController::class, 'ApiDelete'])
     ->name('api-post-delete');
 
@@ -53,5 +53,18 @@ Route::prefix('posts')->group(function () {
     ])
     ->name('api-post-add-section');
 });
+
+
+Route::middleware(['web','auth.api'])
+    ->controller(\App\Http\Controllers\Department\GroupController::class)
+    ->prefix('department-groups')
+    ->group(function () {
+        Route::get('delete/{id?}', 'ApiDelete')->name('api:department-groups:delete');
+
+        Route::get('toggle-show/{id}', 'ApiToggleShow')
+            ->name('api:department-groups:toggle-show');
+
+
+    });
 
 

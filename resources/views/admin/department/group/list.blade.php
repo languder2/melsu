@@ -1,96 +1,109 @@
-<div class="bg-white rounded-md p-4 mb-4">
-
-    <div
-        class="
-            grid gap-4 items-center
-            grid-cols-1
-            md:grid-cols-[auto_repeat(6,minmax(0,1fr))_auto]
-        "
-    >
-        <div class="font-semibold">
-            ID
-        </div>
-
-        <div class="font-semibold">
-            Название
-        </div>
-
-        <div class="font-semibold">
-            Должность
-        </div>
-
-        <div class="md:col-span-2 font-semibold">
-            Начальник
-        </div>
-
-        <div class="md:col-span-2 font-semibold">
-            ссылки
-        </div>
-
-        <div></div>
-
-        @foreach($list as $record)
-            <div class="text-right">
-                    <?= $record->id ?>
-            </div>
-
-            <div>
-                    <?= $record->name ?>
-            </div>
-
-            <div>
-                    <?= $record->chief_post ?>
-            </div>
-
-            <div class="md:col-span-2">
-                    <?= $record->lastname ?>
-                    <?= $record->firstname ?>
-                    <?= $record->middle_name ?>
-            </div>
-
-            <div class="md:col-span-2">
-                {{url(route('public:department:show',$record->id))}}
-                @if(!empty($record->alias))
-                    <br>
-                    {{url(route('public:department:show',$record->alias))}}
-                @endif
-            </div>
-
-            <div>
-                <div class="flex flex-row-reverse text-white w-full">
-                    <div class="flex-none w-14">
-                        <a
-                            href="{{route('admin:department:delete',$record->id)}}"
-                            class="
-                                py-2 px-4 rounded-md
-                                bg-red-950
-                                hover:bg-red-700
-                                active:bg-gray-700
-                            "
-                        >
-                            <i class="fas fa-trash w-4 h-4"></i>
-                        </a>
-                    </div>
-                    <div class="flex-none w-14">
-                        <a
-                            href="{{route('admin:department:edit',$record->id)}}"
-                            class="
-                                py-2 px-4 rounded-md
-                                bg-green-950
-                                hover:bg-green-700
-                                active:bg-gray-700
-                            "
-                        >
-                            <i class="far fa-edit w-4 h-4"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <hr class="md:col-span-8 last:hidden">
-        @endforeach
+@if($list->links())
+    <div class="my-3">
+        {{$list->links()}}
     </div>
+@endif
 
-    <hr class="my-4">
+<div class="flex flex-wrap gap-3">
+    @foreach($list as $item)
+        <div
+            class="
+                item
+                relative rounded-lg
+                transition-all duration-200
+                hover:-mt-2px
+                hover:mb-2px
+                hover:drop-shadow-[3px_5px_5px_rgba(0,0,0,.5)]
+                select-none
+            "
+        >
+            <img
+                src="{{optional($item->preview)->thumbnail}}"
+                alt="{{$item->name}}"
+                class="
+                    h-86
+                    relative rounded-lg
+                    transition-all duration-300
+                "
+            >
 
-    {!! @$list->links() !!}
+            <div
+                class="
+                    absolute inset-0 end-0 flex flex-col
+                    items-end
+                "
+            >
+                <x-html.blocks.check-button
+                    onclick="Actions.ToggleShow(this,'{{route('api:department-groups:toggle-show',$item->id)}}')"
+                    :checked="$item->show"
+                >
+                    <i class="fas fa-toggle-on hidden text-green-700 group-has-checked:block"></i>
+                    <i class="fas fa-toggle-off block text-red-700 group-has-checked:hidden"></i>
+                </x-html.blocks.check-button>
+
+                <x-html.blocks.a-button
+                    hoverColor="text-blue-700"
+                    :href="route('admin:department-group:edit',$item->id)"
+                >
+                    <i class="fas fa-pencil-alt"></i>
+                </x-html.blocks.a-button>
+
+                <x-html.blocks.a-button
+                    hoverColor="text-blue-700"
+                >
+                    <i class="fas fa-layer-group"></i>
+                </x-html.blocks.a-button>
+
+                <x-html.blocks.a-button
+                    hoverColor="text-blue-700"
+                    :href='route("admin:department:add")."?group={$item->id}"'
+                >
+                    <i class="fas fa-plus"></i>
+                </x-html.blocks.a-button>
+
+                <x-html.blocks.a-button
+                    hoverColor="text-blue-700"
+                    :href='route("admin:department:add")."?group={$item->id}"'
+                >
+                    <i class="fas fa-plus"></i>
+                </x-html.blocks.a-button>
+
+
+                <span class="flex-grow-5"></span>
+
+                <x-html.blocks.a-button
+                    hoverColor="text-red-700"
+                    onclick="Actions.DeleteItem(
+                        this.closest('.item'),
+                        '{{route('api:department-groups:delete',$item->id)}}'
+                    )"
+                    DeleteItem
+                >
+                    <i class="fas fa-recycle"></i>
+                </x-html.blocks.a-button>
+
+
+                <x-html.blocks.bottom-header>
+                    <span>
+                        #{{$item->id}}
+                    </span>
+
+                    <span class="border-r border-r-stone-50/30"></span>
+
+                    <span>
+                        {{str_pad($item->departments->count(), 3, '0', STR_PAD_LEFT)}}
+                    </span>
+
+                    <span class="border-r border-r-stone-50/30"></span>
+
+                    <span class="text-right flex-1">
+                        {{$item->name}}
+                    </span>
+                </x-html.blocks.bottom-header>
+            </div>
+
+        </div>
+    @endforeach
 </div>
+
+{{$list->links()}}

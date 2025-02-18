@@ -11,10 +11,25 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('department_groups', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('department_groups'))
+            Schema::create('department_groups', function (Blueprint $table) {
+                $table->id();
+
+                $table->string('name');
+                $table->string('alias')->nullable()->unique();
+                $table->text('description')->nullable();
+
+                $table->tinyInteger('show')->default(1);
+                $table->integer('order')->default(10000);
+                $table->timestamp('deleted_at')->nullable();
+                $table->timestamps();
+            });
+
+        if(!Schema::hasColumns('departments',['relation_type','relation_id']))
+            Schema::table('departments',function (Blueprint $table){
+                $table->string('relation_id')->nullable();
+                $table->string('relation_type')->nullable();
+            });
     }
 
     /**
