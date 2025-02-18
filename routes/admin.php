@@ -130,25 +130,25 @@ Route::middleware('auth.check')
     ->prefix('departments')
     ->group(function () {
 
-        Route::get('', 'adminList')->name('admin:department');
 
-        Route::get('contents/add', function () {
-        })->name('admin:department:content:add');
-        Route::get('contents/add/{i}', 'addContentSection');
-
-        Route::get('staff/add', function () {
-        })->name('admin:department:staff:add');
-        Route::get('staff/add/{i}', 'addStaff');
-
-        Route::get('document/add', function () {
-        })->name('admin:department:document:add');
-        Route::get('document/add/{i}', 'addDocument2Form');
+//        Route::get('contents/add', function () {
+//        })->name('admin:department:content:add');
+//        Route::get('contents/add/{i}', 'addContentSection');
+//
+//        Route::get('staff/add', function () {
+//        })->name('admin:department:staff:add');
+//        Route::get('staff/add/{i}', 'addStaff');
+//
+//        Route::get('document/add', function () {
+//        })->name('admin:department:document:add');
+//        Route::get('document/add/{i}', 'addDocument2Form');
 
         Route::get('add', 'form')->name('admin:department:add');
         Route::get('edit/{id}', 'form')->name('admin:department:edit');
         Route::post('save', 'save')->name('admin:department:save');
         Route::get('delete/{id}', 'delete')->name('admin:department:delete');
 
+        Route::get('{group?}', 'adminList')->name('admin:department:list');
     });
 
 Route::middleware('auth.check')

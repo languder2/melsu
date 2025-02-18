@@ -3,31 +3,50 @@
 namespace App\Http\Controllers;
 
 use App\Models\Department\Department;
-use App\Models\Department\Section;
-use App\Models\Staff\Staff;
 
 class TestController extends Controller
 {
     public function index()
     {
 
+        $department = \App\Models\Department\Department::find(1);
 
-        dd(1);
+        if($department)
+            dump($department->toArray());
 
-        return view('pages.page',[
-            'contents'  => [
-                view('test')
-            ]
-        ]);
-        $department = Department::where('alias', 'rectorate')->first();
+        if($department->parent)
+            dump($department->parent->toArray());
 
-        dump($department->chief_card?->link);
-        dump($department->staffs);
-        dump($department->toArray());
+        if($department->parent->parent)
+            dump($department->parent->parent->toArray());
 
 
-        dd('end');
+//        DataTransfer::DepartmentSections();
 
+
+        //        $department = \App\Models\Department\Department::find(91);
+    //
+    //        dump($department->chiefCard->card->toArray());
+    //        dump($department->staffs);
+    //        dd();
+
+//        DataTransfer::DepartmentsStaff();
+
+
+//        return view('pages.page',[
+//            'contents'  => [
+//                view('test')
+//            ]
+//        ]);
+//        $department = Department::where('alias', 'rectorate')->first();
+//
+//        dump($department->chief_card?->link);
+//        dump($department->staffs);
+//        dump($department->toArray());
+//
+//
+//        dd('end');
+//
 //        $profile = Profile::find(1);
 //
 //        $profile->faq()->save(
@@ -74,6 +93,8 @@ class TestController extends Controller
 
 
 //        dump($profile->staffs()->orderBy('order','desc')->first()->staff);
-//        dd('--------------------------');
+
+        dd();
+
     }
 }

@@ -63,3 +63,8 @@ export async function addSection(block, link) {
         console.error("Error in addSection:", error);
     }
 }
+export function showTab(targetId, groupClass) {
+    let tabs = document.querySelectorAll(groupClass);
+    if (!targetId || !tabs) return;
+    tabs.forEach(tab => tab.classList.toggle('hidden', tab.id !== targetId));
+}

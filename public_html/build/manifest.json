@@ -15,6 +15,10 @@
     "file": "assets/calc-BOHshExI.png",
     "src": "public_html/img/calc.png"
   },
+  "public_html/img/hex-bg.png": {
+    "file": "assets/hex-bg-sE8VX6pe.png",
+    "src": "public_html/img/hex-bg.png"
+  },
   "public_html/img/honeycombs1.png": {
     "file": "assets/honeycombs1-CPdL7dPm.png",
     "src": "public_html/img/honeycombs1.png"
@@ -44,7 +48,7 @@
     "src": "public_html/img/traktor.png"
   },
   "resources/css/app.css": {
-    "file": "assets/app-DThmJrhI.css",
+    "file": "assets/app-Bhjw1NeI.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },

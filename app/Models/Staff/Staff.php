@@ -108,20 +108,4 @@ class Staff extends Model
     {
         return $this->MorphMany(Post::class, 'relation');
     }
-
-    public static function DataTransfer()
-    {
-        $staffs = Staff::whereNotNull('works')->withTrashed()->get();
-
-        foreach ($staffs as $staff)
-            foreach ($staff->works as $work) {
-                $staff->posts()->create([
-                    'post'          => $work->post,
-                    'employment'    => $work->employment,
-                    'dismissal'     => $work->dismissal,
-                ])->save();
-
-            }
-
-    }
 }

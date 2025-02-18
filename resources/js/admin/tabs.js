@@ -1,4 +1,7 @@
 export function showTab(el, groupClass) {
+
+    console.log(el, groupClass);
+
     let targetId = el.value;
     let tabs = document.querySelectorAll(groupClass);
     if (!targetId || !tabs) return;

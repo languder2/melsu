@@ -9,32 +9,48 @@ use App\Models\Staff\Staff;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 use App\Models\Department\Department;
+use App\Models\Department\Group;
 
 
 class DepartmentController extends Controller
 {
-    public function adminList(): string
+    public function adminList($code = 'without-group'): string
     {
+
+        $group= Group::where('alias',$code)->orWhere('id',$code)->first();
+
+        $departments =
+            (
+                ($code !== 'without-group')
+                    ? $group->departments()
+                    : Department::whereNull('group_id')
+            )->whereNull('parent_id')->get();
+
         return view('pages.admin', [
             'contents' => [
-                View('admin.department.menu'),
-                View('admin.department.department.header'),
+                View('admin.department.menu',[
+                    'list'  => Group::orderBy('order')->orderBy('name')->get(),
+                ]),
+                View('admin.department.department.header',[
+                    'group' => $group,
+                ]),
                 View('admin.department.department.list',[
-                    'list'      => Department::paginate(20),
+                    'list'      => $departments,
                 ]),
             ]
         ]);
     }
 
-    public function form($id = null): string
+    public function form(Request $request,$id = null): string
     {
 
         return view('pages.admin', [
             'contents' => [
-                View::make('components.admin.department.form.form')->with([
-                    'current' => OldDepartment::find($id),
-                    'staffs' => Staff::getListForSelect(),
-                ])->render(),
+                View('admin.department.department.form',[
+                        'current'   => Department::find($id),
+                        'groups'    => Group::orderBy('order')->orderBy('name')->get(),
+                        'group'     => $request->get('group'),
+                ]),
             ]
         ]);
     }

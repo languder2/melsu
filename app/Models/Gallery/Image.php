@@ -37,7 +37,7 @@ class Image extends Model
         return [
             'name' => 'required',
             'alt' => '',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:51200',
             'gallery_code'  => '',
         ];
     }
@@ -47,7 +47,7 @@ class Image extends Model
         return [
             'name'          => 'Укажите название',
             'image.mimes'   => 'Не верный формат изображения',
-            'image.max'     => 'Размер изображения превышает лимит в 2MB',
+            'image.max'     => 'Размер изображения превышает лимит в 50MB',
         ];
     }
 
@@ -107,6 +107,16 @@ class Image extends Model
         return Storage::exists($filepath)?Storage::url($filepath):Storage::url('images/placeholder.png');
     }
 
+    public function getImageAttribute():string|null
+    {
+        $record = $this->reference ?? $this;
+        $path = self::getPath($record->relation_type);
+        $path .= $record->filename;
+        $filepath=  "$path/image.{$record->filetype}";
+
+        return Storage::exists($filepath) ? Storage::url($filepath) : Storage::url('images/placeholder.png');
+    }
+
     public function getThumbnailAttribute():string|null
     {
 
@@ -157,6 +167,11 @@ class Image extends Model
     public function getOrderAttribute($order):int|null
     {
         return ($order === 10000) ? $order : null;
+    }
+
+    public static function placeholder():string
+    {
+        return Storage::url('images/placeholder.png');
     }
 
 }

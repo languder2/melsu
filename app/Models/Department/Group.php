@@ -4,11 +4,14 @@ namespace App\Models\Department;
 
 use App\Models\Gallery\Image;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Department\Department;
+use Illuminate\Support\Facades\Storage;
 
 class Group extends Model
 {
@@ -57,13 +60,31 @@ class Group extends Model
     }
     public function preview(): MorphOne
     {
+        $image = $this->MorphOne(Image::class, 'relation')->where('type', 'preview');
+
+        if($image->count()) return $image;
+
+        (new Image([
+            'type'      => 'preview',
+            'name'      => $this->name,
+        ]))->relation()->associate($this)->save();
+
         return $this->MorphOne(Image::class, 'relation')->where('type', 'preview');
     }
 
-    public function departments(bool $hidden = false, $trashed = null): MorphMany
+//    public function getPreviewAttribute()
+//    {
+//        $image = $this->MorphOne(Image::class, 'relation')->where('type', 'preview')->first();
+//
+//        return $image ?? (object)[
+//            'thumbnail' => Image::placeholder(),
+//            'src' => Image::placeholder(),
+//        ];
+//    }
+    public function departments(bool $hidden = false, $trashed = null): HasMany
     {
 
-        $object = $this->morphMany(Department::class, 'relation');
+        $object = $this->hasMany(Department::class);
 
 //        $object->where(function ($query) {
 //            $query->where('type', '!=', 'preview')

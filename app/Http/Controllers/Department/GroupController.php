@@ -13,9 +13,12 @@ class GroupController extends Controller
 {
     public function list()
     {
+
         return view('pages.admin', [
             'contents' => [
-                View('admin.department.menu'),
+                View('admin.department.menu',[
+                    'list'  => Group::orderBy('order')->orderBy('name')->get(),
+                ]),
                 View('admin.department.group.header'),
                 View('admin.department.group.list',[
                     'list'      => Group::paginate(20),
