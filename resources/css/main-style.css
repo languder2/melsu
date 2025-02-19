@@ -654,7 +654,7 @@ header{
         }
     }
     .new-menu.mob-menu.opened{
-        transform: translateX(-100px);
+        transform: translateX(0px);
     }
 }
 /*END Header style*/
