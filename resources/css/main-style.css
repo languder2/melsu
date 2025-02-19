@@ -4745,17 +4745,17 @@ a.modal-open {
 *{
     margin: 0;
 }
-.map-wrapper{
+.campus-map-wrapper{
     width: 100%;
     margin: 0 auto;
     background-color: #D5D5D5;
 }
-.map-wrapper h3{
+.campus-map-wrapper h3{
     margin: 0;
     font-size: 16px;
     font-weight: bold !important;
 }
-.map-wrapper p{
+.campus-map-wrapper p{
     margin: 0;
     font-size: 14px;
     font-weight: normal !important;
@@ -4814,17 +4814,17 @@ model-viewer {
     border-radius: .8rem;
     background-color: #c10f1a;
 }
-.map-wrapper .nav-link{
+.campus-map-wrapper .nav-link{
     color: #820000;
 }
-.map-wrapper .nav-link.active{
+.campus-map-wrapper .nav-link.active{
     background-color: #820000 !important;
     color: #FFFFFF !important;
 }
-.map-wrapper .nav-link:hover{
+.campus-map-wrapper .nav-link:hover{
     color: #c10f1a;
 }
-.map-wrapper .card{
+.campus-map-wrapper .card{
     max-width: 320px;
     position: absolute;
     background-color: #FEFEFE;
@@ -4839,10 +4839,10 @@ model-viewer {
     opacity: 0.9;
 
 }
-.map-wrapper .card h4{
+.campus-map-wrapper .card h4{
     font-size: 24px;
 }
-.map-wrapper .card .close{
+.campus-map-wrapper .card .close{
     opacity: 1 !important;
     display: flex;
     justify-content: flex-end;
@@ -4850,21 +4850,21 @@ model-viewer {
     color: #820000;
     cursor: pointer;
 }
-.map-wrapper .Read-more{
+.campus-map-wrapper .Read-more{
     display: flex;
     flex-direction: row;
     column-gap: 10px;
 }
-.map-wrapper .Read-more a{
+.campus-map-wrapper .Read-more a{
     text-decoration: none;
     color: #820000;
     transition: .3s linear;
     font-size: 20px;
 }
-.map-wrapper .Read-more a:hover{
+.campus-map-wrapper .Read-more a:hover{
     color: #c10f1a;
 }
-.map-wrapper .card img{
+.campus-map-wrapper .card img{
     opacity: 1;
     max-width: 270px;
     max-height: 180px;
@@ -4889,7 +4889,7 @@ model-viewer {
     opacity: 0.9 !important;
     border-radius: .375rem !important;
 }
-.map-wrapper .form-select {
+.campus-map-wrapper .form-select {
     display: block;
     width: 100%;
     padding: 6px 36px 6px 12px;
@@ -4912,7 +4912,7 @@ model-viewer {
 .select-korp select:focus{
     outline: 1px solid #820000;
 }
-.map-wrapper .reset-map{
+.campus-map-wrapper .reset-map{
     font-size: 1rem;
     background-color: #820000;
     color: #FFFFFF;
@@ -4926,24 +4926,24 @@ model-viewer {
     line-height: 1.5;
     transition: .3s linear;
 }
-.map-wrapper .reset-map:hover{
+.campus-map-wrapper .reset-map:hover{
     background-color: #FFFFFF;
     color: #820000;
 }
-.map-wrapper .prvBtn{
+.campus-map-wrapper .prvBtn{
     margin-right: 10px;
 }
-.map-wrapper .nxtBtn{
+.campus-map-wrapper .nxtBtn{
     margin-left: 10px;
 }
-.map-wrapper .prvBtn,.map-wrapper .nxtBtn{
+.campus-map-wrapper .prvBtn,.campus-map-wrapper .nxtBtn{
     font-size: 35px;
     color: #820000;
     transition: .3s linear;
     cursor: pointer;
 
 }
-.map-wrapper .prvBtn:hover,.nxtBtn:hover{
+.campus-map-wrapper.prvBtn:hover,.nxtBtn:hover{
     color: rgb(104, 3, 3);
 }
 .no-context{
@@ -4954,38 +4954,38 @@ model-viewer {
     user-select: none;
 }
 @media screen and (max-width: 1024px) {
-    .map-wrapper .card{
+    .campus-map-wrapper .card{
         max-width: 280px !important;
         top: 2rem !important;
         left: 2rem !important;
     }
 }
 @media screen and (max-width: 560px){
-    .map-wrapper .card{
+    .campus-map-wrapper .card{
         top: 0.1rem !important;
         left: 2rem !important;
     }
 }
 @media screen and (max-width: 400px){
-    .map-wrapper .prvBtn,.map-wrapper .nxtBtn{
+    .campus-map-wrapper .prvBtn,.campus-map-wrapper .nxtBtn{
         display: none;
     }
 }
 @media screen and (max-width: 355px){
-    .map-wrapper .card{
+    .campus-map-wrapper .card{
         max-width: 300px;
         top: 0.1rem !important;
         left: 0.5rem !important;
     }
-    .map-wrapper .card img{
+    .campus-map-wrapper .card img{
         width: 230px !important;
     }
-    .map-wrapper .card h4{
+    .campus-map-wrapper .card h4{
         font-size: 20px;
     }
 }
 @media screen and (max-width: 320px){
-    .map-wrapper .card{
+    .campus-map-wrapper .card{
         left: 1.2rem !important;
     }
 }

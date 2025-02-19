@@ -1,5 +1,5 @@
 <section class="container">
-    <div class="flex flex-wrap gap-4">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 2xl:grid-cols-5 gap-3 px-2">
         @foreach($gallery->images as $image)
             <div
                 class="
@@ -11,11 +11,11 @@
                     select-none
                 "
             >
-                <button popovertarget="modal-img-{{$image->id}}" class="cursor-pointer">
+                <button popovertarget="modal-img-{{$image->id}}" class="cursor-pointer w-full">
                     <img
                         src="{{optional($image)->thumbnail}}"
                         alt="{{$image->name}}"
-                        class="
+                        class=" w-full
                             h-68
                             relative rounded-lg
                             transition-all duration-300

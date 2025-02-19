@@ -1,6 +1,6 @@
 <section class="main-section">
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
-    <div class="map-wrapper">
+    <div class="campus-map-wrapper">
         <model-viewer
             class="uppermap"
             src="{{asset('object/fullmap2.glb')}}"
