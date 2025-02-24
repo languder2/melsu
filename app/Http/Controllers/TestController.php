@@ -8,93 +8,10 @@ class TestController extends Controller
 {
     public function index()
     {
-
-        $department = \App\Models\Department\Department::find(1);
-
-        if($department)
-            dump($department->toArray());
-
-        if($department->parent)
-            dump($department->parent->toArray());
-
-        if($department->parent->parent)
-            dump($department->parent->parent->toArray());
-
-
-//        DataTransfer::DepartmentSections();
-
-
-        //        $department = \App\Models\Department\Department::find(91);
-    //
-    //        dump($department->chiefCard->card->toArray());
-    //        dump($department->staffs);
-    //        dd();
-
-//        DataTransfer::DepartmentsStaff();
-
-
-//        return view('pages.page',[
-//            'contents'  => [
-//                view('test')
-//            ]
-//        ]);
-//        $department = Department::where('alias', 'rectorate')->first();
-//
-//        dump($department->chief_card?->link);
-//        dump($department->staffs);
-//        dump($department->toArray());
-//
-//
-//        dd('end');
-//
-//        $profile = Profile::find(1);
-//
-//        $profile->faq()->save(
-//            new FAQ([
-//                'question'  => 'test2',
-//                'answer'    => 'test',
-//                'order'     => 200
-//            ])
-//        );
-//
-
-        /**
-         *
-         * $profile->documents()->save(new Document([
-         * 'title'     => 'test',
-         * 'filename'  => 'test',
-         * 'filetype'  => 'test',
-         * ]));
-         *
-         * dd($profile->documents()->count());
-         * /**/
-//        dd($profile->documents()->where('show',true)->get()->pluck('show'));
-
-//        $profile->documents()->save(new Link([
-//            'name'      => 'test1',
-//            'link'      => 'test1',
-//            'order'     => 100,
-//        ]));
-//
-//        $profile->documents()->save(new Link([
-//            'name'      => 'test2',
-//            'title'     => 'test2',
-//            'order'     => 200,
-//        ]));
-
-//        dump($profile->links()->orderBy('order','desc')->get()->keyBy('id'));
-
-//        $profile->documents()->save(new StaffAffiliation([
-//            'staff_id'  => 1,
-//            'alt_name'  => 'Sultan SV',
-//            'post'      => 'test',
-//            'order'     => 100,
-//        ]));
-
-
-//        dump($profile->staffs()->orderBy('order','desc')->first()->staff);
-
-        dd();
-
+        return view('pages.page',[
+            'contents'  => [
+                view('test',['test'=>'test string'])
+            ]
+        ]);
     }
 }

@@ -4,6 +4,7 @@ namespace App\Models\Department;
 
 use App\Models\Department\Section as DepartmentSection;
 use App\Models\Department\Staff as DepartmentStaff;
+use App\Models\Gallery\Image;
 use App\Models\Staff\Staff;
 use App\Models\Staff\Affiliation as StaffAffiliation;
 use Illuminate\Database\Eloquent\Model;
@@ -19,13 +20,16 @@ class Department extends Model
     use SoftDeletes;
 
     protected $table = 'departments';
+
     protected $fillable = [
         'id',
         'name',
         'group_id',
         'parent_id',
+        'coordinator_id',
         'code',
         'order',
+        'show',
     ];
 
     protected $visible = [
@@ -34,18 +38,27 @@ class Department extends Model
         'code',
         'group_id',
         'parent_id',
+        'coordinator_id',
+        'show'
     ];
 
     public static function FormRules($id): array
     {
         return [
-            'name'          => "required|unique:departments,name,{$id},id,deleted_at,NULL",
-            'code'          => "nullable|unique:departments,code,{$id},id,deleted_at,NULL",
-            'chief'         => '',
-            'order'         => '',
-            'sections'      => '',
-            'staffs'        => '',
-            'documents'     => '',
+            'name'              => "required|unique:departments,name,{$id},id,deleted_at,NULL",
+            'code'              => "nullable|unique:departments,code,{$id},id,deleted_at,NULL",
+            'order'             => '',
+            'group_id'          => '',
+            'parent_id'         => '',
+            'coordinator_id'    => '',
+            'sections'          => '',
+            'chief'             => '',
+            'chief_post'        => '',
+            'documents'         => '',
+            'image'             => '',
+            'preview'           => '',
+            'show'              => '',
+            'staffs'            => '',
         ];
     }
 
@@ -56,6 +69,17 @@ class Department extends Model
             'name.unique' => 'Название уже занято',
         ];
     }
+
+    public function getOrderAttribute($order): int|null
+    {
+        return ($order < 10000) ? $order :  null ;
+    }
+
+    public function setOrderAttribute($order): void
+    {
+        $this->attributes['order'] = $order ?? 10000;
+    }
+
 
     public function options(): MorphMany
     {
@@ -87,9 +111,15 @@ class Department extends Model
         return $this->MorphOne(StaffAffiliation::class, 'relation')->where('type','chief');
     }
 
-    public function staffs(): MorphMany
+    public function staffs($all= false): MorphMany
     {
-        return $this->morphMany(StaffAffiliation::class, 'relation');
+
+        $response = $this->morphMany(StaffAffiliation::class, 'relation')->orderBy('order');
+
+        if(!$all)
+            $response = $response->where('type','staff');
+
+        return $response;
     }
 
     public function sections(): MorphMany
@@ -103,6 +133,20 @@ class Department extends Model
             'code' => $this->alias ?? $this->id,
         ]);
     }
+
+    public function preview(): MorphOne
+    {
+        $image = $this->MorphOne(Image::class, 'relation')->where('type', 'preview');
+
+        if(!$image->count())
+            $image->create([
+                'type'      => 'preview',
+                'name'      => $this->name,
+            ])->save();
+
+        return $image;
+    }
+
 
 
 }

@@ -37,8 +37,9 @@
 
         <x-admin.sidebar-li
             link="{{route('admin:department-group:list')}}"
-            ico="fas fa-align-left"
+            ico="fas fa-sitemap"
             text="Департаменты"
+            class="text-lg"
         />
 
         <x-admin.sidebar-li
@@ -50,6 +51,7 @@
         <x-admin.sidebar-li
             link="{{route('admin:education-faculty:list')}}"
             ico="fas fa-university"
+
             text="Обучение"
         />
 
@@ -67,10 +69,10 @@
         />
     </ul>
 
-    <i class="fas fa-outdent"></i>
-    <i class="fas fa-indent"></i>
+{{--    <i class="fas fa-outdent"></i>--}}
+{{--    <i class="fas fa-indent"></i>--}}
 
-    <i class="fab fa-squarespace"></i>
+{{--    <i class="fab fa-squarespace"></i>--}}
 </div>
 
 

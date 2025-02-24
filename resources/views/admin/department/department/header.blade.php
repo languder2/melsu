@@ -1,10 +1,10 @@
 <div class="bg-white rounded-md p-4 mb-4 flex">
     <h2 class="flex-1 text-2xl font-semibold">
-        {{$group->name??"Отделы без категории"}}
+        Подразделения
     </h2>
     <div>
         <a
-            href="{{route('admin:department:add')}}{{$group?"?group=".($group->alias??$group->id):''}}"
+            href="{{route('admin:department:add')}}"
             class="
                 py-2 px-4
                 rounded-md

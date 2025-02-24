@@ -17,6 +17,8 @@
 
             value="{{@$staffs[$params->value]??@$params->value}}"
 
+            autocomplete="off"
+
             class="
                 staffFullName
                 border-b
@@ -34,6 +36,7 @@
                 focus:border-blue-700
             {{@$class}}
         "
+            onfocus="this.closest('.block').querySelector('ul').classList.remove('hidden')"
             onkeyup="AdminStaff.KeyUp(this)"
             placeholder=""
         >
@@ -61,7 +64,9 @@
             </label>
         @endif
 
-        <ul class="
+        <ul
+            data-persistent="false"
+            class="
                 StaffList
                 max-h-0 overflow-y-scroll
                 peer-focus:max-h-80
@@ -74,6 +79,7 @@
                 peer-focus:border-t-0
                 w-full
                 z-50
+                hidden
             "
         >
             @foreach($staffs as $staffID=>$full_name)

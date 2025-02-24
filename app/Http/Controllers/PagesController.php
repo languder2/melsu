@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\View\Components\sections\breadcrumbs;
-use App\Models\{Menu, MenuItems};
+use App\Models\{Menu\Menu, Menu\Item};
 use App\Models\Page;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -84,28 +83,25 @@ class PagesController extends Controller
         else
             $content = $page->content;
 
-        if (!is_null($page->menu_id))
-            $menu = MenuItems::getSideMenuForPage($page->menu_id, $page->id);
-
-        $layout = 'pages.page';
-
-        if (isset($menu))
-            $layout = 'pages.page-with-menu';
+        $menu = Menu::where('show',1)->find($page->menu_id);
 
         if (empty($content))
             return redirect()->route('pages:main');
 
-        return view($layout, [
+        return view($menu?'pages.page-with-menu':'pages.page', [
             'breadcrumbs' => (object)[
                 'view'      => null,
                 'route'     => 'pages',
                 'element'   => $page,
             ],
 
-            'sidebar' => View::make('components.menu.sidebar')->with([
+            'sidebar' => view('Public.Menu.Aside',[
                 'menu' => &$menu,
-                'full' => false,
-            ])->render(),
+            ]),
+
+//            'sidebar' => view::make('components.menu.sidebar')->with([
+//                'menu' => &$menu,
+//            ])->render(),
 
             'includes'    =>[
                 'jquery',

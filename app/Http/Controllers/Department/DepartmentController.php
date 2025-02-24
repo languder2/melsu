@@ -3,13 +3,14 @@
 namespace App\Http\Controllers\Department;
 
 use App\Http\Controllers\Controller;
-use App\Models\{Department as OldDepartment, DepartmentSection, DepartmentStaff};
-use App\Models\Menu;
+use App\Models\{Department as OldDepartment};
+use App\Models\Department\Department;
+use App\Models\Department\Group;
+use App\Models\Menu\Menu;
+use App\Models\Staff\Affiliation as StaffAffiliation;
 use App\Models\Staff\Staff;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
-use App\Models\Department\Department;
-use App\Models\Department\Group;
 
 
 class DepartmentController extends Controller
@@ -19,23 +20,20 @@ class DepartmentController extends Controller
 
         $group= Group::where('alias',$code)->orWhere('id',$code)->first();
 
-        $departments =
-            (
-                ($code !== 'without-group')
-                    ? $group->departments()
-                    : Department::whereNull('group_id')
-            )->whereNull('parent_id')->get();
+        $departments = Department::whereNull('parent_id')
+            ->orderByRaw('ISNULL(group_id), group_id ASC')
+            ->orderBy('name')
+            ->get();
 
         return view('pages.admin', [
             'contents' => [
-                View('admin.department.menu',[
-                    'list'  => Group::orderBy('order')->orderBy('name')->get(),
-                ]),
+                View('admin.department.menu'),
+
                 View('admin.department.department.header',[
                     'group' => $group,
                 ]),
                 View('admin.department.department.list',[
-                    'list'      => $departments,
+                    'list'  => $departments,
                 ]),
             ]
         ]);
@@ -44,12 +42,22 @@ class DepartmentController extends Controller
     public function form(Request $request,$id = null): string
     {
 
+        if($id)
+            $parents =  Department::orderBy('name')->where('id','!=',$id)->get();
+        else
+            $parents =  Department::orderBy('name')->get();
+
         return view('pages.admin', [
             'contents' => [
+                View('admin.department.menu',[
+                    'list'  => Group::orderBy('order')->orderBy('name')->get(),
+                ]),
                 View('admin.department.department.form',[
                         'current'   => Department::find($id),
-                        'groups'    => Group::orderBy('order')->orderBy('name')->get(),
+                        'groups'    => Group::orderBy('order')->orderBy('name')->get()->pluck('name','id'),
                         'group'     => $request->get('group'),
+                        'parents'   => $parents->pluck('name','id'),
+
                 ]),
             ]
         ]);
@@ -83,34 +91,66 @@ class DepartmentController extends Controller
     public function save(Request $request)
     {
 
-        $form = $request->validate(OldDepartment::FormRules($request->get('id')), OldDepartment::$FormMessage);
+        $form = $request->validate(Department::FormRules($request->get('id')), Department::FormMessage());
 
         if (empty($request->get('id')))
             $record = new Department();
         else
-            $record = OldDepartment::find($request->get('id'));
+            $record = Department::find($request->get('id'));
 
         $record->fill($form);
 
-        if (empty($form['chief_name'])) {
-            $record->chief_post = null;
-            $record->chief = null;
-        }
+        $record->show = array_key_exists('show',$form);
 
         $record->save();
 
-        if (isset($form['sections']) && is_array($form['sections']))
-            DepartmentSection::AddInDepartment($record->id, $form['sections']);
+        if($form['chief'] && Staff::find($form['chief'])){
+            $chief = $record->chief;
 
-        if (isset($form['staffs']) && is_array($form['staffs']))
-            DepartmentStaff::AddInDepartment($record->id, $form['staffs']);
+            if(!$chief)
+                $chief = $record->chief()->create([
+                    'type'      => 'chief',
+                ]);
 
-        return redirect()->route('admin:department');
+            $chief->staff_id    = $form['chief'];
+            $chief->post        = $form['chief_post'];
+
+            $chief->save();
+        }
+
+        if($form['staffs'])
+            foreach ($form['staffs'] as $affiliation_id=>$staff) {
+                if(!Staff::Find($staff['staff_id'])) continue;
+
+                $item = $record->staffs()->find($affiliation_id);
+
+                if(!$item)
+                    $item = $record->staffs()->create([
+                        'type'  => 'staff',
+                    ]);
+
+                $item->fill($staff);
+
+                $item->save();
+            }
+
+        if($request->file('image')){
+            $record->preview->saveImage($request->file('image'));
+            $record->preview->reference_id = null;
+            $record->preview->save();
+        }
+        elseif($form['preview']){
+            $record->preview->name = $record->name;
+            $record->preview->getReferenceID($form['preview']);
+            $record->preview->save();
+        }
+
+        return redirect()->route('admin:department:list');
     }
 
     public function delete(int $id)
     {
-        $record = OldDepartment::find($id);
+        $record = Department::find($id);
 
         if (!is_null($record))
             $record->delete();
@@ -122,10 +162,10 @@ class DepartmentController extends Controller
     public function show(Request $request, $code = null)
     {
 
-        $department = Department2::where('alias', $code)->first();
+        $department = Department::where('alias', $code)->first();
 
         if (!$department)
-            $department = Department2::find((int)$code);
+            $department = Department::find((int)$code);
 
         if (!$department)
             return redirect()->route('pages:main');
@@ -189,6 +229,21 @@ class DepartmentController extends Controller
                 $pageContent
             ]
         ]);
+    }
+
+
+    public function ApiVacatePosition(Request $request,$affiliation_id = null)
+    {
+
+        $item = StaffAffiliation::find($affiliation_id);
+
+        if($item)
+            $item->delete();
+
+        return response()->json(
+            [
+                'message' => "Вакансия освобождена"
+            ]);
     }
 
 }

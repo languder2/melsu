@@ -31,6 +31,7 @@ class Select extends Component
 
         if (!is_null($params))
             $this->params = (object)$params;
+
     }
 
     /**

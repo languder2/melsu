@@ -1,22 +1,14 @@
 <?php
 
-use App\Http\Controllers\{NewsController, suStructureController};
-use App\Http\Controllers\{MenuController, MenuItemsController, PagesController};
-
-use App\Http\Controllers\Department\{
-    DepartmentController,
-    GroupController as DepartmentGroupController
-};
-
-use App\Http\Controllers\Education\{
-    DepartmentController as EducationDepartmentController,
+use App\Http\Controllers\{News\NewsController, suStructureController};
+use App\Http\Controllers\{Menu\ItemsController as MenuItems, Menu\MenuController, PagesController};
+use App\Http\Controllers\Department\{DepartmentController, GroupController as DepartmentGroupController};
+use App\Http\Controllers\Education\{DepartmentController as EducationDepartmentController,
     FacultyController,
-    SpecialityController
-};
-
-use App\Http\Controllers\EventsController;
-use App\Http\Controllers\StaffController;
-use App\Http\Controllers\UserController;
+    SpecialityController};
+use App\Http\Controllers\News\EventsController;
+use App\Http\Controllers\Staffs\StaffController;
+use App\Http\Controllers\Users\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth.check'])
@@ -63,8 +55,8 @@ Route::middleware('auth.check')
     });
 
 Route::middleware('auth.check')
-    ->controller(MenuItemsController::class)
-    ->prefix('menu-items')
+    ->controller(MenuItems::class)
+    ->prefix('menu/items')
     ->group(function () {
 
         Route::get('', 'list')->name('admin:menu-items');
@@ -77,7 +69,7 @@ Route::middleware('auth.check')
 
 Route::middleware('auth.check')
     ->controller(MenuController::class)
-    ->prefix('menu')
+    ->prefix('menu/list')
     ->group(function () {
 
         Route::get('', 'list')->name('admin:menu');

@@ -2,7 +2,7 @@
 
 namespace App\View\Components\Menu;
 
-use App\Models\Menu;
+use App\Models\Menu\Menu;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;

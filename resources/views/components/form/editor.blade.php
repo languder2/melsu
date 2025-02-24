@@ -3,7 +3,7 @@
 @endif
 
 @if(isset($id))
-    <label for="{{$id}}" class="mb-2 mt-4 block text-center font-semibold uppercase">
+    <label for="{{$id}}" class="mb-2 block text-center font-semibold uppercase">
         @if(!isset($hideLabel))
             {{$label??$name}}@if(isset($required))
                 *

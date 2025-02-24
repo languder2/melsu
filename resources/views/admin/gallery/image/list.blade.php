@@ -18,11 +18,11 @@
 
 
 <div class="flex flex-wrap gap-3">
-                @foreach($list as $image)
+    @foreach($list as $image)
         <div class="max-w-[800px] max-h-[400px] clear-both relative justify-center align-middle items-center">
-                    {{view('admin.gallery.image.item',['image'=>$image])}}
+            {{view('admin.gallery.image.item',['image'=>$image])}}
         </div>
-                @endforeach
+    @endforeach
 </div>
 
 

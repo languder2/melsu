@@ -4,6 +4,7 @@ namespace App\Models\Education;
 
 use App\Models\Education\Department as EducationDepartment;
 use App\Models\Gallery\Image;
+use App\Models\Staff\Affiliation as StaffAffiliation;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
@@ -18,20 +19,28 @@ class Faculty extends Model
 
     protected $fillable = [
         'id',
+        'acronym',
         'name',
         'code',
         'description',
         'order',
+        'show',
     ];
 
     public static function FormRules($id): array
     {
         return [
-            'name' => 'required',
-            'code' => "required|unique:education_faculties,code,{$id},id,deleted_at,NULL",
-            'description' => '',
-            'order' => 'nullable|numeric',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'acronym'       => 'nullable',
+            'name'          => 'required',
+            'code'          => "required|unique:education_faculties,code,{$id},id,deleted_at,NULL",
+            'description'   => '',
+            'order'         => 'nullable|numeric',
+            'image'         => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'preview'       => '',
+            'show'          => '',
+            'staffs'        => '',
+            'chief'         => '',
+            'chief_post'    => '',
         ];
     }
 
@@ -58,9 +67,14 @@ class Faculty extends Model
             ->orderBy('spec_code');
     }
 
-    public function getOrderAttribute(?int $value): int|null
+    public function getOrderAttribute($order): int|null
     {
-        return ($value === 10000) ? null : $value;
+        return ($order < 10000) ? $order :  null ;
+    }
+
+    public function setOrderAttribute($order): void
+    {
+        $this->attributes['order'] = $order ?? 10000;
     }
 
     public function image(): MorphMany
@@ -70,8 +84,34 @@ class Faculty extends Model
 
     public function logo(): MorphOne
     {
-        return $this->MorphOne(Image::class, 'relation')->where('type', 'logo');
+        $image = $this->MorphOne(Image::class, 'relation')->where('type', 'logo');
+
+        if(!$image->count())
+            $image->create([
+                'type'      => 'logo',
+                'name'      => $this->name,
+            ])->save();
+
+        return $image;
+
     }
+
+    public function staffs($all= false): MorphMany
+    {
+
+        $response = $this->morphMany(StaffAffiliation::class, 'relation')->orderBy('order');
+
+        if(!$all)
+            $response = $response->where('type','staff');
+
+        return $response;
+    }
+    public function chief(): MorphOne
+    {
+        return $this->MorphOne(StaffAffiliation::class, 'relation')->where('type','chief');
+    }
+
+
 }
 
 

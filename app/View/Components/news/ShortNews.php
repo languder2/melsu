@@ -2,8 +2,8 @@
 
 namespace App\View\Components\News;
 
-use App\Models\Events;
-use App\Models\News;
+use App\Models\News\Events;
+use App\Models\News\News;
 use Carbon\Carbon;
 use Closure;
 use Illuminate\Contracts\View\View;

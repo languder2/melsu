@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Education;
 use App\Http\Controllers\Controller;
 use App\Models\Education\Faculty;
 use App\Models\Education\Speciality;
-use App\Models\Menu;
+use App\Models\Menu\Menu;
 use App\View\Components\Specialities\{AllSpeciality, Single as SingleSpeciality};
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\View;

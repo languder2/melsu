@@ -14,22 +14,10 @@
     </span>
 
     <x-html.a-blue
-        href="{{route('admin:department:list',['without-group'])}}"
-        text="Без группы"
-        :active="str_contains(url()->current(),route('admin:department:list',['without-group']))"
+        href="{{route('admin:department:list')}}"
+        text="Подразделения"
+        :active="str_contains(url()->current(),route('admin:department:list'))"
     />
-
-    @foreach($list??[] as $item)
-        <span class="inline-block mx-3 opacity-30">
-            |
-        </span>
-
-        <x-html.a-blue
-            href="{{route('admin:department:list',[$item->alias??$item->id])}}"
-            text="{{$item->name}}"
-            :active="str_contains(url()->current(),route('admin:department:list',[$item->alias??$item->id]))"
-        />
-    @endforeach
 
 </div>
 

@@ -1,15 +1,14 @@
 <?php
 
-use App\Http\Controllers\{NewsController, suStructureController};
+use App\Http\Controllers\{News\NewsController, suStructureController};
 use App\Http\Controllers\{AdminController, PagesController};
 use App\Http\Controllers\Department\DepartmentController;
 use App\Http\Controllers\Education\EducationController;
 use App\Http\Controllers\Gallery\PublicGallery;
-use App\Http\Controllers\StaffController;
+use App\Http\Controllers\Staffs\StaffController;
 use App\Http\Controllers\TestController;
-use App\Http\Controllers\WishTreeController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Menu\MenuController;
 
 Route::get('/', function () {
     return view('pages.main');
@@ -34,10 +33,6 @@ Route::prefix('admin')->group(function () {
 Route::prefix('nomix')->group(function () {
     require __DIR__.'/nomix.php';
 });
-
-Route::view('wish-tree', 'pages.wish-tree.form')->name('wish-tree');
-Route::post('wish-tree/save', [WishTreeController::class, 'save'])->name('wish-tree:save');
-Route::get('wish-tree/list', [WishTreeController::class, 'list'])->name('wish-tree:list');
 
 Route::get('test', [TestController::class, 'index']);
 
@@ -126,6 +121,14 @@ Route::controller(PublicGallery::class)
     });
 
 
-/* Pages: public */
+/* Menu Page */
+    Route::get('menu/{code?}', [MenuController::class,'show'])
+        ->name('public:menu:show');
+
+
+/* Pages */
 
 Route::get('{alias}', [PagesController::class, 'showPage']);
+
+
+

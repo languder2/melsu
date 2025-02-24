@@ -21,9 +21,10 @@
                             <i class="bi bi-list"></i>
                         </span>
             </button>
+
             <div class="navbar-collapse">
                 <ul class="navbar-nav">
-                    @foreach($list??[] as $menu)
+                    @foreach($MainMenu->subs as $menu)
                         <li
                             data-menu="menu_{{$menu->id}}"
                             class="nav-item point-menu flex items-center"
@@ -33,7 +34,7 @@
                                     nav-link
                                     hidden lg:block
                                 "
-                                href="{{$menu->link??"#"}}"
+                                href="{{$menu->link}}"
                             >
                                 {{$menu->name}}
                             </a>
@@ -88,8 +89,8 @@
                 </div>
             </div>
         </nav>
-        @foreach($list??[] as $menu)
-            @if(count($menu->sub))
+        @foreach($MainMenu->subs as $menu)
+            @if($menu->items->count())
                 <div id="menu_{{$menu->id}}" class="new-menu hidde">
                     <div class="box-dropdown-btns">
                         <div class="box-back-btn">
@@ -101,7 +102,7 @@
                         <div class="box-transit-btn">
                             <a
                                 class="transit-btn"
-                                href="{{$menu->link??'#'}}"
+                                href="{{url($menu->link)}}"
                             >
                                 {{$menu->name}}
                                 <i class="bi bi-arrow-right"></i>
@@ -109,10 +110,10 @@
                         </div>
                     </div>
                     <div class="wrapper-dropdown-menu">
-                        @foreach($menu->sub as $group)
+                        @foreach($menu->items as $group)
                             <div class="box-dropdown-menu">
                                 <nav class="nav">
-                                    @foreach($group as $item)
+                                    @foreach($group->subs as $item)
                                         <a
                                             class="nav-link"
                                             href="{{$item->link??'#'}}"
@@ -126,7 +127,6 @@
                     </div>
                 </div>
             @endif
-
         @endforeach
     </div>
 </div>

@@ -1,11 +1,12 @@
 <?php
 
+use App\Http\Controllers\Gallery\AdminImageGallery;
+use App\Http\Controllers\Staffs\StaffController;
 use App\Models\Education\Department;
 use App\Models\Education\Faculty;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Gallery\AdminImageGallery;
-use App\Http\Controllers\StaffController;
+use Illuminate\Support\Facades\View;
 
 Route::get('departments-by-faculty-shorts/{faculty?}', function (Request $request, $faculty = null) {
 
@@ -23,7 +24,7 @@ Route::get('link-correct', function (Request $request) {
 
     if (!$from || !$to) return;
 
-    $menu = new \App\Models\MenuItems();
+    $menu = new \App\Models\Menu\Item();
 
     foreach ($menu::where('link', "!=", '')->get() as $item) {
         $item->link = str_replace($from, $to, $item->link);
@@ -63,6 +64,54 @@ Route::middleware(['web','auth.api'])
 
         Route::get('toggle-show/{id}', 'ApiToggleShow')
             ->name('api:department-groups:toggle-show');
+
+
+    });
+
+
+Route::middleware(['web','auth.api'])
+    ->controller(\App\Http\Controllers\Department\DepartmentController::class)
+    ->prefix('departments')
+    ->group(function () {
+//        Route::get('delete/{id?}', 'ApiVacattePosition')->name('api:department-groups:delete');
+
+        Route::get('vacate-position/{affiliation_id?}', 'ApiVacatePosition')
+            ->name('api:department:staff:vacate-position');
+
+        Route::get('staff-add-position', function(){
+            return View::make('components.staff.select-with-post')->with([
+                'id' => (int)microtime(true ),
+            ])->render();
+        })
+            ->name('api:department:staff:add-position');
+
+
+    });
+
+
+Route::middleware(['web','auth.api'])
+    ->controller(\App\Http\Controllers\Menu\ItemsController::class)
+    ->prefix('menu')
+    ->group(function () {
+
+        Route::get('get-parents-for-menu/{menu?}/{id?}', function($menu = null,$id = null){
+
+            return \App\Models\Menu\Item::where('menu_id',$menu)
+                ->where('id','!=',$id)
+                ->whereNull('parent_id')
+                ->select('name','id')
+                ->orderBy('name')
+                ->get();
+
+        })->name('api:menu-items:parents:get');
+
+
+        Route::get('staff-add-position', function(){
+            return View::make('components.staff.select-with-post')->with([
+                'id' => (int)microtime(true ),
+            ])->render();
+        })
+            ->name('api:department:staff:add-position');
 
 
     });

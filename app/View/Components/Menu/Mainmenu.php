@@ -2,7 +2,7 @@
 
 namespace App\View\Components\Menu;
 
-use App\Models\{Menu};
+use App\Models\{Menu\Menu};
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
@@ -23,10 +23,10 @@ class Mainmenu extends Component
     public function render(): View|Closure|string
     {
 
-        $menu = Menu::GetMainMenu();
+        $menu = Menu::where('code','main')->first();
 
         return view('components.menu.mainmenu', [
-            'list' => $menu->items ?? [],
+            'MainMenu' => $menu,
         ]);
     }
 }

@@ -3,11 +3,9 @@
 namespace App\Http\Controllers\Gallery;
 
 use App\Http\Controllers\Controller;
-use App\Models\Menu;
+use App\Models\Gallery\Gallery;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use App\Models\Gallery\Gallery;
-use Illuminate\Support\Facades\View;
 
 class PublicGallery extends Controller
 {

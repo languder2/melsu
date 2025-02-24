@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\NewsCategory;
+use App\Models\News\NewsCategory;
 use Illuminate\Database\Seeder;
 
 class NewsCategoriesSeed extends Seeder

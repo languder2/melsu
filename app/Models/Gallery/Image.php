@@ -2,7 +2,6 @@
 
 namespace App\Models\Gallery;
 
-use App\Models\Education\Faculty;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
@@ -10,7 +9,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Drivers\Gd\Driver;
-use Intervention\Image\Image as InterventionImage;
 use Intervention\Image\ImageManager;
 
 class Image extends Model
@@ -87,11 +85,13 @@ class Image extends Model
     {
         return match($model){
             'App\Models\Education\Faculty'      => "images/faculty/",
-            'App\Models\News'                   => 'images/news/',
+            'App\Models\News\News'              => 'images/news/',
             'App\Models\Gallery\Gallery'        => 'images/gallery/',
             'App\Models\Staff\Staff'            => 'images/staffs/',
             'App\Models\Department\Group'       => 'images/department/group/',
-            default => 'images/uploads/',
+            'App\Models\Department\Department'  => 'images/department/department/',
+            'App\Models\Menu\Item'              => 'images/menu/item/',
+            default                             => 'images/uploads/',
         };
     }
     public function getSrcAttribute():string|null

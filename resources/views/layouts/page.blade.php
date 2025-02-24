@@ -5,6 +5,8 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="{{url('favicons/favicon.ico')}}" type="image/x-icon" />
+
     <title>@yield('title', 'ФГБОУ ВО "Мелитопольский государственный университет"')</title>
 
     <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
@@ -32,7 +34,7 @@
 
             <div class="grid grid-cols-1 lg:grid-cols-[25%_minmax(70%,1fr)] gap-3">
                 <div class="left-side-menu-box hidden lg:block ">
-                    <div class="sticky top-42 bg-white p-2.5">
+                    <div class="bg-white p-2.5">
                         @yield('sidebar')
                     </div>
                 </div>

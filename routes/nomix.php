@@ -1,10 +1,8 @@
 <?php
 
-use App\Models\Menu;
-use App\Models\Page;
+use App\Models\Menu\Menu;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\View;
 
 Route::get("{page}",function(Request $request,$page){
     return view('pages.page', [

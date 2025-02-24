@@ -62,14 +62,13 @@ class Group extends Model
     {
         $image = $this->MorphOne(Image::class, 'relation')->where('type', 'preview');
 
-        if($image->count()) return $image;
+        if(!$image->count())
+            $image->create([
+                'type'      => 'preview',
+                'name'      => $this->name,
+            ])->save();
 
-        (new Image([
-            'type'      => 'preview',
-            'name'      => $this->name,
-        ]))->relation()->associate($this)->save();
-
-        return $this->MorphOne(Image::class, 'relation')->where('type', 'preview');
+        return $image;
     }
 
 //    public function getPreviewAttribute()
@@ -91,8 +90,8 @@ class Group extends Model
 //                ->orWhereNull('type');
 //        });
 
-        if(!$hidden)
-            $object->where('show',true);
+//        if(!$hidden)
+//            $object->where('show',true);
 
 
         if ($trashed === 'include')
