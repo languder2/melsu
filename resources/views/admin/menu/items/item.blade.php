@@ -3,7 +3,11 @@
 </div>
 
 <div>
-    preview
+    <img
+        src="{{$item->preview->thumbnail}}"
+        alt="{{$item->name}}"
+        class="h-12"
+    />
 </div>
 
 <div class="flex items-center">

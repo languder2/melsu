@@ -43,7 +43,7 @@
                         </div>
                     </div>
                     <img
-                        src="{{$sub->preview->src}}"
+                        src="{{$sub->preview->thumbnail}}"
                         alt="{{$item->name}}"
                         title="{{$item->name}}"
                         class="object-cover h-26 w-full"

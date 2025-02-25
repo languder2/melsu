@@ -29,7 +29,7 @@
                 <li class="py-2 px-5">
                     <a
                         href="{{$sub->link}}"
-                        class="text-[#301428] font-['jost']"
+                        class="text-[#301428]"
                     >
                         {{$sub->name}}
                     </a>

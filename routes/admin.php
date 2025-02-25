@@ -122,19 +122,6 @@ Route::middleware('auth.check')
     ->prefix('departments')
     ->group(function () {
 
-
-//        Route::get('contents/add', function () {
-//        })->name('admin:department:content:add');
-//        Route::get('contents/add/{i}', 'addContentSection');
-//
-//        Route::get('staff/add', function () {
-//        })->name('admin:department:staff:add');
-//        Route::get('staff/add/{i}', 'addStaff');
-//
-//        Route::get('document/add', function () {
-//        })->name('admin:department:document:add');
-//        Route::get('document/add/{i}', 'addDocument2Form');
-
         Route::get('add', 'form')->name('admin:department:add');
         Route::get('edit/{id}', 'form')->name('admin:department:edit');
         Route::post('save', 'save')->name('admin:department:save');
@@ -171,16 +158,28 @@ Route::middleware('auth.check')
 
 Route::middleware('auth.check')
     ->controller(EducationDepartmentController::class)
-    ->prefix('education-departments')
+    ->prefix('education/departments')
     ->group(function () {
 
-        Route::get('', 'list')->name('admin:education-department:list');
+        Route::get('', 'list')->where('type','labs|departments')
+            ->name('admin:education-department:list');
+
         Route::get('add', 'form')->name('admin:education-department:add');
         Route::get('edit/{id}', 'form')->name('admin:education-department:edit');
         Route::post('save', 'save')->name('admin:education-department:save');
         Route::get('delete/{id}', 'delete')->name('admin:education-department:delete');
 
     });
+
+Route::middleware('auth.check')
+    ->controller(EducationDepartmentController::class)
+    ->prefix('education/labs')
+    ->group(function () {
+        Route::get('labs', 'list')->where('type','labs|departments')
+            ->name('admin:education-department:list');
+
+    });
+
 
 Route::middleware('auth.check')
     ->controller(SpecialityController::class)

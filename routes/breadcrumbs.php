@@ -24,7 +24,7 @@ Breadcrumbs::for('news-item', function (BreadcrumbTrail $trail, News $news) {
 
 Breadcrumbs::for('faculties', function (BreadcrumbTrail $trail) {
     $trail->parent('home');
-    $trail->push('Факультеты', route('public:education:faculties'));
+    $trail->push('Факультеты и филиалы', route('public:education:faculties'));
 });
 
 Breadcrumbs::for('faculty', function (BreadcrumbTrail $trail, Faculty $faculty) {

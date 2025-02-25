@@ -34,6 +34,22 @@
                     required
                 />
             </div>
+
+            <div class="w-30">
+
+                <x-form.select
+                    id="form_faculty_type"
+                    name="type"
+                    old="{{old('type')?? $current->type ?? 'faculty'}}"
+                    :list="[
+                        'faculty'   => 'Факультет',
+                        'branch'    => 'Филиал',
+                    ]"
+                    label="Тип"
+                />
+
+            </div>
+
         </div>
 
         <div class="flex gap-4 my-2">

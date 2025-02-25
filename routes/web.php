@@ -54,6 +54,23 @@ Route::controller(NewsController::class)
 
     });
 
+
+Route::controller(EducationController::class)
+    ->prefix('education')
+    ->group(function () {
+        Route::get('faculties', 'faculties')
+            ->name('public:education:faculties');
+
+        Route::get('departments', 'showAllDepartments')
+            ->name('public:education:departments:list');
+
+        Route::get('labs', 'showAllLabs')
+            ->name('public:education:labs:list');
+
+        Route::get('branch', 'showAllBranch')
+            ->name('public:education:branch:list');
+    });
+
 Route::controller(EducationController::class)
     ->prefix('specialities')
     ->group(function () {
@@ -66,11 +83,8 @@ Route::controller(EducationController::class)
 /* Education: public */
 
 Route::controller(EducationController::class)
-    ->prefix('faculties')
+    ->prefix('education/faculties')
     ->group(function () {
-
-        Route::get('', 'faculties')
-            ->name('public:education:faculties');
 
         Route::get('{faculty}/departments', 'departments')
             ->name('public:education:departments');
@@ -127,6 +141,7 @@ Route::controller(PublicGallery::class)
 
 
 /* Pages */
+
 
 Route::get('{alias}', [PagesController::class, 'showPage']);
 

@@ -117,6 +117,7 @@ class News extends NewsCategory
 
     public function preview(): MorphOne
     {
+
         return $this->MorphOne(Image::class, 'relation')->where('type', 'preview');
     }
 

@@ -21,7 +21,7 @@ class All extends Component
      */
     public function render(): View|Closure|string
     {
-        $departments = Department::orderBy('sort')->orderBy('name')->get();
+        $departments = Department::orderBy('order')->orderBy('name')->get();
 
         if (!$departments)
             return redirect()->route('pages:main');

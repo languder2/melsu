@@ -20,6 +20,7 @@ class Faculty extends Model
     protected $fillable = [
         'id',
         'acronym',
+        'type',
         'name',
         'code',
         'description',
@@ -31,6 +32,7 @@ class Faculty extends Model
     {
         return [
             'acronym'       => 'nullable',
+            'type'          => '',
             'name'          => 'required',
             'code'          => "required|unique:education_faculties,code,{$id},id,deleted_at,NULL",
             'description'   => '',
@@ -56,6 +58,15 @@ class Faculty extends Model
     public function departments(): HasMany
     {
         return $this->hasMany(EducationDepartment::class, 'faculty_code', 'code')
+            ->where('type_code','department')
+            ->orderBy('order', 'desc')
+            ->orderBy('name');
+    }
+
+    public function labs(): HasMany
+    {
+        return $this->hasMany(EducationDepartment::class, 'faculty_code', 'code')
+            ->where('type_code','lab')
             ->orderBy('order', 'desc')
             ->orderBy('name');
     }

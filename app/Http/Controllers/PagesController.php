@@ -72,16 +72,17 @@ class PagesController extends Controller
 
     public function showPage(Request $request, $alias): RedirectResponse|string
     {
-
         $page = Page::where('alias', $alias)->first();
 
-        if ($page === null)
+
+        if (!$page)
             return redirect()->route('pages:main');
 
         if (!is_null($page->view) && View::exists("pages.content.{$page->view}"))
             $content = view("pages.content.{$page->view}")->render();
         else
             $content = $page->content;
+
 
         $menu = Menu::where('show',1)->find($page->menu_id);
 
@@ -95,13 +96,9 @@ class PagesController extends Controller
                 'element'   => $page,
             ],
 
-            'sidebar' => view('Public.Menu.Aside',[
-                'menu' => &$menu,
-            ]),
-
-//            'sidebar' => view::make('components.menu.sidebar')->with([
+//            'sidebar' => view('Public.Menu.Aside',[
 //                'menu' => &$menu,
-//            ])->render(),
+//            ]),
 
             'includes'    =>[
                 'jquery',

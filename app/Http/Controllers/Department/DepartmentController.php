@@ -162,7 +162,7 @@ class DepartmentController extends Controller
     public function show(Request $request, $code = null)
     {
 
-        $department = Department::where('alias', $code)->first();
+        $department = Department::where('code', $code)->first();
 
         if (!$department)
             $department = Department::find((int)$code);

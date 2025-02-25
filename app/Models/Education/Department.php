@@ -2,6 +2,7 @@
 
 namespace App\Models\Education;
 
+use App\Models\Education\Department as EducationDepartment;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -63,12 +64,41 @@ class Department extends Model
 
     public function getOrderAttribute(?int $value): int|null
     {
-        return ($value === 10000) ? null : $value;
+        return ($value < 10000) ? $value : null;
+    }
+
+    public function setOrderAttribute(?int $value): void
+    {
+        $this->attributes['order'] = $order ?? 10000;
     }
 
     public function specialities(): HasMany
     {
         return $this->hasMany(Speciality::class, 'department_code', 'code');
+    }
+
+    public function getLinkAttribute(): string
+    {
+        return route('public:education:department',[
+            $this->faculty->code ?? $this->faculty->id,
+            $this->code ?? $this->id,
+        ]);
+    }
+
+    public function subs(): HasMany
+    {
+        return $this->hasMany(self::class, 'department_code', 'code')
+            ->where('type_code','department')
+            ->orderBy('order', 'desc')
+            ->orderBy('name');
+    }
+
+    public function labs(): HasMany
+    {
+        return $this->hasMany(self::class, 'department_code', 'code')
+            ->where('type_code','lab')
+            ->orderBy('order', 'desc')
+            ->orderBy('name');
     }
 
 

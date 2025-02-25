@@ -3,37 +3,99 @@
 namespace App\Http\Controllers\Education;
 
 use App\Http\Controllers\Controller;
+use App\Models\Education\Department;
 use App\Models\Education\Faculty;
 use App\Models\Education\Speciality;
 use App\Models\Menu\Menu;
 use App\View\Components\Specialities\{AllSpeciality, Single as SingleSpeciality};
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Route;
 
 class EducationController extends Controller
 {
     public function faculties(): string
     {
-        $faculties = Faculty::orderBy('order', 'desc')->orderBy('name')->get();
-
-        return view('pages.page-with-menu', [
+        return view('pages.page', [
             'breadcrumbs' => (object)[
                 'view'      => null,
                 'route'     => 'faculties',
                 'element'   => null,
             ],
 
-            'sidebar' => View::make('components.menu.alt_sidebar')->with([
-                'menu' => Menu::GetMenuFaculties($faculties),
-            ])->render(),
-
             'contents' => [
-                View::make('components.education.faculties')->with([
-                    'list' => $faculties,
-                ])->render()
+                view("Public.Education.Tabs.List",['active' => 'faculties']),
+                view("Public.Education.Faculties.List",[
+                    'list'  => Faculty::where('show',1)->where('type','faculty')
+                        ->orderBy('order')->orderBy('name')->get(),
+                ]),
             ]
         ]);
 
+    }
+    public function showAllBranch(): string
+    {
+
+        return view('pages.page', [
+            'breadcrumbs' => (object)[
+                'view'      => null,
+                'route'     => 'faculties',
+                'element'   => null,
+            ],
+
+            'contents' => [
+                view("Public.Education.Tabs.List",['active' => 'branch']),
+                view("Public.Education.Branch.List",[
+                    'list'  => Faculty::where('show',1)->where('type','branch')
+                        ->orderBy('order')->orderBy('name')->get(),
+                ]),
+            ]
+        ]);
+
+    }
+    public function showAllDepartments(): string
+    {
+
+
+
+        $groupedItems = Department::orderBy('name')->get()->groupBy(function ($item) {
+            return strtoupper(mb_substr($item->name, 0, 1, 'UTF-8')); // Первая буква в верхнем регистре
+        });
+
+        return view('pages.page', [
+            'breadcrumbs' => (object)[
+                'view'      => null,
+                'route'     => 'faculties',
+                'element'   => null,
+            ],
+
+            'contents' => [
+
+                view("Public.Education.Tabs.List",['active' => 'departments']),
+                view("Public.Education.Departments.List",[
+                    'list'  => $groupedItems,
+                ]),
+            ]
+        ]);
+    }
+
+    public function showAllLabs(): string
+    {
+        return view('pages.page', [
+            'breadcrumbs' => (object)[
+                'view'      => null,
+                'route'     => 'faculties',
+                'element'   => null,
+            ],
+
+            'contents' => [
+
+                view("Public.Education.Tabs.List",['active' => 'labs']),
+                view("Public.Education.Labs.List",[
+                    'list'  => Faculty::where('show',1)->orderBy('order')->orderBy('name')->get(),
+                ]),
+            ]
+        ]);
     }
 
     public function faculty($faculty = null): string|RedirectResponse
@@ -64,6 +126,8 @@ class EducationController extends Controller
 
             ]
         ]);
+
+
 
     }
 

@@ -75,7 +75,7 @@ class MenuController extends Controller
 
         return view("pages.page", [
             'contents' => [
-                view('public.menu.page',[
+                view('Public.Menu.Page',[
                     'menu' => $menu,
                 ]),
             ]

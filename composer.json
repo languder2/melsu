@@ -15,7 +15,8 @@
         "laravel/framework": "^11.31",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
-        "tinymce/tinymce": "^7.6"
+        "tinymce/tinymce": "^7.6",
+        "ext-iconv": "*"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",

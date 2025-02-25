@@ -5,7 +5,7 @@
 @endif
 
 @if(isset($label))
-    <div class="mt-2 -mb-2">
+    <div class="mt-1 -mb-2 text-xs">
         {{@$label}}@if(isset($required))
             *
         @endif

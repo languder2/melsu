@@ -11,7 +11,7 @@
                     <li class="py-3.5 px-5" style="border-bottom: 1px solid var(--primary-color);">
                         <a
                             href="{{$item->link}}"
-                            class="font-['jost'] text-baseRed"
+                            class="text-baseRed"
                         >
                             {{$item->name}}
                         </a>
@@ -20,7 +20,7 @@
                     <li class="py-3.5 px-5">
                         <a
                             href="{{$item->link}}"
-                            class="text-[#301428] font-['jost']"
+                            class="text-[#301428]"
                         >
                             {{$item->name}}
                         </a>

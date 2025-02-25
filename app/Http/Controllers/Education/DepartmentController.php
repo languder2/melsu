@@ -11,22 +11,24 @@ use Illuminate\Support\Facades\View;
 
 class DepartmentController extends Controller
 {
-    public function list(): string
+    public function list($type = 'departments'): string
     {
-        $list = Faculty::first();
+
+        $faculties = Faculty::orderBy('order', 'desc')->orderBy('name')->get();
+        $departments = Department::whereNull('faculty_code')->where('type_code','department')->orderBy('order')->orderBy('name')->get();
+        $labs = Department::where('type_code','lab')->orderBy('order')->orderBy('name')->get();
 
         return view('pages.admin', [
             'contents' => [
 
-                View::make('components.admin.top_menu.education')->with([
-                    'active' => 'departments'
-                ])->render(),
+                view('admin.education.menu'),
 
-                View::make('components.admin.education.departments.header')->with([])->render(),
-
-                View::make('components.admin.education.departments.list')->with([
-                    'list' => Faculty::orderBy('order', 'desc')->orderBy('name')->get(),
-                ])->render(),
+                view('admin.education.departments.header'),
+                view('admin.education.departments.list')->with([
+                    'faculties'     => $faculties,
+                    'departments'   => $departments,
+                    'labs'          => $labs,
+                ]),
             ]
         ]);
     }
