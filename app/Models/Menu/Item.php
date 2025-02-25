@@ -250,4 +250,13 @@ class Item extends Model
     }
 
 
+    public function LinkedPage(): BelongsTo|null
+    {
+
+        return $this->page_id
+            ? $this->belongsTo(Page::class, 'page_id', 'id')
+            : null;
+
+    }
+
 }

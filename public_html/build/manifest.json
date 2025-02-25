@@ -3,6 +3,10 @@
     "file": "assets/bg-map-_MI7dOr-.png",
     "src": "public_html/img/bg-map.png"
   },
+  "public_html/img/bg-with-logo.png": {
+    "file": "assets/bg-with-logo-BIjjRpKx.png",
+    "src": "public_html/img/bg-with-logo.png"
+  },
   "public_html/img/book.png": {
     "file": "assets/book-051inJDp.png",
     "src": "public_html/img/book.png"
@@ -48,7 +52,7 @@
     "src": "public_html/img/traktor.png"
   },
   "resources/css/app.css": {
-    "file": "assets/app-CbEhC-wM.css",
+    "file": "assets/app-bJEsHQbb.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },

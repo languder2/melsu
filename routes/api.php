@@ -117,3 +117,13 @@ Route::middleware(['web','auth.api'])
     });
 
 
+Route::get('correct/page-menu-link', function(Request $request){
+        $list = \App\Models\Menu\Item::whereNotNull('page_id')->get();
+
+        foreach ($list as $item){
+            if(!$item->LinkedPage->menu_id) continue;
+            $item->LinkedPage->fill(['menu_id'=>$item->menu_id])->save();
+        }
+
+        return response()->json('success');
+});

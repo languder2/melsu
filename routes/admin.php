@@ -175,7 +175,7 @@ Route::middleware('auth.check')
     ->controller(EducationDepartmentController::class)
     ->prefix('education/labs')
     ->group(function () {
-        Route::get('labs', 'list')->where('type','labs|departments')
+        Route::get('labs', 'list')
             ->name('admin:education-department:list');
 
     });

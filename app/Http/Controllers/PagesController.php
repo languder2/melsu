@@ -46,7 +46,7 @@ class PagesController extends Controller
 
     public function save(Request $request): string|RedirectResponse
     {
-        $form = $request->validate(Page::FormRules($request->get('id')), Page::$FormMessage);
+        $form = $request->validate(Page::FormRules($request->get('id')), Page::FormMessage());
 
         if (empty($request->get('id')))
             $record = new Page();
@@ -54,6 +54,8 @@ class PagesController extends Controller
             $record = Page::find($request->get('id'));
 
         $record->fill($form);
+
+        $record->without_bg = array_key_exists('without_bg', $form);
 
         $record->save();
 
@@ -89,6 +91,7 @@ class PagesController extends Controller
         if (empty($content))
             return redirect()->route('pages:main');
 
+
         return view($menu?'pages.page-with-menu':'pages.page', [
             'breadcrumbs' => (object)[
                 'view'      => null,
@@ -96,19 +99,15 @@ class PagesController extends Controller
                 'element'   => $page,
             ],
 
-//            'sidebar' => view('Public.Menu.Aside',[
-//                'menu' => &$menu,
-//            ]),
+            'sidebar' => view('Public.Menu.Aside',[
+                'menu' => &$menu,
+            ]),
 
             'includes'    =>[
                 'jquery',
             ],
 
-            'nobg' => in_array($page->alias, [
-                'sved',
-                'why-melsu',
-                'science',
-            ]),
+            'nobg' => !empty($page->without_bg),
 
             'news' => false,
 

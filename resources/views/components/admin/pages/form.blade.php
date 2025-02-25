@@ -98,6 +98,12 @@
         label="Боковое меню"
     />
 
+    <x-form.checkbox
+        id="form_without_bg"
+        name="without_bg"
+        text="убрать фон"
+    />
+
     <x-form.input
         id="view"
         name="view"

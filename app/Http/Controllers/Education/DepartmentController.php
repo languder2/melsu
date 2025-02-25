@@ -14,8 +14,12 @@ class DepartmentController extends Controller
     public function list($type = 'departments'): string
     {
 
-        $faculties = Faculty::orderBy('order', 'desc')->orderBy('name')->get();
+        $faculties = Faculty::orderBy('order', 'desc')
+            ->where('type','faculty')
+            ->orderBy('name')->get();
+
         $departments = Department::whereNull('faculty_code')->where('type_code','department')->orderBy('order')->orderBy('name')->get();
+
         $labs = Department::where('type_code','lab')->orderBy('order')->orderBy('name')->get();
 
         return view('pages.admin', [

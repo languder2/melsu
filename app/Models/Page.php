@@ -12,12 +12,8 @@ class Page extends Model
 {
     use SoftDeletes;
 
-    public static $FormMessage = [
-        'name' => 'Укажите заголовок',
-        'route.required_without' => 'Alias или Route должны быть заполнены',
-        'alias.required_without' => 'Alias или Route должны быть заполнены',
-    ];
     protected $table = 'pages';
+
     protected $fillable = [
         'id',
 
@@ -36,11 +32,18 @@ class Page extends Model
         'view',
         'content',
 
-        'created_at',
-        'updated_at',
-        'deleted_at',
+        'without_bg'
+
     ];
 
+    public static function FormMessage():array{
+        return [
+            'name' => 'Укажите заголовок',
+            'route.required_without' => 'Alias или Route должны быть заполнены',
+            'alias.required_without' => 'Alias или Route должны быть заполнены',
+
+        ];
+    }
     public static function FormRules($id): array
     {
         return [
@@ -56,6 +59,7 @@ class Page extends Model
             'sidebar' => '',
             'content' => '',
             'menu_id' => '',
+            'without_bg' => '',
         ];
     }
 

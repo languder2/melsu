@@ -18,10 +18,12 @@
             focus:ring-baseRed focus:ring-2
             cursor-pointer
         "
-        @checked(old($name))
+        @if(old('_token'))
+            @checked(old($name))
+        @endif
 
-    @if(isset($dataOptions))
-        {!! $dataOptions !!}
+        @if(isset($dataOptions))
+            {!! $dataOptions !!}
         @endif
     >
     <label
