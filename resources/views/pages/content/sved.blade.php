@@ -14,7 +14,7 @@
         <div class="z-10">
             <ul class="text-base xl:text-lg list-outside list-disc">
                 <li class="leading-normal pb-3">
-                    <a class="transition duration-300 ease-in-out hover:opacity-60" href="https://melsu/main-sved">Основные сведения</a>
+                    <a class="transition duration-300 ease-in-out hover:opacity-60" href="https://melsu.ru/main-sved">Основные сведения</a>
                 </li>
                 <li class="leading-normal pb-3">
                     <a class="transition duration-300 ease-in-out hover:opacity-60" href="#">Структура и органы управления образовательной организацией</a>
