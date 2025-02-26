@@ -1797,7 +1797,7 @@ header{
 
                     .category-box {
                         z-index: 2;
-                        background-color: #820000;
+                        background-color: #820000c2;
                         padding: 10px;
                         right: 0;
                         position: absolute;
@@ -1820,9 +1820,15 @@ header{
                             margin-bottom: 10px;
 
                             a {
-                                background-color: var(--primary-color);
+                                background-color: #820000c2;
                                 padding: 5px;
                                 color: white;
+                            }
+                        }
+                        .description-box{
+                            h3{
+                                background: #820000c2;
+                                padding: 10px;
                             }
                         }
                     }
