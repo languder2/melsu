@@ -52,12 +52,12 @@
     "src": "public_html/img/traktor.png"
   },
   "resources/css/app.css": {
-    "file": "assets/app-bJEsHQbb.css",
+    "file": "assets/app-vrFNgyFZ.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
   "resources/js/app.js": {
-    "file": "assets/app-CavwV4vN.js",
+    "file": "assets/app-B51-CPMy.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true

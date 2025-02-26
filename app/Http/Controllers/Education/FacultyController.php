@@ -107,7 +107,7 @@ class FacultyController extends Controller
             $record->logo->save();
         }
 
-        return redirect()->route('admin:education-faculty:list');
+        return redirect()->route('admin:education:faculty:list');
     }
 
     public function delete(int $id)
@@ -117,6 +117,6 @@ class FacultyController extends Controller
         if (!is_null($record))
             $record->delete();
 
-        return redirect()->route('admin:education-faculty:list');
+        return redirect()->route('admin:education:faculty:list');
     }
 }

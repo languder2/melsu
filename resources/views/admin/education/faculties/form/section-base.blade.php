@@ -58,7 +58,7 @@
             @endif
 
             <div class="flex-1">
-                <div class="block md:flex flex-row gap-4 items-center">
+                <div class="flex flex-col md:flex-row gap-4 items-center">
                     <div class="flex-1">
                         <x-form.input
                             id="form_code"

@@ -16,7 +16,7 @@
         @if(isset($current->id))
             Внести изменения {{$current->name}}
         @else
-            Добавить кафедру/лабораторию
+            Добавить кафедру
         @endif
     </h3>
 
@@ -26,49 +26,17 @@
 
     <x-form.input type="hidden" name="id" value="{{$current->id??null}}"/>
 
-{{--    <x-form.select--}}
-{{--        id="form_faculty_code"--}}
-{{--        name="faculty_code"--}}
-{{--        nullDisabled--}}
-{{--        old="{{old('faculty_code')??$add2faculty}}"--}}
-{{--        value="{{@$current->faculty_code}}"--}}
-{{--        null="Выбрать"--}}
-{{--        :list="$faculties"--}}
-{{--        label="Факультет"--}}
-{{--        required--}}
-{{--    />--}}
 
     <x-form.select
         id="form_faculty_code"
         name="faculty_code"
-{{--        nullDisabled--}}
+        nullDisabled
         old="{{old('faculty_code')??$add2faculty}}"
         value="{{$current?->faculty_code}}"
         null="Выбрать"
         :list="$faculties"
         label="Факультет"
         onchange="DependedSelects.DepartmentsByFaculty('form_faculty_code','form_department')"
-    />
-
-    <x-form.select
-        id="form_department"
-        name="department_code"
-        old="{{old('department_code')}}"
-        value="{{$current?->department_code}}"
-        null="Выбрать"
-        :list="$departments"
-        label="Кафедра"
-    />
-
-    <x-form.select
-        id="form_type_code"
-        name="type_code"
-        nullDisabled
-        old="{{old('type_code')}}"
-        value="{{@$current->type_code}}"
-        null="Выбрать"
-        :list="$types"
-        label="Тип отделения"
         required
     />
 

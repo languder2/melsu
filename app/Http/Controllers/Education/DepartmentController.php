@@ -4,34 +4,24 @@ namespace App\Http\Controllers\Education;
 
 use App\Http\Controllers\Controller;
 use App\Models\Education\Department;
-use App\Models\Education\DepartmentType;
 use App\Models\Education\Faculty;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 
 class DepartmentController extends Controller
 {
-    public function list($type = 'departments'): string
+    public function list(): string
     {
-
-        $faculties = Faculty::orderBy('order', 'desc')
-            ->where('type','faculty')
-            ->orderBy('name')->get();
-
-        $departments = Department::whereNull('faculty_code')->where('type_code','department')->orderBy('order')->orderBy('name')->get();
-
-        $labs = Department::where('type_code','lab')->orderBy('order')->orderBy('name')->get();
 
         return view('pages.admin', [
             'contents' => [
-
                 view('admin.education.menu'),
-
                 view('admin.education.departments.header'),
                 view('admin.education.departments.list')->with([
-                    'faculties'     => $faculties,
-                    'departments'   => $departments,
-                    'labs'          => $labs,
+                    'faculties'     => Faculty::orderBy('order', 'desc')
+                        ->where('type','faculty')->orderBy('name')->get(),
+                    'departments'   => Department::whereNull('faculty_code')
+                        ->orderBy('order')->orderBy('name')->get(),
                 ]),
             ]
         ]);
@@ -42,23 +32,15 @@ class DepartmentController extends Controller
 
         $current= Department::find($id);
 
-        $departments = $current
-                ?$current->faculty->departments->where('type_code','department')->pluck('name', 'code')->toArray()
-                :Department::where('type_code','department')->pluck('name', 'code')?->toArray();
-
         return view('pages.admin', [
             'contents' => [
-                View::make('components.admin.top_menu.education')->with([
-                    'active' => 'departments'
-                ])->render(),
+                view('admin.education.menu'),
 
-                View::make('components.admin.education.departments.form')->with([
+                view('admin.education.departments.form')->with([
                     'current' => Department::find($id),
                     'add2faculty' => request()->get('faculty'),
                     'faculties' => Faculty::pluck('name', 'code')->toArray(),
-                    'departments' => $departments,
-                    'types' => DepartmentType::pluck('name', 'code')->toArray(),
-                ])->render(),
+                ]),
             ]
         ]);
     }

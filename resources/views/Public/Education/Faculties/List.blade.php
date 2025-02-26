@@ -2,7 +2,8 @@
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
         @foreach($list as $item)
-            <div
+            <a
+                href="{{route('public:education:faculty',[$item->code??$item->id])}}"
                 class="
                     block
                     bg-gray-100 relative group
@@ -13,27 +14,19 @@
                 "
             >
 
-                <a
-                    href="{{route('public:education:faculty',[$item->code??$item->id])}}"
-                    class="
-                        opacity-0
-                        absolute z-50 inset-0
-                        transition-all duration-200
-                        group-hover:opacity-100
-                    "
-                >
-                    <span class="absolute bottom-0 right-0 p-4 bg-base-red text-white">
-                        подробнее
-                        <i class="fas fa-arrow-right ml-2"></i>
-                    </span>
-                </a>
+                <x-html.plate-details />
+
                 <img
                     src="{{$item->logo->thumbnail}}"
                     alt="{{$item->name}}"
                     title="{{$item->name}}"
                     class="
-                        absolute inset-y-0 right-8 max-h-full z-10 w-1/3
-                        object-contain object-right grayscale-100 group-hover:grayscale-0 transition-all duration-300
+                        absolute right-8 max-h-full z-10 w-1/3
+                        bottom-0
+                        object-contain object-right-bottom
+                        transition-all duration-300
+                        grayscale-100 group-hover:grayscale-0
+                        group-hover:drop-shadow-[0_0_3px_rgba(100,100,100,1)]
                     "
                 >
 
@@ -67,12 +60,12 @@
 
                     <hr class="bg-white/40 h-2px ml-4">
 
-                    <div class="my-2 ml-4 ">
-                        {{$item->description ?? 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aut beatae dolores, doloribus ducimus earum eveniet laudantium magnam numquam odio perspiciatis placeat porro praesentium, quas tempore veniam vero. Eveniet, explicabo? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur cumque'}}
+                    <div class="my-2 ml-4 line-clamp-8">
+                        {!! $item->description ?? null !!}
                     </div>
 
                 </div>
-            </div>
+            </a>
         @endforeach
     </div>
 </section>

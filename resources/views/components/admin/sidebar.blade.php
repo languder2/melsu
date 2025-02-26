@@ -18,28 +18,9 @@
         />
 
         <x-admin.sidebar-li
-            link="{{route('admin:structure')}}"
-            ico="fas fa-project-diagram text-lg"
-            text="Структура"
-        />
-
-        <x-admin.sidebar-li
             link="{{route('admin:news')}}"
             ico="far fa-calendar-check"
             text="Новости"
-        />
-
-        <x-admin.sidebar-li
-            link="{{route('admin:staff')}}"
-            ico="fas fa-users text-lg"
-            text="Сотрудники"
-        />
-
-        <x-admin.sidebar-li
-            link="{{route('admin:department-group:list')}}"
-            ico="fas fa-sitemap"
-            text="Департаменты"
-            class="text-lg"
         />
 
         <x-admin.sidebar-li
@@ -49,11 +30,29 @@
         />
 
         <x-admin.sidebar-li
-            link="{{route('admin:education-faculty:list')}}"
-            ico="fas fa-university"
-
-            text="Обучение"
+            link="{{route('admin:department-group:list')}}"
+            ico="fas fa-sitemap"
+            text="Департаменты"
+            class="text-lg"
         />
+        <x-admin.sidebar-li
+            link="{{route('admin:education:faculty:list')}}"
+            ico="fas fa-university"
+            text="Университет"
+        />
+
+        <x-admin.sidebar-li
+            link="{{route('admin:structure')}}"
+            ico="fas fa-project-diagram text-lg"
+            text="Структура"
+        />
+
+        <x-admin.sidebar-li
+            link="{{route('admin:staff')}}"
+            ico="fas fa-users text-lg"
+            text="Сотрудники"
+        />
+
 
         <x-admin.sidebar-li
             link="{{route('admin:image:list')}}"
@@ -68,11 +67,6 @@
             text="Выход"
         />
     </ul>
-
-{{--    <i class="fas fa-outdent"></i>--}}
-{{--    <i class="fas fa-indent"></i>--}}
-
-{{--    <i class="fab fa-squarespace"></i>--}}
 </div>
 
 

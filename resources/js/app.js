@@ -39,5 +39,11 @@ window.ShowMessage = ShowMessage;
 import * as ClipBoard from './admin/clip-board.js';
 window.ClipBoard = ClipBoard;
 
+import * as Service from './service/fetch.js';
+window.Service = Service;
+
 import * as Actions from './admin/actions.js';
 window.Actions = Actions;
+
+import * as PublicAction from './public/actions.js';
+window.PublicAction = PublicAction;

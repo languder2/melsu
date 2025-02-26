@@ -58,7 +58,7 @@
 {{--                <div class="flex flex-row-reverse text-white w-full">--}}
 {{--                    <div class="flex-none w-14">--}}
 {{--                        <a--}}
-{{--                            href="{{route('admin:education-faculty:delete',$record->id??0)}}"--}}
+{{--                            href="{{route('admin:education:faculty:delete',$record->id??0)}}"--}}
 {{--                            class="--}}
 {{--                                py-2 px-4 rounded-md--}}
 {{--                                bg-red-950--}}
@@ -71,7 +71,7 @@
 {{--                    </div>--}}
 {{--                    <div class="flex-none w-14">--}}
 {{--                        <a--}}
-{{--                            href="{{route('admin:education-faculty:edit',$record->id??0)}}"--}}
+{{--                            href="{{route('admin:education:faculty:edit',$record->id??0)}}"--}}
 {{--                            class="--}}
 {{--                                py-2 px-4 rounded-md--}}
 {{--                                bg-green-950--}}
@@ -162,7 +162,7 @@
 
                     <x-html.blocks.a-button
                         hoverColor="text-blue-700"
-                        :href="route('admin:education-faculty:edit',$item->id)"
+                        :href="route('admin:education:faculty:edit',$item->id)"
                     >
                         <i class="fas fa-pencil-alt"></i>
                     </x-html.blocks.a-button>

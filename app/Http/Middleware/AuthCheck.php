@@ -15,8 +15,9 @@ class AuthCheck
      */
     public function handle(Request $request, Closure $next): Response
     {
+
         if (!auth()->check())
-            return redirect()->route('pages:main');
+            return redirect()->route(str_contains(url()->current(),'admin')?'admin:main':'pages:main');
 
         return $next($request);
     }

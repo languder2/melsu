@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Education;
 use App\Http\Controllers\Controller;
 use App\Models\Education\Department;
 use App\Models\Education\Faculty;
+use App\Models\Education\Lab;
 use App\Models\Education\Speciality;
 use App\Models\Menu\Menu;
 use App\View\Components\Specialities\{AllSpeciality, Single as SingleSpeciality};
@@ -55,9 +56,6 @@ class EducationController extends Controller
     }
     public function showAllDepartments(): string
     {
-
-
-
         $groupedItems = Department::orderBy('name')->get()->groupBy(function ($item) {
             return strtoupper(mb_substr($item->name, 0, 1, 'UTF-8')); // Первая буква в верхнем регистре
         });
@@ -72,6 +70,11 @@ class EducationController extends Controller
             'contents' => [
 
                 view("Public.Education.Tabs.List",['active' => 'departments']),
+                view("Public.Education.Departments.Search",[
+                    'filter'        => json_decode(session()->get('Public.Education.Departments.Search')),
+                    'faculties'     => Faculty::where('show',1)->where('type','faculty')
+                        ->orderBy('name')->get()->pluck('name','code'),
+                ]),
                 view("Public.Education.Departments.List",[
                     'list'  => $groupedItems,
                 ]),
@@ -92,7 +95,7 @@ class EducationController extends Controller
 
                 view("Public.Education.Tabs.List",['active' => 'labs']),
                 view("Public.Education.Labs.List",[
-                    'list'  => Faculty::where('show',1)->orderBy('order')->orderBy('name')->get(),
+                    'list'  => Lab::where('show',1)->orderBy('sort')->orderBy('name')->get(),
                 ]),
             ]
         ]);

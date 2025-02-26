@@ -1,4 +1,6 @@
-<section class="container py-20">
+@if(!isset($without_container))
+    <section id="DepartmentsList" class="container pb-20">
+@endif
     <div class="grid gap-4 grid-cols-[100px_1fr] gap-x-4 gap-y-20">
         @foreach($list as $letter=>$group)
             <h3 class="font-semibold text-4xl">
@@ -27,4 +29,7 @@
 
         @endforeach
     </div>
-</section>
+
+@if(!isset($without_container))
+    </section>
+@endif

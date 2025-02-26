@@ -4,6 +4,7 @@ use App\Http\Controllers\Gallery\AdminImageGallery;
 use App\Http\Controllers\Staffs\StaffController;
 use App\Models\Education\Department;
 use App\Models\Education\Faculty;
+use App\Models\Education\Lab;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
@@ -127,3 +128,28 @@ Route::get('correct/page-menu-link', function(Request $request){
 
         return response()->json('success');
 });
+
+
+Route::post('set-filter-for-departments', function(Request $request){
+    $groupedItems = Department::orderBy('name');
+
+    $faculty = $request->get('faculty');
+    if($faculty)
+        $groupedItems = $groupedItems->where('faculty_code', $faculty);
+
+    $search = $request->get('search');
+
+    if ($search)
+        $groupedItems = $groupedItems->whereLike('name', "%$search%");
+
+    $groupedItems= $groupedItems->get()->groupBy(function ($item) {
+        return strtoupper(mb_substr($item->name, 0, 1, 'UTF-8')); // Первая буква в верхнем регистре
+    });
+
+
+    return view("Public.Education.Departments.List",[
+        'list'              => $groupedItems,
+        'without_container' => true,
+    ]);
+
+})->name('public:departments:filter:set');

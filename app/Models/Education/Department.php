@@ -6,6 +6,7 @@ use App\Models\Education\Department as EducationDepartment;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Department extends Model
@@ -19,13 +20,8 @@ class Department extends Model
         'name',
         'code',
         'faculty_code',
-        'department_code',
-        'type_code',
-        'parent_id',
         'description',
         'order',
-        'created_at',
-        'deleted_at',
     ];
 
     public static function FormRules($id): array
@@ -34,8 +30,6 @@ class Department extends Model
             'name' => 'required',
             'code' => "required|unique:education_departments,code,{$id},id,deleted_at,NULL",
             'faculty_code' => '',
-            'department_code' => '',
-            'type_code' => 'required',
             'description' => '',
             'order' => 'nullable|numeric',
         ];
@@ -48,18 +42,12 @@ class Department extends Model
             'code.required' => 'Код должен быть указан',
             'code.unique' => 'Код должен быть уникальным',
             'faculty.required' => 'Укажите факультет',
-            'type.required' => 'Укажите тип подразделения',
         ];
     }
 
     public function faculty(): BelongsTo
     {
         return $this->belongsTo(Faculty::class, 'faculty_code', 'code');
-    }
-
-    public function type(): BelongsTo
-    {
-        return $this->belongsTo(DepartmentType::class, 'type_code', 'code');
     }
 
     public function getOrderAttribute(?int $value): int|null
@@ -85,20 +73,9 @@ class Department extends Model
         ]);
     }
 
-    public function subs(): HasMany
+    public function labs(): MorphMany
     {
-        return $this->hasMany(self::class, 'department_code', 'code')
-            ->where('type_code','department')
-            ->orderBy('order', 'desc')
-            ->orderBy('name');
-    }
-
-    public function labs(): HasMany
-    {
-        return $this->hasMany(self::class, 'department_code', 'code')
-            ->where('type_code','lab')
-            ->orderBy('order', 'desc')
-            ->orderBy('name');
+        return $this->morphMany(Lab::class, 'relation');
     }
 
 

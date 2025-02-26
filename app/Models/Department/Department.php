@@ -54,6 +54,7 @@ class Department extends Model
             'sections'          => '',
             'chief'             => '',
             'chief_post'        => '',
+            'chief_post_alt'    => '',
             'documents'         => '',
             'image'             => '',
             'preview'           => '',

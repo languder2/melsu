@@ -85,6 +85,8 @@ class Image extends Model
     {
         return match($model){
             'App\Models\Education\Faculty'      => "images/faculty/",
+            'App\Models\Education\Departments'  => "images/departments/",
+            'App\Models\Education\Labs'         => "images/labs/",
             'App\Models\News\News'              => 'images/news/',
             'App\Models\Gallery\Gallery'        => 'images/gallery/',
             'App\Models\Staff\Staff'            => 'images/staffs/',

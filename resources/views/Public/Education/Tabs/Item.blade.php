@@ -10,7 +10,7 @@
             after:h-2px
             after:transition-all
             after:duration-200
-            after:bottom-0
+            after:-bottom-2px
         ",
         $active
         ?'after:inset-x-0 after:bg-gray-700':

@@ -4,6 +4,7 @@
 @import '../css/root-style.css' layer(base);
 @import '../css/news-detail.css' layer(base);
 @import '../css/slider-bg-style.css' layer(base);
+@import '../css/scrolls.css' layer(base);
 
 @import '@fortawesome/fontawesome-free/css/all.css' layer(base);
 

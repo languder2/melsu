@@ -58,7 +58,6 @@ class Faculty extends Model
     public function departments(): HasMany
     {
         return $this->hasMany(EducationDepartment::class, 'faculty_code', 'code')
-            ->where('type_code','department')
             ->orderBy('order', 'desc')
             ->orderBy('name');
     }

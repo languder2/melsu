@@ -19,6 +19,7 @@ class Affiliation extends Model
         'staff_id',
         'alt_name',
         'post',
+        'post_alt',
         'order',
         'show',
     ];
