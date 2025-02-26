@@ -31,18 +31,19 @@ class Faculty extends Model
     public static function FormRules($id): array
     {
         return [
-            'acronym'       => 'nullable',
-            'type'          => '',
-            'name'          => 'required',
-            'code'          => "required|unique:education_faculties,code,{$id},id,deleted_at,NULL",
-            'description'   => '',
-            'order'         => 'nullable|numeric',
-            'image'         => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'preview'       => '',
-            'show'          => '',
-            'staffs'        => '',
-            'chief'         => '',
-            'chief_post'    => '',
+            'acronym'           => 'nullable',
+            'type'              => '',
+            'name'              => 'required',
+            'code'              => "required|unique:education_faculties,code,{$id},id,deleted_at,NULL",
+            'description'       => '',
+            'order'             => 'nullable|numeric',
+            'image'             => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'preview'           => '',
+            'show'              => '',
+            'staffs'            => '',
+            'chief'             => '',
+            'chief_post'        => '',
+            'chief_post_alt'    => '',
         ];
     }
 

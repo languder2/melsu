@@ -45,7 +45,7 @@
         <div>
             <x-form.input
                 id="chief_post_alt"
-                name="chief_post"
+                name="chief_post_alt"
                 label="Должность полностью"
                 value="{{old('chief_post_alt')?? $post_alt ?? null}}"
             />

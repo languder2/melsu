@@ -114,9 +114,11 @@ class DepartmentController extends Controller
 
             $chief->staff_id    = $form['chief'];
             $chief->post        = $form['chief_post'];
+            $chief->post_alt    = $form['chief_post_alt'];
 
             $chief->save();
         }
+
 
         if($form['staffs'])
             foreach ($form['staffs'] as $affiliation_id=>$staff) {
