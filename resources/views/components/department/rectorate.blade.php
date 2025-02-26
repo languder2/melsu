@@ -1,5 +1,5 @@
 <x-department.staff.rectorate
-    :staff="$department->chief_card"
+    :staff="$department->chief->card"
 />
 
 @foreach($department->staffs as $staff)
@@ -8,3 +8,5 @@
         :post="$staff->post"
     />
 @endforeach
+
+

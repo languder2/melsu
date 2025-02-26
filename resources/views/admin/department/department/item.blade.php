@@ -1,4 +1,9 @@
-<div class="text-right">
+<div
+    @class([
+        "text-right",
+        $record->show?'text-green-700':'text-red-700'
+    ])
+>
     {{$record->id}}
 </div>
 

@@ -32,7 +32,7 @@
         <x-admin.sidebar-li
             link="{{route('admin:department-group:list')}}"
             ico="fas fa-sitemap"
-            text="Департаменты"
+            text="Подразделения"
             class="text-lg"
         />
         <x-admin.sidebar-li

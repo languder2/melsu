@@ -2,8 +2,6 @@
 
 namespace App\Models\Department;
 
-use App\Models\Department\Section as DepartmentSection;
-use App\Models\Department\Staff as DepartmentStaff;
 use App\Models\Gallery\Image;
 use App\Models\Staff\Staff;
 use App\Models\Staff\Affiliation as StaffAffiliation;

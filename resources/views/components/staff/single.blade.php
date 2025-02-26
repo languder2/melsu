@@ -121,32 +121,27 @@
                 </span>
             </div>
         @endif
-        {{--        <span class="text-[var(--secondary-color)] text-md font-bold">Семейное положение:</span>--}}
-        {{--        <div class="flex items-center">--}}
-        {{--            <span class="text-[#4C4C4C] text-md pt-3 sm:ps-3 sm:pt-0">--}}
-        {{--                {{$staff->family_status}}--}}
-        {{--            </span>--}}
-        {{--        </div>--}}
     </div>
 </div>
 
 
-@if(is_array($staff->work_list))
+@if($staff->posts->count())
     <div class="work-experience">
         <h2 class="font-bold text-3xl my-6">Трудовая деятельность</h2>
         <div class="work-experience-box grid grid-cols-1 lg:grid-cols-[150px_minmax(70%,_1fr)] gap-1">
-            @foreach($staff->work_list as $work)
+            @foreach($staff->posts as $post)
                 <div class="bg-white p-2.5 flex items-center text-center font-semibold">
                 <span class="w-full">
-                    {{$work->years}}
+                    {{$post->years}}
                 </span>
                 </div>
                 <div class="bg-white p-2.5 flex items-center">
                 <span class="ps-3 lg:ps-0">
-                    {{$work->post}}
+                    {{$post->post}}
                 </span>
                 </div>
             @endforeach
         </div>
     </div>
 @endif
+

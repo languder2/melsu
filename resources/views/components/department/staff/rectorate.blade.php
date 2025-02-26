@@ -3,8 +3,8 @@
         href="{{url($staff->link)}}"
         class="grid grid-cols-1 lg:grid-cols-[25%_minmax(70%,_1fr)] gap-5 min-h-[209px]"
     >
-        <div class="mx-auto">
-            <img src="{{$staff->avatar_src   }}" alt="" class="">
+                <div class="mx-auto">
+            <img src="{{$staff->avatar_src}}" alt="" class="">
         </div>
         <div class="flex flex-col justify-evenly">
             <div class="mb-7 lg:mb-0 sm:flex-row">

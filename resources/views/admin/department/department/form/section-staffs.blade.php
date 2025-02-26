@@ -39,13 +39,14 @@
         />
 
 
+
         @if(old('_token'))
             @foreach(old('staffs') as $staff_id => $staff)
                 <x-staff.select-with-post
                     :id="$staff_id"
                 />
             @endforeach
-        @elseif($current->staffs)
+        @elseif($current)
             @foreach($current->staffs as $staff)
                 <x-staff.select-with-post
                     :id="$staff->id"
@@ -57,13 +58,13 @@
             @endforeach
         @endif
 
-        @unless($current->staffs || old('_token'))
+        @unless($current || old('_token'))
             <x-staff.select-with-post
                 :id="(int)microtime(true)"
             />
         @endunless
 
-        @if(!old('_token') && $current->staffs->count()===0)
+        @if(!old('_token') && $current===0)
             <x-staff.select-with-post
                 :id="(int)microtime(true)"
             />

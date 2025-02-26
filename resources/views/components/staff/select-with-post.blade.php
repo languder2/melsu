@@ -47,7 +47,7 @@
             <x-form.input
                 id="staffs_{{$id}}_post"
                 name="staffs[{{$id}}][post]"
-                label="Должность полностью"
+                label="Должность"
                 value="{{old('staffs.'.$id.'.post')?? $post ?? null}}"
             />
         </div>
@@ -56,7 +56,7 @@
             <x-form.input
                 id="staffs_{{$id}}_post_alt"
                 name="staffs[{{$id}}][post_alt]"
-                label="Должность"
+                label="Должность полностью"
                 value="{{old('staffs.'.$id.'.post_alt')?? $post_alt ?? null}}"
             />
         </div>

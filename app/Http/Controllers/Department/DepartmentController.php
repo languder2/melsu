@@ -120,7 +120,7 @@ class DepartmentController extends Controller
         }
 
 
-        if($form['staffs'])
+        if(array_key_exists('staffs',$form))
             foreach ($form['staffs'] as $affiliation_id=>$staff) {
                 if(!Staff::Find($staff['staff_id'])) continue;
 
@@ -157,22 +157,25 @@ class DepartmentController extends Controller
         if (!is_null($record))
             $record->delete();
 
-        return redirect()->route('admin:department');
+        $list = Department::where('parent_id',$id)->get();
+
+        foreach ($list as $item)
+            $item->fill(['parent_id' => null])->save();
+
+        return redirect()->route('admin:department:list');
     }
 
 
     public function show(Request $request, $code = null)
     {
 
-        $department = Department::where('code', $code)->first();
+        $department = Department::where('code', $code)->orWhere('id',(int)$code)->first();
 
-        if (!$department)
-            $department = Department::find((int)$code);
-
+//        if (!$department || !$department->show)
         if (!$department)
             return redirect()->route('pages:main');
 
-        if (strtolower($department->alias) === 'rectorate')
+        if (strtolower($department->code) === 'rectorate')
             $pageContent = View::make('components.department.rectorate')->with([
                 'department' => $department,
             ])->render();
