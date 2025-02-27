@@ -3922,6 +3922,17 @@ a.modal-open {
     height: 420px;
     background: #929292;
     clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+    transition: transform .4s linear;
+}
+.hex.rotate {
+    transform: rotate(360deg);
+}
+.changed-symbol{
+    display: inline-block;
+    transition: transform .4s linear;
+}
+.changed-symbol.rotate{
+    transform: rotate(360deg);
 }
 
 .hexinner {
@@ -4168,6 +4179,25 @@ a.modal-open {
 .right-bottom-img{
     bottom: 98px;
     right: -144px;
+}
+.info-hex-wrapp,
+.line-hex-left,
+.line-hex-right,
+.img-hex-left,
+.img-hex-right
+{
+    transition: .3s linear;
+    pointer-events: none;
+    opacity: 0;
+}
+.info-hex-wrapp.show,
+.line-hex-left.show,
+.line-hex-right.show,
+.img-hex-left.show,
+.img-hex-right.show
+{
+    pointer-events: auto;
+    opacity: 1;
 }
 .left-info-box .info-hex-wrapp .info-hex-content.center-info-content{
     margin-right: 56px;
@@ -4679,6 +4709,16 @@ a.modal-open {
     }
 }
 @media screen and (max-width: 1023px){
+    .info-hex-wrapp,
+    .line-hex-left,
+    .line-hex-right,
+    .img-hex-left,
+    .img-hex-right
+    {
+        transition: .3s linear;
+        pointer-events: auto;
+        opacity: 1;
+    }
     .left-top-img, .right-top-img, .left-bottom-img, .right-bottom-img {
         max-width: 150px;
         max-height: 150px;
@@ -4730,6 +4770,7 @@ a.modal-open {
     }
 }
 /*END Melsu this is style*/
+
 /*modal img style*/
 .modal-image{
     margin: auto;

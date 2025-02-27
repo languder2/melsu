@@ -39,17 +39,17 @@
                     </div>
                 </div>
                 <div class="middle-block-hex relative order-1 lg:order-2">
-                    <div class="left-top-line hidden lg:flex">
+                    <div class="line-hex-left left-top-line hidden lg:flex">
                     </div>
-                    <div class="right-top-line hidden lg:flex">
+                    <div class="line-hex-left left-center-line hidden lg:flex">
                     </div>
-                    <div class="left-center-line hidden lg:flex">
+                    <div class="line-hex-left left-bottom-line hidden lg:flex">
                     </div>
-                    <div class="right-center-line hidden lg:flex">
+                    <div class="line-hex-right right-top-line hidden lg:flex">
                     </div>
-                    <div class="left-bottom-line hidden lg:flex">
+                    <div class="line-hex-right right-center-line hidden lg:flex">
                     </div>
-                    <div class="right-bottom-line hidden lg:flex">
+                    <div class="line-hex-right right-bottom-line hidden lg:flex">
                     </div>
                     <div class="hex">
                         <div class="hexinner">
@@ -58,21 +58,21 @@
                                     <div class="hex-logo">
                                         <img src="{{asset('img/bg-white-logo.png')}}" alt="">
                                     </div>
-                                    <h2 class="text-white font-semibold">МелГУ Это -</h2>
+                                    <h2 class="text-white font-semibold">МелГУ Это <span class="changed-symbol">?</span></h2>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="left-top-img">
+                    <div class="img-hex-left left-top-img">
                         <img src="{{asset('img/circle-1.jpg')}}" alt="">
                     </div>
-                    <div class="right-top-img">
+                    <div class="img-hex-right right-top-img">
                         <img src="{{asset('img/circle-2.jpg')}}" alt="">
                     </div>
-                    <div class="left-bottom-img">
+                    <div class="img-hex-left left-bottom-img">
                         <img src="{{asset('img/circle-3.png')}}" alt="">
                     </div>
-                    <div class="right-bottom-img">
+                    <div class="img-hex-right right-bottom-img">
                         <img src="{{asset('img/circle-4.jpg')}}" alt="">
                     </div>
                 </div>
@@ -116,3 +116,4 @@
             </div>
         </div>
 </section>
+<script src="{{asset('js/melsu-this-is-script.js')}}"></script>
