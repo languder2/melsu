@@ -12,26 +12,14 @@
     <div class="bg-white p-6 mb-5">
         <ul class="doc-list list-none list-inside marker:text-[var(--secondary-color)] text-[var(--main-color)]">
             <li class="leading-[1.8rem] pb-3">
-                <a href="#" class="flex items-center"><i
-                        class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>Информация
-                    о поступлении для лиц с инвалидностью и ОВЗ</a>
+                <a href="https://mgu-mlt.ru/wp-content/uploads/2024/02/polozhenie_o_podgotovke_nauchnyh_kadrov_v_aspiranture.pdf" class="flex items-center"><i
+                        class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>
+                    Положение о подготовке научных и научно-педагогических кадров в аспирантуре Мелитопольского государственного университета</a>
             </li>
             <li class="leading-[1.8rem] pb-3">
-                <a href="#" class="flex items-center"><i
+                <a href="https://mgu-mlt.ru/wp-content/uploads/2024/02/polozhenie_o_nauchnom_rukovoditele_aspiranta_i_nauchnom_konsultante.pdf" class="flex items-center"><i
                         class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>Ответы на
-                    наиболее часто поступающие вопросы при поступлении лиц с инвалидностью в образовательные организации
-                    высшего образования</a>
-            </li>
-            <li class="leading-[1.8rem] pb-3">
-                <a href="#" class="flex items-center"><i
-                        class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>Атлас
-                    профессий. Выбор специальности для получения высшего образования</a>
-            </li>
-            <li class="leading-[1.8rem] pb-3 lg:pb-0">
-                <a href="#" class="flex items-center"><i
-                        class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>Перечень
-                    рекомендуемых лицам с инвалидностью профессий и должностей с учетом нарушенных функций и ограничений
-                    жизнедеятельности</a>
+                    Положение о научном руководителе аспиранта и научном консультанте докторанта в Мелитопольском государственном университете</a>
             </li>
         </ul>
     </div>
@@ -68,22 +56,67 @@
                     <div class="accordion-text py-3">
                         <ul class="doc-list list-disc list-inside marker:text-[var(--secondary-color)] text-[var(--main-color)]">
                             <li class="leading-[1.8rem]">
-                                <a href="#"><strong>Министерство науки и высшего образования РФ</strong> — Методические
-                                    рекомендации по использованию унифицированного подхода к доступности электронной
-                                    информационно-образовательной среды для обучающихся с инвалидностью и ограниченными
-                                    возможностями здоровья в образовательной организации высшего образования</a>
+                                5.8.2 Теория и методика обучения и воспитания (по областям и уровням образования)
                             </li>
                             <li class="leading-[1.8rem]">
-                                <a href="#"><strong>Артюхов В.Е., Мартюшева В.А., Фёдорова Е.В.</strong>> «Методические
-                                    рекомендации по реализации программ профессионального обучения лиц с инвалидностью и
-                                    ограниченными возможностями здоровья с применением электронного обучения и
-                                    дистанционных образовательных технологий»</a>
+                                5.8.3 Коррекционная педагогика
                             </li>
                             <li class="leading-[1.8rem]">
-                                <a href="#"><strong>Зиненко К.А., Крывошлыкова Я.С., Омельчук М.А.</strong>>
-                                    «Методические рекомендации по оказанию содействия в поиске подходящей работы
-                                    выпускникам среднего профессионального образования и высшего образования,
-                                    относящихся к категории инвалидов и лиц с ОВЗ»</a>
+                                5.8.7 Методология и технология профессионального образования
+                            </li>
+                            <li class="leading-[1.8rem]">
+                                5.2.3 Региональная и отраслевая экономика
+                            </li>
+                            <li class="leading-[1.8rem]">
+                                5.2.4 Финансы
+                            </li>
+                            <li class="leading-[1.8rem]">
+                                1.5.9 Ботаника
+                            </li>
+                            <li class="leading-[1.8rem]">
+                                1.5.15 Экология
+                            </li>
+                            <li class="leading-[1.8rem]">
+                                2.5.21 Машины, агрегаты и технологические процессы
+                            </li>
+                            <li class="leading-[1.8rem]">
+                                4.1.5 Мелиорация, водное хозяйство и агрофизика
+                            </li>
+                            <li class="leading-[1.8rem]">
+                                4.3.3 Пищевые системы
+                            </li>
+                            <li class="leading-[1.8rem]">
+                                2.4.4 Электротехнология и электрофизика
+                            </li>
+                            <li class="leading-[1.8rem]">
+                                5.6.1 Отечественная история
+                            </li>
+                            <li class="leading-[1.8rem]">
+                                5.6.5 Историография, источниковедение, методы исторического исследования
+                            </li>
+                            <li class="leading-[1.8rem]">
+                                5.6.7 История международных отношений и внешней политики
+                            </li>
+                            <li class="leading-[1.8rem]">
+                                5.7.8 Философская антропология, философия культуры
+                            </li>
+                            <li class="leading-[1.8rem]">
+                                4.1.1 Общее земледелие и растениеводство
+                            </li>
+                            <li class="leading-[1.8rem]">
+                                5.1.1 Теоретико-исторические правовые науки
+                            </li>
+                            <li class="leading-[1.8rem]">
+                                5.1.2 Публично-правовые (государственно-правовые) науки
+                            </li>
+                            <li class="leading-[1.8rem]">
+                                5.1.3 Частноправовые (цивилистические) науки
+                            </li>
+                            <li class="leading-[1.8rem]">
+                                5.1.4 Уголовно-правовые науки
+                            </li>
+                            <li class="leading-[1.8rem]">
+                                1.2.3 Теоретическая информатика, кибернетика
                             </li>
                         </ul>
                     </div>
@@ -124,22 +157,58 @@
                     <div class="accordion-text py-3">
                         <ul class="doc-list list-disc list-inside marker:text-[var(--secondary-color)] text-[var(--main-color)]">
                             <li class="leading-[1.8rem]">
-                                <a href="#"><strong>Министерство науки и высшего образования РФ</strong> — Методические
-                                    рекомендации по использованию унифицированного подхода к доступности электронной
-                                    информационно-образовательной среды для обучающихся с инвалидностью и ограниченными
-                                    возможностями здоровья в образовательной организации высшего образования</a>
+                                5.8.1 Общая педагогика, история педагогики и образования
                             </li>
                             <li class="leading-[1.8rem]">
-                                <a href="#"><strong>Артюхов В.Е., Мартюшева В.А., Фёдорова Е.В.</strong>> «Методические
-                                    рекомендации по реализации программ профессионального обучения лиц с инвалидностью и
-                                    ограниченными возможностями здоровья с применением электронного обучения и
-                                    дистанционных образовательных технологий»</a>
+                                5.8.2 Теория и методика обучения и воспитания (по областям и уровням образования)
                             </li>
                             <li class="leading-[1.8rem]">
-                                <a href="#"><strong>Зиненко К.А., Крывошлыкова Я.С., Омельчук М.А.</strong>>
-                                    «Методические рекомендации по оказанию содействия в поиске подходящей работы
-                                    выпускникам среднего профессионального образования и высшего образования,
-                                    относящихся к категории инвалидов и лиц с ОВЗ»</a>
+                                5.8.3 Коррекционная педагогика
+                            </li>
+                            <li class="leading-[1.8rem]">
+                                5.8.7 Методология и технология профессионального образования
+                            </li>
+                            <li class="leading-[1.8rem]">
+                                5.2.3 Региональная и отраслевая экономика
+                            </li>
+                            <li class="leading-[1.8rem]">
+                                5.2.4 Финансы
+                            </li>
+                            <li class="leading-[1.8rem]">
+                                2.5.21 Машины, агрегаты и технологические процессы
+                            </li>
+                            <li class="leading-[1.8rem]">
+                                4.1.5 Мелиорация, водное хозяйство и агрофизика
+                            </li>
+                            <li class="leading-[1.8rem]">
+                                4.3.3 Пищевые системы
+                            </li>
+                            <li class="leading-[1.8rem]">
+                                5.6.1 Отечественная история
+                            </li>
+                            <li class="leading-[1.8rem]">
+                                5.6.5 Историография, источниковедение, методы исторического исследования
+                            </li>
+                            <li class="leading-[1.8rem]">
+                                5.6.7 История международных отношений и внешней политики
+                            </li>
+                            <li class="leading-[1.8rem]">
+                                5.7.8 Философская антропология, философия культуры
+                            </li>
+                            <li class="leading-[1.8rem]">
+                                5.1.1 Теоретико-исторические правовые науки
+                            </li>
+                            <li class="leading-[1.8rem]">
+                                5.1.2 Публично-правовые (государственно - правовые) науки
+                            </li>
+                            <li class="leading-[1.8rem]">
+                                5.1.3 Частноправовые (цивилистические) науки
+                            </li>
+                            <li class="leading-[1.8rem]">
+                                5.1.4 Уголовно-правовые науки
+                            </li>
+                            <li class="leading-[1.8rem]">
+                                1.2.3 Теоретическая информатика, кибернетика
                             </li>
                         </ul>
                     </div>
@@ -164,22 +233,16 @@
                     <div class="accordion-text py-3">
                         <ul class="doc-list list-disc list-inside marker:text-[var(--secondary-color)] text-[var(--main-color)]">
                             <li class="leading-[1.8rem]">
-                                <a href="#"><strong>Министерство науки и высшего образования РФ</strong>> — Методические
-                                    рекомендации по использованию унифицированного подхода к доступности электронной
-                                    информационно-образовательной среды для обучающихся с инвалидностью и ограниченными
-                                    возможностями здоровья в образовательной организации высшего образования</a>
+                                1.5.9 Ботаника
                             </li>
                             <li class="leading-[1.8rem]">
-                                <a href="#"><strong>Артюхов В.Е., Мартюшева В.А., Фёдорова Е.В.</strong>> «Методические
-                                    рекомендации по реализации программ профессионального обучения лиц с инвалидностью и
-                                    ограниченными возможностями здоровья с применением электронного обучения и
-                                    дистанционных образовательных технологий»</a>
+                                1.5.15 Экология
                             </li>
                             <li class="leading-[1.8rem]">
-                                <a href="#"><strong>Зиненко К.А., Крывошлыкова Я.С., Омельчук М.А.</strong>>
-                                    «Методические рекомендации по оказанию содействия в поиске подходящей работы
-                                    выпускникам среднего профессионального образования и высшего образования,
-                                    относящихся к категории инвалидов и лиц с ОВЗ»</a>
+                                2.4.4 Электротехнология и электрофизика
+                            </li>
+                            <li class="leading-[1.8rem]">
+                                4.1.1 Общее земледелие и растениеводство
                             </li>
                         </ul>
                     </div>
@@ -189,42 +252,73 @@
     </div>
 </section>
 <div class="box-heading container custom">
-    <h2 class="font-bold text-3xl my-6 lg:text-end">Документы</h2>
+    <h2 class="font-bold text-3xl my-6 lg:text-end">ПРАВИЛА ПРИЕМА НА 2024 ГОД</h2>
 </div>
 <section class="container custom">
     <div class="bg-white p-6 mb-5">
         <ul class="doc-list list-none list-inside marker:text-[var(--secondary-color)] text-[var(--main-color)]">
             <li class="leading-[1.8rem] pb-3">
-                <a href="#" class="flex items-center"><i
-                        class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>Документ
-                    (документы),
-                    удостоверяющий личность, гражданство (в том числе может представить паспорт гражданина Российской
-                    Федерации,
-                    удостоверяющий личность гражданина Российской Федерации за пределами территории Российской
-                    Федерации)</a>
-            </li>
-            <li class="leading-[1.8rem] pb-3">
-                <a href="#" class="flex items-center"><i
-                        class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>Ответы на
-                    наиболее часто поступающие вопросы при поступлении лиц с инвалидностью в образовательные организации
-                    высшего образования</a>
-            </li>
-            <li class="leading-[1.8rem] pb-3">
-                <a href="#" class="flex items-center"><i
-                        class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>Атлас
-                    профессий. Выбор специальности для получения высшего образования</a>
-            </li>
-            <li class="leading-[1.8rem] pb-3 lg:pb-0">
-                <a href="#" class="flex items-center"><i
-                        class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>Перечень
-                    рекомендуемых лицам с инвалидностью профессий и должностей с учетом нарушенных функций и ограничений
-                    жизнедеятельности</a>
+                <a href="https://mgu-mlt.ru/wp-content/uploads/2024/02/prilozhenie_asp_2_015_k_prikazu_1278_kczp_dlya_7940.pdf" class="flex items-center"><i
+                        class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>
+                    Контрольные цифры приема на обучение по научным специальностям для обучения по образовательным программам высшего образования –
+                    программам подготовки научных и научно-педагогических кадров в аспирантуре (адъюнктуре) за счет бюджетных ассигнований федерального бюджета на 2024/25 учебный год</a>
             </li>
         </ul>
     </div>
 </section>
 <div class="box-heading container custom">
-    <h2 class="font-bold text-3xl my-6">Документы, заверенные руководителем структурного подразделения</h2>
+    <h2 class="font-bold text-3xl my-6">Документы</h2>
+</div>
+<section class="container custom">
+    <div class="bg-white p-6 mb-5">
+        <ul class="doc-list list-none list-inside marker:text-[var(--secondary-color)] text-[var(--main-color)]">
+            <li class="leading-[1.8rem] pb-3">
+                <a href="https://mgu-mlt.ru/wp-content/uploads/2024/07/zayavlenie-2024.pdf" class="flex items-center"><i
+                        class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>Заявление</a>
+            </li>
+            <li class="leading-[1.8rem] pb-3 flex items-center">
+                <i class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>
+                    Документ (документы), удостоверяющий личность, гражданство (в том числе может представить паспорт гражданина Российской Федерации,
+                    удостоверяющий личность гражданина Российской Федерации за пределами территории Российской Федерации).
+            </li>
+            <li class="leading-[1.8rem] pb-3 flex items-center">
+               <i class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>
+                    Документ об образовании и о квалификации, удостоверяющий образование соответствующего уровня специалитета или магистратуры
+                    (в том числе может представить документ иностранного государства об образовании со свидетельством о признании иностранного образования, за исключением случаев, в которых в соответствии с законодательством
+                    Российской Федерации и (или) международным договором не требуется признание иностранного образования).
+                    Поступающий МОЖЕТ представить один или несколько документов установленного образца.
+            </li>
+            <li class="leading-[1.8rem] pb-3 lg:pb-0 flex items-center">
+               <i class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>
+                    Свидетельство о признании иностранного образования (при необходимости) представляется в те же сроки,
+                    что и документ установленного образца.
+            </li>
+            <li class="leading-[1.8rem] pb-3 lg:pb-0 flex items-center">
+               <i class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>
+                    Документ, подтверждающий регистрацию в системе индивидуального (персонифицированного) учета (при наличии).
+            </li>
+            <li class="leading-[1.8rem] pb-3 lg:pb-0 flex items-center">
+                <i class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>
+                При необходимости создания для поступающего специальных условий проведения вступительных испытаний, – документ, подтверждающий инвалидность, в связи с наличием которой необходимо создание указанных условий.
+                Документ, подтверждающий инвалидность, принимается Университетом, если он ДЕЙСТВИТЕЛЕН на день подачи заявления о приеме.
+            </li>
+            <li class="leading-[1.8rem] pb-3 lg:pb-0 flex items-center">
+                <i class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>
+                Документы, подтверждающие индивидуальные достижения поступающего, результаты которых учитываются при приеме на обучение (представляются по усмотрению поступающего).
+            </li>
+            <li class="leading-[1.8rem] pb-3 lg:pb-0 flex items-center">
+                <i class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>
+                Иные документы (представляются по усмотрению поступающего).
+            </li>
+            <li class="leading-[1.8rem] pb-3 lg:pb-0 flex items-center">
+                <i class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>
+                Две фотографии поступающего размером 3 на 4 см.
+            </li>
+        </ul>
+    </div>
+</section>
+<div class="box-heading container custom">
+    <h2 class="font-bold text-3xl my-6 lg:text-end">Документы, заверенные руководителем структурного подразделения</h2>
 </div>
 <section class="container custom">
     <div class="bg-white p-6 mb-5">
@@ -256,27 +350,37 @@
                     <div class="accordion-text py-3">
                         <ul class="list-disc list-inside marker:text-[var(--secondary-color)] text-[var(--main-color)]">
                             <li class="leading-[1.8rem]">
-                                <a href="#"><strong>Министерство науки и высшего образования РФ</strong> — Методические
-                                    рекомендации по использованию унифицированного подхода к доступности электронной
-                                    информационно-образовательной среды для обучающихся с инвалидностью и ограниченными
-                                    возможностями здоровья в образовательной организации высшего образования</a>
+                                список опубликованных научных работ, изобретений и отчетов по научно-исследовательской работе;
                             </li>
                             <li class="leading-[1.8rem]">
-                                <a href="#"><strong>Артюхов В.Е., Мартюшева В.А., Фёдорова Е.В.</strong>> «Методические
-                                    рекомендации по реализации программ профессионального обучения лиц с инвалидностью и
-                                    ограниченными возможностями здоровья с применением электронного обучения и
-                                    дистанционных образовательных технологий»</a>
+                                копии удостоверений лауреатов, сертификатов, грамот, патентов, дипломов участников и победителей научных конкурсов, олимпиад, грантов, конференций и т.д.);
                             </li>
                             <li class="leading-[1.8rem]">
-                                <a href="#"><strong>Зиненко К.А., Крывошлыкова Я.С., Омельчук М.А.</strong>>
-                                    «Методические рекомендации по оказанию содействия в поиске подходящей работы
-                                    выпускникам среднего профессионального образования и высшего образования,
-                                    относящихся к категории инвалидов и лиц с ОВЗ»</a>
+                                рекомендация ученого совета соответствующего факультета Университета о поступлении;
+                            </li>
+                            <li class="leading-[1.8rem]">
+                                удостоверение о сдаче кандидатских экзаменов (при наличии);
+                            </li>
+                            <li class="leading-[1.8rem]">
+                                заключение от научного руководителя о собеседовании с поступающим в аспирантуру.
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+</section>
+<section class="container custom">
+    <div class="bg-white p-6 mb-5">
+        <div class="flex items-center border-b-[1px] border-[var(--primary-color)] pb-3 mb-3">
+            <span class="text-[var(--primary-color)] text-lg font-[600]"><i
+                    class="bi bi-lightbulb text-[var(--secondary-color)] me-2"></i>Обратите внимание</span>
+        </div>
+        <p class="font-[600] text-[#4C4C4C]">
+            Поступающие сдают следующие вступительные испытания:
+        </p>
+        <div class='accordion-group grid grid-cols-1 gap-1' data-accordion="default-accordion">
             <div class='accordion-box accordion p-6' style="height: 73px;">
                 <button
                     class='accordion-toggle group accordion-active:text-indigo-600 inline-flex items-center justify-between text-[var(--primary-color)] w-full transition duration-500 hover:text-[var(--secondary-color)] active:text-[var(--secondary-color)]'
@@ -296,22 +400,13 @@
                     <div class="accordion-text py-3">
                         <ul class="list-disc list-inside marker:text-[var(--secondary-color)] text-[var(--main-color)]">
                             <li class="leading-[1.8rem]">
-                                <a href="#"><strong>Министерство науки и высшего образования РФ</strong>> — Методические
-                                    рекомендации по использованию унифицированного подхода к доступности электронной
-                                    информационно-образовательной среды для обучающихся с инвалидностью и ограниченными
-                                    возможностями здоровья в образовательной организации высшего образования</a>
+                                специальную дисциплину, соответствующую научной специальности программы аспирантуры;
                             </li>
                             <li class="leading-[1.8rem]">
-                                <a href="#"><strong>Артюхов В.Е., Мартюшева В.А., Фёдорова Е.В.</strong>> «Методические
-                                    рекомендации по реализации программ профессионального обучения лиц с инвалидностью и
-                                    ограниченными возможностями здоровья с применением электронного обучения и
-                                    дистанционных образовательных технологий»</a>
+                                иностранный язык;
                             </li>
                             <li class="leading-[1.8rem]">
-                                <a href="#"><strong>Зиненко К.А., Крывошлыкова Я.С., Омельчук М.А.</strong>>
-                                    «Методические рекомендации по оказанию содействия в поиске подходящей работы
-                                    выпускникам среднего профессионального образования и высшего образования,
-                                    относящихся к категории инвалидов и лиц с ОВЗ»</a>
+                                философию.
                             </li>
                         </ul>
                     </div>
@@ -321,7 +416,7 @@
     </div>
 </section>
 <div class="box-heading container custom">
-    <h2 class="font-bold text-3xl my-6 lg:text-end">Важные даты</h2>
+    <h2 class="font-bold text-3xl my-6">Важные даты</h2>
 </div>
 <section class="container custom">
     <div class="bg-white p-6 mb-5">
@@ -341,7 +436,36 @@
     </div>
 </section>
 <div class="box-heading container custom">
-    <h2 class="font-bold text-3xl my-6">Контакты</h2>
+    <h2 class="font-bold text-3xl my-6 lg:text-end">Кандидатские экзамены</h2>
+</div>
+<section class="container custom">
+    <div class="bg-white p-6 mb-5">
+        <ul class="doc-list list-none list-inside marker:text-[var(--secondary-color)] text-[var(--main-color)]">
+            <li class="leading-[1.8rem] pb-3">
+                <a href="https://mgu-mlt.ru/wp-content/uploads/2024/04/poryadok_podgotovki_i_sdachi_soiskatelyami_nauchnoj_stepeni.pdf" class="flex items-center"><i
+                        class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>
+                    ФГБОУ ВО «МелГУ» — Порядок подготовки и сдачи соискателями научной степени кандидатских экзаменов в Федеральном государственном бюджетном образовательном учреждении
+                    высшего образования «Мелитопольский государственный университет»</a>
+            </li>
+        </ul>
+    </div>
+</section>
+<div class="box-heading container custom">
+    <h2 class="font-bold text-3xl my-6">Программы кандидатские экзамены</h2>
+</div>
+<section class="container custom">
+    <div class="bg-white p-6 mb-5">
+        <ul class="doc-list list-none list-inside marker:text-[var(--secondary-color)] text-[var(--main-color)]">
+            <li class="leading-[1.8rem] pb-3">
+                <a href="https://melsu.ru/programmy-kandidatskogo-ekzamena" class="flex items-center"><i
+                        class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>
+                    Программы кандидатского экзамена</a>
+            </li>
+        </ul>
+    </div>
+</section>
+<div class="box-heading container custom">
+    <h2 class="font-bold text-3xl my-6 lg:text-end">Контакты</h2>
 </div>
 <section class="container custom">
     <div class="bg-white p-6 mb-5">
