@@ -1,26 +1,34 @@
 @if($menu)
+    @foreach($menu->items as $item)
         <h4 class="font-bold text-lg pb-1 mb-2 border-b border-[var(--primary-color)]" >
-                {{$menu->name}}
+            <a
+                href="{{$item->link}}"
+                class="hover:text-base-red"
+            >
+                {{$item->name}}
+            </a>
         </h4>
 
         <ul class="left-side-menu">
-            @foreach($menu->items as $item)
-                @if($item->active)
+            @foreach($item->subs as $sub)
+                @if($sub->active)
                     <li class="py-3.5 px-5" style="border-bottom: 1px solid var(--primary-color);">
                         <span class="text-baseRed">
-                            {{$item->name}}
+                            {{$sub->name}}
                         </span>
                     </li>
                 @else
                     <li class="py-2 px-5">
                         <a
-                            href="{{$item->link}}"
+                            href="{{$sub->link}}"
                             class="text-[#301428]"
                         >
-                            {{$item->name}}
+                            {{$sub->name}}
                         </a>
                     </li>
                 @endif
             @endforeach
         </ul>
+
+    @endforeach
 @endif

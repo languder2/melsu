@@ -2,6 +2,7 @@
 
 namespace App\Models\Menu;
 
+use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -22,7 +23,8 @@ class Menu extends Model
         'code',
         'parent_id',
         'comment',
-        'show'
+        'show',
+        'is_tree',
     ];
 
     public static function FormRules($id)

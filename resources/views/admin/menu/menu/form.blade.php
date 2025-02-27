@@ -39,15 +39,34 @@
         value="{{old('code')??@$current->code}}"
     />
 
-    <x-form.select
-        id="form_department_parent_id"
-        name="parent_id"
-        old="{{old('parent_id')?? $addTo ?? null}}"
-        value="{{$current->parent_id ?? null}}"
-        null="Выбрать"
-        :list="$parents??[]"
-        label="Parent"
-    />
+
+    <div class="flex gap-4 items-end">
+        <div>
+            <x-form.checkbox.base
+                id="form_is_tree"
+                name="is_tree"
+                text="Древовидное"
+                :checked="
+                    old('_token')
+                    ? old('is_tree')
+                    : $current->is_tree ?? null
+                "
+            />
+
+        </div>
+
+        <div class="flex-1">
+            <x-form.select
+                id="form_department_parent_id"
+                name="parent_id"
+                old="{{old('parent_id')?? $addTo ?? null}}"
+                value="{{$current->parent_id ?? null}}"
+                null="Выбрать"
+                :list="$parents??[]"
+                label="Parent"
+            />
+        </div>
+    </div>
 
     <x-form.input
         id="comment"

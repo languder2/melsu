@@ -32,31 +32,15 @@
             label="Parent"
         />
 
-        <div class="grid grid-cols-2 gap-4">
-            <div>
-                <x-form.select
-                    id="form_department_group_id"
-                    name="group_id"
-                    old="{{old('group_id')?? $group ?? null}}"
-                    value="{{optional($current)->group_id}}"
-                    null="Выбрать"
-                    :list="$groups??[]"
-                    label="Группа"
-                />
-            </div>
-
-            <div class="pt-3">
-                <x-staff.select
-                    :current="optional($current)->coordinator_id"
-                    :params='[
-                        "name"      => "coordinator_id",
-                        "label"     => "Координатор",
-                        "id"        => "form_department_coordinator_id",
-                        "value"     => old("coordinator_id") ?? optional($current)->coordinator_id,
-                    ]'
-                />
-            </div>
-        </div>
+        <x-staff.select
+            :current="optional($current)->coordinator_id"
+            :params='[
+                "name"      => "coordinator_id",
+                "label"     => "Координатор",
+                "id"        => "form_department_coordinator_id",
+                "value"     => old("coordinator_id") ?? optional($current)->coordinator_id,
+            ]'
+        />
 
         <div class="flex gap-4 my-2">
             @if($current)

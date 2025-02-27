@@ -88,6 +88,12 @@ class PagesController extends Controller
 
         $menu = Menu::where('show',1)->find($page->menu_id);
 
+        if($menu)
+            $aside = view(
+                $menu->is_tree?'Public.Menu.AsideTree':'Public.Menu.Aside',
+                ['menu' => $menu]
+            );
+
         if (empty($content))
             return redirect()->route('pages:main');
 
@@ -99,9 +105,8 @@ class PagesController extends Controller
                 'element'   => $page,
             ],
 
-            'sidebar' => view('Public.Menu.Aside',[
-                'menu' => &$menu,
-            ]),
+
+            'sidebar' => @$aside,
 
             'includes'    =>[
                 'jquery',

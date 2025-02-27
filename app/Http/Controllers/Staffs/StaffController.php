@@ -10,12 +10,28 @@ use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
-
 class StaffController extends Controller
 {
     public function adminList(): string
     {
+
+        $list= Staff::orderBy('lastname')->orderBy('firstname')->orderBy('middle_name');
+
+        if(session()->has('AdminStaffsFilter')){
+            $filter = json_decode(session()->get('AdminStaffsFilter'));
+
+            if($filter->search)
+
+                $list->where(DB::raw("CONCAT(lastname, ' ', firstname)"), 'like', '%'.$filter->search.'%')
+                     ->orWhere(DB::raw("CONCAT(firstname, ' ', lastname)"), 'like', '%'.$filter->search.'%')
+                     ->orWhere(DB::raw("CONCAT(lastname, ' ', firstname, ' ', middle_name)"), 'like', '%'.$filter->search.'%')
+                     ->orWhere(DB::raw("CONCAT(firstname, ' ', middle_name, ' ', lastname)"), 'like', '%'.$filter->search.'%')
+                     ->orWhere(DB::raw("CONCAT(middle_name, ' ', lastname, ' ', firstname)"), 'like', '%'.$filter->search.'%')
+                ;
+        }
+
 
         return view('pages.admin', [
             'contents' => [
@@ -23,7 +39,7 @@ class StaffController extends Controller
                 View::make('components.admin.staff.header')->with([])->render(),
 
                 View::make('components.admin.staff.list')->with([
-                    'list' => Staff::orderBy('lastname')->orderBy('firstname')->orderBy('middle_name')->paginate(20),
+                    'list' => $list->paginate(20),
                 ])->render(),
             ]
         ]);
@@ -167,16 +183,13 @@ class StaffController extends Controller
             return redirect()->route('pages:main');
 
         return view("pages.page-with-menu", [
-            'sidebar' => View::make('components.menu.sidebar')->with([
-                'menu' => &$menu,
-                'full' => false,
-            ])->render(),
+            'sidebar' => view('Public.Menu.AsideTree',[
+                'menu' => Menu::where('code','university')->first(),
+            ]),
 
             'nobg' => true,
 
             'news' => false,
-
-            'menu' => Menu::getMenuFromMain(($code==='rector')?$request->path():route('public:staff:list')),
 
             'breadcrumbs' => (object)[
                 'view'      => null,
@@ -191,6 +204,14 @@ class StaffController extends Controller
             ]
 
         ]);
+    }
+
+    public function setFilter(Request $request):RedirectResponse
+    {
+
+        session()->put('AdminStaffsFilter',collect($request->all())->toJson(JSON_UNESCAPED_UNICODE));
+
+        return  redirect()->back();
     }
 
 }

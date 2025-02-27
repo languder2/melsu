@@ -38,13 +38,13 @@
 @if($department->sections->count())
     @foreach($department->sections as $section)
         <div class="about-otdel">
-            @if($section->show_title === 'show')
-                <h2 class="font-bold text-xl my-6">
-                    {{$section->name}}
+            @if($section->show_title)
+                <h2 class="font-bold text-xl my-6 uppercase">
+                    {{$section->title}}
                 </h2>
             @endif
             <div class="bg-white p-6 mb-5">
-                {!! $section->text !!}
+                {!! $section->content !!}
             </div>
         </div>
     @endforeach
@@ -52,7 +52,7 @@
 
 @if($department->staffs->count())
     <div class="employees-about">
-        Сотрудники</h2>
+        <h2 class="font-bold text-xl my-6 text-end uppercase">Сотрудники</h2>
         <div class="employees-box grid grid-cols-1 lg:grid-cols-[25%_minmax(70%,_1fr)] gap-1">
             @foreach($department->staffs as $staff)
                 <div class="bg-white p-2.5">
@@ -67,4 +67,3 @@
         </div>
     </div>
 @endif
-

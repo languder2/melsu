@@ -22,7 +22,6 @@ class Department extends Model
     protected $fillable = [
         'id',
         'name',
-        'group_id',
         'parent_id',
         'coordinator_id',
         'code',
@@ -34,7 +33,6 @@ class Department extends Model
         'id',
         'name',
         'code',
-        'group_id',
         'parent_id',
         'coordinator_id',
         'show'
@@ -43,10 +41,9 @@ class Department extends Model
     public static function FormRules($id): array
     {
         return [
-            'name'              => "required|unique:departments,name,{$id},id,deleted_at,NULL",
+            'name'              => "required",
             'code'              => "nullable|unique:departments,code,{$id},id,deleted_at,NULL",
             'order'             => '',
-            'group_id'          => '',
             'parent_id'         => '',
             'coordinator_id'    => '',
             'sections'          => '',
@@ -95,11 +92,6 @@ class Department extends Model
         return $this->hasMany(self::class, 'parent_id','id');
     }
 
-    public function group(): BelongsTo
-    {
-        return $this->belongsTo(Group::class, 'group_id','id');
-    }
-
     public function coordinator(): BelongsTo
     {
         return $this->belongsTo(Staff::class, 'Coordinator_id','id');
@@ -116,7 +108,9 @@ class Department extends Model
         $response = $this->morphMany(StaffAffiliation::class, 'relation')->orderBy('order');
 
         if(!$all)
-            $response = $response->where('type','staff');
+            $response->where('type','staff');
+
+        $response->where('show',1);
 
         return $response;
     }
@@ -140,7 +134,7 @@ class Department extends Model
         if(!$image->count())
             $image->create([
                 'type'      => 'preview',
-                'name'      => $this->name,
+                'name'      => 'preview',
             ])->save();
 
         return $image;

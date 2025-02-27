@@ -3,6 +3,12 @@
 </div>
 
 <div class="text-right">
+    @if($record->is_tree)
+        <i class="fas fa-sitemap"></i>
+    @endif
+</div>
+
+<div class="text-right">
     {{$record->code}}
 </div>
 
@@ -61,7 +67,7 @@
         </div>
     </div>
 </div>
-<hr class="md:col-span-5 last:hidden opacity-20">
+<hr class="md:col-span-6 last:hidden opacity-20">
 
 @if($record->subs)
     @foreach($record->subs as $record)

@@ -50,6 +50,8 @@ class MenuController extends Controller
 
         $record->fill($form);
 
+        $record->is_tree = $request->has('is_tree');
+
         $record->save();
 
         return redirect()->route('admin:menu');

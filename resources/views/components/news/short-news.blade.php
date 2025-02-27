@@ -1,4 +1,4 @@
-<section class="news-section">
+<section class="news-section mb-6">
     <div class="container custom p-2.5 xl:p-0">
         <div class="box-nav-btns">
             <div class="nav-btns">
@@ -37,47 +37,42 @@
                 @endif
             </div>
         </div>
-        <div class="relative min-h-[380px] mb-5">
-            @if(!empty($news))
-                <div class="elem news-block-box active">
-                    <div class="news-block">
-                        @foreach($news as $item)
-                            <div class="news-box">
-                                <div class="category-box">
-                                    <a href="{{$item->link}}">
-                                        {{@$item->tag->name}}
-                                    </a>
-                                </div>
-                                <a href="{{$item->link}}">
-                                    @if($item->preview && $item->preview->src)
-                                        <img
-                                            src="{{$item->preview->thumbnail}}"
-                                            alt="{{$item->preview->alt??$item->preview->name}}"
-                                        >
-                                    @elseif($item->image)
-                                        <img
-                                            src="{{$item->image}}"
-                                            alt=""
-                                        >
-                                    @endif
-                                </a>
-                                <div class="descrip-meta-wrap">
-                                    <div class="meta-box">
-                                        <a href="{{$item->link}}">
-                                            {{$item->publication_at}}
-                                        </a>
-                                    </div>
-                                    <div class="description-box">
-                                        <h3>
-                                            {{$item->title}}
-                                        </h3>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-            @endif
-        </div>
+        @if($news->count())
+            <div class="grid grid-cols-4 gap-4">
+                @foreach($news as $item)
+                    <a
+                        href="{{$item->link}}"
+                        class="min-h-300 relative block"
+                    >
+                        <img
+                            src="{{$item->preview->thumbnail}}"
+                            alt="{{$item->preview->alt??$item->preview->name}}"
+                            class="w-full h-full object-cover object-center"
+                        />
+                        <span class="absolute z-20 py-2 px-3 bg-base-red/80 text-white top-0 right-0 text-right">
+                            {{@$item->tag->name}}
+                        </span>
+
+                        <p
+                            class="
+                                flex flex-col gap-2
+                                absolute inset-x-4 bottom-4
+                                text-white
+                            "
+                        >
+                            <span>
+                                <span class="py-2 px-3 bg-base-red/80 text-white inline-block">
+                                    {{$item->publication_at}}
+                                </span>
+                            </span>
+                            <span class="py-2 px-3 bg-base-red/80 text-white">
+                                {{$item->title}}
+                            </span>
+                        </p>
+                    </a>
+
+                @endforeach
+            </div>
+        @endif
     </div>
 </section>

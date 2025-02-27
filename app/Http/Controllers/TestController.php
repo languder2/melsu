@@ -13,7 +13,7 @@ class TestController extends Controller
 
         foreach ($all as $department) {
 
-            $department->show = 0;
+            $department->show = 1;
             $department->save();
 
         }

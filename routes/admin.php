@@ -111,6 +111,10 @@ Route::middleware('auth.check')
         Route::post('save', 'save')->name('admin:staff:save');
         Route::get('delete/{id}', 'delete')->name('admin:staff:delete');
 
+        Route::post('set-filter', 'setFilter')->name('admin:staff:filter:set');
+
+
+
     });
 
 Route::middleware('auth.check')
@@ -132,19 +136,6 @@ Route::middleware('auth.check')
 
         Route::get('{group?}', 'adminList')->name('admin:department:list');
     });
-
-Route::middleware('auth.check')
-    ->controller(DepartmentGroupController::class)
-    ->prefix('department-groups')
-    ->group(function () {
-
-        Route::get('', 'list')->name('admin:department-group:list');
-        Route::get('add', 'form')->name('admin:department-group:add');
-        Route::get('edit/{id?}', 'form')->name('admin:department-group:edit');
-        Route::post('save', 'save')->name('admin:department-group:save');
-
-    });
-
 
 Route::middleware('auth.check')
     ->controller(FacultyController::class)

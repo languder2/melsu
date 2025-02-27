@@ -2,8 +2,10 @@
 
 namespace App\Models\Staff;
 
+use App\Models\Department\Department;
 use App\Models\Gallery\Image;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -107,5 +109,9 @@ class Staff extends Model
     public function posts():MorphMany
     {
         return $this->MorphMany(Post::class, 'relation');
+    }
+    public function departments():HasMany
+    {
+        return $this->hasMany(Department::class,'coordinator_id', 'id');
     }
 }

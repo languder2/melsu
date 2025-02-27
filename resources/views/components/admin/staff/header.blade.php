@@ -16,3 +16,5 @@
         </a>
     </div>
 </div>
+
+<x-admin.staff.search />

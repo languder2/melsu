@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Department;
 
 use App\Http\Controllers\Controller;
-use App\Models\{Department as OldDepartment};
 use App\Models\Department\Department;
 use App\Models\Department\Group;
 use App\Models\Menu\Menu;
@@ -18,10 +17,7 @@ class DepartmentController extends Controller
     public function adminList($code = 'without-group'): string
     {
 
-        $group= Group::where('alias',$code)->orWhere('id',$code)->first();
-
         $departments = Department::whereNull('parent_id')
-            ->orderByRaw('ISNULL(group_id), group_id ASC')
             ->orderBy('name')
             ->get();
 
@@ -29,9 +25,7 @@ class DepartmentController extends Controller
             'contents' => [
                 View('admin.department.menu'),
 
-                View('admin.department.department.header',[
-                    'group' => $group,
-                ]),
+                View('admin.department.department.header'),
                 View('admin.department.department.list',[
                     'list'  => $departments,
                 ]),
@@ -49,15 +43,10 @@ class DepartmentController extends Controller
 
         return view('pages.admin', [
             'contents' => [
-                View('admin.department.menu',[
-                    'list'  => Group::orderBy('order')->orderBy('name')->get(),
-                ]),
+                View('admin.department.menu'),
                 View('admin.department.department.form',[
                         'current'   => Department::find($id),
-                        'groups'    => Group::orderBy('order')->orderBy('name')->get()->pluck('name','id'),
-                        'group'     => $request->get('group'),
                         'parents'   => $parents->pluck('name','id'),
-
                 ]),
             ]
         ]);
@@ -186,9 +175,9 @@ class DepartmentController extends Controller
 
 
         return view("pages.page-with-menu", [
-            'menu' => Menu::getMenuFromMain(
-                ($department->alias==='rectorate')?$request->path():route('public:department:list')
-            ),
+            'sidebar' => view('Public.Menu.AsideTree',[
+                'menu' => Menu::where('code','university')->first(),
+            ]),
 
             'breadcrumbs' => (object)[
                 'view'      => null,
@@ -209,13 +198,18 @@ class DepartmentController extends Controller
     public function showList(Request $request):string
     {
 
-        $pageContent = (new \App\View\Components\Department\All())->render();
+//        $pageContent = (new \App\View\Components\Department\All())->render();
+
+
+
+        $pageContent = view('Public.Departments.List',[
+            'department'    =>  Department::where('code', 'rectorate')->first(),
+        ]);
 
         return view("pages.page-with-menu", [
-            'sidebar' => View::make('components.menu.sidebar')->with([
-                'menu' => &$menu,
-                'full' => false,
-            ])->render(),
+            'sidebar' => view('Public.Menu.AsideTree',[
+                'menu' => Menu::where('code','university')->first(),
+            ]),
 
             'breadcrumbs' => (object)[
                 'view'      => null,
@@ -223,8 +217,6 @@ class DepartmentController extends Controller
                 'element'   => null,
             ],
 
-
-            'menu' => Menu::getMenuFromMain(route('public:department:list')),
 
             'nobg' => true,
 

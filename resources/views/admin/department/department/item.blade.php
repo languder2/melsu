@@ -33,10 +33,6 @@
 </div>
 
 <div>
-    {{optional($record->group)->name}}
-</div>
-
-<div>
     <div class="flex flex-row-reverse text-white w-full">
         <div class="flex-none w-14">
             <a
@@ -66,7 +62,7 @@
         </div>
     </div>
 </div>
-<hr class="md:col-span-5 last:hidden opacity-20">
+<hr class="md:col-span-4 last:hidden opacity-20">
 
 @if($record->subs)
     @foreach($record->subs as $record)
