@@ -26,10 +26,10 @@
 
 
     <div class="flex gap-4 mt-2">
-        @if($current && ($current->avatar || $current->photo))
+        @if($current)
             <div>
                 <img
-                    src="{{optional($current->avatar)->thumbnail ?? $current->avatar_src}}"
+                    src="{{$current->avatar->thumbnail}}"
                     alt=""
                     class="h-58 rounded-lg"/>
             </div>

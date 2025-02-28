@@ -111,7 +111,18 @@ class DepartmentController extends Controller
 
         if(array_key_exists('staffs',$form))
             foreach ($form['staffs'] as $affiliation_id=>$staff) {
-                if(!Staff::Find($staff['staff_id'])) continue;
+
+
+                if(!Staff::Find($staff['staff_id'])){
+                    $fullName = explode(' ',$staff['full_name']);
+                    $newStaff = Staff::create([
+                        'lastname'      => $fullName[0] ?? null,
+                        'firstname'     => @$fullName[1] ?? null,
+                        'middle_name'   => @$fullName[2] ?? null,
+                    ]);
+
+                    $staff['staff_id'] = $newStaff->id;
+                }
 
                 $item = $record->staffs()->find($affiliation_id);
 

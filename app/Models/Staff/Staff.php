@@ -88,22 +88,17 @@ class Staff extends Model
         return trim("{$this->lastname} {$this->firstname} {$this->middle_name}");
     }
 
-    public function getAvatarSrcAttribute(): string
-    {
-
-        $path = 'images/photo/';
-
-        if (!$this->photo)
-            return asset($path . 'avatar.webp');
-
-        return file_exists(public_path($path . "600x600_{$this->photo}.jpg"))
-            ? asset($path . "600x600_{$this->photo}.jpg")
-            : asset($path . 'avatar.webp');
-
-    }
     public function avatar(): MorphOne
     {
-        return $this->MorphOne(Image::class, 'relation')->where('type', 'avatar');
+        $image = $this->MorphOne(Image::class, 'relation')->where('type', 'avatar');
+
+        if(!$image->count())
+            $image->create([
+                'type'      => 'avatar',
+                'name'      => 'avatar',
+            ])->save();
+
+        return $image;
     }
 
     public function posts():MorphMany

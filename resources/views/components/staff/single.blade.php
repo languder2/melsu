@@ -1,7 +1,7 @@
 <div class="bg-white p-6 sm:min-h-[257px] flex flex-col justify-between">
     <div class="grid grid-cols-1 lg:grid-cols-[25%_minmax(70%,_1fr)] gap-5 min-h-[209px]">
         <div class="mx-auto">
-            <img src="{{$staff->avatar_src}}" alt="" class="">
+            <img src="{{$staff->avatar->thumbnail}}" alt="{{$staff->avatar->name}}" class="max-h-60">
         </div>
         <div class="flex flex-col justify-evenly">
             <div class="mb-7 lg:mb-0 sm:flex-row">
@@ -41,26 +41,29 @@
                 </div>
             @endif
 
-            @if($staff->address)
                 <div class="flex justify-between flex-col sm:flex-row mb-7 lg:mb-0">
-                    <div class="w-[100%] mb-7 sm:mb-0">
-                    <span class="text-[#4C4C4C] text-lg">
-                        Адрес:
-                    </span>
-                        <p class="font-semibold text-lg text-[#4C4C4C]">
-                            {{$staff->address}}
-                        </p>
-                    </div>
-                    <div class="w-[100%]">
-                    <span class="text-[#4C4C4C] text-lg">
-                        Телефон:
-                    </span>
-                        <p class="font-semibold text-lg text-[#4C4C4C]">
-                            +7 (990) XXX-XX-XX
-                        </p>
-                    </div>
+                    @if($staff->address)
+                        <div class="w-[100%] mb-7 sm:mb-0">
+                            <span class="text-[#4C4C4C] text-lg">
+                                Адрес:
+                            </span>
+                            <p class="font-semibold text-lg text-[#4C4C4C]">
+                                {!! str_replace('!!!','<br>',$staff->address) !!}
+                            </p>
+                        </div>
+                    @endif
+
+                    @if($staff->phone)
+                        <div class="w-[100%]">
+                            <span class="text-[#4C4C4C] text-lg">
+                                Телефон:
+                            </span>
+                            <p class="font-semibold text-lg text-[#4C4C4C]">
+                                {{$staff->phone}}
+                            </p>
+                        </div>
+                    @endif
                 </div>
-            @endif
         </div>
     </div>
 </div>
