@@ -217,4 +217,15 @@ Route::middleware('auth.check')
         Route::get('', 'list')->name('admin:gallery:video:list');
     });
 
+/**/
+
+Route::
+    controller(\App\Http\Controllers\ImportController::class)
+    ->prefix('imports')
+    ->group(function () {
+        Route::get('departments',"DepartmentsGetFile")
+            ->name('imports:departments:get');
+        Route::post('departments/update',"DepartmentsUpdate")
+            ->name('imports:departments:update');
+    });
 

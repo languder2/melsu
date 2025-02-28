@@ -58,15 +58,18 @@ Route::middleware(['web','auth.api'])->prefix('posts')->group(function () {
 
 
 Route::middleware(['web','auth.api'])
-    ->controller(\App\Http\Controllers\Department\GroupController::class)
-    ->prefix('department-groups')
+    ->prefix('content/sections')
     ->group(function () {
-        Route::get('delete/{id?}', 'ApiDelete')->name('api:department-groups:delete');
+//        Route::get('delete/{id?}', 'ApiDelete')->name('api:department-groups:delete');
 
-        Route::get('toggle-show/{id}', 'ApiToggleShow')
-            ->name('api:department-groups:toggle-show');
-
-
+        Route::get('add', function (){
+            return view('admin.page.content.editor')
+                ->with([
+                    'id'        => (int)microtime(true),
+                    'section'   => null,
+                    'content'   => true
+                ]);
+        })->name('api:content:sections:add');
     });
 
 

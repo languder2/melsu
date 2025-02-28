@@ -3,29 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Department\Department;
+use App\Imports\Import;
 
 class TestController extends Controller
 {
     public function index()
     {
 
-        $all = Department::all();
+        $array = (new Import);
 
-        foreach ($all as $department) {
+        dump();
 
-            $department->show = 1;
-            $department->save();
-
-        }
-
-        dump($all->count());
-
-        dd();
-
-        return view('pages.page',[
-            'contents'  => [
-                view('test',['test'=>'test string'])
-            ]
-        ]);
     }
 }

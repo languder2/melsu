@@ -108,6 +108,24 @@ class FacultyController extends Controller
             $record->logo->save();
         }
 
+
+        if(array_key_exists('sections',$form)){
+            foreach ($form['sections'] as $section_id=>$section) {
+                if(!$section['title']) continue;
+
+                $item = $record->sections()->find($section_id);
+
+                if(!$item)
+                    $item = $record->sections()->create(['title'=> 'new']);
+
+                $item->fill($section);
+
+                $item->show         = array_key_exists('show',$section);
+                $item->show_title   = array_key_exists('show_title',$section);
+
+                $item->save();
+            }
+        }
         return redirect()->route('admin:education:faculty:list');
     }
 
