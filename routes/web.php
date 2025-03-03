@@ -95,7 +95,7 @@ Route::controller(EducationController::class)
         Route::get('{faculty?}/specialities', 'specialities')
             ->name('public:education:specialities');
 
-        Route::get('{faculty}/{department}', 'department')
+        Route::get('{faculty?}/{department?}', 'department')
             ->name('public:education:department');
 
         Route::get('{faculty}/{department}/specialities', 'specialities')

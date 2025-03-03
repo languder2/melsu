@@ -6,14 +6,14 @@
 >
     <div class="grid gap-4 grid-cols-[1fr_auto]">
         <div class="relative">
-
             <x-staff.select
                 :params='[
-                        "name"      => "chief",
+                        "name"      => "chief[staff_id]",
                         "label"     => "Руководитель",
                         "id"        => "form_department_chief",
-                        "value"     => $old ?? $chief ?? null,
+                        "value"     => $current->id ?? null,
                     ]'
+                :staff="old('chief')"
             />
         </div>
 
@@ -36,20 +36,19 @@
         <div>
             <x-form.input
                 id="chief_post"
-                name="chief_post"
+                name="chief[post]"
                 label="Должность"
-                value="{{old('chief_post')?? $post ?? null}}"
+                value="{{old('chief.post')?? $post ?? null}}"
             />
         </div>
 
         <div>
             <x-form.input
                 id="chief_post_alt"
-                name="chief_post_alt"
+                name="chief[post_alt]"
                 label="Должность полностью"
-                value="{{old('chief_post_alt')?? $post_alt ?? null}}"
+                value="{{old('chief.post_alt')?? $alt ?? null}}"
             />
         </div>
     </div>
 </div>
-

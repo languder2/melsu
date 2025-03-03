@@ -42,4 +42,41 @@ class Affiliation extends Model
         $this->attributes['order'] = $order ?? 10000;
     }
 
+    public static function ProcessingChief($record,$form):void
+    {
+        $staff= Staff::getOrCreate($form['staff_id'],$form['full_name']);
+
+        if(!$staff) return;
+
+        $chief = $record->chief;
+
+        if(!$chief)
+            $chief= $record->chief()->create([
+                'type'      => 'chief',
+            ]);
+
+        $chief->fill($form);
+        $chief->staff_id = $staff->id;
+        $chief->save();
+
+    }
+
+    public static function ProcessingStaff($record,$aID,$form):void
+    {
+        $staff= Staff::getOrCreate($form['staff_id'],$form['full_name']);
+
+        if(!$staff) return;
+
+        $item = $record->staffs()->find($aID);
+
+        if(!$item)
+            $item = $record->staffs()->create([
+                'type'  => 'staff',
+            ]);
+
+        $item->fill($form);
+        $item->staff_id = $staff->id;
+        $item->save();
+    }
+
 }

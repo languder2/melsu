@@ -1,8 +1,10 @@
 <?php
 
-use App\Http\Controllers\{News\NewsController, suStructureController};
-use App\Http\Controllers\{Menu\ItemsController as MenuItems, Menu\MenuController, PagesController};
-use App\Http\Controllers\Department\{DepartmentController, GroupController as DepartmentGroupController};
+use App\Http\Controllers\News\NewsController;
+use App\Http\Controllers\suStructureController;
+use App\Http\Controllers\Menu\{ItemsController as MenuItems, MenuController};
+use App\Http\Controllers\PagesController;
+use App\Http\Controllers\Department\DepartmentController;
 use App\Http\Controllers\Education\{
     DepartmentController as EducationDepartmentController,
     FacultyController,

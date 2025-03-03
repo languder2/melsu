@@ -16,8 +16,9 @@ class Select extends Component
     public $current;
     public ?array $staffs;
     public ?object $params;
+    public ?object $staff = null;
 
-    public function __construct($current = null, ?array $params = null)
+    public function __construct($current = null, ?array $params = null,$staff = null)
     {
 
         $this->staffs = Staff::orderBy('lastname')
@@ -32,6 +33,8 @@ class Select extends Component
         if (!is_null($params))
             $this->params = (object)$params;
 
+        if($staff)
+            $this->staff = is_array($staff) ? (object)$staff : $staff;
     }
 
     /**

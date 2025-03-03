@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Department;
 
 use App\Http\Controllers\Controller;
 use App\Models\Department\Department;
-use App\Models\Department\Group;
 use App\Models\Menu\Menu;
-use App\Models\Staff\Affiliation as StaffAffiliation;
+use App\Models\Staff\Affiliation;
 use App\Models\Staff\Staff;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 
@@ -35,6 +35,10 @@ class DepartmentController extends Controller
 
     public function form(Request $request,$id = null): string
     {
+        $department = Department::find($id);
+
+        if(!$department)
+            return redirect()->route('admin:department:list');
 
         if($id)
             $parents =  Department::orderBy('name')->where('id','!=',$id)->get();
@@ -45,7 +49,7 @@ class DepartmentController extends Controller
             'contents' => [
                 View('admin.department.menu'),
                 View('admin.department.department.form',[
-                        'current'   => Department::find($id),
+                        'current'   => $department,
                         'parents'   => $parents->pluck('name','id'),
                 ]),
             ]
@@ -87,6 +91,9 @@ class DepartmentController extends Controller
         else
             $record = Department::find($request->get('id'));
 
+        if($request->has('coordinator'))
+            $record->coordinator_id = $request->get('coordinator')['staff_id'] ?? null;
+
         $record->fill($form);
 
         $record->show = array_key_exists('show',$form);
@@ -94,52 +101,13 @@ class DepartmentController extends Controller
         $record->save();
 
 
-        if(array_key_exists('chief',$form)){
-            if($form['chief'] && Staff::find($form['chief'])){
-                $chief = $record->chief;
+        if(array_key_exists('chief',$form))
+            Affiliation::ProcessingChief($record,$form['chief']);
 
-                if(!$chief)
-                    $chief = $record->chief()->create([
-                        'type'      => 'chief',
-                    ]);
 
-                $chief->staff_id    = $form['chief'];
-                $chief->post        = $form['chief_post'];
-                $chief->post_alt    = $form['chief_post_alt'];
-
-                $chief->save();
-            }
-        }
-
-        if(array_key_exists('staffs',$form)){
-            foreach ($form['staffs'] as $affiliation_id=>$staff) {
-                if(!$staff['full_name']) continue;
-
-                $staffCard = Staff::Find($staff['staff_id']);
-
-                if(!$staffCard){
-                    $fullName = explode(' ',$staff['full_name']);
-                    $newStaff = Staff::create([
-                        'lastname'      => $fullName[0] ?? null,
-                        'firstname'     => @$fullName[1] ?? null,
-                        'middle_name'   => @$fullName[2] ?? null,
-                    ]);
-
-                    $staff['staff_id'] = $newStaff->id;
-                }
-
-                $item = $record->staffs()->find($affiliation_id);
-
-                if(!$item)
-                    $item = $record->staffs()->create([
-                        'type'  => 'staff',
-                    ]);
-
-                $item->fill($staff);
-
-                $item->save();
-            }
-        }
+        if(array_key_exists('staffs',$form))
+            foreach ($form['staffs'] as $aID=>$staff)
+                Affiliation::ProcessingStaff($record,$aID,$staff);
 
         if($request->file('image')){
             $record->preview->saveImage($request->file('image'));
@@ -263,10 +231,10 @@ class DepartmentController extends Controller
     }
 
 
-    public function ApiVacatePosition(Request $request,$affiliation_id = null)
+    public function ApiVacatePosition(Request $request,$affiliation_id = null): JsonResponse
     {
 
-        $item = StaffAffiliation::find($affiliation_id);
+        $item = Affiliation::find($affiliation_id);
 
         if($item)
             $item->delete();

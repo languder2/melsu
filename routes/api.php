@@ -77,7 +77,6 @@ Route::middleware(['web','auth.api'])
     ->controller(\App\Http\Controllers\Department\DepartmentController::class)
     ->prefix('departments')
     ->group(function () {
-//        Route::get('delete/{id?}', 'ApiVacattePosition')->name('api:department-groups:delete');
 
         Route::get('vacate-position/{affiliation_id?}', 'ApiVacatePosition')
             ->name('api:department:staff:vacate-position');
@@ -89,6 +88,14 @@ Route::middleware(['web','auth.api'])
         })
             ->name('api:department:staff:add-position');
 
+
+    });
+
+Route::middleware(['web','auth.api'])
+    ->controller(\App\Http\Controllers\PagesController::class)
+    ->prefix('page/contents')
+    ->group(function () {
+        Route::get('delete/{id?}', 'ApiDeleteSection')->name('api:page:contents:section:delete');
 
     });
 

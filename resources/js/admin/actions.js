@@ -70,6 +70,23 @@ export async function addSection(block, link, reinit = false) {
         console.error("Error in addSection:", error);
     }
 }
+
+export async function DeleteSection(element,blockClass)
+{
+
+    console.log(blockClass,element,element.href);
+
+    element.classList.add('pointer-events-none');
+    try {
+        await actionFetch(element.href);
+    } catch (error) {}
+    finally {
+        element.closest(blockClass).parentNode.removeChild(element.closest(blockClass));
+    }
+}
+
+
+
 export function showTab(targetId, groupClass) {
     let tabs = document.querySelectorAll(groupClass);
     if (!targetId || !tabs) return;

@@ -8,7 +8,10 @@
             </h3>
             <div class="grid gap-4 grid-cols-1 md:grid-cols-2 items-center">
                 @foreach($group as $item)
-                    <a  href="{{$item->link}}" class="grid grid-cols-[80px_1fr] gap-4 items-center group">
+                    <a
+                        href="{{$item->link}}"
+                        class="grid grid-cols-[80px_1fr] gap-4 items-center group"
+                    >
                         <div class="text-center">
                             <span
                                 class="
@@ -21,15 +24,15 @@
                         </div>
 
                         <div class="font-semibold group-hover:text-base-red">
-                            {{$item->name}}
+                            {{$item->name ?? null}}
                         </div>
                     </a>
                 @endforeach
             </div>
-
         @endforeach
     </div>
 
 @if(!isset($without_container))
     </section>
 @endif
+

@@ -17,7 +17,7 @@
 
             name="{{str_replace('staff_id','full_name',$params->name)}}"
 
-            value="{{@$staffs[$params->value]??@$params->value}}"
+            value="{{old('_token') ? $staff->full_name : $staffs[$params->value] ?? null}}"
 
             autocomplete="off"
 
@@ -39,7 +39,7 @@
             {{@$class}}
         "
             onfocus="this.closest('.block').querySelector('ul').classList.remove('hidden')"
-            onkeyup="AdminStaff.KeyUp(this)"
+            onkeyup="AdminStaff.KeyUp(this)"-
             placeholder=""
         >
         @if(isset($params->label) && isset($params->id))
@@ -110,3 +110,4 @@
 
     </div>
 </div>
+

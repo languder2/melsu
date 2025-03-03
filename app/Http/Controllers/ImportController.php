@@ -50,6 +50,9 @@ class ImportController extends Controller
             }
 
 
+            if($row[5] && !$department)
+                $department = Department::find($row[5]);
+
             if($row[0] && !$department){
                 $counter++;
                 echo "<div style='display: flex; gap: 20px; margin-top: 10px;'>";
@@ -93,8 +96,6 @@ class ImportController extends Controller
                 'full_name' => $staff->full_name ?? null,
             ]);
         }
-
-        dd($staffs); // Вывод данных для отладки
 
     }
 }

@@ -29,24 +29,21 @@
 
     <div id="staffs" class="flex flex-col gap-4 mb-4">
 
-{{--        <x-staff.select-chief--}}
-{{--            :id='$current?->chief?->id ?? null '--}}
-{{--            :chief='$current?->chief?->staff_id ?? null '--}}
-{{--            :post="$current?->chief?->post ?? null "--}}
-{{--            :post_alt="$current?->chief?->post_alt ?? null "--}}
-{{--            name="chief"--}}
-{{--            :old="old('chief')"--}}
-{{--        />--}}
+        <x-staff.select-chief
+            :id='$current->chief?->card?->id ?? null'
+            :current="$current->chief?->card"
+            :post="$current->chief?->post"
+            :alt="$current->chief?->post_alt"
+        />
 
 
-
-        @if(old('_token'))
-            @foreach(old('staffs')??[] as $staff_id => $staff)
+        @if(old('_token') && is_array(old('staffs')))
+            @foreach(old('staffs') as $staff_id => $staff)
                 <x-staff.select-with-post
                     :id="$staff_id"
                     :staff="$staff['full_name']"
                     :post="$staff['post']"
-                    :post_alt="$staff['post_alt']"
+                    :alt="$staff['post_alt']"
                     :order="$staff['order']"
                 />
             @endforeach
@@ -56,23 +53,12 @@
                     :id="$staff->id"
                     :staff='$staff->staff_id'
                     :post='$staff->post'
-                    :post_alt='$staff->post_alt'
+                    :alt='$staff->post_alt'
                     :order='$staff->order'
                 />
             @endforeach
         @endif
 
-        @unless($current || old('_token'))
-            <x-staff.select-with-post
-                :id="(int)microtime(true)"
-            />
-        @endunless
-
-        @if(!old('_token') && $current===0)
-            <x-staff.select-with-post
-                :id="(int)microtime(true)"
-            />
-        @endif
     </div>
 
 </div>

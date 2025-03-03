@@ -13,8 +13,8 @@
 
     <div>
         <a
-            href="#"
-            onclick="console.log('edit section'); return false;"
+            href="{{route('api:page:contents:section:delete',[$id])}}"
+            onClick="Actions.DeleteSection(this,'.content_section'); return false;"
             class="
                 inline-block
                 bg-gray-100 px-3 py-2 rounded-lg

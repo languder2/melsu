@@ -109,4 +109,25 @@ class Staff extends Model
     {
         return $this->hasMany(Department::class,'coordinator_id', 'id');
     }
+
+
+    public static function getOrCreate($id,$full_name):?Staff
+    {
+        $staff = Staff::find($id);
+
+        if(!$staff && !$full_name) return null;
+
+        $fullName = explode(' ',$full_name);
+
+        $staff = Staff::firstOrCreate(
+            [
+                'lastname'          => $fullName[0] ?? null,
+                'firstname'         => $fullName[1] ?? null,
+                'middle_name'       => $fullName[2] ?? null,
+            ],
+        );
+
+        return $staff;
+    }
+
 }

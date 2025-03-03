@@ -21,7 +21,7 @@
     </div>
 
     <div class="sections">
-        @if(old('_token'))
+        @if(old('_token') && is_array(old('sections')))
             @foreach(old('sections') as $id=>$section)
                     {{
                         view('admin.page.content.editor')
@@ -32,7 +32,7 @@
                         ])
                     }}
             @endforeach
-        @elseif($current)
+        @elseif($current && $current->sections->count())
             @foreach($current->sections as $section)
                     {{
                         view('admin.page.content.editor',[
@@ -41,15 +41,6 @@
                         ])
                     }}
             @endforeach
-        @else
-                {{
-                    view('admin.page.content.editor')
-                    ->with([
-                        'id'        => (int)microtime(true),
-                        'section'   => null,
-                        'content'   => true
-                    ])
-                }}
         @endif
     </div>
     <div class="flex gap-4 items-center bg-white p-4 mt-4">

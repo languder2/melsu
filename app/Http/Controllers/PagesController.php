@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{Menu\Menu, Menu\Item};
+use Illuminate\Http\JsonResponse;
+use App\Models\Menu\Menu;
 use App\Models\Page;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
+use App\Models\Page\Content;
 
 class PagesController extends Controller
 {
@@ -71,6 +73,20 @@ class PagesController extends Controller
 
         return redirect()->route('admin:pages');
     }
+
+    public function ApiDeleteSection($id = null): JsonResponse
+    {
+        $item = Content::find($id);
+
+        if($item)
+            $item->delete();
+
+        return response()->json(
+            [
+                'message' => "Секция контента удалена"
+            ]);
+    }
+
 
     public function showPage(Request $request, $alias): RedirectResponse|string
     {

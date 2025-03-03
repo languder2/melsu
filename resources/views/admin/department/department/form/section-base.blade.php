@@ -18,28 +18,30 @@
             id="form_department_name"
             name="name"
             label="Название"
-            value="{{old('name')??@$current->name}}"
+            value="{{old('name') ?? $current->name ?? null}}"
             required
         />
 
         <x-form.select
             id="form_department_parent_id"
             name="parent_id"
-            old="{{old('parent_id')?? $addTo ?? null}}"
-            value="{{optional($current)->parent_id}}"
+            old="{{old('parent_id') ?? $addTo ?? null}}"
+            value="{{$current->parent_id ?? null}}"
             null="Выбрать"
             :list="$parents??[]"
             label="Parent"
         />
 
         <x-staff.select
-            :current="optional($current)->coordinator_id"
+            :current="$current->coordinator_id ?? null"
             :params='[
-                "name"      => "coordinator_id",
+                "name"      => "coordinator[staff_id]",
                 "label"     => "Координатор",
                 "id"        => "form_department_coordinator_id",
-                "value"     => old("coordinator_id") ?? optional($current)->coordinator_id,
+                "value"     => old("coordinator.staff_id") ?? $current->coordinator_id ?? null,
             ]'
+            :staff="old('coordinator')"
+
         />
 
         <div class="flex gap-4 my-2">
@@ -91,4 +93,3 @@
         </div>
     </div>
 </div>
-

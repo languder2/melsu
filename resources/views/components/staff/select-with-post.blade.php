@@ -13,6 +13,7 @@
                     "id"        => "department_staff_id_$id",
                     "value"     => old("staffs.$id.staff_id") ?? $staff ?? null,
                 ]'
+                :staff='old("staffs.$id")'
         />
 
         <div class="w-36">
@@ -25,14 +26,15 @@
             />
         </div>
         <div class="w-8 text-center">
-            <a href="{{route('api:department:staff:vacate-position',[$id])}}"
-               class="
-                inline-block mt-6
-                hover:text-red-700
-                active:text-gray-700
-            "
-               onClick="Actions.VacatePosition(this,'.staff-block',true); return false;"
-               title="Освободить должность руководителя"
+            <a
+                href="{{route('api:department:staff:vacate-position',[$id])}}"
+                class="
+                    inline-block mt-6
+                    hover:text-red-700
+                    active:text-gray-700
+                "
+                onClick="Actions.VacatePosition(this,'.staff-block',true); return false;"
+                title="Освободить должность руководителя"
             >
                 <i class="fas fa-user-minus"></i>
             </a>
@@ -57,7 +59,7 @@
                 id="staffs_{{$id}}_post_alt"
                 name="staffs[{{$id}}][post_alt]"
                 label="Должность полностью"
-                value="{{old('staffs.'.$id.'.post_alt')?? $post_alt ?? null}}"
+                value="{{old('staffs.'.$id.'.post_alt')?? $alt ?? null}}"
             />
         </div>
     </div>

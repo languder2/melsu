@@ -68,8 +68,8 @@ class Department extends Model
     public function getLinkAttribute(): string
     {
         return route('public:education:department',[
-            $this->faculty->code ?? $this->faculty->id,
-            $this->code ?? $this->id,
+            $this->faculty->code ?? $this->faculty->id ?? null,
+            $this->code ?? $this->id ?? null,
         ]);
     }
 
