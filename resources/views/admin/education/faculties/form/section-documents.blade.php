@@ -6,5 +6,5 @@
         (old('side_menu') === 'tab_documents')?'':'hidden'
     ])
 >
-    documents
+    documents 123
 </div>

@@ -1,4 +1,4 @@
-<div class="flex items-center pb-2">
+<div class="flex items-center">
     <input
         @if(isset($id))
             id      = "{{$id}}"

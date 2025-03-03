@@ -41,6 +41,7 @@ class Department extends Model
     public static function FormRules($id): array
     {
         return [
+//            'test'              => "required",
             'name'              => "required",
             'code'              => "nullable|unique:departments,code,{$id},id,deleted_at,NULL",
             'order'             => '',
@@ -139,6 +140,7 @@ class Department extends Model
 
         return $image;
     }
+
 
 
 

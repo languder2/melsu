@@ -1,11 +1,11 @@
 <div class="group bg-white p-6 flex flex-col justify-between mb-3 last:mb-0 hover:bg-gray-100">
     <a
         href="{{url($staff->link)}}"
-        class="grid grid-cols-1 lg:grid-cols-[160px_1fr] gap-4"
+        class="grid grid-cols-1 lg:grid-cols-[auto_1fr] gap-4"
     >
         <div class="mx-auto">
             <img
-                src="{{$staff->avatar_src}}"
+                src="{{$staff->avatar->thumbnail}}"
                 alt="{{$staff->full_name}}"
                 class="h-40"
             >

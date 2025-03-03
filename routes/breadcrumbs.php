@@ -102,7 +102,7 @@ Breadcrumbs::for('staff', function (BreadcrumbTrail $trail, ?Staff $staff) {
 Breadcrumbs::for('departments', function (BreadcrumbTrail $trail) {
     $trail->parent('home');
 
-    $trail->push("Департаменты и отделы", route('public:department:list'));
+    $trail->push("Структура Университета", route('public:department:list'));
 });
 
 

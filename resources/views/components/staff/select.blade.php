@@ -15,6 +15,8 @@
                 id="{{$params->id}}"
             @endif
 
+            name="{{str_replace('staff_id','full_name',$params->name)}}"
+
             value="{{@$staffs[$params->value]??@$params->value}}"
 
             autocomplete="off"

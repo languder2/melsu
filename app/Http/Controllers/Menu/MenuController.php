@@ -75,6 +75,11 @@ class MenuController extends Controller
         if(!$menu)
             return redirect()->route('pages:main');
 
+        if(!$menu->items->count())
+            return  redirect()->to(url('update-page'));
+
+
+
         return view("pages.page", [
             'contents' => [
                 view('Public.Menu.Page',[

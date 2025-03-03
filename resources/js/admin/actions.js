@@ -52,12 +52,20 @@ export async function DeleteItem(el, link) {
     setTimeout(() => el.parentNode.removeChild(el), 200);
 }
 
-export async function addSection(block, link) {
+export async function addSection(block, link, reinit = false) {
     try {
         const html = await actionFetch(link, 'text');
-        if (html) {
+        if (html)
             block.insertAdjacentHTML("beforeend", html);
-        }
+
+        if(reinit)
+            tinymce.init({
+                selector: 'textarea.editor', // Replace this CSS selector to match the placeholder element for TinyMCE
+                plugins: 'code table lists image',
+                license_key: 'gpl',
+                toolbar: 'undo redo | blocks | bold italic | alignleft aligncenter alignright | indent outdent | bullist numlist | code | table'
+            });
+
     } catch (error) {
         console.error("Error in addSection:", error);
     }

@@ -93,25 +93,40 @@ class DepartmentController extends Controller
 
         $record->save();
 
-        if($form['chief'] && Staff::find($form['chief'])){
-            $chief = $record->chief;
 
-            if(!$chief)
-                $chief = $record->chief()->create([
-                    'type'      => 'chief',
-                ]);
+        if(array_key_exists('chief',$form)){
+            if($form['chief'] && Staff::find($form['chief'])){
+                $chief = $record->chief;
 
-            $chief->staff_id    = $form['chief'];
-            $chief->post        = $form['chief_post'];
-            $chief->post_alt    = $form['chief_post_alt'];
+                if(!$chief)
+                    $chief = $record->chief()->create([
+                        'type'      => 'chief',
+                    ]);
 
-            $chief->save();
+                $chief->staff_id    = $form['chief'];
+                $chief->post        = $form['chief_post'];
+                $chief->post_alt    = $form['chief_post_alt'];
+
+                $chief->save();
+            }
         }
 
-
-        if(array_key_exists('staffs',$form))
+        if(array_key_exists('staffs',$form)){
             foreach ($form['staffs'] as $affiliation_id=>$staff) {
-                if(!Staff::Find($staff['staff_id'])) continue;
+                if(!$staff['full_name']) continue;
+
+                $staffCard = Staff::Find($staff['staff_id']);
+
+                if(!$staffCard){
+                    $fullName = explode(' ',$staff['full_name']);
+                    $newStaff = Staff::create([
+                        'lastname'      => $fullName[0] ?? null,
+                        'firstname'     => @$fullName[1] ?? null,
+                        'middle_name'   => @$fullName[2] ?? null,
+                    ]);
+
+                    $staff['staff_id'] = $newStaff->id;
+                }
 
                 $item = $record->staffs()->find($affiliation_id);
 
@@ -124,6 +139,7 @@ class DepartmentController extends Controller
 
                 $item->save();
             }
+        }
 
         if($request->file('image')){
             $record->preview->saveImage($request->file('image'));
@@ -134,6 +150,24 @@ class DepartmentController extends Controller
             $record->preview->name = $record->name;
             $record->preview->getReferenceID($form['preview']);
             $record->preview->save();
+        }
+
+        if(array_key_exists('sections',$form)){
+            foreach ($form['sections'] as $section_id=>$section) {
+                if(!$section['title']) continue;
+
+                $item = $record->sections()->find($section_id);
+
+                if(!$item)
+                    $item = $record->sections()->create(['title'=> 'new']);
+
+                $item->fill($section);
+
+                $item->show         = array_key_exists('show',$section);
+                $item->show_title   = array_key_exists('show_title',$section);
+
+                $item->save();
+            }
         }
 
         return redirect()->route('admin:department:list');

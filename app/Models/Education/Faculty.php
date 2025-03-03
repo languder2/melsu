@@ -4,6 +4,7 @@ namespace App\Models\Education;
 
 use App\Models\Education\Department as EducationDepartment;
 use App\Models\Gallery\Image;
+use App\Models\Page\Content as PageContent;
 use App\Models\Staff\Affiliation as StaffAffiliation;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -31,6 +32,7 @@ class Faculty extends Model
     public static function FormRules($id): array
     {
         return [
+//            'test'              => "required",
             'acronym'           => 'nullable',
             'type'              => '',
             'name'              => 'required',
@@ -40,10 +42,11 @@ class Faculty extends Model
             'image'             => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'preview'           => '',
             'show'              => '',
-            'staffs'            => '',
             'chief'             => '',
             'chief_post'        => '',
             'chief_post_alt'    => '',
+            'staffs'            => '',
+            'sections'          => '',
         ];
     }
 
@@ -122,6 +125,10 @@ class Faculty extends Model
         return $this->MorphOne(StaffAffiliation::class, 'relation')->where('type','chief');
     }
 
+    public function sections(): MorphMany
+    {
+        return $this->morphMany(PageContent::class, 'relation');
+    }
 
 }
 

@@ -84,7 +84,7 @@
                     id="form_department_preview"
                     name="preview"
                     label="Превью из галереи"
-                    value="{{old('preview')??optional(optional($current)->preview)->src}}"
+                    value="{{old('preview') ?? $current->preview->src ?? null}}"
                 />
 
             </div>
