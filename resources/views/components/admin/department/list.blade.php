@@ -60,7 +60,7 @@
                 <div class="flex flex-row-reverse text-white w-full">
                     <div class="flex-none w-14">
                         <a
-                            href="{{route('admin:department:delete',$record->id)}}"
+                            href="{{route('admin:division:delete',$record->id)}}"
                             class="
                                 py-2 px-4 rounded-md
                                 bg-red-950
@@ -73,7 +73,7 @@
                     </div>
                     <div class="flex-none w-14">
                         <a
-                            href="{{route('admin:department:edit',$record->id)}}"
+                            href="{{route('admin:division:edit',$record->id)}}"
                             class="
                                 py-2 px-4 rounded-md
                                 bg-green-950

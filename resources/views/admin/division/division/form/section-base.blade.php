@@ -1,8 +1,8 @@
 <div
-    id="tab_department_base"
+    id="tab_division_base"
     @class([
-        "department_form_box",
-        (!old('_token') || old('side_menu') === 'tab_department_base')?'':'hidden'
+        "division_form_box",
+        (!old('_token') || old('side_menu') === 'tab_division_base')?'':'hidden'
     ])
 >
     <div class="bg-stone-50 p-4 flex gap-4 mb-4">
@@ -14,7 +14,7 @@
     <div class="bg-stone-50 p-4 mb-4">
 
         <x-form.select
-            id="form_department_parent_id"
+            id="form_division_parent_id"
             name="parent_id"
             old="{{old('parent_id') ?? $addTo ?? null}}"
             value="{{$current->parent_id ?? null}}"
@@ -24,7 +24,7 @@
         />
 
         <x-form.input
-            id="form_department_name"
+            id="form_division_name"
             name="name"
             label="Название"
             value="{{old('name') ?? $current->name ?? null}}"
@@ -40,7 +40,7 @@
             :params='[
                 "name"      => "coordinator[staff_id]",
                 "label"     => "Координатор",
-                "id"        => "form_department_coordinator_id",
+                "id"        => "form_division_coordinator_id",
                 "value"     => old("coordinator.staff_id") ?? $current->coordinator_id ?? null,
             ]'
             :staff="old('coordinator')"
@@ -56,7 +56,7 @@
                 <div class="block md:flex flex-row gap-4 items-center">
                     <div class="flex-1">
                         <x-form.input
-                            id="form_department_code"
+                            id="form_division_code"
                             name="code"
                             label="Alias"
                             value="{{ old('code') ?? optional($current)->code }}"
@@ -64,7 +64,7 @@
                     </div>
                     <span class="w-full md:w-40">
                         <x-form.input
-                            id="form_department_order"
+                            id="form_division_order"
                             name="order"
                             type="number"
                             label="Порядок вывода"
@@ -80,13 +80,13 @@
                 </div>
 
                 <x-form.file
-                    id="form_department_image"
+                    id="form_division_image"
                     label="Превью"
                     name="image"
                 />
 
                 <x-form.input
-                    id="form_department_preview"
+                    id="form_division_preview"
                     name="preview"
                     label="Превью из галереи"
                     value="{{old('preview') ?? $current->preview->src ?? null}}"

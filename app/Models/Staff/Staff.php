@@ -2,7 +2,7 @@
 
 namespace App\Models\Staff;
 
-use App\Models\Department\Department;
+use App\Models\Division\Division;
 use App\Models\Gallery\Image;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -108,7 +108,7 @@ class Staff extends Model
     }
     public function departments():HasMany
     {
-        return $this->hasMany(Department::class,'coordinator_id', 'id')
+        return $this->hasMany(Division::class,'coordinator_id', 'id')
             ->orderBy('order')
             ->orderBy('name');
     }

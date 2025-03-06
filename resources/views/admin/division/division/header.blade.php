@@ -4,7 +4,7 @@
     </h2>
     <div>
         <a
-            href="{{route('admin:department:add')}}"
+            href="{{route('admin:division:add')}}"
             class="
                 py-2 px-4
                 rounded-md

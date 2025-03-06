@@ -2,7 +2,7 @@
 
 namespace App\View\Components\Department;
 
-use App\Models\Department\Department;
+use App\Models\Division\Division;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
@@ -21,7 +21,7 @@ class All extends Component
      */
     public function render(): View|Closure|string
     {
-        $departments = Department::orderBy('order')->orderBy('name')->get();
+        $departments = Division::orderBy('order')->orderBy('name')->get();
 
         if (!$departments)
             return redirect()->route('pages:main');

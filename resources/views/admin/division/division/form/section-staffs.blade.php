@@ -1,8 +1,8 @@
 <div
-    id="tab_department_staffs"
+    id="tab_division_staffs"
     @class([
-        "department_form_box",
-        (old('side_menu') === 'tab_department_staffs')?'':'hidden'
+        "division_form_box",
+        (old('side_menu') === 'tab_division_staffs')?'':'hidden'
     ])
 >
 
@@ -11,7 +11,7 @@
             Сотрудники
         </div>
         <div class="w-8 text-center">
-            <a href="{{route('api:department:staff:add-position')}}"
+            <a href="{{route('api:division:staff:add-position')}}"
                class="
                 inline-block mt-2
                 hover:text-green-700

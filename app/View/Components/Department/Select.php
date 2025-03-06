@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Collection;
 use Illuminate\View\Component;
-use App\Models\Department\Department;
+use App\Models\Division\Division;
 use PhpParser\Node\Expr\Array_;
 
 class Select extends Component
@@ -19,7 +19,7 @@ class Select extends Component
 
     public function __construct(?string $type = null, bool $branch = false)
     {
-        $list = Department::query();
+        $list = Division::query();
 
 
         switch ($type) {

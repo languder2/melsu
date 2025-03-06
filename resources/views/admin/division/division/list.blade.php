@@ -22,9 +22,7 @@
         <div></div>
 
         @foreach($list as $record)
-
-            {{ view('admin.department.department.item',['record'=>$record, "level" => isset($level)?$level+1:0 ]) }}
-
+            @include('admin.division.division.item',['record'=>$record, "depth" => isset($depth)?$depth+1:0])
         @endforeach
     </div>
 

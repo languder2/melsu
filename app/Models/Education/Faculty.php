@@ -3,7 +3,7 @@
 namespace App\Models\Education;
 
 use App\Models\Education\Department as EducationDepartment;
-use App\Models\Department\Department;
+use App\Models\Division\Division;
 use App\Models\Gallery\Image;
 use App\Models\Page\Content as PageContent;
 use App\Models\Staff\Affiliation as StaffAffiliation;
@@ -140,7 +140,7 @@ class Faculty extends Model
 
     public function department():MorphOne
     {
-        return $this->morphOne(Department::class, 'relation');
+        return $this->morphOne(Division::class, 'relation');
     }
 
 

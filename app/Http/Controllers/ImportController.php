@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\Import;
-use App\Models\Department\Department;
+use App\Models\Division\Division;
 use App\Models\Staff\Staff;
 use App\Models\Staff\Affiliation;
 class ImportController extends Controller
@@ -45,13 +45,13 @@ class ImportController extends Controller
             $type= 'staff';
 
             if($row[0]){
-                $department = Department::where('name',trim($row[0]))->first();
+                $department = Division::where('name',trim($row[0]))->first();
                 $type = 'chief';
             }
 
 
             if($row[5] && !$department)
-                $department = Department::find($row[5]);
+                $department = Division::find($row[5]);
 
             if($row[0] && !$department){
                 $counter++;

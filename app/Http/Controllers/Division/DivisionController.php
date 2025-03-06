@@ -1,37 +1,37 @@
 <?php
 
-namespace App\Http\Controllers\Department;
+namespace App\Http\Controllers\Division;
 
 use App\Http\Controllers\Controller;
-use App\Models\Department\Department;
+use App\Models\Division\Division;
 use App\Models\Education\Faculty;
 use App\Models\Education\Department as EducationDepartment;
 use App\Models\Education\Lab;
 use App\Models\Menu\Menu;
 use App\Models\Staff\Affiliation;
-use App\Models\Staff\Staff;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 
-class DepartmentController extends Controller
+class DivisionController extends Controller
 {
     public function adminList($code = 'without-group'): string
     {
 
-        $departments = Department::whereNull('parent_id')
+
+        $divisions = Division::whereNull('parent_id')
             ->orderBy('name')
             ->get();
 
         return view('pages.admin', [
             'contents' => [
-                View('admin.department.menu'),
+                View('admin.division.menu'),
 
-                View('admin.department.department.header'),
-                View('admin.department.department.list',[
-                    'list'  => $departments,
+                View('admin.division.division.header'),
+                View('admin.division.division.list',[
+                    'list'  => $divisions,
                 ]),
             ]
         ]);
@@ -39,17 +39,17 @@ class DepartmentController extends Controller
 
     public function form(Request $request,$id = null): View|RedirectResponse
     {
-        $parents = Department::query();
+        $parents = Division::query();
 
 
-        if($department = Department::find($id))
+        if($department = Division::find($id))
             $parents->where('id','!=',$id);
         else
-            return redirect()->route('admin:department:list');
+            return redirect()->route('admin:division:list');
 
         $parents = $parents->orderBy('name')->get()->pluck('name','id');
 
-        return view('admin.department.department.form.page',[
+        return view('admin.division.division.form.page',[
             'current'   => $department,
             'parents'   => $parents,
         ]);
@@ -57,12 +57,12 @@ class DepartmentController extends Controller
     public function save(Request $request)
     {
 
-        $form = $request->validate(Department::FormRules($request->get('id')), Department::FormMessage());
+        $form = $request->validate(Division::FormRules($request->get('id')), Division::FormMessage());
 
         if (empty($request->get('id')))
-            $record = new Department();
+            $record = new Division();
         else
-            $record = Department::find($request->get('id'));
+            $record = Division::find($request->get('id'));
 
         if($request->has('coordinator'))
             $record->coordinator_id = $request->get('coordinator')['staff_id'] ?? null;
@@ -138,29 +138,29 @@ class DepartmentController extends Controller
             }
         }
 
-        return redirect()->route('admin:department:list');
+        return redirect()->route('admin:division:list');
     }
 
     public function delete(int $id)
     {
-        $record = Department::find($id);
+        $record = Division::find($id);
 
         if (!is_null($record))
             $record->delete();
 
-        $list = Department::where('parent_id',$id)->get();
+        $list = Division::where('parent_id',$id)->get();
 
         foreach ($list as $item)
             $item->fill(['parent_id' => null])->save();
 
-        return redirect()->route('admin:department:list');
+        return redirect()->route('admin:division:list');
     }
 
 
     public function show(Request $request, $code = null):View|RedirectResponse
     {
 
-        $department = Department::where('code', $code)->orWhere('id',(int)$code)->first();
+        $department = Division::where('code', $code)->orWhere('id',(int)$code)->first();
 
 //        if (!$department || !$department->show)
         if (!$department)
@@ -200,7 +200,7 @@ class DepartmentController extends Controller
     public function showList(Request $request)
     {
         return view('public.departments.page',[
-            'department'    => Department::where('code', 'rectorate')->first(),
+            'department'    => Division::where('code', 'rectorate')->first(),
             'menu'          => Menu::where('code','university')->first(),
             'depth'         => 0
         ]);
@@ -224,12 +224,12 @@ class DepartmentController extends Controller
 
     public function PublicSearchResult(Request $request)
     {
-        $department = Department::where('code', 'rectorate')->first();
+        $department = Division::where('code', 'rectorate')->first();
 
         if($request->has('search'))
-            Department::search($department,$request->get('search'));
+            Division::search($department,$request->get('search'));
         else
-            Department::search($department,'Отдел по работе с обучающимися');
+            Division::search($department,'Отдел по работе с обучающимися');
 
         return view('public.departments.list',[
             'department'    => $department,

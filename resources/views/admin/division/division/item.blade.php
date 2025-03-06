@@ -11,15 +11,14 @@
 
     @if($record->parent_id)
 
-        @if(isset($level) && $level > 1)
-
-            @for($i = 1; $i < $level; $i++)
+        @if(isset($depth) && $depth > 1)
+            @for($i = 1; $i < $depth; $i++)
                 <div class="mx-4"></div>
             @endfor
         @endif
 
         <div class="mx-4">
-            <i class="fas fa-level-up-alt rotate-90"></i>
+            <i class="fas fa-depth-up-alt rotate-90"></i>
         </div>
     @endif
 
@@ -29,14 +28,14 @@
 </div>
 
 <div>
-    {{optional($record->parent)->name}}
+    {{$record->parent->name ?? null}}
 </div>
 
 <div>
     <div class="flex flex-row-reverse text-white w-full">
         <div class="flex-none w-14">
             <a
-                href="{{route('admin:department:delete',$record->id)}}"
+                href="{{route('admin:division:delete',$record->id)}}"
                 class="
                                 py-2 px-4 rounded-md
                                 bg-red-950
@@ -49,7 +48,7 @@
         </div>
         <div class="flex-none w-14">
             <a
-                href="{{route('admin:department:edit',$record->id)}}"
+                href="{{route('admin:division:edit',$record->id)}}"
                 class="
                                 py-2 px-4 rounded-md
                                 bg-green-950
@@ -66,6 +65,6 @@
 
 @if($record->subs)
     @foreach($record->subs as $record)
-        {{ view('admin.department.department.item',['record'=>$record, "level" => isset($level)?$level+1:0 ]) }}
+        @include('admin.division.division.item',['record'=>$record, "depth" => isset($depth)?$depth+1:0])
     @endforeach
 @endif

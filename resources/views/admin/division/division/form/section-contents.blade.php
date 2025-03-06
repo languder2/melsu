@@ -1,8 +1,8 @@
 <div
-    id="tab_department_contents"
+    id="tab_division_contents"
     @class([
-        "department_form_box",
-        (old('side_menu') === 'tab_department_contents')?'':'hidden'
+        "division_form_box",
+        (old('side_menu') === 'tab_division_contents')?'':'hidden'
     ])
 >
 

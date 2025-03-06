@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\{News\NewsController, suStructureController};
 use App\Http\Controllers\{AdminController, PagesController};
-use App\Http\Controllers\Department\DepartmentController;
+use App\Http\Controllers\Division\DivisionController;
 use App\Http\Controllers\Education\EducationController;
 use App\Http\Controllers\Gallery\PublicGallery;
 use App\Http\Controllers\Staffs\StaffController;
@@ -106,7 +106,7 @@ Route::controller(EducationController::class)
 
 /* Department: public */
 
-Route::controller(DepartmentController::class)
+Route::controller(DivisionController::class)
     ->group(function () {
         Route::get('departments', 'showList')->name('public:department:list');
 

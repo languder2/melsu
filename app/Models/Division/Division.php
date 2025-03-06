@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Department;
+namespace App\Models\Division;
 
 use App\Models\Gallery\Image;
 use App\Models\Staff\Staff;
@@ -15,7 +15,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Page\Content as PageContent;
 use App\Models\Global\Options;
 
-class Department extends Model
+class Division extends Model
 {
     use SoftDeletes;
 

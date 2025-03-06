@@ -26,7 +26,7 @@
 @section('content')
     <x-head.tinymce-config/>
     <form
-        action="{{route('admin:department:save')}}"
+        action="{{route('admin:division:save')}}"
         method="POST"
         enctype="multipart/form-data"
     >
@@ -36,7 +36,7 @@
 
         <div class="grid grid-cols-[400px_minmax(400px,1200px)] mx-auto gap-4">
             <div>
-                @include('admin.department.department.form.menu')
+                @include('admin.division.division.form.menu')
                 <x-form.submit
                     class="uppercase"
                     value="сохранить"
@@ -48,10 +48,10 @@
                     setTheme="1"
                 />
 
-                @include('admin.department.department.form.section-base')
-                @include('admin.department.department.form.section-contents')
-                @include('admin.department.department.form.section-documents')
-                @include('admin.department.department.form.section-staffs')
+                @include('admin.division.division.form.section-base')
+                @include('admin.division.division.form.section-contents')
+                @include('admin.division.division.form.section-documents')
+                @include('admin.division.division.form.section-staffs')
 
             </div>
 
