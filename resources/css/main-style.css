@@ -364,6 +364,13 @@ header{
         }
     }
 }
+@media screen and (max-width: 1600px){
+    .main-menu {
+        ul li {
+            padding: 35px 10px;
+        }
+    }
+}
 @media screen and (max-width: 1566px){
     .search-form input {
         width: 120px;
@@ -3863,7 +3870,8 @@ a.modal-open {
     background:#fff;
     color:#424242;
 }
-@media screen and (max-width: 1440px){
+
+@media screen and (max-width: 1470px){
     .excursion-menu-box {
         & .excursion-menu {
             li{
