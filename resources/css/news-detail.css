@@ -1,0 +1,29 @@
+.content-news {
+    p {
+        margin-bottom: 12px;
+        line-height: 2rem;
+        font-size: 18px;
+    }
+
+    img {
+        display: inline !important;
+    }
+
+    ul {
+        font-size: 18px;
+        margin-bottom: 12px;
+        list-style: disc !important;
+        line-height: 2rem;
+        list-style-position: inside !important;
+    }
+
+    table {
+        border-spacing: 8px 8px !important;
+        border-collapse: separate !important;
+        border: 1px solid transparent !important;
+    }
+
+    ul {
+        padding-left: 2rem;
+    }
+}

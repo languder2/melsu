@@ -1,0 +1,21 @@
+:root {
+    /*style text color*/
+
+    --primary-color: #820000;
+    --secondary-color: #c10f1a;
+    --main-color: #4C4C4C;
+
+    /*END style text color*/
+
+    /*style background*/
+
+    --primary-background-color: #FAFAFA;
+
+    /*END style background*/
+
+    /*style animation*/
+
+    --transition-link: all .3s linear;
+
+    /* END style animation*/
+}
