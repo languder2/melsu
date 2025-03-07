@@ -1,9 +1,11 @@
 export function initSelect(selectWrapper) {
     let inputField = selectWrapper.querySelector('.chosen-value');
     let inputHiddenField = selectWrapper.querySelector('.input-hidden');
+    console.log(selectWrapper)
     let dropdown = selectWrapper.querySelector('.value-list');
-    let dropdownItems = [...dropdown.querySelectorAll('.drop-li')];
 
+
+    let dropdownItems = [...dropdown.querySelectorAll('.drop-li')];
     let filterItems = (inputValue) => {
         dropdownItems.forEach(item => {
             let itemText = item.textContent.toLowerCase().trim();

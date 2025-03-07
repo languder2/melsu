@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\{News\NewsController, suStructureController};
-use App\Http\Controllers\{AdminController, PagesController};
+use App\Http\Controllers\{AdminController, PagesController, ScheduleController};
 use App\Http\Controllers\Department\DepartmentController;
 use App\Http\Controllers\Education\EducationController;
 use App\Http\Controllers\Gallery\PublicGallery;
@@ -145,4 +145,10 @@ Route::controller(PublicGallery::class)
 Route::get('{alias}', [PagesController::class, 'showPage']);
 
 
+/*Schedule*/
 
+Route::controller(ScheduleController::class)
+    ->prefix('schedule')
+    ->group(function () {
+        Route::get('/schedule',  'index')->name('public.schedule.index');
+    });
