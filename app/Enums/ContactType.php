@@ -18,5 +18,16 @@ enum ContactType: string
         };
     }
 
+    public static function getSortedCasesByName()
+    {
 
+        $result = [];
+        foreach (self::cases() as $case)
+            $result[$case->name] = $case->getName();
+
+        sort($result);
+
+        return collect($result);
+
+    }
 }
