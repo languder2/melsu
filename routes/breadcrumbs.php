@@ -7,6 +7,7 @@ use App\Models\Page;
 use App\Models\Staff\Staff;
 use Diglactic\Breadcrumbs\Breadcrumbs;
 use Diglactic\Breadcrumbs\Generator as BreadcrumbTrail;
+use App\Models\Division\Division;
 
 Breadcrumbs::for('home', function (BreadcrumbTrail $trail) {
     $trail->push('Главная', route('pages:main'));
@@ -99,16 +100,16 @@ Breadcrumbs::for('staff', function (BreadcrumbTrail $trail, ?Staff $staff) {
     $trail->push($staff->full_name, route('public:staff:show',[$staff->id??null]));
 });
 
-Breadcrumbs::for('departments', function (BreadcrumbTrail $trail) {
+Breadcrumbs::for('divisions', function (BreadcrumbTrail $trail) {
     $trail->parent('home');
 
-    $trail->push("Структура Университета", route('public:department:list'));
+    $trail->push("Структура Университета", route('public:division:list'));
 });
 
 
-Breadcrumbs::for('department', function (BreadcrumbTrail $trail, \App\Models\Department\Department $department) {
-    $trail->parent('departments');
-    $trail->push($department->name??'отдел', $department->link);
+Breadcrumbs::for('division', function (BreadcrumbTrail $trail, Division $division) {
+    $trail->parent('divisions');
+    $trail->push($division->name??'отдел', $division->link);
 });
 
 Breadcrumbs::for('galleries', function (BreadcrumbTrail $trail) {

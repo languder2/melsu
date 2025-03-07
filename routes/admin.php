@@ -4,9 +4,9 @@ use App\Http\Controllers\News\NewsController;
 use App\Http\Controllers\suStructureController;
 use App\Http\Controllers\Menu\{ItemsController as MenuItems, MenuController};
 use App\Http\Controllers\PagesController;
-use App\Http\Controllers\Department\DepartmentController;
+use App\Http\Controllers\Division\DivisionController;
 use App\Http\Controllers\Education\{
-    DepartmentController as EducationDepartmentController,
+    DepartmentController,
     FacultyController,
     SpecialityController,
     LabsController
@@ -129,16 +129,16 @@ Route::middleware('auth.check')
     });
 
 Route::middleware('auth.check')
-    ->controller(DepartmentController::class)
-    ->prefix('departments')
+    ->controller(DivisionController::class)
+    ->prefix('divisions')
     ->group(function () {
 
-        Route::get('add', 'form')->name('admin:department:add');
-        Route::get('edit/{id}', 'form')->name('admin:department:edit');
-        Route::post('save', 'save')->name('admin:department:save');
-        Route::get('delete/{id}', 'delete')->name('admin:department:delete');
+        Route::get('add', 'form')->name('admin:division:add');
+        Route::get('edit/{id}', 'form')->name('admin:division:edit');
+        Route::post('save', 'save')->name('admin:division:save');
+        Route::get('delete/{id}', 'delete')->name('admin:division:delete');
 
-        Route::get('{group?}', 'adminList')->name('admin:department:list');
+        Route::get('{group?}', 'adminList')->name('admin:division:list');
     });
 
 Route::middleware('auth.check')
@@ -155,7 +155,7 @@ Route::middleware('auth.check')
     });
 
 Route::middleware('auth.check')
-    ->controller(EducationDepartmentController::class)
+    ->controller(DepartmentController::class)
     ->prefix('education/departments')
     ->group(function () {
 

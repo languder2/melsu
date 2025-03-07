@@ -1,6 +1,6 @@
 <div class="bg-white rounded-md p-4 mb-4 flex">
     <h2 class="flex-1 text-2xl font-semibold">
-        Департаменты/отделы
+        Подразделения
     </h2>
     <div>
         <a
@@ -16,3 +16,4 @@
         </a>
     </div>
 </div>
+

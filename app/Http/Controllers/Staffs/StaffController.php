@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Staffs;
 
 use App\Http\Controllers\Controller;
-use App\Models\Department\Department;
+use App\Models\Division\Division;
 use App\Models\Menu\Menu;
 use App\Models\Staff\Post;
 use App\Models\Staff\Staff;

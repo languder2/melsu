@@ -70,8 +70,8 @@ class EducationController extends Controller
             'contents' => [
 
                 view("public.education.tabs.list",['active' => 'departments']),
-                view("public.education.departments.Search",[
-                    'filter'        => json_decode(session()->get('public.education.departments.Search')),
+                view("public.education.departments.search",[
+                    'filter'        => json_decode(session()->get('public.education.departments.search')),
                     'faculties'     => Faculty::where('show',1)->where('type','faculty')
                         ->orderBy('name')->get()->pluck('name','code'),
                 ]),

@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\Gallery\AdminImageGallery;
 use App\Http\Controllers\Staffs\StaffController;
-use App\Models\Department\Department;
+use App\Models\Division\Division;
 use App\Models\Education\Department as EducationDepartment;
 use App\Models\Education\Faculty;
 use App\Models\Education\Lab;
@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\View;
 Route::get('departments-by-faculty-shorts/{faculty?}', function (Request $request, $faculty = null) {
 
     if (is_null($faculty))
-        return Department::orderBy('name')->get()->pluck('name', 'code')->toJson(JSON_UNESCAPED_UNICODE);
+        return Division::orderBy('name')->get()->pluck('name', 'code')->toJson(JSON_UNESCAPED_UNICODE);
     else
         return Faculty::where('code', $faculty)?->first()->departments->pluck('name', 'code')->toJson(JSON_UNESCAPED_UNICODE);
 })->name('departments-by-faculty-shorts');
@@ -73,9 +73,8 @@ Route::middleware(['web','auth.api'])
         })->name('api:content:sections:add');
     });
 
-
-Route::controller(\App\Http\Controllers\Department\DepartmentController::class)
-    ->prefix('departments')
+Route::controller(\App\Http\Controllers\Division\DivisionController::class)
+    ->prefix('divisions')
     ->group(function () {
 
         Route::middleware(['web','auth.api'])->group(function () {
@@ -86,11 +85,11 @@ Route::controller(\App\Http\Controllers\Department\DepartmentController::class)
                 return View::make('components.staff.select-with-post')->with([
                     'id' => (int)microtime(true ),
                 ])->render();
-            })->name('api:department:staff:add-position');
+            })->name('api:division:staff:add-position');
         });
 
         Route::post('get-search-result','PublicSearchResult')
-            ->name('public:departments:search');
+            ->name('public:division:search');
     });
 
 Route::controller(StaffController::class)->group(function () {
@@ -148,9 +147,8 @@ Route::get('correct/page-menu-link', function(Request $request){
         return response()->json('success');
 });
 
-
 Route::post('set-filter-for-education-departments', function(Request $request){
-    $groupedItems = Department::orderBy('name');
+    $groupedItems = Division::orderBy('name');
 
     $faculty = $request->get('faculty');
     if($faculty)
@@ -165,10 +163,10 @@ Route::post('set-filter-for-education-departments', function(Request $request){
         return strtoupper(mb_substr($item->name, 0, 1, 'UTF-8')); // Первая буква в верхнем регистре
     });
 
-
     return view("Public.Education.Departments.List",[
         'list'              => $groupedItems,
         'without_container' => true,
     ]);
 
 })->name('public:education:departments:filter:set');
+

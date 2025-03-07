@@ -2,7 +2,7 @@
 
 namespace App\View\Components\Admin\Structure\Department;
 
-use App\Models\Department\Department;
+use App\Models\Division\Division;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Collection;
@@ -14,12 +14,12 @@ class Select extends Component
      * Create a new component instance.
      */
 
-    public Department|Collection $list;
+    public Division|Collection $list;
 
     public function __construct($where = null,$order = ['name','asc'])
     {
 
-        $this->list = Department::orderBy($order);
+        $this->list = Division::orderBy($order);
 
         dd(1);
 

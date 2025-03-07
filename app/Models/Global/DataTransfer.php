@@ -12,7 +12,7 @@ class DataTransfer extends Model
     {
 
         try{
-            $departments = \App\Models\Department\Department::all();
+            $departments = \App\Models\Division\Division::all();
 
             foreach ($departments as $department) {
 
@@ -47,7 +47,7 @@ class DataTransfer extends Model
     public static function DepartmentSections():void
     {
         try{
-            $departments = \App\Models\Department\Department::all();
+            $departments = \App\Models\Division\Division::all();
 
             foreach ($departments as $department) {
                 foreach ($department->old_sections as $section) {
