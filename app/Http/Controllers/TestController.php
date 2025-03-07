@@ -13,6 +13,6 @@ class TestController extends Controller
     public function index()
     {
 
-        dump(DepartmentType::Department->getType());
+        return view('test.page');
     }
 }

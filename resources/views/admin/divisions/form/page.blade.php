@@ -36,7 +36,7 @@
 
         <div class="grid grid-cols-[400px_minmax(400px,1200px)] mx-auto gap-4">
             <div>
-                @include('admin.division.division.form.menu')
+                @include('admin.divisions.form.menu')
                 <x-form.submit
                     class="uppercase"
                     value="сохранить"
@@ -48,10 +48,10 @@
                     setTheme="1"
                 />
 
-                @include('admin.division.division.form.section-base')
-                @include('admin.division.division.form.section-contents')
-                @include('admin.division.division.form.section-documents')
-                @include('admin.division.division.form.section-staffs')
+                @include('admin.divisions.form.section-base')
+                @include('admin.divisions.form.section-contents')
+                @include('admin.divisions.form.section-documents')
+                @include('admin.divisions.form.section-staffs')
 
             </div>
 

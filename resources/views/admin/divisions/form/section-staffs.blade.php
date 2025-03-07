@@ -31,9 +31,9 @@
 
         <x-staff.select-chief
             :id='$current->chief?->card?->id ?? null'
-            :current="$current->chief?->card"
-            :post="$current->chief?->post"
-            :alt="$current->chief?->post_alt"
+            :current="$current->chief?->card ?? null"
+            :post="$current->chief?->post ?? null"
+            :alt="$current->chief?->post_alt ?? null"
         />
 
 

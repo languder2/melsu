@@ -106,7 +106,7 @@ class Staff extends Model
     {
         return $this->MorphMany(Post::class, 'relation');
     }
-    public function departments():HasMany
+    public function divisions():HasMany
     {
         return $this->hasMany(Division::class,'coordinator_id', 'id')
             ->orderBy('order')

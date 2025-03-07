@@ -106,12 +106,9 @@ Route::controller(EducationController::class)
 
 /* Department: public */
 
-Route::controller(DivisionController::class)
-    ->group(function () {
-        Route::get('departments', 'showList')->name('public:department:list');
-
-        Route::get('department/{code}', 'show')->name('public:department:show');
-    });
+Route::get('divisions', [DivisionController::class,'publicList'])->name('public:division:list');
+Route::get('division/{code?}',[DivisionController::class,'show'])->name('public:division:show');
+Route::get('rectorate',[DivisionController::class,'show'])->setDefaults(['code'=>'rectorate']);
 
 /* Staffs: public */
 
@@ -135,13 +132,11 @@ Route::controller(PublicGallery::class)
 
 
 /* Menu Page */
-    Route::get('menu/{code?}', [MenuController::class,'show'])
-        ->name('public:menu:show');
+Route::get('menu/{code?}', [MenuController::class,'show'])
+    ->name('public:menu:show');
 
 
 /* Pages */
-
-
 Route::get('{alias}', [PagesController::class, 'showPage']);
 
 

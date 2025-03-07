@@ -14,49 +14,34 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
-
 class DivisionController extends Controller
 {
     public function adminList($code = 'without-group'): string
     {
+        $list = Division::whereNull('parent_id')->orderBy('name')->get();
 
-
-        $divisions = Division::whereNull('parent_id')
-            ->orderBy('name')
-            ->get();
-
-        return view('pages.admin', [
-            'contents' => [
-                View('admin.division.menu'),
-
-                View('admin.division.division.header'),
-                View('admin.division.division.list',[
-                    'list'  => $divisions,
-                ]),
-            ]
-        ]);
+        return view('admin.divisions.list', compact('list'));
     }
 
     public function form(Request $request,$id = null): View|RedirectResponse
     {
         $parents = Division::query();
 
-
-        if($department = Division::find($id))
-            $parents->where('id','!=',$id);
+        if($id)
+            if($current = Division::find($id))
+                $parents->where('id','!=',$id);
+            else
+                return redirect()->route('admin:division:list');
         else
-            return redirect()->route('admin:division:list');
+            $current = null;
 
         $parents = $parents->orderBy('name')->get()->pluck('name','id');
 
-        return view('admin.division.division.form.page',[
-            'current'   => $department,
-            'parents'   => $parents,
-        ]);
+        return view('admin.divisions.form.page',compact('parents','current'));
     }
+
     public function save(Request $request)
     {
-
         $form = $request->validate(Division::FormRules($request->get('id')), Division::FormMessage());
 
         if (empty($request->get('id')))
@@ -156,57 +141,36 @@ class DivisionController extends Controller
         return redirect()->route('admin:division:list');
     }
 
-
-    public function show(Request $request, $code = null):View|RedirectResponse
+    /* Public */
+    public function publicList(Request $request):View
     {
 
-        $department = Division::where('code', $code)->orWhere('id',(int)$code)->first();
-
-//        if (!$department || !$department->show)
-        if (!$department)
-            return redirect()->route('pages:main');
-
-        if (strtolower($department->code) === 'rectorate')
-            $pageContent = \Illuminate\Support\Facades\View::make('components.department.rectorate')->with([
-                'department' => $department,
-            ])->render();
-        else
-            $pageContent = \Illuminate\Support\Facades\View::make('components.department.single')->with([
-                'department' => $department,
-            ])->render();
-
-
-        return view("pages.page-with-menu", [
-            'sidebar' => view('public.menu.aside-tree',[
-                'menu' => Menu::where('code','university')->first(),
-            ]),
-
-            'breadcrumbs' => (object)[
-                'view'      => null,
-                'route'     => 'department',
-                'element'   => $department,
-            ],
-
-            'nobg' => true,
-
-            'news' => false,
-
-            'contents' => [
-                $pageContent
-            ]
-        ]);
-    }
-
-    public function showList(Request $request)
-    {
-        return view('public.departments.page',[
-            'department'    => Division::where('code', 'rectorate')->first(),
+        return view('public.divisions.list.page',[
+            'division'      => Division::where('code', 'rectorate')->first(),
             'menu'          => Menu::where('code','university')->first(),
             'depth'         => 0
         ]);
     }
 
+    public function show($code = null):View|RedirectResponse
+    {
 
+        $division   = Division::where('code', $code)->orWhere('id',(int)$code)->first();
+
+        if (!$division || !$division->show)
+            return redirect()->route('public:division:list');
+
+        $menu       = Menu::where('code','university')->first();
+
+
+        if (strtolower($division->code) === 'rectorate')
+            return view('public.divisions.rectorate.page', compact('menu','division'));
+        else
+            return view('public.divisions.single.page', compact('menu','division'));
+    }
+
+
+    /* API */
     public function ApiVacatePosition(Request $request,$affiliation_id = null): JsonResponse
     {
 
@@ -221,21 +185,23 @@ class DivisionController extends Controller
             ]);
     }
 
+    /* Public search */
 
     public function PublicSearchResult(Request $request)
     {
-        $department = Division::where('code', 'rectorate')->first();
+        $division = Division::where('code', 'rectorate')->first();
 
         if($request->has('search'))
-            Division::search($department,$request->get('search'));
+            Division::search($division,$request->get('search'));
         else
-            Division::search($department,'Отдел по работе с обучающимися');
+            Division::search($division,'Отдел по работе с обучающимися');
 
-        return view('public.departments.list',[
-            'department'    => $department,
-            'depth'         => 0
-        ]);
+        $depth = 0;
+
+        return view('public.divisions.list.list',compact('division','depth'));
 
     }
+
+
 
 }

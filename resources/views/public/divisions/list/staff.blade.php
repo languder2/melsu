@@ -1,19 +1,19 @@
 <div class="group bg-white p-6 flex flex-col justify-between mb-3 last:mb-0 hover:bg-gray-100">
     <a
-        href="{{url($staff->link)}}"
-        class="grid grid-cols-1 lg:grid-cols-[auto_1fr] gap-4"
+            href="{{url($staff->link)}}"
+            class="grid grid-cols-1 lg:grid-cols-[auto_1fr] gap-4"
     >
         <div class="mx-auto">
             <img
-                src="{{$staff->avatar->thumbnail}}"
-                alt="{{$staff->full_name}}"
-                class="h-40"
+                    src="{{$staff->avatar->thumbnail}}"
+                    alt="{{$staff->full_name}}"
+                    class="h-40"
             >
         </div>
         <div class="flex flex-col justify-between">
             <div class="mb-7 lg:mb-0 sm:flex-row">
                 <h3
-                    class="
+                        class="
                         font-semibold
                         mb-3
                         text-xl
@@ -47,7 +47,7 @@
                     </div>
                 @endif
                 @if($staff->phones)
-                    <div >
+                    <div>
                         <span class="text-[#4C4C4C]">
                             Телефон:
                         </span>
@@ -55,19 +55,19 @@
                             {{$staff->phones}}
                         </p>
                     </div>
-               @endif
+                @endif
             </div>
         </div>
     </a>
 </div>
 
-@if($staff->departments->count())
+@if($staff->divisions->count())
     <h3 class="font-semibold text-xl mt-8 mb-6">
         Курируемые структурные подразделения
     </h3>
     <div class="mb-8 bg-white p-4">
         <div
-            class="
+                class="
                 grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-4
             "
         >
@@ -77,9 +77,11 @@
             <div class="font-semibold">
                 Руководитель
             </div>
-            @foreach($staff->departments as $department)
-                @if(strtolower($department->code) === 'rectorate') @continue @endif
-                @include("public.departments.department",['department' => $department,'depth' => 0])
+            @foreach($staff->divisions as $division)
+                @if(strtolower($division->code) === 'rectorate')
+                    @continue
+                @endif
+                @include("public.divisions.list.division",['division' => $division,'depth' => 0])
             @endforeach
         </div>
     </div>

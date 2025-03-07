@@ -73,7 +73,6 @@ Route::middleware(['web','auth.api'])
         })->name('api:content:sections:add');
     });
 
-
 Route::controller(\App\Http\Controllers\Division\DivisionController::class)
     ->prefix('divisions')
     ->group(function () {
@@ -90,7 +89,7 @@ Route::controller(\App\Http\Controllers\Division\DivisionController::class)
         });
 
         Route::post('get-search-result','PublicSearchResult')
-            ->name('public:departments:search');
+            ->name('public:division:search');
     });
 
 Route::controller(StaffController::class)->group(function () {
@@ -148,7 +147,6 @@ Route::get('correct/page-menu-link', function(Request $request){
         return response()->json('success');
 });
 
-
 Route::post('set-filter-for-education-departments', function(Request $request){
     $groupedItems = Division::orderBy('name');
 
@@ -165,10 +163,10 @@ Route::post('set-filter-for-education-departments', function(Request $request){
         return strtoupper(mb_substr($item->name, 0, 1, 'UTF-8')); // Первая буква в верхнем регистре
     });
 
-
     return view("Public.Education.Departments.List",[
         'list'              => $groupedItems,
         'without_container' => true,
     ]);
 
 })->name('public:education:departments:filter:set');
+

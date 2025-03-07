@@ -122,7 +122,7 @@ class Division extends Model
 
     public function getLinkAttribute(): string
     {
-        return route('public:department:show', [
+        return route('public:division:show', [
             'code' => $this->alias ?? $this->id,
         ]);
     }
@@ -140,7 +140,7 @@ class Division extends Model
         return $image;
     }
 
-    public static function search(&$department,$search): void
+    public static function search(&$division,$search): void
     {
 
         $list = self::where('name', 'LIKE', "%$search%")->get();
@@ -152,12 +152,12 @@ class Division extends Model
             self::getParents($ids, $item);
         }
 
-        if($department->chief->card->departments->count())
-            self::searchVerifiedID($department->chief->card,$ids);
+        if($division->chief->card->divisions->count())
+            self::searchVerifiedID($division->chief->card,$ids);
 
 
-        foreach ($department->staffs as $staff)
-            if($staff->card->departments->count())
+        foreach ($division->staffs as $staff)
+            if($staff->card->divisions->count())
                 self::searchVerifiedID($staff->card,$ids);
 
     }
@@ -179,12 +179,12 @@ class Division extends Model
                 ->whereIn('id',$ids->keys()->toArray())
                 ->get();
         else
-            $current->departments = $current->departments()
+            $current->divisions = $current->divisions()
                 ->whereIn('id',$ids->keys()->toArray())
                 ->get();
 
 
-        $list = $current->departments ?? $current->subs ?? null;
+        $list = $current->divisions ?? $current->subs ?? null;
 
         foreach ($list as $sub)
             self::searchVerifiedID($sub, $ids);
@@ -202,7 +202,7 @@ class Division extends Model
 
         return match($this->relation_type){
             'App\Models\Education\Faculty'     => "faculty:{$this->relation_id}",
-            'App\Models\Education\Department'  => "department:{$this->relation_id}",
+            'App\Models\Education\division'  => "division:{$this->relation_id}",
             'App\Models\Education\Lab'         => "lab:{$this->relation_id}",
             default                             => "{$this->relation_type}:{$this->relation_id}",
         };

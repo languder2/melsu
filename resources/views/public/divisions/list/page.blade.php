@@ -3,7 +3,7 @@
 @section('title', 'ФГБОУ ВО "Мелитопольский государственный университет"')
 
 @section('breadcrumbs')
-    {{Breadcrumbs::view("vendor.breadcrumbs.base",'departments',null)}}
+    {{Breadcrumbs::view("vendor.breadcrumbs.base",'divisions',null)}}
 @endsection
 
 
@@ -13,11 +13,8 @@
 
 
 @section('content-without-bg')
-    @include('public.departments.search')
+    @include('public.divisions.list.search')
     <div id="UniversityStructure" class="relative">
-        @include('public.departments.list',compact('depth','department'))
+        @include('public.divisions.list.list',compact('depth','division'))
     </div>
 @endsection
-
-
-

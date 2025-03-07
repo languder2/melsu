@@ -1,8 +1,8 @@
 <div
-    @class([
-        "text-right",
-        $record->show?'text-green-700':'text-red-700'
-    ])
+        @class([
+            "text-right",
+            $record->show?'text-green-700':'text-red-700'
+        ])
 >
     {{$record->id}}
 </div>
@@ -18,7 +18,7 @@
         @endif
 
         <div class="mx-4">
-            <i class="fas fa-depth-up-alt rotate-90"></i>
+            <i class="fas fa-level-up-alt rotate-90"></i>
         </div>
     @endif
 
@@ -35,8 +35,8 @@
     <div class="flex flex-row-reverse text-white w-full">
         <div class="flex-none w-14">
             <a
-                href="{{route('admin:division:delete',$record->id)}}"
-                class="
+                    href="{{route('admin:division:delete',$record->id)}}"
+                    class="
                                 py-2 px-4 rounded-md
                                 bg-red-950
                                 hover:bg-red-700
@@ -48,8 +48,8 @@
         </div>
         <div class="flex-none w-14">
             <a
-                href="{{route('admin:division:edit',$record->id)}}"
-                class="
+                    href="{{route('admin:division:edit',$record->id)}}"
+                    class="
                                 py-2 px-4 rounded-md
                                 bg-green-950
                                 hover:bg-green-700
@@ -61,10 +61,10 @@
         </div>
     </div>
 </div>
-<hr class="md:col-span-4 last:hidden opacity-20">
+<hr class="md:col-span-4 last:hidden opacity-70">
 
 @if($record->subs)
     @foreach($record->subs as $record)
-        @include('admin.division.division.item',['record'=>$record, "depth" => isset($depth)?$depth+1:0])
+        @include('admin.divisions.item',['record'=>$record, "depth" => isset($depth)?$depth+1:0])
     @endforeach
 @endif
