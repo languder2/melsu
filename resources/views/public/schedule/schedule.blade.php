@@ -2,20 +2,14 @@
 
 @section('title', 'ФГБОУ ВО "Мелитопольский государственный университет"')
 
-@section('breadcrumbs')
-    {{Breadcrumbs::view("vendor.breadcrumbs.base",'departments',null)}}
-@endsection
 <?php function getWeekNumberFromSeptember($date) {
-// Преобразуем дату в объект DateTime
+
 $dateTime = new DateTime($date);
 
-// Устанавливаем дату начала учебного года (1 сентября)
-$startDateTime = new DateTime('2024-09-01'); // Замените на нужный год
+$startDateTime = new DateTime('2024-09-01');
 
-// Вычисляем разницу в днях
 $diff = $dateTime->diff($startDateTime);
 
-// Вычисляем номер недели
 $weekNumber = (int) floor(($diff->days + $startDateTime->format('w')) / 7) + 1;
 
 return $weekNumber;
@@ -25,9 +19,10 @@ return $weekNumber;
 @section('content')
     <section class="p-2.5">
     <div class="border-2 border-red-900 p-6 ">
-        <form class="flex gap-2">
+        <form action="{{ route('public.schedule.updateSchedule') }}" method="POST" class="grid grid-cols-1 xl:grid-cols-6 gap-2">
+            @csrf
             <div>
-                <select id="week" name="week" class="bg-white p-2.5 appearance-none border border-red-900 w-50">
+                <select id="week" name="week" class="bg-white p-2.5 appearance-none border border-red-900 xl:max-w-50 w-full">
                     @php
                         $today = date('Y-m-d');
                         $currentWeekNumber = getWeekNumberFromSeptember($today);
@@ -44,7 +39,7 @@ return $weekNumber;
                 </select>
             </div>
             <div>
-                <select id="faculty" class="bg-white p-2.5 appearance-none border border-red-900 w-50" name="faculty">
+                <select id="faculty" class="bg-white p-2.5 appearance-none border border-red-900 xl:max-w-50 w-full" name="faculty">
                     <option value="">Факультет</option>
                     @foreach ($faculties as $faculty)
                         <option value="{{ $faculty }}">{{ $faculty }}</option>
@@ -52,7 +47,7 @@ return $weekNumber;
                 </select>
             </div>
             <div>
-                <select id="form_edu" name="form_edu" class="bg-white p-2.5 appearance-none border border-red-900 w-50" required>
+                <select id="form_edu" name="form_edu" class="bg-white p-2.5 appearance-none border border-red-900 xl:max-w-50 w-full" required>
                     <option value="">Форма обучения</option>
                     @foreach ($forms_edu as $form)
                         <option value="{{ $form }}">
@@ -64,7 +59,7 @@ return $weekNumber;
                 </select>
             </div>
                 <div>
-                    <select id="course" name="course" class="bg-white p-2.5 appearance-none border border-red-900 w-50" required>
+                    <select id="course" name="course" class="bg-white p-2.5 appearance-none border border-red-900 xl:max-w-50 w-full" required>
                         <option value="">Курс</option>
                         @foreach ($courses as $course)
                             <option value="{{ $course }}">
@@ -75,22 +70,20 @@ return $weekNumber;
                 </div>
             <div class="select-wrapper relative">
                 <input type="text" class="input-hidden hidden">
-                <input class="chosen-value relative top-0 left-0 bg-white p-2.5 appearance-none border border-red-900 w-50
-                             transition duration-300 ease-in-out placeholder:text-[black] focus:border-b-[2px] outline-0 z-20"
+                <input name="group" class="chosen-value relative top-0 left-0 bg-white p-2.5 appearance-none border border-red-900 xl:max-w-50 w-full
+                             transition duration-300 ease-in-out placeholder:text-[black] outline-0 z-20"
                        type="text" value="" placeholder="Группа">
-                <ul class="value-list transition duration-300 ease-in-out absolute top-0 left-0 w-full max-h-0 cursor-pointer list-none mt-[48px] shadow-[2px_24px_17px_-13px_rgba(66, 68, 90, 1)] overflow-hidden
+                <ul id="groupList" class="value-list transition duration-300 ease-in-out absolute top-0 left-0 w-full max-h-0 cursor-pointer list-none mt-[48px] shadow-[2px_24px_17px_-13px_rgba(66, 68, 90, 1)] overflow-hidden
                 [&.open]:max-h-[320px] [&.open]:overflow-auto z-20">
+                    @foreach ($groups as $group)
                     <li data-id="1" class="drop-li min-h-[4rem] opacity-100 relative p-[1rem] bg-white text-lg flex items-center cursor-pointer transition duration-300 ease-in-out max-h-0 hover:bg-[#820000] hover:text-white
                                 [&.closed]:max-h-0 [&.closed]:overflow-hidden [&.closed]:p-0 [&.closed]:opacity-0 [&.closed]:min-h-[0px]">
-                        Главное в МелГУ
+                        {{$group }}
                     </li>
-                    <li data-id="2" class="drop-li min-h-[4rem] relative p-[1rem] bg-white text-lg flex items-center cursor-pointer transition duration-300 ease-in-out max-h-0 hover:bg-[#820000] hover:text-white
-                                [&.closed]:max-h-0 [&.closed]:overflow-hidden [&.closed]:p-0 [&.closed]:opacity-0 [&.closed]:min-h-[0px]">
-                        Наука
-                    </li>
+                    @endforeach>
                 </ul>
             </div>
-            <button class="p-2.5 appearance-none border border-red-900 w-50 transition duration-300 ease-linear hover:bg-red-900 hover:text-white cursor-pointer">Применить</button>
+            <button type="submit" class="p-2.5 appearance-none border border-red-900 xl:max-w-50 w-full transition duration-300 ease-linear hover:bg-red-900 hover:text-white cursor-pointer">Применить</button>
         </form>
     </div>
     @if($schedule == 'start')
@@ -116,6 +109,7 @@ return $weekNumber;
                     $todayIndex = date('N');
                     $currentHour = date('H');
                     $currentMinute = date('i');
+                    $maxWeekday = $maxWeekdays[$gk];
                 @endphp
                 @foreach ($group as $i => $les)
                     @foreach ($les as $k => $item)
@@ -131,62 +125,75 @@ return $weekNumber;
                     @endforeach
                     @break
                 @endforeach
-                <h3>Группа: {{ $gk }}</h3>
-                <table>
-                    <thead style="background-color: #820000; color: #ffffff;">
-                    <tr>
-                        <td style="width: 3%" rowspan="2">№</td>
-                        <td style="width: 3%" rowspan="2">Время</td>
-                        @foreach ($daysOfWeek as $i => $day)
-                            @if($edu == '2' || $edu == '3')
-                                <td style="width: 20%;" colspan="2" class="{{ ($i + 1 == $todayIndex) ? 'today' : '' }}">{{ $day }}</td>
-                            @else
-                                <td style="width: 20%;" colspan="2" id="{{ ($i + 1 == 6) ? 'saturday' : '' }}" class="{{ ($i + 1 == $todayIndex) ? 'today' : '' }}">
-                                    @if($day !== 'Суббота')
-                                        {{ $day }}
-                                    @elseif ($day == 'Суббота' && $edu !== '2' && $edu !== '3')
+                <h3 class="font-bold text-xl my-3">Группа: {{ $gk }}</h3>
 
+                @if($maxWeekday <= 5)
+                <div class="grid grid-cols-1 xl:grid-cols-[3%_5%_1fr_5%_1fr_5%_1fr_5%_1fr_5%_1fr_5%] gap-[2px] p-[2px] bg-[#D3D3D3]">
+                    @else
+                        <div class="grid grid-cols-[3%_5%_1fr_5%_1fr_5%_1fr_5%_1fr_5%_1fr_5%_1fr_5%] gap-1">
+                    @endif
+
+                        <div class="bg-red-900 font-bold text-white row-span-2 flex items-center justify-center p-2.5">№</div>
+                        <div class="bg-red-900 font-bold text-white row-span-2 flex items-center justify-center p-2.5">Время</div>
+                            @foreach ($daysOfWeek as $i => $day)
+                                @if ($i + 1 <= $maxWeekday)
+                                    @if ($edu == '2' || $edu == '3')
+                                        <div class="{{ ($i + 1 == $todayIndex) ? 'today' : '' }} bg-red-900 text-white col-span-2 flex items-center justify-center p-2.5">
+                                            {{ $day }}
+                                        </div>
+                                    @else
+                                        <div class="bg-red-900 font-bold text-white col-span-2 flex items-center justify-center p-2.5" id="{{ ($i + 1 == 6) ? 'saturday' : '' }}" class="{{ ($i + 1 == $todayIndex) ? 'today' : '' }}">
+                                            @if ($i + 1 == 6 && $maxWeekday <= 5)
+                                            @else
+                                                {{ $day }}
+                                            @endif
+                                        </div>
                                     @endif
-                                </td>
-                            @endif
-                        @endforeach
-                    </tr>
-                    <tr>
-                        @if($edu == '1')
-                            <td style="width: 15%;">Дисциплина, вид занятия, преподаватель</td>
-                            <td style="width: 3%;">Ауд.</td>
-                            <td style="width: 15%;">Дисциплина, вид занятия, преподаватель</td>
-                            <td style="width: 3%;">Ауд.</td>
-                            <td style="width: 15%;">Дисциплина, вид занятия, преподаватель</td>
-                            <td style="width: 3%;">Ауд.</td>
-                            <td style="width: 15%;">Дисциплина, вид занятия, преподаватель</td>
-                            <td style="width: 3%;">Ауд.</td>
-                            <td style="width: 15%;">Дисциплина, вид занятия, преподаватель</td>
-                            <td style="width: 3%;">Ауд.</td>
+                                @endif
+                            @endforeach
+
+                        @if($maxWeekday <= 5)
+                                    <div class="bg-red-900 flex items-center justify-center p-2.5 text-white font-bold">Дисциплина, вид занятия, преподаватель</div>
+                                    <div class="bg-red-900 flex items-center justify-center p-2.5 text-white font-bold">Ауд.</div>
+
+                                    <div class="bg-red-900 flex items-center justify-center p-2.5 text-white font-bold">Дисциплина, вид занятия, преподаватель</div>
+                                    <div class="bg-red-900 flex items-center justify-center p-2.5 text-white font-bold">Ауд.</div>
+
+                                    <div class="bg-red-900 flex items-center justify-center p-2.5 text-white font-bold">Дисциплина, вид занятия, преподаватель</div>
+                                    <div class="bg-red-900 flex items-center justify-center p-2.5 text-white font-bold">Ауд.</div>
+
+                                    <div class="bg-red-900 flex items-center justify-center p-2.5 text-white font-bold">Дисциплина, вид занятия, преподаватель</div>
+                                    <div class="bg-red-900 flex items-center justify-center p-2.5 text-white font-bold">Ауд.</div>
+
+                                    <div class="bg-red-900 flex items-center justify-center p-2.5 text-white font-bold">Дисциплина, вид занятия, преподаватель</div>
+                                    <div class="bg-red-900 flex items-center justify-center p-2.5 text-white font-bold">Ауд.</div>
+
                         @else
-                            <td style="width: 12%;">Дисциплина, вид занятия, преподаватель</td>
-                            <td style="width: 3%;">Ауд.</td>
-                            <td style="width: 12%;">Дисциплина, вид занятия, преподаватель</td>
-                            <td style="width: 3%;">Ауд.</td>
-                            <td style="width: 12%;">Дисциплина, вид занятия, преподаватель</td>
-                            <td style="width: 3%;">Ауд.</td>
-                            <td style="width: 12%;">Дисциплина,вид занятия, преподаватель</td>
-                            <td style="width: 3%;">Ауд.</td>
-                            <td style="width: 12%;">Дисциплина, вид занятия, преподаватель</td>
-                            <td style="width: 3%;">Ауд.</td>
-                            <td style="width: 12%;">Дисциплина, вид занятия, преподаватель</td>
-                            <td style="width: 3%;">Ауд.</td>
-                            <td style="width: 12%;">Дисциплина, вид занятия, преподаватель</td>
-                            <td style="width: 3%;">Ауд.</td>
+                                <div class="bg-red-900 flex items-center justify-center p-2.5 text-white font-bold">Дисциплина, вид занятия, преподаватель</div>
+                                <div class="bg-red-900 flex items-center justify-center p-2.5 text-white font-bold">Ауд.</div>
+
+                                <div class="bg-red-900 flex items-center justify-center p-2.5 text-white font-bold">Дисциплина, вид занятия, преподаватель</div>
+                                <div class="bg-red-900 flex items-center justify-center p-2.5 text-white font-bold">Ауд.</div>
+
+                                <div class="bg-red-900 flex items-center justify-center p-2.5 text-white font-bold">Дисциплина, вид занятия, преподаватель</div>
+                                <div class="bg-red-900 flex items-center justify-center p-2.5 text-white font-bold">Ауд.</div>
+
+                                <div class="bg-red-900 flex items-center justify-center p-2.5 text-white font-bold">Дисциплина, вид занятия, преподаватель</div>
+                                <div class="bg-red-900 flex items-center justify-center p-2.5 text-white font-bold">Ауд.</div>
+
+                                <div class="bg-red-900 flex items-center justify-center p-2.5 text-white font-bold">Дисциплина, вид занятия, преподаватель</div>
+                                <div class="bg-red-900 flex items-center justify-center p-2.5 text-white font-bold">Ауд.</div>
+
+                                <div class="bg-red-900 flex items-center justify-center p-2.5 text-white font-bold">Дисциплина, вид занятия, преподаватель</div>
+                                <div class="bg-red-900 flex items-center justify-center p-2.5 text-white font-bold">Ауд.</div>
                         @endif
-                    </tr>
-                    </thead>
-                    <tbody>
+
+
                     @foreach ($group as $kt => $time)
                         @if (empty($TimeLessons[$kt-1])) @continue @endif
-                        <tr>
-                            <td>{{ $kt }}</td>
-                            <td>{{ $TimeLessons[(int)$kt-1] ?? '' }}</td>
+
+                            <div class="flex items-center justify-center p-2.5 bg-white">{{ $kt }}</div>
+                            <div class="flex items-center justify-center p-2.5 bg-white">{{ $TimeLessons[(int)$kt-1] ?? '' }}</div>
                             @php $colDay = ($edu == '2' || $edu == '3') ? 6 : 5; @endphp
                             @for($i=1;$i <= $colDay;$i++)
                                 @php
@@ -211,22 +218,98 @@ return $weekNumber;
                                         }
                                     }
                                 @endphp
-                                <td class="{{ ($kt-1 == $CurrentLesson) && ($i == $todayIndex) && (!empty($time[$i]->subject)) ? 'current-lessons' : '' }}">
+                                <div class="{{ ($kt-1 == $CurrentLesson) && ($i == $todayIndex) && (!empty($time[$i]->subject)) ? 'current-lessons' : '' }} flex items-center justify-center p-2.5 bg-white whitespace-normal">
                                     @if(!empty($time[$i]->subject))
                                         {{ $time[$i]->subject }}, {{ $time[$i]->type ?? '' }} <br> {{ $time[$i]->teacher_name ?? '' }}
                                     @endif
-                                </td>
-                                <td>{{ $time[$i]->auditory_name ?? '' }}</td>
+                                </div>
+                                <div class="flex items-center justify-center p-2.5 bg-white text-wrap">
+                                    @if(!empty($time[$i]->auditory_name) &&$time[$i]->auditory_name == "Спорт.комплекс (пр.Б.Хмельницкого,1)")
+                                        Спорт комплекс
+                                    @else
+                                        {{ $time[$i]->auditory_name ?? '' }}
+                                    @endif
+
+                                </div>
                             @endfor
-                        </tr>
+
                     @endforeach
-                    </tbody>
-                </table>
+                </div>
             @endforeach
         </div>
     @endif
+                <div class="list-box">
+                    @if ($schedule && $schedule != 'start')
+                        @foreach ($schedule as $gk => $group)
+                            @php  $maxWeekday = $maxWeekdays[$gk];  @endphp
+                            <div>
+                                <h3 class="text-xl font-bold my-3">Группа: {{ $gk }}</h3>
+                            </div>
+                            <div class="list-group">
+                                @for ($day = 0; $day < 6; $day++)
+                                    <div class="day-rasp grid grid-cols-1 gap-2 mb-2">
+                                        @if ($day < 5 || ($day == 5 && $maxWeekday > 5))
+                                            <div class="day-week{{ ($day + 1 == $todayIndex) ? 'today' : '' }} bg-red-900 p-2.5 font-bold">
+                                                <h4 class="text-white">{{ $daysOfWeek[$day] }}</h4>
+                                            </div>
+                                            @foreach ($group as $kt => $time)
+                                                @if (isset($time[$day + 1]) && !empty($time[$day + 1]->subject))
+                                                    <div class="rasp-box bg-white">
+                                                        <div class="item-box {{ ($kt - 1 == $CurrentLesson) && ($day + 1 == $todayIndex) && (!empty($time[$CurrentLesson]->subject)) ? 'current-lessons mr' : '' }} px-5 py-2.5">
+                                                            <div class="font-bold my-2">
+                                                                <span>Пара: № {{ $kt }}</span>
+                                                            </div>
+                                                            <div class="discip-rasp font-bold my-2">
+                                                                <span>Дисциплина: {{ $time[$day + 1]->subject }}, {{ $time[$day + 1]->type ?? '' }}</span>
+                                                            </div>
+                                                            <div class="time-lesson my-2">
+                                                                <span>Время: {{ $TimeLessons[$kt - 1] }}</span>
+                                                            </div>
+                                                            <div class="room-lesson my-2">
+                                                                <span>Ауд. {{ $time[$day + 1]->auditory_name ?? '' }}</span>
+                                                            </div>
+                                                            <div class="teacher my-2">
+                                                                <span>Преподаватель: {{ $time[$day + 1]->teacher_name ?? '' }}</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                            @endforeach
+                                        @endif
+                                    </div>
+                                @endfor
+                            </div>
+                        @endforeach
+                    @endif
+                </div>
     </section>
 @endsection
 
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const weekSelect = document.getElementById('week');
+        const facultySelect = document.getElementById('faculty');
+        const formEduSelect = document.getElementById('form_edu');
+        const courseSelect = document.getElementById('course');
+        const groupList = document.getElementById('groupList');
 
+        function updateGroups() {
+            const week = weekSelect.value;
+            const faculty = facultySelect.value;
+            const formEdu = formEduSelect.value;
+            const course = courseSelect.value;
+
+            fetch('{{ route('public.schedule.getGroups') }}' + `?week=${week}&faculty=${faculty}&form_edu=${formEdu}&course=${course}`)
+                .then(response => response.text())
+                .then(html => {
+                    groupList.innerHTML = html;
+                });
+        }
+
+        weekSelect.addEventListener('change', updateGroups);
+        facultySelect.addEventListener('change', updateGroups);
+        formEduSelect.addEventListener('change', updateGroups);
+        courseSelect.addEventListener('change', updateGroups);
+    });
+</script>
 

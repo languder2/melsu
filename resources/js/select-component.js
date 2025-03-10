@@ -39,6 +39,11 @@ export function initSelect(selectWrapper) {
         inputField.placeholder = inputField.getAttribute('data-placeholder');
         dropdown.classList.remove('open');
     });
+    document.addEventListener('click', (event) => {
+        if (!selectWrapper.contains(event.target)) {
+            dropdown.classList.remove('open');
+        }
+    });
 }
 
 let selectWrappers = document.querySelectorAll('.select-wrapper');
