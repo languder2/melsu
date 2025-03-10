@@ -144,11 +144,11 @@ Route::middleware('auth.check')
     ->prefix('faculties')
     ->group(function () {
 
-        Route::get('', 'list')->name('admin:education:faculty:list');
-        Route::get('add', 'form')->name('admin:education:faculty:add');
-        Route::get('edit/{id}', 'form')->name('admin:education:faculty:edit');
-        Route::post('save', 'save')->name('admin:education:faculty:save');
-        Route::get('delete/{id}', 'delete')->name('admin:education:faculty:delete');
+        Route::get('', 'list')->name('admin:faculty:list');
+        Route::get('add', 'form')->name('admin:faculty:add');
+        Route::get('edit/{id}', 'form')->name('admin:faculty:edit');
+        Route::post('save', 'save')->name('admin:faculty:save');
+        Route::get('delete/{id}', 'delete')->name('admin:faculty:delete');
 
     });
 
@@ -157,11 +157,11 @@ Route::middleware('auth.check')
     ->prefix('education/departments')
     ->group(function () {
 
-        Route::get('', 'list')->name('admin:education-department:list');
-        Route::get('add', 'form')->name('admin:education-department:add');
-        Route::get('edit/{id}', 'form')->name('admin:education-department:edit');
-        Route::post('save', 'save')->name('admin:education-department:save');
-        Route::get('delete/{id}', 'delete')->name('admin:education-department:delete');
+        Route::get('', 'list')->name('admin:department:list');
+        Route::get('add', 'form')->name('admin:department:add');
+        Route::get('edit/{id}', 'form')->name('admin:department:edit');
+        Route::post('save', 'save')->name('admin:department:save');
+        Route::get('delete/{id}', 'delete')->name('admin:department:delete');
 
     });
 

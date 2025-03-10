@@ -9,6 +9,7 @@ use App\Models\Education\Lab;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
+use App\Http\Controllers\ContactController;
 
 Route::get('departments-by-faculty-shorts/{faculty?}', function (Request $request, $faculty = null) {
 
@@ -169,4 +170,16 @@ Route::post('set-filter-for-education-departments', function(Request $request){
     ]);
 
 })->name('public:education:departments:filter:set');
+
+
+Route::prefix('contacts')
+//Route::middleware(['web','auth.api'])->prefix('contacts')
+    ->group(function () {
+        Route::get('add-position/{type}/{contact?}', [ContactController::class, 'ApiAddPosition'])
+        ->name('api:admin:contact:add-position');
+
+        Route::get('delete/{id}', [ContactController::class, 'ApiDelete'])
+            ->name('api:contact:delete');
+    });
+
 

@@ -12,37 +12,25 @@ class DepartmentController extends Controller
 {
     public function list(): string
     {
+        $faculties      = Faculty::orderBy('order', 'desc')->where('type','faculty')->orderBy('name')->get();
+        $departments    = Department::whereNull('faculty_code')->orderBy('order')->orderBy('name')->get();
 
-        return view('pages.admin', [
-            'contents' => [
-                view('admin.education.menu'),
-                view('admin.education.departments.header'),
-                view('admin.education.departments.list')->with([
-                    'faculties'     => Faculty::orderBy('order', 'desc')
-                        ->where('type','faculty')->orderBy('name')->get(),
-                    'departments'   => Department::whereNull('faculty_code')
-                        ->orderBy('order')->orderBy('name')->get(),
-                ]),
-            ]
-        ]);
+        return view('admin.education.departments.page', compact('faculties','departments'));
     }
 
     public function form($id = null)
     {
 
-        $current= Department::find($id);
+        $current = Department::find($id);
+        $add2faculty = request()->get('faculty');
+        $faculties = Faculty::pluck('name', 'code')->toArray();
 
-        return view('pages.admin', [
-            'contents' => [
-                view('admin.education.menu'),
 
-                view('admin.education.departments.form')->with([
-                    'current' => Department::find($id),
-                    'add2faculty' => request()->get('faculty'),
-                    'faculties' => Faculty::pluck('name', 'code')->toArray(),
-                ]),
-            ]
-        ]);
+
+        dd($current->contacts);
+
+        return view('admin.education.departments.form.page',
+            compact('current','add2faculty','faculties'));
     }
 
     public function save(Request $request)
@@ -59,7 +47,7 @@ class DepartmentController extends Controller
 
         $record->save();
 
-        return redirect()->route('admin:education-department:list');
+        return redirect()->route('admin:department:list');
     }
 
     public function delete(int $id)
@@ -69,6 +57,6 @@ class DepartmentController extends Controller
         if (!is_null($record))
             $record->delete();
 
-        return redirect()->route('admin:education-department:list');
+        return redirect()->route('admin:department:list');
     }
 }

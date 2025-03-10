@@ -2,6 +2,7 @@
 
 namespace App\Models\Education;
 
+use App\Models\Contact;
 use App\Models\Education\Department as EducationDepartment;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -77,6 +78,16 @@ class Department extends Model
     public function labs(): MorphMany
     {
         return $this->morphMany(Lab::class, 'relation');
+    }
+
+    public function contacts(?string $type = null): MorphMany
+    {
+        $query = $this->morphMany(Contact::class, 'relation');
+
+        if($type)
+            $query->where('type', $type);
+
+        return $query->orderBy('type')->orderBy('sort');
     }
 
 

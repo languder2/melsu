@@ -2,6 +2,7 @@
 
 namespace App\Models\Education;
 
+use App\Models\Contact;
 use App\Models\Education\Department as EducationDepartment;
 use App\Models\Division\Division;
 use App\Models\Gallery\Image;
@@ -44,8 +45,6 @@ class Faculty extends Model
             'preview'           => '',
             'show'              => '',
             'chief'             => '',
-            'chief_post'        => '',
-            'chief_post_alt'    => '',
             'staffs'            => '',
             'sections'          => '',
         ];
@@ -97,15 +96,19 @@ class Faculty extends Model
         return $this->morphMany(Image::class, 'relation');
     }
 
-    public function logo(): MorphOne
+    public function logo(): ?MorphOne
     {
+
         $image = $this->MorphOne(Image::class, 'relation')->where('type', 'logo');
+
+        if(!$this->id)
+            return $image;
 
         if(!$image->count())
             $image->create([
                 'type'      => 'logo',
-                'name'      => $this->name,
-            ])->save();
+                'name'      => 'preview',
+            ]);
 
         return $image;
 
@@ -129,6 +132,16 @@ class Faculty extends Model
     public function sections(): MorphMany
     {
         return $this->morphMany(PageContent::class, 'relation');
+    }
+
+    public function contacts(?string $type = null): MorphMany
+    {
+        $query = $this->morphMany(Contact::class, 'relation');
+
+        if($type)
+            $query->where('type', $type);
+
+        return $query->orderBy('type')->orderBy('sort');
     }
 
     public function getLinkAttribute(): string

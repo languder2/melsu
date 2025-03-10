@@ -36,7 +36,7 @@
             class="text-lg"
         />
         <x-admin.sidebar-li
-            link="{{route('admin:education:faculty:list')}}"
+            link="{{route('admin:faculty:list')}}"
             ico="fas fa-university"
             text="Университет"
         />

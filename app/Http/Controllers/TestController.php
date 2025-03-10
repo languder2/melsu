@@ -8,20 +8,17 @@ use App\Models\Staff\Staff;
 use App\Enums\DepartmentType;
 use App\Models\Contact;
 use App\Enums\ContactType;
+use Illuminate\Http\Request;
 
 class TestController extends Controller
 {
     public function index()
     {
-//
-//        Contact::create([
-//            'content'   => 'test',
-//            'type'      => ContactType::Telegram
-//
-//        ]);
-//
-        $contacts = ContactType::getSortedCasesByName();
+            return view('test.page');
+    }
 
-        dump($contacts);
+    public function save(Request $request)
+    {
+        $request->validate(['test2'=>'required']);
     }
 }

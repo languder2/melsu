@@ -1,7 +1,7 @@
 <x-head.tinymce-config/>
 
 <form
-    action="{{route('admin:education-department:save')}}"
+    action="{{route('admin:department:save')}}"
     method="POST"
     enctype="multipart/form-data"
     class="

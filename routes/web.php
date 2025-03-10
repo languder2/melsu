@@ -34,7 +34,8 @@ Route::prefix('nomix')->group(function () {
     require __DIR__.'/nomix.php';
 });
 
-Route::get('test', [TestController::class, 'index']);
+Route::get('test', [TestController::class, 'index'])->name('test');
+Route::post('test/save', [TestController::class, 'save'])->name('test:save');
 
 Route::controller(suStructureController::class)
     ->prefix('structure')

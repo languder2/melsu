@@ -52,9 +52,8 @@
 
         </div>
 
-
         <div class="flex gap-4 my-2">
-            @if($current->logo)
+            @if($current)
                 <img src="{{$current->logo->thumbnail}}" alt="123" class="h-44 rounded-md">
             @endif
 
@@ -91,13 +90,12 @@
                     name="image"
                 />
 
-
-{{--                <x-form.input--}}
-{{--                    id="form_preview"--}}
-{{--                    name="preview"--}}
-{{--                    label="Превью из галереи"--}}
-{{--                    value="{{old('preview')?? optional($current)->logo->src ?? null}}"--}}
-{{--                />--}}
+                <x-form.input
+                    id="form_preview"
+                    name="preview"
+                    label="Превью из галереи"
+                    value="{{old('preview')?? optional($current)->logo->src ?? null}}"
+                />
 
             </div>
         </div>

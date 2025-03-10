@@ -3,18 +3,25 @@
 @section('title', 'ФГБОУ ВО "Мелитопольский государственный университет"')
 
 @section('top-menu')
-    {{view('admin.education.menu')}}
+    @include('admin.education.menu')
 @endsection
 
-@section('top-menu')
-    231
+@section('content-header')
+    @component('components.html.admin.content-header')
+        @if($current)
+            Изменение факультета: {{$current->name}}
+        @else
+            Добавление факультета
+        @endif
+    @endcomponent
 @endsection
+
 
 @section('content')
 
     <x-head.tinymce-config/>
     <form
-        action="{{route('admin:education:faculty:save')}}"
+        action="{{route('admin:faculty:save')}}"
         method="POST"
         enctype="multipart/form-data"
     >
@@ -24,7 +31,8 @@
 
         <div class="grid grid-cols-[400px_minmax(400px,1200px)] mx-auto gap-4">
             <div>
-                {{view('admin/education/faculties/form/menu')}}
+                @include('admin.education.faculties.form.menu')
+
                 <x-form.submit
                     class="uppercase"
                     value="сохранить"
@@ -36,10 +44,11 @@
                     setTheme="1"
                 />
 
-                {{view('admin/education/faculties/form/section-base',['current'=>$current])}}
-                {{view('admin/education/faculties/form/section-staffs',['current'=>$current])}}
-                {{view('admin/education/faculties/form/section-documents',['current'=>$current])}}
-                {{view('admin/education/faculties/form/section-contents',['current'=>$current])}}
+                @include('admin.education.faculties.form.section-base')
+                @include('admin.education.faculties.form.section-contacts')
+                @include('admin.education.faculties.form.section-staffs')
+                @include('admin.education.faculties.form.section-documents')
+                @include('admin.education.faculties.form.section-contents')
 
             </div>
 

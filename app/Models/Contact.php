@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Enums\ContactType;
 
@@ -12,6 +13,7 @@ class Contact extends Model
     protected $table = 'contacts';
 
     protected $fillable = [
+        'id',
         'content',
         'type',
         'is_show',
@@ -35,10 +37,32 @@ class Contact extends Model
             'type'      => "Укажите тип",
         ];
     }
-
     protected $casts = [
         'is_show'   => 'boolean',
         'type'      => ContactType::class,
     ];
+
+    public function relation():MorphTo
+    {
+        return $this->morphTo();
+    }
+
+    public static function processing($record,$forms)
+    {
+        foreach ($forms as $id=>$form) {
+            $form['is_show'] = array_key_exists('is_show',$form);
+            unset($form['id']);
+
+            $contact = Contact::find($id);
+            if(!$contact)
+                $contact  = new Contact($form);
+
+            $contact->fill($form);
+
+            $contact->relation()->associate($record);
+
+            $contact->save();
+        }
+    }
 
 }

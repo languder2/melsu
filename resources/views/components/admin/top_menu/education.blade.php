@@ -11,7 +11,7 @@
     </span>
 
     <x-html.a-blue
-        href="{{route('admin:education-department:list')}}"
+        href="{{route('admin:department:list')}}"
         text="Отделы"
         active="{!! ($active==='departments')?true:null !!}"
     />

@@ -2,39 +2,37 @@
 
 namespace App\Http\Controllers\Education;
 
+use App\Enums\ContactType;
 use App\Http\Controllers\Controller;
+use App\Models\Contact;
 use App\Models\Education\Faculty;
 use App\Models\Gallery\Image;
+use App\Models\Staff\Affiliation;
 use App\Models\Staff\Staff;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\View;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx\ContentTypes;
 
 class FacultyController extends Controller
 {
-    public function list(): string
+    public function list()
     {
-        return view('pages.admin', [
-            'contents' => [
+        $list = Faculty::orderBy('order')->orderBy('name')->get();
 
-                view('admin.education.menu'),
-
-                view('admin.education.faculties.header'),
-
-                View::make('admin.education.faculties.list')->with([
-                    'list' => Faculty::orderBy('order')->orderBy('name')->get(),
-                ])->render(),
-            ]
-        ]);
+        return view('admin.education.faculties.page', compact('list'));
     }
 
     public function form($id = null)
     {
-        return view('admin.education.faculties.form.form',[
-            'current' => Faculty::find($id),
-        ]);
+        $current = Faculty::find($id);
+
+        if(!$current)
+            $current= new Faculty();
+
+        return view('admin.education.faculties.form.page', compact('current'));
     }
 
     public function save(Request $request)
@@ -52,36 +50,12 @@ class FacultyController extends Controller
 
         $record->save();
 
-        if($form['chief'] && Staff::find($form['chief'])){
-            $chief = $record->chief;
-
-            if(!$chief)
-                $chief = $record->chief()->create([
-                    'type'      => 'chief',
-                ]);
-
-            $chief->staff_id    = $form['chief'];
-            $chief->post        = $form['chief_post'];
-            $chief->post_alt    = $form['chief_post_alt'];
-
-            $chief->save();
-        }
+        if(array_key_exists('chief',$form))
+            Affiliation::ProcessingChief($record,$form['chief']);
 
         if(array_key_exists('staffs',$form))
-            foreach ($form['staffs'] as $affiliation_id=>$staff) {
-                if(!Staff::Find($staff['staff_id'])) continue;
-
-                $item = $record->staffs()->find($affiliation_id);
-
-                if(!$item)
-                    $item = $record->staffs()->create([
-                        'type'  => 'staff',
-                    ]);
-
-                $item->fill($staff);
-
-                $item->save();
-            }
+            foreach ($form['staffs'] as $aID=>$staff)
+                Affiliation::ProcessingStaff($record,$aID,$staff);
 
         if(!$record->logo)
             $record->logo = $record->logo()->create([
@@ -100,7 +74,6 @@ class FacultyController extends Controller
             $record->logo->save();
         }
 
-
         if(array_key_exists('sections',$form)){
             foreach ($form['sections'] as $section_id=>$section) {
                 if(!$section['title']) continue;
@@ -118,7 +91,11 @@ class FacultyController extends Controller
                 $item->save();
             }
         }
-        return redirect()->route('admin:education:faculty:list');
+
+        if($request->has('contacts'))
+            Contact::processing($record,$request->get('contacts'));
+
+        return redirect()->route('admin:faculty:list');
     }
 
     public function delete(int $id)
@@ -128,6 +105,6 @@ class FacultyController extends Controller
         if (!is_null($record))
             $record->delete();
 
-        return redirect()->route('admin:education:faculty:list');
+        return redirect()->route('admin:faculty:list');
     }
 }

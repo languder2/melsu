@@ -84,6 +84,6 @@ class LabsController extends Controller
         if (!is_null($record))
             $record->delete();
 
-        return redirect()->route('admin:education-department:list');
+        return redirect()->route('admin:department:list');
     }
 }

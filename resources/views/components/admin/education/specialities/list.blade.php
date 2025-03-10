@@ -95,7 +95,7 @@
                     <div class="flex flex-row-reverse text-white w-full">
                         <div class="flex-none w-14">
                             <a
-                                href="{{route('admin:education-department:delete',$record->id??0)}}"
+                                href="{{route('admin:department:delete',$record->id??0)}}"
                                 class="
                                 py-2 px-4 rounded-md
                                 bg-red-950
