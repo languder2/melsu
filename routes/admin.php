@@ -14,7 +14,9 @@ use App\Http\Controllers\Education\{
 use App\Http\Controllers\News\EventsController;
 use App\Http\Controllers\Staffs\StaffController;
 use App\Http\Controllers\Users\UserController;
+use App\Http\Controllers\ScheduleController;
 use Illuminate\Support\Facades\Route;
+
 
 Route::middleware(['auth.check'])
     ->controller(suStructureController::class)
@@ -231,18 +233,10 @@ Route::
             ->name('imports:departments:update');
     });
 
-
-
-/* Branches / Филиалы */
-
 Route::middleware('auth.check')
-    ->controller(\App\Http\Controllers\Education\BranchController::class)
-    ->prefix('branches')
+    ->prefix('schedule')
     ->group(function () {
-       Route::get('', 'admin')->name('admin:education:branches:list');
-       Route::get('add', 'form')->name('admin:education:branches:add');
-       Route::get('edit/{id}', 'form')->name('admin:education:branches:edit');
-       Route::get('save', 'save')->name('admin:education:branches:save');
-       Route::get('delete/{id}', 'delete')->name('admin:education:branches:delete');
-    });
 
+        Route::get('/', [ScheduleController::class, 'showSchedulePage'])->name('schedule.page');
+        Route::post('/import', [ScheduleController::class, 'importSchedule'])->name('schedule.import');
+    });

@@ -1,8 +1,8 @@
 <?php
 
 use App\Http\Controllers\{News\NewsController, suStructureController};
-use App\Http\Controllers\{AdminController, PagesController};
-use App\Http\Controllers\Division\DivisionController;
+use App\Http\Controllers\{AdminController, PagesController, ScheduleController};
+use App\Http\Controllers\Department\DepartmentController;
 use App\Http\Controllers\Education\EducationController;
 use App\Http\Controllers\Gallery\PublicGallery;
 use App\Http\Controllers\Staffs\StaffController;
@@ -107,9 +107,12 @@ Route::controller(EducationController::class)
 
 /* Department: public */
 
-Route::get('divisions', [DivisionController::class,'publicList'])->name('public:division:list');
-Route::get('division/{code?}',[DivisionController::class,'show'])->name('public:division:show');
-Route::get('rectorate',[DivisionController::class,'show'])->setDefaults(['code'=>'rectorate']);
+Route::controller(DepartmentController::class)
+    ->group(function () {
+        Route::get('departments', 'showList')->name('public:department:list');
+
+        Route::get('department/{code}', 'show')->name('public:department:show');
+    });
 
 /* Staffs: public */
 
@@ -133,12 +136,22 @@ Route::controller(PublicGallery::class)
 
 
 /* Menu Page */
-Route::get('menu/{code?}', [MenuController::class,'show'])
-    ->name('public:menu:show');
+    Route::get('menu/{code?}', [MenuController::class,'show'])
+        ->name('public:menu:show');
 
 
 /* Pages */
+
+
 Route::get('{alias}', [PagesController::class, 'showPage']);
 
 
+/*Schedule*/
 
+Route::controller(ScheduleController::class)
+    ->prefix('schedule')
+    ->group(function () {
+        Route::get('/schedule',  'index')->name('public.schedule.index');
+        Route::get('/get-groups', 'getGroups')->name('public.schedule.getGroups');
+        Route::post('/schedule-result', 'updateSchedule')->name('public.schedule.updateSchedule');
+    });
