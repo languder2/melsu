@@ -102,21 +102,25 @@ class Menu extends Model
     {
         return
             (object)[
-                'name' => $faculty->name,
                 'items' => [
                     (object)[
                         'name' => "О факультете",
-                        'link' => url("faculties/{$faculty->code}"),
+                        'link' => "#",
                         'active' => (bool)($page === 'about'),
                     ],
                     (object)[
                         'name' => "Деканат",
-                        'link' => url("faculties/{$faculty->code}/staffs"),
+                        'link' => "#",
+                        'active' => (bool)($page === 'staffs'),
+                    ],
+                    (object)[
+                        'name' => "Педагогический состав",
+                        'link' => "#",
                         'active' => (bool)($page === 'staffs'),
                     ],
                     (object)[
                         'name' => "Кафедры",
-                        'link' => url("faculties/{$faculty->code}/departments"),
+                        'link' => "#",
                         'active' => (bool)($page === 'departments'),
                     ],
                     (object)[
@@ -131,6 +135,16 @@ class Menu extends Model
                     ],
                     (object)[
                         'name' => "Наука",
+                        'link' => url('science'),
+                        'active' => false,
+                    ],
+                    (object)[
+                        'name' => "История",
+                        'link' => url('science'),
+                        'active' => false,
+                    ],
+                    (object)[
+                        'name' => "Фотогалерея",
                         'link' => url('science'),
                         'active' => false,
                     ],

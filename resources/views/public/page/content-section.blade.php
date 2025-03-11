@@ -1,10 +1,10 @@
-<div class="p-corrector">
+<div class="p-corrector mb-4 last:mb-0">
     @if($section->show_title)
-        <h2 class="font-bold text-xl my-6 uppercase">
+        <h2 class="font-bold text-xl my-4 uppercase text-right">
             {{$section->title}}
         </h2>
     @endif
-    <div class="bg-white p-6 mb-5">
+    <div class="bg-white p-6">
         {!! $section->content !!}
     </div>
 </div>

@@ -29,71 +29,36 @@ class EducationController extends Controller
 
         return view('public.education.faculties.list', compact('list'));
 
-
-
-        return view('pages.page', [
-            'breadcrumbs' => (object)[
-                'view'      => null,
-                'route'     => 'faculties',
-                'element'   => null,
-            ],
-
-            'contents' => [
-                view("public.education.tabs.list",['active' => 'faculties']),
-                view("public.education.faculties.list",[
-                    'list'  => Division::where('show',1)->where('type',DivisionType::Faculty)
-                        ->orderBy('sort')->orderBy('name')->get(),
-                ]),
-            ]
-        ]);
-
     }
     public function showAllBranch(): string
     {
 
-        return view('pages.page', [
-            'breadcrumbs' => (object)[
-                'view'      => null,
-                'route'     => 'faculties',
-                'element'   => null,
-            ],
+        $list = Division::where('show',1)->where('type',DivisionType::Branch)
+            ->orderBy('sort')->orderBy('name')
+            ->get()
+        ;
 
-            'contents' => [
-                view("public.education.tabs.list",['active' => 'branch']),
-                view("public.education.branch.list",[
-                    'list'  => Faculty::where('show',1)->where('type','branch')
-                        ->orderBy('order')->orderBy('name')->get(),
-                ]),
-            ]
-        ]);
+        return view('public.education.branch.list', compact('list'));
 
     }
     public function showAllDepartments(): string
     {
-        $groupedItems = Department::orderBy('name')->get()->groupBy(function ($item) {
-            return strtoupper(mb_substr($item->name, 0, 1, 'UTF-8')); // Первая буква в верхнем регистре
-        });
+        $list = Division::where('show',1)->where('type',DivisionType::Department)
+            ->orderBy('name')->get()
+            ->groupBy(function ($item) {
+                return strtoupper(mb_substr($item->alt_name, 0, 1, 'UTF-8'));
+            });
 
-        return view('pages.page', [
-            'breadcrumbs' => (object)[
-                'view'      => null,
-                'route'     => 'faculties',
-                'element'   => null,
-            ],
+        $filter     = json_decode(session()->get('public.education.departments.search'));
+        $faculties  = Division::where('show',1)
+            ->where('type',DivisionType::Faculty)
+            ->orderBy('sort')
+            ->orderBy('name')
+            ->get()
+            ->pluck('name','code')
+        ;
 
-            'contents' => [
-
-                view("public.education.tabs.list",['active' => 'departments']),
-                view("public.education.departments.search",[
-                    'filter'        => json_decode(session()->get('public.education.departments.search')),
-                    'faculties'     => Faculty::where('show',1)->where('type','faculty')
-                        ->orderBy('name')->get()->pluck('name','code'),
-                ]),
-                view("public.education.departments.list",[
-                    'list'  => $groupedItems,
-                ]),
-            ]
-        ]);
+        return view('public.education.departments.list', compact('list','faculties','filter'));
     }
 
     public function showAllLabs(): string
@@ -115,41 +80,17 @@ class EducationController extends Controller
         ]);
     }
 
-    public function faculty($faculty = null): \Illuminate\View\View|RedirectResponse
+    public function faculty($code = null): \Illuminate\View\View|RedirectResponse
     {
 
-        $faculty = Faculty::where('code', $faculty)->first();
+        $faculty = Division::where('code', $code)->orWhere('id',$code)->first();
 
         if ($faculty === null)
             return redirect()->to(route('public:education:faculties'));
 
         $menu = Menu::GetMenuFaculty($faculty, page: 'about');
 
-
         return view('public.education.faculty.about',compact('faculty','menu'));
-
-
-        return view('pages.page-with-menu', [
-            'breadcrumbs' => (object)[
-                'view'      => null,
-                'route'     => 'faculty',
-                'element'   => $faculty,
-            ],
-
-            'sidebar' => View::make('components.menu.alt_sidebar')->with([
-                'menu' => &$menu,
-            ])->render(),
-
-            'contents' => [
-                View::make('components.education.faculty')->with([
-                    'faculty' => $faculty,
-                ])->render()
-
-            ]
-        ]);
-
-
-
     }
 
     public function departments($faculty = null): string|RedirectResponse

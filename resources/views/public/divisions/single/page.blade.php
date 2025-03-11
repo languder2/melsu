@@ -11,11 +11,12 @@
 @endsection
 
 @section('content-without-bg')
-    @if($division->chief_card)
+
+    @isset($division->chief->card)
         <div class="bg-white p-6 sm:min-h-40 flex flex-col justify-between mb-3">
             <div class="mb-7 sm:mb-0">
-                <a href="{{$division->chief_card->link}}" class="font-bold text-2xl mb-5 block">
-                    {{$division->chief_card->full_name}}
+                <a href="{{$division->chief->link}}" class="font-bold text-2xl mb-5 block">
+                    {{$division->chief->full_name}}
                 </a>
                 <div class="flex flex-col sm:flex-row mb-3">
             <span class="text-[#4C4C4C] text-lg">

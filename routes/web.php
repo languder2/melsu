@@ -85,28 +85,21 @@ Route::controller(EducationController::class)
 /* Education: public */
 
 Route::controller(EducationController::class)
-    ->prefix('education')
     ->group(function () {
-        Route::get('{faculty?}', 'faculty')
+        Route::get('branch/{branch?}', 'branch')
+            ->name('public:education:branch');
+
+        Route::get('faculties/{faculty?}', 'faculty')
             ->name('public:education:faculty');
 
-        Route::get('{faculty}/departments', 'departments')
-            ->name('public:education:departments');
-
-        Route::get('{faculty}/staffs', 'staffs')
-            ->name('public:education:staffs');
-
-        Route::get('{faculty?}/specialities', 'specialities')
-            ->name('public:education:specialities');
-
-        Route::get('{faculty?}/{department?}', 'department')
+        Route::get('departments/{department?}', 'department')
             ->name('public:education:department');
 
-        Route::get('{faculty}/{department}/specialities', 'specialities')
-            ->name('public:education:specialities:department');
+        Route::get('labs/{labs?}', 'lab')
+            ->name('public:education:lab');
     });
 
-/* Department: public */
+/* Divisions: public */
 
 Route::get('divisions', [DivisionController::class,'publicList'])->name('public:division:list');
 Route::get('division/{code?}',[DivisionController::class,'show'])->name('public:division:show');

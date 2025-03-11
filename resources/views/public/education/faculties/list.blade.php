@@ -1,6 +1,6 @@
 @extends("layouts.main")
 
-@section('title', 'ФГБОУ ВО "МелГУ"')
+@section('title', 'ФГБОУ ВО "МелГУ": Факультеты')
 
 @section('breadcrumbs')
     {{Breadcrumbs::view("vendor.breadcrumbs.base",'faculties',null)}}
@@ -22,7 +22,7 @@
                         cursor-pointer
                         transition-all duration-200
                         hover:-mt-1 hover:mb-1
-                        hover:shadow-md hover:shadow-black/10
+                        hover:shadow-md hover:shadow-black/5
 
                     "
                 >
@@ -32,11 +32,11 @@
                         alt="{{$item->name}}"
                         title="{{$item->name}}"
                         class="
-                            absolute right-8 max-h-full z-10 w-1/3
+                            absolute right-0 max-h-full z-10 w-1/3
                             bottom-0
                             object-contain object-right-bottom
                             transition-all duration-300
-                            group-hover:drop-shadow-[0_0_3px_rgba(100,100,100,.5)]
+                            group-hover:drop-shadow-[0_0_3px_rgba(100,100,100,.2)]
                         "
                     />
 

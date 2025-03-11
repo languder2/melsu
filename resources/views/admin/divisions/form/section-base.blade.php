@@ -23,6 +23,16 @@
             label="Parent"
         />
 
+        <div class="flex-1">
+            <x-form.input
+                id="form_name"
+                name="name"
+                label="Название"
+                value="{{old('name')?? $current->name ?? null}}"
+                required
+            />
+        </div>
+
         <div class="flex gap-3">
             <div class="w-24">
                 <x-form.input
@@ -30,17 +40,15 @@
                     name="acronym"
                     label="Акроним"
                     value="{{old('acronym')?? $current->acronym ?? null}}"
-                    required
                 />
             </div>
 
             <div class="flex-1">
                 <x-form.input
-                    id="form_name"
-                    name="name"
-                    label="Название"
-                    value="{{old('name')?? $current->name ?? null}}"
-                    required
+                    id="form_alt_name"
+                    name="alt_name"
+                    label="Альтернативное название (сокращенное)"
+                    value="{{old('alt_name')?? $current->alt_name ?? null}}"
                 />
             </div>
         </div>

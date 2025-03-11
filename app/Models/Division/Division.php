@@ -2,6 +2,7 @@
 
 namespace App\Models\Division;
 
+use App\Enums\ContactType;
 use App\Enums\DivisionType;
 use App\Models\Contact;
 use App\Models\Gallery\Image;
@@ -26,6 +27,7 @@ class Division extends Model
         'id',
         'acronym',
         'name',
+        'alt_name',
         'type',
         'parent_id',
         'coordinator_id',
@@ -54,6 +56,7 @@ class Division extends Model
 //            'test'              => "required",
             'acronym'           => "",
             'name'              => "required",
+            'alt_name'          => "",
             'code'              => "nullable|unique:divisions,code,{$id},id,deleted_at,NULL",
             'type'              => "",
             'sort'             => '',
@@ -130,15 +133,31 @@ class Division extends Model
         return $this->morphMany(PageContent::class, 'relation');
     }
 
-    public function contacts(?string $type = null): MorphMany
+    public function contacts(): MorphMany
     {
         $query = $this->morphMany(Contact::class, 'relation');
-
-        if($type)
-            $query->where('type', $type);
-
         return $query->orderBy('type')->orderBy('sort');
     }
+
+    public function phones(): MorphMany
+    {
+        return $this->morphMany(Contact::class, 'relation')
+            ->where('type',ContactType::Phone)
+            ->orderBy('sort');
+    }
+    public function emails(): MorphMany
+    {
+        return $this->morphMany(Contact::class, 'relation')
+            ->where('type',ContactType::Email)
+            ->orderBy('sort');
+    }
+    public function addresses(): MorphMany
+    {
+        return $this->morphMany(Contact::class, 'relation')
+            ->where('type',ContactType::Address)
+            ->orderBy('sort');
+    }
+
     public function images(): MorphMany
     {
         return $this->morphMany(Image::class, 'relation');
@@ -159,9 +178,15 @@ class Division extends Model
 
     public function getLinkAttribute(): string
     {
-        return route('public:division:show', [
-            'code' => $this->alias ?? $this->id,
-        ]);
+        $code = $this->alias ?? $this->id;
+
+        return match($this->type){
+            default                     => route('public:division:show',        $code),
+            DivisionType::Faculty       => route('public:education:faculty',    $code),
+            DivisionType::Department    => route('public:education:department', $code),
+            DivisionType::Lab           => route('public:education:lab',        $code),
+            DivisionType::Branch        => route('public:education:branch',     $code),
+        };
     }
 
     public static function search(&$division,$search): void
@@ -214,19 +239,6 @@ class Division extends Model
             self::searchVerifiedID($sub, $ids);
     }
 
-    protected function getIdentityAttribute(): ?string
-    {
-        if(!$this->relation_type)
-            return null;
-
-        return match($this->relation_type){
-            'App\Models\Education\Faculty'     => "faculty:{$this->relation_id}",
-            'App\Models\Education\division'  => "division:{$this->relation_id}",
-            'App\Models\Education\Lab'         => "lab:{$this->relation_id}",
-            default                             => "{$this->relation_type}:{$this->relation_id}",
-        };
-
-    }
 
 }
 

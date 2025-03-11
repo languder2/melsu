@@ -18,6 +18,7 @@ return new class extends Migration
                 $table->integer('sort')->default(1000)->after('code');
                 $table->string('type',50)->after('name')->nullable();
                 $table->longText('description')->nullable()->after('code');
+                $table->string('alt_name')->nullable()->after('name');
 
                 $table->dropColumn('relation_id');
                 $table->dropColumn('relation_type');
@@ -35,6 +36,7 @@ return new class extends Migration
             Schema::table('divisions', function (Blueprint $table) {
                 $table->dropColumn('acronym');
                 $table->dropColumn('sort');
+                $table->dropColumn('alt_name');
                 $table->dropColumn('description');
 
                 $table->integer('order')->default(1000)->after('code');
