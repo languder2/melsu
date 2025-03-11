@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded',()=>{
+document.addEventListener('DOMContentLoaded', () => {
     $('.slider').each(function () {
         var $this = $(this);
         var $group = $this.find('.slide_group');
@@ -25,6 +25,11 @@ document.addEventListener('DOMContentLoaded',()=>{
             } else {
                 slideLeft = '-100%';
                 animateLeft = '100%';
+            }
+
+            if (currentIndex === $slides.length - 1 && newIndex === 0) {
+                slideLeft = '100%';
+                animateLeft = '-100%';
             }
 
             $slides.eq(newIndex).css({
@@ -70,7 +75,7 @@ document.addEventListener('DOMContentLoaded',()=>{
             if (currentIndex !== 0) {
                 move(currentIndex - 1);
             } else {
-                move(3);
+                move($slides.length - 1);
             }
         });
 
@@ -88,4 +93,4 @@ document.addEventListener('DOMContentLoaded',()=>{
 
         advance();
     });
-})
+});
