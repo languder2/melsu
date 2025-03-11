@@ -27,9 +27,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 animateLeft = '100%';
             }
 
+            // Изменено здесь
             if (currentIndex === $slides.length - 1 && newIndex === 0) {
                 slideLeft = '100%';
                 animateLeft = '-100%';
+            } else if (currentIndex === 0 && newIndex === $slides.length - 1) {
+                slideLeft = '-100%';
+                animateLeft = '100%';
             }
 
             $slides.eq(newIndex).css({
