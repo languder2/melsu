@@ -1,7 +1,8 @@
 <?php
 
 use App\Http\Controllers\{News\NewsController, suStructureController};
-use App\Http\Controllers\{AdminController, PagesController, ScheduleController};
+use App\Http\Controllers\{AdminController, PagesController};
+use App\Http\Controllers\Schedule\ScheduleController;
 use App\Http\Controllers\Division\DivisionController;
 use App\Http\Controllers\Education\EducationController;
 use App\Http\Controllers\Gallery\PublicGallery;
@@ -148,7 +149,7 @@ Route::get('{alias}', [PagesController::class, 'showPage']);
 Route::controller(ScheduleController::class)
     ->prefix('schedule')
     ->group(function () {
-        Route::get('/schedule',  'index')->name('public.schedule.index');
+        Route::get('/show',  'index')->name('public.schedule.index');
         Route::get('/get-groups', 'getGroups')->name('public.schedule.getGroups');
         Route::post('/schedule-result', 'updateSchedule')->name('public.schedule.updateSchedule');
     });

@@ -35,6 +35,7 @@
             text="Структура"
             class="text-lg"
         />
+
         <x-admin.sidebar-li
             link="{{route('admin:faculty:list')}}"
             ico="fas fa-university"
@@ -52,6 +53,13 @@
             link="{{route('admin:image:list')}}"
             ico="far fa-images"
             text="Gallery"
+            class="text-xl"
+        />
+
+        <x-admin.sidebar-li
+            link="{{route('schedule.page')}}"
+            ico="fas fa-calendar-alt fa-lg"
+            text="Расписание"
             class="text-xl"
         />
 

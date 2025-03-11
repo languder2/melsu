@@ -1,20 +1,15 @@
 <?php
 
-use App\Http\Controllers\News\NewsController;
-use App\Http\Controllers\suStructureController;
-use App\Http\Controllers\Menu\{ItemsController as MenuItems, MenuController};
-use App\Http\Controllers\PagesController;
 use App\Http\Controllers\Division\DivisionController;
-use App\Http\Controllers\Education\{
-    DepartmentController,
-    FacultyController,
-    SpecialityController,
-    LabsController
-};
+use App\Http\Controllers\Education\{DepartmentController, FacultyController, LabsController, SpecialityController};
+use App\Http\Controllers\Menu\{ItemsController as MenuItems, MenuController};
 use App\Http\Controllers\News\EventsController;
+use App\Http\Controllers\News\NewsController;
+use App\Http\Controllers\PagesController;
+use App\Http\Controllers\Schedule\ScheduleController;
 use App\Http\Controllers\Staffs\StaffController;
+use App\Http\Controllers\suStructureController;
 use App\Http\Controllers\Users\UserController;
-use App\Http\Controllers\ScheduleController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -232,6 +227,8 @@ Route::
         Route::post('departments/update',"DepartmentsUpdate")
             ->name('imports:departments:update');
     });
+
+/*schedule*/
 
 Route::middleware('auth.check')
     ->prefix('schedule')

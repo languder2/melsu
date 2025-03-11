@@ -1,14 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Schedule;
 
+use App\Http\Controllers\Controller;
+use App\Models\Schedule\ScheduleModel;
 use Illuminate\Http\Request;
-use App\Models\ScheduleModel;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\View;
-use Illuminate\Foundation\Application;
-use Illuminate\Contracts\View\Factory;
 
 class ScheduleController extends Controller
 {
@@ -46,6 +45,9 @@ class ScheduleController extends Controller
             $jsonData = str_replace('\\', '/', $jsonData);
             $data = json_decode($jsonData, true);
             ScheduleModel::importFromJson($data);
+
+            return Redirect::route('schedule.page')->with('success', 'Расписание успешно импортировано.');
+
         }
         else{
             return response()->json(['message' => 'Файл не найден'], 400);

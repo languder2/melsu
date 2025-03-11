@@ -1,11 +1,9 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Schedule;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log;
 
 class ScheduleModel extends Model
 {

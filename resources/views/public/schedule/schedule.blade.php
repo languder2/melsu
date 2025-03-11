@@ -19,9 +19,9 @@ return $weekNumber;
 @section('content')
     <section class="p-2.5">
     <div class="border-2 border-red-900 p-6 ">
-        <form action="{{ route('public.schedule.updateSchedule') }}" method="POST" class="grid grid-cols-1 xl:grid-cols-6 gap-2">
+        <form action="{{ route('public.schedule.updateSchedule') }}" method="POST" class="flex flex-col xl:flex-row gap-2">
             @csrf
-            <div>
+            <div class="xl:max-w-50 w-full">
                 <select id="week" name="week" class="bg-white p-2.5 appearance-none border border-red-900 xl:max-w-50 w-full">
                     @php
                         $today = date('Y-m-d');
@@ -38,7 +38,7 @@ return $weekNumber;
                     @endforeach
                 </select>
             </div>
-            <div>
+            <div class="xl:max-w-50 w-full">
                 <select id="faculty" class="bg-white p-2.5 appearance-none border border-red-900 xl:max-w-50 w-full" name="faculty">
                     <option value="">Факультет</option>
                     @foreach ($faculties as $faculty)
@@ -46,7 +46,7 @@ return $weekNumber;
                     @endforeach
                 </select>
             </div>
-            <div>
+            <div class="xl:max-w-50 w-full">
                 <select id="form_edu" name="form_edu" class="bg-white p-2.5 appearance-none border border-red-900 xl:max-w-50 w-full" required>
                     <option value="">Форма обучения</option>
                     @foreach ($forms_edu as $form)
@@ -58,7 +58,7 @@ return $weekNumber;
                     @endforeach
                 </select>
             </div>
-                <div>
+                <div class="xl:max-w-50 w-full">
                     <select id="course" name="course" class="bg-white p-2.5 appearance-none border border-red-900 xl:max-w-50 w-full" required>
                         <option value="">Курс</option>
                         @foreach ($courses as $course)
@@ -68,7 +68,7 @@ return $weekNumber;
                         @endforeach
                     </select>
                 </div>
-            <div class="select-wrapper relative">
+            <div class="select-wrapper relative xl:max-w-50 w-full">
                 <input type="text" class="input-hidden hidden">
                 <input name="group" class="chosen-value relative top-0 left-0 bg-white p-2.5 appearance-none border border-red-900 xl:max-w-50 w-full
                              transition duration-300 ease-in-out placeholder:text-[black] outline-0 z-20"
@@ -126,7 +126,6 @@ return $weekNumber;
                     @break
                 @endforeach
                 <h3 class="font-bold text-xl my-3">Группа: {{ $gk }}</h3>
-
                 @if($maxWeekday <= 5)
                 <div class="grid grid-cols-1 xl:grid-cols-[3%_5%_1fr_5%_1fr_5%_1fr_5%_1fr_5%_1fr_5%] gap-[2px] p-[2px] bg-[#D3D3D3]">
                     @else
@@ -139,14 +138,12 @@ return $weekNumber;
                                 @if ($i + 1 <= $maxWeekday)
                                     @if ($edu == '2' || $edu == '3')
                                         <div class="{{ ($i + 1 == $todayIndex) ? 'today' : '' }} bg-red-900 text-white col-span-2 flex items-center justify-center p-2.5">
+                                            {{ ($i + 1 == $todayIndex) ? 'today' : '' }}
                                             {{ $day }}
                                         </div>
                                     @else
-                                        <div class="bg-red-900 font-bold text-white col-span-2 flex items-center justify-center p-2.5" id="{{ ($i + 1 == 6) ? 'saturday' : '' }}" class="{{ ($i + 1 == $todayIndex) ? 'today' : '' }}">
-                                            @if ($i + 1 == 6 && $maxWeekday <= 5)
-                                            @else
-                                                {{ $day }}
-                                            @endif
+                                        <div class="bg-red-900 font-bold text-white col-span-2 flex items-center justify-center p-2.5 {{ ($i + 1 == $todayIndex) ? 'today' : '' }} {{ ($i + 1 == 6 && $maxWeekday > 5) ? 'saturday' : '' }}">
+                                            {{ $day }}
                                         </div>
                                     @endif
                                 @endif
@@ -284,7 +281,6 @@ return $weekNumber;
                 </div>
     </section>
 @endsection
-
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const weekSelect = document.getElementById('week');
@@ -303,6 +299,33 @@ return $weekNumber;
                 .then(response => response.text())
                 .then(html => {
                     groupList.innerHTML = html;
+                    let selectWrappers = document.querySelectorAll('.select-wrapper');
+                    selectWrappers.forEach(function(selectWrapper) {
+                        const chosenValue = selectWrapper.querySelector('.chosen-value');
+                        const valueList = selectWrapper.querySelector('.value-list');
+                        const inputHidden = selectWrapper.querySelector('.input-hidden');
+                        const dropLi = selectWrapper.querySelectorAll('.drop-li');
+
+                        chosenValue.addEventListener('click', function() {
+                            valueList.classList.toggle('open');
+                            valueList.classList.toggle('closed');
+                        });
+                        dropLi.forEach(function(li) {
+                            li.addEventListener('click', function() {
+                                const value = li.textContent;
+                                chosenValue.value = value;
+                                inputHidden.value = value;
+                                valueList.classList.remove('open');
+                                valueList.classList.add('closed');
+                            });
+                        });
+                        document.addEventListener('click', function(event) {
+                            if (!selectWrapper.contains(event.target)) {
+                                valueList.classList.remove('open');
+                                valueList.classList.add('closed');
+                            }
+                        });
+                    });
                 });
         }
 
@@ -310,6 +333,8 @@ return $weekNumber;
         facultySelect.addEventListener('change', updateGroups);
         formEduSelect.addEventListener('change', updateGroups);
         courseSelect.addEventListener('change', updateGroups);
+
+        updateGroups();
     });
 </script>
 

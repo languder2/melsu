@@ -5406,6 +5406,12 @@ position: fixed;
 /*END style scroll to top*/
 
 /*schedule style*/
+.today:before{
+    content: 'Сегодня:';
+    margin-right: 5px;
+    color: lime;
+    font-weight: bold;
+}
 #scheduleTable{
     display: block;
 }
