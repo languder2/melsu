@@ -14,7 +14,7 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Faculty extends Model
+class Faculty extends Division
 {
     use SoftDeletes;
 
@@ -91,58 +91,57 @@ class Faculty extends Model
         $this->attributes['order'] = $order ?? 10000;
     }
 
-    public function image(): MorphMany
-    {
-        return $this->morphMany(Image::class, 'relation');
-    }
+//    public function images(): MorphMany
+//    {
+//        return $this->morphMany(Image::class, 'relation');
+//    }
 
-    public function logo(): ?MorphOne
-    {
+//    public function preview(): MorphOne
+//    {
+//
+//        $image = $this->MorphOne(Image::class, 'relation')->where('type', 'preview');
+//
+//        if(!$this->id)
+//            return $image;
+//
+//        if(!$image->count())
+//            $image->create([
+//                'type'      => 'logo',
+//                'name'      => 'preview',
+//            ]);
+//
+//        return $image;
+//    }
 
-        $image = $this->MorphOne(Image::class, 'relation')->where('type', 'logo');
+//    public function staffs($all= false): MorphMany
+//    {
+//
+//        $response = $this->morphMany(StaffAffiliation::class, 'relation')->orderBy('order');
+//
+//        if(!$all)
+//            $response = $response->where('type','staff');
+//
+//        return $response;
+//    }
+//    public function chief(): MorphOne
+//    {
+//        return $this->MorphOne(StaffAffiliation::class, 'relation')->where('type','chief');
+//    }
 
-        if(!$this->id)
-            return $image;
-
-        if(!$image->count())
-            $image->create([
-                'type'      => 'logo',
-                'name'      => 'preview',
-            ]);
-
-        return $image;
-
-    }
-
-    public function staffs($all= false): MorphMany
-    {
-
-        $response = $this->morphMany(StaffAffiliation::class, 'relation')->orderBy('order');
-
-        if(!$all)
-            $response = $response->where('type','staff');
-
-        return $response;
-    }
-    public function chief(): MorphOne
-    {
-        return $this->MorphOne(StaffAffiliation::class, 'relation')->where('type','chief');
-    }
-
-    public function sections(): MorphMany
-    {
-        return $this->morphMany(PageContent::class, 'relation');
-    }
-
-    public function contacts(?string $type = null): MorphMany
-    {
-        $query = $this->morphMany(Contact::class, 'relation');
-
-        if($type)
-            $query->where('type', $type);
-
-        return $query->orderBy('type')->orderBy('sort');
-    }
+//    public function sections(): MorphMany
+//    {
+//        return $this->morphMany(PageContent::class, 'relation');
+//    }
+//
+//    public function contacts(?string $type = null): MorphMany
+//    {
+//        $query = $this->morphMany(Contact::class, 'relation');
+//
+//        if($type)
+//            $query->where('type', $type);
+//
+//        return $query->orderBy('type')->orderBy('sort');
+//    }
 
     public function getLinkAttribute(): string
     {
@@ -151,10 +150,21 @@ class Faculty extends Model
         ]);
     }
 
-    public function department():MorphOne
+    public function division():MorphOne
     {
         return $this->morphOne(Division::class, 'relation');
     }
+
+    public function getStaffsAttribute()
+    {
+        return $this->division->staffs;
+    }
+    public function getContactsAttribute()
+    {
+        return $this->division->contacts;
+    }
+
+
 
 
 }

@@ -43,11 +43,13 @@
                 <x-form.errors
                     setTheme="1"
                 />
-                @include('admin.education.faculties.form.section-base')
-                @include('admin.education.faculties.form.section-contacts')
-                @include('admin.education.faculties.form.section-staffs')
-                @include('admin.education.faculties.form.section-documents')
-                @include('admin.education.faculties.form.section-contents')
+{{--                @include('admin.education.departments.form')--}}
+                @include('admin.education.departments.form.section-base')
+
+                @component('components.form.sections.contacts',compact('current')) @endcomponent
+                @component('components.form.sections.staffs',['current'=>$current->division]) @endcomponent
+                @component('components.form.sections.documents',['current'=>$current->division]) @endcomponent
+                @component('components.form.sections.contents',['current'=>$current->division]) @endcomponent
 
             </div>
 
@@ -55,6 +57,3 @@
 
     </form>
 @endsection
-
-
-

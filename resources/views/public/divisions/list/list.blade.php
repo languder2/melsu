@@ -4,7 +4,6 @@
     @include('public.divisions.list.staff',['staff' => $division->chief->card,'post' => $division->chief->post])
 @endif
 
-
 @if($division->staffs->count())
     @foreach($division->staffs as $staff)
         @if($staff->card->divisions->count())

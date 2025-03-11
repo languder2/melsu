@@ -3,11 +3,16 @@
 namespace App\Models\Education;
 
 use App\Models\Contact;
+use App\Models\Division\Division;
 use App\Models\Education\Department as EducationDepartment;
+use App\Models\Gallery\Image;
+use App\Models\Page\Content as PageContent;
+use App\Models\Staff\Affiliation as StaffAffiliation;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Department extends Model
@@ -80,6 +85,11 @@ class Department extends Model
         return $this->morphMany(Lab::class, 'relation');
     }
 
+    public function sections(): MorphMany
+    {
+        return $this->morphMany(PageContent::class, 'relation');
+    }
+
     public function contacts(?string $type = null): MorphMany
     {
         $query = $this->morphMany(Contact::class, 'relation');
@@ -89,6 +99,47 @@ class Department extends Model
 
         return $query->orderBy('type')->orderBy('sort');
     }
+    public function staffs($all= false): MorphMany
+    {
+        $response = $this->morphMany(StaffAffiliation::class, 'relation')->orderBy('order');
+
+        if(!$all)
+            $response = $response->where('type','staff');
+
+        return $response;
+    }
+
+    public function preview(): MorphOne
+    {
+
+        $image = $this->MorphOne(Image::class, 'relation')->where('type', 'logo');
+
+        if(!$this->id)
+            return $image;
+
+        if(!$image->count())
+            $image->create([
+                'type'      => 'logo',
+                'name'      => 'preview',
+            ]);
+
+        return $image;
+    }
+
+    public function division(): MorphOne
+    {
+
+        $item = $this->MorphOne(Division::class, 'relation');
+
+        if(!$this->id)
+            return $item;
+
+        if(!$item)
+            $item = New Division();
+
+        return $item;
+    }
+
 
 
 }

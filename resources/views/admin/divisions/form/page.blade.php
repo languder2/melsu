@@ -9,10 +9,6 @@
     @endif
 @endsection
 
-@section('top-menu')
-    @include('admin.education.menu')
-@endsection
-
 @section('content-header')
     <x-html.admin.content-header>
         @if($current)
@@ -49,9 +45,10 @@
                 />
 
                 @include('admin.divisions.form.section-base')
-                @include('admin.divisions.form.section-contents')
-                @include('admin.divisions.form.section-documents')
-                @include('admin.divisions.form.section-staffs')
+                @component('components.form.sections.contacts',compact('current')) @endcomponent
+                @component('components.form.sections.staffs',compact('current')) @endcomponent
+                @component('components.form.sections.documents',compact('current')) @endcomponent
+                @component('components.form.sections.contents',compact('current')) @endcomponent
 
             </div>
 

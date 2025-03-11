@@ -19,6 +19,7 @@ class Image extends Model
 
     protected $fillable = [
         'id',
+        'reference_id',
         'name',
         'alt',
         'filename',
@@ -69,6 +70,10 @@ class Image extends Model
         }
 
         $this->filetype = 'webp';
+
+
+        $this->reference_id = null;
+        $this->save();
 
         $manager = new ImageManager(new Driver());
         $image = $manager->read($file);
@@ -164,6 +169,12 @@ class Image extends Model
         $this->reference_id = Image::where('filename', $path->take(-2)->first())->pluck('id')->first();
 
         $this->save();
+    }
+    public static function getReference(string $path):?int
+    {
+        $path = collect(explode('/', $path));
+
+        return Image::where('filename', $path->take(-2)->first())->pluck('id')->first();
     }
 
     public function getOrderAttribute($order):int|null

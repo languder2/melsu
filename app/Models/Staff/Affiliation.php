@@ -51,14 +51,20 @@ class Affiliation extends Model
         $chief = $record->chief;
 
         if(!$chief)
-            $chief= $record->chief()->create([
-                'type'      => 'chief',
-            ]);
+            $chief= new Affiliation(['type'      => 'chief']);
 
-        $chief->fill($form);
-        $chief->staff_id = $staff->id;
+
+        $chief->fill([
+            'post'          => $form['post'],
+            'staff_id'      => $staff->id,
+            'full_name'     => $staff->full_name,
+            'order'         => $staff->order,
+            'show'          => array_key_exists('show',$form),
+        ])
+            ->relation()->associate($record)
+            ->save();
+
         $chief->save();
-
     }
 
     public static function ProcessingStaff($record,$aID,$form):void

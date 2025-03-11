@@ -54,8 +54,8 @@
 
 
         <div class="flex gap-4 my-2">
-            @if($current->logo)
-                <img src="{{$current->logo->thumbnail}}" alt="123" class="h-44 rounded-md">
+            @if($current->preview)
+                <img src="{{$current->preview->thumbnail}}" alt="123" class="h-44 rounded-md">
             @endif
 
             <div class="flex-1">
@@ -65,7 +65,7 @@
                             id="form_code"
                             name="code"
                             label="Alias"
-                            value="{{ old('code') ?? optional($current)->code }}"
+                            value="{{ old('code') ?? $current->code ?? null }}"
                         />
                     </div>
                     <span class="w-full md:w-40">
@@ -91,13 +91,12 @@
                     name="image"
                 />
 
-
-{{--                <x-form.input--}}
-{{--                    id="form_preview"--}}
-{{--                    name="preview"--}}
-{{--                    label="Превью из галереи"--}}
-{{--                    value="{{old('preview')?? optional($current)->logo->src ?? null}}"--}}
-{{--                />--}}
+                <x-form.input
+                    id="form_preview"
+                    name="preview"
+                    label="Превью из галереи"
+                    value="{{old('preview')?? $current->preview->src ?? null}}"
+                />
 
             </div>
         </div>
@@ -109,7 +108,7 @@
             id="form_description"
             name="description"
             label="Описание"
-            value="{{old('description')??@$current->description}}"
+            value="{{old('description') ?? $current->description ?? null}}"
         />
     </div>
 

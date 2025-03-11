@@ -14,6 +14,7 @@ class Contact extends Model
 
     protected $fillable = [
         'id',
+        'title',
         'content',
         'type',
         'is_show',
@@ -23,6 +24,7 @@ class Contact extends Model
     public static function FormRules($id): array
     {
         return [
+            'title'     => "",
             'content'   => 'required',
             'type'      => "required",
             'show'      => '',

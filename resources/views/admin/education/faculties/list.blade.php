@@ -14,7 +14,7 @@
             "
         >
             <img
-                src="{{$item->logo->thumbnail}}"
+                src="{{$item->preview->thumbnail}}"
                 alt="{{$item->name}}"
                 class="
                     h-96

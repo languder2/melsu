@@ -32,19 +32,13 @@
         <x-admin.sidebar-li
             link="{{route('admin:division:list')}}"
             ico="fas fa-sitemap"
-            text="Подразделения"
+            text="Структура"
             class="text-lg"
         />
         <x-admin.sidebar-li
             link="{{route('admin:faculty:list')}}"
             ico="fas fa-university"
             text="Университет"
-        />
-
-        <x-admin.sidebar-li
-            link="{{route('admin:structure')}}"
-            ico="fas fa-project-diagram text-lg"
-            text="Структура"
         />
 
         <x-admin.sidebar-li

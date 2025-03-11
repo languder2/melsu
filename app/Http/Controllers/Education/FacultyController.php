@@ -27,11 +27,17 @@ class FacultyController extends Controller
 
     public function form($id = null)
     {
+
         $current = Faculty::find($id);
 
         if(!$current)
             $current= new Faculty();
 
+
+        $current->contacts()->create(['type'=>'phone','content'=>'extend test']);
+
+        dump($current->contacts);
+        dd();
         return view('admin.education.faculties.form.page', compact('current'));
     }
 
@@ -57,20 +63,23 @@ class FacultyController extends Controller
             foreach ($form['staffs'] as $aID=>$staff)
                 Affiliation::ProcessingStaff($record,$aID,$staff);
 
+
+
         if(!$record->logo)
             $record->logo = $record->logo()->create([
                 'name'          => $record->name,
                 'type'          => 'logo',
             ])->save();
 
+
         if($request->file('image')){
             $record->logo->saveImage($request->file('image'));
             $record->logo->reference_id = null;
             $record->logo->save();
         }
-        elseif($form['preview']){
+        elseif($request->has('preview')){
             $record->logo->name = $record->name;
-            $record->logo->getReferenceID($form['preview']);
+            $record->logo->getReferenceID($request->get('preview'));
             $record->logo->save();
         }
 

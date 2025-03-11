@@ -22,12 +22,12 @@ class DepartmentController extends Controller
     {
 
         $current = Department::find($id);
+
+        if(!$current)
+            $current = new Department();
+
         $add2faculty = request()->get('faculty');
         $faculties = Faculty::pluck('name', 'code')->toArray();
-
-
-
-        dd($current->contacts);
 
         return view('admin.education.departments.form.page',
             compact('current','add2faculty','faculties'));

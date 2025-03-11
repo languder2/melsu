@@ -11,7 +11,7 @@
                         "name"      => "chief[staff_id]",
                         "label"     => "Руководитель",
                         "id"        => "form_department_chief",
-                        "value"     => $current->id ?? null,
+                        "value"     => $chief ?? null,
                     ]'
                 :staff="old('chief')"
             />
@@ -52,3 +52,4 @@
         </div>
     </div>
 </div>
+

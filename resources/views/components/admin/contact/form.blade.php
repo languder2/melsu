@@ -25,7 +25,15 @@
             </div>
         </div>
 
-        <div class="grid grid-cols-[1fr_auto] gap-4 items-center mt-3">
+        <div class="grid grid-cols-[1fr_auto_auto] gap-4 items-center mt-3">
+            <x-form.input.with-label
+                id="contact_{{$current->id}}_title"
+                name="contacts[{{$current->id}}][title]"
+                old="contacts.{{$current->id}}.title"
+                :value="$current->title"
+                label="Заголовок"
+            />
+
             <div>
                 <x-form.input.with-label
                     id="contact_{{$current->id}}_sort"

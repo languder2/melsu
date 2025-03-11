@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers\Division;
 
+use App\Enums\DivisionType;
 use App\Http\Controllers\Controller;
+use App\Models\Contact;
 use App\Models\Division\Division;
-use App\Models\Education\Faculty;
-use App\Models\Education\Department as EducationDepartment;
-use App\Models\Education\Lab;
 use App\Models\Menu\Menu;
 use App\Models\Staff\Affiliation;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use App\Models\Page\Content as PageContent;
 
 class DivisionController extends Controller
 {
@@ -25,19 +25,16 @@ class DivisionController extends Controller
 
     public function form(Request $request,$id = null): View|RedirectResponse
     {
-        $parents = Division::query();
+        $current = Division::find($id);
 
-        if($id)
-            if($current = Division::find($id))
-                $parents->where('id','!=',$id);
-            else
-                return redirect()->route('admin:division:list');
-        else
-            $current = null;
+        if(!$current)
+            $current = new Division();
 
-        $parents = $parents->orderBy('name')->get()->pluck('name','id');
+        $parents = Division::where('id','!=',$id)->orderBy('name')->get()->pluck('name','id');
 
-        return view('admin.divisions.form.page',compact('parents','current'));
+        $types = DivisionType::forSelect();
+
+        return view('admin.divisions.form.page',compact('parents','current','types'));
     }
 
     public function save(Request $request)
@@ -49,79 +46,46 @@ class DivisionController extends Controller
         else
             $record = Division::find($request->get('id'));
 
+        $record->fill($form);
+
         if($request->has('coordinator'))
             $record->coordinator_id = $request->get('coordinator')['staff_id'] ?? null;
 
-        $record->fill($form);
-
         $record->show = array_key_exists('show', $form);
-
-        if(request()->get('identity')){
-            $identity = explode(':',$request->get('identity'));
-
-            switch ($identity[0]) {
-                case 'faculty':
-                    $identity = Faculty::find($identity[1]);
-                break;
-
-                case 'department':
-                    $identity = EducationDepartment::find($identity[1]);
-                break;
-
-                case 'lab':
-                    $identity = Lab::find($identity[1]);
-                break;
-
-                default:
-                    $identity = null;
-                break;
-            }
-
-            if($identity)
-                $record->relation()->associate($identity)->save();
-        }
-
-        $record->show = array_key_exists('show',$form);
 
         $record->save();
 
 
+        /* chief */
         if(array_key_exists('chief',$form))
             Affiliation::ProcessingChief($record,$form['chief']);
 
-
+        /* staffs */
         if(array_key_exists('staffs',$form))
             foreach ($form['staffs'] as $aID=>$staff)
                 Affiliation::ProcessingStaff($record,$aID,$staff);
 
-        if($request->file('image')){
+        /* upload image */
+        if($request->file('image'))
             $record->preview->saveImage($request->file('image'));
-            $record->preview->reference_id = null;
-            $record->preview->save();
-        }
-        elseif($form['preview']){
-            $record->preview->name = $record->name;
-            $record->preview->getReferenceID($form['preview']);
-            $record->preview->save();
-        }
 
-        if(array_key_exists('sections',$form)){
-            foreach ($form['sections'] as $section_id=>$section) {
-                if(!$section['title']) continue;
+        /* image form gallery */
+        elseif($request->has('preview'))
+            $record->preview->fill([
+                'name'          => $record->name,
+                'reference_id'  => $record->preview::getReference($request->get('preview')),
+            ])
+                ->relation()->associate($record)
+                ->save();
 
-                $item = $record->sections()->find($section_id);
+        /* add content sections*/
+        if(array_key_exists('sections',$form))
+            PageContent::processing($record,$request->get('sections'));
 
-                if(!$item)
-                    $item = $record->sections()->create(['title'=> 'new']);
+        /* add contacts*/
+        if($request->has('contacts'))
+            Contact::processing($record,$request->get('contacts'));
 
-                $item->fill($section);
-
-                $item->show         = array_key_exists('show',$section);
-                $item->show_title   = array_key_exists('show_title',$section);
-
-                $item->save();
-            }
-        }
 
         return redirect()->route('admin:division:list');
     }
@@ -144,7 +108,6 @@ class DivisionController extends Controller
     /* Public */
     public function publicList(Request $request):View
     {
-
         return view('public.divisions.list.page',[
             'division'      => Division::where('code', 'rectorate')->first(),
             'menu'          => Menu::where('code','university')->first(),

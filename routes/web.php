@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\{News\NewsController, suStructureController};
 use App\Http\Controllers\{AdminController, PagesController, ScheduleController};
-use App\Http\Controllers\Department\DepartmentController;
+use App\Http\Controllers\Division\DivisionController;
 use App\Http\Controllers\Education\EducationController;
 use App\Http\Controllers\Gallery\PublicGallery;
 use App\Http\Controllers\Staffs\StaffController;
@@ -107,12 +107,9 @@ Route::controller(EducationController::class)
 
 /* Department: public */
 
-Route::controller(DepartmentController::class)
-    ->group(function () {
-        Route::get('departments', 'showList')->name('public:department:list');
-
-        Route::get('department/{code}', 'show')->name('public:department:show');
-    });
+Route::get('divisions', [DivisionController::class,'publicList'])->name('public:division:list');
+Route::get('division/{code?}',[DivisionController::class,'show'])->name('public:division:show');
+Route::get('rectorate',[DivisionController::class,'show'])->setDefaults(['code'=>'rectorate']);
 
 /* Staffs: public */
 

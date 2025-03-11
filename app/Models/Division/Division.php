@@ -2,6 +2,8 @@
 
 namespace App\Models\Division;
 
+use App\Enums\DivisionType;
+use App\Models\Contact;
 use App\Models\Gallery\Image;
 use App\Models\Staff\Staff;
 use App\Models\Staff\Affiliation as StaffAffiliation;
@@ -19,15 +21,16 @@ class Division extends Model
 {
     use SoftDeletes;
 
-    protected $table = 'departments';
+    protected $table = 'divisions';
 
     protected $fillable = [
         'id',
         'name',
+        'type',
         'parent_id',
         'coordinator_id',
         'code',
-        'order',
+        'sort',
         'show',
     ];
 
@@ -40,12 +43,17 @@ class Division extends Model
         'show'
     ];
 
+    protected $casts = [
+        'type'  => DivisionType::class,
+    ];
+
     public static function FormRules($id): array
     {
         return [
 //            'test'              => "required",
             'name'              => "required",
-            'code'              => "nullable|unique:departments,code,{$id},id,deleted_at,NULL",
+            'code'              => "nullable|unique:divisions,code,{$id},id,deleted_at,NULL",
+            'type'              => "",
             'order'             => '',
             'parent_id'         => '',
             'sections'          => '',
@@ -66,16 +74,15 @@ class Division extends Model
         ];
     }
 
-    public function getOrderAttribute($order): int|null
+    public function getSortAttribute($sort): int|null
     {
-        return ($order < 10000) ? $order :  null ;
+        return ($sort > 0 && $sort < 1000) ? $sort :  null ;
     }
 
     public function setOrderAttribute($order): void
     {
-        $this->attributes['order'] = $order ?? 10000;
+        $this->attributes['order'] = $order ?? 1000;
     }
-
 
     public function options(): MorphMany
     {
@@ -120,6 +127,36 @@ class Division extends Model
         return $this->morphMany(PageContent::class, 'relation');
     }
 
+    public function contacts(?string $type = null): MorphMany
+    {
+        $query = $this->morphMany(Contact::class, 'relation');
+
+        if($type)
+            $query->where('type', $type);
+
+        return $query->orderBy('type')->orderBy('sort');
+    }
+    public function images(): MorphMany
+    {
+        return $this->morphMany(Image::class, 'relation');
+    }
+
+    public function preview(): MorphOne
+    {
+
+        $image = $this->MorphOne(Image::class, 'relation')->where('type', 'preview');
+
+        return $image;
+    }
+
+
+    public function getPreviewAttribute()
+    {
+        return $this->preview()->first() ?? new Image([
+            'type'  => 'preview',
+        ]);
+    }
+
     public function getLinkAttribute(): string
     {
         return route('public:division:show', [
@@ -127,20 +164,7 @@ class Division extends Model
         ]);
     }
 
-    public function preview(): MorphOne
-    {
-        $image = $this->MorphOne(Image::class, 'relation')->where('type', 'preview');
-
-        if(!$image->count())
-            $image->create([
-                'type'      => 'preview',
-                'name'      => 'preview',
-            ])->save();
-
-        return $image;
-    }
-
-    public static function search(&$division,$search): void
+    private static function search(&$division,$search): void
     {
 
         $list = self::where('name', 'LIKE', "%$search%")->get();
@@ -195,7 +219,7 @@ class Division extends Model
         return $this->MorphTo();
     }
 
-    public function getIdentityAttribute(): ?string
+    protected function getIdentityAttribute(): ?string
     {
         if(!$this->relation_type)
             return null;
@@ -208,8 +232,6 @@ class Division extends Model
         };
 
     }
-
-
 
 }
 

@@ -17,7 +17,7 @@
                 <x-html.plate-details />
 
                 <img
-                    src="{{$item->logo->thumbnail}}"
+                    src="{{$item->preivew->thumbnail}}"
                     alt="{{$item->name}}"
                     title="{{$item->name}}"
                     class="

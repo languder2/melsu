@@ -1,8 +1,8 @@
 <div
-    id="tab_division_base"
+    id="tab_base"
     @class([
-        "division_form_box",
-        (!old('_token') || old('side_menu') === 'tab_division_base')?'':'hidden'
+        "form_box",
+        (!old('_token') || old('side_menu') === 'tab_base')?'':'hidden'
     ])
 >
     <div class="bg-stone-50 p-4 flex gap-4 mb-4">
@@ -31,9 +31,16 @@
             required
         />
 
-        <x-admin.education.select.opt-group
-            :current="$current->identity ?? null"
+        <x-form.select
+            id="form_type"
+            name="type"
+            old="{{old('type')}}"
+            value="{{$current->type ?? null}}"
+            null="Выбрать"
+            :list="$types"
+            label="Тип подразделения"
         />
+
 
         <x-staff.select
             :current="$current->coordinator_id ?? null"
@@ -64,12 +71,12 @@
                     </div>
                     <span class="w-full md:w-40">
                         <x-form.input
-                            id="form_division_order"
-                            name="order"
+                            id="form_division_sort"
+                            name="sort"
                             type="number"
                             label="Порядок вывода"
                             class="text-center"
-                            value="{{old('order')??optional($current)->order}}"
+                            value="{{old('sort') ?? $current->sort }}"
                         />
                     </span>
 

@@ -1,9 +1,9 @@
 <nav class="bg-white p-4 mb-4 flex">
 
-    <x-html.a-blue
-        href="{{route('admin:education:branches:list')}}"
-        text="Филиалы"
-    />
+{{--    <x-html.a-blue--}}
+{{--        href="{{route('admin:education:branches:list')}}"--}}
+{{--        text="Филиалы"--}}
+{{--    />--}}
 
     <span class="inline-block mx-3 opacity-30">|</span>
 
