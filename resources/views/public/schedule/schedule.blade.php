@@ -246,9 +246,15 @@ return $weekNumber;
                                 @for ($day = 0; $day < 6; $day++)
                                     <div class="day-rasp grid grid-cols-1 gap-2 mb-2">
                                         @if ($day < 5 || ($day == 5 && $maxWeekday > 5))
-                                            <div class="day-week{{ ($day + 1 == $todayIndex) ? 'today' : '' }} bg-red-900 p-2.5 font-bold">
-                                                <h4 class="text-white">{{ $daysOfWeek[$day] }}</h4>
-                                            </div>
+                                            @if ($day >= 0 && $day <= 6 && $todayIndex >= 1 && $todayIndex <= 7 && isset($daysOfWeek[$day]))
+                                                <div class="day-week {{ ($day + 1 == $todayIndex) ? 'today' : '' }} flex bg-red-900 p-2.5 font-bold">
+                                                    <h4 class="text-white">{{ $daysOfWeek[$day] }}</h4>
+                                                </div>
+                                            @else
+                                                <div class="day-week bg-red-900 p-2.5 font-bold">
+                                                    <h4 class="text-white">Ошибка</h4>
+                                                </div>
+                                            @endif
                                             @foreach ($group as $kt => $time)
                                                 @if (isset($time[$day + 1]) && !empty($time[$day + 1]->subject))
                                                     <div class="rasp-box bg-white">
