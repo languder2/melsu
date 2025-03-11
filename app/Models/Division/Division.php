@@ -12,7 +12,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
-use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Page\Content as PageContent;
 use App\Models\Global\Options;
@@ -25,10 +24,12 @@ class Division extends Model
 
     protected $fillable = [
         'id',
+        'acronym',
         'name',
         'type',
         'parent_id',
         'coordinator_id',
+        'description',
         'code',
         'sort',
         'show',
@@ -36,13 +37,13 @@ class Division extends Model
 
     protected $visible = [
         'id',
+        'acronym',
         'name',
         'code',
         'parent_id',
         'coordinator_id',
         'show'
     ];
-
     protected $casts = [
         'type'  => DivisionType::class,
     ];
@@ -51,14 +52,16 @@ class Division extends Model
     {
         return [
 //            'test'              => "required",
+            'acronym'           => "",
             'name'              => "required",
             'code'              => "nullable|unique:divisions,code,{$id},id,deleted_at,NULL",
             'type'              => "",
-            'order'             => '',
+            'sort'             => '',
             'parent_id'         => '',
             'sections'          => '',
             'chief'             => '',
             'documents'         => '',
+            'description'       => '',
             'image'             => '',
             'preview'           => '',
             'show'              => '',
@@ -79,9 +82,9 @@ class Division extends Model
         return ($sort > 0 && $sort < 1000) ? $sort :  null ;
     }
 
-    public function setOrderAttribute($order): void
+    public function setSortAttribute($sort): void
     {
-        $this->attributes['order'] = $order ?? 1000;
+        $this->attributes['sort'] = $sort ?? 1000;
     }
 
     public function options(): MorphMany
@@ -143,17 +146,14 @@ class Division extends Model
 
     public function preview(): MorphOne
     {
-
-        $image = $this->MorphOne(Image::class, 'relation')->where('type', 'preview');
-
-        return $image;
+        return $this->MorphOne(Image::class, 'relation')->where('type', 'preview');
     }
-
 
     public function getPreviewAttribute()
     {
         return $this->preview()->first() ?? new Image([
             'type'  => 'preview',
+            'name'  => $this->name,
         ]);
     }
 
@@ -164,7 +164,7 @@ class Division extends Model
         ]);
     }
 
-    private static function search(&$division,$search): void
+    public static function search(&$division,$search): void
     {
 
         $list = self::where('name', 'LIKE', "%$search%")->get();
@@ -212,11 +212,6 @@ class Division extends Model
 
         foreach ($list as $sub)
             self::searchVerifiedID($sub, $ids);
-    }
-
-    public function relation():MorphTo
-    {
-        return $this->MorphTo();
     }
 
     protected function getIdentityAttribute(): ?string

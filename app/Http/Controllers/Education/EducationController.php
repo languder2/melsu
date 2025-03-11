@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Education;
 
+use App\Enums\DivisionType;
 use App\Http\Controllers\Controller;
+use App\Models\Division\Division;
 use App\Models\Education\Department;
 use App\Models\Education\Faculty;
 use App\Models\Education\Lab;
@@ -17,6 +19,18 @@ class EducationController extends Controller
 {
     public function faculties(): string
     {
+
+        $list = Division::where('show',1)
+            ->where('type',DivisionType::Faculty)
+            ->orderBy('sort')
+            ->orderBy('name')
+            ->get()
+        ;
+
+        return view('public.education.faculties.list', compact('list'));
+
+
+
         return view('pages.page', [
             'breadcrumbs' => (object)[
                 'view'      => null,
@@ -27,8 +41,8 @@ class EducationController extends Controller
             'contents' => [
                 view("public.education.tabs.list",['active' => 'faculties']),
                 view("public.education.faculties.list",[
-                    'list'  => Faculty::where('show',1)->where('type','faculty')
-                        ->orderBy('order')->orderBy('name')->get(),
+                    'list'  => Division::where('show',1)->where('type',DivisionType::Faculty)
+                        ->orderBy('sort')->orderBy('name')->get(),
                 ]),
             ]
         ]);

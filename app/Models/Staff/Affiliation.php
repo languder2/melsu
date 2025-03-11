@@ -22,6 +22,7 @@ class Affiliation extends Model
         'post_alt',
         'order',
         'show',
+        'relation_type'
     ];
     public function relation(): MorphTo
     {

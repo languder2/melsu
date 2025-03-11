@@ -2,19 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Division\Division;
-use App\Imports\Import;
-use App\Models\Staff\Staff;
-use App\Enums\DepartmentType;
-use App\Models\Contact;
-use App\Enums\ContactType;
 use Illuminate\Http\Request;
+use App\Models\Education\Faculty;
 
 class TestController extends Controller
 {
     public function index()
     {
-            return view('test.page');
+        $list= Faculty::all();
+
     }
 
     public function save(Request $request)

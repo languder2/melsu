@@ -36,8 +36,6 @@ class FacultyController extends Controller
 
         $current->contacts()->create(['type'=>'phone','content'=>'extend test']);
 
-        dump($current->contacts);
-        dd();
         return view('admin.education.faculties.form.page', compact('current'));
     }
 

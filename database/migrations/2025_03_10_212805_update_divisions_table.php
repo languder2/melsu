@@ -14,8 +14,13 @@ return new class extends Migration
         if(Schema::hasTable('departments'))
             Schema::table('departments', function (Blueprint $table) {
                 $table->dropColumn('order');
+                $table->string('acronym',10)->nullable()->after('id');
                 $table->integer('sort')->default(1000)->after('code');
                 $table->string('type',50)->after('name')->nullable();
+                $table->longText('description')->nullable()->after('code');
+
+                $table->dropColumn('relation_id');
+                $table->dropColumn('relation_type');
 
                 $table->rename('divisions');
             });
@@ -28,8 +33,14 @@ return new class extends Migration
     {
         if(Schema::hasTable('divisions'))
             Schema::table('divisions', function (Blueprint $table) {
+                $table->dropColumn('acronym');
                 $table->dropColumn('sort');
+                $table->dropColumn('description');
+
                 $table->integer('order')->default(1000)->after('code');
+                $table->integer('relation_id')->nullable();
+                $table->string('relation_type')->nullable();
+
                 $table->dropColumn('type');
                 $table->rename('departments');
             });

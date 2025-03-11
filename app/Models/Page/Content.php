@@ -18,6 +18,7 @@ class Content extends Model
         'content',
         'show',
         'order',
+        'relation_type'
     ];
 
     public function relation(): MorphTo

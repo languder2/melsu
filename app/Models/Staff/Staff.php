@@ -109,7 +109,7 @@ class Staff extends Model
     public function divisions():HasMany
     {
         return $this->hasMany(Division::class,'coordinator_id', 'id')
-            ->orderBy('order')
+            ->orderBy('sort')
             ->orderBy('name');
     }
 

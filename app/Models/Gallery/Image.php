@@ -57,7 +57,6 @@ class Image extends Model
 
     public function saveImage(UploadedFile $file):void
     {
-
         $path = self::getPath($this->relation_type);
 
         $this->filename = substr($file->hashName(),0,strpos($file->hashName(),'.'));
@@ -89,6 +88,7 @@ class Image extends Model
     public static function getPath(?string $model = null):string
     {
         return match($model){
+            'App\Models\Division\Division'      => "images/divisions/",
             'App\Models\Education\Faculty'      => "images/faculty/",
             'App\Models\Education\Departments'  => "images/departments/",
             'App\Models\Education\Labs'         => "images/labs/",

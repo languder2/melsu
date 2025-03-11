@@ -23,13 +23,27 @@
             label="Parent"
         />
 
-        <x-form.input
-            id="form_division_name"
-            name="name"
-            label="Название"
-            value="{{old('name') ?? $current->name ?? null}}"
-            required
-        />
+        <div class="flex gap-3">
+            <div class="w-24">
+                <x-form.input
+                    id="form_acronym"
+                    name="acronym"
+                    label="Акроним"
+                    value="{{old('acronym')?? $current->acronym ?? null}}"
+                    required
+                />
+            </div>
+
+            <div class="flex-1">
+                <x-form.input
+                    id="form_name"
+                    name="name"
+                    label="Название"
+                    value="{{old('name')?? $current->name ?? null}}"
+                    required
+                />
+            </div>
+        </div>
 
         <x-form.select
             id="form_type"
@@ -55,6 +69,7 @@
         />
 
         <div class="flex gap-4 my-2">
+
             @if($current)
                 <img src="{{$current->preview->thumbnail}}" alt="123" class="h-44 rounded-md">
             @endif
@@ -101,5 +116,16 @@
 
             </div>
         </div>
+
     </div>
+
+    <div class="bg-stone-50 p-4 mb-4">
+        <x-form.editor
+            id="form_description"
+            name="description"
+            label="Краткое описание"
+            value="{{old('description') ?? $current->description ?? null}}"
+        />
+    </div>
+
 </div>

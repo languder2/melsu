@@ -6,6 +6,7 @@ use App\Enums\DivisionType;
 use App\Http\Controllers\Controller;
 use App\Models\Contact;
 use App\Models\Division\Division;
+use App\Models\Gallery\Image;
 use App\Models\Menu\Menu;
 use App\Models\Staff\Affiliation;
 use Illuminate\Http\JsonResponse;
@@ -67,17 +68,20 @@ class DivisionController extends Controller
 
         /* upload image */
         if($request->file('image'))
-            $record->preview->saveImage($request->file('image'));
+            $record->preview->relation()->associate($record)->saveImage($request->file('image'));
 
         /* image form gallery */
-        elseif($request->has('preview'))
+        elseif($request->has('preview') && $record->preview->src != $request->get('preview')){
             $record->preview->fill([
                 'name'          => $record->name,
                 'reference_id'  => $record->preview::getReference($request->get('preview')),
+                'filename'      => null,
+                'filetype'      => null,
             ])
                 ->relation()->associate($record)
                 ->save();
 
+        }
         /* add content sections*/
         if(array_key_exists('sections',$form))
             PageContent::processing($record,$request->get('sections'));

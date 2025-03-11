@@ -91,6 +91,7 @@ Route::controller(\App\Http\Controllers\Division\DivisionController::class)
 
         Route::post('get-search-result','PublicSearchResult')
             ->name('public:division:search');
+        Route::get('get-search-result','PublicSearchResult');
     });
 
 Route::controller(StaffController::class)->group(function () {
@@ -183,3 +184,17 @@ Route::prefix('contacts')
     });
 
 
+
+Route::get('correct',function(){
+    $list = \App\Models\Page\Content::where('relation_type','App\Models\Department\Department')->get();
+
+
+    foreach ($list as $item)
+        $item->fill(['relation_type'=>'App\Models\Division\Division'])->save();
+
+    $list = \App\Models\Staff\Affiliation::where('relation_type','App\Models\Department\Department')->get();
+
+    foreach ($list as $item)
+        $item->fill(['relation_type'=>'App\Models\Division\Division'])->save();
+
+});
