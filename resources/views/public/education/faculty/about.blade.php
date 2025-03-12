@@ -13,16 +13,18 @@
 @endsection
 
 @section('content')
-    <section class="container px-2">
-
+    <section class="container px-2 bg-[url(img/lines-vector-map.jpg)] ">
         <div
             class="
                 flex gap-4 mb-4 p-4
-                bg-neutral-200
-            "
-{{--            style="background: #e4e4e4 url({{asset('img/lines-vector-map.jpg')}});"--}}
-        >
+                relative
+                before:absolute
+                before:inset-0
+                before:bg-cover before:bg-center
+                before:opacity-50
 
+            "
+        >
             @isset($faculty->chief->card)
                 <img
                     src="{{$faculty->chief->card->avatar->thumbnail}}"

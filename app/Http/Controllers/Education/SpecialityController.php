@@ -17,41 +17,23 @@ class SpecialityController extends Controller
 {
     public function list(): string
     {
+        $list = Faculty::orderBy('order')->orderBy('name')->get();
 
-        return view('pages.admin', [
-            'contents' => [
-
-                View::make('components.admin.top_menu.education')->with([
-                    'active' => 'specialities'
-                ])->render(),
-
-                View::make('components.admin.education.specialities.header')->with([])->render(),
-
-                View::make('components.admin.education.specialities.list')->with([
-                    'list' => Faculty::orderBy('order', 'desc')->orderBy('name')->get(),
-                ])->render(),
-            ]
-        ]);
+        return view('admin.education.specialities.page', compact('list'));
     }
 
     public function form(Request $request, $id = null)
     {
 
-        return view('pages.admin', [
-            'contents' => [
-                View::make('components.admin.top_menu.education')->with([
-                    'active' => 'specialities'
-                ])->render(),
+        $current        = Speciality::find($id);
+        $add2faculty    = request()->get('faculty');
+        $faculties      = Faculty::pluck('name', 'code')?->toJSON(JSON_UNESCAPED_UNICODE);
+        $departments    = Department::pluck('name', 'code')?->toJSON(JSON_UNESCAPED_UNICODE);
+        $levels         = Level::pluck('name', 'code')?->toJSON(JSON_UNESCAPED_UNICODE);
 
-                View::make('components.admin.education.specialities.form.form')->with([
-                    'current' => Speciality::find($id),
-                    'add2faculty' => request()->get('faculty'),
-                    'faculties' => Faculty::pluck('name', 'code')?->toJSON(JSON_UNESCAPED_UNICODE),
-                    'departments' => Department::pluck('name', 'code')?->toJSON(JSON_UNESCAPED_UNICODE),
-                    'levels' => Level::pluck('name', 'code')?->toJSON(JSON_UNESCAPED_UNICODE),
-                ])->render(),
-            ]
-        ]);
+        return view('admin.education.specialities.form',
+            compact('current','add2faculty','faculties','departments','levels')
+        );
     }
 
     public function save(Request $request)
