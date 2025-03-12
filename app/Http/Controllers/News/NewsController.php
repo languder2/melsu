@@ -65,8 +65,7 @@ class NewsController extends Controller
             ]);
 
         if($request->file('image')){
-            $record->preview->saveImage($request->file('image'),'images/news');
-            $record->preview->reference_id = null;
+            $record->preview->relation()->associate($record)->saveImage($request->file('image'));
         }
         elseif($form['preview']){
             $record->preview->name = $record->title;
@@ -101,13 +100,17 @@ class NewsController extends Controller
         if (is_null($news))
             return redirect()->route('pages:main');
 
-        return view('pages.page', [
+        $previousNews = News::where('id', '<', $news->id)->orderBy('id', 'desc')->first();
 
-//            'breadcrumbs' => Breadcrumbs::render('news-item',$news),
+        $nextNews = News::where('id', '>', $news->id)->orderBy('id', 'asc')->first();
+
+        return view('pages.page', [
             'title' => 'ФГБОУ ВО "МелГУ": ' . $news->title,
             'contents' => [
                 View::make('components.public.news.news')->with([
                     'news' => $news,
+                    'previousNews' => $previousNews,
+                    'nextNews' => $nextNews,
                 ])->render(),
             ]
         ]);

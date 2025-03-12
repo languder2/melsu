@@ -14,6 +14,7 @@ if (document.querySelector('.main-menu')) {
     let navbarCollapseHeight = navbarCollapseContent.getBoundingClientRect().height;
     let underNavBarContent = document.querySelector('.navbar-collapse .navbar-nav');
     let underNavBarHeight = underNavBarContent.getBoundingClientRect().height;
+    let aminBtn = document.querySelector('.excursion-btn');
 
     function checkScreenWidth() {
         if (window.matchMedia("(min-width: 1025px)").matches) {
@@ -62,6 +63,7 @@ if (document.querySelector('.main-menu')) {
                     content.classList.remove('opacit');
                 }
                 searchBox.classList.toggle('active');
+                aminBtn.classList.toggle('close');
                 content.classList.toggle('opacit');
                 document.body.classList.toggle('no-scroll');
                 if (searchBox.classList.contains('active') && window.matchMedia("(min-width: 1025px)").matches) {
@@ -166,6 +168,7 @@ if (document.querySelector('.main-menu')) {
     closeSearchBox.addEventListener('click', () => {
         if (searchBox.classList.contains('active')) {
             searchBox.classList.remove('active');
+            aminBtn.classList.remove('close');
             content.classList.remove('opacit');
             document.body.classList.remove('no-scroll');
             searchBox.style.height = '0px';
@@ -200,6 +203,7 @@ if (document.querySelector('.main-menu')) {
     function closeAllSearch() {
         if (searchBox.classList.contains('active')) {
             searchBox.classList.remove('active');
+            aminBtn.classList.remove('close');
             content.classList.remove('opacit');
             document.body.classList.remove('no-scroll');
             for (let i = 0; i < dropDownMenus.length; i++) {

@@ -38,7 +38,7 @@
             </div>
         </div>
         @if($news->count())
-            <div class="grid grid-cols-4 gap-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
                 @foreach($news as $item)
                     <a
                         href="{{$item->link}}"

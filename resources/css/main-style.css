@@ -6,6 +6,12 @@
     padding: 0;
     font-family: "Montserrat", sans-serif;
 }
+@media screen and (max-width: 1024px){
+    .main-content {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
 .wrapper-video{
     position: fixed;
     top: 0;
@@ -79,6 +85,7 @@ body{
     min-height: calc(100vh - 530px);
     padding-bottom: 10px;
 }
+
 @media screen and (max-width: 767px) {
     .main-wrapper{
         padding-left: 0;
@@ -400,11 +407,44 @@ header{
         }
     }
 }
+@media screen and (max-width: 1366px){
+    .upper-menu {
+        .box-header-address {
+            padding-left: 1%;
+        }
+    }
+    .main-menu{
+        .navbar-nav{
+            li a {
+                font-size: 14px;
+            }
+        }
+    }
+}
+@media screen and (max-width: 1366px) {
+    .main-menu {
+        & .navbar-nav {
+            li a {
+                font-size: 13px;
+            }
+        }
+    }
+}
 @media screen and (max-width: 1300px){
     .main-menu {
 
         .search-form input {
             width: 120px;
+        }
+    }
+}
+@media screen and (max-width: 1280px){
+    .upper-menu {
+        h2{
+            font-size: 12px;
+        }
+        .nav a {
+            font-size: 12px;
         }
     }
 }
@@ -610,7 +650,8 @@ header{
             display: block;
         }
         position: fixed;
-        max-height: 93vh;
+        min-height: 90vh;
+        height: 100%;
         overflow: scroll;
         min-width: 100%;
         z-index: 9998;
@@ -2287,6 +2328,17 @@ header{
         }
     }
 }
+@media screen and (max-width: 323px) {
+    .number-section {
+        & .under-number-row {
+            & .box-number:first-child {
+                h1 {
+                    font-size: 80px;
+                }
+            }
+        }
+    }
+}
     /*END number section style*/
 
 /*END news section style*/
@@ -3720,6 +3772,9 @@ td.today.active.start-date.active.end-date.available,
     z-index: 999;
     opacity: 1;
     margin-right: 4%;
+}
+.excursion-btn.close{
+    display: none;
 }
 .excursion-btn:hover{
     box-shadow: 0 0 45px 0 rgb(255 0 0);
