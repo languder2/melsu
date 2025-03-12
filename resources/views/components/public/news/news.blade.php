@@ -22,7 +22,7 @@
         <div class="flex justify-between md:grid  md:grid-cols-[1fr_1fr] gap-[1px] bg-[#F1F1F1] p-[1px]">
             <div class="p-6 group/btnnews bg-white w-full">
                 @if ($previousNews)
-                <a href="https://melsu/news/show/{{$previousNews->id}}">
+                <a href="https://melsu.ru/news/show/{{$previousNews->id}}">
                     <div class="flex flex-row">
                         <div class="w-[80px] h-[80px] relative text-white pointer me-3">
                                     <img src="{{$previousNews->preview->thumbnail}}" alt=""
@@ -57,7 +57,7 @@
             </div>
             <div class="p-6 group/btnnews bg-white w-full">
                 @if ($nextNews)
-                    <a href="https://melsu/news/show/{{$nextNews->id}}">
+                    <a href="https://melsu.ru/news/show/{{$nextNews->id}}">
                         <div class="flex flex-row justify-end">
                             <div class="hidden md:flex flex-col">
                                 <label class="text-sm mb-2 text-end">Следующая:</label>
