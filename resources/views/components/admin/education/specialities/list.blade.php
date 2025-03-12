@@ -58,7 +58,7 @@
             <div></div>
 
             @foreach($faculty->specialities as $record)
-                <div class="text-center">
+                <div @class([" text-center",$record->show?'text-green-700':'text-red-700'])>
                     {{$record->id}}
                 </div>
 

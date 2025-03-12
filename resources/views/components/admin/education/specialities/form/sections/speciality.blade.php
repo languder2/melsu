@@ -12,13 +12,13 @@
 
     <x-form.input
         type="hidden"
-        name="speciality[id]"
+        name="id"
         value="{{$current?->id}}"
     />
 
     <x-form.input
         id="form_spec_name"
-        name="speciality[name]"
+        name="name"
         label="Название"
         value="{{old('speciality.name')??$current?->name}}"
         required1
@@ -26,46 +26,80 @@
 
     <x-form.input
         id="form_spec_code"
-        name="speciality[code]"
+        name="code"
         label="Alias"
         value="{{old('speciality.code')??$current?->code}}"
         required1
     />
 
-    <x-form.input
-        id="form_spec_code"
-        name="speciality[spec_code]"
-        label="Код специальности"
-        value="{{old('speciality.spec_code')??$current?->spec_code}}"
-        required1
-    />
+    <div class="flex gap-4">
+        <div class="flex-1">
+            <x-form.input
+                id="form_spec_code"
+                name="spec_code"
+                label="Код специальности"
+                value="{{old('speciality.spec_code')??$current?->spec_code}}"
+                required
+            />
+        </div>
 
-    <x-form.select
-        id="form_spec_faculty"
-        name="speciality[faculty_code]"
-        nullDisabled
-        old="{{old('speciality.faculty_code')??$add2faculty}}"
-        value="{{$current?->faculty_code}}"
-        null="Выбрать"
-        :list="$faculties"
-        label="Факультет"
-        onchange="DependedSelects.departmentsByFaculty('form_spec_faculty','form_spec_department')"
-    />
+        <x-form.on-off
+            :old="old('show')"
+            :current="$current"
+        />
+    </div>
 
-    <x-form.select
-        id="form_spec_department"
-        name="speciality[department_code]"
-        old="{{old('speciality.department_code')}}"
-        value="{{$current?->department_code}}"
-        null="Выбрать"
-        :list="$departments"
-        label="Кафедра"
-        required1
-    />
+
+    <div class="bg-base-red/20 p-4">
+        <x-form.select
+            id="form_spec_faculty"
+            name="faculty_code"
+            nullDisabled
+            old="{{old('speciality.faculty_code')??$add2faculty}}"
+            value="{{$current?->faculty_code}}"
+            null="Выбрать"
+            :list="$faculties2 ?? []"
+            label="Факультет"
+        />
+
+        <x-form.select
+            id="form_spec_department"
+            name="department_code"
+            old="{{old('speciality.department_code')}}"
+            value="{{$current?->department_code}}"
+            null="Выбрать"
+            :list="$departments2 ?? []"
+            label="Кафедра"
+            required1
+        />
+    </div>
+
+    <div class="bg-green-700/20 p-4">
+        <x-form.select
+            id="faculty_id"
+            name="faculty_id"
+            old="{{ old('faculty_id') }}"
+            value="{{ $current->faculty_id }}"
+            null="выбрать"
+            label="Факультет"
+            :list="$faculties ?? []"
+        />
+
+        <x-form.select
+            id="department_id"
+            name="department_id"
+            old="{{ old('department_id') }}"
+            value="{{ $current->department_id }}"
+            null="выбрать"
+            label="Кафедра"
+            :list="$departments ?? []"
+        />
+    </div>
+
 
     <x-form.select
         id="form_level_code"
-        name="speciality[level_code]"
+        name="level_code"
         nullDisabled
         old="{{old('speciality.level_code')}}"
         value="{{$current?->level_code}}"
@@ -78,14 +112,14 @@
     <x-form.input
         id="form_speciality_logo"
         type="file"
-        name="speciality[logo]"
+        name="logo"
         label="Логотип"
         value="{{old('logo')}}"
     />
 
     <x-form.editor
         id="for_spec_description"
-        name="speciality[description]"
+        name="description"
         label="Описание специальности"
         value="{{old('description')??$current?->description}}"
         hideLabel

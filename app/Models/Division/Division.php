@@ -16,6 +16,7 @@ use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Page\Content as PageContent;
 use App\Models\Global\Options;
+use Illuminate\Support\Collection;
 
 class Division extends Model
 {
@@ -105,6 +106,38 @@ class Division extends Model
         return $this->hasMany(self::class, 'parent_id','id');
     }
 
+    public function departments(): HasMany
+    {
+        return $this->hasMany(self::class, 'parent_id','id')
+            ->where('type', DivisionType::Department)
+            ->where('show',true)
+            ->orderBy('sort')
+            ->orderBy('name')
+        ;
+    }
+    public function labs(): HasMany
+    {
+        return $this->hasMany(self::class, 'parent_id','id')
+            ->where('type', DivisionType::Lab)
+            ->where('show',true)
+            ->orderBy('sort')
+            ->orderBy('name')
+        ;
+    }
+
+    public function getFacultyLabsAttribute(): Collection
+    {
+        $result = collect([]);
+
+        foreach ($this->departments as $department)
+            if($department->labs->isNotEmpty())
+                $result= $result->merge($department->labs);
+
+        return $result;
+    }
+
+
+
     public function coordinator(): BelongsTo
     {
         return $this->belongsTo(Staff::class, 'Coordinator_id','id');
@@ -130,7 +163,7 @@ class Division extends Model
 
     public function sections(): MorphMany
     {
-        return $this->morphMany(PageContent::class, 'relation');
+        return $this->morphMany(PageContent::class, 'relation')->orderBy('order');
     }
 
     public function contacts(): MorphMany
@@ -158,6 +191,13 @@ class Division extends Model
             ->orderBy('sort');
     }
 
+    public function telegrams(): MorphMany
+    {
+        return $this->morphMany(Contact::class, 'relation')
+            ->where('type',ContactType::Telegram)
+            ->orderBy('sort');
+    }
+
     public function images(): MorphMany
     {
         return $this->morphMany(Image::class, 'relation');
@@ -178,7 +218,7 @@ class Division extends Model
 
     public function getLinkAttribute(): string
     {
-        $code = $this->alias ?? $this->id;
+        $code = $this->alias ?? $this->code ?? $this->id;
 
         return match($this->type){
             default                     => route('public:division:show',        $code),

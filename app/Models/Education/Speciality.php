@@ -21,28 +21,30 @@ class Speciality extends Model
         'name',
         'code',
         'spec_code',
-        'faculty_code',
-        'department_code',
+        'faculty_id',
+        'department_id',
         'level_code',
         'total_places',
         'favorite',
         'description',
         'order',
+        'show',
     ];
 
     public static function FormRules($id): array
     {
         return [
-            'name' => 'required',
-            'code' => "required|unique:education_specialities,code,$id,id,deleted_at,NULL",
-            'spec_code' => "required",
-            'faculty_code' => 'required',
-            'department_code' => 'required',
-            'level_code' => 'required',
-            'total_places' => '',
-            'favorite' => '',
-            'description' => '',
-            'order' => 'nullable|numeric',
+            'name'              => 'required',
+            'code'              => "required|unique:education_specialities,code,$id,id,deleted_at,NULL",
+            'spec_code'         => "required",
+            'faculty_id'        => '',
+            'department_id'     => '',
+            'level_code'        => 'required',
+            'total_places'      => '',
+            'favorite'          => '',
+            'description'       => '',
+            'order'             => 'nullable|numeric',
+            'show'              => '',
         ];
     }
 
@@ -53,8 +55,6 @@ class Speciality extends Model
             'code.required' => 'Код должен быть указан',
             'code.unique' => 'Код должен быть уникальным',
             'spec_code' => "Код специальности должен быть указан",
-            'faculty_code' => 'Укажите факультет',
-            'department_code' => 'Укажите кафедру',
             'level_code' => 'Укажите уровень',
         ];
     }

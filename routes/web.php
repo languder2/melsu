@@ -92,6 +92,9 @@ Route::controller(EducationController::class)
         Route::get('faculties/{faculty?}', 'faculty')
             ->name('public:education:faculty');
 
+        Route::get('faculties/{faculty?}/departments', [EducationController::class, 'departments'])
+            ->name('public:education:faculty:departments');
+
         Route::get('departments/{department?}', 'department')
             ->name('public:education:department');
 

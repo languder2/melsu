@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Education;
 
+use App\Enums\DivisionType;
 use App\Http\Controllers\Controller;
+use App\Models\Division\Division;
 use App\Models\Education\Department;
 use App\Models\Education\Faculty;
 use App\Models\Education\Forms;
@@ -24,116 +26,99 @@ class SpecialityController extends Controller
 
     public function form(Request $request, $id = null)
     {
-
         $current        = Speciality::find($id);
         $add2faculty    = request()->get('faculty');
-        $faculties      = Faculty::pluck('name', 'code')?->toJSON(JSON_UNESCAPED_UNICODE);
-        $departments    = Department::pluck('name', 'code')?->toJSON(JSON_UNESCAPED_UNICODE);
         $levels         = Level::pluck('name', 'code')?->toJSON(JSON_UNESCAPED_UNICODE);
+        $faculties      = Division::where('type',DivisionType::Faculty)
+            ->orderBy('name')
+            ->get()->pluck('name', 'id');
+        $departments    = Division::where('type',DivisionType::Department)
+            ->orderBy('alt_name')
+            ->get()->pluck('alt_name', 'id');
+        $faculties2     = Faculty::pluck('name', 'code')?->toJSON(JSON_UNESCAPED_UNICODE);
+        $departments2   = Department::pluck('name', 'code')?->toJSON(JSON_UNESCAPED_UNICODE);
+
 
         return view('admin.education.specialities.form',
-            compact('current','add2faculty','faculties','departments','levels')
+            compact('current','add2faculty','faculties','departments','levels','faculties2','departments2')
         );
     }
 
     public function save(Request $request)
     {
 
-        $id = $request->speciality['id'] ?? null;
+        $form = $request->validate(Speciality::FormRules($request->get('id')),Speciality::FormMessage());
 
-        $rules = [
-            'speciality.name' => 'required',
-            'speciality.code' => "required|unique:education_specialities,code,{$id},id,deleted_at,NULL",
-            'speciality.spec_code' => "required",
-            'speciality.faculty_code' => 'required',
-            'speciality.department_code' => 'required',
-            'speciality.level_code' => 'required',
-            'favorite' => '',
-            'speciality.description' => '',
-            'order' => 'nullable|numeric',
-            'profiles' => ''
-        ];
+        $record = Speciality::find($request->get('id'));
 
-        $messages = [
-            'speciality.name' => 'Укажите название специальности',
-            'speciality.code.required' => 'Alias специальности должен быть указан',
-            'speciality.code.unique' => 'Alias специальности должен быть уникальным',
-            'speciality.spec_code' => "Код специальности должен быть указан",
-            'speciality.faculty_code' => 'Укажите факультет',
-            'speciality.department_code' => 'Укажите кафедру',
-            'speciality.level_code' => 'Укажите уровень',
-        ];
-
-
-        $form = $request->validate($rules, $messages);
-
-
-        if ($id)
-            $record = Speciality::find($id);
-        else
+        if(!$record)
             $record = new Speciality();
 
 
-        $record->fill($form['speciality']);
+        $record->fill($form);
+
+        $record->show = array_key_exists('show', $form);
 
         $record->save();
 
-        foreach ($form['profiles'] as $profileForm) {
-            $profile = Profile::where([
-                'speciality_code' => $record->code,
-                'form_code' => $profileForm['form_code'],
-            ])->first();
 
-            if (!$profile)
-                $profile = new Profile([
+        if($request->has('profiles'))
+            foreach ($request->get('profiles') as $profileForm) {
+                $profile = Profile::where([
                     'speciality_code' => $record->code,
                     'form_code' => $profileForm['form_code'],
-                    'alias' => "{$record->code}-{$profileForm['form_code']}",
-                ]);
+                ])->first();
 
-            $profileForm['show'] = isset($profileForm['show']);
+                if (!$profile)
+                    $profile = new Profile([
+                        'speciality_code' => $record->code,
+                        'form_code' => $profileForm['form_code'],
+                        'alias' => "{$record->code}-{$profileForm['form_code']}",
+                    ]);
 
-            $profileForm['afc'] = isset($profileForm['afc']);
+                $profileForm['show'] = isset($profileForm['show']);
 
-            $profile->fill($profileForm);
+                $profileForm['afc'] = isset($profileForm['afc']);
 
-            $profile->save();
+                $profile->fill($profileForm);
 
-            foreach ($profileForm['places'] as $type => $count) {
-                $place = $profile->places->where('type', $type)->first();
+                $profile->save();
 
-                if (!$place)
-                    $place = $profile->places()->create(['type' => $type]);
+                foreach ($profileForm['places'] as $type => $count) {
+                    $place = $profile->places->where('type', $type)->first();
 
-                $place->count = $count;
-                $place->save();
-            }
+                    if (!$place)
+                        $place = $profile->places()->create(['type' => $type]);
 
-            foreach ($profileForm['exams'] as $type => $list) {
-                foreach ($list as $subject_id => $item) {
-                    $exam = $profile->exams()->where([
-                        'type' => $type,
-                        'subject_id' => $subject_id,
-                    ])->first();
+                    $place->count = $count;
+                    $place->save();
+                }
 
-                    if (!$exam)
-                        $exam = $profile->exams()->create([
+                foreach ($profileForm['exams'] as $type => $list) {
+                    foreach ($list as $subject_id => $item) {
+                        $exam = $profile->exams()->where([
                             'type' => $type,
                             'subject_id' => $subject_id,
-                        ]);
+                        ])->first();
 
-                    if (!isset($item['required']))
-                        $item['required'] = false;
+                        if (!$exam)
+                            $exam = $profile->exams()->create([
+                                'type' => $type,
+                                'subject_id' => $subject_id,
+                            ]);
 
-                    if (!isset($item['selectable']) || $item['required'])
-                        $item['selectable'] = false;
+                        if (!isset($item['required']))
+                            $item['required'] = false;
 
-                    $exam->fill($item);
-                    $exam->save();
+                        if (!isset($item['selectable']) || $item['required'])
+                            $item['selectable'] = false;
 
+                        $exam->fill($item);
+                        $exam->save();
+
+                    }
                 }
             }
-        }
 
         return redirect()->route('admin:education-speciality:list');
     }

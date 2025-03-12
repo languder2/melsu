@@ -38,15 +38,15 @@
 
 
         <div class="grid grid-cols-2 gap-x-4">
-            <x-staff.select
-                :current="null"
-                :params='[
-                "name"      => "profiles[{$code}][director]",
-                "label"     => "Директор",
-                "id"        => "profiles_{$code}_director",
-                "value"     => old("profiles.{$code}.director")??@$profile?->director,
-            ]'
-            />
+{{--            <x-staff.select--}}
+{{--                :current="null"--}}
+{{--                :params='[--}}
+{{--                "name"      => "profiles[{$code}][director]",--}}
+{{--                "label"     => "Директор",--}}
+{{--                "id"        => "profiles_{$code}_director",--}}
+{{--                "value"     => old("profiles.{$code}.director")??@$profile?->director,--}}
+{{--            ]'--}}
+{{--            />--}}
 
             <div class="py-4">
                 <input

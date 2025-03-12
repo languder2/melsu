@@ -42,6 +42,4 @@
     @endforeach
 
 @endsection
-
-
-
+<div class="bg-neutral-200"></div>
