@@ -22,8 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('hours').textContent = hours;
         document.getElementById('minutes').textContent = minutes;
         document.getElementById('seconds').textContent = seconds;
-        console.log('timeLeft:', timeLeft);
-        console.log('days:', days, 'hours:', hours, 'minutes:', minutes, 'seconds:', seconds);
     }
 
     updateCountdown();
