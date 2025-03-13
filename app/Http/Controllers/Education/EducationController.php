@@ -71,10 +71,9 @@ class EducationController extends Controller
             ],
 
             'contents' => [
-
                 view("public.education.tabs.list",['active' => 'labs']),
                 view("public.education.labs.list",[
-                    'list'  => Lab::where('show',1)->orderBy('sort')->orderBy('name')->get(),
+                    'list'  => Division::where('type',DivisionType::Lab)->where('show',1)->orderBy('sort')->orderBy('name')->get(),
                 ]),
             ]
         ]);
@@ -90,37 +89,21 @@ class EducationController extends Controller
 
         $menu = Menu::GetMenuFaculty($faculty, page: 'about');
 
+
         return view('public.education.faculty.about',compact('faculty','menu'));
     }
 
-    public function departments($faculty = null): string|RedirectResponse
+    public function departments($code = null): string|RedirectResponse
     {
 
-        $faculty = Faculty::where('code', $faculty)->first();
+        $faculty = Division::where('code', $code)->orWhere('id',$code)->first();
 
         if ($faculty === null)
             return redirect()->to(route('public:education:faculties'));
 
         $menu = Menu::GetMenuFaculty($faculty, page: 'departments');
 
-        return view('pages.page-with-menu', [
-            'breadcrumbs' => (object)[
-                'view'      => null,
-                'route'     => 'departments',
-                'element'   => $faculty,
-            ],
-
-            'sidebar' => View::make('components.menu.alt_sidebar')->with([
-                'menu' => &$menu,
-            ])->render(),
-
-            'contents' => [
-                View::make('components.education.departments')->with([
-                    'faculty' => $faculty,
-                ])->render()
-            ]
-        ]);
-
+        return view('public.education.faculty.departments',compact('faculty','menu'));
 
     }
 

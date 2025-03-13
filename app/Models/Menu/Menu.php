@@ -120,7 +120,7 @@ class Menu extends Model
                     ],
                     (object)[
                         'name' => "Кафедры",
-                        'link' => "#",
+                        'link' => route('public:education:faculty:departments',[$faculty->code ?? $faculty->id]),
                         'active' => (bool)($page === 'departments'),
                     ],
                     (object)[

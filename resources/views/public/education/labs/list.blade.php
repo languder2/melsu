@@ -41,7 +41,7 @@
                         "
 
                     >
-                        {{$item->name}}
+                        {!! $item->name !!}
                     </h4>
 
                     <hr class="bg-white/40 h-2px ml-4">

@@ -9,7 +9,7 @@ class TestController extends Controller
 {
     public function index()
     {
-        $list= Faculty::all();
+        return view('test.page');
 
     }
 

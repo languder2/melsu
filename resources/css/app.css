@@ -83,13 +83,44 @@ img {
     -o-user-drag: none; /* Для Opera */
 }
 
-.p-corrector p{
-    padding: .75rem 0;
+.p-corrector{
+    p,ul{
+        padding: .75rem 0;
 
-    :first-child{
-        padding-top: 0;
+        :first-child{
+            padding-top: 0;
+        }
+        :last-child{
+            padding-bottom: 0;
+        }
     }
-    :last-child{
-        padding-bottom: 0;
+
+    ul{
+        list-style: disc;
     }
+}
+.about-otdel{
+    p,li{
+        padding: .25rem 0;
+
+        :first-child{
+            padding-top: 0;
+        }
+        :last-child{
+            padding-bottom: 0;
+        }
+    }
+
+    ul{
+        margin-left: 1rem;
+        list-style: disc;
+    }
+
+    a{
+        text-decoration: underline;
+    }
+    a:hover{
+        color: #820000;
+    }
+
 }

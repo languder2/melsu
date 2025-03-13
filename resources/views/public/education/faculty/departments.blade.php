@@ -65,19 +65,12 @@
                 @include('public.menu.education')
             </div>
 
-            <div class="flex flex-col gap-4">
-                @each('public.page.content-section',$faculty->sections,'section')
+            <div class="wrapper">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                    @each("public.education.departments.block",$faculty->departments,'department')
+                </div>
             </div>
         </div>
-
-        @isset($faculty->chief->card)
-
-        @endisset
-
-        @dump($faculty->sections)
-
-        @dump($faculty->chief->card)
-        @dump($faculty->contacts)
     </section>
 @endsection
 
