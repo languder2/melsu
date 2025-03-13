@@ -7,6 +7,24 @@
                         <a href="#" class="slide-link">
                             <img src="{{asset('img/Slide.jpg')}}" alt="">
                         </a>
+                        <div id="countdown" class="countdown hidden">
+                            <div class="countdown-item">
+                                <span id="days"></span>
+                                <div class="countdown-label">дней</div>
+                            </div>
+                            <div class="countdown-item">
+                                <span id="hours"></span>
+                                <div class="countdown-label">часов</div>
+                            </div>
+                            <div class="countdown-item">
+                                <span id="minutes"></span>
+                                <div class="countdown-label">минут</div>
+                            </div>
+                            <div class="countdown-item">
+                                <span id="seconds"></span>
+                                <div class="countdown-label">секунд</div>
+                            </div>
+                        </div>
                     </div>
                     <div class="slide">
                         <a href="#" class="slide-link">

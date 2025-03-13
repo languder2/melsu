@@ -38,40 +38,42 @@
             </div>
         </div>
         @if($news->count())
-            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
-                @foreach($news as $item)
-                    <a
-                        href="{{$item->link}}"
-                        class="min-h-300 relative block"
-                    >
-                        <img
-                            src="{{$item->preview->thumbnail}}"
-                            alt="{{$item->preview->alt??$item->preview->name}}"
-                            class="w-full h-full object-cover object-center"
-                        />
-                        <span class="absolute z-20 py-2 px-3 bg-base-red/80 text-white top-0 right-0 text-right">
-                            {{@$item->tag->name}}
-                        </span>
-
-                        <p
-                            class="
-                                flex flex-col gap-2
-                                absolute inset-x-4 bottom-4
-                                text-white
-                            "
+            <div class="scroll-news overflow-x-scroll">
+                <div class="news-main-block grid grid-cols-8 md:grid-cols-2 xl:grid-cols-4 gap-4 w-max md:w-full">
+                    @foreach($news as $item)
+                        <a
+                            href="{{$item->link}}"
+                            class="min-h-300 relative block"
                         >
-                            <span>
-                                <span class="py-2 px-3 bg-base-red/80 text-white inline-block">
-                                    {{$item->publication_at}}
-                                </span>
+                            <img
+                                src="{{$item->preview->thumbnail}}"
+                                alt="{{$item->preview->alt??$item->preview->name}}"
+                                class="w-full h-full object-cover object-center"
+                            />
+                            <span class="absolute z-20 py-2 px-3 bg-base-red/80 text-white top-0 right-0 text-right">
+                                {{@$item->tag->name}}
                             </span>
-                            <span class="py-2 px-3 bg-base-red/80 text-white">
-                                {{$item->title}}
-                            </span>
-                        </p>
-                    </a>
 
-                @endforeach
+                            <p
+                                class="
+                                    flex flex-col gap-2
+                                    absolute inset-x-4 bottom-4
+                                    text-white
+                                "
+                            >
+                                <span>
+                                    <span class="py-2 px-3 bg-base-red/80 text-white inline-block">
+                                        {{$item->publication_at}}
+                                    </span>
+                                </span>
+                                <span class="py-2 px-3 bg-base-red/80 text-white">
+                                    {{$item->title}}
+                                </span>
+                            </p>
+                        </a>
+
+                    @endforeach
+                </div>
             </div>
         @endif
     </div>

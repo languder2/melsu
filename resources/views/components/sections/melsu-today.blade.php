@@ -6,10 +6,10 @@
                 МелГУ сегодня — ведущий учебный и научный центр.
             </h2>
         </div>
-
+        <div class="scroll-info-box overflow-x-scroll wrapper-info-box">
         <div
-            class="wrapper-info-box grid sm:grid-cols-[1fr_1fr] gap-y-2.5 sm:gap-[5px] xl:gap-0 xl:grid-cols-[1fr_1fr_1fr_1fr]">
-            <div class="flex flex-col justify-between w-full info-box">
+            class="flex md:grid md:grid-cols-2 gap-y-2.5 sm:gap-[5px] xl:gap-0 xl:grid-cols-4 overflow-scroll w-fit md:w-full"><!--sm:grid-cols-[1fr_1fr] gap-y-2.5 sm:gap-[5px] xl:gap-0 xl:-->
+            <div class="mini-info-box flex flex-col justify-between  md:w-full info-box">
                 <div class="box-person-icon">
                     <img src="{{asset('img/student.png')}}" alt="">
                 </div>
@@ -40,7 +40,7 @@
                     <i class="bi bi-arrow-right-circle-fill"></i>
                 </div>
             </div>
-            <div class="flex flex-col justify-between w-full info-box">
+            <div class="mini-info-box flex flex-col justify-between md:w-full info-box">
                 <div class="box-person-icon">
                     <img src="{{asset('img/entrant.png')}}" alt="">
                 </div>
@@ -71,7 +71,7 @@
                     <i class="bi bi-arrow-right-circle-fill"></i>
                 </div>
             </div>
-            <div class="flex flex-col justify-between w-full info-box">
+            <div class="mini-info-box flex flex-col justify-between md:w-full info-box">
                 <div class="box-person-icon">
                     <img src="{{asset('img/worker.png')}}" alt="">
                 </div>
@@ -102,7 +102,7 @@
                     <i class="bi bi-arrow-right-circle-fill"></i>
                 </div>
             </div>
-            <div class="flex flex-col justify-between w-full info-box">
+            <div class="mini-info-box flex flex-col justify-between md:w-full info-box">
                 <div class="box-person-icon">
                     <img src="{{asset('img/partner.png')}}" alt="">
                 </div>
@@ -133,6 +133,7 @@
                     <i class="bi bi-arrow-right-circle-fill"></i>
                 </div>
             </div>
+        </div>
         </div>
     </div>
 </section>

@@ -708,6 +708,68 @@ header{
 /*END Header style*/
 
 /* Slider style*/
+/*countdown style*/
+.countdown {
+    position: absolute;
+    color: #FFFFFF;
+    top: 20px;
+    left: 3%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.countdown-item {
+    text-align: center;
+    margin: 0 10px;
+}
+
+.countdown-item span {
+    text-shadow: 5px 5px 10px #000000;
+    font-size: 42px;
+    font-weight: bold;
+}
+
+.countdown-label {
+    text-shadow: 5px 5px 10px #000000;
+    font-size: 19px;
+}
+@media screen and (max-width: 1430px){
+    .countdown-item span {
+        font-size: 32px;
+    }
+}
+@media screen and (max-width: 1024px){
+    .countdown-item span {
+        font-size: 28px;
+    }
+    .countdown-label{
+        font-size: 16px;
+    }
+    .countdown{
+        top: 10px;
+    }
+}
+@media screen and (max-width: 767px){
+    .countdown-item {
+        margin: 0 5px;
+    }
+    .countdown-item span {
+        font-size: 19px;
+    }
+    .countdown-label{
+        font-size: 14px;
+    }
+    .countdown{
+        top: 10px;
+    }
+}
+@media screen and (max-width: 550px){
+    .countdown{
+        display: none;
+    }
+}
+/*END countdown style*/
 .slider-section{
     height: auto;
     position: relative;
@@ -1206,8 +1268,12 @@ header{
                 line-height: 1.9em;
             }
             li a{
+                transition: .3s linear;
                 color: #4C4C52;
             }
+        }
+        .point-menu-list li:hover a{
+            color: #C10F1A;
         }
     }
 }
@@ -1290,6 +1356,44 @@ header{
         }
     }
 }
+@media screen and (max-width: 767px){
+    .scroll-info-box::-webkit-scrollbar {
+        width: 1px;
+        height: 5px;
+    }
+    .scroll-info-box::-webkit-scrollbar-track {
+        background: transparent;
+
+    }
+    .scroll-info-box::-webkit-scrollbar-thumb {
+        background-color: #820000;
+        border-radius: 20px;
+        border: 1px solid #820000;
+    }
+    .mini-info-box{
+        min-width: 97vw;
+    }
+}
+@media screen and (max-width: 660px){
+    .mini-info-box{
+        min-width: 96.5vw;
+    }
+}
+@media screen and (max-width: 580px){
+    .mini-info-box{
+        min-width: 96.5vw;
+    }
+}
+@media screen and (max-width: 490px){
+    .mini-info-box{
+        min-width: 95.5vw;
+    }
+}
+@media screen and (max-width: 440px){
+    .mini-info-box{
+        min-width: 95vw;
+    }
+}
 @media screen and (max-width: 430px){
     .melsu-today-section{
         .header-today-box{
@@ -1298,6 +1402,11 @@ header{
                 font-size: 24px;
             }
         }
+    }
+}
+@media screen and (max-width: 400px){
+    .mini-info-box{
+        min-width: 94.5vw;
     }
 }
 @media screen and (max-width: 375px){
@@ -1311,6 +1420,16 @@ header{
                 font-size: 24px;
             }
         }
+    }
+}
+@media screen and (max-width: 360px){
+    .mini-info-box{
+        min-width: 94vw;
+    }
+}
+@media screen and (max-width: 335px){
+    .mini-info-box{
+        min-width: 93.5vw;
     }
 }
 @media screen and (max-width: 320px){
@@ -1784,6 +1903,22 @@ header{
                 justify-content: end;
             }
         }
+    }
+    .scroll-news::-webkit-scrollbar {
+        width: 1px;
+        height: 5px;
+    }
+    .scroll-news::-webkit-scrollbar-track {
+        background: transparent;
+
+    }
+    .scroll-news::-webkit-scrollbar-thumb {
+        background-color: #820000;
+        border-radius: 20px;
+        border: 1px solid #820000;
+    }
+    .news-main-block > a{
+        max-width: 98vw;
     }
 }
     /*wrapper news*/

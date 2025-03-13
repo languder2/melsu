@@ -22,3 +22,4 @@
 
     <x-sections.map/>
 @endsection
+<script src="{{asset('./js/countdown-slider.js')}}"></script>
