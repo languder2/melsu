@@ -1142,6 +1142,7 @@ header{
     padding: 20px;
     font-family: "Montserrat", sans-serif;
 }
+
 .melsu-today-section{
     z-index: 1;
     position: relative;
@@ -3061,7 +3062,7 @@ footer{
 td.today.active.start-date.active.end-date.available,
 .active.start-date.available,
 .active.end-date.in-range.available{
-    background-color: var(--primary-color);
+    background-color: #820000 !important;
 }
     /*END data range picker style*/
     /*search news style*/
@@ -5461,7 +5462,8 @@ position: fixed;
 /*END style scroll to top*/
 
 /*schedule style*/
-.today:before{
+#scheduleTable .today:before,
+.list-box .today:before{
     content: 'Сегодня:';
     margin-right: 5px;
     color: lime;
