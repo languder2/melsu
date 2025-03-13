@@ -98,34 +98,36 @@ class Menu extends Model
         return $first;
     }
 
-    public static function GetMenuFaculty($faculty, $page): object
+    public static function GetMenuFaculty($division, $page): object
     {
+
+        $code = $division->code ?? $division->id;
         return
             (object)[
                 'items' => [
                     (object)[
                         'name' => "О факультете",
-                        'link' => "#",
+                        'link' => route('public:education:faculty', $code),
                         'active' => (bool)($page === 'about'),
                     ],
                     (object)[
                         'name' => "Деканат",
-                        'link' => "#",
-                        'active' => (bool)($page === 'staffs'),
+                        'link' => route('public:education:faculty:dean-office', $code),
+                        'active' => (bool)($page === 'dean-office'),
                     ],
                     (object)[
                         'name' => "Педагогический состав",
-                        'link' => "#",
-                        'active' => (bool)($page === 'staffs'),
+                        'link' => route('public:education:faculty:teaching-staff', $code),
+                        'active' => (bool)($page === 'teaching-staff'),
                     ],
                     (object)[
-                        'name' => "Кафедры",
-                        'link' => route('public:education:faculty:departments',[$faculty->code ?? $faculty->id]),
+                        'name' => "Кафедры и лаборатории",
+                        'link' => route('public:education:faculty:departments', $code),
                         'active' => (bool)($page === 'departments'),
                     ],
                     (object)[
                         'name' => "Направление подготовки",
-                        'link' => url("faculties/{$faculty->code}/specialities"),
+                        'link' => route('public:education:faculty:specialities', $code),
                         'active' => (bool)($page === 'specialities'),
                     ],
                     (object)[

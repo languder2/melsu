@@ -8,6 +8,7 @@ use App\Models\Staff\Staff;
 use Diglactic\Breadcrumbs\Breadcrumbs;
 use Diglactic\Breadcrumbs\Generator as BreadcrumbTrail;
 use App\Models\Division\Division;
+use App\Enums\DivisionType;
 
 Breadcrumbs::for('home', function (BreadcrumbTrail $trail) {
     $trail->push('Главная', route('pages:main'));
@@ -41,8 +42,15 @@ Breadcrumbs::for('faculty-departments', function (BreadcrumbTrail $trail, Facult
 //faculties/faculty_1
 
 
-Breadcrumbs::for('specialities', function (BreadcrumbTrail $trail) {
-    $trail->parent('home');
+Breadcrumbs::for('specialities', function (BreadcrumbTrail $trail, Division $division) {
+
+    if($division->type === DivisionType::Faculty)
+        $trail->push($faculty->name??"", route('public:education:faculty', [$faculty->code ?? $faculty->id??null]));
+    else if($division->type === DivisionType::Department)
+        $trail->push($faculty->name??"", route('public:education:faculty', [$faculty->code ?? $faculty->id??null]));
+    else
+        $trail->parent('home');
+
     $trail->push('Направления подготовки', route('public:education:specialities:all'));
 });
 

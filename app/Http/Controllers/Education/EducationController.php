@@ -143,31 +143,42 @@ class EducationController extends Controller
     }
 
     /* public: specialities | Специальности, список  */
-    public function specialities($faculty = null, $department = null): string|RedirectResponse
+    public function specialities($code = null): string|RedirectResponse
     {
+        $division = Division::where('code', $code)->orWhere('id',$code)->first();
+
+        if ($division === null)
+            return redirect()->to(route('public:education:faculties'));
+
+        $menu = Menu::GetMenuFaculty($division, page: 'specialities');
 
 
-//        $menu = Menu::GetMenuFaculty($faculty??[], page: 'specialities');
+        return view('public.education.faculty.specialities',compact('division','menu'));
+    }
 
-        return view("pages.page-with-menu", [
-            'sidebar' => View::make('components.menu.sidebar')->with([
-                'menu' => &$menu,
-                'full' => false,
-            ])->render(),
+    public function deanOffice($code = null): string|RedirectResponse
+    {
+        $division = Division::where('code', $code)->orWhere('id',$code)->first();
 
-            'breadcrumbs' => (object)[
-                'view'      => null,
-                'route'     => 'specialities',
-                'element'   => null,
-            ],
+        if ($division === null)
+            return redirect()->to(route('public:education:faculties'));
 
-            'nobg' => true,
+        $menu = Menu::GetMenuFaculty($division, page: 'dean-office');
 
-            'contents' => [
-                (new AllSpeciality($faculty, $department))->render(),
-            ]
 
-        ]);
+        return view('public.education.faculty.dean-office',compact('division','menu'));
+    }
+
+    public function teachingStaff($code = null): string|RedirectResponse
+    {
+        $division = Division::where('code', $code)->orWhere('id',$code)->first();
+
+        if ($division === null)
+            return redirect()->to(route('public:education:faculties'));
+
+        $menu = Menu::GetMenuFaculty($division, page: 'teaching-staff');
+
+        return view('public.education.faculty.teaching-staff',compact('division','menu'));
     }
 
     public function speciality(?string $speciality_code): string|RedirectResponse

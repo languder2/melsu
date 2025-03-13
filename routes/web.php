@@ -95,6 +95,18 @@ Route::controller(EducationController::class)
         Route::get('faculties/{faculty?}/departments', [EducationController::class, 'departments'])
             ->name('public:education:faculty:departments');
 
+        Route::get('faculties/{faculty?}/departments', [EducationController::class, 'departments'])
+            ->name('public:education:faculty:departments');
+
+        Route::get('faculties/{faculty?}/specialities', [EducationController::class, 'specialities'])
+            ->name('public:education:faculty:specialities');
+
+        Route::get('faculties/{faculty?}/dean-office', [EducationController::class, 'deanOffice'])
+            ->name('public:education:faculty:dean-office');
+
+        Route::get('faculties/{faculty?}/teaching-staff', [EducationController::class, 'teachingStaff'])
+            ->name('public:education:faculty:teaching-staff');
+
         Route::get('departments/{department?}', 'department')
             ->name('public:education:department');
 

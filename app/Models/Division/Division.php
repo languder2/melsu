@@ -158,7 +158,29 @@ class Division extends Model
 
         $response->where('show',1);
 
+
         return $response;
+    }
+
+    public function getTeachingStaffAttribute(): Collection
+    {
+        $result = collect([]);
+
+        foreach ($this->departments as $department)
+            foreach ($department->staffs as $staff){
+                if(!$result->has($staff->card->full_name))
+                    $result->put($staff->card->full_name,(object)[
+                        'full_name' => $staff->card->full_name,
+                        'link'      => $staff->card->link,
+                        'avatar'    => $staff->card->avatar,
+                        'posts'     => collect([$staff->post]) ,
+                    ]);
+
+                elseif($result[$staff->card->full_name]->posts->doesntContain($staff->post))
+                    $result[$staff->card->full_name]->posts->push($staff->post);
+            }
+
+        return $result->sortBy('full_name');
     }
 
     public function sections(): MorphMany

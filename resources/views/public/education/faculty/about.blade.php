@@ -12,7 +12,7 @@
     <section class="container px-2 bg-[url(img/lines-vector-map.jpg)] ">
         <div
             class="
-                flex gap-4 mb-4 p-4
+                flex gap-4 mb-4
                 relative
                 before:absolute
                 before:inset-0
