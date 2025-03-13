@@ -237,6 +237,82 @@ class Menu extends Model
 
     }
 
+    public static function GetMenuBranch($division, $page): object
+    {
+        $code = $division->code ?? $division->id;
+
+        $menu = (object)[
+            'name'  => 'Колледж',
+            'items' => collect([
+                (object)[
+                    'name' => "О колледже",
+                    'link' => route('public:education:branch', $code),
+                    'active' => (bool)($page === 'about'),
+                ],
+            ]),
+        ];
+
+        if($division->staffs->count())
+            $menu->items->push((object)[
+                'name' => "Педагогический состав",
+                'link' => route('public:education:branch:teaching-staff', $code),
+                'active' => (bool)($page === 'teaching-staff'),
+            ]);
+
+        if($division->labs->count())
+            $menu->items->push((object)[
+                'name' => "Лаборатории",
+                'link' => route('public:education:branch:labs', $code),
+                'active' => (bool)($page === 'labs'),
+            ]);
+
+//        if($division->specialities->count())
+//            $menu->items->push((object)[
+//                'name' => "Направление подготовки",
+//                'link' => route('public:education:branch:specialities', $code),
+//                'active' => (bool)($page === 'specialities'),
+//            ]);
+
+        $menu->items->push((object)[
+            'name' => "Поступающим",
+            'link' => url('incoming'),
+            'active' => false,
+        ]);
+
+        $menu->items->push((object)[
+            'name' => "Наука",
+            'link' => url('science'),
+            'active' => false,
+        ]);
+
+        $menu->items->push((object)[
+            'name' => "История",
+            'link' => url('science'),
+            'active' => false,
+        ]);
+
+        $menu->items->push((object)[
+            'name' => "Фотогалерея",
+            'link' => url('science'),
+            'active' => false,
+        ]);
+
+        $menu->items->push((object)[
+            'name' => "Наука",
+            'link' => url('science'),
+            'active' => false,
+        ]);
+
+        $menu->items->push((object)[
+            'name' => "Партнеры и выпускники",
+            'link' => url('partner'),
+            'active' => false,
+        ]);
+
+        return $menu;
+
+    }
+
     public static function GetMenuFaculties($list): array
     {
 

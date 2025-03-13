@@ -1,5 +1,11 @@
-<div
-    class="bg-neutral-100 px-5 py-3 flex flex-col"
+<a href="{{$department->link}}"
+    class="
+        bg-neutral-100 px-5 py-3 flex flex-col
+        group
+
+        hover:-mt-1 hover:mb-1 hover:bg-white
+        hover:shadow-md hover:shadow-black/5
+    "
 >
 
     <h3 class="font-semibold " >
@@ -26,4 +32,4 @@
             @each('public.contacts.contact',$department->emails,'contact')
         </div>
     @endif
-</div>
+</a>

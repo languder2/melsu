@@ -133,7 +133,6 @@ class Division extends Model
         $field = match($this->type){
             DivisionType::Faculty       => 'faculty_id',
             DivisionType::Department    => 'department_id',
-
         };
 
         return $this->hasMany(Speciality::class, $field,'id')

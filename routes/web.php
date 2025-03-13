@@ -64,8 +64,6 @@ Route::controller(EducationController::class)
         Route::get('labs', 'showAllLabs')
             ->name('public:education:labs:list');
 
-        Route::get('branch', 'showAllBranch')
-            ->name('public:education:branch:list');
     });
 
 
@@ -125,6 +123,20 @@ Route::prefix('departments')->group(function () {
         ->name('public:education:department:teaching-staff');
 });
 
+Route::prefix('branches')->group(function () {
+    Route::get('', [EducationController::class, 'showAllBranch'])
+        ->name('public:education:branch:list');
+
+    Route::get('{branch}', [EducationController::class, 'branch'])
+        ->name('public:education:branch');
+
+    Route::get('{branch}/specialities', [EducationController::class, 'specialities'])
+        ->name('public:education:branch:specialities');
+
+    Route::get('{branch}/teaching-staff', [EducationController::class, 'teachingStaff'])
+        ->name('public:education:branch:teaching-staff');
+});
+
 
 
 
@@ -135,8 +147,6 @@ Route::prefix('departments')->group(function () {
 Route::controller(EducationController::class)
     ->group(function () {
 
-        Route::get('branch/{branch}', 'branch')
-            ->name('public:education:branch');
 
         Route::get('labs/{labs}', 'lab')
             ->name('public:education:lab');

@@ -95,10 +95,6 @@ class EducationController extends Controller
 
         return view('public.education.departments.about',compact('division','menu'));
     }
-
-
-
-
     public function specialities($code = null): string|RedirectResponse
     {
 
@@ -139,23 +135,11 @@ class EducationController extends Controller
             default => null,
             DivisionType::Faculty       => Menu::GetMenuFaculty($division, page: 'teaching-staff'),
             DivisionType::Department    => Menu::GetMenuDepartment($division, page: 'teaching-staff'),
+            DivisionType::Branch        => Menu::GetMenuBranch($division, page: 'teaching-staff'),
         };
 
         return view('public.education.faculty.teaching-staff',compact('division','menu'));
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     public function showAllBranch(): string
     {
@@ -166,8 +150,32 @@ class EducationController extends Controller
         ;
 
         return view('public.education.branch.list', compact('list'));
-
     }
+
+    public function branch($code = null): string|RedirectResponse
+    {
+
+        $division   = Division::where('code', $code)->orWhere('id',$code)->first();
+
+        if(!$division || $division->type != DivisionType::Branch)
+            return redirect()->to(route('public:education:branch:list'));
+
+        $menu = Menu::GetMenuBranch($division,'about');
+
+        return view('public.education.branch.about',compact('division','menu'));
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 
     public function showAllLabs(): string
     {
