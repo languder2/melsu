@@ -18,6 +18,8 @@ use App\Models\Page\Content as PageContent;
 use App\Models\Global\Options;
 use Illuminate\Support\Collection;
 
+use App\Models\Education\Speciality;
+
 class Division extends Model
 {
     use SoftDeletes;
@@ -122,6 +124,22 @@ class Division extends Model
             ->where('show',true)
             ->orderBy('sort')
             ->orderBy('name')
+            ;
+    }
+
+    public function specialities(): HasMany
+    {
+
+        $field = match($this->type){
+            DivisionType::Faculty       => 'faculty_id',
+            DivisionType::Department    => 'department_id',
+
+        };
+
+        return $this->hasMany(Speciality::class, $field,'id')
+            ->where('show',true)
+            ->orderBy('order')
+            ->orderBy('spec_code')
         ;
     }
 
@@ -166,8 +184,22 @@ class Division extends Model
     {
         $result = collect([]);
 
-        foreach ($this->departments as $department)
-            foreach ($department->staffs as $staff){
+        if($this->type === DivisionType::Faculty)
+            foreach ($this->departments as $department)
+                foreach ($department->staffs as $staff){
+                    if(!$result->has($staff->card->full_name))
+                        $result->put($staff->card->full_name,(object)[
+                            'full_name' => $staff->card->full_name,
+                            'link'      => $staff->card->link,
+                            'avatar'    => $staff->card->avatar,
+                            'posts'     => collect([$staff->post]) ,
+                        ]);
+
+                    elseif($result[$staff->card->full_name]->posts->doesntContain($staff->post))
+                        $result[$staff->card->full_name]->posts->push($staff->post);
+                }
+        else
+            foreach ($this->staffs as $staff){
                 if(!$result->has($staff->card->full_name))
                     $result->put($staff->card->full_name,(object)[
                         'full_name' => $staff->card->full_name,
@@ -179,6 +211,7 @@ class Division extends Model
                 elseif($result[$staff->card->full_name]->posts->doesntContain($staff->post))
                     $result[$staff->card->full_name]->posts->push($staff->post);
             }
+
 
         return $result->sortBy('full_name');
     }

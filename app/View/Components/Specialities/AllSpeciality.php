@@ -53,16 +53,16 @@ class AllSpeciality extends Component
 
     public function render(): View|Closure|string
     {
-        $specialities = new Speciality();
+        $specialities = Speciality::where('show',true);
 
         if ($this->division->type === DivisionType::Faculty)
-            $specialities = $specialities->where('faculty_id', $this->division->id);
+            $specialities->where('faculty_id', $this->division->id);
 
         if ($this->division->type === DivisionType::Department)
-            $specialities = $specialities->where('department_id', $this->division->id);
+            $specialities->where('department_id', $this->division->id);
 
         if ($this->short)
-            $specialities = $specialities->limit(9);
+            $specialities->limit(9);
 
         return view('components.specialities.all-speciality', [
             'specialities' => $specialities->get(),

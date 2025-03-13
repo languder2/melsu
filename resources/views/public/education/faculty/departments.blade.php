@@ -1,60 +1,55 @@
 @extends("layouts.main")
 
 @section('title')
-    ФГБОУ ВО "МелГУ: {{$faculty->name}}
+    ФГБОУ ВО "МелГУ: {{$division->name}}
 @endsection
 
 @section('breadcrumbs')
-    {{Breadcrumbs::view("vendor.breadcrumbs.base",'faculty',$faculty)}}
+    {{Breadcrumbs::view("vendor.breadcrumbs.base",'faculty',$division)}}
 @endsection
 
 @section('content')
-
     <section class="container px-2">
         <div
             class="
                 flex gap-4 mb-4
                 relative
-                before:absolute
-                before:inset-0
-                before:bg-cover before:bg-center
-                before:opacity-50
             "
         >
-            @isset($faculty->chief->card)
+            @isset($division->chief->card)
                 <img
-                    src="{{$faculty->chief->card->avatar->thumbnail}}"
-                    alt="{{$faculty->chief->card->full_name}}"
+                    src="{{$division->chief->card->avatar->thumbnail}}"
+                    alt="{{$division->chief->card->full_name}}"
                     class="w-92"
                 />
             @endisset
 
-            <div class="flex-1 flex flex-col gap-3 bg-neutral-100 p-4">
-                @isset($faculty->chief->card)
+            <div class="flex-1 flex flex-col gap-3 p-4 bg-neutral-100">
+                @isset($division->chief->card)
                     <h3 class="font-semibold text-xl">
-                        {{$faculty->chief->card->full_name}}
+                        {{$division->chief->card->full_name}}
                     </h3>
                 @endisset
 
-                @isset($faculty->chief)
+                @isset($division->chief)
                     <h3 class="font-semibold ">
-                        {{$faculty->chief->post}}
+                        {{$division->chief->post}}
                     </h3>
                 @endisset
 
-                @if($faculty->contacts->count())
+                @if($division->contacts->count())
                     <h4 class="text-lg font-semibold mt-6">
                         Контакты
                     </h4>
                     <div class="grid grid-cols-3 gap-3">
                         <div>
-                            @each('public.contacts.contact',$faculty->phones,'contact')
+                            @each('public.contacts.contact',$division->phones,'contact')
                         </div>
                         <div>
-                            @each('public.contacts.contact',$faculty->emails,'contact')
+                            @each('public.contacts.contact',$division->emails,'contact')
                         </div>
                     </div>
-                    @each('public.contacts.address',$faculty->addresses,'contact')
+                    @each('public.contacts.address',$division->addresses,'contact')
                @endif
 
             </div>
@@ -66,24 +61,33 @@
             </div>
 
             <div class="wrapper">
-
-                @if($faculty->departments->count())
-                    <h4 class="font-semibold pb-3 text-lg">
+                @if($division->departments->count())
+                    <h4 class="font-semibold text-lg mb-2">
                         Кафедры
                     </h4>
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                        @each("public.education.departments.block",$faculty->departments,'department')
+                        @each("public.education.departments.block",$division->departments,'department')
                     </div>
                 @endif
 
-                @if($faculty->facultyLabs->count())
-                    <h4 class="font-semibold py-3 mt-4 text-lg">
+                @if($division->FacultyLabs->count())
+                    <h4 class="font-semibold text-lg mb-2 mt-6">
                         Лаборатории
                     </h4>
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                        @each("public.education.departments.block",$faculty->facultyLabs,'department')
+                        @each("public.education.departments.block",$division->FacultyLabs,'department')
                     </div>
                 @endif
+
+                @if($division->labs->count())
+                    <h4 class="font-semibold text-lg mb-2 mt-6">
+                        Лаборатории
+                    </h4>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                        @each("public.education.departments.block",$division->labs,'department')
+                    </div>
+               @endif
+
             </div>
         </div>
     </section>

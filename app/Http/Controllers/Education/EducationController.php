@@ -17,9 +17,9 @@ use Illuminate\Support\Facades\Route;
 
 class EducationController extends Controller
 {
+
     public function faculties(): string
     {
-
         $list = Division::where('show',1)
             ->where('type',DivisionType::Faculty)
             ->orderBy('sort')
@@ -30,17 +30,21 @@ class EducationController extends Controller
         return view('public.education.faculties.list', compact('list'));
 
     }
-    public function showAllBranch(): string
+
+    public function faculty($code = null): \Illuminate\View\View|RedirectResponse
     {
 
-        $list = Division::where('show',1)->where('type',DivisionType::Branch)
-            ->orderBy('sort')->orderBy('name')
-            ->get()
-        ;
+        $faculty = Division::where('code', $code)->orWhere('id',$code)->first();
 
-        return view('public.education.branch.list', compact('list'));
+        if ($faculty === null)
+            return redirect()->to(route('public:education:faculties'));
 
+        $menu = Menu::GetMenuFaculty($faculty, page: 'about');
+
+
+        return view('public.education.faculty.about',compact('faculty','menu'));
     }
+
     public function showAllDepartments(): string
     {
         $list = Division::where('show',1)->where('type',DivisionType::Department)
@@ -61,8 +65,113 @@ class EducationController extends Controller
         return view('public.education.departments.list', compact('list','faculties','filter'));
     }
 
+    public function departments($code = null): string|RedirectResponse
+    {
+
+        $division = Division::where('code', $code)->orWhere('id',$code)->first();
+
+        if ($division === null)
+            return redirect()->to(route('public:education:faculties'));
+
+        $menu = match($division->type){
+            default => null,
+            DivisionType::Faculty       => Menu::GetMenuFaculty($division, page: 'departments'),
+            DivisionType::Department    => Menu::GetMenuDepartment($division, page: 'labs'),
+        };
+
+        return view('public.education.faculty.departments',compact('division','menu'));
+
+    }
+
+    public function department($code = null): string|RedirectResponse
+    {
+
+        $division   = Division::where('code', $code)->orWhere('id',$code)->first();
+
+        if(!$division || $division->type != DivisionType::Department)
+            return redirect()->to(route('public:education:faculties'));
+
+        $menu = Menu::GetMenuDepartment($division,'about');
+
+        return view('public.education.departments.about',compact('division','menu'));
+    }
+
+
+
+
+    public function specialities($code = null): string|RedirectResponse
+    {
+
+        $division = Division::where('code', $code)->orWhere('id',$code)->first();
+
+        if ($division === null)
+            return redirect()->to(route('public:education:faculties'));
+
+        $menu = match($division->type){
+            default => null,
+            DivisionType::Faculty       => Menu::GetMenuFaculty($division, page: 'specialities'),
+            DivisionType::Department    => Menu::GetMenuDepartment($division, page: 'specialities'),
+        };
+
+        return view('public.education.faculty.specialities',compact('division','menu'));
+    }
+
+    public function deanOffice($code = null): string|RedirectResponse
+    {
+        $division = Division::where('code', $code)->orWhere('id',$code)->first();
+
+        if ($division === null)
+            return redirect()->to(route('public:education:faculties'));
+
+        $menu = Menu::GetMenuFaculty($division, page: 'dean-office');
+
+        return view('public.education.faculty.dean-office',compact('division','menu'));
+    }
+
+    public function teachingStaff($code = null): string|RedirectResponse
+    {
+        $division = Division::where('code', $code)->orWhere('id',$code)->first();
+
+        if ($division === null)
+            return redirect()->to(route('public:education:faculties'));
+
+        $menu = match($division->type){
+            default => null,
+            DivisionType::Faculty       => Menu::GetMenuFaculty($division, page: 'teaching-staff'),
+            DivisionType::Department    => Menu::GetMenuDepartment($division, page: 'teaching-staff'),
+        };
+
+        return view('public.education.faculty.teaching-staff',compact('division','menu'));
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public function showAllBranch(): string
+    {
+
+        $list = Division::where('show',1)->where('type',DivisionType::Branch)
+            ->orderBy('sort')->orderBy('name')
+            ->get()
+        ;
+
+        return view('public.education.branch.list', compact('list'));
+
+    }
+
     public function showAllLabs(): string
     {
+
         return view('pages.page', [
             'breadcrumbs' => (object)[
                 'view'      => null,
@@ -79,107 +188,8 @@ class EducationController extends Controller
         ]);
     }
 
-    public function faculty($code = null): \Illuminate\View\View|RedirectResponse
-    {
-
-        $faculty = Division::where('code', $code)->orWhere('id',$code)->first();
-
-        if ($faculty === null)
-            return redirect()->to(route('public:education:faculties'));
-
-        $menu = Menu::GetMenuFaculty($faculty, page: 'about');
-
-
-        return view('public.education.faculty.about',compact('faculty','menu'));
-    }
-
-    public function departments($code = null): string|RedirectResponse
-    {
-
-        $faculty = Division::where('code', $code)->orWhere('id',$code)->first();
-
-        if ($faculty === null)
-            return redirect()->to(route('public:education:faculties'));
-
-        $menu = Menu::GetMenuFaculty($faculty, page: 'departments');
-
-        return view('public.education.faculty.departments',compact('faculty','menu'));
-
-    }
-
-    public function department($faculty = null, $department = null): string|RedirectResponse
-    {
-
-        $faculty = Faculty::where('code', $faculty)->first();
-
-        $department = $faculty->departments()->where('code', $department)->first();
-
-        if (!$faculty || !$department)
-            return redirect()->to(route('public:education:faculties'));
-
-        $menu = Menu::GetMenuFaculty($faculty, page: 'departments');
-
-        return view('pages.page-with-menu', [
-            'breadcrumbs' => (object)[
-                'view'      => null,
-                'route'     => 'faculty',
-                'element'   => $faculty,
-            ],
-
-            'sidebar' => View::make('components.menu.alt_sidebar')->with([
-                'menu' => &$menu,
-            ])->render(),
-
-            'nobg' => true,
-
-            'contents' => [
-                View::make('components.education.department')->with([
-                    'faculty' => $faculty,
-                    'department' => $department,
-                ])->render(),
-                (new AllSpeciality($faculty->code, $department->code))->render(),
-            ]
-        ]);
-    }
-
     /* public: specialities | Специальности, список  */
-    public function specialities($code = null): string|RedirectResponse
-    {
-        $division = Division::where('code', $code)->orWhere('id',$code)->first();
 
-        if ($division === null)
-            return redirect()->to(route('public:education:faculties'));
-
-        $menu = Menu::GetMenuFaculty($division, page: 'specialities');
-
-
-        return view('public.education.faculty.specialities',compact('division','menu'));
-    }
-
-    public function deanOffice($code = null): string|RedirectResponse
-    {
-        $division = Division::where('code', $code)->orWhere('id',$code)->first();
-
-        if ($division === null)
-            return redirect()->to(route('public:education:faculties'));
-
-        $menu = Menu::GetMenuFaculty($division, page: 'dean-office');
-
-
-        return view('public.education.faculty.dean-office',compact('division','menu'));
-    }
-
-    public function teachingStaff($code = null): string|RedirectResponse
-    {
-        $division = Division::where('code', $code)->orWhere('id',$code)->first();
-
-        if ($division === null)
-            return redirect()->to(route('public:education:faculties'));
-
-        $menu = Menu::GetMenuFaculty($division, page: 'teaching-staff');
-
-        return view('public.education.faculty.teaching-staff',compact('division','menu'));
-    }
 
     public function speciality(?string $speciality_code): string|RedirectResponse
     {

@@ -1,6 +1,8 @@
-<div class="my-3">
+<div class="my-2">
     <div class="flex gap-3">
-        {!! $contact->type->getIco() !!}
+        <span class="text-base-red/75">
+            {!! $contact->type->getIco() !!}
+        </span>
         {{$contact->title ?? "Адрес"}}
     </div>
     <div>

@@ -1,9 +1,14 @@
 @if($menu)
     <ul class="left-side-menu sticky top-44 bg-white px-4 py-2">
+        <li>
+            <h4 class="font-bold text-lg pb-1 mb-2 border-b border-base-red" >
+                {!! $menu->name !!}
+            </h4>
+        </li>
         @foreach($menu->items as $item)
             @if($item->active)
                 <li class="py-2">
-                    <span class="text-baseRed">
+                    <span class="text-base-red font-semibold ">
                         {{$item->name}}
                     </span>
                 </li>
@@ -11,7 +16,7 @@
                 <li class="py-2">
                     <a
                         href="{{$item->link}}"
-                        class="text-[#301428]"
+                        class="text-[#301428] hover:text-base-red"
                     >
                         {{$item->name}}
                     </a>
