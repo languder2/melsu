@@ -28,9 +28,9 @@
     <div class="grid grid-cols-1 sm:grid-cols-[2fr_1fr] gap-4">
         @if($staff->address)
             <div class="mb-7 sm:mb-0">
-                        <span class="text-[#4C4C4C]">
-                            Адрес:
-                        </span>
+                <span class="text-[#4C4C4C]">
+                    Адрес:
+                </span>
                 <p class="font-semibold text-[#4C4C4C]">
                     {!! str_replace('!!!','<br>',$staff->address) !!}
                 </p>

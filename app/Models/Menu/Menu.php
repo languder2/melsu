@@ -98,34 +98,37 @@ class Menu extends Model
         return $first;
     }
 
-    public static function GetMenuFaculty($faculty, $page): object
+    public static function GetMenuFaculty($division, $page): object
     {
+        $code = $division->code ?? $division->id;
+
         return
             (object)[
+                'name'  => 'Факультет',
                 'items' => [
                     (object)[
                         'name' => "О факультете",
-                        'link' => "#",
+                        'link' => route('public:education:faculty', $code),
                         'active' => (bool)($page === 'about'),
                     ],
                     (object)[
                         'name' => "Деканат",
-                        'link' => "#",
-                        'active' => (bool)($page === 'staffs'),
+                        'link' => route('public:education:faculty:dean-office', $code),
+                        'active' => (bool)($page === 'dean-office'),
                     ],
                     (object)[
                         'name' => "Педагогический состав",
-                        'link' => "#",
-                        'active' => (bool)($page === 'staffs'),
+                        'link' => route('public:education:faculty:teaching-staff', $code),
+                        'active' => (bool)($page === 'teaching-staff'),
                     ],
                     (object)[
-                        'name' => "Кафедры",
-                        'link' => route('public:education:faculty:departments',[$faculty->code ?? $faculty->id]),
+                        'name' => "Кафедры и лаборатории",
+                        'link' => route('public:education:faculty:departments', $code),
                         'active' => (bool)($page === 'departments'),
                     ],
                     (object)[
                         'name' => "Направление подготовки",
-                        'link' => url("faculties/{$faculty->code}/specialities"),
+                        'link' => route('public:education:faculty:specialities', $code),
                         'active' => (bool)($page === 'specialities'),
                     ],
                     (object)[
@@ -156,6 +159,158 @@ class Menu extends Model
                 ],
 
             ];
+    }
+
+    public static function GetMenuDepartment($division, $page): object
+    {
+        $code = $division->code ?? $division->id;
+
+        $menu = (object)[
+            'name'  => 'Кафедра',
+            'items' => collect([
+                (object)[
+                    'name' => "О кафедре",
+                    'link' => route('public:education:department', $code),
+                    'active' => (bool)($page === 'about'),
+                ],
+            ]),
+        ];
+
+        if($division->staffs->count())
+            $menu->items->push((object)[
+                'name' => "Педагогический состав",
+                'link' => route('public:education:department:teaching-staff', $code),
+                'active' => (bool)($page === 'teaching-staff'),
+            ]);
+
+        if($division->labs->count())
+            $menu->items->push((object)[
+                'name' => "Лаборатории",
+                'link' => route('public:education:department:labs', $code),
+                'active' => (bool)($page === 'labs'),
+            ]);
+
+        if($division->specialities->count())
+            $menu->items->push((object)[
+                'name' => "Направление подготовки",
+                'link' => route('public:education:department:specialities', $code),
+                'active' => (bool)($page === 'specialities'),
+            ]);
+
+        $menu->items->push((object)[
+            'name' => "Поступающим",
+            'link' => url('incoming'),
+            'active' => false,
+        ]);
+
+        $menu->items->push((object)[
+            'name' => "Наука",
+            'link' => url('science'),
+            'active' => false,
+        ]);
+
+        $menu->items->push((object)[
+            'name' => "История",
+            'link' => url('science'),
+            'active' => false,
+        ]);
+
+        $menu->items->push((object)[
+            'name' => "Фотогалерея",
+            'link' => url('science'),
+            'active' => false,
+        ]);
+
+        $menu->items->push((object)[
+            'name' => "Наука",
+            'link' => url('science'),
+            'active' => false,
+        ]);
+
+        $menu->items->push((object)[
+            'name' => "Партнеры и выпускники",
+            'link' => url('partner'),
+            'active' => false,
+        ]);
+
+        return $menu;
+
+    }
+
+    public static function GetMenuBranch($division, $page): object
+    {
+        $code = $division->code ?? $division->id;
+
+        $menu = (object)[
+            'name'  => 'Колледж',
+            'items' => collect([
+                (object)[
+                    'name' => "О колледже",
+                    'link' => route('public:education:branch', $code),
+                    'active' => (bool)($page === 'about'),
+                ],
+            ]),
+        ];
+
+        if($division->staffs->count())
+            $menu->items->push((object)[
+                'name' => "Педагогический состав",
+                'link' => route('public:education:branch:teaching-staff', $code),
+                'active' => (bool)($page === 'teaching-staff'),
+            ]);
+
+        if($division->labs->count())
+            $menu->items->push((object)[
+                'name' => "Лаборатории",
+                'link' => route('public:education:branch:labs', $code),
+                'active' => (bool)($page === 'labs'),
+            ]);
+
+//        if($division->specialities->count())
+//            $menu->items->push((object)[
+//                'name' => "Направление подготовки",
+//                'link' => route('public:education:branch:specialities', $code),
+//                'active' => (bool)($page === 'specialities'),
+//            ]);
+
+        $menu->items->push((object)[
+            'name' => "Поступающим",
+            'link' => url('incoming'),
+            'active' => false,
+        ]);
+
+        $menu->items->push((object)[
+            'name' => "Наука",
+            'link' => url('science'),
+            'active' => false,
+        ]);
+
+        $menu->items->push((object)[
+            'name' => "История",
+            'link' => url('science'),
+            'active' => false,
+        ]);
+
+        $menu->items->push((object)[
+            'name' => "Фотогалерея",
+            'link' => url('science'),
+            'active' => false,
+        ]);
+
+        $menu->items->push((object)[
+            'name' => "Наука",
+            'link' => url('science'),
+            'active' => false,
+        ]);
+
+        $menu->items->push((object)[
+            'name' => "Партнеры и выпускники",
+            'link' => url('partner'),
+            'active' => false,
+        ]);
+
+        return $menu;
+
     }
 
     public static function GetMenuFaculties($list): array

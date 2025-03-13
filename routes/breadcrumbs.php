@@ -8,6 +8,7 @@ use App\Models\Staff\Staff;
 use Diglactic\Breadcrumbs\Breadcrumbs;
 use Diglactic\Breadcrumbs\Generator as BreadcrumbTrail;
 use App\Models\Division\Division;
+use App\Enums\DivisionType;
 
 Breadcrumbs::for('home', function (BreadcrumbTrail $trail) {
     $trail->push('Главная', route('pages:main'));
@@ -41,41 +42,21 @@ Breadcrumbs::for('faculty-departments', function (BreadcrumbTrail $trail, Facult
 //faculties/faculty_1
 
 
-Breadcrumbs::for('specialities', function (BreadcrumbTrail $trail) {
-    $trail->parent('home');
+Breadcrumbs::for('specialities', function (BreadcrumbTrail $trail, Division $division) {
+
+    if($division->type === DivisionType::Faculty)
+        $trail->push($faculty->name??"", route('public:education:faculty', [$faculty->code ?? $faculty->id??null]));
+    else if($division->type === DivisionType::Department)
+        $trail->push($faculty->name??"", route('public:education:faculty', [$faculty->code ?? $faculty->id??null]));
+    else
+        $trail->parent('home');
+
     $trail->push('Направления подготовки', route('public:education:specialities:all'));
 });
 
-Breadcrumbs::for('speciality', function (BreadcrumbTrail $trail, Speciality $speciality) {
-    $trail->push('Главная', route('pages:main'));
-
-    if($speciality->faculty)
-        $trail->push(
-            $speciality->faculty->name,
-            route('public:education:faculty', [$speciality->faculty->code ?? $speciality->faculty->id??null])
-        );
-
-    if($speciality->department)
-        $trail->push(
-            $speciality->department->name,
-            route(
-                'public:education:department',
-                    [
-                        $speciality->faculty->code ?? $speciality->faculty->id??null,
-                        $speciality->department->code ?? $speciality->department->id??null
-                    ]
-            )
-        );
-
-
-    $trail->push('Направления подготовки', route('public:education:specialities:department',
-        [
-            $speciality->faculty->code ?? $speciality->faculty->id??"",
-            $speciality->department->code ?? $speciality->department->id??""
-        ]
-    ));
-
-    $trail->push($speciality->name??"-", route('public:education:speciality', [$speciality->code ?? $speciality->id??null]));
+Breadcrumbs::for('speciality', function (BreadcrumbTrail $trail) {
+    $trail->parent('home');
+    $trail->push("Факультеты и филиалы", route('public:education:faculties'));
 });
 
 

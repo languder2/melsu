@@ -11,7 +11,7 @@
             @foreach($speciality->profiles as $profile)
                 @foreach($profile->places??[] as $place)
 
-                    <div class="box-searching card-nap position-aware checked-box hidden">
+                    <div class="box-searching card-nap position-aware checked-box hidden group">
                         <svg width="285" height="312" viewBox="0 0 285 312" fill="none"
                              xmlns="http://www.w3.org/2000/svg">
                             <path opacity="0.4"
@@ -38,38 +38,38 @@
                                         checked
                                     @endif
                                 >
-                                @if(is_null($faculty))
-                                    <p class="sku uppercase font-medium mb-3">
-                                        {{$speciality->faculty->name}}
-                                    </p>
-                                @endif
+{{--                                @if(is_null($faculty))--}}
+{{--                                    <p class="sku uppercase font-medium mb-3">--}}
+{{--                                        {{$speciality->faculty->name}}--}}
+{{--                                    </p>--}}
+{{--                                @endif--}}
                                 <h2 class="text-xl font-[600] name mb-6">
                                     {{$speciality->spec_code}}
                                     -
                                     {{$speciality->name}}
                                 </h2>
                             </div>
-                            <div class="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-3">
+                            <div class="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-3 group-hover:text-white">
                                 <div class="flex flex-col">
                                     @if($place->type !== 'budget')
                                         <span class="font-[400]">
                                             {{$profile->price/1000}}
                                             тыс
                                         </span>
-                                        <span class="font-[400] text-sm text-[#252422]">Стоимость, ₽</span>
+                                        <span class="font-[400] text-sm text-neutral-700 group-hover:text-white">Стоимость, ₽</span>
                                     @endif
                                 </div>
                                 <div class="flex flex-col">
                                 <span class="font-[400]">
                                     {{@$profile->budget_scores}}
                                 </span>
-                                    <span class="font-[400] text-sm text-[#252422]">Проходной балл</span>
+                                    <span class="font- text-sm text-neutral-700 group-hover:text-white">Проходной балл</span>
                                 </div>
                                 <div class="flex flex-col">
                                     <span class="font-[400] text-sm">
                                         {{ $place->count }}
                                     </span>
-                                    <span class="font-[400] text-sm text-[#252422]">
+                                    <span class="font-[400] text-sm text-neutral-700 group-hover:text-white">
                                         @if($place->type === 'budget')
                                             Бюджетных мест
                                         @else
@@ -81,7 +81,7 @@
                                 <span class="font-[400] text-sm">
                                     {{(float)$profile->duration}}
                                 </span>
-                                    <span class="font-[400] text-sm text-[#252422]">Срок обучения</span>
+                                    <span class="font-[400] text-sm text-neutral-700 group-hover:text-white ">Срок обучения</span>
                                 </div>
                             </div>
                             <span class="aware-bg"></span>

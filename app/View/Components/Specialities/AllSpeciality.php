@@ -2,13 +2,14 @@
 
 namespace App\View\Components\Specialities;
 
+use App\Enums\DivisionType;
 use App\Models\Education\Department as EducationDepartment;
 use App\Models\Education\Faculty;
 use App\Models\Education\Speciality;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
-
+use App\Models\Division\Division;
 class AllSpeciality extends Component
 {
 
@@ -18,23 +19,20 @@ class AllSpeciality extends Component
 
     public array $options = [];
 
-    public Faculty|null $faculty = null;
-    public EducationDepartment|null $department = null;
+    public ?Division $division = null;
 
     /**
      * Create a new component instance.
      */
-    public function __construct($faculty = null, $department = null, $short = false, bool $showHeader = false)
+    public function __construct(?Division $division = null, $short = false, bool $showHeader = false)
     {
-
         if ($short)
             $this->short = true;
 
         if ($showHeader)
             $this->showHeader = true;
 
-        $this->faculty = Faculty::where('code', $faculty)->first();
-        $this->department = EducationDepartment::where('code', $department)->first();
+        $this->division = $division;
     }
 
     /**
@@ -55,23 +53,22 @@ class AllSpeciality extends Component
 
     public function render(): View|Closure|string
     {
-        $specialities = new Speciality();
+        $specialities = Speciality::where('show',true);
 
-        if ($this->faculty)
-            $specialities = $specialities->where('faculty_code', $this->faculty->code);
+        if ($this->division->type === DivisionType::Faculty)
+            $specialities->where('faculty_id', $this->division->id);
 
-        if ($this->department)
-            $specialities = $specialities->where('department_code', $this->department->code);
+        if ($this->division->type === DivisionType::Department)
+            $specialities->where('department_id', $this->division->id);
 
         if ($this->short)
-            $specialities = $specialities->limit(9);
+            $specialities->limit(9);
 
         return view('components.specialities.all-speciality', [
             'specialities' => $specialities->get(),
             'short' => $this->short,
             'show'  => $this->showHeader,
-            'faculty' => $this->faculty,
-            'department' => $this->department,
+            'division' => $this->division,
         ]);
     }
 }

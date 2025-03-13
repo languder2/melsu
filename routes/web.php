@@ -60,18 +60,14 @@ Route::controller(NewsController::class)
 Route::controller(EducationController::class)
     ->prefix('education')
     ->group(function () {
-        Route::get('faculties', 'faculties')
-            ->name('public:education:faculties');
-
-        Route::get('departments', 'showAllDepartments')
-            ->name('public:education:departments:list');
 
         Route::get('labs', 'showAllLabs')
             ->name('public:education:labs:list');
 
-        Route::get('branch', 'showAllBranch')
-            ->name('public:education:branch:list');
     });
+
+
+
 
 Route::controller(EducationController::class)
     ->prefix('specialities')
@@ -84,21 +80,75 @@ Route::controller(EducationController::class)
 
 /* Education: public */
 
+
+/* Faculties */
+
+Route::prefix('faculties')->group(function () {
+    Route::get('', [EducationController::class, 'faculties'])
+        ->name('public:education:faculties');
+
+    Route::get('{faculty}', [EducationController::class, 'faculty'])
+        ->name('public:education:faculty');
+
+    Route::get('{faculty}/departments', [EducationController::class, 'departments'])
+        ->name('public:education:faculty:departments');
+
+    Route::get('{faculty}/departments', [EducationController::class, 'departments'])
+        ->name('public:education:faculty:departments');
+
+    Route::get('{faculty}/specialities', [EducationController::class, 'specialities'])
+        ->name('public:education:faculty:specialities');
+
+    Route::get('{faculty}/dean-office', [EducationController::class, 'deanOffice'])
+        ->name('public:education:faculty:dean-office');
+
+    Route::get('{faculty}/teaching-staff', [EducationController::class, 'teachingStaff'])
+        ->name('public:education:faculty:teaching-staff');
+});
+
+Route::prefix('departments')->group(function () {
+    Route::get('', [EducationController::class, 'showAllDepartments'])
+        ->name('public:education:departments:list');
+
+    Route::get('{department}', [EducationController::class, 'department'])
+        ->name('public:education:department');
+
+    Route::get('{department}/labs', [EducationController::class, 'departments'])
+        ->name('public:education:department:labs');
+
+    Route::get('{department}/specialities', [EducationController::class, 'specialities'])
+        ->name('public:education:department:specialities');
+
+    Route::get('{department}/teaching-staff', [EducationController::class, 'teachingStaff'])
+        ->name('public:education:department:teaching-staff');
+});
+
+Route::prefix('branches')->group(function () {
+    Route::get('', [EducationController::class, 'showAllBranch'])
+        ->name('public:education:branch:list');
+
+    Route::get('{branch}', [EducationController::class, 'branch'])
+        ->name('public:education:branch');
+
+    Route::get('{branch}/specialities', [EducationController::class, 'specialities'])
+        ->name('public:education:branch:specialities');
+
+    Route::get('{branch}/teaching-staff', [EducationController::class, 'teachingStaff'])
+        ->name('public:education:branch:teaching-staff');
+});
+
+
+
+
+/* END Faculties */
+
+
+
 Route::controller(EducationController::class)
     ->group(function () {
-        Route::get('branch/{branch?}', 'branch')
-            ->name('public:education:branch');
 
-        Route::get('faculties/{faculty?}', 'faculty')
-            ->name('public:education:faculty');
 
-        Route::get('faculties/{faculty?}/departments', [EducationController::class, 'departments'])
-            ->name('public:education:faculty:departments');
-
-        Route::get('departments/{department?}', 'department')
-            ->name('public:education:department');
-
-        Route::get('labs/{labs?}', 'lab')
+        Route::get('labs/{labs}', 'lab')
             ->name('public:education:lab');
     });
 

@@ -9,10 +9,10 @@
 @endsection
 
 @section('content')
-    <section class="container px-2 bg-[url(img/lines-vector-map.jpg)] ">
+    <section class="container px-2">
         <div
             class="
-                flex gap-4 mb-4 p-4
+                flex gap-4 mb-4
                 relative
                 before:absolute
                 before:inset-0
@@ -29,7 +29,7 @@
                 />
             @endisset
 
-            <div class="flex-1 flex flex-col gap-3">
+            <div class="flex-1 flex flex-col gap-3 p-4 bg-neutral-100">
                 @isset($faculty->chief->card)
                     <h3 class="font-semibold text-xl">
                         {{$faculty->chief->card->full_name}}
@@ -70,14 +70,6 @@
             </div>
         </div>
 
-        @isset($faculty->chief->card)
-
-        @endisset
-
-        @dump($faculty->sections)
-
-        @dump($faculty->chief->card)
-        @dump($faculty->contacts)
     </section>
 @endsection
 

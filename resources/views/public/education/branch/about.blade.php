@@ -5,15 +5,20 @@
 @endsection
 
 @section('breadcrumbs')
-    {{Breadcrumbs::view("vendor.breadcrumbs.base",'faculty',$division)}}
+    {{Breadcrumbs::view("vendor.breadcrumbs.base",'faculty',$division )}}
 @endsection
 
 @section('content')
-    <section class="container px-2">
+    <section class="container px-2 bg-[url(img/lines-vector-map.jpg)] ">
         <div
             class="
                 flex gap-4 mb-4
                 relative
+                before:absolute
+                before:inset-0
+                before:bg-cover before:bg-center
+                before:opacity-50
+
             "
         >
             @isset($division->chief->card)
@@ -24,7 +29,7 @@
                 />
             @endisset
 
-            <div class="flex-1 flex flex-col gap-3 p-4 bg-neutral-100">
+            <div class="flex-1 flex flex-col gap-3">
                 @isset($division->chief->card)
                     <h3 class="font-semibold text-xl">
                         {{$division->chief->card->full_name}}
@@ -56,40 +61,15 @@
         </div>
 
         <div class="grid grid-cols-[auto_1fr] gap-4 mb-4">
-            <div class="menu w-92">
+            <div class="menu w-92 pt-14">
                 @include('public.menu.education')
             </div>
 
-            <div class="wrapper">
-                @if($division->departments->count())
-                    <h4 class="font-semibold text-lg mb-2">
-                        Кафедры
-                    </h4>
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                        @each("public.education.departments.block",$division->departments,'department')
-                    </div>
-                @endif
-
-                @if($division->FacultyLabs->count())
-                    <h4 class="font-semibold text-lg mb-2 mt-6">
-                        Лаборатории
-                    </h4>
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                        @each("public.education.departments.block",$division->FacultyLabs,'department')
-                    </div>
-                @endif
-
-                @if($division->labs->count())
-                    <h4 class="font-semibold text-lg mb-2 mt-6">
-                        Лаборатории
-                    </h4>
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                        @each("public.education.departments.block",$division->labs,'department')
-                    </div>
-               @endif
-
+            <div class="flex flex-col gap-4">
+                @each('public.page.content-section',$division->sections,'section')
             </div>
         </div>
+
     </section>
 @endsection
 
