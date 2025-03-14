@@ -54,8 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 currentIndex = newIndex;
             });
         }
-
-        /*function advance() {
+        function advance() {
             clearTimeout(timeout);
             timeout = setTimeout(function () {
                 if (currentIndex < ($slides.length - 1)) {
@@ -64,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     move(0);
                 }
             }, 4000);
-        }*/
+        }
 
         $('.next_btn').on('click', function () {
             if (currentIndex < ($slides.length - 1)) {
