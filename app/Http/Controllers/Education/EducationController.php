@@ -165,18 +165,6 @@ class EducationController extends Controller
         return view('public.education.branch.about',compact('division','menu'));
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
     public function showAllLabs(): string
     {
 
@@ -194,6 +182,18 @@ class EducationController extends Controller
                 ]),
             ]
         ]);
+    }
+    public function lab(string $code = null): string
+    {
+
+        $division = Division::where('code', $code)->orWhere('id',(int)$code)->first();
+
+        if (!$division || !$division->show)
+            return redirect()->route('public:division:list');
+
+        $menu = Menu::where('code','university')->first();
+
+        return view('public.divisions.single.page', compact('menu','division'));
     }
 
     /* public: specialities | Специальности, список  */

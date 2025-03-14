@@ -58,18 +58,6 @@ Route::controller(NewsController::class)
 
 
 Route::controller(EducationController::class)
-    ->prefix('education')
-    ->group(function () {
-
-        Route::get('labs', 'showAllLabs')
-            ->name('public:education:labs:list');
-
-    });
-
-
-
-
-Route::controller(EducationController::class)
     ->prefix('specialities')
     ->group(function () {
         Route::get('', 'specialities')->name('public:education:specialities:all');
@@ -137,6 +125,21 @@ Route::prefix('branches')->group(function () {
         ->name('public:education:branch:teaching-staff');
 });
 
+Route::prefix('labs')->group(function () {
+
+    Route::get('', [EducationController::class, 'showAllLabs'])
+        ->name('public:labs:list');
+
+    Route::get('{lab}', [EducationController::class, 'lab'])
+        ->name('public:lab:show');
+
+//    Route::get('{branch}/specialities', [EducationController::class, 'specialities'])
+//        ->name('public:education:branch:specialities');
+//
+//    Route::get('{branch}/teaching-staff', [EducationController::class, 'teachingStaff'])
+//        ->name('public:education:branch:teaching-staff');
+});
+
 
 
 
@@ -144,13 +147,6 @@ Route::prefix('branches')->group(function () {
 
 
 
-Route::controller(EducationController::class)
-    ->group(function () {
-
-
-        Route::get('labs/{labs}', 'lab')
-            ->name('public:education:lab');
-    });
 
 /* Divisions: public */
 

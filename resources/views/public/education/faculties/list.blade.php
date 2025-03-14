@@ -58,13 +58,13 @@
                                 Кол-во кафедр
                             </div>
                             <div class="font-semibold">
-{{--                                {{$item->departments->count() ?? null}}--}}
+                                {{$item->departments->count() }}
                             </div>
                             <div>
                                 Направлений подготовки
                             </div>
                             <div class="font-semibold">
-{{--                                {{$item->specialities->count() ?? null}}--}}
+                                {{$item->specialities->count()}}
                             </div>
                         </div>
 

@@ -278,7 +278,7 @@ class Division extends Model
             default                     => route('public:division:show',        $code),
             DivisionType::Faculty       => route('public:education:faculty',    $code),
             DivisionType::Department    => route('public:education:department', $code),
-            DivisionType::Lab           => route('public:education:lab',        $code),
+            DivisionType::Lab           => route('public:lab:show',             $code),
             DivisionType::Branch        => route('public:education:branch',     $code),
         };
     }

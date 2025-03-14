@@ -12,7 +12,7 @@
 
                     <span class="crumb-home font-xs after:ms-2 hover:text-red-900 hover:underline">
                         <a href="{{ $breadcrumb->url }}" class="font-xs">
-                            {{ $breadcrumb->title }}
+                            {!! $breadcrumb->title !!}
                         </a>
                     </span>
 
@@ -22,7 +22,7 @@
         </div>
 
         <h1 class="text-3xl sm:text-5xl font-bold">
-            {{$breadcrumb->title??''}}
+            {!! $breadcrumb->title !!}
         </h1>
     </div>
 </section>

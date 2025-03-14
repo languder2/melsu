@@ -17,7 +17,7 @@
         {{
             view("public.education.tabs.item",[
                 'text'  => 'Лаборатории',
-                'href'      => route('public:education:labs:list'),
+                'href'      => route('public:labs:list'),
                 'active'    => ($active === 'labs')
             ])
         }}

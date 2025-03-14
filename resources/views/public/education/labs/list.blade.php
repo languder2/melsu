@@ -3,14 +3,15 @@
 
         @foreach($list as $item)
             <a
-                href="#"
+                href="{{$item->link}}"
                 class="
                     block
                     bg-gray-100 relative group
                     cursor-pointer
                     transition-all duration-200
                     hover:-mt-1 hover:mb-1
-                    hover:drop-shadow-[3px_3px_5px_rgba(100,100,100,.6)]
+                    hover:shadow-md
+                    hover:shadow-black/20
                     group
                 "
             >
@@ -28,7 +29,6 @@
                             absolute right-8 h-full z-10 w-1/3 bottom-0
                             object-contain object-right-bottom
                             transition-all duration-300
-                            grayscale-100 group-hover:grayscale-0
                         "
                     >
                 @endif
