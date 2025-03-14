@@ -750,6 +750,7 @@ header{
         top: 10px;
     }
 }
+
 @media screen and (max-width: 767px){
     .countdown-item {
         margin: 0 5px;
