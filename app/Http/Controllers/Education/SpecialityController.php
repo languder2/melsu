@@ -19,7 +19,7 @@ class SpecialityController extends Controller
 {
     public function list(): string
     {
-        $list = Faculty::orderBy('order')->orderBy('name')->get();
+        $list = Division::where('type',DivisionType::Faculty)->orderBy('name')->get();
 
         return view('admin.education.specialities.page', compact('list'));
     }
@@ -30,17 +30,14 @@ class SpecialityController extends Controller
         $add2faculty    = request()->get('faculty');
         $levels         = Level::pluck('name', 'code')?->toJSON(JSON_UNESCAPED_UNICODE);
         $faculties      = Division::where('type',DivisionType::Faculty)
-            ->orderBy('name')
-            ->get()->pluck('name', 'id');
+                            ->orderBy('name')
+                            ->get()->pluck('name', 'id');
         $departments    = Division::where('type',DivisionType::Department)
-            ->orderBy('alt_name')
-            ->get()->pluck('alt_name', 'id');
-        $faculties2     = Faculty::pluck('name', 'code')?->toJSON(JSON_UNESCAPED_UNICODE);
-        $departments2   = Department::pluck('name', 'code')?->toJSON(JSON_UNESCAPED_UNICODE);
-
+                            ->orderBy('alt_name')
+                            ->get()->pluck('alt_name', 'id');
 
         return view('admin.education.specialities.form',
-            compact('current','add2faculty','faculties','departments','levels','faculties2','departments2')
+            compact('current','add2faculty','faculties','departments','levels')
         );
     }
 
@@ -53,7 +50,6 @@ class SpecialityController extends Controller
 
         if(!$record)
             $record = new Speciality();
-
 
         $record->fill($form);
 

@@ -15,9 +15,7 @@
         :current="$current"
         :add2faculty="$add2faculty"
         :faculties="$faculties"
-        :faculties2="$faculties"
         :departments="$departments"
-        :departments2="$departments"
         :levels="$levels"
     />
 @endsection

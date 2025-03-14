@@ -17,8 +17,6 @@
         :faculties="$faculties"
         :departments="$departments"
         :levels="$levels"
-        :faculties2="$faculties"
-        :departments2="$departments"
     />
 
     <x-admin.education.speciality.form.sections.profiles.profiles

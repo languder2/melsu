@@ -2,10 +2,9 @@
     id="tab_contents"
     @class([
         "form_box",
-        (old('side_menu') === 'tab_contents')?'':'hidden'
+        (old('side_menu') === 'tab_contents' || isset($active))?'':'hidden'
     ])
 >
-
     <div class="flex gap-4 items-center bg-white p-4">
         <div class="flex-1 text-lg font-semibold">
             Секции контента

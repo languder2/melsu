@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Page\Content as PageContent;
 use Illuminate\Http\JsonResponse;
 use App\Models\Menu\Menu;
 use App\Models\Page;
@@ -33,6 +34,7 @@ class PagesController extends Controller
 
     public function form($id = null): string
     {
+
         return view('pages.admin', [
             'contents' => [
 
@@ -61,6 +63,9 @@ class PagesController extends Controller
 
         $record->save();
 
+        if($request->has('sections'))
+            PageContent::processing($record,$request->get('sections'));
+
         return redirect()->route('admin:pages');
     }
 
@@ -88,31 +93,32 @@ class PagesController extends Controller
     }
 
 
-    public function showPage(Request $request, $alias): RedirectResponse|string
+    public function showPage(string $alias = null): RedirectResponse|string
     {
-        $page = Page::where('alias', $alias)->first();
-
+        $page = Page::where('alias', $alias)->where('show',true)->first();
 
         if (!$page)
             return redirect()->route('pages:main');
 
-        if (!is_null($page->view) && View::exists("pages.content.{$page->view}"))
-            $content = view("pages.content.{$page->view}")->render();
-        else
-            $content = $page->content;
+        $show = false;
 
+        if($page->view && View::exists("pages.content.{$page->view}"))
+            $show = true;
+        elseif($page->content || $page->sections->count())
+            $show = true;
+
+        if(!$show)
+            return redirect()->route('pages:main');
 
         $menu = Menu::where('show',1)->find($page->menu_id);
 
-        if($menu)
-            $aside = view(
-                $menu->is_tree?'public.menu.aside-tree':'public.menu.aside',
-                ['menu' => $menu]
-            );
+        return view('public.page.single',compact('page','menu'));
 
-        if (empty($content))
-            return redirect()->route('pages:main');
 
+
+
+
+        dd();
 
         return view($menu?'pages.page-with-menu':'pages.page', [
             'breadcrumbs' => (object)[

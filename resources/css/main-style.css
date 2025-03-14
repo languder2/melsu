@@ -80,11 +80,11 @@ body{
 .main-wrapper{
     padding-left: 100px;
 }
-.main-section{
-    transition: var(--transition-link);
-    min-height: calc(100vh - 530px);
-    padding-bottom: 10px;
-}
+/*.main-section{*/
+/*    transition: var(--transition-link);*/
+/*    min-height: calc(100vh - 530px);*/
+/*    padding-bottom: 10px;*/
+/*}*/
 
 @media screen and (max-width: 767px) {
     .main-wrapper{

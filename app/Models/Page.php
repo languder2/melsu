@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use App\Models\Page\Content as PageContent;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Route;
@@ -61,6 +63,10 @@ class Page extends Model
             'menu_id' => '',
             'without_bg' => '',
         ];
+    }
+    public function sections(): MorphMany
+    {
+        return $this->morphMany(PageContent::class, 'relation')->orderBy('order');
     }
 
     public static function GetList(): Collection

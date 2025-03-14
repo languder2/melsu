@@ -50,51 +50,25 @@
     </div>
 
 
-    <div class="bg-base-red/20 p-4">
-        <x-form.select
-            id="form_spec_faculty"
-            name="faculty_code"
-            nullDisabled
-            old="{{old('speciality.faculty_code')??$add2faculty}}"
-            value="{{$current?->faculty_code}}"
-            null="Выбрать"
-            :list="$faculties2 ?? []"
-            label="Факультет"
-        />
+    <x-form.select
+        id="faculty_id"
+        name="faculty_id"
+        old="{{ old('faculty_id')}}"
+        value="{{ $current->faculty_id ?? null }}"
+        null="выбрать"
+        label="Факультет"
+        :list="$faculties ?? []"
+    />
 
-        <x-form.select
-            id="form_spec_department"
-            name="department_code"
-            old="{{old('speciality.department_code')}}"
-            value="{{$current?->department_code}}"
-            null="Выбрать"
-            :list="$departments2 ?? []"
-            label="Кафедра"
-            required1
-        />
-    </div>
-
-    <div class="bg-green-700/20 p-4">
-        <x-form.select
-            id="faculty_id"
-            name="faculty_id"
-            old="{{ old('faculty_id') }}"
-            value="{{ $current->faculty_id }}"
-            null="выбрать"
-            label="Факультет"
-            :list="$faculties ?? []"
-        />
-
-        <x-form.select
-            id="department_id"
-            name="department_id"
-            old="{{ old('department_id') }}"
-            value="{{ $current->department_id }}"
-            null="выбрать"
-            label="Кафедра"
-            :list="$departments ?? []"
-        />
-    </div>
+    <x-form.select
+        id="department_id"
+        name="department_id"
+        old="{{ old('department_id')}}"
+        value="{{ $current->department_id ?? null }}"
+        null="выбрать"
+        label="Кафедра"
+        :list="$departments ?? []"
+    />
 
 
     <x-form.select

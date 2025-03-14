@@ -27,9 +27,34 @@
 
     <x-template.header/>
 
-    <section class="main-section">
+    <section
+        @class([
+            "main-content",
+            $menu?'container':'',
+        ])
+    >
+        <div class="my-6">
+            @yield('breadcrumbs')
+        </div>
 
-        <section class="container py-5">
+        <div class="flex gap-4">
+            @hasSection('aside')
+                <div class="left-side-menu-box hidden lg:block ">
+                    <div class="bg-white p-2.5">
+                        @yield('aside')
+                    </div>
+                </div>
+            @endif
+            @hasSection('content')
+                <section class="container pb-5">
+                    @yield('content')
+                </section>
+            @endif
+        </div>
+    </section>
+
+
+    <section class=" hidden container py-5">
             @yield('breadcrumbs')
 
             <div class="grid grid-cols-1 lg:grid-cols-[25%_minmax(70%,1fr)] gap-3">
@@ -57,9 +82,6 @@
 
             </div>
         </section>
-    </section>
-
-    @yield('news')
 
     <x-template.footer/>
 
