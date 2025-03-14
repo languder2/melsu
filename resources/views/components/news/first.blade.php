@@ -1,4 +1,4 @@
-<div class="first-news-box col-span-2 row-span-2 border border-[#e5e7eb] sm:max-h-[758px] lg:max-w-2xl">
+<div class="first-news-box col-span-2 row-span-2 border border-[#e5e7eb] sm:max-h-[758px] xl:max-w-2xl">
     <a href="{{route('news:show',$news->id)}}">
         <div class="img-news-box xl:max-w-[660px] sm:max-h-[353px] relative">
 
