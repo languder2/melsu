@@ -95,9 +95,9 @@ class EducationController extends Controller
 
         return view('public.education.departments.about',compact('division','menu'));
     }
+
     public function specialities($code = null): string|RedirectResponse
     {
-
         $division = Division::where('code', $code)->orWhere('id',$code)->first();
 
         if ($division === null)
@@ -194,32 +194,6 @@ class EducationController extends Controller
         $menu = Menu::where('code','university')->first();
 
         return view('public.divisions.single.page', compact('menu','division'));
-    }
-
-    /* public: specialities | Специальности, список  */
-
-
-    public function speciality(?string $speciality_code): string|RedirectResponse
-    {
-
-        $speciality = Speciality::where('code', $speciality_code)->first();
-
-        if (!$speciality)
-            return redirect()->to(route('public:education:faculties'));
-
-        return view("pages.page", [
-            'sidebar' => View::make('components.menu.sidebar')->with([
-                'menu' => &$menu,
-                'full' => false,
-            ])->render(),
-
-            'nobg' => true,
-
-            'contents' => [
-                (new SingleSpeciality($speciality))->render(),
-            ]
-
-        ]);
     }
 
 

@@ -12,6 +12,9 @@ use App\Models\Education\Level;
 use App\Models\Education\Place;
 use App\Models\Education\Profile;
 use App\Models\Education\Speciality;
+use App\Models\Menu\Menu;
+use App\View\Components\Specialities\Single as SingleSpeciality;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 
@@ -19,9 +22,10 @@ class SpecialityController extends Controller
 {
     public function list(): string
     {
-        $list = Division::where('type',DivisionType::Faculty)->orderBy('name')->get();
+        $list   = Division::where('type',DivisionType::Faculty)->orderBy('name')->get();
+        $spo    = Speciality::whereNull('faculty_id')->orderBy('name')->get();
 
-        return view('admin.education.specialities.page', compact('list'));
+        return view('admin.education.specialities.list', compact('list','spo'));
     }
 
     public function form(Request $request, $id = null)
@@ -128,4 +132,39 @@ class SpecialityController extends Controller
 
         return redirect()->route('admin:education-speciality:list');
     }
+
+    public function showAll()
+    {
+
+        $menu= Menu::where('code','education')->first();
+
+
+
+
+        return view('public.education.speciality.all',compact('menu'));
+    }
+
+    public function showSingle(?string $speciality_code): string|RedirectResponse
+    {
+
+        $speciality = Speciality::where('code', $speciality_code)->first();
+
+        if (!$speciality)
+            return redirect()->to(route('public:education:faculties'));
+
+        return view("pages.page", [
+            'sidebar' => View::make('components.menu.sidebar')->with([
+                'menu' => &$menu,
+                'full' => false,
+            ])->render(),
+
+            'nobg' => true,
+
+            'contents' => [
+                (new SingleSpeciality($speciality))->render(),
+            ]
+
+        ]);
+    }
+
 }

@@ -1,6 +1,6 @@
 <form
     method="post"
-    action="{{route('public:division:search')}}"
+    action="{!!route('public:division:search')!!}"
     onsubmit="PublicAction.FormSend(this,document.getElementById('UniversityStructure')); return false;"
     class="mb-4 p-4 bg-white"
 >

@@ -42,14 +42,9 @@ Breadcrumbs::for('faculty-departments', function (BreadcrumbTrail $trail, Facult
 //faculties/faculty_1
 
 
-Breadcrumbs::for('specialities', function (BreadcrumbTrail $trail, Division $division) {
+Breadcrumbs::for('specialities', function (BreadcrumbTrail $trail) {
 
-    if($division->type === DivisionType::Faculty)
-        $trail->push($faculty->name??"", route('public:education:faculty', [$faculty->code ?? $faculty->id??null]));
-    else if($division->type === DivisionType::Department)
-        $trail->push($faculty->name??"", route('public:education:faculty', [$faculty->code ?? $faculty->id??null]));
-    else
-        $trail->parent('home');
+    $trail->parent('home');
 
     $trail->push('Направления подготовки', route('public:education:specialities:all'));
 });

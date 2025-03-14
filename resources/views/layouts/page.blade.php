@@ -39,14 +39,14 @@
 
         <div class="flex gap-4">
             @hasSection('aside')
-                <div class="left-side-menu-box hidden lg:block ">
+                <div class="left-side-menu-box hidden lg:block w-96 ">
                     <div class="bg-white p-2.5">
                         @yield('aside')
                     </div>
                 </div>
             @endif
             @hasSection('content')
-                <section class="container pb-5">
+                <section class="mx-auto flex-1">
                     @yield('content')
                 </section>
             @endif

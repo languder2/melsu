@@ -3,16 +3,16 @@
 @section('title', 'ФГБОУ ВО "МелГУ"')
 
 @section('breadcrumbs')
-    {{Breadcrumbs::view("vendor.breadcrumbs.base",'division',$division)}}
+    {!!Breadcrumbs::view("vendor.breadcrumbs.base",'division',$division)!!}
 @endsection
 
 
-@section('sidebar')
-    {{view('public.menu.aside-tree',['menu' => $menu ?? null ])}}
+@section('aside')
+    {!!view('public.menu.aside-tree',['menu' => $menu ?? null ])!!}
 @endsection
 
 
-@section('content-without-bg')
+@section('content')
 
     @include('public.divisions.rectorate.staff',['staff'=>$division->chief->card])
 

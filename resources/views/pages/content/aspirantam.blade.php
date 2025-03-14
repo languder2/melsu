@@ -1,14 +1,15 @@
-<section class="container1 custom1">
+
+<section class="container custom1">
     <p class="text-lg text-[#4C4C4C] mb-6">
         2023-2024 учебный год университет встретил со 122 аспирантами и 16 докторантами.
         Надежными наставниками на пути становления кандидата или доктора наук являются десятки научных руководителей,
         как из числа штатных сотрудников университета, так и ведущие приглашенные ученые с других вузов.
     </p>
 </section>
-<div class="box-heading container1 custom1">
+<div class="box-heading container custom1">
     <h2 class="font-bold text-3xl my-6">Положение</h2>
 </div>
-<section class="container1 custom1">
+<section class="container custom1">
     <div class="bg-white p-6 mb-5">
         <ul class="doc-list list-none list-inside marker:text-[var(--secondary-color)] text-[var(--main-color)]">
             <li class="leading-[1.8rem] pb-3">
@@ -24,10 +25,10 @@
         </ul>
     </div>
 </section>
-<div class="box-heading container1 custom1">
+<div class="box-heading container custom1">
     <h2 class="font-bold text-3xl my-6 lg:text-end">Специальности</h2>
 </div>
-<section class="container1 custom1">
+<section class="container custom1">
     <div class="bg-white p-6 mb-5">
         <div class="flex items-center border-b-[1px] border-[var(--primary-color)] pb-3 mb-3">
             <span class="text-[var(--primary-color)] text-lg font-[600]"><i
@@ -125,10 +126,10 @@
         </div>
     </div>
 </section>
-<div class="box-heading container1 custom1">
+<div class="box-heading container custom1">
     <h2 class="font-bold text-3xl my-6">Обучение</h2>
 </div>
-<section class="container1 custom1">
+<section class="container custom1">
     <div class="bg-white p-6 mb-5">
         <div class="flex items-center border-b-[1px] border-[var(--primary-color)] pb-3 mb-3">
             <span class="text-[var(--primary-color)] text-lg font-[600]"><i
@@ -251,10 +252,10 @@
         </div>
     </div>
 </section>
-<div class="box-heading container1 custom1">
+<div class="box-heading container custom1">
     <h2 class="font-bold text-3xl my-6 lg:text-end">ПРАВИЛА ПРИЕМА НА 2024 ГОД</h2>
 </div>
-<section class="container1 custom1">
+<section class="container custom1">
     <div class="bg-white p-6 mb-5">
         <ul class="doc-list list-none list-inside marker:text-[var(--secondary-color)] text-[var(--main-color)]">
             <li class="leading-[1.8rem] pb-3">
@@ -266,10 +267,10 @@
         </ul>
     </div>
 </section>
-<div class="box-heading container1 custom1">
+<div class="box-heading container custom1">
     <h2 class="font-bold text-3xl my-6">Документы</h2>
 </div>
-<section class="container1 custom1">
+<section class="container custom1">
     <div class="bg-white p-6 mb-5">
         <ul class="doc-list list-none list-inside marker:text-[var(--secondary-color)] text-[var(--main-color)]">
             <li class="leading-[1.8rem] pb-3">
@@ -317,10 +318,10 @@
         </ul>
     </div>
 </section>
-<div class="box-heading container1 custom1">
+<div class="box-heading container custom1">
     <h2 class="font-bold text-3xl my-6 lg:text-end">Документы, заверенные руководителем структурного подразделения</h2>
 </div>
-<section class="container1 custom1">
+<section class="container custom1">
     <div class="bg-white p-6 mb-5">
         <div class="flex items-center border-b-[1px] border-[var(--primary-color)] pb-3 mb-3">
             <span class="text-[var(--primary-color)] text-lg font-[600]"><i
@@ -371,7 +372,7 @@
         </div>
     </div>
 </section>
-<section class="container1 custom1">
+<section class="container custom1">
     <div class="bg-white p-6 mb-5">
         <div class="flex items-center border-b-[1px] border-[var(--primary-color)] pb-3 mb-3">
             <span class="text-[var(--primary-color)] text-lg font-[600]"><i
@@ -415,10 +416,10 @@
         </div>
     </div>
 </section>
-<div class="box-heading container1 custom1">
+<div class="box-heading container custom1">
     <h2 class="font-bold text-3xl my-6">Важные даты</h2>
 </div>
-<section class="container1 custom1">
+<section class="container custom1">
     <div class="bg-white p-6 mb-5">
         <div class="flex items-center border-b-[1px] border-[var(--primary-color)] pb-3 mb-3">
             <span class="text-[var(--primary-color)] text-lg font-[600]"><i
@@ -435,10 +436,10 @@
         </p>
     </div>
 </section>
-<div class="box-heading container1 custom1">
+<div class="box-heading container custom1">
     <h2 class="font-bold text-3xl my-6 lg:text-end">Кандидатские экзамены</h2>
 </div>
-<section class="container1 custom1">
+<section class="container custom1">
     <div class="bg-white p-6 mb-5">
         <ul class="doc-list list-none list-inside marker:text-[var(--secondary-color)] text-[var(--main-color)]">
             <li class="leading-[1.8rem] pb-3">
@@ -450,10 +451,10 @@
         </ul>
     </div>
 </section>
-<div class="box-heading container1 custom1">
+<div class="box-heading container custom1">
     <h2 class="font-bold text-3xl my-6">Программы кандидатские экзамены</h2>
 </div>
-<section class="container1 custom1">
+<section class="container custom1">
     <div class="bg-white p-6 mb-5">
         <ul class="doc-list list-none list-inside marker:text-[var(--secondary-color)] text-[var(--main-color)]">
             <li class="leading-[1.8rem] pb-3">
@@ -464,10 +465,10 @@
         </ul>
     </div>
 </section>
-<div class="box-heading container1 custom1">
+<div class="box-heading container custom1">
     <h2 class="font-bold text-3xl my-6 lg:text-end">Контакты</h2>
 </div>
-<section class="container1 custom1">
+<section class="container custom1">
     <div class="bg-white p-6 mb-5">
         <h3 class="text-2xl font-[600] mb-3">Отдел аспирантуры и докторантуры</h3>
         <span

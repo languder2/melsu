@@ -112,30 +112,27 @@ class DivisionController extends Controller
     /* Public */
     public function publicList(Request $request):View
     {
-        return view('public.divisions.list.page',[
-            'division'      => Division::where('code', 'rectorate')->first(),
-            'menu'          => Menu::where('code','university')->first(),
-            'depth'         => 0
-        ]);
+        $division   = Division::where('code', 'rectorate')->first();
+        $menu       = Menu::where('code','university')->first();
+        $depth      = 0;
+
+        return view('public.divisions.list.page',compact('division','depth','menu'));
     }
 
     public function show($code = null):View|RedirectResponse
     {
-
         $division   = Division::where('code', $code)->orWhere('id',(int)$code)->first();
 
         if (!$division || !$division->show)
             return redirect()->route('public:division:list');
 
-        $menu       = Menu::where('code','university')->first();
-
+        $menu = Menu::where('code','university')->first();
 
         if (strtolower($division->code) === 'rectorate')
             return view('public.divisions.rectorate.page', compact('menu','division'));
         else
             return view('public.divisions.single.page', compact('menu','division'));
     }
-
 
     /* API */
     public function ApiVacatePosition(Request $request,$affiliation_id = null): JsonResponse

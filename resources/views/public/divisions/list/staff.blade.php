@@ -1,12 +1,12 @@
 <div class="group bg-white p-6 flex flex-col justify-between mb-3 last:mb-0 hover:bg-gray-100">
     <a
-            href="{{url($staff->link)}}"
+            href="{!!url($staff->link)!!}"
             class="grid grid-cols-1 lg:grid-cols-[auto_1fr] gap-4"
     >
         <div class="mx-auto">
             <img
-                    src="{{$staff->avatar->thumbnail}}"
-                    alt="{{$staff->full_name}}"
+                    src="{!!$staff->avatar->thumbnail!!}"
+                    alt="{!!$staff->full_name!!}"
                     class="h-40"
             >
         </div>
@@ -24,13 +24,13 @@
                         group-hover:underline
                     "
                 >
-                    {{$staff->full_name}}
+                    {!!$staff->full_name!!}
                 </h3>
                 @if($post)
                     <div class="grid grid-cols-1 lg:grid-cols-[auto_1fr] gap-4 mb-7 lg:mb-0">
                         <span class="text-[var(--secondary-color)] text-md font-bold">Должность:</span>
                         <div class="text-[#4C4C4C] text-md pt-3 sm:ps-3 sm:pt-0">
-                            {{$post}}
+                            {!!$post!!}
                         </div>
                     </div>
                 @endif
@@ -52,7 +52,7 @@
                             Телефон:
                         </span>
                         <p class="font-semibold text-[#4C4C4C]">
-                            {{$staff->phones}}
+                            {!!$staff->phones!!}
                         </p>
                     </div>
                 @endif

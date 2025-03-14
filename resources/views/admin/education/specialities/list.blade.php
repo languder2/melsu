@@ -11,9 +11,11 @@
 @endsection
 
 @section('content')
-    <x-admin.education.specialities.list
-        :list="$list   "
-    />
+
+    @each('admin.education.specialities.section',$list,'section')
+
+    @include('admin.education.specialities.section',['list'=>$spo,'name'=>'СПО'])
+
 @endsection
 
 

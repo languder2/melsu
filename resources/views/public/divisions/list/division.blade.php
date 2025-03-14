@@ -10,22 +10,22 @@
 
     @if($division->sections->count() || $division->staffs->count())
         <a
-                href="{{ $division->relation->link ?? $division->link }}"
+                href="{!! $division->relation->link ?? $division->link !!}"
                 class="hover:underline hover:text-base-red"
         >
-            {{ $division->name }}
+            {!! $division->name !!}
         </a>
     @else
-        {{ $division->name }}
+        {!! $division->name !!}
     @endif
 </div>
 <div>
     @if($division->chief)
         <a
-                href="{{ $division->chief->card->link}}"
+                href="{!! $division->chief->card->link!!}"
                 class="hover:underline hover:text-base-red"
         >
-            {{ $division->chief->card->full_name}}
+            {!! $division->chief->card->full_name!!}
         </a>
     @else
         -

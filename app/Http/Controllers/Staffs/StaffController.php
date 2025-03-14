@@ -152,39 +152,20 @@ class StaffController extends Controller
         return view('public.staffs.staffs.page',compact('staffs','menu'));
 
     }
-    public function show(Request $request, $code):string|RedirectResponse
+    public function show(string $code = null)
     {
 
-        $staff = Staff::where('alias', $code)->first();
+        $staff = Staff::where('alias', $code)->orWhere('id',(int)$code)->first();
 
         if (!$staff)
             $staff = Staff::find((int)$code);
 
         if (!$staff)
             return redirect()->route('pages:main');
+        $menu       = Menu::where('code','university')->first();
 
-        return view("pages.page-with-menu", [
-            'sidebar' => view('public.menu.aside-tree',[
-                'menu' => Menu::where('code','university')->first(),
-            ]),
 
-            'nobg' => true,
-
-            'news' => false,
-
-            'breadcrumbs' => (object)[
-                'view'      => null,
-                'route'     => 'staff',
-                'element'   => $staff,
-            ],
-
-            'contents' => [
-                View::make('components.staff.single')->with([
-                    'staff' => $staff,
-                ])->render(),
-            ]
-
-        ]);
+        return view('public.staffs.staffs.single',compact('staff','menu'));
     }
 
     public function setFilter(Request $request):RedirectResponse

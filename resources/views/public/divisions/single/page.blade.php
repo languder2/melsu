@@ -3,27 +3,26 @@
 @section('title', 'ФГБОУ ВО "МелГУ"')
 
 @section('breadcrumbs')
-    {{Breadcrumbs::view("vendor.breadcrumbs.base",'division',$division)}}
+    {!!Breadcrumbs::view("vendor.breadcrumbs.base",'division',$division)!!}
 @endsection
 
-@section('sidebar')
-    {{view('public.menu.aside-tree',['menu' => $menu ?? null ])}}
+@section('aside')
+    {!!view('public.menu.aside-tree',['menu' => $menu ?? null ])!!}
 @endsection
 
-@section('content-without-bg')
-
+@section('content')
     @isset($division->chief->card)
         <div class="bg-white p-6 sm:min-h-40 flex flex-col justify-between mb-3">
             <div class="mb-7 sm:mb-0">
-                <a href="{{$division->chief->card->link}}" class="font-bold text-2xl mb-5 block">
-                    {{$division->chief->card->full_name}}
+                <a href="{!!$division->chief->card->link!!}" class="font-bold text-2xl mb-5 block">
+                    {!!$division->chief->card->full_name!!}
                 </a>
                 <div class="flex flex-col sm:flex-row">
             <span class="text-[#4C4C4C] text-lg">
                 Должность:
             </span>
                     <span class="text-lg pt-3 sm:pl-3 sm:pt-0">
-                {{$division->chief->post}}
+                {!!$division->chief->post!!}
             </span>
                 </div>
             </div>
@@ -47,24 +46,24 @@
             @endif
 
 
-            {{--            <div class="flex justify-between flex-col sm:flex-row mb-7 sm:mb-0">--}}
-{{--                <div class="w-[100%] mb-7 sm:mb-0">--}}
-{{--                <span class="text-[#4C4C4C] text-lg">--}}
-{{--                    Адрес:--}}
-{{--                </span>--}}
-{{--                    <p class="font-semibold text-lg text-[#4C4C4C]">--}}
+            {!!--            <div class="flex justify-between flex-col sm:flex-row mb-7 sm:mb-0">--!!}
+{!!--                <div class="w-[100%] mb-7 sm:mb-0">--!!}
+{!!--                <span class="text-[#4C4C4C] text-lg">--!!}
+{!!--                    Адрес:--!!}
+{!!--                </span>--!!}
+{!!--                    <p class="font-semibold text-lg text-[#4C4C4C]">--!!}
 
-{{--                    </p>--}}
-{{--                </div>--}}
-{{--                <div class="w-[100%]">--}}
-{{--            <span class="text-[#4C4C4C] text-lg">--}}
-{{--                Телефон:--}}
-{{--            </span>--}}
-{{--                    <p class="font-semibold text-lg text-[#4C4C4C]">--}}
+{!!--                    </p>--!!}
+{!!--                </div>--!!}
+{!!--                <div class="w-[100%]">--!!}
+{!!--            <span class="text-[#4C4C4C] text-lg">--!!}
+{!!--                Телефон:--!!}
+{!!--            </span>--!!}
+{!!--                    <p class="font-semibold text-lg text-[#4C4C4C]">--!!}
 
-{{--                    </p>--}}
-{{--                </div>--}}
-{{--            </div>--}}
+{!!--                    </p>--!!}
+{!!--                </div>--!!}
+{!!--            </div>--!!}
         </div>
     @endif
 
@@ -73,7 +72,7 @@
             <div class="about-otdel">
                 @if($section->show_title)
                     <h2 class="font-bold text-xl my-6 uppercase">
-                        {{$section->title}}
+                        {!!$section->title!!}
                     </h2>
                 @endif
                 <div class="bg-white p-6 mb-5">
@@ -89,21 +88,21 @@
             <div class="employees-box grid grid-cols-1 lg:grid-cols-[auto_1fr] gap-2">
                 @isset($division->chief->card)
                     <div class="bg-white p-3">
-                        <span>{{$division->chief->card->full_name}}</span>
+                        <span>{!!$division->chief->card->full_name!!}</span>
                     </div>
                     <div class="bg-white p-3 flex items-center">
                         <span class="ps-3 lg:ps-0">
-                            {{$division->chief->post}}
+                            {!!$division->chief->post!!}
                         </span>
                     </div>
                 @endisset
                 @foreach($division->staffs as $staff)
                     <div class="bg-white p-3">
-                        <span>{{$staff->card->full_name}}</span>
+                        <span>{!!$staff->card->full_name!!}</span>
                     </div>
                     <div class="bg-white p-3 flex items-center">
                     <span class="ps-3 lg:ps-0">
-                        {{$staff->post}}
+                        {!!$staff->post!!}
                     </span>
                     </div>
                 @endforeach

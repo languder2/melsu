@@ -10,6 +10,7 @@ use App\Http\Controllers\Staffs\StaffController;
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Menu\MenuController;
+use App\Http\Controllers\Education\SpecialityController;
 
 Route::get('/', function () {
     return view('pages.main');
@@ -56,17 +57,10 @@ Route::controller(NewsController::class)
 
     });
 
-
-Route::controller(EducationController::class)
-    ->prefix('specialities')
-    ->group(function () {
-        Route::get('', 'specialities')->name('public:education:specialities:all');
-
-        Route::get('{speciality}', 'speciality')->name('public:education:speciality');
-
-    });
-
-/* Education: public */
+Route::get('specialities', [SpecialityController::class,'showAll'])
+    ->name('public:education:specialities:all');
+Route::get('specialities/{speciality}', [SpecialityController::class,'showSingle'])
+    ->name('public:education:speciality');
 
 
 /* Faculties */
