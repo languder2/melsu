@@ -3194,10 +3194,8 @@ footer{
 .daterangepicker .calendar-table tr:nth-child(2) th{
     font-weight: 500 !important;
 }
-td.today.active.start-date.active.end-date.available,
-.active.start-date.available,
-.active.end-date.in-range.available{
-    background-color: var(--primary-color);
+.daterangepicker td.active, .daterangepicker td.active:hover{
+    background-color: #820000 !important;
 }
     /*END data range picker style*/
     /*search news style*/
@@ -5597,7 +5595,8 @@ position: fixed;
 /*END style scroll to top*/
 
 /*schedule style*/
-.today:before{
+.list-box.today:before,
+#scheduleTable.today:before{
     content: 'Сегодня:';
     margin-right: 5px;
     color: lime;

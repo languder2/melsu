@@ -19,7 +19,7 @@
 
         </div>
         <div class="descrip-box-news bg-white text-[var(--primary-color)] lg:min-h-[228px] xl:max-h-[228px]">
-            <div class="descrip-wrapper p-5 lg:max-h-[228px]">
+            <div class="descrip-wrapper p-5 max-h-[198px] min-h-[198px] lg:max-h-[228px]">
                 <div class="grid grid-cols-[1fr] mb-3 p-[-20px] relative">
                     <span
                         class="meta-category bg-[var(--primary-color)] absolute text-white text-[12px] left-[-20px] py-[3px] px-[7px] font-[500]">
