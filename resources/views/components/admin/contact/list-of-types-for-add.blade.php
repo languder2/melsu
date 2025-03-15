@@ -8,7 +8,8 @@
             class="
                 bg-slate-800 hover:bg-green-700 rounded-md
                 py-2 px-3
-                text-white
+                text-white stroke-white
+                flex items-center
             "
             title="Добавить контакт: {{$type->getName()}}"
         >

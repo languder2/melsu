@@ -2,44 +2,39 @@
 
 namespace App\Http\Controllers\Education;
 
-use App\Enums\ContactType;
+use App\Enums\DivisionType;
 use App\Http\Controllers\Controller;
 use App\Models\Contact;
+use App\Models\Division\Division;
 use App\Models\Education\Faculty;
-use App\Models\Gallery\Image;
+use App\Models\Menu\Menu;
 use App\Models\Staff\Affiliation;
-use App\Models\Staff\Staff;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\View;
-use Intervention\Image\ImageManager;
-use Intervention\Image\Drivers\Gd\Driver;
-use PhpOffice\PhpSpreadsheet\Writer\Xlsx\ContentTypes;
+use Illuminate\View\View;
 
 class FacultyController extends Controller
 {
-    public function list()
+    public function list():View
     {
         $list = Faculty::orderBy('order')->orderBy('name')->get();
 
         return view('admin.education.faculties.page', compact('list'));
     }
 
-    public function form($id = null)
+    public function form($id = null):View
     {
-
         $current = Faculty::find($id);
 
         if(!$current)
             $current= new Faculty();
-
 
         $current->contacts()->create(['type'=>'phone','content'=>'extend test']);
 
         return view('admin.education.faculties.form.page', compact('current'));
     }
 
-    public function save(Request $request)
+    public function save(Request $request):RedirectResponse
     {
         $form = $request->validate(Faculty::FormRules($request->get('id')), Faculty::FormMessage());
 
@@ -61,14 +56,11 @@ class FacultyController extends Controller
             foreach ($form['staffs'] as $aID=>$staff)
                 Affiliation::ProcessingStaff($record,$aID,$staff);
 
-
-
         if(!$record->logo)
             $record->logo = $record->logo()->create([
                 'name'          => $record->name,
                 'type'          => 'logo',
             ])->save();
-
 
         if($request->file('image')){
             $record->logo->saveImage($request->file('image'));
@@ -105,7 +97,7 @@ class FacultyController extends Controller
         return redirect()->route('admin:faculty:list');
     }
 
-    public function delete(int $id)
+    public function delete(int $id):RedirectResponse
     {
         $record = Faculty::find($id);
 
@@ -114,4 +106,46 @@ class FacultyController extends Controller
 
         return redirect()->route('admin:faculty:list');
     }
+
+
+    public function faculties(): View
+    {
+        $list = Division::where('show',1)
+            ->where('type',DivisionType::Faculty)
+            ->orderBy('sort')
+            ->orderBy('name')
+            ->get()
+        ;
+
+        return view('public.education.faculties.list', compact('list'));
+    }
+
+    public function faculty($code = null): View|RedirectResponse
+    {
+
+        $division = Division::where('code', $code)->orWhere('id',$code)->first();
+
+        if ($division === null)
+            return redirect()->to(route('public:education:faculties'));
+
+
+        return view('public.education.faculty.about',compact('division'));
+    }
+
+    public function departments($code = null): View|RedirectResponse
+    {
+        $division = Division::where('code', $code)->orWhere('id',$code)->first();
+
+        if ($division === null)
+            return redirect()->to(route('public:education:faculties'));
+
+
+        if($division->departments->isEmpty() && $division->labs->isEmpty() && $division->faculty_labs->isEmpty())
+            return redirect()->to($division->link);
+
+        return view('public.education.departments.related',compact('division'));
+
+    }
+
+
 }

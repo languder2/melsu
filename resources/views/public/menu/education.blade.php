@@ -1,12 +1,12 @@
-@if($menu)
+@if($division->menu)
     <ul class="left-side-menu sticky top-44 bg-white px-4 py-2">
         <li>
             <h4 class="font-bold text-lg pb-1 mb-2 border-b border-base-red" >
-                {!! $menu->name !!}
+                {!! $division->menu->name !!}
             </h4>
         </li>
-        @foreach($menu->items as $item)
-            @if($item->active)
+        @foreach($division->menu ->items as $item)
+            @if($item->link === url()->current())
                 <li class="py-2">
                     <span class="text-base-red font-semibold ">
                         {{$item->name}}
@@ -25,3 +25,4 @@
         @endforeach
     </ul>
 @endif
+

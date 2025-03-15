@@ -6,6 +6,7 @@ use App\Enums\ContactType;
 use App\Enums\DivisionType;
 use App\Models\Contact;
 use App\Models\Gallery\Image;
+use App\Models\Menu\Menu;
 use App\Models\Staff\Staff;
 use App\Models\Staff\Affiliation as StaffAffiliation;
 use Illuminate\Database\Eloquent\Model;
@@ -333,6 +334,15 @@ class Division extends Model
             self::searchVerifiedID($sub, $ids);
     }
 
+    public function getMenuAttribute(): object
+    {
+        return  match($this->type){
+            default => null,
+            DivisionType::Faculty       => Menu::GetMenuFaculty($this),
+            DivisionType::Department    => Menu::GetMenuDepartment($this),
+            DivisionType::Branch        => Menu::GetMenuBranch($this),
+        };
+    }
 
 }
 

@@ -28,10 +28,7 @@
     <x-template.header/>
 
     <section
-        @class([
-            "main-content",
-            $menu?'container':'',
-        ])
+        class="main-content @hasSection('aside') container @endif"
     >
         <div class="my-6">
             @yield('breadcrumbs')

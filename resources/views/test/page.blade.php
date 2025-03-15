@@ -1,58 +1,20 @@
-@extends("layouts.page")
+@extends("layouts.main")
 
 @section('title', 'ФГБОУ ВО "МелГУ"')
 
-@section('content-without-bg')
-    {{Storage::url('documents/Information about the dates of the comprehensive exam.pdf')}}
+@section('content')
+    @use('App\Enums\CardBG')
 
-    «»
-    <ul>
-        <li>
-            <a href="https://test.tsu.ru/sites/default/files/FZ-115-25-07-22.pdf">
-                Федеральный закон от 25 июля 2002 г. № 115-ФЗ &laquo;О правовом положении иностранных граждан в Российской Федерации&raquo;
-            </a>
-        </li>
-        <li>
-            <a href="https://test.tsu.ru/sites/default/files/PPRF-N-824-31-05-21%20.pdf">
-                Постановление Правительства Российской Федерации от 31 мая 2021 г. № 824 &laquo;Об утверждении Положения о проведении экзамена по русскому языку как иностранному, истории России и основам законодательства Российской Федерации&raquo;
-            </a>
-        </li>
-        <li>
-            <a href="https://test.tsu.ru/sites/default/files/PPRF-N-840-31-05-21.pdf">
-                Постановление Правительства Российской Федерации от 31 мая 2021 г. № 840 &laquo;Об утверждении требований к минимальному уровню знаний, необходимых для сдачи экзамена по русскому языку как иностранному, истории России и основам законодательства Российской Федерации&raquo;
-            </a>
-        </li>
-        <li>
-            <a href="https://test.tsu.ru/sites/default/files/PRON-N675-18-5-21.pdf">
-                Приказ Федеральной службы по надзору в сфере образования и науки от 18 мая 2021 г. № 675 &laquo;О контрольных измерительных материалах для проведения экзамена по русскому языку как иностранному, истории России и основам законодательства Российской Федерации и периодичности их пересмотра&raquo; (зарегистрирован Минюстом России 17 июня 2021 г., регистрационный № 63 902)
-            </a>
-        </li>
-        <li>
-            <a href="https://test.tsu.ru/sites/default/files/PMO-N400-%D0%BE%D1%82%2026-05-21.pdf">
-                Приказ Министерства науки и высшего образования Российской Федерации от 26 мая 2021 г. № 400 &laquo;Об утверждении форм сертификата о владении русским языком, знании истории России и основ законодательства Российской Федерации на уровне, соответствующем цели получения разрешения на временное проживание или вида на жительство, разрешения на работу или патента, технических требований к нему, а также порядка выдачи указанного сертификата&raquo; (зарегистрирован Минюстом России, 09 июня 2021 г., регистрационный № 63 823)
-            </a>
-        </li>
-    </ul>
+    <div class="h-[800px] p-8 flex gap-8">
 
+        <div class="w-40 h-40 {{ CardBG::getRandom() }} p-8">
+        </div>
+        <div class="w-40 h-40 {{ CardBG::getRandom() }} p-8">
+        </div>
+        <div class="w-40 h-40 {{ CardBG::getRandom() }} p-8">
+        </div>
+        <div class="w-40 h-40 {{ CardBG::getRandom() }} p-8">
+        </div>
 
-    <p class="text-se">
-        <a href="https://doc.fipi.ru/inostr-exam/Spetsifikatsiya_ekzamen_Inostr_grazhd_1-3_uroven.pdf"> Спецификация контрольно-измерительных материалов для уровней 1-3 </a>
-    </p>
-
-    <p>Демонстрационные варианты* для получения</p>
-
-    <ul>
-        <li>разрешения на <a href="https://doc.fipi.ru/inostr-exam/demo_level_1.zip"> работу или патента (уровень 1)</a></li>
-        <li>разрешения на <a href="https://doc.fipi.ru/inostr-exam/demo_level_2.zip"> временное проживание (уровень 2)</a></li>
-        <li>разрешения на <a href="https://doc.fipi.ru/inostr-exam/demo_level_3.zip"> вид на жительство (уровень 3)</a></li>
-    </ul>
-
-    <p class="mt-2">
-        <a href="https://melsu.ru/storage/documents/Information about the dates of the comprehensive exam.pdf">
-            Информация о датах проведения комплексного экзамена
-        </a>
-    </p>
-
-    Information about the dates of the comprehensive exam.pdf
-
+    </div>
 @endsection

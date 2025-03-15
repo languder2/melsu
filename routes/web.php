@@ -1,16 +1,19 @@
 <?php
 
-use App\Http\Controllers\{News\NewsController, suStructureController};
-use App\Http\Controllers\{AdminController, PagesController};
-use App\Http\Controllers\Schedule\ScheduleController;
-use App\Http\Controllers\Division\DivisionController;
-use App\Http\Controllers\Education\EducationController;
-use App\Http\Controllers\Gallery\PublicGallery;
-use App\Http\Controllers\Staffs\StaffController;
-use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TestController;
 use App\Http\Controllers\Menu\MenuController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\PagesController;
+use App\Http\Controllers\Division\DivisionController;
+use App\Http\Controllers\Staffs\StaffController;
+use App\Http\Controllers\Education\EducationController;
+use App\Http\Controllers\Education\FacultyController;
 use App\Http\Controllers\Education\SpecialityController;
+use App\Http\Controllers\Schedule\ScheduleController;
+use App\Http\Controllers\News\NewsController;
+use App\Http\Controllers\Gallery\PublicGallery;
+
 
 Route::get('/', function () {
     return view('pages.main');
@@ -37,14 +40,6 @@ Route::prefix('nomix')->group(function () {
 });
 
 Route::get('test', [TestController::class, 'index'])->name('test');
-Route::post('test/save', [TestController::class, 'save'])->name('test:save');
-
-Route::controller(suStructureController::class)
-    ->prefix('structure')
-    ->group(function () {
-        Route::get('', 'show')->name('structure:show');
-    });
-
 
 /* News: public */
 
@@ -66,16 +61,16 @@ Route::get('specialities/{speciality}', [SpecialityController::class,'showSingle
 /* Faculties */
 
 Route::prefix('faculties')->group(function () {
-    Route::get('', [EducationController::class, 'faculties'])
+    Route::get('', [FacultyController::class, 'faculties'])
         ->name('public:education:faculties');
 
-    Route::get('{faculty}', [EducationController::class, 'faculty'])
+    Route::get('{faculty}', [FacultyController::class, 'faculty'])
         ->name('public:education:faculty');
 
-    Route::get('{faculty}/departments', [EducationController::class, 'departments'])
+    Route::get('{faculty}/departments', [FacultyController::class, 'departments'])
         ->name('public:education:faculty:departments');
 
-    Route::get('{faculty}/departments', [EducationController::class, 'departments'])
+    Route::get('{faculty}/departments', [FacultyController::class, 'departments'])
         ->name('public:education:faculty:departments');
 
     Route::get('{faculty}/specialities', [EducationController::class, 'specialities'])
@@ -134,10 +129,6 @@ Route::prefix('labs')->group(function () {
 //        ->name('public:education:branch:teaching-staff');
 });
 
-
-
-
-/* END Faculties */
 
 
 
