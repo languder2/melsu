@@ -1,6 +1,6 @@
 <?php
 
-namespace App\View\Components\admin\Education\Speciality\Form\Sections\Profiles;
+namespace App\View\Components\Admin\Education\Speciality\Form\Sections\Profiles;
 
 use App\Models\Education\Forms;
 use Closure;
