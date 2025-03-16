@@ -108,23 +108,23 @@ class Menu extends Model
                 'items' => [
                     (object)[
                         'name' => "О факультете",
-                        'link' => route('public:education:faculty', $code),
+                        'link' => route('public:faculty:show', $code),
                     ],
                     (object)[
                         'name' => "Деканат",
-                        'link' => route('public:education:faculty:dean-office', $code),
+                        'link' => route('public:faculty:show', [$code,'dean-office']),
                     ],
                     (object)[
                         'name' => "Педагогический состав",
-                        'link' => route('public:education:faculty:teaching-staff', $code),
+                        'link' => route('public:faculty:show', [$code,'teaching-staff']),
                     ],
                     (object)[
                         'name' => "Кафедры и лаборатории",
-                        'link' => route('public:education:faculty:departments', $code),
+                        'link' => route('public:faculty:show', [$code,'departments']),
                     ],
                     (object)[
                         'name' => "Направление подготовки",
-                        'link' => route('public:education:faculty:specialities', $code),
+                        'link' => route('public:faculty:show', [$code,'specialities']),
                     ],
                     (object)[
                         'name' => "Поступающим",

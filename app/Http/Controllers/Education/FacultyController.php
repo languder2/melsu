@@ -120,32 +120,38 @@ class FacultyController extends Controller
         return view('public.education.faculties.list', compact('list'));
     }
 
-    public function faculty($code = null): View|RedirectResponse
+    public function faculty(?Division $division = null,?string $section = null )
     {
-
-        $division = Division::where('code', $code)->orWhere('id',$code)->first();
-
-        if ($division === null)
+        if(!$division)
             return redirect()->to(route('public:education:faculties'));
 
-
-        return view('public.education.faculty.about',compact('division'));
+        return view('public.education.faculty.page',compact('division','section'));
     }
 
-    public function departments($code = null): View|RedirectResponse
+    public function departments(?Division $division): View|RedirectResponse
     {
-        $division = Division::where('code', $code)->orWhere('id',$code)->first();
-
         if ($division === null)
             return redirect()->to(route('public:education:faculties'));
-
 
         if($division->departments->isEmpty() && $division->labs->isEmpty() && $division->faculty_labs->isEmpty())
             return redirect()->to($division->link);
 
         return view('public.education.departments.related',compact('division'));
-
     }
+
+    public function staffs(?Division $division, ?string $code= null, ?string $type= null)
+    {
+
+        dd($division);
+
+        if (!$division)
+            return redirect()->to(route('public:education:faculties'));
+
+
+        dd($division);
+        return view('public.education.faculty.page',compact('division','type'));
+    }
+
 
 
 }

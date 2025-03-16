@@ -75,7 +75,18 @@ class Division extends Model
             'staffs'            => '',
         ];
     }
+    public function resolveRouteBinding($value, $field = null)
+    {
+        // Попробуем сначала найти по полю 'code'
+        $division = $this->where('code', $value)->first();
 
+        // Если не найдено, попробуем найти по 'id'
+        if (!$division) {
+            $division = $this->where('id', $value)->first();
+        }
+
+        return $division;
+    }
     public static function FormMessage(): array
     {
         return [
@@ -153,7 +164,6 @@ class Division extends Model
 
         return $result;
     }
-
 
 
     public function coordinator(): BelongsTo
@@ -277,7 +287,7 @@ class Division extends Model
 
         return match($this->type){
             default                     => route('public:division:show',        $code),
-            DivisionType::Faculty       => route('public:education:faculty',    $code),
+            DivisionType::Faculty       => route('public:faculty:show',         $code),
             DivisionType::Department    => route('public:education:department', $code),
             DivisionType::Lab           => route('public:lab:show',             $code),
             DivisionType::Branch        => route('public:education:branch',     $code),

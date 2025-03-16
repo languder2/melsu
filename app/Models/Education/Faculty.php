@@ -133,7 +133,7 @@ class Faculty extends Model
 
     public function getLinkAttribute(): string
     {
-        return route('public:education:faculty',[
+        return route('public:faculty:show',[
             $this->code ?? $this->id ?? null
         ]);
     }
