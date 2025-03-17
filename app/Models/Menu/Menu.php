@@ -224,7 +224,7 @@ class Menu extends Model
             'items' => collect([
                 (object)[
                     'name' => "О колледже",
-                    'link' => route('public:education:branch', $code),
+                    'link' => route('public:education:division', [$division->type, $code]),
                 ],
             ]),
         ];
@@ -232,13 +232,13 @@ class Menu extends Model
         if($division->staffs->count())
             $menu->items->push((object)[
                 'name' => "Педагогический состав",
-                'link' => route('public:education:branch:teaching-staff', $code),
+                'link' => route('public:education:division', [$division->type, $code, 'teaching-staff']),
             ]);
 
         if($division->labs->count())
             $menu->items->push((object)[
                 'name' => "Лаборатории",
-                'link' => route('public:education:branch:labs', $code),
+                'link' => route('public:education:division', [$division->type, $code, 'labs']),
             ]);
 
 //        if($division->specialities->count())
