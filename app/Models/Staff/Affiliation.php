@@ -2,6 +2,7 @@
 
 namespace App\Models\Staff;
 
+use App\Models\Gallery\Image;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
@@ -84,6 +85,20 @@ class Affiliation extends Model
         $item->fill($form);
         $item->staff_id = $staff->id;
         $item->save();
+    }
+
+    public function getAvatarAttribute():?Image
+    {
+        return $this->card->avatar;
+    }
+    public function getFullNameAttribute():string
+    {
+        return $this->card->full_name;
+    }
+
+    public function getLinkAttribute():string
+    {
+        return $this->card->link;
     }
 
 }

@@ -44,26 +44,6 @@
                 </div>
                 @each('public.contacts.address',$division->addresses,'contact')
             @endif
-
-
-            {!!--            <div class="flex justify-between flex-col sm:flex-row mb-7 sm:mb-0">--!!}
-{!!--                <div class="w-[100%] mb-7 sm:mb-0">--!!}
-{!!--                <span class="text-[#4C4C4C] text-lg">--!!}
-{!!--                    Адрес:--!!}
-{!!--                </span>--!!}
-{!!--                    <p class="font-semibold text-lg text-[#4C4C4C]">--!!}
-
-{!!--                    </p>--!!}
-{!!--                </div>--!!}
-{!!--                <div class="w-[100%]">--!!}
-{!!--            <span class="text-[#4C4C4C] text-lg">--!!}
-{!!--                Телефон:--!!}
-{!!--            </span>--!!}
-{!!--                    <p class="font-semibold text-lg text-[#4C4C4C]">--!!}
-
-{!!--                    </p>--!!}
-{!!--                </div>--!!}
-{!!--            </div>--!!}
         </div>
     @endif
 

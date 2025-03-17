@@ -108,23 +108,23 @@ class Menu extends Model
                 'items' => [
                     (object)[
                         'name' => "О факультете",
-                        'link' => route('public:faculty:show', $code),
+                        'link' => route('public:education:division', ['faculty',$code]),
                     ],
                     (object)[
                         'name' => "Деканат",
-                        'link' => route('public:faculty:show', [$code,'dean-office']),
+                        'link' => route('public:education:division', ['faculty',$code,'dean-office']),
                     ],
                     (object)[
                         'name' => "Педагогический состав",
-                        'link' => route('public:faculty:show', [$code,'teaching-staff']),
+                        'link' => route('public:education:division', ['faculty',$code,'teaching-staff']),
                     ],
                     (object)[
                         'name' => "Кафедры и лаборатории",
-                        'link' => route('public:faculty:show', [$code,'departments']),
+                        'link' => route('public:education:division', ['faculty',$code,'departments']),
                     ],
                     (object)[
                         'name' => "Направление подготовки",
-                        'link' => route('public:faculty:show', [$code,'specialities']),
+                        'link' => route('public:education:division', ['faculty',$code,'specialities']),
                     ],
                     (object)[
                         'name' => "Поступающим",
@@ -160,7 +160,7 @@ class Menu extends Model
             'items' => collect([
                 (object)[
                     'name' => "О кафедре",
-                    'link' => route('public:education:department', $code),
+                    'link' => route('public:education:division', ['department', $code]),
                 ],
             ]),
         ];
@@ -168,19 +168,19 @@ class Menu extends Model
         if($division->staffs->count())
             $menu->items->push((object)[
                 'name' => "Педагогический состав",
-                'link' => route('public:education:department:teaching-staff', $code),
+                'link' => route('public:education:division', ['department', $code, 'teaching-staff']),
             ]);
 
         if($division->labs->count())
             $menu->items->push((object)[
                 'name' => "Лаборатории",
-                'link' => route('public:education:department:labs', $code),
+                'link' => route('public:education:division', ['department', $code, 'labs']),
             ]);
 
         if($division->specialities->count())
             $menu->items->push((object)[
                 'name' => "Направление подготовки",
-                'link' => route('public:education:department:specialities', $code),
+                'link' => route('public:education:division', ['department', $code, 'specialities']),
             ]);
 
         $menu->items->push((object)[

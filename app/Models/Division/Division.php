@@ -75,17 +75,9 @@ class Division extends Model
             'staffs'            => '',
         ];
     }
-    public function resolveRouteBinding($value, $field = null)
+    public function resolveRouteBinding($value, $field = null): ?Division
     {
-        // Попробуем сначала найти по полю 'code'
-        $division = $this->where('code', $value)->first();
-
-        // Если не найдено, попробуем найти по 'id'
-        if (!$division) {
-            $division = $this->where('id', $value)->first();
-        }
-
-        return $division;
+        return $this->where('code', $value)->first() ??  $this->where('id', $value)->first();
     }
     public static function FormMessage(): array
     {
@@ -138,7 +130,6 @@ class Division extends Model
             ->orderBy('name')
             ;
     }
-
     public function specialities(): HasMany
     {
 
@@ -197,16 +188,17 @@ class Division extends Model
         if($this->type === DivisionType::Faculty)
             foreach ($this->departments as $department)
                 foreach ($department->staffs as $staff){
-                    if(!$result->has($staff->card->full_name))
-                        $result->put($staff->card->full_name,(object)[
+
+                    if(!$result->has($staff->staff_id))
+                        $result->put($staff->staff_id,(object)[
                             'full_name' => $staff->card->full_name,
                             'link'      => $staff->card->link,
-                            'avatar'    => $staff->card->avatar,
+                            'avatar'    => $staff->avatar,
                             'posts'     => collect([$staff->post]) ,
                         ]);
 
-                    elseif($result[$staff->card->full_name]->posts->doesntContain($staff->post))
-                        $result[$staff->card->full_name]->posts->push($staff->post);
+                    elseif($result[$staff->staff_id]->posts->doesntContain($staff->post))
+                        $result[$staff->staff_id]->posts->push($staff->post);
                 }
         else
             foreach ($this->staffs as $staff){
@@ -287,16 +279,13 @@ class Division extends Model
 
         return match($this->type){
             default                     => route('public:division:show',        $code),
-            DivisionType::Faculty       => route('public:faculty:show',         $code),
-            DivisionType::Department    => route('public:education:department', $code),
-            DivisionType::Lab           => route('public:lab:show',             $code),
-            DivisionType::Branch        => route('public:education:branch',     $code),
+            DivisionType::Faculty, DivisionType::Department, DivisionType::Lab, DivisionType::Branch
+                => route('public:education:division',   [$this->type, $code]),
         };
     }
 
     public static function search(&$division,$search): void
     {
-
         $list = self::where('name', 'LIKE', "%$search%")->get();
 
         $ids = collect([]);
@@ -309,11 +298,9 @@ class Division extends Model
         if($division->chief->card->divisions->count())
             self::searchVerifiedID($division->chief->card,$ids);
 
-
         foreach ($division->staffs as $staff)
             if($staff->card->divisions->count())
                 self::searchVerifiedID($staff->card,$ids);
-
     }
 
     private static function getParents(&$ids,$item): void
@@ -344,7 +331,7 @@ class Division extends Model
             self::searchVerifiedID($sub, $ids);
     }
 
-    public function getMenuAttribute(): object
+    public function getMenuAttribute(): ?object
     {
         return  match($this->type){
             default => null,

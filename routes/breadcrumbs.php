@@ -29,10 +29,19 @@ Breadcrumbs::for('faculties', function (BreadcrumbTrail $trail) {
     $trail->push('Факультеты и филиалы', route('public:education:faculties'));
 });
 
-Breadcrumbs::for('faculty', function (BreadcrumbTrail $trail, ?Division $faculty) {
-
+Breadcrumbs::for('faculty', function (BreadcrumbTrail $trail, ?Division $division) {
     $trail->parent('faculties');
-    $trail->push($faculty->name, $faculty->link);
+    $trail->push($division->name, $division->link);
+});
+
+Breadcrumbs::for('department', function (BreadcrumbTrail $trail, ?Division $division) {
+    $trail->parent($division->parent->type->value,$division->parent);
+    $trail->push($division->name, $division->link);
+});
+
+Breadcrumbs::for('lab', function (BreadcrumbTrail $trail, ?Division $division) {
+    $trail->parent($division->parent->type->value,$division->parent);
+    $trail->push($division->name, $division->link);
 });
 
 Breadcrumbs::for('faculty-departments', function (BreadcrumbTrail $trail, Faculty $faculty) {
