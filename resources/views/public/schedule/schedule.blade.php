@@ -87,7 +87,7 @@ return $weekNumber;
         </form>
     </div>
     @if($schedule == 'start')
-        <div class="empty_search text-center mt-30">
+        <div class="empty_search text-center my-30">
             <p>
             <h1 class="text-3xl font-bold mb-3">Для вывода расписания укажите в строке поиска номер учебной группы</h1>
             <h2 class="text-red-900 text-2xl">Форма обучения и Курс являются обязательным полем</h2>

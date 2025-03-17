@@ -38,12 +38,12 @@
             </div>
         </div>
         @if($news->count())
-            <div class="scroll-news overflow-x-scroll">
+            <div class="scroll-news overflow-x-auto">
                 <div class="news-main-block grid grid-cols-8 md:grid-cols-2 xl:grid-cols-4 gap-4 w-max md:w-full">
                     @foreach($news as $item)
                         <a
                             href="{{$item->link}}"
-                            class="min-h-300 relative block"
+                            class="min-h-300 relative block "
                         >
                             <img
                                 src="{{$item->preview->thumbnail}}"

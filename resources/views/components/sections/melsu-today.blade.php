@@ -6,9 +6,9 @@
                 МелГУ сегодня — ведущий учебный и научный центр.
             </h2>
         </div>
-        <div class="scroll-info-box overflow-x-scroll wrapper-info-box">
+        <div class="scroll-info-box overflow-x-auto wrapper-info-box ">
         <div
-            class="flex md:grid md:grid-cols-2 gap-y-2.5 sm:gap-[5px] xl:gap-0 xl:grid-cols-4 overflow-scroll w-fit md:w-full"><!--sm:grid-cols-[1fr_1fr] gap-y-2.5 sm:gap-[5px] xl:gap-0 xl:-->
+            class="flex md:grid md:grid-cols-2 gap-y-2.5 sm:gap-[5px] xl:gap-0 xl:grid-cols-4  w-fit md:w-full"><!--sm:grid-cols-[1fr_1fr] gap-y-2.5 sm:gap-[5px] xl:gap-0 xl:-->
             <div class="mini-info-box flex flex-col justify-between  md:w-full info-box">
                 <div class="box-person-icon">
                     <img src="{{asset('img/student.png')}}" alt="">
@@ -22,7 +22,7 @@
                 <div class="point-menu-list">
                     <ul>
                         <li>
-                            <a href="#">Расписание</a>
+                            <a href="https://melsu.ru/schedule/show">Расписание</a>
                         </li>
                         <li>
                             <a href="#">Личный кабинет</a>
