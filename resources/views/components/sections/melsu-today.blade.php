@@ -22,7 +22,7 @@
                 <div class="point-menu-list">
                     <ul>
                         <li>
-                            <a href="https://melsu.ru/schedule/show">Расписание</a>
+                            <a href="https://melsu.ru/schedule/show ">Расписание</a>
                         </li>
                         <li>
                             <a href="#">Личный кабинет</a>
@@ -42,7 +42,7 @@
             </div>
             <div class="mini-info-box flex flex-col justify-between md:w-full info-box">
                 <div class="box-person-icon">
-                    <img src="{{asset('img/entrant.png')}}" alt="">
+                    <img src="{{asset('img/entrant.png')}} " alt="">
                 </div>
                 <div class="text-box">
                     <p>
