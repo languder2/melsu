@@ -11,7 +11,7 @@
             class="flex md:grid md:grid-cols-2 gap-y-2.5 sm:gap-[5px] xl:gap-0 xl:grid-cols-4  w-fit md:w-full"><!--sm:grid-cols-[1fr_1fr] gap-y-2.5 sm:gap-[5px] xl:gap-0 xl:-->
             <div class="mini-info-box flex flex-col justify-between  md:w-full info-box">
                 <div class="box-person-icon">
-                    <img src="{{asset('img/student.png')}} " alt="">
+                    <img src="{{asset('img/student.png')}}" alt="">
                 </div>
                 <div class="text-box">
                     <p>
