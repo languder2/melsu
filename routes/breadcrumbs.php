@@ -34,6 +34,11 @@ Breadcrumbs::for('faculty', function (BreadcrumbTrail $trail, ?Division $divisio
     $trail->push($division->name, $division->link);
 });
 
+Breadcrumbs::for('branch', function (BreadcrumbTrail $trail, ?Division $division) {
+    $trail->parent('faculties');
+    $trail->push($division->name, $division->link);
+});
+
 Breadcrumbs::for('department', function (BreadcrumbTrail $trail, ?Division $division) {
     $trail->parent($division->parent->type->value,$division->parent);
     $trail->push($division->name, $division->link);
