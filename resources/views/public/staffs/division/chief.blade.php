@@ -13,7 +13,7 @@
         <img
             src="{{$division->chief->card->avatar->thumbnail}}"
             alt="{{$division->chief->card->full_name}}"
-            class="w-92"
+            class="w-92 hidden xl:block"
         />
     @endisset
 

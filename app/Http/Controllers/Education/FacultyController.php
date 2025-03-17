@@ -107,45 +107,4 @@ class FacultyController extends Controller
         return redirect()->route('admin:faculty:list');
     }
 
-
-    public function faculties(): View
-    {
-        $list = Division::where('show',1)
-            ->where('type',DivisionType::Faculty)
-            ->orderBy('sort')
-            ->orderBy('name')
-            ->get()
-        ;
-
-        return view('public.education.faculties.list', compact('list'));
-    }
-
-    public function faculty($code = null): View|RedirectResponse
-    {
-
-        $division = Division::where('code', $code)->orWhere('id',$code)->first();
-
-        if ($division === null)
-            return redirect()->to(route('public:education:faculties'));
-
-
-        return view('public.education.faculty.about',compact('division'));
-    }
-
-    public function departments($code = null): View|RedirectResponse
-    {
-        $division = Division::where('code', $code)->orWhere('id',$code)->first();
-
-        if ($division === null)
-            return redirect()->to(route('public:education:faculties'));
-
-
-        if($division->departments->isEmpty() && $division->labs->isEmpty() && $division->faculty_labs->isEmpty())
-            return redirect()->to($division->link);
-
-        return view('public.education.departments.related',compact('division'));
-
-    }
-
-
 }
