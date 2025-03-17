@@ -7,7 +7,15 @@
 @endsection
 
 @section('content-header')
-    @include('admin.education.faculties.header')
+    @component('admin.education.header',[
+        'link'  => route('admin:division:add'),
+        'type'  => \App\Enums\DivisionType::Faculty,
+    ])
+        @slot('title')
+            Факультеты
+        @endslot
+    @endcomponent
+
 @endsection
 
 @section('content')
@@ -57,6 +65,7 @@
                                 {{$item->departments->count()}}
                             </a>
                         </div>
+
                         <x-html.blocks.check-button
                             onclick="Actions.ToggleShow(this,'{{route('gallery-toggle-show',$item->id)}}')"
                             :checked="$item->show"
@@ -83,7 +92,7 @@
 
                         <x-html.blocks.a-button
                             hoverColor="text-blue-700"
-                            :href="route('admin:faculty:edit',$item->id)"
+                            :href="route('admin:division:edit',$item->id)"
                         >
                             <i class="fas fa-pencil-alt"></i>
                         </x-html.blocks.a-button>
@@ -95,12 +104,11 @@
 
                     <x-html.blocks.a-button
                         hoverColor="text-red-700"
-                        onclick="Actions.DeleteItem(this.closest('.gallery-item'),'{{route('gallery-delete',$item->id)}}')"
+                        onclick="Actions.DeleteItem(this.closest('.gallery-item'),'{{route('admin:division:delete',$item->id)}}')"
                         DeleteItem
                     >
                         <i class="fas fa-recycle"></i>
                     </x-html.blocks.a-button>
-
 
                     <x-html.blocks.bottom-header>
                         <div>
@@ -117,7 +125,6 @@
             </div>
         @endforeach
     </div>
-
 
 @endsection
 

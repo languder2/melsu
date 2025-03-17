@@ -283,7 +283,6 @@ class Division extends Model
                 => route('public:education:division',   [$this->type, $code]),
         };
     }
-
     public static function search(&$division,$search): void
     {
         $list = self::where('name', 'LIKE', "%$search%")->get();

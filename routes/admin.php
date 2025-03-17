@@ -142,23 +142,15 @@ Route::middleware('auth.check')
     ->group(function () {
 
         Route::get('', 'list')->name('admin:faculty:list');
-        Route::get('add', 'form')->name('admin:faculty:add');
-        Route::get('edit/{id}', 'form')->name('admin:faculty:edit');
-        Route::post('save', 'save')->name('admin:faculty:save');
-        Route::get('delete/{id}', 'delete')->name('admin:faculty:delete');
 
     });
 
 Route::middleware('auth.check')
     ->controller(DepartmentController::class)
-    ->prefix('education/departments')
+    ->prefix('departments')
     ->group(function () {
 
         Route::get('', 'list')->name('admin:department:list');
-        Route::get('add', 'form')->name('admin:department:add');
-        Route::get('edit/{id}', 'form')->name('admin:department:edit');
-        Route::post('save', 'save')->name('admin:department:save');
-        Route::get('delete/{id}', 'delete')->name('admin:department:delete');
 
     });
 
@@ -169,11 +161,7 @@ Route::middleware('auth.check')
     ->prefix('education/labs')
     ->group(function () {
 
-        Route::get('', 'AdminList')->name('admin:education:labs:list');
-        Route::get('add', 'form')->name('admin:education:labs:add');
-        Route::get('edit/{id}', 'form')->name('admin:education:labs:edit');
-        Route::post('save', 'save')->name('admin:education:labs:save');
-        Route::get('delete/{id}', 'delete')->name('admin:education:labs:delete');
+        Route::get('', 'AdminList')->name('admin:lab:list');
 
     });
 

@@ -1,11 +1,11 @@
 <nav class="bg-white p-4 mb-4 flex">
 
 {{--    <x-html.a-blue--}}
-{{--        href="{{route('admin:education:branches:list')}}"--}}
+{{--        href="{{route('admin:branch:list')}}"--}}
 {{--        text="Филиалы"--}}
 {{--    />--}}
 
-    <span class="inline-block mx-3 opacity-30">|</span>
+{{--    <span class="inline-block mx-3 opacity-30">|</span>--}}
 
     <x-html.a-blue
         href="{{route('admin:faculty:list')}}"
@@ -22,7 +22,7 @@
     <span class="inline-block mx-3 opacity-30">|</span>
 
     <x-html.a-blue
-        href="{{route('admin:education:labs:list')}}"
+        href="{{route('admin:lab:list')}}"
         text="Лаборатории"
     />
 

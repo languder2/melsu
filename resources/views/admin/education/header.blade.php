@@ -1,10 +1,10 @@
 <div class="bg-white rounded-md p-4 mb-4 flex">
     <h2 class="flex-1 text-2xl font-semibold">
-        Факультеты
+        {{$title}}
     </h2>
     <div>
         <a
-            href="{{route('admin:faculty:add')}}"
+            href="{{$link}}"
             class="
                 py-2 px-4
                 rounded-md

@@ -28,7 +28,7 @@
                 id="form_name"
                 name="name"
                 label="Название"
-                value="{!! old('name')?? $current->name ?? null !!}"
+                value="{!! old('_token') ? old('name') : $current->name ?? null !!}"
                 required
             />
         </div>

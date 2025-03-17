@@ -1,7 +1,7 @@
 @extends("layouts.page")
 
 @section('title')
-    ФГБОУ ВО "МелГУ: {{$division->name}}
+    ФГБОУ ВО "МелГУ: {!! $division->name    !!}
 @endsection
 
 @section('breadcrumbs')

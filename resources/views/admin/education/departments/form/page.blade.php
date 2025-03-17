@@ -21,9 +21,9 @@
 
     <x-head.tinymce-config/>
     <form
-        action="{{route('admin:faculty:save')}}"
-        method="POST"
-        enctype="multipart/form-data"
+            action="{{route('admin:faculty:save')}}"
+            method="POST"
+            enctype="multipart/form-data"
     >
         @csrf
 
@@ -31,19 +31,19 @@
 
         <div class="grid grid-cols-[400px_minmax(400px,1200px)] mx-auto gap-4">
             <div>
-                @include('admin.education.faculties.form.menu')
+                @include('admin.education.faculty.form.menu')
 
                 <x-form.submit
-                    class="uppercase"
-                    value="сохранить"
+                        class="uppercase"
+                        value="сохранить"
                 />
             </div>
 
             <div>
                 <x-form.errors
-                    setTheme="1"
+                        setTheme="1"
                 />
-{{--                @include('admin.education.departments.form')--}}
+                {{--                @include('admin.education.departments.form')--}}
                 @include('admin.education.departments.form.section-base')
 
                 @component('components.form.sections.contacts',compact('current')) @endcomponent

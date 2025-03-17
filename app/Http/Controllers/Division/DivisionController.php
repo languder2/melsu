@@ -91,7 +91,19 @@ class DivisionController extends Controller
             Contact::processing($record,$request->get('contacts'));
 
 
-        return redirect()->route('admin:division:list');
+        switch ($record->type) {
+            case DivisionType::Faculty:
+                return redirect()->route('admin:faculty:list');
+            case DivisionType::Department:
+                return redirect()->route('admin:department:list');
+            case DivisionType::Lab:
+                return redirect()->route('admin:lab:list');
+            default:
+                return redirect()->route('admin:division:list');
+
+        }
+
+
     }
 
     public function delete(int $id)
