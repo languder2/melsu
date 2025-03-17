@@ -43,7 +43,7 @@
                     @foreach($news as $item)
                         <a
                             href="{{$item->link}}"
-                            class="min-h-300 relative block"
+                            class="min-h-300 relative block "
                         >
                             <img
                                 src="{{$item->preview->thumbnail}}"
