@@ -29,6 +29,7 @@ class SpecialityController extends Controller
 
     public function form(Request $request, $id = null)
     {
+
         $current        = Speciality::find($id);
         $faculties      = Division::where('type',DivisionType::Faculty)
                             ->orderBy('name')
@@ -37,8 +38,9 @@ class SpecialityController extends Controller
         $departments    = Division::where('type',DivisionType::Department)
             ->orderBy('alt_name')->get()->pluck('alt_name', 'id');
 
+
         return view('admin.education.specialities.form',
-            compact('current','faculties','departments','levels')
+            compact('current','faculties','departments')
         );
     }
 
@@ -71,7 +73,7 @@ class SpecialityController extends Controller
 
                 $profile = Profile::where([
                     'speciality_code' => $record->code,
-                    'form_code' => $profileForm['form_code'],
+                    'form' => $profileForm['form'],
                 ])->first();
 
                 if (!$profile)

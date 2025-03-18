@@ -140,7 +140,7 @@ class Division extends Model
 
         return $this->hasMany(Speciality::class, $field,'id')
             ->where('show',true)
-            ->orderBy('order')
+            ->orderBy('sort')
             ->orderBy('spec_code')
         ;
     }

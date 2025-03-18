@@ -2,6 +2,9 @@
 
 namespace App\Models\Education;
 
+use App\Enums\DivisionType;
+use App\Enums\EducationLevel;
+use App\Models\Division\Division;
 use App\Models\Education\Department as Department;
 use App\Models\Gallery\Image;
 use App\Models\Page\Content as PageContent;
@@ -25,12 +28,15 @@ class Speciality extends Model
         'spec_code',
         'faculty_id',
         'department_id',
-        'level_code',
-        'total_places',
+        'level',
         'favorite',
         'description',
-        'order',
+        'sort',
         'show',
+    ];
+
+    protected $casts = [
+        'level' => EducationLevel::class
     ];
 
     public static function FormRules($id): array
@@ -42,11 +48,10 @@ class Speciality extends Model
             'spec_code'         => "required",
             'faculty_id'        => '',
             'department_id'     => '',
-            'level_code'        => 'required',
-            'total_places'      => '',
+            'level'             => 'required',
             'favorite'          => '',
             'description'       => '',
-            'order'             => 'nullable|numeric',
+            'sort'              => 'nullable|numeric',
             'show'              => '',
         ];
     }
@@ -62,19 +67,14 @@ class Speciality extends Model
         ];
     }
 
-    public function level(): BelongsTo
-    {
-        return $this->belongsTo(Level::class, 'level_code', 'code');
-    }
-
     public function department(): BelongsTo
     {
-        return $this->belongsTo(Department::class, 'department_code', 'code');
+        return $this->belongsTo(Division::class, 'department_id', 'id');
     }
 
     public function faculty(): BelongsTo
     {
-        return $this->belongsTo(Faculty::class, 'faculty_code', 'code');
+        return $this->belongsTo(Division::class, 'faculty_id', 'id');
     }
 
     public function getPlacesAttribute(): int

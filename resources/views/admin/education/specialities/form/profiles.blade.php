@@ -16,7 +16,7 @@
     @foreach(EducationForm::cases() as $form)
         @component('admin.education.specialities.form.profile',[
             'form'      => $form,
-            'profile'   => $current->profiles->where('form_code',$form->value)->first()
+            'profile'   => $current->profiles->where('form',$form->value)->first()
         ])@endcomponent
     @endforeach
 </div>

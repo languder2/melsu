@@ -2,12 +2,13 @@
     {{$record->id}}
 </div>
 
+
 <div>
     {{$record->spec_code}}
 </div>
 
 <div>
-    {{$record->level->name ?? null}}
+    {{$record->level->getName() ?? null}}
 </div>
 
 <div class="md:col-span-2">
@@ -25,7 +26,7 @@
 <div>
     @foreach($record->profiles->where('show',true) as $profile)
         <p>
-            {{ $profile->form->name }}
+            {{ $profile->form->getName() }}
         </p>
     @endforeach
 </div>

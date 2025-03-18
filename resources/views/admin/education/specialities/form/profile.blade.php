@@ -42,7 +42,7 @@
             peer-checked:before:hidden
         "
     >
-        <input type="hidden" name="profiles[{{$form->name}}][form_code]" value="{{$form}}">
+        <input type="hidden" name="profiles[{{$form->name}}][form]" value="{{$form}}">
 
 
         <div class="grid grid-cols-2 gap-x-4">

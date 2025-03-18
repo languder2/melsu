@@ -2,8 +2,8 @@
 
 namespace App\Models\Education;
 
-use App\Models\{Document, FAQ, Link, StaffAffiliation};
-use App\Models\Education\Forms as EducationForm;
+use App\Enums\EducationForm;
+use App\Models\{Document, FAQ, Link};
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
@@ -19,7 +19,7 @@ class Profile extends Model
         'id',
         'alias',
         'speciality_code',
-        'form_code',
+        'form',
         'duration',
         'total_places',
         'director',
@@ -32,13 +32,17 @@ class Profile extends Model
         'deleted_at',
     ];
 
+    protected $casts = [
+        'form'  => EducationForm::class,
+    ];
+
     public static function FormRules($id): array
     {
         return [
             'alias' => "required|unique:education_profiles,alias,{$id},id,deleted_at,NULL",
             'description' => '',
             'speciality_code' => '',
-            'form_code' => '',
+            'form' => '',
             'duration' => '',
             'total_places' => 'nullable|numeric',
             'director' => '',
@@ -114,11 +118,6 @@ class Profile extends Model
             $object = $object->withTrashed();
 
         return $object;
-    }
-
-    public function form(): BelongsTo
-    {
-        return $this->belongsTo(EducationForm::class, 'form_code', 'code');
     }
 
     public function getBudgetScoreAttribute(): int

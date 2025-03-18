@@ -74,10 +74,10 @@
 
         <x-form.select
             id="form_level_code"
-            name="level_code"
+            name="level"
             nullDisabled
-            old="{{old('speciality.level_code')}}"
-            value="{{$current?->level_code}}"
+            old="{{old('speciality.level')}}"
+            value="{{$current?->level}}"
             null="Выбрать"
             :list="EducationLevel::getList()"
             label="Уровень"
