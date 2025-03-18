@@ -54,6 +54,7 @@ Route::controller(NewsController::class)
 
 Route::get('specialities', [SpecialityController::class,'showAll'])
     ->name('public:education:specialities:all');
+
 Route::get('specialities/{speciality}', [SpecialityController::class,'showSingle'])
     ->name('public:education:speciality');
 

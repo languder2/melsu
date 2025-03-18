@@ -86,7 +86,9 @@
     <div class="bg-white p-6">
         <div class="flex flex-col lg:grid lg:grid-cols-[70%_30%]">
             <div class="prog-info order-2 lg:order-1 text-xl line-clamp-4">
-                {{$speciality->description??'not set description'}}
+                @each('public.page.content-section',$speciality->sections,'section')
+
+
             </div>
             <div class="flex lg:items-center flex-col lg:justify-center order-1 lg:order-2 mb-3 lg:mb-0">
                 <h2 class="text-7xl font-[600]">
@@ -94,10 +96,11 @@
                 </h2>
                 <span class="text-xl">
                             бюджетных места
-                    </span>
+                </span>
             </div>
-            <a class="more-prog-btn text-md sm:text-lg border-b-2 border-[#474747] hover:opacity-80 transition duration-300 ease-linear uppercase pb-2 col-span-2 order-3 w-fit mt-3 cursor-pointer">Подробее
-                о программе</a>
+            <a class="more-prog-btn text-md sm:text-lg border-b-2 border-[#474747] hover:opacity-80 transition duration-300 ease-linear uppercase pb-2 col-span-2 order-3 w-fit mt-3 cursor-pointer">
+                Подробнее о программе
+            </a>
         </div>
     </div>
 </section>

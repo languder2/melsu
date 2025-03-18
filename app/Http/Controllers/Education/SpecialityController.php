@@ -3,14 +3,10 @@
 namespace App\Http\Controllers\Education;
 
 use App\Enums\DivisionType;
-use App\Enums\EducationForm;
 use App\Http\Controllers\Controller;
 use App\Models\Division\Division;
 use App\Models\Education\Department;
-use App\Models\Education\Faculty;
-use App\Models\Education\Forms;
 use App\Models\Education\Level;
-use App\Models\Education\Place;
 use App\Models\Education\Profile;
 use App\Models\Education\Speciality;
 use App\Models\Gallery\Image;
@@ -33,19 +29,16 @@ class SpecialityController extends Controller
 
     public function form(Request $request, $id = null)
     {
-
         $current        = Speciality::find($id);
-        $add2faculty    = request()->get('faculty');
-        $levels         = Level::pluck('name', 'code')?->toJSON(JSON_UNESCAPED_UNICODE);
         $faculties      = Division::where('type',DivisionType::Faculty)
                             ->orderBy('name')
-                            ->get()->pluck('name', 'id');
+                            ->get()
+                            ->pluck('name', 'id');
         $departments    = Division::where('type',DivisionType::Department)
-                            ->orderBy('alt_name')
-                            ->get()->pluck('alt_name', 'id');
+            ->orderBy('alt_name')->get()->pluck('alt_name', 'id');
 
         return view('admin.education.specialities.form',
-            compact('current','add2faculty','faculties','departments','levels')
+            compact('current','faculties','departments','levels')
         );
     }
 
