@@ -7,11 +7,11 @@
 </div>
 
 <div>
-    {{@$record->level->name}}
+    {{$record->level->name ?? null}}
 </div>
 
 <div class="md:col-span-2">
-    {{$record->name}}
+    {!! $record->name !!}
 </div>
 
 <div>
@@ -19,14 +19,13 @@
 </div>
 
 <div>
-    {!! @$record->department->name !!}
+    {!! $record->department->name ?? null !!}
 </div>
 
 <div>
-
     @foreach($record->profiles->where('show',true) as $profile)
         <p>
-            {{@$profile->form->name}}
+            {{ $profile->form->name }}
         </p>
     @endforeach
 </div>
@@ -35,7 +34,7 @@
     <div class="flex flex-row-reverse text-white w-full">
         <div class="flex-none w-14">
             <a
-                href="{{route('admin:department:delete',$record->id??0)}}"
+                href="{{route('admin:speciality:delete',$record->id)}}"
                 class="
                                 py-2 px-4 rounded-md
                                 bg-red-950
@@ -48,7 +47,7 @@
         </div>
         <div class="flex-none w-14">
             <a
-                href="{{route('admin:education-speciality:edit',$record?->id)}}"
+                href="{{route('admin:speciality:edit',$record->id)}}"
                 class="
                                     py-2 px-4 rounded-md
                                     bg-green-950

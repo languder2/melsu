@@ -7,7 +7,7 @@
             </h2>
             <div>
                 <a
-                    href="{{route('admin:education-speciality:add')."?faculty={$faculty->code}"}}"
+                    href="{{route('admin:speciality:add')}}"
                     class="
                 py-2 px-4
                 rounded-md
@@ -95,7 +95,7 @@
                     <div class="flex flex-row-reverse text-white w-full">
                         <div class="flex-none w-14">
                             <a
-                                href="{{route('admin:department:delete',$record->id??0)}}"
+                                href="{{route('admin:speciality:delete',$record->id)}}"
                                 class="
                                 py-2 px-4 rounded-md
                                 bg-red-950
@@ -108,7 +108,7 @@
                         </div>
                         <div class="flex-none w-14">
                             <a
-                                href="{{route('admin:education-speciality:edit',$record?->id)}}"
+                                href="{{route('admin:speciality:edit',$record->id)}}"
                                 class="
                                     py-2 px-4 rounded-md
                                     bg-green-950

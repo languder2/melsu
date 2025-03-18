@@ -264,6 +264,10 @@ class Division extends Model
     {
         return $this->MorphOne(Image::class, 'relation')->where('type', 'preview');
     }
+    public function ico(): MorphOne
+    {
+        return $this->MorphOne(Image::class, 'relation')->where('type', 'ico');
+    }
 
     public function getPreviewAttribute()
     {

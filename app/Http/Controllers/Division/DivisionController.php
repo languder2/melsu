@@ -66,6 +66,12 @@ class DivisionController extends Controller
             foreach ($form['staffs'] as $aID=>$staff)
                 Affiliation::ProcessingStaff($record,$aID,$staff);
 
+
+        if($request->has('ico')){
+            $ico = $record->ico ?? ( new Image(['type'=>'ico','name'=>$record->name]))->relation()->associate($record);
+            $ico->saveImage($request->file('ico'));
+        }
+
         /* upload image */
         if($request->file('image'))
             $record->preview->relation()->associate($record)->saveImage($request->file('image'));
@@ -100,10 +106,7 @@ class DivisionController extends Controller
                 return redirect()->route('admin:lab:list');
             default:
                 return redirect()->route('admin:division:list');
-
         }
-
-
     }
 
     public function delete(int $id)

@@ -1,5 +1,5 @@
 <form
-    action="{{route('admin:education-speciality:save')}}"
+    action="{{route('admin:speciality:save')}}"
     method="POST"
     enctype="multipart/form-data"
     class="

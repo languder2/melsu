@@ -4,10 +4,12 @@ namespace App\Models\Education;
 
 use App\Models\Education\Department as Department;
 use App\Models\Gallery\Image;
+use App\Models\Page\Content as PageContent;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Speciality extends Model
@@ -34,6 +36,7 @@ class Speciality extends Model
     public static function FormRules($id): array
     {
         return [
+//            'test'              => 'required',
             'name'              => 'required',
             'code'              => "required|unique:education_specialities,code,$id,id,deleted_at,NULL",
             'spec_code'         => "required",
@@ -84,9 +87,13 @@ class Speciality extends Model
         return $this->hasMany(Profile::class, 'speciality_code', 'code');
     }
 
-    public function logo(): MorphMany
+    public function ico(): MorphOne
     {
-        return $this->morphMany(Image::class, 'relation')->where('type', 'logo');
+        return $this->MorphOne(Image::class, 'relation')->where('type', 'ico');
+    }
+    public function sections(): MorphMany
+    {
+        return $this->morphMany(PageContent::class, 'relation')->orderBy('order');
     }
 
 }

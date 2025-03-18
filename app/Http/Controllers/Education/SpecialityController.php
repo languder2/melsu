@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Education;
 
 use App\Enums\DivisionType;
+use App\Enums\EducationForm;
 use App\Http\Controllers\Controller;
 use App\Models\Division\Division;
 use App\Models\Education\Department;
@@ -12,7 +13,9 @@ use App\Models\Education\Level;
 use App\Models\Education\Place;
 use App\Models\Education\Profile;
 use App\Models\Education\Speciality;
+use App\Models\Gallery\Image;
 use App\Models\Menu\Menu;
+use App\Models\Page\Content as PageContent;
 use App\View\Components\Specialities\Single as SingleSpeciality;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -30,6 +33,7 @@ class SpecialityController extends Controller
 
     public function form(Request $request, $id = null)
     {
+
         $current        = Speciality::find($id);
         $add2faculty    = request()->get('faculty');
         $levels         = Level::pluck('name', 'code')?->toJSON(JSON_UNESCAPED_UNICODE);
@@ -61,9 +65,17 @@ class SpecialityController extends Controller
 
         $record->save();
 
+        if($request->has('ico')){
+            $ico = $record->ico ?? ( new Image(['type'=>'ico','name'=>$record->name]))->relation()->associate($record);
+            $ico->saveImage($request->file('ico'));
+        }
+
+        if($request->has('sections'))
+            PageContent::processing($record,$request->get('sections'));
 
         if($request->has('profiles'))
             foreach ($request->get('profiles') as $profileForm) {
+
                 $profile = Profile::where([
                     'speciality_code' => $record->code,
                     'form_code' => $profileForm['form_code'],
@@ -120,7 +132,7 @@ class SpecialityController extends Controller
                 }
             }
 
-        return redirect()->route('admin:education-speciality:list');
+        return redirect()->route('admin:speciality:list');
     }
 
     public function delete(int $id)
@@ -130,16 +142,12 @@ class SpecialityController extends Controller
         if (!is_null($record))
             $record->delete();
 
-        return redirect()->route('admin:education-speciality:list');
+        return redirect()->route('admin:speciality:list');
     }
 
     public function showAll()
     {
-
         $menu= Menu::where('code','education')->first();
-
-
-
 
         return view('public.education.speciality.all',compact('menu'));
     }

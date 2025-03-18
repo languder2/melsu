@@ -29,7 +29,7 @@
     <span class="inline-block mx-3 opacity-30">|</span>
 
     <x-html.a-blue
-        href="{{route('admin:education-speciality:list')}}"
+        href="{{route('admin:speciality:list')}}"
         text="Специальности"
     />
 

@@ -63,7 +63,6 @@
             label="Тип подразделения"
         />
 
-
         <x-staff.select
             :current="$current->coordinator_id ?? null"
             :params='[
@@ -75,6 +74,22 @@
             :staff="old('coordinator')"
 
         />
+
+        <div class="flex gap-4">
+            @if($current->ico)
+                <div class="bg-gray-700 py-2 px-3">
+                    <img src="{!! $current->ico->image !!}" alt="ico" class="h-10">
+                </div>
+            @endif
+
+            <div class="flex-1">
+                <x-form.file
+                    id="form_ico"
+                    label="Иконка"
+                    name="ico"
+                />
+            </div>
+        </div>
 
         <div class="flex gap-4 my-2">
 

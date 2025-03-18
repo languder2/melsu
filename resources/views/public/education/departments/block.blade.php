@@ -11,7 +11,13 @@
     "
 >
 
-    <div class="h-full" style="background: url({{$case->getSVG()}}) bottom right no-repeat; background-size: contain">
+
+
+    <div class="h-full"
+        @if($department->ico)
+            style="background: url({{$department->ico->image}}) bottom right no-repeat; background-size: contain;"
+        @endif
+    >
         <h3 class="font-semibold " >
             {!! $department->name !!}
         </h3>

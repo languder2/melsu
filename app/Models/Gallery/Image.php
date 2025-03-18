@@ -57,6 +57,7 @@ class Image extends Model
 
     public function saveImage(UploadedFile $file):void
     {
+
         $path = self::getPath($this->relation_type);
 
         $this->filename = substr($file->hashName(),0,strpos($file->hashName(),'.'));
@@ -65,24 +66,26 @@ class Image extends Model
             $this->filetype = 'svg';
 
             $file->storeAs("$path/$this->filename", 'image.svg');
+            $this->save();
+
             return;
         }
 
         $this->filetype = 'webp';
 
-
         $this->reference_id = null;
         $this->save();
 
-        $manager = new ImageManager(new Driver());
-        $image = $manager->read($file);
+        if($this->type !== 'ico'){
+            $manager = new ImageManager(new Driver());
+            $image = $manager->read($file);
 
-        $width  = ($image->width()  > $image->height()) ?600:600*$image->width()/$image->height();
-        $height = ($image->height() > $image->width())  ?600:600*$image->height()/$image->width();
+            $width  = ($image->width()  > $image->height()) ?600:600*$image->width()/$image->height();
+            $height = ($image->height() > $image->width())  ?600:600*$image->height()/$image->width();
 
-        Storage::put("$path/$this->filename/image.webp",(string)$image->toWebp(90));
-        Storage::put("$path/{$this->filename}/thumbnail.webp",(string)$image->resize($width,$height)->toWebp(90));
-
+            Storage::put("$path/$this->filename/image.webp",(string)$image->toWebp(90));
+            Storage::put("$path/{$this->filename}/thumbnail.webp",(string)$image->resize($width,$height)->toWebp(90));
+        }
     }
 
     public static function getPath(?string $model = null):string

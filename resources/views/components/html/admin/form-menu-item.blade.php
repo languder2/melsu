@@ -12,8 +12,7 @@
         value="{{$tab}}"
         onchange="Actions.showTab(this.value,'.{{$tabs}}')"
 
-        @checked(isset($first))
-        @checked(old('_token') && old('side_menu') === $tab)
+        @checked(isset($active) || (old('_token') && old('side_menu') === $tab))
 
     >
     <label for="menu_{{$tab}}"

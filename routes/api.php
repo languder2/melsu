@@ -3,9 +3,7 @@
 use App\Http\Controllers\Gallery\AdminImageGallery;
 use App\Http\Controllers\Staffs\StaffController;
 use App\Models\Division\Division;
-use App\Models\Education\Department as EducationDepartment;
 use App\Models\Education\Faculty;
-use App\Models\Education\Lab;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;

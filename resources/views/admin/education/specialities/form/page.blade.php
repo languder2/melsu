@@ -31,10 +31,8 @@
         <input type="hidden" name="id" value="{{$current->id ?? null}}">
 
         <div class="grid grid-cols-[400px_minmax(400px,1200px)] mx-auto gap-4">
-
             <div>
                 @include('admin.divisions.form.menu')
-
                 <x-form.submit
                     class="uppercase"
                     value="сохранить"

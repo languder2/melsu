@@ -1,7 +1,7 @@
 <div class="bg-white rounded-md p-4 mb-4 flex">
 
     <x-html.a-blue
-        href="{{route('admin:education:faculty:list')}}"
+        href="{{route('admin:faculty:list')}}"
         text="Факультеты"
         active="{!! ($active==='faculties')?true:null !!}"
     />
@@ -21,7 +21,7 @@
     </span>
 
     <x-html.a-blue
-        href="{{route('admin:education-speciality:list')}}"
+        href="{{route('admin:speciality:list')}}"
         text="Специальности"
         active="{!! ($active==='specialities')?true:null !!}"
     />

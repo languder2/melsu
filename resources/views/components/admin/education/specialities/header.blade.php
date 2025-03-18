@@ -4,7 +4,7 @@
     </h2>
     <div>
         <a
-            href="{{route('admin:education-speciality:add')}}"
+            href="{{route('admin:speciality:add')}}"
             class="
                 py-2 px-4
                 rounded-md

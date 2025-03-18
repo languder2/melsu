@@ -171,11 +171,11 @@ Route::middleware('auth.check')
     ->prefix('specialities')
     ->group(function () {
 
-        Route::get('', 'list')->name('admin:education-speciality:list');
-        Route::get('add', 'form')->name('admin:education-speciality:add');
-        Route::get('edit/{id}', 'form')->name('admin:education-speciality:edit');
-        Route::post('save', 'save')->name('admin:education-speciality:save');
-        Route::get('delete/{id}', 'delete')->name('admin:education-speciality:delete');
+        Route::get('', 'list')->name('admin:speciality:list');
+        Route::get('add', 'form')->name('admin:speciality:add');
+        Route::get('edit/{id}', 'form')->name('admin:speciality:edit');
+        Route::post('save', 'save')->name('admin:speciality:save');
+        Route::get('delete/{id}', 'delete')->name('admin:speciality:delete');
 
     });
 
