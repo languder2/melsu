@@ -99,14 +99,28 @@
                                 Назад
                             </a>
                         </div>
-                        <div class="box-transit-btn">
-                            <a
-                                class="transit-btn"
-                                href="{{url($menu->link)}}"
-                            >
-                                {{$menu->name}}
-                                <i class="bi bi-box-arrow-up-right"></i>
-                            </a>
+                        <div class="">
+                            <div class="">
+                                <a
+                                    class="inline-block py-2 px-4 hover:bg-base-red hover:text-white rounded-md justify-center align-center"
+                                    href="{{url($menu->link)}}"
+                                >
+                                    <p class="flex gap-2 group">
+                                        <span
+                                            class="
+                                                inline-block w-5 h-5
+                                                stroke-neutral-700 fill-neutral-700 group-hover:stroke-white group-hover:fill-white
+                                                transition-all duration-200
+                                            "
+                                        >
+                                            {!! @file_get_contents(public_path($menu->ico->image)) !!}
+                                        </span>
+                                        {{$menu->name}}
+                                        <i class="bi bi-box-arrow-up-right text-sm"></i>
+
+                                    </p>
+                                </a>
+                            </div>
                         </div>
                     </div>
                     <div class="wrapper-dropdown-menu">

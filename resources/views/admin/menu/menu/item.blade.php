@@ -35,7 +35,7 @@
 
 <div class="text-right">
     @if($record->ico)
-        <div class="stroke-green fill-red w-8 h-8 fill-blue-600 stroke-purple-600 hover:stroke-amber-600 hover:fill-red-600">
+        <div class="w-8 h-8 fill-blue-600 stroke-purple-600 hover:stroke-amber-600 hover:fill-red-600">
             {!! @file_get_contents(public_path($record->ico->image)) !!}
         </div>
     @endif
