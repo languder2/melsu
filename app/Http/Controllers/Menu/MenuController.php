@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Menu;
 
 use App\Http\Controllers\Controller;
+use App\Models\Gallery\Image;
 use App\Models\Menu\Menu;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -53,6 +54,11 @@ class MenuController extends Controller
         $record->is_tree = $request->has('is_tree');
 
         $record->save();
+
+        if($request->has('ico')) {
+            $ico = $record->ico ?? (new Image(['type' => 'ico', 'name' => $record->name]))->relation()->associate($record);
+            $ico->saveImage($request->file('ico'));
+        }
 
         return redirect()->route('admin:menu');
     }

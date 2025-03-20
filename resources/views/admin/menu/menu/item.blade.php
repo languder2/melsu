@@ -33,6 +33,14 @@
     </div>
 </div>
 
+<div class="text-right">
+    @if($record->ico)
+        <div class="stroke-green fill-red w-8 h-8 fill-blue-600 stroke-purple-600 hover:stroke-amber-600 hover:fill-red-600">
+            {!! @file_get_contents(public_path($record->ico->image)) !!}
+        </div>
+    @endif
+</div>
+
 <div>
     {{optional($record->parent)->name}}
 </div>
@@ -67,7 +75,7 @@
         </div>
     </div>
 </div>
-<hr class="md:col-span-6 last:hidden opacity-20">
+<hr class="md:col-span-7 last:hidden opacity-20">
 
 @if($record->subs)
     @foreach($record->subs as $record)

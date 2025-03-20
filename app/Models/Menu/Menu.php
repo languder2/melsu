@@ -2,6 +2,8 @@
 
 namespace App\Models\Menu;
 
+use App\Models\Gallery\Image;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -376,6 +378,11 @@ class Menu extends Model
     public function getLinkAttribute(): string
     {
         return route('public:menu:show',[$this->code]);
+    }
+
+    public function ico(): MorphOne
+    {
+        return $this->MorphOne(Image::class, 'relation')->where('type', 'ico');
     }
 
 

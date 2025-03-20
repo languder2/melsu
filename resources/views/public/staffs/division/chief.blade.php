@@ -44,13 +44,19 @@
             <h4 class="text-lg font-semibold mt-6">
                 Контакты
             </h4>
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-3 stroke-base-red">
-                <div>
-                    @each('public.contacts.contact',$division->phones,'contact')
-                </div>
-                <div>
-                    @each('public.contacts.contact',$division->emails,'contact')
-                </div>
+            <div class="flex flex-col lg:flex-row gap-3 stroke-base-red">
+
+                @if($division->phones->count())
+                    <div class="flex-1">
+                        @each('public.contacts.contact',$division->phones,'contact')
+                    </div>
+                @endif
+
+                @if($division->emails->count())
+                    <div class="flex-1">
+                        @each('public.contacts.contact',$division->emails,'contact')
+                    </div>
+               @endif
             </div>
             <div class="fill-base-red">
                 @each('public.contacts.address',$division->addresses,'contact')

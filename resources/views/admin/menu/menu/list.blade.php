@@ -4,7 +4,7 @@
         class="
             grid gap-4 items-center
             grid-cols-1
-            md:grid-cols-[auto_auto_auto_auto_1fr_auto]
+            md:grid-cols-[auto_auto_auto_auto_auto_1fr_auto]
         "
     >
         <div class="font-semibold">
@@ -20,6 +20,10 @@
 
         <div class="font-semibold">
             Название
+        </div>
+
+        <div class="font-semibold">
+            Ico
         </div>
 
         <div class="font-semibold">

@@ -24,6 +24,22 @@
 
     <x-form.input type="hidden" name="id" value="{{$current->id??null}}"/>
 
+    <div class="flex gap-4">
+        @if($current->ico)
+            <div class="stroke-green fill-red w-16 h-16 fill-blue-600 stroke-purple-600 hover:stroke-amber-600 hover:fill-red-600">
+                {!! @file_get_contents(public_path($current->ico->image)) !!}
+            </div>
+        @endif
+
+        <div class="flex-1">
+            <x-form.file
+                id="form_ico"
+                label="Иконка"
+                name="ico"
+            />
+        </div>
+    </div>
+
     <x-form.input
         id="name"
         name="name"
