@@ -125,3 +125,19 @@ img {
     }
 
 }
+
+ol{
+    list-style: decimal;
+    margin-left: 12px;
+    li{
+        padding: 10px 0;
+    }
+    li:first-child{
+        padding-top: 0;
+    }
+    li:last-child{
+        padding-bottom: 0;
+    }
+
+
+}

@@ -12,9 +12,7 @@ use Illuminate\View\Component;
 use App\Models\Division\Division;
 class AllSpeciality extends Component
 {
-
     public bool $short = false;
-
     public bool $showHeader = false;
 
     public array $options = [];
@@ -33,6 +31,7 @@ class AllSpeciality extends Component
             $this->showHeader = true;
 
         $this->division = $division;
+
     }
 
     /**

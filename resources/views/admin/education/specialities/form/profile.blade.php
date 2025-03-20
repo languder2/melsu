@@ -1,4 +1,5 @@
 @use('App\Enums\EducationForm')
+@use('App\Enums\EducationBasis')
 <div
     id="forms_{{$form->name}}_tab"
     class="
@@ -19,11 +20,11 @@
         name="profiles[{{$form->name}}][show]"
         class="peer w-4 h-4"
         @checked(
-            old("_token") ? old("profiles.{$form->name}.show") : $profile->show
+            old("_token") ? old("profiles.{$form->name}.show") : $profile->show ?? null
         )
     >
     <label for="activator_form_{{$form->name}}" class="pointer">
-        Активировать форму обучения
+        Активировать профиль обучения
     </label>
     <div
 
@@ -105,42 +106,43 @@
                 value='{{old("profiles.{$form->name}.price")??@$profile?->price}}'
             />
 
-            <x-form.input
-                id="form_profiles_{{$form->name}}_places_budget"
-                name="profiles[{{$form->name}}][places][budget]"
-                type="number"
-                label="Кол-во мест, бюджет"
-                :value="old('profiles.'.$form->name.'.places.budget')??@$profile->places['budget']"
-            />
+            @foreach(EducationBasis::cases() as $basis)
+                <div class="p-3 border my-2">
 
-            <x-form.input
-                id="form_profiles_{{$form->name}}_places_contract"
-                name="profiles[{{$form->name}}][places][contract]"
-                type="number"
-                label="Кол-во мест, контракт"
-                :value="old('profiles.'.$form->name.'.places.contract')??@$profile->places['contract']"
-            />
+                    <h4 class="font-semibold mb-2 text-center">
+                        {{$basis->getName()}}
+                    </h4>
 
-            <div>
-                <h3 class="text-lg font-semibold text-center">
-                    Экзамены: Бюджет
-                </h3>
-                <x-exam.admin-list
-                    :code="$form->name"
-                    type="budget"
-                    :exams="@$profile->exams"
-                />
-            </div>
-            <div>
-                <h3 class="text-lg font-semibold text-center">
-                    Экзамены: Контракт
-                </h3>
-                <x-exam.admin-list
-                    :code="$form->name"
-                    type="contract"
-                    :exams="@$profile->exams"
-                />
-            </div>
+                    <x-form.input
+                        id="form_profiles_{{$form->name}}_places_{{$basis}}"
+                        name="profiles[{{$form->name}}][places][{{$basis->value}}]"
+                        type="number"
+                        label="Кол-во мест"
+                        :value='old("profiles.{$form->name}.places.{$basis->value}") ?? $profile->placesByType($basis) ?? null'
+                    />
+
+                    <x-form.input
+                        id="form_profiles_{{$form->name}}_score_{{$basis}}"
+                        type="number"
+                        max="300"
+                        name="profiles[{{$form->name}}][score][{{$basis->value}}]"
+                        label="Проходной бал"
+                        :value='old("profiles.{$form->name}.score.{$basis->value}") ?? $profile->scoreByType($basis) ?? null'
+                    />
+
+                        <h4 class="font-semibold mb-2 mt-4 border-b border-dashed">
+                            Экзамены:
+                        </h4>
+
+                        <x-exam.admin-list
+                            :code="$form->name"
+                            :type="$basis->value"
+                            :exams="$profile->exams"
+                        />
+
+                </div>
+            @endforeach
+
         </div>
     </div>
 </div>

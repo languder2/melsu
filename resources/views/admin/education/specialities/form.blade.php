@@ -8,7 +8,7 @@
 
 @section('content-header')
     <x-html.admin.content-header>
-        @if($current)
+        @if($current->id)
             {{$current->spec_code}} {!! $current->name !!}
         @else
             Добавление направления подготовки

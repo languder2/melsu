@@ -33,14 +33,24 @@
 
         @if($department->phones->count())
             <div class="my-2 text-stone-50 stroke-stone-50">
-                @each('public.contacts.contact',$department->phones,'contact')
+                @foreach($department->phones as $contact)
+                    @component('public.contacts.contact',[
+                        'contact'   => $contact,
+                        'color'     => 'stroke-white'
+                    ]) @endcomponent
+
+                @endforeach
             </div>
         @endif
 
         @if($department->emails->count())
-            <div class="my-2 text-stone-50 stroke-stone-50">
-                @each('public.contacts.contact',$department->emails,'contact')
-            </div>
+            @foreach($department->emails as $contact)
+                @component('public.contacts.contact',[
+                    'contact'   => $contact,
+                    'color'     => 'stroke-white'
+                ]) @endcomponent
+
+            @endforeach
         @endif
     </div>
 </a>

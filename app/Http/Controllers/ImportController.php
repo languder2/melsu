@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\EducationForm;
+use App\Models\Education\Speciality;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\Import;
 use App\Models\Division\Division;
@@ -95,6 +98,38 @@ class ImportController extends Controller
                 'post'      => $post,
                 'full_name' => $staff->full_name ?? null,
             ]);
+        }
+
+    }
+
+    public function setScores()
+    {
+        $import = new Import();
+
+        Excel::import($import, Storage::disk('public')->path('xlsx/specialities.xlsx'));
+
+        $data = $import->getData();
+
+        foreach ($data as $rodID=>$item) {
+            $speciality = Speciality::find($item[0]);
+
+            if(!$speciality) {
+                dump("$rodID: no speciality found");
+                continue;
+            }
+
+            $speciality->fill(['show'=>true])->save();
+
+            $profile =
+                $speciality->profileByForm($item[1])
+                ?? $speciality->profiles()->create(['form'  => EducationForm::tryFrom($item[1])]);
+
+            $profile->fill(['show'=>true])->save();
+
+            $score = $profile->score()->firstWhere('type',$item[2])
+                ?? $profile->score()->create(['type'=>$item[2]]);
+
+            $score->fill(['score'=>$item[3]])->save();
         }
 
     }

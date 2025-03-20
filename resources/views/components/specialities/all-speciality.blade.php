@@ -26,18 +26,23 @@
                                 <input
                                     type="checkbox"
 
-                                    data-form="{{$profile->form->code}}"
+                                    data-form="{{$profile->form}}"
                                     data-type="{{$place->type}}"
-                                    data-level="{{$speciality->level->code}}"
+                                    data-level="{{$speciality->level}}"
 
                                     class="hidden education-profile"
 
                                     value="{{$speciality->spec_code}} {{$speciality->name}}"
 
-                                    @if($profile->form->code === 'full-time' && $place->type === 'budget' )
+                                    @if($profile->form->value === 'full-time' && $place->type === 'budget' )
                                         checked
                                     @endif
                                 >
+
+                                    <p class="sku uppercase font-medium mb-3">
+                                        {{$speciality->faculty->name ?? ''}}
+                                    </p>
+
 {{--                                @if(is_null($faculty))--}}
 {{--                                    <p class="sku uppercase font-medium mb-3">--}}
 {{--                                        {{$speciality->faculty->name}}--}}

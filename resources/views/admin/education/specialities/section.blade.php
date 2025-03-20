@@ -58,7 +58,7 @@
 
         <div></div>
 
-        @each('admin.education.specialities.item',$section->specialities ?? $list ?? [],'record')
+        @each('admin.education.specialities.item',$list ?? $section->specialities('all')->get() ?? [],'record')
     </div>
 </div>
 

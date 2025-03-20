@@ -40,7 +40,7 @@
         <input
             type="text"
             name="search"
-            class="w-[100%] p-[12px] outline-0 focus:border-b-2 min-h-[50px] specialities_filter"
+            class="w-full p-3 bg-white outline-0 focus:border-b-2 min-h-[50px] specialities_filter"
             data-group=".education-profile"
             value=""
             placeholder="Поиск"

@@ -21,7 +21,7 @@
             id="form_spec_name"
             name="name"
             label="Название"
-            value="{{old('speciality.name')??$current?->name}}"
+            value="{{old('name')??$current?->name}}"
             required1
         />
 
@@ -29,7 +29,7 @@
             id="form_spec_code"
             name="code"
             label="Alias"
-            value="{{old('speciality.code')??$current?->code}}"
+            value="{{old('code')??$current?->code}}"
             required1
         />
 
@@ -39,7 +39,7 @@
                     id="form_spec_code"
                     name="spec_code"
                     label="Код специальности"
-                    value="{{old('speciality.spec_code')??$current?->spec_code}}"
+                    value="{{old('spec_code')??$current?->spec_code}}"
                     required
                 />
             </div>
@@ -71,17 +71,27 @@
             :list="$departments ?? []"
         />
 
+        <x-form.select
+            id="branch_id"
+            name="branch_id"
+            old="{{ old('branch_id')}}"
+            value="{{ $current->relation_id ?? null }}"
+            null="выбрать"
+            label="Колледж"
+            :list="$branches"
+        />
+
 
         <x-form.select
             id="form_level_code"
             name="level"
             nullDisabled
-            old="{{old('speciality.level')}}"
+            old="{{old('level')}}"
             value="{{$current?->level}}"
             null="Выбрать"
             :list="EducationLevel::getList()"
             label="Уровень"
-            required1
+            required
         />
 
         <div class="flex gap-4">
@@ -90,6 +100,8 @@
                     <img src="{!! $current->ico->image !!}" alt="ico" class="h-10">
                 </div>
             @endif
+
+
 
             <div class="flex-1">
                 <x-form.file

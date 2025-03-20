@@ -4,7 +4,7 @@
             Кафедры
         </h4>
 
-        <div class="grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-3 ">
+        <div class="grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-3">
             @each("public.education.departments.block",$division->departments,'department')
         </div>
     @endif
