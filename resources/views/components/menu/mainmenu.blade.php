@@ -105,7 +105,7 @@
                                 href="{{url($menu->link)}}"
                             >
                                 {{$menu->name}}
-                                <i class="bi bi-arrow-right"></i>
+                                <i class="bi bi-box-arrow-up-right"></i>
                             </a>
                         </div>
                     </div>
