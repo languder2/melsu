@@ -18,86 +18,81 @@
     </div>
 </section>
 
-<section class="container custom lg:p-2.5">
-    <div>
-        <div class="grid grid-cols-1 lg:grid-cols-[20%_20%_1fr] bg-white p-6">
-            <div>
-                <div class="mb-3 lg:mb-0">
-                    <h2 class="text-[#828282] uppercase font-[700] mb-2">Уровень обучения</h2>
-                    <h2 class="font-[700] text-lg">
-                        {{$speciality->level->name}}
-                    </h2>
-                </div>
-            </div>
-            <div class="mb-3 lg:mb-0">
-                <div class="mb-2">
-                    <h2 class="text-[#828282] uppercase font-[700]">Форма обучения</h2>
-                </div>
-                <div class="grid grid-cols-[auto_auto] gap-3 lg:gap-0 lg:grid-cols-1 justify-start lg:justify-normal">
-                    @foreach($speciality->profiles as $profile)
-                        <div>
-                            <h2 class="font-[700]">
-                                {{$profile->form->name}}
-                            </h2>
-                        </div>
-                    @endforeach
-                </div>
-            </div>
-            <div class="grid grid-cols[1fr]">
-                <div class="mb-2">
-                    <h2 class="text-[#828282] uppercase font-[700]">Наименование направления и код</h2>
-                </div>
-                <div>
-                    <h2 class="font-[700] text-lg">
-                        {{$speciality->spec_code}}
-                        -
-                        {{$speciality->name}}
-                    </h2>
-                </div>
+
+<section class="container custom p-3 pb-0">
+    <div class="grid grid-cols-1 lg:grid-cols-[auto_auto_1fr_auto] bg-white p-6 gap-5">
+        <div>
+            <h4 class="text-neutral-600 uppercase font-bold mb-2">
+                Уровень обучения
+            </h4>
+            <div class="font-bold text-lg">
+                {{$speciality->level->getName()}}
             </div>
         </div>
-
-        <div
-            class="grid grid-cols-1 sm:grid-cols-[1fr_1fr] lg:grid-cols-[1fr_1fr_1fr_1fr_1fr] bg-[var(--primary-color)] p-6 gap-3 sm:text-center lg:text-start lg:gap-0 lg:justify-normal">
-            <div>
-                <a href="#" class="text-white font-[700] text-xl hover:opacity-80 transition duration-300 ease-linear">О
-                    программе</a>
+        <div>
+            <h2 class="text-neutral-600 uppercase font-bold mb-2 text-right">
+                Форма обучения
+            </h2>
+            @foreach($speciality->profiles as $profile)
+                <div class="font-bold text-right">
+                    {{$profile->form->getName()}}
+                </div>
+            @endforeach
+        </div>
+        <div>
+            <h2 class="text-neutral-600 uppercase font-bold mb-2">
+                Наименование направления и код
+            </h2>
+            <div class="font-bold">
+                {!! $speciality->spec_code !!} - {!! $speciality->name !!}
             </div>
-            <div>
-                <a href="#" class="text-white font-[700] text-xl hover:opacity-80 transition duration-300 ease-linear">Общее</a>
-            </div>
-            <div>
-                <a href="#" class="text-white font-[700] text-xl hover:opacity-80 transition duration-300 ease-linear">Документы</a>
-            </div>
-            <div>
-                <a href="#" class="text-white font-[700] text-xl hover:opacity-80 transition duration-300 ease-linear">Вопросы</a>
-            </div>
-            <div>
-                <a href="#" class="text-white font-[700] text-xl hover:opacity-80 transition duration-300 ease-linear">Карьера</a>
+        </div>
+        <div>
+            <h2 class="text-neutral-600 uppercase font-bold mb-2 text-right">
+                Бюджетных мест
+            </h2>
+            <div class="font-bold text-right">
+                {{$speciality->places}}
             </div>
         </div>
     </div>
 </section>
 
-<div class="box-heading container custom lg:p-2.5">
+<section class="container custom p-3 pt-0">
+    <div
+        class="grid grid-cols-1 sm:grid-cols-[1fr_1fr] lg:grid-cols-[1fr_1fr_1fr_1fr_1fr] bg-[var(--primary-color)] p-6 gap-3 sm:text-center lg:text-start lg:gap-0 lg:justify-normal">
+        <div>
+            <a href="#" class="text-white font-bold text-xl hover:opacity-80 transition duration-300 ease-linear">О
+                программе</a>
+        </div>
+        <div>
+            <a href="#" class="text-white font-bold text-xl hover:opacity-80 transition duration-300 ease-linear">Общее</a>
+        </div>
+        <div>
+            <a href="#" class="text-white font-bold text-xl hover:opacity-80 transition duration-300 ease-linear">Документы</a>
+        </div>
+        <div>
+            <a href="#" class="text-white font-bold text-xl hover:opacity-80 transition duration-300 ease-linear">Вопросы</a>
+        </div>
+        <div>
+            <a href="#" class="text-white font-bold text-xl hover:opacity-80 transition duration-300 ease-linear">Карьера</a>
+        </div>
+    </div>
+</section>
+
+
+
+<section class="container custom p-3">
     <h2 class="font-bold text-3xl my-6">О программе</h2>
-</div>
-<section class="container custom lg:p-2.5">
     <div class="bg-white p-6">
-        <div class="flex flex-col lg:grid lg:grid-cols-[70%_30%]">
-            <div class="prog-info order-2 lg:order-1 text-xl line-clamp-4">
-                @each('public.page.content-section',$speciality->sections,'section')
+        <div class="prog-info text-xl line-clamp-4">
+            @foreach($speciality->sections as $section)
+                {!! $section->content !!}
 
+            @endforeach
+        </div>
 
-            </div>
-            <div class="flex lg:items-center flex-col lg:justify-center order-1 lg:order-2 mb-3 lg:mb-0">
-                <h2 class="text-7xl font-[600]">
-{{--                    {{$speciality->places}}--}}
-                </h2>
-                <span class="text-xl">
-                            бюджетных места
-                </span>
-            </div>
+        <div class="text-right mt-3">
             <a class="more-prog-btn text-md sm:text-lg border-b-2 border-[#474747] hover:opacity-80 transition duration-300 ease-linear uppercase pb-2 col-span-2 order-3 w-fit mt-3 cursor-pointer">
                 Подробнее о программе
             </a>
@@ -105,80 +100,90 @@
     </div>
 </section>
 
-<div class="box-heading container custom lg:p-2.5">
+<section class="container custom lg:p-3">
     <h2 class="font-bold text-3xl my-6">Общая информация о программе</h2>
-</div>
-<section class="container custom lg:p-2.5">
+    <div class="flex">
+        @foreach($speciality->profiles as $profile)
+            <div class="btn-info-prog bg-white group p-6 cursor-pointer active flex-1">
+                <h2 class="text-2xl font-bold group-hover:text-base-red group-open:text-base-red transition duration-300 ease-linear">
+                    {!! $profile->form->getFullName() !!}
+                </h2>
+            </div>
+
+        @endforeach
+    </div>
+
     <div class="box-info-prog grid grid-cols-1 sm:grid-cols-[1fr_1fr] sm:gap-1">
         <div class="btn-info-prog bg-white group p-6 cursor-pointer active">
-            <h2 class="text-2xl font-[700] group-hover:text-[var(--primary-color)] transition duration-300 ease-linear">
+            <h2 class="text-2xl font-bold group-hover:text-[var(--primary-color)] transition duration-300 ease-linear">
                 Очная форма</h2>
         </div>
         <div class="btn-info-prog bg-white group p-6 cursor-pointer">
-            <h2 class="text-2xl font-[700] group-hover:text-[var(--primary-color)] transition duration-300 ease-linear">
+            <h2 class="text-2xl font-bold group-hover:text-[var(--primary-color)] transition duration-300 ease-linear">
                 Заочная форма</h2>
         </div>
     </div>
+
     <div class="relative">
         <div class="content-info-prog bg-white p-6 active">
             <div class="grid grid-cols-1 md:grid-cols-[1fr_1fr] gap-3">
                 <div class="mb-3 lg:mb-0">
-                    <h2 class="text-[#828282] uppercase font-[700] text-lg mb-2">Срок обучения</h2>
+                    <h2 class="text-[#828282] uppercase font-bold text-lg mb-2">Срок обучения</h2>
                     <h2 class="font-[400] text-xl">5 лет</h2>
                 </div>
                 <div class="mb-3 lg:mb-0">
-                    <h2 class="text-[#828282] uppercase font-[700] text-lg mb-2">Стоимость обучения за год</h2>
+                    <h2 class="text-[#828282] uppercase font-bold text-lg mb-2">Стоимость обучения за год</h2>
                     <h2 class="font-[400] text-xl">141 800 руб</h2>
                 </div>
             </div>
-            <h2 class="uppercase font-[700] text-lg my-4 sm:my-8">
+            <h2 class="uppercase font-bold text-lg my-4 sm:my-8">
                 Вступительные испытания и минимальные баллы
             </h2>
             <div class="grid grid-cols-1 md:grid-cols-[1fr_1fr] gap-3">
                 <div class="mb-3 lg:mb-0">
-                    <h2 class="text-[#828282] uppercase font-[700] text-lg mb-2">на бюджет</h2>
+                    <h2 class="text-[#828282] uppercase font-bold text-lg mb-2">на бюджет</h2>
                     <h2 class="font-[400] text-xl">Информатика и ИКТ/Физика — 52/44 баллов</h2>
                     <h2 class="font-[400] text-xl">Математика (профильная) — 47 баллов</h2>
                     <h2 class="font-[400] text-xl">Русский язык — 45 баллов</h2>
                 </div>
                 <div class="mb-3 lg:mb-0">
-                    <h2 class="text-[#828282] uppercase font-[700] text-lg mb-2">на платное</h2>
+                    <h2 class="text-[#828282] uppercase font-bold text-lg mb-2">на платное</h2>
                     <h2 class="font-[400] text-xl">Информатика и ИКТ/Физика — 46/41 баллов</h2>
                     <h2 class="font-[400] text-xl">Математика (профильная) — 41 балл</h2>
                     <h2 class="font-[400] text-xl">Русский язык — 42 балла</h2>
                 </div>
             </div>
-            <h2 class="uppercase font-[700] text-lg my-4 sm:my-8">
+            <h2 class="uppercase font-bold text-lg my-4 sm:my-8">
                 Проходные баллы в прошлом году
             </h2>
             <div class="grid grid-cols-1 md:grid-cols-[1fr_1fr] md:gap-3">
                 <div class="mb-3 lg:mb-0">
-                    <h2 class="text-[#828282] uppercase font-[700] text-lg mb-2">на бюджет</h2>
+                    <h2 class="text-[#828282] uppercase font-bold text-lg mb-2">на бюджет</h2>
                     <h2 class="font-[400] text-xl">Проходной балл — 258 (2023)</h2>
                 </div>
                 <div class="mb-3 lg:mb-0">
-                    <h2 class="text-[#828282] uppercase font-[700] text-lg mb-2">на платное</h2>
+                    <h2 class="text-[#828282] uppercase font-bold text-lg mb-2">на платное</h2>
                     <h2 class="font-[400] text-xl">Проходной балл — 258 (2023)</h2>
                 </div>
             </div>
-            <h2 class="uppercase font-[700] text-lg my-4 sm:my-8">
+            <h2 class="uppercase font-bold text-lg my-4 sm:my-8">
                 Основаня информация
             </h2>
             <div class="grid grid-cols-1 md:grid-cols-[1fr_1fr] lg:grid-cols-[1fr_1fr_1fr]">
                 <div class="mb-3 lg:mb-0">
-                    <h2 class="text-[#828282] uppercase font-[700] text-lg mb-2">основной корпус</h2>
+                    <h2 class="text-[#828282] uppercase font-bold text-lg mb-2">основной корпус</h2>
                     <h2 class="font-[400] text-xl">Мелитополь, Проспект Б. Хмельницкого, 18</h2>
                 </div>
                 <div class="mb-3 lg:mb-0">
-                    <h2 class="text-[#828282] uppercase font-[700] text-lg mb-2">руководитель</h2>
+                    <h2 class="text-[#828282] uppercase font-bold text-lg mb-2">руководитель</h2>
                     <h2 class="font-[400] text-xl">Иванов Иван Иванович</h2>
                 </div>
                 <div class="mb-3 lg:mb-0">
-                    <h2 class="text-[#828282] uppercase font-[700] text-lg mb-2">прием иностранных граждан</h2>
+                    <h2 class="text-[#828282] uppercase font-bold text-lg mb-2">прием иностранных граждан</h2>
                     <h2 class="font-[400] text-xl">Возможен</h2>
                 </div>
             </div>
-            <h2 class="uppercase font-[700] text-lg my-4 sm:my-8">
+            <h2 class="uppercase font-bold text-lg my-4 sm:my-8">
                 Дополнительная информация и полезные ссылки
             </h2>
             <div class="grid grid-cols-[1fr] md:grid-cols-[1fr_1fr] xl:grid-cols-[25%_15%_30%_30%] gap-y-3">
@@ -199,62 +204,62 @@
         <div class="content-info-prog bg-white p-6 hidden">
             <div class="grid grid-cols-1 md:grid-cols-[1fr_1fr] gap-3">
                 <div class="mb-3 lg:mb-0">
-                    <h2 class="text-[#828282] uppercase font-[700] text-lg mb-2">Срок обучения</h2>
+                    <h2 class="text-[#828282] uppercase font-bold text-lg mb-2">Срок обучения</h2>
                     <h2 class="font-[400] text-xl">5 лет</h2>
                 </div>
                 <div class="mb-3 lg:mb-0">
-                    <h2 class="text-[#828282] uppercase font-[700] text-lg mb-2">Стоимость обучения за год</h2>
+                    <h2 class="text-[#828282] uppercase font-bold text-lg mb-2">Стоимость обучения за год</h2>
                     <h2 class="font-[400] text-xl">200 800 руб</h2>
                 </div>
             </div>
-            <h2 class="uppercase font-[700] text-lg my-4 sm:my-8">
+            <h2 class="uppercase font-bold text-lg my-4 sm:my-8">
                 Вступительные испытания и минимальные баллы
             </h2>
             <div class="grid grid-cols-1 md:grid-cols-[1fr_1fr] gap-3">
                 <div class="mb-3 lg:mb-0">
-                    <h2 class="text-[#828282] uppercase font-[700] text-lg mb-2">на бюджет</h2>
+                    <h2 class="text-[#828282] uppercase font-bold text-lg mb-2">на бюджет</h2>
                     <h2 class="font-[400] text-xl">Информатика и ИКТ/Физика — 52/44 баллов</h2>
                     <h2 class="font-[400] text-xl">Математика (профильная) — 47 баллов</h2>
                     <h2 class="font-[400] text-xl">Русский язык — 45 баллов</h2>
                 </div>
                 <div class="mb-3 lg:mb-0">
-                    <h2 class="text-[#828282] uppercase font-[700] text-lg mb-2">на платное</h2>
+                    <h2 class="text-[#828282] uppercase font-bold text-lg mb-2">на платное</h2>
                     <h2 class="font-[400] text-xl">Информатика и ИКТ/Физика — 46/41 баллов</h2>
                     <h2 class="font-[400] text-xl">Математика (профильная) — 41 балл</h2>
                     <h2 class="font-[400] text-xl">Русский язык — 42 балла</h2>
                 </div>
             </div>
-            <h2 class="uppercase font-[700] text-lg my-4 sm:my-8">
+            <h2 class="uppercase font-bold text-lg my-4 sm:my-8">
                 Проходные баллы в прошлом году
             </h2>
             <div class="grid grid-cols-1 md:grid-cols-[1fr_1fr] md:gap-3">
                 <div class="mb-3 lg:mb-0">
-                    <h2 class="text-[#828282] uppercase font-[700] text-lg mb-2">на бюджет</h2>
+                    <h2 class="text-[#828282] uppercase font-bold text-lg mb-2">на бюджет</h2>
                     <h2 class="font-[400] text-xl">Проходной балл — 258 (2023)</h2>
                 </div>
                 <div class="mb-3 lg:mb-0">
-                    <h2 class="text-[#828282] uppercase font-[700] text-lg mb-2">на платное</h2>
+                    <h2 class="text-[#828282] uppercase font-bold text-lg mb-2">на платное</h2>
                     <h2 class="font-[400] text-xl">Проходной балл — 258 (2023)</h2>
                 </div>
             </div>
-            <h2 class="uppercase font-[700] text-lg my-4 sm:my-8">
+            <h2 class="uppercase font-bold text-lg my-4 sm:my-8">
                 Основаня информация
             </h2>
             <div class="grid grid-cols-1 md:grid-cols-[1fr_1fr] lg:grid-cols-[1fr_1fr_1fr]">
                 <div class="mb-3 lg:mb-0">
-                    <h2 class="text-[#828282] uppercase font-[700] text-lg mb-2">основной корпус</h2>
+                    <h2 class="text-[#828282] uppercase font-bold text-lg mb-2">основной корпус</h2>
                     <h2 class="font-[400] text-xl">Мелитополь, Проспект Б. Хмельницкого, 18</h2>
                 </div>
                 <div class="mb-3 lg:mb-0">
-                    <h2 class="text-[#828282] uppercase font-[700] text-lg mb-2">руководитель</h2>
+                    <h2 class="text-[#828282] uppercase font-bold text-lg mb-2">руководитель</h2>
                     <h2 class="font-[400] text-xl">Иванов Иван Иванович</h2>
                 </div>
                 <div class="mb-3 lg:mb-0">
-                    <h2 class="text-[#828282] uppercase font-[700] text-lg mb-2">прием иностранных граждан</h2>
+                    <h2 class="text-[#828282] uppercase font-bold text-lg mb-2">прием иностранных граждан</h2>
                     <h2 class="font-[400] text-xl">Возможен</h2>
                 </div>
             </div>
-            <h2 class="uppercase font-[700] text-lg my-4 sm:my-8">
+            <h2 class="uppercase font-bold text-lg my-4 sm:my-8">
                 Дополнительная информация и полезные ссылки
             </h2>
             <div class="grid grid-cols-[1fr] md:grid-cols-[1fr_1fr] xl:grid-cols-[25%_15%_30%_30%] gap-y-3">
@@ -412,10 +417,10 @@
         <div class="bg-[var(--primary-color)] p-6 text-white">
             <div class="flex flex-col lg:flex-row justify-between mb-3">
                 <div>
-                    <h2 class="text-white font-[700] text-xl">Middle frontend-разработчик</h2>
+                    <h2 class="text-white font-bold text-xl">Middle frontend-разработчик</h2>
                 </div>
                 <div>
-                    <h2 class="text-lg font-[700]">от <span class="text-2xl">80</span> тыс.</h2>
+                    <h2 class="text-lg font-bold">от <span class="text-2xl">80</span> тыс.</h2>
                     <h2 class="text-lg font-[500]">Зарплата, ₽</h2>
                 </div>
             </div>
@@ -429,7 +434,7 @@
             </div>
             <div>
                 <button data-modal-target="default-modal-1" data-modal-toggle="default-modal-1"
-                        class="block text-white text-lg font-[700] border-b-2 border-white hover:opacity-80 transition duration-300 ease-linear"
+                        class="block text-white text-lg font-bold border-b-2 border-white hover:opacity-80 transition duration-300 ease-linear"
                         type="button">
                     Читать полностью
                 </button>
@@ -476,10 +481,10 @@
         <div class="bg-white p-6 text-[#4C4C4C]">
             <div class="flex flex-col lg:flex-row justify-between mb-3">
                 <div>
-                    <h2 class="font-[700] text-xl">Middle frontend-разработчик</h2>
+                    <h2 class="font-bold text-xl">Middle frontend-разработчик</h2>
                 </div>
                 <div>
-                    <h2 class="text-lg font-[700]">от <span class="text-2xl">80</span> тыс.</h2>
+                    <h2 class="text-lg font-bold">от <span class="text-2xl">80</span> тыс.</h2>
                     <h2 class="text-lg font-[500]">Зарплата, ₽</h2>
                 </div>
             </div>
@@ -493,7 +498,7 @@
             </div>
             <div>
                 <button data-modal-target="default-modal-2" data-modal-toggle="default-modal-2"
-                        class="block text-lg font-[700] border-b-2 border-[#4C4C4C] hover:opacity-80 transition duration-300 ease-linear"
+                        class="block text-lg font-bold border-b-2 border-[#4C4C4C] hover:opacity-80 transition duration-300 ease-linear"
                         type="button">
                     Читать полностью
                 </button>
@@ -549,7 +554,7 @@
     <div class="grid grid-cols-1 lg:grid-cols-[1fr_1fr_2fr]">
         <div class="jst-block bg-[#252422] p-6 text-white hover:opacity-[0.9]">
             <a href="#" class="min-h-[160px] lg:min-h-[295px] flex flex-col justify-between">
-                <h2 class="font-[700] text-lg">Узнать, как поступить</h2>
+                <h2 class="font-bold text-lg">Узнать, как поступить</h2>
                 <div class="text-end">
                                 <span class="text-xl font-[400]">
                                     Подробнее
@@ -560,7 +565,7 @@
         </div>
         <div class="jst-block bg-[var(--secondary-color)] p-6 text-white hover:opacity-[0.9]">
             <a href="#" class="min-h-[160px] lg:min-h-[295px] flex flex-col justify-between">
-                <h2 class="font-[700] text-lg">Подберите мне программу</h2>
+                <h2 class="font-bold text-lg">Подберите мне программу</h2>
                 <div class="text-end">
                               <span class="text-xl font-[400]">
                                     Подробнее
@@ -571,7 +576,7 @@
         </div>
         <div class="jst-block bg-[#383838] p-6 text-white hover:opacity-[0.9]">
             <a href="#" class="min-h-[160px] lg:min-h-[295px] flex flex-col justify-between">
-                <h2 class="font-[700] text-lg">Выбрать программу</h2>
+                <h2 class="font-bold text-lg">Выбрать программу</h2>
                 <div class="text-end">
                                <span class="text-xl font-[400]">
                                     Подробнее

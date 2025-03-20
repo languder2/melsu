@@ -2,6 +2,7 @@
 
 namespace App\Models\Education;
 
+use App\Enums\EducationBasis;
 use App\Enums\EducationLevel;
 use App\Models\Division\Division;
 use App\Models\Gallery\Image;
@@ -101,7 +102,12 @@ class Speciality extends Model
 
     public function getPlacesAttribute(): int
     {
-        return $this->profiles()->pluck('places')->sum();
+        $places = 0;
+
+        foreach ($this->profiles as $profile)
+            $places += $profile->placesByType(EducationBasis::Budget);
+
+        return $places;
     }
 
 
