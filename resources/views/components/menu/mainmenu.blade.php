@@ -109,7 +109,7 @@
                                         <span
                                             class="
                                                 inline-block w-5 h-5
-                                                stroke-neutral-700 fill-neutral-700 group-hover:stroke-white group-hover:fill-white
+                                                stroke-base-red fill-base-red group-hover:stroke-white group-hover:fill-white
                                                 transition-all duration-200
                                             "
                                         >
