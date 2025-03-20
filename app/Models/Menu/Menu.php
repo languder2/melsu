@@ -128,19 +128,19 @@ class Menu extends Model
                     ],
                     (object)[
                         'name' => "Поступающим",
-                        'link' => url('incoming'),
+                        'link' => "https://abiturient.mgu-mlt.ru/",
                     ],
                     (object)[
                         'name' => "Наука",
-                        'link' => url('science'),
+                        'link' => "https://melsu.ru/menu/science",
                     ],
                     (object)[
                         'name' => "История",
-                        'link' => url('science'),
+                        'link' => url('history'),
                     ],
                     (object)[
                         'name' => "Фотогалерея",
-                        'link' => url('science'),
+                        'link' => url('gallery'),
                     ],
                     (object)[
                         'name' => "Партнеры и выпускники",
