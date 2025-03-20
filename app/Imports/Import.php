@@ -23,6 +23,6 @@ class Import implements ToArray, WithHeadingRow
 
     public function headingRow(): int
     {
-        return 3;
+        return 0;
     }
 }

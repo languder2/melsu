@@ -37,11 +37,11 @@
             <a
                 href="{{route('admin:speciality:delete',$record->id)}}"
                 class="
-                                py-2 px-4 rounded-md
-                                bg-red-950
-                                hover:bg-red-700
-                                active:bg-gray-700
-                            "
+                    py-2 px-4 rounded-md
+                    bg-red-950
+                    hover:bg-red-700
+                    active:bg-gray-700
+                "
             >
                 <i class="fas fa-trash w-4 h-4"></i>
             </a>

@@ -33,7 +33,7 @@
             :id='$current?->chief?->id ?? null '
             :chief='$current?->chief?->staff_id ?? null '
             :post="$current?->chief?->post ?? null "
-            :post_alt="$current?->chief?->post_alt ?? null "
+            :alt="$current?->chief?->post_alt ?? null "
             name="chief"
             :old="old('chief')"
         />
@@ -51,7 +51,7 @@
                     :id="$staff->id"
                     :staff='$staff->staff_id'
                     :post='$staff->post'
-                    :post_alt='$staff->post_alt'
+                    :alt='$staff->post_alt'
                     :order='$staff->order'
                 />
             @endforeach

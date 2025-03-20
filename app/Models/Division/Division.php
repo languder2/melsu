@@ -130,7 +130,7 @@ class Division extends Model
             ->orderBy('name')
             ;
     }
-    public function specialities(): HasMany
+    public function specialities($all = null): HasMany
     {
 
         $field = match($this->type){
@@ -138,11 +138,12 @@ class Division extends Model
             DivisionType::Department    => 'department_id',
         };
 
-        return $this->hasMany(Speciality::class, $field,'id')
-            ->where('show',true)
-            ->orderBy('sort')
-            ->orderBy('spec_code')
-        ;
+        $hasMany = $this->hasMany(Speciality::class, $field,'id');
+
+        if(!$all)
+            $hasMany->where('show',true);
+
+        return $hasMany->orderBy('sort')->orderBy('spec_code');
     }
 
     public function getFacultyLabsAttribute(): Collection

@@ -5,8 +5,8 @@ namespace App\Models\Education;
 use App\Enums\EducationForm;
 use App\Models\{Document, FAQ, Link};
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Profile extends Model
@@ -31,11 +31,9 @@ class Profile extends Model
         'updated_at',
         'deleted_at',
     ];
-
     protected $casts = [
         'form'  => EducationForm::class,
     ];
-
     public static function FormRules($id): array
     {
         return [
@@ -135,6 +133,15 @@ class Profile extends Model
 
         return $object;
     }
+    public function score(): MorphMany
+    {
+        return $this->morphMany(Exam::class, 'relation')->whereNull('subject_id');
+    }
+
+    public function scoreByType($type): ?int
+    {
+        return $this->score()->firstWhere('type', $type)->score ?? null;
+    }
 
     public function getBudgetPlacesAttribute(): int|string
     {
@@ -144,15 +151,20 @@ class Profile extends Model
     public function places($all = null, $trashed = null): MorphMany
     {
 
-        $object = $this->morphMany(Place::class, 'relation');
+        $result = $this->morphMany(Place::class, 'relation');
 
         if (is_null($all))
-            $object = $object->where('show', true);
+            $result->where('show', true);
 
         if (!is_null($trashed))
-            $object = $object->withTrashed();
+            $result->withTrashed();
 
-        return $object;
+        return $result;
+    }
+
+    public function placesByType($type)
+    {
+        return $this->places()->firstWhere('type', $type)->count ?? null;
     }
 
     public function getBudgetScoresAttribute(): int|string

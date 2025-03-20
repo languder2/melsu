@@ -54,7 +54,7 @@ return new class extends Migration
 
         if(!Schema::hasColumn('education_specialities','relation_type'))
             Schema::table('education_specialities',function (Blueprint $table){
-                $table->integer('relation_type')->nullable()->after('relation_id');
+                $table->string('relation_type')->nullable()->after('relation_id');
             });
 
         if(Schema::hasColumn('education_profiles','form_code')){
@@ -64,6 +64,12 @@ return new class extends Migration
                 $table->renameColumn('form_code','form');
             });
 
+        }
+
+        if(!Schema::hasColumn('education_academic_subjects','score')){
+            Schema::table('education_academic_subjects',function (Blueprint $table){
+                $table->integer('score')->nullable()->after('alt_name');
+            });
         }
 
         Schema::dropIfExists('education_departments');

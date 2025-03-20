@@ -2,10 +2,8 @@
 
 namespace App\Models\Education;
 
-use App\Enums\DivisionType;
 use App\Enums\EducationLevel;
 use App\Models\Division\Division;
-use App\Models\Education\Department as Department;
 use App\Models\Gallery\Image;
 use App\Models\Page\Content as PageContent;
 use Illuminate\Database\Eloquent\Model;
@@ -13,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Speciality extends Model
@@ -63,8 +62,13 @@ class Speciality extends Model
             'code.required' => 'Код должен быть указан',
             'code.unique' => 'Код должен быть уникальным',
             'spec_code' => "Код специальности должен быть указан",
-            'level_code' => 'Укажите уровень',
+            'level' => 'Укажите уровень',
         ];
+    }
+
+    public function relation():MorphTo
+    {
+        return $this->morphTo();
     }
 
     public function department(): BelongsTo
@@ -77,16 +81,6 @@ class Speciality extends Model
         return $this->belongsTo(Division::class, 'faculty_id', 'id');
     }
 
-    public function getPlacesAttribute(): int
-    {
-        return $this->profiles()->pluck('places')->sum();
-    }
-
-    public function profiles(): HasMany
-    {
-        return $this->hasMany(Profile::class, 'speciality_code', 'code');
-    }
-
     public function ico(): MorphOne
     {
         return $this->MorphOne(Image::class, 'relation')->where('type', 'ico');
@@ -95,5 +89,20 @@ class Speciality extends Model
     {
         return $this->morphMany(PageContent::class, 'relation')->orderBy('order');
     }
+
+    public function profiles(): HasMany
+    {
+        return $this->hasMany(Profile::class, 'speciality_code', 'code');
+    }
+    public function profileByForm($form): ?Profile
+    {
+        return $this->profiles()->firstWhere('form', $form) ?? null;
+    }
+
+    public function getPlacesAttribute(): int
+    {
+        return $this->profiles()->pluck('places')->sum();
+    }
+
 
 }

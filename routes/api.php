@@ -196,3 +196,5 @@ Route::get('correct',function(){
         $item->fill(['relation_type'=>'App\Models\Division\Division'])->save();
 
 });
+
+Route::get('set-score',[\App\Http\Controllers\ImportController::class,'setScores']);

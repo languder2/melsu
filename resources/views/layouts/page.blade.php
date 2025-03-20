@@ -34,7 +34,7 @@
             @yield('breadcrumbs')
         </div>
 
-        <div class="flex gap-4">
+        <div class="flex gap-4 mb-6">
             @hasSection('aside')
                 <div class="left-side-menu-box hidden lg:block w-96 ">
                     <div class="bg-white p-2.5">

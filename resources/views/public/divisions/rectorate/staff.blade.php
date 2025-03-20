@@ -9,7 +9,7 @@
             @endif
         </div>
         <div class="flex flex-col justify-evenly">
-            <div class="mb-7 lg:mb-0 sm:flex-row">
+            <div class="mb-7 lg:mb-2 sm:flex-row">
                 <h3
                     class="
                         font-semibold
@@ -24,65 +24,67 @@
                 >
                     {!!$staff->full_name!!}
                 </h3>
-                @if($staff->post)
-                    <div class="grid grid-cols-1 lg:grid-cols-[25%_minmax(70%,_1fr)] mb-7 lg:mb-0">
-                        <span class="text-[var(--secondary-color)] text-md font-bold">Должность:</span>
-                        <div class="flex items-center">
-                        <span class="text-[#4C4C4C] text-md pt-3 sm:ps-3 sm:pt-0">
-                            {!!$staff->post!!}
-                        </span>
-                        </div>
-                    </div>
-                @endif
+
+                <div class="mb-2">
+                    <span class="text-red-700 text-md font-bold">Должность:</span>
+
+                    @if($staff->AffiliationPosts)
+                        @foreach($staff->AffiliationPosts as $post)
+                            <span>
+                                {{$post->post_alt ?? $post->post}}
+                            </span>
+                        @endforeach
+                    @endif
+                </div>
 
                 @if($staff->title)
-                    <div class="grid grid-cols-1 lg:grid-cols-[25%_minmax(70%,_1fr)]">
-                        <span class="text-[var(--secondary-color)] text-md font-bold">Ученая степень, звание:</span>
+                    <div class="flex flex-col mb-2">
+                        <div class="text-red-700 text-md font-bold">
+                            Ученая степень, звание:
+                        </div>
                         <div class="flex items-center">
-                        <span class="text-[#4C4C4C] text-md pt-3 sm:ps-3 sm:pt-0">
-                            {!!$staff->title!!}
-                        </span>
+                            {{$staff->title}}
                         </div>
                     </div>
                 @endif
-            </div>
 
-            @if($staff->reception_time)
-                <div class="mb-7 lg:mb-0 sm:flex-row">
-                    <div class="grid grid-cols-1 lg:grid-cols-[25%_minmax(70%,_1fr)]">
-                        <span class="text-[var(--secondary-color)] text-md font-bold">Прием по личным вопросам:</span>
+
+                @if($staff->reception_time)
+                    <div class="flex flex-col mb-2">
+                        <div class="text-red-700 text-md font-bold">
+                            Прием по личным вопросам:
+                        </div>
                         <div class="flex items-center">
-                        <span class="text-[#4C4C4C] text-md pt-3 sm:ps-3 sm:pt-0">
-                            {!!$staff->reception_time!!}
-                        </span>
+                            {{$staff->reception_time}}
                         </div>
                     </div>
-                </div>
-            @endif
+                @endif
 
-            <div class="flex justify-between flex-col sm:flex-row mb-7 lg:mb-0">
-                @if($staff->address)
-                    <div class="w-[100%] mb-7 sm:mb-0">
-                            <span class="text-[#4C4C4C]">
+                <div class="flex justify-between flex-col sm:flex-row mb-7 lg:mb-0">
+                    @if($staff->address)
+                        <div class="w-[100%] mb-7 sm:mb-0">
+                            <span class="text-red-700 text-md font-bold">
                                 Адрес:
                             </span>
-                        <p class="font-semibold text-[#4C4C4C]">
-                            {!! str_replace('!!!','<br>',$staff->address) !!}
-                        </p>
-                    </div>
-                @endif
+                            <p class="font-semibold text-lg text-[#4C4C4C]">
+                                {!! str_replace('!!!',' ',$staff->address) !!}
+                            </p>
+                        </div>
+                    @endif
 
-                @if($staff->phones)
-                    <div class="w-[100%]">
-                            <span class="text-[#4C4C4C]">
+                    @if($staff->phone)
+                        <div class="w-[100%]">
+                            <span class="text-[#4C4C4C] text-lg">
                                 Телефон:
                             </span>
-                        <p class="font-semibold text-[#4C4C4C]">
-                            {!!$staff->phones!!}
-                        </p>
-                    </div>
-                @endif
+                            <p class="font-semibold text-lg text-[#4C4C4C]">
+                                {{$staff->phone}}
+                            </p>
+                        </div>
+                    @endif
+                </div>
             </div>
+
         </div>
     </a>
 </div>

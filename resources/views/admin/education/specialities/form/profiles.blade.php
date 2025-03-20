@@ -13,10 +13,12 @@
         @each('admin.education.specialities.form.profile-tab',EducationForm::cases(),'form')
     </div>
 
+
+    @use('App\Models\Education\Profile')
     @foreach(EducationForm::cases() as $form)
         @component('admin.education.specialities.form.profile',[
             'form'      => $form,
-            'profile'   => $current->profiles->where('form',$form->value)->first()
+            'profile'   => $current->profiles->where('form',$form->value)->first() ?? new Profile()
         ])@endcomponent
     @endforeach
 </div>

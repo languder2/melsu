@@ -4,21 +4,19 @@ namespace App\Enums;
 
 use Illuminate\Support\Collection;
 
-enum EducationForm: string
+enum EducationBasis: string
 {
-    case Full       = "full-time";
-    case Part       = "correspondence";
-    case Hybrid     = "full-part";
+    case Budget     = 'budget';
+    case Contract   = 'contract';
 
-    public function getName(): string
+    public function getName()
     {
         return match ($this) {
-            self::Full         => 'Очная',
-            self::Part         => 'Заочная',
-            self::Hybrid       => 'Очно-заочная',
+            self::Budget      => __('education-types.Budget'),
+            self::Contract    => __('education-types.Contract'),
         };
-
     }
+
     public static function getList(): Collection
     {
         $result =  collect([]);
@@ -28,8 +26,4 @@ enum EducationForm: string
         return  $result;
     }
 
-
 }
-
-
-

@@ -2,20 +2,21 @@
 
 namespace App\View\Components\Specialities;
 
-use App\Models\Education\Forms;
-use App\Models\Education\Level;
-use App\Models\Education\Place;
+use App\Enums\EducationBasis;
+use App\Enums\EducationForm;
+use App\Enums\EducationLevel;
 use Closure;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Collection;
 use Illuminate\View\Component;
 
 
 class Filter extends Component
 {
 
-    public array $levels;
-    public array $forms;
-    public array $types;
+    public Collection $levels;
+    public Collection $forms;
+    public Collection $types;
     public object $current;
 
     /**
@@ -23,12 +24,10 @@ class Filter extends Component
      */
     public function __construct()
     {
-        $this->levels = Level::all()->pluck('name', 'code')->toArray();
-        $this->forms = Forms::all()->pluck('name', 'code')->toArray();
-        $this->types = [
-            'budget' => 'Бюджет',
-            'contract' => 'Контракт',
-        ];
+        $this->levels   = EducationLevel::getList();
+        $this->forms    = EducationForm::getList();
+        $this->types    = EducationBasis::getList();
+
         $this->current = (object)[];
     }
 
@@ -37,8 +36,6 @@ class Filter extends Component
      */
     public function render(): View|Closure|string
     {
-
-
         return view('components.specialities.filter');
     }
 }

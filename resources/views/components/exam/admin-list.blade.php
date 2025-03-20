@@ -1,4 +1,3 @@
-123
 <div class="grid grid-cols-[1fr_60px_60px_60px] gap-x-2 gap-y-2 items-center">
     <div class="font-semibold">
         Предмет
