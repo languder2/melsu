@@ -26,15 +26,16 @@
                 </h3>
 
                 <div class="mb-2">
-                    <span class="text-red-700 text-md font-bold">Должность:</span>
-
-                    @if($staff->AffiliationPosts)
-                        @foreach($staff->AffiliationPosts as $post)
-                            <span>
-                                {{$post->post_alt ?? $post->post}}
-                            </span>
-                        @endforeach
-                    @endif
+                    <div class="text-red-700 text-md font-bold">Должность:</div>
+                    <div>
+                        @if($staff->AffiliationPosts)
+                            @foreach($staff->AffiliationPosts as $post)
+                                <span class="lg:text-nowrap">
+                                {{$post->post_alt ?? $post->post}}@if(!$loop->last),@endif
+                                </span>
+                            @endforeach
+                        @endif
+                    </div>
                 </div>
 
                 @if($staff->title)
@@ -66,7 +67,7 @@
                             <span class="text-red-700 text-md font-bold">
                                 Адрес:
                             </span>
-                            <p class="font-semibold text-lg text-[#4C4C4C]">
+                            <p>
                                 {!! str_replace('!!!',' ',$staff->address) !!}
                             </p>
                         </div>

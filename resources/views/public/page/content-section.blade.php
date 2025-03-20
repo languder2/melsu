@@ -1,4 +1,4 @@
-<div class="p-corrector mb-4 last:mb-0">
+<div class="about-otdel mb-4 last:mb-0">
     @if($section->show_title)
         <h2 class="font-bold text-xl my-4 uppercase">
             {{$section->title}}

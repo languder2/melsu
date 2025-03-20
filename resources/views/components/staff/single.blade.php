@@ -7,11 +7,12 @@
             <div class="mb-7 lg:mb-0 sm:flex-row">
                 <div class="mb-2">
                     <div class="text-red-700 text-md font-bold">Должность:</div>
-
                     <div>
                         @if($staff->AffiliationPosts)
                             @foreach($staff->AffiliationPosts as $post)
-                                {{$post->post_alt ?? $post->post}}@if(!$loop->last),@endif
+                                <span class="lg:text-nowrap">
+                                    {{$post->post_alt ?? $post->post}}@if(!$loop->last),@endif
+                                </span>
                             @endforeach
                         @endif
                     </div>
@@ -46,7 +47,7 @@
                             <span class="text-red-700 text-md font-bold">
                                 Адрес:
                             </span>
-                        <p class="font-semibold text-lg text-[#4C4C4C]">
+                        <p>
                             {!! str_replace('!!!',' ',$staff->address) !!}
                         </p>
                     </div>
