@@ -102,10 +102,10 @@
                         <div class="">
                             <div class="">
                                 <a
-                                    class="inline-block py-2 px-4 hover:bg-base-red hover:text-white rounded-md justify-center align-center"
+                                    class="inline-block hover:bg-base-red hover:text-white rounded-md justify-center align-center"
                                     href="{{url($menu->link)}}"
                                 >
-                                    <p class="flex gap-2 group">
+                                    <p class="flex gap-2 group py-2 px-4">
                                         <span
                                             class="
                                                 inline-block w-5 h-5
