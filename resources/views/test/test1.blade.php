@@ -20,62 +20,25 @@
     @endif
 </head>
 <body class="">
-<h4 class="font-semibold py-6 text-xl">Сотрутники</h4>
-<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-4 gap-y-6">
-
-    <div class="flex gap-4">
-        <div class="flex items-center bg-neutral-200 w-16 h-16 justify-center rounded-md">
-            <svg height="32" viewBox="0 0 128 140" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M26.6455 90.9125C16.8993 96.9333 -8.6546 109.227 6.90945 124.611C14.5124 132.126 22.9801 137.5 33.626 137.5H94.374C105.02 137.5 113.488 132.126 121.091 124.611C136.655 109.227 111.101 96.9333 101.354 90.9125C78.4998 76.7939 49.5002 76.7939 26.6455 90.9125Z" stroke="#C10F1A" stroke-width="4"></path>
-                <path d="M92.1818 31.0882C92.1818 46.8771 79.5644 59.6765 64 59.6765C48.4356 59.6765 35.8182 46.8771 35.8182 31.0882C35.8182 15.2994 48.4356 2.5 64 2.5C79.5644 2.5 92.1818 15.2994 92.1818 31.0882Z" stroke="#C10F1A" stroke-width="4"></path>
-            </svg>
+<div class="flex gap-3">
+    <div class="">
+        <img class="h-60 hidden xl:block " src="{{asset('img/thumbnail-1.webp')}}" alt="картинка">
+    </div>
+    <div class="flex flex-col p-4 gap-3">
+        <h3 class="font-semibold text-xl text-red-800">Артюхов Валерий Евгениевич</h3>
+        <div class="flex flex-col">
+            <span class="font-semibold text-red-600">Должность:</span>
+            <h3>Проректор по цифровой трансформации</h3>
         </div>
-        <div class="flex flex-col gap-1">
-            <h5 class="font-semibold">Адаменко Роман Сергеевич</h5>
-            <p>Заведующий лабораторией</p>
-            <p>Асистент</p>
+        <div class="flex flex-col">
+            <span class="font-semibold text-red-600">Приём по личным вопросам:</span>
+            <span>с 14:00 - 16:30 (приёмный день среда)</span>
+        </div>
+        <div class=" flex flex-col">
+            <span class="font-semibold text-red-600">Адрес:</span>
+            <span>272312, Заппорожская область, г.Мелитополь, ул.Бейбулатова, 2, ауд. № 15.306</span>
         </div>
     </div>
-
-    <div class="flex gap-4">
-        <div class="flex items-center bg-neutral-200 w-16 h-16 justify-center rounded-md">
-            <svg height="32" viewBox="0 0 128 140" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M26.6455 90.9125C16.8993 96.9333 -8.6546 109.227 6.90945 124.611C14.5124 132.126 22.9801 137.5 33.626 137.5H94.374C105.02 137.5 113.488 132.126 121.091 124.611C136.655 109.227 111.101 96.9333 101.354 90.9125C78.4998 76.7939 49.5002 76.7939 26.6455 90.9125Z" stroke="#C10F1A" stroke-width="4"></path>
-                <path d="M92.1818 31.0882C92.1818 46.8771 79.5644 59.6765 64 59.6765C48.4356 59.6765 35.8182 46.8771 35.8182 31.0882C35.8182 15.2994 48.4356 2.5 64 2.5C79.5644 2.5 92.1818 15.2994 92.1818 31.0882Z" stroke="#C10F1A" stroke-width="4"></path>
-            </svg>
-        </div>
-        <div class="flex flex-col gap-1">
-            <h5 class="font-semibold">Башинская Марина Викторовна</h5>
-            <p>Старший преподоватенль</p>
-        </div>
-    </div>
-
-    <div class="flex gap-4">
-        <div class="flex items-center bg-neutral-200 w-16 h-16 justify-center rounded-md">
-            <svg height="32" viewBox="0 0 128 140" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M26.6455 90.9125C16.8993 96.9333 -8.6546 109.227 6.90945 124.611C14.5124 132.126 22.9801 137.5 33.626 137.5H94.374C105.02 137.5 113.488 132.126 121.091 124.611C136.655 109.227 111.101 96.9333 101.354 90.9125C78.4998 76.7939 49.5002 76.7939 26.6455 90.9125Z" stroke="#C10F1A" stroke-width="4"></path>
-                <path d="M92.1818 31.0882C92.1818 46.8771 79.5644 59.6765 64 59.6765C48.4356 59.6765 35.8182 46.8771 35.8182 31.0882C35.8182 15.2994 48.4356 2.5 64 2.5C79.5644 2.5 92.1818 15.2994 92.1818 31.0882Z" stroke="#C10F1A" stroke-width="4"></path>
-            </svg>
-        </div>
-        <div class="flex flex-col gap-1">
-            <h5 class="font-semibold">Белокопытов Алекстандр Владимирович</h5>
-            <p>Доцент</p>
-        </div>
-    </div>
-
-    <div class="flex gap-4">
-        <div class="flex items-center bg-neutral-200 w-16 h-16 justify-center rounded-md">
-            <svg height="32" viewBox="0 0 128 140" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M26.6455 90.9125C16.8993 96.9333 -8.6546 109.227 6.90945 124.611C14.5124 132.126 22.9801 137.5 33.626 137.5H94.374C105.02 137.5 113.488 132.126 121.091 124.611C136.655 109.227 111.101 96.9333 101.354 90.9125C78.4998 76.7939 49.5002 76.7939 26.6455 90.9125Z" stroke="#C10F1A" stroke-width="4"></path>
-                <path d="M92.1818 31.0882C92.1818 46.8771 79.5644 59.6765 64 59.6765C48.4356 59.6765 35.8182 46.8771 35.8182 31.0882C35.8182 15.2994 48.4356 2.5 64 2.5C79.5644 2.5 92.1818 15.2994 92.1818 31.0882Z" stroke="#C10F1A" stroke-width="4"></path>
-            </svg>
-        </div>
-        <div class="flex flex-col gap-1">
-            <h5 class="font-semibold">Бойко Валентин Семенович</h5>
-            <p>Доцент</p>
-        </div>
-    </div>
-
 </div>
 </body>
 </html>

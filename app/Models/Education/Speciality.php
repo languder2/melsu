@@ -100,6 +100,11 @@ class Speciality extends Model
     {
         return $this->hasMany(Profile::class, 'speciality_code', 'code');
     }
+    public function publicProfiles(): HasMany
+    {
+        return $this->hasMany(Profile::class, 'speciality_code', 'code')
+            ->where('show', true);
+    }
     public function profileByForm($form): ?Profile
     {
         return $this->profiles()->firstWhere('form', $form) ?? null;

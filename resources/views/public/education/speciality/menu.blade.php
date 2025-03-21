@@ -7,30 +7,30 @@
     "
 >
         <a href="#"
-           class="p-3"
+           class="p-3 hover:bg-stone-50 hover:text-base-red"
         >
             О программе
         </a>
         <a href="#"
-           class="p-3"
+           class="p-3 hover:bg-stone-50 hover:text-base-red"
         >
             Общее
         </a>
         <a
             href="#"
-            class="p-3"
+            class="p-3 hover:bg-stone-50 hover:text-base-red"
         >
             Документы
         </a>
         <a
             href="#"
-            class="p-3"
+            class="p-3 hover:bg-stone-50 hover:text-base-red"
         >
             Вопросы
         </a>
         <a
             href="#"
-            class="p-3"
+            class="p-3 hover:bg-stone-50 hover:text-base-red"
         >
             Карьера
         </a>
