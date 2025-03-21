@@ -108,9 +108,9 @@
         </div>
     </div>
 </section>
-<section class="info-how-proceed bg-[var(--primary-color)] mt-6 lg:mt-[230px] lg:mb-12">
+<section class="info-how-proceed bg-[var(--primary-color)]  sm:mt-[150px] lg:mt-[300px] lg:mb-12">
     <div class="container custom lg:px-[100px] lg:py-[50px]">
-        <h2 class="font-bold text-[20px] sm:text-[32px] text-white mb-3">Как поступить в МелГУ</h2>
+        <h2 class="font-bold text-[20px] sm:text-[32px] text-white mb-6">Как поступить в МелГУ</h2>
         <div class="grid grid-cols-1 lg:grid-cols-[45%_45%] gap-3 lg:gap-x-[10%] lg:gap-y-12 lg:mx-auto">
             <div class="text-white">
                 <h2 class="font-bold text-[20px] sm:text-[32px] text-white before:content-['1.'] before:me-3 mb-3">Сдать
@@ -218,66 +218,69 @@
 <x-news.short-news/>
 
 <section>
-    <div class="container custom">
+    <div class="container custom px-2.5">
         <div
             class="
+                group
                 container-with-logo
+                overflow-hidden
                 bg-white
-                bg-[url('{{url('img/bg-logo.png')}}')]
-                hover:bg-[url('{{url('img/clr-logo.png')}}')]
-                bg-no-repeat
-                bg-[97%]
-                lg:bg-[111%_266%]
-                bg-[length:340px_290px]
+                relative
                 p-6
                 min-h-[339px]
                 flex flex-col justify-between
-                hover:lg:bg-[108%_177%]
+
             "
-            style="background-image: url('{{url('img/bg-logo.png')}}')"
         >
-            <div>
-                <h2 class="text-2xl font-[700] mb-3">Поступление в университет</h2>
-                <div class="grid grid-cols-1 lg:grid-cols-[1fr_1fr_1fr] gap-3 lg:w-[70%]">
+            <video muted>
+                <source src="{{asset('video/anim-bloc.webm')}}" type="video/webm">
+            </video>
+            <div class="z-10">
+                <h2 class="text-2xl font-[700] mb-6">Поступление в университет</h2>
+                <div class="grid grid-cols-1 lg:grid-cols-[1fr_1fr_1fr] gap-6 lg:w-[70%]">
                     <div>
-                                <span
-                                    class="text-[var(--secondary-color)] hover:opacity-80 transition duration-300 ease-linear">
+                                <span class="text-[var(--secondary-color)] transition duration-300 ease-linear
+                                hover:opacity-80 hover:border-b hover:border-[var(--secondary-color)]">
                                     <a href="#">Подготовка к поступлению</a>
                                 </span>
                     </div>
                     <div>
-                                <span
-                                    class="text-[var(--secondary-color)] hover:opacity-80 transition duration-300 ease-linear">
+                                <span class="text-[var(--secondary-color)] transition duration-300 ease-linear
+                                hover:opacity-80 hover:border-b hover:border-[var(--secondary-color)]">
                                     <a href="#">Рейтинг абитуриентов</a>
                                 </span>
                     </div>
                     <div>
-                                <span
-                                    class="text-[var(--secondary-color)] hover:opacity-80 transition duration-300 ease-linear">
+                                <span class="text-[var(--secondary-color)] transition duration-300 ease-linear
+                                hover:opacity-80 hover:border-b hover:border-[var(--secondary-color)]">
                                     <a href="#">Стоимость обучения</a>
                                 </span>
                     </div>
                     <div>
-                                <span
-                                    class="text-[var(--secondary-color)] hover:opacity-80 transition duration-300 ease-linear">
+                                <span class="text-[var(--secondary-color)] transition duration-300 ease-linear
+                                hover:opacity-80 hover:border-b hover:border-[var(--secondary-color)]">
                                     <a href="#">Прием 2025</a>
                                 </span>
                     </div>
                     <div>
-                                <span
-                                    class="text-[var(--secondary-color)] hover:opacity-80 transition duration-300 ease-linear">
+                                <span class="text-[var(--secondary-color)] transition duration-300 ease-linear
+                                hover:opacity-80 hover:border-b hover:border-[var(--secondary-color)]">
                                     <a href="#">Правила приема</a>
                                 </span>
                     </div>
                 </div>
             </div>
-            <div>
-                <a href="#" class="text-lg border-b-2 border-[#474747] hover:opacity-[0.8]">Подать документы <i
+            <div class="doc z-10">
+                <a href="#" class="text-lg transition duration-300 ease-linear
+                                hover:opacity-80 hover:text-[var(--secondary-color)]">Подать документы <i
                         class="bi bi-arrow-right"></i></a>
+            </div>
+            <div class="logo-in-block">
+                <img src="{{asset('img/bg-logo.png')}}" alt="">
             </div>
         </div>
         <div class="grid grid-cols-1 lg:grid-cols-[1fr_1fr_1fr_1fr]">
-            <div class="jst-block bg-[var(--primary-color)] p-6 text-white hover:opacity-[0.9]">
+            <div class="jst-block bg-[var(--primary-color)] p-6 text-white hover:opacity-[0.9] position-aware">
                 <a href="#" class="min-h-[160px] lg:min-h-[295px] flex flex-col justify-between">
                     <h2 class="font-[700] text-lg">Перевод из другого ВУЗа</h2>
                     <div class="text-end">
@@ -286,6 +289,7 @@
                                 </span>
                     </div>
                 </a>
+                <span class="aware-bg"></span>
             </div>
             <div class="jst-block bg-[var(--secondary-color)] p-6 text-white hover:opacity-[0.9]">
                 <a href="#" class="min-h-[160px] lg:min-h-[295px] flex flex-col justify-between">
@@ -320,12 +324,7 @@
         </div>
     </div>
 </section>
-
-<div class="box-heading container custom pt-6">
-    <x-specialities.all-speciality
-        :short="true"
-    />
-</div>
+<!--x-specialities-->
 
 <div class="box-heading container custom pb-6">
     <h2 class="font-bold text-2xl mt-5 lg:mt-12 lg:mb-6">Учиться близко и удобно</h2>
@@ -408,3 +407,4 @@
         </div>
     </div>
 </section>
+<script src="{{asset('js/video-anim-block.js')}}"></script>
