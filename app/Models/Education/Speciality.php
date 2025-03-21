@@ -39,6 +39,11 @@ class Speciality extends Model
         'level' => EducationLevel::class
     ];
 
+    public function resolveRouteBinding($value, $field = null): ?Speciality
+    {
+        return $this->where('code', $value)->first() ??  $this->where('id', $value)->first();
+    }
+
     public static function FormRules($id): array
     {
         return [

@@ -1,13 +1,5 @@
 <div
-    class="
-                flex gap-4 mb-4
-                relative
-                before:absolute
-                before:inset-0
-                before:bg-cover before:bg-center
-                before:opacity-50
-
-            "
+    class="flex gap-4 mb-4"
 >
     @isset($division->chief->card)
 

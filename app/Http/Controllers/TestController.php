@@ -19,13 +19,7 @@ class TestController extends Controller
 {
     public function index()
     {
-        $list = Speciality::where('show',0)
-            ->whereIn('level',[EducationLevel::Bachelor,EducationLevel::Master])
-            ->orderBy('level')
-            ->get();
-
-
-        return view('test.page',compact('list'));
+        return view('test.test1');
     }
 
 }

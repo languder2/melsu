@@ -173,27 +173,14 @@ class SpecialityController extends Controller
         return view('public.education.speciality.all',compact('menu'));
     }
 
-    public function showSingle(?string $speciality_code): string|RedirectResponse
+    public function showSingle(Speciality $speciality)
     {
-
-        $speciality = Speciality::where('code', $speciality_code)->first();
-
         if (!$speciality)
             return redirect()->to(route('public:education:faculties'));
 
-        return view("pages.page", [
-            'sidebar' => View::make('components.menu.sidebar')->with([
-                'menu' => &$menu,
-                'full' => false,
-            ])->render(),
+        $menu = Menu::where('code','education')->first();
 
-            'nobg' => true,
-
-            'contents' => [
-                (new SingleSpeciality($speciality))->render(),
-            ]
-
-        ]);
+        return view('public.education.speciality.single',compact('speciality','menu'));
     }
 
 }

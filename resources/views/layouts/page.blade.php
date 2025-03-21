@@ -19,7 +19,6 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 
-
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
@@ -50,39 +49,10 @@
         </div>
     </section>
 
-
-    <section class=" hidden container py-5">
-            @yield('breadcrumbs')
-
-            <div class="grid grid-cols-1 lg:grid-cols-[25%_minmax(70%,1fr)] gap-3">
-                <div class="left-side-menu-box hidden lg:block ">
-                    <div class="bg-white p-2.5">
-                        @yield('sidebar')
-                    </div>
-                </div>
-                @if(isset($nobg) && $nobg === true)
-                    <div class="main-content">
-                        @yield('content')
-                    </div>
-                @else
-                    @hasSection('content')
-                        <div class="main-content p-5 pt-[1.375rem] bg-white">
-                            @yield('content')
-                        </div>
-                    @else
-                        <div class="main-content">
-                            @yield('content-without-bg')
-                        </div>
-                    @endif
-                @endif
-
-
-            </div>
-        </section>
-
     <x-template.footer/>
 
     <x-template.left-side-offset/>
+
 </div>
 </body>
 </html>

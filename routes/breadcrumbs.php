@@ -64,7 +64,7 @@ Breadcrumbs::for('specialities', function (BreadcrumbTrail $trail) {
     $trail->push('Направления подготовки', route('public:education:specialities:all'));
 });
 
-Breadcrumbs::for('speciality', function (BreadcrumbTrail $trail) {
+Breadcrumbs::for('speciality', function (BreadcrumbTrail $trail, Speciality $speciality) {
     $trail->parent('home');
     $trail->push("Факультеты и филиалы", route('public:education:faculties'));
 });
