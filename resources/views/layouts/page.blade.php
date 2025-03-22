@@ -42,7 +42,7 @@
                 </div>
             @endif
             @hasSection('content')
-                <section class="mx-auto flex-1">
+                <section class="mx-auto flex-1 max-w-full">
                     @yield('content')
                 </section>
             @endif

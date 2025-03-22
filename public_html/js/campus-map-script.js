@@ -1,5 +1,4 @@
 const modelViewerColor = document.querySelector("model-viewer.uppermap");
-console.log('123');
 let rotationAngle = 0;
 let isRotating = true;
 let animation;
