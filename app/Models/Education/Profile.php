@@ -2,6 +2,7 @@
 
 namespace App\Models\Education;
 
+use App\Enums\EducationBasis;
 use App\Enums\EducationForm;
 use App\Models\{Document, FAQ, Link};
 use Illuminate\Database\Eloquent\Model;
@@ -187,7 +188,8 @@ class Profile extends Model
 
     public function showByBasis($basis):bool
     {
-        return $this->placesByType($basis)
+        return $this->scoreByType($basis)
+            || $this->placesByType($basis)
             || $this->requiredExamsByType($basis)->count()
             || $this->selectableExamsByType($basis)->count();
     }

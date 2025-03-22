@@ -13,8 +13,8 @@
                 {!! $exam->subject->name !!}
             </div>
 
-            <div class="text-right">
-                {!! $exam->score !!}
+            <div class="text-right font-semibold">
+                {!! $exam->score ?? $exam->subject->score!!}
             </div>
         @endforeach
     </div>
@@ -29,17 +29,18 @@
             <div>
                 {!! $exam->subject->name !!}
             </div>
-            <div class="text-right">
+            <div class="text-right font-semibold">
                 {!! $exam->score ?? $exam->subject->score!!}
             </div>
         @endforeach
     </div>
 @endif
 
+<div class="flex-grow"></div>
 
 @if($total)
     <hr class="my-2">
-    <div class="grid gap-3 grid-cols-[1fr_auto]">
+    <div class="grid gap-3 grid-cols-[1fr_auto] font-semibold">
         <div>
             Минимальное кол-во проходных баллов
         </div>

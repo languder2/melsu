@@ -7,8 +7,8 @@ use Illuminate\Support\Collection;
 enum EducationForm: string
 {
     case Full       = "full-time";
-    case Hybrid     = "full-part";
     case Part       = "correspondence";
+    case Hybrid     = "full-part";
 
     public function getName(): string
     {
