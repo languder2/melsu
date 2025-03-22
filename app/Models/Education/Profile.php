@@ -185,14 +185,11 @@ class Profile extends Model
         return $this->places()->firstWhere('type', $type)->count ?? null;
     }
 
-    public function getBudgetScoresAttribute(): int|string
+    public function showByBasis($basis):bool
     {
-        return $this->exams()
-            ->where('type', 'budget')
-            ->get()
-            ->pluck('score')
-            ->sum()
-            ?? "&nbsp;";
+        return $this->placesByType($basis)
+            || $this->requiredExamsByType($basis)->count()
+            || $this->selectableExamsByType($basis)->count();
     }
 
 }

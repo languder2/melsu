@@ -105,9 +105,14 @@ class Speciality extends Model
         return $this->hasMany(Profile::class, 'speciality_code', 'code')
             ->where('show', true);
     }
-    public function profileByForm($form): ?Profile
+    public function profileByForm($form,$public=false): ?Profile
     {
-        return $this->profiles()->firstWhere('form', $form) ?? null;
+        $result = $this->profiles();
+
+        if($public)
+            $result->where('show',true);
+
+        return  $result->firstWhere('form', $form)?? null;
     }
 
     public function getPlacesAttribute(): int

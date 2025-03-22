@@ -1,12 +1,15 @@
+@use('App\Enums\EducationForm')
+@use('App\Enums\EducationBasis')
+
 @if($speciality->publicProfiles->count())
     <section>
-        <h2 class="font-bold text-3xl my-6">Общая информация о программе</h2>
+        <h2 class="font-bold text-3xl mb-2 mt-8">Общая информация о программе</h2>
 
-        @if($speciality->publicProfiles->count()>1)
             <div class="flex flex-col xl:flex-row">
-                @foreach($speciality->publicProfiles as $profile)
+                @foreach(EducationForm::cases() as $form)
                     <label
-                        for="profile_{{$profile->form}}"
+                        for="profile_{{$form->name}}"
+                        @disabled(!$speciality->profileByForm($form,true))
                         class="
                         group
 
@@ -16,128 +19,137 @@
                         has-checked:bg-base-red
                         has-checked:text-white
                         has-checked:border-base-red
-                        border-2 border-base-red border-b-0 last:border-b-2
+                        border-2 border-base-red border-t-0 first:border-b-2
 
-                        xl:border-white xl:border-b-2 xl:border-b-base-red
+                        xl:border-white xl:border-t-2 xl:border-b-base-red
                         xl:has-checked:bg-white
                         xl:has-checked:text-black
                         xl:has-checked:border-b-white
                         hover:text-base-red
 
+                        has-disabled:bg-neutral-300
+                        has-disabled:border-neutral-300
+                        has-disabled:border-b-base-red
+                        has-disabled:text-white
+                        has-disabled:hidden
+                        has-disabled:xl:block
+
+
 
                     "
                     >
                         <input
-                            id="profile_{{$profile->form}}"
+                            id="profile_{{$form->name}}"
                             type="radio"
                             name="form"
                             @checked($loop->first)
 
-                            value="panel_{{$profile->form}}"
+                            value="panel_{{$form->name}}"
                             class="hidden"
-                            onchange="PublicAction.showBlock('profile_{{$profile->id}}','.profiles')"
+                            onchange="PublicAction.showBlock('profile_{{$form->name}}','.profiles')"
+                            @disabled(!$speciality->profileByForm($form,true))
                         >
-                        {!! $profile->form->getName() !!}
+                        {!! $form->getName() !!}
                     </label>
-
                 @endforeach
             </div>
-        @endif
+            <div
+                class="
+                    profile_detail
+                    p-6 bg-white
+                    border-2 border-base-red
+                    border-t-0
 
-        <div
-            class="
-                profile_detail
-                p-6 bg-white
-                border-2 border-base-red
-                @if($speciality->publicProfiles->count() > 1) border-t-0 @endif
+                "
+            >
+                @foreach(EducationForm::cases() as $form)
+                    @php
+                        $profile = $speciality->profileByForm($form);
+                        if(!$profile) continue;
+                    @endphp
 
-            "
-        >
-            @foreach($speciality->publicProfiles as $profile)
-                <div
-                    class="
-                        profiles overflow-hidden profile_{{$profile->id}} @if(!$loop->first) max-h-0 @endif
-                        grid gap-5 grid-cols-1 lg:grid-cols-2
-                        text-lg
-                    "
-                >
-                    <div>
-                        <h3 class="text-neutral-600 uppercase font-bold text-lg mb-2">
-                            Срок обучения
-                        </h3>
-                        <p class="text-xl">
-                            {{(int)$profile->duration}} лет
-                        </p>
-                    </div>
+                    <div
+                        class="
+                            flex gap-4 flex-col
+                            profiles overflow-hidden
+                            profile_{{$form->name}} @if(!$loop->first) max-h-0 @endif
+                        "
+                    >
 
-                    <div>
-                        <h3 class="text-neutral-600 uppercase font-bold text-lg mb-2">
-                            Стоимость обучения за год
-                        </h3>
-                        <p class="text-xl">
-                            {{ number_format($profile->price, 0, '.', ' ') }} &#8381;
-                        </p>
-                    </div>
+                        @include('public.education.speciality.duration-price')
 
+                        <div class="flex gap-4 flex-col xl:flex-row">
 
-                    @if($profile->placesByType(\App\Enums\EducationBasis::Budget))
-                        <div>
-                            <h3 class="text-neutral-600 uppercase font-bold text-lg mb-2">
-                                Мест на бюджете
-                            </h3>
-                            <p class="text-xl">
-                                {!! $profile->placesByType(\App\Enums\EducationBasis::Budget) !!}
-                            </p>
                         </div>
-                    @endif
 
-                    @if($profile->placesByType(\App\Enums\EducationBasis::Contract))
-                        <div>
-                            <h3 class="text-neutral-600 uppercase font-bold text-lg mb-2">
-                                Мест на платной основе
-                            </h3>
-                            <p class="text-xl">
-                                {!! $profile->placesByType(\App\Enums\EducationBasis::Contract) !!}
-                            </p>
-                        </div>
-                    @endif
 
-                    @include('public.education.speciality.exams')
+                        @if($profile->placesByType(EducationBasis::Budget))
+                            <div>
+                                <h3 class="text-neutral-600 uppercase font-bold text-lg mb-2">
+                                    Мест на бюджете
+                                </h3>
+                                <p class="text-xl">
+                                    {!! $profile->placesByType(EducationBasis::Budget) !!}
+                                </p>
+                            </div>
+                        @endif
 
-                </div>
-            @endforeach
+                        @if($profile->placesByType(EducationBasis::Contract))
+                            <div>
+                                <h3 class="text-neutral-600 uppercase font-bold text-lg mb-2">
+                                    Мест на платной основе
+                                </h3>
+                                <p class="text-xl">
+                                    {!! $profile->placesByType(EducationBasis::Contract) !!}
+                                </p>
+                            </div>
+                        @endif
 
-            <h2 class="uppercase font-bold text-lg mt-8 mb-2 col-span-2">
-                Основная информация
-            </h2>
+                        @include('public.education.speciality.exams')
 
-            <div class="col-span-2 flex gap-3 flex-col lg:flex-row">
-                <div class="flex-1">
-                    <h3 class="text-neutral-600 uppercase font-bold text-lg mb-2">
-                        основной корпус
-                    </h3>
-                    <div>
-                        Мелитополь, Проспект Б. Хмельницкого, 18
+                        <section class="col-span-2">
+                            <h2 class="font-bold text-xl my-3 uppercase">
+                                Основная информация
+                            </h2>
+
+                            <div class="flex gap-3 flex-col lg:flex-row bg-white px-4 py-3">
+
+                                @if($profile->address)
+                                    <div class="flex-1">
+                                        <h3 class="text-neutral-600 uppercase font-bold text-lg mb-2">
+                                            основной корпус
+                                        </h3>
+                                        <div>
+                                            {{$profile->address}}
+                                        </div>
+                                    </div>
+                                @endif
+
+
+                                @if($speciality->chief)
+                                    <div class="flex-1">
+                                        <h3 class="text-neutral-600 uppercase font-bold text-lg mb-2">
+                                            руководитель
+                                        </h3>
+                                        <div>
+                                            Иванов Иван Иванович
+                                        </div>
+                                    </div>
+                                @endif
+
+                                <div class="flex-1">
+                                    <h3 class="text-neutral-600 uppercase font-bold text-lg mb-2">
+                                        прием иностранных граждан
+                                    </h3>
+                                    <div>
+                                        {{__('statuses.afc_'.$profile->afc)}}
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
                     </div>
-                </div>
-                <div class="flex-1">
-                    <h3 class="text-neutral-600 uppercase font-bold text-lg mb-2">
-                        руководитель
-                    </h3>
-                    <div>
-                        Иванов Иван Иванович
-                    </div>
-                </div>
-                <div class="flex-1">
-                    <h3 class="text-neutral-600 uppercase font-bold text-lg mb-2">
-                        прием иностранных граждан
-                    </h3>
-                    <div>
-                        Возможен
-                    </div>
-                </div>
+                @endforeach
             </div>
-        </div>
     </section>
 @endif
 

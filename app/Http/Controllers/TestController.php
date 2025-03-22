@@ -19,7 +19,7 @@ class TestController extends Controller
 {
     public function index()
     {
-        return view('test.test1');
+        return view('test.page');
     }
 
 }

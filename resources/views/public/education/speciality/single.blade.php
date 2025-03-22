@@ -10,8 +10,6 @@
     @component('public.menu.aside-tree',compact('menu')) @endcomponent
 @endsection
 
-
-
 @section('content')
     <div class="flex flex-col gap-4">
 
@@ -78,9 +76,6 @@
         @include('public.education.speciality.about')
 
         @include('public.education.speciality.detail')
-
-
-
 
         <div class="box-heading container custom lg:p-2.5">
             <h2 class="font-bold text-3xl my-6">Документы</h2>
