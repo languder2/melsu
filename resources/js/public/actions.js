@@ -44,3 +44,19 @@ export function KeyDownTimer(element){
     clearTimeout(timeoutId);
     timeoutId = setTimeout(()=>element.closest('form').dispatchEvent(new Event('submit')),300);
 }
+
+
+export function showBlock(blockClass,listClass){
+    let list = document.querySelectorAll(listClass);
+
+    if(!list)
+        return;
+
+    list.forEach(el=>{
+       if(el.classList.contains(blockClass))
+           el.classList.remove('max-h-0');
+       else
+           el.classList.add('max-h-0');
+    });
+
+}

@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Collection;
 
 class Profile extends Model
 {
@@ -143,6 +144,23 @@ class Profile extends Model
         return $this->score()->firstWhere('type', $type)->score ?? null;
     }
 
+    public function requiredExamsByType($type):?Collection
+    {
+        return $this->exams()
+            ->where('type', $type)
+            ->where('required', '1')
+            ->get();
+    }
+
+    public function selectableExamsByType($type):?Collection
+    {
+        return $this->exams()
+            ->where('type', $type)
+            ->where('required', '0')
+            ->where('selectable', '1')
+            ->get();
+    }
+
     public function getBudgetPlacesAttribute(): int|string
     {
         return $this->places()->where('type', 'budget')->first()->count ?? "&nbsp;";
@@ -162,7 +180,7 @@ class Profile extends Model
         return $result;
     }
 
-    public function placesByType($type)
+    public function placesByType($type):?int
     {
         return $this->places()->firstWhere('type', $type)->count ?? null;
     }

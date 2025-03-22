@@ -1,199 +1,161 @@
-<section>
-    <h2 class="font-bold text-3xl my-6">Общая информация о программе</h2>
-    <div class="flex flex-col lg:flex-row">
-        @foreach($speciality->profiles as $profile)
-            <label
-                for="profile_{{$profile->form}}"
-                class="
-                    group
-                    bg-white p-6 cursor-pointer flex-1 text-2xl font-bold transition duration-200
-                    border-2 border-white
-                    has-checked:bg-base-red
-                "
-            >
-                <input
-                    id="profile_{{$profile->form}}"
-                    type="radio"
-                    name="form"
-                    @checked($loop->first)
+@if($speciality->publicProfiles->count())
+    <section>
+        <h2 class="font-bold text-3xl my-6">Общая информация о программе</h2>
 
-                    value="panel_{{$profile->form}}"
-{{--                    class="hidden"--}}
+        @if($speciality->publicProfiles->count()>1)
+            <div class="flex flex-col xl:flex-row">
+                @foreach($speciality->publicProfiles as $profile)
+                    <label
+                        for="profile_{{$profile->form}}"
+                        class="
+                        group
+
+                        bg-white
+                        px-6 py-3 cursor-pointer flex-1 font-bold transition duration-150
+                        text-lg xl:text-xl
+                        has-checked:bg-base-red
+                        has-checked:text-white
+                        has-checked:border-base-red
+                        border-2 border-base-red border-b-0 last:border-b-2
+
+                        xl:border-white xl:border-b-2 xl:border-b-base-red
+                        xl:has-checked:bg-white
+                        xl:has-checked:text-black
+                        xl:has-checked:border-b-white
+                        hover:text-base-red
+
+
+                    "
+                    >
+                        <input
+                            id="profile_{{$profile->form}}"
+                            type="radio"
+                            name="form"
+                            @checked($loop->first)
+
+                            value="panel_{{$profile->form}}"
+                            class="hidden"
+                            onchange="PublicAction.showBlock('profile_{{$profile->id}}','.profiles')"
+                        >
+                        {!! $profile->form->getName() !!}
+                    </label>
+
+                @endforeach
+            </div>
+        @endif
+
+        <div
+            class="
+                profile_detail
+                p-6 bg-white
+                border-2 border-base-red
+                @if($speciality->publicProfiles->count() > 1) border-t-0 @endif
+
+            "
+        >
+            @foreach($speciality->publicProfiles as $profile)
+                <div
+                    class="
+                        profiles overflow-hidden profile_{{$profile->id}} @if(!$loop->first) max-h-0 @endif
+                        grid gap-5 grid-cols-1 lg:grid-cols-2
+                        text-lg
+                    "
                 >
-                    {!! $profile->form->getFullName() !!}
-            </label>
+                    <div>
+                        <h3 class="text-neutral-600 uppercase font-bold text-lg mb-2">
+                            Срок обучения
+                        </h3>
+                        <p class="text-xl">
+                            {{(int)$profile->duration}} лет
+                        </p>
+                    </div>
 
-        @endforeach
-    </div>
-</section>
+                    <div>
+                        <h3 class="text-neutral-600 uppercase font-bold text-lg mb-2">
+                            Стоимость обучения за год
+                        </h3>
+                        <p class="text-xl">
+                            {{ number_format($profile->price, 0, '.', ' ') }} &#8381;
+                        </p>
+                    </div>
 
 
-<section class="container custom lg:p-3">
+                    @if($profile->placesByType(\App\Enums\EducationBasis::Budget))
+                        <div>
+                            <h3 class="text-neutral-600 uppercase font-bold text-lg mb-2">
+                                Мест на бюджете
+                            </h3>
+                            <p class="text-xl">
+                                {!! $profile->placesByType(\App\Enums\EducationBasis::Budget) !!}
+                            </p>
+                        </div>
+                    @endif
 
-    <div class="box-info-prog grid grid-cols-1 sm:grid-cols-[1fr_1fr] sm:gap-1">
-        <div class="btn-info-prog bg-white group p-6 cursor-pointer active">
-            <h2 class="text-2xl font-bold group-hover:text-[var(--primary-color)] transition duration-300 ease-linear">
-                Очная форма</h2>
-        </div>
-        <div class="btn-info-prog bg-white group p-6 cursor-pointer">
-            <h2 class="text-2xl font-bold group-hover:text-[var(--primary-color)] transition duration-300 ease-linear">
-                Заочная форма</h2>
-        </div>
-    </div>
+                    @if($profile->placesByType(\App\Enums\EducationBasis::Contract))
+                        <div>
+                            <h3 class="text-neutral-600 uppercase font-bold text-lg mb-2">
+                                Мест на платной основе
+                            </h3>
+                            <p class="text-xl">
+                                {!! $profile->placesByType(\App\Enums\EducationBasis::Contract) !!}
+                            </p>
+                        </div>
+                    @endif
 
-    <div class="relative">
-        <div class="content-info-prog bg-white p-6 active">
-            <div class="grid grid-cols-1 md:grid-cols-[1fr_1fr] gap-3">
-                <div class="mb-3 lg:mb-0">
-                    <h2 class="text-[#828282] uppercase font-bold text-lg mb-2">Срок обучения</h2>
-                    <h2 class="font-[400] text-xl">5 лет</h2>
+                    @include('public.education.speciality.exams')
+
                 </div>
-                <div class="mb-3 lg:mb-0">
-                    <h2 class="text-[#828282] uppercase font-bold text-lg mb-2">Стоимость обучения за год</h2>
-                    <h2 class="font-[400] text-xl">141 800 руб</h2>
-                </div>
-            </div>
-            <h2 class="uppercase font-bold text-lg my-4 sm:my-8">
-                Вступительные испытания и минимальные баллы
+            @endforeach
+
+            <h2 class="uppercase font-bold text-lg mt-8 mb-2 col-span-2">
+                Основная информация
             </h2>
-            <div class="grid grid-cols-1 md:grid-cols-[1fr_1fr] gap-3">
-                <div class="mb-3 lg:mb-0">
-                    <h2 class="text-[#828282] uppercase font-bold text-lg mb-2">на бюджет</h2>
-                    <h2 class="font-[400] text-xl">Информатика и ИКТ/Физика — 52/44 баллов</h2>
-                    <h2 class="font-[400] text-xl">Математика (профильная) — 47 баллов</h2>
-                    <h2 class="font-[400] text-xl">Русский язык — 45 баллов</h2>
+
+            <div class="col-span-2 flex gap-3 flex-col lg:flex-row">
+                <div class="flex-1">
+                    <h3 class="text-neutral-600 uppercase font-bold text-lg mb-2">
+                        основной корпус
+                    </h3>
+                    <div>
+                        Мелитополь, Проспект Б. Хмельницкого, 18
+                    </div>
                 </div>
-                <div class="mb-3 lg:mb-0">
-                    <h2 class="text-[#828282] uppercase font-bold text-lg mb-2">на платное</h2>
-                    <h2 class="font-[400] text-xl">Информатика и ИКТ/Физика — 46/41 баллов</h2>
-                    <h2 class="font-[400] text-xl">Математика (профильная) — 41 балл</h2>
-                    <h2 class="font-[400] text-xl">Русский язык — 42 балла</h2>
+                <div class="flex-1">
+                    <h3 class="text-neutral-600 uppercase font-bold text-lg mb-2">
+                        руководитель
+                    </h3>
+                    <div>
+                        Иванов Иван Иванович
+                    </div>
                 </div>
-            </div>
-            <h2 class="uppercase font-bold text-lg my-4 sm:my-8">
-                Проходные баллы в прошлом году
-            </h2>
-            <div class="grid grid-cols-1 md:grid-cols-[1fr_1fr] md:gap-3">
-                <div class="mb-3 lg:mb-0">
-                    <h2 class="text-[#828282] uppercase font-bold text-lg mb-2">на бюджет</h2>
-                    <h2 class="font-[400] text-xl">Проходной балл — 258 (2023)</h2>
-                </div>
-                <div class="mb-3 lg:mb-0">
-                    <h2 class="text-[#828282] uppercase font-bold text-lg mb-2">на платное</h2>
-                    <h2 class="font-[400] text-xl">Проходной балл — 258 (2023)</h2>
-                </div>
-            </div>
-            <h2 class="uppercase font-bold text-lg my-4 sm:my-8">
-                Основаня информация
-            </h2>
-            <div class="grid grid-cols-1 md:grid-cols-[1fr_1fr] lg:grid-cols-[1fr_1fr_1fr]">
-                <div class="mb-3 lg:mb-0">
-                    <h2 class="text-[#828282] uppercase font-bold text-lg mb-2">основной корпус</h2>
-                    <h2 class="font-[400] text-xl">Мелитополь, Проспект Б. Хмельницкого, 18</h2>
-                </div>
-                <div class="mb-3 lg:mb-0">
-                    <h2 class="text-[#828282] uppercase font-bold text-lg mb-2">руководитель</h2>
-                    <h2 class="font-[400] text-xl">Иванов Иван Иванович</h2>
-                </div>
-                <div class="mb-3 lg:mb-0">
-                    <h2 class="text-[#828282] uppercase font-bold text-lg mb-2">прием иностранных граждан</h2>
-                    <h2 class="font-[400] text-xl">Возможен</h2>
-                </div>
-            </div>
-            <h2 class="uppercase font-bold text-lg my-4 sm:my-8">
-                Дополнительная информация и полезные ссылки
-            </h2>
-            <div class="grid grid-cols-[1fr] md:grid-cols-[1fr_1fr] xl:grid-cols-[25%_15%_30%_30%] gap-y-3">
-                <div class="mb-3 lg:mb-0">
-                    <a class="font-[400] text-xl text-[var(--primary-color)]">Подготовительные курсы</a>
-                </div>
-                <div class="mb-3 lg:mb-0">
-                    <a class="font-[400] text-xl text-[var(--primary-color)]">Олимпиады</a>
-                </div>
-                <div class="mb-3 lg:mb-0">
-                    <a class="font-[400] text-xl text-[var(--primary-color)]">Проходные баллы прошлых лет</a>
-                </div>
-                <div class="mb-3 lg:mb-0">
-                    <a class="font-[400] text-xl text-[var(--primary-color)]">Вступительные после колледжа</a>
+                <div class="flex-1">
+                    <h3 class="text-neutral-600 uppercase font-bold text-lg mb-2">
+                        прием иностранных граждан
+                    </h3>
+                    <div>
+                        Возможен
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="content-info-prog bg-white p-6 hidden">
-            <div class="grid grid-cols-1 md:grid-cols-[1fr_1fr] gap-3">
-                <div class="mb-3 lg:mb-0">
-                    <h2 class="text-[#828282] uppercase font-bold text-lg mb-2">Срок обучения</h2>
-                    <h2 class="font-[400] text-xl">5 лет</h2>
-                </div>
-                <div class="mb-3 lg:mb-0">
-                    <h2 class="text-[#828282] uppercase font-bold text-lg mb-2">Стоимость обучения за год</h2>
-                    <h2 class="font-[400] text-xl">200 800 руб</h2>
-                </div>
-            </div>
-            <h2 class="uppercase font-bold text-lg my-4 sm:my-8">
-                Вступительные испытания и минимальные баллы
-            </h2>
-            <div class="grid grid-cols-1 md:grid-cols-[1fr_1fr] gap-3">
-                <div class="mb-3 lg:mb-0">
-                    <h2 class="text-[#828282] uppercase font-bold text-lg mb-2">на бюджет</h2>
-                    <h2 class="font-[400] text-xl">Информатика и ИКТ/Физика — 52/44 баллов</h2>
-                    <h2 class="font-[400] text-xl">Математика (профильная) — 47 баллов</h2>
-                    <h2 class="font-[400] text-xl">Русский язык — 45 баллов</h2>
-                </div>
-                <div class="mb-3 lg:mb-0">
-                    <h2 class="text-[#828282] uppercase font-bold text-lg mb-2">на платное</h2>
-                    <h2 class="font-[400] text-xl">Информатика и ИКТ/Физика — 46/41 баллов</h2>
-                    <h2 class="font-[400] text-xl">Математика (профильная) — 41 балл</h2>
-                    <h2 class="font-[400] text-xl">Русский язык — 42 балла</h2>
-                </div>
-            </div>
-            <h2 class="uppercase font-bold text-lg my-4 sm:my-8">
-                Проходные баллы в прошлом году
-            </h2>
-            <div class="grid grid-cols-1 md:grid-cols-[1fr_1fr] md:gap-3">
-                <div class="mb-3 lg:mb-0">
-                    <h2 class="text-[#828282] uppercase font-bold text-lg mb-2">на бюджет</h2>
-                    <h2 class="font-[400] text-xl">Проходной балл — 258 (2023)</h2>
-                </div>
-                <div class="mb-3 lg:mb-0">
-                    <h2 class="text-[#828282] uppercase font-bold text-lg mb-2">на платное</h2>
-                    <h2 class="font-[400] text-xl">Проходной балл — 258 (2023)</h2>
-                </div>
-            </div>
-            <h2 class="uppercase font-bold text-lg my-4 sm:my-8">
-                Основаня информация
-            </h2>
-            <div class="grid grid-cols-1 md:grid-cols-[1fr_1fr] lg:grid-cols-[1fr_1fr_1fr]">
-                <div class="mb-3 lg:mb-0">
-                    <h2 class="text-[#828282] uppercase font-bold text-lg mb-2">основной корпус</h2>
-                    <h2 class="font-[400] text-xl">Мелитополь, Проспект Б. Хмельницкого, 18</h2>
-                </div>
-                <div class="mb-3 lg:mb-0">
-                    <h2 class="text-[#828282] uppercase font-bold text-lg mb-2">руководитель</h2>
-                    <h2 class="font-[400] text-xl">Иванов Иван Иванович</h2>
-                </div>
-                <div class="mb-3 lg:mb-0">
-                    <h2 class="text-[#828282] uppercase font-bold text-lg mb-2">прием иностранных граждан</h2>
-                    <h2 class="font-[400] text-xl">Возможен</h2>
-                </div>
-            </div>
-            <h2 class="uppercase font-bold text-lg my-4 sm:my-8">
-                Дополнительная информация и полезные ссылки
-            </h2>
-            <div class="grid grid-cols-[1fr] md:grid-cols-[1fr_1fr] xl:grid-cols-[25%_15%_30%_30%] gap-y-3">
-                <div class="mb-3 lg:mb-0">
-                    <a class="font-[400] text-xl text-[var(--primary-color)]">Подготовительные курсы</a>
-                </div>
-                <div class="mb-3 lg:mb-0">
-                    <a class="font-[400] text-xl text-[var(--primary-color)]">Олимпиады</a>
-                </div>
-                <div class="mb-3 lg:mb-0">
-                    <a class="font-[400] text-xl text-[var(--primary-color)]">Проходные баллы прошлых лет</a>
-                </div>
-                <div class="mb-3 lg:mb-0">
-                    <a class="font-[400] text-xl text-[var(--primary-color)]">Вступительные после колледжа</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+    </section>
+@endif
+
+{{--<h2 class="uppercase font-bold text-lg my-4 sm:my-8">--}}
+{{--    Дополнительная информация и полезные ссылки--}}
+{{--</h2>--}}
+{{--<div class="grid grid-cols-[1fr] md:grid-cols-[1fr_1fr] xl:grid-cols-[25%_15%_30%_30%] gap-y-3">--}}
+{{--    <div class="mb-3 lg:mb-0">--}}
+{{--        <a class="font-[400] text-xl text-[var(--primary-color)]">Подготовительные курсы</a>--}}
+{{--    </div>--}}
+{{--    <div class="mb-3 lg:mb-0">--}}
+{{--        <a class="font-[400] text-xl text-[var(--primary-color)]">Олимпиады</a>--}}
+{{--    </div>--}}
+{{--    <div class="mb-3 lg:mb-0">--}}
+{{--        <a class="font-[400] text-xl text-[var(--primary-color)]">Проходные баллы прошлых лет</a>--}}
+{{--    </div>--}}
+{{--    <div class="mb-3 lg:mb-0">--}}
+{{--        <a class="font-[400] text-xl text-[var(--primary-color)]">Вступительные после колледжа</a>--}}
+{{--    </div>--}}
+{{--</div>--}}
 
