@@ -33,7 +33,7 @@ class ShortNews extends Component
                 'publication_at',
             )
             ->orderBy('publication_at', 'desc')
-            ->limit(8)
+            ->limit(6)
             ->get();
 
         $this->reports = Events

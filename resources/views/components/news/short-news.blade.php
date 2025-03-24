@@ -1,79 +1,27 @@
 <section class="news-section mb-6">
     <div class="container custom p-2.5 xl:p-0">
-        <div class="box-nav-btns">
-            <div class="nav-btns">
-                @if($news->count())
-                    <a class="news-btn active">Новости</a>
-                @endif
-                @if($previews->count() && 0)
-                    <a class="events-btn">Мероприятия</a>
-                @endif
-                @if($reports->count() && 0)
-                    <a class="anons-btn">Анонсы</a>
-                @endif
-            </div>
-            <div class="more-btns">
-                @if(!empty($news))
-                    <div class="btn-more-box flex items-center active">
-                        <a href="{{url(route('news:show:all'))}}" class="btn-more">
-                            Все новости
-                        </a>
-                        <a href="{{url(route('news:show:all'))}}">
-                            <i class="bi bi-arrow-right-circle-fill"></i>
-                        </a>
-                    </div>
-                @endif
-                @if(!empty($previews))
-                    <div class="btn-more-box flex items-center">
-                        <a href="#" class="btn-more">Все мероприятия</a>
-                        <i class="bi bi-arrow-right-circle-fill"></i>
-                    </div>
-                @endif
-                @if(!empty($reports))
-                    <div class="btn-more-box flex items-center">
-                        <a href="#" class="btn-more">Все анонсы</a>
-                        <i class="bi bi-arrow-right-circle-fill"></i>
-                    </div>
-                @endif
-            </div>
-        </div>
         @if($news->count())
-            <div class="scroll-news overflow-x-auto">
-                <div class="news-main-block grid grid-cols-8 md:grid-cols-2 xl:grid-cols-4 gap-4 w-max md:w-full">
-                    @foreach($news as $item)
-                        <a
-                            href="{{$item->link}}"
-                            class="min-h-300 relative block "
-                        >
-                            <img
-                                src="{{$item->preview->thumbnail}}"
-                                alt="{{$item->preview->alt??$item->preview->name}}"
-                                class="w-full h-full object-cover object-center"
-                            />
-                            <span class="absolute z-20 py-2 px-3 bg-base-red/80 text-white top-0 right-0 text-right">
-                                {{@$item->tag->name}}
-                            </span>
 
-                            <p
-                                class="
-                                    flex flex-col gap-2
-                                    absolute inset-x-4 bottom-4
-                                    text-white
-                                "
-                            >
-                                <span>
-                                    <span class="py-2 px-3 bg-base-red/80 text-white inline-block">
-                                        {{$item->publication_at}}
-                                    </span>
-                                </span>
-                                <span class="py-2 px-3 bg-base-red/80 text-white">
-                                    {{$item->title}}
-                                </span>
-                            </p>
-                        </a>
-
-                    @endforeach
+            <div class="flex justify-between items-center mb-6">
+                <div>
+                    <h2 class="text-2xl lg:text-3xl font-bold">Новости</h2>
                 </div>
+                <div class="border-r-4 border-red-900 border-b-4 border-b-[#FAFAFA] px-3 transition duration-300 ease-linear cursor-pointer
+        hover:border-b-4 hover:border-red-900">
+                    <a href="{{url(route('news:show:all'))}}" class="font-semibold">Все новости</a>
+                </div>
+            </div>
+
+
+            <div class="grid grid-cols-4 mb-6">
+                @foreach($news as $k => $item)
+                    <div class="max-h-[300px] relative group {{ $k == 0 || $k == 4 ? 'col-span-2' : '' }}">
+                    <a href="{{$item->link}}" alt="{{$item->preview->alt??$item->preview->name}}">
+                        <img src="{{$item->preview->thumbnail}}" alt="" class="object-cover h-full w-full transition duration-300 ease-linear group-hover:opacity-80">
+                        <span class="absolute bottom-3 left-3 right-3 {{ $k == 0 || $k == 4 ? 'w-2/3' : '' }} text-white [text-shadow:_0_4px_8px_#000000]">{{$item->title}}</span>
+                    </a>
+                </div>
+                @endforeach
             </div>
         @endif
     </div>
