@@ -2,11 +2,11 @@
     <div class="container custom p-2.5 xl:p-0">
         @if($news->count())
 
-            <div class="flex justify-between items-center mb-6">
-                <div>
+            <div class="flex justify-between items-center mb-6 flex-col sm:flex-row">
+                <div class="mb-3 sm:mb-0">
                     <h2 class="text-2xl lg:text-3xl font-bold">Новости</h2>
                 </div>
-                <div class="flex justify-between items-center">
+                <div class="flex justify-between items-center mb-3 sm:mb-0">
                     <div class="p-4 rounded-full border border-[#212121] transition duration-300 ease-linear cursor-pointer group
                     hover:border-red-900 hover:bg-red-900">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left group-hover:fill-white" viewBox="0 0 16 16">
@@ -25,7 +25,7 @@
                         </svg>
                     </div>
                 </div>
-                <div class="border-r-4 border-red-900 border-b-4 border-b-[#FAFAFA] px-3 transition duration-300 ease-linear cursor-pointer
+                <div class="border-none sm:border-r-4 border-red-900 sm:border-b-4 border-b-[#FAFAFA] px-3 transition duration-300 ease-linear cursor-pointer
         hover:border-b-4 hover:border-red-900">
                     <a href="{{url(route('news:show:all'))}}" class="font-semibold">Все новости</a>
                 </div>
