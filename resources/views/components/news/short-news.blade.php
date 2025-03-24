@@ -18,7 +18,9 @@
                     <div class="min-h-[300px] sm:min-h-auto max-h-[300px] relative group {{ $k == 0 || $k == 4 ? 'lg:col-span-2' : '' }}">
                     <a href="{{$item->link}}" alt="{{$item->preview->alt??$item->preview->name}}">
                         <img src="{{$item->preview->thumbnail}}" alt="" class="object-cover h-full w-full transition duration-300 ease-linear group-hover:opacity-80">
-                        <span class="absolute bottom-3 left-3 right-3 {{ $k == 0 || $k == 4 ? 'w-2/3' : '' }} text-white [text-shadow:_0_4px_8px_#000000]">{{$item->title}}</span>
+                        <div class="absolute bottom-0 left-0 right-0 p-3 bg-[#000000A1] min-h-1/3">
+                            <span class="{{ $k == 0 || $k == 4 ? 'w-2/3' : '' }} text-white [text-shadow:_0_4px_8px_#000000]">{{$item->title}}</span>
+                        </div>
                     </a>
                 </div>
                 @endforeach
