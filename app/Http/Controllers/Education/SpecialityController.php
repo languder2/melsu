@@ -8,6 +8,7 @@ use App\Models\Division\Division;
 use App\Models\Education\Department;
 use App\Models\Education\Profile;
 use App\Models\Education\Speciality;
+use App\Models\FAQ;
 use App\Models\Gallery\Image;
 use App\Models\Menu\Menu;
 use App\Models\Page\Content as PageContent;
@@ -152,6 +153,9 @@ class SpecialityController extends Controller
                     }
                 }
             }
+
+        if($request->has('faq'))
+            FAQ::processing($record,$request->get('faq'));
 
         return redirect()->route('admin:speciality:list');
     }

@@ -49,6 +49,7 @@
 {{--                @component('components.form.sections.staffs',compact('current')) @endcomponent--}}
 {{--                @component('components.form.sections.documents',compact('current')) @endcomponent--}}
                 @component('components.form.sections.contents',compact('current')) @endcomponent
+                @component('admin.faq.section',compact('current')) @endcomponent
 
             </div>
 

@@ -189,9 +189,14 @@ class Profile extends Model
     public function showByBasis($basis):bool
     {
         return $this->scoreByType($basis)
-            || $this->placesByType($basis)
+//            || $this->placesByType($basis)
             || $this->requiredExamsByType($basis)->count()
             || $this->selectableExamsByType($basis)->count();
+    }
+
+    public function showDualBasis():bool
+    {
+        return $this->showByBasis(EducationBasis::Budget) && $this->showByBasis(EducationBasis::Contract);
     }
 
 }

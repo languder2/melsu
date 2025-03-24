@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
 use App\Http\Controllers\ContactController;
 
+use App\Http\Controllers\Sections\FAQController;
+
 Route::get('departments-by-faculty-shorts/{faculty?}', function (Request $request, $faculty = null) {
 
     if (is_null($faculty))
@@ -71,6 +73,14 @@ Route::middleware(['web','auth.api'])
                 ]);
         })->name('api:content:sections:add');
     });
+
+Route::middleware(['web','auth.api'])
+    ->controller(FAQController::class)
+    ->group(function () {
+        Route::get('faq/add', [FAQController::class,'ApiAdd'])->name('api:faq:add');
+        Route::get('faq/delete/{item?}', [FAQController::class,'ApiDelete'])->name('api:faq:delete');
+    });
+
 
 Route::controller(\App\Http\Controllers\Division\DivisionController::class)
     ->prefix('divisions')

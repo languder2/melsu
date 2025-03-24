@@ -2,39 +2,50 @@
     {{$slot}}
 </h2>
 
-@if($required->count())
-    <h3 class="font-semibold col-span-2 text-neutral-600">
-        Обязательные:
-    </h3>
+<div @class([
+        "flex gap-4 flex-col",
+        $dual?"":"lg:flex-row",
+    ])
+>
 
-    <div class="grid gap-3 grid-cols-[1fr_auto]">
-        @foreach($required as $exam)
-            <div>
-                {!! $exam->subject->name !!}
-            </div>
+    @if($required->count())
+        <div class="flex-1">
+            <h3 class="font-semibold col-span-2 text-neutral-600 mb-4">
+                Обязательные:
+            </h3>
 
-            <div class="text-right font-semibold">
-                {!! $exam->score ?? $exam->subject->score!!}
-            </div>
-        @endforeach
-    </div>
-@endif
+            <div class="grid gap-3 grid-cols-[1fr_auto]">
+                @foreach($required as $exam)
+                    <div>
+                        {!! $exam->subject->name !!}
+                    </div>
 
-@if($selectable->count())
-    <h3 class="font-semibold text-neutral-600 mt-3">
-        На выбор:
-    </h3>
-    <div class="grid gap-3 grid-cols-[1fr_auto]">
-        @foreach($selectable as $exam)
-            <div>
-                {!! $exam->subject->name !!}
+                    <div class="text-right font-semibold">
+                        {!! $exam->score ?? $exam->subject->score!!}
+                    </div>
+                @endforeach
             </div>
-            <div class="text-right font-semibold">
-                {!! $exam->score ?? $exam->subject->score!!}
+        </div>
+    @endif
+
+    @if($selectable->count())
+        <div class="flex-1">
+            <h3 class="font-semibold text-neutral-600 mb-4">
+                На выбор:
+            </h3>
+            <div class="grid gap-3 grid-cols-[1fr_auto]">
+                @foreach($selectable as $exam)
+                    <div>
+                        {!! $exam->subject->name !!}
+                    </div>
+                    <div class="text-right font-semibold">
+                        {!! $exam->score ?? $exam->subject->score!!}
+                    </div>
+                @endforeach
             </div>
-        @endforeach
-    </div>
-@endif
+        </div>
+   @endif
+</div>
 
 <div class="flex-grow"></div>
 

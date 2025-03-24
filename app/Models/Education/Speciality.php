@@ -5,6 +5,7 @@ namespace App\Models\Education;
 use App\Enums\EducationBasis;
 use App\Enums\EducationLevel;
 use App\Models\Division\Division;
+use App\Models\FAQ;
 use App\Models\Gallery\Image;
 use App\Models\Page\Content as PageContent;
 use Illuminate\Database\Eloquent\Model;
@@ -95,6 +96,15 @@ class Speciality extends Model
     {
         return $this->morphMany(PageContent::class, 'relation')->orderBy('order');
     }
+    public function faq($public = false): MorphMany
+    {
+        $result = $this->morphMany(FAQ::class, 'relation');
+
+        if($public)
+            $result->where('show', true);
+
+        return $result->orderBy('order');
+    }
 
     public function profiles(): HasMany
     {
@@ -121,7 +131,6 @@ class Speciality extends Model
 
         foreach ($this->profiles as $profile)
             $places += $profile->placesByType(EducationBasis::Budget);
-
         return $places;
     }
 

@@ -58,5 +58,11 @@ export function showBlock(blockClass,listClass){
        else
            el.classList.add('max-h-0');
     });
+}
 
+export function toggleShowBlock(blockID){
+    let block = document.getElementById(blockID);
+    if(!block) return;
+
+    block.style.maxHeight = (block.style.maxHeight !== '0px') ? '0px' : block.scrollHeight+'px';
 }
