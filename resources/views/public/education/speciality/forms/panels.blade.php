@@ -58,9 +58,10 @@
                     @if($profile->showByBasis(EducationBasis::Budget))
                         <div class="flex-1 flex flex-col gap-3 p-4">
                             @component('public.education.speciality.basis.exams',[
-                                'required'    => $profile->requiredExamsByType(EducationBasis::Budget),
-                                'selectable'  => $profile->selectableExamsByType(EducationBasis::Budget),
-                                'total'       => $profile->scoreByType(EducationBasis::Budget)
+                                'required'      => $profile->requiredExamsByType(EducationBasis::Budget),
+                                'selectable'    => $profile->selectableExamsByType(EducationBasis::Budget),
+                                'total'         => $profile->scoreByType(EducationBasis::Budget),
+                                'dual'          => $profile->showDualBasis(),
                             ])
                                 на бюджете
                             @endcomponent
@@ -72,7 +73,8 @@
                             @component('public.education.speciality.basis.exams',[
                                 'required'    => $profile->requiredExamsByType(EducationBasis::Contract),
                                 'selectable'  => $profile->selectableExamsByType(EducationBasis::Contract),
-                                'total'       => $profile->scoreByType(EducationBasis::Contract)
+                                'total'       => $profile->scoreByType(EducationBasis::Contract),
+                                'dual'          => $profile->showDualBasis(),
                             ])
                                 на платное
                             @endcomponent

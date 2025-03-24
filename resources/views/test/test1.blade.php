@@ -19,26 +19,96 @@
         </style>
     @endif
 </head>
-<body class="">
-<div class="flex gap-3">
-    <div class="">
-        <img class="h-60 hidden xl:block " src="{{asset('img/thumbnail-1.webp')}}" alt="картинка">
+<body class="bg-neutral-200">
+<section class="bg-white p-5 mb-5">
+    <div class="flex gap-3">
+        <div class="hidden lg:block">
+            <img class="h-60" src="{{asset('img/rector.png')}}" alt="картинка">
+        </div>
+
+        <div class="flex-1 flex flex-col p-2 gap-3">
+
+            <div>
+                <h4 class="font-semibold text-red-600">Должность:</h4>
+                <p>Ректор</p>
+            </div>
+
+            <div>
+                <h4 class="font-semibold text-red-600">Ученая степень, звание:</h4>
+                <p>Кандидат физики-математических наук, доцент</p>
+            </div>
+
+            <div>
+                <span class="font-semibold text-red-600">Приём по личным вопросам:</span>
+                <br>
+                <span>с 15:00 - 18:0 (предварительная запись со вторника)</span>
+            </div>
+
+            <div>
+                <span class="font-semibold text-red-600">Адрес:</span>
+                <br>
+                <span>272312, Заппорожская область, г.Мелитополь, ул.Бейбулатова, 2, ауд. № 15.306</span>
+            </div>
+        </div>
     </div>
-    <div class="flex flex-col p-4 gap-3">
-        <h3 class="font-semibold text-xl text-red-800">Артюхов Валерий Евгениевич</h3>
-        <div class="flex flex-col">
-            <span class="font-semibold text-red-600">Должность:</span>
-            <h3>Проректор по цифровой трансформации</h3>
-        </div>
-        <div class="flex flex-col">
-            <span class="font-semibold text-red-600">Приём по личным вопросам:</span>
-            <span>с 14:00 - 16:30 (приёмный день среда)</span>
-        </div>
-        <div class=" flex flex-col">
-            <span class="font-semibold text-red-600">Адрес:</span>
-            <span>272312, Заппорожская область, г.Мелитополь, ул.Бейбулатова, 2, ауд. № 15.306</span>
-        </div>
+</section>
+
+<section class="bg-white grid lg:grid-cols-[240px_3fr] p-5 mb-5">
+    <div class="p-2 pl-0 text-red-600 font-semibold">Месторождения:</div>
+    <div class="lg:pl-0 pl-4 p-2 text-neutral-500">с.Мыт,Пестяковский район, Ивановская область</div>
+
+    <div class="p-2 pl-0 text-red-600 font-semibold">Место жительства:</div>
+    <div class="lg:pl-0 pl-4 p-2 text-neutral-500">г.Мелитополь, Запорожская область</div>
+
+    <div class="p-2 pl-0 text-red-600 font-semibold">Образование:</div>
+    <div class="lg:pl-0 pl-4 p-2 text-neutral-500">высшее - Ленинградский государственный университет им. А.А.Жданова, 1984 г.</div>
+
+    <div class="p-2 pl-0 text-red-600 font-semibold">Награды-поощрения:</div>
+    <div class="lg:pl-0 pl-4 p-2 text-neutral-500">звание "Почетный работник высшего профессионального образования Российской Федирации", 2006 г.</div>
+
+    <div class="p-2 pl-0 text-red-600 font-semibold">Партийная принадлежность:</div>
+    <div class="lg:pl-0 pl-4 p-2 text-neutral-500">Всероссийская политическая партия "Единая Россия"</div>
+</section>
+
+<h3 class="mb-5 font-semibold text-2xl">Трудовая деятельность</h3>
+
+<section class="grid grid lg:grid-cols-[240px_3fr] gap-1">
+    <div class="p-3 flex justify-center items-center font-semibold bg-white">1984 - 1986</div>
+    <div class="p-3 bg-white">инжинер Петрозаводского государственного университета им. О. В. Куусинева</div>
+
+    <div class="p-3 flex justify-center items-center font-semibold bg-white">1986 - 1989</div>
+    <div class="p-3 bg-white">аспирант Ленинградского государственного университета им. А. А. Жданова</div>
+
+    <div class="p-3 flex justify-center items-center font-semibold bg-white">1990 - 1994</div>
+    <div class="p-3 bg-white">преподователь, старший преподователь, доцент Петрозаводского государственного университета</div>
+
+    <div class="p-3 flex justify-center items-center font-semibold bg-white">1994 - 2005</div>
+    <div class="p-3 bg-white">проректор по международным связям ФГБОУ ВПО "Петрозаводский государственный университет"</div>
+
+    <div class="p-3 flex justify-center items-center font-semibold bg-white">2005 - 2008</div>
+    <div class="p-3 bg-white">Главный специалист по стратегическому развитию, начальнк отдела, начальник управления,
+        директор Дерекции инновационного образовательного проекта (ИОП) ФГБОУ ВПО "Санкт-Петербургский государственный университет"</div>
+
+
+    <div class="p-3 flex justify-center items-center font-semibold bg-white">2008 - 2014</div>
+    <div class="p-3 bg-white">проректор по развитию проектной деятельности, проректор по инноовационной деятельности,
+        проректор по стратегическому развитию ФГБОУ ВПО "Санкт-Петербургский национальный исследовательский университет
+        информационных технологий, механики и оптики". Одновременно или последовательнол занимал должности декана факультета,
+        заведующего лаборатьорией, директора института, директора департамента, директора Дирекции программы развития
+        (НИУ) и Дирекции повышения конкурентоспособности университета (программа "5 в 100")
     </div>
-</div>
+
+    <div class="p-3 flex justify-center items-center font-semibold bg-white">2014 - 2017</div>
+    <div class="p-3 bg-white">Директор Межународного департамента Министерства образования и науки Российской Федерации</div>
+
+    <div class="p-3 flex justify-center items-center font-semibold bg-white">2017 - 2023</div>
+    <div class="p-3 bg-white">Проректор по стратегическому развитию Санкт-Петербургского государственного экономического университета;
+        советник Университета
+    </div>
+
+    <div class="p-3 flex justify-center items-center font-semibold bg-white">2023</div>
+    <div class="p-3 bg-white">Ректор ФГБОУ ВО "Мелитопольский государственный университет"</div>
+</section>
+
 </body>
 </html>

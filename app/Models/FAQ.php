@@ -20,9 +20,6 @@ class FAQ extends Model
         'relation_id',
         'relation_type',
         'order',
-        'created_at',
-        'updated_at',
-        'deleted_at',
     ];
 
     public static function FormRules($id): array
@@ -47,4 +44,28 @@ class FAQ extends Model
     {
         return $this->morphTo();
     }
+
+    public function getOrderAttribute($order): int|null
+    {
+        return ($order < 10000) ? $order :  null ;
+    }
+
+    public function setOrderAttribute($order): void
+    {
+        $this->attributes['order'] = $order ?? 10000;
+    }
+
+    public static function processing($object,$list):void
+    {
+
+        foreach ($list as $id=>$form) {
+            if(!$form['question']) continue;
+            $faq = self::find($id) ?? new FAQ();
+            $faq->fill($form);
+            $faq->show= array_key_exists('show',$form);
+            $faq->relation()->associate($object);
+            $faq->save();
+        }
+    }
+
 }
