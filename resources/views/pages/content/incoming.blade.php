@@ -324,7 +324,7 @@
         </div>
     </div>
 </section>
-<!--x-specialities-->
+<x-specialities/>
 
 <div class="box-heading container custom pb-6">
     <h2 class="font-bold text-2xl mt-5 lg:mt-12 lg:mb-6">Учиться близко и удобно</h2>
