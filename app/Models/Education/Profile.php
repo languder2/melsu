@@ -4,10 +4,9 @@ namespace App\Models\Education;
 
 use App\Enums\EducationBasis;
 use App\Enums\EducationForm;
-use App\Models\{Document, FAQ, Link};
+use App\Models\{Link, Sections\Document, Sections\FAQ};
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
-use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Collection;
 

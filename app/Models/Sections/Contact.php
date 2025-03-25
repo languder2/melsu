@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Sections;
 
+use App\Enums\ContactType;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use App\Enums\ContactType;
 
 class Contact extends Model
 {

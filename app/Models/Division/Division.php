@@ -4,22 +4,21 @@ namespace App\Models\Division;
 
 use App\Enums\ContactType;
 use App\Enums\DivisionType;
-use App\Models\Contact;
+use App\Models\Education\Speciality;
 use App\Models\Gallery\Image;
+use App\Models\Global\Options;
 use App\Models\Menu\Menu;
-use App\Models\Staff\Staff;
+use App\Models\Page\Content as PageContent;
+use App\Models\Sections\Contact;
 use App\Models\Staff\Affiliation as StaffAffiliation;
+use App\Models\Staff\Staff;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use App\Models\Page\Content as PageContent;
-use App\Models\Global\Options;
 use Illuminate\Support\Collection;
-
-use App\Models\Education\Speciality;
 
 class Division extends Model
 {

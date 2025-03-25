@@ -5,9 +5,10 @@ namespace App\Models\Education;
 use App\Enums\EducationBasis;
 use App\Enums\EducationLevel;
 use App\Models\Division\Division;
-use App\Models\FAQ;
 use App\Models\Gallery\Image;
 use App\Models\Page\Content as PageContent;
+use App\Models\Sections\Career;
+use App\Models\Sections\FAQ;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -98,12 +99,24 @@ class Speciality extends Model
     }
     public function faq($public = false): MorphMany
     {
+
         $result = $this->morphMany(FAQ::class, 'relation');
 
         if($public)
             $result->where('show', true);
 
         return $result->orderBy('order');
+    }
+
+    public function career($public = true): MorphMany
+    {
+
+        $result = $this->morphMany(Career::class, 'relation');
+
+        if($public)
+            $result->where('active', true);
+
+        return $result->orderBy('sort');
     }
 
     public function profiles(): HasMany

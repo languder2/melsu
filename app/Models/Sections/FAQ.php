@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Sections;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
@@ -45,7 +45,7 @@ class FAQ extends Model
         return $this->morphTo();
     }
 
-    public function getOrderAttribute($order): int|null
+    public function getOrderAttribute(?int $order): ?int
     {
         return ($order < 10000) ? $order :  null ;
     }

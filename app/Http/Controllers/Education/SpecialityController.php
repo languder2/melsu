@@ -8,14 +8,12 @@ use App\Models\Division\Division;
 use App\Models\Education\Department;
 use App\Models\Education\Profile;
 use App\Models\Education\Speciality;
-use App\Models\FAQ;
 use App\Models\Gallery\Image;
 use App\Models\Menu\Menu;
 use App\Models\Page\Content as PageContent;
-use App\View\Components\Specialities\Single as SingleSpeciality;
-use Illuminate\Http\RedirectResponse;
+use App\Models\Sections\Career;
+use App\Models\Sections\FAQ;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\View;
 
 class SpecialityController extends Controller
 {
@@ -156,6 +154,9 @@ class SpecialityController extends Controller
 
         if($request->has('faq'))
             FAQ::processing($record,$request->get('faq'));
+
+        if($request->has('career'))
+            Career::processing($record,$request->get('career'));
 
         return redirect()->route('admin:speciality:list');
     }

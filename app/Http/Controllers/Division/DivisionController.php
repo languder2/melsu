@@ -4,16 +4,16 @@ namespace App\Http\Controllers\Division;
 
 use App\Enums\DivisionType;
 use App\Http\Controllers\Controller;
-use App\Models\Contact;
 use App\Models\Division\Division;
 use App\Models\Gallery\Image;
 use App\Models\Menu\Menu;
+use App\Models\Page\Content as PageContent;
+use App\Models\Sections\Contact;
 use App\Models\Staff\Affiliation;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
-use App\Models\Page\Content as PageContent;
 
 class DivisionController extends Controller
 {

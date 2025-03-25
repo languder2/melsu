@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Contact;
-use App\Models\Gallery\Gallery;
+use App\Models\Sections\Contact;
 use App\View\Components\Admin\Contact\Form;
 use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;

@@ -37,6 +37,6 @@
 
 <x-html.admin.form-menu-item
         tabs='form_box'
-        tab='tab_careers'
+        tab='tab_career'
         text='Карьеры'
 />

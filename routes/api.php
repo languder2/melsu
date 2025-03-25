@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\View;
 use App\Http\Controllers\ContactController;
 
 use App\Http\Controllers\Sections\FAQController;
+use App\Http\Controllers\Sections\CareerController;
 
 Route::get('departments-by-faculty-shorts/{faculty?}', function (Request $request, $faculty = null) {
 
@@ -75,11 +76,15 @@ Route::middleware(['web','auth.api'])
     });
 
 Route::middleware(['web','auth.api'])
-    ->controller(FAQController::class)
     ->group(function () {
         Route::get('faq/add', [FAQController::class,'ApiAdd'])->name('api:faq:add');
         Route::get('faq/delete/{item?}', [FAQController::class,'ApiDelete'])->name('api:faq:delete');
     });
+
+Route::middleware(['web','auth.api'])->group(function () {
+    Route::get('career/add', [CareerController::class,'ApiAdd'])->name('api:career:add');
+    Route::get('career/delete/{item?}', [CareerController::class,'ApiDelete'])->name('api:career:delete');
+});
 
 
 Route::controller(\App\Http\Controllers\Division\DivisionController::class)

@@ -2,11 +2,10 @@
 
 namespace App\Models\Education;
 
-use App\Models\Contact;
 use App\Models\Division\Division;
-use App\Models\Education\Department as EducationDepartment;
 use App\Models\Gallery\Image;
 use App\Models\Page\Content as PageContent;
+use App\Models\Sections\Contact;
 use App\Models\Staff\Affiliation as StaffAffiliation;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;

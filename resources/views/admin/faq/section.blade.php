@@ -5,6 +5,7 @@
         (old('side_menu') === 'tab_faq' || isset($active))?'':'hidden'
     ])
 >
+
     <div class="flex gap-4 items-center bg-white p-4">
         <div class="flex-1 text-lg font-semibold">
             Вопросы и ответы
