@@ -2,7 +2,7 @@
     <div class="container custom p-2.5 xl:p-0">
         @if($news->count())
 
-            <div class="flex justify-between items-center mb-6 flex-col sm:flex-row">
+            <div class="flex justify-between items-center my-6 flex-col sm:flex-row">
                 <div class="mb-3 sm:mb-0">
                     <h2 class="text-2xl lg:text-3xl font-bold">Новости</h2>
                 </div>
@@ -25,7 +25,7 @@
                         </svg>
                     </div>
                 </div>
-                <div class="border-none sm:border-r-4 border-red-900 sm:border-b-4 border-b-[#FAFAFA] px-3 transition duration-300 ease-linear cursor-pointer
+                <div class="border-b-0 sm:border-r-4 sm:border-red-900 sm:border-b-4 sm:border-b-[#FAFAFA] px-3 transition duration-300 ease-linear cursor-pointer
         hover:border-b-4 hover:border-red-900">
                     <a href="{{url(route('news:show:all'))}}" class="font-semibold">Все новости</a>
                 </div>
