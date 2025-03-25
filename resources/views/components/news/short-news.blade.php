@@ -1,4 +1,4 @@
-<section class="news-section mb-6">
+<section id="news-block" class="news-section mb-6 scroll-mt-[50px] lg:scroll-mt-[150px] xl:scroll-mt-[200px]">
     <div class="container custom p-2.5 xl:p-0">
         @if($news->count())
 
@@ -7,23 +7,21 @@
                     <h2 class="text-2xl lg:text-3xl font-bold">Новости</h2>
                 </div>
                 <div class="flex justify-between items-center mb-3 sm:mb-0">
-                    <div class="p-4 rounded-full border border-[#212121] transition duration-300 ease-linear cursor-pointer group
-                    hover:border-red-900 hover:bg-red-900">
+                    <a href="{{$news->previousPageUrl()}}#news-block" class="{{$news->previousPageUrl() ? 'hover:border-red-900 hover:bg-red-900' : 'pointer-events-none bg-gray-300'}} p-4 rounded-full border border-[#212121] transition duration-300 ease-linear cursor-pointer group">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left group-hover:fill-white" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
                         </svg>
-                    </div>
+                    </a>
                     <div class="flex items-center px-3">
-                        <span class="font-bold">01</span>
+                        <span class="font-bold">{{ $news->currentPage() }}</span>
                         <span class="font-bold px-1">/</span>
-                        <span>10</span>
+                        <span>{{ $news->lastPage() }}</span>
                     </div>
-                    <div class="p-4 rounded-full border border-[#212121] transition duration-300 ease-linear cursor-pointer group
-                    hover:border-red-900 hover:bg-red-900">
+                    <a href="{{ $news->nextPageUrl() }}#news-block" class="{{$news->nextPageUrl() ? 'hover:border-red-900 hover:bg-red-900' : 'pointer-events-none bg-gray-300'}} p-4 rounded-full border border-[#212121] transition duration-300 ease-linear cursor-pointer group">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right group-hover:fill-white" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
                         </svg>
-                    </div>
+                    </a>
                 </div>
                 <div class="border-b-0 sm:border-r-4 sm:border-red-900 sm:border-b-4 sm:border-b-[#FAFAFA] px-3 transition duration-300 ease-linear cursor-pointer
         hover:border-b-4 hover:border-red-900">
@@ -46,3 +44,15 @@
         @endif
     </div>
 </section>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        if (window.location.hash === '#news-block') {
+            const newsBlock = document.getElementById('news-block');
+            if (newsBlock) {
+                newsBlock.scrollIntoView({
+                    block: 'start'
+                });
+            }
+        }
+    });
+</script>

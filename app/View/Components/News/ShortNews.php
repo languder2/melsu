@@ -8,12 +8,13 @@ use Carbon\Carbon;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Collection;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\View\Component;
 
 class ShortNews extends Component
 {
     public string $test = '55';
-    public ?Collection $news;
+    public LengthAwarePaginator $news;
     public ?Collection $reports;
     public ?Collection $previews;
 
@@ -33,8 +34,7 @@ class ShortNews extends Component
                 'publication_at',
             )
             ->orderBy('publication_at', 'desc')
-            ->limit(6)
-            ->get();
+            ->paginate(6);
 
         $this->reports = Events
             ::where('publication_at', '<=', Carbon::now())
