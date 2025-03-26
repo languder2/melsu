@@ -31,7 +31,7 @@
                             <a href="#">Стипендии</a>
                         </li>
                         <li>
-                            <a href="#">Гранты и форумы</a>
+                            <a href="{{url('granty-i-forumy')}}">Гранты и форумы</a>
                         </li>
                     </ul>
                 </div>
@@ -56,7 +56,7 @@
                             <a href="#">Личный кабинет абитуриента</a>
                         </li>
                         <li>
-                            <a href="#">Правила приема</a>
+                            <a href="{{url('https://abiturient.mgu-mlt.ru/documents')}}">Правила приема</a>
                         </li>
                         <li>
                             <a href="#">Подготовительные курсы</a>
