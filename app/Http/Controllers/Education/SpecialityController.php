@@ -25,7 +25,7 @@ class SpecialityController extends Controller
         return view('admin.education.specialities.list', compact('list','spo'));
     }
 
-    public function form(Request $request, $id = null)
+    public function form($id = null)
     {
 
         $current        = Speciality::find($id) ?? new Speciality();

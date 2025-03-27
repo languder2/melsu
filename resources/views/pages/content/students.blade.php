@@ -38,7 +38,7 @@
                 <h4 class="text-2xl font-[600] mb-3">Актуально</h4>
                 <ul>
                     <li class="hover:*:opacity-[0.8] *:transition-[var(--transition-link)] leading-normal pb-3">
-                        <a href="#"><i class="bi bi-arrow-right me-3"></i>Щаселение в общежитие</a>
+                        <a href="https://abiturient.mgu-mlt.ru/documents#dormitory"><i class="bi bi-arrow-right me-3"></i>Заселение в общежитие</a>
                     </li>
                     <li class="hover:*:opacity-[0.8] *:transition-[var(--transition-link)] leading-normal pb-3">
                         <a href="#"><i class="bi bi-arrow-right me-3"></i>Дополнительное образование</a>

@@ -32,7 +32,7 @@
                 }}
             @endforeach
         @elseif($current)
-            @foreach($current->sections as $section)
+            @foreach($current->sections(false)->get() as $section)
                 {{
                     view('admin.page.content.editor',[
                         'section'   => $section,
