@@ -4612,7 +4612,11 @@ a.modal-open {
 .info-hex-wrapp
 {
     transition: .3s linear;
+    pointer-events: auto;
     opacity: 1;
+}
+.info-hex-wrapp.load{
+    pointer-events: none;
 }
 .left-info-box .info-hex-wrapp .info-hex-content .move-block,
 .right-info-box .info-hex-wrapp .info-hex-content .move-block{
