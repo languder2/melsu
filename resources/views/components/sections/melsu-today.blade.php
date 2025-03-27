@@ -3,7 +3,7 @@
     <div class="wrapper-melsu-section p-2.5 2xl:p-0 container custom">
         <div class="header-today-box col-12 col-lg-12 col-xl-8 col-xxl-6">
             <h2 class="heading-title-h2">
-                МелГУ сегодня — ведущий учебный и научный центр.
+                МелГУ сегодня — ведущий учебный и научный центр
             </h2>
         </div>
         <div class="scroll-info-box overflow-x-auto wrapper-info-box ">
@@ -46,20 +46,20 @@
                 </div>
                 <div class="text-box">
                     <p>
-                        Абитуриенту
+                        Поступающему
                     </p>
                 </div>
                 <div class="red-line"></div>
                 <div class="point-menu-list">
                     <ul>
                         <li>
-                            <a href="#">Личный кабинет абитуриента</a>
+                            <a href="https://epk.mgu-mlt.ru">Личный кабинет абитуриента</a>
                         </li>
                         <li>
                             <a href="{{url('https://abiturient.mgu-mlt.ru/documents')}}">Правила приема</a>
                         </li>
                         <li>
-                            <a href="#">Подготовительные курсы</a>
+                            <a href="{{'podgotovitelnye-kursy'}}">Подготовительные курсы</a>
                         </li>
                         <li>
                             <a href="#">Иностранным абитуриентам</a>
@@ -115,7 +115,7 @@
                 <div class="point-menu-list">
                     <ul>
                         <li>
-                            <a href="#">Партнеры</a>
+                            <a href="{{url('partner')}}">Партнеры</a>
                         </li>
                         <li>
                             <a href="#">Проекты</a>

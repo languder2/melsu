@@ -40,16 +40,16 @@
             <div class="flex items-center order-2 lg:order-2">
                 <ul class="list-disc list-inside leading-10">
                     <li>
-                        Средняя температура в году <strong>+5 °C</strong>
-                    </li>
-                    <li>
-                        Долгое, теплое и малооблачное лето.
-                    </li>
-                    <li>
-                        Теплый сезон – 5 месяцев
+                        Средняя температура в году <strong>+23 °C</strong>
                     </li>
                     <li>
                         Максимальная среднесуточная температура <strong>23 °C</strong>
+                    </li>
+                    <li>
+                        Долгое, теплое и малооблачное лето
+                    </li>
+                    <li>
+                        Теплый сезон – 5 месяцев
                     </li>
                 </ul>
             </div>
