@@ -119,7 +119,7 @@
             <div class="flex items-center order-2 lg:order-2">
                 <ul class="list-disc list-inside leading-10">
                     <li>
-                        <strong>7 тысяч гектаров</strong> садов у Мелитопольского государственного университета
+                        <strong>7 тысяч гектаров</strong> садов Мелитопольского государственного университета
                     </li>
                     <li>
                         <strong>Более 10 000 фруктовых деревьев</strong>
@@ -170,8 +170,7 @@
     </div>
 </section>
 <div class="box-heading container custom">
-    <h2 class="font-bold text-2xl my-6 lg:mt-[7%] lg:mb-[3.5%] lg:text-end">Наука В МелГУ – Фундамент для светлого
-        «Завтра»</h2>
+    <h2 class="font-bold text-2xl my-6 lg:mt-[7%] lg:mb-[3.5%] lg:text-end">Наука В МелГУ – фундамент светлого будущего</h2>
 </div>
 <section class="container custom text-lg">
     <div class="bg-white p-6 mb-3">
@@ -259,9 +258,6 @@
 </div>
 <section class="container custom text-lg">
     <div class="bg-white p-6">
-        <p class="mb-3 font-[500]">
-            Новые направления подготовки на 2025-2026 учебный год:
-        </p>
         <div class="grid grid-cols-1 lg:grid-cols-[422px_auto] gap-3 lg:gap-6">
             <div class="flex justify-center lg:justify-end order-1 lg:order-1">
                 <img src="{{asset('img/ph-16.jpg')}}" alt="" class="lg:max-w-[422px] lg:max-h-[422px]">
@@ -291,9 +287,6 @@
 </div>
 <section class="container custom text-lg p-2.5">
     <div class="bg-white p-6">
-        <p class="mb-3 font-[500]">
-            Новые направления подготовки на 2025-2026 учебный год:
-        </p>
         <div class="grid grid-cols-1 lg:grid-cols-[auto_422px] gap-3 lg:gap-6">
             <div class="flex items-center order-2 lg:order-1">
                 <ul class="list-disc list-inside leading-10">
@@ -397,7 +390,7 @@
     </div>
 </section>
 <div class="box-heading container custom">
-    <h2 class="font-bold text-2xl my-6 lg:mt-[7%] lg:mb-[3.5%] lg:text-end">Достопримечательности города</h2>
+    <h2 class="font-bold text-2xl my-6 lg:mt-[7%] lg:mb-[3.5%] lg:text-end">Достопримечательности Запорожской области.</h2>
 </div>
 <section class="container custom text-lg p-2.5">
     <div class="bg-white p-6">
