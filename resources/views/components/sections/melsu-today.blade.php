@@ -28,7 +28,7 @@
                             <a href="#">Личный кабинет</a>
                         </li>
                         <li>
-                            <a href="#">Стипендии</a>
+                            <a href="{{url('stipendii')}}">Стипендии</a>
                         </li>
                         <li>
                             <a href="{{url('granty-i-forumy')}}">Гранты и форумы</a>
