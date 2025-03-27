@@ -27,6 +27,7 @@
                 flex-1
             "
             onkeydown="PublicAction.KeyDownTimer(this)"
+            onchange="PublicAction.FormSend(this.closest('form'),document.getElementById('{{$block}}'))"
         >
         <i class="fas fa-search pr-4 "></i>
 

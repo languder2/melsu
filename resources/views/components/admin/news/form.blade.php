@@ -62,11 +62,11 @@
             />
 
             <x-form.input
-                id="publication_at"
+                id="published_at"
                 type="datetime-local"
-                name="publication_at"
+                name="published_at"
                 label="Дата публикация"
-                value="{{old('post')??($current?->getAttributes()['publication_at']??now())}}"
+                value="{{old('post')??($current?->getAttributes()['published_at']??now())}}"
             />
 
             <x-form.file

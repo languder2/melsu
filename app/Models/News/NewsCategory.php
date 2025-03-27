@@ -14,7 +14,7 @@ class NewsCategory extends Model
         'id' => '',
         'name' => 'required|unique',
         'sort' => '',
-        'publication_at' => '',
+        'published_at' => '',
     ];
     public static $FormMessage = [
         'name.required' => 'Укажите заголовок',
@@ -26,7 +26,10 @@ class NewsCategory extends Model
         'id',
         'name',
         'sort',
-        'deleted_at',
+    ];
+    protected $visible = [
+        'name',
+        'sort',
     ];
 
     public static function getListForSelect(?int $id = null): array
@@ -39,15 +42,12 @@ class NewsCategory extends Model
             $response[$record->id] = $record->name;
 
         return $response;
-
     }
 
     public function news(): HasMany
     {
-
         return $this->hasMany(News::class, 'category', 'id')
-//            ->where()
-            ->orderBy('publication_at', 'desc')
+            ->orderBy('published_at', 'desc')
             ->orderBy('name');
     }
 

@@ -193,6 +193,7 @@ class StaffController extends Controller
 
         $staffs = $staffs->paginate(3);
 
+
         return view('public.staffs.staffs.list',compact('staffs'));
 
     }

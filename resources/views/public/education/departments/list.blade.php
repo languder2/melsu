@@ -3,7 +3,7 @@
 @section('title', 'ФГБОУ ВО "МелГУ": Факультеты')
 
 @section('breadcrumbs')
-    {{Breadcrumbs::view("vendor.breadcrumbs.base",'faculties',null)}}
+    {{Breadcrumbs::view("vendor.breadcrumbs.base",'departments',null)}}
 @endsection
 
 @section('content')

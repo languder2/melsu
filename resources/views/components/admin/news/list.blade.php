@@ -39,7 +39,7 @@
             </div>
 
             <div>
-                    <?= $record->publication_at ?>
+                    <?= $record->published_at ?>
             </div>
 
             <div class="md:col-span-4">

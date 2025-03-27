@@ -41,8 +41,12 @@ export async function FormSend(form,block) {
 
 let timeoutId;
 export function KeyDownTimer(element){
+    let value = element.value;
     clearTimeout(timeoutId);
-    timeoutId = setTimeout(()=>element.closest('form').dispatchEvent(new Event('submit')),300);
+    timeoutId = setTimeout(()=> {
+        if(value !== element.value)
+            element.dispatchEvent(new Event('change'))
+    },300);
 }
 
 

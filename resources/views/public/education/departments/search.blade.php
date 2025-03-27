@@ -2,12 +2,13 @@
     <form
         method="post"
         action="{{route('public:education:departments:filter:set')}}"
-        onsubmit="PublicAction.formSend(this,document.getElementById('DepartmentsList')); return false;"
+        onsubmit="return false;"
     >
         <div class="flex gap-4">
             <div class="flex-1">
                 <x-form.theme1.input-search
                     name="search"
+                    block="DepartmentsList"
                 />
             </div>
             <x-form.theme1.alt-select

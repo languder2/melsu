@@ -9,7 +9,7 @@
             </h1>
             <span class="text-[var(--primary-color)]">
                 <i class="bi bi-calendar2-week"></i>
-                    {{$news->publication_at}}
+                    {{$news->published_at}}
             </span>
         </div>
     </section>

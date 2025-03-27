@@ -28,7 +28,7 @@
                     <div class="text-end">
                                     <span class="text-[12px] font-[500]">
                                         <i class="bi bi-calendar2-week"></i>
-                                        {{$news->publication_at}}
+                                        {{$news->published_at}}
                                     </span>
                     </div>
                 </div>

@@ -2,6 +2,7 @@
 
 namespace App\Models\Menu;
 
+use App\Models\Division\Division;
 use App\Models\Gallery\Image;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Http\Request;
@@ -44,6 +45,10 @@ class Menu extends Model
             'name' => 'Укажите заголовок',
             'code' => 'Код уже занят'
         ];
+    }
+    public function resolveRouteBinding($value, $field = null): ?Menu
+    {
+        return $this->where('code', $value)->first() ??  $this->where('id', $value)->first();
     }
 
     public static function GetList(): Collection

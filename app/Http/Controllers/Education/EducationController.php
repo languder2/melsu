@@ -99,7 +99,7 @@ class EducationController extends Controller
         return view('pages.page', [
             'breadcrumbs' => (object)[
                 'view'      => null,
-                'route'     => 'faculties',
+                'route'     => 'labs',
                 'element'   => null,
             ],
 

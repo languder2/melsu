@@ -17,7 +17,7 @@ class Events extends NewsCategory
         'news' => '',
         'author' => '',
         'sort' => '',
-        'publication_at' => '',
+        'published_at' => '',
     ];
     public static $FormMessage = [
         'type' => 'Укажите тип',
@@ -34,13 +34,13 @@ class Events extends NewsCategory
         'news',
         'image',
         'author',
-        'publication_at',
+        'published_at',
         'deleted_at',
     ];
 
     public static function getList(): object
     {
-        return self::orderBy('publication_at', 'desc')->get();
+        return self::orderBy('published_at', 'desc')->get();
     }
 
 }

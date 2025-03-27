@@ -4,9 +4,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!list) return;
 
     list.forEach((el) => {
-        console.log(el);
-        return;
-
             let form = el.closest('form');
             if(!form) return;
 
@@ -14,11 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let noSearch = form.getAttribute('data-no-search');
             let cards = document.querySelectorAll(groupSearch);
 
-
-
             el.addEventListener('change', () => {
-
-                showAll(cards);
 
                 let formData = new FormData(form);
 
@@ -72,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if(document.querySelector('.btn-show-filter'))
         document.querySelector('.btn-show-filter').addEventListener('click', () => {
-            document.querySelector('.box-show-filter').classList.add('hidde');
+            document.querySelector('.box-show-filter').classList.add('hidden');
             document.querySelector('.filters-select-box').classList.remove('hidden');
         })
 
