@@ -104,7 +104,8 @@
     >
         Направления подготовки по заданным параметрам не найдены
     </div>
-    @if($short)
+
+    @if($is_short)
         <div class="more-btns">
             <div class="btn-more-box flex items-center active justify-end">
                 <a href="{{route('public:education:specialities:all')}}" class="btn-more">

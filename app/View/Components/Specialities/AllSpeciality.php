@@ -64,10 +64,10 @@ class AllSpeciality extends Component
             $specialities->limit(9);
 
         return view('components.specialities.all-speciality', [
-            'specialities' => $specialities->get(),
-            'short' => $this->short,
-            'show'  => $this->showHeader,
-            'division' => $this->division,
+            'specialities'  => $specialities->get(),
+            'is_short'      => $this->short,
+            'show'          => $this->showHeader,
+            'division'      => $this->division,
         ]);
     }
 }

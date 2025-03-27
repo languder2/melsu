@@ -15,6 +15,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 let formData = new FormData(form);
 
+                filterShowAllCards(cards);
+
                 formData.forEach((value, field) => {
                     let type = form.querySelector('[name="' + field + '"]')
                         .getAttribute('data-filter-type');
@@ -32,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
             })
     });
 
-    function showAll(cards) {
+    function filterShowAllCards(cards) {
         cards.forEach((card) => {
             card.setAttribute('checked', 'true');
         })
