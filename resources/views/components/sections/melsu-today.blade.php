@@ -36,7 +36,7 @@
                     </ul>
                 </div>
                 <div class="btn-more-box flex items-center">
-                    <a href="#" class="btn-more">Подробнее</a>
+                    <a href="https://melsu.ru/update-page" class="btn-more">Подробнее</a>
                     <i class="bi bi-arrow-right-circle-fill"></i>
                 </div>
             </div>
@@ -67,7 +67,7 @@
                     </ul>
                 </div>
                 <div class="btn-more-box flex items-center">
-                    <a href="#" class="btn-more">Подробнее</a>
+                    <a href="https://melsu.ru/update-page" class="btn-more">Подробнее</a>
                     <i class="bi bi-arrow-right-circle-fill"></i>
                 </div>
             </div>
@@ -98,7 +98,7 @@
                     </ul>
                 </div>
                 <div class="btn-more-box flex items-center">
-                    <a href="#" class="btn-more">Подробнее</a>
+                    <a href="https://melsu.ru/update-page" class="btn-more">Подробнее</a>
                     <i class="bi bi-arrow-right-circle-fill"></i>
                 </div>
             </div>
@@ -129,7 +129,7 @@
                     </ul>
                 </div>
                 <div class="btn-more-box flex items-center">
-                    <a href="#" class="btn-more">Подробнее</a>
+                    <a href="https://melsu.ru/update-page" class="btn-more">Подробнее</a>
                     <i class="bi bi-arrow-right-circle-fill"></i>
                 </div>
             </div>
