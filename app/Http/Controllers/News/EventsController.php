@@ -19,7 +19,7 @@ class EventsController extends Controller
                 ])->render(),
 
                 View::make('components.admin.events.events')->with([
-                    'list' => Events::orderBy('publication_at', 'desc')->get(),
+                    'list' => Events::orderBy('published_at', 'desc')->get(),
                 ])->render(),
             ]
         ]);

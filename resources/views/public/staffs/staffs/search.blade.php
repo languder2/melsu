@@ -1,7 +1,9 @@
 <form
+
+    id="StaffFormSearch"
     method="post"
     action="{{route('public:staffs:search')}}"
-    onsubmit="PublicAction.formSend(this,document.getElementById('PersonnelStructure')); return false;"
+    onsubmit="return false;"
     class="mb-4 p-4 bg-white"
 >
     @csrf
@@ -10,6 +12,7 @@
             <x-form.theme1.input-search
                 name="search"
                 class="bg-stone-50/50"
+                block="PersonnelStructure"
             />
         </div>
     </div>

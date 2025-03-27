@@ -43,11 +43,6 @@
                                         {{$speciality->faculty->name ?? ''}}
                                     </p>
 
-{{--                                @if(is_null($faculty))--}}
-{{--                                    <p class="sku uppercase font-medium mb-3">--}}
-{{--                                        {{$speciality->faculty->name}}--}}
-{{--                                    </p>--}}
-{{--                                @endif--}}
                                 <h2 class="text-xl font-[600] name mb-6">
                                     {{$speciality->spec_code}}
                                     -

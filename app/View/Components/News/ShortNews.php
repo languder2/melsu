@@ -24,43 +24,43 @@ class ShortNews extends Component
     public function __construct()
     {
         $this->news = News
-            ::where('publication_at', '<=', Carbon::now())
+            ::where('published_at', '<=', Carbon::now())
             ->select(
                 'id',
                 'category',
                 'title',
                 'short',
                 'image',
-                'publication_at',
+                'published_at',
             )
-            ->orderBy('publication_at', 'desc')
+            ->orderBy('published_at', 'desc')
             ->paginate(6);
 
         $this->reports = Events
-            ::where('publication_at', '<=', Carbon::now())
+            ::where('published_at', '<=', Carbon::now())
             ->where('type', 'report')
             ->select(
                 'id',
                 'title',
                 'short',
                 'image',
-                'publication_at',
+                'published_at',
             )
-            ->orderBy('publication_at', 'desc')
+            ->orderBy('published_at', 'desc')
             ->limit(4)
             ->get();
 
         $this->previews = Events
-            ::where('publication_at', '<=', Carbon::now())
+            ::where('published_at', '<=', Carbon::now())
             ->where('type', 'preview')
             ->select(
                 'id',
                 'title',
                 'short',
                 'image',
-                'publication_at',
+                'published_at',
             )
-            ->orderBy('publication_at', 'desc')
+            ->orderBy('published_at', 'desc')
             ->limit(4)
             ->get();;
     }

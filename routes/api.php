@@ -11,6 +11,7 @@ use App\Http\Controllers\ContactController;
 
 use App\Http\Controllers\Sections\FAQController;
 use App\Http\Controllers\Sections\CareerController;
+use App\Http\Controllers\News\ApiNews;
 
 Route::get('departments-by-faculty-shorts/{faculty?}', function (Request $request, $faculty = null) {
 
@@ -107,10 +108,8 @@ Route::controller(\App\Http\Controllers\Division\DivisionController::class)
         Route::get('get-search-result','PublicSearchResult');
     });
 
-Route::controller(StaffController::class)->group(function () {
-    Route::post('get-search-result','PublicSearchResult')
+    Route::post('get-search-result',[StaffController::class,'PublicSearchResult'])
         ->name('public:staffs:search');
-});
 
 
 
@@ -213,3 +212,10 @@ Route::get('correct',function(){
 });
 
 Route::get('set-score',[\App\Http\Controllers\ImportController::class,'setScores']);
+
+Route::get('set-score',[\App\Http\Controllers\ImportController::class,'setScores']);
+
+Route::get('news/categories',           [ApiNews::class,'getCategories']);
+Route::get('news/list/{count?}',        [ApiNews::class,'getList'])->setDefaults(['count'=>10]);
+Route::get('news/from/{date?}',         [ApiNews::class,'getListFrom']);
+

@@ -9,8 +9,6 @@
 //         const cards = document.querySelectorAll(groupSearch);
 //
 //         el.addEventListener('change', () => {
-//             showAll(cards);
-//
 //             const formData = new FormData(form);
 //             formData.forEach((value, field) => {
 //                 const type = form.querySelector(`[name="${field}"]`).getAttribute('data-filter-type');

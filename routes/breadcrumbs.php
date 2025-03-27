@@ -2,6 +2,7 @@
 
 use App\Models\Education\Faculty;
 use App\Models\Education\Speciality;
+use App\Models\Menu\Menu;
 use App\Models\News\News;
 use App\Models\Page;
 use App\Models\Staff\Staff;
@@ -24,9 +25,37 @@ Breadcrumbs::for('news-item', function (BreadcrumbTrail $trail, News $news) {
     $trail->push($news->title??'Новость', route('news:show',[$news->id??null]));
 });
 
-Breadcrumbs::for('faculties', function (BreadcrumbTrail $trail) {
+Breadcrumbs::for('menu', function (BreadcrumbTrail $trail, ?Menu $menu) {
     $trail->parent('home');
+    $trail->push($menu->name,$menu->link);
+});
+
+Breadcrumbs::for('faculties', function (BreadcrumbTrail $trail) {
+    $trail->parent('menu',Menu::where('code','university')->first());
+
     $trail->push('Факультеты и филиалы', route('public:education:faculties'));
+    $trail->push('Факультеты', route('public:education:faculties'));
+});
+
+Breadcrumbs::for('departments', function (BreadcrumbTrail $trail) {
+    $trail->parent('menu',Menu::where('code','university')->first());
+
+    $trail->push('Факультеты и филиалы', route('public:education:faculties'));
+    $trail->push('Кафедры', route('public:education:departments:list'));
+});
+
+Breadcrumbs::for('branches', function (BreadcrumbTrail $trail) {
+    $trail->parent('menu',Menu::where('code','university')->first());
+
+    $trail->push('Факультеты и филиалы', route('public:education:faculties'));
+    $trail->push('Филиалы', route('public:education:branch:list'));
+});
+
+Breadcrumbs::for('labs', function (BreadcrumbTrail $trail) {
+    $trail->parent('menu',Menu::where('code','university')->first());
+
+    $trail->push('Факультеты и филиалы', route('public:education:faculties'));
+    $trail->push('Лаборатории', route('public:labs:list'));
 });
 
 Breadcrumbs::for('faculty', function (BreadcrumbTrail $trail, ?Division $division) {

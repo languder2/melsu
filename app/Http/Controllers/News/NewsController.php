@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\News;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\JsonResponse;
 use App\Models\{News\News, News\NewsCategory};
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -118,8 +119,8 @@ class NewsController extends Controller
 
     public function showAll()
     {
-        $list = News::orderBy('publication_at', 'desc')
-            ->select('id', 'title', 'short', 'full', 'publication_at', 'image', 'category')
+        $list = News::orderBy('published_at', 'desc')
+            ->select('id', 'title', 'short', 'full', 'published_at', 'image', 'category')
             ->paginate(13);
 
         return view('pages.page', [
@@ -142,5 +143,4 @@ class NewsController extends Controller
             ]
         ]);
     }
-
 }
