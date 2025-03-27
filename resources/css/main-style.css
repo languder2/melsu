@@ -4612,7 +4612,6 @@ a.modal-open {
 .info-hex-wrapp
 {
     transition: .3s linear;
-    pointer-events: none;
     opacity: 1;
 }
 .left-info-box .info-hex-wrapp .info-hex-content .move-block,
@@ -5740,3 +5739,23 @@ position: fixed;
     }
 }
 /*END schedule style*/
+.block-with-triangle:before{
+    content: '';
+    display: block;
+    position: absolute;
+    right: -4px;
+    top: -4px;
+    width: 30px;
+    height: 30px;
+    clip-path: polygon(10% 10%, 50% 50%, 90% 90%, 10% 90%);
+}
+.block-with-triangle:after{
+    content: '';
+    display: block;
+    position: absolute;
+    right: -5px;
+    top: -7px;
+    width: 35px;
+    height: 35px;
+    clip-path: polygon(10% 10%, 90% 10%, 90% 90%, 50% 50%);
+}
