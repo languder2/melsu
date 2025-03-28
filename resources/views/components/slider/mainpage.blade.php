@@ -54,7 +54,7 @@
     </div>
     <div class="info-under-slider">
         <div class="box-info-under-slider">
-            <div class="under-info flex items-center">
+            <a href="{{url('notsmu')}}" class="under-info flex items-center">
                     <span class="icon-box">
                         <svg aria-hidden="true"
                              class="e-font-icon-svg e-fas-microscope"
@@ -65,10 +65,10 @@
                             </svg>
                     </span>
                 <span class="text-under-info text-lg">
-                        Научно-образовательный центр мирового уровня
-                    </span>
-            </div>
-            <div class="under-info flex items-center">
+                    Научно-образовательный центр мирового уровня
+                </span>
+            </a>
+            <a href="{{url('programma-razvitiya-melsu')}}" class="under-info flex items-center">
                     <span class="icon-box">
                         <svg aria-hidden="true"
                              class="e-font-icon-svg e-far-calendar-alt"
@@ -82,7 +82,7 @@
                 <span class="text-under-info text-lg">
                         Программа развития МелГУ на 2023-2028 годы
                     </span>
-            </div>
+            </a>
         </div>
     </div>
 </section>
