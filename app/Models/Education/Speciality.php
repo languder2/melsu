@@ -93,9 +93,15 @@ class Speciality extends Model
     {
         return $this->MorphOne(Image::class, 'relation')->where('type', 'ico');
     }
-    public function sections(): MorphMany
+    public function sections(bool $public = true): MorphMany
     {
-        return $this->morphMany(PageContent::class, 'relation')->orderBy('order');
+
+        $result = $this->morphMany(PageContent::class, 'relation')->orderBy('order');
+
+        if($public)
+            $result->where('show',true);
+
+        return $result;
     }
     public function faq($public = false): MorphMany
     {
