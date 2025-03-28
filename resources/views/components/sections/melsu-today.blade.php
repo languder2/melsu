@@ -62,7 +62,7 @@
                             <a href="{{'podgotovitelnye-kursy'}}">Подготовительные курсы</a>
                         </li>
                         <li>
-                            <a href="#">Иностранным абитуриентам</a>
+                            <a href="../../../storage/documents/board-of-trustees/inostr-student.pdf">Иностранным абитуриентам</a>
                         </li>
                     </ul>
                 </div>
