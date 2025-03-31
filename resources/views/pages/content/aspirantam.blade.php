@@ -1,7 +1,7 @@
 
 <section class="container custom1">
     <p class="text-lg text-[#4C4C4C] mb-6">
-        2023-2024 учебный год университет встретил со 122 аспирантами и 16 докторантами.
+        2024-2025 учебный год университет встретил со 151 аспирантами и 17 докторантами.
         Надежными наставниками на пути становления кандидата или доктора наук являются десятки научных руководителей,
         как из числа штатных сотрудников университета, так и ведущие приглашенные ученые с других вузов.
     </p>
@@ -13,12 +13,12 @@
     <div class="bg-white p-6 mb-5">
         <ul class="doc-list list-none list-inside marker:text-[var(--secondary-color)] text-[var(--main-color)]">
             <li class="leading-[1.8rem] pb-3">
-                <a href="https://mgu-mlt.ru/wp-content/uploads/2024/02/polozhenie_o_podgotovke_nauchnyh_kadrov_v_aspiranture.pdf" class="flex items-center"><i
+                <a target="_blank" href="../../../storage/documents/board-of-trustees/polozhenie_o_podgotovke_nauchnyh_kadrov_v_aspiranture_2025.pdf" class="flex items-center"><i
                         class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>
                     Положение о подготовке научных и научно-педагогических кадров в аспирантуре Мелитопольского государственного университета</a>
             </li>
             <li class="leading-[1.8rem] pb-3">
-                <a href="https://mgu-mlt.ru/wp-content/uploads/2024/02/polozhenie_o_nauchnom_rukovoditele_aspiranta_i_nauchnom_konsultante.pdf" class="flex items-center"><i
+                <a target="_blank" href="../../../storage/documents/board-of-trustees/polozhenie_o_nauchnom_rukovoditele_aspiranta_i_nauchnom_konsultante.pdf" class="flex items-center"><i
                         class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>Ответы на
                     Положение о научном руководителе аспиранта и научном консультанте докторанта в Мелитопольском государственном университете</a>
             </li>
@@ -56,6 +56,9 @@
                      aria-labelledby='basic-heading-one-default'>
                     <div class="accordion-text py-3">
                         <ul class="doc-list list-disc list-inside marker:text-[var(--secondary-color)] text-[var(--main-color)]">
+                            <li class="leading-[1.8rem]">
+                                5.8.1 Общая педагогика, история педагогики и образования
+                            </li>
                             <li class="leading-[1.8rem]">
                                 5.8.2 Теория и методика обучения и воспитания (по областям и уровням образования)
                             </li>
@@ -176,9 +179,6 @@
                                 5.2.4 Финансы
                             </li>
                             <li class="leading-[1.8rem]">
-                                2.5.21 Машины, агрегаты и технологические процессы
-                            </li>
-                            <li class="leading-[1.8rem]">
                                 4.1.5 Мелиорация, водное хозяйство и агрофизика
                             </li>
                             <li class="leading-[1.8rem]">
@@ -243,6 +243,9 @@
                                 2.4.4 Электротехнология и электрофизика
                             </li>
                             <li class="leading-[1.8rem]">
+                                2.5.21 Машины, агрегаты и технологические процессы
+                            </li>
+                            <li class="leading-[1.8rem]">
                                 4.1.1 Общее земледелие и растениеводство
                             </li>
                         </ul>
@@ -253,16 +256,17 @@
     </div>
 </section>
 <div class="box-heading container custom1">
-    <h2 class="font-bold text-3xl my-6 lg:text-end">ПРАВИЛА ПРИЕМА НА 2024 ГОД</h2>
+    <h2 class="font-bold text-3xl my-6 lg:text-end">ПРАВИЛА ПРИЕМА НА 2025 ГОД</h2>
 </div>
 <section class="container custom1">
     <div class="bg-white p-6 mb-5">
         <ul class="doc-list list-none list-inside marker:text-[var(--secondary-color)] text-[var(--main-color)]">
             <li class="leading-[1.8rem] pb-3">
-                <a href="https://mgu-mlt.ru/wp-content/uploads/2024/02/prilozhenie_asp_2_015_k_prikazu_1278_kczp_dlya_7940.pdf" class="flex items-center"><i
+                <a target="_blank" href="../../../storage/documents/board-of-trustees/application-3.pdf" class="flex items-center"><i
                         class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>
-                    Контрольные цифры приема на обучение по научным специальностям для обучения по образовательным программам высшего образования –
-                    программам подготовки научных и научно-педагогических кадров в аспирантуре (адъюнктуре) за счет бюджетных ассигнований федерального бюджета на 2024/25 учебный год</a>
+                    Контрольные цифры приема на обучение по научным специальностям
+                    для обучения по образовательным программам высшего образования – программам подготовки научных и научно-педагогических
+                    кадров в аспирантуре (адъюнктуре) за счет бюджетных ассигнований федерального бюджета на 2025/26 учебный год</a>
             </li>
         </ul>
     </div>
@@ -274,7 +278,7 @@
     <div class="bg-white p-6 mb-5">
         <ul class="doc-list list-none list-inside marker:text-[var(--secondary-color)] text-[var(--main-color)]">
             <li class="leading-[1.8rem] pb-3">
-                <a href="https://mgu-mlt.ru/wp-content/uploads/2024/07/zayavlenie-2024.pdf" class="flex items-center"><i
+                <a target="_blank" href="../../../storage/documents/board-of-trustees/zayavlenie-2024.pdf" class="flex items-center"><i
                         class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>Заявление</a>
             </li>
             <li class="leading-[1.8rem] pb-3 flex items-center">
@@ -427,12 +431,11 @@
         </div>
         <p class="text-[#4C4C4C]">
             Сроки приема документов для обучения по программам аспирантуры в рамках контрольных цифр за счет бюджетных
-            ассигнований происходит – <strong>с 1 июля по 28 июля 2024 г.</strong><br><br>
-            Сроки проведения вступительных испытаний (в соответствии с расписанием) – <strong>с 1 августа по 30 августа
-                2024 г.</strong><br><br>
-            Завершение приема оригиналов документов при зачислении на места в рамках КЦП – <strong>31 августа 2024
-                года.</strong><br><br>
-            Зачисление на обучение – <strong>1 сентября 2024 года.</strong>
+            ассигнований происходит – <strong>20 июня с использованием суперсервиса</strong><br><br>
+            без использования суперсервиса – <strong>с 1 августа по 15 августа 2025 г.</strong><br><br>
+            Сроки проведения вступительных испытаний (в соответствии с расписанием) – <strong>с 15 по 30 августа 2025 года.</strong><br><br>
+            Завершение приема оригиналов документов при зачислении на места в рамках КЦП – <strong>31 АВГУСТА 2025 года.</strong>
+            Зачисление на обучение – <strong>1 СЕНТЯБРЯ 2025 года.</strong>
         </p>
     </div>
 </section>
@@ -443,7 +446,7 @@
     <div class="bg-white p-6 mb-5">
         <ul class="doc-list list-none list-inside marker:text-[var(--secondary-color)] text-[var(--main-color)]">
             <li class="leading-[1.8rem] pb-3">
-                <a href="https://mgu-mlt.ru/wp-content/uploads/2024/04/poryadok_podgotovki_i_sdachi_soiskatelyami_nauchnoj_stepeni.pdf" class="flex items-center"><i
+                <a target="_blank" href="../../../storage/documents/board-of-trustees/poryadok_podgotovki_i_sdachi_soiskatelyami_nauchnoj_stepeni.pdf" class="flex items-center"><i
                         class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>
                     ФГБОУ ВО «МелГУ» — Порядок подготовки и сдачи соискателями научной степени кандидатских экзаменов в Федеральном государственном бюджетном образовательном учреждении
                     высшего образования «Мелитопольский государственный университет»</a>
@@ -458,9 +461,49 @@
     <div class="bg-white p-6 mb-5">
         <ul class="doc-list list-none list-inside marker:text-[var(--secondary-color)] text-[var(--main-color)]">
             <li class="leading-[1.8rem] pb-3">
-                <a href="https://melsu.ru/programmy-kandidatskogo-ekzamena" class="flex items-center"><i
+                <a target="_blank" href="../../../storage/documents/board-of-trustees/programma_kandidatskogo_ekzamena_po_inostrannomu_yazyku_anglijskomu.pdf" class="flex items-center"><i
                         class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>
-                    Программы кандидатского экзамена</a>
+                    По иностранному языку (английский), направление подготовки 44.06.01 Образование и педагогические науки (специальности — 5.8.1, 5.8.2, 5.8.7).</a>
+            </li>
+            <li class="leading-[1.8rem] pb-3">
+                <a target="_blank" href="../../../storage/documents/board-of-trustees/programma_kandidatskogo_ekzamena_po_inostrannomu_yazyku_anglijskomu-2.pdf" class="flex items-center"><i
+                        class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>
+                    По иностранному языку (английский), направление подготовки 46.06.01 Исторические науки и археология (специальности — 5.6.1, 5.6.5, 5.6.7).</a>
+            </li>
+            <li class="leading-[1.8rem] pb-3">
+                <a target="_blank" href="../../../storage/documents/board-of-trustees/programma_kandidatskogo_ekzamena_po_inostrannomu_yazyku_anglijskomu-3.pdf" class="flex items-center"><i
+                        class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>
+                    По иностранному языку (английский), направление подготовки 02.06.01 Компьютерные и информационные науки (специальность — 1.2.3).</a>
+            </li>
+            <li class="leading-[1.8rem] pb-3">
+                <a target="_blank" href="../../../storage/documents/board-of-trustees/programma_kandidatskogo_ekzamena_po_inostrannomu_yazyku_anglijskomu-4.pdf" class="flex items-center"><i
+                        class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>
+                    По иностранному языку (английский), направление подготовки 06.06.01 Биологические науки (специальность— 1.5.9).</a>
+            </li>
+            <li class="leading-[1.8rem] pb-3">
+                <a target="_blank" href="../../../storage/documents/board-of-trustees/programma_kandidatskogo_ekzamena_po_inostrannomu_yazyku_anglijskomu-5.pdf" class="flex items-center"><i
+                        class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>
+                    По иностранному языку (английский), направление подготовки 35.06.04 Технологии, средства механизации и энергетическое оборудование в сельском, лесном и рыбном хозяйстве (специальность — 2.5.21).</a>
+            </li>
+            <li class="leading-[1.8rem] pb-3">
+                <a target="_blank" href="../../../storage/documents/board-of-trustees/programma_kandidatskogo_ekzamena_po_inostrannomu_yazyku_anglijskomu-6.pdf" class="flex items-center"><i
+                        class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>
+                    По иностранному языку (английский), направление подготовки 38.06.01 Экономика (специальность — 5.2.3).</a>
+            </li>
+            <li class="leading-[1.8rem] pb-3">
+                <a target="_blank" href="../../../storage/documents/board-of-trustees/programma_kandidatskogo_ekzamena_po_inostrannomu_yazyku_anglijskomu-7.pdf" class="flex items-center"><i
+                        class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>
+                    По иностранному языку (английский), направление подготовки 13.06.01 Электро- и теплотехника науки и археология (специальность — 2.4.4).</a>
+            </li>
+            <li class="leading-[1.8rem] pb-3">
+                <a target="_blank" href="../../../storage/documents/board-of-trustees/programma_kandidatskogo_ekzamena_po_inostrannomu_yazyku_anglijskomu-8.pdf" class="flex items-center"><i
+                        class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>
+                    По иностранному языку (английский), направление подготовки 40.06.01 Юриспруденция (специальность — 5.1.4).</a>
+            </li>
+            <li class="leading-[1.8rem] pb-3">
+                <a target="_blank" href="../../../storage/documents/board-of-trustees/programma_kandidatskogo_ekzamena_po_inostrannomu_yazyku_anglijskomu-9.pdf" class="flex items-center"><i
+                        class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>
+                    По иностранному языку (английский), направление подготовки 35.06.01 Сельское хозяйство (специальность — 4.1.1).</a>
             </li>
         </ul>
     </div>
@@ -492,7 +535,7 @@
             <i class="bi bi-arrow-right-circle-fill"></i>
         </div>
         <div class="btn-more-box flex items-center">
-            <a href="#" class="btn-more">Страница подразделения</a>
+            <a href="https://melsu.ru/division/32" class="btn-more">Страница подразделения</a>
             <i class="bi bi-arrow-right-circle-fill"></i>
         </div>
     </div>
