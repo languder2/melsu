@@ -8,8 +8,8 @@
                 Здесь вы можете посмотреть все объекты университетского кампуса
             </p>
             <div class="btn-more-box flex items-center">
-                <a href="https://melsu.ru/campus-map" class="btn-more">К карте</a>
-                <i class="bi bi-arrow-right-circle-fill"></i>
+                <a href="https://melsu.ru/campus-map" class="btn-more flex items-center">К карте
+                <i class="bi bi-arrow-right-circle-fill"></i></a>
             </div>
         </div>
     </div>
