@@ -17,7 +17,9 @@
     <section class="container px-2 pb-8">
 
         @include('public.staffs.division.chief')
-
+        <div class="horizontal-mob-menu">
+            @include('public.menu.education')
+        </div>
         @switch($section)
             @case('labs') @case('departments')
                 @include('public.education.departments.related')
