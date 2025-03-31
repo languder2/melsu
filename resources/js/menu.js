@@ -1,7 +1,12 @@
 if (document.querySelector('.main-menu')) {
     let menuPoints = document.querySelectorAll('.point-menu');
     let dropDownMenus = document.querySelectorAll('.new-menu');
-    let content = document.querySelector('.main-section');
+    if(document.querySelector('.main-section')){
+        var content = document.querySelector('.main-section');
+    }
+    else{
+        var content = document.querySelector('.main-content');
+    }
     let navBar = document.querySelector('.navbar-collapse');
     let btnSearchPc = document.querySelector('.box-upper-nav .btn-search');
     let btnSearchMob = document.querySelector('.navbar .btn-search');
