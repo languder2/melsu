@@ -5763,3 +5763,34 @@ position: fixed;
     height: 35px;
     clip-path: polygon(10% 10%, 90% 10%, 90% 90%, 50% 50%);
 }
+/*education menu*/
+.horizontal-mob-menu{
+    display: none;
+}
+.horizontal-mob-menu .left-side-menu{
+    overflow: scroll;
+}
+.horizontal-mob-menu .left-side-menu{
+    width: 100% !important;
+}
+.horizontal-mob-menu ul{
+    position: unset !important;
+    display: flex !important;
+}
+.horizontal-mob-menu ul li span,
+.horizontal-mob-menu ul li a{
+    width: max-content;
+    display: block;
+}
+.horizontal-mob-menu ul li:first-child{
+    display: none;
+}
+.horizontal-mob-menu ul li:not(:last-child){
+    margin-right: 10px;
+}
+@media screen and (max-width: 1023px){
+    .horizontal-mob-menu{
+        display: block;
+    }
+}
+/*END education menu*/

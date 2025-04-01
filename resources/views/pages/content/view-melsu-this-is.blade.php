@@ -3,7 +3,7 @@
             <div class="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr]">
                 <div class="left-info-box flex justify-between flex-col order-2 lg:order-1">
                     <div class="info-hex-wrapp flex justify-end load">
-                        <div class="info-hex-content" onclick="console.log(1)   ">
+                        <div class="info-hex-content">
                             <a href="https://melsu.ru/novorossiya" class="group ">
                                 <div class="move-block">
                                     <h3 class="font-semibold mb-2 group-hover:text-red-900 transition duration-300 ease-linear">Новороссия</h3>
@@ -105,7 +105,7 @@
                                 <div class="move-block">
                                     <h3 class="font-semibold mb-2 group-hover:text-red-900 transition duration-300 ease-linear">Ключ к успеху</h3>
                                     <p class="text-base font-normal line-clamp-4 mb-2">
-                                        В МелГУ представлены 4 основные области знаний: естественно-научная, гуманитарная, инженерно-техническая, медико-биологическая.
+                                        В МелГУ представлены 5 основных областей знаний: аграрная, естественно-научная, гуманитарная, инженерно-техническая, медико-биологическая.
                                     </p>
                                     <span class="group-hover:text-red-900 transition duration-300 ease-linear font-semibold">Подробнее</span>
                                 </div>
