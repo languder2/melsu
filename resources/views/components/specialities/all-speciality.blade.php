@@ -79,7 +79,7 @@
                                 </div>
                                 <div class="flex flex-col">
                                 <span class="font-[400] text-sm">
-                                    {{(float)$profile->duration}}
+                                    {{$profile->duration('OOO')}}
                                 </span>
                                     <span class="font-[400] text-sm text-neutral-700 group-hover:text-white ">Срок обучения</span>
                                 </div>

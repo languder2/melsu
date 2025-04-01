@@ -12,6 +12,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Sections\FAQController;
 use App\Http\Controllers\Sections\CareerController;
 use App\Http\Controllers\News\ApiNews;
+use App\Http\Controllers\Staffs\ApiStaff;
 
 Route::get('departments-by-faculty-shorts/{faculty?}', function (Request $request, $faculty = null) {
 
@@ -218,4 +219,7 @@ Route::get('set-score',[\App\Http\Controllers\ImportController::class,'setScores
 Route::get('news/categories',           [ApiNews::class,'getCategories']);
 Route::get('news/list/{count?}',        [ApiNews::class,'getList'])->setDefaults(['count'=>10]);
 Route::get('news/from/{date?}',         [ApiNews::class,'getListFrom']);
+
+
+Route::get('staff/teachers',            [ApiStaff::class,'getTeachersByDepartments']);
 

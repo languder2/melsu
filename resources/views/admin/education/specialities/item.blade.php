@@ -24,9 +24,9 @@
 </div>
 
 <div>
-    @foreach($record->profiles->where('show',true) as $profile)
-        <p>
-            {{ $profile->form->getName() }}
+    @foreach($record->profiles as $profile)
+        <p @class([$profile->show === 1 ? 'text-green-700' : 'text-red-700'])>
+            {{ $profile->form->getName() ?? null }}
         </p>
     @endforeach
 </div>

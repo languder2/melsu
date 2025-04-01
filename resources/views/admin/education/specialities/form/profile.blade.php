@@ -47,15 +47,15 @@
 
 
         <div class="grid grid-cols-2 gap-x-4">
-{{--            <x-staff.select--}}
-{{--                :current="null"--}}
-{{--                :params='[--}}
-{{--                "name"      => "profiles[{$form->name}][director]",--}}
-{{--                "label"     => "Директор",--}}
-{{--                "id"        => "profiles_{$form->name}_director",--}}
-{{--                "value"     => old("profiles.{$form->name}.director")??@$profile?->director,--}}
-{{--            ]'--}}
-{{--            />--}}
+            {{--            <x-staff.select--}}
+            {{--                :current="null"--}}
+            {{--                :params='[--}}
+            {{--                "name"      => "profiles[{$form->name}][director]",--}}
+            {{--                "label"     => "Директор",--}}
+            {{--                "id"        => "profiles_{$form->name}_director",--}}
+            {{--                "value"     => old("profiles.{$form->name}.director")??@$profile?->director,--}}
+            {{--            ]'--}}
+            {{--            />--}}
 
             <div class="py-4">
                 <input
@@ -89,14 +89,50 @@
         />
 
         <div class="grid grid-cols-2 gap-x-4 mt-3">
-            <x-form.input
-                id="form_profiles_{{$form->name}}_duration"
-                name="profiles[{{$form->name}}][duration]"
-                type="number"
-                step="0.01"
-                label="Срок обучения"
-                value='{{old("profiles.{$form->name}.duration")??@$profile?->duration}}'
-            />
+
+            <div class="grid gap-4 grid-cols-3 items-end">
+                <span class="pb-2"> Срок обучения ООО </span>
+                <x-form.input
+                    id="form_profiles_{{$form->name}}_duration_years"
+                    name="profiles[{{$form->name}}][duration][OOO][years]"
+                    type="number"
+                    class="text-center"
+                    step="1"
+                    label="Срок обучения, лет"
+                    value="0"
+                    value='{{old("_token") ? old("profiles.{$form->name}.duration.OOO.years") : $profile->years("OOO")}}'
+                />
+                <x-form.input
+                    id="form_profiles_{{$form->name}}_duration_month"
+                    name="profiles[{{$form->name}}][duration][OOO][months]"
+                    type="number"
+                    class="text-center"
+                    step="1"
+                    label="Срок обучения, месяцев"
+                    value='{{old("_token") ? old("profiles.{$form->name}.duration.OOO.months") : $profile->months("OOO")}}'
+                />
+
+                <span class="pb-2"> Срок обучения СОО </span>
+                <x-form.input
+                    id="form_profiles_{{$form->name}}_duration_years"
+                    name="profiles[{{$form->name}}][duration][SOO][years]"
+                    type="number"
+                    class="text-center"
+                    step="1"
+                    label="Срок обучения, лет"
+                    value="0"
+                    value='{{old("_token") ? old("profiles.{$form->name}.duration.SOO.years") : $profile->years("SOO")}}'
+                />
+                <x-form.input
+                    id="form_profiles_{{$form->name}}_duration_month"
+                    name="profiles[{{$form->name}}][duration][SOO][months]"
+                    type="number"
+                    class="text-center"
+                    step="1"
+                    label="Срок обучения, месяцев"
+                    value='{{old("_token") ? old("profiles.{$form->name}.duration.SOO.months") : $profile->months("SOO")}}'
+                />
+            </div>
 
             <x-form.input
                 id="form_profiles_{{$form->name}}_price"
@@ -130,15 +166,15 @@
                         :value='old("profiles.{$form->name}.score.{$basis->value}") ?? $profile->scoreByType($basis) ?? null'
                     />
 
-                        <h4 class="font-semibold mb-2 mt-4 border-b border-dashed">
-                            Экзамены:
-                        </h4>
+                    <h4 class="font-semibold mb-2 mt-4 border-b border-dashed">
+                        Экзамены:
+                    </h4>
 
-                        <x-exam.admin-list
-                            :code="$form->name"
-                            :type="$basis->value"
-                            :exams="$profile->exams"
-                        />
+                    <x-exam.admin-list
+                        :code="$form->name"
+                        :type="$basis->value"
+                        :exams="$profile->exams"
+                    />
 
                 </div>
             @endforeach
