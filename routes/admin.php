@@ -8,12 +8,12 @@ use App\Http\Controllers\News\NewsController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\Schedule\ScheduleController;
 use App\Http\Controllers\Staffs\StaffController;
-use App\Http\Controllers\suStructureController;
 use App\Http\Controllers\Users\UserController;
+use App\Http\Controllers\suStructureController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::middleware(['auth.check'])
+Route::middleware(['isAdmin'])
     ->controller(suStructureController::class)
     ->prefix('structure')
     ->group(function () {
@@ -28,7 +28,7 @@ Route::middleware(['auth.check'])
 
 /* News: admin */
 
-Route::middleware('auth.check')
+Route::middleware('isAdmin')
     ->controller(NewsController::class)
     ->prefix('news')
     ->group(function () {
@@ -43,7 +43,7 @@ Route::middleware('auth.check')
 
 /* Events: admin */
 
-Route::middleware('auth.check')
+Route::middleware('isAdmin')
     ->controller(EventsController::class)
     ->prefix('events')
     ->group(function () {
@@ -56,7 +56,7 @@ Route::middleware('auth.check')
 
     });
 
-Route::middleware('auth.check')
+Route::middleware('isAdmin')
     ->controller(MenuItems::class)
     ->prefix('menu/items')
     ->group(function () {
@@ -69,7 +69,7 @@ Route::middleware('auth.check')
 
     });
 
-Route::middleware('auth.check')
+Route::middleware('isAdmin')
     ->controller(MenuController::class)
     ->prefix('menu/list')
     ->group(function () {
@@ -82,7 +82,7 @@ Route::middleware('auth.check')
 
     });
 
-Route::middleware('auth.check')
+Route::middleware('isAdmin')
     ->controller(PagesController::class)
     ->prefix('pages')
     ->group(function () {
@@ -96,7 +96,7 @@ Route::middleware('auth.check')
     });
 
 
-Route::middleware('auth.check')
+Route::middleware('isAdmin')
     ->controller(StaffController::class)
     ->prefix('staff')
     ->group(function () {
@@ -112,18 +112,17 @@ Route::middleware('auth.check')
 
         Route::post('set-filter', 'setFilter')->name('admin:staff:filter:set');
 
-
-
     });
 
-Route::middleware('auth.check')
-    ->controller(UserController::class)
-    ->prefix('users')
-    ->group(function () {
-        Route::get('add', 'add')->name('admin:user:add');
-    });
+Route::middleware(['isAdmin'])->prefix('users')->group(function () {
+    Route::get('',              [UserController::class,'list'])->name('admin:users:list');
+    Route::get('add',           [UserController::class,'form'])->name('admin:users:add');
+    Route::get('edit/{user}',   [UserController::class,'form'])->name('admin:users:edit');
+    Route::post('save',         [UserController::class,'save'])->name('admin:users:save');
+    Route::get('delete/{user}', [UserController::class,'delete'])->name('admin:users:delete');
+});
 
-Route::middleware('auth.check')
+Route::middleware('isAdmin')
     ->controller(DivisionController::class)
     ->prefix('divisions')
     ->group(function () {
@@ -136,7 +135,7 @@ Route::middleware('auth.check')
         Route::get('{group?}', 'adminList')->name('admin:division:list');
     });
 
-Route::middleware('auth.check')
+Route::middleware('isAdmin')
     ->controller(FacultyController::class)
     ->prefix('faculties')
     ->group(function () {
@@ -145,7 +144,7 @@ Route::middleware('auth.check')
 
     });
 
-Route::middleware('auth.check')
+Route::middleware('isAdmin')
     ->controller(DepartmentController::class)
     ->prefix('departments')
     ->group(function () {
@@ -156,7 +155,7 @@ Route::middleware('auth.check')
 
 /* Labs */
 
-Route::middleware('auth.check')
+Route::middleware('isAdmin')
     ->controller(LabsController::class)
     ->prefix('education/labs')
     ->group(function () {
@@ -166,7 +165,7 @@ Route::middleware('auth.check')
     });
 
 
-Route::middleware('auth.check')
+Route::middleware('isAdmin')
     ->controller(SpecialityController::class)
     ->prefix('specialities')
     ->group(function () {
@@ -179,7 +178,7 @@ Route::middleware('auth.check')
 
     });
 
-Route::middleware('auth.check')
+Route::middleware('isAdmin')
     ->controller(\App\Http\Controllers\Gallery\AdminImageGallery::class)
     ->prefix('gallery/images')
     ->group(function () {
@@ -188,7 +187,7 @@ Route::middleware('auth.check')
         Route::post('save', 'save')->name('admin:gallery:image:save');
     });
 
-Route::middleware('auth.check')
+Route::middleware('isAdmin')
     ->controller(\App\Http\Controllers\Gallery\AdminImage::class)
     ->prefix('images')
     ->group(function () {
@@ -197,7 +196,7 @@ Route::middleware('auth.check')
         Route::post('save', 'save')->name('admin:image:save');
     });
 
-Route::middleware('auth.check')
+Route::middleware('isAdmin')
     ->controller(\App\Http\Controllers\Gallery\AdminVideoGallery::class)
     ->prefix('gallery/videos')
     ->group(function () {
@@ -208,6 +207,7 @@ Route::middleware('auth.check')
 
 Route::
     controller(\App\Http\Controllers\ImportController::class)
+    ->middleware('isAdmin')
     ->prefix('imports')
     ->group(function () {
         Route::get('departments',"DepartmentsGetFile")
@@ -218,7 +218,7 @@ Route::
 
 /*schedule*/
 
-Route::middleware('auth.check')
+Route::middleware('isAdmin')
     ->prefix('schedule')
     ->group(function () {
 

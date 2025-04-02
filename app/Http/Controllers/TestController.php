@@ -6,6 +6,7 @@ use App\Enums\DurationType;
 use App\Enums\EducationBasis;
 use App\Enums\EducationForm;
 use App\Enums\EducationLevel;
+use App\Enums\UserRoles;
 use App\Imports\Import;
 use App\Models\Education\Exam;
 use App\Models\Education\Profile;
@@ -21,6 +22,11 @@ class TestController extends Controller
 {
     public function index()
     {
+
+        $user = User::find(8);
+
+        dd($user->isAdmin(),$user->isSuperAdmin(),$user->role->getListBySet());
+
 
 //        $item = Profile::find(3);
 //        $item->duration()->create([
