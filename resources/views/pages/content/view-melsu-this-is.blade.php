@@ -62,11 +62,11 @@
                             <div class="hex-content-box">
                                 <div class="hex-content">
                                     <div class="hex-logo">
-                                        <video autoplay="" loop="" muted="">
-                                            <source src="{{asset('video/anim-logo.webm')}}" type='video/webm'>
+                                        <video autoplay loop muted>
+                                            <source src="{{asset('video/2__3.webm')}}" type='video/webm'>
                                         </video>
                                     </div>
-                                    <h2 class="text-white font-semibold">МелГУ Это <span class="changed-symbol">?</span></h2>
+                                    <!--<h2 class="text-white font-semibold">МелГУ Это <span class="changed-symbol">?</span></h2>-->
                                 </div>
                             </div>
                         </div>

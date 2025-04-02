@@ -4292,7 +4292,7 @@ a.modal-open {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     width: 265px;
     padding: 40px 0px;
 }
@@ -4301,7 +4301,7 @@ a.modal-open {
     line-height: 70px;
 }
 .hex-logo{
-    width: 144px;
+    width: 450px;
 }
 /*line style*/
 .left-top-line{
@@ -4822,6 +4822,9 @@ a.modal-open {
     }
 }
 @media screen and (max-width: 1770px){
+    .hex-logo{
+        width: 400px;
+    }
     .left-info-box .info-hex-wrapp .info-hex-content a{
         width: 84%;
     }
@@ -5000,7 +5003,7 @@ a.modal-open {
         height: 254px;
     }
     .hex-logo {
-        width: 100px;
+        width: 320px;
     }
     .hex-content{
         width: 147px;
@@ -5200,7 +5203,7 @@ a.modal-open {
         height: 204px;
     }
     .hex-logo {
-        width: 80px;
+        width: 260px;
     }
     .hex-content h2 {
         font-size: 26px;
@@ -5747,6 +5750,7 @@ position: fixed;
     content: '';
     display: block;
     position: absolute;
+    background-color: var(--item-color) !important;;
     right: -4px;
     top: -4px;
     width: 30px;
@@ -5757,6 +5761,7 @@ position: fixed;
     content: '';
     display: block;
     position: absolute;
+    background-color: #FAFAFA;
     right: -5px;
     top: -7px;
     width: 35px;
