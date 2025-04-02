@@ -15,7 +15,7 @@
                 id="filter_faculty"
                 class="min-w-96"
                 name="faculty"
-                value="{{$filter?->faculty}}"
+                value="{{$filter->faculty ?? null}}"
                 base="Все факультеты"
                 :list="$faculties"
             />

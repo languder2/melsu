@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Schedule;
 
 use App\Http\Controllers\Controller;
-use App\Models\Division\Division;
 use App\Models\Schedule\ScheduleModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -15,7 +14,7 @@ class ScheduleController extends Controller
     public function index()
     {
 
-        $schedules = ScheduleModel::orderBy('time')->limit(1000)->get();
+        $schedule = ScheduleModel::orderBy('time')->limit(50000)->get();
         $results = 'start';
 
         $weeks = DB::table('schedule')->distinct()->pluck('week')->toArray();
