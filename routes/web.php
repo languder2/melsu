@@ -121,7 +121,7 @@ Route::get('{alias}', [PagesController::class, 'showPage']);
 Route::controller(ScheduleController::class)
     ->prefix('schedule')
     ->group(function () {
-        Route::get('/show',  'index')->name('public.schedule.index');
-        Route::get('/get-groups', 'getGroups')->name('public.schedule.getGroups');
-        Route::post('/schedule-result', 'updateSchedule')->name('public.schedule.updateSchedule');
+        Route::get('show',  'index')->name('public.schedule.index');
+        Route::get('get-groups', 'getGroups')->name('public.schedule.getGroups');
+        Route::post('schedule-result', 'updateSchedule')->name('public.schedule.updateSchedule');
     });

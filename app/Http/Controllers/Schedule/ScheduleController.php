@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Schedule;
 
 use App\Http\Controllers\Controller;
+use App\Models\Division\Division;
 use App\Models\Schedule\ScheduleModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -11,9 +12,10 @@ use Illuminate\Support\Facades\View;
 
 class ScheduleController extends Controller
 {
-    public function index(): \Illuminate\Contracts\View\View
+    public function index()
     {
-        $schedule = DB::table('schedule')->orderBy('time')->get();
+
+        $schedules = ScheduleModel::orderBy('time')->limit(1000)->get();
         $results = 'start';
 
         $weeks = DB::table('schedule')->distinct()->pluck('week')->toArray();
@@ -30,7 +32,8 @@ class ScheduleController extends Controller
             'groups' => $groups,
             'forms_edu' => $forms_edu,
         ];
-            return View::make('public.schedule.schedule', $data);
+
+        return view('public.schedule.schedule', $data);
     }
     public function showSchedulePage():string
     {
