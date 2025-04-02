@@ -166,6 +166,7 @@ Route::post('set-filter-for-education-departments', function(Request $request){
     $groupedItems = Division::orderBy('name');
 
     $faculty = $request->get('faculty');
+
     if($faculty)
         $groupedItems = $groupedItems->where('faculty_code', $faculty);
 
@@ -178,9 +179,12 @@ Route::post('set-filter-for-education-departments', function(Request $request){
         return strtoupper(mb_substr($item->name, 0, 1, 'UTF-8')); // Первая буква в верхнем регистре
     });
 
+    $faculties = collect([]);
+
     return view("Public.Education.Departments.List",[
         'list'              => $groupedItems,
         'without_container' => true,
+        'faculties'         => $faculties,
     ]);
 
 })->name('public:education:departments:filter:set');
