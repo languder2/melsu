@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Division\DivisionController;
 use App\Http\Controllers\Education\{DepartmentController, FacultyController, LabsController, SpecialityController};
+use App\Http\Controllers\Handbook\HandbookController;
 use App\Http\Controllers\Menu\{ItemsController as MenuItems, MenuController};
 use App\Http\Controllers\News\EventsController;
 use App\Http\Controllers\News\NewsController;
@@ -224,4 +225,26 @@ Route::middleware('isAdmin')
 
         Route::get('/', [ScheduleController::class, 'showSchedulePage'])->name('schedule.page');
         Route::post('/import', [ScheduleController::class, 'importSchedule'])->name('schedule.import');
+    });
+
+/*handbook*/
+
+Route::middleware('auth.check')
+    ->prefix('handbook')
+    ->group(function () {
+        // Коллекции справочников
+        Route::get('/', [HandbookController::class, 'indexCollections'])->name('handbook.collections');
+        Route::get('collections/create', [HandbookController::class, 'createCollection'])->name('handbook.collections.create');
+        Route::post('collections/store', [HandbookController::class, 'storeCollection'])->name('handbook.collections.store');
+        Route::get('collections/edit/{id}', [HandbookController::class, 'editCollection'])->name('handbook.collections.edit');
+        Route::put('collections/update/{id}', [HandbookController::class, 'updateCollection'])->name('handbook.collections.update');
+        Route::delete('collections/delete/{id}', [HandbookController::class, 'destroyCollection'])->name('handbook.collections.delete');
+
+        // Справочники внутри коллекции
+        Route::get('{collectionId}', [HandbookController::class, 'index'])->name('handbook.page');
+        Route::get('{collectionId}/add', [HandbookController::class, 'create'])->name('handbook.create');
+        Route::post('{collectionId}/store', [HandbookController::class, 'store'])->name('handbook.store');
+        Route::get('{collectionId}/edit/{id}', [HandbookController::class, 'edit'])->name('handbook.edit');
+        Route::put('{collectionId}/update/{id}', [HandbookController::class, 'update'])->name('handbook.update');
+        Route::delete('{collectionId}/delete/{id}', [HandbookController::class, 'destroy'])->name('handbook.delete');
     });
