@@ -8,6 +8,8 @@ use App\Enums\EducationForm;
 use App\Enums\EducationLevel;
 use App\Enums\UserRoles;
 use App\Imports\Import;
+use App\Jobs\SendEmailJob;
+use App\Mail\SendEmail;
 use App\Models\Education\Exam;
 use App\Models\Education\Profile;
 use App\Models\Education\Speciality;
@@ -15,6 +17,7 @@ use Illuminate\Http\Request;
 use App\Models\Education\Faculty;
 use App\Models\User;
 use App\Enums\CardBG;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -23,25 +26,17 @@ class TestController extends Controller
     public function index()
     {
 
-        $user = User::find(8);
+    //        $user = User::find(1);
+    //        $user->password = bcrypt('work-2025');
+    //
+    //        $user->save();
 
-        dd($user->isAdmin(),$user->isSuperAdmin(),$user->role->getListBySet());
+        SendEmailJob::dispatch((object)[
+            "template"      => "emails.account.pass-recovery",
+            "subject"       => "pass-recovery",
+            "user"          => $user
+        ]);
 
-
-//        $item = Profile::find(3);
-//        $item->duration()->create([
-//            'type'      => DurationType::OOO,
-//            'duration'  => 55,
-//            'comment'   => DurationType::OOO->getComment(),
-//
-//        ]);
-
-        $item = new Profile();
-        dump($item->duration('SOO'));
-        dump($item->months('SOO'));
-        dd();
-
-        return view('test.page');
 
     }
 

@@ -4,9 +4,7 @@ namespace App\Policies;
 
 use App\Enums\UserRoles;
 use App\Models\User;
-use Couchbase\Role;
 use Illuminate\Auth\Access\HandlesAuthorization;
-use Illuminate\Auth\Access\Response;
 
 class UserPolicy
 {
@@ -22,6 +20,5 @@ class UserPolicy
             || $user->id === $model->id
             || $user->role === UserRoles::Super;
     }
-
 
 }

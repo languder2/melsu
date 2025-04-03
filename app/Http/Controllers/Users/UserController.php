@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Users;
 
 use App\Enums\UserRoles;
 use App\Http\Controllers\Controller;
+use App\Jobs\SendEmailJob;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -25,18 +26,26 @@ class UserController extends Controller
         return view('admin.users.form',compact('user','setRoleList'));
     }
 
-
     public function save(Request $request):RedirectResponse
     {
-        $user = User::find($request->get('id')) ?? new User();
+        $user = User::find($request->get('id')) ?? new User(['role'=>UserRoles::User]);
 
         if(Gate::denies('manage', $user))
             return redirect()->route('admin:users:list');
 
+
         $form = $request->validate($user->FormRules(),$user->FormMessage());
 
-        if(array_key_exists('new_password',$form)){
+        if(array_key_exists('new_password',$form) && $form['new_password']){
             $user->password = bcrypt($form['new_password']);
+
+            SendEmailJob::dispatch((object)[
+                "template"      => "emails.account.password-change",
+                "subject"       => "Пароль сменен",
+                "user"          => $user,
+                "password"      => $form['new_password']
+            ]);
+
         }
 
         $user->fill($form)->save();

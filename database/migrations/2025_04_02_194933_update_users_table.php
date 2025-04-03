@@ -14,9 +14,12 @@ return new class extends Migration
         if(!Schema::hasColumn('users','role')){
             Schema::table('users', function (Blueprint $table) {
                $table->string('role')->default('user')->after('email');
-               $table->string('full_name')->nullable()->after('role');
-               $table->timestamp('deleted_at')->nullable()->after('remember_token');
+               $table->string('lastname')->nullable()->after('role');
+               $table->string('firstname')->nullable()->after('lastname');
+               $table->string('middlename')->nullable()->after('firstname');
+               $table->string('post')->nullable()->after('middlename');
 
+               $table->timestamp('deleted_at')->nullable()->after('remember_token');
             });
         }
     }
@@ -29,8 +32,11 @@ return new class extends Migration
         if(Schema::hasColumn('users','role')){
             Schema::table('users', function (Blueprint $table) {
                 $table->dropColumn('role');
-                $table->dropColumn('full_name');
                 $table->dropColumn('deleted_at');
+                $table->dropColumn('lastname');
+                $table->dropColumn('firstname');
+                $table->dropColumn('middlename');
+                $table->dropColumn('post');
             });
         }
     }

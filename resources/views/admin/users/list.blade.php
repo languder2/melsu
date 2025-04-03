@@ -71,22 +71,21 @@
                 </div>
 
                 <div>
-                    <div class="flex flex-row-reverse text-white w-full">
-                        <div class="flex-none w-14">
-                            <a
-                                href="{{route('admin:users:delete',$record->id)}}"
-                                class="
-                                py-2 px-4 rounded-md
-                                bg-red-950
-                                hover:bg-red-700
-                                active:bg-gray-700
-                            "
-                            >
-                                <i class="fas fa-trash w-4 h-4"></i>
-                            </a>
-                        </div>
-                    </div>
+                    <a
+                        href="{{route('admin:users:delete',$record->id)}}"
+                        class="
+                            inline-block
+                            bg-gray-100 p-3 rounded-lg
+                            transition-all duration-200
+                            hover:text-white hover:bg-red-700
+                            hover:-mt-2px hover:mb-2px
+                            hover:shadow-md hover:shadow-gray-400
+                        "
+                    >
+                        <i class="fas fa-recycle"></i>
+                    </a>
                 </div>
+
                 <hr class="md:col-span-6 last:hidden opacity-70">
             @endforeach
         </div>

@@ -27,6 +27,16 @@
 
         <div class="flex-1">
             <x-form.input
+                id="form_email"
+                name="email"
+                label="Email"
+                value="{!! old('_token') ? old('email') : $user->email ?? null !!}"
+                required
+            />
+        </div>
+
+        <div class="flex-1">
+            <x-form.input
                 id="form_name"
                 name="name"
                 label="Login"
@@ -37,21 +47,30 @@
 
         <div class="flex-1">
             <x-form.input
-                id="form_full_name"
-                name="full_name"
-                label="ФИО"
-                value="{!! old('_token') ? old('full_name') : $user->full_name ?? null !!}"
+                id="form_lastname"
+                name="lastname"
+                label="Фамилия"
+                value="{!! old('_token') ? old('lastname') : $user->lastname ?? null !!}"
                 required
             />
         </div>
 
         <div class="flex-1">
             <x-form.input
-                id="form_full_name"
-                name="email"
-                label="Email"
-                value="{!! old('_token') ? old('email') : $user->email ?? null !!}"
+                id="form_firstname"
+                name="firstname"
+                label="Имя"
+                value="{!! old('_token') ? old('firstname') : $user->firstname ?? null !!}"
                 required
+            />
+        </div>
+
+        <div class="flex-1">
+            <x-form.input
+                id="form_middlename"
+                name="middlename"
+                label="Отчество"
+                value="{!! old('_token') ? old('middlename') : $user->middlename ?? null !!}"
             />
         </div>
 

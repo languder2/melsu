@@ -9,6 +9,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+/**
+ * @property mixed $lastname
+ * @property mixed $firstname
+ * @property mixed $middlename
+ */
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
@@ -17,7 +22,9 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'role',
-        'full_name',
+        'lastname',
+        'firstname',
+        'middlename',
         'email',
         'password',
     ];
@@ -55,8 +62,10 @@ class User extends Authenticatable
             'name'              => "required|required|unique:users,name,{$this->id},id,deleted_at,NULL",
             'role'              => 'required',
             'email'             => "email|required|unique:users,email,{$this->id},id,deleted_at,NULL",
-            'full_name'         => 'required',
-            'new_password'      => 'same:retry_password',
+            'lastname'          => 'required',
+            'firstname'         => 'required',
+            'middlename'        => '',
+            'new_password'      => 'nullable|same:retry_password',
             'retry_password'    => '',
         ];
 
@@ -65,12 +74,20 @@ class User extends Authenticatable
     public function FormMessage():array
     {
         return [
-            'required'              => 'Заполните обязательные поля',
+            'name.required'         => 'Заполните обязательные поля',
             'email.unique'          => 'Email должен быть уникальным',
             'name.unique'           => 'Login должен быть уникальным',
             'some'                  => "Пароль и повторение не совпадают",
             'id.required_without'   => "Для новых пользователей пароль обязателен к указанию",
         ];
+    }
+    public function getFullNameAttribute(): string
+    {
+        return "{$this->lastname} {$this->firstname} {$this->middlename}";
+    }
+    public function getContactNameAttribute(): string
+    {
+        return "{$this->firstname} {$this->middlename}";
     }
 
 }
