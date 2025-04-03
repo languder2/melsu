@@ -1,18 +1,18 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\TestController;
-use App\Http\Controllers\Menu\MenuController;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\PagesController;
 use App\Http\Controllers\Division\DivisionController;
-use App\Http\Controllers\Staffs\StaffController;
 use App\Http\Controllers\Education\EducationController;
-use App\Http\Controllers\Education\FacultyController;
 use App\Http\Controllers\Education\SpecialityController;
-use App\Http\Controllers\Schedule\ScheduleController;
-use App\Http\Controllers\News\NewsController;
 use App\Http\Controllers\Gallery\PublicGallery;
+use App\Http\Controllers\Handbook\HandbookController;
+use App\Http\Controllers\Menu\MenuController;
+use App\Http\Controllers\News\NewsController;
+use App\Http\Controllers\PagesController;
+use App\Http\Controllers\Schedule\ScheduleController;
+use App\Http\Controllers\Staffs\StaffController;
+use App\Http\Controllers\TestController;
+use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', function () {
@@ -125,3 +125,6 @@ Route::controller(ScheduleController::class)
         Route::get('get-groups', 'getGroups')->name('public.schedule.getGroups');
         Route::post('schedule-result', 'updateSchedule')->name('public.schedule.updateSchedule');
     });
+
+/*handbook*/
+Route::get('/handbooks/{collectionId}', [HandbookController::class, 'show'])->name('public.handbooks.show');
