@@ -26,7 +26,6 @@ class StaffController extends Controller
             $filter = json_decode(session()->get('AdminStaffsFilter'));
 
             if($filter->search)
-
                 $list->where(DB::raw("CONCAT(lastname, ' ', firstname)"), 'like', '%'.$filter->search.'%')
                      ->orWhere(DB::raw("CONCAT(firstname, ' ', lastname)"), 'like', '%'.$filter->search.'%')
                      ->orWhere(DB::raw("CONCAT(lastname, ' ', firstname, ' ', middle_name)"), 'like', '%'.$filter->search.'%')
@@ -35,9 +34,10 @@ class StaffController extends Controller
                 ;
         }
 
-
         return view('pages.admin', [
             'contents' => [
+
+                view('admin.users.menu'),
 
                 View::make('components.admin.staff.header')->with([])->render(),
 

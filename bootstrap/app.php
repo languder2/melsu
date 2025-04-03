@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Middleware\AuthCheck;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -14,8 +13,11 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->alias([
-            "auth.check" => AuthCheck::class,
-            "auth.api" => \App\Http\Middleware\AuthApi::class,
+            "auth.check"    => \App\Http\Middleware\AuthCheck::class,
+            "auth.api"      => \App\Http\Middleware\AuthApi::class,
+            "isEditor"      => \App\Http\Middleware\IsEditor::class,
+            "isAdmin"       => \App\Http\Middleware\IsAdmin::class,
+            "isSuperAdmin"  => \App\Http\Middleware\IsSuperAdmin::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
