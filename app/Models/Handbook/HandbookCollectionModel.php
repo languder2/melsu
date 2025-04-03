@@ -11,7 +11,7 @@ class HandbookCollectionModel extends Model
 
     protected $table = 'handbook_collections';
 
-    protected $fillable = ['page_name', 'alias'];
+    protected $fillable = ['page_name'];
 
     public function handbooks()
     {
