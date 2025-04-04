@@ -4,6 +4,9 @@
             <div class="slide_viewer sldr">
                 <div class="slide_group sldr">
                     <div class="slide">
+                            <img src="{{asset('storage/images/gallery/uzoxDl581PW0Qzh7NGUlzZcATgbUgUnYIrQOu65s/image.webp')}}" alt="">
+                    </div>
+                    <div class="slide">
                         <a href="#" class="slide-link">
                             <img src="{{asset('img/Slide.jpg')}}" alt="">
                         </a>

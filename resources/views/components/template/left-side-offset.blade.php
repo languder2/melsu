@@ -10,5 +10,11 @@
                 <i class="bi bi-telegram"></i>
             </a>
         </li>
+
     </ul>
+    <img
+        src="{{asset('img/logo-09.05.webp')}}"
+        alt=""
+        class="mt-40 hidden"
+    />
 </div>

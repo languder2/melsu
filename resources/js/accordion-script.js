@@ -9,6 +9,9 @@ document.addEventListener('DOMContentLoaded', function () {
         var defaultHeight = [];
         var rect = [];
         var newWidth = [];
+
+        console.log(accordionItems);
+
         accordionItems.forEach((item, index) => {
             rect[index] = accordionText[index].getBoundingClientRect();
             newWidth[index] = accordionItems[index].offsetWidth;
