@@ -48,18 +48,18 @@ function createCounterDecay(elementId, startValue, interval, step = 1) {
 
 if (document.querySelector('.box-number')) {
     if (document.querySelector('#countFaculty')) {
-        const intervalIdFaculty = createCounter('countFaculty', 7, 100, 1);
+        const intervalIdFaculty = createCounter('countFaculty', 5, 100, 1);
     }
     if (document.querySelector('#countKaf')) {
         const intervalIdKaf = createCounter('countKaf', 40, 10, 1);
     }
     if (document.querySelector('#countStud')) {
-        const intervalIdStud = createCounter('countStud', 15500, 1, 100);
+        const intervalIdStud = createCounter('countStud', 15000, 1, 100);
     }
     if (document.querySelector('#countObl')) {
         const intervalIdObl = createCounterDecay('countObl', 100, 1, 1);
     }
     if (document.querySelector('#countProg')) {
-        const intervalIdProg = createCounter('countProg', 96, 1, 1);
+        const intervalIdProg = createCounter('countProg', 144, 1, 1);
     }
 }
