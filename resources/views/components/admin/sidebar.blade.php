@@ -64,6 +64,13 @@
         />
 
         <x-admin.sidebar-li
+            link="{{route('handbook.collections')}}"
+            ico="fas fa-solid fa-book"
+            text="Справочники"
+            class="text-xl"
+        />
+
+        <x-admin.sidebar-li
             link="{{route('admin:logout')}}"
             ico="fas fa-sign-out-alt"
             text="Выход"

@@ -77,7 +77,7 @@
                 peer-autofill:top-0
 
             ">
-                    Ссылка *
+                    Ссылка
                 </label>
             </div>
             <div class="block relative mt-2">
@@ -94,7 +94,7 @@
             peer
             autofill:text-pink-800
             focus:text-blue-700
-            focus:border-blue-700" value="{{ isset($handbook) ? $handbook->icon : '' }}">
+            focus:border-blue-700" value="{{ isset($handbook) ? $handbook->icon : '' }}" required>
                 <label for="icon" class="
                 absolute
                 left-0

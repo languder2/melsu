@@ -238,7 +238,7 @@ Route::middleware('auth.check')
         Route::post('collections/store', [HandbookController::class, 'storeCollection'])->name('handbook.collections.store');
         Route::get('collections/edit/{id}', [HandbookController::class, 'editCollection'])->name('handbook.collections.edit');
         Route::put('collections/update/{id}', [HandbookController::class, 'updateCollection'])->name('handbook.collections.update');
-        Route::delete('collections/delete/{id}', [HandbookController::class, 'destroyCollection'])->name('handbook.collections.delete');
+        Route::get('collections/delete/{id}', [HandbookController::class, 'destroyCollection'])->name('handbook.collections.delete');
 
         // Справочники внутри коллекции
         Route::get('{collectionId}', [HandbookController::class, 'index'])->name('handbook.page');
@@ -246,5 +246,5 @@ Route::middleware('auth.check')
         Route::post('{collectionId}/store', [HandbookController::class, 'store'])->name('handbook.store');
         Route::get('{collectionId}/edit/{id}', [HandbookController::class, 'edit'])->name('handbook.edit');
         Route::put('{collectionId}/update/{id}', [HandbookController::class, 'update'])->name('handbook.update');
-        Route::delete('{collectionId}/delete/{id}', [HandbookController::class, 'destroy'])->name('handbook.delete');
+        Route::get('{collectionId}/delete/{id}', [HandbookController::class, 'destroy'])->name('handbook.delete');
     });

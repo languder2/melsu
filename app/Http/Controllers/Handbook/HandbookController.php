@@ -57,10 +57,19 @@ class HandbookController extends Controller
 
     public function destroyCollection($id)
     {
-        HandbookCollectionModel::find($id)->delete();
+        $collection = HandbookCollectionModel::find($id);
 
-        return redirect()->route('handbook.collections')
-            ->with('success', 'Коллекция справочников успешно удалена.');
+        if ($collection) {
+            HandbookModel::where('handbook_collection_id', $id)->delete();
+
+            $collection->delete();
+
+            return redirect()->route('handbook.collections')
+                ->with('success', 'Коллекция справочников и все связанные с ней записи успешно удалены.');
+        } else {
+            return redirect()->route('handbook.collections')
+                ->with('error', 'Коллекция справочников не найдена.');
+        }
     }
 
     public function index($collectionId)
@@ -81,7 +90,7 @@ class HandbookController extends Controller
         $request->validate([
             'title' => 'required',
             'link' => '',
-            'icon' => 'nullable|file|mimes:svg',
+            'icon' => 'required|file|mimes:svg',
             'category' => 'required',
             'color' => 'nullable',
         ]);
