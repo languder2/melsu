@@ -10,9 +10,11 @@ use App\Enums\UserRoles;
 use App\Imports\Import;
 use App\Jobs\SendEmailJob;
 use App\Mail\SendEmail;
+use App\Models\Division\Division;
 use App\Models\Education\Exam;
 use App\Models\Education\Profile;
 use App\Models\Education\Speciality;
+use App\Models\Log;
 use Illuminate\Http\Request;
 use App\Models\Education\Faculty;
 use App\Models\User;
@@ -26,12 +28,12 @@ class TestController extends Controller
     public function index()
     {
 
-            $user = User::find(1);
-            $user->password = bcrypt('Work-2025');
 
-            $user->save();
+        $division = Division::first();
 
-            dd(1);
+        Log::add($division,'create','test log');
+
+        dd();
 
 
     }

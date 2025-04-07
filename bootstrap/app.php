@@ -18,6 +18,7 @@ return Application::configure(basePath: dirname(__DIR__))
             "isEditor"      => \App\Http\Middleware\IsEditor::class,
             "isAdmin"       => \App\Http\Middleware\IsAdmin::class,
             "isSuperAdmin"  => \App\Http\Middleware\IsSuperAdmin::class,
+            "isAuth"        => \App\Http\Middleware\AuthCheck::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

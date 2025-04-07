@@ -1,11 +1,4 @@
 @import '../css/font-import.css' layer(base);
-@import '../css/main-style.css' layer(base);
-@import '../css/new-tailwind.css' layer(base);
-@import '../css/root-style.css' layer(base);
-@import '../css/news-detail.css' layer(base);
-@import '../css/slider-bg-style.css' layer(base);
-@import '../css/scrolls.css' layer(base);
-
 @import '@fortawesome/fontawesome-free/css/all.css' layer(base);
 
 @import 'tailwindcss';
@@ -13,25 +6,32 @@
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 
 @theme {
-    --font-sans: Figtree, ui-sans-serif, system-ui, sans-serif,
+    --font-sans: "Montserrat", ui-sans-serif, system-ui, sans-serif,
     'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 
-    --color-baseRed: #820000;
+
+    --color-red: #820000;
     --color-blue: #374573;
+    --color-blue-hover: #556391;
     --color-neutral-150: #EEEEEE;
     --color-base-red: #820000;
-    --spacing-1px: 1px;
     --spacing-2px: 2px;
     --spacing-300: 300px;
     --spacing-400: 400px;
     --spacing-800: 800px;
     --spacing-1200: 1200px;
+    --spacing-1400: 1400px;
+    --spacing-1600: 1600px;
 
     --list-style-type-none: none;
     --list-style-type-disc: disc;
     --list-style-type-decimal: decimal;
     --list-style-type-square: square;
     --list-style-type-roman: upper-roman;
+
+    --bg-cabinet-header: url('../../public_html/img/cabinet/bg-header.png');
+    --bg-panel-1: url('../../public_html/img/cabinet/bg-panel.jpg');
+
 }
 
 /*
@@ -68,61 +68,6 @@ select:-webkit-autofill:focus {
     transition: background-color 5000s ease-in-out 0s;
 }
 
-
-.checked-box:has(:checked) {
-    display: block;
-}
-
-.btn-filter-card:has(:checked) {
-    background-color: var(--color-baseRed);
-}
-
-img {
-    user-drag: none; /* Запрещает перетаскивание */
-    -webkit-user-drag: none; /* Для Safari */
-    -khtml-user-drag: none; /* Для Konqueror */
-    -moz-user-drag: none; /* Для Firefox */
-    -o-user-drag: none; /* Для Opera */
-}
-
-.about-otdel{
-    p,li{
-        padding: .25rem 0;
-
-        :first-child{
-            padding-top: 0;
-        }
-        :last-child{
-            padding-bottom: 0;
-        }
-    }
-
-    ul{
-        margin-left: 1rem;
-        list-style: disc;
-    }
-
-    a{
-        text-decoration: underline;
-    }
-    a:hover{
-        color: #820000;
-    }
-
-}
-
-ol{
-    list-style: decimal;
-    margin-left: 24px;
-    li{
-        padding: 10px 0 !important;
-    }
-    li:first-child{
-        padding-top: 0;
-    }
-    li:last-child{
-        padding-bottom: 0;
-    }
+/* CUSTOM CLASSES */
 
 
-}
