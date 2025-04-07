@@ -91,6 +91,18 @@
     </div>
 </footer>
 
+<div class="hidden md:block z-20 top-28 right-2 fixed transition-all duration-400">
+    <span class="cursor-pointer text-[#dc302a] absolute right-10 top-16 z-50 hover:drop-shadow-md hover:shadow-indigo-700"
+        onclick="this.closest('div').classList.add('scale-0'); return false;"
+
+    >
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+            <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
+        </svg>
+    </span>
+    <img src="{{asset('img/Pobeda80_logo_main.png')}}" alt="" class="scale-75"/>
+</div>
+
 <!-- Top.Mail.Ru counter -->
 <script type="text/javascript">
     var _tmr = window._tmr || (window._tmr = []);

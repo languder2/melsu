@@ -26,16 +26,12 @@ class TestController extends Controller
     public function index()
     {
 
-    //        $user = User::find(1);
-    //        $user->password = bcrypt('work-2025');
-    //
-    //        $user->save();
+            $user = User::find(1);
+            $user->password = bcrypt('Work-2025');
 
-        SendEmailJob::dispatch((object)[
-            "template"      => "emails.account.pass-recovery",
-            "subject"       => "pass-recovery",
-            "user"          => $user
-        ]);
+            $user->save();
+
+            dd(1);
 
 
     }
