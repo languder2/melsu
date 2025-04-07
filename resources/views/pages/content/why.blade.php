@@ -254,7 +254,7 @@
     </div>
 </section>
 <div class="box-heading container custom">
-    <h2 class="font-bold text-2xl my-6 lg:mt-[7%] lg:mb-[3.5%] lg:text-end">Наши студенты нужны ВСЕМ</h2>
+    <h2 class="font-bold text-2xl my-6 lg:mt-[7%] lg:mb-[3.5%] lg:text-end">Наши студенты нужны ВСЕМ </h2>
 </div>
 <section class="container custom text-lg">
     <div class="bg-white p-6">
