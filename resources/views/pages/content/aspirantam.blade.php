@@ -19,8 +19,7 @@
             </li>
             <li class="leading-[1.8rem] pb-3">
                 <a target="_blank" href="../../../storage/documents/board-of-trustees/polozhenie_o_nauchnom_rukovoditele_aspiranta_i_nauchnom_konsultante.pdf" class="flex items-center"><i
-                        class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>Ответы на
-                    Положение о научном руководителе аспиранта и научном консультанте докторанта в Мелитопольском государственном университете</a>
+                        class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>Положение о научном руководителе аспиранта и научном консультанте докторанта в Мелитопольском государственном университете</a>
             </li>
         </ul>
     </div>
@@ -261,6 +260,11 @@
 <section class="container custom1">
     <div class="bg-white p-6 mb-5">
         <ul class="doc-list list-none list-inside marker:text-[var(--secondary-color)] text-[var(--main-color)]">
+            <li class="leading-[1.8rem] pb-3">
+                <a target="_blank" href="../../../storage/documents/board-of-trustees/pravila-priema-2025-26.pdf" class="flex items-center"><i
+                        class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>
+                    Правила приема</a>
+            </li>
             <li class="leading-[1.8rem] pb-3">
                 <a target="_blank" href="../../../storage/documents/board-of-trustees/application-3.pdf" class="flex items-center"><i
                         class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>
