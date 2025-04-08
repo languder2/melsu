@@ -35,6 +35,10 @@ Route::prefix('admin')->group(function () {
     require __DIR__.'/admin.php';
 });
 
+Route::prefix('cabinet')->group(function () {
+    require __DIR__.'/cabinet.php';
+});
+
 Route::prefix('nomix')->group(function () {
     require __DIR__.'/nomix.php';
 });
