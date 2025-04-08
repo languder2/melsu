@@ -10,8 +10,5 @@ Route::get('exit', function(){
     return redirect()->back();
 })->name('cabinet:exit');
 
-Route::post('auth', function(){
-    auth()->login(\App\Models\User::find(1));
-    return redirect()->back();
-})->name('cabinet:auth');
+Route::post('auth', [Cabinet::class,'login'])->name('cabinet:auth');
 

@@ -27,7 +27,7 @@
     ])
         @slot('title')
             @if($division->code === 'academic-council')
-                Состав учебного совета
+                Состав ученого совета
             @else
                 Сотрудники
             @endif

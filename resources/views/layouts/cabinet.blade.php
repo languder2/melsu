@@ -16,27 +16,46 @@
         @yield('includes')
     @endif
 </head>
-<body class="bg-neutral-100 relative flex flex-col min-h-screen">
+<body class="bg-neutral-100 relative grid grid-rows-[auto_1fr_auto] min-h-screen gap-px">
 
 @include("cabinet.template.header")
-@guest
-    <main class="flex-grow flex items-center justify-center">
-        @include('cabinet.form.login')
-    </main>
-@else
-    <main class="flex-grow">
 
-        @hasSection('header')
-            @yield('header')
-        @endif
+<main class="min-h-full bg-amber" >
+    @guest
+        @include('cabinet.auth')
+    @else
+        <div class="flex gap-4 min-h-full">
+            <div class="hidden">
+                123
+            </div>
 
-        @hasSection('content-header')
-            @yield('content-header')
-        @endif
+            @hasSection('instruction')
+                <aside class="bg-neutral-150 w-96 border-r drop-shadow-md">
+                    <h3 class="font-semibold p-4">
+                        Инструкция
+                    </h3>
+                    <hr class="border-blue">
+                    <div class="flex flex-col gap-4 p-4">
+                        @yield('instruction')
+                    </div>
+                </aside>
+            @endif
 
-        @yield('content')
-    </main>
-@endguest
-@include("cabinet.template.header")
+            <div class="flex-1">
+                @hasSection('content-header')
+                    @yield('content-header')
+                @endif
+
+                @yield('content')
+            </div>
+
+            <aside>
+
+            </aside>
+        </div>
+    @endguest
+</main>
+@include("cabinet.template.footer")
+
 </body>
 </html>
