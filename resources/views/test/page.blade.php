@@ -1,4 +1,4 @@
-@extends("layouts.main")
+@extends("layouts.test")
 
 @section('title', 'ФГБОУ ВО "МелГУ"')
 

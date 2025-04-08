@@ -12,28 +12,26 @@
 
 @section('content')
 
-    @include('public.staffs.division.chief')
-
+    @if(!in_array($division->code,['academic-council']))
+        @include('public.staffs.division.chief')
+    @endif
 
     @if($division->sections->count())
-        @foreach($division->sections as $section)
-            <div class="about-otdel">
-                @if($section->show_title)
-                    <h2 class="font-bold text-xl my-6 uppercase">
-                        {!!$section->title!!}
-                    </h2>
-                @endif
-                <div class="bg-white p-6 mb-5">
-                    {!! $section->content !!}
-                </div>
-            </div>
-        @endforeach
+        <div class="flex flex-col gap-3">
+            @each('public.page.content-section',$division->sections,'section')
+        </div>
     @endif
 
     @component('public.staffs.division.staffs',[
         'staffs'    => $division->staffs(true)->get()
     ])
-        @slot('title') Сотрудники @endslot
+        @slot('title')
+            @if($division->code === 'academic-council')
+                Состав учебного совета
+            @else
+                Сотрудники
+            @endif
+        @endslot
     @endcomponent
 
 @endsection

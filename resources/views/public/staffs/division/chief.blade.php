@@ -2,7 +2,6 @@
     class="flex gap-4 mb-4"
 >
     @isset($division->chief->card)
-
         @if($division->chief->avatar->name === 'avatar')
             <div class="flex items-center bg-neutral-150 w-72 h-72 justify-center rounded-md">
                 <svg height="150px" viewBox="0 0 128 140" fill="none" xmlns="http://www.w3.org/2000/svg">

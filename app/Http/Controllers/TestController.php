@@ -27,13 +27,7 @@ class TestController extends Controller
 {
     public function index()
     {
-
-
-        $division = Division::first();
-
-        Log::add($division,'create','test log');
-
-        dd();
+        return view('test.page');
 
 
     }
