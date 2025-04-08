@@ -7,7 +7,7 @@ use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
-class Cabinet extends Controller
+class CabinetController extends Controller
 {
     public function index()
     {
