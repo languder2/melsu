@@ -64,6 +64,9 @@
                         <li>
                             <a href="../../../storage/documents/board-of-trustees/inostr-student.pdf">Иностранным абитуриентам</a>
                         </li>
+                        <li>
+                            <a href="{{url('https://melsu.ru/podderzhka-uchastnikov-SVO-i-ih-detej')}}">Поддержка участников СВО и их детей</a>
+                        </li>
                     </ul>
                 </div>
                 <div class="btn-more-box flex items-center">

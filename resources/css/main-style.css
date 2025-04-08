@@ -1257,7 +1257,7 @@ header{
         border-left: 1px solid lightgray;
         border-top: 1px solid lightgray;
         border-bottom: 1px solid lightgray;
-        max-height: 455px;
+        max-height: 500px;
         & *{
             font-family: "Montserrat", sans-serif;/*Jost*/
         }
@@ -1280,6 +1280,7 @@ header{
         }
         .point-menu-list{
             margin-bottom: 20px;
+            height: -webkit-fill-available;
             ul{
                 list-style-position: inside;
                 padding-left: 0;
