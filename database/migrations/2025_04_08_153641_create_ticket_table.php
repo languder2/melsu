@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('tickets', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->unsignedBigInteger('author_id')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->text('comment')->nullable();
             $table->longText('content')->nullable();
             $table->string('status');
@@ -22,7 +22,7 @@ return new class extends Migration
             $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
 
-            $table->foreign('author_id')
+            $table->foreign('user_id')
                 ->references('id')
                 ->on('users')
                 ->cascadeOnUpdate()
@@ -46,12 +46,19 @@ return new class extends Migration
 
         });
 
-        Schema::create('ticket_response', function (Blueprint $table) {
+        Schema::create('ticket_replies', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('ticket_id')->nullable();
             $table->unsignedBigInteger('parent_id')->nullable();
-            $table->unsignedBigInteger('author_id')->nullable();
-            $table->string('role');
+            $table->unsignedBigInteger('user_id')->nullable();
+
+            $table->boolean('is_new')->default(true);
+            $table->boolean('is_favorite')->default(false);
+            $table->boolean('is_important')->default(false);
+
+            $table->longText('content')->nullable();
+
+            $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
 
             $table->foreign('ticket_id')->references('id')->on('tickets')
@@ -62,11 +69,16 @@ return new class extends Migration
                 ->onUpdate('set null')
                 ->onDelete('cascade');
 
+            $table->foreign('parent_id')->references('id')->on('ticket_replies')
+                ->onUpdate('set null')
+                ->onDelete('cascade');
+
+
         });
     }
     public function down(): void
     {
-        Schema::dropIfExists('ticket_response');
+        Schema::dropIfExists('ticket_replies');
         Schema::dropIfExists('ticket_affiliation');
         Schema::dropIfExists('tickets');
     }
