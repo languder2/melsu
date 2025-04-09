@@ -71,3 +71,18 @@ select:-webkit-autofill:focus {
 /* CUSTOM CLASSES */
 
 
+
+::-webkit-scrollbar {
+    width: 3px;
+}
+::-webkit-scrollbar-track {
+    background: transparent;
+
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 20px;
+    border: 1px solid var(--color-blue-hover);
+}
+/*aside.right > .wrapper{*/
+/*    direction: rtl;*/
+/*}*/

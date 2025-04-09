@@ -46,6 +46,19 @@ return new class extends Migration
 
         });
 
+        Schema::create('ticket_user_roles', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->string('role');
+            $table->text('post')->nullable();
+            $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')
+                ->onUpdate('set null')
+                ->onDelete('cascade');
+
+        });
+
         Schema::create('ticket_replies', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('ticket_id')->nullable();
@@ -80,6 +93,7 @@ return new class extends Migration
     {
         Schema::dropIfExists('ticket_replies');
         Schema::dropIfExists('ticket_affiliation');
+        Schema::dropIfExists('ticket_user_roles');
         Schema::dropIfExists('tickets');
     }
 };

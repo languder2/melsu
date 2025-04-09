@@ -12,10 +12,10 @@
         value="{{ $value ?? null }}"
         @required(isset($required))
         @class([
-            "bg-white rounded-md",
+            "rounded-md",
             'py-2 px-3',
             'outline-0',
-            $inputClasses ?? null
+            $inputClasses ?? "bg-white"
         ])
         autocomplete="password"
     >

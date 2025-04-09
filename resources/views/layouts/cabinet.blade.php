@@ -29,29 +29,16 @@
                 123
             </div>
 
-            @hasSection('instruction')
-                <aside class="bg-neutral-150 w-96 border-r drop-shadow-md">
-                    <h3 class="font-semibold p-4">
-                        Инструкция
-                    </h3>
-                    <hr class="border-blue">
-                    <div class="flex flex-col gap-4 p-4">
-                        @yield('instruction')
-                    </div>
-                </aside>
-            @endif
+            @include('cabinet.template.aside-left')
 
             <div class="flex-1">
                 @hasSection('content-header')
                     @yield('content-header')
                 @endif
-
                 @yield('content')
             </div>
 
-            <aside>
-
-            </aside>
+            @include('cabinet.template.aside-right')
         </div>
     @endguest
 </main>
