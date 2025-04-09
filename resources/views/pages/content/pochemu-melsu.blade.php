@@ -65,7 +65,7 @@
     <div
         class="grid lg:grid-cols-[29%_70%] xl:grid-cols-[39%_60%] bg-[var(--primary-color)] w-full lg:gap-x-6 xl:gap-x-3 lg:min-h-[240px] items-end xl:relative mb-6 xl:mb-8">
         <div class="order-2 lg:order-1 xl:absolute xl:top-[50px] xl:left-[-50px] xl:py-0">
-            <img src="{{asset('img/kart-novor.jpg')}}" alt="" class="lg:h-[240px] w-full xl:h-[487px] xl:w-[510px]">
+            <img src="{{asset('img/kart-novor.jpg')}}" alt="" class="lg:h-[240px] w-full xl:h-[338px] xl:w-[510px]">
         </div>
         <div class="hidden xl:block"></div>
         <div class="w-[98%] order-1 lg:order-2">
@@ -617,7 +617,7 @@
             <img src="{{asset('img/snapedit_1730877599144-1024x751.png')}}" alt="" class="lg:h-[240px] w-full xl:h-[487px] xl:w-[510px]">
         </div>
         <div class="hidden xl:block order-1 lg:order-2"></div>
-        <div class="w-[98%]">
+        <div class="w-[98%] order-1 lg:order-2">
             <h2 class="font-[700] px-2.5 lg:px-0 py-6 text-xl sm:text-4xl text-white">
                 Дом Ильи Адировича
             </h2>
