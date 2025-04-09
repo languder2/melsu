@@ -11,17 +11,4 @@
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="flex flex-col h-screen">
-    <div class="bg-cyan-800 p-8">
-        1
-    </div>
-    <div class="flex-grow">
-        <main class="bg-amber-400 min-h-full">
-            123
-        </main>
-    </div>
-    <div class="bg-cyan-800 p-4">
-        3
-    </div>
-</body>
 </html>

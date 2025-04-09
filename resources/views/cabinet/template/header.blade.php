@@ -1,8 +1,8 @@
 <header
     class="py-1 text-white bg-cover bg-[image:var(--bg-cabinet-header)]"
 >
-    <nav class="mx-auto max-w-1600 flex items-center gap-4">
-        <a href="{{route('pages:main')}}" target="_blank">
+    <nav class="px-2 lg:mx-auto max-w-1600 flex items-center gap-4 :bg-red-300">
+        <a href="{{route('pages:main')}}" target="_blank" class="focus:outline-0">
             <img src="{{asset('img/cabinet/logo.svg')}}" alt="" />
         </a>
         @guest
@@ -21,14 +21,14 @@
                 <li></li>
                 <li>
                     <a href="{{route('cabinet:index')}}"
-                       class="flex gap-3 p-3 hover:bg-blue-hover rounded-md"
+                       class="flex gap-3 py-3 px-5 hover:bg-blue-hover rounded-md focus:outline-0"
                     >
                         Тикет система
                     </a>
                 </li>
                 <li>
                     <a href="{{route('cabinet:exit')}}"
-                       class="flex gap-3 p-3 hover:bg-blue-hover rounded-md"
+                       class="flex gap-3 py-3 px-5 hover:bg-blue-hover rounded-md focus:outline-0"
                     >
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M11 3L10.3374 3.23384C7.75867 4.144 6.46928 4.59908 5.73464 5.63742C5 6.67576 5 8.0431 5 10.7778V13.2222C5 15.9569 5 17.3242 5.73464 18.3626C6.46928 19.4009 7.75867 19.856 10.3374 20.7662L11 21" stroke="#FAF9F6" stroke-width="1.5" stroke-linecap="round"/>

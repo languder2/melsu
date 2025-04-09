@@ -1,21 +1,38 @@
-<div class="grid grid-cols-2">
-    <div
-        class="bg-neutral-200 p-8"
+<form name="auth" method="post" action="{{route('cabinet:auth')}}" class="flex flex-col gap-4 h-full">
+    @csrf
+    <h3
+        class="font-semibold uppercase text-center"
     >
-        <form method="POST" action="">
-            @csrf
-            <div>
-            </div>
-            <div>
-                2
-            </div>
-        </form>
+        Авторизация
+    </h3>
 
-    </div>
-    <div
-        class="text-white p-8 bg-[image:var(--bg-panel-1)]"
-    >
-            123
+    @component('components.cabinet.form.errors') @endcomponent
+
+    @component('components.cabinet.form.input',[
+        'name'      => 'email',
+        'type'      => 'email',
+        'required'  => true,
+    ])
+        Email:
+    @endcomponent
+
+    @component('components.cabinet.form.input',[
+        'name'      => 'password',
+        'type'      => 'password',
+        'required'  => true,
+    ])
+        Password:
+    @endcomponent
+
+    <div class="text-right">
+        <a href="#" class="underline">
+            Забыли пароль?
+        </a>
     </div>
 
-</div>
+    <div class="flex-grow"></div>
+
+    @component('components.cabinet.form.submit')
+        Войти
+    @endcomponent
+</form>
