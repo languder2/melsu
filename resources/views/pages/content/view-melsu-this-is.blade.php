@@ -136,7 +136,7 @@
      class="modal-image transition-discrete starting:open:opacity-0 fixed open:backdrop-brightness-50 w-fit xl:max-w-4/5 max-h-[1535px] border-2 border-white shadow-md shadow-white">
     <div class="wrapp-modal-video relative">
         <span class="close-modal absolute border border-[#820000] right-3 top-3 bg-[#820000] rounded-full text-white py-1 px-2 cursor-pointer transition duration-300 ease-linear hover:bg-white hover:text-[#820000] z-20">X</span>
-        <video controls playsinline  class=" object-cover">
+        <video controls playsinline  class=" object-cover" poster="{{asset('img/poster.jpg')}}">
             <source src="{{asset('video/Center.mp4')}}" type='video/mp4'>
         </video>
     </div>
