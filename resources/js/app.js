@@ -4,6 +4,10 @@ import './menu.js';
 import './load.js';
 import './scroll-to-top.js';
 
+import * as isvek from "bvi"
+
+new isvek.Bvi()
+
 import './accordion-script.js';
 import './classie.js';
 import './counter-script.js';

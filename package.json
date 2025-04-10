@@ -16,6 +16,7 @@
         "vite": "^6.0"
     },
     "dependencies": {
+        "bvi": "^1.0.2",
         "font-awesome": "^4.7.0"
     }
 }
