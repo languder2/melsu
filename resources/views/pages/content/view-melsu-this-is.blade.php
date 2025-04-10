@@ -58,6 +58,7 @@
                     <div class="line-hex-right right-bottom-line hidden lg:flex start befo aftr">
                     </div>
                     <div class="hex">
+                        <button popovertarget="center-video" class="cursor-pointer">
                         <div class="hexinner">
                             <div class="hex-content-box">
                                 <div class="hex-content">
@@ -70,6 +71,7 @@
                                 </div>
                             </div>
                         </div>
+                        </button>
                     </div>
                     <div class="img-hex-left left-top-img start">
                         <img src="{{asset('img/circle-1.jpg')}}" alt="">
@@ -130,9 +132,38 @@
             </div>
         </div>
 </section>
+<div popover="manual" id="center-video"
+     class="modal-image transition-discrete starting:open:opacity-0 fixed open:backdrop-brightness-50 w-fit xl:max-w-4/5 max-h-[1535px] border-2 border-white shadow-md shadow-white">
+    <div class="wrapp-modal-video relative">
+        <span class="close-modal absolute border border-[#820000] right-3 top-3 bg-[#820000] rounded-full text-white py-1 px-2 cursor-pointer transition duration-300 ease-linear hover:bg-white hover:text-[#820000] z-20">X</span>
+        <video controls playsinline  class=" object-cover">
+            <source src="{{asset('video/Center.mp4')}}" type='video/mp4'>
+        </video>
+    </div>
+</div>
 <style>
     .container.hidden{
         display: none;
     }
 </style>
+<script>
+    document.querySelector('.close-modal').addEventListener('click', () =>  {
+        const modal = document.getElementById('center-video');
+        const video = modal.querySelector('video');
+        video.pause();
+        modal.hidePopover();
+    });
+    document.addEventListener('click', (event) => {
+        const modal = document.getElementById('center-video');
+        const video = modal.querySelector('video');
+
+        if (modal.matches(':popover-open')) {
+            const clickInsideModal = event.composedPath().includes(modal);
+            if (!clickInsideModal) {
+                video.pause();
+                modal.hidePopover();
+            }
+        }
+    });
+</script>
 <script src="{{asset('js/melsu-this-is-script.js')}}"></script>
