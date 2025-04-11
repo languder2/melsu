@@ -13,7 +13,7 @@ use App\Http\Controllers\Sections\FAQController;
 use App\Http\Controllers\Sections\CareerController;
 use App\Http\Controllers\News\ApiNews;
 use App\Http\Controllers\Staffs\ApiStaff;
-
+use App\Http\Controllers\Education\SpecialityController;
 Route::get('departments-by-faculty-shorts/{faculty?}', function (Request $request, $faculty = null) {
 
     if (is_null($faculty))
@@ -226,4 +226,6 @@ Route::get('news/from/{date?}',         [ApiNews::class,'getListFrom']);
 
 
 Route::get('staff/teachers',            [ApiStaff::class,'getTeachersByDepartments']);
+
+Route::get('specialities/list',         [SpecialityController::class,'getListAPI']);
 
