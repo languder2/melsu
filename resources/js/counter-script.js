@@ -48,10 +48,10 @@ function createCounterDecay(elementId, startValue, interval, step = 1) {
 
 if (document.querySelector('.box-number')) {
     if (document.querySelector('#countFaculty')) {
-        const intervalIdFaculty = createCounter('countFaculty', 5, 100, 1);
+        const intervalIdFaculty = createCounter('countFaculty', 10, 100, 1);
     }
     if (document.querySelector('#countKaf')) {
-        const intervalIdKaf = createCounter('countKaf', 40, 10, 1);
+        const intervalIdKaf = createCounter('countKaf', 46, 10, 1);
     }
     if (document.querySelector('#countStud')) {
         const intervalIdStud = createCounter('countStud', 15000, 1, 100);
