@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Education;
 
 use App\Enums\DivisionType;
+use App\Enums\TicketRoles;
 use App\Http\Controllers\Controller;
 use App\Models\Division\Division;
 use App\Models\Education\Department;
@@ -13,7 +14,9 @@ use App\Models\Menu\Menu;
 use App\Models\Page\Content as PageContent;
 use App\Models\Sections\Career;
 use App\Models\Sections\FAQ;
+use App\Models\Ticket\UserRole;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 
 class SpecialityController extends Controller
 {
@@ -119,6 +122,35 @@ class SpecialityController extends Controller
         $menu = Menu::where('code','education')->first();
 
         return view('public.education.speciality.single',compact('speciality','menu'));
+    }
+
+    /* API */
+
+    public function getListAPI():Collection
+    {
+        $list = Speciality::where('show',true)->get()
+            ->mapWithKeys(function ($record) {
+                return [$record->id =>
+                    (object)[
+                        "id"                => $record->id ?? null,
+                        "spec_code"         => $record->spec_code ?? null,
+                        "name"              => $record->name ?? null,
+                        "department_id"     => $record->department_id ?? null,
+                        "department_name"   => $record->department->name ?? null,
+                        "faculty_id"        => $record->faculty_id ?? null,
+                        "faculty_acronym"   => $record->faculty->acronym ?? null,
+                        "faculty_name"      => $record->faculty->name ?? null,
+                        "level"             => $record->level->getName() ?? null,
+                        "forms"             => $record->profiles->mapWithKeys(function($profile){
+                              return [
+                                  $profile->form->value => $profile->form->getName(),
+                              ];
+                            })->toArray() ?? null,
+
+                    ]
+                ];
+            });
+        return $list;
     }
 
 }

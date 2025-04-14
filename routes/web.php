@@ -14,6 +14,8 @@ use App\Http\Controllers\Staffs\StaffController;
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\Services\ControlController;
+
 
 Route::get('/', function () {
     return view('pages.main');
@@ -132,3 +134,9 @@ Route::controller(ScheduleController::class)
 
 /*handbook*/
 Route::get('/handbooks/{collectionId}', [HandbookController::class, 'show'])->name('public.handbooks.show');
+
+
+Route::get('control/sections',  [ControlController::class,'sections']);
+Route::get('control/contacts',  [ControlController::class,'contacts']);
+Route::get('control/staffs',    [ControlController::class,'staffs']);
+

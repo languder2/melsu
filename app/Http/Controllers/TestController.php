@@ -15,6 +15,7 @@ use App\Models\Education\Exam;
 use App\Models\Education\Profile;
 use App\Models\Education\Speciality;
 use App\Models\Log;
+use App\Models\Page\Content;
 use Illuminate\Http\Request;
 use App\Models\Education\Faculty;
 use App\Models\User;
@@ -29,8 +30,6 @@ class TestController extends Controller
     {
 
         return view('test.page');
-
-
     }
 
 }

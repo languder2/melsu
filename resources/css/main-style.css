@@ -803,6 +803,7 @@ header{
     max-height: 850px;
     position: relative;
     .slider {
+        z-index: 2;
         margin: 0 auto;
         height: auto;
         max-height: 850px;
@@ -882,13 +883,14 @@ header{
         }
     }
 
-    .directional_nav {
+    /*.directional_nav {
         max-height: 850px;
+        z-index: 1;
         height: 100%;
         width: 100%;
         margin: 0 auto;
         position: absolute;
-        top: 0;
+        top: 0;*/
 
 
         .previous_btn {
@@ -908,8 +910,11 @@ header{
         }
 
         .previous_btn, .next_btn {
+            z-index: 3;
             cursor: pointer;
-            height: 65px;
+            height: 100%;
+            display: flex;
+            align-items: center;
             opacity: 0.5;
             -webkit-transition: opacity 0.4s ease-in-out;
             -moz-transition: opacity 0.4s ease-in-out;
@@ -929,7 +934,6 @@ header{
             opacity: 1;
         }
     }
-}
 @media screen and (max-width: 1920px) {
     .slider-section{
         & .sldr{
