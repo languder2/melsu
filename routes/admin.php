@@ -12,7 +12,7 @@ use App\Http\Controllers\Staffs\StaffController;
 use App\Http\Controllers\Users\UserController;
 use App\Http\Controllers\suStructureController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Education\InstituteController;
 
 Route::middleware(['isAdmin'])
     ->controller(suStructureController::class)
@@ -145,6 +145,10 @@ Route::middleware('isAdmin')
 
     });
 
+
+Route::get('institutes',[InstituteController::class,'list'])->middleware('isAdmin')
+    ->name('admin:institutes:list');
+
 Route::middleware('isAdmin')
     ->controller(DepartmentController::class)
     ->prefix('departments')
@@ -160,7 +164,6 @@ Route::middleware('isAdmin')
     ->controller(LabsController::class)
     ->prefix('education/labs')
     ->group(function () {
-
         Route::get('', 'AdminList')->name('admin:lab:list');
 
     });

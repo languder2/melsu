@@ -40,6 +40,18 @@ Route::get('link-correct', function (Request $request) {
 
 });
 
+Route::get('division/toggle-show/{division}', function(?Division $division){
+    if($division){
+        $division->show = !(bool)$division->show;
+        $division->save();
+
+        return response()->json(
+            [
+                'message' => ($division->show ? "Опубликовано" : 'Снята публикация' )."\n{$division->name}"
+            ]);
+    }
+})->middleware(['web','auth.api'])->name('division:toggle-show');
+
 Route::middleware(['web','auth.api'])->prefix('gallery')->group(function () {
     Route::get('toggle-show/{id}', [AdminImageGallery::class, 'ApiToggleShow'])
     ->name('gallery-toggle-show');
@@ -50,7 +62,6 @@ Route::middleware(['web','auth.api'])->prefix('gallery')->group(function () {
 });
 
 Route::middleware(['web','auth.api'])->prefix('posts')->group(function () {
-//Route::prefix('posts')->group(function () {
     Route::get('delete/{id?}', [StaffController::class, 'ApiDelete'])
     ->name('api-post-delete');
 
@@ -65,7 +76,6 @@ Route::middleware(['web','auth.api'])->prefix('posts')->group(function () {
 Route::middleware(['web','auth.api'])
     ->prefix('content/sections')
     ->group(function () {
-//        Route::get('delete/{id?}', 'ApiDelete')->name('api:department-groups:delete');
 
         Route::get('add', function (){
             return view('admin.page.content.editor')

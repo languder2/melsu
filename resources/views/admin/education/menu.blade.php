@@ -8,6 +8,13 @@
 {{--    <span class="inline-block mx-3 opacity-30">|</span>--}}
 
     <x-html.a-blue
+        href="{{route('admin:institutes:list')}}"
+        text="Институты"
+    />
+
+    <span class="inline-block mx-3 opacity-30">|</span>
+
+    <x-html.a-blue
         href="{{route('admin:faculty:list')}}"
         text="Факультеты"
     />

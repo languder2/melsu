@@ -6,6 +6,7 @@ enum DivisionType: string
 {
     case Rectorate = 'rectorate';
     case Branch         = 'branch';
+    case Institute      = 'institute';
     case Faculty        = 'faculty';
     case Department     = 'department';
     case Lab            = 'lab';
@@ -18,6 +19,7 @@ enum DivisionType: string
         return match ($this) {
             self::Rectorate             => 'Ректорат',
             self::Branch                => 'Филиал',
+            self::Institute             => 'Институт',
             self::Faculty               => 'Факультет',
             self::Department            => 'Кафедра',
             self::Lab                   => 'Лаборатория',
