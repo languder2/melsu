@@ -17,59 +17,59 @@
                     <a class="transition duration-300 ease-in-out hover:opacity-60" href="https://melsu.ru/main-sved">Основные сведения</a>
                 </li>
                 <li class="leading-normal pb-3">
-                    <a class="transition duration-300 ease-in-out hover:opacity-60" href="#">Структура и органы управления образовательной организацией</a>
+                    <a class="transition duration-300 ease-in-out hover:opacity-60" href="https://melsu.ru/divisions">Структура и органы управления образовательной организацией</a>
                 </li>
                 <li class="leading-normal pb-3">
-                    <a class="transition duration-300 ease-in-out hover:opacity-60" href="#">Документы</a>
+                    <a class="transition duration-300 ease-in-out hover:opacity-60" href="https://melsu.ru/update-page">Документы</a>
                 </li>
                 <li class="leading-normal pb-3">
-                    <a class="transition duration-300 ease-in-out hover:opacity-60" href="#">Образование</a>
+                    <a class="transition duration-300 ease-in-out hover:opacity-60" href="https://melsu.ru/menu/education">Образование</a>
                 </li>
                 <li class="leading-normal pb-3">
-                    <a class="transition duration-300 ease-in-out hover:opacity-60" href="#">Образовательные стандарты и требования</a>
+                    <a class="transition duration-300 ease-in-out hover:opacity-60" href="https://melsu.ru/update-page">Образовательные стандарты и требования</a>
                 </li>
                 <li class="leading-normal pb-3">
-                    <a class="transition duration-300 ease-in-out hover:opacity-60" href="#">Руководство</a>
+                    <a class="transition duration-300 ease-in-out hover:opacity-60" href="https://melsu.ru/rectorate">Ректорат</a>
                 </li>
                 <li class="leading-normal pb-3">
-                    <a class="transition duration-300 ease-in-out hover:opacity-60" href="#">Материально-техническое обеспечение и оснащённость образовательного процесса. Доступная среда</a>
+                    <a class="transition duration-300 ease-in-out hover:opacity-60" href="https://melsu.ru/material-no-tekhnicheskoe-obespechenie-i-osnashchyonnost-obrazovatelnogo-processa">Материально-техническое обеспечение и оснащённость образовательного процесса</a>
                 </li>
                 <li class="leading-normal pb-3 lg:pb-0">
-                    <a class="transition duration-300 ease-in-out hover:opacity-60" href="#">Стипендии и меры поддержки обучающихся</a>
+                    <a class="transition duration-300 ease-in-out hover:opacity-60" href="https://melsu.ru/stipendii">Стипендии и меры поддержки обучающихся</a>
                 </li>
             </ul>
         </div>
         <div class="z-10">
             <ul class="text-base xl:text-lg list-outside list-disc">
                 <li class="leading-normal pb-3">
-                    <a class="transition duration-300 ease-in-out hover:opacity-60" href="#">Платные образовательные услуги</a>
+                    <a class="transition duration-300 ease-in-out hover:opacity-60" href="https://melsu.ru/update-page">Платные образовательные услуги</a>
                 </li>
                 <li class="leading-normal pb-3">
-                    <a class="transition duration-300 ease-in-out hover:opacity-60" href="#">Финансово-хозяйственная деятельность</a>
+                    <a class="transition duration-300 ease-in-out hover:opacity-60" href="https://melsu.ru/finansovo-hozyajstvennaya-deyatelnost">Финансово-хозяйственная деятельность</a>
                 </li>
                 <li class="leading-normal pb-3">
-                    <a class="transition duration-300 ease-in-out hover:opacity-60" href="#">Вакантные места для приема (перевода) обучающихся</a>
+                    <a class="transition duration-300 ease-in-out hover:opacity-60" href="https://melsu.ru/update-page">Вакантные места для приема (перевода) обучающихся</a>
                 </li>
                 <li class="leading-normal pb-3">
-                    <a class="transition duration-300 ease-in-out hover:opacity-60" href="#">Международное сотрудничество</a>
+                    <a class="transition duration-300 ease-in-out hover:opacity-60" href="https://melsu.ru/update-page">Международное сотрудничество</a>
                 </li>
                 <li class="leading-normal pb-3">
-                    <a class="transition duration-300 ease-in-out hover:opacity-60" href="#">Организация питания в образовательной организации</a>
+                    <a class="transition duration-300 ease-in-out hover:opacity-60" href="https://melsu.ru/update-page">Организация питания в образовательной организации</a>
                 </li>
                 <li class="leading-normal pb-3">
-                    <a class="transition duration-300 ease-in-out hover:opacity-60" href="#">Антитеррор</a>
+                    <a class="transition duration-300 ease-in-out hover:opacity-60" href="https://melsu.ru/anti-terror">Антитеррор</a>
                 </li>
                 <li class="leading-normal pb-3">
-                    <a class="transition duration-300 ease-in-out hover:opacity-60" href="#">Противодействие коррупции</a>
+                    <a class="transition duration-300 ease-in-out hover:opacity-60" href="https://melsu.ru/division/anti-corruption-department">Противодействие коррупции</a>
                 </li>
                 <li class="leading-normal pb-3">
-                    <a class="transition duration-300 ease-in-out hover:opacity-60" href="#">Прием обращений граждан</a>
+                    <a class="transition duration-300 ease-in-out hover:opacity-60" href="https://melsu.ru/update-page">Прием обращений граждан</a>
                 </li>
                 <li class="leading-normal pb-3">
-                    <a class="transition duration-300 ease-in-out hover:opacity-60" href="#">Обратная связь</a>
+                    <a class="transition duration-300 ease-in-out hover:opacity-60" href="https://melsu.ru/update-page">Обратная связь</a>
                 </li>
                 <li class="leading-normal pb-3 lg:pb-0">
-                    <a class="transition duration-300 ease-in-out hover:opacity-60" href="#">Абитуриенту</a>
+                    <a class="transition duration-300 ease-in-out hover:opacity-60" href="https://abiturient.mgu-mlt.ru/">Поступающему</a>
                 </li>
             </ul>
         </div>
