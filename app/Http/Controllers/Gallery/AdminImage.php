@@ -91,4 +91,9 @@ class AdminImage extends Controller
                 :'admin:image:list'
         );
     }
+
+    public function processing(){
+
+    }
+
 }

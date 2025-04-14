@@ -13,19 +13,19 @@ use App\Http\Controllers\Users\UserController;
 use App\Http\Controllers\suStructureController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Education\InstituteController;
-
-Route::middleware(['isAdmin'])
-    ->controller(suStructureController::class)
-    ->prefix('structure')
-    ->group(function () {
-
-        Route::get('', 'adminList')->name('admin:structure');
-        Route::get('add', 'form')->name('admin:structure:add');
-        Route::get('edit/{id}', 'form')->name('admin:structure:edit');
-        Route::post('save', 'save')->name('admin:structure:save');
-        Route::get('delete/{id}', 'delete')->name('admin:structure:delete');
-
-    });
+//
+//Route::middleware(['isAdmin'])
+//    ->controller(suStructureController::class)
+//    ->prefix('structure')
+//    ->group(function () {
+//
+//        Route::get('', 'adminList')->name('admin:structure');
+//        Route::get('add', 'form')->name('admin:structure:add');
+//        Route::get('edit/{id}', 'form')->name('admin:structure:edit');
+//        Route::post('save', 'save')->name('admin:structure:save');
+//        Route::get('delete/{id}', 'delete')->name('admin:structure:delete');
+//
+//    });
 
 /* News: admin */
 
@@ -52,7 +52,7 @@ Route::middleware('isAdmin')
         Route::get('', 'adminList')->name('admin:events');
         Route::get('add', 'form')->name('admin:events:add');
         Route::get('edit/{id}', 'form')->name('admin:events:edit');
-        Route::post('save', 'save')->name('admin:events:save');
+        Route::post('save/{event?}', 'save')->name('admin:events:save');
         Route::get('delete/{id}', 'delete')->name('admin:events:delete');
 
     });
@@ -251,3 +251,4 @@ Route::middleware('auth.check')
         Route::put('{collectionId}/update/{id}', [HandbookController::class, 'update'])->name('handbook.update');
         Route::get('{collectionId}/delete/{id}', [HandbookController::class, 'destroy'])->name('handbook.delete');
     });
+

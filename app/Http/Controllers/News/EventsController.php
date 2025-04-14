@@ -2,75 +2,57 @@
 
 namespace App\Http\Controllers\News;
 
+use App\Enums\EventType;
 use App\Http\Controllers\Controller;
-use App\Models\ImageStorage;
 use App\Models\News\Events;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 
 class EventsController extends Controller
 {
-    public function adminList(): string
+    public function adminList(): \Illuminate\View\View
     {
-        return view('pages.admin', [
-            'contents' => [
-                View::make('components.admin.top_menu.news')->with([
-                    'active' => 'events'
-                ])->render(),
+        $last = Events::orderBy('id','desc')->first();
 
-                View::make('components.admin.events.events')->with([
-                    'list' => Events::orderBy('published_at', 'desc')->get(),
-                ])->render(),
-            ]
-        ]);
+        dd($last->preview->src);
+        return view('admin.events.events.list');
     }
 
-    public function form($id = null): string
+    public function form(Events $event): string
     {
 
-        return view('pages.admin', [
-            'contents' => [
-                View::make('components.admin.top_menu.news')->with([
-                    'active' => 'events'
-                ])->render(),
+        $types = EventType::forSelect();
 
-                View::make('components.admin.events.form')->with([
-                    'current' => Events::find($id),
-
-                ])->render(),
-            ]
-        ]);
+        return view('admin.events.events.form' , compact('event','types'));
     }
 
-    public function save(Request $request)
+    public function save(Request $request, ?Events $event)
     {
 
-        $form = $request->validate(Events::$FormRules, Events::$FormMessage);
+        $form = $request->validate(Events::FormRules(), Events::FormMessage());
 
-        if (empty($request->get('id')))
-            $record = new Events();
-        else
-            $record = Events::find($request->get('id'));
+        $event->fill($form)->save();
 
-        $record->fill($form);
+        if(!$event->preview)
+            $event->preview = $event->preview()->create([
+                'name'          => $event->title,
+                'type'          => 'preview',
+            ]);
 
-        $record->save();
+        if($request->file('image')){
+            $event->preview->relation()->associate($event)->saveImage($request->file('image'));
+        }
+        elseif($form['preview']){
+            $event->preview->name = $event->title;
+            $event->preview->getReferenceID($form['preview']);
+        }
+        else{
+            $event->preview->reference_id = null;
+            $event->preview->filename = null;
+            $event->preview->filetype = null;
+        }
 
-        $image = (object)$request->validate(ImageStorage::$FormRules, ImageStorage::$FormMessage);
-
-        if (!isset($image->image))
-            return redirect()->route('admin:events');
-
-
-        $record->image = 'event-' . $record->id;
-
-        $record->save();
-
-        $image->image->storeAS('images/events', 'original.' . $image->image->extension(), 'public');
-
-        ImageStorage::saveResizedImageToStorage('events', $image->image->path(), 'event-' . $record->id, [
-            "600:600", '900:900', [1200, 1200]
-        ]);
+        $event->preview->save();
 
         return redirect()->route('admin:events');
     }
