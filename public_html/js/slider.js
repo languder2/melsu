@@ -1,11 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
+    var timeout;
     $('.slider').each(function () {
         var $this = $(this);
         var $group = $this.find('.slide_group');
         var $slides = $this.find('.slide');
         var bulletArray = [];
         var currentIndex = 0;
-        var timeout;
+
 
         function move(newIndex) {
             var animateLeft, slideLeft;
