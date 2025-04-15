@@ -247,7 +247,7 @@
         <div>
             <div class="bg-[var(--primary-color)] xl:mt-[290px] p-6 text-white">
                 <div class="border-b-[1px] border-white py-3">
-                    <h3 class="text-5xl font-[700] mb-3">9</h3>
+                    <h3 class="text-5xl font-[700] mb-3">32</h3>
                     <span>Новых направлений</span>
                 </div>
                 <div class="border-white py-3">
@@ -262,15 +262,38 @@
                 <li>
                     Новые направления подготовки на 2025-2026 учебный год:
                     <ul class="ps-5 space-y-1 list-disc list-inside my-3">
-                        <li>Картография и геоинформатика</li>
-                        <li>Почвоведение</li>
-                        <li>Мехатроника и робототехника</li>
-                        <li>Авиастроение (Беспилотные летательные аппараты)</li>
-                        <li>Гидромелиорация</li>
-                        <li>Бизнес-информатика</li>
-                        <li>Реклама и связи с общественностью</li>
-                        <li>Дизайн</li>
-                        <li>Судебная и прокурорская деятельность и др.</li>
+                        <li><a class="hover:underline hover:text-base-red" href="">Картография и геоинформатика</a></li>
+                        <li><a class="hover:underline hover:text-base-red" href="https://melsu.ru/specialities/speciality_163">Строительство</a></li>
+                        <li><a class="hover:underline hover:text-base-red" href="https://melsu.ru/specialities/speciality_148">Радиотехника</a></li>
+                        <li><a class="hover:underline hover:text-base-red" href="https://melsu.ru/specialities/speciality_165">Почвоведение</a></li>
+                        <li><a class="hover:underline hover:text-base-red" href="https://melsu.ru/specialities/speciality_187">Управление персоналом</a></li>
+                        <li><a class="hover:underline hover:text-base-red" href="https://melsu.ru/specialities/speciality_189">Жилищное хозяйство и коммунальная инфраструктура</a></li>
+                        <li><a class="hover:underline hover:text-base-red" href="https://melsu.ru/specialities/speciality_176">Социология (Бакалавриат)</a></li>
+                        <li><a class="hover:underline hover:text-base-red" href="https://melsu.ru/specialities/speciality_178">Социология (Магистратура)</a></li>
+                        <li><a class="hover:underline hover:text-base-red" href="https://melsu.ru/specialities/speciality_179">Реклама и связи с общественностью</a></li>
+                        <li><a class="hover:underline hover:text-base-red" href="https://melsu.ru/specialities/speciality_171">Рекреация и спортивно-оздоровительный туризм</a></li>
+                        <li><a class="hover:underline hover:text-base-red" href="https://melsu.ru/specialities/speciality_177">Культурология</a></li>
+                        <li><a class="hover:underline hover:text-base-red" href="https://melsu.ru/specialities/speciality_145">Музыкальное искусство эстрады</a></li>
+                        <li><a class="hover:underline hover:text-base-red" href="https://melsu.ru/specialities/15-03-05">Конструкторско-технологическое обеспечение машиностроительных производств</a></li>
+                        <li><a class="hover:underline hover:text-base-red" href="https://melsu.ru/specialities/speciality_160">Наземные транспортно-технологические комплексы</a></li>
+                        <li><a class="hover:underline hover:text-base-red" href="https://melsu.ru/specialities/43.03.01">Сервис</a></li>
+                        <li><a class="hover:underline hover:text-base-red" href="https://melsu.ru/specialities/speciality_149">Ядерная энергетика и теплофизика</a></li>
+                        <li><a class="hover:underline hover:text-base-red" href="https://melsu.ru/specialities/speciality_166">Агрохимия и агропочвоведение</a></li>
+                        <li><a class="hover:underline hover:text-base-red" href="https://melsu.ru/specialities/speciality_21">Садоводство (Бакалавриат)</a></li>
+                        <li><a class="hover:underline hover:text-base-red" href="https://melsu.ru/specialities/speciality_167">Садоводство (Магистратура)</a></li>
+                        <li><a class="hover:underline hover:text-base-red" href="https://melsu.ru/specialities/ugolovno-pravovoi">Правоохранительная деятельность</a></li>
+                        <li><a class="hover:underline hover:text-base-red" href="https://melsu.ru/specialities/40-05-04">Судебная и прокурорская деятельность</a></li>
+                        <li><a class="hover:underline hover:text-base-red" href="https://melsu.ru/specialities/speciality_182">Журналистика</a></li>
+                        <li><a class="hover:underline hover:text-base-red" href="https://melsu.ru/specialities/speciality_183">Медиакоммуникации</a></li>
+                        <li><a class="hover:underline hover:text-base-red" href="https://melsu.ru/specialities/51-04-03">Социально-культурная деятельность</a></li>
+                        <li><a class="hover:underline hover:text-base-red" href="https://melsu.ru/specialities/speciality_162">Мехатроника и робототехника</a></li>
+                        <li><a class="hover:underline hover:text-base-red" href="https://melsu.ru/specialities/speciality_161">Авиастроение (Беспилотные летательные аппараты)</a></li>
+                        <li><a class="hover:underline hover:text-base-red" href="https://melsu.ru/specialities/speciality_169">Гидромелиорация</a></li>
+                        <li><a class="hover:underline hover:text-base-red" href="https://melsu.ru/specialities/speciality_170">Гидромелиорация (Магистратура)</a></li>
+                        <li><a class="hover:underline hover:text-base-red" href="https://melsu.ru/specialities/speciality_190">Бизнес-информатика</a></li>
+                        <li><a class="hover:underline hover:text-base-red" href="https://melsu.ru/specialities/speciality_179">Реклама и связи с общественностью</a></li>
+                        <li><a class="hover:underline hover:text-base-red" href="https://melsu.ru/specialities/speciality_184">Дизайн</a></li>
+                        <li><a class="hover:underline hover:text-base-red" href="https://melsu.ru/specialities/speciality_195">Судебная и прокурорская деятельность и др.</a></li>
                     </ul>
                 </li>
                 <li>в МелГУ открылись 5 новейших учебных лабораторий:
