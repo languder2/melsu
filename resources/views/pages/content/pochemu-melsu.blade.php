@@ -292,7 +292,7 @@
                         <li><a class="hover:underline hover:text-base-red" href="https://melsu.ru/specialities/speciality_190">Бизнес-информатика</a></li>
                         <li><a class="hover:underline hover:text-base-red" href="https://melsu.ru/specialities/speciality_179">Реклама и связи с общественностью</a></li>
                         <li><a class="hover:underline hover:text-base-red" href="https://melsu.ru/specialities/speciality_184">Дизайн</a></li>
-                        <li><a class="hover:underline hover:text-base-red" href="https://melsu.ru/specialities/speciality_195">Судебная и прокурорская деятельность и др.</a></li>
+                        <li><a class="hover:underline hover:text-base-red" href="https://melsu.ru/specialities/speciality_195">Судебная и прокурорская деятельность</a></li>
                     </ul>
                 </li>
                 <li>в МелГУ открылись 5 новейших учебных лабораторий:
