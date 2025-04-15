@@ -287,7 +287,7 @@
                         <li><a class="hover:underline hover:text-base-red" href="https://melsu.ru/specialities/51-04-03">Социально-культурная деятельность</a></li>
                         <li><a class="hover:underline hover:text-base-red" href="https://melsu.ru/specialities/speciality_162">Мехатроника и робототехника</a></li>
                         <li><a class="hover:underline hover:text-base-red" href="https://melsu.ru/specialities/speciality_161">Авиастроение (Беспилотные летательные аппараты)</a></li>
-                        <li><a class="hover:underline hover:text-base-red" href="https://melsu.ru/specialities/speciality_169">Гидромелиорация</a></li>
+                        <li><a class="hover:underline hover:text-base-red" href="https://melsu.ru/specialities/speciality_169">Гидромелиорация (Бакалавриат)</a></li>
                         <li><a class="hover:underline hover:text-base-red" href="https://melsu.ru/specialities/speciality_170">Гидромелиорация (Магистратура)</a></li>
                         <li><a class="hover:underline hover:text-base-red" href="https://melsu.ru/specialities/speciality_190">Бизнес-информатика</a></li>
                         <li><a class="hover:underline hover:text-base-red" href="https://melsu.ru/specialities/speciality_179">Реклама и связи с общественностью</a></li>
