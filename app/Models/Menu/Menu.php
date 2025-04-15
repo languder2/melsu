@@ -211,11 +211,6 @@ class Menu extends Model
         ]);
 
         $menu->items->push((object)[
-            'name' => "Наука",
-            'link' => url('science'),
-        ]);
-
-        $menu->items->push((object)[
             'name' => "Партнеры и выпускники",
             'link' => url('partner'),
         ]);

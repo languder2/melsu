@@ -10,6 +10,7 @@ use Diglactic\Breadcrumbs\Breadcrumbs;
 use Diglactic\Breadcrumbs\Generator as BreadcrumbTrail;
 use App\Models\Division\Division;
 use App\Enums\DivisionType;
+use App\Models\News\Events;
 
 Breadcrumbs::for('home', function (BreadcrumbTrail $trail) {
     $trail->push('Главная', route('pages:main'));
@@ -18,6 +19,16 @@ Breadcrumbs::for('home', function (BreadcrumbTrail $trail) {
 Breadcrumbs::for('news', function (BreadcrumbTrail $trail) {
     $trail->parent('home');
     $trail->push('Новости', route('news:show:all'));
+});
+
+Breadcrumbs::for('events', function (BreadcrumbTrail $trail, ?Events $event) {
+    $trail->parent('home');
+
+    if($event){
+        $trail->push('Мероприятия',route('public:events:list'));
+        $trail->push($event->title,route('public:event:show',$event));
+
+    }
 });
 
 Breadcrumbs::for('news-item', function (BreadcrumbTrail $trail, News $news) {

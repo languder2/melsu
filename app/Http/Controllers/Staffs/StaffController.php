@@ -181,16 +181,18 @@ class StaffController extends Controller
 
         session()->put('PublicStaffsSearch',collect($request->get('search'))->toJson(JSON_UNESCAPED_UNICODE));
 
-        $search = esc($request->get('search'));
 
         $staffs     = Staff::orderBy('lastname')->orderBy('firstname')->orderBy('middle_name');
 
-        $staffs->where(DB::raw("CONCAT(lastname, ' ', firstname)"), 'like', '%'.$search.'%')
-            ->orWhere(DB::raw("CONCAT(firstname, ' ', lastname)"), 'like', '%'.$search.'%')
-            ->orWhere(DB::raw("CONCAT(lastname, ' ', firstname, ' ', middle_name)"), 'like', '%'.$search.'%')
-            ->orWhere(DB::raw("CONCAT(firstname, ' ', middle_name, ' ', lastname)"), 'like', '%'.$search.'%')
-            ->orWhere(DB::raw("CONCAT(middle_name, ' ', lastname, ' ', firstname)"), 'like', '%'.$search.'%');
+        if($request->has('search')){
+            $search = esc($request->get('search'));
 
+            $staffs->where(DB::raw("CONCAT(lastname, ' ', firstname)"), 'like', '%'.$search.'%')
+                ->orWhere(DB::raw("CONCAT(firstname, ' ', lastname)"), 'like', '%'.$search.'%')
+                ->orWhere(DB::raw("CONCAT(lastname, ' ', firstname, ' ', middle_name)"), 'like', '%'.$search.'%')
+                ->orWhere(DB::raw("CONCAT(firstname, ' ', middle_name, ' ', lastname)"), 'like', '%'.$search.'%')
+                ->orWhere(DB::raw("CONCAT(middle_name, ' ', lastname, ' ', firstname)"), 'like', '%'.$search.'%');
+        }
         $staffs = $staffs->paginate(3);
 
 

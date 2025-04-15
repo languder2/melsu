@@ -63,6 +63,17 @@
                         </p>
                     </div>
                 @endif
+
+                @if($staff->emails)
+                    <div class="w-[100%]">
+                            <span class="text-[#4C4C4C] text-lg">
+                                Email:
+                            </span>
+                        <p class="font-semibold text-lg text-[#4C4C4C]">
+                            {{$staff->emails}}
+                        </p>
+                    </div>
+                @endif
             </div>
         </div>
     </div>

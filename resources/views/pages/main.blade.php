@@ -18,6 +18,8 @@
 
     <x-news.short-news/>
 
+    <x-events.short-list/>
+
     <x-sections.melsu-numbers/>
 
     <x-sections.map/>
