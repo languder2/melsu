@@ -6,7 +6,7 @@
             проживание.
         </p>
         <a href="#" class="bg-[var(--primary-color)] transition-[var(--transition-link)]
-                py-[12px] px-[24px] max-w-[162px] text-white
+                py-[12px] px-[24px] w-fit text-white
                 hover:bg-[var(--secondary-color)] ">Личный кабинет</a>
     </div>
 </section>
@@ -20,16 +20,19 @@
 
             </div>
             <div class="bg-[#1E1E1E] text-white text-lg p-6 lg:min-h-[349px]">
-                <h4 class="text-2xl font-[600] mb-3">По делам</h4>
+                <h4 class="text-2xl font-[600] mb-3">Важное</h4>
                 <ul>
                     <li class="hover:*:opacity-[0.8] *:transition-[var(--transition-link)] leading-normal pb-3">
-                        <a href="#"><i class="bi bi-arrow-right me-3"></i>Факультеты</a>
+                        <a href="https://melsu.ru/faculties"><i class="bi bi-arrow-right me-3"></i>Факультеты</a>
                     </li>
                     <li class="hover:*:opacity-[0.8] *:transition-[var(--transition-link)] leading-normal pb-3">
-                        <a href="#"><i class="bi bi-arrow-right me-3"></i>Учебный отдел</a>
+                        <a href="../../../storage/documents/board-of-trustees/kodeks_etiki_i_sluzhebnogo_povedeniya.pdf" target="_blank"><i class="bi bi-arrow-right me-3"></i>Кодекс этики</a>
+                    </li>
+                    <li class="hover:*:opacity-[0.8] *:transition-[var(--transition-link)] leading-normal pb-3">
+                        <a href="https://melsu.ru/division/4"><i class="bi bi-arrow-right me-3"></i>Учебно-организационный отдел</a>
                     </li>
                     <li class="hover:*:opacity-[0.8] *:transition-[var(--transition-link)] leading-normal pb-3 lg:pb-0">
-                        <a href="#"><i class="bi bi-arrow-right me-3"></i>Отдел молодежных инициатив и проектной
+                        <a href="https://melsu.ru/division/37"><i class="bi bi-arrow-right me-3"></i>Отдел молодежных инициатив и проектной
                             деятельности</a>
                     </li>
                 </ul>
@@ -41,21 +44,21 @@
                         <a href="https://abiturient.mgu-mlt.ru/documents#dormitory"><i class="bi bi-arrow-right me-3"></i>Заселение в общежитие</a>
                     </li>
                     <li class="hover:*:opacity-[0.8] *:transition-[var(--transition-link)] leading-normal pb-3">
-                        <a href="#"><i class="bi bi-arrow-right me-3"></i>Дополнительное образование</a>
+                        <a href="https://melsu.ru/dop-obr"><i class="bi bi-arrow-right me-3"></i>Дополнительное образование</a>
                     </li>
                     <li class="hover:*:opacity-[0.8] *:transition-[var(--transition-link)] leading-normal pb-3 lg:pb-0">
-                        <a href="#"><i class="bi bi-arrow-right me-3"></i>Объединение и клубы</a>
+                        <a href="https://melsu.ru/obedineniya-i-kluby"><i class="bi bi-arrow-right me-3"></i>Объединение и клубы</a>
                     </li>
                 </ul>
             </div>
             <div class="bg-white text-lg p-6 lg:min-h-[349px]">
-                <h4 class="text-2xl font-[600] mb-3">Будьте на связи</h4>
+                <h4 class="text-2xl font-[600] mb-3">Навигация</h4>
                 <ul>
                     <li class="hover:*:opacity-[0.8] *:transition-[var(--transition-link)] leading-normal pb-3">
-                        <a href="#"><i class="bi bi-arrow-right me-3"></i>Корпоративная почта</a>
+                        <a href="https://melsu.ru/campus-map"><i class="bi bi-arrow-right me-3"></i>Карта кампуса</a>
                     </li>
                     <li class="hover:*:opacity-[0.8] *:transition-[var(--transition-link)] leading-normal pb-3 lg:pb-0">
-                        <a href="#"><i class="bi bi-arrow-right me-3"></i>Wi-Fi</a>
+                        <a href="https://melsu.ru/uchebnye-korpusa"><i class="bi bi-arrow-right me-3"></i>Учебные корпуса</a>
                     </li>
                 </ul>
             </div>
@@ -63,10 +66,10 @@
                 <h4 class="text-2xl font-[600] mb-3">Знакомство с МелГУ</h4>
                 <ul>
                     <li class="hover:*:opacity-[0.8] *:transition-[var(--transition-link)] leading-normal pb-3">
-                        <a href="#"><i class="bi bi-arrow-right me-3"></i>Новости МелГУ</a>
+                        <a href="https://melsu.ru/news"><i class="bi bi-arrow-right me-3"></i>Новости МелГУ</a>
                     </li>
                     <li class="hover:*:opacity-[0.8] *:transition-[var(--transition-link)] leading-normal pb-3 lg:pb-0">
-                        <a href="#"><i class="bi bi-arrow-right me-3"></i>Карта Кампуса</a>
+                        <a href="https://melsu.ru/campus-map"><i class="bi bi-arrow-right me-3"></i>Карта Кампуса</a>
                     </li>
                 </ul>
             </div>
@@ -74,17 +77,16 @@
                 <h4 class="text-2xl font-[600] mb-3">Библиотека</h4>
                 <ul>
                     <li class="hover:*:opacity-[0.8] *:transition-[var(--transition-link)] leading-normal pb-3">
-                        <a href="#"><i class="bi bi-arrow-right me-3"></i>Отдел формирования и обработки документов</a>
+                        <a href="https://melsu.ru/division/otdel_28"><i class="bi bi-arrow-right me-3"></i>Отдел формирования и обработки документов</a>
                     </li>
                     <li class="hover:*:opacity-[0.8] *:transition-[var(--transition-link)] leading-normal pb-3">
-                        <a href="#"><i class="bi bi-arrow-right me-3"></i>Отдел книгохранения фонда</a>
+                        <a href="https://melsu.ru/division/29"><i class="bi bi-arrow-right me-3"></i>Отдел книгохранения</a>
                     </li>
                     <li class="hover:*:opacity-[0.8] *:transition-[var(--transition-link)] leading-normal pb-3">
-                        <a href="#"><i class="bi bi-arrow-right me-3"></i>Отдел обслуживания пользователей с
-                            абонементами и читальными залами</a>
+                        <a href="https://melsu.ru/division/otdel_26"><i class="bi bi-arrow-right me-3"></i>Отдел обслуживания пользователей</a>
                     </li>
                     <li class="hover:*:opacity-[0.8] *:transition-[var(--transition-link)] leading-normal pb-3 lg:pb-0">
-                        <a href="#"><i class="bi bi-arrow-right me-3"></i>Отдел научно-информационной и
+                        <a href="https://melsu.ru/division/otdel_nauchno_informacionnoy_i_bibliograficheskoy_raboty_31"><i class="bi bi-arrow-right me-3"></i>Отдел научно-информационной и
                             библиографической работы</a>
                     </li>
                 </ul>
@@ -93,7 +95,7 @@
     </div>
 </section>
 <div class="box-heading container custom">
-    <h2 class="font-bold text-2xl my-6 lg:mt-[7%] lg:mb-[3.5%]">Обучение</h2>
+    <h2 class="font-bold text-2xl my-6 lg:mt-[7%] lg:mb-[3.5%]">Полезное</h2>
 </div>
 <section class="struct-rumz-section min-h-[auto] lg:min-h-[370px] bg-[100%]"
          style="background-image: url({{asset('img/bg-section-7.jpg')}})">
@@ -103,26 +105,20 @@
             <div>
                 <ul>
                     <li class="hover:*:opacity-[0.8] *:transition-[var(--transition-link)] leading-normal pb-3">
-                        <a href="#"><i class="bi bi-arrow-right me-3"></i>Сведения об образовательной организации</a>
+                        <a href="https://melsu.ru/mission-melgu"><i class="bi bi-arrow-right me-3"></i>Миссия МелГУ</a>
                     </li>
                     <li class="hover:*:opacity-[0.8] *:transition-[var(--transition-link)] leading-normal pb-3">
-                        <a href="#"><i class="bi bi-arrow-right me-3"></i>Миссия МелГУ</a>
-                    </li>
-                    <li class="hover:*:opacity-[0.8] *:transition-[var(--transition-link)] leading-normal pb-3 lg:pb-0">
-                        <a href="#"><i class="bi bi-arrow-right me-3"></i>История МелГУ</a>
+                        <a href="https://melsu.ru/sved"><i class="bi bi-arrow-right me-3"></i>Сведения об образовательной организации</a>
                     </li>
                 </ul>
             </div>
             <div>
                 <ul>
                     <li class="hover:*:opacity-[0.8] *:transition-[var(--transition-link)] leading-normal pb-3">
-                        <a href="#"><i class="bi bi-arrow-right me-3"></i>МелГУ сегодня</a>
+                        <a href="https://melsu.ru/gallery"><i class="bi bi-arrow-right me-3"></i>Фотоальбом</a>
                     </li>
-                    <li class="hover:*:opacity-[0.8] *:transition-[var(--transition-link)] leading-normal pb-3">
-                        <a href="#"><i class="bi bi-arrow-right me-3"></i>Фотопрогулка</a>
-                    </li>
-                    <li class="hover:*:opacity-[0.8] *:transition-[var(--transition-link)] leading-normal">
-                        <a href="#"><i class="bi bi-arrow-right me-3"></i>Экскурсии в МелГУ</a>
+                    <li class="hover:*:opacity-[0.8] *:transition-[var(--transition-link)] leading-normal pb-3 lg:pb-0">
+                        <a href="https://melsu.ru/history"><i class="bi bi-arrow-right me-3"></i>История МелГУ</a>
                     </li>
                 </ul>
             </div>
@@ -138,37 +134,31 @@
             <div class="bg-[var(--primary-color)] text-white p-6">
                 <ul>
                     <li class="hover:*:opacity-[0.8] *:transition-[var(--transition-link)] leading-normal pb-3">
-                        <a href="#"><i class="bi bi-arrow-right me-3"></i>Сведения об образовательной организации</a>
+                        <a href="https://melsu.ru/stipendii"><i class="bi bi-arrow-right me-3"></i>Стипендии</a>
                     </li>
                     <li class="hover:*:opacity-[0.8] *:transition-[var(--transition-link)] leading-normal pb-3">
-                        <a href="#"><i class="bi bi-arrow-right me-3"></i>Миссия МелГУ</a>
-                    </li>
-                    <li class="hover:*:opacity-[0.8] *:transition-[var(--transition-link)] leading-normal pb-3 lg:pb-0">
-                        <a href="#"><i class="bi bi-arrow-right me-3"></i>История МелГУ</a>
+                        <a href="https://melsu.ru/trudoustrojstvo-vypusknikov-i-studentov"><i class="bi bi-arrow-right me-3"></i>Трудоустройство выпускников и студентов</a>
                     </li>
                 </ul>
             </div>
             <div class="bg-white text-[var(--primary-color)] p-6">
                 <ul>
                     <li class="hover:*:opacity-[0.8] *:transition-[var(--transition-link)] leading-normal pb-3">
-                        <a href="#"><i class="bi bi-arrow-right me-3"></i>МелГУ сегодня</a>
+                        <a href="https://melsu.ru/centr-kompetencij"><i class="bi bi-arrow-right me-3"></i>Центр компетенций</a>
                     </li>
                     <li class="hover:*:opacity-[0.8] *:transition-[var(--transition-link)] leading-normal pb-3">
-                        <a href="#"><i class="bi bi-arrow-right me-3"></i>Фотопрогулка</a>
-                    </li>
-                    <li class="hover:*:opacity-[0.8] *:transition-[var(--transition-link)] leading-normal">
-                        <a href="#"><i class="bi bi-arrow-right me-3"></i>Экскурсии в МелГУ</a>
+                        <a href="https://melsu.ru/studencheskoe-samoupravlenie"><i class="bi bi-arrow-right me-3"></i>Студенческое самоуправление</a>
                     </li>
                 </ul>
             </div>
             <div>
-                <img src="../assets/img/ph-7.jpg" alt="" class="w-[100%] min-h-[100%]">
+                <img src="{{asset('img/ph-7.jpg')}}" alt="" class="w-[100%] min-h-[100%]">
             </div>
         </div>
     </div>
 </section>
 <div class="box-heading container custom">
-    <h2 class="font-bold text-2xl my-6 lg:mt-[7%] lg:mb-[3.5%]">Объединения и клубы</h2>
+    <h2 class="font-bold text-2xl my-6 lg:mt-[7%] lg:mb-[3.5%]">Активности</h2>
 </div>
 <section class="struct-rumz-section min-h-[auto] lg:min-h-[370px] bg-[100%]"
          style="background-image: url({{asset('img/bg-section-8.jpg')}})">
@@ -178,26 +168,20 @@
             <div>
                 <ul>
                     <li class="hover:*:opacity-[0.8] *:transition-[var(--transition-link)] leading-normal pb-3">
-                        <a href="#"><i class="bi bi-arrow-right me-3"></i>Сведения об образовательной организации</a>
+                        <a href="https://melsu.ru/obedineniya-i-kluby"><i class="bi bi-arrow-right me-3"></i>Объединения и клубы</a>
                     </li>
                     <li class="hover:*:opacity-[0.8] *:transition-[var(--transition-link)] leading-normal pb-3">
-                        <a href="#"><i class="bi bi-arrow-right me-3"></i>Миссия МелГУ</a>
-                    </li>
-                    <li class="hover:*:opacity-[0.8] *:transition-[var(--transition-link)] leading-normal pb-3 lg:pb-0">
-                        <a href="#"><i class="bi bi-arrow-right me-3"></i>История МелГУ</a>
+                        <a href="https://melsu.ru/division/centr_kultury_i_dosuga_48"><i class="bi bi-arrow-right me-3"></i>Центр культуры и досуга</a>
                     </li>
                 </ul>
             </div>
             <div>
                 <ul>
                     <li class="hover:*:opacity-[0.8] *:transition-[var(--transition-link)] leading-normal pb-3">
-                        <a href="#"><i class="bi bi-arrow-right me-3"></i>МелГУ сегодня</a>
+                        <a href="https://melsu.ru/studencheskie-otryady"><i class="bi bi-arrow-right me-3"></i>Студенческие отряды</a>
                     </li>
                     <li class="hover:*:opacity-[0.8] *:transition-[var(--transition-link)] leading-normal pb-3">
-                        <a href="#"><i class="bi bi-arrow-right me-3"></i>Фотопрогулка</a>
-                    </li>
-                    <li class="hover:*:opacity-[0.8] *:transition-[var(--transition-link)] leading-normal">
-                        <a href="#"><i class="bi bi-arrow-right me-3"></i>Экскурсии в МелГУ</a>
+                        <a href="https://melsu.ru/division/55"><i class="bi bi-arrow-right me-3"></i>Спортивный клуб</a>
                     </li>
                 </ul>
             </div>
