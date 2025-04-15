@@ -38,9 +38,10 @@
                         @if($staff->AffiliationPosts)
                             @foreach($staff->AffiliationPosts as $post)
                                 <span class="lg:text-nowrap">
-                                {{$post->post_alt ?? $post->post}}@if(!$loop->last),@endif
+                                {{$post->post_alt ?? $post->post}}@if(!$loop->last && $loop->count>1),@endif
                                 </span>
                             @endforeach
+
                         @endif
                     </div>
                 </div>

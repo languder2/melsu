@@ -50,6 +50,7 @@ Route::get('division/toggle-show/{division}', function(?Division $division){
                 'message' => ($division->show ? "Опубликовано" : 'Снята публикация' )."\n{$division->name}"
             ]);
     }
+    return null;
 })->middleware(['web','auth.api'])->name('division:toggle-show');
 
 Route::middleware(['web','auth.api'])->prefix('gallery')->group(function () {

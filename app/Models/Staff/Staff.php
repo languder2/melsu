@@ -135,7 +135,7 @@ class Staff extends Model
 
     public function AffiliationPosts():HasMany
     {
-        return $this->hasMany(Affiliation::class,'staff_id', 'id');
+        return $this->hasMany(Affiliation::class,'staff_id', 'id')->select('post_alt')->groupBy('post_alt');
     }
 
 
