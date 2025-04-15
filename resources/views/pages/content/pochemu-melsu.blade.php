@@ -262,7 +262,6 @@
                 <li>
                     Новые направления подготовки на 2025-2026 учебный год:
                     <ul class="ps-5 space-y-1 list-disc list-inside my-3">
-                        <li><a class="hover:underline hover:text-base-red" href="">Картография и геоинформатика</a></li>
                         <li><a class="hover:underline hover:text-base-red" href="https://melsu.ru/specialities/speciality_163">Строительство</a></li>
                         <li><a class="hover:underline hover:text-base-red" href="https://melsu.ru/specialities/speciality_148">Радиотехника</a></li>
                         <li><a class="hover:underline hover:text-base-red" href="https://melsu.ru/specialities/speciality_165">Почвоведение</a></li>
