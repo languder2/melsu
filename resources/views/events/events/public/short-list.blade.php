@@ -15,12 +15,35 @@
                 Все мероприятия
             </a>
     </div>
-    <div class="py-4">
+    <div class="py-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-3 gap-y-6">
         @foreach($list as $item)
-            {{__("month.$item->month")}}
-            @dump($item->year)
-            @dump($item->month)
-            @dump($item->day)
+            <div class="flex gap-3 items-start">
+                <a
+                    href="{{route('public:event:show',$item)}}"
+                    class="
+                        flex flex-col gap-1 leading-none text-center px-5 py-2 rounded-md text-white
+                        bg-base-red hover:bg-red-700
+                    "
+                >
+                    <p class="text-[.625rem] uppercase">
+                        {{__("month.short-{$item->month}")}}
+                    </p>
+
+                    <p class="text-[1.5rem] p-px font-semibold">
+                    {{ $item->day }}
+                    </p>
+
+                    <p class="text-[.75rem]">
+                        {{ $item->year }}
+                    </p>
+                </a>
+                <a
+                    href="{{route('public:event:show',$item)}}"
+                    class="flex-1 hover:underline"
+                >
+                    {!! $item->title !!}
+                </a>
+            </div>
         @endforeach
     </div>
 </section>
