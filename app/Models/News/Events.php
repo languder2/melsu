@@ -3,6 +3,7 @@
 namespace App\Models\News;
 
 use App\Models\Gallery\Image;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -47,6 +48,29 @@ class Events extends NewsCategory
         ];
     }
 
+    public function getPublishedAtAttribute($value):string
+    {
+        return Carbon::createFromDate($value)->format('d.m.Y H:i:s');
+    }
+    public function getPublicDateAttribute($value):string
+    {
+        return Carbon::createFromDate($value)->format('d.m.Y');
+
+    }
+    public function getYearAttribute($value):string
+    {
+        return Carbon::createFromDate($value)->format('Y');
+    }
+    public function getMonthAttribute($value):string
+    {
+        return Carbon::createFromDate($value)->format('m');
+    }
+    public function getDayAttribute($value):string
+    {
+        return Carbon::createFromDate($value)->format('d');
+    }
+
+
     public function preview(): MorphOne
     {
         $image = $this->MorphOne(Image::class, 'relation')->where('type', 'preview');
@@ -59,6 +83,11 @@ class Events extends NewsCategory
 
         return $image;
 
+    }
+
+    public function getLinkAttribute():string
+    {
+        return route('public:event:show',$this->id);
     }
 
 }

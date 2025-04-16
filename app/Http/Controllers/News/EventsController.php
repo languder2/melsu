@@ -5,25 +5,23 @@ namespace App\Http\Controllers\News;
 use App\Enums\EventType;
 use App\Http\Controllers\Controller;
 use App\Models\News\Events;
+use App\Models\News\News;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\View;
+use Illuminate\View\View;
 
 class EventsController extends Controller
 {
-    public function adminList(): \Illuminate\View\View
+    public function list(): View
     {
-        $last = Events::orderBy('id','desc')->first();
-
-        dd($last->preview->src);
-        return view('admin.events.events.list');
+        $list= Events::orderBy('published_at','desc')->get();
+        return view('events.events.admin.list',compact('list'));
     }
 
     public function form(Events $event): string
     {
-
         $types = EventType::forSelect();
-
-        return view('admin.events.events.form' , compact('event','types'));
+        return view('events.events.admin.form' , compact('event','types'));
     }
 
     public function save(Request $request, ?Events $event)
@@ -42,9 +40,9 @@ class EventsController extends Controller
         if($request->file('image')){
             $event->preview->relation()->associate($event)->saveImage($request->file('image'));
         }
-        elseif($form['preview']){
+        elseif($request->has('preview')){
             $event->preview->name = $event->title;
-            $event->preview->getReferenceID($form['preview']);
+            $event->preview->getReferenceID($request->has('preview'));
         }
         else{
             $event->preview->reference_id = null;
@@ -57,14 +55,28 @@ class EventsController extends Controller
         return redirect()->route('admin:events');
     }
 
-    public function delete(int $id)
+    public function delete(Events $event)
     {
-        $record = Events::find($id);
-
-        if (!is_null($record))
-            $record->delete();
-
-        return redirect()->route('admin:events');
+        $event->delete();
+        return redirect()->back();
     }
+
+    public function all(Request $request): View
+    {
+        $list =  Events::orderBy('published_at', 'desc')
+            ->select('id', 'title', 'short', 'full', 'published_at')
+            ->paginate(13);
+
+        return view('events.events.public.list',compact('list'));
+    }
+    public function show(?Events $event): View | RedirectResponse
+    {
+        if(!$event)
+            return  redirect()->route('public:events:list');
+
+        return view('events.events.public.show', compact('event'));
+    }
+
+
 
 }

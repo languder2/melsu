@@ -8,6 +8,7 @@ use App\Http\Controllers\Gallery\PublicGallery;
 use App\Http\Controllers\Handbook\HandbookController;
 use App\Http\Controllers\Menu\MenuController;
 use App\Http\Controllers\News\NewsController;
+use App\Http\Controllers\News\EventsController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\Schedule\ScheduleController;
 use App\Http\Controllers\Staffs\StaffController;
@@ -116,12 +117,6 @@ Route::controller(PublicGallery::class)
         ->name('public:menu:show');
 
 
-/* Pages */
-
-
-Route::get('{alias}', [PagesController::class, 'showPage']);
-
-
 /*Schedule*/
 
 Route::controller(ScheduleController::class)
@@ -140,3 +135,18 @@ Route::get('control/sections',  [ControlController::class,'sections']);
 Route::get('control/contacts',  [ControlController::class,'contacts']);
 Route::get('control/staffs',    [ControlController::class,'staffs']);
 
+/* Events */
+
+Route::get('events', [EventsController::class,'all'])->name('public:events:list');
+Route::get('event/{event?}', [EventsController::class,'show'])->name('public:event:show');
+
+/**/
+
+
+
+
+
+/* Pages */
+
+
+Route::get('{alias}', [PagesController::class, 'showPage']);

@@ -49,11 +49,11 @@ Route::middleware('isAdmin')
     ->prefix('events')
     ->group(function () {
 
-        Route::get('', 'adminList')->name('admin:events');
+        Route::get('', 'list')->name('admin:events');
         Route::get('add', 'form')->name('admin:events:add');
-        Route::get('edit/{id}', 'form')->name('admin:events:edit');
+        Route::get('edit/{event?}', 'form')->name('admin:events:edit');
         Route::post('save/{event?}', 'save')->name('admin:events:save');
-        Route::get('delete/{id}', 'delete')->name('admin:events:delete');
+        Route::get('delete/{event?}', 'delete')->name('admin:events:delete');
 
     });
 

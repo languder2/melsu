@@ -69,7 +69,7 @@
                     </div>
                 @endif
 
-                <div class="flex justify-between flex-col sm:flex-row mb-7 lg:mb-0">
+                <div class="flex justify-between flex-col mb-7 gap-2 lg:mb-0">
                     @if($staff->address)
                         <div class="w-[100%] mb-7 sm:mb-0">
                             <span class="text-red-700 text-md font-bold">
@@ -88,6 +88,17 @@
                             </span>
                             <p class="font-semibold text-lg text-[#4C4C4C]">
                                 {{$staff->phone}}
+                            </p>
+                        </div>
+                    @endif
+
+                    @if($staff->emails)
+                        <div class="w-[100%] mb-7 sm:mb-0">
+                            <span class="text-red-700 text-md font-bold">
+                                Email:
+                            </span>
+                            <p>
+                                {!! $staff->emails !!}
                             </p>
                         </div>
                     @endif

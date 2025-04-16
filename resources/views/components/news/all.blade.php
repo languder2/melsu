@@ -13,14 +13,4 @@
     </div>
     <br>
     {!! $list->links() !!}
-    {{--    <x-news.pagination :list="$list" />--}}
 </div>
-
-
-{{--{{$list->onEachSide(3)->links()}}--}}
-
-{{--@dump($list->toArray()['links'])--}}
-{{--@dump($list->toArray()['next_page_url'])--}}
-{{--@dump($list->toArray()['current_page'])--}}
-{{--@dump($list->toArray()['prev_page_url'])--}}
-{{--@dump($list->toArray())--}}
