@@ -7,7 +7,7 @@
                 </div>
                 <div class="slide_group sldr">
                     <div class="slide">
-                        <a href="https://melsu.ru/fakty-ob-institute-v-gody-VOV" class="slide-link cursor-pointer">
+                        <a href="https://melsu.ru/bessmertnyj-polk" class="slide-link cursor-pointer">
                             <img src="{{asset('storage/images/gallery/uzoxDl581PW0Qzh7NGUlzZcATgbUgUnYIrQOu65s/image.webp')}}" alt="">
                         </a>
                     </div>

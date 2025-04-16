@@ -446,6 +446,12 @@
         linkElement.textContent = letter;
         linkElement.className = "letter-button";
         linkElement.addEventListener('click', function(event) {
+            accordionBoxes.forEach(box => {
+                if (box.classList.contains('show')) {
+                    let toggleButn = box.querySelector('.accordion-toggle');
+                    toggleButn.click();
+                }
+            });
             event.preventDefault();
             filterByFirstLetter(letter);
 

@@ -92,7 +92,7 @@
 </footer>
 
 <div class="hidden md:block z-20 top-28 right-2 fixed transition-all duration-400">
-    <a href="https://melsu.ru/fakty-ob-institute-v-gody-VOV">
+    <a href="https://melsu.ru/bessmertnyj-polk">
     <span class="cursor-pointer text-[#dc302a] absolute right-10 top-16 z-50 hover:drop-shadow-md hover:shadow-indigo-700"
         onclick="this.closest('div').classList.add('scale-0'); return false;"
 
