@@ -4,7 +4,7 @@
 
 @section('content')
 
-    two monitor
+    @include('pages.content.bessmertnyj-polk')
 
 @endsection
 

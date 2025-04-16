@@ -69,10 +69,12 @@ Route::get('specialities/{speciality}', [SpecialityController::class,'showSingle
 /* Faculties */
 
 
+Route::get('institutes', [EducationController::class, 'institutes'])->name('public:education:institutes');
+
 Route::get('faculties', [EducationController::class, 'faculties'])->name('public:education:faculties');
 
 Route::get('{type}/{division}/{section?}',[EducationController::class, 'division'])
-    ->whereIn('type', ['faculty', 'department','lab','branch'])
+    ->whereIn('type', ['institute','faculty', 'department','lab','branch'])
     ->name('public:education:division');
 
 
