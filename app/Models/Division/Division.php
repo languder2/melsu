@@ -171,9 +171,8 @@ class Division extends Model
 
         foreach ($this->faculties as $faculty){
             if($faculty->departments->isNotEmpty())
-                $result= $result->merge($faculty->department);
+                $result= $result->merge($faculty->departments);
         }
-
         return $result;
     }
 

@@ -2,6 +2,7 @@
 
 namespace App\Models\Education;
 
+use App\Enums\DivisionType;
 use App\Enums\EducationBasis;
 use App\Enums\EducationLevel;
 use App\Models\Division\Division;
@@ -28,6 +29,7 @@ class Speciality extends Model
         'name',
         'code',
         'spec_code',
+        'institute_id',
         'faculty_id',
         'department_id',
         'level',
@@ -153,5 +155,14 @@ class Speciality extends Model
         return $places;
     }
 
+    public static function updateAffiliation(?Speciality $speciality,?Division $division):void
+    {
+        if(!$speciality || !$division || !$division->type->getSpecialityFiled()) return;
+
+        $speciality->fill([$division->type->getSpecialityFiled() => $division->id])->save();
+
+        if($division->parent)
+            self::updateAffiliation($speciality,$division->parent);
+    }
 
 }

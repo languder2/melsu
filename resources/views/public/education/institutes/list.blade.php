@@ -64,13 +64,13 @@
                                 Кол-во кафедр
                             </div>
                             <div class="font-semibold">
-                                {{$item->faculties->count() }}
+                                {{$item->InstituteDepartments->count() }}
                             </div>
                             <div>
                                 Кол-во лабораторий
                             </div>
                             <div class="font-semibold">
-                                {{$item->faculties->count() }}
+                                {{$item->InstituteLabs->count() }}
                             </div>
                             <div>
                                 Направлений подготовки
