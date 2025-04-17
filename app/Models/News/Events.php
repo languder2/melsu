@@ -57,19 +57,18 @@ class Events extends NewsCategory
         return Carbon::createFromDate($value)->format('d.m.Y');
 
     }
-    public function getYearAttribute($value):string
+    public function getYearAttribute():string
     {
-        return Carbon::createFromDate($value)->format('Y');
+        return Carbon::createFromDate($this->published_at)->format('Y');
     }
-    public function getMonthAttribute($value):string
+    public function getMonthAttribute():string
     {
-        return Carbon::createFromDate($value)->format('m');
+        return Carbon::createFromDate($this->published_at)->format('m');
     }
-    public function getDayAttribute($value):string
+    public function getDayAttribute():string
     {
-        return Carbon::createFromDate($value)->format('d');
+        return Carbon::createFromDate($this->published_at)->format('d');
     }
-
 
     public function preview(): MorphOne
     {

@@ -111,6 +111,15 @@ class Division extends Model
         return $this->hasMany(self::class, 'parent_id','id');
     }
 
+    public function faculties(): HasMany
+    {
+        return $this->hasMany(self::class, 'parent_id','id')
+            ->where('type', DivisionType::Faculty)
+            ->where('show',true)
+            ->orderBy('sort')
+            ->orderBy('name')
+        ;
+    }
     public function departments(): HasMany
     {
         return $this->hasMany(self::class, 'parent_id','id')
@@ -153,6 +162,28 @@ class Division extends Model
         foreach ($this->departments as $department)
             if($department->labs->isNotEmpty())
                 $result= $result->merge($department->labs);
+
+        return $result;
+    }
+    public function getInstituteDepartmentsAttribute(): Collection
+    {
+        $result = collect([]);
+
+        foreach ($this->faculties as $faculty){
+            if($faculty->departments->isNotEmpty())
+                $result= $result->merge($faculty->departments);
+        }
+        return $result;
+    }
+
+    public function getInstituteLabsAttribute(): Collection
+    {
+        $result = collect([]);
+
+        foreach ($this->faculties as $faculty)
+            foreach ($faculty->departments as $department)
+                if($department->labs->isNotEmpty())
+                    $result= $result->merge($department->labs);
 
         return $result;
     }
@@ -284,7 +315,7 @@ class Division extends Model
 
         return match($this->type){
             default                     => route('public:division:show',        $code),
-            DivisionType::Faculty, DivisionType::Department, DivisionType::Lab, DivisionType::Branch
+            DivisionType::Faculty, DivisionType::Department, DivisionType::Lab, DivisionType::Branch, DivisionType::Institute
                 => route('public:education:division',   [$this->type, $code]),
         };
     }

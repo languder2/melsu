@@ -29,6 +29,15 @@ enum DivisionType: string
             self::Other                 => 'Иное',
         };
     }
+    public function getSpecialityFiled():?string
+    {
+        return match ($this) {
+            self::Institute             => 'institute_id',
+            self::Faculty               => 'faculty_id',
+            self::Department            => 'department_id',
+            default                     => null,
+        };
+    }
 
     public static function forSelect():array
     {

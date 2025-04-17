@@ -1,16 +1,16 @@
 <div class="news-box border border-[#e5e7eb] max-h-[339px] lg:max-h-[367px]">
-    <a href="{{route('news:show',$news->id)}}">
+    <a href="{!!route('news:show',$news->id)!!}">
         <div class="box-photo-news min-h-[139px] bg-white overflow-hidden">
 
             @if($news->preview && $news->preview->src)
                 <img
-                    src="{{$news->preview->thumbnail}}"
-                    alt="{{$news->preview->alt??$news->preview->name}}"
+                    src="{!!$news->preview->thumbnail!!}"
+                    alt="{!!$news->preview->alt??$news->preview->name!!}"
                     class="object-cover max-h-[139px] w-full"
                 >
             @elseif($news->image)
                 <img
-                    src="{{$news->image}}"
+                    src="{!!$news->image!!}"
                     alt=""
                     class="object-cover max-h-[139px] w-full"
                 >
@@ -23,18 +23,18 @@
                 <div class="grid grid-cols-[1fr] mb-3 p-[-20px] relative">
                     <span
                         class="meta-category bg-[var(--primary-color)] absolute text-white text-[12px] left-[-20px] py-[3px] px-[7px] font-[500]">
-                        {{@$news->tag->name}}
+                        {!!@$news->tag->name!!}
                     </span>
                     <div class="text-end">
                                     <span class="text-[12px] font-[500]">
                                         <i class="bi bi-calendar2-week"></i>
-                                        {{$news->published_at}}
+                                        {!!$news->published_at!!}
                                     </span>
                     </div>
                 </div>
                 <div class="mb-6">
                     <h3 class="text-lg font-[700] line-clamp-3 max-h-[84px]">
-                        {{$news->title}}
+                        {!!$news->title!!}
                     </h3>
                 </div>
                 <div class="description-news line-clamp-3 max-h-[72px]">

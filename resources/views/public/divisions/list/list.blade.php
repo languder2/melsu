@@ -9,7 +9,7 @@
         @if($staff->card->divisions->count())
             @php $found = true @endphp
             @include('public.divisions.list.staff',['staff' => $staff->card,'post'  => $staff->post])
-        @endif
+f        @endif
     @endforeach
 @endif
 

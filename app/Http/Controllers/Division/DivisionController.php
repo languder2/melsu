@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Division;
 use App\Enums\DivisionType;
 use App\Http\Controllers\Controller;
 use App\Models\Division\Division;
+use App\Models\Education\Speciality;
 use App\Models\Gallery\Image;
 use App\Models\Menu\Menu;
 use App\Models\Page\Content as PageContent;
@@ -55,6 +56,10 @@ class DivisionController extends Controller
         $record->show = array_key_exists('show', $form);
 
         $record->save();
+
+        if(in_array($record->type,[DivisionType::Faculty,DivisionType::Department]))
+            foreach ($record->specialities as $speciality)
+                Speciality::updateAffiliation($speciality,$record);
 
 
         /* chief */

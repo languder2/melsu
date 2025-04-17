@@ -17,7 +17,17 @@ use Illuminate\Support\Facades\Route;
 
 class EducationController extends Controller
 {
+    public function institutes(): \Illuminate\View\View
+    {
+        $list = Division::where('show',true)
+            ->where('type',DivisionType::Institute)
+            ->orderBy('sort')
+            ->orderBy('name')
+            ->get()
+        ;
 
+        return view('public.education.institutes.list', compact('list'));
+    }
     public function faculties(): \Illuminate\View\View
     {
         $list = Division::where('show',1)
