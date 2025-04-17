@@ -70,7 +70,7 @@
         <div class="hidden xl:block"></div>
         <div class="w-[98%] order-1 lg:order-2">
             <h2 class="font-[700] px-2.5 lg:px-0 py-6 text-xl sm:text-4xl text-white">
-                Потенциал города мелитополя
+                Потенциал города Мелитополя
             </h2>
         </div>
     </div>
