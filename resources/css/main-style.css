@@ -2433,7 +2433,7 @@ header{
     .number-section{
         .up-path-box:hover,
         .under-path-box:hover{
-            background-color: transparent !important;
+            background-color: transparent;
         }
         .upper-number-row,.under-number-row{
             flex-direction: column;
