@@ -320,13 +320,13 @@
             <span class="font-bold text-white">Адрес места нахождения:</span>
         </div>
         <div class="bg-white p-2.5 flex lg:justify-center items-center order-1 lg:order-4">
-            <span class="ps-3 lg:ps-0">Учебный корпус</span>
+            <span class="ps-3 lg:ps-0">-</span>
         </div>
         <div class="bg-white p-2.5 flex lg:justify-center items-center order-2 lg:order-5">
-            <span class="ps-3 lg:ps-0">проспект Богдана Хмельницкого, 1</span>
+            <span class="ps-3 lg:ps-0">-</span>
         </div>
         <div class="bg-white p-2.5 flex lg:justify-center items-center order-3 lg:order-6">
-            <span class="ps-3 lg:ps-0">Учебный корпус</span>
+            <span class="ps-3 lg:ps-0">-</span>
         </div>
     </div>
     <div class="grid grid-cols-1 lg:grid-cols-[33%_33%_33%] gap-1 mb-[4px]">
@@ -340,13 +340,13 @@
             <span class="font-bold text-white">Адрес места нахождения:</span>
         </div>
         <div class="bg-white p-2.5 flex lg:justify-center items-center order-1 lg:order-4">
-            <span class="ps-3 lg:ps-0">Учебный корпус</span>
+            <span class="ps-3 lg:ps-0">-</span>
         </div>
         <div class="bg-white p-2.5 flex lg:justify-center items-center order-2 lg:order-5">
-            <span class="ps-3 lg:ps-0">проспект Богдана Хмельницкого, 1</span>
+            <span class="ps-3 lg:ps-0">-</span>
         </div>
         <div class="bg-white p-2.5 flex lg:justify-center items-center order-3 lg:order-6">
-            <span class="ps-3 lg:ps-0">Учебный корпус</span>
+            <span class="ps-3 lg:ps-0">-</span>
         </div>
     </div>
 </div>
@@ -363,13 +363,13 @@
             <span class="font-bold text-white">Адрес места нахождения:</span>
         </div>
         <div class="bg-white p-2.5 flex lg:justify-center items-center order-1 lg:order-4">
-            <span class="ps-3 lg:ps-0">Учебный корпус</span>
+            <span class="ps-3 lg:ps-0">-</span>
         </div>
         <div class="bg-white p-2.5 flex lg:justify-center items-center order-2 lg:order-5">
-            <span class="ps-3 lg:ps-0">проспект Богдана Хмельницкого, 1</span>
+            <span class="ps-3 lg:ps-0">-</span>
         </div>
         <div class="bg-white p-2.5 flex lg:justify-center items-center order-3 lg:order-6">
-            <span class="ps-3 lg:ps-0">Учебный корпус</span>
+            <span class="ps-3 lg:ps-0">-</span>
         </div>
     </div>
     <div class="grid grid-cols-1 lg:grid-cols-[33%_33%_33%] gap-1 mb-[4px]">
@@ -383,13 +383,13 @@
             <span class="font-bold text-white">Адрес места нахождения:</span>
         </div>
         <div class="bg-white p-2.5 flex lg:justify-center items-center order-1 lg:order-4">
-            <span class="ps-3 lg:ps-0">Учебный корпус</span>
+            <span class="ps-3 lg:ps-0">-</span>
         </div>
         <div class="bg-white p-2.5 flex lg:justify-center items-center order-2 lg:order-5">
-            <span class="ps-3 lg:ps-0">проспект Богдана Хмельницкого, 1</span>
+            <span class="ps-3 lg:ps-0">-</span>
         </div>
         <div class="bg-white p-2.5 flex lg:justify-center items-center order-3 lg:order-6">
-            <span class="ps-3 lg:ps-0">Учебный корпус</span>
+            <span class="ps-3 lg:ps-0">-</span>
         </div>
     </div>
 </div>
@@ -406,13 +406,13 @@
             <span class="font-bold text-white">Адрес места нахождения:</span>
         </div>
         <div class="bg-white p-2.5 flex lg:justify-center items-center order-1 lg:order-4">
-            <span class="ps-3 lg:ps-0">Учебный корпус</span>
+            <span class="ps-3 lg:ps-0">-</span>
         </div>
         <div class="bg-white p-2.5 flex lg:justify-center items-center order-2 lg:order-5">
-            <span class="ps-3 lg:ps-0">проспект Богдана Хмельницкого, 1</span>
+            <span class="ps-3 lg:ps-0">-</span>
         </div>
         <div class="bg-white p-2.5 flex lg:justify-center items-center order-3 lg:order-6">
-            <span class="ps-3 lg:ps-0">Учебный корпус</span>
+            <span class="ps-3 lg:ps-0">-</span>
         </div>
     </div>
     <div class="grid grid-cols-1 lg:grid-cols-[33%_33%_33%] gap-1 mb-[4px]">
@@ -426,13 +426,13 @@
             <span class="font-bold text-white">Адрес места нахождения:</span>
         </div>
         <div class="bg-white p-2.5 flex lg:justify-center items-center order-1 lg:order-4">
-            <span class="ps-3 lg:ps-0">Учебный корпус</span>
+            <span class="ps-3 lg:ps-0">-</span>
         </div>
         <div class="bg-white p-2.5 flex lg:justify-center items-center order-2 lg:order-5">
-            <span class="ps-3 lg:ps-0">проспект Богдана Хмельницкого, 1</span>
+            <span class="ps-3 lg:ps-0">-</span>
         </div>
         <div class="bg-white p-2.5 flex lg:justify-center items-center order-3 lg:order-6">
-            <span class="ps-3 lg:ps-0">Учебный корпус</span>
+            <span class="ps-3 lg:ps-0">-</span>
         </div>
     </div>
 </div>
@@ -450,13 +450,13 @@
             <span class="font-bold text-white">Адрес места нахождения:</span>
         </div>
         <div class="bg-white p-2.5 flex lg:justify-center items-center order-1 lg:order-4">
-            <span class="ps-3 lg:ps-0">Учебный корпус</span>
+            <span class="ps-3 lg:ps-0">-</span>
         </div>
         <div class="bg-white p-2.5 flex lg:justify-center items-center order-2 lg:order-5">
-            <span class="ps-3 lg:ps-0">проспект Богдана Хмельницкого, 1</span>
+            <span class="ps-3 lg:ps-0">-</span>
         </div>
         <div class="bg-white p-2.5 flex lg:justify-center items-center order-3 lg:order-6">
-            <span class="ps-3 lg:ps-0">Учебный корпус</span>
+            <span class="ps-3 lg:ps-0">-</span>
         </div>
     </div>
     <div class="grid grid-cols-1 lg:grid-cols-[33%_33%_33%] gap-1 mb-[4px]">
@@ -470,13 +470,13 @@
             <span class="font-bold text-white">Адрес места нахождения:</span>
         </div>
         <div class="bg-white p-2.5 flex lg:justify-center items-center order-1 lg:order-4">
-            <span class="ps-3 lg:ps-0">Учебный корпус</span>
+            <span class="ps-3 lg:ps-0">-</span>
         </div>
         <div class="bg-white p-2.5 flex lg:justify-center items-center order-2 lg:order-5">
-            <span class="ps-3 lg:ps-0">проспект Богдана Хмельницкого, 1</span>
+            <span class="ps-3 lg:ps-0">-</span>
         </div>
         <div class="bg-white p-2.5 flex lg:justify-center items-center order-3 lg:order-6">
-            <span class="ps-3 lg:ps-0">Учебный корпус</span>
+            <span class="ps-3 lg:ps-0">-</span>
         </div>
     </div>
 </div>
@@ -494,13 +494,13 @@
             <span class="font-bold text-white">Адрес места нахождения:</span>
         </div>
         <div class="bg-white p-2.5 flex lg:justify-center items-center order-1 lg:order-4">
-            <span class="ps-3 lg:ps-0">Учебный корпус</span>
+            <span class="ps-3 lg:ps-0">-</span>
         </div>
         <div class="bg-white p-2.5 flex lg:justify-center items-center order-2 lg:order-5">
-            <span class="ps-3 lg:ps-0">проспект Богдана Хмельницкого, 1</span>
+            <span class="ps-3 lg:ps-0">-</span>
         </div>
         <div class="bg-white p-2.5 flex lg:justify-center items-center order-3 lg:order-6">
-            <span class="ps-3 lg:ps-0">Учебный корпус</span>
+            <span class="ps-3 lg:ps-0">-</span>
         </div>
     </div>
     <div class="grid grid-cols-1 lg:grid-cols-[33%_33%_33%] gap-1 mb-[4px]">
@@ -514,18 +514,18 @@
             <span class="font-bold text-white">Адрес места нахождения:</span>
         </div>
         <div class="bg-white p-2.5 flex lg:justify-center items-center order-1 lg:order-4">
-            <span class="ps-3 lg:ps-0">Учебный корпус</span>
+            <span class="ps-3 lg:ps-0">-</span>
         </div>
         <div class="bg-white p-2.5 flex lg:justify-center items-center order-2 lg:order-5">
-            <span class="ps-3 lg:ps-0">проспект Богдана Хмельницкого, 1</span>
+            <span class="ps-3 lg:ps-0">-</span>
         </div>
         <div class="bg-white p-2.5 flex lg:justify-center items-center order-3 lg:order-6">
-            <span class="ps-3 lg:ps-0">Учебный корпус</span>
+            <span class="ps-3 lg:ps-0">-</span>
         </div>
     </div>
 </div>
 <div>
-    <h2 class="font-bold text-3xl my-6">Сетка учебных занятий</h2>
+    <h2 class="font-bold text-3xl my-6">Расписание учебных занятий</h2>
     <div class="grid grid-cols-[33%_33%_33%] gap-1 mb-[4px]">
         <div class="p-2.5 flex justify-center items-center bg-[var(--primary-color)]">
             <span class="font-bold text-white">№ п/п</span>
@@ -570,43 +570,52 @@
             <span class="font-bold text-white">12:20</span>
         </div>
         <div class="p-2.5 flex justify-center items-center bg-[var(--secondary-color)]">
-            <span class="font-bold text-white">13:00</span>
+            <span class="font-bold text-white">12:40</span>
         </div>
         <div class="bg-white p-2.5 flex justify-center items-center">
             <span class="font-bold">4</span>
         </div>
         <div class="bg-white p-2.5 flex justify-center items-center">
-            <span class="font-bold">13:00</span>
+            <span class="font-bold">12:40</span>
         </div>
         <div class="bg-white p-2.5 flex justify-center items-center">
-            <span class="font-bold">14:20</span>
+            <span class="font-bold">14:00</span>
         </div>
         <div class="bg-white p-2.5 flex justify-center items-center">
             <span class="font-bold">5</span>
         </div>
         <div class="bg-white p-2.5 flex justify-center items-center">
-            <span class="font-bold">14:30</span>
+            <span class="font-bold">14:10</span>
         </div>
         <div class="bg-white p-2.5 flex justify-center items-center">
-            <span class="font-bold">15:50</span>
+            <span class="font-bold">15:30</span>
         </div>
         <div class="bg-white p-2.5 flex justify-center items-center">
             <span class="font-bold">6</span>
         </div>
         <div class="bg-white p-2.5 flex justify-center items-center">
-            <span class="font-bold">16:00</span>
+            <span class="font-bold">15:40</span>
         </div>
         <div class="bg-white p-2.5 flex justify-center items-center">
-            <span class="font-bold">17:20</span>
+            <span class="font-bold">17:00</span>
         </div>
         <div class="bg-white p-2.5 flex justify-center items-center">
             <span class="font-bold">7</span>
         </div>
         <div class="bg-white p-2.5 flex justify-center items-center">
-            <span class="font-bold">17:40</span>
+            <span class="font-bold">17:10</span>
         </div>
         <div class="bg-white p-2.5 flex justify-center items-center">
-            <span class="font-bold">19:00</span>
+            <span class="font-bold">18:30</span>
+        </div>
+        <div class="bg-white p-2.5 flex justify-center items-center">
+            <span class="font-bold">8</span>
+        </div>
+        <div class="bg-white p-2.5 flex justify-center items-center">
+            <span class="font-bold">18:40</span>
+        </div>
+        <div class="bg-white p-2.5 flex justify-center items-center">
+            <span class="font-bold">20:00</span>
         </div>
     </div>
 </div>
