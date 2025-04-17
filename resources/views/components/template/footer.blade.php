@@ -84,8 +84,8 @@
     <div class="bg-[#252738] py-6 text-white">
         <div class="container custom lg:p-2.5 flex flex-col lg:flex-row gap-3">
             <a href="{{url('campus-map')}}" class="text-md hover:opacity-80 hover:text-red-200 w-fit transition duration-300 ease-linear">Карта сайта</a>
-            <a href="#" class="text-md hover:opacity-80 hover:text-red-200 w-fit transition duration-300 ease-linear">Почтовый сервер</a>
-            <a href="#" class="text-md hover:opacity-80 hover:text-red-200 w-fit transition duration-300 ease-linear">Пользовательское соглашение</a>
+            <a href="https://r7office.melsu.ru/" class="text-md hover:opacity-80 hover:text-red-200 w-fit transition duration-300 ease-linear">Почтовый сервер</a>
+            <a href="https://melsu.ru/polzovatelskoe-soglashenie" class="text-md hover:opacity-80 hover:text-red-200 w-fit transition duration-300 ease-linear">Пользовательское соглашение</a>
             <a href="#" class="text-md hover:opacity-80 hover:text-red-200 w-fit transition duration-300 ease-linear">Политика по обработке персональных данных</a>
         </div>
     </div>
