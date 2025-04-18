@@ -38,6 +38,14 @@ class Page extends Model
 
     ];
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($page) {
+            $page->sections()->delete();
+        });
+    }
     public static function FormMessage():array{
         return [
             'name' => 'Укажите заголовок',

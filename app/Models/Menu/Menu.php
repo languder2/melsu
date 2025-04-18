@@ -105,6 +105,54 @@ class Menu extends Model
         return $first;
     }
 
+    public static function GetMenuInstitute($division): object
+    {
+        $code = $division->code ?? $division->id;
+
+        return
+            (object)[
+                'name'  => 'Институт',
+                'items' => [
+                    (object)[
+                        'name' => "О институте",
+                        'link' => route('public:education:division', ['institute',$code]),
+                    ],
+                    (object)[
+                        'name' => "Факультеты",
+                        'link' => route('public:education:division', ['institute',$code,'faculties']),
+                    ],
+                    (object)[
+                        'name' => "Кафедры и лаборатории",
+                        'link' => route('public:education:division', ['institute',$code,'departments']),
+                    ],
+                    (object)[
+                        'name' => "Направление подготовки",
+                        'link' => route('public:education:division', ['institute',$code,'specialities']),
+                    ],
+                    (object)[
+                        'name' => "Поступающим",
+                        'link' => "https://abiturient.mgu-mlt.ru/",
+                    ],
+                    (object)[
+                        'name' => "Наука",
+                        'link' => "https://melsu.ru/menu/science",
+                    ],
+                    (object)[
+                        'name' => "История",
+                        'link' => url('history'),
+                    ],
+                    (object)[
+                        'name' => "Фотогалерея",
+                        'link' => url('gallery'),
+                    ],
+                    (object)[
+                        'name' => "Партнеры и выпускники",
+                        'link' => url('partner'),
+                    ],
+                ],
+
+            ];
+    }
     public static function GetMenuFaculty($division): object
     {
         $code = $division->code ?? $division->id;

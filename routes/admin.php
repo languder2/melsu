@@ -178,7 +178,7 @@ Route::middleware('isAdmin')
         Route::get('add', 'form')->name('admin:speciality:add');
         Route::get('edit/{id}', 'form')->name('admin:speciality:edit');
         Route::post('save', 'save')->name('admin:speciality:save');
-        Route::get('delete/{id}', 'delete')->name('admin:speciality:delete');
+        Route::get('delete/{speciality}', 'delete')->name('admin:speciality:delete');
 
     });
 

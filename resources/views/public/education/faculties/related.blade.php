@@ -1,23 +1,8 @@
-@extends("layouts.main")
-
-@section('title', 'ФГБОУ ВО "МелГУ": Институты')
-
-@section('breadcrumbs')
-    {{ Breadcrumbs::view("vendor.breadcrumbs.base",'institutes',null) }}
-@endsection
-
-@section('aside')
-{{--    @include('public.menu.education')--}}
-@endsection
-
-@section('content')
-
-    @include("public.education.tabs.list",['active' => 'institutes'])
-
+<div class="wrapper mb-4">
     <section class="container pt-12 pb-12 ">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="grid grid-cols-1 gap-4">
 
-            @foreach($list as $item)
+            @foreach($division->faculties as $item)
                 <a
                     href="{{$item->link}}"
                     class="
@@ -59,22 +44,10 @@
 
                         <div class="grid grid-cols-[1fr_auto] gap-2 ml-4 my-2">
                             <div>
-                                Кол-во факультетов
-                            </div>
-                            <div class="font-semibold">
-                                {{$item->faculties->count() }}
-                            </div>
-                            <div>
                                 Кол-во кафедр
                             </div>
                             <div class="font-semibold">
-                                {{$item->InstituteDepartments->count() }}
-                            </div>
-                            <div>
-                                Кол-во лабораторий
-                            </div>
-                            <div class="font-semibold">
-                                {{$item->InstituteLabs->count() }}
+                                {{$item->departments->count() }}
                             </div>
                             <div>
                                 Направлений подготовки
@@ -95,6 +68,4 @@
             @endforeach
         </div>
     </section>
-@endsection
-
-
+</div>

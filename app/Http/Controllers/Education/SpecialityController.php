@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Education;
 
 use App\Enums\DivisionType;
+use App\Enums\EducationLevel;
 use App\Enums\TicketRoles;
 use App\Http\Controllers\Controller;
 use App\Models\Division\Division;
@@ -23,7 +24,7 @@ class SpecialityController extends Controller
     public function list(): string
     {
         $list   = Division::where('type',DivisionType::Faculty)->orderBy('name')->get();
-        $spo    = Speciality::whereNull('faculty_id')->orderBy('name')->get();
+        $spo    = Speciality::where('level',EducationLevel::Colleges)->orderBy('name')->get();
 
         return view('admin.education.specialities.list', compact('list','spo'));
     }
@@ -97,12 +98,10 @@ class SpecialityController extends Controller
         return redirect()->route('admin:speciality:list');
     }
 
-    public function delete(int $id)
+    public function delete(?Speciality $speciality)
     {
-        $record = Department::find($id);
-
-        if (!is_null($record))
-            $record->delete();
+        if($speciality)
+            $speciality->delete();
 
         return redirect()->route('admin:speciality:list');
     }

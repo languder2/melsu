@@ -47,6 +47,13 @@ Breadcrumbs::for('institutes', function (BreadcrumbTrail $trail) {
     $trail->push('Институты', route('public:education:institutes'));
 });
 
+Breadcrumbs::for('institute', function (BreadcrumbTrail $trail, ?Division $division) {
+    $trail->parent('institutes');
+
+    if($division)
+        $trail->push($division->name, $division->link);
+});
+
 Breadcrumbs::for('faculties', function (BreadcrumbTrail $trail) {
     $trail->parent('menu',Menu::where('code','university')->first());
 
