@@ -70,7 +70,7 @@
                     </ul>
                 </div>
                 <div class="btn-more-box flex items-center">
-                    <a href="https://melsu.ru/update-page" class="btn-more">Подробнее</a>
+                    <a href="https://abiturient.mgu-mlt.ru/documents" class="btn-more">Подробнее</a>
                     <i class="bi bi-arrow-right-circle-fill"></i>
                 </div>
             </div>
