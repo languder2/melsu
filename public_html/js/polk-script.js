@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     const leftSideMenuLinks = document.querySelectorAll('.left-side-menu a[href^="#"]');
     const accordionBoxes = document.querySelectorAll('.accordion-box');
-    const anchorLinks = document.querySelectorAll('a[href^="#"]');
     const offset = -180;
     const personCards = document.querySelectorAll('.accordion-box');
     const firstLettersContainer = document.getElementById('firstLetters');
@@ -9,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let firstLetters = [];
     let activeLetterButton = null;
 
-    function openAccordion(accordionBox, targetId) {
+    function openAccordion(accordionBox) {
         accordionBoxes.forEach(box => {
             if (box.classList.contains('show')) {
                 let toggleButn = box.querySelector('.accordion-toggle');
@@ -19,9 +18,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const toggleButton = accordionBox.querySelector('.accordion-toggle');
         if (toggleButton && !accordionBox.classList.contains('show')) {
             toggleButton.click();
-            if (targetId) {
-                history.pushState(null, null, `#${targetId}`);
-            }
         }
     }
 
@@ -40,7 +36,6 @@ document.addEventListener('DOMContentLoaded', function() {
         personCards.forEach(card => {
             card.style.display = 'block';
         });
-        history.pushState(null, null, window.location.pathname + window.location.search);
     }
 
     leftSideMenuLinks.forEach(link => {
@@ -52,35 +47,20 @@ document.addEventListener('DOMContentLoaded', function() {
             const targetAccordion = document.getElementById(targetId);
 
             if (targetAccordion) {
-                openAccordion(targetAccordion, targetId);
-                const targetPosition = targetAccordion.getBoundingClientRect().top + window.scrollY + offset;
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
+                setTimeout(() => {
+                    openAccordion(targetAccordion);
+                    const targetPosition = targetAccordion.getBoundingClientRect().top + window.scrollY + offset;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }, 500);
             } else {
                 console.error(`Аккордеон с id "${targetId}" не найден.`);
             }
         });
     });
 
-    anchorLinks.forEach(link => {
-        link.addEventListener('click', function(event) {
-            event.preventDefault();
-
-            const targetId = this.getAttribute('href').substring(1);
-            const targetElement = document.getElementById(targetId);
-
-            if (targetElement) {
-                const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY + offset;
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
-                history.pushState(null, null, `#${targetId}`);
-            }
-        });
-    });
 
     personCards.forEach(card => {
         const nameElement = card.querySelector('h5');
@@ -111,7 +91,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             this.classList.add('active');
             activeLetterButton = this;
-            history.pushState(null, null, window.location.pathname + window.location.search);
         });
         firstLettersContainer.appendChild(linkElement);
         firstLettersContainer.appendChild(document.createTextNode(' '));
@@ -139,7 +118,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (targetAccordionOnLoad) {
             setTimeout(() => {
-                openAccordion(targetAccordionOnLoad, targetId);
+                openAccordion(targetAccordionOnLoad);
                 const targetPosition = targetAccordionOnLoad.getBoundingClientRect().top + window.scrollY + offset;
                 window.scrollTo({
                     top: targetPosition,
