@@ -77,7 +77,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     top: targetPosition,
                     behavior: 'smooth'
                 });
-                // Обновляем якорь в URL при клике на обычную ссылку-якорь
                 history.pushState(null, null, `#${targetId}`);
             }
         });
