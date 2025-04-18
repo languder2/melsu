@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let firstLetters = [];
     let activeLetterButton = null;
 
-    function openAccordion(accordionBox) {
+    function openAccordion(accordionBox, targetId) {
         accordionBoxes.forEach(box => {
             if (box.classList.contains('show')) {
                 let toggleButn = box.querySelector('.accordion-toggle');
@@ -19,6 +19,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const toggleButton = accordionBox.querySelector('.accordion-toggle');
         if (toggleButton && !accordionBox.classList.contains('show')) {
             toggleButton.click();
+            if (targetId) {
+                history.pushState(null, null, `#${targetId}`);
+            }
         }
     }
 
@@ -37,6 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
         personCards.forEach(card => {
             card.style.display = 'block';
         });
+        history.pushState(null, null, window.location.pathname + window.location.search);
     }
 
     leftSideMenuLinks.forEach(link => {
@@ -48,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const targetAccordion = document.getElementById(targetId);
 
             if (targetAccordion) {
-                openAccordion(targetAccordion);
+                openAccordion(targetAccordion, targetId);
                 const targetPosition = targetAccordion.getBoundingClientRect().top + window.scrollY + offset;
                 window.scrollTo({
                     top: targetPosition,
@@ -73,6 +77,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     top: targetPosition,
                     behavior: 'smooth'
                 });
+                // Обновляем якорь в URL при клике на обычную ссылку-якорь
+                history.pushState(null, null, `#${targetId}`);
             }
         });
     });
@@ -106,6 +112,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             this.classList.add('active');
             activeLetterButton = this;
+            history.pushState(null, null, window.location.pathname + window.location.search);
         });
         firstLettersContainer.appendChild(linkElement);
         firstLettersContainer.appendChild(document.createTextNode(' '));
@@ -133,7 +140,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (targetAccordionOnLoad) {
             setTimeout(() => {
-                openAccordion(targetAccordionOnLoad);
+                openAccordion(targetAccordionOnLoad, targetId);
                 const targetPosition = targetAccordionOnLoad.getBoundingClientRect().top + window.scrollY + offset;
                 window.scrollTo({
                     top: targetPosition,
