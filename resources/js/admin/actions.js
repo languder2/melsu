@@ -1,9 +1,9 @@
 async function actionFetch(link, responseType = 'json') {
     try {
-        const response = await fetch(link, { method: "GET" });
-        if (!response.ok) {
+        let response = await fetch(link, { method: "GET" });
+
+        if (!response.ok)
             throw new Error(`HTTP error! status: ${response.status}`);
-        }
 
         let data;
         if (responseType === 'json') {
@@ -135,8 +135,6 @@ export async function addStaffPosition(btn,id){
 
 export async function changeSelectOptions(blockID, link)
 {
-
-    console.log(link);
 
     let select = document.getElementById(blockID);
 

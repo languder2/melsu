@@ -24,31 +24,15 @@ import './slider-bg.js';
 
 import './modal-on-main-page.js'
 
-
-import * as AddLine from "./add-line.js";
-window.AddLine = AddLine;
 import * as SearchSelect from './select-component.js';
 window.SearchSelect = SearchSelect;
-import * as DependedSelects from './depended-selects.js';
-window.DependedSelects = DependedSelects;
 import * as Tabs from './admin/tabs.js';
 window.Tabs = Tabs;
-import * as AdminStaff from './admin/staffs.js';
-window.AdminStaff = AdminStaff;
 
 import './search/departments.js';
 
-import * as ShowMessage from './admin/show-message.js';
-window.ShowMessage = ShowMessage;
-
-import * as ClipBoard from './admin/clip-board.js';
-window.ClipBoard = ClipBoard;
-
 import * as Service from './service/fetch.js';
 window.Service = Service;
-
-import * as Actions from './admin/actions.js';
-window.Actions = Actions;
 
 import * as PublicAction from './public/actions.js';
 window.PublicAction = PublicAction;

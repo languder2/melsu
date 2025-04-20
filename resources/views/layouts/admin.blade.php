@@ -10,7 +10,7 @@
 
     <title>@yield('title', 'ФГБОУ ВО "МелГУ"')</title>
 
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @vite(['resources/css/admin.css', 'resources/js/admin.js'])
 
     @hasSection('includes')
         @yield('includes')

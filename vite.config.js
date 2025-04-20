@@ -12,6 +12,8 @@ export default defineConfig({
                 'resources/js/app.js',
                 'resources/css/cabinet.css',
                 'resources/js/cabinet.js',
+                'resources/css/admin.css',
+                'resources/js/admin.js',
             ],
             publicDirectory: 'public_html',
             refresh: true,

@@ -55,7 +55,7 @@
                 required
                 onchange="Actions.changeSelectOptions(
                             'parent_id',
-                            '{{route('api:menu-items:parents:get')}}/'+this.value+'/{{$current->id ?? null}}'
+                            '{{route('api:menu-items:parents:get')}}/'+this.value+'{{isset($current->id) ? '/'.$current->id : null}}'
                         )"
             />
         </div>
