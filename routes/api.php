@@ -134,8 +134,7 @@ Route::middleware(['web','auth.api'])
     });
 
 
-Route::middleware(['web','auth.api'])
-    ->controller(\App\Http\Controllers\Menu\ItemsController::class)
+Route::controller(\App\Http\Controllers\Menu\ItemsController::class)
     ->prefix('menu')
     ->group(function () {
 

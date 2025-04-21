@@ -71,6 +71,13 @@
         />
 
         <x-admin.sidebar-li
+            link="{{route('minors:admin:index')}}"
+            ico="fas fa-window-restore"
+            text="Minors"
+            class="text-xl"
+        />
+
+        <x-admin.sidebar-li
             link="{{route('admin:logout')}}"
             ico="fas fa-sign-out-alt"
             text="Выход"

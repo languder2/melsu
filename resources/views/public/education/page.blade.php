@@ -20,9 +20,14 @@
         <div class="horizontal-mob-menu">
             @include('public.menu.education')
         </div>
+
         @switch($section)
             @case('labs') @case('departments')
                 @include('public.education.departments.related')
+            @break
+
+            @case('faculties')
+                @include('public.education.faculties.related')
             @break
 
             @case('dean-office')

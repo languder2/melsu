@@ -15,7 +15,6 @@ enum EventType: string
              self::Preview      => __('event.Preview'),
         };
     }
-
     public static function forSelect():Collection
     {
         $result = collect([]);

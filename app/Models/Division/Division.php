@@ -53,6 +53,19 @@ class Division extends Model
         'type'  => DivisionType::class,
     ];
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($division) {
+            $division->sections()->delete();
+            $division->staffs()->delete();
+            $division->images()->delete();
+            $division->ico()->delete();
+            $division->preview()->delete();
+        });
+    }
+
     public static function FormRules($id): array
     {
         return [
@@ -178,13 +191,12 @@ class Division extends Model
 
     public function getInstituteLabsAttribute(): Collection
     {
-        $result = collect([]);
 
+        $result = collect([]);
         foreach ($this->faculties as $faculty)
             foreach ($faculty->departments as $department)
                 if($department->labs->isNotEmpty())
                     $result= $result->merge($department->labs);
-
         return $result;
     }
 
@@ -370,6 +382,7 @@ class Division extends Model
     {
         return  match($this->type){
             default => null,
+            DivisionType::Institute     => Menu::GetMenuInstitute($this),
             DivisionType::Faculty       => Menu::GetMenuFaculty($this),
             DivisionType::Department    => Menu::GetMenuDepartment($this),
             DivisionType::Branch        => Menu::GetMenuBranch($this),

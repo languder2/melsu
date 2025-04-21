@@ -14,7 +14,7 @@
 
     @each('admin.education.specialities.section',$list,'section')
 
-{{--    @include('admin.education.specialities.section',['list'=>$spo,'name'=>'СПО'])--}}
+    @include('admin.education.specialities.section',['list'=>$spo,'name'=>'СПО'])
 
 @endsection
 

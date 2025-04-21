@@ -9,6 +9,16 @@
         </div>
     @endif
 
+    @if($division->InstituteDepartments->count())
+        <h4 class="font-semibold text-lg mb-2">
+            Кафедры
+        </h4>
+
+        <div class="grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-3">
+            @each("public.education.departments.block",$division->InstituteDepartments,'department')
+        </div>
+    @endif
+
     @if($division->FacultyLabs->count())
         <h4 class="font-semibold text-lg mb-2 mt-6">
             Лаборатории
@@ -25,4 +35,14 @@
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
             @each("public.education.departments.block",$division->labs,'department')
         </div>
-@endif
+    @endif
+
+    @if($division->InstituteLabs->count())
+        <h4 class="font-semibold text-lg mb-2 mt-6">
+            Лаборатории
+        </h4>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+            @each("public.education.departments.block",$division->InstituteLabs,'department')
+        </div>
+    @endif
+</div>

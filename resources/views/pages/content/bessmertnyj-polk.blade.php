@@ -177,6 +177,41 @@
                     </div>
                 </div>
             </div>
+            <div id="Mirchev-K-F" class='accordion-box accordion p-6 border-b-2 border-baseRed' style="min-height: 73px;">
+                <button class='cursor-pointer accordion-toggle group accordion-active:text-indigo-600 inline-flex items-center justify-between text-[var(--primary-color)] w-full transition duration-500 hover:text-[var(--secondary-color)] active:text-[var(--secondary-color)]' aria-controls='basic-collapse-one-default'>
+                    <h5 class="font-[600] text-lg">Мирчев Кирилл Федорович</h5>
+                    <svg class='text-[var(--primary-color)] transition duration-500 group-hover:text-[var(--secondary-color)]' width='22' height='22' viewBox='0 0 22 22' fill='none' xmlns='http://www.w3.org/2000/svg'>
+                        <path d='M16.5 8.25L12.4142 12.3358C11.7475 13.0025 11.4142 13.3358 11 13.3358C10.5858 13.3358 10.2525 13.0025 9.58579 12.3358L5.5 8.25' stroke='currentColor' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'></path>
+                    </svg>
+                </button>
+                <div class='accordion-content-box accordion-content px-0 overflow-hidden w-full' aria-labelledby='basic-heading-one-default'>
+                    <div class="accordion-text text-md py-3">
+                        <div class="grid grid-cols-1 ">
+                            <div class="p-2 flex justify-center">
+                                <img class="w-full h-full object-cover" src="{{asset('img/polk/Mirchev.jpg')}}" alt="">
+                            </div>
+                        </div>
+                        <div class="my-6">
+                            <p class="mb-6">
+                                Мирчев Кирилл Федорович, родившийся 28 октября 1918 года, стал настоящим героем своего времени. В годы Великой Отечественной войны он служил в различных частях Красной Армии, включая 1038 стрелковый полк и 5 инженерно-саперную бригаду, и проявил невероятное мужество на полях сражений.
+                            </p>
+                            <p class="mb-6">
+                                С началом войны Кирилл Федорович был наводчиком станкового пулемета и активно участвовал в боях. 27 марта 1944 года, поддерживая стрелковые подразделения, он способствовал форсированию реки Южный Буг, отражая контратаку противника и обеспечивая захват плацдарма на правом берегу. Несмотря на полученное ранение, он продолжал сражаться, демонстрируя истинный героизм.
+                            </p>
+                            <p class="mb-6">
+                                В марте 1945 года его меткий огонь уничтожил 8 немецких солдат и подавил огонь вражеского пулемета, что способствовало успешному продвижению стрелковой роты. В бою на подступах к городу Кюстрин он также проявил храбрость, рассеяв заслон противника и уничтожив десять солдат.
+                            </p>
+                            <p class="mb-6">
+                                За свои подвиги Кирилл Федорович был награждён множеством медалей, включая "За отвагу", "За боевые заслуги" и Орден Славы III степени. Его вклад в победу над врагом навсегда останется в памяти потомков.
+                            </p>
+                            <p>
+                                Мирчев Кирилл Федорович — пример мужества и преданности своему делу!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div id="Moroz-V-I" class='accordion-box accordion p-6 border-b-2 border-baseRed'style="min-height: 73px;">
                 <button class='cursor-pointer accordion-toggle group accordion-active:text-indigo-600 inline-flex items-center justify-between text-[var(--primary-color)] w-full transition duration-500 hover:text-[var(--secondary-color)] active:text-[var(--secondary-color)]' aria-controls='basic-collapse-one-default'>
                     <h5 class="font-[600] text-lg">Мороз Владимир Иванович</h5>

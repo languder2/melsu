@@ -13,19 +13,9 @@ use App\Http\Controllers\Users\UserController;
 use App\Http\Controllers\suStructureController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Education\InstituteController;
-//
-//Route::middleware(['isAdmin'])
-//    ->controller(suStructureController::class)
-//    ->prefix('structure')
-//    ->group(function () {
-//
-//        Route::get('', 'adminList')->name('admin:structure');
-//        Route::get('add', 'form')->name('admin:structure:add');
-//        Route::get('edit/{id}', 'form')->name('admin:structure:edit');
-//        Route::post('save', 'save')->name('admin:structure:save');
-//        Route::get('delete/{id}', 'delete')->name('admin:structure:delete');
-//
-//    });
+use App\Http\Controllers\Minor\MinorController;
+use App\Http\Controllers\Minor\RegimentController;
+
 
 /* News: admin */
 
@@ -178,7 +168,7 @@ Route::middleware('isAdmin')
         Route::get('add', 'form')->name('admin:speciality:add');
         Route::get('edit/{id}', 'form')->name('admin:speciality:edit');
         Route::post('save', 'save')->name('admin:speciality:save');
-        Route::get('delete/{id}', 'delete')->name('admin:speciality:delete');
+        Route::get('delete/{speciality}', 'delete')->name('admin:speciality:delete');
 
     });
 
@@ -251,4 +241,17 @@ Route::middleware('auth.check')
         Route::put('{collectionId}/update/{id}', [HandbookController::class, 'update'])->name('handbook.update');
         Route::get('{collectionId}/delete/{id}', [HandbookController::class, 'destroy'])->name('handbook.delete');
     });
+
+/* Regiment / Научный и Бессмертный полк */
+Route::get('minors',[MinorController::class,'index'])->name("minors:admin:index");
+
+Route::prefix('regiment')->group(function(){
+    Route::get('',                      [RegimentController::class,'admin'])->name('regiment:admin:list');
+    Route::get('form/{member?}',        [RegimentController::class,'form'])->name('regiment:admin:form');
+    Route::get('save/{member?}',        [RegimentController::class,'save'])->name('regiment:admin:save');
+    Route::get('delete/{member?}',      [RegimentController::class,'save'])->name('regiment:admin:delete');
+});
+
+/**/
+
 

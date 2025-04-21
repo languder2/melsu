@@ -155,6 +155,11 @@ class Speciality extends Model
         return $places;
     }
 
+    public function getLinkAttribute(): string
+    {
+        return route('public:education:speciality',$this);
+    }
+
     public static function updateAffiliation(?Speciality $speciality,?Division $division):void
     {
         if(!$speciality || !$division || !$division->type->getSpecialityFiled()) return;

@@ -47,6 +47,7 @@ Route::prefix('nomix')->group(function () {
 });
 
 Route::get('test', [TestController::class, 'index'])->name('test');
+Route::get('test2', [TestController::class, 'index'])->name('test2');
 
 /* News: public */
 

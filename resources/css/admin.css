@@ -1,0 +1,80 @@
+@import '../css/new-tailwind.css' layer(base);
+@import '@fortawesome/fontawesome-free/css/all.css' layer(base);
+
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+
+@theme {
+    --font-sans: Figtree, ui-sans-serif, system-ui, sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+    --color-baseRed: #820000;
+    --color-blue: #374573;
+    --color-neutral-150: #EEEEEE;
+    --color-base-red: #820000;
+    --spacing-1px: 1px;
+    --spacing-2px: 2px;
+    --spacing-300: 300px;
+    --spacing-500: 500px;
+    --spacing-600: 600px;
+    --spacing-800: 800px;
+    --spacing-1200: 1200px;
+
+    --list-style-type-none: none;
+    --list-style-type-disc: disc;
+    --list-style-type-decimal: decimal;
+    --list-style-type-square: square;
+    --list-style-type-roman: upper-roman;
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+        border-color: var(--color-gray-200, currentColor);
+    }
+}
+
+/* Change Autocomplete styles in Chrome*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+    -webkit-text-fill-color: inherit;
+    -webkit-box-shadow: inherit;
+    box-shadow: inherit;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+
+.checked-box:has(:checked) {
+    display: block;
+}
+
+.btn-filter-card:has(:checked) {
+    background-color: var(--color-baseRed);
+}
+
+img {
+    user-drag: none; /* Запрещает перетаскивание */
+    -webkit-user-drag: none; /* Для Safari */
+    -khtml-user-drag: none; /* Для Konqueror */
+    -moz-user-drag: none; /* Для Firefox */
+    -o-user-drag: none; /* Для Opera */
+}
