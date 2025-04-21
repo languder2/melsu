@@ -48,8 +48,7 @@ class RegimentController extends Controller
             $member->image->saveImage($request->file('image'));
 
         /* image form gallery */
-        elseif($request->has('gallery_image')){
-
+        elseif($request->has('gallery_image') && $request->get('gallery_image') !== $member->image->src){
             $member->image->fill([
                 'name'          => $member->full_name,
                 'reference_id'  => $member->image::getReference($request->get('gallery_image')),

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('middle_name');
             $table->string('letter');
             $table->string('type');
-            $table->string('content');
+            $table->longText('content');
             $table->boolean('is_show')->default(true);
             $table->unsignedInteger('sort');
             $table->timestamp('deleted_at')->nullable();

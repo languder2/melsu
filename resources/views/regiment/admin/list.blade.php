@@ -28,7 +28,6 @@
             </div>
             <div @class([$item->is_show ? 'text-green-700' : 'text-red-700'])>
                 {!! $item->letter !!}
-                {!! $item->image->id ?? null !!}
             </div>
             <div>
                 <img src="{{ $item->image->preview }}" alt="" class="h-12"/>
