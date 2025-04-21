@@ -394,15 +394,15 @@
                 Студенты состоят в молодежных организациях Российской Федерации:
             </p>
             <ul class="list-decimal list-inside">
-                <li class="mb-3">«Всероссийский студенческий корпус спасателей»</li>
-                <li class="mb-3">«Молодёжный ресурсный центр»</li>
-                <li class="mb-3">«ЮГ молодой»</li>
-                <li class="mb-3">«Движение первых»</li>
-                <li class="mb-3">«Твой ход»</li>
-                <li class="mb-3">«ДОБРО.РУ»</li>
-                <li class="mb-3">«Россия – страна возможностей»</li>
-                <li class="mb-3">«Российский Студенческие Отряды»</li>
-                <li class="mb-3">Министерство по молодёжной политике Запорожской области</li>
+                <li class="mb-3"><a href="https://vsks.ru/" class="hover:underline hover:text-base-red">«Всероссийский студенческий корпус спасателей»</a></li>
+                <li class="mb-3"><a href="https://rscenter.ru/" class="hover:underline hover:text-base-red">«Молодёжный ресурсный центр»</a></li>
+                <li class="mb-3"><a href="https://юг-молодой.рф/" class="hover:underline hover:text-base-red">«ЮГ молодой»</a></li>
+                <li class="mb-3"><a href="https://будьвдвижении.рф/" class="hover:underline hover:text-base-red">«Движение первых»</a></li>
+                <li class="mb-3"><a href="https://tvoyhod.online/" class="hover:underline hover:text-base-red">«Твой ход»</a></li>
+                <li class="mb-3"><a href="https://dobro.ru/?)" class="hover:underline hover:text-base-red">«ДОБРО.РУ»</a></li>
+                <li class="mb-3"><a href="https://rsv.ru/" class="hover:underline hover:text-base-red">«Россия – страна возможностей»</a></li>
+                <li class="mb-3"><a href="https://трудкрут.рф/" class="hover:underline hover:text-base-red">«Российский Студенческие Отряды»</a></li>
+                <li class="mb-3"><a href="https://minmol.zo.gov.ru/" class="hover:underline hover:text-base-red">Министерство по молодёжной политике Запорожской области</a></li>
             </ul>
         </div>
     </div>
