@@ -1,4 +1,4 @@
-@if(isset($borderTop))
+    @if(isset($borderTop))
     <hr class="mt-4 border-dotted">
 @endif
 

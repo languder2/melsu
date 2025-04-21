@@ -9,11 +9,11 @@
     --font-sans: Figtree, ui-sans-serif, system-ui, sans-serif,
     'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 
-    --color-baseRed: #820000;
-    --color-blue: #374573;
-    --color-neutral-150: #EEEEEE;
     --color-base-red: #820000;
-    --spacing-1px: 1px;
+    --color-red: #820000;
+    --color-blue: #374573;
+    --color-blue-hover: #556391;
+    --color-neutral-150: #EEEEEE;
     --spacing-2px: 2px;
     --spacing-300: 300px;
     --spacing-500: 500px;

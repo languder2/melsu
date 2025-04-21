@@ -5,7 +5,7 @@ return [
     'Immortal'                          => 'Бессмертный',
     'Scientific'                        => 'Научный',
 
-    'Immortal and Scientific Regiment'  => 'Бессмертный и Научный полк',
+    'Immortal and Scientific Regiment'  => 'Бессмертный и Научный полки',
     'Immortal Regiment'                 => 'Бессмертный полк',
     'Scientific Regiment'               => 'Научный полк',
 ];

@@ -248,8 +248,8 @@ Route::get('minors',[MinorController::class,'index'])->name("minors:admin:index"
 Route::prefix('regiment')->group(function(){
     Route::get('',                      [RegimentController::class,'admin'])->name('regiment:admin:list');
     Route::get('form/{member?}',        [RegimentController::class,'form'])->name('regiment:admin:form');
-    Route::get('save/{member?}',        [RegimentController::class,'save'])->name('regiment:admin:save');
-    Route::get('delete/{member?}',      [RegimentController::class,'save'])->name('regiment:admin:delete');
+    Route::post('save/{member?}',        [RegimentController::class,'save'])->name('regiment:admin:save');
+    Route::get('delete/{member?}',      [RegimentController::class,'delete'])->name('regiment:delete');
 });
 
 /**/

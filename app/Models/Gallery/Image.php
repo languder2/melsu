@@ -101,6 +101,7 @@ class Image extends Model
             'App\Models\Department\Group'       => 'images/department/group/',
             'App\Models\Department\Department'  => 'images/department/department/',
             'App\Models\Menu\Item'              => 'images/menu/item/',
+            'App\Models\Minor\RegimentMember'   => 'images/regiments/',
             default                             => 'images/uploads/',
         };
     }
@@ -128,6 +129,21 @@ class Image extends Model
     }
 
     public function getThumbnailAttribute():string|null
+    {
+
+        $record = $this->reference??$this;
+
+        $path = self::getPath($record->relation_type);
+
+        $path .= $record->filename;
+
+        $filepath=  ($record->filetype === 'svg')?"$path/image.svg":"$path/thumbnail.webp";
+
+        return Storage::exists($filepath)?Storage::url($filepath):Storage::url('images/placeholder.png');
+
+    }
+
+    public function getPreviewAttribute():string|null
     {
 
         $record = $this->reference??$this;

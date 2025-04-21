@@ -2,8 +2,17 @@
 
 namespace App\Http\Controllers\Minor;
 
+use App\Enums\DivisionType;
+use App\Enums\RegimentType;
 use App\Http\Controllers\Controller;
+use App\Models\Division\Division;
+use App\Models\Education\Speciality;
+use App\Models\Gallery\Image;
 use App\Models\Minor\RegimentMember;
+use App\Models\Page\Content as PageContent;
+use App\Models\Sections\Contact;
+use App\Models\Staff\Affiliation;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class RegimentController extends Controller
@@ -14,19 +23,49 @@ class RegimentController extends Controller
     }
     public function admin()
     {
-        dd(1);
+        $list = RegimentMember::orderBy('lastname')->orderBy('firstname')->get();
+
+        return view('regiment.admin.list',compact('list'));
     }
     public function form(RegimentMember $member)
     {
 
-    }
-    public function save(RegimentMember $member)
-    {
+        $regiments = RegimentType::pluck();
+
+        return view('regiment.admin.form', compact('member', 'regiments'));
 
     }
-    public function Delete(RegimentMember $member)
+    public function save(Request $request, RegimentMember $member):RedirectResponse
     {
 
+        $form = $request->validate(RegimentMember::FormRules(), RegimentMember::FormMessage());
+
+        $member->fill($form)->save();
+
+
+        /* upload image */
+        if($request->file('image'))
+            $member->image->saveImage($request->file('image'));
+
+        /* image form gallery */
+        elseif($request->has('gallery_image')){
+
+            $member->image->fill([
+                'name'          => $member->full_name,
+                'reference_id'  => $member->image::getReference($request->get('gallery_image')),
+                'filename'      => null,
+                'filetype'      => null,
+            ])->save();
+        }
+
+        return redirect()->route('regiment:admin:list');
+
+    }
+    public function Delete(RegimentMember $member):RedirectResponse
+    {
+        $member->delete();
+
+        return redirect()->back();
     }
     public function public()
     {

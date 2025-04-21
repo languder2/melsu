@@ -9,7 +9,13 @@ use App\Models\Gallery\Image;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use JetBrains\PhpStorm\NoReturn;
 
+/**
+ * @property mixed $lastname
+ * @property mixed $firstname
+ * @property mixed $middle_name
+ */
 class RegimentMember extends Model
 {
     use SoftDeletes;
@@ -27,6 +33,7 @@ class RegimentMember extends Model
         'sort',
     ];
     protected $casts = [
+        'lastname'  => 'string',
         'type'      => RegimentType::class,
         'is_show'   => 'boolean'
     ];
@@ -35,11 +42,13 @@ class RegimentMember extends Model
     {
         parent::boot();
 
-        static::deleting(function () {
+        static::deleting(function ($record) {
+            $record->image()->delete();
         });
+
     }
 
-    public static function FormRules($id): array
+    public static function FormRules(): array
     {
         return [
 //            'test'              => "required",
@@ -47,6 +56,7 @@ class RegimentMember extends Model
             'firstname'         => "required",
             'middle_name'       => "",
             'type'              => "required",
+            'content'           => "",
             'sort'              => '',
             'is_show'           => '',
         ];
@@ -70,10 +80,31 @@ class RegimentMember extends Model
         $this->attributes['sort'] = $sort ?? 1000;
     }
 
-    public function preview(): MorphOne | Image
+    public function image():MorphOne
     {
-        return $this->MorphOne(Image::class, 'relation')->where('type', 'photo')
-            ?? new Image(['type'=>'photo']);
+        return $this->MorphOne(Image::class, 'relation')->where('type', 'image');
+    }
+    public function getImageAttribute():Image
+    {
+        return
+            $this->image()->first()
+            ?? (new Image(['type' => 'image','name' => $this->full_name]))->relation()->associate($this);
+    }
+
+    public function getFullNameAttribute(): string
+    {
+        return "{$this->lastname} {$this->firstname} {$this->middle_name}";
+    }
+
+    public function fill(array $attributes):?self
+    {
+        if(!empty($attributes)){
+            $attributes['is_show']      = array_key_exists('is_show', $attributes);
+            $attributes['letter']       = strtoupper(mb_substr($attributes['lastname'], 0, 1, 'UTF-8'));
+            $attributes['sort']         = $attributes['sort'] ?? 1000;
+        }
+
+        return parent::fill($attributes);
     }
 
 }

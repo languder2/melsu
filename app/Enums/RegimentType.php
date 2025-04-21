@@ -25,4 +25,14 @@ enum RegimentType
             self::Scientific    => __('regiment.Scientific Regiment'),
         };
     }
+    public static function pluck():Collection
+    {
+        $result = collect([]);
+
+        foreach (self::cases() as $case)
+            $result->put($case->name,$case->getFullName());
+
+        return $result;
+
+    }
 }
