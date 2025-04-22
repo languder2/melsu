@@ -92,7 +92,6 @@
 
 
                 </div>
-
             </div>
 
             @if($loop->count>1 && !$loop->last)

@@ -7,7 +7,7 @@
                 </div>
                 <div class="slide_group sldr">
                     <div class="slide">
-                        <a href="https://melsu.ru/regiments" class="slide-link cursor-pointer">
+                        <a href="{{ route('regiment:public::list') }} " class="slide-link cursor-pointer">
                             <img src="{{asset('storage/images/gallery/uzoxDl581PW0Qzh7NGUlzZcATgbUgUnYIrQOu65s/image.webp')}}" alt="">
                         </a>
                     </div>

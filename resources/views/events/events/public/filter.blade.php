@@ -6,7 +6,7 @@
         <input type="text" class="input-hidden hidden">
         <input class="chosen-value relative top-0 left-0 w-full min-h-[48px] max-h-[48px] text-lg py-3 px-[18px] bg-white
                              transition duration-300 ease-in-out placeholder:text-[black] focus:border-b-[2px] outline-0 z-20"
-               type="text" value="" placeholder="Выбирите категорию">
+               type="text" value="" placeholder="Выберите категорию">
         <ul class="value-list transition duration-300 ease-in-out absolute top-0 left-0 w-full max-h-0 cursor-pointer list-none mt-[48px] shadow-[2px_24px_17px_-13px_rgba(66, 68, 90, 1)] overflow-hidden
                 [&.open]:max-h-[320px] [&.open]:overflow-auto z-20">
             <li data-id="1" class="drop-li min-h-[4rem] opacity-100 relative p-[1rem] bg-white text-lg flex items-center cursor-pointer transition duration-300 ease-in-out max-h-0 hover:bg-[#820000] hover:text-white

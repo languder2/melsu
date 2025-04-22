@@ -75,4 +75,10 @@ dd(\App\Models\Menu\Item::where('menu_id',$menu)
         return view('test.page', compact('list'));
     }
 
+    public function view()
+    {
+        return view('test.view');
+    }
+
+
 }
