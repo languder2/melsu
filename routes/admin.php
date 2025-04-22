@@ -10,11 +10,9 @@ use App\Http\Controllers\PagesController;
 use App\Http\Controllers\Schedule\ScheduleController;
 use App\Http\Controllers\Staffs\StaffController;
 use App\Http\Controllers\Users\UserController;
-use App\Http\Controllers\suStructureController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Education\InstituteController;
 use App\Http\Controllers\Minor\MinorController;
-use App\Http\Controllers\Minor\RegimentController;
 
 
 /* News: admin */
@@ -245,12 +243,6 @@ Route::middleware('auth.check')
 /* Regiment / Научный и Бессмертный полк */
 Route::get('minors',[MinorController::class,'index'])->name("minors:admin:index");
 
-Route::prefix('regiment')->group(function(){
-    Route::get('',                      [RegimentController::class,'admin'])->name('regiment:admin:list');
-    Route::get('form/{member?}',        [RegimentController::class,'form'])->name('regiment:admin:form');
-    Route::post('save/{member?}',        [RegimentController::class,'save'])->name('regiment:admin:save');
-    Route::get('delete/{member?}',      [RegimentController::class,'delete'])->name('regiment:delete');
-});
 
 /**/
 

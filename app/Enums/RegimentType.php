@@ -3,11 +3,11 @@
 namespace App\Enums;
 
 use Illuminate\Support\Collection;
-enum RegimentType
+enum RegimentType:string
 {
-    case Both;
-    case Immortal;
-    case Scientific;
+    case Both           = "Both";
+    case Immortal       = 'Immortal';
+    case Scientific     = 'Scientific';
 
     public function getName():string
     {

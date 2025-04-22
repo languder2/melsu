@@ -2,16 +2,9 @@
 
 namespace App\Http\Controllers\Minor;
 
-use App\Enums\DivisionType;
 use App\Enums\RegimentType;
 use App\Http\Controllers\Controller;
-use App\Models\Division\Division;
-use App\Models\Education\Speciality;
-use App\Models\Gallery\Image;
 use App\Models\Minor\RegimentMember;
-use App\Models\Page\Content as PageContent;
-use App\Models\Sections\Contact;
-use App\Models\Staff\Affiliation;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
@@ -66,8 +59,23 @@ class RegimentController extends Controller
 
         return redirect()->back();
     }
-    public function public()
+    public function public(string $type)
     {
 
+        $type = RegimentType::tryFrom(ucwords(strtolower($type))) ?? RegimentType::Immortal;
+
+        $menu = RegimentMember::getMenu();
+
+        $list = RegimentMember::where('is_show', true)
+            ->where('type',$type)->orWhere('type',RegimentType::Both)
+            ->orderBy('lastname')->orderBy('firstname')->get();
+
+        $letters = RegimentMember::where('is_show', true)
+            ->where('type',$type)->orWhere('type',RegimentType::Both)
+            ->select('letter')
+            ->distinct()
+            ->pluck('letter');
+
+        return view('regiment.public.list', compact('menu', 'list', 'letters', 'type'));
     }
 }

@@ -38,6 +38,8 @@ Route::prefix('admin')->group(function () {
     require __DIR__.'/admin.php';
 });
 
+require __DIR__.'/regiment.php';
+
 Route::prefix('cabinet')->group(function () {
     require __DIR__.'/cabinet.php';
 });

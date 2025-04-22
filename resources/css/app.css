@@ -87,7 +87,7 @@ img {
     -o-user-drag: none; /* Для Opera */
 }
 
-.about-otdel{
+.about-otdel, .text{
     p,li{
         padding: .25rem 0;
 

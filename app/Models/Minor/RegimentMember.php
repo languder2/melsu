@@ -2,14 +2,12 @@
 
 namespace App\Models\Minor;
 
-use App\Enums\DivisionType;
 use App\Enums\RegimentType;
-use App\Models\Division\Division;
 use App\Models\Gallery\Image;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use JetBrains\PhpStorm\NoReturn;
+use Illuminate\Support\Collection;
 
 /**
  * @property mixed $lastname
@@ -106,6 +104,46 @@ class RegimentMember extends Model
 
         return parent::fill($attributes);
     }
+
+    public static function getMenu():Collection
+    {
+        $menu = collect([]);
+
+        $menu->put(RegimentType::Immortal->value,
+            (object)[
+                'name'      => RegimentType::Immortal->getFullName(),
+                'link'      => route('regiment:public::list',RegimentType::Immortal),
+                'subs'      =>
+                    self::where('is_show', true)
+                        ->where('type',RegimentType::Immortal)->orWhere('type',RegimentType::Both)
+                        ->orderBy('lastname')->orderBy('firstname')->get()
+                        ->map(function($member){ return (object)[
+                            'name' => $member->full_name,
+                            'link' => route('regiment:public::list','immortal')."#member-{$member->id}",
+                            'active'    => false,
+                        ];})
+            ]
+        );
+
+        $menu->put(RegimentType::Scientific->value,
+            (object)[
+                'name'      => RegimentType::Scientific->getFullName(),
+                'link'      => route('regiment:public::list',RegimentType::Scientific),
+                'subs'      =>
+                    self::where('is_show', true)
+                        ->where('type',RegimentType::Scientific)->orWhere('type',RegimentType::Both)
+                        ->orderBy('lastname')->orderBy('firstname')->get()
+                        ->map(function($member){ return (object)[
+                            'name' => $member->full_name,
+                            'link' => route('regiment:public::list',RegimentType::Scientific)."#member-{$member->id}",
+                            'active'    => false,
+                        ];})
+            ]
+        );
+
+        return $menu;
+    }
+
 
 }
 

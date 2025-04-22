@@ -36,3 +36,11 @@ window.Service = Service;
 
 import * as PublicAction from './public/actions.js';
 window.PublicAction = PublicAction;
+
+import {Accordion} from './public/accordion.js';
+window.Accordion = Accordion;
+
+import * as Filters from './public/filters.js';
+window.Filters = Filters;
+
+import './service/has_changes.js';
