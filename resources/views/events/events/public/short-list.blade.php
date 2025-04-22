@@ -39,7 +39,8 @@
                 </a>
                 <a
                     href="{{route('public:event:show',$item)}}"
-                    class="flex-1 hover:underline"
+                    class="flex-1 hover:underline line-clamp-3"
+                    title="{{$item->title}}"
                 >
                     {!! $item->title !!}
                 </a>
