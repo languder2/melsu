@@ -37,12 +37,12 @@ return new class extends Migration
             $table->timestamps();
 
             $table->foreign('ticket_id')->references('id')->on('tickets')
-                ->onUpdate('set null')
-                ->onDelete('cascade');
+                ->onUpdate('cascade')
+                ->onDelete('set null');
 
             $table->foreign('user_id')->references('id')->on('users')
-                ->onUpdate('set null')
-                ->onDelete('cascade');
+                ->onUpdate('cascade')
+                ->onDelete('set null');
 
         });
 
@@ -54,8 +54,8 @@ return new class extends Migration
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')
-                ->onUpdate('set null')
-                ->onDelete('cascade');
+                ->onUpdate('cascade')
+                ->onDelete('set null');
 
         });
 
@@ -75,16 +75,16 @@ return new class extends Migration
             $table->timestamps();
 
             $table->foreign('ticket_id')->references('id')->on('tickets')
-                ->onUpdate('set null')
-                ->onDelete('cascade');
+                ->onUpdate('cascade')
+                ->onDelete('set null');
 
             $table->foreign('user_id')->references('id')->on('users')
-                ->onUpdate('set null')
-                ->onDelete('cascade');
+                ->onUpdate('cascade')
+                ->onDelete('set null');
 
             $table->foreign('parent_id')->references('id')->on('ticket_replies')
-                ->onUpdate('set null')
-                ->onDelete('cascade');
+                ->onUpdate('cascade')
+                ->onDelete('set null');
 
 
         });
