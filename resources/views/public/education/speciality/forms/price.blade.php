@@ -3,6 +3,11 @@
         Стоимость обучения за год
     </h3>
     <p class="text-xl">
-        {{ number_format($profile->price, 0, '.', ' ') }} &#8381;
+        @if(!$profile->price)
+            Данные обновляются
+        @else
+            {{ number_format($profile->price, 0, '.', ' ') }} &#8381;
+        @endif
+
     </p>
 </div>
