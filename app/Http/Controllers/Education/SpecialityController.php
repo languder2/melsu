@@ -15,6 +15,7 @@ use App\Models\Menu\Menu;
 use App\Models\Page\Content as PageContent;
 use App\Models\Sections\Career;
 use App\Models\Sections\FAQ;
+use App\Models\Service\Log;
 use App\Models\Ticket\UserRole;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
@@ -61,14 +62,21 @@ class SpecialityController extends Controller
 
         $record = Speciality::find($request->get('id'));
 
-        if(!$record)
-            $record = new Speciality();
+        $action = 'update';
+
+        if(!$record){
+            $record =   new Speciality();
+            $action =   'create';
+        }
 
         $record->fill($form);
 
         $record->show = array_key_exists('show', $form);
 
+
         $record->save();
+
+        Log::add($record,$action);
 
         if($request->has('branch_id')){
             $branch = Division::find($request->get('branch_id'));

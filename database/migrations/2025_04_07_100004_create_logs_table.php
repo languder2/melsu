@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('logs', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('user_id')->nullable();
 
             $table->string('action')->nullable();
             $table->longText('comment')->nullable();
@@ -22,6 +22,11 @@ return new class extends Migration
             $table->string('relation_type')->nullable();
 
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')
+                ->onUpdate('cascade')
+                ->onDelete('set null');
+
         });
     }
 

@@ -168,3 +168,7 @@ Breadcrumbs::for('gallery', function (BreadcrumbTrail $trail,\App\Models\Gallery
 });
 
 
+Breadcrumbs::for('regiment', function (BreadcrumbTrail $trail, \App\Enums\RegimentType $type) {
+    $trail->parent('home');
+    $trail->push($type->getFullName());
+});

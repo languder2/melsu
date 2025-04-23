@@ -148,6 +148,7 @@ Route::get('event/{event?}', [EventsController::class,'show'])->name('public:eve
 /**/
 
 
+Route::get('test/view', [TestController::class,'view']);
 
 
 

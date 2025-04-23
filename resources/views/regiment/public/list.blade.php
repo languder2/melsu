@@ -3,7 +3,7 @@
 @section('title', 'ФГБОУ ВО "МелГУ"')
 
 @section('breadcrumbs')
-    {{--    {!!Breadcrumbs::view("vendor.breadcrumbs.base",'division',$division)!!}--}}
+        {!! Breadcrumbs::view("vendor.breadcrumbs.base",'regiment',$type) !!}
 @endsection
 
 @section('aside')

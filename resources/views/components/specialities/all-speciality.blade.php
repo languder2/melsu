@@ -39,9 +39,9 @@
                                     @endif
                                 >
 
-                                    <p class="sku uppercase font-medium mb-3">
-                                        {{$speciality->faculty->name ?? ''}}
-                                    </p>
+                                <p class="sku uppercase font-medium mb-3">
+                                    {{$speciality->faculty->name ?? ''}}
+                                </p>
 
                                 <h2 class="text-xl font-[600] name mb-6">
                                     {{$speciality->spec_code}}
@@ -50,41 +50,50 @@
                                 </h2>
                             </div>
                             <div class="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-3 group-hover:text-white">
-                                <div class="flex flex-col">
-                                    @if($place->type !== 'budget')
+                                @if($place->type !== 'budget' && $profile->price)
+                                    <div class="flex flex-col">
                                         <span class="font-[400]">
-                                            {{$profile->price/1000}}
-                                            тыс
+                                                {{$profile->price/1000}}
+                                                тыс
                                         </span>
                                         <span class="font-[400] text-sm text-neutral-700 group-hover:text-white">Стоимость, ₽</span>
-                                    @endif
-                                </div>
-                                <div class="flex flex-col">
-                                <span class="font-[400]">
-                                    {{@$profile->budget_scores}}
-                                </span>
-                                    <span class="font- text-sm text-neutral-700 group-hover:text-white">Проходной балл</span>
-                                </div>
-                                <div class="flex flex-col">
-                                    <span class="font-[400] text-sm">
-                                        {{ $place->count }}
-                                    </span>
-                                    <span class="font-[400] text-sm text-neutral-700 group-hover:text-white">
-                                        @if($place->type === 'budget')
-                                            Бюджетных мест
-                                        @else
-                                            Контрактны мест
-                                        @endif
-                                    </span>
-                                </div>
-                                <div class="flex flex-col">
-                                <span class="font-[400] text-sm">
-                                    {{$profile->durationYear('OOO')}}
-                                    {{$profile->durationMonth('OOO')}}
-                                </span>
-                                    <span class="font-[400] text-sm text-neutral-700 group-hover:text-white ">Срок обучения</span>
-                                </div>
+                                    </div>
+                                @endif
+
+                                @if($profile->budget_scores)
+                                    <div class="flex flex-col">
+                                        <span class="font-[400]">
+                                            {{ $profile->budget_scores }}
+                                        </span>
+                                        <span class="font- text-sm text-neutral-700 group-hover:text-white">Проходной балл</span>
+                                    </div>
+                                @endif
+
+                                @if($place->count)
+                                    <div class="flex flex-col">
+                                        <span class="font-[400] text-sm">
+                                            {{ $place->count }}
+                                        </span>
+                                        <span class="font-[400] text-sm text-neutral-700 group-hover:text-white">
+                                            @if($place->type === 'budget')
+                                                Бюджетных мест
+                                            @else
+                                                Контрактны мест
+                                            @endif
+                                        </span>
+                                    </div>
+                                @endif
+
+                                @if($profile->duration)
+                                    <div class="flex flex-col">
+                                            <span class="font-[400] text-sm">
+                                                {{$profile->durationYear('OOO')}}
+                                                {{$profile->durationMonth('OOO')}}
+                                        </span>
+                                        <span class="font-[400] text-sm text-neutral-700 group-hover:text-white ">Срок обучения</span>
+                                    </div>
                             </div>
+                            @endif
                             <span class="aware-bg"></span>
                         </a>
                     </div>

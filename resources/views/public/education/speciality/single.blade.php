@@ -152,103 +152,103 @@
             </div>
         </section>
 
-        <div class="box-heading container custom">
-            <h2 class="font-bold text-3xl my-6">Другие программы</h2>
-        </div>
-        <section class="container custom lg:p-2.5">
-            <div class="parent grid grid-cols-1 lg:grid-cols-[1fr_1fr] xl:grid-cols-[1fr_1fr_1fr] gap-3">
-                <div class="box-searching card-nap position-aware">
-                    <a href="#" class="p-4 w-full">
-                        <div>
-                            <p class="sku uppercase font-[500] mb-3">
-                                Технический факультет
-                            </p>
-                            <h2 class="text-xl font-[600] name mb-6 line-clamp-2">Информационные технологии в креативных
-                                индустриях (Информационные системы и технологии)</h2>
-                        </div>
-                        <div class="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-3">
-                            <div class="flex flex-col">
-                                <span class="font-[400]">400 тыс</span>
-                                <span class="font-[400] text-sm text-[#96918E]">Стоимость, ₽</span>
-                            </div>
-                            <div class="flex flex-col">
-                                <span class="font-[400]">258</span>
-                                <span class="font-[400] text-sm text-[#96918E]">Проходной балл</span>
-                            </div>
-                            <div class="flex flex-col">
-                                <span class="font-[400] text-sm">55</span>
-                                <span class="font-[400] text-sm text-[#96918E]">Бюджетных мест</span>
-                            </div>
-                            <div class="flex flex-col">
-                                <span class="font-[400] text-sm">5</span>
-                                <span class="font-[400] text-sm text-[#96918E]">Срок обучения</span>
-                            </div>
-                        </div>
-                        <span class="aware-bg"></span>
-                    </a>
-                </div>
-                <div class="box-searching card-nap position-aware">
-                    <a href="#" class="p-4 w-full">
-                        <div>
-                            <p class="sku uppercase font-[500] mb-3">
-                                Агротехнологический факультет
-                            </p>
-                            <h2 class="text-xl font-[600] name mb-6 line-clamp-2">38.02.01 Экономика и бухгалтерский учет (по
-                                отраслям)</h2>
-                        </div>
-                        <div class="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-3">
-                            <div class="flex flex-col">
-                                <span class="font-[400]">400 тыс</span>
-                                <span class="font-[400] text-sm text-[#96918E]">Стоимость, ₽</span>
-                            </div>
-                            <div class="flex flex-col">
-                                <span class="font-[400]">258</span>
-                                <span class="font-[400] text-sm text-[#96918E]">Проходной балл</span>
-                            </div>
-                            <div class="flex flex-col">
-                                <span class="font-[400] text-sm">55</span>
-                                <span class="font-[400] text-sm text-[#96918E]">Бюджетных мест</span>
-                            </div>
-                            <div class="flex flex-col">
-                                <span class="font-[400] text-sm">5</span>
-                                <span class="font-[400] text-sm text-[#96918E]">Срок обучения</span>
-                            </div>
-                        </div>
-                        <span class="aware-bg"></span>
-                    </a>
-                </div>
-                <div
-                    class="box-searching card-nap position-aware lg:col-span-2 xl:col-span-1 lg:min-h-[240px] xl:min-h-[300px]">
-                    <a href="#" class="p-4 w-full">
-                        <div>
-                            <p class="sku uppercase font-[500] mb-3">
-                                Факультет туризма и сервиса
-                            </p>
-                            <h2 class="text-xl font-[600] name mb-6 line-clamp-2">43.02.16 Туризм и гостеприимство</h2>
-                        </div>
-                        <div class="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-3">
-                            <div class="flex flex-col">
-                                <span class="font-[400]">400 тыс</span>
-                                <span class="font-[400] text-sm text-[#96918E]">Стоимость, ₽</span>
-                            </div>
-                            <div class="flex flex-col">
-                                <span class="font-[400]">258</span>
-                                <span class="font-[400] text-sm text-[#96918E]">Проходной балл</span>
-                            </div>
-                            <div class="flex flex-col">
-                                <span class="font-[400] text-sm">55</span>
-                                <span class="font-[400] text-sm text-[#96918E]">Бюджетных мест</span>
-                            </div>
-                            <div class="flex flex-col">
-                                <span class="font-[400] text-sm">5</span>
-                                <span class="font-[400] text-sm text-[#96918E]">Срок обучения</span>
-                            </div>
-                        </div>
-                        <span class="aware-bg"></span>
-                    </a>
-                </div>
-            </div>
-        </section>
+{{--        <div class="box-heading container custom hidden">--}}
+{{--            <h2 class="font-bold text-3xl my-6">Другие программы</h2>--}}
+{{--        </div>--}}
+{{--        <section class="container custom lg:p-2.5 hidden">--}}
+{{--            <div class="parent grid grid-cols-1 lg:grid-cols-[1fr_1fr] xl:grid-cols-[1fr_1fr_1fr] gap-3">--}}
+{{--                <div class="box-searching card-nap position-aware">--}}
+{{--                    <a href="#" class="p-4 w-full">--}}
+{{--                        <div>--}}
+{{--                            <p class="sku uppercase font-[500] mb-3">--}}
+{{--                                Технический факультет--}}
+{{--                            </p>--}}
+{{--                            <h2 class="text-xl font-[600] name mb-6 line-clamp-2">Информационные технологии в креативных--}}
+{{--                                индустриях (Информационные системы и технологии)</h2>--}}
+{{--                        </div>--}}
+{{--                        <div class="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-3">--}}
+{{--                            <div class="flex flex-col">--}}
+{{--                                <span class="font-[400]">400 тыс</span>--}}
+{{--                                <span class="font-[400] text-sm text-[#96918E]">Стоимость, ₽</span>--}}
+{{--                            </div>--}}
+{{--                            <div class="flex flex-col">--}}
+{{--                                <span class="font-[400]">258</span>--}}
+{{--                                <span class="font-[400] text-sm text-[#96918E]">Проходной балл</span>--}}
+{{--                            </div>--}}
+{{--                            <div class="flex flex-col">--}}
+{{--                                <span class="font-[400] text-sm">55</span>--}}
+{{--                                <span class="font-[400] text-sm text-[#96918E]">Бюджетных мест</span>--}}
+{{--                            </div>--}}
+{{--                            <div class="flex flex-col">--}}
+{{--                                <span class="font-[400] text-sm">5</span>--}}
+{{--                                <span class="font-[400] text-sm text-[#96918E]">Срок обучения</span>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <span class="aware-bg"></span>--}}
+{{--                    </a>--}}
+{{--                </div>--}}
+{{--                <div class="box-searching card-nap position-aware">--}}
+{{--                    <a href="#" class="p-4 w-full">--}}
+{{--                        <div>--}}
+{{--                            <p class="sku uppercase font-[500] mb-3">--}}
+{{--                                Агротехнологический факультет--}}
+{{--                            </p>--}}
+{{--                            <h2 class="text-xl font-[600] name mb-6 line-clamp-2">38.02.01 Экономика и бухгалтерский учет (по--}}
+{{--                                отраслям)</h2>--}}
+{{--                        </div>--}}
+{{--                        <div class="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-3">--}}
+{{--                            <div class="flex flex-col">--}}
+{{--                                <span class="font-[400]">400 тыс</span>--}}
+{{--                                <span class="font-[400] text-sm text-[#96918E]">Стоимость, ₽</span>--}}
+{{--                            </div>--}}
+{{--                            <div class="flex flex-col">--}}
+{{--                                <span class="font-[400]">258</span>--}}
+{{--                                <span class="font-[400] text-sm text-[#96918E]">Проходной балл</span>--}}
+{{--                            </div>--}}
+{{--                            <div class="flex flex-col">--}}
+{{--                                <span class="font-[400] text-sm">55</span>--}}
+{{--                                <span class="font-[400] text-sm text-[#96918E]">Бюджетных мест</span>--}}
+{{--                            </div>--}}
+{{--                            <div class="flex flex-col">--}}
+{{--                                <span class="font-[400] text-sm">5</span>--}}
+{{--                                <span class="font-[400] text-sm text-[#96918E]">Срок обучения</span>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <span class="aware-bg"></span>--}}
+{{--                    </a>--}}
+{{--                </div>--}}
+{{--                <div--}}
+{{--                    class="box-searching card-nap position-aware lg:col-span-2 xl:col-span-1 lg:min-h-[240px] xl:min-h-[300px]">--}}
+{{--                    <a href="#" class="p-4 w-full">--}}
+{{--                        <div>--}}
+{{--                            <p class="sku uppercase font-[500] mb-3">--}}
+{{--                                Факультет туризма и сервиса--}}
+{{--                            </p>--}}
+{{--                            <h2 class="text-xl font-[600] name mb-6 line-clamp-2">43.02.16 Туризм и гостеприимство</h2>--}}
+{{--                        </div>--}}
+{{--                        <div class="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-3">--}}
+{{--                            <div class="flex flex-col">--}}
+{{--                                <span class="font-[400]">400 тыс</span>--}}
+{{--                                <span class="font-[400] text-sm text-[#96918E]">Стоимость, ₽</span>--}}
+{{--                            </div>--}}
+{{--                            <div class="flex flex-col">--}}
+{{--                                <span class="font-[400]">258</span>--}}
+{{--                                <span class="font-[400] text-sm text-[#96918E]">Проходной балл</span>--}}
+{{--                            </div>--}}
+{{--                            <div class="flex flex-col">--}}
+{{--                                <span class="font-[400] text-sm">55</span>--}}
+{{--                                <span class="font-[400] text-sm text-[#96918E]">Бюджетных мест</span>--}}
+{{--                            </div>--}}
+{{--                            <div class="flex flex-col">--}}
+{{--                                <span class="font-[400] text-sm">5</span>--}}
+{{--                                <span class="font-[400] text-sm text-[#96918E]">Срок обучения</span>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <span class="aware-bg"></span>--}}
+{{--                    </a>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </section>--}}
     </div>
 @endsection
 

@@ -43,4 +43,7 @@ window.Accordion = Accordion;
 import * as Filters from './public/filters.js';
 window.Filters = Filters;
 
-import './service/has_changes.js';
+import * as Scrolls from './service/scrolls.js';
+window.Scrolls = Scrolls;
+
+import './public/regiments.js';

@@ -1,4 +1,4 @@
-export function Accordion(element){
+export function Accordion(element, force = false){
     let block       = element.closest('.accordion-item');
 
     if(!block) return;
@@ -9,5 +9,8 @@ export function Accordion(element){
     if(!content)
         return;
 
-    content.style.height = content.offsetHeight ? 0 : content.scrollHeight+'px';
+    if(force)
+        content.style.height = content.scrollHeight+'px';
+    else
+        content.style.height = content.offsetHeight ? 0 : content.scrollHeight+'px';
 }

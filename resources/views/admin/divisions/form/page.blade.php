@@ -48,7 +48,7 @@
 
                 @include('admin.divisions.form.section-base')
                 @component('components.form.sections.contacts',compact('current')) @endcomponent
-{{--                @component('components.form.sections.staffs',compact('current')) @endcomponent--}}
+                @component('components.form.sections.staffs',compact('current')) @endcomponent
                 @component('components.form.sections.documents',compact('current')) @endcomponent
                 @component('components.form.sections.contents',compact('current')) @endcomponent
 
