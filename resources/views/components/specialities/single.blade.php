@@ -12,7 +12,7 @@
             {{$speciality->faculty->name}}
         </p>
 
-        <a href="#" class="border-2 py-[5px] px-[10px] border-[var(--primary-color)] text-[var(--primary-color)] text-lg uppercase transition duration-300 ease-linear
+        <a href="https://epk.mgu-mlt.ru/login" class="border-2 py-[5px] px-[10px] border-[var(--primary-color)] text-[var(--primary-color)] text-lg uppercase transition duration-300 ease-linear
                                     hover:text-white hover:bg-[var(--primary-color)]">Подать документы</a>
 
     </div>

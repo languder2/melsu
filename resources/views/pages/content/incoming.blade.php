@@ -271,7 +271,7 @@
                 </div>
             </div>
             <div class="doc z-10">
-                <a href="#" class="text-lg transition duration-300 ease-linear
+                <a href="https://epk.mgu-mlt.ru/login" class="text-lg transition duration-300 ease-linear
                                 hover:opacity-80 hover:text-[var(--secondary-color)]">Подать документы <i
                         class="bi bi-arrow-right"></i></a>
             </div>

@@ -20,7 +20,7 @@
         </h2>
         <div class="mb-2">
             <a
-                href="#"
+                href="https://epk.mgu-mlt.ru/login"
                 class="
                 border-2 py-2 px-3 border-base-red
                 text-base-red text-lg uppercase
