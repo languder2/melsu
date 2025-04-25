@@ -19,7 +19,7 @@
                 <div class="grid grid-cols-1 h-full">
                     <h4 class="text-[#B9BAC1] text-md mb-3">Приемная комиссия</h4>
                     <a href="tel:79900215716" class="text-lg font-[600] mb-2 hover:opacity-80 hover:text-red-200 w-fit transition duration-300 ease-linear">+7(990) 021-57-16</a>
-                    <a href="https://yandex.ru/maps/org/melitopolskiy_gosudarstvenny_pedagogicheskiy_universitet_imeni_bogdana_khmelnitskogo_glavny_korpus/15156338654/?ll=35.378279%2C46.842316&z=17" class="text-lg font-[600] mb-2 hover:opacity-80 hover:text-red-200 w-fit transition duration-300 ease-linear min-h-[56px] flex items-center">г. Мелитополь, ул. Гетманская 20, каб. 2.114</a>
+                    <a href="https://yandex.ru/maps/org/melitopolskiy_gosudarstvenny_pedagogicheskiy_universitet_imeni_bogdana_khmelnitskogo_glavny_korpus/15156338654/?ll=35.378279%2C46.842316&z=17" class="text-lg font-[600] mb-2 hover:opacity-80 hover:text-red-200 w-fit transition duration-300 ease-linear min-h-[56px] flex items-center">г. Мелитополь, ул. Ленина 20, каб. 2.114</a>
                     <h4 class="text-[#B9BAC1] text-md my-3">Для писем</h4>
                     <a href="mailto:priyomnaya_komissiya@mgu-mlt.ru" class="text-lg font-[600] mb-2 hover:opacity-80 hover:text-red-200 w-fit transition duration-300 ease-linear">priyomnaya_komissiya@mgu-mlt.ru</a>
                 </div>
