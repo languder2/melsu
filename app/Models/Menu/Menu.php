@@ -126,7 +126,7 @@ class Menu extends Model
                         'link' => route('public:education:division', ['institute',$code,'departments']),
                     ],
                     (object)[
-                        'name' => "Направление подготовки",
+                        'name' => "Направления подготовки",
                         'link' => route('public:education:division', ['institute',$code,'specialities']),
                     ],
                     (object)[
@@ -178,7 +178,7 @@ class Menu extends Model
                         'link' => route('public:education:division', ['faculty',$code,'departments']),
                     ],
                     (object)[
-                        'name' => "Направление подготовки",
+                        'name' => "Направления подготовки",
                         'link' => route('public:education:division', ['faculty',$code,'specialities']),
                     ],
                     (object)[
@@ -234,7 +234,7 @@ class Menu extends Model
 
         if($division->specialities->count())
             $menu->items->push((object)[
-                'name' => "Направление подготовки",
+                'name' => "Направления подготовки",
                 'link' => route('public:education:division', ['department', $code, 'specialities']),
             ]);
 
