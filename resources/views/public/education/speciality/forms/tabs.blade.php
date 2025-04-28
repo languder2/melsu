@@ -1,6 +1,7 @@
 @use('App\Enums\EducationForm')
 <div class="flex flex-col xl:flex-row">
     @foreach(EducationForm::cases() as $form)
+        @if(!$speciality->profileByForm($form,true)) @continue @endif
         <label
             for="profile_{{$form->name}}"
             @disabled(!$speciality->profileByForm($form,true))

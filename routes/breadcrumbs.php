@@ -172,3 +172,9 @@ Breadcrumbs::for('regiment', function (BreadcrumbTrail $trail, \App\Enums\Regime
     $trail->parent('home');
     $trail->push($type->getFullName());
 });
+
+Breadcrumbs::for('documents', function (BreadcrumbTrail $trail) {
+    $trail->parent('menu',Menu::where('code','university')->first());
+
+    $trail->push('Документы');
+});

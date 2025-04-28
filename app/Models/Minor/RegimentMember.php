@@ -109,17 +109,23 @@ class RegimentMember extends Model
     {
         $menu = collect([]);
 
+//        self::getMenuItem($menu,RegimentType::Immortal,RegimentType::Both);
+//        self::getMenuItem($menu,RegimentType::Scientific,RegimentType::Both);
+//        self::getMenuItem($menu,RegimentType::Svo,null);
+
+
         $menu->put(RegimentType::Immortal->value,
             (object)[
                 'name'      => RegimentType::Immortal->getFullName(),
-                'link'      => route('regiment:public::list',RegimentType::Immortal),
+                'link'      => route('regiment:public:list',RegimentType::Immortal),
+                'type'      => RegimentType::Immortal,
                 'subs'      =>
                     self::where('is_show', true)
                         ->where('type',RegimentType::Immortal)->orWhere('type',RegimentType::Both)
                         ->orderBy('lastname')->orderBy('firstname')->get()
                         ->map(function($member){ return (object)[
                             'name' => $member->full_name,
-                            'link' => route('regiment:public::list','immortal')."#member-{$member->id}",
+                            'link' => route('regiment:public:list','immortal')."#member-{$member->id}",
                             'active'    => false,
                         ];})
             ]
@@ -128,14 +134,31 @@ class RegimentMember extends Model
         $menu->put(RegimentType::Scientific->value,
             (object)[
                 'name'      => RegimentType::Scientific->getFullName(),
-                'link'      => route('regiment:public::list',RegimentType::Scientific),
+                'link'      => route('regiment:public:list',RegimentType::Scientific),
+                'type'      => RegimentType::Scientific,
                 'subs'      =>
                     self::where('is_show', true)
                         ->where('type',RegimentType::Scientific)->orWhere('type',RegimentType::Both)
                         ->orderBy('lastname')->orderBy('firstname')->get()
                         ->map(function($member){ return (object)[
                             'name' => $member->full_name,
-                            'link' => route('regiment:public::list',RegimentType::Scientific)."#member-{$member->id}",
+                            'link' => route('regiment:public:list',RegimentType::Scientific)."#member-{$member->id}",
+                            'active'    => false,
+                        ];})
+            ]
+        );
+        $menu->put(RegimentType::Svo->value,
+            (object)[
+                'name'      => RegimentType::Svo->getFullName(),
+                'link'      => route('regiment:public:list',RegimentType::Svo),
+                'type'      => RegimentType::Svo,
+                'subs'      =>
+                    self::where('is_show', true)
+                        ->where('type',RegimentType::Svo)
+                        ->orderBy('lastname')->orderBy('firstname')->get()
+                        ->map(function($member){ return (object)[
+                            'name' => $member->full_name,
+                            'link' => route('regiment:public:list',RegimentType::Svo)."#member-{$member->id}",
                             'active'    => false,
                         ];})
             ]
@@ -144,6 +167,36 @@ class RegimentMember extends Model
         return $menu;
     }
 
+    public static function getMenuItem(Collection &$menu,RegimentType $type,?RegimentType $additional):void
+    {
+
+
+        $subs = self::where('is_show', true)
+            ->where('type',$type);
+
+        if($additional)
+            $subs->orWhere('type',RegimentType::Both);
+
+        $subs->orderBy('lastname')->orderBy('firstname')->get()
+            ->map(function($member) use ($type) { return (object)[
+                'name' => $member->full_name,
+                'link' => route('regiment:public:list',$type)."#member-{$member->id}",
+                'active'    => false,
+            ];});
+
+        dd($subs->get());
+
+
+        $menu->put($type,
+            (object)[
+                'name'      => $type->getFullName(),
+                'link'      => route('regiment:public:list',$type),
+                'subs'      => $subs
+
+            ]
+        );
+
+    }
 
 }
 

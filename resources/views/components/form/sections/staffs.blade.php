@@ -30,48 +30,48 @@
     <div id="staffs" class="flex flex-col gap-4 mb-4">
 
 
-        @component('staff.admin.select',[
+        @component('staff.admin.include-block',[
             'with_out_sort' => true
         ]) @endcomponent
 
 
 
-    @component('components.staff.select-chief',[
-            'id'        => $current?->chief?->id ?? null,
-            'chief'     => $current?->chief?->staff_id ?? null ,
-            'post'      => $current?->chief?->post ?? null,
-            'alt'       => $current?->chief?->post_alt ?? null,
-            'name'      => "chief",
-            "old"       => old('chief')
-        ])
+        @component('components.staff.select-chief',[
+                'id'        => $current?->chief?->id ?? null,
+                'chief'     => $current?->chief?->staff_id ?? null ,
+                'post'      => $current?->chief?->post ?? null,
+                'alt'       => $current?->chief?->post_alt ?? null,
+                'name'      => "chief",
+                "old"       => old('chief')
+            ])
 
-    @endcomponent
-
-
+        @endcomponent
 
 
-{{--        @if(old('_token'))--}}
-{{--            @foreach(old('staffs') as $staff_id => $staff)--}}
-{{--                <x-staff.select-with-post--}}
-{{--                    :id="$staff_id"--}}
-{{--                />--}}
-{{--            @endforeach--}}
-{{--        @elseif($current->staffs ?? null)--}}
-{{--            @foreach($current->staffs as $staff)--}}
-{{--                <x-staff.select-with-post--}}
-{{--                    :id="$staff->id"--}}
-{{--                    :staff='$staff->staff_id'--}}
-{{--                    :post='$staff->post'--}}
-{{--                    :alt='$staff->post_alt'--}}
-{{--                    :order='$staff->order'--}}
-{{--                />--}}
-{{--            @endforeach--}}
-{{--        @endif--}}
 
-{{--        @if(!old('_token') && (!$current || $current->staffs->count()===0))--}}
-{{--            <x-staff.select-with-post--}}
-{{--                :id="(int)microtime(true)"--}}
-{{--            />--}}
-{{--        @endif--}}
+
+        {{--        @if(old('_token'))--}}
+        {{--            @foreach(old('staffs') as $staff_id => $staff)--}}
+        {{--                <x-staff.select-with-post--}}
+        {{--                    :id="$staff_id"--}}
+        {{--                />--}}
+        {{--            @endforeach--}}
+        {{--        @elseif($current->staffs ?? null)--}}
+        {{--            @foreach($current->staffs as $staff)--}}
+        {{--                <x-staff.select-with-post--}}
+        {{--                    :id="$staff->id"--}}
+        {{--                    :staff='$staff->staff_id'--}}
+        {{--                    :post='$staff->post'--}}
+        {{--                    :alt='$staff->post_alt'--}}
+        {{--                    :order='$staff->order'--}}
+        {{--                />--}}
+        {{--            @endforeach--}}
+        {{--        @endif--}}
+
+        {{--        @if(!old('_token') && (!$current || $current->staffs->count()===0))--}}
+        {{--            <x-staff.select-with-post--}}
+        {{--                :id="(int)microtime(true)"--}}
+        {{--            />--}}
+        {{--        @endif--}}
     </div>
 </div>

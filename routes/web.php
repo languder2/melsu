@@ -39,6 +39,7 @@ Route::prefix('admin')->group(function () {
 });
 
 require __DIR__.'/regiment.php';
+require __DIR__.'/documents.php';
 
 Route::prefix('cabinet')->group(function () {
     require __DIR__.'/cabinet.php';

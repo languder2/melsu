@@ -7,17 +7,18 @@
 @endsection
 
 @section('aside')
-    @component('menu.sidebar-multi',[
-        'menu' => $menu
-    ])@endcomponent
+    @include('regiment.public.menu')
 @endsection
 
 @section('content')
+
 <div class="flex flex-col gap-6">
 
     @include('regiment.public.introduction')
 
     @include('regiment.public.filter')
+
+    @include('regiment.public.top-menu')
 
     <div class="flex flex-col gap-4">
         @foreach($list as $member)
