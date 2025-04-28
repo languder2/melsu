@@ -323,6 +323,12 @@
                 <i class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>
                 Две фотографии поступающего размером 3 на 4 см.
             </li>
+            <li class="leading-[1.8rem] pb-3 lg:pb-0 flex items-center">
+                <a target="_blank" href="../../../storage/documents/board-of-trustees/Perechen-individualnyh-dostizhenij.pdf" class="flex items-center">
+                <i class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>
+                Перечень индивидуальных достижений
+                </a>
+            </li>
         </ul>
     </div>
 </section>
@@ -465,49 +471,94 @@
     <div class="bg-white p-6 mb-5">
         <ul class="doc-list list-none list-inside marker:text-[var(--secondary-color)] text-[var(--main-color)]">
             <li class="leading-[1.8rem] pb-3">
-                <a target="_blank" href="../../../storage/documents/board-of-trustees/programma_kandidatskogo_ekzamena_po_inostrannomu_yazyku_anglijskomu.pdf" class="flex items-center"><i
+                <a target="_blank" href="../../../storage/documents/board-of-trustees/Perechen-Programm-kandidatskih-ekzamenov-na-sajt.pdf" class="flex items-center"><i
                         class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>
-                    По иностранному языку (английский), направление подготовки 44.06.01 Образование и педагогические науки (специальности — 5.8.1, 5.8.2, 5.8.7).</a>
+                    Перечень Программ кандидатских экзаменов на сайт</a>
             </li>
             <li class="leading-[1.8rem] pb-3">
-                <a target="_blank" href="../../../storage/documents/board-of-trustees/programma_kandidatskogo_ekzamena_po_inostrannomu_yazyku_anglijskomu-2.pdf" class="flex items-center"><i
+                <a target="_blank" href="../../../storage/documents/board-of-trustees/programma-kandidatskogo-ekzamena-5.8.2-Teoriya-i-metodika-obucheniya-i-vospitaniya-(pedagogicheskie-nauki).pdf" class="flex items-center"><i
                         class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>
-                    По иностранному языку (английский), направление подготовки 46.06.01 Исторические науки и археология (специальности — 5.6.1, 5.6.5, 5.6.7).</a>
+                    программа кандидатского экзамена  5.8.2 Теория и методика обучения и воспитания  (педагогические науки)</a>
             </li>
             <li class="leading-[1.8rem] pb-3">
-                <a target="_blank" href="../../../storage/documents/board-of-trustees/programma_kandidatskogo_ekzamena_po_inostrannomu_yazyku_anglijskomu-3.pdf" class="flex items-center"><i
+                <a target="_blank" href="../../../storage/documents/board-of-trustees/Programma-kandidatskogo-ekzamena-po-istorii-i-filosofii-nauki.pdf" class="flex items-center"><i
                         class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>
-                    По иностранному языку (английский), направление подготовки 02.06.01 Компьютерные и информационные науки (специальность — 1.2.3).</a>
+                    Программа кандидатского экзамена по истории и философии науки</a>
             </li>
             <li class="leading-[1.8rem] pb-3">
-                <a target="_blank" href="../../../storage/documents/board-of-trustees/programma_kandidatskogo_ekzamena_po_inostrannomu_yazyku_anglijskomu-4.pdf" class="flex items-center"><i
+                <a target="_blank" href="../../../storage/documents/board-of-trustees/Programma-kandidatskogo-ekzamena-po-specialnoj-discipline-2.5.21.pdf" class="flex items-center"><i
                         class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>
-                    По иностранному языку (английский), направление подготовки 06.06.01 Биологические науки (специальность— 1.5.9).</a>
+                    Программа кандидатского экзамена по специальной дисциплине 2.5.21</a>
             </li>
             <li class="leading-[1.8rem] pb-3">
-                <a target="_blank" href="../../../storage/documents/board-of-trustees/programma_kandidatskogo_ekzamena_po_inostrannomu_yazyku_anglijskomu-5.pdf" class="flex items-center"><i
+                <a target="_blank" href="../../../storage/documents/board-of-trustees/Programma-kandidatskogo-ekzamena-po-specialnoj-discipline-4.1.1.pdf" class="flex items-center"><i
                         class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>
-                    По иностранному языку (английский), направление подготовки 35.06.04 Технологии, средства механизации и энергетическое оборудование в сельском, лесном и рыбном хозяйстве (специальность — 2.5.21).</a>
+                    Программа кандидатского экзамена по специальной дисциплине 4.1.1</a>
             </li>
             <li class="leading-[1.8rem] pb-3">
-                <a target="_blank" href="../../../storage/documents/board-of-trustees/programma_kandidatskogo_ekzamena_po_inostrannomu_yazyku_anglijskomu-6.pdf" class="flex items-center"><i
+                <a target="_blank" href="../../../storage/documents/board-of-trustees/Programma-kandidatskogo-ekzamena-po-specialnoj-discipline-po-nauchnoj-specialnosti-5.2.3.pdf" class="flex items-center"><i
                         class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>
-                    По иностранному языку (английский), направление подготовки 38.06.01 Экономика (специальность — 5.2.3).</a>
+                    Программа кандидатского экзамена по специальной дисциплине по научной специальности 5.2.3</a>
             </li>
             <li class="leading-[1.8rem] pb-3">
-                <a target="_blank" href="../../../storage/documents/board-of-trustees/programma_kandidatskogo_ekzamena_po_inostrannomu_yazyku_anglijskomu-7.pdf" class="flex items-center"><i
+                <a target="_blank" href="../../../storage/documents/board-of-trustees/Programma-kandidatskogo-ekzamena-po-inostrannomu-yazyku-biologicheskie-nauki.pdf" class="flex items-center"><i
                         class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>
-                    По иностранному языку (английский), направление подготовки 13.06.01 Электро- и теплотехника науки и археология (специальность — 2.4.4).</a>
+                    Программа кандидатского экзамена по иностранному языку биологические науки</a>
             </li>
             <li class="leading-[1.8rem] pb-3">
-                <a target="_blank" href="../../../storage/documents/board-of-trustees/programma_kandidatskogo_ekzamena_po_inostrannomu_yazyku_anglijskomu-8.pdf" class="flex items-center"><i
+                <a target="_blank" href="../../../storage/documents/board-of-trustees/Programma_kandidatskogo_ekzamena_po_inostrannomu_yazyku_istoricheskie_nauki.pdf" class="flex items-center"><i
                         class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>
-                    По иностранному языку (английский), направление подготовки 40.06.01 Юриспруденция (специальность — 5.1.4).</a>
+                    Программа кандидатского экзамена по иностранному языку исторические науки</a>
             </li>
             <li class="leading-[1.8rem] pb-3">
-                <a target="_blank" href="../../../storage/documents/board-of-trustees/programma_kandidatskogo_ekzamena_po_inostrannomu_yazyku_anglijskomu-9.pdf" class="flex items-center"><i
+                <a target="_blank" href="../../../storage/documents/board-of-trustees/Programma_kandidatskogo_ekzamena_po_inostrannomu_yazyku_pedagogicheskie_nauki.pdf" class="flex items-center"><i
                         class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>
-                    По иностранному языку (английский), направление подготовки 35.06.01 Сельское хозяйство (специальность — 4.1.1).</a>
+                    Программа кандидатского экзамена по иностранному языку педагогические науки</a>
+            </li>
+            <li class="leading-[1.8rem] pb-3">
+                <a target="_blank" href="../../../storage/documents/board-of-trustees/Programma_kandidatskogo_ekzamena_po_inostrannomu_yazyku_tekhnicheskie_nauki_(mekhanika).pdf" class="flex items-center"><i
+                        class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>
+                    Программа кандидатского экзамена по иностранному языку технические науки (механика)</a>
+            </li>
+            <li class="leading-[1.8rem] pb-3">
+                <a target="_blank" href="../../../storage/documents/board-of-trustees/Programma_kandidatskogo_ekzamena_po_inostrannomu_yazyku_tekhnicheskie_nauki_(energetika).pdf" class="flex items-center"><i
+                        class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>
+                    Программа кандидатского экзамена по иностранному языку технические науки (энергетика)</a>
+            </li>
+            <li class="leading-[1.8rem] pb-3">
+                <a target="_blank" href="../../../storage/documents/board-of-trustees/Programma_kandidatskogo_ekzamena_po_inostrannomu_yazyku_ekonomicheskie_nauki.pdf" class="flex items-center"><i
+                        class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>
+                    Программа кандидатского экзамена по иностранному языку экономические науки</a>
+            </li>
+            <li class="leading-[1.8rem] pb-3">
+                <a target="_blank" href="../../../storage/documents/board-of-trustees/Programma_kandidatskogo_ekzamena_po_inostrannomu_yazyku_yuridicheskie_nauki.pdf" class="flex items-center"><i
+                        class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>
+                    Программа кандидатского экзамена по иностранному языку юридические науки</a>
+            </li>
+            <li class="leading-[1.8rem] pb-3">
+                <a target="_blank" href="../../../storage/documents/board-of-trustees/Programma_kandidatskogo_ekzamena_po_specialnoj_discipline_4_3_3.pdf" class="flex items-center"><i
+                        class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>
+                    Программа кандидатского экзамена по специальной дисциплине 4.3.3</a>
+            </li>
+            <li class="leading-[1.8rem] pb-3">
+                <a target="_blank" href="../../../storage/documents/board-of-trustees/Programma_kandidatskogo_ekzamena_po_specialnoj_discipline_5_1_4.pdf" class="flex items-center"><i
+                        class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>
+                    Программа кандидатского экзамена по специальной дисциплине 5.1.4</a>
+            </li>
+            <li class="leading-[1.8rem] pb-3">
+                <a target="_blank" href="../../../storage/documents/board-of-trustees/Programma_kandidatskogo_ekzamena_po_specialnoj_discipline_5_6_5.pdf" class="flex items-center"><i
+                        class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>
+                    Программа кандидатского экзамена по специальной дисциплине 5.6.5</a>
+            </li>
+            <li class="leading-[1.8rem] pb-3">
+                <a target="_blank" href="../../../storage/documents/board-of-trustees/Programma_kandidatskogo_ekzamena_po_specialnoj_discipline_5_8_2 matematika.pdf" class="flex items-center"><i
+                        class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>
+                    Программа кандидатского экзамена по специальной дисциплине 5.8.2 (математика)</a>
+            </li>
+            <li class="leading-[1.8rem] pb-3">
+                <a target="_blank" href="../../../storage/documents/board-of-trustees/Programma_kandidatskogo_ekzamena_po_specialnoj_discipline_5_8_2 fizika.pdf" class="flex items-center"><i
+                        class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>
+                    Программа кандидатского экзамена по специальной дисциплине 5.8.2 (физика)</a>
             </li>
         </ul>
     </div>
