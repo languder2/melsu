@@ -679,8 +679,7 @@ header{
         .box-back-btn{
             display: block;
         }
-        position: fixed;
-        min-height: 90vh;
+        min-height: 85vh;
         height: 100%;
         overflow: scroll;
         min-width: 100%;
