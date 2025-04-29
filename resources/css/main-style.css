@@ -687,6 +687,7 @@ header{
         top: 70px;
         transform: translateX(100%);
         transition: transform .3s cubic-bezier(.645,.045,.355,1);
+        padding-bottom: env(safe-area-inset-bottom);
     }
     .new-menu.mob-menu.opened{
         overflow-y: auto;
