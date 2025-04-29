@@ -128,3 +128,12 @@ ol{
 
 
 }
+
+.ul-correct ul{
+    padding-left: 24px;
+    list-style: disc;
+}
+.ul-correct ul ul{
+    padding-left: 24px;
+    list-style: circle;
+}

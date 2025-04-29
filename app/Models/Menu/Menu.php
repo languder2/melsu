@@ -114,7 +114,7 @@ class Menu extends Model
                 'name'  => 'Институт',
                 'items' => [
                     (object)[
-                        'name' => "О институте",
+                        'name' => "Об институте",
                         'link' => route('public:education:division', ['institute',$code]),
                     ],
                     (object)[

@@ -150,7 +150,7 @@ class Speciality extends Model
     {
         $places = 0;
 
-        foreach ($this->profiles as $profile)
+        foreach ($this->profiles()->where('show',true)->get() as $profile)
             $places += $profile->placesByType(EducationBasis::Budget);
         return $places;
     }

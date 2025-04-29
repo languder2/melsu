@@ -66,13 +66,19 @@ class RegimentController extends Controller
 
         $menu = RegimentMember::getMenu();
 
-        $list = RegimentMember::where('is_show', true)
-            ->where('type',$type)->orWhere('type',RegimentType::Both)
-            ->orderBy('lastname')->orderBy('firstname')->get();
+        $list = RegimentMember::where('is_show', true)->where('type',$type);
 
-        $letters = RegimentMember::where('is_show', true)
-            ->where('type',$type)->orWhere('type',RegimentType::Both)
-            ->select('letter')
+        if($type !== RegimentType::Svo)
+            $list->orWhere('type',RegimentType::Both);
+
+        $list = $list->orderBy('lastname')->orderBy('firstname')->get();
+
+        $letters = RegimentMember::select('letter')->where('is_show', true)->where('type',$type);
+
+        if($type !== RegimentType::Svo)
+            $letters->orWhere('type',RegimentType::Both);
+
+        $letters= $letters
             ->distinct()
             ->pluck('letter');
 

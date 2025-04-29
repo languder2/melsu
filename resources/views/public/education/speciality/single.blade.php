@@ -47,7 +47,7 @@
                     <h2 class="text-neutral-600 uppercase font-bold mb-2 xl:text-right">
                         Форма обучения
                     </h2>
-                    @foreach($speciality->profiles as $profile)
+                    @foreach($speciality->publicProfiles as $profile)
                         <div class="font-bold xl:text-right">
                             {{$profile->form->getName()}}
                         </div>

@@ -10,5 +10,5 @@ Route::prefix('admin/regiment')->group(function(){
 });
 
 Route::get('regiments/{type?}',         [RegimentController::class,'public'])
-    ->setDefaults(['type'=>'Immortal'])->name('regiment:public::list');
+    ->setDefaults(['type'=>'Immortal'])->name('regiment:public:list');
 

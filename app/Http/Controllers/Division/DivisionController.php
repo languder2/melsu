@@ -62,14 +62,14 @@ class DivisionController extends Controller
                 Speciality::updateAffiliation($speciality,$record);
 
 
-        /* chief */
-        if(array_key_exists('chief',$form))
-            Affiliation::ProcessingChief($record,$form['chief']);
-
-        /* staffs */
-        if(array_key_exists('staffs',$form))
-            foreach ($form['staffs'] as $aID=>$staff)
-                Affiliation::ProcessingStaff($record,$aID,$staff);
+//        /* chief */
+//        if(array_key_exists('chief',$form))
+//            Affiliation::ProcessingChief($record,$form['chief']);
+//
+//        /* staffs */
+//        if(array_key_exists('staffs',$form))
+//            foreach ($form['staffs'] as $aID=>$staff)
+//                Affiliation::ProcessingStaff($record,$aID,$staff);
 
 
         if($request->has('ico')){

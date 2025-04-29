@@ -27,6 +27,8 @@
 
         <x-form.errors setTheme />
 
+{{--        @component('staff.admin.include-block') @endcomponent--}}
+
         <div class="flex flex-row justify-between gap-4">
 
             @if($member->image)
