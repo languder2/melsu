@@ -1,6 +1,5 @@
 
 document.addEventListener('DOMContentLoaded', event => {
-    console.log(event.currentTarget);
     RegimentMembersShow()
 });
 window.addEventListener('hashchange', event=> {
