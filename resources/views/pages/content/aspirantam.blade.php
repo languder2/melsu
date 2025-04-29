@@ -471,11 +471,6 @@
     <div class="bg-white p-6 mb-5">
         <ul class="doc-list list-none list-inside marker:text-[var(--secondary-color)] text-[var(--main-color)]">
             <li class="leading-[1.8rem] pb-3">
-                <a target="_blank" href="../../../storage/documents/board-of-trustees/Perechen-Programm-kandidatskih-ekzamenov-na-sajt.pdf" class="flex items-center"><i
-                        class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>
-                    Перечень Программ кандидатских экзаменов на сайт</a>
-            </li>
-            <li class="leading-[1.8rem] pb-3">
                 <a target="_blank" href="../../../storage/documents/board-of-trustees/programma-kandidatskogo-ekzamena-5.8.2-Teoriya-i-metodika-obucheniya-i-vospitaniya-(pedagogicheskie-nauki).pdf" class="flex items-center"><i
                         class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>
                     программа кандидатского экзамена  5.8.2 Теория и методика обучения и воспитания  (педагогические науки)</a>
