@@ -274,6 +274,7 @@ header{
     .navbar-collapse{
         z-index: 70;
         display: flex;
+        height: auto !important;
         justify-content: space-between;
         align-items: center;
         .navbar-nav{
@@ -322,7 +323,7 @@ header{
         display: flex;
         flex-direction: column;
         flex-wrap: nowrap;
-        top: 159px;
+        top: 171px;
         left: 0px;
         z-index: 80;
         width: 100%;
@@ -568,7 +569,8 @@ header{
             z-index: 1;
             overflow: hidden;
             height: 0;
-            transition: all .3s cubic-bezier(.645,.045,.355,1);
+            transition: transform 0.3s ease;
+            transform-origin: top;
             background-color: white;
             width: 100%;
             position: absolute;
@@ -584,7 +586,7 @@ header{
                     a {
                         width: 100%;
                         padding-bottom: 8px;
-                        border-bottom: 1px solid lightgray;
+                        pointer-events: none;
                     }
                 }
             }
@@ -601,8 +603,12 @@ header{
                 }
             }
         }
+        .navbar-collapse:not(.opened) {
+            transform: scaleY(0);
+            height: auto !important;
+        }
         .navbar-collapse.opened{
-            height: 45%;
+            transform: scaleY(1);
         }
         .navbar-toggler{
             display: block;
@@ -701,7 +707,14 @@ header{
                     }
                 }
             }
+            .box-dropdown-menu:not(:last-child){
+                border-right: none !important;
+            }
         }
+    }
+    .navbar-collapse, .search-box, .new-menu {
+        transform: translateZ(0);
+        backface-visibility: hidden;
     }
 }
 @media screen and (max-width: 767px){
@@ -6284,4 +6297,3 @@ li.h--timeline-event.h--timeline-event--selected.text-component {
         font-size: 150px !important;
     }
 }
-
