@@ -35,8 +35,8 @@
 
         <div class="flex gap-4 mb-6">
             @hasSection('aside')
-                <div class="left-side-menu-box hidden lg:block w-96 ">
-                    <div class="bg-white p-2.5">
+                <div class="left-side-menu-box hidden lg:flex flex-col w-96 ">
+                    <div class="bg-white p-2.5 grow">
                         @yield('aside')
                     </div>
                 </div>
