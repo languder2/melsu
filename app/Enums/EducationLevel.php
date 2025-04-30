@@ -50,5 +50,9 @@ enum EducationLevel: string
         return  $result;
     }
 
+    public static function getOrder(): string
+    {
+        return "FIELD(level, 'bachelor', 'specialist', 'master', 'postgraduate', 'colleges')";
+    }
 
 }

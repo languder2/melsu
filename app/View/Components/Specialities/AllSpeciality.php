@@ -3,6 +3,7 @@
 namespace App\View\Components\Specialities;
 
 use App\Enums\DivisionType;
+use App\Enums\EducationLevel;
 use App\Models\Education\Department as EducationDepartment;
 use App\Models\Education\Faculty;
 use App\Models\Education\Speciality;
@@ -52,7 +53,10 @@ class AllSpeciality extends Component
 
     public function render(): View|Closure|string
     {
-        $specialities = Speciality::where('show',true);
+        $specialities = Speciality::where('show',true)
+
+
+        ;
 
         if ($this->division->type === DivisionType::Faculty)
             $specialities->where('faculty_id', $this->division->id);
@@ -62,6 +66,8 @@ class AllSpeciality extends Component
 
         if ($this->short)
             $specialities->limit(9);
+
+        $specialities->orderByRaw(EducationLevel::getOrder());
 
         return view('components.specialities.all-speciality', [
             'specialities'  => $specialities->get(),

@@ -23,9 +23,10 @@
 
         @isset($staff->post)
             <p>
-                {!! $staff->post !!}
+                {!! $full_post && $staff->post_alt ? $staff->post_alt : $staff->post !!}
             </p>
         @endisset
+
         @isset($staff->posts)
             @foreach($staff->posts as $post)
                 <p>

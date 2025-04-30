@@ -23,7 +23,8 @@
     @endif
 
     @component('public.staffs.division.staffs',[
-        'staffs'    => $division->staffs(true)->get()
+        'staffs'    => $division->staffs(true)->get(),
+        'full_post' => in_array($division->code,['academic-council'])
     ])
         @slot('title')
             @if($division->code === 'academic-council')
