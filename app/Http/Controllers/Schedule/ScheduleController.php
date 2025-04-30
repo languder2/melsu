@@ -120,6 +120,7 @@ class ScheduleController extends Controller
 
         $schedule = $query->get();
         $groupedSchedule = [];
+        $maxWeekdays = [];
         foreach ($schedule as $item) {
             if (isset($item->group_name, $item->time, $item->weekday)) {
                 $groupedSchedule[$item->group_name][$item->time][$item->weekday] = $item;
@@ -127,14 +128,12 @@ class ScheduleController extends Controller
                     $maxWeekdays[$item->group_name] = $item->weekday;
                 }
             } else {
-                // Обработка случая, когда свойства отсутствуют
                 error_log("Object missing required properties: " . print_r($item, true));
             }
         }
         foreach ($groupedSchedule as &$group) {
             ksort($group);
         }
-
         return view('public.schedule.schedule', [
             'schedule' => $groupedSchedule,
             'maxWeekdays' => $maxWeekdays,

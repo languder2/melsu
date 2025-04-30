@@ -94,11 +94,11 @@ return $weekNumber;
             </p>
         </div>
     @elseif(empty($schedule))
-        <div class="empty_search">
-            <p>
-            <h1>Группа не найдена попробуйте еще</h1>
-            </p>
-        </div>
+            <div class="empty_search text-center my-30">
+                <p>
+                <h1 class="text-3xl font-bold mb-3">Группа не найдена попробуйте еще</h1>
+                </p>
+            </div>
     @else
         <div id="scheduleTable">
             @foreach ($schedule as $gk => $group)
