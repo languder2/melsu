@@ -255,5 +255,25 @@ if (document.querySelector('.main-menu')) {
         };
     }
 
+    function adjustPaddingForIOS() {
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+        const iOSPadding = '100px';
+
+        if (isIOS) {
+            const dropdownMenu = document.querySelectorAll('.wrapper-dropdown-menu');
+            if (dropdownMenu) {
+                dropdownMenu.forEach(wrap => {
+                    const lastBox = wrap.querySelector('.box-dropdown-menu:last-child');
+                    if (lastBox) {
+                        lastBox.style.paddingBottom = iOSPadding;
+                    }
+                })
+            }
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', adjustPaddingForIOS);
+    window.addEventListener('resize', adjustPaddingForIOS);
+
     init();
 }
