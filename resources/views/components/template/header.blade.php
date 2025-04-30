@@ -1,7 +1,7 @@
 <header>
     @if(request()->session()->get('show-video') === null )
         <div class="wrapper-video">
-            <video id="intro-video" autoplay muted>
+            <video id="intro-video" autoplay loop muted playsinline>
                 <source src="{{asset('video/2kk.webm')}}" type="video/webm">
             </video>
         </div>
