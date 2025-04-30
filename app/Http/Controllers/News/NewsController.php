@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\News;
 
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
-use App\Models\{News\News, News\NewsCategory};
+use App\Models\{Gallery\Gallery, News\News, News\NewsCategory};
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
+use App\Models\News\RelationNews;
 
 class NewsController extends Controller
 {
@@ -142,5 +144,19 @@ class NewsController extends Controller
                 ])->render(),
             ]
         ]);
+    }
+    public function ApiAddSection():\Illuminate\View\View
+    {
+        $news   = new RelationNews();
+        return view('news.admin.editor',compact('news'));
+    }
+    public function ApiDelete (?RelationNews $news): JsonResponse
+    {
+        $news->delete();
+        return response()->json(
+            [
+                'message' => "Галерея удалена\n{$news->title}\n Восстановимо до: "
+                    .Carbon::now()->addWeek(2)->format('d.m.Y H:i')
+            ]);
     }
 }

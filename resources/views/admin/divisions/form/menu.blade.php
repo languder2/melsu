@@ -28,3 +28,9 @@
     tab='tab_contents'
     text='Секции контента'
 />
+
+<x-html.admin.form-menu-item
+    tabs='form_box'
+    tab='tab_news'
+    text='Новости'
+/>

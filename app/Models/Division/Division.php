@@ -8,10 +8,12 @@ use App\Models\Education\Speciality;
 use App\Models\Gallery\Image;
 use App\Models\Global\Options;
 use App\Models\Menu\Menu;
+use App\Models\News\RelationNews;
 use App\Models\Page\Content as PageContent;
 use App\Models\Sections\Contact;
 use App\Models\Staff\Affiliation as StaffAffiliation;
 use App\Models\Staff\Staff;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -223,6 +225,18 @@ class Division extends Model
 
 
         return $response;
+    }
+
+    public function news(): MorphMany
+    {
+        return $this->morphMany(RelationNews::class, 'relation')
+            ->orderBy('published_at');
+    }
+    public function publicNews(): MorphMany
+    {
+        return $this->news()
+            ->where('published_at','<=', Carbon::now())
+            ->where('is_show',1);
     }
 
     public function getTeachingStaffAttribute(): Collection

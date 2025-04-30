@@ -7,7 +7,6 @@ use App\Http\Controllers\Education\SpecialityController;
 use App\Http\Controllers\Gallery\PublicGallery;
 use App\Http\Controllers\Handbook\HandbookController;
 use App\Http\Controllers\Menu\MenuController;
-use App\Http\Controllers\News\NewsController;
 use App\Http\Controllers\News\EventsController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\Schedule\ScheduleController;
@@ -40,6 +39,7 @@ Route::prefix('admin')->group(function () {
 
 require __DIR__.'/regiment.php';
 require __DIR__.'/documents.php';
+require __DIR__.'/news.php';
 
 Route::prefix('cabinet')->group(function () {
     require __DIR__.'/cabinet.php';
@@ -52,16 +52,6 @@ Route::prefix('nomix')->group(function () {
 Route::get('test', [TestController::class, 'index'])->name('test');
 Route::get('test2', [TestController::class, 'index'])->name('test2');
 
-/* News: public */
-
-Route::controller(NewsController::class)
-    ->prefix('news')
-    ->group(function () {
-
-        Route::get('', 'showAll')->name('news:show:all');
-        Route::get('show/{id}', 'show')->name('news:show');
-
-    });
 
 Route::get('specialities', [SpecialityController::class,'showAll'])
     ->name('public:education:specialities:all');
@@ -140,13 +130,6 @@ Route::get('/handbooks/{collectionId}', [HandbookController::class, 'show'])->na
 Route::get('control/sections',  [ControlController::class,'sections']);
 Route::get('control/contacts',  [ControlController::class,'contacts']);
 Route::get('control/staffs',    [ControlController::class,'staffs']);
-
-/* Events */
-
-Route::get('events', [EventsController::class,'all'])->name('public:events:list');
-Route::get('event/{event?}', [EventsController::class,'show'])->name('public:event:show');
-
-/**/
 
 
 Route::get('test/view', [TestController::class,'view']);

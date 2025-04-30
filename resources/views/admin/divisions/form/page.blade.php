@@ -51,6 +51,9 @@
                 @component('components.form.sections.staffs',compact('current')) @endcomponent
                 @component('components.form.sections.documents',compact('current')) @endcomponent
                 @component('components.form.sections.contents',compact('current')) @endcomponent
+                @component('news.admin.include-section',        compact('current'))
+                    tab_news
+                @endcomponent
 
             </div>
 

@@ -4,10 +4,8 @@ namespace App\Http\Controllers\Education;
 
 use App\Enums\DivisionType;
 use App\Enums\EducationLevel;
-use App\Enums\TicketRoles;
 use App\Http\Controllers\Controller;
 use App\Models\Division\Division;
-use App\Models\Education\Department;
 use App\Models\Education\Profile;
 use App\Models\Education\Speciality;
 use App\Models\Gallery\Image;
@@ -15,8 +13,7 @@ use App\Models\Menu\Menu;
 use App\Models\Page\Content as PageContent;
 use App\Models\Sections\Career;
 use App\Models\Sections\FAQ;
-use App\Models\Service\Log;
-use App\Models\Ticket\UserRole;
+use App\Models\Services\Log;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 
