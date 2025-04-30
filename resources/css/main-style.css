@@ -2808,7 +2808,6 @@ footer{
     min-height: calc(100vh - 530px);
     display: flex;
     z-index: 0;
-    height: 100%;
     .wrapp-left-side-menu {
 
         .left-side-menu {

@@ -1,5 +1,5 @@
 <section class="container">
-    <div class="flex flex-wrap gap-3">
+    <div class="flex flex-wrap gap-3 mb-3">
         @foreach($list as $item)
             {{view('gallery.gallery.item',['item'=>$item])}}
         @endforeach
