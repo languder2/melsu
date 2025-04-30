@@ -33,9 +33,8 @@ enum RegimentType:string
         $result = collect([]);
 
         foreach (self::cases() as $case)
-            $result->put($case->name,$case->getFullName());
+            $result->put($case->value,$case->getFullName());
 
         return $result;
-
     }
 }

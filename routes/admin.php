@@ -13,37 +13,9 @@ use App\Http\Controllers\Users\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Education\InstituteController;
 use App\Http\Controllers\Minor\MinorController;
+use App\Http\Controllers\TestController;
 
 
-/* News: admin */
-
-Route::middleware('isAdmin')
-    ->controller(NewsController::class)
-    ->prefix('news')
-    ->group(function () {
-
-        Route::get('', 'adminList')->name('admin:news');
-        Route::get('add', 'form')->name('admin:news:add');
-        Route::get('edit/{id}', 'form')->name('admin:news:edit');
-        Route::post('save', 'save')->name('admin:news:save');
-        Route::get('delete/{id}', 'delete')->name('admin:news:delete');
-
-    });
-
-/* Events: admin */
-
-Route::middleware('isAdmin')
-    ->controller(EventsController::class)
-    ->prefix('events')
-    ->group(function () {
-
-        Route::get('', 'list')->name('admin:events');
-        Route::get('add', 'form')->name('admin:events:add');
-        Route::get('edit/{event?}', 'form')->name('admin:events:edit');
-        Route::post('save/{event?}', 'save')->name('admin:events:save');
-        Route::get('delete/{event?}', 'delete')->name('admin:events:delete');
-
-    });
 
 Route::middleware('isAdmin')
     ->controller(MenuItems::class)
@@ -246,4 +218,5 @@ Route::get('minors',[MinorController::class,'index'])->name("minors:admin:index"
 
 /**/
 
+Route::get('test',[TestController::class,'admin']);
 

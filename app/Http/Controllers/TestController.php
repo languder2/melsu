@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Enums\EducationForm;
 use App\Enums\EducationLevel;
 use App\Models\Education\Speciality;
+use App\Models\News\RelationNews;
 use App\Models\Page\Content;
 use App\Models\Sections\Contact;
 use App\Models\User;
@@ -72,5 +73,10 @@ class TestController extends Controller
         return view('test.view');
     }
 
+    public function admin()
+    {
+        $news = new RelationNews();
+        return view('test.admin');
+    }
 
 }
