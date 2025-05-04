@@ -28,7 +28,6 @@
         @yield('content')
     </section>
 
-
     <x-template.footer/>
 
     <x-template.left-side-offset/>

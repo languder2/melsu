@@ -89,7 +89,7 @@ class Document extends Model
     public function fill(array $attributes):?self
     {
         if(!empty($attributes)){
-            $attributes['is_show']      = array_key_exists('is_show', $attributes);
+            $attributes['is_show']      = (int) array_key_exists('is_show', $attributes);
             $attributes['sort']         = $attributes['sort'] ?? 1000;
         }
 

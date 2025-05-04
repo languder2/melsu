@@ -33,6 +33,8 @@ class ShortNews extends Component
                 'image',
                 'published_at',
             )
+            ->orderBy('is_favorite', 'desc')
+            ->orderBy('sort', 'asc')
             ->orderBy('published_at', 'desc')
             ->paginate(6);
 

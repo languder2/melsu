@@ -85,6 +85,28 @@
         </div>
     </div>
 
+    <div class="flex flex-row gap-4 items-center">
+        <div class="flex flex-col flex-1">
+            <x-form.input
+                id="form_sort"
+                type="number"
+                step="1"
+                name="sort"
+                label="Порядок вывода закрепленных новостей"
+                :value="old('_token') ? old('sort') : $current->sort ?? $sort ?? null "
+            />
+        </div>
+
+        <x-form.radio.on-off-alt
+            name="is_favorite"
+            block="pb-2"
+            :checked="old('_token') ? old('is_show') : ($current->exists ? $current->is_favorite : false)"
+            show="закреплено"
+            hide="общая"
+        />
+    </div>
+
+
     <x-form.editor
         name="short"
         id="short"

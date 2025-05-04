@@ -50,9 +50,10 @@ class NewsController extends Controller
     public function save(Request $request)
     {
 
+
         $form = $request->validate(News::$FormRules, News::$FormMessage);
 
-        if (empty($request->get('id')))
+            if (empty($request->get('id')))
             $record = new News();
         else
             $record = News::find($request->get('id'));
@@ -121,7 +122,9 @@ class NewsController extends Controller
 
     public function showAll()
     {
-        $list = News::orderBy('published_at', 'desc')
+        $list = News::
+            orderBy('is_favorite', 'desc')->orderBy('sort')
+            ->orderBy('published_at', 'desc')
             ->select('id', 'title', 'short', 'full', 'published_at', 'image', 'category')
             ->paginate(13);
 

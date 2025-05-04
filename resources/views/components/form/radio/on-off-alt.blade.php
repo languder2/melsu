@@ -15,10 +15,10 @@
                 <span
                     class="block -translate-y-full group-has-checked:translate-y-0 duration-500 pb-2px"
                 >
-                    {{ __("forms.is_show") }}
+                    {{ $show ?? __("forms.is_show") }}
                 </span>
                 <span class="block -translate-y-full group-has-checked:translate-y-0 duration-500 pb-2px">
-                    {{ __("forms.is_hide") }}
+                    {{ $hide ?? __("forms.is_hide") }}
                 </span>
             </span>
 </label>

@@ -27,7 +27,8 @@ class News extends NewsCategory
         'image',
         'author',
         'published_at',
-        'deleted_at',
+        'is_favorite',
+        'sort',
     ];
 
     public static $FormRules = [
@@ -37,6 +38,7 @@ class News extends NewsCategory
         'full' => '',
         'news' => '',
         'author' => '',
+        'is_favorite' => '',
         'sort' => '',
         'published_at' => '',
         'image'     => 'nullable|image|mimes:jpeg,png,jpg,gif,svg',
@@ -129,7 +131,20 @@ class News extends NewsCategory
             ])->save();
 
         return $image;
+    }
 
+    public function fill(array $attributes):?self
+    {
+        if(!empty($attributes)){
+            $attributes['is_favorite']  = (int) array_key_exists('is_favorite', $attributes);
+
+            if(empty($attributes['is_favorite']))
+                $attributes['sort'] = 10000;
+            else
+                $attributes['sort']     = $attributes['sort'] ?? 10000;
+        }
+
+        return parent::fill($attributes);
     }
 
 
