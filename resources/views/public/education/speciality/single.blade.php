@@ -82,26 +82,10 @@
             </section>
         @endif
 
-        <div class="box-heading container custom lg:p-2.5">
-            <h2 class="font-bold text-3xl my-6">Документы</h2>
-        </div>
-        <section class="container custom lg:p-2.5">
-            <div class="bg-white p-6 mb-5">
-                <ul class="doc-list list-none list-inside marker:text-[var(--secondary-color)] text-[var(--main-color)]">
-                    <li class="leading-[1.8rem] pb-3">
-                        <a href="#" class="flex items-center"><i
-                                class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>Учебный
-                            план</a>
-                    </li>
-                    <li class="leading-[1.8rem] pb-3">
-                        <a href="#" class="flex items-center"><i
-                                class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>Карта
-                            дисциплин</a>
-                    </li>
-                </ul>
-            </div>
-        </section>
 
+        @component('documents.public.includes.block',['list'=> $speciality->publicDocuments])
+            Документы
+        @endcomponent
 
         @component('public.faq.section',['list'=>$speciality->faq(true)->get()])
             Вопросы о программе

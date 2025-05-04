@@ -6,7 +6,7 @@
     @foreach($staffs as $staff)
         @component('public.staffs.division.staff',[
             'staff'         => $staff,
-            'full_post'     => $full_post,
+            'full_post'     => $full_post ?? null,
         ])@endcomponent
     @endforeach
 {{--    @each('public.staffs.division.staff',$staffs,'staff')--}}

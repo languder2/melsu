@@ -49,4 +49,13 @@ enum DivisionType: string
         return $result;
 
     }
+
+    public function getField():string
+    {
+        return match ($this) {
+            DivisionType::Faculty       => 'faculty_id',
+            DivisionType::Department    => 'department_id',
+            DivisionType::Institute     => 'institute_id',
+        };
+    }
 }

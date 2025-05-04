@@ -33,6 +33,6 @@ class AdminController extends Controller
 
         auth()->login($user, isset($form->remember));
 
-        return redirect(route("admin:main"));
+        return redirect()->back();
     }
 }

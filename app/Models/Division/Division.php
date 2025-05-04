@@ -4,6 +4,7 @@ namespace App\Models\Division;
 
 use App\Enums\ContactType;
 use App\Enums\DivisionType;
+use App\Enums\EducationLevel;
 use App\Models\Education\Speciality;
 use App\Models\Gallery\Image;
 use App\Models\Global\Options;
@@ -22,6 +23,9 @@ use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Collection;
 
+/**
+ * @property ?DivisionType $type
+ */
 class Division extends Model
 {
     use SoftDeletes;
@@ -54,7 +58,6 @@ class Division extends Model
     protected $casts = [
         'type'  => DivisionType::class,
     ];
-
     protected static function boot()
     {
         parent::boot();
@@ -156,18 +159,13 @@ class Division extends Model
     public function specialities($all = null): HasMany
     {
 
-        $field = match($this->type){
-            DivisionType::Faculty       => 'faculty_id',
-            DivisionType::Department    => 'department_id',
-            DivisionType::Institute     => 'institute_id',
-        };
-
-        $hasMany = $this->hasMany(Speciality::class, $field,'id');
+        $hasMany = $this->hasMany(Speciality::class, $this->type->getField(),'id');
 
         if(!$all)
             $hasMany->where('show',true);
 
-        return $hasMany->orderBy('sort')->orderBy('spec_code');
+        return $hasMany->orderBy('sort')->orderByRaw(EducationLevel::getOrder())
+            ->orderBy('spec_code')->orderBy('name');
     }
 
     public function getFacultyLabsAttribute(): Collection
@@ -281,6 +279,15 @@ class Division extends Model
         return $this->morphMany(PageContent::class, 'relation')->orderBy('order');
     }
 
+    public function publicSections(): MorphMany
+    {
+        return $this->morphMany(PageContent::class, 'relation')
+            ->where('show',true)->orderBy('order');
+    }
+    public function getPublicSectionsCountAttribute(): int
+    {
+        return $this->publicSections()->count();
+    }
     public function contacts(): MorphMany
     {
         $query = $this->morphMany(Contact::class, 'relation');

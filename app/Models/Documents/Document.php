@@ -2,12 +2,12 @@
 
 namespace App\Models\Documents;
 
+use App\Models\Services\Log;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Storage;
 
 class Document extends Model
@@ -54,6 +54,12 @@ class Document extends Model
     {
         return $this->MorphTo();
     }
+    public function getIdAttribute($value):int
+    {
+        return $value ?? microtime(true);
+
+    }
+
     public function parent():BelongsTo
     {
         return $this->belongsTo(self::class, 'parent_id');
@@ -63,14 +69,15 @@ class Document extends Model
         return $this->belongsTo(DocumentCategory::class, 'category_id');
     }
 
-    public static function FileSave(array &$form):void
+    public static function FileSave(array &$form, ?Model $model = null):void
     {
-        $folder = "documents/custom/".time();
+        $folder = "documents/".($model && $model::Path ? $model::Path : 'custom')."/".time();
+
 
         $filename = transliterate($form['title']);
 
-        if(strlen($filename)>150)
-            $filename = substr($filename, 0, 150);
+        if(strlen($filename)>100)
+            $filename = substr($filename, 0, 100);
 
         $filename .= '.'.$form['file']->getClientOriginalExtension();
 
@@ -102,5 +109,33 @@ class Document extends Model
             ->where('is_show',true)
             ->orderBy('sort')->orderBy('title');
     }
+
+    public static function processingForms(?Model $model, ?array $forms, ?Model $origin = null):void
+    {
+        if(!$forms || !$model) return;
+
+        foreach ($forms as $key => $form) {
+            if(!is_array($form) || empty($form['title'])) continue;
+
+            $form['file'] = request()->file("documents_$key");
+
+            self::processingForm($model, $form, $key, $origin);
+
+        }
+    }
+
+    public static function processingForm(?Model $model, array $form, string $item, ?Model $origin = null):void
+    {
+
+        $item = self::find($item) ?? new self();
+
+        if($form['file'])
+            self::FileSave($form, $model);
+
+        $item->fill($form)->relation()->associate($model)->save();
+
+        $origin ? Log::withOrigin($origin, $item) : Log::add($item);
+    }
+
 
 }

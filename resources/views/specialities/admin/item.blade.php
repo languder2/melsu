@@ -2,26 +2,37 @@
     {{$record->id}}
 </div>
 
+<div>
+    {{$record->level->getName() ?? null}}
+</div>
+
+<div>
+    @isset($record->department)
+        <a
+            href="{{ route('admin:division:edit', $record->department) }}"
+            class="underline text-blue hover:text-red"
+        >
+            {!! $record->department->name !!}
+        </a>
+    @endisset
+</div>
 
 <div>
     {{$record->spec_code}}
 </div>
 
-<div>
-    {{$record->level->getName() ?? null}}
-</div>
-
 <div class="md:col-span-2">
-    {!! $record->name !!}
+    <a href="{{ route('admin:speciality:edit',$record) }}" class="underline text-blue hover:text-red">
+        {!! $record->name !!}
+    </a>
 </div>
 
 <div>
-    {{$record->code}}
+    <a href="{{ $record->link }}" target="_blank" class="underline text-blue hover:text-red">
+        {{ $record->link }}
+    </a>
 </div>
 
-<div>
-    {!! $record->department->name ?? null !!}
-</div>
 
 <div>
     @foreach($record->profiles as $profile)
@@ -44,19 +55,6 @@
                 "
             >
                 <i class="fas fa-trash w-4 h-4"></i>
-            </a>
-        </div>
-        <div class="flex-none w-14">
-            <a
-                href="{{route('admin:speciality:edit',$record->id)}}"
-                class="
-                                    py-2 px-4 rounded-md
-                                    bg-green-950
-                                    hover:bg-green-700
-                                    active:bg-gray-700
-                                "
-            >
-                <i class="far fa-edit w-4 h-4"></i>
             </a>
         </div>
     </div>

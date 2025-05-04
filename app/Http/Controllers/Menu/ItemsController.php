@@ -12,19 +12,11 @@ use Illuminate\Support\Facades\View;
 
 class ItemsController extends Controller
 {
-    public function list(): string
+    public function list(): \Illuminate\View\View
     {
-        return view('pages.admin', [
-            'contents' => [
-                view('admin/menu/menu'),
-                view('admin/menu/items/header'),
-                view('admin/menu/items/list',[
-                    "list"  => Menu::orderBy('name')->get(),
-                ]),
+        $list = Menu::orderBy('name')->get();
 
-
-            ]
-        ]);
+        return view('menu.admin.items.list', compact('list'));
     }
 
     public function form($id = null)

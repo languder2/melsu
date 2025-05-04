@@ -29,3 +29,8 @@ Route::prefix('admin/documents')->group(function(){
 
 Route::get('documents',             [DocumentsController::class,'public'])  ->name('documents:public:list');
 
+/* API */
+Route::middleware(['web','auth.api'])->prefix('api/documents')->group(function () {
+    Route::get('add-block', [DocumentsController::class,'ApiAddBlock']) ->name('documents:api:add-block');
+    Route::get('delete/{item?}', [DocumentsController::class,'ApiDelete'])->name('documents:api:delete');
+});

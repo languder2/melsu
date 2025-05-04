@@ -3,7 +3,7 @@
 @section('title', 'Админ панель: Бессмертный и Научный полки')
 
 @section('top-menu')
-    @include('documents.admin-menu')
+    @include('documents.admin.includes.admin-menu')
 @endsection
 
 @section('content-header')
@@ -20,8 +20,8 @@
     <div class="grid gap-4 grid-cols-[auto_auto_1fr_auto] items-center p-4 bg-white shadow">
         <div class="font-semibold">
             <a
-                href="{{ route('document-categories:admin:list',['id', ($field === 'id' && $direction === 'asc' ) ? 'desc' : 'asc']) }}"
-                class="@if($field === 'id') text-green-700 @endif hover:text-red flex gap-2 items-center"
+                    href="{{ route('document-categories:admin:list',['id', ($field === 'id' && $direction === 'asc' ) ? 'desc' : 'asc']) }}"
+                    class="@if($field === 'id') text-green-700 @endif hover:text-red flex gap-2 items-center"
             >
                 <span class="underline">
                     ID
@@ -38,8 +38,8 @@
         </div>
         <div class="font-semibold">
             <a
-                href="{{ route('document-categories:admin:list',['sort', ($field === 'sort' && $direction === 'asc' ) ? 'desc' : 'asc']) }}"
-                class="@if($field === 'sort') text-green-700 @endif hover:text-red flex gap-2 items-center"
+                    href="{{ route('document-categories:admin:list',['sort', ($field === 'sort' && $direction === 'asc' ) ? 'desc' : 'asc']) }}"
+                    class="@if($field === 'sort') text-green-700 @endif hover:text-red flex gap-2 items-center"
             >
                 <span class="underline">
                     Порядок вывода
@@ -56,8 +56,8 @@
         </div>
         <div class="font-semibold">
             <a
-                href="{{ route('document-categories:admin:list',['name', ($field === 'name' && $direction === 'asc' ) ? 'desc' : 'asc']) }}"
-                class="@if($field === 'name') text-green-700 @endif hover:text-red flex gap-2 items-center"
+                    href="{{ route('document-categories:admin:list',['name', ($field === 'name' && $direction === 'asc' ) ? 'desc' : 'asc']) }}"
+                    class="@if($field === 'name') text-green-700 @endif hover:text-red flex gap-2 items-center"
             >
                 <span class="underline">
                     Название
@@ -90,8 +90,8 @@
             <div>
                 <div>
                     <button
-                        popovertarget="link-for-delete-{{$item->id}}"
-                        class="
+                            popovertarget="link-for-delete-{{$item->id}}"
+                            class="
                         p-1 rounded-md
                         text-red-700
                         hover:text-red-700
@@ -123,8 +123,8 @@
                         <hr>
                         <div class="text-right p-4">
                             <a
-                                href="{{ route('document-categories:delete',$item) }}"
-                                class="
+                                    href="{{ route('document-categories:delete',$item) }}"
+                                    class="
                                 inline-block relative
                                 py-2 px-4 text-white rounded-md shadow-md
                                 shadow-gray-300

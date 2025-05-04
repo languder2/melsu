@@ -136,7 +136,7 @@ class DivisionController extends Controller
         $menu       = Menu::where('code','university')->first();
         $depth      = 0;
 
-        return view('public.divisions.list.page',compact('division','depth','menu'));
+        return view('divisions.public.list.page',compact('division','depth','menu'));
     }
 
     public function show($code = null):View|RedirectResponse

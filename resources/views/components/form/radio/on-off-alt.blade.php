@@ -10,7 +10,7 @@
         @checked($checked ?? null)
     >
     <span
-        class="overflow-hidden block h-7 group-hover:text-blue font-semibold text-lg"
+        class="overflow-hidden block h-7 group-hover:text-blue font-semibold text-lg text-right"
     >
                 <span
                     class="block -translate-y-full group-has-checked:translate-y-0 duration-500 pb-2px"

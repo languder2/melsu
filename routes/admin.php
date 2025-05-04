@@ -17,8 +17,7 @@ use App\Http\Controllers\TestController;
 
 
 
-Route::middleware('isAdmin')
-    ->controller(MenuItems::class)
+Route::controller(MenuItems::class)
     ->prefix('menu/items')
     ->group(function () {
 
@@ -89,7 +88,7 @@ Route::middleware('isAdmin')
     ->group(function () {
 
         Route::get('add', 'form')->name('admin:division:add');
-        Route::get('edit/{id}', 'form')->name('admin:division:edit');
+        Route::get('edit/{id?}', 'form')->name('admin:division:edit');
         Route::post('save', 'save')->name('admin:division:save');
         Route::get('delete/{id}', 'delete')->name('admin:division:delete');
 
@@ -129,8 +128,7 @@ Route::middleware('isAdmin')
     });
 
 
-Route::middleware('isAdmin')
-    ->controller(SpecialityController::class)
+Route::controller(SpecialityController::class)
     ->prefix('specialities')
     ->group(function () {
 
@@ -142,8 +140,7 @@ Route::middleware('isAdmin')
 
     });
 
-Route::middleware('isAdmin')
-    ->controller(\App\Http\Controllers\Gallery\AdminImageGallery::class)
+Route::controller(\App\Http\Controllers\Gallery\AdminImageGallery::class)
     ->prefix('gallery/images')
     ->group(function () {
         Route::get('', 'list')->name('admin:gallery:image:list');
@@ -151,8 +148,7 @@ Route::middleware('isAdmin')
         Route::post('save', 'save')->name('admin:gallery:image:save');
     });
 
-Route::middleware('isAdmin')
-    ->controller(\App\Http\Controllers\Gallery\AdminImage::class)
+Route::controller(\App\Http\Controllers\Gallery\AdminImage::class)
     ->prefix('images')
     ->group(function () {
         Route::get('', 'list')->name('admin:image:list');
@@ -160,8 +156,7 @@ Route::middleware('isAdmin')
         Route::post('save', 'save')->name('admin:image:save');
     });
 
-Route::middleware('isAdmin')
-    ->controller(\App\Http\Controllers\Gallery\AdminVideoGallery::class)
+Route::controller(\App\Http\Controllers\Gallery\AdminVideoGallery::class)
     ->prefix('gallery/videos')
     ->group(function () {
         Route::get('', 'list')->name('admin:gallery:video:list');
@@ -169,9 +164,7 @@ Route::middleware('isAdmin')
 
 /**/
 
-Route::
-    controller(\App\Http\Controllers\ImportController::class)
-    ->middleware('isAdmin')
+Route::controller(\App\Http\Controllers\ImportController::class)
     ->prefix('imports')
     ->group(function () {
         Route::get('departments',"DepartmentsGetFile")
@@ -182,8 +175,7 @@ Route::
 
 /*schedule*/
 
-Route::middleware('isAdmin')
-    ->prefix('schedule')
+Route::prefix('schedule')
     ->group(function () {
 
         Route::get('/', [ScheduleController::class, 'showSchedulePage'])->name('schedule.page');
@@ -214,7 +206,6 @@ Route::middleware('auth.check')
 
 /* Regiment / Научный и Бессмертный полк */
 Route::get('minors',[MinorController::class,'index'])->name("minors:admin:index");
-
 
 /**/
 

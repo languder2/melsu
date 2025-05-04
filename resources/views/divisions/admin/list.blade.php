@@ -2,11 +2,14 @@
 
 @section('title', 'Админ панель: Структура университета')
 
-@section('top-menu')
-@endsection
-
 @section('content-header')
-    @include('admin.divisions.header')
+    @component('admin.components.content-header')
+        Подразделения
+
+        @slot('link')
+            {{ route('admin:division:add') }}
+        @endslot
+    @endcomponent
 @endsection
 
 @section('content')
@@ -36,7 +39,7 @@
                 </div>
 
                 <div></div>
-                @include('admin.divisions.item',['record'=>$record, "depth" => isset($depth)?$depth+1:0])
+                @include('divisions.admin.item',['record'=>$record, "depth" => isset($depth)?$depth+1:0])
             </div>
         </div>
     @endforeach

@@ -11,10 +11,13 @@
 @endsection
 
 @section('content')
+    <div class="flex flex-col gap-4">
+        @foreach($list as $spec)
+            @continue($spec->documents->isEmpty())
 
-
-    @component('news.admin.include')@endcomponent
-
-
-
+            <a href="{{ route('admin:speciality:edit',$spec) }}" target="_blank">
+                {!! $spec->name !!}
+            </a>
+        @endforeach
+    </div>
 @endsection

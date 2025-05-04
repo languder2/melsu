@@ -6,6 +6,7 @@ use App\Enums\DivisionType;
 use App\Enums\EducationLevel;
 use App\Http\Controllers\Controller;
 use App\Models\Division\Division;
+use App\Models\Documents\Document;
 use App\Models\Education\Profile;
 use App\Models\Education\Speciality;
 use App\Models\Gallery\Image;
@@ -16,15 +17,16 @@ use App\Models\Sections\FAQ;
 use App\Models\Services\Log;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
+use Illuminate\View\View;
 
 class SpecialityController extends Controller
 {
-    public function list(): string
+    public function list(): View
     {
         $list   = Division::where('type',DivisionType::Faculty)->orderBy('name')->get();
         $spo    = Speciality::where('level',EducationLevel::Colleges)->orderBy('name')->get();
 
-        return view('admin.education.specialities.list', compact('list','spo'));
+        return view('specialities.admin.list', compact('list','spo'));
     }
 
     public function form($id = null)
@@ -47,7 +49,7 @@ class SpecialityController extends Controller
                             ->get()
                             ->pluck('name', 'id');
 
-        return view('admin.education.specialities.form',
+        return view('specialities.admin.form',
             compact('current','faculties','departments','branches')
         );
     }
@@ -57,23 +59,15 @@ class SpecialityController extends Controller
 
         $form = $request->validate(Speciality::FormRules($request->get('id')),Speciality::FormMessage());
 
-        $record = Speciality::find($request->get('id'));
-
-        $action = 'update';
-
-        if(!$record){
-            $record =   new Speciality();
-            $action =   'create';
-        }
+        $record = Speciality::find($request->get('id')) ?? new Speciality();
 
         $record->fill($form);
 
-        $record->show = array_key_exists('show', $form);
-
+        $record->show = (int)array_key_exists('show', $form);
 
         $record->save();
 
-        Log::add($record,$action);
+        Log::add($record);
 
         if($request->has('branch_id')){
             $branch = Division::find($request->get('branch_id'));
@@ -93,20 +87,24 @@ class SpecialityController extends Controller
         if($request->has('profiles'))
             Profile::processing($record,$request->get('profiles'));
 
-
         if($request->has('faq'))
             FAQ::processing($record,$request->get('faq'));
 
         if($request->has('career'))
             Career::processing($record,$request->get('career'));
 
+
+        if($request->has('documents'))
+            Document::processingForms($record,$request->get('documents'),$record);
+
         return redirect()->route('admin:speciality:list');
     }
 
     public function delete(?Speciality $speciality)
     {
-        if($speciality)
-            $speciality->delete();
+        $speciality->delete();
+
+        Log::add($speciality,'delete');
 
         return redirect()->route('admin:speciality:list');
     }

@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Documents\Document;
 use App\Models\Documents\DocumentCategory;
 use App\Models\Menu\Menu;
+use App\Models\News\RelationNews;
+use App\Models\Services\Log;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use PhpParser\Comment\Doc;
@@ -56,11 +59,16 @@ class DocumentsController extends Controller
 
         $document->fill($form)->save();
 
+        Log::withOrigin($document->category, $document);
+
         return redirect()->route('documents:admin:list');
     }
     public function delete(Document $document):RedirectResponse
     {
+
         $document->delete();
+
+        Log::withOrigin($document->category,$document,'delete');
 
         return redirect()->back();
     }
@@ -76,5 +84,25 @@ class DocumentsController extends Controller
         $depth      = 0;
 
         return view('documents.public.list', compact('categories','menu','depth'));
+    }
+
+    /* API */
+
+    public function ApiAddBlock():View
+    {
+        $item   = new Document();
+
+        return view('documents.admin.includes.block',compact('item'));
+    }
+    public function ApiDelete(?Document $item): JsonResponse
+    {
+        $item->delete();
+
+        Log::withOrigin($item->relation,$item,'delete');
+
+        return response()->json(
+            [
+                'message' => "Документ удален \n {$item->title}"
+            ]);
     }
 }

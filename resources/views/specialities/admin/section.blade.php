@@ -25,7 +25,7 @@
         class="
             grid gap-4 items-center
             grid-cols-1
-            md:grid-cols-[50px_100px_repeat(6,minmax(0,1fr))_200px]
+            md:grid-cols-[auto_auto_1fr_auto_1fr_1fr_auto_auto_auto]
         "
     >
         <div class="font-semibold text-center">
@@ -33,11 +33,15 @@
         </div>
 
         <div class="font-semibold">
-            Код
+            Уровень
         </div>
 
         <div class="font-semibold">
-            Уровень
+            Кафедра
+        </div>
+
+        <div class="font-semibold">
+            Код
         </div>
 
         <div class="font-semibold md:col-span-2">
@@ -45,11 +49,7 @@
         </div>
 
         <div class="font-semibold">
-            Alias
-        </div>
-
-        <div class="font-semibold">
-            Кафедра
+            Ссылка
         </div>
 
         <div class="font-semibold">
@@ -58,7 +58,7 @@
 
         <div></div>
 
-        @each('admin.education.specialities.item',$list ?? $section->specialities('all')->get() ?? [],'record')
+        @each('specialities.admin.item',$list ?? $section->specialities('all')->get() ?? [],'record')
     </div>
 </div>
 

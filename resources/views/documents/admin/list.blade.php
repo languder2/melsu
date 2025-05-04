@@ -3,7 +3,7 @@
 @section('title', 'Админ панель: Документы')
 
 @section('top-menu')
-    @include('documents.admin-menu')
+    @include('documents.admin.includes.admin-menu')
 @endsection
 
 @section('content-header')
@@ -19,27 +19,26 @@
 
 @section('content')
 
-
-<div class="flex flex-col gap-4">
-    @component('documents.admin.category',[
-        'documents'     => $documents,
-        'name'          => 'Без категории',
-        'field'         => $field,
-        'category'      => null,
-        'direction'     => $direction,
-    ])@endcomponent
-
-    @foreach($list as $category)
-{{--        @continue($category->customDocuments->isEmpty())--}}
-
+    <div class="flex flex-col gap-4">
         @component('documents.admin.category',[
-            'documents'     => $category->customDocuments()->orderBy($field,$direction)->get(),
-            'name'          => $category->name,
+            'documents'     => $documents,
+            'name'          => 'Без категории',
             'field'         => $field,
-            'category'      => $category,
+            'category'      => null,
             'direction'     => $direction,
         ])@endcomponent
 
-    @endforeach
-</div>
+        @foreach($list as $category)
+            {{--        @continue($category->customDocuments->isEmpty())--}}
+
+            @component('documents.admin.category',[
+                'documents'     => $category->customDocuments()->orderBy($field,$direction)->get(),
+                'name'          => $category->name,
+                'field'         => $field,
+                'category'      => $category,
+                'direction'     => $direction,
+            ])@endcomponent
+
+        @endforeach
+    </div>
 @endsection

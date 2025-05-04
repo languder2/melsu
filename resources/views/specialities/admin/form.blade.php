@@ -30,7 +30,7 @@
         <div class="grid grid-cols-[400px_minmax(400px,1200px)] mx-auto gap-4">
 
             <div>
-                @include('admin.education.specialities.form.menu')
+                @include('specialities.admin.form.menu')
 
                 <x-form.submit
                     class="uppercase"
@@ -43,11 +43,15 @@
                     setTheme="1"
                 />
 
-                @include('admin.education.specialities.form.speciality')
-                @include('admin.education.specialities.form.profiles')
+                @include('specialities.admin.form.speciality')
+                @include('specialities.admin.form.profiles')
                 @component('components.form.sections.contacts',compact('current')) @endcomponent
 {{--                @component('components.form.sections.staffs',compact('current')) @endcomponent--}}
-{{--                @component('components.form.sections.documents',compact('current')) @endcomponent--}}
+                @component('documents.admin.includes.section',[
+                    'list'  => old('_token') ? old('documents') : $current->documents
+                ])
+                    tab_documents
+                @endcomponent
                 @component('components.form.sections.contents',compact('current')) @endcomponent
                 @component('admin.faq.section',compact('current')) @endcomponent
                 @component('admin.career.section',compact('current')) @endcomponent
@@ -57,9 +61,4 @@
         </div>
 
     </form>
-
-
 @endsection
-
-
-

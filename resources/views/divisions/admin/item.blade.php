@@ -65,6 +65,6 @@
 
 @if($record->subs)
     @foreach($record->subs as $record)
-        @include('admin.divisions.item',['record'=>$record, "depth" => isset($depth)?$depth+1:0])
+        @include('divisions.admin.item',['record'=>$record, "depth" => isset($depth)?$depth+1:0])
     @endforeach
 @endif

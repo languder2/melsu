@@ -75,8 +75,8 @@ class TestController extends Controller
 
     public function admin()
     {
-        $news = new RelationNews();
-        return view('test.admin');
+        $list = Speciality::all();
+        return view('test.admin',compact('list'));
     }
 
 }

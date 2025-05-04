@@ -12,9 +12,9 @@
 
 @section('content')
 
-    @each('admin.education.specialities.section',$list,'section')
+    @each('specialities.admin.section',$list,'section')
 
-    @include('admin.education.specialities.section',['list'=>$spo,'name'=>'СПО'])
+    @include('specialities.admin.section',['list'=>$spo,'name'=>'СПО'])
 
 @endsection
 

@@ -6,6 +6,7 @@ use App\Enums\DivisionType;
 use App\Enums\EducationBasis;
 use App\Enums\EducationLevel;
 use App\Models\Division\Division;
+use App\Models\Documents\Document;
 use App\Models\Gallery\Image;
 use App\Models\Page\Content as PageContent;
 use App\Models\Sections\Career;
@@ -38,6 +39,8 @@ class Speciality extends Model
         'sort',
         'show',
     ];
+
+    public const Path = 'specialities';
 
     protected $casts = [
         'level' => EducationLevel::class
@@ -157,7 +160,7 @@ class Speciality extends Model
 
     public function getLinkAttribute(): string
     {
-        return route('public:education:speciality',$this);
+        return route('public:education:speciality',$this->code ?? $this->id);
     }
 
     public static function updateAffiliation(?Speciality $speciality,?Division $division):void
@@ -168,6 +171,16 @@ class Speciality extends Model
 
         if($division->parent)
             self::updateAffiliation($speciality,$division->parent);
+    }
+
+    public function documents():MorphMany
+    {
+        return $this->morphMany(Document::class,'relation')->orderBy('sort')->whereNull('parent_id');
+    }
+
+    public function publicDocuments():MorphMany
+    {
+        return $this->documents()->where('is_show',true);
     }
 
 }
