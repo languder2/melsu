@@ -18,7 +18,7 @@
         <div class="bg-[var(--primary-color)] p-5 text-white lg:max-h-[404px] h-auto lg:h-full">
             <div class="grid grid-cols-[70%_29%] mb-3">
                 <h2 class="text-3xl font-[700]">
-                    {{$news->title}}
+                    {!! $news->title !!}
                 </h2>
                 <div class="text-end">
                     <span class="text-[12px] font-[500]">

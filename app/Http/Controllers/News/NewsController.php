@@ -123,31 +123,19 @@ class NewsController extends Controller
     public function showAll(?Category $category): \Illuminate\View\View
     {
 
-        $list = $category->exists ? $category->news()->paginate(13) : News::getPublicList()->paginate(13);
-//        $categories = Category::getForPublic();
+        $list = $category->exists ? $category->news() : News::getPublicList();
+
+        $search = session('newsPublicSearch');
+
+        if($search)
+            $list= $list->where('title', 'like', '%' . $search . '%')
+                    ->orWhere('news', 'like', '%' . $search . '%');
+
+        $list= $list->paginate(13);
+
         $categories = Category::orderBy('sort')->orderBy('name')->get();
 
-        return view('news.public.list', compact('list', 'categories'));
-
-        return view('pages.page', [
-            'includes'    =>[
-                'jquery',
-                'data-picker',
-            ],
-
-            'breadcrumbs' => (object)[
-                'view'      => 'news',
-                'route'     => 'news',
-                'element'   => null,
-            ],
-
-            'contents' => [
-                View::make('components.news.all')->with([
-                    'list' => $list,
-                    'categories'    => $categories
-                ])->render(),
-            ]
-        ]);
+        return view('news.public.list', compact('list', 'category','categories','search'));
     }
     public function ApiAddSection():\Illuminate\View\View
     {
@@ -164,5 +152,16 @@ class NewsController extends Controller
             ]);
     }
 
+    public function publicSetFilter(Request $request): RedirectResponse
+    {
+
+        if($request->get('search'))
+            session()->put('newsPublicSearch',$request->get('search'));
+        else
+            session()->remove('newsPublicSearch');
+
+        return redirect()->back();
+
+    }
 
 }

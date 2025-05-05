@@ -13,6 +13,8 @@ Route::controller(NewsController::class)
 
         Route::get('category/{category?}', [NewsController::class,'showAll'])->name('news-categories:public');
 
+        Route::post('set-filter', [NewsController::class,'publicSetFilter'])->name('news:public:set-filter');
+
 
     });
 
