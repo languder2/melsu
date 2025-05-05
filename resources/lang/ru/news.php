@@ -1,7 +1,8 @@
 <?php
 
 return [
-    'Short Description'  => 'Категории описание (до 255 символов)',
-    'Full Description'   => 'Полное описание (примерно 500 символов)',
-    'Content'            => 'Содержание',
+    'News categories'   => 'Категории новостей',
+    'Delete category question'  => 'Удалить категорию новостей?',
+    'Edit news categories'      => 'Редактировать категорию новостей',
+    'Create news categories'    => 'Создать категорию новостей',
 ];

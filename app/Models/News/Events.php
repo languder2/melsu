@@ -4,10 +4,11 @@ namespace App\Models\News;
 
 use App\Models\Gallery\Image;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Events extends NewsCategory
+class Events extends Model
 {
     use SoftDeletes;
 

@@ -4,11 +4,14 @@ namespace App\Models\News;
 
 use App\Models\Gallery\Image;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Collection;
 
-class News extends NewsCategory
+class News extends Model
 {
     use SoftDeletes;
 
@@ -112,7 +115,7 @@ class News extends NewsCategory
 
     public function tag(): BelongsTo
     {
-        return $this->belongsTo(NewsCategory::class, 'category', 'id');
+        return $this->belongsTo(Category::class, 'category', 'id');
     }
 
     public function getImageAttribute($image)
@@ -147,5 +150,11 @@ class News extends NewsCategory
         return parent::fill($attributes);
     }
 
+    public static function getPublicList(): Builder
+    {
+        return News::orderBy('is_favorite', 'desc')->orderBy('sort')
+            ->orderBy('published_at', 'desc')
+            ->select('id', 'title', 'short', 'full', 'published_at', 'image', 'category');
+    }
 
 }

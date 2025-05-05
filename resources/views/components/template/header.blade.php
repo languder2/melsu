@@ -1,12 +1,12 @@
 <header>
-    @if(request()->session()->get('show-video') === null || false )
-        <div class="wrapper-video">
-            <video id="intro-video" autoplay muted playsinline>
-                <source src="{{asset('video/2kk.webm')}}" type="video/webm">
-            </video>
-        </div>
-        @php(session(['show-video' => time()]))
-    @endif
+{{--    @if(request()->session()->get('show-video') === null )--}}
+{{--        <div class="wrapper-video">--}}
+{{--            <video id="intro-video" autoplay loop muted playsinline>--}}
+{{--                <source src="{{asset('video/2kk.webm')}}" type="video/webm">--}}
+{{--            </video>--}}
+{{--        </div>--}}
+{{--        @php(session(['show-video' => time()]))--}}
+{{--    @endif--}}
 
     <div class="upper-menu bg-[#FAFAFA] z-82">
         <div class="box-header-address bg-[#FAFAFA] z-82">

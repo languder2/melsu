@@ -9,14 +9,23 @@
                type="text" value="" placeholder="Выберите категорию">
         <ul class="value-list transition duration-300 ease-in-out absolute top-0 left-0 w-full max-h-0 cursor-pointer list-none mt-[48px] shadow-[2px_24px_17px_-13px_rgba(66, 68, 90, 1)] overflow-hidden
                 [&.open]:max-h-[320px] [&.open]:overflow-auto z-20">
-            <li data-id="1" class="drop-li min-h-[4rem] opacity-100 relative p-[1rem] bg-white text-lg flex items-center cursor-pointer transition duration-300 ease-in-out max-h-0 hover:bg-[#820000] hover:text-white
-                                [&.closed]:max-h-0 [&.closed]:overflow-hidden [&.closed]:p-0 [&.closed]:opacity-0 [&.closed]:min-h-[0px]">
-                Главное в МелГУ
-            </li>
-            <li data-id="2" class="drop-li min-h-[4rem] relative p-[1rem] bg-white text-lg flex items-center cursor-pointer transition duration-300 ease-in-out max-h-0 hover:bg-[#820000] hover:text-white
-                                [&.closed]:max-h-0 [&.closed]:overflow-hidden [&.closed]:p-0 [&.closed]:opacity-0 [&.closed]:min-h-[0px]">
-                Наука
-            </li>
+
+                <li data-id="" class="drop-li min-h-[4rem] opacity-100 relative p-[1rem] bg-white text-lg flex items-center cursor-pointer transition duration-300 ease-in-out max-h-0 hover:bg-[#820000] hover:text-white
+                                    [&.closed]:max-h-0 [&.closed]:overflow-hidden [&.closed]:p-0 [&.closed]:opacity-0 [&.closed]:min-h-[0px]"
+                    onclick="location.href='{{ route('news:show:all') }}'"
+                >
+                    Все
+                </li>
+
+
+            @foreach($categories as $category)
+                <li data-id="{{ $category->id }}" class="drop-li min-h-[4rem] opacity-100 relative p-[1rem] bg-white text-lg flex items-center cursor-pointer transition duration-300 ease-in-out max-h-0 hover:bg-[#820000] hover:text-white
+                                [&.closed]:max-h-0 [&.closed]:overflow-hidden [&.closed]:p-0 [&.closed]:opacity-0 [&.closed]:min-h-[0px]"
+                    onclick="location.href='{{ $category->link }}'"
+                >
+                    {!! $category->name !!}
+                </li>
+            @endforeach
         </ul>
     </div>
     <div class="xl:col-span-2">

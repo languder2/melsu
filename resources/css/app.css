@@ -34,6 +34,8 @@
     --list-style-type-decimal: decimal;
     --list-style-type-square: square;
     --list-style-type-roman: upper-roman;
+
+    --3xl: 2000px;
 }
 
 /*

@@ -15,13 +15,13 @@ class EventsController extends Controller
     public function list(): View
     {
         $list= Events::orderBy('published_at','desc')->get();
-        return view('events.events.admin.list',compact('list'));
+        return view('news.events.admin.list',compact('list'));
     }
 
     public function form(Events $event): string
     {
         $types = EventType::forSelect();
-        return view('events.events.admin.form' , compact('event','types'));
+        return view('news.events.admin.form' , compact('event','types'));
     }
 
     public function save(Request $request, ?Events $event)
@@ -67,14 +67,14 @@ class EventsController extends Controller
             ->select('id', 'title', 'short', 'full', 'published_at')
             ->paginate(13);
 
-        return view('events.events.public.list',compact('list'));
+        return view('news.events.public.list',compact('list'));
     }
     public function show(?Events $event): View | RedirectResponse
     {
         if(!$event)
             return  redirect()->route('public:events:list');
 
-        return view('events.events.public.show', compact('event'));
+        return view('news.events.public.show', compact('event'));
     }
 
 

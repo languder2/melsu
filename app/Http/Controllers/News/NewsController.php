@@ -5,7 +5,7 @@ namespace App\Http\Controllers\News;
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
-use App\Models\{Gallery\Gallery, News\News, News\NewsCategory};
+use App\Models\{Gallery\Gallery, News\News, News\Category};
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
@@ -18,7 +18,7 @@ class NewsController extends Controller
 
         return view('pages.admin', [
             'contents' => [
-                View::make('components.admin.top_menu.news')->with([
+                View::make('news.menu')->with([
                     'active' => 'news'
                 ])->render(),
 
@@ -34,12 +34,12 @@ class NewsController extends Controller
 
         return view('pages.admin', [
             'contents' => [
-                View::make('components.admin.top_menu.news')->with([
+                View::make('news.menu')->with([
                     'active' => 'news'
                 ])->render(),
 
                 View::make('components.admin.news.form')->with([
-                    'categories' => NewsCategory::getListForSelect(),
+                    'categories' => Category::orderBy('name')->get()->pluck('name', 'id'),
                     'current' => News::find($id),
 
                 ])->render(),
@@ -120,16 +120,16 @@ class NewsController extends Controller
         ]);
     }
 
-    public function showAll()
+    public function showAll(?Category $category): \Illuminate\View\View
     {
-        $list = News::
-            orderBy('is_favorite', 'desc')->orderBy('sort')
-            ->orderBy('published_at', 'desc')
-            ->select('id', 'title', 'short', 'full', 'published_at', 'image', 'category')
-            ->paginate(13);
+
+        $list = $category->exists ? $category->news()->paginate(13) : News::getPublicList()->paginate(13);
+//        $categories = Category::getForPublic();
+        $categories = Category::orderBy('sort')->orderBy('name')->get();
+
+        return view('news.public.list', compact('list', 'categories'));
 
         return view('pages.page', [
-
             'includes'    =>[
                 'jquery',
                 'data-picker',
@@ -144,6 +144,7 @@ class NewsController extends Controller
             'contents' => [
                 View::make('components.news.all')->with([
                     'list' => $list,
+                    'categories'    => $categories
                 ])->render(),
             ]
         ]);
@@ -162,4 +163,6 @@ class NewsController extends Controller
                     .Carbon::now()->addWeek(2)->format('d.m.Y H:i')
             ]);
     }
+
+
 }

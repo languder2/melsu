@@ -22,7 +22,7 @@ class DivisionController extends Controller
     {
         $list = Division::whereNull('parent_id')->orderBy('name')->get();
 
-        return view('admin.divisions.list', compact('list'));
+        return view('divisions.admin.list', compact('list'));
     }
 
     public function form(Request $request,$id = null): View|RedirectResponse
@@ -36,7 +36,7 @@ class DivisionController extends Controller
 
         $types = DivisionType::forSelect();
 
-        return view('admin.divisions.form.page',compact('parents','current','types'));
+        return view('divisions.admin.form.page',compact('parents','current','types'));
     }
 
     public function save(Request $request)

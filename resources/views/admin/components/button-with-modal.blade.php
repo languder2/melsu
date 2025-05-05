@@ -29,8 +29,14 @@
         </h3>
         <hr>
         <div class="p-4">
-            {{ $detail ?? '' }}
 
+            @if($show_link)
+                <a href="{{ $show_link }}" target="_blank" class="underline hover:text-red">
+                    {!! $detail !!}
+                </a>
+            @else
+                {{ $detail ?? '' }}
+            @endif
         </div>
         <hr>
         <div class="text-right p-4">

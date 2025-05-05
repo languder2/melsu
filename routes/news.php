@@ -2,7 +2,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\News\NewsController;
 use App\Http\Controllers\News\EventsController;
-
+use App\Http\Controllers\News\CategoriesController;
 /* News */
 Route::controller(NewsController::class)
     ->prefix('news')
@@ -11,10 +11,12 @@ Route::controller(NewsController::class)
         Route::get('', 'showAll')->name('news:show:all');
         Route::get('show/{id}', 'show')->name('news:show');
 
+        Route::get('category/{category?}', [NewsController::class,'showAll'])->name('news-categories:public');
+
+
     });
 
-Route::middleware('isAdmin')
-    ->controller(NewsController::class)
+Route::controller(NewsController::class)
     ->prefix('admin/news')
     ->group(function () {
 
@@ -40,8 +42,7 @@ Route::get('events', [EventsController::class,'all'])->name('public:events:list'
 Route::get('event/{event?}', [EventsController::class,'show'])->name('public:event:show');
 
 
-Route::middleware('isAdmin')
-    ->controller(EventsController::class)
+Route::controller(EventsController::class)
     ->prefix('admin/events')
     ->group(function () {
 
@@ -53,4 +54,15 @@ Route::middleware('isAdmin')
 
     });
 /**/
+
+/* Categories */
+
+Route::prefix('admin/categories-news')->group(function () {
+    Route::get('', [CategoriesController::class,'admin'])->name('news-categories:admin:list');
+    Route::get('form/{category?}',  [CategoriesController::class,'form'])->name('news-categories:admin:form');
+    Route::post('save/{category?}', [CategoriesController::class,'save'])->name('news-categories:save');
+    Route::get('delete/{category?}',[CategoriesController::class,'delete'])->name('news-categories:delete');
+});
+/**/
+
 
