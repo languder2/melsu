@@ -6,13 +6,13 @@
                 <img
                     src="{!!$news->preview->thumbnail!!}"
                     alt="{!!$news->preview->alt??$news->preview->name!!}"
-                    class="object-cover max-h-[139px] w-full"
+                    class="object-cover object-top max-h-[139px] w-full"
                 >
             @elseif($news->image)
                 <img
                     src="{!!$news->image!!}"
                     alt=""
-                    class="object-cover max-h-[139px] w-full"
+                    class="object-cover object-top max-h-[139px] w-full"
                 >
             @endif
 

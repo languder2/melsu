@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Education;
 
 use App\Enums\DivisionType;
+use App\Enums\DurationType;
+use App\Enums\EducationBasis;
 use App\Enums\EducationLevel;
 use App\Http\Controllers\Controller;
 use App\Models\Division\Division;
@@ -130,6 +132,22 @@ class SpecialityController extends Controller
 
     public function getListAPI():Collection
     {
+//        $item = Speciality::where('show',true)->first();
+//
+//        $profile= $item->publicProfiles->first();
+//
+//        dump($item);
+//        dump($item->publicProfiles);
+//
+//        dump($profile->placesByType(EducationBasis::Budget));
+//        dump($profile->placesByType(EducationBasis::Contract));
+//
+//        dump($profile->durationYear(DurationType::OOO));
+//        dump($profile->durationMonth(DurationType::OOO));
+//
+//        dump($profile->durationYear(DurationType::SOO));
+//        dump($profile->durationMonth(DurationType::SOO));
+
         $list = Speciality::where('show',true)->get()
             ->mapWithKeys(function ($record) {
                 return [$record->id =>
@@ -143,12 +161,25 @@ class SpecialityController extends Controller
                         "faculty_acronym"   => $record->faculty->acronym ?? null,
                         "faculty_name"      => $record->faculty->name ?? null,
                         "level"             => $record->level->getName() ?? null,
-                        "forms"             => $record->profiles->mapWithKeys(function($profile){
+                        "forms"             => $record->publicProfiles->mapWithKeys(function($profile){
                               return [
-                                  $profile->form->value => $profile->form->getName(),
+                                  $profile->form->value =>
+                                      (object)[
+                                          'name'        => $profile->form->getName(),
+                                          "prices"      => $profile->price,
+                                          'places'      => [
+                                              $profile->places->mapWithKeys(function($place){
+                                                  return [$place->type => $place->count];
+                                              })->toArray() ?? null
+                                          ],
+                                          'duration'      => [
+                                              $profile->duration->mapWithKeys(function($duration){
+                                                  return [$duration->type => $duration->DurationString];
+                                              })->toArray() ?? null
+                                          ],
+                                      ]
                               ];
                             })->toArray() ?? null,
-
                     ]
                 ];
             });

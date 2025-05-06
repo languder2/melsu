@@ -6,13 +6,13 @@ use App\Http\Controllers\Controller;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\News\News;
-use App\Models\News\NewsCategory;
+use App\Models\News\Category;
 
 class ApiNews extends Controller
 {
     public function getCategories()
     {
-        $list = NewsCategory::all();
+        $list = Category::all();
 
         return $list;
     }

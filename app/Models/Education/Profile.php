@@ -129,7 +129,7 @@ class Profile extends Model
 
     public function months($type = null): ?int
     {
-        return $this->duration($type) % 12;
+            return $this->duration($type) % 12;
     }
 
     public function durationYear($type = null): string

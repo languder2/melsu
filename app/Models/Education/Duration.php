@@ -57,4 +57,34 @@ class Duration extends Model
         }
     }
 
+    public function getYearsAttribute():string
+    {
+        return intdiv($this->duration,12);
+    }
+    public function getMonthsAttribute():string
+    {
+        return $this->duration % 12;
+    }
+
+    public function getDurationStringAttribute():string
+    {
+        $result = '';
+
+        if($this->years)
+            $result = $this->years." ".match(true){
+                $this->years === 1  => __('duration-append.year-one'),
+                $this->years > 4    => __('duration-append.year-many'),
+                default             => __('duration-append.year-some'),
+            };
+
+        if($this->months)
+            $result.= " ".$this->months." ".match(true){
+                $this->months === 1 => __('duration-append.month-one'),
+                $this->months > 4   => __('duration-append.month-many'),
+                $this->months       => __('duration-append.month-some'),
+           };
+
+        return trim($result);
+    }
+
 }

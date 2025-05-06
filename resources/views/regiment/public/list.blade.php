@@ -3,7 +3,8 @@
 @section('title', 'ФГБОУ ВО "МелГУ"')
 
 @section('breadcrumbs')
-        {!! Breadcrumbs::view("vendor.breadcrumbs.base",'regiment',$type) !!}
+{{--        {!! Breadcrumbs::view("vendor.breadcrumbs.base",'regiment',$type) !!}--}}
+    @include('regiment.public.top-menu')
 @endsection
 
 @section('aside')
@@ -18,7 +19,7 @@
 
     @include('regiment.public.filter')
 
-    @include('regiment.public.top-menu')
+    @include('regiment.public.mobile-menu')
 
     <div class="flex flex-col gap-4">
         @foreach($list as $member)

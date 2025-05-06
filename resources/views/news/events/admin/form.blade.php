@@ -1,7 +1,7 @@
 @extends("layouts.admin")
 
 @section('top-menu')
-    @include('events.menu')
+    @include('news.menu')
 @endsection
 
 @if(empty($event->id))

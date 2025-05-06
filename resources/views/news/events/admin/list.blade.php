@@ -3,7 +3,7 @@
 @section('title', 'Админ панель: Факультеты')
 
 @section('top-menu')
-    @include('events.menu')
+    @include('news.menu')
 @endsection
 
 @section('content-header')

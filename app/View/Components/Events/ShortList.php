@@ -26,6 +26,6 @@ class ShortList extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('events.events.public.short-list');
+        return view('news.events.public.short-list');
     }
 }

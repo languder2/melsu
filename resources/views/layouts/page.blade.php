@@ -20,6 +20,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
 </head>
 <body>
 <div class="main-wrapper">

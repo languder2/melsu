@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\News\NewsCategory;
+use App\Models\News\Category;
 use Illuminate\Database\Seeder;
 
 class NewsCategoriesSeed extends Seeder
@@ -13,32 +13,32 @@ class NewsCategoriesSeed extends Seeder
     public function run(): void
     {
 
-        NewsCategory::create([
+        Category::create([
             'name' => 'Главное в МелГУ',
             'sort' => 100,
         ]);
 
-        NewsCategory::create([
+        Category::create([
             'name' => 'Гранты, конкурсы, форумы, конференции',
             'sort' => 200,
         ]);
 
-        NewsCategory::create([
+        Category::create([
             'name' => 'Наука',
             'sort' => 300,
         ]);
 
-        NewsCategory::create([
+        Category::create([
             'name' => 'Партнерство',
             'sort' => 400,
         ]);
 
-        NewsCategory::create([
+        Category::create([
             'name' => 'РУМЦ',
             'sort' => 500,
         ]);
 
-        NewsCategory::create([
+        Category::create([
             'name' => 'Спорт',
             'sort' => 600,
         ]);

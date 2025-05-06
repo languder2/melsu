@@ -1,13 +1,13 @@
-<div class="first-news-box col-span-2 row-span-2 border border-[#e5e7eb] sm:max-h-[758px] xl:max-w-2xl">
+<div class="first-news-box col-span-2 row-span-2 border border-[#e5e7eb]">
     <a href="{{route('public:event:show',$item->id)}}">
-        <div class="img-news-box xl:max-w-[660px] sm:max-h-[353px] relative">
+        <div class="img-news-box relative">
 
             @if($item->preview && $item->preview->src)
                 <img src="{{$item->preview->src}}" alt="{{$item->preview->alt??$item->preview->name}}"
-                     class="object-cover max-h-[353px] w-full">
+                     class="object-cover max-h-[353px] object-top w-full">
             @elseif($item->image)
                 <img src="{{$item->image}}" alt=""
-                     class="object-cover max-h-[353px] w-full">
+                     class="object-cover object-top max-h-[353px] w-full">
             @endif
 
             <span

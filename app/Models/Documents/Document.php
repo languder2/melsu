@@ -57,7 +57,6 @@ class Document extends Model
     public function getIdAttribute($value):int
     {
         return $value ?? microtime(true);
-
     }
 
     public function parent():BelongsTo
