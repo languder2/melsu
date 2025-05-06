@@ -11,83 +11,85 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tickets', function (Blueprint $table) {
-            $table->id();
-            $table->string('title');
-            $table->unsignedBigInteger('user_id')->nullable();
-            $table->text('comment')->nullable();
-            $table->longText('content')->nullable();
-            $table->string('status');
-            $table->string('link')->nullable();
-            $table->timestamp('deleted_at')->nullable();
-            $table->timestamps();
+        if(!Schema::hasTable('tickets'))
+            Schema::create('tickets', function (Blueprint $table) {
+                $table->id();
+                $table->string('title');
+                $table->unsignedBigInteger('user_id')->nullable();
+                $table->text('comment')->nullable();
+                $table->longText('content')->nullable();
+                $table->string('status');
+                $table->string('link')->nullable();
+                $table->timestamp('deleted_at')->nullable();
+                $table->timestamps();
 
-            $table->foreign('user_id')
-                ->references('id')
-                ->on('users')
-                ->cascadeOnUpdate()
-                ->nullOnDelete();
-        });
+                $table->foreign('user_id')
+                    ->references('id')
+                    ->on('users')
+                    ->cascadeOnUpdate()
+                    ->nullOnDelete();
+            });
 
-        Schema::create('ticket_affiliation', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('ticket_id')->nullable();
-            $table->unsignedBigInteger('user_id')->nullable();
-            $table->string('role');
-            $table->timestamps();
+        if(!Schema::hasTable('ticket_affiliation'))
+            Schema::create('ticket_affiliation', function (Blueprint $table) {
+                $table->id();
+                $table->unsignedBigInteger('ticket_id')->nullable();
+                $table->unsignedBigInteger('user_id')->nullable();
+                $table->string('role');
+                $table->timestamps();
 
-            $table->foreign('ticket_id')->references('id')->on('tickets')
-                ->onUpdate('cascade')
-                ->onDelete('set null');
+                $table->foreign('ticket_id')->references('id')->on('tickets')
+                    ->onUpdate('cascade')
+                    ->onDelete('set null');
 
-            $table->foreign('user_id')->references('id')->on('users')
-                ->onUpdate('cascade')
-                ->onDelete('set null');
+                $table->foreign('user_id')->references('id')->on('users')
+                    ->onUpdate('cascade')
+                    ->onDelete('set null');
 
-        });
+            });
 
-        Schema::create('ticket_user_roles', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('user_id')->nullable();
-            $table->string('role');
-            $table->text('post')->nullable();
-            $table->timestamps();
+        if(!Schema::hasTable('ticket_user_roles'))
+            Schema::create('ticket_user_roles', function (Blueprint $table) {
+                $table->id();
+                $table->unsignedBigInteger('user_id')->nullable();
+                $table->string('role');
+                $table->text('post')->nullable();
+                $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users')
-                ->onUpdate('cascade')
-                ->onDelete('set null');
+                $table->foreign('user_id')->references('id')->on('users')
+                    ->onUpdate('cascade')
+                    ->onDelete('set null');
 
-        });
+            });
 
-        Schema::create('ticket_replies', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('ticket_id')->nullable();
-            $table->unsignedBigInteger('parent_id')->nullable();
-            $table->unsignedBigInteger('user_id')->nullable();
+        if(!Schema::hasTable('ticket_user_roles'))
+            Schema::create('ticket_replies', function (Blueprint $table) {
+                $table->id();
+                $table->unsignedBigInteger('ticket_id')->nullable();
+                $table->unsignedBigInteger('parent_id')->nullable();
+                $table->unsignedBigInteger('user_id')->nullable();
 
-            $table->boolean('is_new')->default(true);
-            $table->boolean('is_favorite')->default(false);
-            $table->boolean('is_important')->default(false);
+                $table->boolean('is_new')->default(true);
+                $table->boolean('is_favorite')->default(false);
+                $table->boolean('is_important')->default(false);
 
-            $table->longText('content')->nullable();
+                $table->longText('content')->nullable();
 
-            $table->timestamp('deleted_at')->nullable();
-            $table->timestamps();
+                $table->timestamp('deleted_at')->nullable();
+                $table->timestamps();
 
-            $table->foreign('ticket_id')->references('id')->on('tickets')
-                ->onUpdate('cascade')
-                ->onDelete('set null');
+                $table->foreign('ticket_id')->references('id')->on('tickets')
+                    ->onUpdate('cascade')
+                    ->onDelete('set null');
 
-            $table->foreign('user_id')->references('id')->on('users')
-                ->onUpdate('cascade')
-                ->onDelete('set null');
+                $table->foreign('user_id')->references('id')->on('users')
+                    ->onUpdate('cascade')
+                    ->onDelete('set null');
 
-            $table->foreign('parent_id')->references('id')->on('ticket_replies')
-                ->onUpdate('cascade')
-                ->onDelete('set null');
-
-
-        });
+                $table->foreign('parent_id')->references('id')->on('ticket_replies')
+                    ->onUpdate('cascade')
+                    ->onDelete('set null');
+            });
     }
     public function down(): void
     {

@@ -11,4 +11,10 @@ enum TicketRoles: string
     case Viewer         = 'viewer';
     case Auditor        = 'auditor';
     case Guest          = 'guest';
+
+    public static function getOrderByResponsible(): string
+    {
+        return "FIELD(role, 'bachelor', 'specialist', 'master', 'postgraduate', 'colleges')";
+    }
+
 }
