@@ -5,8 +5,8 @@
             <img src="{{asset('img/collage-1.png')}}" alt="" class="lg:h-[240px] w-full xl:h-[487px] xl:w-[510px]">
         </div>
         <div class="hidden xl:block"></div>
-        <div class="w-[98%] order-1 lg:order-2">
-            <h2 class="font-[700] px-2.5 lg:px-0 py-6 text-xl sm:text-4xl text-white">
+        <div class="w-[98%] h-full order-1 lg:order-2">
+            <h2 class="font-[700] h-full flex items-center px-2.5 lg:px-0 py-6 text-xl sm:text-4xl text-white">
                 Запорожская область – <br>сердце Новороссии
             </h2>
         </div>
@@ -68,8 +68,8 @@
             <img src="{{asset('img/kart-novor.jpg')}}" alt="" class="lg:h-[240px] w-full xl:h-[338px] xl:w-[510px]">
         </div>
         <div class="hidden xl:block"></div>
-        <div class="w-[98%] order-1 lg:order-2">
-            <h2 class="font-[700] px-2.5 lg:px-0 py-6 text-xl sm:text-4xl text-white">
+        <div class="w-[98%] h-full order-1 lg:order-2">
+            <h2 class="font-[700] h-full flex items-center px-2.5 lg:px-0 py-6 text-xl sm:text-4xl text-white">
                 Потенциал города Мелитополя
             </h2>
         </div>
@@ -88,10 +88,7 @@
                     <ul class="ps-5 space-y-1 list-disc list-inside my-3">
                         <li>около 400 км до ближайших крупных городов (Ростов-на-Дону, Одесса, Севастополь, Харьков)</li>
                         <li>45 минут езды до Азовского моря (пос. Кирилловка)</li>
-                        <li>«Жемчужина Приазовья» – Обиточная коса:
-                            <ul class="ps-5 space-y-1 list-disc list-inside my-3" style="list-style-type: square;">
-                                <li>здесь планируется создание круглогодичного курорта для детского и семейного отдыха «Приморск»</li>
-                            </ul>
+                        <li>«Жемчужина Приазовья» – Обиточная коса: здесь планируется создание круглогодичного курорта для детского и семейного отдыха «Приморск»
                         </li>
                     </ul>
                 </li>
@@ -106,8 +103,8 @@
             <img src="{{asset('img/collage-fruits.png')}}" alt="" class="lg:h-[240px] w-full xl:h-[487px] xl:w-[510px]">
         </div>
         <div class="hidden xl:block"></div>
-        <div class="w-[98%] order-1 lg:order-2">
-            <h2 class="font-[700] px-2.5 lg:px-0 py-6 text-xl sm:text-4xl text-white">
+        <div class="w-[98%] h-full order-1 lg:order-2">
+            <h2 class="font-[700] h-full flex items-center px-2.5 lg:px-0 py-6 text-xl sm:text-4xl text-white">
                 Климат области
             </h2>
         </div>
@@ -156,8 +153,8 @@
             <img src="{{asset('img/collage-12.jpg')}}" alt="" class="lg:h-[240px] w-full xl:h-[487px] xl:w-[510px]">
         </div>
         <div class="hidden xl:block"></div>
-        <div class="w-[98%] order-1 lg:order-2">
-            <h2 class="font-[700] px-2.5 lg:px-0 py-6 text-xl sm:text-4xl text-white">
+        <div class="w-[98%] h-full order-1 lg:order-2">
+            <h2 class="font-[700] h-full flex items-center px-2.5 lg:px-0 py-6 text-xl sm:text-4xl text-white">
                 Наш университет – отличный выбор для каждого
             </h2>
         </div>
@@ -206,26 +203,26 @@
             </div>
             <ul class="list-decimal list-inside">
                 <li>
-                    массовое использование инновационных образовательных технологий:
+                    Массовое использование инновационных образовательных технологий:
                     <ul class="ps-5 space-y-1 list-disc list-inside my-3">
                         <li>возможность слушать лекции удаленно</li>
                         <li>личный электронный кабинет с возможностью выстраивания учебную и внеучебную деятельность</li>
                         <li>обучение ИИ, работы с большими данными, интернетом-вещей, VR и пр.</li>
                     </ul>
                 </li>
-                <li class="mb-3">связи с экономикой области агроиндустрией и машиностроением, в том числе наличие базовых кафедр на производстве</li>
-                <li class="mb-3">активная работа с ведущими российскими корпорациями и компаниями по развитию высокотехнологической индустрии в Новороссии</li>
-                <li class="mb-3">подготовка чиновников и педагогов для всей области и шире</li>
-                <li class="mb-3">возможность студентам работать в течение обучения</li>
+                <li class="mb-3">Связи с экономикой области агроиндустрией и машиностроением, в том числе наличие базовых кафедр на производстве</li>
+                <li class="mb-3">Активная работа с ведущими российскими корпорациями и компаниями по развитию высокотехнологической индустрии в Новороссии</li>
+                <li class="mb-3">Подготовка чиновников и педагогов для всей области и шире</li>
+                <li class="mb-3">Возможность студентам работать в течение обучения</li>
                 <li>
                     очень комфортные условия для проживания:
                     <ul class="ps-5 space-y-1 list-disc list-inside my-3">
                         <li>в зданиях и корпусах кампус МелГУ проводится капитальный ремонт</li>
                     </ul>
                 </li>
-                <li class="mb-3">реализация программ ВО, СПО</li>
-                <li class="mb-3">проведение курсов повышения квалификации</li>
-                <li class="mb-3">пять филиалов / колледжей в составе МелГУ (г.Бердянск, Приморск, Энергодар, Васильевка, Орехово), где можно получить среднее профессиональное образование</li>
+                <li class="mb-3">Реализация программ ВО, СПО</li>
+                <li class="mb-3">Проведение курсов повышения квалификации</li>
+                <li class="mb-3">Пять филиалов / колледжей в составе МелГУ (г.Бердянск, Приморск, Энергодар, Васильевка, Орехово), где можно получить среднее профессиональное образование</li>
             </ul>
         </div>
     </div>
@@ -237,8 +234,8 @@
             <img src="{{asset('img/ph-15.jpg')}}" alt="" class="lg:h-[240px] w-full xl:h-[487px] xl:w-[510px]">
         </div>
         <div class="hidden xl:block"></div>
-        <div class="w-[98%] order-1 lg:order-2">
-            <h2 class="font-[700] px-2.5 lg:px-0 py-6 text-xl sm:text-4xl text-white">
+        <div class="w-[98%] h-full order-1 lg:order-2">
+            <h2 class="font-[700] h-full flex items-center px-2.5 lg:px-0 py-6 text-xl sm:text-4xl text-white">
                 МелГУ – фундамент для светлого «ЗАВТРА»
             </h2>
         </div>
@@ -315,8 +312,8 @@
             <img src="{{asset('img/ph-14.jpg')}}" alt="" class="lg:h-[240px] w-full xl:h-[487px] xl:w-[510px]">
         </div>
         <div class="hidden xl:block"></div>
-        <div class="w-[98%] order-1 lg:order-2">
-            <h2 class="font-[700] px-2.5 lg:px-0 py-6 text-xl sm:text-4xl text-white">
+        <div class="w-[98%] h-full order-1 lg:order-2">
+            <h2 class="font-[700] h-full flex items-center px-2.5 lg:px-0 py-6 text-xl sm:text-4xl text-white">
                 Наука – это способ реализации творческого потенциала
             </h2>
         </div>
@@ -347,8 +344,8 @@
             <img src="{{asset('img/ph-19.jpg')}}" alt="" class="lg:h-[240px] w-full xl:h-[487px] xl:w-[510px]">
         </div>
         <div class="hidden xl:block"></div>
-        <div class="w-[98%] order-1 lg:order-2">
-            <h2 class="font-[700] px-2.5 lg:px-0 py-6 text-xl sm:text-4xl text-white">
+        <div class="w-[98%] h-full order-1 lg:order-2">
+            <h2 class="font-[700] h-full flex items-center px-2.5 lg:px-0 py-6 text-xl sm:text-4xl text-white">
                 Наши чемпионы мира
             </h2>
         </div>
@@ -379,8 +376,8 @@
         <div class="hidden xl:block">
 
         </div>
-        <div class="w-[98%] order-1 lg:order-2">
-            <h2 class="font-[700] px-2.5 lg:px-0 py-6 text-xl sm:text-4xl text-white">
+        <div class="w-[98%] h-full order-1 lg:order-2">
+            <h2 class="font-[700] h-full flex items-center px-2.5 lg:px-0 py-6 text-xl sm:text-4xl text-white">
                 Студенты МелГУ — Элита русского мира
             </h2>
         </div>
@@ -402,7 +399,6 @@
                 <li class="mb-3"><a href="https://dobro.ru/?)" class="hover:underline hover:text-base-red">«ДОБРО.РУ»</a></li>
                 <li class="mb-3"><a href="https://rsv.ru/" class="hover:underline hover:text-base-red">«Россия – страна возможностей»</a></li>
                 <li class="mb-3"><a href="https://трудкрут.рф/" class="hover:underline hover:text-base-red">«Российский Студенческие Отряды»</a></li>
-                <li class="mb-3"><a href="https://minmol.zo.gov.ru/" class="hover:underline hover:text-base-red">Министерство по молодёжной политике Запорожской области</a></li>
             </ul>
         </div>
     </div>
@@ -414,8 +410,8 @@
             <img src="{{asset('img/ph-16.jpg')}}" alt="" class="lg:h-[240px] w-full xl:h-[487px] xl:w-[510px]">
         </div>
         <div class="hidden xl:block"></div>
-        <div class="w-[98%] order-1 lg:order-2">
-            <h2 class="font-[700] px-2.5 lg:px-0 py-6 text-xl sm:text-4xl text-white">
+        <div class="w-[98%] h-full order-1 lg:order-2">
+            <h2 class="font-[700] h-full flex items-center px-2.5 lg:px-0 py-6 text-xl sm:text-4xl text-white">
                 Практика и трудоустройство
             </h2>
         </div>
@@ -480,8 +476,8 @@
             <img src="{{asset('img/collage-14.jpg')}}" alt="" class="lg:h-[240px] w-full xl:h-[487px] xl:w-[510px]">
         </div>
         <div class="hidden xl:block"></div>
-        <div class="w-[98%] order-1 lg:order-2">
-            <h2 class="font-[700] px-2.5 lg:px-0 py-6 text-xl sm:text-4xl text-white">
+        <div class="w-[98%] h-full order-1 lg:order-2">
+            <h2 class="font-[700] h-full flex items-center px-2.5 lg:px-0 py-6 text-xl sm:text-4xl text-white">
                 Аскания-Нова
             </h2>
         </div>
@@ -512,8 +508,8 @@
             <img src="{{asset('img/collage-15.jpg')}}" alt="" class="lg:h-[240px] w-full xl:h-[487px] xl:w-[510px]">
         </div>
         <div class="hidden xl:block"></div>
-        <div class="w-[98%] order-1 lg:order-2">
-            <h2 class="font-[700] px-2.5 lg:px-0 py-6 text-xl sm:text-4xl text-white">
+        <div class="w-[98%] h-full order-1 lg:order-2">
+            <h2 class="font-[700] h-full flex items-center px-2.5 lg:px-0 py-6 text-xl sm:text-4xl text-white">
                 «Страус Юг»
             </h2>
         </div>
@@ -549,8 +545,8 @@
             <img src="{{asset('img/collage-16.jpg')}}" alt="" class="lg:h-[240px] w-full xl:h-[487px] xl:w-[510px]">
         </div>
         <div class="hidden xl:block"></div>
-        <div class="w-[98%] order-1 lg:order-2">
-            <h2 class="font-[700] px-2.5 lg:px-0 py-6 text-xl sm:text-4xl text-white">
+        <div class="w-[98%] h-full order-1 lg:order-2">
+            <h2 class="font-[700] h-full flex items-center px-2.5 lg:px-0 py-6 text-xl sm:text-4xl text-white">
                 Бирючий остров
             </h2>
         </div>
@@ -600,8 +596,8 @@
             <img src="{{asset('img/mog-4.jpg')}}" alt="" class="lg:h-[240px] w-full xl:h-[487px] xl:w-[510px]">
         </div>
         <div class="hidden xl:block"></div>
-        <div class="w-[98%] order-1 lg:order-2">
-            <h2 class="font-[700] px-2.5 lg:px-0 py-6 text-xl sm:text-4xl text-white">
+        <div class="w-[98%] h-full order-1 lg:order-2">
+            <h2 class="font-[700] h-full flex items-center px-2.5 lg:px-0 py-6 text-xl sm:text-4xl text-white">
                 «Каменная могила»
             </h2>
         </div>
@@ -639,8 +635,8 @@
             <img src="{{asset('img/snapedit_1730877599144-1024x751.png')}}" alt="" class="lg:h-[240px] w-full xl:h-[487px] xl:w-[510px]">
         </div>
         <div class="hidden xl:block order-1 lg:order-2"></div>
-        <div class="w-[98%] order-1 lg:order-2">
-            <h2 class="font-[700] px-2.5 lg:px-0 py-6 text-xl sm:text-4xl text-white">
+        <div class="w-[98%] h-full order-1 lg:order-2">
+            <h2 class="font-[700] h-full flex items-center px-2.5 lg:px-0 py-6 text-xl sm:text-4xl text-white">
                 Дом Ильи Адировича
             </h2>
         </div>
@@ -669,8 +665,8 @@
             <img src="{{asset('img/car-4.jpg')}}" alt="" class="lg:h-[240px] w-full xl:h-[487px]  xl:w-[510px]">
         </div>
         <div class="hidden xl:block"></div>
-        <div class="w-[98%] order-1 lg:order-2">
-            <h2 class="font-[700] px-2.5 lg:px-0 py-6 text-xl sm:text-4xl text-white">
+        <div class="w-[98%] h-full order-1 lg:order-2">
+            <h2 class="font-[700] h-full flex items-center px-2.5 lg:px-0 py-6 text-xl sm:text-4xl text-white">
                 Спасский песчаный карьер
             </h2>
         </div>
@@ -705,8 +701,8 @@
         <div class="hidden xl:block">
 
         </div>
-        <div class="w-[98%] order-1 lg:order-2">
-            <h2 class="font-[700] px-2.5 lg:px-0 py-6 text-xl sm:text-4xl text-white">
+        <div class="w-[98%] h-full order-1 lg:order-2">
+            <h2 class="font-[700] h-full flex items-center px-2.5 lg:px-0 py-6 text-xl sm:text-4xl text-white">
                 Целебные источники
             </h2>
         </div>
