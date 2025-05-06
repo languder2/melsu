@@ -22,7 +22,7 @@
                                 <div class="move-block">
                                     <h3 class="font-semibold mb-2 group-hover:text-red-900 transition duration-300 ease-linear">Запорожская область</h3>
                                     <p class="text-base font-normal line-clamp-4 mb-2">
-                                        это сердце юга России!<br>
+                                        Это сердце юга России!<br>
                                         Регион является значимым промышленным и аграрным центром, где успешно развиваются металлургия, машиностроение, переработка сельскохозяйственной продукции и энергетика.
                                     </p>
                                     <span class="group-hover:text-red-900 transition duration-300 ease-linear font-semibold">Подробнее</span>
@@ -36,7 +36,7 @@
                                 <div class="move-block">
                                     <h3 class="font-semibold mb-2 group-hover:text-red-900 transition duration-300 ease-linear">Мелитополь</h3>
                                     <p class="text-base font-normal line-clamp-4 mb-2">
-                                        Мелитополь славится своим теплым климатом, близостью к курортноым зонам, а также развитым энергетическим сектором и технологическим потенциалом.
+                                        Славится своим теплым климатом, близостью к курортноым зонам, а также развитым энергетическим сектором и технологическим потенциалом.
                                     </p>
                                     <span class="group-hover:text-red-900 transition duration-300 ease-linear font-semibold">Подробнее</span>
                                 </div>
@@ -77,13 +77,13 @@
                         <img src="{{asset('img/circle-1.jpg')}}" alt="">
                     </div>
                     <div class="img-hex-right right-top-img start">
-                        <img src="{{asset('img/circle-2.jpg')}}" alt="">
+                        <img src="{{asset('img/circle-4.jpg')}}" alt="">
                     </div>
                     <div class="img-hex-left left-bottom-img start">
                         <img src="{{asset('img/circle-3.png')}}" alt="">
                     </div>
                     <div class="img-hex-right right-bottom-img start">
-                        <img src="{{asset('img/circle-4.jpg')}}" alt="">
+                        <img src="{{asset('img/circle-3.jpg')}}" alt="">
                     </div>
                 </div>
                 <div class="right-info-box flex justify-between flex-col order-3">
