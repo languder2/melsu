@@ -16,8 +16,10 @@
                     after:-bottom-2px
                     after:inset-x-0 after:bg-gray-700
                     text-nowrap
+                    flex gap-3
                 "
             >
+                <img src="{{ $item->type->ico() }}" alt="{{$item->type->getFullName()}}" />
                 {!! $item->name !!}
             </a>
         @else
@@ -32,15 +34,21 @@
                     after:transition-all
                     after:duration-200
                     after:-bottom-2px
-                    opacity-40 hover:opacity-100 after:inset-x-1/2 hover:after:inset-x-0 hover:after:bg-gray-700
                     text-nowrap
+                    flex gap-3
+                    group
+                    after:inset-x-1/2
                 "
             >
-                {!! $item->name !!}
+                <img src="{{ $item->type->ico() }}" alt="{{$item->type->getFullName()}}" />
+
+                <span class="opacity-40 group-hover:opacity-100 group-hover:after:inset-x-0 group-hover:after:bg-gray-700">
+                    {!! $item->name !!}
+                </span>
             </a>
         @endif
     @endforeach
-    <a  href="#"
+    <a  href="{{ route('news-categories:public',['Celebration-of-the-80th-anniversary-of-Victory']) }}"
         class="
             relative pb-2 px-8
             border-b-2 font-semibold
@@ -51,11 +59,20 @@
             after:transition-all
             after:duration-200
             after:-bottom-2px
-            opacity-40 hover:opacity-100 after:inset-x-1/2 hover:after:inset-x-0 hover:after:bg-gray-700
+            after:inset-x-1/2
             text-nowrap
+            flex gap-3
+            group
         "
     >
-        Празднование 80-летия Победы
+
+        <img
+            src="{{ asset('img/regiments-menu-ico/celebration.svg') }}"
+            alt="Празднование 80-летия Победы"
+        />
+        <span class="opacity-40 group-hover:opacity-100 group-hover:after:inset-x-0 group-hover:after:bg-gray-700">
+            Празднование 80-летия Победы
+        </span>
     </a>
 </section>
 

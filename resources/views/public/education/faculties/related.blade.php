@@ -1,5 +1,5 @@
 <div class="wrapper mb-4">
-    <section class="container pt-12 pb-12 ">
+    <section class="container py-3 lg:py-12">
         <div class="grid grid-cols-1 gap-4">
 
             @foreach($division->faculties as $item)

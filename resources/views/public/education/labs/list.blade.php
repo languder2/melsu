@@ -1,4 +1,4 @@
-<section class="container pt-12 pb-12 ">
+<section class="container py-3 lg:py-12">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
         @foreach($list as $item)

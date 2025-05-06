@@ -1,5 +1,5 @@
-<section class="container block">
-    <div class="mt-2">
+<section class="container block ">
+    <div class="mt-2 flex flex-col lg:flex-row gap-y-1 flex-wrap">
         @component("public.education.tabs.item",[
                 'text'      => 'Институты',
                 'href'      => route('public:education:institutes'),

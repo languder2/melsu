@@ -37,4 +37,12 @@ enum RegimentType:string
 
         return $result;
     }
+    public function ico():string
+    {
+        return match ($this) {
+            self::Immortal      => asset('img/regiments-menu-ico/immortal.svg'),
+            self::Scientific    => asset('img/regiments-menu-ico/scientific.svg'),
+            self::Svo           => asset('img/regiments-menu-ico/hero.svg'),
+        };
+    }
 }
