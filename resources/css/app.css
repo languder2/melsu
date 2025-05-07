@@ -88,7 +88,6 @@ img {
     -moz-user-drag: none; /* Для Firefox */
     -o-user-drag: none; /* Для Opera */
 }
-
 .about-otdel, .text{
     p,li{
         padding: .25rem 0;

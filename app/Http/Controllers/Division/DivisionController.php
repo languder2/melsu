@@ -8,6 +8,7 @@ use App\Models\Division\Division;
 use App\Models\Education\Speciality;
 use App\Models\Gallery\Image;
 use App\Models\Menu\Menu;
+use App\Models\News\RelationNews;
 use App\Models\Page\Content as PageContent;
 use App\Models\Sections\Contact;
 use App\Models\Staff\Affiliation;
@@ -93,6 +94,7 @@ class DivisionController extends Controller
                 ->save();
 
         }
+
         /* add content sections*/
         if(array_key_exists('sections',$form))
             PageContent::processing($record,$request->get('sections'));
@@ -101,6 +103,10 @@ class DivisionController extends Controller
         if($request->has('contacts'))
             Contact::processing($record,$request->get('contacts'));
 
+        /* add news*/
+        if($request->has('news')){
+            RelationNews::processingForms($record,request()->all('news')['news']);
+        }
 
         switch ($record->type) {
             case DivisionType::Institute:

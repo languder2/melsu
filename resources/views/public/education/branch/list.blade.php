@@ -67,12 +67,12 @@
                         <hr class="bg-white/40 h-2px ml-4">
 
                         <div class="grid grid-cols-[1fr_auto] gap-2 ml-4 my-2">
-                            <div>
-                                Кол-во кафедр
-                            </div>
-                            <div class="font-semibold">
+{{--                            <div>--}}
+{{--                                Кол-во кафедр--}}
+{{--                            </div>--}}
+{{--                            <div class="font-semibold">--}}
 {{--                                {{$item->departments->count() ?? null}}--}}
-                            </div>
+{{--                            </div>--}}
                             <div>
                                 Направлений подготовки
                             </div>

@@ -44,6 +44,12 @@
                 />
             @break
 
+{{--            @case('news')--}}
+{{--                @dd(3)--}}
+{{--                @include('public.education.departments.related')--}}
+{{--            @break--}}
+
+
             @default
                 <div class="flex flex-col gap-4 mb-4">
                     @each('public.page.content-section',$division->sections,'section')

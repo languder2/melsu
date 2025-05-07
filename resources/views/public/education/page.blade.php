@@ -16,7 +16,16 @@
 @section('content')
     <section class="container px-2 pb-8">
 
-        @include('public.staffs.division.chief')
+
+        @switch($section)
+            @case('news')
+            @break
+
+            @default @include('public.staffs.division.chief')
+
+        @endswitch
+
+
         <div class="horizontal-mob-menu">
             @include('public.menu.education')
         </div>
@@ -52,8 +61,16 @@
                 />
             @break
 
-            @default
+            @case('news')
 
+                @if($division->news->find($op))
+                    @component('news.public.relations.item',['news' => $division->news->find($op)])@endcomponent
+                @else
+                    @component('news.public.relations.for-education',['list' => $division->news])@endcomponent
+                @endif
+            @break
+
+            @default
                 @if($division->sections->count())
                     <div class="flex flex-col gap-4 mb-4">
                         @each('public.page.content-section',$division->sections,'section')

@@ -58,6 +58,7 @@ class Image extends Model
     public function saveImage(UploadedFile $file):void
     {
 
+
         $path = self::getPath($this->relation_type);
 
         $this->filename = substr($file->hashName(),0,strpos($file->hashName(),'.'));
@@ -74,6 +75,10 @@ class Image extends Model
         $this->filetype = 'webp';
 
         $this->reference_id = null;
+
+        if(!$this->name)
+            $this->name = $this->relation()->name ?? $this->relation()->title ?? 'empty';
+
         $this->save();
 
         if($this->type !== 'ico'){
@@ -102,6 +107,7 @@ class Image extends Model
             'App\Models\Department\Department'  => 'images/department/department/',
             'App\Models\Menu\Item'              => 'images/menu/item/',
             'App\Models\Minor\RegimentMember'   => 'images/regiments/',
+            'App\Models\News\RelationNews'      => 'images/relation-news/',
             default                             => 'images/uploads/',
         };
     }
@@ -186,6 +192,9 @@ class Image extends Model
         $path = collect(explode('/', $path));
 
         $this->reference_id = Image::where('filename', $path->take(-2)->first())->pluck('id')->first();
+
+        if(!$this->name)
+            $this->name = $this->relation()->name ?? $this->relation()->title ?? 'empty';
 
         $this->save();
     }

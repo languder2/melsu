@@ -108,7 +108,6 @@ class Menu extends Model
     public static function GetMenuInstitute($division): object
     {
         $code = $division->code ?? $division->id;
-
         return
             (object)[
                 'name'  => 'Институт',

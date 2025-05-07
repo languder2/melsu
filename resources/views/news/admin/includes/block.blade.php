@@ -18,7 +18,7 @@
 
             <a
                 href="#"
-                onclick="this.closest('.news_section').querySelector('.block-content').classList.remove('hidden'); return false;"
+                onclick="this.closest('.news_section').querySelector('.block-content').classList.toggle('hidden'); return false;"
                 class="
                 inline-block
                 bg-gray-100 px-3 py-2 rounded-lg
@@ -37,12 +37,12 @@
                 id="news_{{$news->id}}_title"
                 name="title"
                 name="news[{{ $news->id }}][title]"
-                value='{{ old("news.{$news->id}.title") ?? $section->title ?? null}}'
+                value='{{ old("news.{$news->id}.title") ?? $news->title ?? null}}'
                 label="Заголовок новости"
                 required
             />
 
-            <div class="flex flex-row gap-4 items-center">
+            <div class="flex flex-row gap-4 items-end">
                 <div class="flex-1">
                     <x-form.input
                         id="published_at"
@@ -59,7 +59,7 @@
                         type="number"
                         step="1"
                         name="news[{{ $news->id }}][sort]"
-                        label="Порядок вывода закрепленных новостей"
+                        label="Порядок вывода"
                         :value="old('_token') ? old('sort') : $news->sort ?? $sort ?? null "
                     />
                 </div>
@@ -68,15 +68,15 @@
                     name="news[{{ $news->id }}][is_favorite]"
                     block="pb-2"
                     :checked="old('_token') ? old('is_favorite') : ($news->exists ? $news->is_favorite : false)"
-                    show="закрепить"
-                    hide="открепить"
+                    show="закрепленная"
+                    hide="стандартная"
                 />
                 <x-form.radio.on-off-alt
                     name="news[{{ $news->id }}][is_show]"
                     block="pb-2"
-                    :checked="old('_token') ? old('is_show') : ($news->exists ? $news->is_show : false)"
-                    show="закрепить"
-                    hide="открепить"
+                    :checked="old('_token') ? old('is_show') : ($news->exists ? $news->is_show : true)"
+                    show="выводиться"
+                    hide="скрытая"
                 />
             </div>
 
@@ -99,15 +99,26 @@
 
     <div
         @class([
-            "block-content",
-            $news->exsist ? "hidden" : "block"
+            "block-content flex flex-col gap-4",
+            $news->exists ? "hidden" : "block"
         ])
     >
-        <x-form.editor
-            id="form_news_{{ $news->id }}_content"
-            name="news[{{ $news->id }}][content]"
-            label="Контент"
-            value="{{ old('_token') ?? old('sections.{$news->id}.content') ?? $news->content ?? null}}"
-        />
+{{--        <div>--}}
+{{--            <x-form.editor--}}
+{{--                id="form_news_{{ $news->id }}_short"--}}
+{{--                name="news[{{ $news->id }}][short]"--}}
+{{--                label="Краткий текст новости"--}}
+{{--                value="{{ old('_token') ?? old('sections.{$news->id}.short') ?? $news->short ?? null}}"--}}
+{{--            />--}}
+{{--        </div>--}}
+
+        <div>
+            <x-form.editor
+                id="form_news_{{ $news->id }}_content"
+                name="news[{{ $news->id }}][content]"
+                label="Полный текст новости"
+                value="{{ old('_token') ?? old('sections.{$news->id}.content') ?? $news->content ?? null}}"
+            />
+        </div>
     </div>
 </div>

@@ -67,10 +67,9 @@ Route::get('institutes', [EducationController::class, 'institutes'])->name('publ
 
 Route::get('faculties', [EducationController::class, 'faculties'])->name('public:education:faculties');
 
-Route::get('{type}/{division}/{section?}',[EducationController::class, 'division'])
+Route::get('{type}/{division}/{section?}/{news?}',[EducationController::class, 'division'])
     ->whereIn('type', ['institute','faculty', 'department','lab','branch'])
     ->name('public:education:division');
-
 
 Route::get('departments', [EducationController::class, 'showAllDepartments'])
         ->name('public:education:departments:list');

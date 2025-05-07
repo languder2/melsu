@@ -58,4 +58,70 @@ enum DivisionType: string
             DivisionType::Institute     => 'institute_id',
         };
     }
+
+    public function getDivisionMenu($division)
+    {
+        $op = $division->code ?? $division->id;
+
+        return match ($this) {
+            DivisionType::Faculty     =>
+            (object)[
+                'name'  => 'Факультет',
+                'items' => [
+                    (object)[
+                        'name' => "О факультете",
+                        'link' => route('public:education:division', ['faculty',$op]),
+                    ],
+                    (object)[
+                        'name' => "Деканат",
+                        'link' => route('public:education:division', ['faculty',$op,'dean-office']),
+                    ],
+                    (object)[
+                        'name' => "Педагогический состав",
+                        'link' => route('public:education:division', ['faculty',$op,'teaching-staff']),
+                    ],
+                    (object)[
+                        'name' => "Кафедры и лаборатории",
+                        'link' => route('public:education:division', ['faculty',$op,'departments']),
+                    ],
+                    (object)[
+                        'name' => "Направления подготовки",
+                        'link' => route('public:education:division', ['faculty',$op,'specialities']),
+                    ],
+                    (object)[
+                        'name'  => "Поступающим",
+                        'link'  => "https://abiturient.mgu-mlt.ru/",
+                    ],
+                    (object)[
+                        'name'  => "Новости",
+                        'link'  => route('public:education:division', ['faculty',$op,'news']),
+                        'hide'  => (bool) !$division->news()->count(),
+                    ],
+
+//                    (object)[
+//                        'name' => "Наука",
+//                        'link' => "https://melsu.ru/menu/science",
+//                    ],
+//                    (object)[
+//                        'name' => "Наука",
+//                        'link' => "https://melsu.ru/menu/science",
+//                    ],
+//                    (object)[
+//                        'name' => "История",
+//                        'link' => url('history'),
+//                    ],
+//                    (object)[
+//                        'name' => "Фотогалерея",
+//                        'link' => url('gallery'),
+//                    ],
+//                    (object)[
+//                        'name' => "Партнеры и выпускники",
+//                        'link' => url('partner'),
+//                    ],
+                ],
+            ],
+            default                     => null,
+        };
+    }
+
 }

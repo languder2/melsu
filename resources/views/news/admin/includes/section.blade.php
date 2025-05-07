@@ -11,7 +11,7 @@
         </div>
 
         <a
-            href="{{route('news:api:add')}}"
+            href="{{route('news:api:add-section')}}"
             onclick="Actions.addSection(document.querySelector('.news'),this.href,true); return false;"
         >
             <x-form.button.base-admin class="cursor-pointer">
@@ -22,33 +22,20 @@
 
     <div class="news">
         @if(old('_token'))
-            @foreach(old('sections') ?? [] as $id=>$section)
-                @component('news.admin.includes.block')@endcomponent
-
-            @endforeach
         @elseif($current)
-            @foreach($current->sections(false)->get() as $section)
-                {{
-                    view('admin.page.content.editor',[
-                        'section'   => $section,
-                        'id'        => $section->id,
-                    ])
-                }}
+            @foreach($current->news as $news)
+                @component('news.admin.includes.block',[
+                    'news'      => $news
+                ])@endcomponent
             @endforeach
         @endif
-
-
-        @component('news.admin.includes.block',[
-            'news'      => new \App\Models\News\RelationNews()
-        ])@endcomponent
-
     </div>
     <div class="flex gap-4 items-center bg-white p-4 mt-4">
         <div class="flex-1 text-lg font-semibold">
         </div>
         <a
-            href="{{route('api:content:sections:add')}}"
-            onclick="Actions.addSection(document.querySelector('.sections'),this.href,true); return false;"
+            href="{{route('news:api:add-section')}}"
+            onclick="Actions.addSection(document.querySelector('.news'),this.href,true); return false;"
         >
             <x-form.button.base-admin class="cursor-pointer">
                 Добавить секцию
@@ -58,3 +45,6 @@
 </div>
 
 
+{{--@component('news.admin.includes.block',[--}}
+{{--    'news'      => new \App\Models\News\RelationNews()--}}
+{{--])@endcomponent--}}

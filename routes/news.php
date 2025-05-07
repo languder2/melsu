@@ -34,8 +34,8 @@ Route::controller(NewsController::class)
 /* NEWS API */
 
 Route::middleware(['web','auth.api'])->group(function () {
-    Route::get('api/news/add-section',  [NewsController::class,'ApiAddSection'])->name('news:api:add');
-    Route::get('api/news/delete',       [NewsController::class,'ApiDelete'])    ->name('news:api:delete');
+    Route::get('api/news/add-section',  [NewsController::class,'ApiAddSection'])->name('news:api:add-section');
+    Route::get('api/news/delete/{news?}',[NewsController::class,'ApiDelete'])    ->name('news:api:delete');
 });
 
 /* Events */
@@ -66,5 +66,8 @@ Route::prefix('admin/categories-news')->group(function () {
     Route::get('delete/{category?}',[CategoriesController::class,'delete'])->name('news-categories:delete');
 });
 /**/
+
+/* Relation News */
+
 
 

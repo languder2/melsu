@@ -234,8 +234,22 @@ class Division extends Model
     {
         return $this->news()
             ->where('published_at','<=', Carbon::now())
-            ->where('is_show',1);
+            ->where('is_show',1)
+            ->orderBy('is_favorite', 'desc')
+            ->orderBy('sort', 'asc')
+            ->orderBy('published_at', 'desc')
+            ;
+
     }
+    public function NewsLink(?string $op): string
+    {
+        return match($this->type){
+            default => null,
+            DivisionType::Institute, DivisionType::Faculty, DivisionType::Department, DivisionType::Branch
+            => route('public:education:division', [$this->type->value,$this->code ?? $this->id,'news',$op]),
+        };
+    }
+
 
     public function getTeachingStaffAttribute(): Collection
     {
@@ -401,7 +415,10 @@ class Division extends Model
 
     public function getMenuAttribute(): ?object
     {
-        return  match($this->type){
+
+        $result = $this->type->getDivisionMenu($this);
+
+        return $result ?? match($this->type){
             default => null,
             DivisionType::Institute     => Menu::GetMenuInstitute($this),
             DivisionType::Faculty       => Menu::GetMenuFaculty($this),
@@ -409,6 +426,7 @@ class Division extends Model
             DivisionType::Branch        => Menu::GetMenuBranch($this),
         };
     }
+
 
 }
 

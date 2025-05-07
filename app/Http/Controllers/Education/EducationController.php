@@ -40,12 +40,13 @@ class EducationController extends Controller
         return view('public.education.faculties.list', compact('list'));
     }
 
-    public function division(string $type,?Division $division = null,?string $section = null )
+    public function division(string $type,?Division $division = null,?string $section = null, ?string $op = null )
     {
+
         if(!$division)
             return redirect()->to(route('public:education:faculties'));
 
-        return view('public.education.page',compact('division','section'));
+        return view('public.education.page',compact('division','section','type','op'));
     }
 
 

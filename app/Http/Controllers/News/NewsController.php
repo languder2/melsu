@@ -140,14 +140,14 @@ class NewsController extends Controller
     public function ApiAddSection():\Illuminate\View\View
     {
         $news   = new RelationNews();
-        return view('news.admin.editor',compact('news'));
+        return view('news.admin.includes.block',compact('news'));
     }
     public function ApiDelete (?RelationNews $news): JsonResponse
     {
         $news->delete();
         return response()->json(
             [
-                'message' => "Галерея удалена\n{$news->title}\n Восстановимо до: "
+                'message' => "Новость удалена\n{$news->title}\n Восстановимо до: "
                     .Carbon::now()->addWeek(2)->format('d.m.Y H:i')
             ]);
     }

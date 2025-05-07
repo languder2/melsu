@@ -29,8 +29,7 @@ Route::controller(MenuItems::class)
 
     });
 
-Route::middleware('isAdmin')
-    ->controller(MenuController::class)
+Route::controller(MenuController::class)
     ->prefix('menu/list')
     ->group(function () {
 
@@ -42,8 +41,7 @@ Route::middleware('isAdmin')
 
     });
 
-Route::middleware('isAdmin')
-    ->controller(PagesController::class)
+Route::controller(PagesController::class)
     ->prefix('pages')
     ->group(function () {
 
@@ -56,8 +54,7 @@ Route::middleware('isAdmin')
     });
 
 
-Route::middleware('isAdmin')
-    ->controller(StaffController::class)
+Route::controller(StaffController::class)
     ->prefix('staff')
     ->group(function () {
 
@@ -74,7 +71,7 @@ Route::middleware('isAdmin')
 
     });
 
-Route::middleware(['isAdmin'])->prefix('users')->group(function () {
+Route::prefix('users')->group(function () {
     Route::get('',              [UserController::class,'list'])->name('admin:users:list');
     Route::get('add',           [UserController::class,'form'])->name('admin:users:add');
     Route::get('edit/{user}',   [UserController::class,'form'])->name('admin:users:edit');
@@ -82,8 +79,7 @@ Route::middleware(['isAdmin'])->prefix('users')->group(function () {
     Route::get('delete/{user}', [UserController::class,'delete'])->name('admin:users:delete');
 });
 
-Route::middleware('isAdmin')
-    ->controller(DivisionController::class)
+Route::controller(DivisionController::class)
     ->prefix('divisions')
     ->group(function () {
 
@@ -95,8 +91,7 @@ Route::middleware('isAdmin')
         Route::get('{group?}', 'adminList')->name('admin:division:list');
     });
 
-Route::middleware('isAdmin')
-    ->controller(FacultyController::class)
+Route::controller(FacultyController::class)
     ->prefix('faculties')
     ->group(function () {
 
@@ -108,8 +103,7 @@ Route::middleware('isAdmin')
 Route::get('institutes',[InstituteController::class,'list'])->middleware('isAdmin')
     ->name('admin:institutes:list');
 
-Route::middleware('isAdmin')
-    ->controller(DepartmentController::class)
+Route::controller(DepartmentController::class)
     ->prefix('departments')
     ->group(function () {
 
@@ -119,8 +113,7 @@ Route::middleware('isAdmin')
 
 /* Labs */
 
-Route::middleware('isAdmin')
-    ->controller(LabsController::class)
+Route::controller(LabsController::class)
     ->prefix('education/labs')
     ->group(function () {
         Route::get('', 'AdminList')->name('admin:lab:list');
