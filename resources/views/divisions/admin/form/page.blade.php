@@ -22,9 +22,9 @@
 @section('content')
     <x-head.tinymce-config/>
     <form
-            action="{{route('admin:division:save')}}"
-            method="POST"
-            enctype="multipart/form-data"
+        action="{{route('admin:division:save')}}"
+        method="POST"
+        enctype="multipart/form-data"
     >
         @csrf
 
@@ -36,14 +36,14 @@
                 @include('divisions.admin.form.menu')
 
                 <x-form.submit
-                        class="uppercase"
-                        value="сохранить"
+                    class="uppercase"
+                    value="сохранить"
                 />
             </div>
 
             <div>
                 <x-form.errors
-                        setTheme="1"
+                    setTheme="1"
                 />
 
                 @include('divisions.admin.form.section-base')
@@ -51,9 +51,9 @@
                 @component('components.form.sections.staffs',compact('current')) @endcomponent
                 @component('components.form.sections.documents',compact('current')) @endcomponent
                 @component('components.form.sections.contents',compact('current')) @endcomponent
-                {{--                @component('news.admin.include-section',        compact('current'))--}}
-                {{--                    tab_news--}}
-                {{--                @endcomponent--}}
+                @component('news.admin.includes.section',        compact('current'))
+                    tab_news
+                @endcomponent
 
             </div>
 

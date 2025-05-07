@@ -100,7 +100,7 @@
         <x-form.radio.on-off-alt
             name="is_favorite"
             block="pb-2"
-            :checked="old('_token') ? old('is_show') : (optional($current)->exists ? $current->is_favorite : false)"
+            :checked="old('_token') ? old('is_favorite') : (optional($current)->exists ? $current->is_favorite : false)"
             show="закрепить"
             hide="открепить"
         />

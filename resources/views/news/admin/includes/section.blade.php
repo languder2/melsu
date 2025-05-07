@@ -23,14 +23,8 @@
     <div class="news">
         @if(old('_token'))
             @foreach(old('sections') ?? [] as $id=>$section)
-                {{
-                    view('admin.page.content.editor')
-                    ->with([
-                        'section'   => (object)$section,
-                        'id'        => $id,
-                        'content'   => isset($section['content'])
-                    ])
-                }}
+                @component('news.admin.includes.block')@endcomponent
+
             @endforeach
         @elseif($current)
             @foreach($current->sections(false)->get() as $section)
@@ -42,6 +36,12 @@
                 }}
             @endforeach
         @endif
+
+
+        @component('news.admin.includes.block',[
+            'news'      => new \App\Models\News\RelationNews()
+        ])@endcomponent
+
     </div>
     <div class="flex gap-4 items-center bg-white p-4 mt-4">
         <div class="flex-1 text-lg font-semibold">

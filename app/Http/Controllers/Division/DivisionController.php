@@ -103,6 +103,8 @@ class DivisionController extends Controller
 
 
         switch ($record->type) {
+            case DivisionType::Institute:
+                return redirect()->route('admin:institutes:list');
             case DivisionType::Faculty:
                 return redirect()->route('admin:faculty:list');
             case DivisionType::Department:
