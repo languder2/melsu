@@ -1,16 +1,31 @@
 <?php
 
-namespace App\Models\News;
+namespace App\Models\Projects;
 
-use Carbon\Carbon;
+use App\Models\News\Category;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Collection;
 
-class Category extends Model
+class Cluster extends Model
 {
+
     use SoftDeletes;
+
+    protected $table = 'project_clusters';
+
+    protected $fillable = [
+        'name',
+        'code',
+        'description',
+        'is_show',
+        'sort',
+    ];
+
+    protected $cast = [
+
+    ];
+
+    protected $dates = ['deleted_at'];
 
     public function FormRules():array
     {
@@ -21,7 +36,6 @@ class Category extends Model
             'sort'          => '',
         ];
     }
-
     public function FormMessage():array
     {
         return [
@@ -30,19 +44,6 @@ class Category extends Model
             'code.unique'   => "Категория с таким alias'ом уже существует",
         ];
     }
-    protected $table = 'news_categories';
-    protected $primaryKey = 'id';
-    protected $fillable = [
-        'id',
-        'name',
-        'code',
-        'sort',
-    ];
-    protected $visible = [
-        'name',
-        'code',
-        'sort',
-    ];
 
     public function fill(array $attributes):?self
     {
@@ -59,48 +60,31 @@ class Category extends Model
         return $this->where('code', $value)->first() ??  $this->where('id', $value)->first();
     }
 
-    public function news(): HasMany
-    {
-        return $this->hasMany(News::class, 'category', 'id')
-            ->where('published_at', '<=', Carbon::now())
-            ->orderBy('is_favorite', 'desc')
-            ->orderBy('sort')
-            ->orderBy('published_at', 'desc')
-            ;
-    }
-
     public function getIdAttribute($value):int
     {
         return $value ?? microtime(true);
     }
 
-    /* LINKS */
-    public function getLinkAttribute(): string
-    {
-        return route('news-categories:public', $this->code ?? $this->id);
-    }
     public function getAdminAttribute(): string
     {
-        return route('news-categories:admin:list', $this->id);
+        return route('clusters.admin', $this->id);
+    }
+    public function getNewAttribute(): string
+    {
+        return route('clusters.form');
     }
     public function getEditAttribute(): string
     {
-        return route('news-categories:admin:form', $this->id);
+        return route('clusters.form', $this->id);
     }
     public function getDeleteAttribute(): string
     {
-        return route('news-categories:delete', $this->id);
+        return route('clusters.delete', $this->id);
     }
     public function getSaveAttribute(): string
     {
-        return route('news-categories:save', $this->exists ? $this->id : null);
+        return route('clusters.save', $this->exists ? $this->id : null);
     }
 
-    /**/
-
-    public static function getForPublic():Collection
-    {
-        return self::orderBy('sort')->orderBy('name')->get()->pluck('name', 'link');
-    }
 
 }

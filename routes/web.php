@@ -40,6 +40,7 @@ Route::prefix('admin')->group(function () {
 require __DIR__.'/regiment.php';
 require __DIR__.'/documents.php';
 require __DIR__.'/news.php';
+require __DIR__.'/projects.php';
 
 Route::prefix('cabinet')->group(function () {
     require __DIR__.'/cabinet.php';
@@ -59,9 +60,7 @@ Route::get('specialities', [SpecialityController::class,'showAll'])
 Route::get('specialities/{speciality}', [SpecialityController::class,'showSingle'])
     ->name('public:education:speciality');
 
-
 /* Faculties */
-
 
 Route::get('institutes', [EducationController::class, 'institutes'])->name('public:education:institutes');
 
