@@ -152,7 +152,9 @@ class News extends Model
 
     public static function getPublicList(): Builder
     {
-        return News::orderBy('is_favorite', 'desc')->orderBy('sort')
+        return News::
+            where('published_at', '<=', Carbon::now())
+            ->orderBy('is_favorite', 'desc')->orderBy('sort')
             ->orderBy('published_at', 'desc')
             ->select('id', 'title', 'short', 'full', 'published_at', 'image', 'category');
     }

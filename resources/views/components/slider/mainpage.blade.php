@@ -12,6 +12,11 @@
                         </a>
                     </div>
                     <div class="slide">
+                        <a href="#" class="slide-link cursor-pointer">
+                            <img src="{{asset('storage/images/gallery/wIcrdS33mKzu8hRXhHoP1I6wBSoq5DByUYuqXAWZ/image.webp')}}" alt="">
+                        </a>
+                    </div>
+                    <div class="slide">
                             <img src="{{asset('img/Slide.jpg')}}" alt="">
                         <div id="countdown" class="countdown hidden">
                             <div class="countdown-item">
