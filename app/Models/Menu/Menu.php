@@ -148,6 +148,12 @@ class Menu extends Model
                         'name' => "Партнеры и выпускники",
                         'link' => url('partner'),
                     ],
+                    (object)[
+                        'name'  => "Новости",
+                        'link'  => route('public:education:division', ['faculty',$code,'news']),
+                        'hide'  => (bool) !$division->news()->count(),
+                    ],
+
                 ],
 
             ];
@@ -321,6 +327,7 @@ class Menu extends Model
             'name' => "Партнеры и выпускники",
             'link' => url('partner'),
         ]);
+
         return $menu;
     }
 
