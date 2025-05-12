@@ -46,6 +46,4 @@ class Log extends Model
         if($record)
             $record->origin()->associate($origin)->save();
     }
-
-
 }

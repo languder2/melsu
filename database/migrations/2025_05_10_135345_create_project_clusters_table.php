@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('code')->unique()->nullable();
-            $table->longText('description')->nullable();
 
             $table->unsignedInteger('sort')->default(1000);
             $table->boolean('is_show')->default(true);

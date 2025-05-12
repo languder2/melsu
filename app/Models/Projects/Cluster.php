@@ -2,9 +2,15 @@
 
 namespace App\Models\Projects;
 
+use App\Enums\Projects\ClusterContentType;
+use App\Models\Division\Division;
+use App\Models\Gallery\Image;
 use App\Models\News\Category;
+use App\Models\Services\Content;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Collection;
 
 class Cluster extends Model
 {
@@ -31,8 +37,8 @@ class Cluster extends Model
     {
         return [
             'id'            => '',
-            'name'          => "required|unique:news_categories,name,{$this->id},id,deleted_at,NULL",
-            'code'          => "nullable|unique:news_categories,code,{$this->id},id,deleted_at,NULL",
+            'name'          => "required",
+            'code'          => "nullable|unique:project_clusters,code,{$this->id},id,deleted_at,NULL",
             'sort'          => '',
         ];
     }
@@ -40,16 +46,25 @@ class Cluster extends Model
     {
         return [
             'name.required' => 'Укажите название категории',
-            'name.unique'   => 'Категория с таким названием уже существует',
-            'code.unique'   => "Категория с таким alias'ом уже существует",
+            'code.unique'   => "Кластер с таким alias'ом уже существует",
         ];
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($self) {
+            $self->getImage()->delete();
+            $self->getContentMorph()->delete();
+        });
     }
 
     public function fill(array $attributes):?self
     {
         if(!empty($attributes)){
             $attributes['sort'] = $attributes['sort'] ?? 1000;
-            $attributes['code'] = str_replace(' ','-', $attributes['code']);
+            $attributes['code'] = transliterate(str_replace(' ','-', $attributes['code']));
         }
 
         return parent::fill($attributes);
@@ -64,7 +79,18 @@ class Cluster extends Model
     {
         return $value ?? microtime(true);
     }
+    public function getSortAttribute($value):?int
+    {
+        if($value)
+            return $value;
 
+        $sort   = self::latest()->first()->sort ?? 0;
+        return $sort >= 1000 ? null : $sort+10;
+    }
+    public function getLinkAttribute(): string
+    {
+        return route('cluster.single', $this->code ?? $this->id);
+    }
     public function getAdminAttribute(): string
     {
         return route('clusters.admin', $this->id);
@@ -86,5 +112,109 @@ class Cluster extends Model
         return route('clusters.save', $this->exists ? $this->id : null);
     }
 
+    public function getImage(?string $type): MorphOne
+    {
+        $result= $this->MorphOne(Image::class, 'relation');
+        return $type ? $result->where('type', $type) : $result;
+    }
+    public function getPreviewAttribute(): Image
+    {
+        return $this->getImage('preview')->first()
+            ?? (new Image(['type' => 'preview']))->relation()->associate($this);
+    }
+    public function getIcoAttribute(): Image
+    {
+        return $this->getImage('ico')->first()
+            ?? (new Image(['type' => 'ico']))->relation()->associate($this);
+    }
+    public function getContents(?string $type): MorphOne
+    {
+        $result= $this->MorphOne(Content::class, 'relation');
+        return $type ? $result->where('type', $type) : $result;
+    }
+    public function getContent($type): Content
+    {
+        return $this->getContents($type)->first()
+            ?? (new Content(['type' => $type]))->relation()->associate($this);
+    }
+    public function getShortAttribute(): ?string
+    {
+        return $this->getContent('short')->content ?? null;
+    }
+    public function getFullAttribute(): ?string
+    {
+        return $this->getContent('full')->content ?? null;
+    }
+
+    public function relevance(): Content
+    {
+        return $this->getContent('relevance');
+    }
+    public function getRelevanceAttribute(): ?string
+    {
+        return $this->relevance()->content ?? null;
+    }
+
+    public function goals(): Content
+    {
+        return $this->getContent('goals');
+    }
+    public function getGoalsAttribute(): ?string
+    {
+        return $this->goals()->content ?? null;
+    }
+
+    public function structure(): Content
+    {
+        return $this->getContent('structure');
+    }
+    public function getStructureAttribute(): ?string
+    {
+        return $this->structure()->content ?? null;
+    }
+
+    public function suggestions(): Content
+    {
+        return $this->getContent('suggestions');
+    }
+    public function getSuggestionsAttribute(): ?string
+    {
+        return $this->suggestions()->content ?? null;
+    }
+
+    public function getFormMenuAttribute(): Collection
+    {
+        return collect([
+            [
+                'tabs'      => 'form_box',
+                'tab'       => 'tab_base',
+                'text'      => 'Основа',
+                'section'   => 'projects.clusters.admin.includes.form-base-section',
+                'active'    => true
+            ],
+            [
+                'tabs'      => 'form_box',
+                'tab'       => 'tab_contents',
+                'text'      => 'Секции контента',
+//                'section'   => 'components.form.sections.contents',
+                'section'   => 'projects.clusters.admin.includes.form-contents-section',
+            ],
+            [
+                'tabs'      => 'form_box',
+                'tab'       => 'tab_contacts',
+                'text'      => 'Контакты',
+                'section'   => 'components.form.sections.contacts',
+                'disabled'  => !$this->exists
+            ],
+            [
+                'tabs'      => 'form_box',
+                'tab'       => 'tab_staffs',
+                'text'      => 'Сотрудники',
+//                'section'   => 'components.form.sections.staffs',
+                'section'   => '',
+                'disabled'  => !$this->exists
+            ],
+        ]);
+    }
 
 }

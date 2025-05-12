@@ -2,7 +2,7 @@
     <hr class="mt-4 border-dotted">
 @endif
 
-@if(isset($id))
+@isset($label)
     <label for="{{$id}}" class="mb-2 block text-center font-semibold uppercase">
         @if(!isset($hideLabel))
             {{$label??$name}}@if(isset($required))

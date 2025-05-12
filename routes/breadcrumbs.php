@@ -178,3 +178,12 @@ Breadcrumbs::for('documents', function (BreadcrumbTrail $trail) {
 
     $trail->push('Документы');
 });
+
+Breadcrumbs::for('clusters', function (BreadcrumbTrail $trail) {
+    $trail->parent('home');
+    $trail->push('Флагманские проекты', route('clusters.list'));
+});
+Breadcrumbs::for('cluster', function (BreadcrumbTrail $trail, ?\App\Models\Projects\Cluster $cluster) {
+    $trail->parent('clusters');
+    $trail->push($cluster->name, $cluster->link);
+});
