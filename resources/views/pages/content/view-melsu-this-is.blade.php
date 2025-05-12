@@ -83,7 +83,7 @@
                         <img src="{{asset('img/circle-3.png')}}" alt="">
                     </div>
                     <div class="img-hex-right right-bottom-img start">
-                        <img src="{{asset('img/circle-3.jpg')}}" alt="">
+                        <img src="{{asset('img/circle-2.jpg')}}" alt="">
                     </div>
                 </div>
                 <div class="right-info-box flex justify-between flex-col order-3">
