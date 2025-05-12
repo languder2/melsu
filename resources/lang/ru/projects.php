@@ -8,6 +8,14 @@ return [
     'Suggestions for cooperation'   => 'Предложения к сотрудничеству',
     'Content'                       => 'Контент',
 
+    'Projects'                      => 'Проекты',
+    'Terms of implementation'       => 'Сроки реализации',
+    'Amount of funding'             => 'Объем финансирования',
+    'Project Description'           => 'Описание проекта',
+    'Results and achievements'      => 'Результаты и достижения',
+    'Development prospects'         => 'Перспективы развития',
 
-    'Projects'      => 'Проекты',
+    'Implemented'                   => 'Реализованные',
+    'Currents'                      => 'Действующие',
+    'Proposed for development'      => 'Предлагаемые к разработке',
 ];

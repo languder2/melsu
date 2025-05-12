@@ -19,7 +19,7 @@
     </section>
 
     <div class="max-w-[96rem] mx-auto -mb-10">
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 bg-white">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
             @foreach($list as $item)
                 <a href="{{ $item->link }}"
                     class="bg-white p-6 border border-black hover:bg-red-700 hover:text-white group transition-all duration-500 "

@@ -2,12 +2,10 @@
 
 namespace App\Models\Projects;
 
-use App\Enums\Projects\ClusterContentType;
-use App\Models\Division\Division;
 use App\Models\Gallery\Image;
-use App\Models\News\Category;
 use App\Models\Services\Content;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Collection;
@@ -56,7 +54,8 @@ class Cluster extends Model
 
         static::deleting(function ($self) {
             $self->getImage()->delete();
-            $self->getContentMorph()->delete();
+            $self->getContents()->delete();
+            $self->projects()->delete();
         });
     }
 
@@ -64,7 +63,8 @@ class Cluster extends Model
     {
         if(!empty($attributes)){
             $attributes['sort'] = $attributes['sort'] ?? 1000;
-            $attributes['code'] = transliterate(str_replace(' ','-', $attributes['code']));
+            $attributes['code'] = $attributes['code'] ?
+                transliterate(str_replace(' ','-', $attributes['code'])) : null;
         }
 
         return parent::fill($attributes);
@@ -111,8 +111,12 @@ class Cluster extends Model
     {
         return route('clusters.save', $this->exists ? $this->id : null);
     }
+    public function getAddProjectAttribute(): string
+    {
+        return route('projects.form', [null, "cluster_id" => $this->id]);
+    }
 
-    public function getImage(?string $type): MorphOne
+    public function getImage(?string $type = null): MorphOne
     {
         $result= $this->MorphOne(Image::class, 'relation');
         return $type ? $result->where('type', $type) : $result;
@@ -127,10 +131,14 @@ class Cluster extends Model
         return $this->getImage('ico')->first()
             ?? (new Image(['type' => 'ico']))->relation()->associate($this);
     }
-    public function getContents(?string $type): MorphOne
+    public function getContents(?string $type = null): MorphOne
     {
         $result= $this->MorphOne(Content::class, 'relation');
         return $type ? $result->where('type', $type) : $result;
+    }
+    public function getContentsCount(): int
+    {
+        return $this->getContents()->whereNotNull('content')->count();
     }
     public function getContent($type): Content
     {
@@ -180,6 +188,23 @@ class Cluster extends Model
     public function getSuggestionsAttribute(): ?string
     {
         return $this->suggestions()->content ?? null;
+    }
+
+    public function projects(): HasMany
+    {
+        return $this->hasMany(Project::class, 'cluster_id');
+    }
+
+    public function adminProjects(): Collection
+    {
+        return $this->projects()->orderBy('name')->get();
+    }
+
+    public function publicProjects(): Collection
+    {
+        return $this->projects()->where('is_show',true)
+            ->orderBy('sort')->orderBy('name')
+            ->get();
     }
 
     public function getFormMenuAttribute(): Collection

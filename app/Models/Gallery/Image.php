@@ -85,8 +85,8 @@ class Image extends Model
         $image = $manager->read($file);
 
         if($this->type !== 'ico'){
-            $width  = ($image->width()  > $image->height()) ?1000:1000*$image->width()/$image->height();
-            $height = ($image->height() > $image->width())  ?1000:1000*$image->height()/$image->width();
+            $width  = ($image->width()  > $image->height()) ?2000:2000*$image->width()/$image->height();
+            $height = ($image->height() > $image->width())  ?2000:2000*$image->height()/$image->width();
 
             Storage::put("$path/{$this->filename}/thumbnail.webp",(string)$image->resize($width,$height)->toWebp(90));
         }

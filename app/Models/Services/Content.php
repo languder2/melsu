@@ -4,9 +4,12 @@ namespace App\Models\Services;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Content extends Model
 {
+    use SoftDeletes;
+
     protected $table = 'contents';
 
     protected $fillable = [
@@ -35,6 +38,11 @@ class Content extends Model
             'goals'         => __('projects.Goals and objectives'),
             'structure'     => __('projects.Structure'),
             'suggestions'   => __('projects.Suggestions for cooperation'),
+            'terms'         => __('projects.Terms of implementation'),
+            'funding'       => __('projects.Amount of funding'),
+            'description'   => __('projects.Project Description'),
+            'results'       => __('projects.Results and achievements'),
+            'prospects'     => __('projects.Development prospects'),
             default         => __('projects.Content'),
         };
     }

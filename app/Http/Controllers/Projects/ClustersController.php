@@ -54,7 +54,7 @@ class ClustersController extends Controller
 
     public function delete(?Cluster $current): RedirectResponse
     {
-        $current->delete();-
+        $current->delete();
 
         Log::add($current,'delete');
 

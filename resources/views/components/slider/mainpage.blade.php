@@ -11,10 +11,10 @@
                             <img src="{{asset('storage/images/gallery/uzoxDl581PW0Qzh7NGUlzZcATgbUgUnYIrQOu65s/image.webp')}}" alt="">
                         </a>
                     </div>
-                    <div class="slide">
-                        <a href="#" class="slide-link cursor-pointer">
-                            <img src="{{asset('storage/images/gallery/wIcrdS33mKzu8hRXhHoP1I6wBSoq5DByUYuqXAWZ/image.webp')}}" alt="">
-                        </a>
+                    <div class="slide bg-cover bg-center h-full"
+                        style="background-image: url({{asset('storage/images/gallery/VqccB8QnkZo2QJSedA1VWkcr5dg5XTGteeIdbxOU/image.webp')}})"
+                    >
+
                     </div>
                     <div class="slide">
                             <img src="{{asset('img/Slide.jpg')}}" alt="">

@@ -1,6 +1,6 @@
 @extends("layouts.admin")
 
-@section('title', 'Админ панель: '.__('projects.Projects'))
+@section('title', __('admin.Admin panel: ').__('projects.Projects'))
 
 @section('top-menu')
     @include('projects.admin.includes.admin-menu')
@@ -19,26 +19,41 @@
 
 @section('content')
 
-{{--    <div class="flex flex-col gap-4">--}}
-{{--        @component('documents.admin.category',[--}}
-{{--            'documents'     => $documents,--}}
-{{--            'name'          => 'Без категории',--}}
-{{--            'field'         => $field,--}}
-{{--            'category'      => null,--}}
-{{--            'direction'     => $direction,--}}
-{{--        ])@endcomponent--}}
+    <div class="flex flex-col gap-4">
+        @foreach($clusters as $cluster)
+            @continue($cluster->adminProjects()->isEmpty())
+            @component('projects.admin.cluster',compact("cluster"))@endcomponent
+        @endforeach
 
-{{--        @foreach($list as $category)--}}
-{{--            --}}{{--        @continue($category->customDocuments->isEmpty())--}}
+        <section
+            class="p-4 bg-white shadow"
+        >
+            <div class="grid grid-cols-[auto_auto_2fr_1fr_auto] gap-4 bg-white p-4">
+                <div class="font-semibold">
+                    ID
+                </div>
+                <div class="font-semibold">
+                    Sort
+                </div>
+                <div class="font-semibold">
+                    Name
+                </div>
+                <div class="font-semibold">
+                    Link
+                </div>
+                <div class="font-semibold">
 
-{{--            @component('documents.admin.category',[--}}
-{{--                'documents'     => $category->customDocuments()->orderBy($field,$direction)->get(),--}}
-{{--                'name'          => $category->name,--}}
-{{--                'field'         => $field,--}}
-{{--                'category'      => $category,--}}
-{{--                'direction'     => $direction,--}}
-{{--            ])@endcomponent--}}
+                </div>
 
-{{--        @endforeach--}}
-{{--    </div>--}}
+                @foreach($projects as $item)
+                    @component('projects.admin.project',compact('item')) @endcomponent
+                @endforeach
+            </div>
+
+
+
+        </section>
+
+
+    </div>
 @endsection

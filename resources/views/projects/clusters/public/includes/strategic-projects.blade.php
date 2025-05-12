@@ -4,12 +4,11 @@
         -mb-8
     "
 >
-    <div class="container text-white pt-40 pb-14 flex flex-col lg:flex-row gap-4 justify-between">
+    <div class="container text-white pt-20 pb-14 flex flex-col lg:flex-row gap-4 justify-between">
         <div class="flex-1 flex flex-col gap-4 lg:max-w-1/3">
             <h3 class="font-semibold text-3xl uppercase">
                 Системообразующие проекты
             </h3>
-            <div class="flex-grow"></div>
             <div class="font-semibold text-xl">
                 Вместе мы создаем будущее!
             </div>
@@ -25,7 +24,7 @@
                 НОЦ мирового уровня «НовоРоссия – форпост русских технологий»
             </h3>
             <p class="">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                При активном участии ФГБОУ «Мелитопольский государственный университет» подготовлен проект по созданию в нашем регионе научно-образовательного центра мирового уровня «НовоРоссия — форпост русских технологий».
             </p>
         </div>
 

@@ -6,19 +6,18 @@ use Illuminate\Support\Facades\View;
 use App\Http\Controllers\Projects\ClustersController;
 use App\Http\Controllers\Projects\ProjectsController;
 
-
 Route::prefix('admin/projects')->group(function () {
     Route::get('/', [ProjectsController::class, 'admin'])->name('projects.admin');
-    Route::get('form/{project?}', [ProjectsController::class, 'form'])->name('projects.form');
-    Route::post('save/{project?}', [ProjectsController::class, 'save'])->name('projects.save');
-    Route::get('delete/{project?}', [ProjectsController::class, 'delete'])->name('projects.delete');
+    Route::get('form/{current?}', [ProjectsController::class, 'form'])->name('projects.form');
+    Route::post('save/{current?}', [ProjectsController::class, 'save'])->name('projects.save');
+    Route::get('delete/{current?}', [ProjectsController::class, 'delete'])->name('projects.delete');
 });
 
 Route::prefix('projects')->group(function () {
     Route::get('/', [ProjectsController::class, 'public'])->name('projects.list');
-    Route::get('{project?}', [ProjectsController::class, 'project'])->name('projects.project');
-    Route::get('{project?}/news/{news?}', [ProjectsController::class, 'news'])->name('projects.news');
-    Route::get('{project?}/gallery', [ProjectsController::class, 'gallery'])->name('projects.gallery');
+    Route::get('{current?}', [ProjectsController::class, 'single'])->name('projects.single');
+    Route::get('{current?}/news/{news?}', [ProjectsController::class, 'news'])->name('projects.news');
+    Route::get('{current?}/gallery', [ProjectsController::class, 'gallery'])->name('projects.gallery');
 });
 
 Route::prefix('admin/clusters')->group(function () {

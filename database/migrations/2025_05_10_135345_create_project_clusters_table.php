@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('project_clusters', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->text('name');
             $table->string('code')->unique()->nullable();
 
             $table->unsignedInteger('sort')->default(1000);

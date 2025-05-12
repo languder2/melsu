@@ -1,17 +1,17 @@
 @extends("layouts.admin")
 
-@section('title', 'Админ панель: Бессмертный и Научный полки')
+@section('title', __('admin.Admin panel: ').__('projects.Projects'))
 
 @section('top-menu')
-    @include('documents.admin.includes.admin-menu')
+    @include('projects.admin.includes.admin-menu')
 @endsection
 
 @section('content-header')
     @component('admin.components.content-header')
-        @if($document->exists)
-            Редактирование документа: {{$document->title}}
+        @if($current->exists)
+            {{ __('admin.Edit') }}: {{$current->name}}
         @else
-            Добавить документ
+            {{ __('admin.Create') }}
         @endif
     @endcomponent
 @endsection
@@ -19,9 +19,10 @@
 @section('content')
     <x-head.tinymce-config/>
     <form
-        action="{{route('admin:division:save')}}"
+        action="{{ $current->save }}"
         method="POST"
         enctype="multipart/form-data"
+        class="pb-60"
     >
         @csrf
 
@@ -30,12 +31,26 @@
         <div class="grid grid-cols-[400px_minmax(400px,1200px)] mx-auto gap-4">
 
             <div>
-                @include('divisions.admin.form.menu')
+                <div class="sticky top-0">
+                    @foreach($current->form_menu as $item)
+                        @component('admin.components.form-menu-item',$item) @endcomponent
+                    @endforeach
 
-                <x-form.submit
-                    class="uppercase"
-                    value="сохранить"
-                />
+                    <div class="flex flex-row-reverse justify-between">
+                        @component('components.form.submit',[
+                            'name'          => 'save',
+                            'class'         => "uppercase",
+                            'value'         => "сохранить",
+                        ])@endcomponent
+
+                        @component('components.form.submit',[
+                            'name'          => 'close-save',
+                            'class'         => "uppercase",
+                            'value'         => "сохранить и закрыть",
+                        ])@endcomponent
+
+                    </div>
+                </div>
             </div>
 
             <div>
@@ -43,19 +58,13 @@
                     setTheme="1"
                 />
 
-{{--                @include('divisions.admin.form.section-base')--}}
-{{--                @component('components.form.sections.contacts',compact('current')) @endcomponent--}}
-{{--                @component('components.form.sections.staffs',compact('current')) @endcomponent--}}
-{{--                @component('components.form.sections.documents',compact('current')) @endcomponent--}}
-{{--                @component('components.form.sections.contents',compact('current')) @endcomponent--}}
-{{--                @component('news.admin.includes.section',        compact('current'))--}}
-{{--                    tab_news--}}
-{{--                @endcomponent--}}
+                @foreach($current->form_menu as $menuItem)
+                    @continue(empty($menuItem['section']))
 
+                    @include($menuItem['section'])
+                @endforeach
             </div>
-
         </div>
 
     </form>
-
 @endsection
