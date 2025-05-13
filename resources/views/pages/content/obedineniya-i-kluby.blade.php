@@ -204,7 +204,7 @@
         </a>
         <a href="https://t.me/ya_gorzhus_mlt" class="grid sm:grid-cols-[minmax(0,_240px)_1fr] group">
             <div>
-                <img class="h-full w-full object-cover" src="{{asset('img/clubs/club-7.jpg')}}" alt="">
+                <img class="h-full w-full object-cover" src="{{asset('img/clubs/club-7.png')}}" alt="">
             </div>
             <div class="bg-white p-5 group-hover:bg-[#C10F1A] transition duration-300 ease-linear">
                 <h2 class="mb-4 font-bold text-xl group-hover:text-white transition duration-300 ease-linear">Патриотический клуб «Я горжусь»</h2>
