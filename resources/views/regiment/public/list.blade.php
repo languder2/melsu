@@ -16,7 +16,9 @@
 <div class="flex flex-col gap-6">
 
     @include('regiment.public.introduction')
-
+    @if($type->name === 'Immortal')
+        @include('regiment.public.plan')
+    @endif
     @include('regiment.public.filter')
 
     @include('regiment.public.mobile-menu')
