@@ -31,6 +31,8 @@ class Cluster extends Model
 
     protected $dates = ['deleted_at'];
 
+    public bool $open = true;
+
     public function FormRules():array
     {
         return [
@@ -188,6 +190,16 @@ class Cluster extends Model
     public function getSuggestionsAttribute(): ?string
     {
         return $this->suggestions()->content ?? null;
+    }
+
+    public function setOpen():bool
+    {
+        if($this->open){
+            $this->open = false;
+            return true;
+        }
+
+        return false;
     }
 
     public function projects(): HasMany
