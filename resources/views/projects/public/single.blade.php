@@ -30,7 +30,7 @@
                 Проекты
             </h4>
 
-            @foreach($current->cluster->publicProjects() ?? [] as $project)
+            @foreach($current->cluster->publicProjects() as $project)
                 @component('projects.clusters.public.includes.project',compact("project")) @endcomponent
             @endforeach
 
@@ -42,9 +42,16 @@
             </h4>
 
             @if($current->getContentsCount())
+                @if($current->relevance)
+                    @component('projects.clusters.public.includes.content',[
+                        'item'      => $current->relevance(),
+                        'open'      => $current->isOpen()
+                    ]) @endcomponent
+                @endif
 
                 @component('projects.clusters.public.includes.content',[
-                    'item'      => $current->relevance()
+                    'item'      => $current->relevance(),
+                    'open'      => $current->isOpen()
                 ]) @endcomponent
 
                 @component('projects.clusters.public.includes.content',[
@@ -74,16 +81,6 @@
                 <img src="{{ asset('img/plugs/c1.gif') }}" alt="under construct"/>
             @endif
         </div>
-
-{{--        <div class="flex flex-col gap-4">--}}
-{{--            <h4 class="border-b border-b-black text-lg text-center">--}}
-{{--                Медиа--}}
-{{--            </h4>--}}
-
-{{--            <img src="{{ asset('img/clusters/image-0.jpg') }}" alt=""/>--}}
-{{--            <img src="{{ asset('img/clusters/image-1.jpg') }}" alt=""/>--}}
-{{--            <img src="{{ asset('img/clusters/image-2.jpg') }}" alt=""/>--}}
-{{--        </div>--}}
     </div>
 
 @endsection

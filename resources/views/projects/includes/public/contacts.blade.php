@@ -1,4 +1,4 @@
-<div class="grid gap-4 grid-cols-2 -mt-4">
+<div class="grid gap-4 grid-cols-2 -mt-4 hidden11">
 
     <div class="flex gap-4 bg-white">
         <img src="{{asset('img/clusters/photo.jpg')}}" alt=""/>
