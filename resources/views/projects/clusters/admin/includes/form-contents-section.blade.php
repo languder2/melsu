@@ -28,4 +28,8 @@
         'content'   => $current->suggestions()
     ])@endcomponent
 
+    @component('contents.admin.includes.fixed-block',[
+        'content'   => $current->availableResources()
+    ])@endcomponent
+
 </div>

@@ -40,6 +40,9 @@
         'content'   => $current->prospects()
     ])@endcomponent
 
+    @component('contents.admin.includes.fixed-block',[
+        'content'   => $current->availableResources()
+    ])@endcomponent
 
 
 </div>

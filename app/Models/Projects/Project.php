@@ -209,6 +209,14 @@ class Project extends Model
     {
         return $this->prospects()->content ?? null;
     }
+    public function availableResources(): Content
+    {
+        return $this->getContent('available_resources');
+    }
+    public function getAvailableResourcesAttribute(): ?string
+    {
+        return $this->availableResources()->content ?? null;
+    }
 
     public static function independentProjects(): Collection
     {
@@ -240,6 +248,20 @@ class Project extends Model
                 'tab'       => 'tab_contents',
                 'text'      => 'Секции контента',
                 'section'   => 'projects.admin.includes.form-contents-section',
+            ],
+            [
+                'tabs'      => 'form_box',
+                'tab'       => 'tab_documents',
+                'text'      => 'Документы',
+                'section'   => '',
+                'disabled'  => !$this->exists
+            ],
+            [
+                'tabs'      => 'form_box',
+                'tab'       => 'tab_links',
+                'text'      => 'Ссылки',
+                'section'   => '',
+                'disabled'  => !$this->exists
             ],
         ]);
     }

@@ -182,7 +182,6 @@ class Cluster extends Model
     {
         return $this->structure()->content ?? null;
     }
-
     public function suggestions(): Content
     {
         return $this->getContent('suggestions');
@@ -190,6 +189,14 @@ class Cluster extends Model
     public function getSuggestionsAttribute(): ?string
     {
         return $this->suggestions()->content ?? null;
+    }
+    public function availableResources(): Content
+    {
+        return $this->getContent('available_resources');
+    }
+    public function getAvailableResourcesAttribute(): ?string
+    {
+        return $this->availableResources()->content ?? null;
     }
 
     public function isOpen():bool
@@ -243,11 +250,25 @@ class Cluster extends Model
                 'section'   => 'components.form.sections.contacts',
                 'disabled'  => !$this->exists
             ],
+//            [
+//                'tabs'      => 'form_box',
+//                'tab'       => 'tab_staffs',
+//                'text'      => 'Сотрудники',
+////                'section'   => 'components.form.sections.staffs',
+//                'section'   => '',
+//                'disabled'  => !$this->exists
+//            ],
             [
                 'tabs'      => 'form_box',
-                'tab'       => 'tab_staffs',
-                'text'      => 'Сотрудники',
-//                'section'   => 'components.form.sections.staffs',
+                'tab'       => 'tab_documents',
+                'text'      => 'Документы',
+                'section'   => '',
+                'disabled'  => !$this->exists
+            ],
+            [
+                'tabs'      => 'form_box',
+                'tab'       => 'tab_links',
+                'text'      => 'Ссылки',
                 'section'   => '',
                 'disabled'  => !$this->exists
             ],

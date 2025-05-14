@@ -6,6 +6,8 @@ return [
     'Goals and objectives'          => 'Цели и задачи',
     'Structure'                     => 'Структура',
     'Suggestions for cooperation'   => 'Предложения к сотрудничеству',
+    'Available resources'           => 'Имеющиеся ресурсы',
+
     'Content'                       => 'Контент',
 
     'Projects'                      => 'Проекты',
