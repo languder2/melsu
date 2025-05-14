@@ -18,7 +18,13 @@
 
     </section>
 
+
     <div class="max-w-[96rem] mx-auto -mb-10">
+
+        <h3 class="text-3xl font-semibold mb-4 pt-2">
+            Кластеры
+        </h3>
+
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
             @foreach($list as $item)
                 <a href="{{ $item->link }}"

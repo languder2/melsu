@@ -192,14 +192,14 @@ class Cluster extends Model
         return $this->suggestions()->content ?? null;
     }
 
-    public function setOpen():bool
+    public function isOpen():bool
     {
-        if($this->open){
-            $this->open = false;
-            return true;
-        }
+        $response = $this->open;
 
-        return false;
+        if($this->open)
+            $this->open = false;
+
+        return $response;
     }
 
     public function projects(): HasMany

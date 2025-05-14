@@ -18,6 +18,8 @@ class Project extends Model
 
     protected $table = 'projects';
 
+    public bool $open = true;
+
     protected $fillable = [
         'name',
         'code',
@@ -211,6 +213,16 @@ class Project extends Model
     public static function independentProjects(): Collection
     {
         return self::whereNull('cluster_id')->get();
+    }
+
+    public function isOpen():bool
+    {
+        $response = $this->open;
+
+        if($this->open)
+            $this->open = false;
+
+        return $response;
     }
 
     public function getFormMenuAttribute(): Collection

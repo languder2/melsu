@@ -45,24 +45,33 @@
             </h4>
             @if($current->getContentsCount())
 
-                @component('projects.clusters.public.includes.content',[
-                    'item'      => $current->relevance(),
-                    'open'      => true
-                ]) @endcomponent
+                @if($current->relevance)
+                    @component('projects.clusters.public.includes.content',[
+                        'item'      => $current->relevance(),
+                        'open'      => $current->isOpen()
+                    ]) @endcomponent
+                @endif
 
-                @component('projects.clusters.public.includes.content',[
-                    'item'      => $current->goals()
-                ]) @endcomponent
+                @if($current->goals)
+                    @component('projects.clusters.public.includes.content',[
+                        'item'      => $current->goals(),
+                        'open'      => $current->isOpen()
+                    ]) @endcomponent
+                @endif
 
-                @component('projects.clusters.public.includes.content',[
-                    'item'      => $current->structure()
-                ]) @endcomponent
+                @if($current->structure)
+                    @component('projects.clusters.public.includes.content',[
+                        'item'      => $current->structure(),
+                        'open'      => $current->isOpen()
+                    ]) @endcomponent
+                @endif
 
-                @component('projects.clusters.public.includes.content',[
-                    'item'      => $current->suggestions()
-                ]) @endcomponent
-
-
+                @if($current->suggestions)
+                    @component('projects.clusters.public.includes.content',[
+                        'item'      => $current->suggestions(),
+                        'open'      => $current->isOpen()
+                    ]) @endcomponent
+                @endif
             @else
                 <img src="{{ asset('img/plugs/c1.gif') }}" alt="under construct"/>
             @endif

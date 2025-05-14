@@ -1,5 +1,5 @@
 @if($item->content)
-    <div @isset($open) open @endisset class="content-block group border-l border-l-base-red px-2">
+    <div @if($open ?? null) open @endif class="content-block group border-l border-l-base-red px-2">
         <a
             href="#"
             open
