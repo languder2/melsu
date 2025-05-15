@@ -14,6 +14,7 @@
 @endsection
 
 @section('content')
+
     <section class="container px-2 pb-8">
 
 
@@ -62,11 +63,10 @@
             @break
 
             @case('news')
-
-                @if($division->news->find($op))
-                    @component('news.public.relations.item',['news' => $division->news->find($op)])@endcomponent
+                @if($division->getNewsCollection()->find($op))
+                    @component('news.public.relations.item',['news' => $division->getNewsCollection()->find($op)])@endcomponent
                 @else
-                    @component('news.public.relations.for-education',['list' => $division->news])@endcomponent
+                    @component('news.public.relations.for-education',['list' => $division->getNewsCollection()])@endcomponent
                 @endif
             @break
 

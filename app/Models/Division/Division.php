@@ -427,6 +427,35 @@ class Division extends Model
         };
     }
 
+    public function getIDCollection(&$list = []): ?array
+    {
+        $list[] = $this->id;
+
+        if($this->subs->count())
+            foreach ($this->subs as $sub)
+                $sub->getIDCollection($list);
+
+        return $list;
+    }
+
+    public function getNewsCollection()
+    {
+        $ids    = $this->getIDCollection();
+
+        $news   = RelationNews::where('is_show',true)
+            ->whereIn('relation_id',$ids)
+            ->where('relation_type',Division::class)
+            ->where('published_at', '<=', Carbon::now())
+            ->orderBy('is_favorite', 'desc')
+            ->orderBy('sort', 'asc')
+            ->orderBy('published_at','desc')
+            ->orderBy('title')
+            ->get();
+
+        return $news;
+    }
+
+
 
 }
 
