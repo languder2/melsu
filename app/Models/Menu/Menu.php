@@ -275,10 +275,10 @@ class Menu extends Model
         $code = $division->code ?? $division->id;
 
         $menu = (object)[
-            'name'  => 'Колледж',
+            'name'  => 'Филиал',
             'items' => collect([
                 (object)[
-                    'name' => "О колледже",
+                    'name' => "Об филиале",
                     'link' => route('public:education:division', [$division->type, $code]),
                 ],
             ]),
@@ -308,10 +308,10 @@ class Menu extends Model
             'link' => url('incoming'),
         ]);
 
-        $menu->items->push((object)[
+       /* $menu->items->push((object)[
             'name' => "Наука",
             'link' => url('science'),
-        ]);
+        ]);*/
 
         $menu->items->push((object)[
             'name' => "История",
