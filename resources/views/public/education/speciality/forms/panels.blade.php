@@ -49,19 +49,22 @@
                         Мест на платной основе
                     @endcomponent
                 </div>
+                <div>
                 @component('public.education.speciality.basis.places',[
                      'profile'   => $profile,
-                     'basis'     => 'budgetspo'
+                     'basis'     => 'budgetooo'
                  ])
-                    Мест на бюджете СОО
+                    Мест на бюджете ООО
                 @endcomponent
-
+                </div>
+                <div>
                 @component('public.education.speciality.basis.places',[
                        'profile'   => $profile,
-                       'basis'     => 'contractspo',
+                       'basis'     => 'contractooo',
                    ])
-                    Мест на платной основе СОО
+                    Мест на платной основе ООО
                 @endcomponent
+                </div>
             </div>
 
 

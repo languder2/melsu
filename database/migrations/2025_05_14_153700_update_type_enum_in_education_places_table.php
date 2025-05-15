@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up()
     {
-        DB::statement("ALTER TABLE education_places MODIFY type ENUM('budget','contract','budgetspo','contractspo') NOT NULL");
+        DB::statement("ALTER TABLE education_places MODIFY type ENUM('budget','contract','budgetooo','contractooo') NOT NULL");
     }
 
     /**
