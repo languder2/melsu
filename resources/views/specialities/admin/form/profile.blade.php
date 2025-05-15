@@ -158,6 +158,14 @@
                     />
 
                     <x-form.input
+                        id="form_profiles_{{$form->name}}_places_{{$basis}}"
+                        name="profiles[{{$form->name}}][places][{{ $basis->value == 'budget' ? 'budgetspo' : 'contractspo' }}]"
+                        type="number"
+                        label="Кол-во мест СОО"
+                        :value='old("profiles.{$form->name}.places.{$basis->value}") ?? $profile->placesByType($basis) ?? null'
+                    />
+
+                    <x-form.input
                         id="form_profiles_{{$form->name}}_score_{{$basis}}"
                         type="number"
                         max="300"

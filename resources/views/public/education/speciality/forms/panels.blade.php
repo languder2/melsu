@@ -32,19 +32,35 @@
                 </div>
             </div>
 
-            <div class="flex gap-4 flex-col lg:flex-row p-4 ">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 p-4 ">
+                <div>
+                    @component('public.education.speciality.basis.places',[
+                        'profile'   => $profile,
+                        'basis'     => EducationBasis::Budget,
+                    ])
+                        Мест на бюджете
+                    @endcomponent
+                </div>
+                <div>
+                    @component('public.education.speciality.basis.places',[
+                        'profile'   => $profile,
+                        'basis'     => EducationBasis::Contract,
+                    ])
+                        Мест на платной основе
+                    @endcomponent
+                </div>
                 @component('public.education.speciality.basis.places',[
-                    'profile'   => $profile,
-                    'basis'     => EducationBasis::Budget,
-                ])
-                    Мест на бюджете
+                     'profile'   => $profile,
+                     'basis'     => 'budgetspo'
+                 ])
+                    Мест на бюджете СОО
                 @endcomponent
 
                 @component('public.education.speciality.basis.places',[
-                    'profile'   => $profile,
-                    'basis'     => EducationBasis::Contract,
-                ])
-                    Мест на платной основе
+                       'profile'   => $profile,
+                       'basis'     => 'contractspo',
+                   ])
+                    Мест на платной основе СОО
                 @endcomponent
             </div>
 
