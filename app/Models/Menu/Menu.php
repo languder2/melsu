@@ -308,6 +308,10 @@ class Menu extends Model
             'link' => url('incoming'),
         ]);
 
+       /* $menu->items->push((object)[
+            'name' => "Наука",
+            'link' => url('science'),
+        ]);*/
 
         $menu->items->push((object)[
             'name' => "История",
