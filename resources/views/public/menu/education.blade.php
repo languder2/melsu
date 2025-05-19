@@ -5,7 +5,8 @@
                 {!! $division->menu->name !!}
             </h4>
         </li>
-        @foreach($division->menu ->items as $item)
+        @foreach($division->menu->items as $item)
+            @continue($item->hide ?? null)
             @if($item->link === url()->current())
                 <li class="py-2">
                     <span class="text-base-red font-semibold ">
