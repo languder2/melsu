@@ -2,135 +2,91 @@
 
 namespace App\Http\Controllers;
 
-use App\Enums\EducationForm;
-use App\Models\Education\Speciality;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\View\View;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\Import;
-use App\Models\Division\Division;
-use App\Models\Staff\Staff;
-use App\Models\Staff\Affiliation;
+use App\Models\Import\FinanceReport;
+
 class ImportController extends Controller
 {
-    public function DepartmentsGetFile()
+
+    public function financeReport(Request $request)
     {
+        if ($request->hasFile('file')) {
 
-        return view('pages.admin', [
-            'contents' => [
-                View('admin.Imports.form'),
-            ]
-        ]);
-    }
+            $import = new Import();
 
-    public function DepartmentsUpdate(Request $request)
-    {
+            $import->sheet = $request->get('sheet');
 
-        if(!$request->file('file'))
-            dd('no file');
+            Excel::import($import, $request->file('file'));
 
-        Affiliation::truncate();
-
-        $import = new Import();
-
-        Excel::import($import, $request->file('file'));
-
-        $data = $import->getData();
-
-        $counter = 0;
-        $staffs = (object)[
-            'exist' => 0,
-            'no_exist' => 0,
-        ];
-
-        foreach ($data as $rowID=>$row) {
-
-            $type= 'staff';
-
-            if($row[0]){
-                $department = Division::where('name',trim($row[0]))->first();
-                $type = 'chief';
-            }
+        }
 
 
-            if($row[5] && !$department)
-                $department = Division::find($row[5]);
+        $list = FinanceReport::select('name')
+            ->selectRaw('SUM(amount) as amount')
+            ->groupBy('name')
+            ->get();
 
-            if($row[0] && !$department){
-                $counter++;
-                echo "<div style='display: flex; gap: 20px; margin-top: 10px;'>";
-                    echo "<div style='width: 10ch'>$counter</div>";
-                    echo "<div style='width: 10ch'>{$row[1]}</div>";
-                    echo "<div>{$row[0]}</div>";
-                echo "</div>";
-            }
+        $result = collect([]);
 
-            if(!$department)
-                continue;
-
-            $fullName = trim($row[4]);
-
-            if(!$fullName)
-                continue;
-
-            $fullName = explode(' ', $fullName);
-
-            $staff = Staff
-                ::where('lastname',@$fullName[0])
-                ->where('firstname',@$fullName[1])
-                ->where('middle_name',@$fullName[2])
-                ->first();
-
-            if(!$staff)
-                $staff = Staff::create([
-                    'lastname'      => @$fullName[0] ?? null,
-                    'firstname'     => @$fullName[1] ?? null,
-                    'middle_name'   => @$fullName[2] ?? null,
-                ]);
-
-            $post = trim($row[2]);
-            $post = strip_tags($post);
-            $post = str_replace(PHP_EOL,'',$post);
-
-            $item = $department->staffs()->create([
-                'type'      => $type,
-                'staff_id'  => @$staff->id,
-                'post'      => $post,
-                'full_name' => $staff->full_name ?? null,
+        for($i=1;$i<=34;$i++)
+            $result->put($i, (object)[
+                'count'     => 0,
+                'amount'    => 0,
             ]);
+
+
+        foreach ($list as $item) {
+            $item->group = match(true){
+                $item->amount > 0 && $item->amount <= 22440             => 1,
+                $item->amount > 22440 && $item->amount <= 23550         => 2,
+                $item->amount > 23550 && $item->amount <= 24670         => 3,
+                $item->amount > 24670 && $item->amount <= 25790         => 4,
+                $item->amount > 25790 && $item->amount <= 26920         => 5,
+                $item->amount > 26920 && $item->amount <= 29170         => 6,
+                $item->amount > 29170 && $item->amount <= 31410         => 7,
+                $item->amount > 31410 && $item->amount <= 33650         => 8,
+                $item->amount > 33650 && $item->amount <= 35900         => 9,
+                $item->amount > 35900 && $item->amount <= 38140         => 10,
+                $item->amount > 38140 && $item->amount <= 40390         => 11,
+                $item->amount > 40390 && $item->amount <= 42630         => 12,
+                $item->amount > 42630 && $item->amount <= 44870         => 13,
+                $item->amount > 44870 && $item->amount <= 47120         => 14,
+                $item->amount > 47120 && $item->amount <= 49360         => 15,
+                $item->amount > 49360 && $item->amount <= 51610         => 16,
+                $item->amount > 51610 && $item->amount <= 53850         => 17,
+                $item->amount > 53850 && $item->amount <= 56090         => 18,
+                $item->amount > 56090 && $item->amount <= 58340         => 19,
+                $item->amount > 58340 && $item->amount <= 60580         => 20,
+                $item->amount > 60580 && $item->amount <= 62630         => 21,
+                $item->amount > 62630 && $item->amount <= 65070         => 22,
+                $item->amount > 65070 && $item->amount <= 67300         => 23,
+                $item->amount > 67300 && $item->amount <= 70000         => 24,
+                $item->amount > 70000 && $item->amount <= 80000         => 25,
+                $item->amount > 80000 && $item->amount <= 100000        => 26,
+                $item->amount > 100000 && $item->amount <= 150000       => 27,
+                $item->amount > 150000 && $item->amount <= 200000       => 28,
+                $item->amount > 200000 && $item->amount <= 400000       => 29,
+                $item->amount > 400000 && $item->amount <= 1000000      => 30,
+                $item->amount > 1000000 && $item->amount <= 2000000     => 31,
+                $item->amount > 2000000 && $item->amount <= 3000000     => 32,
+                $item->amount > 3000000                                 => 33,
+
+            };
+
+            $result[$item->group]->count++;
+            $result[$item->group]->amount += $item->amount;
+
+
+            $result[34]->count++;
+            $result[34]->amount += $item->amount;
+
         }
+
+        return view('imports.finance.report', compact('result'));
 
     }
 
-    public function setScores()
-    {
-        $import = new Import();
-
-        Excel::import($import, Storage::disk('public')->path('xlsx/specialities.xlsx'));
-
-        $data = $import->getData();
-
-        foreach ($data as $rodID=>$item) {
-            $speciality = Speciality::find($item[0]);
-
-            if(!$speciality) {
-                dump("$rodID: no speciality found");
-                continue;
-            }
-
-            $speciality->fill(['show'=>true])->save();
-
-            $profile =
-                $speciality->profileByForm($item[1])
-                ?? $speciality->profiles()->create(['form'  => EducationForm::tryFrom($item[1])]);
-
-            $profile->fill(['show'=>true])->save();
-
-            $score = $profile->score()->firstWhere('type',$item[2])
-                ?? $profile->score()->create(['type'=>$item[2]]);
-
-            $score->fill(['score'=>$item[3]])->save();
-        }
-
-    }
 }

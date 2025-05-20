@@ -42,6 +42,8 @@ require __DIR__.'/documents.php';
 require __DIR__.'/news.php';
 require __DIR__.'/projects.php';
 
+require __DIR__.'/system.php';
+
 Route::prefix('cabinet')->group(function () {
     require __DIR__.'/cabinet.php';
 });
@@ -135,6 +137,7 @@ Route::get('test/view', [TestController::class,'view']);
 
 
 /* Pages */
+
 
 
 Route::get('{alias}', [PagesController::class, 'showPage']);
