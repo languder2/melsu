@@ -59,21 +59,19 @@
     </div>
     <div class="info-under-slider">
         <div class="box-info-under-slider">
-            <a href="{{url('notsmu')}}" class="under-info flex items-center">
-                    <span class="icon-box">
-                        <svg aria-hidden="true"
-                             class="e-font-icon-svg e-fas-microscope"
-                             viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M160 320h12v16c0 8.84 7.16 16 16 16h40c8.84 0 16-7.16 16-16v-16h12c17.67 0 32-14.33 32-32V64c0-17.67-14.33-32-32-32V16c0-8.84-7.16-16-16-16h-64c-8.84 0-16 7.16-16 16v16c-17.67 0-32 14.33-32 32v224c0 17.67 14.33 32 32 32zm304 128h-1.29C493.24 413.99 512 369.2 512 320c0-105.88-86.12-192-192-192v64c70.58 0 128 57.42 128 128s-57.42 128-128 128H48c-26.51 0-48 21.49-48 48 0 8.84 7.16 16 16 16h480c8.84 0 16-7.16 16-16 0-26.51-21.49-48-48-48zm-360-32h208c4.42 0 8-3.58 8-8v-16c0-4.42-3.58-8-8-8H104c-4.42 0-8 3.58-8 8v16c0 4.42 3.58 8 8 8z">
-                            </path>
-                            </svg>
+            <a href="{{ route('clusters.list') }}" class="under-info flex gap-2 items-center">
+                    <span>
+                        <svg width="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20.663 8.85C21.2522 6.81022 21.0868 5.03955 20.0236 3.97636C17.7744 1.7271 12.3587 3.49602 7.92736 7.92736C7.45397 8.40074 7.01097 8.88536 6.6 9.37615M17.4 14.6238C16.989 15.1146 16.546 15.5993 16.0726 16.0726C11.6413 20.504 6.22562 22.2729 3.97636 20.0236C2.83569 18.883 2.72842 16.928 3.47772 14.7" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12.6734 9.30078L10.9223 11.3711C10.7086 11.6483 10.6017 11.7869 10.6679 11.8938C10.7341 12.0008 10.9268 12.0008 11.3122 12.0008H12.6847C13.0701 12.0008 13.2627 12.0008 13.329 12.1077C13.3952 12.2147 13.2883 12.3533 13.0745 12.6304L11.3122 14.7008" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M9.75 17.7059C9.13145 17.2114 8.52058 16.6659 7.92736 16.0726C3.49602 11.6413 1.7271 6.22562 3.97636 3.97636C5.11702 2.83569 7.07202 2.72842 9.3 3.47772M14.25 20.3607C16.6631 21.2813 18.8068 21.2405 20.0236 20.0236C22.2729 17.7744 20.504 12.3587 16.0726 7.92736C15.4794 7.33413 14.8686 6.78862 14.25 6.29407" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
                     </span>
-                <span class="text-under-info text-lg">
+                <span class="text-under-info text-2xl font-semibold">
                     Флагманские проекты
                 </span>
             </a>
-            <a href="{{url('programma-razvitiya-melsu')}}" class="under-info flex items-center">
+            <a href="{{url('programma-razvitiya-melsu')}}" class="under-info flex gap-2 items-center">
                     <span class="icon-box">
                         <svg aria-hidden="true"
                              class="e-font-icon-svg e-far-calendar-alt"
@@ -84,7 +82,7 @@
                             </path>
                         </svg>
                     </span>
-                <span class="text-under-info text-lg">
+                <span class="text-under-info text-2xl font-semibold">
                         Программа развития МелГУ на 2023-2028 годы
                     </span>
             </a>
