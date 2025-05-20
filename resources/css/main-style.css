@@ -6299,3 +6299,165 @@ li.h--timeline-event.h--timeline-event--selected.text-component {
         font-size: 150px !important;
     }
 }
+
+/*Mission style*/
+
+.misson-melsu-box{
+    box-sizing: border-box;
+    height: 720px;
+    background-image: url("../../public_html/img/melsu-unv.jpg");
+    background-size: 65% 100%;
+    background-repeat: no-repeat;
+    background-position: right;
+}
+
+.misson-melsu-box h2{
+    width: 26%;
+    padding-right: 40px;
+    margin-left: 5%;
+    line-height: inherit;
+}
+.mission-slider{
+    width: 50%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+.mission-slider-content{
+    padding: 60px;
+    padding-left: 30%;
+    min-width: 840px;
+    min-height: 444px;
+}
+.point-number {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: all 0.6s ease-in-out;
+    pointer-events: none;
+}
+
+.point-number.active{
+    font-size: 64px;
+    height: 55px;
+    line-height: 55px;
+    opacity: 1;
+    transform: translateY(0);
+    z-index: 3;
+}
+.point-number.next{
+    font-size: 40px;
+    opacity: 0.4;
+    transform: translateY(60px);
+    z-index: 2;
+}
+.point-number.last{
+    font-size: 20px;
+    opacity: 0.2;
+    transform: translateY(120px);
+    z-index: 1;
+}
+.btn-box button.inactive{
+    background-color: white !important;
+    opacity: 50% !important;
+    pointer-events: none !important;
+}
+.point-number.animate-up {
+    transform: translateY(-100px) !important;
+    opacity: 0 !important;
+}
+.point-number.animate-down {
+    transform: translateY(120px) !important;
+}
+.text-container{
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 1;
+    transition: transform 0.6s ease-in-out, opacity 0.6s ease-in-out;
+}
+.text-container.slide-up {
+    transform: translateY(-50px);
+    opacity: 0;
+}
+@media screen and (max-width: 1279px){
+    .misson-melsu-box{
+        height: 620px;
+    }
+    .misson-melsu-box h2{
+        width: 44%;
+        padding-right: 0;
+        margin-left: 0;
+        line-height: inherit;
+    }
+    .mission-slider-content {
+        padding: 30px;
+        padding-left: 13%;
+        min-width: 840px;
+        min-height: 340px;
+    }
+}
+@media screen and (max-width: 1023px) {
+    .misson-melsu-box {
+        height: 570px;
+        background-size: 45% 100%;
+        background-image: url("../../public_html/img/bg.webp");
+    }
+    .mission-slider {
+        width: 90%;
+    }
+    .mission-slider-content {
+        padding-left: 10px;
+        min-width: 590px;
+        min-height: 290px;
+    }
+}
+@media screen and (max-width: 700px){
+    .mission-slider{
+        position: relative;
+        bottom: -14%;
+    }
+    .mission-slider-content{
+        min-width: 97%;
+    }
+}
+@media screen and (max-width: 635px){
+    .mission-slider-content{
+        min-width: 94%;
+    }
+    .misson-melsu-box {
+        background-size: 30% 100%;
+    }
+    .mission-slider-content {
+        min-width: 100%;
+    }
+}
+@media screen and (max-width: 560px){
+    .misson-melsu-box{
+        background-image: none;
+    }
+    .misson-melsu-box h2{
+        width: 100%;
+        br{
+            display: none;
+        }
+    }
+    .mission-slider {
+        bottom: -3.5%;
+    }
+    .mission-slider-content {
+        min-height: 385px;
+        min-width: 98%;
+    }
+}
+@media screen and (max-width: 480px){
+    .mission-slider-content {
+        min-width: 95%;
+    }
+}
+@media screen and (max-width: 380px){
+    .mission-slider-content {
+        min-width: 92%;
+    }
+}
+/*END Mission style*/
