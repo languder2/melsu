@@ -2,27 +2,46 @@
 
 namespace App\Imports;
 
+use App\Models\Import\FinanceReport;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Collection;
-use Maatwebsite\Excel\Concerns\ToArray;
-use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use Maatwebsite\Excel\Concerns\ToCollection;
+use Maatwebsite\Excel\Concerns\ToModel;
+use Maatwebsite\Excel\Concerns\WithChunkReading;
+use Maatwebsite\Excel\Concerns\WithColumnLimit;
+use Maatwebsite\Excel\Concerns\WithLimit;
+use Maatwebsite\Excel\Concerns\WithStartRow;
 
-class Import implements ToArray, WithHeadingRow
+class Import implements toModel, WithChunkReading, WithLimit, WithColumnLimit
 {
+    public ?string $sheet = null;
 
-    private $data = [];
-
-    public function array(array $array)
+    /**
+    * @param Collection $rows
+    */
+    public function chunkSize(): int
     {
-        $this->data = $array;
+        return 2000;
     }
 
-    public function getData(): array
+    public function endColumn(): string
     {
-        return $this->data;
+        return 'C';
     }
 
-    public function headingRow(): int
+    public function limit(): int
     {
-        return 0;
+        return 2000;
+    }
+
+    public function model(array $row)
+    {
+        return new FinanceReport([
+            'name'      => trim($row[1]),
+            'amount'    => $row[2],
+            'row'       => (int)$row[0],
+            'sheet'     => $this->sheet,
+        ]);
     }
 }
+

@@ -67,7 +67,7 @@
                     <a href="{{url('https://melsu.ru/division/154')}}" class="text-md mb-4 hover:opacity-80 hover:text-red-200 w-fit transition duration-300 ease-linear">Инклюзивное образование</a>
                 </div>
                 <div class="grid grid-cols-1">
-                    <a href="{{url('https://edu.gov.ru/')}}" class="text-md mb-4 hover:opacity-80 hover:text-red-200 w-fit transition duration-300 ease-linear">Минпросвещения России</a>
+{{--                    <a href="{{url('https://edu.gov.ru/')}}" class="text-md mb-4 hover:opacity-80 hover:text-red-200 w-fit transition duration-300 ease-linear">Минпросвещения России</a>--}}
                     <a href="{{url('https://minobrnauki.gov.ru/')}}" class="text-md mb-4 hover:opacity-80 hover:text-red-200 w-fit transition duration-300 ease-linear">Минобрнауки России</a>
                     <a href="{{url('nauchnye-issledovaniya-universiteta')}}" class="text-md mb-4 hover:opacity-80 hover:text-red-200 w-fit transition duration-300 ease-linear">Научные исследования университета</a>
                     <a href="{{url('nauchnye-kruzhki')}}" class="text-md mb-4 hover:opacity-80 hover:text-red-200 w-fit transition duration-300 ease-linear">Научно-исследовательская работа студентов</a>
