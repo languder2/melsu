@@ -224,7 +224,7 @@
         </div>
     </div>
     <h2 class="font-semibold py-6 text-xl">
-        Энергодарская АЭС
+        Запорожская АЭС
     </h2>
     <div class="bg-white p-6">
         <p class="mb-3">

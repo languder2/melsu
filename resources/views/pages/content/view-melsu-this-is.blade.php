@@ -103,7 +103,7 @@
                     </div>
                     <div class="info-hex-wrapp flex justify-start load">
                         <div class="info-hex-content center-info-content">
-                            <a href="https://melsu.ru/klyuch-k-uspekhu" class="group ">
+                            <a href="https://melsu.ru/elita-russkogo-mira" class="group ">
                                 <div class="move-block">
                                     <h3 class="font-semibold mb-2 group-hover:text-red-900 transition duration-300 ease-linear">Элита русского мира</h3>
                                     <p class="text-base font-normal line-clamp-4 mb-2">
@@ -117,9 +117,9 @@
                     </div>
                     <div class="info-hex-wrapp flex justify-start load">
                         <div class="info-hex-content">
-                            <a href="https://melsu.ru/elita-russkogo-mira" class="group ">
+                            <a href="https://melsu.ru/MelGU_Vozmozhnosti_rosta" class="group ">
                                 <div class="move-block">
-                                    <h3 class="font-semibold mb-2 group-hover:text-red-900 transition duration-300 ease-linear">Ключ к успеху</h3>
+                                    <h3 class="font-semibold mb-2 group-hover:text-red-900 transition duration-300 ease-linear">Возможности роста</h3>
                                     <p class="text-base font-normal line-clamp-4 mb-2">
                                         В МелГУ представлены 5 основных областей знаний: аграрная, естественно-научная, гуманитарная, инженерно-техническая, медико-биологическая.
                                     </p>
