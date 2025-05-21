@@ -1,8 +1,4 @@
 <div class="flex flex-col gap-4 relative">
-    <h2 class="font-semibold text-xl text-center">
-        ЭЛИТА РУССКОГО МИРА
-    </h2>
-
     <div class="flex flex-col gap-3 bg-white p-4">
 
         <ol class="list-decimal">

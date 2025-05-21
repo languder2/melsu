@@ -72,6 +72,13 @@
                         'open'      => $current->isOpen()
                     ]) @endcomponent
                 @endif
+
+                @if($current->availableResources)
+                    @component('projects.clusters.public.includes.content',[
+                        'item'      => $current->availableResources(),
+                        'open'      => $current->isOpen()
+                    ]) @endcomponent
+                @endif
             @else
                 <img src="{{ asset('img/plugs/c1.gif') }}" alt="under construct"/>
             @endif

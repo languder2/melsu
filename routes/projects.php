@@ -1,8 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\View;
-
 use App\Http\Controllers\Projects\ClustersController;
 use App\Http\Controllers\Projects\ProjectsController;
 
