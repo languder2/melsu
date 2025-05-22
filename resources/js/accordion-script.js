@@ -4,7 +4,8 @@ document.addEventListener('DOMContentLoaded', function () {
         const accordionContentBox = document.querySelectorAll('.accordion-content-box');
         const accordionText = document.querySelectorAll('.accordion-text');
         const accordionBox = document.querySelectorAll('.accordion-box');
-        const accordionArrow = document.querySelectorAll('.accordion-box svg');
+        const accordionArrow = Array.from(document.querySelectorAll('.accordion-box svg'))
+            .filter(svg => !svg.classList.contains('ico-svg'));
         var height = [];
         var defaultHeight = [];
         var rect = [];
