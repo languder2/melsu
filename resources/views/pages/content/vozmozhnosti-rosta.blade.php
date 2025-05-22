@@ -1,4 +1,5 @@
 <section>
+
     <div class="bg-white p-6">
         <p class="mb-3">
             Инновационная система образовательной и научной деятельности МелГУ создана и постоянно совершенствуется для обеспечения формирования основных лидерских качеств и достижения успеха всеми участниками образовательного процесса!
@@ -9,85 +10,83 @@
         <p>
             Учись в МелГУ воплощать свои мечты в реальность, ставить чёткие и ясные цели, управлять временем, работать в команде! Овладевай новыми компетенциями и не отступай перед трудностями!
         </p>
+
+        <ul class="list-decimal ms-6 mt-4">
+            <li>
+                <a href="javascript:window.Scrolls.scrollToElementWithOffset(document.getElementById('s2'),180);"
+                   class="underline hover:text-base-red"
+                >
+                    Приоритеты Запорожской области
+                </a>
+            </li>
+            <li>
+                <a href="javascript:window.Scrolls.scrollToElementWithOffset(document.getElementById('s3'),180);"
+                   class="underline hover:text-base-red"
+                >
+                    Климат области
+                </a>
+            </li>
+            <li>
+                <a href="javascript:window.Scrolls.scrollToElementWithOffset(document.getElementById('s4'),180);"
+                   class="underline hover:text-base-red"
+                >
+                    Морской порт на Азовском море — Бердянск
+                </a>
+            </li>
+            <li>
+                <a href="javascript:window.Scrolls.scrollToElementWithOffset(document.getElementById('s5'),180);"
+                   class="underline hover:text-base-red"
+                >
+                    Полезные ископаемые
+                </a>
+            </li>
+            <li>
+                <a href="javascript:window.Scrolls.scrollToElementWithOffset(document.getElementById('s6'),180);"
+                   class="underline hover:text-base-red"
+                >
+                    Ботиевская ВЭС
+                </a>
+            </li>
+            <li>
+                <a href="javascript:window.Scrolls.scrollToElementWithOffset(document.getElementById('s7'),180);"
+                   class="underline hover:text-base-red"
+                >
+                    Запорожская АЭС
+                </a>
+            </li>
+            <li>
+                <a href="javascript:window.Scrolls.scrollToElementWithOffset(document.getElementById('s8'),180);"
+                   class="underline hover:text-base-red"
+                >
+                    Сельское хозяйство
+                </a>
+            </li>
+            <li>
+                <a href="javascript:window.Scrolls.scrollToElementWithOffset(document.getElementById('s9'),180);"
+                   class="underline hover:text-base-red"
+                >
+                    Практика и трудоустройство
+                </a>
+            </li>
+            <li>
+                <a href="javascript:window.Scrolls.scrollToElementWithOffset(document.getElementById('s10'),180);"
+                   class="underline hover:text-base-red"
+                >
+                    Наши студенты практикуются и трудоустроены
+                </a>
+            </li>
+            <li>
+                <a href="javascript:window.Scrolls.scrollToElementWithOffset(document.getElementById('s1'),180);"
+                   class="underline hover:text-base-red"
+                >
+                    Возможности для роста студентов МелГУ
+                </a>
+            </li>
+        </ul>
+
     </div>
-    <h2 class="font-semibold py-6 text-xl">
-        Возможности для успеха студентов МелГУ
-    </h2>
-    <div class="bg-white p-6">
-        <ul class="list-disc list-inside mb-6">
-            <li>
-                Высококвалифицированный профессорско-преподавательский состав: Опытные преподаватели, поддержка и передача глубоких знаний на всех этапах обучения
-            </li>
-        </ul>
-        <div>
-            <img class="h-full w-full object-cover" src="{{asset('img/vozmozhnosti/vozm-1.png')}}" alt="">
-        </div>
-        <ul class="list-disc list-inside my-6">
-            <li>
-                Современные аудитории и лаборатории: Оснащённые новейшим оборудованием пространства для эффективного освоения теории и практики
-            </li>
-        </ul>
-        <div class="grid grid-cols-1 md:grid-cols-2">
-            <div class="p-2">
-                <img class="h-full w-full object-cover" src="{{asset('img/vozmozhnosti/vozm-2.png')}}" alt="">
-            </div>
-            <div class="p-2">
-                <img class="h-full w-full object-cover" src="{{asset('img/vozmozhnosti/vozm-3.png')}}" alt="">
-            </div>
-        </div>
-        <ul class="list-disc list-inside my-6">
-            <li>
-                Практическая подготовка в ведущих организациях региона и страны: Получение реального опыта и навыков, востребованных на рынке труда
-            </li>
-        </ul>
-        <div class="grid grid-cols-1 md:grid-cols-2">
-            <div class="p-2">
-                <img class="h-full w-full object-cover" src="{{asset('img/vozmozhnosti/vozm-4.png')}}" alt="">
-            </div>
-            <div class="p-2">
-                <img class="h-full w-full object-cover" src="{{asset('img/vozmozhnosti/vozm-5.png')}}" alt="">
-            </div>
-        </div>
-        <ul class="list-disc list-inside my-6">
-            <li>
-                Участие в научных дискуссиях, проектной и грантовой деятельности: Расширение профессиональных горизонтов и развитие исследовательских компетенций
-            </li>
-        </ul>
-        <div class="grid grid-cols-1 md:grid-cols-2">
-            <div class="p-2">
-                <img class="h-full w-full object-cover" src="{{asset('img/vozmozhnosti/vozm-6.png')}}" alt="">
-            </div>
-            <div class="p-2">
-                <img class="h-full w-full object-cover" src="{{asset('img/vozmozhnosti/vozm-7.png')}}" alt="">
-            </div>
-        </div>
-        <ul class="list-disc list-inside my-6">
-            <li>
-                Участие в молодёжных организациях Российской Федерации: Возможности для личностного роста, лидерства и социальной активности            </li>
-        </ul>
-        <div class="grid grid-cols-1 md:grid-cols-2">
-            <div class="p-2">
-                <img class="h-full w-full object-cover" src="{{asset('img/vozmozhnosti/vozm-8.png')}}" alt="">
-            </div>
-            <div class="p-2">
-                <img class="h-full w-full object-cover" src="{{asset('img/vozmozhnosti/vozm-9.png')}}" alt="">
-            </div>
-        </div>
-        <ul class="list-disc list-inside my-6">
-            <li>
-                Участие в творческих и спортивных коллективах: Развитие командного духа, креативности и здорового образа жизни
-            </li>
-        </ul>
-        <div class="grid grid-cols-1 md:grid-cols-2">
-            <div class="p-2">
-                <img class="h-full w-full object-cover" src="{{asset('img/vozmozhnosti/vozm-10.png')}}" alt="">
-            </div>
-            <div class="p-2">
-                <img class="h-full w-full object-cover" src="{{asset('img/vozmozhnosti/vozm-11.png')}}" alt="">
-            </div>
-        </div>
-    </div>
-    <h2 class="font-semibold py-6 text-xl">
+
+    <h2 class="font-semibold py-6 text-xl" id="s2">
         Приоритеты Запорожской области
     </h2>
     <div class="bg-white p-6">
@@ -116,7 +115,7 @@
             </li>
         </ul>
     </div>
-    <h2 class="font-semibold py-6 text-xl">
+    <h2 class="font-semibold py-6 text-xl" id="s3">
         Климат области
     </h2>
     <div class="bg-white p-6">
@@ -179,15 +178,15 @@
             <img class="h-full w-full object-cover" src="{{asset('img/vozmozhnosti/vozm-20.png')}}" alt="">
         </div>
     </div>
-    <h2 class="font-semibold py-6 text-xl">
-        Морской порт на Азовском море — Бердянск.
+    <h2 class="font-semibold py-6 text-xl" id="s4">
+        Морской порт на Азовском море — Бердянск
     </h2>
     <div class="bg-white p-6">
         <div>
             <img class="h-full w-full object-cover" src="{{asset('img/vozmozhnosti/vozm-21.png')}}" alt="">
         </div>
     </div>
-    <h2 class="font-semibold py-6 text-xl">
+    <h2 class="font-semibold py-6 text-xl" id="s5">
         Полезные ископаемые
     </h2>
     <div class="bg-white p-6">
@@ -201,7 +200,7 @@
             Разрабатываются такие полезные ископаемые, как граниты, известняки, глины, каолин, песчаники, пегматиты. Есть лечебные грязи, минеральные воды.
         </p>
     </div>
-    <h2 class="font-semibold py-6 text-xl">
+    <h2 class="font-semibold py-6 text-xl" id="s6">
         Ботиевская ВЭС
     </h2>
     <div class="bg-white p-6">
@@ -223,8 +222,8 @@
             </div>
         </div>
     </div>
-    <h2 class="font-semibold py-6 text-xl">
-        Энергодарская АЭС
+    <h2 class="font-semibold py-6 text-xl" id="s7">
+        Запорожская АЭС
     </h2>
     <div class="bg-white p-6">
         <p class="mb-3">
@@ -234,7 +233,7 @@
             <img class="h-full w-full object-cover" src="{{asset('img/vozmozhnosti/vozm-25.png')}}" alt="">
         </div>
     </div>
-    <h2 class="font-semibold py-6 text-xl">
+    <h2 class="font-semibold py-6 text-xl" id="s8">
         Сельское хозяйство
     </h2>
     <div class="bg-white p-6">
@@ -280,7 +279,7 @@
             В регионе работают 546 предприятий пищевой и перерабатывающей промышленности.
         </p>
     </div>
-    <h2 class="font-semibold py-6 text-xl">
+    <h2 class="font-semibold py-6 text-xl" id="s9">
         Практика и трудоустройство
     </h2>
     <div class="bg-white p-6">
@@ -422,7 +421,7 @@
             </li>
         </ul>
     </div>
-    <h2 class="font-semibold py-6 text-xl">
+    <h2 class="font-semibold py-6 text-xl" id="s10">
         Наши студенты практикуются и трудоустроены:
     </h2>
     <div class="bg-white p-6">
@@ -480,6 +479,83 @@
                 </ul>
             </li>
         </ul>
+    </div>
+    <h2 class="font-semibold py-6 text-xl" id="s1">
+        Возможности для роста студентов МелГУ
+    </h2>
+    <div class="bg-white p-6">
+        <ul class="list-disc list-inside mb-6">
+            <li>
+                Высококвалифицированный профессорско-преподавательский состав: Опытные преподаватели, поддержка и передача глубоких знаний на всех этапах обучения
+            </li>
+        </ul>
+        <div>
+            <img class="h-full w-full object-cover" src="{{asset('img/vozmozhnosti/vozm-1.png')}}" alt="">
+        </div>
+        <ul class="list-disc list-inside my-6">
+            <li>
+                Современные аудитории и лаборатории: Оснащённые новейшим оборудованием пространства для эффективного освоения теории и практики
+            </li>
+        </ul>
+        <div class="grid grid-cols-1 md:grid-cols-2">
+            <div class="p-2">
+                <img class="h-full w-full object-cover" src="{{asset('img/vozmozhnosti/vozm-2.png')}}" alt="">
+            </div>
+            <div class="p-2">
+                <img class="h-full w-full object-cover" src="{{asset('img/vozmozhnosti/vozm-3.png')}}" alt="">
+            </div>
+        </div>
+        <ul class="list-disc list-inside my-6">
+            <li>
+                Практическая подготовка в ведущих организациях региона и страны: Получение реального опыта и навыков, востребованных на рынке труда
+            </li>
+        </ul>
+        <div class="grid grid-cols-1 md:grid-cols-2">
+            <div class="p-2">
+                <img class="h-full w-full object-cover" src="{{asset('img/vozmozhnosti/vozm-4.png')}}" alt="">
+            </div>
+            <div class="p-2">
+                <img class="h-full w-full object-cover" src="{{asset('img/vozmozhnosti/vozm-5.png')}}" alt="">
+            </div>
+        </div>
+        <ul class="list-disc list-inside my-6">
+            <li>
+                Участие в научных дискуссиях, проектной и грантовой деятельности: Расширение профессиональных горизонтов и развитие исследовательских компетенций
+            </li>
+        </ul>
+        <div class="grid grid-cols-1 md:grid-cols-2">
+            <div class="p-2">
+                <img class="h-full w-full object-cover" src="{{asset('img/vozmozhnosti/vozm-6.png')}}" alt="">
+            </div>
+            <div class="p-2">
+                <img class="h-full w-full object-cover" src="{{asset('img/vozmozhnosti/vozm-7.png')}}" alt="">
+            </div>
+        </div>
+        <ul class="list-disc list-inside my-6">
+            <li>
+                Участие в молодёжных организациях Российской Федерации: Возможности для личностного роста, лидерства и социальной активности            </li>
+        </ul>
+        <div class="grid grid-cols-1 md:grid-cols-2">
+            <div class="p-2">
+                <img class="h-full w-full object-cover" src="{{asset('img/vozmozhnosti/vozm-8.png')}}" alt="">
+            </div>
+            <div class="p-2">
+                <img class="h-full w-full object-cover" src="{{asset('img/vozmozhnosti/vozm-9.png')}}" alt="">
+            </div>
+        </div>
+        <ul class="list-disc list-inside my-6">
+            <li>
+                Участие в творческих и спортивных коллективах: Развитие командного духа, креативности и здорового образа жизни
+            </li>
+        </ul>
+        <div class="grid grid-cols-1 md:grid-cols-2">
+            <div class="p-2">
+                <img class="h-full w-full object-cover" src="{{asset('img/vozmozhnosti/vozm-10.png')}}" alt="">
+            </div>
+            <div class="p-2">
+                <img class="h-full w-full object-cover" src="{{asset('img/vozmozhnosti/vozm-11.png')}}" alt="">
+            </div>
+        </div>
     </div>
 </section>
 
