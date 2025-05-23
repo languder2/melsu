@@ -117,7 +117,7 @@
                     </div>
                     <div class="info-hex-wrapp flex justify-start load">
                         <div class="info-hex-content">
-                            <a href="https://melsu.ru/MelGU_Vozmozhnosti_rosta" class="group ">
+                            <a href="https://melsu.ru/vozmozhnosti_rosta" class="group ">
                                 <div class="move-block">
                                     <h3 class="font-semibold mb-2 group-hover:text-red-900 transition duration-300 ease-linear">Возможности роста</h3>
                                     <p class="text-base font-normal line-clamp-4 mb-2">
