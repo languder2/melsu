@@ -92,11 +92,12 @@
         value="{{old('residence')??@$current->residence}}"
     />
 
-    <x-form.input
+
+    <x-form.editor
         id="awards"
         name="awards"
         label="Награды, поощрение"
-        value="{{old('awards')??@$current->awards}}"
+        value="{{ old('_token') ? old('awards') : $current->awards }}"
     />
 
     <x-form.input
