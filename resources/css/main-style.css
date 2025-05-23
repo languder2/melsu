@@ -5831,6 +5831,10 @@ position: fixed;
     right: 5%;
     top: 5%;
 }
+#prevtBtn.disabled, #nextBtn.disabled{
+    pointer-events: none !important;
+    cursor: not-allowed !important;
+}
 .history-slide{
     height: 80vh;
 }

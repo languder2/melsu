@@ -1,5 +1,15 @@
 
-<section class="h--timeline js-h--timeline">
+<section class="h--timeline js-h--timeline relative">
+    <div id="prevtBtn" class="absolute left-10 top-[35%] z-10 bg-[#C10F1A]/[.6] rounded-full cursor-pointer p-2 transition duration-300 ease-linear hover:bg-[#C10F1A]">
+        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" class="bi bi-chevron-compact-left fill-white transition duration-300 ease-linear" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M9.224 1.553a.5.5 0 0 1 .223.67L6.56 8l2.888 5.776a.5.5 0 1 1-.894.448l-3-6a.5.5 0 0 1 0-.448l3-6a.5.5 0 0 1 .67-.223"/>
+        </svg>
+    </div>
+    <div id="nextBtn" class="absolute right-10 top-[35%] z-10 bg-[#C10F1A]/[.6] rounded-full cursor-pointer p-2 transition duration-300 ease-linear hover:bg-[#C10F1A]">
+        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-chevron-compact-right fill-white" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671"/>
+        </svg>
+    </div>
     <div class="h--timeline-events">
         <ol>
             <li class="h--timeline-event h--timeline-event--selected text-component bg-white history-slide overflow-hidden">
@@ -161,3 +171,6 @@
 
 
 <script src="{{asset('js/history-slider.js')}}"></script>
+<script>
+    document.querySelector('.my-6').classList.add('hidden');
+</script>

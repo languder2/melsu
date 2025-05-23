@@ -13,7 +13,6 @@
 };
 
     function initDragging(content) {
-    //add event listeners
     content.element.addEventListener('mousemove', handleEvent.bind(content));
     content.element.addEventListener('touchmove', handleEvent.bind(content));
     content.element.addEventListener('mouseup', handleEvent.bind(content));
@@ -22,7 +21,6 @@
 };
 
     function cancelDragging(content) {
-    //remove event listeners
     if(content.intervalId) {
     (!window.requestAnimationFrame) ? clearInterval(content.intervalId) : window.cancelAnimationFrame(content.intervalId);
     content.intervalId = false;
@@ -54,10 +52,8 @@
 
     function startDrag(content, event) {
     content.dragging = true;
-    // listen to drag movements
     initDragging(content);
     content.delta = [parseInt(unify(event).clientX), parseInt(unify(event).clientY)];
-    // emit drag start event
     emitSwipeEvents(content, 'dragStart', content.delta);
 };
 
@@ -269,8 +265,8 @@
     var HorizontalTimeline = function(element) {
     this.element = element;
     this.datesContainer = this.element.getElementsByClassName('h--timeline-dates')[0];
-    this.line = this.datesContainer.getElementsByClassName('h--timeline-line')[0]; // grey line in the top timeline section
-    this.fillingLine = this.datesContainer.getElementsByClassName('h--timeline-filling-line')[0]; // green filling line in the top timeline section
+    this.line = this.datesContainer.getElementsByClassName('h--timeline-line')[0];
+    this.fillingLine = this.datesContainer.getElementsByClassName('h--timeline-filling-line')[0]
     this.date = this.line.getElementsByClassName('h--timeline-date');
     this.selectedDate = this.line.getElementsByClassName('h--timeline-date--selected')[0];
     this.dateValues = parseDate(this);
@@ -324,51 +320,84 @@
     resetTimelinePosition(timeline, 'next');
 };
 
-    function initEvents(timeline) {
-    var self = timeline;
-    deaktivateNavigationButtons(self);
+        function initEvents(timeline) {
+            var self = timeline;
 
-    self.navigation[0].addEventListener('click', function(event){
-    event.preventDefault();
-    if (!self.isAnimating) {
-    self.isAnimating = true;
-    keyNavigateTimeline(self, 'prev');
-    deaktivateNavigationButtons(self);
-}
-});
-    self.navigation[1].addEventListener('click', function(event){
-    event.preventDefault();
-    if (!self.isAnimating) {
-    self.isAnimating = true;
-    keyNavigateTimeline(self, 'next');
-    deaktivateNavigationButtons(self);
-}
-});
+            deaktivateNavigationButtons(self);
 
-    new SwipeContent(self.datesContainer);
-    self.datesContainer.addEventListener('swipeLeft', function(event){
-    translateTimeline(self, 'next');
-});
-    self.datesContainer.addEventListener('swipeRight', function(event){
-    translateTimeline(self, 'prev');
-});
+            self.navigation[0].addEventListener('click', function(event){
+                event.preventDefault();
+                if (!self.isAnimating) {
+                    self.isAnimating = true;
+                    keyNavigateTimeline(self, 'prev');
+                    deaktivateNavigationButtons(self);
+                }
+            });
 
-    for(var i = 0; i < self.date.length; i++) {
-    (function(i){
-    self.date[i].addEventListener('click', function(event){
-    event.preventDefault();
-    selectNewDate(self, event.target);
-});
+            self.navigation[1].addEventListener('click', function(event){
+                event.preventDefault();
+                if (!self.isAnimating) {
+                    self.isAnimating = true;
+                    keyNavigateTimeline(self, 'next');
+                    deaktivateNavigationButtons(self);
+                }
+            });
 
-    self.content[i].addEventListener('animationend', function(event){
-    if( i == self.newDateIndex && self.newDateIndex != self.oldDateIndex) {
-    resetAnimation(self);
-    self.isAnimating = false;
-}
-});
-})(i);
-}
-};
+            var prevBtn = document.getElementById('prevtBtn');
+            var nextBtn = document.getElementById('nextBtn');
+
+            if (prevBtn) {
+                prevBtn.addEventListener('click', function () {
+                    if (!self.isAnimating && self.newDateIndex > 0) {
+                        self.isAnimating = true;
+                        keyNavigateTimeline(self, 'prev');
+                        deaktivateNavigationButtons(self);
+                    }
+                });
+            }
+
+            if (nextBtn) {
+                nextBtn.addEventListener('click', function () {
+                    if (!self.isAnimating && self.newDateIndex < self.date.length - 1) {
+                        self.isAnimating = true;
+                        keyNavigateTimeline(self, 'next');
+                        deaktivateNavigationButtons(self);
+                    }
+                });
+            }
+
+            new SwipeContent(self.datesContainer);
+            self.datesContainer.addEventListener('swipeLeft', function(event){
+                if (self.newDateIndex < self.date.length - 1) {
+                    translateTimeline(self, 'next');
+                }
+            });
+
+            self.datesContainer.addEventListener('swipeRight', function(event){
+                if (self.newDateIndex > 0) {
+                    translateTimeline(self, 'prev');
+                }
+            });
+
+            for (var i = 0; i < self.date.length; i++) {
+                (function(i){
+                    self.date[i].addEventListener('click', function(event){
+                        selectNewDate(self, event.target);
+                    });
+                })(i);
+            }
+
+            for (var i = 0; i < self.content.length; i++) {
+                (function(i){
+                    self.content[i].addEventListener('animationend', function(event){
+                        if (i == self.newDateIndex && self.newDateIndex != self.oldDateIndex) {
+                            resetAnimation(self);
+                            self.isAnimating = false;
+                        }
+                    });
+                })(i);
+            }
+        }
 
     function updateFilling(timeline) {
     var dateStyle = window.getComputedStyle(timeline.selectedDate, null),
@@ -398,28 +427,51 @@
 }
 };
 
-    function selectNewDate(timeline, target) {
-        timeline.newDateIndex = Util.getIndexInArray(timeline.date, target);
-        timeline.oldDateIndex = Util.getIndexInArray(timeline.date, timeline.selectedDate);
-        Util.removeClass(timeline.selectedDate, 'h--timeline-date--selected');
-        Util.addClass(timeline.date[timeline.newDateIndex], 'h--timeline-date--selected');
-        timeline.selectedDate = timeline.date[timeline.newDateIndex];
-        updateOlderEvents(timeline);
-        updateVisibleContent(timeline);
-        updateFilling(timeline);
+        function selectNewDate(timeline, target) {
+            timeline.newDateIndex = Util.getIndexInArray(timeline.date, target);
+            timeline.oldDateIndex = Util.getIndexInArray(timeline.date, timeline.selectedDate);
 
-        if (timeline.newDateIndex === 0) {
-            Util.addClass(timeline.navigation[0], 'h--timeline-navigation--inactive');
-        } else {
-            Util.removeClass(timeline.navigation[0], 'h--timeline-navigation--inactive');
-        }
+            Util.removeClass(timeline.selectedDate, 'h--timeline-date--selected');
+            Util.addClass(timeline.date[timeline.newDateIndex], 'h--timeline-date--selected');
+            timeline.selectedDate = timeline.date[timeline.newDateIndex];
 
-        if (timeline.newDateIndex === timeline.date.length - 1) {
-            Util.addClass(timeline.navigation[1], 'h--timeline-navigation--inactive');
-        } else {
-            Util.removeClass(timeline.navigation[1], 'h--timeline-navigation--inactive');
+            updateOlderEvents(timeline);
+            updateVisibleContent(timeline);
+            updateFilling(timeline);
+
+            if (timeline.newDateIndex === 0) {
+                Util.addClass(timeline.navigation[0], 'h--timeline-navigation--inactive');
+            } else {
+                Util.removeClass(timeline.navigation[0], 'h--timeline-navigation--inactive');
+            }
+
+            if (timeline.newDateIndex === timeline.date.length - 1) {
+                Util.addClass(timeline.navigation[1], 'h--timeline-navigation--inactive');
+            } else {
+                Util.removeClass(timeline.navigation[1], 'h--timeline-navigation--inactive');
+            }
+
+            var prevBtn = document.getElementById('prevtBtn');
+            var nextBtn = document.getElementById('nextBtn');
+
+            if (prevBtn) {
+                if (timeline.newDateIndex === 0) {
+                    console.log('asd')
+                    Util.addClass(prevBtn, 'disabled');
+                } else {
+                    console.log('123')
+                    Util.removeClass(prevBtn, 'disabled');
+                }
+            }
+
+            if (nextBtn) {
+                if (timeline.newDateIndex === timeline.date.length - 1) {
+                    Util.addClass(nextBtn, 'disabled');
+                } else {
+                    Util.removeClass(nextBtn, 'disabled');
+                }
+            }
         }
-};
 
     function updateOlderEvents(timeline) {
     for(var i = 0; i < timeline.date.length; i++) {
@@ -518,7 +570,7 @@
     document.addEventListener('keydown', function(event){
     if( (event.keyCode && event.keyCode == 39) || ( event.key && event.key.toLowerCase() == 'arrowright') ) {
     updateHorizontalTimeline('next');
-} else if((event.keyCode && event.keyCode == 37) || ( event.key && event.key.toLowerCase() == 'arrowleft')) {
+} else if((event.keyCode && pevent.keyCode == 37) || ( event.key && event.key.toLowerCase() == 'arrowleft')) {
     updateHorizontalTimeline('prev');
 }
 });
@@ -549,4 +601,51 @@
     (left + width) > window.pageXOffset
     );
 }
-}());
+        var timeline = horizontalTimelineTimelineArray[0];
+
+        var prevBtn = document.getElementById('prevtBtn');
+        var nextBtn = document.getElementById('nextBtn');
+
+        if (!timeline) {
+            console.error("Таймлайн не найден");
+            return;
+        }
+
+        if (prevBtn) {
+            prevBtn.addEventListener('click', function (event) {
+                event.preventDefault();
+                if (!timeline.isAnimating) {
+                    timeline.isAnimating = true;
+                    keyNavigateTimeline(timeline, 'prev');
+                    deaktivateNavigationButtons(timeline);
+                }
+            });
+        }
+
+        if (nextBtn) {
+            nextBtn.addEventListener('click', function (event) {
+                event.preventDefault();
+                if (!timeline.isAnimating) {
+                    timeline.isAnimating = true;
+                    keyNavigateTimeline(timeline, 'next');
+                    deaktivateNavigationButtons(timeline);
+                }
+            });
+        }
+
+        function updateButtonState() {
+            if (prevBtn) {
+                prevBtn.disabled = (timeline.newDateIndex === 0);
+            }
+            if (nextBtn) {
+                nextBtn.disabled = (timeline.newDateIndex === timeline.date.length - 1);
+            }
+        }
+
+        var originalSelectNewDate = window.selectNewDate;
+        window.selectNewDate = function (timeline, target) {
+            originalSelectNewDate(timeline, target);
+            updateButtonState();
+        };
+
+        updateButtonState();}());
