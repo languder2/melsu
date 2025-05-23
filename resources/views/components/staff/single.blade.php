@@ -121,8 +121,8 @@
         @if($staff->awards)
             <span class="text-[var(--secondary-color)] text-md font-bold">Награды, поощрение:</span>
             <div class="flex items-center">
-            <span class="text-[#4C4C4C] text-md pt-3 sm:ps-3 sm:pt-0">
-                {{$staff->awards}}
+            <span class="text-[#4C4C4C] text-md pt-3 sm:ps-3 sm:pt-0 flex flex-col gap-2">
+                {!! $staff->awards !!}
             </span>
             </div>
         @endif
