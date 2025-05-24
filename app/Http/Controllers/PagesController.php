@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Page\Content as PageContent;
+use App\Models\Partner\Partner;
+use App\Models\Upbringing\Upbringing;
 use Illuminate\Http\JsonResponse;
 use App\Models\Menu\Menu;
 use App\Models\Page;
@@ -85,6 +87,33 @@ class PagesController extends Controller
 
         if($item)
             $item->delete();
+
+        return response()->json(
+            [
+                'message' => "Секция контента удалена"
+            ]);
+    }
+
+    public function ApiDeleteUpbringingSection($id = null): JsonResponse
+    {
+        $section = Upbringing::find($id);
+
+        if ($section) {
+            $section->delete();
+        }
+
+        return response()->json(
+            [
+                'message' => "Секция контента удалена"
+            ]);
+    }
+    public function ApiDeletePartnerSection($id = null): JsonResponse
+    {
+        $section = Partner::find($id);
+
+        if ($section) {
+            $section->delete();
+        }
 
         return response()->json(
             [

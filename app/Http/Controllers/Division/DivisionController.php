@@ -10,8 +10,10 @@ use App\Models\Gallery\Image;
 use App\Models\Menu\Menu;
 use App\Models\News\RelationNews;
 use App\Models\Page\Content as PageContent;
+use App\Models\Partner\Partner;
 use App\Models\Sections\Contact;
 use App\Models\Staff\Affiliation;
+use App\Models\Upbringing\Upbringing;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -106,6 +108,32 @@ class DivisionController extends Controller
         /* add news*/
         if($request->has('news')){
             RelationNews::processingForms($record,request()->all('news')['news']);
+        }
+
+        /* add content upbringing sections*/
+        if ($request->has('upbringing_sections')) {
+            foreach ($request->input('upbringing_sections') as $id => $data) {
+                $data['relation_id'] = $record->id;
+                $data['relation_type'] = get_class($record);
+
+                $data['show_title'] = !empty($data['show_title']) ? 1 : 0;
+                $data['show'] = !empty($data['show']) ? 1 : 0;
+
+                Upbringing::updateOrCreate(['id' => $id], $data);
+            }
+        }
+
+        /* add content partner sections*/
+        if ($request->has('partner_sections')) {
+            foreach ($request->input('partner_sections') as $id => $data) {
+                $data['relation_id'] = $record->id;
+                $data['relation_type'] = get_class($record);
+
+                $data['show_title'] = !empty($data['show_title']) ? 1 : 0;
+                $data['show'] = !empty($data['show']) ? 1 : 0;
+
+                Partner::updateOrCreate(['id' => $id], $data);
+            }
         }
 
         switch ($record->type) {

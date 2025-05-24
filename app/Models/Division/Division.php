@@ -11,6 +11,7 @@ use App\Models\Global\Options;
 use App\Models\Menu\Menu;
 use App\Models\News\RelationNews;
 use App\Models\Page\Content as PageContent;
+use App\Models\Partner\Partner;
 use App\Models\Sections\Contact;
 use App\Models\Staff\Affiliation as StaffAffiliation;
 use App\Models\Staff\Staff;
@@ -22,6 +23,7 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Collection;
+use App\Models\Upbringing\Upbringing;
 
 /**
  * @property ?DivisionType $type
@@ -136,7 +138,7 @@ class Division extends Model
             ->where('show',true)
             ->orderBy('sort')
             ->orderBy('name')
-        ;
+            ;
     }
     public function departments(): HasMany
     {
@@ -145,7 +147,7 @@ class Division extends Model
             ->where('show',true)
             ->orderBy('sort')
             ->orderBy('name')
-        ;
+            ;
     }
     public function labs(): HasMany
     {
@@ -363,7 +365,7 @@ class Division extends Model
         return match($this->type){
             default                     => route('public:division:show',        $code),
             DivisionType::Faculty, DivisionType::Department, DivisionType::Lab, DivisionType::Branch, DivisionType::Institute
-                => route('public:education:division',   [$this->type, $code]),
+            => route('public:education:division',   [$this->type, $code]),
         };
     }
     public static function search(&$division,$search): void
@@ -454,8 +456,14 @@ class Division extends Model
 
         return $news;
     }
-
-
+    public function upbringingSections()
+    {
+        return $this->morphMany(Upbringing::class, 'relation');
+    }
+    public function partnerSections()
+    {
+        return $this->morphMany(Partner::class, 'relation');
+    }
 
 }
 

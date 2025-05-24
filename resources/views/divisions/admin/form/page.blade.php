@@ -33,7 +33,7 @@
         <div class="grid grid-cols-[400px_minmax(400px,1200px)] mx-auto gap-4">
 
             <div>
-                @include('divisions.admin.form.menu')
+                @include('divisions.admin.form.menu', ['type' => $current->type])
 
                 <x-form.submit
                     class="uppercase"
@@ -51,6 +51,8 @@
                 @component('components.form.sections.staffs',compact('current')) @endcomponent
                 @component('components.form.sections.documents',compact('current')) @endcomponent
                 @component('components.form.sections.contents',compact('current')) @endcomponent
+                @component('components.form.upbringing.tab_upbringing',compact('current')) @endcomponent
+                @component('components.form.partner.tab_partner',compact('current')) @endcomponent
                 @component('news.admin.includes.section',        compact('current'))
                     tab_news
                 @endcomponent

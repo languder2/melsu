@@ -145,8 +145,8 @@ class Menu extends Model
                         'link' => url('gallery'),
                     ],
                     (object)[
-                        'name' => "Партнеры и выпускники",
-                        'link' => url('partner'),
+                        'name' => "Партнеры",
+                        'link' => route('public:education:division', [$division->type, $code, 'partner']),
                     ],
                     (object)[
                         'name'  => "Новости",
@@ -294,6 +294,11 @@ class Menu extends Model
             $menu->items->push((object)[
                 'name' => "Лаборатории",
                 'link' => route('public:education:division', [$division->type, $code, 'labs']),
+            ]);
+        if($division->upbringingSections->count())
+            $menu->items->push((object)[
+                'name' => "Воспитательная работа",
+                'link' => route('public:education:division', [$division->type, $code, 'upbringing']),
             ]);
 
 //        if($division->specialities->count())

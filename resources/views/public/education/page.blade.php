@@ -70,6 +70,29 @@
                 @endif
             @break
 
+                @case('upbringing')
+                    @php
+                        $sections = $division->upbringingSections->where('show', true)->sortBy('order');
+                    @endphp
+                    <h4 class="font-semibold py-6 text-xl">
+                        Воспитательная работа
+                    </h4>
+                    <div class="flex flex-col gap-4 mb-4">
+                        @each('public.page.content-section', $sections, 'section')
+                    </div>
+                    @break
+                @case('partner')
+                    @php
+                        $sections = $division->partnerSections->where('show', true)->sortBy('order');
+                    @endphp
+                    <h4 class="font-semibold py-6 text-xl">
+                        Партнеры
+                    </h4>
+                    <div class="flex flex-col gap-4 mb-4">
+                        @each('public.page.content-section', $sections, 'section')
+                    </div>
+                    @break
+
             @default
                 @if($division->sections->count())
                     <div class="flex flex-col gap-4 mb-4">

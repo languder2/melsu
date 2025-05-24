@@ -31,6 +31,18 @@
 
 <x-html.admin.form-menu-item
     tabs='form_box'
+    tab='tab_upbringing'
+    text='Воспитательная работа (Филиалы)'
+/>
+
+<x-html.admin.form-menu-item
+    tabs='form_box'
+    tab='tab_partner'
+    text='Партнеры'
+/>
+
+<x-html.admin.form-menu-item
+    tabs='form_box'
     tab='tab_news'
     text='Новости'
 />

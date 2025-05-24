@@ -239,3 +239,30 @@ Route::get('staff/teachers',            [ApiStaff::class,'getTeachersByDepartmen
 
 Route::get('specialities/list',         [SpecialityController::class,'getListAPI']);
 
+Route::middleware(['web', 'auth.api'])
+    ->controller(\App\Http\Controllers\PagesController::class)
+    ->prefix('api/upbringing/sections')
+    ->group(function () {
+        Route::get('/add', function () {
+            $id = time();
+            $section = (object) ['id' => $id, 'title' => '', 'content' => '', 'order' => 0, 'show_title' => true, 'show' => true];
+            return view('components.form.upbringing.editor', compact('section', 'id'));
+        })->name('api:upbringing:sections:add');
+
+        Route::get('/delete/{id}', 'ApiDeleteUpbringingSection')
+            ->name('api:upbringing:sections:delete');
+    });
+
+Route::middleware(['web', 'auth.api'])
+    ->controller(\App\Http\Controllers\PagesController::class)
+    ->prefix('api/partner/sections')
+    ->group(function () {
+        Route::get('/add', function () {
+            $id = time();
+            $section = (object) ['id' => $id, 'title' => '', 'content' => '', 'order' => 0, 'show_title' => true, 'show' => true];
+            return view('components.form.partner.editor', compact('section', 'id'));
+        })->name('api:partner:sections:add');
+
+        Route::get('/delete/{id}', 'ApiDeletePartnerSection')
+            ->name('api:partner:sections:delete');
+    });

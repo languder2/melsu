@@ -11,17 +11,21 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('contents', function (Blueprint $table) {
+        Schema::create('upbringing_sections', function (Blueprint $table) {
             $table->id();
 
-            $table->string('type')->nullable();
-
+            $table->text('title')->nullable();
+            $table->tinyInteger('show_title')->default(1);
+            $table->string('code')->nullable();
+            $table->string('component')->default('text');
             $table->longText('content')->nullable();
 
-            $table->integer('relation_id')->nullable();
+            $table->integer('relation_id')->unsigned()->nullable();
             $table->string('relation_type')->nullable();
 
-            $table->timestamp('deleted_at')->nullable();
+            $table->tinyInteger('show')->default(1);
+            $table->integer('order')->default(10000);
+
             $table->timestamps();
         });
     }
@@ -31,6 +35,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('contents');
+        Schema::dropIfExists('upbringing_sections');
     }
 };
