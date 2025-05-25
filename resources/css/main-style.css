@@ -5845,7 +5845,7 @@ position: fixed;
 .full-img-history img{
     max-height: 780px;
 }
-.under-date{
+.under-date {
     font-family: "Bebas Neue", sans-serif;
     position: absolute;
     left: 0;
@@ -5853,12 +5853,14 @@ position: fixed;
     font-size: 500px;
     line-height: 0.9;
     color: transparent;
+
     background-image: var(--under-date-bg-image);
-    background-clip: text;
-    -webkit-background-clip: text;
     background-repeat: no-repeat;
-    background-position: 100% 20%;
-    background-size: 100%;
+    background-position: center;
+    background-size: cover;
+
+    -webkit-background-clip: text;
+    background-clip: text;
 }
 .date-overlay {
     font-size: 500px !important;

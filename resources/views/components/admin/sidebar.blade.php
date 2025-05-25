@@ -71,6 +71,13 @@
         />
 
         <x-admin.sidebar-li
+            link="{{route('history')}}"
+            ico="fas fa-solid fa-monument"
+            text="История"
+            class="text-xl"
+        />
+
+        <x-admin.sidebar-li
             link="{{route('minors:admin:index')}}"
             ico="fas fa-window-restore"
             text="Minors"

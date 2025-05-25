@@ -6,6 +6,7 @@ use App\Http\Controllers\Education\EducationController;
 use App\Http\Controllers\Education\SpecialityController;
 use App\Http\Controllers\Gallery\PublicGallery;
 use App\Http\Controllers\Handbook\HandbookController;
+use App\Http\Controllers\History\HistoryController;
 use App\Http\Controllers\Menu\MenuController;
 use App\Http\Controllers\News\EventsController;
 use App\Http\Controllers\PagesController;
@@ -138,6 +139,6 @@ Route::get('test/view', [TestController::class,'view']);
 
 /* Pages */
 
-
+Route::get('/history', [HistoryController::class, 'indexPage'])->name('public.history.index');
 
 Route::get('{alias}', [PagesController::class, 'showPage']);

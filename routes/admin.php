@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Division\DivisionController;
+use App\Http\Controllers\History\HistoryController;
 use App\Http\Controllers\Education\{DepartmentController, FacultyController, LabsController, SpecialityController};
 use App\Http\Controllers\Handbook\HandbookController;
 use App\Http\Controllers\Menu\{ItemsController as MenuItems, MenuController};
@@ -203,4 +204,16 @@ Route::get('minors',[MinorController::class,'index'])->name("minors:admin:index"
 /**/
 
 Route::get('test',[TestController::class,'admin']);
+
+/*history*/
+Route::middleware('auth.check')
+    ->prefix('history')
+    ->group(function () {
+        Route::get('/list', [HistoryController::class, 'index'])->name('history');
+        Route::get('/create', [HistoryController::class, 'create'])->name('history.create');
+        Route::post('/store', [HistoryController::class, 'store'])->name('history.store');
+        Route::get('/edit/{id}', [HistoryController::class, 'edit'])->name('history.edit');
+        Route::put('/update/{id}', [HistoryController::class, 'update'])->name('history.update');
+        Route::get('/delete/{id}', [HistoryController::class, 'destroy'])->name('history.delete');
+    });
 
