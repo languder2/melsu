@@ -810,6 +810,90 @@ header{
         display: none;
     }
 }
+/*Info under slider style*/
+.info-under-slider{
+    z-index: 2;
+    position: absolute;
+    bottom: -65px;
+    padding-left: 5%;
+    background: #820000;
+    padding-right: 5%;
+    width: 71%;
+    .box-info-under-slider{
+        display: flex;
+        .under-info:nth-child(1){
+            border-right: 1px solid #922121;
+        }
+        .under-info{
+            cursor: pointer;
+            width: 100%;
+            min-width: fit-content;
+            min-height: 120px;
+            align-content: center;
+            background-color: var(--primary-color);
+            padding: 30px;
+            transition: var(--transition-link);
+            .icon-box{
+                margin-right: 10px;
+                width: 28px;
+                svg{
+                    fill: white;
+                    width: 28px;
+                }
+            }
+            .text-under-info{
+                color: white;
+            }
+        }
+        .under-info:hover{
+            background-color: var(--secondary-color);
+        }
+    }
+}
+.slider-container {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.slider-wrapper {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.box-info-under-slider {
+    flex: 0 0 auto;
+    width: 100%;
+}
+
+.slider-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    i:before{
+        font-size: 50px;
+    }
+}
+.prev,.next{
+    opacity: 0.5;
+    transition: opacity 0.4s ease-in-out;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+.prev:hover,.next:hover{
+    opacity: 1;
+}
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+/*END Info under slider style*/
 /*END countdown style*/
 .slider-section{
     height: auto;
@@ -960,6 +1044,15 @@ header{
 
     }
 }
+@media screen and (max-width: 1535px) {
+    .slider-section{
+        .box-info-under-slider{
+            .under-info{
+                width: 90% !important;
+            }
+        }
+    }
+}
 @media screen and (max-width: 1680px) {
     .slider-section{
         & .sldr{
@@ -967,7 +1060,7 @@ header{
         }
         .box-info-under-slider{
             .under-info{
-                width: 45% !important;
+                width: 45%;
                 .text-under-info{
                     font-size: 16px !important;
                 }
@@ -977,10 +1070,9 @@ header{
 }
 @media screen and (max-width: 1536px) {
     .slider-section{
-        & .sldr{
-            max-height: 530px;
+        .info-under-slider{
+            width: 90%;
         }
-
     }
 }
 @media screen and (max-width: 1440px) {
@@ -1122,6 +1214,14 @@ header{
         }
     }
 }
+@media screen and (max-width: 540px){
+    .slider-section{
+
+        .info-under-slider{
+            padding: 0;
+        }
+    }
+}
 @media screen and (max-width: 430px) {
     .slider-section{
         & .sldr{
@@ -1204,43 +1304,6 @@ header{
 }
 /*END Slider style*/
 
-/*Info under slider style*/
-.info-under-slider{
-    z-index: 2;
-    width: 100%;
-    position: absolute;
-    bottom: -65px;
-    .box-info-under-slider{
-        display: flex;
-        .under-info:nth-child(1){
-            border-right: 1px solid #922121;
-        }
-        .under-info{
-            cursor: pointer;
-            width: 35%;
-            min-height: 120px;
-            align-content: center;
-            background-color: var(--primary-color);
-            padding: 30px;
-            transition: var(--transition-link);
-            .icon-box{
-                margin-right: 10px;
-                width: 28px;
-                svg{
-                    fill: white;
-                    width: 28px;
-                }
-            }
-            .text-under-info{
-                color: white;
-            }
-        }
-        .under-info:hover{
-            background-color: var(--secondary-color);
-        }
-    }
-}
-/*END Info under slider style*/
 
 /*melsu today style*/
 .heading-title-h2{
