@@ -465,5 +465,22 @@ class Division extends Model
         return $this->morphMany(Partner::class, 'relation');
     }
 
+    /* Links */
+
+    public function getAddSpecialityAttribute():?string
+    {
+
+        $route = route('speciality:admin:form');
+
+        return match($this->type){
+            default => null,
+            DivisionType::Faculty       => "{$route}?faculty={$this->id}",
+            DivisionType::Department    => "{$route}?faculty={$this->parent->id}&department={$this->id}",
+        };
+    }
+
+    /* end Links*/
+
+
 }
 

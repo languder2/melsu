@@ -34,8 +34,6 @@ enum EducationForm: string
 
         return  $result;
     }
-
-
 }
 
 

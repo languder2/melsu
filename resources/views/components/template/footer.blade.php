@@ -73,7 +73,6 @@
                     <a href="{{url('nauchnye-kruzhki')}}" class="text-md mb-4 hover:opacity-80 hover:text-red-200 w-fit transition duration-300 ease-linear">Научно-исследовательская работа студентов</a>
                 </div>
                 <div class="grid grid-cols-1">
-                    <a href="{{url('struktura-i-komanda')}}" class="text-md mb-4 hover:opacity-80 hover:text-red-200 w-fit transition duration-300 ease-linear">Структура и команда</a>
                     <a href="{{url('granty-i-forumy')}}" class="text-md mb-4 hover:opacity-80 hover:text-red-200 w-fit transition duration-300 ease-linear">Гранты и форумы</a>
                     <a href="{{url('obedineniya-i-kluby')}}" class="text-md mb-4 hover:opacity-80 hover:text-red-200 w-fit transition duration-300 ease-linear">Объединения и клубы</a>
                     <a href="{{url('centr-kompetencij')}}" class="text-md mb-4 hover:opacity-80 hover:text-red-200 w-fit transition duration-300 ease-linear">Центр компетенций</a>

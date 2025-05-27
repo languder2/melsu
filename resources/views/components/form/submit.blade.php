@@ -28,6 +28,7 @@
                 rounded-md
                 hover:bg-blue-700
                 active:bg-gray-700
+                cursor-pointer
                 {{@$class}}
             "
     >

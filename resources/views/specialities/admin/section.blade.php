@@ -7,7 +7,7 @@
         @isset($section)
             <div>
                 <a
-                    href="{{route('admin:speciality:add')}}"
+                    href="{{ $section->add_speciality }}"
                     class="
                                 py-2 px-4
                                 rounded-md

@@ -115,12 +115,12 @@ Route::controller(\App\Http\Controllers\Division\DivisionController::class)
             })->name('api:division:staff:add-position');
         });
 
-        Route::post('get-search-result','PublicSearchResult')
+        Route::match(['get','post'],'get-search-result','PublicSearchResult')
             ->name('public:division:search');
         Route::get('get-search-result','PublicSearchResult');
     });
 
-    Route::post('get-search-result',[StaffController::class,'PublicSearchResult'])
+    Route::match(['get','post'],'get-search-result',[StaffController::class,'PublicSearchResult'])
         ->name('public:staffs:search');
 
 

@@ -66,7 +66,7 @@ class DivisionController extends Controller
 
 
 
-        $record->partnerSections()->updateOrCreate();
+//        $record->partnerSections()->updateOrCreate();
 //        /* chief */
 //        if(array_key_exists('chief',$form))
 //            Affiliation::ProcessingChief($record,$form['chief']);

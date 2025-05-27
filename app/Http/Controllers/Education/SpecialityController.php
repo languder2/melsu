@@ -17,6 +17,7 @@ use App\Models\Page\Content as PageContent;
 use App\Models\Sections\Career;
 use App\Models\Sections\FAQ;
 use App\Models\Services\Log;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\View\View;
@@ -56,7 +57,7 @@ class SpecialityController extends Controller
         );
     }
 
-    public function save(Request $request)
+    public function save(Request $request, ?Speciality $current):RedirectResponse
     {
 
         $form = $request->validate(Speciality::FormRules($request->get('id')),Speciality::FormMessage());
@@ -99,7 +100,11 @@ class SpecialityController extends Controller
         if($request->has('documents'))
             Document::processingForms($record,$request->get('documents'),$record);
 
-        return redirect()->route('admin:speciality:list');
+
+        if($request->has('save'))
+            return redirect()->to($current->form);
+        else
+            return redirect()->to($current->admin);
     }
 
     public function delete(?Speciality $speciality)

@@ -7,7 +7,8 @@
             </h2>
             <div>
                 <a
-                    href="{{route('admin:speciality:add')}}"
+                    href="123"
+{{--                    href="{{route('admin:speciality:add')}}"--}}
                     class="
                 py-2 px-4
                 rounded-md
@@ -108,7 +109,7 @@
                         </div>
                         <div class="flex-none w-14">
                             <a
-                                href="{{route('admin:speciality:edit',$record->id)}}"
+                                href="{{$record->form}}"
                                 class="
                                     py-2 px-4 rounded-md
                                     bg-green-950

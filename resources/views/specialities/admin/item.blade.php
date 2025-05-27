@@ -22,7 +22,7 @@
 </div>
 
 <div class="md:col-span-2">
-    <a href="{{ route('admin:speciality:edit',$record) }}" class="underline text-blue hover:text-red">
+    <a href="{{ $record->form }}" class="underline text-blue hover:text-red">
         {!! $record->name !!}
     </a>
 </div>
