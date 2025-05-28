@@ -7,6 +7,8 @@ use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Models\Gallery\Gallery;
+use Illuminate\View\View;
+
 class AdminImageGallery extends Controller
 {
     public function list()
@@ -124,6 +126,12 @@ class AdminImageGallery extends Controller
                 'message' => "Галерея удалена\n{$gallery->name}\n Восстановимо до: "
                     .Carbon::now()->addWeek(2)->format('d.m.Y H:i')
             ]);
+    }
+    public function formMultiUploads(Request $request, Gallery $gallery):View
+    {
+        dump($gallery);
+
+        return view('gallery.images.admin.form-multi-upload',compact('gallery'));
     }
 
 }

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Gallery\Gallery;
 use App\Models\Gallery\Image;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class AdminImage extends Controller
 {
@@ -91,9 +92,4 @@ class AdminImage extends Controller
                 :'admin:image:list'
         );
     }
-
-    public function processing(){
-
-    }
-
 }

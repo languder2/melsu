@@ -1,4 +1,4 @@
-<div class="pt-2 text-right">
+<div class="pt-2 {{ $position ?? 'text-right' }}">
     <input
         type="{{$type??'submit'}}"
 
