@@ -89,6 +89,14 @@
                         </span>
                     </a>
                 </div>
+                <div class="box-info-under-slider ">
+                    <a href="{{ url('selekcionno-semenovodcheskij-centr-vysokotekhnologichnyj-selekcionno-pitomnikovodcheskij-kompleks-plodovyh-kultur-novorossii') }}" class="under-info flex gap-2 items-center">
+                        <span class="text-under-info text-2xl font-semibold text-wrap text-center">
+                            Селекционно-семеноводческий центр<br>
+                            «Высокотехнологичный селекционно-питомниководческий комплекс плодовых культур Новороссии»
+                        </span>
+                    </a>
+                </div>
             </div>
 
         </div>

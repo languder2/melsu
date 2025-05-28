@@ -29,22 +29,24 @@
 
         <div class="grid grid-cols-[400px_minmax(400px,1200px)] mx-auto gap-4">
 
-            <div>
-                @include('specialities.admin.form.menu')
+            <div >
+                <div class="sticky top-2">
+                    @include('specialities.admin.form.menu')
 
-                <div class="flex flex-row-reverse justify-between">
-                    @component('components.form.submit',[
-                        'name'          => 'save',
-                        'class'         => "uppercase",
-                        'value'         => "сохранить",
-                    ])@endcomponent
+                    <div class="flex flex-row-reverse justify-between">
+                        @component('components.form.submit',[
+                            'name'          => 'save',
+                            'class'         => "uppercase",
+                            'value'         => "сохранить",
+                        ])@endcomponent
 
-                    @component('components.form.submit',[
-                        'name'          => 'close-save',
-                        'class'         => "uppercase",
-                        'value'         => "сохранить и закрыть",
-                    ])@endcomponent
+                        @component('components.form.submit',[
+                            'name'          => 'close-save',
+                            'class'         => "uppercase",
+                            'value'         => "сохранить и закрыть",
+                        ])@endcomponent
 
+                    </div>
                 </div>
             </div>
 
