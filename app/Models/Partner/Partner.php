@@ -4,22 +4,19 @@ namespace App\Models\Partner;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Partner extends Model
 {
 
-    protected $table = 'partner_sections';
+    use SoftDeletes;
+
+    protected $table = 'partners';
 
     protected $fillable = [
-        'title',
-        'show_title',
-        'code',
-        'component',
-        'content',
-        'relation_id',
-        'relation_type',
-        'show',
-        'order'
+        'name',
+        'is_show',
+        'sort'
     ];
 
     protected $casts = [
@@ -33,4 +30,10 @@ class Partner extends Model
     {
         return $this->morphTo();
     }
+
+    public function resolveRouteBinding($value, $field = null): ?self
+    {
+        return $this->where('code', $value)->first() ??  $this->where('id', $value)->first();
+    }
+
 }

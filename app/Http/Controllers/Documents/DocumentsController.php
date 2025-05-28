@@ -94,6 +94,12 @@ class DocumentsController extends Controller
 
         return view('documents.admin.includes.block',compact('item'));
     }
+    public function ApiAddBlockSpeciality():View
+    {
+        $item   = new Document();
+
+        return view('documents.admin.includes.block-speciality',compact('item'));
+    }
     public function ApiDelete(?Document $item): JsonResponse
     {
         $item->delete();

@@ -2,7 +2,6 @@
 
 namespace App\Models\Education;
 
-use App\Enums\DivisionType;
 use App\Enums\EducationBasis;
 use App\Enums\EducationLevel;
 use App\Models\Division\Division;
@@ -18,6 +17,7 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Collection;
 
 class Speciality extends Model
 {
@@ -26,8 +26,8 @@ class Speciality extends Model
     protected $table = 'education_specialities';
 
     protected $fillable = [
-        'id',
         'name',
+        'name_profile',
         'code',
         'spec_code',
         'institute_id',
@@ -56,6 +56,7 @@ class Speciality extends Model
         return [
 //            'test'              => 'required',
             'name'              => 'required',
+            'name_profile'      => '',
             'code'              => "required|unique:education_specialities,code,$id,id,deleted_at,NULL",
             'spec_code'         => "required",
             'faculty_id'        => '',
@@ -78,11 +79,16 @@ class Speciality extends Model
             'level' => 'Укажите уровень',
         ];
     }
-
     public function relation():MorphTo
     {
         return $this->morphTo();
     }
+
+    public function getIdAttribute($value):int
+    {
+        return $value ?? microtime(true);
+    }
+
 
     public function department(): BelongsTo
     {
@@ -173,14 +179,38 @@ class Speciality extends Model
             self::updateAffiliation($speciality,$division->parent);
     }
 
+    public function getNameWithProfileAttribute(): string
+    {
+        return $this->name_profile ? "{$this->name} ($this->name_profile)" : $this->name;
+    }
+
     public function documents():MorphMany
     {
         return $this->morphMany(Document::class,'relation')->orderBy('sort')->whereNull('parent_id');
     }
 
-    public function publicDocuments():MorphMany
+    public function publicDocuments():Collection
     {
-        return $this->documents()->where('is_show',true);
+        return $this->documents()->where('is_show',true)->get();
     }
+
+    /* Links */
+
+    public function getAdminAttribute():string
+    {
+        return  route('admin:speciality:list');
+    }
+
+    public function getFormAttribute():string
+    {
+        return  route('speciality:admin:form',$this);
+    }
+    public function getSaveAttribute():string
+    {
+        return  route('speciality:save',$this->exists ? $this->id : null);
+    }
+
+
+    /* end Links */
 
 }

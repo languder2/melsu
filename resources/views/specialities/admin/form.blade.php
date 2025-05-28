@@ -19,7 +19,7 @@
 @section('content')
     <x-head.tinymce-config/>
     <form
-        action="{{route('admin:speciality:save')}}"
+        action="{{ $current->save }}"
         method="POST"
         enctype="multipart/form-data"
     >
@@ -32,10 +32,20 @@
             <div>
                 @include('specialities.admin.form.menu')
 
-                <x-form.submit
-                    class="uppercase"
-                    value="сохранить"
-                />
+                <div class="flex flex-row-reverse justify-between">
+                    @component('components.form.submit',[
+                        'name'          => 'save',
+                        'class'         => "uppercase",
+                        'value'         => "сохранить",
+                    ])@endcomponent
+
+                    @component('components.form.submit',[
+                        'name'          => 'close-save',
+                        'class'         => "uppercase",
+                        'value'         => "сохранить и закрыть",
+                    ])@endcomponent
+
+                </div>
             </div>
 
             <div>
@@ -47,7 +57,7 @@
                 @include('specialities.admin.form.profiles')
                 @component('components.form.sections.contacts',compact('current')) @endcomponent
 {{--                @component('components.form.sections.staffs',compact('current')) @endcomponent--}}
-                @component('documents.admin.includes.section',[
+                @component('documents.admin.includes.section-speciality',[
                     'list'  => old('_token') ? old('documents') : $current->documents
                 ])
                     tab_documents

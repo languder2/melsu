@@ -83,7 +83,7 @@
         @endif
 
 
-        @component('documents.public.includes.block',['list'=> $speciality->publicDocuments])
+        @component('documents.public.includes.block',['list'=> $speciality->publicDocuments()])
             Документы
         @endcomponent
 

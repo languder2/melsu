@@ -3,12 +3,10 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Division\DivisionController;
 use App\Http\Controllers\Education\EducationController;
-use App\Http\Controllers\Education\SpecialityController;
 use App\Http\Controllers\Gallery\PublicGallery;
 use App\Http\Controllers\Handbook\HandbookController;
 use App\Http\Controllers\History\HistoryController;
 use App\Http\Controllers\Menu\MenuController;
-use App\Http\Controllers\News\EventsController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\Schedule\ScheduleController;
 use App\Http\Controllers\Staffs\StaffController;
@@ -42,6 +40,7 @@ require __DIR__.'/regiment.php';
 require __DIR__.'/documents.php';
 require __DIR__.'/news.php';
 require __DIR__.'/projects.php';
+require __DIR__.'/education.php';
 
 require __DIR__.'/system.php';
 
@@ -55,13 +54,6 @@ Route::prefix('nomix')->group(function () {
 
 Route::get('test', [TestController::class, 'index'])->name('test');
 Route::get('test2', [TestController::class, 'index'])->name('test2');
-
-
-Route::get('specialities', [SpecialityController::class,'showAll'])
-    ->name('public:education:specialities:all');
-
-Route::get('specialities/{speciality}', [SpecialityController::class,'showSingle'])
-    ->name('public:education:speciality');
 
 /* Faculties */
 

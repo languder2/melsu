@@ -2,10 +2,13 @@
 
 namespace App\Models\Documents;
 
+use App\Models\Global\Options;
+use App\Models\Services\Content;
 use App\Models\Services\Log;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Storage;
@@ -111,6 +114,7 @@ class Document extends Model
 
     public static function processingForms(?Model $model, ?array $forms, ?Model $origin = null):void
     {
+
         if(!$forms || !$model) return;
 
         foreach ($forms as $key => $form) {
@@ -134,7 +138,40 @@ class Document extends Model
         $item->fill($form)->relation()->associate($model)->save();
 
         $origin ? Log::withOrigin($origin, $item) : Log::add($item);
+
+        if(array_key_exists('form',$form))
+            $item->getSpecialityForm()->fill(['property' => $form['form']])->save();
+
+        if(array_key_exists('type',$form))
+            $item->getType()->fill(['property' => $form['type']])->save();
     }
 
+    public function options():MorphOne
+    {
+        return $this->morphOne( Options::class, 'relation');
+    }
+
+    public function getOption($option):Options
+    {
+        return $this->options()->where('code',$option)->first()
+            ?? (new Options(['code' => $option]))->relation()->associate($this);
+    }
+
+    public function getType():Options
+    {
+        return $this->getOption('type');
+    }
+    public function getTypeAttribute():?string
+    {
+        return $this->getType()->property;
+    }
+    public function getSpecialityForm():Options
+    {
+        return $this->getOption('form');
+    }
+    public function getSpecialityFormAttribute():?string
+    {
+        return $this->getSpecialityForm()->property;
+    }
 
 }

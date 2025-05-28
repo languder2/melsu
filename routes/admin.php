@@ -2,11 +2,9 @@
 
 use App\Http\Controllers\Division\DivisionController;
 use App\Http\Controllers\History\HistoryController;
-use App\Http\Controllers\Education\{DepartmentController, FacultyController, LabsController, SpecialityController};
+use App\Http\Controllers\Education\{DepartmentController, FacultyController, LabsController, };
 use App\Http\Controllers\Handbook\HandbookController;
 use App\Http\Controllers\Menu\{ItemsController as MenuItems, MenuController};
-use App\Http\Controllers\News\EventsController;
-use App\Http\Controllers\News\NewsController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\Schedule\ScheduleController;
 use App\Http\Controllers\Staffs\StaffController;
@@ -118,19 +116,6 @@ Route::controller(LabsController::class)
     ->prefix('education/labs')
     ->group(function () {
         Route::get('', 'AdminList')->name('admin:lab:list');
-
-    });
-
-
-Route::controller(SpecialityController::class)
-    ->prefix('specialities')
-    ->group(function () {
-
-        Route::get('', 'list')->name('admin:speciality:list');
-        Route::get('add', 'form')->name('admin:speciality:add');
-        Route::get('edit/{id}', 'form')->name('admin:speciality:edit');
-        Route::post('save', 'save')->name('admin:speciality:save');
-        Route::get('delete/{speciality}', 'delete')->name('admin:speciality:delete');
 
     });
 

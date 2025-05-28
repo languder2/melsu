@@ -4,7 +4,7 @@
     </h2>
     <div>
         <a
-            href="{{route('admin:speciality:add')}}"
+            href="{{ (new \App\Models\Education\Speciality())->form }}"
             class="
                 py-2 px-4
                 rounded-md
