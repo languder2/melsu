@@ -127,11 +127,5 @@ class AdminImageGallery extends Controller
                     .Carbon::now()->addWeek(2)->format('d.m.Y H:i')
             ]);
     }
-    public function formMultiUploads(Request $request, Gallery $gallery):View
-    {
-        dump($gallery);
-
-        return view('gallery.images.admin.form-multi-upload',compact('gallery'));
-    }
 
 }

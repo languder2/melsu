@@ -75,7 +75,7 @@ class TestController extends Controller
         $content = Content::find(1922);
 
 
-        dd($content->ContentAs);
+        dd($content);
         return view('test.view');
     }
 

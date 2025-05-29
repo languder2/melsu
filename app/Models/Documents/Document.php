@@ -139,10 +139,12 @@ class Document extends Model
 
         $origin ? Log::withOrigin($origin, $item) : Log::add($item);
 
-        if(array_key_exists('form',$form))
+
+
+        if(array_key_exists('form',$form) && $form['form'])
             $item->getSpecialityForm()->fill(['property' => $form['form']])->save();
 
-        if(array_key_exists('type',$form))
+        if(array_key_exists('type',$form) && $form['type'])
             $item->getType()->fill(['property' => $form['type']])->save();
     }
 
