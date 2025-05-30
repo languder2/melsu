@@ -6530,3 +6530,620 @@ li.h--timeline-event.h--timeline-event--selected.text-component {
     }
 }
 /*END Mission style*/
+
+/*Vozmoshnosti style*/
+
+.red-custom-text .custom-text{
+    color: #C10F1A;
+    position: absolute;
+    line-height: 40px;
+    width: fit-content;
+    left: -129px;
+    top: 40px;
+}
+.red-custom-text .custom-text-white{
+    position: absolute;
+    color: white;
+    line-height: 40px;
+    width: fit-content;
+    left: 160px;
+    z-index: 10;
+    top: 40px;
+}
+.red-custom-text .custom-text h3, .red-custom-text .custom-text-white h3{
+    font-size: 62px;
+    margin-bottom: 50px;
+}
+.red-custom-text .custom-text h2, .red-custom-text .custom-text-white h2{
+    display: block;
+    margin-left: -3px;
+    font-size: 131px;
+}
+/**/
+.black-custom-text .custom-text{
+    color: black;
+    position: absolute;
+    line-height: 40px;
+    width: fit-content;
+    right: -123px;
+    top: 110px;
+}
+.black-custom-text .custom-text-white{
+    position: absolute;
+    color: white;
+    line-height: 40px;
+    width: fit-content;
+    left: -316px;
+    z-index: 10;
+    top: 110px;
+}
+.black-custom-text .custom-text h3, .black-custom-text .custom-text-white h3{
+    font-size: 92px;
+    margin-bottom: 50px;
+}
+.black-custom-text .custom-text h2, .black-custom-text .custom-text-white h2{
+    display: block;
+    margin-left: -3px;
+    font-size: 131px;
+}
+/**/
+.black-custom-text-second .custom-text{
+    color: black;
+    position: absolute;
+    line-height: 40px;
+    width: fit-content;
+    left: -125px;
+    top: 50px;
+}
+.black-custom-text-second .custom-text-white{
+    position: absolute;
+    color: white;
+    line-height: 40px;
+    width: fit-content;
+    right: -507px;
+    z-index: 10;
+    top: 50px;
+}
+.black-custom-text-second .custom-text h3, .black-custom-text-second .custom-text-white h3{
+    font-size: 88px;
+    margin-bottom: 50px;
+}
+.black-custom-text-second .custom-text h2, .black-custom-text-second .custom-text-white h2{
+    display: block;
+    margin-left: -3px;
+    font-size: 67px;
+}
+/**/
+#ScrollImageContainer {
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+}
+#ScrollImageContainer > div{
+    scroll-snap-align: start;
+    flex: 0 0 100%;
+    box-sizing: border-box;
+}
+
+@media screen and (max-width: 1630px){
+    .red-custom-text .custom-text h3, .red-custom-text .custom-text-white h3{
+        font-size: 50px;
+    }
+    .red-custom-text .custom-text h2, .red-custom-text .custom-text-white h2{
+        font-size: 106px;
+    }
+    .red-custom-text .custom-text{
+        left: -128px;
+    }
+
+    /**/
+    .black-custom-text-second .custom-text{
+        left: -125px;
+        top: 50px;
+    }
+    .black-custom-text-second .custom-text-white{
+        right: -416px;
+        top: 50px;
+    }
+    .black-custom-text-second .custom-text h3, .black-custom-text-second .custom-text-white h3{
+        font-size:75px;
+        margin-bottom: 50px;
+    }
+    .black-custom-text-second .custom-text h2, .black-custom-text-second .custom-text-white h2{
+        margin-left: -3px;
+        font-size: 57px;
+    }
+}
+@media screen and (max-width: 1600px){
+    .red-custom-text .custom-text{
+        left: -120px;
+    }
+}
+@media screen and (max-width: 1535px){
+    .red-custom-text .custom-text h3, .red-custom-text .custom-text-white h3{
+        font-size: 43px;
+        margin-bottom: 20px;
+    }
+    .red-custom-text .custom-text h2, .red-custom-text .custom-text-white h2{
+        font-size: 92px;
+    }
+    .red-custom-text .custom-text{
+        left: -86px;
+    }
+    .red-custom-text .custom-text-white{
+        left: 139px;
+    }
+    /**/
+
+    .black-custom-text .custom-text{
+        right: -123px;
+        top: 38px;
+    }
+    .black-custom-text .custom-text-white{
+        left: -282px;
+        top: 38px;
+    }
+    .black-custom-text .custom-text h3, .black-custom-text .custom-text-white h3{
+        font-size: 84px;
+        margin-bottom: 50px;
+    }
+    .black-custom-text .custom-text h2, .black-custom-text .custom-text-white h2{
+        display: block;
+        margin-left: -3px;
+        font-size: 120px;
+    }
+
+    /**/
+    .black-custom-text-second .custom-text{
+        left: -125px;
+        top: 50px;
+    }
+    .black-custom-text-second .custom-text-white{
+        right: -347px;
+        top: 50px;
+    }
+    .black-custom-text-second .custom-text h3, .black-custom-text-second .custom-text-white h3{
+        font-size: 65px;
+        margin-bottom: 15px;
+    }
+    .black-custom-text-second .custom-text h2, .black-custom-text-second .custom-text-white h2{
+        margin-left: -3px;
+        font-size: 50px;
+    }
+
+}
+@media screen and (max-width: 1380px){
+    .red-custom-text .custom-text h3, .red-custom-text .custom-text-white h3{
+        font-size: 36px;
+        margin-bottom: 20px;
+    }
+    .red-custom-text .custom-text h2, .red-custom-text .custom-text-white h2{
+        font-size: 77px;
+    }
+    .red-custom-text .custom-text{
+        top: 10px;
+        left: -108px;
+    }
+    .red-custom-text .custom-text-white{
+        top: 10px;
+        left: 117px;
+    }
+}
+@media screen and (max-width: 1279px){
+    .red-custom-text .custom-text h3, .red-custom-text .custom-text-white h3{
+        font-size: 37px;
+        margin-bottom: 20px;
+    }
+    .red-custom-text .custom-text h2, .red-custom-text .custom-text-white h2{
+        font-size: 78px;
+    }
+    .red-custom-text .custom-text{
+        top: 10px;
+        left: -75px;
+    }
+    .red-custom-text .custom-text-white{
+        top: 10px;
+        left: 86px;
+    }
+
+    /**/
+
+    .black-custom-text .custom-text{
+        right: -123px;
+        top: 20px;
+    }
+    .black-custom-text .custom-text-white{
+        left: -199px;
+        top: 20px;
+    }
+    .black-custom-text .custom-text h3, .black-custom-text .custom-text-white h3{
+        font-size: 67px;
+        margin-bottom: 30px;
+    }
+    .black-custom-text .custom-text h2, .black-custom-text .custom-text-white h2{
+        display: block;
+        margin-left: -3px;
+        font-size: 95px;
+    }
+
+    /**/
+
+    .black-custom-text-second .custom-text{
+        left: -77px;
+        top: 10px;
+    }
+    .black-custom-text-second .custom-text-white{
+        right: -268px;
+        top: 10px;
+    }
+    .black-custom-text-second .custom-text h3, .black-custom-text-second .custom-text-white h3{
+        font-size: 46px;
+        margin-bottom: 15px;
+    }
+    .black-custom-text-second .custom-text h2, .black-custom-text-second .custom-text-white h2{
+        margin-left: -3px;
+        font-size: 36px;
+    }
+}
+@media screen and (max-width: 1120px){
+    .red-custom-text .custom-text h3, .red-custom-text .custom-text-white h3{
+        font-size: 32px;
+        margin-bottom: 20px;
+    }
+    .red-custom-text .custom-text h2, .red-custom-text .custom-text-white h2{
+        font-size: 68px;
+    }
+    .red-custom-text .custom-text{
+        top: 10px;
+        left: -69px;
+    }
+    .red-custom-text .custom-text-white{
+        top: 10px;
+        left: 91px;
+    }
+
+    /**/
+
+    .black-custom-text-second .custom-text{
+        left: -77px;
+        top: 10px;
+    }
+    .black-custom-text-second .custom-text-white{
+        right: -222px;
+        top: 10px;
+    }
+    .black-custom-text-second .custom-text h3, .black-custom-text-second .custom-text-white h3, .black-custom-text-second-mob .custom-text-white h3{
+        font-size: 40px;
+        margin-bottom: 0px;
+    }
+    .black-custom-text-second .custom-text h2, .black-custom-text-second .custom-text-white h2, .black-custom-text-second-mob .custom-text-white h2{
+        margin-left: -3px;
+        font-size: 31px;
+    }
+}
+@media screen and (max-width: 1023px) {
+    .red-custom-text .custom-text h3, .red-custom-text .custom-text-white h3, .red-custom-text-mob .custom-text-white h3{
+        font-size: 32px;
+        margin-bottom: 5px;
+    }
+    .red-custom-text .custom-text h2, .red-custom-text .custom-text-white h2, .red-custom-text-mob .custom-text-white h2{
+        font-size: 68px;
+    }
+    .red-custom-text .custom-text{
+        top: -37px;
+        left: 218px;
+    }
+    .red-custom-text .custom-text-white {
+        left: -166px;
+        top: inherit;
+        bottom: -48px;
+    }
+    .red-custom-text-mob .custom-text-white {
+        color: white;
+        z-index: 10;
+        right: -183px;
+        bottom: -114px;
+    }
+
+    /**/
+
+    .black-custom-text .custom-text{
+        right: 200px;
+        top: -54px;
+    }
+    .black-custom-text .custom-text-white{
+        top: inherit;
+        bottom: -56px;
+        left: 247px;
+    }
+    .black-custom-text .custom-text h3, .black-custom-text .custom-text-white h3{
+        font-size: 67px;
+        margin-bottom: 30px;
+    }
+    .black-custom-text .custom-text h2, .black-custom-text .custom-text-white h2{
+        margin-left: -3px;
+        font-size: 95px;
+    }
+
+    /**/
+
+    .black-custom-text-second .custom-text{
+        left: 164px;
+        top: -48px;
+    }
+    .black-custom-text-second .custom-text-white{
+        right: -222px;
+        top: 10px;
+    }
+    .black-custom-text-second .custom-text h3, .black-custom-text-second .custom-text-white h3, .black-custom-text-second-mob .custom-text-white h3{
+        font-size: 65px;
+        margin-bottom: 20px;
+    }
+    .black-custom-text-second .custom-text h2, .black-custom-text-second .custom-text-white h2, .black-custom-text-second-mob .custom-text-white h2{
+        margin-left: -3px;
+        font-size: 50px;
+    }
+    .black-custom-text-second-mob .custom-text-white{
+        z-index: 10;
+        line-height: 40px;
+        bottom: -52px;
+        left: 164px;
+    }
+}
+@media screen and (max-width: 767px) {
+    .red-custom-text .custom-text {
+        top: -37px;
+        left: 154px;
+    }
+
+    /**/
+
+    .black-custom-text .custom-text{
+        right: 137px;
+        top: -50px;
+    }
+    .black-custom-text .custom-text-white{
+        bottom: -60px;
+        left: 182px;
+    }
+    .black-custom-text .custom-text h3, .black-custom-text .custom-text-white h3{
+        font-size: 67px;
+        margin-bottom: 30px;
+    }
+    .black-custom-text .custom-text h2, .black-custom-text .custom-text-white h2{
+        margin-left: -3px;
+        font-size: 95px;
+    }
+
+    /**/
+
+    .black-custom-text-second .custom-text{
+        left: 95px;
+        top: -51px;
+    }
+    .black-custom-text-second .custom-text-white{
+        right: -222px;
+        top: 10px;
+    }
+    .black-custom-text-second .custom-text h3, .black-custom-text-second .custom-text-white h3, .black-custom-text-second-mob .custom-text-white h3{
+        font-size: 65px;
+        margin-bottom: 20px;
+    }
+    .black-custom-text-second .custom-text h2, .black-custom-text-second .custom-text-white h2, .black-custom-text-second-mob .custom-text-white h2{
+        margin-left: -3px;
+        font-size: 50px;
+    }
+    .black-custom-text-second-mob .custom-text-white{
+        bottom: -49px;
+        left: 95px;
+    }
+}
+@media screen and (max-width: 430px) {
+    .red-custom-text .custom-text {
+        left: 49px;
+    }
+
+    /**/
+
+    .black-custom-text .custom-text{
+        right: 40px;
+        top: -51px;
+    }
+    .black-custom-text .custom-text-white{
+        bottom: -59px;
+        left: 46px;
+    }
+    .black-custom-text .custom-text h3, .black-custom-text .custom-text-white h3{
+        font-size: 72px;
+        margin-bottom: 30px;
+    }
+    .black-custom-text .custom-text h2, .black-custom-text .custom-text-white h2{
+        margin-left: -3px;
+        font-size: 102px;
+    }
+
+    /**/
+
+    .black-custom-text-second .custom-text{
+        left: 67px;
+        top: -40px;
+    }
+    .black-custom-text-second .custom-text-white{
+        right: -222px;
+        top: 10px;
+    }
+    .black-custom-text-second .custom-text h3, .black-custom-text-second .custom-text-white h3, .black-custom-text-second-mob .custom-text-white h3{
+        font-size: 42px;
+        margin-bottom: 10px;
+    }
+    .black-custom-text-second .custom-text h2, .black-custom-text-second .custom-text-white h2, .black-custom-text-second-mob .custom-text-white h2{
+        margin-left: -3px;
+        font-size: 32px;
+    }
+    .black-custom-text-second-mob .custom-text-white{
+        bottom: -50px;
+        left: 67px;
+    }
+}
+@media screen and (max-width: 414px) {
+    .red-custom-text .custom-text {
+        left: 41px;
+    }
+
+    .black-custom-text .custom-text-white{
+        left: 30px;
+    }
+}
+@media screen and (max-width: 390px) {
+    .red-custom-text .custom-text {
+        left: 29px;
+    }
+    .black-custom-text .custom-text {
+        right: 16px;
+        top: -51px;
+    }
+
+    /**/
+
+    .black-custom-text-second .custom-text{
+        left: 46px;
+    }
+    .black-custom-text-second-mob .custom-text-white{
+        left: 46px;
+    }
+}
+@media screen and (max-width: 375px) {
+    .red-custom-text .custom-text {
+        left: 21px;
+    }
+    .black-custom-text .custom-text-white{
+        left: 15px;
+    }
+
+    /**/
+
+    .black-custom-text-second .custom-text{
+        left: 35px;
+    }
+    .black-custom-text-second-mob .custom-text-white{
+        left: 35px;
+    }
+}
+@media screen and (max-width: 365px){
+    .red-custom-text .custom-text h3, .red-custom-text .custom-text-white h3, .red-custom-text-mob .custom-text-white h3{
+        font-size: 30px;
+        margin-bottom: 5px;
+    }
+    .red-custom-text .custom-text h2, .red-custom-text .custom-text-white h2, .red-custom-text-mob .custom-text-white h2{
+        font-size: 63px;
+    }
+    .red-custom-text-mob .custom-text-white {
+        right: -166px;
+        bottom: -105px;
+    }
+    .red-custom-text .custom-text-white {
+        left: -161px;
+    }
+    .red-custom-text .custom-text {
+        left: 22px;
+    }
+    .black-custom-text .custom-text-white{
+        left: 6px;
+    }
+}
+@media screen and (max-width: 344px){
+    .red-custom-text .custom-text h3, .red-custom-text .custom-text-white h3, .red-custom-text-mob .custom-text-white h3{
+        font-size: 28px;
+        margin-bottom: 5px;
+    }
+    .red-custom-text .custom-text h2, .red-custom-text .custom-text-white h2, .red-custom-text-mob .custom-text-white h2{
+        font-size: 59px;
+    }
+    .red-custom-text-mob .custom-text-white {
+        right: -157px;
+        bottom: -98px;
+    }
+    .red-custom-text .custom-text-white {
+        left: -150px;
+    }
+    .red-custom-text .custom-text {
+        left: 22px;
+    }
+
+
+    .black-custom-text .custom-text {
+        right: 27px;
+        top: -51px;
+    }
+    .black-custom-text .custom-text-white {
+        left: 28px;
+    }
+    .black-custom-text .custom-text h3, .black-custom-text .custom-text-white h3{
+        font-size: 60px;
+        margin-bottom: 30px;
+    }
+    .black-custom-text .custom-text h2, .black-custom-text .custom-text-white h2{
+        margin-left: -3px;
+        font-size: 85px;
+    }
+
+    .black-custom-text-second .custom-text{
+        left: 35px;
+    }
+    .black-custom-text-second .custom-text h3, .black-custom-text-second .custom-text-white h3, .black-custom-text-second-mob .custom-text-white h3{
+        font-size: 38px;
+        margin-bottom: 10px;
+    }
+    .black-custom-text-second .custom-text h2, .black-custom-text-second .custom-text-white h2, .black-custom-text-second-mob .custom-text-white h2{
+        margin-left: -3px;
+        font-size: 30px;
+    }
+    .black-custom-text-second-mob .custom-text-white{
+        left: 35px;
+    }
+}
+@media screen and (max-width: 320px){
+    .red-custom-text .custom-text h3, .red-custom-text .custom-text-white h3, .red-custom-text-mob .custom-text-white h3{
+        font-size: 26px;
+        margin-bottom: 5px;
+    }
+    .red-custom-text .custom-text h2, .red-custom-text .custom-text-white h2, .red-custom-text-mob .custom-text-white h2{
+        font-size: 55px;
+    }
+    .red-custom-text-mob .custom-text-white {
+        right: -148px;
+        bottom: -91px;
+    }
+    .red-custom-text .custom-text-white {
+        left: -138px;
+    }
+    .red-custom-text .custom-text {
+        left: 22px;
+    }
+
+    .black-custom-text .custom-text {
+        right: 13px;
+        top: -51px;
+    }
+    .black-custom-text .custom-text-white {
+        left: 18px;
+    }
+
+    .black-custom-text-second .custom-text{
+        left: 35px;
+    }
+    .black-custom-text-second .custom-text h3, .black-custom-text-second .custom-text-white h3, .black-custom-text-second-mob .custom-text-white h3{
+        font-size: 33px;
+        margin-bottom: 10px;
+    }
+    .black-custom-text-second .custom-text h2, .black-custom-text-second .custom-text-white h2, .black-custom-text-second-mob .custom-text-white h2{
+        margin-left: -3px;
+        font-size: 26px;
+    }
+    .black-custom-text-second-mob .custom-text-white{
+        left: 35px;
+    }
+}
+
+/*END Vozmoshnosti style*/
+

@@ -37,7 +37,7 @@
 
                 </span>
         </a>
-        <a href="javascript:window.Scrolls.scrollToElementWithOffset(document.getElementById('young-initiative'),200);" class="bg-white py-8 px-4 flex justify-between items-center group transition duration-300 ease-linear hover:bg-[#C10F1A]">
+        <a href="javascript:window.Scrolls.scrollToElementWithOffset(document.getElementById('young-initiative'),180);" class="bg-white py-8 px-4 flex justify-between items-center group transition duration-300 ease-linear hover:bg-[#C10F1A]">
             <span class="flex gap-2 group-hover:text-white transition duration-300 ease-linear"><span>4.</span> Отдел молодежных инициатив и проектной деятельности: твои идеи – наша поддержка</span>
             <span>
                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -73,10 +73,10 @@
         </div>
     </div>
 </section>
-<h2 class="text-2xl 2xl:text-3xl font-bold py-5 sm:pt-16 sm:pb-8 text-[#252525]" id="stud-com">
-    Студенческий комитет: твой голос важен!
-</h2>
-<section>
+<section id="stud-com">
+    <h2 class="text-2xl 2xl:text-3xl font-bold py-5 sm:pt-16 sm:pb-8 text-[#252525]">
+        Студенческий комитет: твой голос важен!
+    </h2>
     <div class="grid grid-cols-1 lg:grid-cols-[1fr_2fr] lg:max-h-[280px] box-border p-4 bg-white items-center gap-4 mb-4 lg:text-sm 2xl:text-base">
         <div>
             <p>
@@ -172,10 +172,10 @@
         </div>
     </div>
 </section>
-<h2 class="text-2xl 2xl:text-3xl font-bold py-5 sm:pt-16 sm:pb-8 text-[#252525]" id="culture-center">
-    Центр культуры и творчества: вдохновение на каждом шагу
-</h2>
-<section>
+<section id="culture-center">
+    <h2 class="text-2xl 2xl:text-3xl font-bold py-5 sm:pt-16 sm:pb-8 text-[#252525]">
+        Центр культуры и творчества: вдохновение на каждом шагу
+    </h2>
     <div class="grid grid-cols-1 lg:grid-cols-[12px_1fr_1fr] gap-4 mb-10">
         <div class="bg-[#7E60E6] hidden lg:block">
 
@@ -264,7 +264,6 @@
             </div>
         </div>
     </div>
-</section>
 <h2 class="text-2xl 2xl:text-3xl font-bold py-5 sm:pt-16 sm:pb-8 text-[#252525]">
     Вместе мы создаем незабываемые события!
 </h2>
@@ -586,6 +585,7 @@
         </div>
     </div>
 </section>
+</section>
 <section id="sport">
     <div class="grid grid-cols-1 lg:grid-cols-[2fr_1.4fr] gap-5 mb-4 sm:mb-10">
         <div class="grid grid-cols-2 lg:grid-cols-[62%_35%] gap-5">
@@ -623,7 +623,6 @@
             </div>
         </div>
     </div>
-</section>
 <section class="mb-10">
     <div class="horizontal-scrollbar-second top-scrollbar-second sm:hidden mb-2.5">
         <div class="scroll-handle-second"></div>
@@ -859,10 +858,12 @@
     </div>
     </div>
 </section>
+</section>
+<section id="young-initiative">
 <section class="bg-[#252525]">
     <div class="grid grid-cols-1 xl:grid-cols-[1fr_10%_1fr] 2xl:grid-cols-[1fr_14%_1fr] text-white">
         <div class="p-5 lg:p-8 flex flex-col gap-6">
-            <h2 class="font-bold text-2xl 2xl:text-3xl" id="young-initiative">Отдел молодежных инициатив и проектной деятельности: твои идеи – наша поддержка</h2>
+            <h2 class="font-bold text-2xl 2xl:text-3xl">Отдел молодежных инициатив и проектной деятельности: твои идеи – наша поддержка</h2>
             <div class="lg:text-sm 2xl:text-base">
                 <p class="mb-4">
                     Отдел молодежных инициатив и проектной деятельности Мелитопольского государственного университета — это центр поддержки и развития ваших идей и талантов. Мы проводим тренинги, мастер-классы и помогаем реализовывать социальные проекты, чтобы каждый студент мог раскрыть свой потенциал и получить полезный опыт. В сотрудничестве с различными организациями мы открываем новые возможности для вашего роста и развития.
@@ -1219,10 +1220,11 @@
         </div>
     </div>
 </section>
-<h2 class="text-2xl 2xl:text-3xl font-bold p-5 sm:pt-16 sm:pb-8 text-[#252525]" id="support-and-resources">
-    Поддержка и ресурсы для студентов: мы всегда рядом
-</h2>
-<section>
+</section>
+<section id="support-and-resources">
+    <h2 class="text-2xl 2xl:text-3xl font-bold p-5 sm:pt-16 sm:pb-8 text-[#252525]">
+        Поддержка и ресурсы для студентов: мы всегда рядом
+    </h2>
     <div class="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-5 mb-5 lg:text-sm 2xl:text-base">
         <div class="bg-white p-5 flex flex-col justify-between">
             <div>
@@ -1389,6 +1391,38 @@
     </div>
 </section>
 <style>
+    .left-side-menu li.active a {
+        color: #C10F1A !important;
+    }
+    .left-side-menu li a{
+        display: flex;
+        gap: 5px
+    }
+    .left-side-menu li{
+        display: flex;
+        justify-content: space-between;
+    }
+    .left-side-menu li div{
+        display: flex;
+        align-items: center;
+    }
+    .menu-item-number{
+        display: block;
+    }
+    .grow > h4{
+        display: none;
+    }
+    ul.left-side-menu {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        position: sticky;
+        top: 200px;
+        max-height: calc(100vh - 40px);
+        overflow-y: auto;
+        scrollbar-width: thin;
+        scrollbar-color: #888 #f1f1f1;
+    }
     .cnt.active{
         background-color: #393939;
     }
@@ -1510,6 +1544,74 @@
     }
 
 </style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const menuItems = document.querySelectorAll('.left-side-menu li a');
+        const items = document.querySelectorAll('.left-side-menu li');
+        const sections = [];
+
+        items.forEach((link, index) => {
+            const svgHTML = `
+<div class="svg-box">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="inline-block ml-2 transition duration-300 ease-linear">
+                    <path d="M14 12C14 13.1046 13.1046 14 12 14C10.8954 14 10 13.1046 10 12C10 10.8954 10.8954 10 12 10C13.1046 10 14 10.8954 14 12Z" class="stroke-[#252525] group-hover:stroke-[white]" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M8 6.99997C8 6.99997 10.946 3.00001 12 3C13.0541 2.99999 16 7 16 7" class="stroke-[#252525] group-hover:stroke-[white]" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M16 17C16 17 13.054 21 12 21C10.9459 21 8 17 8 17" class="stroke-[#252525] group-hover:stroke-[white]" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+</div>
+            `;
+
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(svgHTML, 'image/svg+xml');
+            const svgElement = doc.documentElement;
+            link.appendChild(svgElement);
+        })
+
+        menuItems.forEach((link, index) => {
+
+            const numberSpan = document.createElement('span');
+            numberSpan.className = 'menu-item-number';
+            numberSpan.textContent = `${index + 1}.`;
+            link.prepend(numberSpan);
+
+            const href = link.getAttribute('href');
+            if (href && href.includes('getElementById')) {
+                const idMatch = href.match(/getElementById\(['"]([^'"]+)['"]\)/);
+                if (idMatch && idMatch[1]) {
+                    const id = idMatch[1];
+                    const section = document.getElementById(id);
+                    if (section) {
+                        sections.push({ id, link, section });
+                    }
+                }
+            }
+        });
+
+        function setActiveLink() {
+            const scrollPosition = window.scrollY + 220;
+
+            sections.forEach(({ id, link, section }) => {
+                const menuItemLi = link.closest('li');
+
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+
+                if (
+                    scrollPosition >= sectionTop &&
+                    scrollPosition < sectionTop + sectionHeight
+                ) {
+                    menuItemLi.classList.add('active');
+                } else {
+                    menuItemLi.classList.remove('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', setActiveLink);
+        window.addEventListener('load', setActiveLink);
+    });
+</script>
 <script>
     const container = document.getElementById('scrollContainer');
     const prevBtn = document.querySelector('#prev-btn');
