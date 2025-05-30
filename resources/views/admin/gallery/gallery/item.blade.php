@@ -49,7 +49,7 @@
 
         <x-html.blocks.a-button
             hoverColor="text-blue-700"
-            :href='route("admin:image:form")."?gallery={$item->code}"'
+            :href='$item->AddImages'
         >
             <i class="fas fa-plus"></i>
         </x-html.blocks.a-button>

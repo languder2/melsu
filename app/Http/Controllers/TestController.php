@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Enums\EducationForm;
 use App\Enums\EducationLevel;
 use App\Models\Education\Speciality;
+use App\Models\Gallery\Gallery;
 use App\Models\News\RelationNews;
 use App\Models\Page\Content;
 use App\Models\Sections\Contact;
@@ -70,6 +71,11 @@ class TestController extends Controller
 
     public function view()
     {
+
+        $content = Content::find(1922);
+
+
+        dd($content);
         return view('test.view');
     }
 

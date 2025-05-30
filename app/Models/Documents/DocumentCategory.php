@@ -44,10 +44,11 @@ class DocumentCategory extends Model
     {
         return $this->hasMany(Document::class, 'category_id','id');
     }
-    public function publicDocuments():HasMany
+    public function publicDocuments():Collection
     {
         return $this->documents()->where('is_show',true)
-            ->whereNull('relation_id')->whereNull('parent_id')->orderBy('sort');
+            ->whereNull('relation_id')->whereNull('parent_id')->orderBy('sort')
+            ->get();
     }
 
     public function fill(array $attributes):?self

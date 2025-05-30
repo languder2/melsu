@@ -101,7 +101,7 @@
         id="form_sections_{{$id}}_content"
         name="sections[{{$id??(int)microtime(true)}}][content]"
         label="Контент"
-        value="{{old('sections.{$id}.content') ?? $section->content ?? null}}"
+        value="{{old('sections.{$id}.content') ?? is_null($section) ? null : $section->getAttributes()['content']}}"
     />
 </div>
 </div>

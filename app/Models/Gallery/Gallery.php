@@ -4,9 +4,9 @@ namespace App\Models\Gallery;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
-use App\Models\Gallery\Image;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Collection;
 
 class Gallery extends Model
 {
@@ -78,8 +78,31 @@ class Gallery extends Model
         return $object;
     }
 
+    public function publicGallery(): Collection
+    {
+        return $this->images()
+            ->where('show',true)
+            ->whereNull('type')
+            ->orderBy('order')
+            ->get();
+    }
+
+
     public function getOrderAttribute($order):int|null
     {
         return ($order !== 10000) ? $order : null;
     }
+
+    /* Links */
+
+
+    public function getAddImagesAttribute():string
+    {
+        return route('gallery:images:add',$this);
+    }
+
+    /* end links */
+
+
+
 }

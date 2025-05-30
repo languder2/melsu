@@ -14,7 +14,9 @@
 
     @each('specialities.admin.section',$list,'section')
 
-    @include('specialities.admin.section',['list'=>$spo,'name'=>'СПО'])
+    @include('specialities.admin.section-with-parent',['list'=>$spo,'name'=>'СПО'])
+
+    @include('specialities.admin.section-with-parent',['list'=>$pg,'name'=>'Аспирантура'])
 
 @endsection
 

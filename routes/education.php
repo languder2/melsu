@@ -23,3 +23,6 @@ Route::get('specialities', [SpecialityController::class,'showAll'])
 
 Route::get('specialities/{speciality}', [SpecialityController::class,'showSingle'])
     ->name('public:education:speciality');
+
+Route::get('education-programs-higher-education', [SpecialityController::class,'educationProgramsHigherEducation'])
+    ->name('education-programs:higher-education');

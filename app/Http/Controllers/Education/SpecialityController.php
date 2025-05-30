@@ -28,8 +28,9 @@ class SpecialityController extends Controller
     {
         $list   = Division::where('type',DivisionType::Faculty)->orderBy('name')->get();
         $spo    = Speciality::where('level',EducationLevel::Colleges)->orderBy('name')->get();
+        $pg     = Speciality::where('level',EducationLevel::Postgraduate)->orderBy('name')->get();
 
-        return view('specialities.admin.list', compact('list','spo'));
+        return view('specialities.admin.list', compact('list','spo','pg'));
     }
 
     public function form($id = null)
@@ -189,6 +190,19 @@ class SpecialityController extends Controller
                 ];
             });
         return $list;
+    }
+
+    public function educationProgramsHigherEducation():View
+    {
+
+        $specialities = Speciality::
+            whereIn('level',[EducationLevel::Bachelor,EducationLevel::Master,EducationLevel::Specialist])
+            ->orderByRaw(EducationLevel::getOrder())
+            ->orderBy('spec_code')
+            ->orderBy('name')
+            ->get();
+
+        return view('specialities.public.education-programs-higher-education', compact('specialities'));
     }
 
 }
