@@ -93,7 +93,7 @@ class GalleryController extends Controller
             $gallery->preview()->fill(['reference_id' => $image->id])->save();
         }
         elseif($form['preview']){
-            $gallery->preview()->getReferenceID($form['preview']);
+            $id = Image::getIdFromUrl($form['preview']);
             $gallery->preview()->save();
         }
         else

@@ -22,6 +22,7 @@ class Image extends Model
         'id',
         'reference_id',
         'name',
+        'path',
         'alt',
         'filename',
         'filetype',
@@ -77,6 +78,7 @@ class Image extends Model
 
         if($file->extension() === 'svg'){
             $this->filetype = 'svg';
+            $this->path     = "$path/$this->filename/image.svg";
 
             $file->storeAs("$path/$this->filename", 'image.svg');
             $this->save();
@@ -102,6 +104,9 @@ class Image extends Model
 
             Storage::put("$path/{$this->filename}/thumbnail.webp",(string)$image->resize($width,$height)->toWebp(90));
         }
+
+        $this->path     = "$path/$this->filename/image.webp";
+        $this->save();
 
         Storage::put("$path/$this->filename/image.webp",(string)$image->toWebp(90));
     }
@@ -211,6 +216,17 @@ class Image extends Model
 
         $this->save();
     }
+    public static function getIdFromUrl(string $url):?int
+    {
+        $path = collect(explode('/', $url));
+
+        dd($path);
+        $parsed = parse_url($url);
+        $relativePath = $parsed['path'] . (isset($parsed['query']) ? '?' . $parsed['query'] : '');
+        $id = Image::where('filename', $path->take(-2)->first())->pluck('id')->first();
+
+        return  $id;
+    }
     public static function getReference(string $path):?int
     {
         $path = collect(explode('/', $path));
@@ -258,6 +274,7 @@ class Image extends Model
             'filetype'  => 'webp',
             'filename'  => "{$model->id}/{$id}",
             'type'      => 'image',
+            'path'      => "$path{$model->id}/{$id}/image.webp",
         ]);
 
         $image->relation()->associate($model)->save();
