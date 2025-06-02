@@ -20,7 +20,7 @@
         </section>
 
         <div class="container">
-            <div class="content-news mb-3">
+            <div class="content-news mb-3 text-section">
                 {!! $event->news !!}
             </div>
 

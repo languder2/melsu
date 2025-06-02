@@ -2,6 +2,7 @@
 
 namespace App\Models\Upbringing;
 
+use App\Models\Gallery\Gallery;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
@@ -24,4 +25,25 @@ class Upbringing extends Model
     {
         return $this->morphTo();
     }
+    public function getContentAttribute($value)
+    {
+        $pattern = '/image-gallery:([a-zA-Z0-9-]+):end-gallery/';
+
+
+        if (preg_match($pattern, $value, $matches)) {
+
+            $code= $matches[1];
+
+            $gallery = Gallery::where('code',$code)->first();
+
+            return str_replace(
+                "image-gallery:$code:end-gallery",
+                $gallery ? view('gallery.images.public.includes.gallery',compact('gallery')) : null,
+                $value
+            );
+        }
+        else
+            return $value;
+    }
+
 }

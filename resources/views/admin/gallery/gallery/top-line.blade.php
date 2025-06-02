@@ -5,7 +5,7 @@
 
     </div>
     <div class="">
-        <a href="{{route('admin:gallery:image:form')}}" class="
+        <a href="{{route('admin:gallery:form')}}" class="
                 py-2 px-4
                 rounded-md
                 text-white

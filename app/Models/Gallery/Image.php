@@ -32,6 +32,9 @@ class Image extends Model
         'relation_type',
     ];
 
+    protected $casts    = [
+        'show'  => 'boolean',
+    ];
     public static function FormRules($id): array
     {
         return [
@@ -39,6 +42,7 @@ class Image extends Model
             'alt' => '',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:51200',
             'gallery_code'  => '',
+            'order'  => '',
         ];
     }
 
@@ -49,6 +53,14 @@ class Image extends Model
             'image.mimes'   => 'Не верный формат изображения',
             'image.max'     => 'Размер изображения превышает лимит в 50MB',
         ];
+    }
+    public function fill(array $attributes):?self
+    {
+        if(!empty($attributes)){
+            $attributes['order'] = $attributes['order'] ?? 1000;
+        }
+
+        return parent::fill($attributes);
     }
 
     public function relation(): MorphTo
@@ -138,7 +150,7 @@ class Image extends Model
     public function getThumbnailAttribute():string|null
     {
 
-        $record = $this->reference??$this;
+        $record = $this->reference ?? $this;
 
         $path = self::getPath($record->relation_type);
 
@@ -206,9 +218,9 @@ class Image extends Model
         return Image::where('filename', $path->take(-2)->first())->pluck('id')->first();
     }
 
-    public function getOrderAttribute($order):int|null
+    public function getOrderAttribute($value):int|null
     {
-        return ($order === 10000) ? $order : null;
+        return ($value < 10000 && $value > 0) ? $value : null;
     }
 
     public static function placeholder():string
@@ -232,4 +244,52 @@ class Image extends Model
                 Log::add($this,'delete');
         }
     }
+
+
+    public static function upload(UploadedFile $file, ?model $model = null): Image
+    {
+
+        $id = Image::max('id') + 1;
+
+        $path = self::getPath(get_class($model));
+
+        $image = new Image([
+            'name'      => "{$model->name}",
+            'filetype'  => 'webp',
+            'filename'  => "{$model->id}/{$id}",
+            'type'      => 'image',
+        ]);
+
+        $image->relation()->associate($model)->save();
+
+        $manager = new ImageManager(new Driver());
+        $file = $manager->read($file);
+
+        $width  = ($file->width()  > $file->height()) ?600:600*$file->width()/$file->height();
+        $height = ($file->height() > $file->width())  ?600:600*$file->height()/$file->width();
+
+        Storage::put("$path/$image->filename/image.webp",(string)$file->toWebp(90));
+        Storage::put("$path/{$image->filename}/thumbnail.webp",(string)$file->resize($width,$height)->toWebp(90));
+
+        return $image;
+    }
+
+    /* Links */
+
+    public function getEditAttribute():string
+    {
+        return  route('admin:image:form', $this);
+    }
+    public function getApiToggleShowAttribute():string
+    {
+        return  route('image:api:toggle-show', $this);
+    }
+
+    public function getApiDeleteAttribute():string
+    {
+        return  route('image:api:delete', $this);
+    }
+
+    /* End links */
+
 }

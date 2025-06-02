@@ -23,6 +23,9 @@
 
             {{@$class}}
         "
+        @isset($multiple)
+            multiple
+        @endisset
 
         @required(@$required)
         placeholder=""

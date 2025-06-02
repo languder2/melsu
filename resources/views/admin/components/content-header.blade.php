@@ -16,4 +16,8 @@
             <i class="fas fa-plus w-4 py-2"></i>
         </a>
     @endisset
+
+    @isset($info)
+        {!! $info !!}
+    @endisset
 </div>

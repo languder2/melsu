@@ -4,9 +4,9 @@
     </div>
 
     <x-html.a-blue
-        href="{{route('admin:gallery:image:list')}}"
+        href="{{route('admin:gallery:list')}}"
         text="Галереи"
-        :active="str_contains(url()->current(),route('admin:gallery:image:list'))"
+        :active="str_contains(url()->current(),route('admin:gallery:list'))"
     />
 
     <span class="inline-block mx-3">
@@ -28,9 +28,9 @@
     </div>
 
     <x-html.a-blue
-        href="{{route('admin:gallery:image:list')}}"
+        href="{{route('admin:gallery:list')}}"
         text="Галереи"
-        :active="str_contains(url()->current(),route('admin:gallery:image:list'))"
+        :active="str_contains(url()->current(),route('admin:image:list'))"
     />
 
     <span class="inline-block mx-3">
@@ -38,9 +38,9 @@
     </span>
 
     <x-html.a-blue
-        href="{{route('admin:gallery:image:list')}}"
+        href="{{route('admin:gallery:list')}}"
         text="Списки"
-        :active="str_contains(url()->current(),route('admin:gallery:image:list'))"
+        :active="str_contains(url()->current(),route('admin:image:list'))"
     />
 
 </div>

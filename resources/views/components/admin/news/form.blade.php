@@ -126,7 +126,7 @@
         name="news"
         id="news"
         label="Новость"
-        value="{{old('news')??@$current->news}}"
+        value="{{old('news') ?? $current->exists ? $current->getAttributes()['news'] : null}}"
         borderTop
         class="min-h-screen"
     />

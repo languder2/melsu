@@ -51,6 +51,7 @@ class Content extends Model
     {
         $pattern = '/image-gallery:([a-zA-Z0-9-]+):end-gallery/';
 
+
         if (preg_match($pattern, $value, $matches)) {
 
             $code= $matches[1];
@@ -59,7 +60,7 @@ class Content extends Model
 
             return str_replace(
                 "image-gallery:$code:end-gallery",
-                $gallery ? view('gallery.images.pubic.includes.gallery',compact('gallery')) : null,
+                $gallery ? view('gallery.images.public.includes.gallery',compact('gallery')) : null,
                 $value
             );
         }

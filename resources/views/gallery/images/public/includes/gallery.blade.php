@@ -1,5 +1,5 @@
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-1">
-    @foreach($gallery->publicGallery() as $image)
+    @foreach($gallery->publicImages() as $image)
         <div class="flex-auto ">
             <img
                 src="{{$image->src}}"

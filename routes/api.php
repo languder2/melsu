@@ -59,7 +59,6 @@ Route::middleware(['web','auth.api'])->prefix('gallery')->group(function () {
 
     Route::get('delete/{id}', [AdminImageGallery::class, 'ApiDelete'])
     ->name('gallery-delete');
-
 });
 
 Route::middleware(['web','auth.api'])->prefix('posts')->group(function () {
