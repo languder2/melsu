@@ -56,25 +56,22 @@ class AdminImage extends Controller
 
     public function save(Request $request)
     {
-        $form = $request->validate(Image::FormRules($request->get('id')), Image::FormMessage());
 
+        $form = $request->validate(Image::FormRules($request->get('id')), Image::FormMessage());
 
         if (empty($request->get('id')))
             $record = new Image();
         else
             $record = Image::find($request->get('id'));
 
-        if(empty($form['order']))
-            unset($form['order']);
+        $record->fill($form)->save();
 
-        $record->fill($form);
+//        dd($form,$record);
 
         $gallery = Gallery::where('code',$form['gallery_code'])->first();
 
         if($gallery)
-            $record->relation()->associate($gallery);
-
-        $record->save();
+            $record->relation()->associate($gallery)->save();
 
 
         if($request->file('image')){
@@ -84,12 +81,8 @@ class AdminImage extends Controller
             $record->save();
         }
 
-
-
-        return redirect()->route(
-            (bool)session()->get('gallery-image-add')
-                ?'admin:gallery:image:list'
-                :'admin:image:list'
+        return redirect()->to(
+            $gallery->exists ? $gallery->admin_show : route('admin:image:list')
         );
     }
 }

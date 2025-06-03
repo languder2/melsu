@@ -11,7 +11,7 @@
     "
 >
     <img
-        src="{{optional($item->preview)->thumbnail}}"
+        src="{{ $item->preview }}"
         alt="{{$item->name}}"
         class="
             h-80
@@ -36,12 +36,13 @@
 
         <x-html.blocks.a-button
             hoverColor="text-blue-700"
-            :href="route('admin:gallery:image:form',$item->id)"
+            :href="route('admin:gallery:form',$item->id)"
         >
             <i class="fas fa-pencil-alt"></i>
         </x-html.blocks.a-button>
 
         <x-html.blocks.a-button
+            :href='$item->AdminShow'
             hoverColor="text-blue-700"
         >
             <i class="fas fa-layer-group"></i>
@@ -49,7 +50,7 @@
 
         <x-html.blocks.a-button
             hoverColor="text-blue-700"
-            :href='$item->AddImages'
+            :href='$item->AdminShow'
         >
             <i class="fas fa-plus"></i>
         </x-html.blocks.a-button>
@@ -75,7 +76,7 @@
             <span class="border-r border-r-stone-50/30"></span>
 
             <span>
-                {{str_pad($item->images->count(), 3, '0', STR_PAD_LEFT)}}
+                {{str_pad($item->adminImages()->count(), 3, '0', STR_PAD_LEFT)}}
             </span>
 
             <span class="border-r border-r-stone-50/30"></span>

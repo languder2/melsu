@@ -44,8 +44,7 @@
             <x-form.select
                 id="form_faculty_code"
                 name="gallery_code"
-                old="{{old('faculty_code')??@$addTo}}"
-                {{--            value="{{$current->faculty_code}}"--}}
+                old="{{ old('_token') ? old('gallery_code') : $current->relation->code ?? null}}"
                 null="Выбрать"
                 :list="$galleries??[]"
                 label="Добавить в галерею"
@@ -68,6 +67,16 @@
                 />
             </div>
 
+            <x-form.input
+                id="order"
+                type="number"
+                name="order"
+                step="1"
+                max="10000"
+                min="1"
+                label="Порядок вывода"
+                value="{{ old('_token') ? old('order') : $current->order ?? null}}"
+            />
         </div>
     </div>
 

@@ -1,6 +1,6 @@
 <x-head.tinymce-config/>
 <form
-    action="{{route('admin:gallery:image:save')}}"
+    action="{{ $gallery->save }}"
     method="POST"
     enctype="multipart/form-data"
     @class([
@@ -13,7 +13,7 @@
 
     <div class="flex gap-3 justify-center items-center">
         <h3 class="font-semibold text-xl uppercase text-center flex-1">
-            @if(isset($current->id))
+            @if(isset($gallery->exists))
                 Измененить галерею
             @else
                 Создать галерею
@@ -32,11 +32,11 @@
     <x-form.errors/>
 
     <div class="flex gap-3 mt-3">
-        @if(optional($current)->preview && $current->preview->thumbnail)
+        @if($gallery->preview()->exists)
             <div>
                 <img
-                    src="{{optional($current->preview)->thumbnail}}"
-                    alt="{{optional($current)->name}}"
+                    src="{{$gallery->thumbnail}}"
+                    alt="{{$gallery->name}}"
                     class="h-56 rounded-lg"
                 />
             </div>
@@ -49,7 +49,7 @@
                 id="form_name"
                 name="name"
                 label="Название"
-                value="{{ old('name') ?? optional($current)->name }}"
+                value="{{ old('_token') ? old('name') : $gallery->name }}"
                 required1
             />
 
@@ -63,7 +63,7 @@
                 id="form_preview"
                 name="preview"
                 label="Превью из галереи"
-                value="{{old('preview')??optional(optional($current)->preview)->src}}"
+                value="{{ old('_token') ? old('preview') : $gallery->preview->src ?? null }}"
             />
 
             <div class="block md:flex flex-row gap-4 items-center">
@@ -72,7 +72,7 @@
                         id="form_code"
                         name="code"
                         label="Code"
-                        value="{{ old('code') ?? optional($current)->code }}"
+                        value="{{ old('_token') ? old('code') : $gallery->code }}"
                         required
                     />
                 </div>
@@ -83,13 +83,13 @@
                         type="number"
                         label="Порядок вывода"
                         class="text-center"
-                        value="{{old('order')??optional($current)->order}}"
+                        value="{{ old('_token') ? old('order') : $gallery->order }}"
                     />
                 </span>
 
                 <x-form.on-off
                     :old="old('show')"
-                    :current="$current"
+                    :current="$gallery"
                 />
             </div>
         </div>
@@ -100,7 +100,7 @@
         name="description"
         label="Описание"
         borderTop
-        value="{{old('description')??@$current->description}}"
+        value="{{ old('_token') ? old('description') : $gallery->description }}"
     />
 
     <x-form.submit

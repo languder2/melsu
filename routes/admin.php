@@ -119,14 +119,6 @@ Route::controller(LabsController::class)
 
     });
 
-Route::controller(\App\Http\Controllers\Gallery\AdminImageGallery::class)
-    ->prefix('gallery/images')
-    ->group(function () {
-        Route::get('', 'list')->name('admin:gallery:image:list');
-        Route::get('form/{id?}', 'form')->name('admin:gallery:image:form');
-        Route::post('save', 'save')->name('admin:gallery:image:save');
-    });
-
 Route::controller(\App\Http\Controllers\Gallery\AdminImage::class)
     ->prefix('images')
     ->group(function () {

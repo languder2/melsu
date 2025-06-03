@@ -15,7 +15,7 @@
     </section>
 
     <div class="container custom">
-        <div class="content-news mb-3">
+        <div class="content-news mb-3 text-section">
             {!! $news->news !!}
         </div>
 

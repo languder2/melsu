@@ -26,11 +26,11 @@ class Gallery extends Model
         'relation_type',
     ];
 
-    public static function FormRules($id): array
+    public function FormRules(): array
     {
         return [
             'name'          => 'required',
-            'code'          => "required|unique:gallery,code,{$id},id,deleted_at,NULL",
+            'code'          => "required|unique:gallery,code,{$this->id},id,deleted_at,NULL",
             'description'   => '',
             'order'         => 'nullable|numeric',
             'image'         => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
@@ -39,7 +39,7 @@ class Gallery extends Model
         ];
     }
 
-    public static function FormMessage(): array
+    public function FormMessage(): array
     {
         return [
             'name' => 'Укажите название',
@@ -48,34 +48,48 @@ class Gallery extends Model
         ];
     }
 
-    public function preview(): MorphOne
+    public function fill(array $attributes):?self
     {
-        return $this->MorphOne(Image::class, 'relation')->where('type', 'preview');
+        if(!empty($attributes)){
+            $attributes['order'] = $attributes['order'] ?? 1000;
+        }
+
+        return parent::fill($attributes);
     }
 
-    public function images(bool $hidden = false, $trashed = null): MorphMany
+    public function images(): MorphMany
     {
+        return $this->morphMany(Image::class, 'relation');
+    }
 
-        $object = $this->morphMany(Image::class, 'relation');
+    public function preview(): Image
+    {
+        return $this->images()->where('type','preview')->first()
+            ?? (new Image(['type'=> 'preview', 'name' => $this->name]))->relation()->associate($this);
+    }
 
-//        $object->where(function ($query) {
-//            $query->where('type', '!=', 'preview')
-//                ->orWhereNull('type');
-//        });
+    public function getPreviewAttribute():?string
+    {
+        return $this->preview()->src;
+    }
+    public function getThumbnailAttribute():?string
+    {
+        return $this->preview()->thumbnail;
+    }
 
-        if(!$hidden)
-            $object->where('show',true);
-
-
-        if ($trashed === 'include')
-            $object = $object->withTrashed();
-
-        if ($trashed === 'only')
-            $object = $object->onlyTrashed();
-
-        $object = $object->orderBy('order')->orderBy('name');
-
-        return $object;
+    public function adminImages():Collection
+    {
+        return $this->images()
+            ->where('type','image')
+            ->orderBy('order')
+            ->get();
+    }
+    public function publicImages():Collection
+    {
+        return $this->images()
+            ->where('type','image')
+            ->where('show',1)
+            ->get();
     }
 
     public function publicGallery(): Collection
@@ -87,20 +101,26 @@ class Gallery extends Model
             ->get();
     }
 
-
     public function getOrderAttribute($order):int|null
     {
         return ($order !== 10000) ? $order : null;
     }
 
     /* Links */
-
-
-    public function getAddImagesAttribute():string
+    public function getUploadImagesAttribute():string
     {
-        return route('gallery:images:add',$this);
+        return route('gallery:images:upload',$this);
     }
 
+    public function getAdminShowAttribute():string
+    {
+        return route('gallery:admin:show',$this);
+    }
+
+    public function getSaveAttribute():string
+    {
+        return route('gallery:admin:save',$this);
+    }
     /* end links */
 
 
