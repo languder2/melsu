@@ -52,20 +52,26 @@ class Content extends Model
         $pattern = '/image-gallery:([a-zA-Z0-9-]+):end-gallery/';
 
 
-        if (preg_match($pattern, $value, $matches)) {
+        if (preg_match_all($pattern, $value, $matches)) {
 
-            $code= $matches[1];
-
-            $gallery = Gallery::where('code',$code)->first();
-
-            return str_replace(
-                "image-gallery:$code:end-gallery",
-                $gallery ? view('gallery.images.public.includes.gallery',compact('gallery')) : null,
-                $value
-            );
+            foreach ($matches[1] as $match)
+                self::insertGallery($value,$match);
         }
-        else
-            return $value;
+
+        return $value;
+    }
+
+    public static function insertGallery(&$content, ?string $code):void
+    {
+
+        $gallery = Gallery::where('code',$code)->first();
+
+
+        $content = str_replace(
+            "image-gallery:$code:end-gallery",
+            $gallery ? view('gallery.images.public.includes.gallery',compact('gallery')) : null,
+            $content
+        );
     }
 
     public function getTest()
