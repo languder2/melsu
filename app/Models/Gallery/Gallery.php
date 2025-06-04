@@ -52,6 +52,8 @@ class Gallery extends Model
     {
         if(!empty($attributes)){
             $attributes['order'] = $attributes['order'] ?? 1000;
+            if(array_key_exists('show',$attributes))
+            $attributes['show']  = $attributes['show'] ? 1 : '';
         }
 
         return parent::fill($attributes);

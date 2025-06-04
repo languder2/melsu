@@ -71,9 +71,10 @@ function initRemoveBlock() {
 function reinitEditor() {
     tinymce.init({
         selector: 'textarea.editor', // Replace this CSS selector to match the placeholder element for TinyMCE
-        plugins: 'code table lists image',
-        license_key: 'gpl',
-        toolbar: 'undo redo | blocks | bold italic | alignleft aligncenter alignright | indent outdent | bullist numlist | code | table'
+        // plugins: 'code table lists image media link',
+        plugins: [ "uploadcare", "code", "image", "media", "link", "preview", "lists" ],
+        toolbar: 'undo redo | styles  | bold italic | alignleft aligncenter alignright | indent outdent bullist numlist | table | link image media | code | preview',
+        license_key: 'gpl'
     });
 }
 

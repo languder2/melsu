@@ -119,14 +119,14 @@
         id="full"
         label="Полное описание"
         borderTop
-        value="{{old('full')??@$current->full}}"
+        value="{{old('_token') ? old('full') : $current->full ?? null}}"
     />
 
     <x-form.editor
         name="news"
         id="news"
         label="Новость"
-        value="{{old('news') ?? $current->exists ? $current->getAttributes()['news'] : null}}"
+        value="{{old('_token') ? old('news') : ($current ? $current->getAttributes()['news'] : null)}}"
         borderTop
         class="min-h-screen"
     />

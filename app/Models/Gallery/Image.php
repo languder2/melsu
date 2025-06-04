@@ -207,9 +207,23 @@ class Image extends Model
 
     public function getReferenceID(string $path):void
     {
-        $path = collect(explode('/', $path));
 
-        $this->reference_id = Image::where('filename', $path->take(-2)->first())->pluck('id')->first();
+        $path = explode('/', $path);
+
+        unset($path[count($path)-1]);
+        unset($path[0]);
+        unset($path[1]);
+        unset($path[2]);
+        unset($path[3]);
+        unset($path[4]);
+        unset($path[5]);
+
+        $path = implode("/", $path);;
+
+        $id = Image::where('filename', $path)->pluck('id')->first();
+
+        if($id)
+            $this->reference_id = $id;
 
         if(!$this->name)
             $this->name = $this->relation()->name ?? $this->relation()->title ?? 'empty';

@@ -23,7 +23,7 @@ class NewsController extends Controller
                 ])->render(),
 
                 View::make('components.admin.news.news')->with([
-                    'list' => News::getPaginate(),
+                    'list' => News::select('published_at','title','id')->orderBy('published_at','desc')->paginate(20),
                 ])->render(),
             ]
         ]);
