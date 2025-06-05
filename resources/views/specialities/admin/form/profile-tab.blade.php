@@ -28,7 +28,7 @@
                 select-none
 
                 peer-checked:text-white
-                peer-checked:bg-baseRed
+                peer-checked:bg-base-red
 
                 hover:text-red-700
                 hover:bg-gray-100
