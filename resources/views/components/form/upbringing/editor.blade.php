@@ -38,7 +38,7 @@
                 type="number"
                 label="Порядок вывода"
                 class="text-center"
-                value="{{old('order') ?? null}}"
+                value="{{old('_token') ? old('order') : $section->order ?? null}}"
             />
 
         </div>

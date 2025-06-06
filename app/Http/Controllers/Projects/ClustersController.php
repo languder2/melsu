@@ -46,10 +46,7 @@ class ClustersController extends Controller
             foreach ($request->get('contents') as $key=>$form)
                 $current->getContent($key)->customSave($form);
 
-        if($request->has('save'))
-            return redirect()->to($current->edit);
-        else
-            return redirect()->to($current->admin);
+        return redirect()->to($request->has('save') ? $current->edit : $current->admin);
     }
 
     public function delete(?Cluster $current): RedirectResponse

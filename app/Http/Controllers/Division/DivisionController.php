@@ -138,18 +138,9 @@ class DivisionController extends Controller
             }
         }
 
-        switch ($record->type) {
-            case DivisionType::Institute:
-                return redirect()->route('admin:institutes:list');
-            case DivisionType::Faculty:
-                return redirect()->route('admin:faculty:list');
-            case DivisionType::Department:
-                return redirect()->route('admin:department:list');
-            case DivisionType::Lab:
-                return redirect()->route('admin:lab:list');
-            default:
-                return redirect()->route('admin:division:list');
-        }
+        return redirect()->to($request->has('save') ? $record->edit : $record->admin);
+
+
     }
 
     public function delete(int $id)

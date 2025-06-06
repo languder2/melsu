@@ -94,9 +94,9 @@
                     @break
 
             @default
-                @if($division->sections->count())
+                @if($division->publicSections->count())
                     <div class="flex flex-col gap-4 mb-4">
-                        @each('public.page.content-section',$division->sections,'section')
+                        @each('public.page.content-section',$division->publicSections,'section')
                     </div>
                 @else
                     <div class="bg-white p-6">

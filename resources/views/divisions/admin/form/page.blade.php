@@ -33,12 +33,23 @@
         <div class="grid grid-cols-[400px_minmax(400px,1200px)] mx-auto gap-4">
 
             <div>
-                @include('divisions.admin.form.menu', ['type' => $current->type])
+                <div class="sticky top-2">
+                    @include('divisions.admin.form.menu', ['type' => $current->type])
 
-                <x-form.submit
-                    class="uppercase"
-                    value="сохранить"
-                />
+                    <div class="flex flex-row-reverse justify-between">
+                        @component('components.form.submit',[
+                            'name'          => 'save',
+                            'class'         => "uppercase",
+                            'value'         => "сохранить",
+                        ])@endcomponent
+
+                        @component('components.form.submit',[
+                            'name'          => 'close-save',
+                            'class'         => "uppercase",
+                            'value'         => "сохранить и закрыть",
+                        ])@endcomponent
+                    </div>
+                </div>
             </div>
 
             <div>

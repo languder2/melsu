@@ -31,7 +31,7 @@
         <div class="grid grid-cols-[400px_minmax(400px,1200px)] mx-auto gap-4">
 
             <div>
-                <div class="sticky top-0">
+                <div class="sticky top-2">
                     @foreach($current->form_menu as $item)
                         @component('admin.components.form-menu-item',$item) @endcomponent
                     @endforeach

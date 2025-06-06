@@ -3,7 +3,7 @@
     tinymce.init({
         selector: 'textarea.editor', // Replace this CSS selector to match the placeholder element for TinyMCE
         // plugins: 'code table lists image media link',
-        plugins: [ "uploadcare", "code", "image", "media", "link", "preview", "lists" ],
+        plugins: [ "uploadcare", "code", "image", "media", "link", "preview", "lists", "table" ],
         toolbar: 'undo redo | styles  | bold italic | alignleft aligncenter alignright | indent outdent bullist numlist | table | link image media | code | preview',
         license_key: 'gpl',
         image_title: true,

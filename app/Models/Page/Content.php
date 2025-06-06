@@ -49,7 +49,7 @@ class Content extends Model
 
     public function getContentAttribute($value)
     {
-        $pattern = '/image-gallery:([a-zA-Z0-9-]+):end-gallery/';
+        $pattern = '/image-gallery:([a-zA-Z0-9\-._,]+):end-gallery/';
 
 
         if (preg_match_all($pattern, $value, $matches)) {

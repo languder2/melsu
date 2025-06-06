@@ -16,9 +16,9 @@
         @include('public.staffs.division.chief')
     @endif
 
-    @if($division->sections->count())
+    @if($division->publicSections->count())
         <div class="flex flex-col gap-3">
-            @each('public.page.content-section',$division->sections,'section')
+            @each('public.page.content-section',$division->publicSections,'section')
         </div>
     @endif
 
