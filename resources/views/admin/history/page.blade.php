@@ -2,7 +2,7 @@
 
 @section('title', 'ФГБОУ ВО "МелГУ"')
 @section('content')
-    <div class="bg-white rounded-md p-4 mb-4 flex">
+    <div class="bg-white rounded-md p-4 flex">
         <h2 class="flex-1 text-2xl font-semibold">
             Секции истории
         </h2>

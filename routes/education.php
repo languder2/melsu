@@ -6,14 +6,20 @@ use App\Http\Controllers\Education\SpecialityController;
 Route::prefix('admin/specialities')
     ->group(function () {
 
-        Route::get('',                      [SpecialityController::class,'list'])
+        Route::get('',                      [SpecialityController::class,'admin'])
             ->name('admin:speciality:list');
+
         Route::get('edit/{current?}',       [SpecialityController::class,'form'])
             ->name('speciality:admin:form');
+
         Route::post('save/{current?}',      [SpecialityController::class,'save'])
             ->name('speciality:save');
+
         Route::get('delete/{speciality}',   [SpecialityController::class,'delete'])
             ->name('admin:speciality:delete');
+
+        Route::post('set-filter',       [SpecialityController::class,'setFilter'])
+            ->name('specialities:admin:set-filter');
 
     });
 

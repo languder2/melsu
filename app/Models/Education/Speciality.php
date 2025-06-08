@@ -211,6 +211,11 @@ class Speciality extends Model
     }
 
 
+    public function applyAdminFilter()
+    {
+        dd(5);
+    }
+
     /* end Links */
 
 }

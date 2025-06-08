@@ -6,15 +6,35 @@
     {{$record->level->getName() ?? null}}
 </div>
 
-<div>
+<div class="flex flex-col gap-2">
+    @isset($record->faculty)
+        <a
+            href="{{ $record->faculty->edit }}"
+            class="underline text-blue hover:text-red"
+            target="_blank"
+        >
+            {!! $record->faculty->name !!}
+        </a>
+    @endisset
     @isset($record->department)
         <a
-            href="{{ route('admin:division:edit', $record->department) }}"
+            href="{{ $record->department->edit }}"
             class="underline text-blue hover:text-red"
+            target="_blank"
         >
             {!! $record->department->name !!}
         </a>
     @endisset
+    @isset($record->relation)
+        <a
+            href="{!! $record->relation->edit !!}"
+            target="_blank"
+            class="underline text-blue hover:text-red"
+        >
+            {!! $record->relation->name !!}
+        </a>
+    @endisset
+
 </div>
 
 <div>
