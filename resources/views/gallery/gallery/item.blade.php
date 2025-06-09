@@ -11,7 +11,7 @@
     "
 >
     <img
-        src="{{optional($item->preview)->thumbnail}}"
+        src="{{$item->preview}}"
         alt="{{$item->name}}"
         class="
             h-80

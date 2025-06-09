@@ -18,7 +18,7 @@ class News extends Model
 
     protected $table = 'news';
 
-    public static int $adminPerPage = 20;
+    public static int $adminPerPage = 10;
     protected $primaryKey = 'id';
 
     protected $fillable = [

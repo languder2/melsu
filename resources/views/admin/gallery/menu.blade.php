@@ -1,4 +1,4 @@
-<div class="bg-white rounded-md p-4 mb-4 flex">
+<div class="bg-white rounded-md p-4 flex">
     <div class="mr-3">
         Изображения:
     </div>

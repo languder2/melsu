@@ -32,29 +32,13 @@
 @section('content')
     <div class="flex flex-col gap-4">
         @component('gallery.images.admin.form-multi-upload',compact('gallery')) @endcomponent
-
-
-{{--        @if($images->count())--}}
-{{--            <h3 class="font-semibold text-2xl">--}}
-{{--                Последние добавленные--}}
-{{--            </h3>--}}
-{{--            <div class="flex gap-4 flex-wrap">--}}
-{{--                @foreach($images as $image)--}}
-{{--                    @component('gallery.admin.image',compact('image')) @endcomponent--}}
-{{--                @endforeach--}}
-{{--                <div class="flex-auto h-80"></div>--}}
-{{--            </div>--}}
-{{--        @endif--}}
-
         <h3>
-            Все
+            Содержание галереи
         </h3>
-        <div class="flex gap-4 flex-wrap">
-
+        <div class="flex gap-3 flex-wrap">
             @foreach($gallery->adminImages() as $image)
                 @component('gallery.admin.image',compact('image')) @endcomponent
             @endforeach
         </div>
-
-
+    </div>
 @endsection

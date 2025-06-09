@@ -1,4 +1,4 @@
-<nav class="bg-white p-4 mb-4 flex">
+<nav class="bg-white p-4 flex">
     <x-html.a-blue
         href="{{route('admin:news')}}"
         text="Новости"

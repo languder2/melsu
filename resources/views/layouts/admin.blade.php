@@ -22,7 +22,7 @@
 @endguest
 @auth
     <div class="ml-14 p-4">
-        <section>
+        <section class="flex flex-col gap-4">
             @hasSection('top-menu')
                 @yield('top-menu')
             @endif
@@ -33,6 +33,12 @@
 
             @hasSection('content-header')
                 @yield('content-header')
+            @endif
+
+            @hasSection('filter')
+                <div class="p-4 bg-white">
+                    @yield('filter')
+                </div>
             @endif
 
             @yield('content')

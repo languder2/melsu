@@ -298,7 +298,8 @@ class Division extends Model
     public function publicSections(): MorphMany
     {
         return $this->morphMany(PageContent::class, 'relation')
-            ->where('show',true)->orderBy('order');
+            ->where('show',true)
+            ->orderBy('order');
     }
     public function getPublicSectionsCountAttribute(): int
     {
@@ -469,7 +470,6 @@ class Division extends Model
 
     public function getAddSpecialityAttribute():?string
     {
-
         $route = route('speciality:admin:form');
 
         return match($this->type){
@@ -477,6 +477,21 @@ class Division extends Model
             DivisionType::Faculty       => "{$route}?faculty={$this->id}",
             DivisionType::Department    => "{$route}?faculty={$this->parent->id}&department={$this->id}",
         };
+    }
+
+    public function getAdminAttribute():?string
+    {
+        return match ($this->type) {
+            DivisionType::Institute     => route('admin:institutes:list'),
+            DivisionType::Faculty       => route('admin:faculty:list'),
+            DivisionType::Department    => route('admin:department:list'),
+            DivisionType::Lab           => route('admin:lab:list'),
+            default                     => route('admin:division:list'),
+        };
+    }
+    public function getEditAttribute():?string
+    {
+        return route('division:admin:form',$this);
     }
 
     /* end Links*/

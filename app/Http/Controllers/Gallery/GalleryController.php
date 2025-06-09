@@ -31,7 +31,6 @@ class GalleryController extends Controller
 
     public function adminShow(Gallery $gallery):view
     {
-
         $images = collect([]);
 
         if(session()->has('last-upload-images'))
@@ -45,7 +44,7 @@ class GalleryController extends Controller
     {
 
         $list= Gallery::orderBy('order')
-            ->orderBy('name')
+            ->orderBy('id','desc')
             ->get();
 
 
