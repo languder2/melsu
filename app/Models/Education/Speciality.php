@@ -194,6 +194,27 @@ class Speciality extends Model
         return $this->documents()->where('is_show',true)->get();
     }
 
+    public function curriculum(?string $form = null, bool $public = false):Collection
+    {
+        $query = $this->documents()->orderBy('sort');
+
+        if($public)
+            $query->where('is_show',true);
+
+        $list =  $query->get();
+
+        $list = $list->filter(function ($item){
+            return $item->type === 'curriculum';
+        });
+
+        if($form)
+            $list = $list->filter(function ($item) use ($form){
+                return $item->SpecialityForm === $form;
+            });
+
+        return $list;
+    }
+
     /* Links */
 
     public function getAdminAttribute():string
@@ -208,12 +229,6 @@ class Speciality extends Model
     public function getSaveAttribute():string
     {
         return  route('speciality:save',$this->exists ? $this->id : null);
-    }
-
-
-    public function applyAdminFilter()
-    {
-        dd(5);
     }
 
     /* end Links */

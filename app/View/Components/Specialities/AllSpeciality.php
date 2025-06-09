@@ -67,7 +67,7 @@ class AllSpeciality extends Component
         if ($this->short)
             $specialities->limit(9);
 
-        $specialities->orderByRaw(EducationLevel::getOrder());
+        $specialities->orderByRaw(EducationLevel::getOrder())->orderBy('spec_code')->orderBy('name');
 
         return view('components.specialities.all-speciality', [
             'specialities'  => $specialities->get(),

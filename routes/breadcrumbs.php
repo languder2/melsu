@@ -201,3 +201,9 @@ Breadcrumbs::for('project', function (BreadcrumbTrail $trail, ?\App\Models\Proje
 
     $trail->push($project->name, $project->link);
 });
+
+Breadcrumbs::for('education-programs:higher-education', function (BreadcrumbTrail $trail) {
+    $trail->parent('home');
+    $trail->push('Образовательная инфраструктура', url('obrazovatelnaya-infrastruktura'));
+    $trail->push('Образовательные программы высшего образования', route('education-programs:higher-education'));
+});

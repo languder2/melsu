@@ -176,23 +176,9 @@ class SpecialityController extends Controller
 
     public function getListAPI():Collection
     {
-//        $item = Speciality::where('show',true)->first();
-//
-//        $profile= $item->publicProfiles->first();
-//
-//        dump($item);
-//        dump($item->publicProfiles);
-//
-//        dump($profile->placesByType(EducationBasis::Budget));
-//        dump($profile->placesByType(EducationBasis::Contract));
-//
-//        dump($profile->durationYear(DurationType::OOO));
-//        dump($profile->durationMonth(DurationType::OOO));
-//
-//        dump($profile->durationYear(DurationType::SOO));
-//        dump($profile->durationMonth(DurationType::SOO));
-
-        $list = Speciality::where('show',true)->get()
+        $list = Speciality::where('show',true)
+            ->orderByRaw(EducationLevel::getOrder())->orderBy('spec_code')->orderBy('name')
+            ->get()
             ->mapWithKeys(function ($record) {
                 return [$record->id =>
                     (object)[
@@ -204,6 +190,7 @@ class SpecialityController extends Controller
                         "faculty_id"        => $record->faculty_id ?? null,
                         "faculty_acronym"   => $record->faculty->acronym ?? null,
                         "faculty_name"      => $record->faculty->name ?? null,
+                        "collage"           => $record->relation ? $record->relation->alt_name ?? $record->relation->name : null,
                         "level"             => $record->level->getName() ?? null,
                         "forms"             => $record->publicProfiles->mapWithKeys(function($profile){
                               return [
@@ -232,10 +219,10 @@ class SpecialityController extends Controller
 
     public function educationProgramsHigherEducation():View
     {
-
         $specialities = Speciality::
             whereIn('level',[EducationLevel::Bachelor,EducationLevel::Master,EducationLevel::Specialist])
-            ->orderByRaw(EducationLevel::getOrder())
+            ->where('show',true)
+            ->orderByraw(EducationLevel::getOrder())
             ->orderBy('spec_code')
             ->orderBy('name')
             ->get();
