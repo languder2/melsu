@@ -153,14 +153,15 @@
                         id="form_profiles_{{$form->name}}_places_{{$basis}}"
                         name="profiles[{{$form->name}}][places][{{$basis->value}}]"
                         type="number"
-                        label="Кол-во мест"
+                        label="Кол-во мест ООО"
                         :value='old("profiles.{$form->name}.places.{$basis->value}") ?? $profile->placesByType($basis) ?? null'
                     />
+
                     <x-form.input
                         id="form_profiles_{{$form->name}}_places_{{$basis}}"
                         name="profiles[{{$form->name}}][places][{{ $basis->value == 'budget' ? 'budgetooo' : 'contractooo' }}]"
                         type="number"
-                        label="Кол-во мест ООО"
+                        label="Кол-во мест СОО"
                         :value='($basis->value == "budget" ? $profile->placesByType("budgetooo") : ($basis->value == "contract" ? $profile->placesByType("contractooo") : null))'
                     />
 

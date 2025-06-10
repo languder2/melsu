@@ -4,9 +4,16 @@
 
 @section('content')
 
-    <div class="flex gap-4 flex-wrap">
-        @foreach($gallery->adminImages() as $image)
-            <img src="{{ $image->thumbnail }}" alt="{!! $image->name !!}" />
+    <div class="flex flex-col gap-4">
+        @foreach($list as $item)
+            <a href="{{$item->edit}}" target="_blank" class="underline hover:text-base-red">
+                    {!! $item->id !!}
+                |
+                    {!! $item->alt_name !!}
+                |
+                    {!! $item->name !!}
+            </a>
+
         @endforeach
     </div>
 

@@ -54,5 +54,9 @@ enum EducationLevel: string
     {
         return "FIELD(level, 'bachelor', 'specialist', 'master', 'postgraduate', 'colleges')";
     }
+    public static function getAdminOrder(): string
+    {
+        return "FIELD(level, 'colleges', 'bachelor', 'specialist', 'master', 'postgraduate')";
+    }
 
 }

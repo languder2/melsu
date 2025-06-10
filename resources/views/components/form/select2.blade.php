@@ -56,7 +56,7 @@
             @disabled(!$code)
             @selected($value == $code)
         >
-            {{$item}}
+            {!! $item !!}
         </option>
     @endforeach
 </select>

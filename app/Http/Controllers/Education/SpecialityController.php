@@ -3,8 +3,6 @@
 namespace App\Http\Controllers\Education;
 
 use App\Enums\DivisionType;
-use App\Enums\DurationType;
-use App\Enums\EducationBasis;
 use App\Enums\EducationLevel;
 use App\Http\Controllers\Controller;
 use App\Models\Division\Division;
@@ -21,22 +19,62 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\View\View;
-
+use App\View\Components\Specialities\Admin\Filters as AdminFilter;
 class SpecialityController extends Controller
 {
-    public function list(): View
+    public function admin(): View
     {
-        $list   = Division::where('type',DivisionType::Faculty)->orderBy('name')->get();
-        $spo    = Speciality::where('level',EducationLevel::Colleges)->orderBy('name')->get();
-        $pg     = Speciality::where('level',EducationLevel::Postgraduate)->orderBy('name')->get();
+        $list   = Speciality::orderByRaw(EducationLevel::getOrder())->orderBy('spec_code')->orderBy('name');
 
-        return view('specialities.admin.list', compact('list','spo','pg'));
+        if(session()->has('specialities:admin:filters')){
+
+            $filters = session()->get('specialities:admin:filters');
+
+
+            if($filters['level'])
+                $list = $list->where('level', $filters['level']);
+
+            if($filters['is_show'])
+                $list = $list->where('show', $filters['is_show']==='true');
+
+            if($filters['institute'])
+                $list = $list->where('institute_id', $filters['institute']);
+
+            if($filters['faculty'])
+                $list = $list->where('faculty_id', $filters['faculty']);
+
+            if($filters['department'])
+                $list = $list->where('department_id', $filters['department']);
+
+            if($filters['branch'])
+                $list = $list->where('relation_id', $filters['branch']);
+
+            if($filters['search'])
+                $list->where(function ($query) use ($filters) {
+                    $query->where('name', 'like', '%'.$filters['search'].'%')
+                        ->orWhere('spec_code', 'like', '%'.$filters['search'].'%');
+                });
+
+        }
+
+        $list   = $list->get();
+
+        return view('specialities.admin.list', compact('list'));
     }
 
-    public function form($id = null)
+    public function setFilter(Request $request):RedirectResponse
     {
 
-        $current        = Speciality::find($id) ?? new Speciality();
+        if($request->has('clear'))
+            session()->forget('specialities:admin:filters');
+        else
+            session()->put('specialities:admin:filters',$request->validate(AdminFilter::rules()));
+
+        return redirect()->back();
+    }
+
+    public function form(?Speciality $current)
+    {
 
         $faculties      = Division::where('type',DivisionType::Faculty)
                             ->orderBy('name')
@@ -138,23 +176,9 @@ class SpecialityController extends Controller
 
     public function getListAPI():Collection
     {
-//        $item = Speciality::where('show',true)->first();
-//
-//        $profile= $item->publicProfiles->first();
-//
-//        dump($item);
-//        dump($item->publicProfiles);
-//
-//        dump($profile->placesByType(EducationBasis::Budget));
-//        dump($profile->placesByType(EducationBasis::Contract));
-//
-//        dump($profile->durationYear(DurationType::OOO));
-//        dump($profile->durationMonth(DurationType::OOO));
-//
-//        dump($profile->durationYear(DurationType::SOO));
-//        dump($profile->durationMonth(DurationType::SOO));
-
-        $list = Speciality::where('show',true)->get()
+        $list = Speciality::where('show',true)
+            ->orderByRaw(EducationLevel::getOrder())->orderBy('spec_code')->orderBy('name')
+            ->get()
             ->mapWithKeys(function ($record) {
                 return [$record->id =>
                     (object)[
@@ -166,6 +190,7 @@ class SpecialityController extends Controller
                         "faculty_id"        => $record->faculty_id ?? null,
                         "faculty_acronym"   => $record->faculty->acronym ?? null,
                         "faculty_name"      => $record->faculty->name ?? null,
+                        "collage"           => $record->relation ? $record->relation->alt_name ?? $record->relation->name : null,
                         "level"             => $record->level->getName() ?? null,
                         "forms"             => $record->publicProfiles->mapWithKeys(function($profile){
                               return [
@@ -194,10 +219,10 @@ class SpecialityController extends Controller
 
     public function educationProgramsHigherEducation():View
     {
-
         $specialities = Speciality::
             whereIn('level',[EducationLevel::Bachelor,EducationLevel::Master,EducationLevel::Specialist])
-            ->orderByRaw(EducationLevel::getOrder())
+            ->where('show',true)
+            ->orderByraw(EducationLevel::getOrder())
             ->orderBy('spec_code')
             ->orderBy('name')
             ->get();

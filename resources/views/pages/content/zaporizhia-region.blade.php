@@ -80,6 +80,36 @@
                     </svg>
                 </span>
         </a>
+        <a href="javascript:window.Scrolls.scrollToElementWithOffset(document.getElementById('kamennaya-mogila'),180);" class="bg-white py-8 px-4 flex justify-between items-center group transition duration-300 ease-linear hover:bg-[#C10F1A]">
+            <span class="flex gap-2 group-hover:text-white transition duration-300 ease-linear"><span>9.</span>  Каменная могила</span>
+            <span>
+                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M14 12C14 13.1046 13.1046 14 12 14C10.8954 14 10 13.1046 10 12C10 10.8954 10.8954 10 12 10C13.1046 10 14 10.8954 14 12Z" class="stroke-[#252525] group-hover:stroke-[white] transition duration-300 ease-linear" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M8 6.99997C8 6.99997 10.946 3.00001 12 3C13.0541 2.99999 16 7 16 7" class="stroke-[#252525] group-hover:stroke-[white] transition duration-300 ease-linear" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M16 17C16 17 13.054 21 12 21C10.9459 21 8 17 8 17" class="stroke-[#252525] group-hover:stroke-[white] transition duration-300 ease-linear" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </span>
+        </a>
+        <a href="javascript:window.Scrolls.scrollToElementWithOffset(document.getElementById('spasskij-karer'),180);" class="bg-white py-8 px-4 flex justify-between items-center group transition duration-300 ease-linear hover:bg-[#C10F1A]">
+            <span class="flex gap-2 group-hover:text-white transition duration-300 ease-linear"><span>10.</span>  Спасский песчаный карьер</span>
+            <span>
+                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M14 12C14 13.1046 13.1046 14 12 14C10.8954 14 10 13.1046 10 12C10 10.8954 10.8954 10 12 10C13.1046 10 14 10.8954 14 12Z" class="stroke-[#252525] group-hover:stroke-[white] transition duration-300 ease-linear" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M8 6.99997C8 6.99997 10.946 3.00001 12 3C13.0541 2.99999 16 7 16 7" class="stroke-[#252525] group-hover:stroke-[white] transition duration-300 ease-linear" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M16 17C16 17 13.054 21 12 21C10.9459 21 8 17 8 17" class="stroke-[#252525] group-hover:stroke-[white] transition duration-300 ease-linear" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </span>
+        </a>
+        <a href="javascript:window.Scrolls.scrollToElementWithOffset(document.getElementById('eliseevskij-karer'),180);" class="bg-white py-8 px-4 flex justify-between items-center group transition duration-300 ease-linear hover:bg-[#C10F1A]">
+            <span class="flex gap-2 group-hover:text-white transition duration-300 ease-linear"><span>11.</span>  Елисеевский карьер</span>
+            <span>
+                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M14 12C14 13.1046 13.1046 14 12 14C10.8954 14 10 13.1046 10 12C10 10.8954 10.8954 10 12 10C13.1046 10 14 10.8954 14 12Z" class="stroke-[#252525] group-hover:stroke-[white] transition duration-300 ease-linear" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M8 6.99997C8 6.99997 10.946 3.00001 12 3C13.0541 2.99999 16 7 16 7" class="stroke-[#252525] group-hover:stroke-[white] transition duration-300 ease-linear" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M16 17C16 17 13.054 21 12 21C10.9459 21 8 17 8 17" class="stroke-[#252525] group-hover:stroke-[white] transition duration-300 ease-linear" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </span>
+        </a>
     </div>
 </section>
 <section class="mb-12">
@@ -835,7 +865,7 @@
         </div>
     </div>
 </section>
-<section id="healing-springs"   >
+<section id="healing-springs">
     <h2 class="text-2xl 2xl:text-3xl font-bold py-5 sm:pt-16 sm:pb-8 text-[#252525]">
         Целебные источники
     </h2>
@@ -917,6 +947,167 @@
                     </p>
                 </div>
             </div>
+        </div>
+    </div>
+</section>
+<section id="kamennaya-mogila">
+    <h2 class="text-2xl 2xl:text-3xl font-bold py-5 sm:pt-16 sm:pb-8 text-[#252525]">
+        Каменная Могила
+    </h2>
+    <div class="grid grid-cols-1  xl:grid-cols-[12%_44%_44%] mb-5 xl:mb-0">
+        <div class="relative hidden xl:flex items-center overflow-hidden">
+            <div class="absolute right-[-50px]">
+                <svg width="135" height="185" viewBox="0 0 185 227" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M39.792 176.751C20.5121 181.09 8.16699 187.759 8.16699 195.237C8.16699 208.315 45.9243 218.917 92.5003 218.917C139.076 218.917 176.834 208.315 176.834 195.237C176.834 187.759 164.489 181.09 145.209 176.751M118.854 81.8756C118.854 96.4307 107.055 108.23 92.5003 108.23C77.9453 108.23 66.1462 96.4307 66.1462 81.8756C66.1462 67.3206 77.9453 55.5215 92.5003 55.5215C107.055 55.5215 118.854 67.3206 118.854 81.8756ZM105.755 171.412C102.2 174.836 97.4477 176.751 92.5019 176.751C87.5562 176.751 82.8039 174.836 79.2484 171.412C46.6894 139.863 3.05628 104.62 24.3348 53.4525C35.84 25.7869 63.4574 8.08398 92.5019 8.08398C121.546 8.08398 149.164 25.7869 160.669 53.4525C181.921 104.555 138.395 139.972 105.755 171.412Z" stroke="#252525" stroke-width="16" stroke-linecap="round"/>
+                </svg>
+            </div>
+        </div>
+        <div class="relative flex items-center overflow-hidden">
+            <img class="object-cover h-full w-full" src="{{asset('img/zp-region/zp-25.jpg')}}" alt="">
+            <div class="hidden xl:block absolute left-[-85px]">
+                <svg width="135" height="185" viewBox="0 0 185 227" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M39.792 176.751C20.5121 181.09 8.16699 187.759 8.16699 195.237C8.16699 208.315 45.9243 218.917 92.5003 218.917C139.076 218.917 176.834 208.315 176.834 195.237C176.834 187.759 164.489 181.09 145.209 176.751M118.854 81.8756C118.854 96.4307 107.055 108.23 92.5003 108.23C77.9453 108.23 66.1462 96.4307 66.1462 81.8756C66.1462 67.3206 77.9453 55.5215 92.5003 55.5215C107.055 55.5215 118.854 67.3206 118.854 81.8756ZM105.755 171.412C102.2 174.836 97.4477 176.751 92.5019 176.751C87.5562 176.751 82.8039 174.836 79.2484 171.412C46.6894 139.863 3.05628 104.62 24.3348 53.4525C35.84 25.7869 63.4574 8.08398 92.5019 8.08398C121.546 8.08398 149.164 25.7869 160.669 53.4525C181.921 104.555 138.395 139.972 105.755 171.412Z" stroke="white" stroke-width="16" stroke-linecap="round"/>
+                </svg>
+            </div>
+        </div>
+        <div>
+            <div class="bg-[#C10F1A] p-5">
+                <h2 class="font-bold text-lg text-white">Где находится: расположена в 2 км от посёлка Мирное, Мелитопольского района.</h2>
+            </div>
+            <div class="bg-white p-5 flex flex-col gap-3">
+                <p>
+                    Мелитопольский государственный университет находится в крае, где история и природа переплетаются. Жемчужиной этого наследия является Каменная Могила – природный и исторический памятник, расположенный совсем недалеко от Мелитополя.
+                </p>
+                <p>
+                    Каменная Могила — это не просто скопление камней, это целый мир древней культуры и духовности. Здесь насчитывается 87 гротов и пещер, в 65 из которых сохранились тысячи петроглифов — рисунков и символов, оставленных нашими предками. Этот древний храм хранит множество тайн и загадок прошлого.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="grid grid-cols-1 xl:grid-cols-[1fr_2fr] mb-5 xl:mb-0">
+        <div>
+            <img class="object-cover h-full w-full" src="{{asset('img/zp-region/zp-26.jpg')}}" alt="">
+        </div>
+        <div class="bg-white p-5 flex flex-col gap-3">
+            <p>
+                Интересный факт: Каменная Могила старше не только Стоунхенджа, но и пирамид Египта, что делает её ещё более уникальной и значимой.
+            </p>
+            <p>
+                На территории Каменной Могилы ученые обнаружили орудия труда, предметы быта и украшения, относящиеся к разным историческим эпохам, что подтверждает ее важную роль в жизни древних народов.
+            </p>
+            <p>
+                Каменная Могила считается священным местом для многих народов, включая скифов и тюрков. Здесь проводились ритуалы и обряды, и многие верят, что это место обладает особой энергетикой.
+            </p>
+            <p>
+                На камнях этого исторического памятника можно увидеть древние наскальные изображения — петроглифы, которые датируются бронзовым веком. Эти рисунки являются бесценным источником информации о жизни и культуре наших предков.
+            </p>
+            <p>
+                Мелитопольский государственный университет рекомендует всем углубиться в изучение Каменной Могилы, бережно относиться к этому уникальному памятнику истории и культуры. Это не только ценное наследие, но и источник вдохновения для научных поисков.
+            </p>
+        </div>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-[2fr_1fr] gap-5 xl:gap-0">
+        <div>
+            <img class="object-cover h-full w-full rounded-tr-none xl:rounded-tr-[150px]" src="{{asset('img/zp-region/zp-27.jpg')}}" alt="">
+        </div>
+        <div>
+            <img class="object-cover h-full w-full" src="{{asset('img/zp-region/zp-28.jpg')}}" alt="">
+        </div>
+    </div>
+</section>
+<section id="spasskij-karer">
+    <h2 class="text-2xl 2xl:text-3xl font-bold py-5 sm:pt-16 sm:pb-8 text-[#252525]">
+        Спасский песчаный карьер
+    </h2>
+    <div class="grid grid-cols-1 xl:grid-cols-[60%_auto] gap-5">
+        <div class="flex flex-col gap-5">
+            <div class="bg-[#C10F1A] p-5">
+                <h2 class="text-xl text-white font-bold">
+                    Где находится: расположен всего в 25 километрах от Мелитополя, между сёлами Терпенье и Троицкое.
+                </h2>
+            </div>
+            <div>
+                <img class="object-cover max-h-[170px] 2xl:max-h-[280px] 2xl:object-[0%_76%] h-full w-full" src="{{asset('img/zp-region/zp-29.jpg')}}" alt="">
+            </div>
+            <div class="bg-[#252525] p-5 text-white">
+                <h2 class="font-bold text-xl mb-5">Особенности карьера:</h2>
+                <div class="flex flex-col gap-3">
+                    <ul class="list-disc list-inside ps-3">
+                        <li class="mb-2">
+                            белоснежный песок, который контрастирует с красными глиняными склонами, покрытыми зелёной травой;
+                        </li>
+                        <li class="mb-2">
+                            спонтанное озеро в самой низшей точке карьера;
+                        </li>
+                        <li class="mb-2">
+                            участки высохшей до трещин красной глины, которые выглядят как марсианский пейзаж;
+                        </li>
+                        <li>
+                            зелёные лужайки и редкие полевые цветы, растущие на песке.
+                        </li>
+                    </ul>
+                    <p>
+                        Настоящим чудом, созданным совместными усилиями природы и человека, можно назвать Спасский песчаный карьер, который по праву считается одной из красивейших природных достопримечательностей Запорожской области.
+                    </p>
+                    <p>
+                        Возраст здешних песков изучал ещё летом 1887 года русский геолог Николай Алексеевич Соколов:
+                    </p>
+                    <p>
+                        «Наиболее значительные разрезы наблюдаются в оврагах, выходящих с правой стороны в долину р. Молочной, особенно в окрестностях селений Троицкое и Терпение. В самом низу залегает довольно мощная толща (10 метров) слоистых рыхлых песков желтовато-голубовато-белого цвета с ярко-оранжевыми прослойками. Эти пески состоят преимущественно из кварцевых зёрен и, за исключением самых верхних слоёв, не содержат никаких окаменелостей».
+                    </p>
+                </div>
+            </div>
+            <div class="relative flex flex-col xl:flex-row items-center">
+                <img class="object-cover lg:object-top h-full lg:max-h-[275px] w-full" src="{{asset('img/zp-region/zp-30.jpg')}}" alt="">
+                <div class="bg-white p-5 xl:absolute xl:right-[-130px] xl:w-[370px]">
+                    <p>
+                        Возраст Спасского месторождения составляет как минимум 5 миллионов лет. Пески образовались в то время, когда здешние земли то покрывались наступающими мелководными морями, то практически полностью высыхали.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="grid grid-cols-2 xl:grid-cols-1 gap-5">
+            <div>
+                <img class="object-cover lg:object-[24%] 2xl:object-left h-full xl:h-[544px] w-full" src="{{asset('img/zp-region/zp-31.jpg')}}" alt="">
+            </div>
+            <div>
+                <img class="object-cover object-right h-full xl:h-[789px] 2xl:h-[751px] w-full xl:rounded-tl-[250px]" src="{{asset('img/zp-region/zp-32.jpg')}}" alt="">
+            </div>
+        </div>
+    </div>
+</section>
+<section id="eliseevskij-karer">
+    <h2 class="text-2xl 2xl:text-3xl font-bold py-5 sm:pt-16 sm:pb-8 text-[#252525]">
+        Елисеевский карьер
+    </h2>
+    <div class="relative mb-5 xl:mb-0">
+        <img class="object-cover h-full w-full" src="{{asset('img/zp-region/zp-33.jpg')}}" alt="">
+        <div class="p-5 xl:absolute bottom-0 right-0 flex flex-col gap-5 text-white xl:w-[350px] xl:[text-shadow:_0_4px_8px_#000000] xl:backdrop-brightness-50 bg-[#252525] xl:bg-transparent">
+            <h2 class="text-xl font-bold">Где находится: Приморский район, окрестности села Елисеевка</h2>
+            <div class="flex flex-col gap-3">
+                <p>
+                    Елисеевский карьер – рукотворный геологический памятник. Воля человека превратила скалы в незабываемое место, которое непременно стоит посетить.
+                </p>
+                <p>
+                    Карьер находится рядом с одноименным селом Запорожской области, в Приморском районе. В этой местности геологами было найдено около 160 видов различных ценных минералов и пород. В прошлом карьер был источником пегматита, берилла, танталита, касситерита… Потом люди ушли, а часть котлованов была заполнена водой. Кстати, существует легенда, что на дне одной из котловин до сих пор находится затопленный экскаватор.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="grid grid-cols-1 xl:grid-cols-[1fr_2fr] mb-5 xl:mb-0">
+        <div class="bg-white p-5 order-2 xl:order-1">
+            Водой затопило только два из котлованов, вследствие чего образовались своеобразные искусственные озера, разделенные скальной перемычкой. Их называют Голубыми озерами. Глубина искусственных озер – около 20 метров и даже больше, по словам местных старожилов. Опытные ныряльщики утверждают, что на глубине вода ледяная, и остается полное ощущение, что под ногами бездна. В одном из сухих карьеров, самом дальнем, есть небольшой грот. Берега карьера крутые и неприступные, но вместе с тем, очень красивые. В сухих котлованах и на побережье озер можно встретить несколько видов трав и полевых цветов.
+        </div>
+        <div class="order-1 xl:order-2">
+            <img class="object-cover h-full w-full xl:rounded-bl-[250px]" src="{{asset('img/zp-region/zp-34.jpg')}}" alt="">
+        </div>
+    </div>
+    <div class="grid grid-cols-1 xl:grid-cols-[2fr_1fr]">
+        <div>
+            <img class="object-cover lg:object-top h-full max-h-[350px] w-full" src="{{asset('img/zp-region/zp-35.jpg')}}" alt="">
+        </div>
+        <div class="bg-white p-5">
+            Елисеевский карьер расположен в укромном месте и практически не виден тем, кто не знает, куда идти. Если ехать по дороге от Бердянска вдоль окраины села Елисеевка, то можно увидеть колодец. Возле колодца есть развилка дорог. К карьеру ведет одна из них, грунтовая.
         </div>
     </div>
 </section>
