@@ -227,7 +227,7 @@
         </div>
     </div>
 </section>
-<section id="storicheskij-park">
+<section id="istoricheskij-park">
     <h2 class="text-2xl 2xl:text-3xl font-bold py-5 sm:pt-16 sm:pb-8 text-[#252525]">
         Исторический мультимедийный парк «Россия – моя история»
     </h2>
@@ -486,14 +486,14 @@
                 <img class="h-full  w-full object-cover" src="{{asset('img/mlt/mlt-26.jpg')}}" alt="">
             </div>
             <div>
-                <img class="h-full  w-full object-cover" src="{{asset('img/mlt/mlt-27.jpg')}}" alt="">
+                <img class="h-full  w-full object-cover" src="{{asset('img/mlt/mlt-28.jpg')}}" alt="">
             </div>
         </div>
     </div>
     <div class="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-5">
         <div class="flex flex-col gap-5">
             <div>
-                <img class="h-full  w-full object-cover" src="{{asset('img/mlt/mlt-28.jpg')}}" alt="">
+                <img class="h-full  w-full object-cover" src="{{asset('img/mlt/mlt-27.jpg')}}" alt="">
             </div>
             <div>
                 <img class="h-full max-h-[202px] w-full object-cover object-[1%_40%]" src="{{asset('img/mlt/mlt-29.jpg')}}" alt="">
