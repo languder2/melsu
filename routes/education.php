@@ -48,3 +48,8 @@ Route::get(
     'education-programs-higher-education',
     [SpecialityController::class,'educationProgramsHigherEducation']
 )->name('education-programs:higher-education');
+
+Route::get(
+    'education-programs',
+    [SpecialityController::class,'adminEducationPrograms']
+)->name('admin:education:programs');
