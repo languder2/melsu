@@ -86,7 +86,7 @@
 
     <section class="main-content mx-4 p-4 bg-white">
         <div class="overflow-x-scroll pb-4">
-            <div class="grid gap-4 grid-cols-[auto_auto_auto_auto_1fr] text-center ">
+            <div class="grid gap-4 grid-cols-[auto_auto_auto_auto_1fr] text-center items-center ">
                 <div class="font-semibold">
                     Код
                 </div>
@@ -160,7 +160,7 @@
                                         target="_blank"
                                         class="underline hover:text-base-red"
                                     >
-                                        {{ $doc->title }}
+                                        {{ $doc->title }} ({{ __('education-forms.short.'.$doc->speciality_form) }})
                                     </a>
                                 @endforeach
                             </div>
