@@ -1321,9 +1321,9 @@
     <h2 class="text-2xl 2xl:text-3xl font-bold py-5 sm:pt-16 sm:pb-8 text-[#252525]">
         Динамика роста департамента научно-исследовательской деятельности
     </h2>
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-5 mb-5">
-        <div class="bg-white p-5 flex flex-col gap-6">
-            <h2 class="font-semibold text-xl">Финансирование Государственного задания в МелГУ за 2023-2025 гг.</h2>
+    <div class="grid grid-cols-1 lg:grid-cols-6 gap-5 mb-5">
+        <div class="bg-white p-5 flex flex-col gap-6 col-span-6 xl:col-span-2">
+            <h2 class="font-semibold text-lg 2xl:text-xl">Финансирование Государственного задания в МелГУ за 2023-2025 гг.</h2>
             <div>
                 <svg width="100%" height="100%" viewBox="0 0 260 260" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g clip-path="url(#paint0_angular_1934_6446_clip_path)" data-figma-skip-parse="true"><g transform="matrix(0 -0.125 0.125 0 129.265 129.264)"><foreignObject x="-1160" y="-1160" width="2320" height="2320"><div xmlns="http://www.w3.org/1999/xhtml" style="background:conic-gradient(from 90deg,rgba(231, 231, 231, 1) 0deg,rgba(232, 232, 232, 0) 360deg);height:100%;width:100%;opacity:1"></div></foreignObject></g></g><path d="M234.257 127.972C234.093 114.623 231.384 101.423 226.272 89.082C220.996 76.3428 213.261 64.7677 203.511 55.0176C194.065 45.5722 182.908 38.018 170.638 32.7578L169.446 32.2559C157.105 27.144 143.906 24.4357 130.557 24.2715L129.265 24.2637C115.907 24.2637 102.676 26.8129 90.2803 31.7695L89.083 32.2559C76.7418 37.3677 65.4929 44.7863 55.9375 54.1094L55.0186 55.0176C45.5732 64.463 38.019 75.6207 32.7588 87.8906L32.2568 89.082C26.9802 101.821 24.2647 115.475 24.2646 129.264C24.2646 143.052 26.9802 156.706 32.2568 169.445L32.7588 170.637C38.019 182.907 45.5732 194.064 55.0186 203.51L55.9375 204.418C65.4929 213.741 76.7418 221.16 89.083 226.271L90.2803 226.758C102.676 231.714 115.907 234.264 129.265 234.264L130.557 234.256C143.906 234.092 157.105 231.383 169.446 226.271L170.638 225.77C182.908 220.509 194.065 212.955 203.511 203.51L204.419 202.591C213.742 193.035 221.161 181.786 226.272 169.445C231.549 156.706 234.265 143.052 234.265 129.264L234.257 127.972ZM254.255 130.802C254.059 146.694 250.836 162.408 244.75 177.1C238.664 191.791 229.833 205.182 218.734 216.558L217.653 217.652C206.409 228.897 193.125 237.889 178.518 244.151L177.1 244.749C162.408 250.834 146.694 254.058 130.803 254.254L129.265 254.264C113.362 254.264 97.6113 251.229 82.8545 245.328L81.4287 244.749C66.7371 238.664 53.346 229.832 41.9707 218.733L40.876 217.652C29.6313 206.408 20.6391 193.124 14.377 178.517L13.7793 177.099C7.49761 161.933 4.26465 145.679 4.26465 129.264C4.26466 112.848 7.49745 96.5934 13.7793 81.4277L14.377 80.0107C20.6391 65.4035 29.6313 52.1197 40.876 40.875L41.9707 39.7939C53.3461 28.6952 66.7379 19.8638 81.4297 13.7783L82.8545 13.1982C97.1353 7.48789 112.348 4.46267 127.727 4.27344L129.265 4.26367L130.803 4.27344C146.694 4.46898 162.408 7.69289 177.1 13.7783L178.518 14.376C193.125 20.6381 206.409 29.6303 217.653 40.875C229.261 52.4823 238.468 66.263 244.75 81.4287C251.032 96.5943 254.265 112.849 254.265 129.264L254.255 130.802Z" data-figma-gradient-fill="{&#34;type&#34;:&#34;GRADIENT_ANGULAR&#34;,&#34;stops&#34;:[{&#34;color&#34;:{&#34;r&#34;:0.90833336114883423,&#34;g&#34;:0.90833336114883423,&#34;b&#34;:0.90833336114883423,&#34;a&#34;:1.0},&#34;position&#34;:0.0},{&#34;color&#34;:{&#34;r&#34;:0.90980392694473267,&#34;g&#34;:0.90980392694473267,&#34;b&#34;:0.90980392694473267,&#34;a&#34;:0.0},&#34;position&#34;:1.0}],&#34;stopsVar&#34;:[{&#34;color&#34;:{&#34;r&#34;:0.90833336114883423,&#34;g&#34;:0.90833336114883423,&#34;b&#34;:0.90833336114883423,&#34;a&#34;:1.0},&#34;position&#34;:0.0},{&#34;color&#34;:{&#34;r&#34;:0.90980392694473267,&#34;g&#34;:0.90980392694473267,&#34;b&#34;:0.90980392694473267,&#34;a&#34;:0.0},&#34;position&#34;:1.0}],&#34;transform&#34;:{&#34;m00&#34;:1.2346977010680577e-13,&#34;m01&#34;:250.0,&#34;m02&#34;:4.26464843750,&#34;m10&#34;:-250.0,&#34;m11&#34;:-1.7083981798671211e-12,&#34;m12&#34;:254.2636718750},&#34;opacity&#34;:1.0,&#34;blendMode&#34;:&#34;NORMAL&#34;,&#34;visible&#34;:true}"/>
@@ -1343,10 +1343,10 @@
                 </svg>
             </div>
         </div>
-        <div class="bg-white p-5 flex flex-col gap-6 lg:col-span-2">
-            <h2 class="font-semibold text-xl">Финансирование Государственного задания в МелГУ за 2023-2025 гг.</h2>
+        <div class="bg-white p-5 flex flex-col gap-6 col-span-6 xl:col-span-4">
+            <h2 class="font-semibold text-lg 2xl:text-xl">Финансирование Государственного задания в МелГУ за 2023-2025 гг.</h2>
             <div>
-                <div class="grid grid-cols-1 lg:grid-cols-[10%_10%_23%_auto] gap-5 p-2.5 bg-[#E9F6FF]">
+                <div class="grid grid-cols-[10%_10%_23%_auto] gap-5 p-2.5 bg-[#E9F6FF]">
                     <div class="flex justify-center items-center">
                         <span class="text-sm text-center">Год</span>
                     </div>
@@ -1361,7 +1361,7 @@
                     </div>
                 </div>
                 <div class="grid grid-cols-1">
-                    <div class="grid grid-cols-1 lg:grid-cols-[10%_10%_23%_auto] gap-5 px-2.5 py-5 border-b border-[#D0D0D0]">
+                    <div class="grid grid-cols-[10%_10%_23%_auto] gap-5 px-2.5 py-5 border-b border-[#D0D0D0]">
                         <div class="flex justify-center items-center">
                             <span class="text-center font-semibold">2022</span>
                         </div>
@@ -1375,7 +1375,7 @@
                             <span class="text-center font-semibold">-</span>
                         </div>
                     </div>
-                    <div class="grid grid-cols-1 lg:grid-cols-[10%_10%_23%_auto] gap-5 px-2.5 py-5 border-b border-[#D0D0D0]">
+                    <div class="grid grid-cols-[10%_10%_23%_auto] gap-5 px-2.5 py-5 border-b border-[#D0D0D0]">
                         <div class="flex justify-center items-center">
                             <span class="text-center font-semibold">2023</span>
                         </div>
@@ -1389,7 +1389,7 @@
                             <span class="text-center font-semibold">-</span>
                         </div>
                     </div>
-                    <div class="grid grid-cols-1 lg:grid-cols-[10%_10%_23%_auto] gap-5 px-2.5 py-5 border-b border-[#D0D0D0]">
+                    <div class="grid grid-cols-[10%_10%_23%_auto] gap-5 px-2.5 py-5 border-b border-[#D0D0D0]">
                         <div class="flex justify-center items-center">
                             <span class="text-center font-semibold">2024</span>
                         </div>
@@ -1415,7 +1415,7 @@
                             </p>
                         </div>
                     </div>
-                    <div class="grid grid-cols-1 lg:grid-cols-[10%_10%_23%_auto] gap-5 px-2.5 py-5 border-b border-[#D0D0D0]">
+                    <div class="grid grid-cols-[10%_10%_23%_auto] gap-5 px-2.5 py-5 border-b border-[#D0D0D0]">
                         <div class="flex justify-center items-center">
                             <span class="text-center font-semibold">2024</span>
                         </div>
@@ -1444,8 +1444,8 @@
                 </div>
             </div>
         </div>
-        <div class="bg-white p-5 flex flex-col gap-6">
-            <h2 class="font-semibold text-xl">Аспирантура (динамика роста аспирантов)</h2>
+        <div class="bg-white p-5 flex flex-col gap-6 col-span-6 xl:col-span-3 2xl:col-span-2">
+            <h2 class="font-semibold text-lg 2xl:text-xl">Аспирантура (динамика роста аспирантов)</h2>
             <div>
                 <svg width="100%" height="100%" viewBox="0 0 328 261" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect width="301" height="64" transform="translate(15.5 10)" fill="url(#paint0_linear_1935_6566)"/>
@@ -1486,8 +1486,8 @@
                 </svg>
             </div>
         </div>
-        <div class="bg-white p-5 flex flex-col gap-6">
-            <h2 class="font-semibold text-xl">Научные мероприятия (конференции, круглые столы и т.п.)</h2>
+        <div class="bg-white p-5 flex flex-col gap-6 col-span-6 xl:col-span-3 2x:col-span-2">
+            <h2 class="font-semibold text-lg 2xl:text-xl">Научные мероприятия (конференции, круглые столы и т.п.)</h2>
             <div>
                 <svg width="312" height="232" viewBox="0 0 312 232" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M160.997 227V226.286L165.071 222.296C165.445 221.932 165.725 221.615 165.911 221.344C166.098 221.064 166.224 220.803 166.289 220.56C166.355 220.317 166.387 220.089 166.387 219.874C166.387 219.305 166.191 218.857 165.799 218.53C165.417 218.203 164.847 218.04 164.091 218.04C163.513 218.04 162.999 218.129 162.551 218.306C162.113 218.483 161.735 218.759 161.417 219.132L160.703 218.516C161.086 218.068 161.576 217.723 162.173 217.48C162.771 217.237 163.438 217.116 164.175 217.116C164.838 217.116 165.412 217.223 165.897 217.438C166.383 217.643 166.756 217.947 167.017 218.348C167.288 218.749 167.423 219.221 167.423 219.762C167.423 220.079 167.377 220.392 167.283 220.7C167.199 221.008 167.041 221.335 166.807 221.68C166.583 222.016 166.252 222.399 165.813 222.828L162.075 226.496L161.795 226.104H167.871V227H160.997ZM173.015 227.084C172.259 227.084 171.587 226.888 170.999 226.496C170.411 226.095 169.949 225.525 169.613 224.788C169.277 224.041 169.109 223.145 169.109 222.1C169.109 221.055 169.277 220.163 169.613 219.426C169.949 218.679 170.411 218.11 170.999 217.718C171.587 217.317 172.259 217.116 173.015 217.116C173.771 217.116 174.443 217.317 175.031 217.718C175.619 218.11 176.081 218.679 176.417 219.426C176.762 220.163 176.935 221.055 176.935 222.1C176.935 223.145 176.762 224.041 176.417 224.788C176.081 225.525 175.619 226.095 175.031 226.496C174.443 226.888 173.771 227.084 173.015 227.084ZM173.015 226.16C173.594 226.16 174.098 226.006 174.527 225.698C174.956 225.381 175.292 224.923 175.535 224.326C175.778 223.719 175.899 222.977 175.899 222.1C175.899 221.223 175.778 220.485 175.535 219.888C175.292 219.281 174.956 218.824 174.527 218.516C174.098 218.199 173.594 218.04 173.015 218.04C172.455 218.04 171.956 218.199 171.517 218.516C171.078 218.824 170.738 219.281 170.495 219.888C170.252 220.485 170.131 221.223 170.131 222.1C170.131 222.977 170.252 223.719 170.495 224.326C170.738 224.923 171.078 225.381 171.517 225.698C171.956 226.006 172.455 226.16 173.015 226.16ZM178.196 227V226.286L182.27 222.296C182.644 221.932 182.924 221.615 183.11 221.344C183.297 221.064 183.423 220.803 183.488 220.56C183.554 220.317 183.586 220.089 183.586 219.874C183.586 219.305 183.39 218.857 182.998 218.53C182.616 218.203 182.046 218.04 181.29 218.04C180.712 218.04 180.198 218.129 179.75 218.306C179.312 218.483 178.934 218.759 178.616 219.132L177.902 218.516C178.285 218.068 178.775 217.723 179.372 217.48C179.97 217.237 180.637 217.116 181.374 217.116C182.037 217.116 182.611 217.223 183.096 217.438C183.582 217.643 183.955 217.947 184.216 218.348C184.487 218.749 184.622 219.221 184.622 219.762C184.622 220.079 184.576 220.392 184.482 220.7C184.398 221.008 184.24 221.335 184.006 221.68C183.782 222.016 183.451 222.399 183.012 222.828L179.274 226.496L178.994 226.104H185.07V227H178.196ZM185.853 224.424V223.696L191.047 217.2H192.167L187.015 223.696L186.469 223.528H194.351V224.424H185.853ZM191.383 227V224.424L191.411 223.528V221.26H192.391V227H191.383Z" fill="#808080"/>
@@ -1543,10 +1543,10 @@
                 </svg>
             </div>
         </div>
-        <div class="bg-white p-5 flex flex-col gap-6">
-            <h2 class="font-semibold text-xl">Динамика роста проектной деятельности (конкурсы, гранты)</h2>
+        <div class="bg-white p-5 flex flex-col gap-6 col-span-6 2x:col-span-2">
+            <h2 class="font-semibold text-lg 2xl:text-xl">Динамика роста проектной деятельности (конкурсы, гранты)</h2>
             <div>
-                <div class="grid grid-cols-1 lg:grid-cols-[13%_20%_20%_auto] gap-5 p-2.5 bg-[#E9F6FF]">
+                <div class="grid grid-cols-[13%_20%_20%_auto] gap-5 p-2.5 bg-[#E9F6FF]">
                     <div class="flex justify-center items-center">
                         <span class="text-sm text-center">Год</span>
                     </div>
@@ -1561,7 +1561,7 @@
                     </div>
                 </div>
                 <div class="grid grid-cols-1">
-                    <div class="grid grid-cols-1 lg:grid-cols-[13%_20%_20%_auto] gap-5 px-2.5 py-5 border-b border-[#D0D0D0]">
+                    <div class="grid grid-cols-[13%_20%_20%_auto] gap-5 px-2.5 py-5 border-b border-[#D0D0D0]">
                         <div class="flex justify-center items-center">
                             <span class="text-center font-semibold">2023</span>
                         </div>
@@ -1575,7 +1575,7 @@
                             <span class="text-center font-semibold">1</span>
                         </div>
                     </div>
-                    <div class="grid grid-cols-1 lg:grid-cols-[13%_20%_20%_auto] gap-5 px-2.5 py-5 border-b border-[#D0D0D0]">
+                    <div class="grid grid-cols-[13%_20%_20%_auto] gap-5 px-2.5 py-5 border-b border-[#D0D0D0]">
                         <div class="flex justify-center items-center">
                             <span class="text-center font-semibold">2024</span>
                         </div>
@@ -1604,7 +1604,7 @@
                             </span>
                         </div>
                     </div>
-                    <div class="grid grid-cols-1 lg:grid-cols-[13%_20%_20%_auto] gap-5 px-2.5 py-5 border-b border-[#D0D0D0]">
+                    <div class="grid grid-cols-[13%_20%_20%_auto] gap-5 px-2.5 py-5 border-b border-[#D0D0D0]">
                         <div class="flex justify-center items-center">
                             <span class="text-center font-semibold">2025</span>
                         </div>
@@ -1637,454 +1637,456 @@
             </div>
         </div>
     </div>
-    <div class="bg-white p-5">
+    <div class="bg-white p-5 overflow-x-scroll">
         <h2 class="font-semibold text-xl mb-6">Публикационная активность МелГУ 2022-2025 гг.</h2>
-        <div>
-            <div class="grid grid-cols-1 lg:grid-cols-[25%_7%_7%_7%_20%_auto] gap-5 p-2.5 bg-[#E9F6FF]">
+        <div class="min-w-[900px] md:min-w-[auto] overflow-scroll">
+            
+                <div class="grid grid-cols-[25%_7%_7%_7%_20%_auto] gap-5 p-2.5 bg-[#E9F6FF]">
+                        <div class="flex items-center">
+                            <span class="text-sm">Название показателя</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="text-sm">2022</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="text-sm">2023</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="text-sm">2024</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="text-sm">2025 показатели на 26.05</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="text-sm">Общие показатели по состоянию на 26.05.2025</span>
+                        </div>
+                </div>
+            
+            
+                <div class="grid grid-cols-[25%_7%_7%_7%_20%_auto] gap-5 px-2.5 py-5 border-b border-[#D0D0D0]">
                     <div class="flex items-center">
-                        <span class="text-sm">Название показателя</span>
+                        <span class="text-sm">Число публикаций на elibrary.ru</span>
                     </div>
                     <div class="flex items-center">
-                        <span class="text-sm">2022</span>
+                        <span class="font-semibold">221</span>
                     </div>
                     <div class="flex items-center">
-                        <span class="text-sm">2023</span>
+                        <span class="text-[#319A27] flex items-center gap-1">
+                        <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7.29289 0.292893C7.68342 -0.0976315 8.31658 -0.0976315 8.70711 0.292893L15.0711 6.65685C15.4616 7.04738 15.4616 7.68054 15.0711 8.07107C14.6805 8.46159 14.0474 8.46159 13.6569 8.07107L8 2.41421L2.34315 8.07107C1.95262 8.46159 1.31946 8.46159 0.928932 8.07107C0.538408 7.68054 0.538408 7.04738 0.928932 6.65685L7.29289 0.292893ZM8 15H7L7 1H8H9V15H8Z" fill="#319A27"/>
+                        </svg>
+                        838
+                        </span>
                     </div>
                     <div class="flex items-center">
-                        <span class="text-sm">2024</span>
+                        <span class="text-[#319A27] flex items-center gap-1">
+                            <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7.29289 0.292893C7.68342 -0.0976315 8.31658 -0.0976315 8.70711 0.292893L15.0711 6.65685C15.4616 7.04738 15.4616 7.68054 15.0711 8.07107C14.6805 8.46159 14.0474 8.46159 13.6569 8.07107L8 2.41421L2.34315 8.07107C1.95262 8.46159 1.31946 8.46159 0.928932 8.07107C0.538408 7.68054 0.538408 7.04738 0.928932 6.65685L7.29289 0.292893ZM8 15H7L7 1H8H9V15H8Z" fill="#319A27"/>
+                            </svg>
+                            1291
+                        </span>
                     </div>
                     <div class="flex items-center">
-                        <span class="text-sm">2025 показатели на 26.05</span>
+                        <span class="font-semibold">250</span>
                     </div>
                     <div class="flex items-center">
-                        <span class="text-sm">Общие показатели по состоянию на 26.05.2025</span>
+                        <span class="font-semibold">2600</span>
                     </div>
-            </div>
-        </div>
-        <div>
-            <div class="grid grid-cols-1 lg:grid-cols-[25%_7%_7%_7%_20%_auto] gap-5 px-2.5 py-5 border-b border-[#D0D0D0]">
-                <div class="flex items-center">
-                    <span class="text-sm">Число публикаций на elibrary.ru</span>
                 </div>
-                <div class="flex items-center">
-                    <span class="font-semibold">221</span>
-                </div>
-                <div class="flex items-center">
-                    <span class="text-[#319A27] flex items-center gap-1">
-                    <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M7.29289 0.292893C7.68342 -0.0976315 8.31658 -0.0976315 8.70711 0.292893L15.0711 6.65685C15.4616 7.04738 15.4616 7.68054 15.0711 8.07107C14.6805 8.46159 14.0474 8.46159 13.6569 8.07107L8 2.41421L2.34315 8.07107C1.95262 8.46159 1.31946 8.46159 0.928932 8.07107C0.538408 7.68054 0.538408 7.04738 0.928932 6.65685L7.29289 0.292893ZM8 15H7L7 1H8H9V15H8Z" fill="#319A27"/>
-                    </svg>
-                    838
-                    </span>
-                </div>
-                <div class="flex items-center">
-                    <span class="text-[#319A27] flex items-center gap-1">
+                <div class="grid grid-cols-[25%_7%_7%_7%_20%_auto] gap-5 px-2.5 py-5 border-b border-[#D0D0D0]">
+                    <div class="flex items-center">
+                        <span class="text-sm">Число публикаций в РИНЦ</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="font-semibold">217</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="text-[#319A27] flex items-center gap-1">
                         <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M7.29289 0.292893C7.68342 -0.0976315 8.31658 -0.0976315 8.70711 0.292893L15.0711 6.65685C15.4616 7.04738 15.4616 7.68054 15.0711 8.07107C14.6805 8.46159 14.0474 8.46159 13.6569 8.07107L8 2.41421L2.34315 8.07107C1.95262 8.46159 1.31946 8.46159 0.928932 8.07107C0.538408 7.68054 0.538408 7.04738 0.928932 6.65685L7.29289 0.292893ZM8 15H7L7 1H8H9V15H8Z" fill="#319A27"/>
                         </svg>
-                        1291
-                    </span>
+                        639
+                        </span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="text-[#319A27] flex items-center gap-1">
+                            <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7.29289 0.292893C7.68342 -0.0976315 8.31658 -0.0976315 8.70711 0.292893L15.0711 6.65685C15.4616 7.04738 15.4616 7.68054 15.0711 8.07107C14.6805 8.46159 14.0474 8.46159 13.6569 8.07107L8 2.41421L2.34315 8.07107C1.95262 8.46159 1.31946 8.46159 0.928932 8.07107C0.538408 7.68054 0.538408 7.04738 0.928932 6.65685L7.29289 0.292893ZM8 15H7L7 1H8H9V15H8Z" fill="#319A27"/>
+                            </svg>
+                            899
+                        </span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="font-semibold">154</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="font-semibold">1909</span>
+                    </div>
                 </div>
-                <div class="flex items-center">
-                    <span class="font-semibold">250</span>
+                <div class="grid grid-cols-[25%_7%_7%_7%_20%_auto] gap-5 px-2.5 py-5 border-b border-[#D0D0D0]">
+                    <div class="flex items-center">
+                        <span class="text-sm">Число публикаций в ядре РИНЦ</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="font-semibold">1</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="font-semibold">1</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="text-[#319A27] flex items-center gap-1">
+                            <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7.29289 0.292893C7.68342 -0.0976315 8.31658 -0.0976315 8.70711 0.292893L15.0711 6.65685C15.4616 7.04738 15.4616 7.68054 15.0711 8.07107C14.6805 8.46159 14.0474 8.46159 13.6569 8.07107L8 2.41421L2.34315 8.07107C1.95262 8.46159 1.31946 8.46159 0.928932 8.07107C0.538408 7.68054 0.538408 7.04738 0.928932 6.65685L7.29289 0.292893ZM8 15H7L7 1H8H9V15H8Z" fill="#319A27"/>
+                            </svg>
+                            12
+                        </span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="font-semibold">3</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="font-semibold">17</span>
+                    </div>
                 </div>
-                <div class="flex items-center">
-                    <span class="font-semibold">2600</span>
-                </div>
-            </div>
-            <div class="grid grid-cols-1 lg:grid-cols-[25%_7%_7%_7%_20%_auto] gap-5 px-2.5 py-5 border-b border-[#D0D0D0]">
-                <div class="flex items-center">
-                    <span class="text-sm">Число публикаций в РИНЦ</span>
-                </div>
-                <div class="flex items-center">
-                    <span class="font-semibold">217</span>
-                </div>
-                <div class="flex items-center">
-                    <span class="text-[#319A27] flex items-center gap-1">
-                    <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M7.29289 0.292893C7.68342 -0.0976315 8.31658 -0.0976315 8.70711 0.292893L15.0711 6.65685C15.4616 7.04738 15.4616 7.68054 15.0711 8.07107C14.6805 8.46159 14.0474 8.46159 13.6569 8.07107L8 2.41421L2.34315 8.07107C1.95262 8.46159 1.31946 8.46159 0.928932 8.07107C0.538408 7.68054 0.538408 7.04738 0.928932 6.65685L7.29289 0.292893ZM8 15H7L7 1H8H9V15H8Z" fill="#319A27"/>
-                    </svg>
-                    639
-                    </span>
-                </div>
-                <div class="flex items-center">
-                    <span class="text-[#319A27] flex items-center gap-1">
+                <div class="grid grid-cols-[25%_7%_7%_7%_20%_auto] gap-5 px-2.5 py-5 border-b border-[#D0D0D0]">
+                    <div class="flex items-center">
+                        <span class="text-sm">Число цитирований публикаций на elibrary.ru</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="font-semibold">0</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="text-[#319A27] flex items-center gap-1">
                         <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M7.29289 0.292893C7.68342 -0.0976315 8.31658 -0.0976315 8.70711 0.292893L15.0711 6.65685C15.4616 7.04738 15.4616 7.68054 15.0711 8.07107C14.6805 8.46159 14.0474 8.46159 13.6569 8.07107L8 2.41421L2.34315 8.07107C1.95262 8.46159 1.31946 8.46159 0.928932 8.07107C0.538408 7.68054 0.538408 7.04738 0.928932 6.65685L7.29289 0.292893ZM8 15H7L7 1H8H9V15H8Z" fill="#319A27"/>
                         </svg>
-                        899
-                    </span>
+                        157
+                        </span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="text-[#319A27] flex items-center gap-1">
+                            <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7.29289 0.292893C7.68342 -0.0976315 8.31658 -0.0976315 8.70711 0.292893L15.0711 6.65685C15.4616 7.04738 15.4616 7.68054 15.0711 8.07107C14.6805 8.46159 14.0474 8.46159 13.6569 8.07107L8 2.41421L2.34315 8.07107C1.95262 8.46159 1.31946 8.46159 0.928932 8.07107C0.538408 7.68054 0.538408 7.04738 0.928932 6.65685L7.29289 0.292893ZM8 15H7L7 1H8H9V15H8Z" fill="#319A27"/>
+                            </svg>
+                            461
+                        </span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="font-semibold">195</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="font-semibold">813</span>
+                    </div>
                 </div>
-                <div class="flex items-center">
-                    <span class="font-semibold">154</span>
-                </div>
-                <div class="flex items-center">
-                    <span class="font-semibold">1909</span>
-                </div>
-            </div>
-            <div class="grid grid-cols-1 lg:grid-cols-[25%_7%_7%_7%_20%_auto] gap-5 px-2.5 py-5 border-b border-[#D0D0D0]">
-                <div class="flex items-center">
-                    <span class="text-sm">Число публикаций в ядре РИНЦ</span>
-                </div>
-                <div class="flex items-center">
-                    <span class="font-semibold">1</span>
-                </div>
-                <div class="flex items-center">
-                    <span class="font-semibold">1</span>
-                </div>
-                <div class="flex items-center">
-                    <span class="text-[#319A27] flex items-center gap-1">
+                <div class="grid grid-cols-[25%_7%_7%_7%_20%_auto] gap-5 px-2.5 py-5 border-b border-[#D0D0D0]">
+                    <div class="flex items-center">
+                        <span class="text-sm">Число цитирований публикаций в РИНЦ</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="font-semibold">0</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="text-[#319A27] flex items-center gap-1">
                         <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M7.29289 0.292893C7.68342 -0.0976315 8.31658 -0.0976315 8.70711 0.292893L15.0711 6.65685C15.4616 7.04738 15.4616 7.68054 15.0711 8.07107C14.6805 8.46159 14.0474 8.46159 13.6569 8.07107L8 2.41421L2.34315 8.07107C1.95262 8.46159 1.31946 8.46159 0.928932 8.07107C0.538408 7.68054 0.538408 7.04738 0.928932 6.65685L7.29289 0.292893ZM8 15H7L7 1H8H9V15H8Z" fill="#319A27"/>
                         </svg>
-                        12
-                    </span>
+                        145
+                        </span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="text-[#319A27] flex items-center gap-1">
+                            <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7.29289 0.292893C7.68342 -0.0976315 8.31658 -0.0976315 8.70711 0.292893L15.0711 6.65685C15.4616 7.04738 15.4616 7.68054 15.0711 8.07107C14.6805 8.46159 14.0474 8.46159 13.6569 8.07107L8 2.41421L2.34315 8.07107C1.95262 8.46159 1.31946 8.46159 0.928932 8.07107C0.538408 7.68054 0.538408 7.04738 0.928932 6.65685L7.29289 0.292893ZM8 15H7L7 1H8H9V15H8Z" fill="#319A27"/>
+                            </svg>
+                            404
+                        </span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="font-semibold">175</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="font-semibold">724</span>
+                    </div>
                 </div>
-                <div class="flex items-center">
-                    <span class="font-semibold">3</span>
-                </div>
-                <div class="flex items-center">
-                    <span class="font-semibold">17</span>
-                </div>
-            </div>
-            <div class="grid grid-cols-1 lg:grid-cols-[25%_7%_7%_7%_20%_auto] gap-5 px-2.5 py-5 border-b border-[#D0D0D0]">
-                <div class="flex items-center">
-                    <span class="text-sm">Число цитирований публикаций на elibrary.ru</span>
-                </div>
-                <div class="flex items-center">
-                    <span class="font-semibold">0</span>
-                </div>
-                <div class="flex items-center">
-                    <span class="text-[#319A27] flex items-center gap-1">
-                    <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M7.29289 0.292893C7.68342 -0.0976315 8.31658 -0.0976315 8.70711 0.292893L15.0711 6.65685C15.4616 7.04738 15.4616 7.68054 15.0711 8.07107C14.6805 8.46159 14.0474 8.46159 13.6569 8.07107L8 2.41421L2.34315 8.07107C1.95262 8.46159 1.31946 8.46159 0.928932 8.07107C0.538408 7.68054 0.538408 7.04738 0.928932 6.65685L7.29289 0.292893ZM8 15H7L7 1H8H9V15H8Z" fill="#319A27"/>
-                    </svg>
-                    157
-                    </span>
-                </div>
-                <div class="flex items-center">
-                    <span class="text-[#319A27] flex items-center gap-1">
+                <div class="grid grid-cols-[25%_7%_7%_7%_20%_auto] gap-5 px-2.5 py-5 border-b border-[#D0D0D0]">
+                    <div class="flex items-center">
+                        <span class="text-sm">Число цитирований из публикаций, входящих в ядро РИНЦ</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="font-semibold">0</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="text-[#319A27] flex items-center gap-1">
                         <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M7.29289 0.292893C7.68342 -0.0976315 8.31658 -0.0976315 8.70711 0.292893L15.0711 6.65685C15.4616 7.04738 15.4616 7.68054 15.0711 8.07107C14.6805 8.46159 14.0474 8.46159 13.6569 8.07107L8 2.41421L2.34315 8.07107C1.95262 8.46159 1.31946 8.46159 0.928932 8.07107C0.538408 7.68054 0.538408 7.04738 0.928932 6.65685L7.29289 0.292893ZM8 15H7L7 1H8H9V15H8Z" fill="#319A27"/>
                         </svg>
-                        461
-                    </span>
+                        2
+                        </span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="text-[#319A27] flex items-center gap-1">
+                            <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7.29289 0.292893C7.68342 -0.0976315 8.31658 -0.0976315 8.70711 0.292893L15.0711 6.65685C15.4616 7.04738 15.4616 7.68054 15.0711 8.07107C14.6805 8.46159 14.0474 8.46159 13.6569 8.07107L8 2.41421L2.34315 8.07107C1.95262 8.46159 1.31946 8.46159 0.928932 8.07107C0.538408 7.68054 0.538408 7.04738 0.928932 6.65685L7.29289 0.292893ZM8 15H7L7 1H8H9V15H8Z" fill="#319A27"/>
+                            </svg>
+                            7
+                        </span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="text-[#319A27] flex items-center gap-1">
+                            <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7.29289 0.292893C7.68342 -0.0976315 8.31658 -0.0976315 8.70711 0.292893L15.0711 6.65685C15.4616 7.04738 15.4616 7.68054 15.0711 8.07107C14.6805 8.46159 14.0474 8.46159 13.6569 8.07107L8 2.41421L2.34315 8.07107C1.95262 8.46159 1.31946 8.46159 0.928932 8.07107C0.538408 7.68054 0.538408 7.04738 0.928932 6.65685L7.29289 0.292893ZM8 15H7L7 1H8H9V15H8Z" fill="#319A27"/>
+                            </svg>
+                            8
+                        </span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="font-semibold">17</span>
+                    </div>
                 </div>
-                <div class="flex items-center">
-                    <span class="font-semibold">195</span>
-                </div>
-                <div class="flex items-center">
-                    <span class="font-semibold">813</span>
-                </div>
-            </div>
-            <div class="grid grid-cols-1 lg:grid-cols-[25%_7%_7%_7%_20%_auto] gap-5 px-2.5 py-5 border-b border-[#D0D0D0]">
-                <div class="flex items-center">
-                    <span class="text-sm">Число цитирований публикаций в РИНЦ</span>
-                </div>
-                <div class="flex items-center">
-                    <span class="font-semibold">0</span>
-                </div>
-                <div class="flex items-center">
-                    <span class="text-[#319A27] flex items-center gap-1">
-                    <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M7.29289 0.292893C7.68342 -0.0976315 8.31658 -0.0976315 8.70711 0.292893L15.0711 6.65685C15.4616 7.04738 15.4616 7.68054 15.0711 8.07107C14.6805 8.46159 14.0474 8.46159 13.6569 8.07107L8 2.41421L2.34315 8.07107C1.95262 8.46159 1.31946 8.46159 0.928932 8.07107C0.538408 7.68054 0.538408 7.04738 0.928932 6.65685L7.29289 0.292893ZM8 15H7L7 1H8H9V15H8Z" fill="#319A27"/>
-                    </svg>
-                    145
-                    </span>
-                </div>
-                <div class="flex items-center">
-                    <span class="text-[#319A27] flex items-center gap-1">
-                        <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M7.29289 0.292893C7.68342 -0.0976315 8.31658 -0.0976315 8.70711 0.292893L15.0711 6.65685C15.4616 7.04738 15.4616 7.68054 15.0711 8.07107C14.6805 8.46159 14.0474 8.46159 13.6569 8.07107L8 2.41421L2.34315 8.07107C1.95262 8.46159 1.31946 8.46159 0.928932 8.07107C0.538408 7.68054 0.538408 7.04738 0.928932 6.65685L7.29289 0.292893ZM8 15H7L7 1H8H9V15H8Z" fill="#319A27"/>
-                        </svg>
-                        404
-                    </span>
-                </div>
-                <div class="flex items-center">
-                    <span class="font-semibold">175</span>
-                </div>
-                <div class="flex items-center">
-                    <span class="font-semibold">724</span>
-                </div>
-            </div>
-            <div class="grid grid-cols-1 lg:grid-cols-[25%_7%_7%_7%_20%_auto] gap-5 px-2.5 py-5 border-b border-[#D0D0D0]">
-                <div class="flex items-center">
-                    <span class="text-sm">Число цитирований из публикаций, входящих в ядро РИНЦ</span>
-                </div>
-                <div class="flex items-center">
-                    <span class="font-semibold">0</span>
-                </div>
-                <div class="flex items-center">
-                    <span class="text-[#319A27] flex items-center gap-1">
-                    <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M7.29289 0.292893C7.68342 -0.0976315 8.31658 -0.0976315 8.70711 0.292893L15.0711 6.65685C15.4616 7.04738 15.4616 7.68054 15.0711 8.07107C14.6805 8.46159 14.0474 8.46159 13.6569 8.07107L8 2.41421L2.34315 8.07107C1.95262 8.46159 1.31946 8.46159 0.928932 8.07107C0.538408 7.68054 0.538408 7.04738 0.928932 6.65685L7.29289 0.292893ZM8 15H7L7 1H8H9V15H8Z" fill="#319A27"/>
-                    </svg>
-                    2
-                    </span>
-                </div>
-                <div class="flex items-center">
-                    <span class="text-[#319A27] flex items-center gap-1">
-                        <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M7.29289 0.292893C7.68342 -0.0976315 8.31658 -0.0976315 8.70711 0.292893L15.0711 6.65685C15.4616 7.04738 15.4616 7.68054 15.0711 8.07107C14.6805 8.46159 14.0474 8.46159 13.6569 8.07107L8 2.41421L2.34315 8.07107C1.95262 8.46159 1.31946 8.46159 0.928932 8.07107C0.538408 7.68054 0.538408 7.04738 0.928932 6.65685L7.29289 0.292893ZM8 15H7L7 1H8H9V15H8Z" fill="#319A27"/>
-                        </svg>
-                        7
-                    </span>
-                </div>
-                <div class="flex items-center">
-                    <span class="text-[#319A27] flex items-center gap-1">
-                        <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M7.29289 0.292893C7.68342 -0.0976315 8.31658 -0.0976315 8.70711 0.292893L15.0711 6.65685C15.4616 7.04738 15.4616 7.68054 15.0711 8.07107C14.6805 8.46159 14.0474 8.46159 13.6569 8.07107L8 2.41421L2.34315 8.07107C1.95262 8.46159 1.31946 8.46159 0.928932 8.07107C0.538408 7.68054 0.538408 7.04738 0.928932 6.65685L7.29289 0.292893ZM8 15H7L7 1H8H9V15H8Z" fill="#319A27"/>
-                        </svg>
-                        8
-                    </span>
-                </div>
-                <div class="flex items-center">
-                    <span class="font-semibold">17</span>
-                </div>
-            </div>
-            <div class="grid grid-cols-1 lg:grid-cols-[25%_7%_7%_7%_20%_auto] gap-5 px-2.5 py-5 border-b border-[#D0D0D0]">
-                <div class="flex items-center">
-                    <span class="text-sm">Индекс Хирша по всем публикациям на elibrary.ru</span>
-                </div>
-                <div class="flex items-center">
-                    <span class="font-semibold">0</span>
-                </div>
-                <div class="flex items-center">
-                    <span class="text-[#319A27] flex items-center gap-1">
-                    <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M7.29289 0.292893C7.68342 -0.0976315 8.31658 -0.0976315 8.70711 0.292893L15.0711 6.65685C15.4616 7.04738 15.4616 7.68054 15.0711 8.07107C14.6805 8.46159 14.0474 8.46159 13.6569 8.07107L8 2.41421L2.34315 8.07107C1.95262 8.46159 1.31946 8.46159 0.928932 8.07107C0.538408 7.68054 0.538408 7.04738 0.928932 6.65685L7.29289 0.292893ZM8 15H7L7 1H8H9V15H8Z" fill="#319A27"/>
-                    </svg>
-                    6
-                    </span>
-                </div>
-                <div class="flex items-center">
-                    <span class="text-[#319A27] flex items-center gap-1">
-                        <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M7.29289 0.292893C7.68342 -0.0976315 8.31658 -0.0976315 8.70711 0.292893L15.0711 6.65685C15.4616 7.04738 15.4616 7.68054 15.0711 8.07107C14.6805 8.46159 14.0474 8.46159 13.6569 8.07107L8 2.41421L2.34315 8.07107C1.95262 8.46159 1.31946 8.46159 0.928932 8.07107C0.538408 7.68054 0.538408 7.04738 0.928932 6.65685L7.29289 0.292893ZM8 15H7L7 1H8H9V15H8Z" fill="#319A27"/>
-                        </svg>
-                        8
-                    </span>
-                </div>
-                <div class="flex items-center">
-                    <span class="text-[#319A27] flex items-center gap-1">
-                        <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M7.29289 0.292893C7.68342 -0.0976315 8.31658 -0.0976315 8.70711 0.292893L15.0711 6.65685C15.4616 7.04738 15.4616 7.68054 15.0711 8.07107C14.6805 8.46159 14.0474 8.46159 13.6569 8.07107L8 2.41421L2.34315 8.07107C1.95262 8.46159 1.31946 8.46159 0.928932 8.07107C0.538408 7.68054 0.538408 7.04738 0.928932 6.65685L7.29289 0.292893ZM8 15H7L7 1H8H9V15H8Z" fill="#319A27"/>
-                        </svg>
-                        10
-                    </span>
-                </div>
-                <div class="flex items-center">
-                    <span class="font-semibold">10</span>
-                </div>
-            </div>
-            <div class="grid grid-cols-1 lg:grid-cols-[25%_7%_7%_7%_20%_auto] gap-5 px-2.5 py-5 border-b border-[#D0D0D0]">
-                <div class="flex items-center">
-                    <span class="text-sm">Индекс Хирша по публикациям в РИНЦ</span>
-                </div>
-                <div class="flex items-center">
-                    <span class="font-semibold">0</span>
-                </div>
-                <div class="flex items-center">
-                    <span class="text-[#319A27] flex items-center gap-1">
-                    <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M7.29289 0.292893C7.68342 -0.0976315 8.31658 -0.0976315 8.70711 0.292893L15.0711 6.65685C15.4616 7.04738 15.4616 7.68054 15.0711 8.07107C14.6805 8.46159 14.0474 8.46159 13.6569 8.07107L8 2.41421L2.34315 8.07107C1.95262 8.46159 1.31946 8.46159 0.928932 8.07107C0.538408 7.68054 0.538408 7.04738 0.928932 6.65685L7.29289 0.292893ZM8 15H7L7 1H8H9V15H8Z" fill="#319A27"/>
-                    </svg>
-                    6
-                    </span>
-                </div>
-                <div class="flex items-center">
-                    <span class="text-[#319A27] flex items-center gap-1">
-                        <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M7.29289 0.292893C7.68342 -0.0976315 8.31658 -0.0976315 8.70711 0.292893L15.0711 6.65685C15.4616 7.04738 15.4616 7.68054 15.0711 8.07107C14.6805 8.46159 14.0474 8.46159 13.6569 8.07107L8 2.41421L2.34315 8.07107C1.95262 8.46159 1.31946 8.46159 0.928932 8.07107C0.538408 7.68054 0.538408 7.04738 0.928932 6.65685L7.29289 0.292893ZM8 15H7L7 1H8H9V15H8Z" fill="#319A27"/>
-                        </svg>
-                        8
-                    </span>
-                </div>
-                <div class="flex items-center">
-                    <span class="text-[#319A27] flex items-center gap-1">
-                        <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M7.29289 0.292893C7.68342 -0.0976315 8.31658 -0.0976315 8.70711 0.292893L15.0711 6.65685C15.4616 7.04738 15.4616 7.68054 15.0711 8.07107C14.6805 8.46159 14.0474 8.46159 13.6569 8.07107L8 2.41421L2.34315 8.07107C1.95262 8.46159 1.31946 8.46159 0.928932 8.07107C0.538408 7.68054 0.538408 7.04738 0.928932 6.65685L7.29289 0.292893ZM8 15H7L7 1H8H9V15H8Z" fill="#319A27"/>
-                        </svg>
-                        10
-                    </span>
-                </div>
-                <div class="flex items-center">
-                    <span class="font-semibold">10</span>
-                </div>
-            </div>
-            <div class="grid grid-cols-1 lg:grid-cols-[25%_7%_7%_7%_20%_auto] gap-5 px-2.5 py-5 border-b border-[#D0D0D0]">
-                <div class="flex items-center">
-                    <span class="text-sm">Индекс Хирша по ядру РИНЦ</span>
-                </div>
-                <div class="flex items-center">
-                    <span class="font-semibold">0</span>
-                </div>
-                <div class="flex items-center">
-                    <span class="text-[#319A27] flex items-center gap-1">
-                    <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M7.29289 0.292893C7.68342 -0.0976315 8.31658 -0.0976315 8.70711 0.292893L15.0711 6.65685C15.4616 7.04738 15.4616 7.68054 15.0711 8.07107C14.6805 8.46159 14.0474 8.46159 13.6569 8.07107L8 2.41421L2.34315 8.07107C1.95262 8.46159 1.31946 8.46159 0.928932 8.07107C0.538408 7.68054 0.538408 7.04738 0.928932 6.65685L7.29289 0.292893ZM8 15H7L7 1H8H9V15H8Z" fill="#319A27"/>
-                    </svg>
-                    1
-                    </span>
-                </div>
-                <div class="flex items-center">
-                    <span class="font-semibold">1</span>
-                </div>
-                <div class="flex items-center">
-                    <span class="font-semibold">1</span>
-                </div>
-                <div class="flex items-center">
-                    <span class="font-semibold">1</span>
-                </div>
-            </div>
-            <div class="grid grid-cols-1 lg:grid-cols-[25%_7%_7%_7%_20%_auto] gap-5 px-2.5 py-5 border-b border-[#D0D0D0]">
-                <div class="flex items-center">
-                    <span class="text-sm">g-индекс</span>
-                </div>
-                <div class="flex items-center">
-                    <span class="font-semibold">0</span>
-                </div>
-                <div class="flex items-center">
-                    <span class="text-[#319A27] flex items-center gap-1">
-                    <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M7.29289 0.292893C7.68342 -0.0976315 8.31658 -0.0976315 8.70711 0.292893L15.0711 6.65685C15.4616 7.04738 15.4616 7.68054 15.0711 8.07107C14.6805 8.46159 14.0474 8.46159 13.6569 8.07107L8 2.41421L2.34315 8.07107C1.95262 8.46159 1.31946 8.46159 0.928932 8.07107C0.538408 7.68054 0.538408 7.04738 0.928932 6.65685L7.29289 0.292893ZM8 15H7L7 1H8H9V15H8Z" fill="#319A27"/>
-                    </svg>
-                    9
-                    </span>
-                </div>
-                <div class="flex items-center">
-                    <span class="text-[#319A27] flex items-center gap-1">
-                        <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M7.29289 0.292893C7.68342 -0.0976315 8.31658 -0.0976315 8.70711 0.292893L15.0711 6.65685C15.4616 7.04738 15.4616 7.68054 15.0711 8.07107C14.6805 8.46159 14.0474 8.46159 13.6569 8.07107L8 2.41421L2.34315 8.07107C1.95262 8.46159 1.31946 8.46159 0.928932 8.07107C0.538408 7.68054 0.538408 7.04738 0.928932 6.65685L7.29289 0.292893ZM8 15H7L7 1H8H9V15H8Z" fill="#319A27"/>
-                        </svg>
-                        11
-                    </span>
-                </div>
-                <div class="flex items-center">
-                    <span class="text-[#319A27] flex items-center gap-1">
-                        <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M7.29289 0.292893C7.68342 -0.0976315 8.31658 -0.0976315 8.70711 0.292893L15.0711 6.65685C15.4616 7.04738 15.4616 7.68054 15.0711 8.07107C14.6805 8.46159 14.0474 8.46159 13.6569 8.07107L8 2.41421L2.34315 8.07107C1.95262 8.46159 1.31946 8.46159 0.928932 8.07107C0.538408 7.68054 0.538408 7.04738 0.928932 6.65685L7.29289 0.292893ZM8 15H7L7 1H8H9V15H8Z" fill="#319A27"/>
-                        </svg>
-                        14
-                    </span>
-                </div>
-                <div class="flex items-center">
-                    <span class="font-semibold">14</span>
-                </div>
-            </div>
-            <div class="grid grid-cols-1 lg:grid-cols-[25%_7%_7%_7%_20%_auto] gap-5 px-2.5 py-5 border-b border-[#D0D0D0]">
-                <div class="flex items-center">
-                    <span class="text-sm">i-индекс</span>
-                </div>
-                <div class="flex items-center">
-                    <span class="font-semibold">0</span>
-                </div>
-                <div class="flex items-center">
-                    <span class="text-[#319A27] flex items-center gap-1">
-                    <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M7.29289 0.292893C7.68342 -0.0976315 8.31658 -0.0976315 8.70711 0.292893L15.0711 6.65685C15.4616 7.04738 15.4616 7.68054 15.0711 8.07107C14.6805 8.46159 14.0474 8.46159 13.6569 8.07107L8 2.41421L2.34315 8.07107C1.95262 8.46159 1.31946 8.46159 0.928932 8.07107C0.538408 7.68054 0.538408 7.04738 0.928932 6.65685L7.29289 0.292893ZM8 15H7L7 1H8H9V15H8Z" fill="#319A27"/>
-                    </svg>
-                    4
-                    </span>
-                </div>
-                <div class="flex items-center">
-                    <span class="text-[#319A27] flex items-center gap-1">
-                        <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M7.29289 0.292893C7.68342 -0.0976315 8.31658 -0.0976315 8.70711 0.292893L15.0711 6.65685C15.4616 7.04738 15.4616 7.68054 15.0711 8.07107C14.6805 8.46159 14.0474 8.46159 13.6569 8.07107L8 2.41421L2.34315 8.07107C1.95262 8.46159 1.31946 8.46159 0.928932 8.07107C0.538408 7.68054 0.538408 7.04738 0.928932 6.65685L7.29289 0.292893ZM8 15H7L7 1H8H9V15H8Z" fill="#319A27"/>
-                        </svg>
-                        5
-                    </span>
-                </div>
-                <div class="flex items-center">
-                    <span class="text-[#319A27] flex items-center gap-1">
+                <div class="grid grid-cols-[25%_7%_7%_7%_20%_auto] gap-5 px-2.5 py-5 border-b border-[#D0D0D0]">
+                    <div class="flex items-center">
+                        <span class="text-sm">Индекс Хирша по всем публикациям на elibrary.ru</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="font-semibold">0</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="text-[#319A27] flex items-center gap-1">
                         <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M7.29289 0.292893C7.68342 -0.0976315 8.31658 -0.0976315 8.70711 0.292893L15.0711 6.65685C15.4616 7.04738 15.4616 7.68054 15.0711 8.07107C14.6805 8.46159 14.0474 8.46159 13.6569 8.07107L8 2.41421L2.34315 8.07107C1.95262 8.46159 1.31946 8.46159 0.928932 8.07107C0.538408 7.68054 0.538408 7.04738 0.928932 6.65685L7.29289 0.292893ZM8 15H7L7 1H8H9V15H8Z" fill="#319A27"/>
                         </svg>
                         6
-                    </span>
+                        </span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="text-[#319A27] flex items-center gap-1">
+                            <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7.29289 0.292893C7.68342 -0.0976315 8.31658 -0.0976315 8.70711 0.292893L15.0711 6.65685C15.4616 7.04738 15.4616 7.68054 15.0711 8.07107C14.6805 8.46159 14.0474 8.46159 13.6569 8.07107L8 2.41421L2.34315 8.07107C1.95262 8.46159 1.31946 8.46159 0.928932 8.07107C0.538408 7.68054 0.538408 7.04738 0.928932 6.65685L7.29289 0.292893ZM8 15H7L7 1H8H9V15H8Z" fill="#319A27"/>
+                            </svg>
+                            8
+                        </span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="text-[#319A27] flex items-center gap-1">
+                            <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7.29289 0.292893C7.68342 -0.0976315 8.31658 -0.0976315 8.70711 0.292893L15.0711 6.65685C15.4616 7.04738 15.4616 7.68054 15.0711 8.07107C14.6805 8.46159 14.0474 8.46159 13.6569 8.07107L8 2.41421L2.34315 8.07107C1.95262 8.46159 1.31946 8.46159 0.928932 8.07107C0.538408 7.68054 0.538408 7.04738 0.928932 6.65685L7.29289 0.292893ZM8 15H7L7 1H8H9V15H8Z" fill="#319A27"/>
+                            </svg>
+                            10
+                        </span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="font-semibold">10</span>
+                    </div>
                 </div>
-                <div class="flex items-center">
-                    <span class="font-semibold">6</span>
-                </div>
-            </div>
-            <div class="grid grid-cols-1 lg:grid-cols-[25%_7%_7%_7%_20%_auto] gap-5 px-2.5 py-5 border-b border-[#D0D0D0]">
-                <div class="flex items-center">
-                    <span class="text-sm">Число авторов</span>
-                </div>
-                <div class="flex items-center">
-                    <span class="font-semibold">-</span>
-                </div>
-                <div class="flex items-center">
-                    <span class="text-[#319A27] flex items-center gap-1">
-                    <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M7.29289 0.292893C7.68342 -0.0976315 8.31658 -0.0976315 8.70711 0.292893L15.0711 6.65685C15.4616 7.04738 15.4616 7.68054 15.0711 8.07107C14.6805 8.46159 14.0474 8.46159 13.6569 8.07107L8 2.41421L2.34315 8.07107C1.95262 8.46159 1.31946 8.46159 0.928932 8.07107C0.538408 7.68054 0.538408 7.04738 0.928932 6.65685L7.29289 0.292893ZM8 15H7L7 1H8H9V15H8Z" fill="#319A27"/>
-                    </svg>
-                    195
-                    </span>
-                </div>
-                <div class="flex items-center">
-                    <span class="text-[#319A27] flex items-center gap-1">
+                <div class="grid grid-cols-[25%_7%_7%_7%_20%_auto] gap-5 px-2.5 py-5 border-b border-[#D0D0D0]">
+                    <div class="flex items-center">
+                        <span class="text-sm">Индекс Хирша по публикациям в РИНЦ</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="font-semibold">0</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="text-[#319A27] flex items-center gap-1">
                         <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M7.29289 0.292893C7.68342 -0.0976315 8.31658 -0.0976315 8.70711 0.292893L15.0711 6.65685C15.4616 7.04738 15.4616 7.68054 15.0711 8.07107C14.6805 8.46159 14.0474 8.46159 13.6569 8.07107L8 2.41421L2.34315 8.07107C1.95262 8.46159 1.31946 8.46159 0.928932 8.07107C0.538408 7.68054 0.538408 7.04738 0.928932 6.65685L7.29289 0.292893ZM8 15H7L7 1H8H9V15H8Z" fill="#319A27"/>
                         </svg>
-                        225
-                    </span>
+                        6
+                        </span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="text-[#319A27] flex items-center gap-1">
+                            <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7.29289 0.292893C7.68342 -0.0976315 8.31658 -0.0976315 8.70711 0.292893L15.0711 6.65685C15.4616 7.04738 15.4616 7.68054 15.0711 8.07107C14.6805 8.46159 14.0474 8.46159 13.6569 8.07107L8 2.41421L2.34315 8.07107C1.95262 8.46159 1.31946 8.46159 0.928932 8.07107C0.538408 7.68054 0.538408 7.04738 0.928932 6.65685L7.29289 0.292893ZM8 15H7L7 1H8H9V15H8Z" fill="#319A27"/>
+                            </svg>
+                            8
+                        </span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="text-[#319A27] flex items-center gap-1">
+                            <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7.29289 0.292893C7.68342 -0.0976315 8.31658 -0.0976315 8.70711 0.292893L15.0711 6.65685C15.4616 7.04738 15.4616 7.68054 15.0711 8.07107C14.6805 8.46159 14.0474 8.46159 13.6569 8.07107L8 2.41421L2.34315 8.07107C1.95262 8.46159 1.31946 8.46159 0.928932 8.07107C0.538408 7.68054 0.538408 7.04738 0.928932 6.65685L7.29289 0.292893ZM8 15H7L7 1H8H9V15H8Z" fill="#319A27"/>
+                            </svg>
+                            10
+                        </span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="font-semibold">10</span>
+                    </div>
                 </div>
-                <div class="flex items-center">
-                    <span class="text-[#319A27] flex items-center gap-1">
+                <div class="grid grid-cols-[25%_7%_7%_7%_20%_auto] gap-5 px-2.5 py-5 border-b border-[#D0D0D0]">
+                    <div class="flex items-center">
+                        <span class="text-sm">Индекс Хирша по ядру РИНЦ</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="font-semibold">0</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="text-[#319A27] flex items-center gap-1">
                         <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M7.29289 0.292893C7.68342 -0.0976315 8.31658 -0.0976315 8.70711 0.292893L15.0711 6.65685C15.4616 7.04738 15.4616 7.68054 15.0711 8.07107C14.6805 8.46159 14.0474 8.46159 13.6569 8.07107L8 2.41421L2.34315 8.07107C1.95262 8.46159 1.31946 8.46159 0.928932 8.07107C0.538408 7.68054 0.538408 7.04738 0.928932 6.65685L7.29289 0.292893ZM8 15H7L7 1H8H9V15H8Z" fill="#319A27"/>
                         </svg>
-                        306
-                    </span>
+                        1
+                        </span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="font-semibold">1</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="font-semibold">1</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="font-semibold">1</span>
+                    </div>
                 </div>
-                <div class="flex items-center">
-                    <span class="font-semibold">306</span>
-                </div>
-            </div>
-            <div class="grid grid-cols-1 lg:grid-cols-[25%_7%_7%_7%_20%_auto] gap-5 px-2.5 py-5 border-b border-[#D0D0D0]">
-                <div class="flex items-center">
-                    <span class="text-sm">Число авторов, зарегистрированных в ScienceIndex</span>
-                </div>
-                <div class="flex items-center">
-                    <span class="font-semibold">19</span>
-                </div>
-                <div class="flex items-center">
-                    <span class="text-[#319A27] flex items-center gap-1">
-                    <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M7.29289 0.292893C7.68342 -0.0976315 8.31658 -0.0976315 8.70711 0.292893L15.0711 6.65685C15.4616 7.04738 15.4616 7.68054 15.0711 8.07107C14.6805 8.46159 14.0474 8.46159 13.6569 8.07107L8 2.41421L2.34315 8.07107C1.95262 8.46159 1.31946 8.46159 0.928932 8.07107C0.538408 7.68054 0.538408 7.04738 0.928932 6.65685L7.29289 0.292893ZM8 15H7L7 1H8H9V15H8Z" fill="#319A27"/>
-                    </svg>
-                    173
-                    </span>
-                </div>
-                <div class="flex items-center">
-                    <span class="text-[#319A27] flex items-center gap-1">
+                <div class="grid grid-cols-[25%_7%_7%_7%_20%_auto] gap-5 px-2.5 py-5 border-b border-[#D0D0D0]">
+                    <div class="flex items-center">
+                        <span class="text-sm">g-индекс</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="font-semibold">0</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="text-[#319A27] flex items-center gap-1">
                         <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M7.29289 0.292893C7.68342 -0.0976315 8.31658 -0.0976315 8.70711 0.292893L15.0711 6.65685C15.4616 7.04738 15.4616 7.68054 15.0711 8.07107C14.6805 8.46159 14.0474 8.46159 13.6569 8.07107L8 2.41421L2.34315 8.07107C1.95262 8.46159 1.31946 8.46159 0.928932 8.07107C0.538408 7.68054 0.538408 7.04738 0.928932 6.65685L7.29289 0.292893ZM8 15H7L7 1H8H9V15H8Z" fill="#319A27"/>
                         </svg>
-                        250
-                    </span>
+                        9
+                        </span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="text-[#319A27] flex items-center gap-1">
+                            <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7.29289 0.292893C7.68342 -0.0976315 8.31658 -0.0976315 8.70711 0.292893L15.0711 6.65685C15.4616 7.04738 15.4616 7.68054 15.0711 8.07107C14.6805 8.46159 14.0474 8.46159 13.6569 8.07107L8 2.41421L2.34315 8.07107C1.95262 8.46159 1.31946 8.46159 0.928932 8.07107C0.538408 7.68054 0.538408 7.04738 0.928932 6.65685L7.29289 0.292893ZM8 15H7L7 1H8H9V15H8Z" fill="#319A27"/>
+                            </svg>
+                            11
+                        </span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="text-[#319A27] flex items-center gap-1">
+                            <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7.29289 0.292893C7.68342 -0.0976315 8.31658 -0.0976315 8.70711 0.292893L15.0711 6.65685C15.4616 7.04738 15.4616 7.68054 15.0711 8.07107C14.6805 8.46159 14.0474 8.46159 13.6569 8.07107L8 2.41421L2.34315 8.07107C1.95262 8.46159 1.31946 8.46159 0.928932 8.07107C0.538408 7.68054 0.538408 7.04738 0.928932 6.65685L7.29289 0.292893ZM8 15H7L7 1H8H9V15H8Z" fill="#319A27"/>
+                            </svg>
+                            14
+                        </span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="font-semibold">14</span>
+                    </div>
                 </div>
-                <div class="flex items-center">
-                    <span class="text-[#319A27] flex items-center gap-1">
+                <div class="grid grid-cols-[25%_7%_7%_7%_20%_auto] gap-5 px-2.5 py-5 border-b border-[#D0D0D0]">
+                    <div class="flex items-center">
+                        <span class="text-sm">i-индекс</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="font-semibold">0</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="text-[#319A27] flex items-center gap-1">
                         <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M7.29289 0.292893C7.68342 -0.0976315 8.31658 -0.0976315 8.70711 0.292893L15.0711 6.65685C15.4616 7.04738 15.4616 7.68054 15.0711 8.07107C14.6805 8.46159 14.0474 8.46159 13.6569 8.07107L8 2.41421L2.34315 8.07107C1.95262 8.46159 1.31946 8.46159 0.928932 8.07107C0.538408 7.68054 0.538408 7.04738 0.928932 6.65685L7.29289 0.292893ZM8 15H7L7 1H8H9V15H8Z" fill="#319A27"/>
                         </svg>
-                        282
-                    </span>
+                        4
+                        </span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="text-[#319A27] flex items-center gap-1">
+                            <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7.29289 0.292893C7.68342 -0.0976315 8.31658 -0.0976315 8.70711 0.292893L15.0711 6.65685C15.4616 7.04738 15.4616 7.68054 15.0711 8.07107C14.6805 8.46159 14.0474 8.46159 13.6569 8.07107L8 2.41421L2.34315 8.07107C1.95262 8.46159 1.31946 8.46159 0.928932 8.07107C0.538408 7.68054 0.538408 7.04738 0.928932 6.65685L7.29289 0.292893ZM8 15H7L7 1H8H9V15H8Z" fill="#319A27"/>
+                            </svg>
+                            5
+                        </span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="text-[#319A27] flex items-center gap-1">
+                            <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7.29289 0.292893C7.68342 -0.0976315 8.31658 -0.0976315 8.70711 0.292893L15.0711 6.65685C15.4616 7.04738 15.4616 7.68054 15.0711 8.07107C14.6805 8.46159 14.0474 8.46159 13.6569 8.07107L8 2.41421L2.34315 8.07107C1.95262 8.46159 1.31946 8.46159 0.928932 8.07107C0.538408 7.68054 0.538408 7.04738 0.928932 6.65685L7.29289 0.292893ZM8 15H7L7 1H8H9V15H8Z" fill="#319A27"/>
+                            </svg>
+                            6
+                        </span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="font-semibold">6</span>
+                    </div>
                 </div>
-                <div class="flex items-center">
-                    <span class="font-semibold">282</span>
+                <div class="grid grid-cols-[25%_7%_7%_7%_20%_auto] gap-5 px-2.5 py-5 border-b border-[#D0D0D0]">
+                    <div class="flex items-center">
+                        <span class="text-sm">Число авторов</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="font-semibold">-</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="text-[#319A27] flex items-center gap-1">
+                        <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7.29289 0.292893C7.68342 -0.0976315 8.31658 -0.0976315 8.70711 0.292893L15.0711 6.65685C15.4616 7.04738 15.4616 7.68054 15.0711 8.07107C14.6805 8.46159 14.0474 8.46159 13.6569 8.07107L8 2.41421L2.34315 8.07107C1.95262 8.46159 1.31946 8.46159 0.928932 8.07107C0.538408 7.68054 0.538408 7.04738 0.928932 6.65685L7.29289 0.292893ZM8 15H7L7 1H8H9V15H8Z" fill="#319A27"/>
+                        </svg>
+                        195
+                        </span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="text-[#319A27] flex items-center gap-1">
+                            <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7.29289 0.292893C7.68342 -0.0976315 8.31658 -0.0976315 8.70711 0.292893L15.0711 6.65685C15.4616 7.04738 15.4616 7.68054 15.0711 8.07107C14.6805 8.46159 14.0474 8.46159 13.6569 8.07107L8 2.41421L2.34315 8.07107C1.95262 8.46159 1.31946 8.46159 0.928932 8.07107C0.538408 7.68054 0.538408 7.04738 0.928932 6.65685L7.29289 0.292893ZM8 15H7L7 1H8H9V15H8Z" fill="#319A27"/>
+                            </svg>
+                            225
+                        </span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="text-[#319A27] flex items-center gap-1">
+                            <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7.29289 0.292893C7.68342 -0.0976315 8.31658 -0.0976315 8.70711 0.292893L15.0711 6.65685C15.4616 7.04738 15.4616 7.68054 15.0711 8.07107C14.6805 8.46159 14.0474 8.46159 13.6569 8.07107L8 2.41421L2.34315 8.07107C1.95262 8.46159 1.31946 8.46159 0.928932 8.07107C0.538408 7.68054 0.538408 7.04738 0.928932 6.65685L7.29289 0.292893ZM8 15H7L7 1H8H9V15H8Z" fill="#319A27"/>
+                            </svg>
+                            306
+                        </span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="font-semibold">306</span>
+                    </div>
                 </div>
-            </div>
-        </div>         
+                <div class="grid grid-cols-[25%_7%_7%_7%_20%_auto] gap-5 px-2.5 py-5 border-b border-[#D0D0D0]">
+                    <div class="flex items-center">
+                        <span class="text-sm">Число авторов, зарегистрированных в ScienceIndex</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="font-semibold">19</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="text-[#319A27] flex items-center gap-1">
+                        <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7.29289 0.292893C7.68342 -0.0976315 8.31658 -0.0976315 8.70711 0.292893L15.0711 6.65685C15.4616 7.04738 15.4616 7.68054 15.0711 8.07107C14.6805 8.46159 14.0474 8.46159 13.6569 8.07107L8 2.41421L2.34315 8.07107C1.95262 8.46159 1.31946 8.46159 0.928932 8.07107C0.538408 7.68054 0.538408 7.04738 0.928932 6.65685L7.29289 0.292893ZM8 15H7L7 1H8H9V15H8Z" fill="#319A27"/>
+                        </svg>
+                        173
+                        </span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="text-[#319A27] flex items-center gap-1">
+                            <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7.29289 0.292893C7.68342 -0.0976315 8.31658 -0.0976315 8.70711 0.292893L15.0711 6.65685C15.4616 7.04738 15.4616 7.68054 15.0711 8.07107C14.6805 8.46159 14.0474 8.46159 13.6569 8.07107L8 2.41421L2.34315 8.07107C1.95262 8.46159 1.31946 8.46159 0.928932 8.07107C0.538408 7.68054 0.538408 7.04738 0.928932 6.65685L7.29289 0.292893ZM8 15H7L7 1H8H9V15H8Z" fill="#319A27"/>
+                            </svg>
+                            250
+                        </span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="text-[#319A27] flex items-center gap-1">
+                            <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7.29289 0.292893C7.68342 -0.0976315 8.31658 -0.0976315 8.70711 0.292893L15.0711 6.65685C15.4616 7.04738 15.4616 7.68054 15.0711 8.07107C14.6805 8.46159 14.0474 8.46159 13.6569 8.07107L8 2.41421L2.34315 8.07107C1.95262 8.46159 1.31946 8.46159 0.928932 8.07107C0.538408 7.68054 0.538408 7.04738 0.928932 6.65685L7.29289 0.292893ZM8 15H7L7 1H8H9V15H8Z" fill="#319A27"/>
+                            </svg>
+                            282
+                        </span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="font-semibold">282</span>
+                    </div>
+                </div>
+              
+        </div>      
     </div>
 </section>
 <section id="activity-as-an-outpost">
     <h2 class="text-2xl 2xl:text-3xl font-bold py-5 sm:pt-16 sm:pb-8 text-[#252525]">
         Деятельность МелГУ как форпоста русских технологий направлена на:
     </h2>
-    <div class="grid grid-cols-1 lg:grid-cols-[55%_auto] gap-5 mb-5">
+    <div class="grid grid-cols-1 xl:grid-cols-[55%_auto] gap-5 mb-5">
         <div class="flex flex-col gap-5">
             <div class="flex flex-col gap-2.5">
                 <div class="bg-white flex">
@@ -2098,7 +2100,7 @@
                         </div>                
                     </div>
                     <div class="p-5">
-                        <p>
+                        <p class="lg:text-sm 2xl:text-base">
                             Разработку и внедрение инновационных технологий в различных отраслях экономики, таких как машиностроение, энергетика, информационные технологии и другие;
                         </p>
                     </div>
@@ -2116,7 +2118,7 @@
                         </div>                
                     </div>
                     <div class="p-5">
-                        <p>
+                        <p class="lg:text-sm 2xl:text-base">
                             Подготовку высококвалифицированных специалистов, способных работать с современными технологиями и решать сложные задачи в области науки и техники;
                         </p>
                     </div>
@@ -2132,7 +2134,7 @@
                         </div>                
                     </div>
                     <div class="p-5">
-                        <p>
+                        <p class="lg:text-sm 2xl:text-base">
                             Подготовку высококвалифицированных специалистов, способных работать с современными технологиями и решать сложные задачи в области науки и техники;
                         </p>
                     </div>
@@ -2152,7 +2154,7 @@
                         </div>                
                     </div>
                     <div class="p-5">
-                        <p>
+                        <p class="lg:text-sm 2xl:text-base">
                             Создание условий для сотрудничества между учёными, инженерами и предпринимателями, способствующих трансферу технологий из научной среды в производство;
                         </p>
                     </div>
@@ -2172,7 +2174,7 @@
                         </div>                
                     </div>
                     <div class="p-5">
-                        <p>
+                        <p class="lg:text-sm 2xl:text-base">
                             Организацию образовательных программ и курсов повышения квалификации для специалистов различных отраслей, направленных на освоение новых технологий и методов работы;
                         </p>
                     </div>
@@ -2201,13 +2203,13 @@
             </div>
         </div>
     </div>
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+    <div class="grid grid-cols-1 xl:grid-cols-2 gap-5">
         <div class="flex flex-col gap-5">
-            <div>
-                <img class="object-cover h-full lg:h-[289px] w-full" src="{{asset('img/forpost/forp-7.jpg')}}" alt="">
+            <div class="h-full 2xl:h-auto">
+                <img class="object-cover h-full 2xl:h-[289px] w-full" src="{{asset('img/forpost/forp-7.jpg')}}" alt="">
             </div>
-            <div>
-                <img class="object-cover h-full lg:h-[289px] w-full" src="{{asset('img/forpost/forp-8.jpg')}}" alt="">
+            <div class="h-full 2xl:h-auto">
+                <img class="object-cover h-full 2xl:h-[289px] w-full" src="{{asset('img/forpost/forp-8.jpg')}}" alt="">
             </div>
         </div>
         <div class="flex flex-col gap-2.5">
@@ -2222,7 +2224,7 @@
                         </div>                
                     </div>
                     <div class="p-5">
-                        <p>
+                        <p class="lg:text-sm 2xl:text-base">
                             Участие в международных проектах и программах, направленных на обмен опытом и знаниями в области технологий, а также на продвижение российских разработок на мировом рынке;
                         </p>
                     </div>
@@ -2238,7 +2240,7 @@
                         </div>                
                     </div>
                     <div class="p-5">
-                        <p>
+                        <p class="lg:text-sm 2xl:text-base">
                             Разработку образовательных программ, ориентированных на формирование компетенций в области цифровых технологий, искусственного интеллекта, робототехники и других перспективных направлений;
                         </p>
                     </div>
@@ -2256,7 +2258,7 @@
                         </div>                
                     </div>
                     <div class="p-5">
-                        <p>
+                        <p class="lg:text-sm 2xl:text-base">
                             Создание и развитие научно-исследовательских лабораторий и центров, оснащённых современным оборудованием и технологиями для проведения исследований и разработок;
                         </p>
                     </div>
@@ -2271,7 +2273,7 @@
                         </div>                
                     </div>
                     <div class="p-5">
-                        <p>
+                        <p class="lg:text-sm 2xl:text-base">
                             Обеспечение доступа обучающихся к современным образовательным технологиям и ресурсам, включая цифровые платформы и инструменты для дистанционного обучения.
                         </p>
                     </div>
