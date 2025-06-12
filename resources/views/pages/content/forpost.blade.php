@@ -885,7 +885,7 @@
                                 </svg>
                             </div>
                             <div class="flex flex-col gap-2.5 w-full">
-                                <h2 class="lg:text-lg 2xl:text-2xl">0 студ.</h2>
+                                <h2 class="lg:text-lg 2xl:text-2xl">0 заявок</h2>
                                 <div class="flex justify-between">
                                     <h3 class="font-medium text-xl">2023</h3>
                                     <span class="lg:text-base 2xl:text-xl">0%</span>
@@ -1248,7 +1248,7 @@
                 </p>
             </div>
             <div class="border border-[#D0D0D0] p-2.5 flex flex-col justify-between gap-5">
-                <div class="bg-[#EEEEEE] rounded-[4px flex justify-center items-center]">
+                <div class="bg-[#EEEEEE] rounded-[4px flex justify-center items-center">
                     <svg width="51" height="50" viewBox="0 0 51 50" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M29.6688 7.29101C37.5255 7.29102 41.4539 7.29102 43.8947 9.88434C46.3354 12.4777 46.3354 16.6516 46.3354 24.9993C46.3354 33.3471 46.3354 37.521 43.8947 40.1144C41.4539 42.7077 37.5255 42.7077 29.6688 42.7077L21.3354 42.7077C13.4787 42.7077 9.55033 42.7077 7.10956 40.1144C4.66878 37.521 4.66878 33.3471 4.66878 24.9993C4.66878 16.6516 4.66878 12.4777 7.10956 9.88434C9.55034 7.29101 13.4787 7.29101 21.3354 7.29101L29.6688 7.29101Z" stroke="#808080" stroke-width="3" stroke-linejoin="round"/>
                         <path d="M10.9189 32.2901C14.2703 27.8373 22.0729 27.5942 25.5023 32.2901M21.8544 21.3529C21.8544 23.3664 20.2221 24.9987 18.2086 24.9987C16.195 24.9987 14.5627 23.3664 14.5627 21.3529C14.5627 19.3393 16.195 17.707 18.2086 17.707C20.2221 17.707 21.8544 19.3393 21.8544 21.3529Z" stroke="#808080" stroke-width="3" stroke-linecap="round"/>
@@ -1257,8 +1257,8 @@
                     </svg>
                 </div>
                 <div class="flex justify-between">
-                    <div class="flex flex-col gap-2.5 w-full">
-                        <h2 class="lg:text-lg 2xl:text-2xl">0 студ.</h2>
+                    <div class="flex flex-col gap-5 w-full">
+                        <h2 class="lg:text-lg 2xl:text-xl">0 студ.</h2>
                         <div class="flex justify-between">
                             <h3 class="font-medium text-xl">2023</h3>
                             <span class="lg:text-base 2xl:text-xl">0%</span>
@@ -1267,7 +1267,7 @@
                 </div>
             </div>
             <div class="border border-[#D0D0D0] p-2.5 flex flex-col justify-between gap-5">
-                <div class="bg-[#D6F8DA] rounded-[4px flex justify-center items-center">
+                <div class="bg-[#D6F8DA] rounded-[4px] flex justify-center items-center">
                     <svg width="51" height="50" viewBox="0 0 51 50" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M29.6688 7.29101C37.5255 7.29102 41.4539 7.29102 43.8947 9.88434C46.3354 12.4777 46.3354 16.6516 46.3354 24.9993C46.3354 33.3471 46.3354 37.521 43.8947 40.1144C41.4539 42.7077 37.5255 42.7077 29.6688 42.7077L21.3354 42.7077C13.4787 42.7077 9.55033 42.7077 7.10956 40.1144C4.66878 37.521 4.66878 33.3471 4.66878 24.9993C4.66878 16.6516 4.66878 12.4777 7.10956 9.88434C9.55034 7.29101 13.4787 7.29101 21.3354 7.29101L29.6688 7.29101Z" stroke="#319A27" stroke-width="3" stroke-linejoin="round"/>
                         <path d="M10.9189 32.2901C14.2703 27.8373 22.0729 27.5942 25.5023 32.2901M21.8544 21.3529C21.8544 23.3664 20.2221 24.9987 18.2086 24.9987C16.195 24.9987 14.5627 23.3664 14.5627 21.3529C14.5627 19.3393 16.195 17.707 18.2086 17.707C20.2221 17.707 21.8544 19.3393 21.8544 21.3529Z" stroke="#319A27" stroke-width="3" stroke-linecap="round"/>
@@ -1276,8 +1276,8 @@
                     </svg>
                 </div>
                 <div class="flex justify-between">
-                    <div class="flex flex-col gap-2.5 w-full">
-                        <h2 class="lg:text-lg 2xl:text-2xl font-semibold">1485 студ.</h2>
+                    <div class="flex flex-col gap-5 w-full">
+                        <h2 class="lg:text-lg 2xl:text-xl font-semibold">1485 студ.</h2>
                         <div class="flex justify-between">
                         <h3 class="font-medium text-xl">2024</h3>
                         <span class="lg:text-base 2xl:text-xl text-[#319A27] flex items-center gap-1">
@@ -1291,7 +1291,7 @@
                 </div>
             </div>
             <div class="border border-[#D0D0D0] p-2.5 flex flex-col justify-between gap-5">
-                <div class="bg-[#FFC8CC] rounded-[4px flex justify-center items-center">
+                <div class="bg-[#FFC8CC] rounded-[4px] flex justify-center items-center">
                     <svg width="51" height="50" viewBox="0 0 51 50" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M29.6688 7.29101C37.5255 7.29102 41.4539 7.29102 43.8947 9.88434C46.3354 12.4777 46.3354 16.6516 46.3354 24.9993C46.3354 33.3471 46.3354 37.521 43.8947 40.1144C41.4539 42.7077 37.5255 42.7077 29.6688 42.7077L21.3354 42.7077C13.4787 42.7077 9.55033 42.7077 7.10956 40.1144C4.66878 37.521 4.66878 33.3471 4.66878 24.9993C4.66878 16.6516 4.66878 12.4777 7.10956 9.88434C9.55034 7.29101 13.4787 7.29101 21.3354 7.29101L29.6688 7.29101Z" stroke="#C10F1A" stroke-width="3" stroke-linejoin="round"/>
                         <path d="M10.9189 32.2901C14.2703 27.8373 22.0729 27.5942 25.5023 32.2901M21.8544 21.3529C21.8544 23.3664 20.2221 24.9987 18.2086 24.9987C16.195 24.9987 14.5627 23.3664 14.5627 21.3529C14.5627 19.3393 16.195 17.707 18.2086 17.707C20.2221 17.707 21.8544 19.3393 21.8544 21.3529Z" stroke="#C10F1A" stroke-width="3" stroke-linecap="round"/>
@@ -1300,8 +1300,8 @@
                     </svg>
                 </div>
                 <div class="flex w-full">
-                    <div class="flex flex-col gap-2.5 w-full">
-                        <h2 class="lg:text-lg 2xl:text-2xl font-semibold">418+ студ.</h2>
+                    <div class="flex flex-col gap-5 w-full">
+                        <h2 class="lg:text-lg 2xl:text-xl font-semibold">418+ студ.</h2>
                         <span class="flex justify-between">
                             <h3 class="font-medium text-xl">2025</h3>
                             <div class="lg:text-base 2xl:text-xl text-[#C10F1A] flex items-center gap-1">
@@ -1486,7 +1486,7 @@
                 </svg>
             </div>
         </div>
-        <div class="bg-white p-5 flex flex-col gap-6 col-span-6 xl:col-span-3 2x:col-span-2">
+        <div class="bg-white p-5 flex flex-col gap-6 col-span-6 xl:col-span-3 2xl:col-span-2">
             <h2 class="font-semibold text-lg 2xl:text-xl">Научные мероприятия (конференции, круглые столы и т.п.)</h2>
             <div>
                 <svg width="312" height="232" viewBox="0 0 312 232" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1543,7 +1543,7 @@
                 </svg>
             </div>
         </div>
-        <div class="bg-white p-5 flex flex-col gap-6 col-span-6 2x:col-span-2">
+        <div class="bg-white p-5 flex flex-col gap-6 col-span-6 2xl:col-span-2">
             <h2 class="font-semibold text-lg 2xl:text-xl">Динамика роста проектной деятельности (конкурсы, гранты)</h2>
             <div>
                 <div class="grid grid-cols-[13%_20%_20%_auto] gap-5 p-2.5 bg-[#E9F6FF]">
