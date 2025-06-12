@@ -230,4 +230,31 @@ class SpecialityController extends Controller
         return view('specialities.public.education-programs-higher-education', compact('specialities'));
     }
 
+
+    public function adminEducationPrograms(Request $request):View
+    {
+        $filters = $request->all();
+
+        $specialities = Speciality::
+//            orderByRaw(EducationLevel::getOrder())
+            orderBy('spec_code')
+            ->orderBy('name');
+
+        if($request->get('show'))
+            $specialities->where('show',$filters['show'] === 'show');
+
+        if($request->get('level'))
+            $specialities->where('level',$filters['level']);
+
+        if($request->get('search'))
+            $specialities->where(function ($query) use ($filters) {
+                $query->where('name', 'like', '%'.$filters['search'].'%')
+                    ->orWhere('spec_code', 'like', '%'.$filters['search'].'%');
+            });
+
+        $specialities   = $specialities->get();
+
+        return view('specialities.admin.specialities', compact('specialities','filters'));
+    }
+
 }

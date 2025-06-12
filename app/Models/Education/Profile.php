@@ -132,32 +132,35 @@ class Profile extends Model
             return $this->duration($type) % 12;
     }
 
-    public function durationYear($type = null): string
+    public function durationYear($type = null, $full = true): string
     {
         $duration = $this->years($type);
 
         if(!$duration)  return '';
 
-        return "$duration ".match(true){
-                $duration === 1 => __('duration-append.year-one'),
-                $duration > 4   => __('duration-append.year-many'),
-                default         => __('duration-append.year-some'),
-            };
+        return $full
+            ? match(true){
+                $duration === 1 => "$duration".__('duration-append.year-one'),
+                $duration > 4   => "$duration".__('duration-append.year-many'),
+                default         => "$duration".__('duration-append.year-some'),
+            }
+            : "$duration".__('duration-append.short-year');
     }
 
-    public function durationMonth($type = null): string
+    public function durationMonth($type = null, $full = true): string
     {
         $duration = $this->months($type);
 
         if(!$duration)  return '';
 
-        return "$duration ".match(true){
-                $duration === 1 => __('duration-append.month-one'),
-                $duration > 4   => __('duration-append.month-many'),
-                default         => __('duration-append.month-some'),
-            };
+        return $full
+            ? match(true){
+                $duration === 1 => "$duration".__('duration-append.month-one'),
+                $duration > 4   => "$duration".__('duration-append.month-many'),
+                default         => "$duration".__('duration-append.month-some'),
+            }
+            : "$duration".__('duration-append.short-month');
     }
-
 
     public function staffs($all = null, $trashed = null): MorphMany
     {
@@ -313,6 +316,37 @@ class Profile extends Model
                 }
             }
         }
+    }
+
+    public function getFormatedPriceAttribute(): ?string
+    {
+        return  $this->price
+            ? number_format($this->price, 0, ',', ' ') . ' ₽'
+            : null;
+    }
+
+    public function formatedDuration(DurationType $type, $full = true): ?string
+    {
+        if( !$this->duration($type) ) return null;
+
+        return trim($this->durationYear($type, $full)." ".$this->durationMonth($type, $full));
+    }
+    public function getFormatedDurationOOOAttribute(): ?string
+    {
+        return  $this->formatedDuration(DurationType::OOO);
+    }
+    public function getFormatedDurationSOOAttribute(): ?string
+    {
+        return  $this->formatedDuration(DurationType::SOO);
+    }
+
+    public function getShortFormatedDurationOOOAttribute(): ?string
+    {
+        return  $this->formatedDuration(DurationType::OOO,false);
+    }
+    public function getShortFormatedDurationSOOAttribute(): ?string
+    {
+        return  $this->formatedDuration(DurationType::SOO,false);
     }
 
 }

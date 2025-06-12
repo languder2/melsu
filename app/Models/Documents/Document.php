@@ -2,6 +2,7 @@
 
 namespace App\Models\Documents;
 
+use App\Enums\EducationForm;
 use App\Models\Global\Options;
 use App\Models\Services\Content;
 use App\Models\Services\Log;
