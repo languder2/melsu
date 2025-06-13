@@ -58,7 +58,7 @@
     </div>
     <div class="grid grid-cols-1 xl:grid-cols-[1fr_2fr] gap-5">
         <div class="relative flex flex-col justify-end">
-            <div class="bg-[#C10F1A] text-white p-5 flex flex-col gap-3 xl:absolute top-[-200px] 2xl:top-[-233px] lg:text-sm 2xl:text-base">
+            <div class="bg-[#C10F1A] text-white p-5 flex flex-col gap-3 xl:absolute top-[-200px] 2xl:top-[-230px] lg:text-sm 2xl:text-base">
                 <p>
                     Форпост русских технологий — это символ национального достоинства и гордости, место, где Россия демонстрирует, на что она способна в эпоху глобализации и технологического прогресса.
                 </p>
@@ -885,7 +885,7 @@
                                 </svg>
                             </div>
                             <div class="flex flex-col gap-2.5 w-full">
-                                <h2 class="lg:text-lg 2xl:text-2xl">0 заявок</h2>
+                                <h2 class="lg:text-lg 2xl:text-xl">0 заявок</h2>
                                 <div class="flex justify-between">
                                     <h3 class="font-medium text-xl">2023</h3>
                                     <span class="lg:text-base 2xl:text-xl">0%</span>
@@ -903,7 +903,7 @@
                                 </svg>
                             </div>
                                 <div class="flex flex-col gap-2.5 w-full">
-                                    <h2 class="lg:text-lg 2xl:text-2xl font-semibold">18 заявок</h2>
+                                    <h2 class="lg:text-lg 2xl:text-xl font-semibold">18 заявок</h2>
                                     <div class="flex justify-between gap-3">
                                     <h3 class="font-medium text-xl">2024</h3>
                                     <span class="lg:text-base 2xl:text-xl text-[#319A27] flex items-center gap-1">
@@ -927,7 +927,7 @@
                                 </svg>
                             </div>
                             <div class="flex flex-col gap-2.5 w-full">
-                                <h2 class="lg:text-lg 2xl:text-2xl font-semibold">34 заявки</h2>
+                                <h2 class="lg:text-lg 2xl:text-xl font-semibold">34 заявки</h2>
                                 <div class="flex justify-between gap-3">
                                     <h3 class="font-medium text-xl">2025</h3>
                                     <span class="lg:text-base 2xl:text-xl text-[#319A27] flex items-center gap-1">
@@ -956,7 +956,7 @@
                                 </svg>
                             </div>
                             <div class="flex flex-col gap-2.5 w-full">
-                                <h2 class="lg:text-lg 2xl:text-2xl">до 500</h2>
+                                <h2 class="lg:text-lg 2xl:text-xl">до 500</h2>
                                 <div class="flex justify-between">
                                     <h3 class="font-medium text-xl">2023</h3>
                                     <span class="lg:text-base 2xl:text-xl">0%</span>
@@ -975,7 +975,7 @@
                                 </svg>
                             </div>
                             <div class="flex flex-col gap-2.5 w-full">
-                                <h2 class="lg:text-lg 2xl:text-2xl font-semibold">до 1500</h2>
+                                <h2 class="lg:text-lg 2xl:text-xl font-semibold">до 1500</h2>
                                 <div class="flex justify-between gap-3">
                                     <h3 class="font-medium text-xl">2024</h3>
                                     <span class="lg:text-base 2xl:text-xl text-[#319A27] flex items-center gap-1">
@@ -998,7 +998,7 @@
                                 </svg>
                             </div>
                             <div class="flex flex-col gap-2.5 w-full">
-                                <h2 class="lg:text-lg 2xl:text-2xl font-semibold">более 2000</h2>
+                                <h2 class="lg:text-lg 2xl:text-xl font-semibold">более 2000</h2>
                                 <div class="flex justify-between gap-3">
                                     <h3 class="font-medium text-xl">2025</h3>
                                     <span class="lg:text-base 2xl:text-xl text-[#319A27] flex items-center gap-1">
@@ -1030,7 +1030,7 @@
                                 </svg>
                             </div>
                             <div class="flex flex-col gap-2.5 w-full">
-                                <h2 class="lg:text-lg 2xl:text-2xl">2500 р.</h2>
+                                <h2 class="lg:text-lg 2xl:text-xl">2500 р.</h2>
                                 <div class="flex justify-between">
                                     <h3 class="font-medium text-xl">2023</h3>
                                     <span class="lg:text-base 2xl:text-xl">0%</span>
@@ -1049,7 +1049,7 @@
                                 </svg>
                             </div>
                             <div class="flex flex-col gap-2.5 w-full">
-                                <h2 class="lg:text-lg 2xl:text-2xl">2500 р.</h2>
+                                <h2 class="lg:text-lg 2xl:text-xl">2500 р.</h2>
                                 <div class="flex justify-between">
                                     <h3 class="font-medium text-xl">2024</h3>
                                     <span class="lg:text-base 2xl:text-xl">0%</span>
@@ -1068,7 +1068,7 @@
                                 </svg>
                             </div>
                             <div class="flex flex-col gap-2.5 w-full">
-                                <h2 class="lg:text-lg 2xl:text-2xl font-semibold">4500 р.</h2>
+                                <h2 class="lg:text-lg 2xl:text-xl font-semibold">4500 р.</h2>
                                 <div class="flex justify-between gap-3">
                                     <h3 class="font-medium text-xl">2025</h3>
                                     <span class="lg:text-base 2xl:text-xl text-[#319A27] flex items-center gap-1">
