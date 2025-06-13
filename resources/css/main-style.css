@@ -506,7 +506,7 @@ header{
     }
     .search-box {
         background-color: #FFFFFF;
-        top: 90px;
+        top: 64px;
         padding-top: 0 !important;
         padding-bottom: 0 !important;
         height: 0;
@@ -530,15 +530,15 @@ header{
         }
     }
     .search-box.active{
-        top: 90px;
+        top: 64px;
         height: 40%;
     }
     .main-menu {
-        padding-left: 0px;
-        height: auto;
+        padding-left: 12px;
+        height: 64px;
         align-items: center;
         .nav-item{
-            padding: 15px;
+            padding-top: 8px;
         }
         .nav-link{
             font-size: 20px;
@@ -554,12 +554,12 @@ header{
             max-height: 100%;
         }
         .box-logo{
-            max-width: 90px;
-            max-height: 90px;
+            max-width: 40px;
+            max-height: 40px;
             width: 100%;
             a img{
-                width: 90px;
-                height: 90px;
+                width: 40px;
+                height: 40px;
             }
         }
         .navbar{
@@ -577,7 +577,7 @@ header{
             background-color: white;
             width: 100%;
             position: absolute;
-            top: 90px;
+            top: 64px;
             left: 0;
             flex-direction: column;
             justify-content: start;
@@ -612,58 +612,17 @@ header{
         }
         .navbar-collapse.opened{
             transform: scaleY(1);
-            border-top: 1px solid #E6E6E6;
         }
         .navbar-toggler{
-             display: flex;
+            display: block;
             position: absolute;
             right: 10px;
-            top: 26px;
+            top: 13px;
             max-height: 38px;
-            background: transparent
+            background: var(--primary-color);
             .box-hamburg i:before{
                 color: white;
                 font-size: 38px;
-            }
-            .box-hamburg{
-                margin: 0;
-                display: grid;
-                place-items: center;
-                align-content: space-evenly;
-                height: 38px;
-                width: 38px;
-                cursor: pointer;
-                overflow:hidden;
-                span{
-                    width: 25px;
-                    height: 3px;
-                    display: block;
-                    background-color: #820000;
-                    transition: all 0.3s ease-in-out;
-                    justify-self: center;
-                }
-                span:nth-child(1) {
-                    width: 25px;
-                }
-                span:nth-child(2) {
-                    width: 25px;
-                }
-            }
-            .box-hamburg.active{
-                justify-content: start;
-            }
-            .box-hamburg.active span:nth-child(1) {
-                transform-origin: center center;
-                transform: rotate(-45deg) translate(-6px, 8px);
-                width: 35px;
-            }
-            .box-hamburg.active span:nth-child(2) {
-                transform: translateX(40px);
-            }
-            .box-hamburg.active span:nth-child(3) {
-                transform-origin: center center;
-                transform: rotate(45deg) translate(-6px, -8px);
-                width: 35px;
             }
             :focus{
                 box-shadow: none;
@@ -696,7 +655,7 @@ header{
             height: auto;
             .personal-account-btn{
                 height: auto;
-                padding: 15px;
+                padding: 8px 10px;
                 background: none;
                 color: var(--primary-color);
                 border: none;
@@ -734,7 +693,7 @@ header{
         overflow: scroll;
         min-width: 100%;
         z-index: 9998;
-        top: 90px;
+        top: 70px;
         transform: translateX(100%);
         transition: transform .3s cubic-bezier(.645,.045,.355,1);
         padding-bottom: env(safe-area-inset-bottom);
@@ -781,7 +740,7 @@ header{
             background-color: white;
             width: 100vw;
             position: absolute;
-            top: 90px;
+            top: 64px;
             left: 0;
         }
         #navbarTogglerDemo2 {
