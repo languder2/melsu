@@ -72,7 +72,6 @@
                         </video>
                     </div>
                 </div>
-
                 <div class="search-and-btn-box">
                     <div class="personal-account-box">
                         <button class="personal-account-btn align-center">

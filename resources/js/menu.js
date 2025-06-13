@@ -14,6 +14,7 @@ if (document.querySelector('.main-menu')) {
         aminBtn: document.querySelector('.excursion-btn'),
         hamburger: document.querySelector('.navbar-toggler'),
         backButtons: document.querySelectorAll('.back-btn')
+        
     };
 
     let state = {
