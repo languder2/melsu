@@ -541,7 +541,7 @@ header{
             padding-top: 8px;
         }
         .nav-link{
-            font-size: 15px;
+            font-size: 20px;
         }
         .container-fluid {
             justify-content: flex-end;
@@ -663,8 +663,14 @@ header{
                 align-items: center;
                 flex-direction: row-reverse;
                 column-gap: 5px;
+                
                 span{
                     display: inline-block;
+                    font-size: 20px !important;
+                }
+                svg{
+                    width: 25px;
+                    height: 25px;
                 }
             }
 
@@ -925,7 +931,7 @@ header{
         .slide {
             display: none;
             max-height: 955px !important;
-            height: auto;
+            height: 100%;
             position: absolute;
             width: 100%;
 
@@ -1225,7 +1231,7 @@ header{
 @media screen and (max-width: 430px) {
     .slider-section{
         & .sldr{
-            max-height: 147px;
+            max-height: 143px;
         }
         .directional_nav {
             .previous_btn, .next_btn {
