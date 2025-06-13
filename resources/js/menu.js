@@ -5,7 +5,7 @@ if (document.querySelector('.main-menu')) {
         content: document.querySelector('.main-section') || document.querySelector('.main-content'),
         navBar: document.querySelector('.navbar-collapse'),
         btnSearchPc: document.querySelector('.box-upper-nav .btn-search'),
-        btnSearchMob: document.querySelector('.navbar .btn-search'),
+        btnSearchMob: document.querySelector('.search-in-menu .btn-search'),
         searchBox: document.querySelector('.search-box'),
         closeSearchBox: document.querySelector('.close-search'),
         btnsFilterSearch: document.querySelectorAll('.btn-filter-search'),
@@ -13,6 +13,7 @@ if (document.querySelector('.main-menu')) {
         navbarCollapseContent: document.querySelector('.navbar-collapse .navbar-nav'),
         aminBtn: document.querySelector('.excursion-btn'),
         hamburger: document.querySelector('.navbar-toggler'),
+        hamburgerIcon : document.querySelector('.navbar-toggler > .box-hamburg'),
         backButtons: document.querySelectorAll('.back-btn')
     };
 
@@ -37,6 +38,7 @@ if (document.querySelector('.main-menu')) {
 
         requestAnimationFrame(() => {
             elements.navBar.classList.toggle('opened', state.menuOpened);
+            elements.hamburgerIcon.classList.toggle('active');
             document.body.classList.toggle('no-scroll', state.menuOpened);
             elements.content.classList.toggle('opacit', state.menuOpened);
 
