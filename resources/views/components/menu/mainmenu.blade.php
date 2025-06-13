@@ -78,7 +78,6 @@
                         </video>
                     </div>
                 </div>
-
                 <div class="search-and-btn-box">
                     <div class="search-in-menu p-[15px] flex items-center gap-3">
                         <div class="bvi-shortcode border-r pr-2.5">
