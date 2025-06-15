@@ -51,7 +51,9 @@ class SpecialityController extends Controller
 
             if($filters['search'])
                 $list->where(function ($query) use ($filters) {
-                    $query->where('name', 'like', '%'.$filters['search'].'%')
+                    $query
+                        ->where('name', 'like', '%'.$filters['search'].'%')
+                        ->orwhere('name_profile', 'like', '%'.$filters['search'].'%')
                         ->orWhere('spec_code', 'like', '%'.$filters['search'].'%');
                 });
 

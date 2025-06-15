@@ -17,22 +17,6 @@
             value="{{$current?->id}}"
         />
 
-        <x-form.input
-            id="form_spec_name"
-            name="name"
-            label="Название"
-            value="{{old('name')??$current?->name}}"
-            required1
-        />
-
-        <x-form.input
-            id="form_spec_code"
-            name="code"
-            label="Alias"
-            value="{{old('code')??$current?->code}}"
-            required1
-        />
-
         <div class="flex gap-4">
             <div class="flex-1">
                 <x-form.input
@@ -50,6 +34,29 @@
             />
         </div>
 
+        <x-form.input
+            id="form_spec_name"
+            name="name"
+            label="Специальность"
+            value="{{old('_token') ? old('name') : $current->name ?? null}}"
+            required1
+        />
+
+        <x-form.input
+            id="form_spec_name_profile"
+            name="name_profile"
+            label="Профиль"
+            value="{{old('_token') ? old('name_profile') : $current->name_profile ?? null}}"
+            required1
+        />
+
+        <x-form.input
+            id="form_spec_code"
+            name="code"
+            label="Alias"
+            value="{{old('code')??$current?->code}}"
+            required1
+        />
 
         <x-form.select
             id="faculty_id"
