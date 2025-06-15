@@ -8,7 +8,8 @@
                 <div class="slide_group sldr">
                     <div class="slide">
                         <a href="https://abiturient.mgu-mlt.ru/" class="slide-link cursor-pointer">
-                            <img src="{{asset('img/Banner_priom_2025.png')}}" alt="">
+                            <img src="{{asset('img/Banner_priom_2025.png')}}" alt="" class="hidden sm:block">
+                            <img src="{{asset('img/Banner_priom_mob.png')}}" alt="" class="block sm:hidden">
                         </a>
                     </div>
                     <div class="slide">
