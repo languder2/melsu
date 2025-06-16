@@ -38,7 +38,7 @@ class Speciality extends Model
         'description',
         'sort',
         'show',
-        'is_recruiting',
+        'is_recruitment',
     ];
 
     public const Path = 'specialities';
@@ -67,7 +67,7 @@ class Speciality extends Model
             'description'       => '',
             'sort'              => 'nullable|numeric',
             'show'              => '',
-            'is_recruiting'     => '',
+            'is_recruitment'    => 'boolean|nullable',
         ];
     }
 
@@ -85,7 +85,12 @@ class Speciality extends Model
     public function fill(array $attributes):?self
     {
         if(!empty($attributes)){
-            $attributes['is_recruiting'] = isset($attributes['is_recruiting']);
+
+            if(array_key_exists('is_recruitment', $attributes))
+                $attributes['is_recruitment'] = (bool) $attributes['is_recruitment'];
+
+            if(array_key_exists('show', $attributes))
+                $attributes['show'] = (bool) $attributes['show'];
         }
 
         return parent::fill($attributes);
@@ -100,7 +105,6 @@ class Speciality extends Model
     {
         return $value ?? microtime(true);
     }
-
 
     public function department(): BelongsTo
     {
@@ -150,12 +154,18 @@ class Speciality extends Model
 
     public function profiles(): HasMany
     {
-        return $this->hasMany(Profile::class, 'speciality_code', 'code');
+        return $this->hasMany(Profile::class, 'speciality_id', 'id');
     }
-    public function publicProfiles(): HasMany
+    public function getPublicProfilesAttribute(): Collection
     {
-        return $this->hasMany(Profile::class, 'speciality_code', 'code')
-            ->where('show', true);
+        return $this->profiles()->where('show', true)->get();
+    }
+    public function getRecruitmentProfilesAttribute(): Collection
+    {
+        return $this->profiles()
+            ->where('is_recruitment', true)
+            ->where('show', true)
+            ->get();
     }
     public function profileByForm($form,$public=false): ?Profile
     {
@@ -236,7 +246,7 @@ class Speciality extends Model
 
     public function getFormAttribute():string
     {
-        return  route('speciality:admin:form',$this);
+        return  route('speciality:admin:form',$this->exists ? $this->id : null);
     }
     public function getSaveAttribute():string
     {

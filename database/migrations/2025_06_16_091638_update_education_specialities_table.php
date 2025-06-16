@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        if(!Schema::hasColumn('education_specialities', 'is_recruiting')) {
+        if(!Schema::hasColumn('education_specialities', 'is_recruitment')) {
             Schema::table('education_specialities', function (Blueprint $table) {
-                $table->boolean('is_recruiting')->default(true)->after('spec_code');
+                $table->boolean('is_recruitment')->default(true)->after('spec_code');
             });
         }
     }
@@ -23,9 +23,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        if(Schema::hasColumn('education_specialities', 'is_recruiting')) {
+        if(Schema::hasColumn('education_specialities', 'is_recruitment')) {
             Schema::table('education_specialities', function (Blueprint $table) {
-                $table->dropColumn('is_recruiting');
+                $table->dropColumn('is_recruitment');
             });
         }
     }

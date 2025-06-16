@@ -61,11 +61,11 @@
                         <div>
                             {!! $speciality->level->getName() !!}
                         </div>
-                        <div>
+                        <div @class([ $profile->is_recruitment ? "text-green-700" : "text-red-700" ])>
                             {!! $profile->form->getName() !!}
                         </div>
                         <div class="flex flex-col gap-3">
-                            @foreach($speciality->curriculum($profile->form->value) as $doc)
+                            @foreach($speciality->curriculum($profile->form->value,true) as $doc)
                                 <a
                                     href="{{ $doc->link }}"
                                     target="_blank"

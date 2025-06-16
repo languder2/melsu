@@ -29,9 +29,9 @@
             </div>
 
             <x-form.radio.on-off-alt
-                name="is_recruiting"
+                name="is_recruitment"
                 block="pb-2"
-                :checked="old('_token') ? old('is_recruiting') : ($current->exists ? $current->is_recruiting : true)"
+                :checked="old('_token') ? old('is_recruitment') : ($current->exists ? $current->is_recruitment : true)"
                 show="набор ведется"
                 hide="набор не ведется"
             />
@@ -58,7 +58,7 @@
             name="name_profile"
             label="Профиль"
             value="{{old('_token') ? old('name_profile') : $current->name_profile ?? null}}"
-4            required1
+            required
         />
 
         <x-form.input
@@ -66,7 +66,7 @@
             name="code"
             label="Alias"
             value="{{old('code')??$current?->code}}"
-            required1
+            required
         />
 
         <x-form.select

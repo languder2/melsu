@@ -122,6 +122,13 @@
                         >
                             {!! $speciality->name !!}
                         </a>
+                        <a
+                            href="{!! auth()->check() ? $speciality->form : $speciality->link !!}"
+                            target="_blank"
+                            class="underline hover:text-base-red text-wrap"
+                        >
+                            {!! $speciality->name_profile !!}
+                        </a>
                     </div>
                     <div class="{{ $loop->iteration % 2 ? "" : '' }}">
                         {!! $speciality->level->getName() !!}
