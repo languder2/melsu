@@ -171,7 +171,7 @@
                                 <nav class="nav">
                                     @foreach($group->subs as $item)
                                         <a
-                                            class="nav-link text-lg"
+                                            class="nav-link text-lg lg:text-[15px]"
                                             href="{{$item->link??'#'}}"
                                         >
                                             {{$item->name}}
