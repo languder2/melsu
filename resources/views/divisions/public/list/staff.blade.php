@@ -3,9 +3,9 @@
             href="{!!url($staff->link)!!}"
             class="grid grid-cols-1 lg:grid-cols-[auto_1fr] gap-4"
     >
-        <div class="mx-auto">
+        <div class="mx-auto max-h-[250px] sm:max-h-full">
             @if($staff->avatar->name !== 'avatar')
-                <img src="{!!$staff->avatar->thumbnail!!}" alt="{!!$staff->avatar->name!!}" class="h-40">
+                <img src="{!!$staff->avatar->thumbnail!!}" alt="{!!$staff->avatar->name!!}" class="h-full lg:h-40 w-full object-top object-contain">
             @else
                 <div class="flex items-center bg-neutral-150 w-40 h-40 justify-center rounded-md">
                     <svg height="120px" viewBox="0 0 128 140" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -14,11 +14,9 @@
                     </svg>
                 </div>
             @endif
-
-
         </div>
         <div class="flex flex-col justify-between">
-            <div class="mb-7 lg:mb-0 sm:flex-row">
+            <div class="mb-4 sm:flex-row">
                 <h3
                         class="
                         font-semibold
@@ -34,17 +32,17 @@
                     {!!$staff->full_name!!}
                 </h3>
                 @if($post)
-                    <div class="grid grid-cols-1 lg:grid-cols-[auto_1fr] gap-4 mb-7 lg:mb-0">
+                    <div class="grid grid-cols-1 lg:grid-cols-[auto_1fr] gap-2 sm:gap-4 mb-0">
                         <span class="text-[var(--secondary-color)] text-md font-bold">Должность:</span>
-                        <div class="text-[#4C4C4C] text-md pt-3 sm:ps-3 sm:pt-0">
+                        <div class="text-[#4C4C4C] text-md pt-0 lg:ps-3 sm:pt-0 font-semibold sm:font-normal">
                             {!!$post!!}
                         </div>
                     </div>
                 @endif
             </div>
-            <div class="grid grid-cols-1 sm:grid-cols-[2fr_1fr] gap-4">
+            <div class="grid grid-cols-1 sm:grid-cols-[2fr_1fr] lg:grid-cols-2 xl:grid-cols-[2fr_1fr] gap-4">
                 @if($staff->address)
-                    <div class="mb-7 sm:mb-0">
+                    <div class="mb-0 flex flex-col gap-2">
                         <span class="text-[#4C4C4C]">
                             Адрес:
                         </span>
@@ -54,7 +52,7 @@
                     </div>
                 @endif
                 @if($staff->phones)
-                    <div>
+                    <div class="sm:mb-0 flex flex-col gap-2">
                         <span class="text-[#4C4C4C]">
                             Телефон:
                         </span>
@@ -73,15 +71,11 @@
         Курируемые структурные подразделения
     </h3>
     <div class="mb-8 bg-white p-4">
-        <div
-                class="
-                grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-4
-            "
-        >
-            <div class="font-semibold">
+        <div class="grid grid-cols-2 sm:grid-cols-[2fr_1fr] gap-4">
+            <div class="font-semibold text-sm sm:text-base">
                 Подразделение
             </div>
-            <div class="font-semibold">
+            <div class="font-semibold text-sm sm:text-base">
                 Руководитель
             </div>
             @foreach($staff->divisions as $division)

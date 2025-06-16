@@ -1,5 +1,5 @@
 <hr class="col-span-2">
-<div>
+<div class="break-words sm:break-normal text-sm sm:text-base">
     @for($i=1;$i<$depth;$i++)
         <span class="inline-block mx-3"></span>
     @endfor
@@ -19,7 +19,7 @@
         {!! $division->name !!}
     @endif
 </div>
-<div>
+<div class="break-words sm:break-normal text-sm sm:text-base">
     @if($division->chief)
         <a
             href="{!! $division->chief->card->link!!}"
