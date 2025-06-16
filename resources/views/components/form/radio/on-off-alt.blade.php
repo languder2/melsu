@@ -1,12 +1,18 @@
 <label class="group peer flex items-center gap-3 cursor-pointer {{ $block??'' }}">
     <input
+        type="hidden"
+        name="{{ $name ?? 'is_show' }}"
+        value=""
+    >
+
+    <input
         @isset($id)
             id="{{ $id }}"
         @endisset
         type="checkbox"
         class="peer size-6 rounded-lg border border-gray-300 accent-blue-700 checked:appearance-auto transition-all duration-1000"
         name="{{ $name ?? 'is_show' }}"
-        value="on"
+        value="1"
         @checked($checked ?? null)
     >
     <span

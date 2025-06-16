@@ -5,11 +5,13 @@ namespace App\Models\Education;
 use App\Enums\DurationType;
 use App\Enums\EducationBasis;
 use App\Enums\EducationForm;
-use App\Models\{Link, Sections\Document, Sections\FAQ, Staff\Affiliation};
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use App\Models\{Link, Sections\FAQ, Staff\Affiliation};
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Collection;
+use App\Models\Documents\Document;
 
 /**
  * @method static find(int $int)
@@ -23,6 +25,7 @@ class Profile extends Model
     protected $fillable = [
         'id',
         'alias',
+        'speciality_id',
         'speciality_code',
         'form',
         'total_places',
@@ -31,7 +34,7 @@ class Profile extends Model
         'afc',
         'price',
         'show',
-        'is_recruiting',
+        'is_recruitment',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -45,6 +48,7 @@ class Profile extends Model
         return [
             'alias'             => "required|unique:education_profiles,alias,{$id},id,deleted_at,NULL",
             'description'       => '',
+            'speciality_id'     => '',
             'speciality_code'   => '',
             'form'              => '',
             'total_places'      => 'nullable|numeric',
@@ -52,7 +56,7 @@ class Profile extends Model
             'address'           => '',
             'afc'               => 'boolean',
             'show'              => 'boolean',
-            'is_recruiting'     => 'boolean',
+            'is_recruitment'    => 'boolean',
             'price'             => 'nullable|numeric',
         ];
     }
@@ -73,14 +77,24 @@ class Profile extends Model
     {
         if(!empty($attributes)){
 
-            $attributes['is_recruiting']    = array_key_exists('is_recruiting',$attributes);
-            $attributes['show']             = array_key_exists('show',$attributes);
-            $attributes['afc']              = array_key_exists('afc',$attributes);
+            if(array_key_exists('is_recruitment', $attributes))
+                $attributes['is_recruitment']   = (bool) $attributes['is_recruitment'];
+
+            if(array_key_exists('show', $attributes))
+                $attributes['show']             = (bool) $attributes['show'];
+
+            if(array_key_exists('afc', $attributes))
+                $attributes['afc']              = (bool) ($attributes['afc']);
         }
 
         return parent::fill($attributes);
     }
 
+
+    public function speciality(): BelongsTo
+    {
+        return $this->belongsTo(Speciality::class, 'speciality_code', 'code');
+    }
 
     public function documents($all = null, $trashed = null): MorphMany
     {
@@ -268,10 +282,13 @@ class Profile extends Model
         return $this->showByBasis(EducationBasis::Budget) && $this->showByBasis(EducationBasis::Contract);
     }
 
+
     public static function processing($object,$list):void
     {
 
         foreach ($list as $educationForm => $form) {
+
+            $form['show']           = array_key_exists('show', $form);
 
             $profile = self::firstOrCreate(
                 [

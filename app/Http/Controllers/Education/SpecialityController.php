@@ -107,8 +107,6 @@ class SpecialityController extends Controller
 
         $record->fill($form);
 
-        $record->show = (int)array_key_exists('show', $form);
-
         $record->save();
 
         Log::add($record);

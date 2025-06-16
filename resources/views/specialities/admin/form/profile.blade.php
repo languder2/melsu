@@ -23,7 +23,7 @@
         )
     >
     <label for="activator_form_{{$form->name}}" class="pointer">
-        Активировать профиль обучения
+        Активировать профиль обучения {{ $profile->id }}
     </label>
 
     <div
@@ -53,9 +53,9 @@
                     hide="Не ведется прием иностранных абитуриентов"
                 />
                 <x-form.radio.on-off-alt
-                    name="profiles[{{$form->name}}][is_recruiting]"
+                    name="profiles[{{$form->name}}][is_recruitment]"
                     block="flex-1"
-                    :checked="old('_token') ? old('is_recruiting') : ($profile->exists ? $profile->is_recruiting : false)"
+                    :checked="old('_token') ? old('is_recruitment') : ($profile->exists ? $profile->is_recruitment : false)"
                     show="набор ведется"
                     hide="набор не ведется"
                 />

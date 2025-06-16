@@ -38,7 +38,7 @@ class Speciality extends Model
         'description',
         'sort',
         'show',
-        'is_recruiting',
+        'is_recruitment',
     ];
 
     public const Path = 'specialities';
@@ -67,7 +67,7 @@ class Speciality extends Model
             'description'       => '',
             'sort'              => 'nullable|numeric',
             'show'              => '',
-            'is_recruiting'     => '',
+            'is_recruitment'    => 'boolean|nullable',
         ];
     }
 
@@ -85,7 +85,12 @@ class Speciality extends Model
     public function fill(array $attributes):?self
     {
         if(!empty($attributes)){
-            $attributes['is_recruiting'] = isset($attributes['is_recruiting']);
+
+            if(array_key_exists('is_recruitment', $attributes))
+                $attributes['is_recruitment'] = (bool) $attributes['is_recruitment'];
+
+            if(array_key_exists('show', $attributes))
+                $attributes['show'] = (bool) $attributes['show'];
         }
 
         return parent::fill($attributes);
@@ -236,7 +241,7 @@ class Speciality extends Model
 
     public function getFormAttribute():string
     {
-        return  route('speciality:admin:form',$this);
+        return  route('speciality:admin:form',$this->exists ? $this->id : null);
     }
     public function getSaveAttribute():string
     {
