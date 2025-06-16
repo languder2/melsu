@@ -9,7 +9,7 @@
     font-family: "Montserrat", sans-serif;
 }
 body{
-    overflow-x: hidden;
+
 }
 @media screen and (max-width: 1024px){
     .main-content {
@@ -85,7 +85,6 @@ body{
 
 .main-wrapper{
     padding-left: 100px;
-    overflow: hidden;
 }
 /*.main-section{*/
 /*    transition: var(--transition-link);*/
@@ -430,12 +429,7 @@ header{
     }
 }
 @media screen and (max-width: 1430px){
-    .main-menu {
-        .nav-item {
-            padding: 10px;
-            border-bottom: 1px solid #E6E6E6;
-        }
-    }
+
 }
 @media screen and (max-width: 1366px){
     .upper-menu {
@@ -503,6 +497,12 @@ header{
     }
 }
 @media screen and (max-width: 1024px){
+    .main-menu {
+        .nav-item {
+            padding: 10px;
+            border-bottom: 1px solid #E6E6E6;
+        }
+    }
     .upper-menu{
         display: none !important;
     }

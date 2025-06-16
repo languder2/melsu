@@ -437,7 +437,7 @@
         </div>
     </div>
 </section>
-<section id="biryuchy-island" class="relative">
+<section id="biryuchy-island" class="relative overflow-hidden">
     <h2 class="text-2xl 2xl:text-3xl font-bold py-5 sm:pt-16 sm:pb-8 text-[#252525]">
         Бирючий Остров
     </h2>

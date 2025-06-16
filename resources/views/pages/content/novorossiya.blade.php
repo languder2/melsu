@@ -137,7 +137,7 @@
         <div class="relative overflow-hidden">
             <img class="h-full w-full objecet-cover" src="{{asset('img/novoross/novoross-2.jpg')}}" alt="">
             <div class="first-white-block w-max absolute">
-                <h2 class="text-white uppercase font-bold">Где находиться</h2>
+                <h2 class="text-white uppercase font-bold">Где находится</h2>
             </div>
             <div class="second-white-block w-max absolute">
                 <h2 class="text-white uppercase font-bold">Площадь</h2>
@@ -148,14 +148,14 @@
         </div>
         <div class="relative overflow-hidden">
             <div class="first-red-block w-max relative">
-                <h2 class="text-[#820000] uppercase font-bold">Где находиться</h2>
+                <h2 class="text-[#820000] uppercase font-bold">Где находится</h2>
             </div>
             <div class="px-0 py-5 lg:p-5">
                 <p class="lg:text-sm 2xl:text-base">
                     Генический район, Херсонская область, север косы Арабатской Стрелки.
                 </p>
             </div>
-            
+
             <div class="second-black-block lg:w-max relative flex lg:justify-end z-2 mb-5 lg:mb-0">
                 <h2 class="text-[#252525] uppercase font-bold">Площадь</h2>
                 <div class="bg-[#820000] p-2.5 w-fit z-2 block lg:hidden">
@@ -244,7 +244,7 @@
         </div>
         <div class="order-1 xl:order-2 h-[calc(100%-40px)] xl:h-full">
             <div class="bg-[#820000] p-5">
-                <h2 class="text-xl text-white font-bold">Где находится: Херсонская область, поселок Аскания Нова.</h2>
+                <h2 class="text-xl text-white font-bold">Где находится: Херсонская область, поселок Аскания Нова</h2>
             </div>
             <div class="mb-5 lg:mb-0">
                 <img class="h-full xl:h-[500px] 2xl:h-full 2xl:max-h-[476px] w-full objecet-cover" src="{{asset('img/novoross/novoross-6.jpg')}}" alt="">
@@ -268,12 +268,13 @@
         <div class="relative">
             <img class="h-full w-full objecet-cover rounded-bl-[187px] 2xl:rounded-bl-[400px]" src="{{asset('img/novoross/novoross-9.jpg')}}" alt="">
             <div class="absolute rounded-full bg-[#C10F1A] w-[167px] 2xl:w-[250px] h-[167px] 2xl:h-[250px] flex justify-center items-center text-center bottom-[0px]">
-                <h2 class="text-sm 2xl:text-xl text-white font-bold">Где находится: с. Геническая Горка, с. Счастливцево,с. Стрелковое</h2>
+                <h2 class="text-sm 2xl:text-xl text-white font-bold">Где находится: <br> с. Геническая Горка, <br> с. Счастливцево,
+                    <br> с. Стрелковое</h2>
             </div>
         </div>
         <div>
             <div class="bg-[#252525] p-5">
-                <h2 class="text-white font-bold text-xl">Тип воды: йодо-бромная хлоридно-натривая радоновая.</h2>
+                <h2 class="text-white font-bold text-xl">Тип воды: йодо-бромная хлоридно-натривая радоновая</h2>
             </div>
             <div class="bg-white p-5 flex flex-col gap-3 lg:text-sm 2xl:text-base">
                 <p>
@@ -341,9 +342,9 @@
                     <path d="M19.1026 16.794C18.5976 17.4508 18.7206 18.3925 19.3774 18.8975C20.0341 19.4024 20.9759 19.2794 21.4808 18.6226L19.1026 16.794ZM29.5201 18.6226C30.0251 19.2794 30.9668 19.4024 31.6235 18.8975C32.2803 18.3925 32.4033 17.4508 31.8984 16.794L29.5201 18.6226ZM31.8905 33.2149C32.4005 32.562 32.2845 31.6194 31.6316 31.1095C30.9787 30.5996 30.0361 30.7155 29.5262 31.3684L31.8905 33.2149ZM21.4808 31.3773C20.9759 30.7206 20.0341 30.5976 19.3774 31.1025C18.7206 31.6075 18.5976 32.5492 19.1026 33.206L21.4808 31.3773ZM25.5009 37.5H27.0009V12.5H25.5009H24.0009V37.5H25.5009ZM20.2917 17.7083L21.4808 18.6226C22.1825 17.7101 23.1175 16.4658 24.0389 15.4394C24.5005 14.9251 24.9172 14.513 25.2618 14.2409C25.4334 14.1054 25.5546 14.0307 25.6266 13.995C25.7092 13.9541 25.6551 14 25.5009 14V12.5V11C25.0224 11 24.6051 11.1531 24.295 11.3067C23.9742 11.4656 23.6731 11.6728 23.4024 11.8866C22.8622 12.3133 22.314 12.8699 21.8064 13.4354C20.789 14.5688 19.768 15.9286 19.1026 16.794L20.2917 17.7083ZM25.5009 12.5V14C25.3467 14 25.2925 13.9541 25.3751 13.995C25.4471 14.0306 25.5682 14.1053 25.7398 14.2408C26.0842 14.5129 26.5009 14.925 26.9624 15.4393C27.8835 16.4657 28.8183 17.71 29.5201 18.6226L30.7092 17.7083L31.8984 16.794C31.2331 15.9287 30.2122 14.5688 29.1951 13.4356C28.6876 12.87 28.1395 12.3134 27.5994 11.8867C27.3287 11.6729 27.0276 11.4656 26.7068 11.3068C26.3967 11.1531 25.9794 11 25.5009 11V12.5ZM25.5009 37.5V39C25.9805 39 26.395 38.8408 26.6926 38.6903C27.0037 38.533 27.2968 38.3287 27.5605 38.1189C28.0872 37.6999 28.6286 37.1522 29.1351 36.5923C30.1506 35.4698 31.1884 34.114 31.8905 33.2149L30.7084 32.2917L29.5262 31.3684C28.7909 32.3098 27.8345 33.5582 26.9104 34.5797C26.447 35.0919 26.0322 35.5012 25.6929 35.7712C25.5236 35.9058 25.4061 35.9791 25.3388 36.0131C25.258 36.054 25.326 36 25.5009 36V37.5ZM20.2917 32.2917L19.1026 33.206C19.768 34.0714 20.789 35.4312 21.8064 36.5646C22.314 37.1301 22.8622 37.6867 23.4024 38.1133C23.6731 38.3272 23.9742 38.5344 24.295 38.6933C24.6051 38.8469 25.0224 39 25.5009 39V37.5V36C25.6551 36 25.7092 36.0459 25.6266 36.005C25.5546 35.9693 25.4334 35.8946 25.2618 35.7591C24.9172 35.487 24.5005 35.0749 24.0389 34.5606C23.1175 33.5342 22.1825 32.2899 21.4808 31.3773L20.2917 32.2917Z" fill="white"/>
                 </svg>
             </div>
-            <h2 class="lg:text-base xl:text-xl font-bold">Площадь объекта:</h2>
+            <h2 class="lg:text-base xl:text-xl font-bold">Высшая точка:</h2>
             <p class="lg:text-sm xl:text-base">
-                10 га.
+                242 метра над уровнем моря.
             </p>
         </div>
     </div>
@@ -596,7 +597,7 @@
                     <img class="h-full w-full objecet-cover" src="{{asset('img/novoross/novoross-21.jpg')}}" alt="">
                 </div>
                 <div class="bg-[#C10F1A] p-5 xl:absolute bottom-5">
-                    <h2 class="text-white font-bold text-xl">Где находится: юго-запад ДНР</h2>
+                    <h2 class="text-white font-bold text-xl">Символ парка — птица шилоклювка.</h2>
                 </div>
             </div>
         </div>
@@ -614,8 +615,8 @@
 <style>
     .first-white-block{
         top: 30px;
-        right: -486px;
-        
+        right: -440px;
+
     }
     .first-red-block{
         top: 30px;
@@ -625,7 +626,7 @@
     .second-white-block{
         top: 240px;
         right: -250px;
-        
+
     }
     .second-black-block{
         top: 52px;
@@ -649,12 +650,13 @@
             line-height: 53px;
         }
         .first-white-block {
-            right: -380px;
+            right: -345px;
         }
         .first-red-block {
             left: -111px;
         }
         .second-white-block {
+
             top: 224px;
             right: -185px;
         }
@@ -672,7 +674,7 @@
             line-height: 38px;
         }
         .first-white-block {
-            right: -248px;
+            right: -225px;
         }
         .first-red-block {
             left: -65px;

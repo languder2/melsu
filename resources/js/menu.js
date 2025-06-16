@@ -17,7 +17,6 @@ if (document.querySelector('.main-menu')) {
         backButtons: document.querySelectorAll('.back-btn')
 
     };
-
     let state = {
         isMobile: window.innerWidth <= 1024,
         searchHeight: 0,
@@ -57,6 +56,9 @@ if (document.querySelector('.main-menu')) {
     function closeAllDropdowns() {
         elements.dropDownMenus.forEach(menu => {
             menu.classList.remove('opened');
+            setTimeout(() => {
+                menu.classList.add('hidde');
+            }, 300);
         });
     }
 
@@ -136,7 +138,6 @@ if (document.querySelector('.main-menu')) {
 
     function setupMobileMenu() {
         elements.dropDownMenus.forEach(menu => {
-            menu.classList.remove('hidde');
             menu.classList.add('mob-menu');
         });
 
@@ -146,8 +147,11 @@ if (document.querySelector('.main-menu')) {
                 const menuId = point.getAttribute('data-menu');
                 const menu = document.getElementById(menuId);
                 if (menu) {
-                    menu.classList.add('opened');
-                    document.body.classList.add('no-scroll');
+                    menu.classList.remove('hidde');
+                    setTimeout(() => {
+                        menu.classList.add('opened');
+                        document.body.classList.add('no-scroll');
+                    }, 100);
                 }
             });
         });
@@ -159,6 +163,9 @@ if (document.querySelector('.main-menu')) {
                 if (menu) {
                     menu.classList.remove('opened');
                     document.body.classList.remove('no-scroll');
+                    setTimeout(() => {
+                        menu.classList.add('hidde');
+                    }, 300);
                 }
             });
         });
