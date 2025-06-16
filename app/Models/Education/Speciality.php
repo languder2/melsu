@@ -106,7 +106,6 @@ class Speciality extends Model
         return $value ?? microtime(true);
     }
 
-
     public function department(): BelongsTo
     {
         return $this->belongsTo(Division::class, 'department_id', 'id');
@@ -155,12 +154,18 @@ class Speciality extends Model
 
     public function profiles(): HasMany
     {
-        return $this->hasMany(Profile::class, 'speciality_code', 'code');
+        return $this->hasMany(Profile::class, 'speciality_id', 'id');
     }
-    public function publicProfiles(): HasMany
+    public function getPublicProfilesAttribute(): Collection
     {
-        return $this->hasMany(Profile::class, 'speciality_code', 'code')
-            ->where('show', true);
+        return $this->profiles()->where('show', true)->get();
+    }
+    public function getRecruitmentProfilesAttribute(): Collection
+    {
+        return $this->profiles()
+            ->where('is_recruitment', true)
+            ->where('show', true)
+            ->get();
     }
     public function profileByForm($form,$public=false): ?Profile
     {
