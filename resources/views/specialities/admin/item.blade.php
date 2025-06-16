@@ -41,10 +41,18 @@
     {{$record->spec_code}}
 </div>
 
-<div class="md:col-span-2">
-    <a href="{{ $record->form }}" class="underline text-blue hover:text-red">
-        {!! $record->name !!}
-    </a>
+<div class="md:col-span-2 flex flex-col gap-2">
+
+    <p>
+        <a href="{{ $record->form }}" class="underline text-blue hover:text-red">
+            {!! $record->name !!}
+        </a>
+    </p>
+    <p>
+        <a href="{{ $record->form }}" class="underline text-blue hover:text-red">
+            {!! $record->name_profile !!}
+        </a>
+    </p>
 </div>
 
 <div>

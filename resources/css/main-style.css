@@ -706,7 +706,7 @@ header{
                 align-items: center;
                 flex-direction: row-reverse;
                 column-gap: 5px;
-                
+
                 span{
                     display: inline-block;
                     font-size: 20px !important;

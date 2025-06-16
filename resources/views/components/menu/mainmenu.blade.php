@@ -9,12 +9,12 @@
             <button
                 class="btn-search bg-[var(--primary-color)] min-h-[38px] min-w-[38px] items-center justify-center absolute right-[55px] top-[26px] hidden">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-search"
-                    viewBox="0 0 16 16">
+                     viewBox="0 0 16 16">
                     <path
                         d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
                 </svg>
             </button>
-            <button class="navbar-toggler items-end rounded-0  border-0" type="button" data-bs-toggle="collapse"
+            <button class="navbar-toggler items-end rounded-0  border-0 flex" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarTogglerDemo2" aria-controls="navbarTogglerDemo2" aria-expanded="false"
                     aria-label="Toggle navigation">
                         <span class="box-hamburg">
@@ -91,15 +91,15 @@
                         </div>
                         <div>
                             <button class="btn-search  min-h-[38px] min-w-[38px] items-center justify-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#820000" class="bi bi-search" viewBox="0 0 16 16">
-                                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"></path>
-                            </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#820000" class="bi bi-search" viewBox="0 0 16 16">
+                                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"></path>
+                                </svg>
                             </button>
                         </div>
                     </div>
                     <div class="flex items-center justify-between w-full pr-[15px] border-b border-[#E6E6E6]">
                         <a href="https://abiturient.mgu-mlt.ru" class="text-xl p-[15px] flex items-center gap-1 text-[#820000]">
-                            Поступающему 
+                            Поступающему
                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-mortarboard" viewBox="0 0 16 16">
                                 <path d="M8.211 2.047a.5.5 0 0 0-.422 0l-7.5 3.5a.5.5 0 0 0 .025.917l7.5 3a.5.5 0 0 0 .372 0L14 7.14V13a1 1 0 0 0-1 1v2h3v-2a1 1 0 0 0-1-1V6.739l.686-.275a.5.5 0 0 0 .025-.917zM8 8.46 1.758 5.965 8 3.052l6.242 2.913z"/>
                                 <path d="M4.176 9.032a.5.5 0 0 0-.656.327l-.5 1.7a.5.5 0 0 0 .294.605l4.5 1.8a.5.5 0 0 0 .372 0l4.5-1.8a.5.5 0 0 0 .294-.605l-.5-1.7a.5.5 0 0 0-.656-.327L8 10.466zm-.068 1.873.22-.748 3.496 1.311a.5.5 0 0 0 .352 0l3.496-1.311.22.748L8 12.46z"/>

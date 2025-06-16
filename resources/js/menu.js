@@ -15,7 +15,7 @@ if (document.querySelector('.main-menu')) {
         hamburger: document.querySelector('.navbar-toggler'),
         hamburgerIcon : document.querySelector('.navbar-toggler > .box-hamburg'),
         backButtons: document.querySelectorAll('.back-btn')
-        
+
     };
 
     let state = {

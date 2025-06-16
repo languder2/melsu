@@ -18,11 +18,34 @@ class TestController extends Controller
 {
     public function index()
     {
-
+        dd(3);
     }
 
     public function view()
     {
+        $list = Speciality::all();
+
+
+        $list->each(function ($item) {
+            if (preg_match('/\((.*?)\)/', $item->name, $matches)) {
+                $item->fill([
+                    'name' => trim(mb_substr($item->name,0,mb_strpos($item->name,'('))),
+                    'name_profile' => $matches[1]
+                ])->save();
+            }
+        });
+
+        dd(1);
+
+//        if (preg_match($pattern, $value, $matches)) {
+//
+//            $code= $matches[1];
+//
+//
+
+        dd(1);
+
+            dd(1);
 
         $list = Division::where('type',DivisionType::Branch)->get();
 
