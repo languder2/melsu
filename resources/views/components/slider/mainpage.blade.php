@@ -44,7 +44,7 @@
                         </div>
                     </div>
                     <div class="slide">
-                        <a href="#" class="slide-link">
+                        <a href="https://melsu.ru/uchebnye-korpusa" class="slide-link">
                             <img src="{{asset('img/Slide2.jpg')}}" alt="">
                         </a>
                     </div>
