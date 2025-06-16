@@ -17,6 +17,7 @@
             {{$speciality->spec_code}}
             -
             {{$speciality->name}}
+            ({{$speciality->name_profile}})
         </h2>
         <div class="mb-2">
             <a

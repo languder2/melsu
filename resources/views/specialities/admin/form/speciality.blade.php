@@ -17,7 +17,7 @@
             value="{{$current?->id}}"
         />
 
-        <div class="flex gap-4">
+        <div class="flex gap-y-4 gap-x-8 items-end">
             <div class="flex-1">
                 <x-form.input
                     id="form_spec_code"
@@ -28,9 +28,20 @@
                 />
             </div>
 
-            <x-form.on-off
-                :old="old('show')"
-                :current="$current"
+            <x-form.radio.on-off-alt
+                name="is_recruiting"
+                block="pb-2"
+                :checked="old('_token') ? old('is_recruiting') : ($current->exists ? $current->is_recruiting : true)"
+                show="набор ведется"
+                hide="набор не ведется"
+            />
+
+            <x-form.radio.on-off-alt
+                name="show"
+                block="pb-2"
+                :checked="old('_token') ? old('show') : ($current->exists ? $current->show : true)"
+                show="специальность активна"
+                hide="специальность отключена"
             />
         </div>
 
@@ -47,7 +58,7 @@
             name="name_profile"
             label="Профиль"
             value="{{old('_token') ? old('name_profile') : $current->name_profile ?? null}}"
-            required1
+4            required1
         />
 
         <x-form.input

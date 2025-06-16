@@ -9,12 +9,15 @@
 @section('content')
     <section class="main-content mx-4 p-4 bg-white">
         <div class="overflow-x-scroll pb-4">
-            <div class="grid gap-4 grid-cols-[auto_auto_auto_auto_auto] text-center items-center">
+            <div class="grid gap-4 grid-cols-[auto_auto_auto_auto_auto_auto] text-center items-center">
                 <div class="font-semibold">
                     Код
                 </div>
                 <div class="font-semibold text-left">
                     Наименование
+                </div>
+                <div class="font-semibold text-left">
+                    Профиль
                 </div>
                 <div class="font-semibold">
                     Уровень
@@ -25,7 +28,7 @@
                 <div class="font-semibold">
                     Учебный план
                 </div>
-                <hr class="col-span-5 last:hidden">
+                <hr class="col-span-6    last:hidden">
                 @foreach($specialities as $speciality)
                     @foreach($speciality->publicProfiles as $profile)
                         <div>
@@ -46,6 +49,15 @@
                                 {!! $speciality->name !!}
                             </a>
                         </div>
+                        <div class="text-left">
+                            <a
+                                href="{!! $speciality->link !!}"
+                                target="_blank"
+                                class="underline hover:text-base-red"
+                            >
+                                {!! $speciality->name_profile !!}
+                            </a>
+                        </div>
                         <div>
                             {!! $speciality->level->getName() !!}
                         </div>
@@ -63,7 +75,7 @@
                                 </a>
                             @endforeach
                         </div>
-                        <hr class="col-span-5 last:hidden">
+                        <hr class="col-span-6 last:hidden">
                     @endforeach
                 @endforeach
             </div>

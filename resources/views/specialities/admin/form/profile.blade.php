@@ -12,7 +12,6 @@
             hidden
         @endif
     "
-
 >
     <input
         id="activator_form_{{$form->name}}"
@@ -26,8 +25,8 @@
     <label for="activator_form_{{$form->name}}" class="pointer">
         Активировать профиль обучения
     </label>
-    <div
 
+    <div
         class="
             pointer-events-none
             peer-checked:pointer-events-auto
@@ -45,40 +44,21 @@
     >
         <input type="hidden" name="profiles[{{$form->name}}][form]" value="{{$form}}">
 
-
-        <div class="grid grid-cols-2 gap-x-4">
-            {{--            <x-staff.select--}}
-            {{--                :current="null"--}}
-            {{--                :params='[--}}
-            {{--                "name"      => "profiles[{$form->name}][director]",--}}
-            {{--                "label"     => "Директор",--}}
-            {{--                "id"        => "profiles_{$form->name}_director",--}}
-            {{--                "value"     => old("profiles.{$form->name}.director")??@$profile?->director,--}}
-            {{--            ]'--}}
-            {{--            />--}}
-
-            <div class="py-4">
-                <input
-                    id="form_profiles_{{$form->name}}_afc"
+        <div class="flex gap-4 items-end pt-4">
+                <x-form.radio.on-off-alt
                     name="profiles[{{$form->name}}][afc]"
-                    type="checkbox"
-                    @checked(old("profiles.{$form->name}.afc") || @$profile?->afc)
-                    class="
-                        w-4 h-4 text-baseRed bg-gray-100 border-gray-300 rounded
-                        focus:ring-baseRed focus:ring-2
-                        cursor-pointer
-                    "
-                >
-                <label
-                    for="form_profiles_{{$form->name}}_afc"
-                    @class([
-                        'ms-2 text-sm font-medium text-gray-900',
-                        'cursor-pointer',
-                    ])
-                >
-                    Прием иностранных абитуриентов
-                </label>
-            </div>
+                    block="flex-1"
+                    :checked='old("_token") ? old("profiles.{$form->name}.afc") : ($profile->exists ? $profile->afc : false)'
+                    show="Ведется прием иностранных абитуриентов"
+                    hide="Не ведется прием иностранных абитуриентов"
+                />
+                <x-form.radio.on-off-alt
+                    name="profiles[{{$form->name}}][is_recruiting]"
+                    block="flex-1"
+                    :checked="old('_token') ? old('is_recruiting') : ($profile->exists ? $profile->is_recruiting : false)"
+                    show="набор ведется"
+                    hide="набор не ведется"
+                />
         </div>
 
         <x-form.input

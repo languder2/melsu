@@ -31,6 +31,7 @@ class Profile extends Model
         'afc',
         'price',
         'show',
+        'is_recruiting',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -42,19 +43,19 @@ class Profile extends Model
     public static function FormRules($id): array
     {
         return [
-            'alias' => "required|unique:education_profiles,alias,{$id},id,deleted_at,NULL",
-            'description' => '',
-            'speciality_code' => '',
-            'form' => '',
-            'total_places' => 'nullable|numeric',
-            'director' => '',
-            'address' => '',
-            'afc' => 'boolean',
-            'show' => 'boolean',
-            'price' => 'nullable|numeric',
+            'alias'             => "required|unique:education_profiles,alias,{$id},id,deleted_at,NULL",
+            'description'       => '',
+            'speciality_code'   => '',
+            'form'              => '',
+            'total_places'      => 'nullable|numeric',
+            'director'          => '',
+            'address'           => '',
+            'afc'               => 'boolean',
+            'show'              => 'boolean',
+            'is_recruiting'     => 'boolean',
+            'price'             => 'nullable|numeric',
         ];
     }
-
     public static function FormMessage(): array
     {
         return [
@@ -67,6 +68,19 @@ class Profile extends Model
             'afc' => 'AFC must be boolean',
         ];
     }
+
+    public function fill(array $attributes):?self
+    {
+        if(!empty($attributes)){
+
+            $attributes['is_recruiting']    = array_key_exists('is_recruiting',$attributes);
+            $attributes['show']             = array_key_exists('show',$attributes);
+            $attributes['afc']              = array_key_exists('afc',$attributes);
+        }
+
+        return parent::fill($attributes);
+    }
+
 
     public function documents($all = null, $trashed = null): MorphMany
     {
@@ -256,6 +270,7 @@ class Profile extends Model
 
     public static function processing($object,$list):void
     {
+
         foreach ($list as $educationForm => $form) {
 
             $profile = self::firstOrCreate(
@@ -267,12 +282,6 @@ class Profile extends Model
                     'alias' => "{$object->code}-{$form['form']}",
                 ]
             );
-
-
-
-            $form['show']   = array_key_exists('show',$form);
-
-            $form['afc']    = array_key_exists('afc',$form);
 
             $profile->fill($form)->save();
 

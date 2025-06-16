@@ -38,6 +38,7 @@ class Speciality extends Model
         'description',
         'sort',
         'show',
+        'is_recruiting',
     ];
 
     public const Path = 'specialities';
@@ -66,6 +67,7 @@ class Speciality extends Model
             'description'       => '',
             'sort'              => 'nullable|numeric',
             'show'              => '',
+            'is_recruiting'     => '',
         ];
     }
 
@@ -79,6 +81,16 @@ class Speciality extends Model
             'level' => 'Укажите уровень',
         ];
     }
+
+    public function fill(array $attributes):?self
+    {
+        if(!empty($attributes)){
+            $attributes['is_recruiting'] = isset($attributes['is_recruiting']);
+        }
+
+        return parent::fill($attributes);
+    }
+
     public function relation():MorphTo
     {
         return $this->morphTo();

@@ -237,10 +237,7 @@ class SpecialityController extends Controller
     {
         $filters = $request->all();
 
-        $specialities = Speciality::
-//            orderByRaw(EducationLevel::getOrder())
-            orderBy('spec_code')
-            ->orderBy('name');
+        $specialities = Speciality::orderBy('spec_code')->orderBy('name');
 
         if($request->get('show'))
             $specialities->where('show',$filters['show'] === 'show');

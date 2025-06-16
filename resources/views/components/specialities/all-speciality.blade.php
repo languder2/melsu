@@ -32,7 +32,7 @@
 
                                     class="hidden education-profile"
 
-                                    value="{{$speciality->spec_code}} {{$speciality->name}}"
+                                    value="{{$speciality->spec_code}} {{$speciality->name}} ({{$speciality->name_profile}})"
 
                                     @if($profile->form->value === 'full-time' && $place->type === 'budget' )
                                         checked
@@ -47,6 +47,7 @@
                                     {{$speciality->spec_code}}
                                     -
                                     {{$speciality->name}}
+                                    ({{$speciality->name_profile}})
                                 </h2>
                             </div>
                             <div class="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-3 group-hover:text-white">
