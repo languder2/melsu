@@ -175,7 +175,7 @@
                 </div>
             </div>
             <div class="w-full hidden lg:flex items-center z-1 justify-end relative pt-3 mb-3">
-                <div class="absolute h-[1px] lg:w-[48%] 2xl:w-[50%] top-[36px] right-[95px] border-b border-dashed hidden"></div>
+                <div class="absolute h-[1px] lg:w-[48%] 2xl:w-[50%] top-[36px] right-[95px] border-b border-dashed"></div>
                 <div class="bg-[#820000] p-2.5 w-fit z-2 hidden lg:block">
                     <span class="text-white font-bold text-sm sm:text-lg xl:text-xl">0,6 м</span>
                 </div>
