@@ -794,6 +794,29 @@ header{
         transform: translateX(0px);
     }
 }
+@media screen and (max-width: 460px){
+    a.bvi-open{
+        font-size: 18px !important;
+    }
+}
+@media screen and (max-width: 340px) {
+    .main-menu {
+        .nav-link {
+            font-size: 16px !important;
+        }
+        & .personal-account-box {
+            & .personal-account-btn {
+                span {
+                    display: inline-block;
+                    font-size: 16px !important;
+                }
+            }
+        }
+        .search-and-btn-box a{
+            font-size: 16px !important;
+        }
+    }
+}
 /*END Header style*/
 
 /* Slider style*/
