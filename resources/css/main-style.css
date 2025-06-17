@@ -543,7 +543,7 @@ header{
             padding: 15px;
         }
         .nav-link{
-            font-size: 20px;
+            font-size: 20px !important;
         }
         .container-fluid {
             justify-content: flex-end;
@@ -794,6 +794,29 @@ header{
         transform: translateX(0px);
     }
 }
+@media screen and (max-width: 460px){
+    a.bvi-open{
+        font-size: 18px !important;
+    }
+}
+@media screen and (max-width: 340px) {
+    .main-menu {
+        .nav-link {
+            font-size: 16px !important;
+        }
+        & .personal-account-box {
+            & .personal-account-btn {
+                span {
+                    display: inline-block;
+                    font-size: 16px !important;
+                }
+            }
+        }
+        .search-and-btn-box a{
+            font-size: 16px !important;
+        }
+    }
+}
 /*END Header style*/
 
 /* Slider style*/
@@ -865,22 +888,23 @@ header{
     position: absolute;
     bottom: -65px;
     padding-left: 5%;
-    background: #820000;
-    padding-right: 5%;
-    width: 71%;
+    background: transparent;
+    padding-right: 0;
+    width: 100%;
     .box-info-under-slider{
         display: flex;
+        gap: 20px;
         .under-info:nth-child(1){
             border-right: 1px solid #922121;
         }
         .under-info{
             cursor: pointer;
-            width: 100%;
+            width: fit-content;
             min-width: fit-content;
-            min-height: 120px;
+            border-radius: 70px;
             align-content: center;
             background-color: var(--primary-color);
-            padding: 30px;
+            padding: 12px;
             transition: var(--transition-link);
             .icon-box{
                 margin-right: 10px;
@@ -891,7 +915,9 @@ header{
                 }
             }
             .text-under-info{
+                font-size: 24px;
                 color: white;
+                padding: 18px;
             }
         }
         .under-info:hover{
@@ -1102,7 +1128,7 @@ header{
     .slider-section{
         .box-info-under-slider{
             .under-info{
-                width: 90% !important;
+                width: fit-content !important;
             }
         }
     }
@@ -1115,9 +1141,7 @@ header{
         .box-info-under-slider{
             .under-info{
                 width: 45%;
-                .text-under-info{
-                    font-size: 16px !important;
-                }
+                
             }
         }
     }
@@ -1136,9 +1160,8 @@ header{
         }
         .box-info-under-slider{
             .under-info{
-
                 .text-under-info{
-                    font-size: 16px !important;
+                    font-size: 16px;
                 }
             }
         }
@@ -1161,6 +1184,21 @@ header{
         }
     }
 }
+@media screen and (max-width: 1130px){
+    .info-under-slider{
+            bottom: -95px;
+            width: 100%;
+            padding: 0px 10px;
+            .box-info-under-slider{
+                gap: 10px;
+                .under-info{
+                    .text-under-info{
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+}
 @media screen and (max-width: 1024px) {
     .slider-section{
         & .sldr{
@@ -1170,18 +1208,6 @@ header{
             bottom: 10px;
             a.slide_btn{
                 font-size: 20px;
-            }
-        }
-        .info-under-slider{
-            bottom: -119px;
-            width: 100%;
-            .box-info-under-slider{
-                .under-info{
-                    width: 50% !important;
-                    .text-under-info{
-                        font-size: 14px;
-                    }
-                }
             }
         }
     }
@@ -1228,7 +1254,7 @@ header{
             }
         }
         .info-under-slider{
-            bottom: 1px;
+            bottom: -10px;
             width: 100%;
             position: inherit;
             .box-info-under-slider{
@@ -1237,11 +1263,10 @@ header{
                     border-right: none;
                 }
                 .under-info{
-                    min-height: 0;
-                    height: 92px;
                     width: 100% !important;
                     .text-under-info{
                         font-size: 14px;
+                        padding: 0px 10px;
                     }
                 }
             }
@@ -1305,7 +1330,23 @@ header{
     .slider-section{
 
         .info-under-slider{
-            padding: 0;
+            padding: 0px 10px;
+        }
+    }
+    .ico-link{
+        width: 35px !important;
+        height: 35px !important;
+    }
+}
+@media screen and (max-width: 480px){
+    .info-under-slider {
+        & .box-info-under-slider {
+            .under-info {
+                padding: 7px;
+                .text-under-info{
+                    font-size: 12px !important;
+                }
+            }
         }
     }
 }
@@ -1326,12 +1367,9 @@ header{
             .box-info-under-slider{
                 flex-direction: column;
                 .under-info{
-                    height: 78px;
                     overflow: hidden;
                     display: flex;
-                    padding: 15px;
                     .text-under-info{
-                        font-size: 14px !important;
                         white-space: collapse;
                     }
                     .icon-box svg{
@@ -1356,10 +1394,8 @@ header{
             .box-info-under-slider{
                 flex-direction: column;
                 .under-info{
-                    padding: 15px;
-                    height: 54px;
                     .text-under-info{
-                        font-size: 11px !important;
+                        font-size: 11px;
                     }
                     .icon-box svg{
                         width: 20px;
@@ -1378,8 +1414,6 @@ header{
             .box-info-under-slider{
                 flex-direction: column;
                 .under-info{
-                    padding: 15px;
-                    height: 78px;
                     .text-under-info{
                         font-size: 11px !important;
                     }
