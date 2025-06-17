@@ -426,19 +426,19 @@
         </div>
     </div>
 </section>
-<section id="house-museum">
+<section id="house-museum" class="overflow-hidden">
     <h2 class="text-2xl 2xl:text-3xl font-bold py-5 sm:pt-16 sm:pb-8 text-[#252525]">
         Дом-музей В. Даля: культурное наследие Новороссии
     </h2>
-    <div class="bg-[#252525] grid grid-cols-1 xl:grid-cols-[44%_auto]">
+    <div class="bg-[#252525] grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-[44%_auto]">
         <div class="hidden xl:flex flex-col relative overflov-hidden">
-            <div>
+            <div class="h-full">
                 <img class="h-full w-full objecet-cover" src="{{asset('img/novoross/novoross-15.jpg')}}" alt="">
             </div>
-            <div>
+            <div class="h-full">
                 <img class="h-full w-full objecet-cover rounded-tr-[190px]" src="{{asset('img/novoross/novoross-16.jpg')}}" alt="">
             </div>
-            <div>
+            <div class="h-full">
                 <img class="h-full w-full objecet-cover" src="{{asset('img/novoross/novoross-17.jpg')}}" alt="">
             </div>
             <div class="w-[200px] h-[553px] absolute left-[-10px] top-[190px]">
@@ -453,7 +453,7 @@
             <div class="block xl:hidden">
                 <img class="h-full w-full objecet-cover" src="{{asset('img/novoross/novoross-15.jpg')}}" alt="">
             </div>
-            <div class="flex flex-col gap-3 p-5 xl:border-b border-[#FFFFFF] w-full">
+            <div class="flex flex-col gap-3 p-5 xl:border-b border-[#FFFFFF] w-full box-border">
                 <h2 class="font-bold text-xl">Где находится: Луганск, улица Владимира Даля, 12</h2>
                 <div class="flex flex-col gap-3 lg:text-sm 2xl:text-base">
                     <p>
