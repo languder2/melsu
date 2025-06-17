@@ -562,7 +562,7 @@
         </div>
     </div>
 </section>
-<section id="stepanovka" class="bg-[#252525] text-white p-5">
+<section id="stepanovka" class="bg-[#252525] text-white p-5 overflow-hidden">
     <h2 class="text-2xl 2xl:text-3xl font-bold sm:pb-8 text-white">
         Степановка
     </h2>
