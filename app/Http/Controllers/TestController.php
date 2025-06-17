@@ -17,26 +17,28 @@ use App\Models\User;
 
 class TestController extends Controller
 {
-    public function index()
+    public function token()
     {
-        dd(3);
+
+        $_SESSION['text'] = 321;
+
+        dump(session()->token());
+    }
+
+    public function phpinfo():void
+    {
+
+        phpinfo();
+
     }
 
     public function view()
     {
+        dump(auth()->check());
 
-        $list = Profile::get();
-
-        $list = $list->sortByDesc('price');
-
-        foreach ($list as $item){
-            $item->fill([
-                "speciality_id"     => $item->speciality->id ?? null,
-            ])->save();
-        }
-
-
-        return view('test.view',compact('list'));
+        dump(auth()->user());
+        dump(auth()->check());
+//        return view('test.view',compact('list'));
     }
 
     public function admin()

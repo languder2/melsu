@@ -15,6 +15,9 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Services\ControlController;
 
+Route::get('token', [TestController::class, 'token']);
+Route::get('php-info', [TestController::class, 'phpinfo']);
+
 
 Route::get('/', function () {
     return view('pages.main');
@@ -54,8 +57,6 @@ Route::prefix('nomix')->group(function () {
     require __DIR__.'/nomix.php';
 });
 
-Route::get('test', [TestController::class, 'index'])->name('test');
-Route::get('test2', [TestController::class, 'index'])->name('test2');
 
 /* Faculties */
 
