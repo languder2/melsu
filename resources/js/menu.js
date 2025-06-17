@@ -15,8 +15,9 @@ if (document.querySelector('.main-menu')) {
         hamburger: document.querySelector('.navbar-toggler'),
         hamburgerIcon : document.querySelector('.navbar-toggler > .box-hamburg'),
         backButtons: document.querySelectorAll('.back-btn')
-
+        
     };
+
     let state = {
         isMobile: window.innerWidth <= 1024,
         searchHeight: 0,
@@ -56,9 +57,7 @@ if (document.querySelector('.main-menu')) {
     function closeAllDropdowns() {
         elements.dropDownMenus.forEach(menu => {
             menu.classList.remove('opened');
-            setTimeout(() => {
-                menu.classList.add('hidde');
-            }, 300);
+            menu.classList.add('hidde');
         });
     }
 
@@ -138,6 +137,7 @@ if (document.querySelector('.main-menu')) {
 
     function setupMobileMenu() {
         elements.dropDownMenus.forEach(menu => {
+            menu.classList.add('hidde');
             menu.classList.add('mob-menu');
         });
 
@@ -150,8 +150,8 @@ if (document.querySelector('.main-menu')) {
                     menu.classList.remove('hidde');
                     setTimeout(() => {
                         menu.classList.add('opened');
-                        document.body.classList.add('no-scroll');
                     }, 100);
+                    document.body.classList.add('no-scroll');
                 }
             });
         });
