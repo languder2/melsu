@@ -245,9 +245,14 @@ class Profile extends Model
             ->get();
     }
 
-    public function getBudgetPlacesAttribute(): int|string
+    public function getBudgetPlacesAttribute(): ?int
     {
-        return $this->places()->where('type', 'budget')->first()->count ?? "&nbsp;";
+        return $this->places()->where('type', EducationBasis::Budget)->first()->count ?? null;
+    }
+
+    public function getContractPlacesAttribute(): ?int
+    {
+        return $this->places()->where('type', EducationBasis::Contract)->first()->count ?? null;
     }
 
     public function places($all = null, $trashed = null): MorphMany

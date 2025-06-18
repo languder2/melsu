@@ -8,7 +8,7 @@
     <x-specialities.filter/>
     <div class="parent grid grid-cols-1 lg:grid-cols-[1fr_1fr] xl:grid-cols-[1fr_1fr_1fr] gap-3">
         @foreach($specialities as $speciality)
-            @foreach($speciality->publicProfiles as $profile)
+            @foreach($speciality->RecruitmentProfiles as $profile)
                 @foreach($profile->places??[] as $place)
 
                     <div class="box-searching card-nap position-aware checked-box hidden group">
