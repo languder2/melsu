@@ -50,6 +50,6 @@ Route::get(
 )->name('education-programs:higher-education');
 
 Route::get(
-    'https://melsu.ru/education-programs',
+    'education-programs',
     [SpecialityController::class,'adminEducationPrograms']
 )->name('admin:education:programs');

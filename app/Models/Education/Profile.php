@@ -245,9 +245,14 @@ class Profile extends Model
             ->get();
     }
 
-    public function getBudgetPlacesAttribute(): int|string
+    public function getBudgetPlacesAttribute(): ?int
     {
-        return $this->places()->where('type', 'budget')->first()->count ?? "&nbsp;";
+        return $this->places()->where('type', EducationBasis::Budget)->first()->count ?? null;
+    }
+
+    public function getContractPlacesAttribute(): ?int
+    {
+        return $this->places()->where('type', EducationBasis::Contract)->first()->count ?? null;
     }
 
     public function places($all = null, $trashed = null): MorphMany
@@ -288,11 +293,13 @@ class Profile extends Model
 
         foreach ($list as $educationForm => $form) {
 
-            $form['show']           = array_key_exists('show', $form);
+
+            $form['show']   = array_key_exists('show', $form);
 
             $profile = self::firstOrCreate(
                 [
-                    'speciality_code' => $object->code,
+                    'speciality_id'     => $object->id,
+                    'speciality_code'   => $object->code,
                     'form' => $form['form']
                 ],
                 [
@@ -302,9 +309,7 @@ class Profile extends Model
 
             $profile->fill($form)->save();
 
-
             Duration::processing($profile,$form['duration']);
-
 
             foreach($form['score'] as $type=>$count){
                 if(!$count) continue;

@@ -2,39 +2,29 @@
 
 namespace App\Http\Controllers;
 
-use App\Enums\DivisionType;
-use App\Enums\EducationForm;
-use App\Enums\EducationLevel;
-use App\Models\Division\Division;
 use App\Models\Education\Profile;
 use App\Models\Education\Speciality;
-use App\Models\Gallery\Gallery;
-use App\Models\Gallery\Image;
-use App\Models\News\RelationNews;
-use App\Models\Page\Content;
-use App\Models\Sections\Contact;
-use App\Models\User;
+use Illuminate\View\View;
 
 class TestController extends Controller
 {
-    public function index()
+    public function token()
     {
-        dd(3);
+        $_SESSION['text'] = 321;
+
+        dump(session()->token());
+    }
+
+    public function phpinfo():void
+    {
+
+        phpinfo();
+
     }
 
     public function view()
     {
-
-        $list = Profile::get();
-
-        $list = $list->sortByDesc('price');
-
-        foreach ($list as $item){
-            $item->fill([
-                "speciality_id"     => $item->speciality->id ?? null,
-            ])->save();
-        }
-
+        $list = collect([]);
 
         return view('test.view',compact('list'));
     }
@@ -44,5 +34,31 @@ class TestController extends Controller
         $list = Speciality::all();
         return view('test.admin',compact('list'));
     }
+
+    public function index(): View
+    {
+        $list = collect([]);
+
+        $list = Profile::all();
+
+        foreach ($list as $item) {
+
+            $item->fill(['is_recruitment' => $item->budget_places || ($item->contract_places && $item->price)])->save();
+
+        }
+
+
+        $list = Speciality::all();
+
+        foreach ($list as $item) {
+            $item->isRecruitmentBasedOnFormRecruitment();
+        }
+
+        $list = Speciality::where('show',true)->where('is_recruitment',true)->get();
+
+
+        return view('test.index',compact('list'));
+    }
+
 
 }

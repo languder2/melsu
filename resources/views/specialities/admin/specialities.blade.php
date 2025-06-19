@@ -54,6 +54,22 @@
             </option>
         </select>
 
+        <select name="is_recruitment" class="outline-0 border-b p-2">
+            <option value="">Все</option>
+            <option
+                value="true"
+                @selected(array_key_exists('is_recruitment',$filters) && $filters['is_recruitment'] === 'true')
+            >
+                Ведется набор
+            </option>
+            <option
+                value="false"
+                @selected(array_key_exists('is_recruitment',$filters) && $filters['is_recruitment'] === 'false')
+            >
+                Нет набора
+            </option>
+        </select>
+
         <div class="" >
             <input
                 type="submit"
@@ -136,13 +152,15 @@
 
                     <div class="grid grid-cols-[200px_150px_auto_auto] items-center gap-3 {{ $loop->iteration % 2 ? "" : '' }}">
                         @foreach($speciality->publicProfiles as $profile)
-                            <div class="">
+                            @continue(array_key_exists('is_recruitment',$filters) && $filters['is_recruitment'] === 'true'  && !$profile->is_recruitment)
+                            @continue(array_key_exists('is_recruitment',$filters) && $filters['is_recruitment'] === 'false' && $profile->is_recruitment)
+                            <div @class([$profile->is_recruitment ? "text-green-700" : ""])>
                                 {{ $profile->form->getName() }}
                             </div>
-                            <div class="">
+                            <div @class([$profile->is_recruitment ? "text-green-700" : ""])>
                                 {{ $profile->formated_price }}
                             </div>
-                            <div class="grid grid-cols-[50px_100px] gap-2">
+                            <div @class([$profile->is_recruitment ? "text-green-700" : "", "grid grid-cols-[50px_100px] gap-2"])>
                                 @if($profile->FormatedDurationOOO)
                                     <div>
                                         OOO
@@ -160,7 +178,7 @@
                                     </div>
                                 @endif
                             </div>
-                            <div class="flex flex-col gap-2">
+                            <div @class([$profile->is_recruitment ? "text-green-700" : "", "flex flex-col gap-2"])>
                                 @foreach($speciality->curriculum($profile->form->value) as $doc)
                                     <a
                                         href="{{ $doc->link }}"

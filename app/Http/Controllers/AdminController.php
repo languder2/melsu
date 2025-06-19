@@ -11,7 +11,8 @@ class AdminController extends Controller
     public function login(Request $request): RedirectResponse
     {
 
-        $form = (object)$request->validate(
+
+        $form = (object) $request->validate(
             [
                 "username" => "required",
                 "password" => 'required',
@@ -33,6 +34,6 @@ class AdminController extends Controller
 
         auth()->login($user, isset($form->remember));
 
-        return redirect()->back();
+        return redirect()->to(url()->previous());
     }
 }

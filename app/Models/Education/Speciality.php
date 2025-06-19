@@ -255,4 +255,20 @@ class Speciality extends Model
 
     /* end Links */
 
+    public function postSaveMaintenance():void
+    {
+        $this->isRecruitmentBasedOnFormRecruitment();
+    }
+
+    /* service */
+    public function isRecruitmentBasedOnFormRecruitment(): bool
+    {
+        $this->is_recruitment = !$this->public_profiles->where('is_recruitment',true)->isEmpty();
+
+        $this->save();
+
+        return $this->is_recruitment;
+    }
+
+
 }

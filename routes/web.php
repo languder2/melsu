@@ -10,11 +10,9 @@ use App\Http\Controllers\Menu\MenuController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\Schedule\ScheduleController;
 use App\Http\Controllers\Staffs\StaffController;
-use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Services\ControlController;
-
 
 Route::get('/', function () {
     return view('pages.main');
@@ -36,6 +34,7 @@ Route::prefix('admin')->group(function () {
     require __DIR__.'/admin.php';
 });
 
+require __DIR__.'/test.php';
 require __DIR__.'/regiment.php';
 require __DIR__.'/divisions.php';
 require __DIR__.'/documents.php';
@@ -54,8 +53,6 @@ Route::prefix('nomix')->group(function () {
     require __DIR__.'/nomix.php';
 });
 
-Route::get('test', [TestController::class, 'index'])->name('test');
-Route::get('test2', [TestController::class, 'index'])->name('test2');
 
 /* Faculties */
 
@@ -125,10 +122,6 @@ Route::get('/handbooks/{collectionId}', [HandbookController::class, 'show'])->na
 Route::get('control/sections',  [ControlController::class,'sections']);
 Route::get('control/contacts',  [ControlController::class,'contacts']);
 Route::get('control/staffs',    [ControlController::class,'staffs']);
-
-
-Route::get('test/view', [TestController::class,'view']);
-
 
 
 /* Pages */

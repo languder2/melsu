@@ -139,6 +139,7 @@ class SpecialityController extends Controller
         if($request->has('documents'))
             Document::processingForms($record,$request->get('documents'),$record);
 
+        $current->postSaveMaintenance();
 
         if($request->has('save'))
             return redirect()->to($current->form);
@@ -176,7 +177,9 @@ class SpecialityController extends Controller
 
     public function getListAPI():Collection
     {
-        $list = Speciality::where('show',true)
+
+
+        $list = Speciality::where('show',true)->where('is_recruitment',true)
             ->orderByRaw(EducationLevel::getOrder())->orderBy('spec_code')->orderBy('name')
             ->get()
             ->mapWithKeys(function ($record) {
@@ -184,7 +187,7 @@ class SpecialityController extends Controller
                     (object)[
                         "id"                => $record->id ?? null,
                         "spec_code"         => $record->spec_code ?? null,
-                        "name"              => $record->name ?? null,
+                        "name"              => $record->name.($record->name_profile ? " ({$record->name_profile})" : ''),
                         "department_id"     => $record->department_id ?? null,
                         "department_name"   => $record->department->name ?? null,
                         "faculty_id"        => $record->faculty_id ?? null,
@@ -249,7 +252,12 @@ class SpecialityController extends Controller
                     ->orWhere('spec_code', 'like', '%'.$filters['search'].'%');
             });
 
+        if($request->get('is_recruitment'))
+            $specialities->where('is_recruitment',$filters['is_recruitment'] === 'true');
+
         $specialities   = $specialities->get();
+
+        dump($specialities->count());
 
         return view('specialities.admin.specialities', compact('specialities','filters'));
     }

@@ -53,10 +53,7 @@ class AllSpeciality extends Component
 
     public function render(): View|Closure|string
     {
-        $specialities = Speciality::where('show',true)
-
-
-        ;
+        $specialities = Speciality::where('show',true)->where('is_recruitment',true);
 
         if ($this->division->type === DivisionType::Faculty)
             $specialities->where('faculty_id', $this->division->id);
