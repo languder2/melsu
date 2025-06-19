@@ -76,14 +76,6 @@ class Events extends Model
     {
         return Carbon::createFromDate($this->published_at)->format('d');
     }
-    public function setEventDatetimeAttribute($value)
-    {
-        if ($value && is_string($value)) {
-            $this->attributes['event_datetime'] = Carbon::createFromFormat('Y-m-d\TH:i', $value);
-        } else {
-            $this->attributes['event_datetime'] = $value;
-        }
-    }
 
     public function preview(): MorphOne
     {
@@ -102,6 +94,32 @@ class Events extends Model
     public function getLinkAttribute():string
     {
         return route('public:event:show',$this->id);
+    }
+
+    public function getEventDatetimeAttribute($value):Carbon
+    {
+        return $value ? now() : ( $value instanceof Carbon ? $value : Carbon::createFromDate($value));
+    }
+
+    public function getFormatedEventDatetimeAttribute():string
+    {
+        return $this->EventDatetime->format("d.m.Y H:i");
+    }
+    public function getDayFromEventDatetimeAttribute():int
+    {
+        return $this->EventDatetime->format("d");
+    }
+    public function getMonthFromEventDatetimeAttribute():int
+    {
+        return $this->EventDatetime->format("m");
+    }
+    public function getYearFromEventDatetimeAttribute():int
+    {
+        return $this->EventDatetime->format("Y");
+    }
+    public function getTimeFromEventDatetimeAttribute():int
+    {
+        return $this->EventDatetime->format("H:i");
     }
 
 }

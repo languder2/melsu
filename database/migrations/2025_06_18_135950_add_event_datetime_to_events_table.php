@@ -12,7 +12,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('events', function (Blueprint $table) {
-            $table->dateTime('event_datetime')
+            $table->timestamp('event_datetime')
                 ->nullable()
                 ->after('published_at');
         });

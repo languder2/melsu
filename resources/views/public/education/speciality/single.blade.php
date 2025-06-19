@@ -17,7 +17,9 @@
             {{$speciality->spec_code}}
             -
             {{$speciality->name}}
-            ({{$speciality->name_profile}})
+            @if($speciality->name_profile)
+                ({{$speciality->name_profile}})
+            @endif
         </h2>
         <div class="mb-2">
             <a

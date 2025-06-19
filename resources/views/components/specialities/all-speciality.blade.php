@@ -22,6 +22,9 @@
                             href="{{route('public:education:speciality',$speciality->code)}}"
                             class="p-4"
                         >
+
+
+                            {{ __('month.'.$dateTime->format('d')) }}
                             <div>
                                 <input
                                     type="checkbox"
@@ -47,7 +50,10 @@
                                     {{$speciality->spec_code}}
                                     -
                                     {{$speciality->name}}
-                                    ({{$speciality->name_profile}})
+
+                                    @if($speciality->name_profile)
+                                        ({{$speciality->name_profile}})
+                                    @endif
                                 </h2>
                             </div>
                             <div class="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-3 group-hover:text-white">

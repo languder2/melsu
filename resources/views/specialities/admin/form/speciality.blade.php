@@ -58,7 +58,7 @@
             name="name_profile"
             label="Профиль"
             value="{{old('_token') ? old('name_profile') : $current->name_profile ?? null}}"
-            required
+            required1
         />
 
         <x-form.input
