@@ -9,6 +9,7 @@ use App\Models\News\News;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Carbon\Carbon;
 
 class EventsController extends Controller
 {
@@ -21,13 +22,16 @@ class EventsController extends Controller
     public function form(Events $event): string
     {
         $types = EventType::forSelect();
-        return view('news.events.admin.form' , compact('event','types'));
+    return view('news.events.admin.form', compact('event', 'types'))->render();
     }
 
     public function save(Request $request, ?Events $event)
     {
 
         $form = $request->validate(Events::FormRules(), Events::FormMessage());
+
+        
+        $form['published_at'] = now();
 
         $event->fill($form)->save();
 

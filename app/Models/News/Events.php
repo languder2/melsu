@@ -18,6 +18,7 @@ class Events extends Model
         'id',
         'type',
         'title',
+        'event_datetime',
         'short',
         'full',
         'news',
@@ -27,11 +28,16 @@ class Events extends Model
         'deleted_at',
     ];
     public static int $adminPerPage = 20;
+    protected $casts = [
+    'event_datetime' => 'datetime',
+    'published_at' => 'datetime',
+    ];
     public static function FormRules():array
     {
         return [
             'type' => 'required',
             'title' => 'required',
+            'event_datetime' => 'nullable|date_format:Y-m-d\TH:i',
             'short' => '',
             'full' => '',
             'news' => '',
@@ -69,6 +75,14 @@ class Events extends Model
     public function getDayAttribute():string
     {
         return Carbon::createFromDate($this->published_at)->format('d');
+    }
+    public function setEventDatetimeAttribute($value)
+    {
+        if ($value && is_string($value)) {
+            $this->attributes['event_datetime'] = Carbon::createFromFormat('Y-m-d\TH:i', $value);
+        } else {
+            $this->attributes['event_datetime'] = $value;
+        }
     }
 
     public function preview(): MorphOne

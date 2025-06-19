@@ -78,6 +78,15 @@
                         value="{{old('post')??($event?->getAttributes()['published_at']??now())}}"
                 />
 
+                
+<x-form.input
+    id="event_datetime"
+    type="datetime-local"
+    name="event_datetime"
+    label="Дата проведения"
+    value="{{ old('event_datetime', $event->event_datetime instanceof \Carbon\Carbon ? $event->event_datetime->format('Y-m-d\TH:i') : now()->format('Y-m-d\TH:i')) }}"
+/>
+
                 <x-form.file
                         id="form_image"
                         label="Preview"

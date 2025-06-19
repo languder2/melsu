@@ -18,7 +18,15 @@ class ShortList extends Component
 
     public function __construct()
     {
-        $this->list = Events::where('published_at','<=',Carbon::now())->orderBy('published_at', 'desc')->limit(12)->get();
+        $this->list = Events::query()
+        ->whereNotNull('event_datetime')
+        ->orderBy('event_datetime', 'desc')
+        ->get()
+        ->groupBy(function($event) {
+            return $event->event_datetime->format('Y-m-d');
+        })
+        ->sortKeysDesc()
+        ->take(6);
     }
 
     /**

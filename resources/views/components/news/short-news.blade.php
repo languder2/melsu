@@ -1,4 +1,4 @@
-<section id="news-block" class="news-section mb-6 scroll-mt-[50px] lg:scroll-mt-[150px] xl:scroll-mt-[200px]">
+<section id="news-block" class="news-section scroll-mt-[50px] lg:scroll-mt-[150px] xl:scroll-mt-[200px]">
     <div class="container custom p-2.5 xl:p-0">
         @if($news->count())
 
@@ -29,7 +29,7 @@
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-0 mb-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-0">
                 @foreach($news as $k => $item)
                     <div class="min-h-[300px] sm:min-h-auto max-h-[300px] relative group {{ $k == 0 || $k == 4 ? 'lg:col-span-2' : '' }}">
                     <a href="{{$item->link}}" alt="{{$item->preview->alt??$item->preview->name}}">
