@@ -114,99 +114,185 @@
     </div>
 </section>
 <script>
+document.addEventListener('DOMContentLoaded', function() {
     const sliderWrapper = document.querySelector('.slider-wrapper');
     const slides = document.querySelectorAll('.box-info-under-slider');
-    const prevButton = document.querySelector('.prev');
-    const nextButton = document.querySelector('.next');
+    const prevBtn = document.querySelector('.prev');
+    const nextBtn = document.querySelector('.next');
 
-    let currentIndex = 1;
-    let slideInterval;
+    // Настройки
+    const settings = {
+        slideDuration: 500,
+        autoSlideInterval: 3000,
+        swipeThreshold: 0.2,
+        maxDragSlides: 2
+    };
 
-    const firstSlide = slides[0].cloneNode(true);
-    const lastSlide = slides[slides.length - 1].cloneNode(true);
+    // Состояние слайдера
+    const state = {
+        currentIndex: 1,
+        isDragging: false,
+        isAnimating: false,
+        startX: 0,
+        currentX: 0,
+        dragOffset: 0,
+        slideInterval: null,
+        allSlides: null
+    };
 
-    sliderWrapper.appendChild(firstSlide);
-    sliderWrapper.insertBefore(lastSlide, slides[0]);
-
-    const updatedSlides = document.querySelectorAll('.box-info-under-slider');
-
-    function updateSlider() {
-        const offset = -currentIndex * 100;
-        sliderWrapper.style.transition = 'transform 0.5s ease-in-out';
-        sliderWrapper.style.transform = `translateX(${offset}%)`;
+    function initSlider() {
+        // Клон слайдов для бесконойной прокрутки
+        const firstClone = slides[0].cloneNode(true);
+        const lastClone = slides[slides.length - 1].cloneNode(true);
+        
+        firstClone.classList.add('clone');
+        lastClone.classList.add('clone');
+        
+        sliderWrapper.appendChild(firstClone);
+        sliderWrapper.insertBefore(lastClone, slides[0]);
+        
+        state.allSlides = document.querySelectorAll('.box-info-under-slider');
+        
+        // Установка начальной позиции
+        setSlidePosition(state.currentIndex, false);
+        
+        // Добавление обработчиков событий
+        addEventListeners();
+        
+        // Запуск автопрокрутки
+        startAutoSlide();
     }
 
-    function startAutoSlide() {
-        clearInterval(slideInterval);
-        slideInterval = setInterval(() => {
-            currentIndex++;
-            if (currentIndex === updatedSlides.length - 1) {
-                updateSlider();
-            }
-            if (currentIndex >= updatedSlides.length - 1) {
-                setTimeout(() => {
-                    sliderWrapper.style.transition = 'none';
-                    currentIndex = 1;
-                    sliderWrapper.style.transform = `translateX(${-currentIndex * 100}%)`;
+    // Установка позиции слайда
+    function setSlidePosition(index, animate = true) {
+        sliderWrapper.style.transition = animate ? 
+            `transform ${settings.slideDuration}ms ease-in-out` : 'none';
+        sliderWrapper.style.transform = `translateX(${-index * 100}%)`;
+    }
 
-                    setTimeout(() => {
-                        sliderWrapper.style.transition = 'transform 0.5s ease-in-out';
-                    }, 20);
-                }, 500);
-            } else {
-                updateSlider();
-            }
-        }, 3000);
+    // Переход к слайду
+    function goToSlide(index, animate = true) {
+        if (state.isAnimating) return;
+        
+        state.isAnimating = true;
+        setSlidePosition(index, animate);
+
+        setTimeout(function() {
+        // Проверка на клоны и телепортация
+        if (index === 0) {
+            state.currentIndex = state.allSlides.length - 2;
+            setSlidePosition(state.currentIndex, false);
+        } else if (index === state.allSlides.length - 1) {
+            state.currentIndex = 1;
+            setSlidePosition(state.currentIndex, false);
+        } else {
+            state.currentIndex = index;
+        }
+
+        setTimeout(function() {
+            state.isAnimating = false;
+        }, 20);
+        }, animate ? settings.slideDuration : 0);
+    }
+
+    // Обработка свайпа
+    function handleSwipe() {
+        const swipeRatio = Math.abs(state.dragOffset) / sliderWrapper.offsetWidth;
+        const slidesToMove = Math.min(
+        Math.floor(swipeRatio / settings.swipeThreshold),
+        settings.maxDragSlides
+        );
+        
+        const direction = state.dragOffset > 0 ? -1 : 1;
+        goToSlide(state.currentIndex + (direction * slidesToMove));
+    }
+
+    // Автопрокрутка
+    function startAutoSlide() {
+        stopAutoSlide();
+        state.slideInterval = setInterval(function() {
+        if (!state.isDragging && !state.isAnimating) {
+            goToSlide(state.currentIndex + 1);
+        }
+        }, settings.autoSlideInterval);
+    }
+
+    function stopAutoSlide() {
+        clearInterval(state.slideInterval);
     }
 
     function resetAutoSlide() {
-        clearInterval(slideInterval);
-        startAutoSlide();
+        stopAutoSlide();
+        setTimeout(startAutoSlide, settings.slideDuration + 100);
     }
 
-    prevButton.addEventListener('click', () => {
-        currentIndex--;
-        if (currentIndex <= 0) {
-            updateSlider();
-            setTimeout(() => {
-                sliderWrapper.style.transition = 'none';
-                currentIndex = updatedSlides.length - 2;
-                sliderWrapper.style.transform = `translateX(${-currentIndex * 100}%)`;
+    // Обработчики перетаскивания
+    function handleDragStart(e) {
+        if (state.isAnimating) return;
+        
+        state.isDragging = true;
+        state.startX = e.clientX || e.touches[0].clientX;
+        state.currentX = state.startX;
+        sliderWrapper.style.transition = 'none';
+        sliderWrapper.style.cursor = 'grabbing';
+        stopAutoSlide();
+    }
 
-                setTimeout(() => {
-                    sliderWrapper.style.transition = 'transform 0.5s ease-in-out';
-                }, 20);
-            }, 500);
+    function handleDragMove(e) {
+        if (!state.isDragging) return;
+        
+        state.currentX = e.clientX || e.touches[0].clientX;
+        state.dragOffset = state.currentX - state.startX;
+        
+        const limitedOffset = state.dragOffset * 0.7; // скорость перетаскивания
+        const position = (-state.currentIndex * 100) + (limitedOffset / sliderWrapper.offsetWidth * 100);
+        sliderWrapper.style.transform = `translateX(${position}%)`;
+    }
+
+    function handleDragEnd() {
+        if (!state.isDragging) return;
+        
+        state.isDragging = false;
+        sliderWrapper.style.cursor = 'grab';
+        
+        if (Math.abs(state.dragOffset) > sliderWrapper.offsetWidth * settings.swipeThreshold) {
+        handleSwipe();
         } else {
-            updateSlider();
+        goToSlide(state.currentIndex);
         }
-
+        
         resetAutoSlide();
-    });
+        state.dragOffset = 0;
+    }
 
-    nextButton.addEventListener('click', () => {
-        currentIndex++;
-        if (currentIndex >= updatedSlides.length - 1) {
-            updateSlider();
-            setTimeout(() => {
-                sliderWrapper.style.transition = 'none';
-                currentIndex = 1;
-                sliderWrapper.style.transform = `translateX(${-currentIndex * 100}%)`;
-
-                setTimeout(() => {
-                    sliderWrapper.style.transition = 'transform 0.5s ease-in-out';
-                }, 20);
-            }, 500);
-        } else {
-            updateSlider();
-        }
-
+    // обработчик событий
+    function addEventListeners() {
+        // Мышь
+        sliderWrapper.addEventListener('mousedown', handleDragStart);
+        document.addEventListener('mousemove', handleDragMove);
+        document.addEventListener('mouseup', handleDragEnd);
+        
+        // Тач
+        sliderWrapper.addEventListener('touchstart', handleDragStart, { passive: true });
+        document.addEventListener('touchmove', handleDragMove, { passive: true });
+        document.addEventListener('touchend', handleDragEnd);
+        
+        // Кнопки
+        prevBtn.addEventListener('click', function() {
+        goToSlide(state.currentIndex - 1);
         resetAutoSlide();
-    });
+        });
+        
+        nextBtn.addEventListener('click', function() {
+        goToSlide(state.currentIndex + 1);
+        resetAutoSlide();
+        });
+        
+        // Пауза при наведении
+        sliderWrapper.addEventListener('mouseenter', stopAutoSlide);
+        sliderWrapper.addEventListener('mouseleave', startAutoSlide);
+    }
 
-    window.addEventListener('load', () => {
-        sliderWrapper.style.transform = `translateX(${-currentIndex * 100}%)`;
-        sliderWrapper.style.transition = 'transform 0.5s ease-in-out';
-        startAutoSlide();
-    });
+    initSlider();
+});
 </script>
