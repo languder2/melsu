@@ -257,8 +257,6 @@ class SpecialityController extends Controller
 
         $specialities   = $specialities->get();
 
-        dump($specialities->count());
-
         return view('specialities.admin.specialities', compact('specialities','filters'));
     }
 

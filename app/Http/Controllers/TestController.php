@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Education\Profile;
 use App\Models\Education\Speciality;
+use App\Models\News\Events;
 use Illuminate\View\View;
 
 class TestController extends Controller
@@ -26,7 +27,15 @@ class TestController extends Controller
     {
         $list = collect([]);
 
-        return view('test.view',compact('list'));
+
+        $list = Events::whereNotNull('event_datetime')->get();
+
+        foreach ($list as $item) {
+            @dump($item->event_datetime->format('H:i:s'));
+            @dump($item->FormatedEventDatetime('H:i'));
+        }
+
+//        return view('test.view',compact('list'));
     }
 
     public function admin()

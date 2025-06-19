@@ -278,7 +278,7 @@ class Menu extends Model
             'name'  => 'Филиал',
             'items' => collect([
                 (object)[
-                    'name' => "Об филиале",
+                    'name' => "О филиале",
                     'link' => route('public:education:division', [$division->type, $code]),
                 ],
             ]),

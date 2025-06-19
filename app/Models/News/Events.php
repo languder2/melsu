@@ -103,7 +103,7 @@ class Events extends Model
 
     public function FormatedEventDatetime(string $format = "d.m.Y H:i"):string
     {
-        return $this->EventDatetime->format($format);
+        return $this->event_datetime->format($format);
     }
 
 
