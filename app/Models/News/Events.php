@@ -98,7 +98,7 @@ class Events extends Model
 
     public function getEventDatetimeAttribute($value):Carbon
     {
-        return $value ? now() : ( $value instanceof Carbon ? $value : Carbon::createFromDate($value));
+        return $value ? ( $value instanceof Carbon ? $value : Carbon::createFromDate($value)) : now();
     }
 
     public function FormatedEventDatetime(string $format = "d.m.Y H:i"):string
