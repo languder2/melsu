@@ -30,9 +30,6 @@ class EventsController extends Controller
 
         $form = $request->validate(Events::FormRules(), Events::FormMessage());
 
-        
-        $form['published_at'] = now();
-
         $event->fill($form)->save();
 
         if(!$event->preview)
