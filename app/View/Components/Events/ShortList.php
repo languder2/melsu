@@ -18,14 +18,23 @@ class ShortList extends Component
 
     public function __construct()
     {
-        $this->list = Events::query()
+    $this->list = Events::query()
         ->whereNotNull('event_datetime')
-        ->orderBy('event_datetime', 'desc')
+        ->latest('event_datetime')
         ->get()
         ->groupBy(function($event) {
             return $event->event_datetime->format('Y-m-d');
         })
-        ->sortKeysDesc()
+        ->map(function($items) {
+            $dateObj = $items->first()->event_datetime;
+            return (object)[
+                'date' => $dateObj->format('Y-m-d'),
+                'month' => $dateObj->format('m'),
+                'day' => $dateObj->format('d'),
+                'dayOfWeek' => $dateObj->format('N') - 1,
+                'events' => $items
+            ];
+        })
         ->take(6);
     }
 

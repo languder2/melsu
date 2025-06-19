@@ -10,50 +10,30 @@
         </div>
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 bg-white gap-5 lg:gap-0">
-    @foreach($list as $date => $items)
-        @php
-            $dateTime = DateTime::createFromFormat('Y-m-d', $date);
-            $day = $dateTime->format('d');
-            $monthNumber = $dateTime->format('m');
-
-            $months = [
-                1 => 'января', 2 => 'февраля', 3 => 'марта', 4 => 'апреля',
-                5 => 'мая', 6 => 'июня', 7 => 'июля', 8 => 'августа',
-                9 => 'сентября', 10 => 'октября', 11 => 'ноября', 12 => 'декабря'
-            ];
-            $monthName = $months[(int)$monthNumber];
-
-            $dayOfWeekShort = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'][$dateTime->format('N') - 1];
-        @endphp
-
-    <div class="flex flex-col lg:grid lg:grid-cols-[17%_auto]">
-        <div class="bg-[#C10F1A] p-5 lg:py-5 flex items-center lg:items-baseline gap-5 h-fit lg:h-auto">
-                <h4 class="text-white text-2xl sm:text-5xl lg:text-8xl font-bold lg:px-12 sticky">
-                    {{ $day }}
-                </h4>
-            <div class="flex flex-col lg:hidden">
-                <h3 class="text-white text-xl font-semibold">{{ $monthName }}</h3>
-                <h5 class="text-[#C0C0C0] text-base font-semibold">{{ $dayOfWeekShort }}</h5>
+    @foreach($list as $items)
+        <div class="flex flex-col lg:grid lg:grid-cols-[17%_auto]">
+            <div class="bg-[#C10F1A] p-5 lg:py-5 lg:p-0 flex items-center lg:items-baseline gap-5 h-fit lg:h-auto">
+                    <h4 class="text-white text-2xl sm:text-5xl lg:text-8xl font-bold lg:px-12 sticky">
+                        {{ $items->day }}
+                    </h4>
+                <div class="flex flex-col lg:hidden">
+                    <h3 class="text-white text-xl font-semibold">{{ __('month.rod-m-'.$items->month) }}</h3>
+                    <h5 class="text-[#C0C0C0] text-base font-semibold">{{ __('month.day-'.$items->dayOfWeek) }}</h5>
+                </div>
             </div>
-        </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-[17%_auto] border lg:border-b lg:border-0 border-[#C0C0C0] p-5 gap-x-5 h-full lg:h-auto">
             <div class="hidden lg:flex flex-col">
-                <h4 class="font-extrabold text-4xl">{{ $monthName }}</h4>
-                <h5 class="text-[#C0C0C0] uppercase text-3xl font-semibold">{{ $dayOfWeekShort }}</h5>
+                <h4 class="font-extrabold text-4xl">{{ __('month.rod-m-'.$items->month) }}</h4>
+                <h5 class="text-[#C0C0C0] uppercase text-3xl font-semibold">{{ __('month.day-'.$items->dayOfWeek) }}</h5>
             </div>
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-5 gap-y-6">
-            @foreach($items as $item)
-                @php
-                    $eventTime = $item->event_datetime 
-                        ? DateTime::createFromFormat('Y-m-d H:i:s', $item->event_datetime)?->format('H:i') 
-                        : null;
-                @endphp
+            @foreach($items->events as $item)
                     <a href="{{route('public:event:show',$item->id)}}" class="flex flex-col gap-4 group cursor-pointer">
                         <h3 class="text-xl sm:text-3xl font-extrabold group-hover:text-[#C10F1A] transition duration-300 ease-linear flex justify-between items-center">
-                            @if($eventTime)
-                                {{ $eventTime }}
-                            @else
+                            @if($item->FormatedEventDatetime('H:i'))
+                                {{ $item->FormatedEventDatetime('H:i') }}
+                            @else 
                                 <div class="h-[16px] w-[16px] sm:w-[36px] sm:h-[36px]">
                                     <svg width="100%" height="100%" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M7.5 10.5C7.5 16.299 10.701 18 16.5 18C10.701 18 7.5 22.701 7.5 28.5V33M28.5 28.5V33" stroke="#252525" stroke-width="3" stroke-linecap="round"/>
@@ -96,3 +76,4 @@
 </div>
 
 </section>
+
