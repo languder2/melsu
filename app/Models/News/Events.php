@@ -101,25 +101,10 @@ class Events extends Model
         return $value ? now() : ( $value instanceof Carbon ? $value : Carbon::createFromDate($value));
     }
 
-    public function getFormatedEventDatetimeAttribute():string
+    public function FormatedEventDatetime(string $format = "d.m.Y H:i"):string
     {
-        return $this->EventDatetime->format("d.m.Y H:i");
+        return $this->EventDatetime->format($format);
     }
-    public function getDayFromEventDatetimeAttribute():int
-    {
-        return $this->EventDatetime->format("d");
-    }
-    public function getMonthFromEventDatetimeAttribute():int
-    {
-        return $this->EventDatetime->format("m");
-    }
-    public function getYearFromEventDatetimeAttribute():int
-    {
-        return $this->EventDatetime->format("Y");
-    }
-    public function getTimeFromEventDatetimeAttribute():int
-    {
-        return $this->EventDatetime->format("H:i");
-    }
+
 
 }
