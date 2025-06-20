@@ -7,7 +7,7 @@
 </div>
     <a href="https://epk.mgu-mlt.ru/login" class="flex gap-2 items-center justify-between bg-[#820000] w-[75%] left-[15px] sm:left-auto sm:w-fit rounded-[70px] px-2.5 py-3 fixed bottom-[15px] right-[90px] z-50
     transition duration-300 hover:bg-[#C10F1A] active:bg-[#838383]">
-                        <span class="text-white text-lg md:text-xl font-semibold uppercase">
+                        <span class="text-white text-lg md:text-xl font-semibold uppercase px-2">
                             Поступить онлайн!
                         </span>
                         <div class="ico-link bg-white rounded-full w-[40px] h-[40px] md:w-[60px] md:h-[60px] flex items-center justify-center">

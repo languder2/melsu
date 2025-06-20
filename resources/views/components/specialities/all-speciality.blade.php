@@ -23,8 +23,6 @@
                             class="p-4"
                         >
 
-
-                            {{ __('month.'.$dateTime->format('d')) }}
                             <div>
                                 <input
                                     type="checkbox"

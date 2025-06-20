@@ -9,7 +9,12 @@
 @section('content-header')
     <x-html.admin.content-header>
         @if($current->id)
-            {{$current->spec_code}} {!! $current->name !!}
+            {{$current->spec_code}}
+            {!! $current->name !!}
+            @if($current->name_profile)
+                ({!! $current->name_profile !!})
+            @endif
+
         @else
             Добавление направления подготовки
         @endif
