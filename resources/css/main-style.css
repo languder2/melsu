@@ -1141,7 +1141,7 @@ header{
         .box-info-under-slider{
             .under-info{
                 width: 45%;
-                
+
             }
         }
     }
@@ -7271,4 +7271,16 @@ li.h--timeline-event.h--timeline-event--selected.text-component {
 }
 
 /*END Vozmoshnosti style*/
+
+/*apply-online-button style*/
+.apply-online-button{
+    transition: .3s linear;
+    right: 15px;
+    transform: translateX(0);
+
+}
+.apply-online-button.scroll{
+    transform: translateX(-75px);
+}
+/*apply-online-button style*/
 

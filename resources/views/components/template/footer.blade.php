@@ -1,16 +1,16 @@
-<div class="scroll-to-top-box">
-    <button class="scroll-to-top-btn cursor-pointer">
-        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="white" class="bi bi-arrow-up" viewBox="0 0 16 16">
+<div class="scroll-to-top-box rounded-full">
+    <button class="scroll-to-top-btn cursor-pointer rounded-full">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="white" class="bi bi-arrow-up w-[40px] h-[42px]" viewBox="0 0 16 16">
             <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5"/>
         </svg>
     </button>
 </div>
-    <a href="https://epk.mgu-mlt.ru/login" class="flex gap-2 items-center justify-between bg-[#820000] w-[75%] left-[15px] sm:left-auto sm:w-fit rounded-[70px] px-2.5 py-3 fixed bottom-[15px] right-[90px] z-50
+    <a href="https://epk.mgu-mlt.ru/login" class="apply-online-button flex gap-2 items-center justify-between bg-[#820000] w-[75%] sm:w-fit rounded-[70px] px-2.5 py-3 fixed bottom-[15px] z-50
     transition duration-300 hover:bg-[#C10F1A] active:bg-[#838383]">
-                        <span class="text-white text-lg md:text-xl font-semibold uppercase px-2">
+                        <span class="text-white text-lg font-semibold uppercase px-2">
                             Поступить онлайн!
                         </span>
-                        <div class="ico-link bg-white rounded-full w-[40px] h-[40px] md:w-[60px] md:h-[60px] flex items-center justify-center">
+                        <div class="bg-white rounded-full w-[40px] h-[40px] flex items-center justify-center">
                             <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M3.66667 1H17M17 1V14.3333M17 1L1 17" stroke="#252525" stroke-width="2"/>
                             </svg>
