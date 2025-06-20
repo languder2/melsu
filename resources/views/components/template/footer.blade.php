@@ -5,6 +5,17 @@
         </svg>
     </button>
 </div>
+    <a href="https://epk.mgu-mlt.ru/login" class="flex gap-2 items-center justify-between bg-[#820000] w-[75%] left-[15px] sm:left-auto sm:w-fit rounded-[70px] px-2.5 py-3 fixed bottom-[15px] right-[90px] z-50
+    transition duration-300 hover:bg-[#C10F1A] active:bg-[#838383]">
+                        <span class="text-white text-lg md:text-xl font-semibold uppercase">
+                            Поступить онлайн!
+                        </span>
+                        <div class="ico-link bg-white rounded-full w-[40px] h-[40px] md:w-[60px] md:h-[60px] flex items-center justify-center">
+                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3.66667 1H17M17 1V14.3333M17 1L1 17" stroke="#252525" stroke-width="2"/>
+                            </svg>
+                        </div>
+                    </a>
 <footer>
     <div class="pt-6 pb-4 bg-[#2E3146]">
         <div class="container custom lg:p-2.5">
