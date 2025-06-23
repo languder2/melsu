@@ -5,17 +5,17 @@
         </svg>
     </button>
 </div>
-    <a href="https://epk.mgu-mlt.ru/login" class="apply-online-button flex gap-2 items-center justify-between bg-[#820000] w-[75%] sm:w-fit rounded-[70px] px-2.5 py-3 fixed bottom-[15px] z-50
+<a href="https://epk.mgu-mlt.ru/login" class="apply-online-button flex gap-2 items-center justify-between bg-[#820000] w-[75%] sm:w-fit rounded-[70px] px-2.5 py-3 fixed bottom-[15px] z-50
     transition duration-300 hover:bg-[#C10F1A] active:bg-[#838383]">
                         <span class="text-white text-lg font-semibold uppercase px-2">
                             Поступить онлайн!
                         </span>
-                        <div class="bg-white rounded-full w-[40px] h-[40px] flex items-center justify-center">
-                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M3.66667 1H17M17 1V14.3333M17 1L1 17" stroke="#252525" stroke-width="2"/>
-                            </svg>
-                        </div>
-                    </a>
+    <div class="bg-white rounded-full w-[40px] h-[40px] flex items-center justify-center">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3.66667 1H17M17 1V14.3333M17 1L1 17" stroke="#252525" stroke-width="2"/>
+        </svg>
+    </div>
+</a>
 <footer>
     <div class="pt-6 pb-4 bg-[#2E3146]">
         <div class="container custom lg:p-2.5">
@@ -78,7 +78,7 @@
                     <a href="{{url('https://melsu.ru/division/154')}}" class="text-md mb-4 hover:opacity-80 hover:text-red-200 w-fit transition duration-300 ease-linear">Инклюзивное образование</a>
                 </div>
                 <div class="grid grid-cols-1">
-{{--                    <a href="{{url('https://edu.gov.ru/')}}" class="text-md mb-4 hover:opacity-80 hover:text-red-200 w-fit transition duration-300 ease-linear">Минпросвещения России</a>--}}
+                    {{--                    <a href="{{url('https://edu.gov.ru/')}}" class="text-md mb-4 hover:opacity-80 hover:text-red-200 w-fit transition duration-300 ease-linear">Минпросвещения России</a>--}}
                     <a href="{{url('https://minobrnauki.gov.ru/')}}" class="text-md mb-4 hover:opacity-80 hover:text-red-200 w-fit transition duration-300 ease-linear">Минобрнауки России</a>
                     <a href="{{url('nauchnye-issledovaniya-universiteta')}}" class="text-md mb-4 hover:opacity-80 hover:text-red-200 w-fit transition duration-300 ease-linear">Научные исследования университета</a>
                     <a href="{{url('nauchnye-kruzhki')}}" class="text-md mb-4 hover:opacity-80 hover:text-red-200 w-fit transition duration-300 ease-linear">Научно-исследовательская работа студентов</a>
@@ -104,14 +104,14 @@
 <div class="hidden lg:block z-20 top-28 right-2 fixed transition-all duration-400">
     <a href="{{ route('regiment:public:list') }}">
     <span class="cursor-pointer text-[#dc302a] absolute right-10 top-16 z-50 hover:drop-shadow-md hover:shadow-indigo-700"
-        onclick="this.closest('div').classList.add('scale-0'); return false;"
+          onclick="this.closest('div').classList.add('scale-0'); return false;"
 
     >
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
             <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
         </svg>
     </span>
-    <img src="{{asset('img/Pobeda80_logo_main.png')}}" alt="" class="scale-75"/>
+        <img src="{{asset('img/Pobeda80_logo_main.png')}}" alt="" class="scale-75"/>
     </a>
 </div>
 
