@@ -54,13 +54,32 @@ class Document extends Model
         'is_show'   => 'boolean',
         'sort'      => 'integer',
     ];
+
+    public function __construct(array $attributes = [])
+    {
+        parent::__construct($attributes);
+        $this->id = now()->format('Uv');
+    }
+
+    public function save(array $options = []): void
+    {
+        if(!$this->exists)
+            $this->id = null;
+
+        parent::save($options);
+    }
+    public function fill(array $attributes):self
+    {
+//        if(!empty($attributes)){
+//            $attributes['is_show']      = (int) array_key_exists('is_show', $attributes);
+//            $attributes['sort']         = $attributes['sort'] ?? 1000;
+//        }
+        return parent::fill($attributes);
+    }
+
     public function relation():MorphTo
     {
         return $this->MorphTo();
-    }
-    public function getIdAttribute($value):int
-    {
-        return $value ?? microtime(true);
     }
 
     public function parent():BelongsTo
@@ -88,15 +107,6 @@ class Document extends Model
 
         $form['filename'] = "$folder/$filename";
         $form['filetype'] = $form['file']->getClientOriginalExtension();
-    }
-    public function fill(array $attributes):?self
-    {
-        if(!empty($attributes)){
-            $attributes['is_show']      = (int) array_key_exists('is_show', $attributes);
-            $attributes['sort']         = $attributes['sort'] ?? 1000;
-        }
-
-        return parent::fill($attributes);
     }
     public function getLinkAttribute():?string
     {

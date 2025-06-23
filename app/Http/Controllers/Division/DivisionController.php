@@ -215,6 +215,12 @@ class DivisionController extends Controller
 
     }
 
+    public function adminBranches():View
+    {
+        $list = Division::getBranches();
+
+        return view('divisions.branches.admin.admin', compact('list'));
+    }
 
 
 }

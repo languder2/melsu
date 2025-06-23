@@ -9,7 +9,7 @@ use Illuminate\View\View;
 
 class InstituteController extends Controller
 {
-    public function list():View
+    public function admin():View
     {
         $list = Division::where('type',DivisionType::Institute)
             ->orderBy('sort')->orderBy('name')

@@ -10,7 +10,6 @@ use App\Http\Controllers\Schedule\ScheduleController;
 use App\Http\Controllers\Staffs\StaffController;
 use App\Http\Controllers\Users\UserController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Education\InstituteController;
 use App\Http\Controllers\Minor\MinorController;
 use App\Http\Controllers\TestController;
 
@@ -78,18 +77,6 @@ Route::prefix('users')->group(function () {
     Route::get('delete/{user}', [UserController::class,'delete'])->name('admin:users:delete');
 });
 
-Route::controller(DivisionController::class)
-    ->prefix('divisions')
-    ->group(function () {
-
-        Route::get('add', 'form')->name('admin:division:add');
-        Route::get('edit/{id?}', 'form')->name('admin:division:edit');
-        Route::post('save', 'save')->name('admin:division:save');
-        Route::get('delete/{id}', 'delete')->name('admin:division:delete');
-
-        Route::get('{group?}', 'adminList')->name('admin:division:list');
-    });
-
 Route::controller(FacultyController::class)
     ->prefix('faculties')
     ->group(function () {
@@ -99,8 +86,6 @@ Route::controller(FacultyController::class)
     });
 
 
-Route::get('institutes',[InstituteController::class,'list'])->middleware('isAdmin')
-    ->name('admin:institutes:list');
 
 Route::controller(DepartmentController::class)
     ->prefix('departments')

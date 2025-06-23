@@ -1,11 +1,11 @@
 <nav class="bg-white p-4 flex">
 
-{{--    <x-html.a-blue--}}
-{{--        href="{{route('admin:branch:list')}}"--}}
-{{--        text="Филиалы"--}}
-{{--    />--}}
+    <x-html.a-blue
+        href="{{route('branches:admin')}}"
+        text="Филиалы"
+    />
 
-{{--    <span class="inline-block mx-3 opacity-30">|</span>--}}
+    <span class="inline-block mx-3 opacity-30">|</span>
 
     <x-html.a-blue
         href="{{route('admin:institutes:list')}}"

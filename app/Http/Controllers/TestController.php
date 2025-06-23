@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Documents\Document;
 use App\Models\Education\Profile;
 use App\Models\Education\Speciality;
 use App\Models\News\Events;
+use Illuminate\Support\Str;
 use Illuminate\View\View;
 
 class TestController extends Controller
 {
     public function token()
     {
-        $_SESSION['text'] = 321;
-
         dump(session()->token());
     }
 
@@ -48,23 +48,26 @@ class TestController extends Controller
     {
         $list = collect([]);
 
-        $list = Profile::all();
+        $item = new Document([
+            'title'     => 100,
+            'sort'      => 300,
+        ]);
 
-        foreach ($list as $item) {
+        dump($item->id);
 
-            $item->fill(['is_recruitment' => $item->budget_places || ($item->contract_places && $item->price)])->save();
+        dump($item->id);
+        dump($item->id);
+        dump($item->id);
+        dump($item->id);
 
-        }
+        $item->save();
 
+        dump($item->id);
+        dump($item->id);
+        dump($item->id);
+        dump($item->id);
 
-        $list = Speciality::all();
-
-        foreach ($list as $item) {
-            $item->isRecruitmentBasedOnFormRecruitment();
-        }
-
-        $list = Speciality::where('show',true)->where('is_recruitment',true)->get();
-
+        dd($item);
 
         return view('test.index',compact('list'));
     }
