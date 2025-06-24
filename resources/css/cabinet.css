@@ -19,6 +19,7 @@
     --spacing-300: 300px;
     --spacing-400: 400px;
     --spacing-800: 800px;
+    --spacing-1000: 1000px;
     --spacing-1200: 1200px;
     --spacing-1400: 1400px;
     --spacing-1600: 1600px;
@@ -30,6 +31,7 @@
     --list-style-type-roman: upper-roman;
 
     --bg-cabinet-header: url('../../public_html/img/cabinet/bg-header.png');
+    --bg-sveden-header: url('../../public_html/img/sveden/bg-sved.jpg');
     --bg-panel-1: url('../../public_html/img/cabinet/bg-panel.jpg');
 
 }
