@@ -14,7 +14,7 @@ function createCounter(elementId, targetValue, interval, step = 1) {
     const observer = new IntersectionObserver((entries) => {
         if (entries[0].isIntersecting) {
             intervalId = setInterval(increment, interval);
-            observer.unobserve(counterElement); // Останавливаем наблюдение после запуска
+            observer.unobserve(counterElement);
         }
     });
 
@@ -38,7 +38,7 @@ function createCounterDecay(elementId, startValue, interval, step = 1) {
     const observer = new IntersectionObserver((entries) => {
         if (entries[0].isIntersecting) {
             intervalId = setInterval(decrement, interval);
-            observer.unobserve(counterElement); // Останавливаем наблюдение после запуска
+            observer.unobserve(counterElement);
         }
     });
 
