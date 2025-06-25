@@ -239,7 +239,7 @@ class SpecialityController extends Controller
     {
         $filters = $request->all();
 
-        $specialities = Speciality::orderBy('spec_code')->orderBy('name');
+        $specialities = Speciality::orderBy('spec_code')->orderBy('name')->orderBy('name_profile');
 
         if($request->get('show'))
             $specialities->where('show',$filters['show'] === 'show');
@@ -250,6 +250,7 @@ class SpecialityController extends Controller
         if($request->get('search'))
             $specialities->where(function ($query) use ($filters) {
                 $query->where('name', 'like', '%'.$filters['search'].'%')
+                    ->orWhere('name_profile', 'like', '%'.$filters['search'].'%')
                     ->orWhere('spec_code', 'like', '%'.$filters['search'].'%');
             });
 
