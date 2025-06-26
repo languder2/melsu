@@ -55,6 +55,10 @@ Route::controller(EventsController::class)
         Route::get('delete/{event?}', 'delete')->name('admin:events:delete');
 
     });
+
+    Route::get('/events/calendar', [EventsController::class, 'calendar'])->name('public:events:calendar');
+    Route::get('/events/day/{date}', [EventsController::class, 'getDayEvents']);
+
 /**/
 
 /* Categories */

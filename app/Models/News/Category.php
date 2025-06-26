@@ -103,4 +103,9 @@ class Category extends Model
         return self::orderBy('sort')->orderBy('name')->get()->pluck('name', 'link');
     }
 
+    public function eventsRelation()
+    {
+        return $this->hasMany(Events::class, 'category_id');
+    }
+
 }

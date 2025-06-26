@@ -70,6 +70,17 @@
                         required
                 />
 
+                <x-form.select
+                        id="category_id"
+                        name="category_id"
+                        nullDisabled
+                        old="{{ old('category_id', $event->category_id) }}"
+                        value="{{@$current->category_id}}}"
+                        null="Выберите категорию"
+                        :list="$categories??[]"
+                        required
+                />
+
                 <x-form.input
                         id="published_at"
                         type="datetime-local"
@@ -79,12 +90,12 @@
                 />
 
                 
-<x-form.input
-    id="event_datetime"
-    type="datetime-local"
-    name="event_datetime"
-    label="Дата проведения"
-    value="{{ old('event_datetime', $event->event_datetime instanceof \Carbon\Carbon ? $event->event_datetime->format('Y-m-d\TH:i') : now()->format('Y-m-d\TH:i')) }}"
+    <x-form.input
+        id="event_datetime"
+        type="datetime-local"
+        name="event_datetime"
+        label="Дата проведения"
+        value="{{ old('event_datetime', $event->event_datetime instanceof \Carbon\Carbon ? $event->event_datetime->format('Y-m-d\TH:i') : now()->format('Y-m-d\TH:i')) }}"
 />
 
                 <x-form.file

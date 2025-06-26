@@ -18,8 +18,8 @@ class ShortList extends Component
 
     public function __construct()
     {
-    $this->list = Events::query()
-        ->whereNotNull('event_datetime')
+    $this->list = Events::
+        whereNotNull('event_datetime')
         ->latest('event_datetime')
         ->get()
         ->groupBy(function($event) {
@@ -31,7 +31,7 @@ class ShortList extends Component
                 'date' => $dateObj->format('Y-m-d'),
                 'month' => $dateObj->format('m'),
                 'day' => $dateObj->format('d'),
-                'dayOfWeek' => $dateObj->format('N') - 1,
+                'dayOfWeek' => $dateObj->format('N'),
                 'events' => $items
             ];
         })

@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\News\Category;
 
 class Events extends Model
 {
@@ -24,6 +25,7 @@ class Events extends Model
         'news',
         'image',
         'author',
+        'category_id',
         'published_at',
         'deleted_at',
     ];
@@ -44,6 +46,7 @@ class Events extends Model
             'author' => '',
             'sort' => '',
             'published_at' => '',
+            'category_id' => 'required|exists:news_categories,id',
         ];
     }
 
@@ -105,6 +108,9 @@ class Events extends Model
     {
         return $this->event_datetime->format($format);
     }
-
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'category_id');
+    }
 
 }

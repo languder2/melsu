@@ -58,7 +58,7 @@
     </div>
     @endforeach
     <div class="bg-white group transition duration-300 ease-linear hover:bg-[#820000] w-[17%]">
-        <a href="{{ route('public:events:list') }}" class="flex p-5 justify-between items-center transition duration-300 ease-linear group-hover:text-white">
+        <a href="{{ route('public:events:calendar') }}" class="flex p-5 justify-between items-center transition duration-300 ease-linear group-hover:text-white">
             Больше
             <span>
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
