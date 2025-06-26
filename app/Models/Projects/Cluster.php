@@ -79,7 +79,7 @@ class Cluster extends Model
 
     public function getIdAttribute($value):int
     {
-        return $value ?? microtime(true);
+        return $value ?? now()->format('Uv');
     }
     public function getSortAttribute($value):?int
     {

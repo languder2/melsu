@@ -35,6 +35,7 @@ Route::prefix('admin')->group(function () {
 });
 
 require __DIR__.'/test.php';
+require __DIR__.'/info.php';
 require __DIR__.'/regiment.php';
 require __DIR__.'/divisions.php';
 require __DIR__.'/documents.php';

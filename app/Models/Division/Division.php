@@ -482,6 +482,7 @@ class Division extends Model
     public function getAdminAttribute():?string
     {
         return match ($this->type) {
+            DivisionType::Branch        => route('branches:admin'),
             DivisionType::Institute     => route('admin:institutes:list'),
             DivisionType::Faculty       => route('admin:faculty:list'),
             DivisionType::Department    => route('admin:department:list'),
@@ -493,8 +494,43 @@ class Division extends Model
     {
         return route('division:admin:form',$this);
     }
+    public function getDeleteAttribute():?string
+    {
+        return route('admin:division:delete',$this);
+    }
+    public function getToggleShowAttribute():?string
+    {
+        return route('division:toggle-show',$this);
+    }
 
     /* end Links*/
+
+
+    /* collections */
+
+    public static function getBranches():Collection
+    {
+        return self::where('type',DivisionType::Branch)->get();
+    }
+
+    public static function getInstitutes():Collection
+    {
+        return self::where('type',DivisionType::Institute)->get();
+    }
+    public static function getFaculties():Collection
+    {
+        return self::where('type',DivisionType::Faculty)->get();
+    }
+    public static function getDepartments():Collection
+    {
+        return self::where('type',DivisionType::Department)->get();
+    }
+
+    /* end  collections */
+
+
+
+
 
 
 }

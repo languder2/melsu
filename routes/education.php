@@ -2,8 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Education\SpecialityController;
+use App\Http\Controllers\Education\InstituteController;
+use App\Http\Controllers\Division\DivisionController;
 
 Route::prefix('admin/specialities')
+    ->middleware('isAdmin')
     ->group(function () {
 
         Route::get(
@@ -53,3 +56,19 @@ Route::get(
     'education-programs',
     [SpecialityController::class,'adminEducationPrograms']
 )->name('admin:education:programs');
+
+
+
+/* Institutes */
+
+Route::middleware('isAdmin')->prefix('admin')->group(function () {
+    Route::get('institutes',[InstituteController::class,'admin'])->name('admin:institutes:list');
+});
+
+Route::middleware('isAdmin')->prefix('admin')->group(function () {
+    Route::get('branches',[DivisionController::class,'adminBranches'])->name('branches:admin');
+});
+
+/* */
+
+

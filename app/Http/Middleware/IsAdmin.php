@@ -16,10 +16,7 @@ class IsAdmin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (!auth()->check())
-            abort(403, "You are not authorized to access this page.");
-
-        if(auth()->user()->role->level() < UserRoles::Admin->level() )
+        if(auth()->check() && auth()->user()->role->level() < UserRoles::Admin->level() )
             abort(403, "Your access level is insufficient");
 
         return $next($request);

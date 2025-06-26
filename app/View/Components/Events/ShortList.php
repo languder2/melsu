@@ -18,9 +18,7 @@ class ShortList extends Component
 
     public function __construct()
     {
-    $this->list = Events::
-        whereNotNull('event_datetime')
-        ->latest('event_datetime')
+    $this->list = Events::whereNotNull('event_datetime')->latest('event_datetime')
         ->get()
         ->groupBy(function($event) {
             return $event->event_datetime->format('Y-m-d');

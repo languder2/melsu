@@ -33,6 +33,7 @@ Route::get('documents',             [DocumentsController::class,'public'])  ->na
 Route::middleware(['web','auth.api'])->prefix('api/documents')->group(function () {
     Route::get('add-block',             [DocumentsController::class,'ApiAddBlock'])
         ->name('documents:api:add-block');
+
     Route::get('add-block-speciality',  [DocumentsController::class,'ApiAddBlockSpeciality'])
         ->name('documents:api:add-block:speciality');
 
