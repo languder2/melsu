@@ -107,5 +107,4 @@ class Category extends Model
     {
         return $this->hasMany(Events::class, 'category_id');
     }
-
 }

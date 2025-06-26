@@ -39,13 +39,13 @@
             @if($event->preview && $event->preview->src)
                 <div>
                     <img src="{{$event->preview->src}}" alt="1"
-                         class="max-h-68"
+                        class="max-h-68"
                     />
                 </div>
             @elseif(optional($event)->image)
                 <div>
                     <img src="{{$event->image}}" alt="1"
-                         class="max-h-68"
+                        class="max-h-68"
                     />
                 </div>
             @endif

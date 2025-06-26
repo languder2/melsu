@@ -16,6 +16,7 @@ class EventsController extends Controller
 {
     public function calendar(): View
     {
+        
         $now = Carbon::now();
         $month = request('month', $now->month);
         $year = request('year', $now->year);
