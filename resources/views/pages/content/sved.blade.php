@@ -4,9 +4,7 @@
     В 1932 году на базе техникума индустриализации сельского хозяйства был создан технический вуз-завод ВТУЗ им. ОГПУ. В 1934—1935 годах во ВТУЗе работало 13 кафедр и обучалось около 500 студентов.
 </p>
 <div class="sved-block">
-    <div class="upper-sved-block p-4 flex justify-center">
-        <h2 class="uppercase text-white font-bold text-center text-2xl xl:text-5xl w-full xl:leading-[66px]">Образование — <br>самое мощное оружие</h2>
-    </div>
+    
     <div class="relative grid grid-cols-1 lg:grid-cols-2 bg-red-900 text-white text-sm sm:text-lg py-7 px-12 w-full lg:mx-none gap-3">
         <video autoplay loop muted class="vid-bg">
             <source src="{{asset('video/anim-logo.webm')}}" type="video/webm">
@@ -29,7 +27,7 @@
                     <a class="transition duration-300 ease-in-out hover:opacity-60" href="https://melsu.ru/update-page">Образовательные стандарты и требования</a>
                 </li>
                 <li class="leading-normal pb-3">
-                    <a class="transition duration-300 ease-in-out hover:opacity-60" href="https://melsu.ru/rectorate">Ректорат</a>
+                    <a class="transition duration-300 ease-in-out hover:opacity-60" href="https://melsu.ru/rectorate">Руководство</a>
                 </li>
                 <li class="leading-normal pb-3">
                     <a class="transition duration-300 ease-in-out hover:opacity-60" href="https://melsu.ru/material-no-tekhnicheskoe-obespechenie-i-osnashchyonnost-obrazovatelnogo-processa">Материально-техническое обеспечение и оснащённость образовательного процесса</a>
