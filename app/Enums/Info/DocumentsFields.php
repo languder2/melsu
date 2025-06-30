@@ -19,7 +19,7 @@ enum DocumentsFields: string
     /* methods */
     public function getName(): string
     {
-        return __("info.documents.{$this->value}");
+        return __("info.documents.{$this->name}");
     }
 
 }

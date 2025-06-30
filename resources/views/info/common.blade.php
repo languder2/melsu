@@ -9,58 +9,52 @@
 @section('content-header')
     Общие сведения
 @endsection
+
 @section('content')
 
-    <div class="grid grid-cols-1 lg:grid-cols-[500px_1fr] gap-4">
-        @component('components.sveden.common')
+    <div class="grid grid-cols-1 lg:grid-cols-[500px_1fr] gap-2">
+
+        @component('components.info.common')
             @slot('itemprop')
-                fullName
+                Название
             @endslot
-            @slot('title')
-                Полное наименование организации:
+            @slot('label')
+                Название
             @endslot
-            @slot('value')
-                Федеральное государственное бюджетное образовательное учреждение высшего образования «Мелитопольский государственный университет
+            @slot('content')
+                значение
             @endslot
+            @slot('header') 1 @endslot
         @endcomponent
 
-        @component('components.sveden.common')
-            @slot('itemprop')
-                shortName
-            @endslot
-            @slot('title')
-                Сокращенные наименования организации:
-            @endslot
-            @slot('value')
-                МелГУ
-            @endslot
-        @endcomponent
-
-        @component('components.sveden.common')
-            @slot('itemprop')
-                regDate
-            @endslot
-            @slot('title')
-                Дата создания образовательной организации:
-            @endslot
-            @slot('value')
-                27.05.2022
-            @endslot
-        @endcomponent
-
-        @component('components.sveden.common')
-            @slot('itemprop')
-                address
-            @endslot
-            @slot('title')
-                Адрес местонахождения образовательной организации (юридический и почтовый адрес):
-            @endslot
-            @slot('value')
-                272312, Запорожская область, г. Мелитополь, проспект Богдана Хмельницкого, 18
-            @endslot
-        @endcomponent
-
+        @foreach($common->base() as $item)
+            @component('components.info.common')
+                @slot('itemprop')
+                    {!! $item->prop !!}
+                @endslot
+                @slot('label')
+                    {!! $item->label !!}
+                @endslot
+                @slot('content')
+                    {!! $item->content->implode(', ') !!}
+                @endslot
+            @endcomponent
+        @endforeach
     </div>
+
+    @component('components.info.documents',$common->licenseDocLink())@endcomponent
+
+    @component('components.info.documents',$common->accreditationDocLink())@endcomponent
+
+    @component('components.info.founder',$founder->template())@endcomponent
+
+    @component('components.info.places',$common->places('addressPlaceSet')) @endcomponent
+    @component('components.info.places',$common->places('addressPlacePrac')) @endcomponent
+    @component('components.info.places',$common->places('addressPlacePodg')) @endcomponent
+    @component('components.info.places',$common->places('addressPlaceGia')) @endcomponent
+    @component('components.info.places',$common->places('addressPlaceDop')) @endcomponent
+    @component('components.info.places',$common->places('addressPlaceOppo')) @endcomponent
+
 @endsection
 
 

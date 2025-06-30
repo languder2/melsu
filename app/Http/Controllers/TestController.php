@@ -2,9 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\Info\BaseFields;
+use App\Enums\Info\CommonFields;
+use App\Enums\Info\InfoType;
 use App\Models\Documents\Document;
 use App\Models\Education\Profile;
 use App\Models\Education\Speciality;
+use App\Models\Info\Info;
+use App\Models\Info\InfoCommon;
+use App\Models\Info\InfoFounder;
 use App\Models\News\Events;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
@@ -44,30 +50,42 @@ class TestController extends Controller
         return view('test.admin',compact('list'));
     }
 
-    public function index(): View
+    public function index(InfoCommon $common): View
     {
         $list = collect([]);
 
-        $item = new Document([
-            'title'     => 100,
-            'sort'      => 300,
-        ]);
 
-        dump($item->id);
+//        Info::create([
+//            'type' => InfoType::Places,
+//            'code' => CommonFields::addressPlaceSet,
+//            'content' => 'address 1',
+//        ]);
+//        Info::create([
+//            'type' => InfoType::Places,
+//            'code' => CommonFields::addressPlaceSet,
+//            'content' => 'address 2',
+//        ]);
+//        Info::create([
+//            'type' => InfoType::Places,
+//            'code' => CommonFields::addressPlaceSet,
+//        ]);
+//        Info::create([
+//            'type' => InfoType::Places,
+//            'code' => CommonFields::addressPlaceSet,
+//            'content' => 'address 3',
+//        ]);
 
-        dump($item->id);
-        dump($item->id);
-        dump($item->id);
-        dump($item->id);
 
-        $item->save();
-
-        dump($item->id);
-        dump($item->id);
-        dump($item->id);
-        dump($item->id);
-
-        dd($item);
+//        $info = Info::Find(9);
+//
+//        $item = Info::find(11);
+//
+//        $item->relation()->associate($info)->save();
+//
+//        dd(
+//            $item
+//        );
+//
 
         return view('test.index',compact('list'));
     }

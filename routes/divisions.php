@@ -8,7 +8,7 @@ Route::prefix('admin/divisions')->group(function () {
 
 Route::controller(DivisionController::class)
     ->middleware('isAdmin')
-    ->prefix('divisions')
+    ->prefix('admin/divisions')
     ->group(function () {
 
         Route::get('add', 'form')->name('admin:division:add');

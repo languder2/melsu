@@ -17,15 +17,15 @@ enum StructureFields: string
     case fioFil                         = 'fioFil';
     case postFil                        = 'postFil';
     case addressFil                     = 'addressFil';
-    case emailFil                       = 'emailFil';
     case websiteFil                     = 'websiteFil';
+    case emailFil                       = 'emailFil';
     case repInfo                        = 'repInfo';
     case nameRep                        = 'nameRep';
     case fioRep                         = 'fioRep';
     case postRep                        = 'postRep';
     case addressRep                     = 'addressRep';
-    case emailRep                       = 'emailRep';
     case websiteRep                     = 'websiteRep';
+    case emailRep                       = 'emailRep';
 
 
     /* methods */

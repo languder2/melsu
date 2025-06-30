@@ -1,10 +1,7 @@
 <header
-    class="py-1 text-white bg-cover bg-[image:var(--bg-sveden-header)]"
+    class="py-1 text-white bg-cover bg-[image:var(--bg-sveden-header)] sticky top-0"
 >
-    <nav class="px-2 lg:mx-auto max-w-1600 flex items-center gap-4 :bg-red-300">
-        <a href="{{route('pages:main')}}" target="_blank" class="focus:outline-0">
-            <img src="{{asset('img/cabinet/logo.svg')}}" alt="" />
-        </a>
+    <nav class="px-4 flex items-center gap-4 :bg-red-300">
         <div>
             {{ $title ?? null }}
         </div>
@@ -14,10 +11,8 @@
             <li></li>
             <li></li>
             <li>
-                <a href="{{route('sveden:common')}}"
-                   class="flex gap-3 py-3 px-5 hover:bg-red-700 rounded-md focus:outline-0"
-                >
-                    Общие сведения
+                <a href="#" itemprop="copy">
+                    ...
                 </a>
             </li>
         </ul>

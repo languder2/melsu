@@ -5,6 +5,7 @@ namespace App\Enums;
 enum DivisionType: string
 {
     case Rectorate = 'rectorate';
+    case Representative = 'representative';
     case Branch         = 'branch';
     case Institute      = 'institute';
     case Faculty        = 'faculty';
@@ -26,6 +27,7 @@ enum DivisionType: string
             self::Administration        => 'Управление',
             self::Division              => 'Департамент',
             self::Office                => 'Отдел',
+            self::Representative        => 'Представительство',
             self::Other                 => 'Иное',
         };
     }

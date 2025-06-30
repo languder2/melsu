@@ -33,6 +33,6 @@ enum CommonFields : string
     /* methods */
     public function getName(): string
     {
-        return __("info.common.{$this->value}");
+        return __("info.common.{$this->name}");
     }
 }

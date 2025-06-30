@@ -13,7 +13,8 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use PhpParser\Comment\Doc;
 
-class DocumentsController extends Controller
+class
+DocumentsController extends Controller
 {
     /* ADMIN */
     public function admin(string $field,string $direction):View
