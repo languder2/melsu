@@ -83,7 +83,7 @@ class InfoController extends Controller
 
     public function catering(InfoBase $info):View
     {
-        return view('info.wip', compact('info'));
+        return view('info.catering', compact('info'));
     }
 
 
