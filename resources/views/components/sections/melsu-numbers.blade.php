@@ -29,7 +29,7 @@
                     <h4 class="text-xl lg:text-lg 2xl:text-xl text-[#A1A1A1] font-medium">образовательных программ</h4>
                     <h3 id="countProg" class="counter text-[40px] text-[#C10F1A] font-extrabold">0</h3>
                 </div>
-                <div class="bg-[#C10F1A] min-h-[260px] relative">
+                <div class="bg-[#C10F1A] min-h-[260px] relative overflow-hidden">
                     <img class="absolute right-[-35px] h-full max-h-[258px] w-auto lg:w-full" src="{{asset('img/white-logo-2.png')}}" alt="">
                 </div>
                 <div class="bg-white p-10 flex flex-col justify-between min-h-[260px] border border-[#EEEEEE]">
@@ -44,14 +44,14 @@
         </div>
         <div class="grid grid-cols-1 lg:grid-cols-[20%_auto]">
             <div class="h-full">
-                <img class="h-full w-full object-cover object-[32%]" src="{{asset('img/numb-1.jpg')}}" alt="">
+                <img class="h-full max-h-[680px] w-full object-cover object-[32%]" src="{{asset('img/numb-1.jpg')}}" alt="">
             </div>
             <div class="bg-white border border-[#EEEEEE] px-5 py-10">
                 <h2 class="text-xl font-semibold">
                     Число обучающихся МелГУ:
                 </h2>
-                <div class="flex flex-col justify-between h-full">
-                    <div>
+                <div class="flex flex-col justify-between">
+                    <div class="max-h-[242px]">
                         <svg width="100%" height="100%" viewBox="0 0 447 226" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M237 199V54.5897L423.249 23L424 199H237Z" fill="url(#paint0_radial_1_21906)"/>
                             <path d="M26 199L26.0001 151L236 55V199H26Z" fill="url(#paint1_radial_1_21906)"/>
@@ -84,7 +84,7 @@
                             </defs>
                         </svg>
                     </div>
-                    <p class="text-lg">
+                    <p class="text-lg h-full">
                         ФГБОУ «Мелитопольский государственный университет» создан 27 мая 2022 года. И уже 15 августа 2022 г. МелГУ получил свидетельство о государственной аккредитации в Российской Федерации. В структуру Мелитопольского государственного университета входят 7 факультетов и 3 колледжа. Вуз готовит высококвалифицированных специалистов по 68 специальностям различных направлений подготовки.
                     </p>
                 </div>
