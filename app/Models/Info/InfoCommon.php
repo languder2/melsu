@@ -2,75 +2,77 @@
 
 namespace App\Models\Info;
 
-use App\Enums\Info\CommonFields;
-use App\Enums\Info\InfoType;
+use App\Enums\Info\Common;
+use App\Enums\Info\Types;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
 
 class InfoCommon extends Info
 {
+    protected const Types Type = Types::Common;
+
     public function base(): array
     {
         return [
-            CommonFields::fullName->name => (object)[
-                'prop'      => CommonFields::fullName->name,
-                'label'     => CommonFields::fullName->getName(),
+            Common::fullName->name => (object)[
+                'prop'      => Common::fullName->name,
+                'label'     => Common::fullName->getName(),
                 'type'      => 'string',
                 'multi'     => false,
                 'content'   => $this->fullName(),
             ],
-            CommonFields::shortName->name => (object)[
-                'prop'      => CommonFields::shortName->name,
-                'label'     => CommonFields::shortName->getName(),
+            Common::shortName->name => (object)[
+                'prop'      => Common::shortName->name,
+                'label'     => Common::shortName->getName(),
                 'type'      => 'string',
                 'multi'     => false,
                 'content'   => $this->shortName(),
             ],
-            CommonFields::regDate->name => (object)[
-                'prop'      => CommonFields::regDate->name,
-                'label'     => CommonFields::regDate->getName(),
+            Common::regDate->name => (object)[
+                'prop'      => Common::regDate->name,
+                'label'     => Common::regDate->getName(),
                 'type'      => 'date',
                 'format'    => 'd.m.Y',
                 'multi'     => false,
                 'content'   => $this->regDate(),
             ],
-            CommonFields::address->name => (object)[
-                'prop'      => CommonFields::address->name,
-                'label'     => CommonFields::address->getName(),
+            Common::address->name => (object)[
+                'prop'      => Common::address->name,
+                'label'     => Common::address->getName(),
                 'type'      => 'string',
                 'content'   => $this->address(),
             ],
-            CommonFields::availabilityOfBranches->name => (object)[
-                'prop'      => CommonFields::availabilityOfBranches->name,
-                'label'     => CommonFields::availabilityOfBranches->getName(),
+            Common::availabilityOfBranches->name => (object)[
+                'prop'      => Common::availabilityOfBranches->name,
+                'label'     => Common::availabilityOfBranches->getName(),
                 'type'      => 'boolean',
                 'multi'     => false,
                 'content'   => $this->branches(),
             ],
-            CommonFields::availabilityOfRepresentative->name => (object)[
-                'prop'      => CommonFields::availabilityOfRepresentative->name,
-                'label'     => CommonFields::availabilityOfRepresentative->getName(),
+            Common::availabilityOfRepresentative->name => (object)[
+                'prop'      => Common::availabilityOfRepresentative->name,
+                'label'     => Common::availabilityOfRepresentative->getName(),
                 'type'      => 'boolean',
                 'multi'     => false,
                 'content'   => $this->representative(),
             ],
-            CommonFields::workTime->name => (object)[
-                'prop'      => CommonFields::workTime->name,
-                'label'     => CommonFields::workTime->getName(),
+            Common::workTime->name => (object)[
+                'prop'      => Common::workTime->name,
+                'label'     => Common::workTime->getName(),
                 'type'      => 'text',
                 'multi'     => false,
                 'content'   => $this->workTime(),
             ],
-            CommonFields::telephone->name => (object)[
-                'prop'      => CommonFields::telephone->name,
-                'label'     => CommonFields::telephone->getName(),
+            Common::telephone->name => (object)[
+                'prop'      => Common::telephone->name,
+                'label'     => Common::telephone->getName(),
                 'type'      => 'text',
                 'multi'     => false,
                 'content'   => $this->tel(),
             ],
-            CommonFields::email->name => (object)[
-                'prop'      => CommonFields::email->name,
-                'label'     => CommonFields::email->getName(),
+            Common::email->name => (object)[
+                'prop'      => Common::email->name,
+                'label'     => Common::email->getName(),
                 'type'      => 'text',
                 'multi'     => false,
                 'content'   => $this->email(),
@@ -80,7 +82,7 @@ class InfoCommon extends Info
 
     public function fullName():Collection
     {
-        $result = $this->getContent(InfoType::Common,CommonFields::fullName);
+        $result = $this->getContent(Types::Common,Common::fullName);
 
         if($result->isEmpty())
             $result->push('Не указано');
@@ -89,7 +91,7 @@ class InfoCommon extends Info
     }
     public function shortName():Collection
     {
-        $result = $this->getContent(InfoType::Common,CommonFields::shortName);
+        $result = $this->getContent(Types::Common,Common::shortName);
 
         if($result->isEmpty())
             $result->push('Не указано');
@@ -98,7 +100,7 @@ class InfoCommon extends Info
     }
     public function regDate():Collection
     {
-        $result = $this->getContent(InfoType::Common,CommonFields::regDate)->map(function ($item){
+        $result = $this->getContent(Types::Common,Common::regDate)->map(function ($item){
             return $item ? Carbon::createFromFormat('Y-m-d',$item)->format('d.m.Y') : 'Не указано';
         });
 
@@ -110,7 +112,7 @@ class InfoCommon extends Info
     }
     public function address():Collection
     {
-        $result = $this->getContent(InfoType::Common,CommonFields::address);
+        $result = $this->getContent(Types::Common,Common::address);
 
         if($result->isEmpty())
             $result->push('Не указано');
@@ -120,7 +122,7 @@ class InfoCommon extends Info
 
     public function branches():Collection
     {
-        $result = $this->getContent(InfoType::Common,CommonFields::availabilityOfBranches)
+        $result = $this->getContent(Types::Common,Common::availabilityOfBranches)
             ->map(function ($item){
                 return (bool) $item ? 'Имеются' : 'Отсутствуют';
             });
@@ -133,7 +135,7 @@ class InfoCommon extends Info
 
     public function representative():Collection
     {
-        $result = $this->getContent(InfoType::Common,CommonFields::availabilityOfBranches)
+        $result = $this->getContent(Types::Common,Common::availabilityOfBranches)
             ->map(function ($item){
                 return (bool) $item ? 'Имеются' : 'Отсутствуют';
             });
@@ -146,7 +148,7 @@ class InfoCommon extends Info
 
     public function workTime():Collection
     {
-        $result = $this->getContent(InfoType::Common,CommonFields::address);
+        $result = $this->getContent(Types::Common,Common::address);
 
         if($result->isEmpty())
             $result->push('Не указано');
@@ -156,7 +158,7 @@ class InfoCommon extends Info
 
     public function tel():Collection
     {
-        $result = $this->getContent(InfoType::Common,CommonFields::telephone);
+        $result = $this->getContent(Types::Common,Common::telephone);
 
         if($result->isEmpty())
             $result->push('Не указано');
@@ -166,7 +168,7 @@ class InfoCommon extends Info
 
     public function email():Collection
     {
-        $result = $this->getContent(InfoType::Common,CommonFields::email);
+        $result = $this->getContent(Types::Common,Common::email);
 
         if($result->isEmpty())
             $result->push('Не указано');
@@ -177,29 +179,29 @@ class InfoCommon extends Info
     public function licenseDocLink(): array
     {
         return [
-            'prop'      => CommonFields::licenseDocLink->name,
-            'label'     => CommonFields::licenseDocLink->getName(),
-            'documents' => $this->getDocuments(InfoType::Common,CommonFields::licenseDocLink),
+            'prop'      => Common::licenseDocLink->name,
+            'label'     => Common::licenseDocLink->getName(),
+            'documents' => $this->getDocuments(Types::Common,Common::licenseDocLink),
         ];
     }
 
     public function accreditationDocLink(): array
     {
         return [
-            'prop'      => CommonFields::accreditationDocLink->name,
-            'label'     => CommonFields::accreditationDocLink->getName(),
-            'documents' => $this->getDocuments(InfoType::Common,CommonFields::accreditationDocLink),
+            'prop'      => Common::accreditationDocLink->name,
+            'label'     => Common::accreditationDocLink->getName(),
+            'documents' => $this->getDocuments(Types::Common,Common::accreditationDocLink),
         ];
     }
 
     public function places(string $code): array
     {
-        $code = CommonFields::tryFrom($code);
+        $code = Common::tryFrom($code);
 
         return [
             'prop'      => $code->name,
             'label'     => $code->getName(),
-            'list'      => $this->getContent(InfoType::Places,$code),
+            'list'      => $this->getContent(Types::Places,$code),
         ];
     }
 

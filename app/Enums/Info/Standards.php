@@ -2,7 +2,7 @@
 
 namespace App\Enums\Info;
 
-enum StandardsFields
+enum Standards
 {
     case eduFedDoc;
     case eduStandartDoc;
@@ -14,14 +14,4 @@ enum StandardsFields
     {
         return __("info.standards.{$this->name}");
     }
-
-    public static function get($value): ?self
-    {
-        foreach(self::cases() as $case)
-            if($case->name === $value)
-                return $case;
-
-        return null;
-    }
-
 }

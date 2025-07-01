@@ -2,7 +2,7 @@
 
 namespace App\Enums\Info;
 
-enum InfoType
+enum Types
 {
     case Common;
     case Founder;
@@ -10,6 +10,13 @@ enum InfoType
     case Documents;
     case Standards;
     case Managers;
+    case Objects;
+    case Grants;
+    case Paid;
+    case Budget;
+    case Vacant;
+    case Inter;
+    case Catering;
 
 
     public function label():string

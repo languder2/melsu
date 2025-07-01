@@ -3,8 +3,8 @@
 namespace App\Models\Info;
 
 use App\Enums\DivisionType;
-use App\Enums\Info\ManagersFields;
-use App\Enums\Info\StructureFields;
+use App\Enums\Info\Managers;
+use App\Enums\Info\Structure;
 use App\Models\Division\Division;
 use App\Models\Staff\Affiliation;
 use App\Models\Staff\Staff;
@@ -26,31 +26,31 @@ class InfoManagers extends Info
         $rectorate = Division::where('type',DivisionType::Rectorate)->first();
 
         return [
-            'label'             => ManagersFields::rucovodstvo->getName(),
+            'label'             => Managers::rucovodstvo->getName(),
             'captions'          => [
-                ManagersFields::fio,
-                ManagersFields::post,
-                ManagersFields::telephone,
-                ManagersFields::email,
+                Managers::fio,
+                Managers::post,
+                Managers::telephone,
+                Managers::email,
             ],
-            'chief_prop'    => ManagersFields::rucovodstvo->name,
+            'chief_prop'    => Managers::rucovodstvo->name,
             'chief'         => self::manager($rectorate->chief ?? null),
-            'staff_prop'    => ManagersFields::rucovodstvoZam->name,
+            'staff_prop'    => Managers::rucovodstvoZam->name,
             'staffs'        => $rectorate->staffs->keyBy('id')->map(fn($staff) => self::manager($staff ?? null)),
         ];
     }
     public function branches(): array
     {
         return [
-            'label'             => ManagersFields::rucovodstvoFil->getName(),
+            'label'             => Managers::rucovodstvoFil->getName(),
             'captions'          => [
-                ManagersFields::nameFil,
-                ManagersFields::fio,
-                ManagersFields::post,
-                ManagersFields::telephone,
-                ManagersFields::email,
+                Managers::nameFil,
+                Managers::fio,
+                Managers::post,
+                Managers::telephone,
+                Managers::email,
             ],
-            'staff_prop'    => ManagersFields::rucovodstvoFil->name,
+            'staff_prop'    => Managers::rucovodstvoFil->name,
             'staffs'        =>
                 Division::where('type',DivisionType::Branch)
                     ->orderBy('sort')->orderBy('name')

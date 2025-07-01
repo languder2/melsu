@@ -13,6 +13,7 @@
 @section('content')
 
     @component('components.info.rectorate',$managers->rectorate())@endcomponent
+
     @component('components.info.rectorate',$managers->branches())@endcomponent
 
 @endsection

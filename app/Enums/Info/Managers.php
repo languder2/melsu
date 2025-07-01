@@ -2,19 +2,21 @@
 
 namespace App\Enums\Info;
 
-enum CateringFields
+enum Managers
 {
-    case meals;
-    case health;
-    case objName;
-    case objAddress;
-    case objSq;
-    case objCnt;
-    case objOvz;
+    case rucovodstvo;
+    case fio;
+    case post;
+    case telephone;
+    case email;
+    case rucovodstvoZam;
+    case rucovodstvoFil;
+    case nameFil;
+
     /* methods */
     public function getName(): string
     {
-        return __("info.standards.{$this->name}");
+        return __("info.managers.{$this->name}");
     }
 
     public static function get($value): ?self

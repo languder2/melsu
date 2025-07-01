@@ -2,7 +2,7 @@
 
 namespace App\Enums\Info;
 
-enum EducationFields
+enum Education
 {
     case eduAccred;
     case eduCode;
@@ -37,16 +37,6 @@ enum EducationFields
     /* methods */
     public function getName(): string
     {
-        return __("info.documents.{$this->name}");
+        return __("info.education.{$this->name}");
     }
-
-    public static function get($value): ?self
-    {
-        foreach(self::cases() as $case)
-            if($case->name === $value)
-                return $case;
-
-        return null;
-    }
-
 }

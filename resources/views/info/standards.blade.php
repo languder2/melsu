@@ -12,13 +12,10 @@
 
 @section('content')
 
-    @component('components.info.documents',$standards->standards('eduFedDoc'))@endcomponent
-
-    @component('components.info.documents',$standards->standards('eduStandartDoc'))@endcomponent
-
-    @component('components.info.documents',$standards->standards('eduFedTreb'))@endcomponent
-
-    @component('components.info.documents',$standards->standards('eduStandartTreb'))@endcomponent
+    @component('components.info.documents',$standards->getTemplate('eduFedDoc','documents'))@endcomponent
+    @component('components.info.documents',$standards->getTemplate('eduStandartDoc','documents'))@endcomponent
+    @component('components.info.documents',$standards->getTemplate('eduFedTreb','documents'))@endcomponent
+    @component('components.info.documents',$standards->getTemplate('eduStandartTreb','documents'))@endcomponent
 
 @endsection
 

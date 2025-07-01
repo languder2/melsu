@@ -4,7 +4,7 @@ namespace App\Models\Info;
 
 use App\Enums\ContactType;
 use App\Enums\DivisionType;
-use App\Enums\Info\StructureFields;
+use App\Enums\Info\Structure;
 use App\Models\Division\Division;
 use Illuminate\Support\Collection;
 
@@ -14,22 +14,22 @@ class InfoStructure extends Info
 
     public function __construct()
     {
-        $this->pageTitle = StructureFields::structOrgUprav->getName();
+        $this->pageTitle = Structure::structOrgUprav->getName();
 
         parent::__construct();
     }
     public function divisions(): array
     {
         return [
-            'prop'              => StructureFields::structOrgUprav->name,
+            'prop'              => Structure::structOrgUprav->name,
             'captions'          => [
-                StructureFields::name,
-                StructureFields::fio,
-                StructureFields::post,
-                StructureFields::addressStr,
-                StructureFields::site,
-                StructureFields::email,
-                StructureFields::divisionClauseDocLink,
+                Structure::name,
+                Structure::fio,
+                Structure::post,
+                Structure::addressStr,
+                Structure::site,
+                Structure::email,
+                Structure::divisionClauseDocLink,
             ],
             'list'            => $this->divisionsList(),
         ];
@@ -55,16 +55,16 @@ class InfoStructure extends Info
     public function branches(): array
     {
         return [
-            'prop'              => StructureFields::filInfo->name,
-            'label'             => StructureFields::filInfo->getName(),
+            'prop'              => Structure::filInfo->name,
+            'label'             => Structure::filInfo->getName(),
             'captions'          => [
-                StructureFields::nameFil,
-                StructureFields::fioFil,
-                StructureFields::postFil,
-                StructureFields::addressFil,
-                StructureFields::websiteFil,
-                StructureFields::emailFil,
-                StructureFields::divisionClauseDocLink,
+                Structure::nameFil,
+                Structure::fioFil,
+                Structure::postFil,
+                Structure::addressFil,
+                Structure::websiteFil,
+                Structure::emailFil,
+                Structure::divisionClauseDocLink,
             ],
             'list'            => $this->branchesList(),
         ];
@@ -90,16 +90,16 @@ class InfoStructure extends Info
     public function representative(): array
     {
         return [
-            'prop'              => StructureFields::repInfo->name,
-            'label'             => StructureFields::repInfo->getName(),
+            'prop'              => Structure::repInfo->name,
+            'label'             => Structure::repInfo->getName(),
             'captions'          => [
-                StructureFields::nameRep,
-                StructureFields::fioRep,
-                StructureFields::postRep,
-                StructureFields::addressRep,
-                StructureFields::websiteRep,
-                StructureFields::emailRep,
-                StructureFields::divisionClauseDocLink,
+                Structure::nameRep,
+                Structure::fioRep,
+                Structure::postRep,
+                Structure::addressRep,
+                Structure::websiteRep,
+                Structure::emailRep,
+                Structure::divisionClauseDocLink,
             ],
             'list'            => $this->representativeList(),
         ];

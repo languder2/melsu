@@ -7,13 +7,14 @@
 @endsection
 
 @section('content-header')
-    {{ __('info.title.managers') }}
+    {{ __('info.title.catering') }}
 @endsection
 
 @section('content')
 
-{{--    @component('components.info.rectorate',$managers->rectorate())@endcomponent--}}
-{{--    @component('components.info.rectorate',$managers->branches())@endcomponent--}}
+    @component('components.info.table',$catering->template('meals'))@endcomponent
+
+    @component('components.info.table',$catering->template('health'))@endcomponent
 
 @endsection
 

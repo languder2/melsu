@@ -6,7 +6,9 @@ use App\Enums\DurationType;
 use App\Enums\EducationBasis;
 use App\Enums\EducationForm;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use App\Models\{Link, Sections\FAQ, Staff\Affiliation};
+use Illuminate\Database\Eloquent\Relations\MorphOne;
+use Illuminate\Database\Eloquent\Relations\MorphOneOrMany;
+use App\Models\{Info\Info, Link, Sections\FAQ, Staff\Affiliation};
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -379,5 +381,29 @@ class Profile extends Model
     {
         return  $this->formatedDuration(DurationType::SOO,false);
     }
+
+    public function info(): MorphMany
+    {
+        return $this-> morphMany(Info::class,'relation');
+    }
+
+    public function getInfoByCode($code): ?Info
+    {
+        return $this->info()->where('code',$code)->first();
+    }
+    public function getInfos(): Collection
+    {
+        return $this->info()->get()->keyBy('code');
+    }
+    public function getInfosByType($type): Collection
+    {
+        return $this->info()->where('type',$type)->get()->keyBy('code');
+    }
+    public function getInfoContent($code): string|int|null
+    {
+        return $this->info()->where('code',$code)->first()->content ?? null;
+    }
+
+
 
 }

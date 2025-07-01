@@ -2,7 +2,7 @@
 
 namespace App\Enums\Info;
 
-enum StructureFields: string
+enum Structure: string
 {
     case structOrgUprav                 = 'structOrgUprav';
     case name                           = 'name';

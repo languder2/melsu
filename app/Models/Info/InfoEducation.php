@@ -3,11 +3,11 @@
 namespace App\Models\Info;
 
 use App\Enums\DurationType;
-use App\Enums\Info\DocumentsFields;
-use App\Enums\Info\EducationFields;
-use App\Enums\Info\InfoType;
-use App\Enums\Info\ManagersFields;
-use App\Enums\Info\StandardsFields;
+use App\Enums\Info\Documents;
+use App\Enums\Info\Education;
+use App\Enums\Info\Types;
+use App\Enums\Info\Managers;
+use App\Enums\Info\Standards;
 use App\Models\Education\Profile;
 use Illuminate\Support\Collection;
 
@@ -17,17 +17,17 @@ class InfoEducation extends Info
     public function template()
     {
         return [
-            'label'             => EducationFields::eduAccred->getName(),
-            'prop'              => EducationFields::eduAccred->name,
+            'label'             => Education::eduAccred->getName(),
+            'prop'              => Education::eduAccred->name,
             'captions'          => [
-                EducationFields::eduCode,
-                EducationFields::eduName,
-                EducationFields::eduProf,
-                EducationFields::eduLevel,
-                EducationFields::eduForm,
-                EducationFields::learningTerm,
-                EducationFields::eduPred,
-                EducationFields::eduPrac,
+                Education::eduCode,
+                Education::eduName,
+                Education::eduProf,
+                Education::eduLevel,
+                Education::eduForm,
+                Education::learningTerm,
+                Education::eduPred,
+                Education::eduPrac,
             ],
             'list'              => $this->specialities()
 

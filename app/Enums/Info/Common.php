@@ -2,7 +2,7 @@
 
 namespace App\Enums\Info;
 
-enum CommonFields : string
+enum Common : string
 {
     case fullName                       = 'fullName';
     case shortName                      = 'shortName';

@@ -2,8 +2,8 @@
 
 namespace App\Models\Info;
 
-use App\Enums\Info\CommonFields;
-use App\Enums\Info\InfoType;
+use App\Enums\Info\Common;
+use App\Enums\Info\Types;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
 
@@ -12,37 +12,37 @@ class InfoFounder extends Info
     public function template(): array
     {
         return [
-            'prop'              => CommonFields::uchredLaw->name,
-            'label'             => CommonFields::uchredLaw->getName(),
+            'prop'              => Common::uchredLaw->name,
+            'label'             => Common::uchredLaw->getName(),
             'captions'          => [
-                CommonFields::nameUchred->getName(),
-                CommonFields::addressUchred->getName(),
-                CommonFields::telUchred->getName(),
-                CommonFields::mailUchred->getName(),
-                CommonFields::websiteUchred->getName(),
+                Common::nameUchred->getName(),
+                Common::addressUchred->getName(),
+                Common::telUchred->getName(),
+                Common::mailUchred->getName(),
+                Common::websiteUchred->getName(),
             ],
             'list'            => $this->list(),
         ];
     }
     public function list(): Collection
     {
-        $list = $this->getFields(InfoType::Founder,CommonFields::uchredLaw);
+        $list = $this->getFields(Types::Founder,Common::uchredLaw);
 
         if($list->isEmpty())
             $list->push(new self([
-                "type"  => InfoType::Common,
-                "code"  => CommonFields::uchredLaw
+                "type"  => Types::Common,
+                "code"  => Common::uchredLaw
             ]));
 
         return $list->map(function ($item) {
             return (object)[
                 "id"        => $item->id,
                 "fields"    => [
-                    "nameUchred"    => $item->getRelationArgs(CommonFields::nameUchred),
-                    "addressUchred" => $item->getRelationArgs(CommonFields::addressUchred),
-                    "telUchred"     => $item->getRelationArgs(CommonFields::telUchred),
-                    "mailUchred"    => $item->getRelationArgs(CommonFields::mailUchred),
-                    "websiteUchred" => $item->getRelationArgs(CommonFields::websiteUchred),
+                    "nameUchred"    => $item->getRelationArgs(Common::nameUchred),
+                    "addressUchred" => $item->getRelationArgs(Common::addressUchred),
+                    "telUchred"     => $item->getRelationArgs(Common::telUchred),
+                    "mailUchred"    => $item->getRelationArgs(Common::mailUchred),
+                    "websiteUchred" => $item->getRelationArgs(Common::websiteUchred),
                 ]
             ];
         });

@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Enums\Info\BaseFields;
-use App\Enums\Info\CommonFields;
-use App\Enums\Info\InfoType;
+use App\Enums\Info\Base;
+use App\Enums\Info\Common;
+use App\Enums\Info\Types;
 use App\Models\Documents\Document;
 use App\Models\Education\Profile;
 use App\Models\Education\Speciality;
@@ -53,6 +53,16 @@ class TestController extends Controller
     public function index(InfoCommon $common): View
     {
         $list = collect([]);
+
+        $host = Info::find(1);
+
+        $item = Info::find(2);
+
+        $item->relation()->associate($host)->save();
+
+        dd($host->subs);
+
+        dd($host,$item);
 
 
 //        Info::create([

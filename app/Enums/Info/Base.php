@@ -2,7 +2,7 @@
 
 namespace App\Enums\Info;
 
-enum BaseFields
+enum Base
 {
     case copy;
 

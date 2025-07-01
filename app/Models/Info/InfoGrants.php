@@ -2,21 +2,21 @@
 
 namespace App\Models\Info;
 
-use App\Enums\Info\Documents;
+use App\Enums\Info\Grants;
 use App\Enums\Info\Types;
 use Illuminate\Support\Collection;
 
-class InfoDocuments extends Info
+class InfoGrants extends Info
 {
-    protected const Types Type = Types::Documents;
+
+    protected const Types Type = Types::Grants;
 
     protected Collection $codes;
 
     public function __construct(...$arguments)
     {
-        $this->codes = collect(Documents::cases());
+        $this->codes = collect(Grants::cases());
 
         parent::__construct($arguments);
     }
-
 }

@@ -12,27 +12,27 @@
 
 @section('content')
 
-    @component('components.info.documents',$documents->documents('ustavDocLink'))@endcomponent
+    @component('components.info.documents',$documents->getTemplate('ustavDocLink','documents'))@endcomponent
 
-    @component('components.info.documents',$documents->documents('localActStud'))@endcomponent
+    @component('components.info.documents',$documents->getTemplate('localActStud','documents'))@endcomponent
 
-    @component('components.info.documents',$documents->documents('localActOrder'))@endcomponent
+    @component('components.info.documents',$documents->getTemplate('localActOrder','documents'))@endcomponent
 
-    @component('components.info.documents',$documents->documents('localActCollec'))@endcomponent
+    @component('components.info.documents',$documents->getTemplate('localActCollec','documents'))@endcomponent
 
-    @component('components.info.documents',$documents->documents('reportEduDocLink'))@endcomponent
+    @component('components.info.documents',$documents->getTemplate('reportEduDocLink','documents'))@endcomponent
 
-    @component('components.info.documents',$documents->documents('prescriptionDocLink'))@endcomponent
+    @component('components.info.documents',$documents->getTemplate('prescriptionDocLink','documents'))@endcomponent
 
-    @component('components.info.documents',$documents->documents('priemDocLink'))@endcomponent
+    @component('components.info.documents',$documents->getTemplate('priemDocLink','documents'))@endcomponent
 
-    @component('components.info.documents',$documents->documents('modeDocLink'))@endcomponent
+    @component('components.info.documents',$documents->getTemplate('modeDocLink','documents'))@endcomponent
 
-    @component('components.info.documents',$documents->documents('tekKontrolDocLink'))@endcomponent
+    @component('components.info.documents',$documents->getTemplate('tekKontrolDocLink','documents'))@endcomponent
 
-    @component('components.info.documents',$documents->documents('perevodDocLink'))@endcomponent
+    @component('components.info.documents',$documents->getTemplate('perevodDocLink','documents'))@endcomponent
 
-    @component('components.info.documents',$documents->documents('vozDocLink'))@endcomponent
+    @component('components.info.documents',$documents->getTemplate('vozDocLink','documents'))@endcomponent
 
 @endsection
 

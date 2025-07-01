@@ -7,12 +7,12 @@
 @endsection
 
 @section('content-header')
-    {{ __('info.education.title') }}
+    {{ __('info.title.inter') }}
 @endsection
 
 @section('content')
 
-    @component('components.info.education',$education->template())@endcomponent
+    @component('components.info.table',$inter->template())@endcomponent
 
 @endsection
 

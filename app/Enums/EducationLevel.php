@@ -12,6 +12,15 @@ enum EducationLevel: string
     case Colleges       = 'colleges';
     case Postgraduate   = 'postgraduate';
 
+    public function getCurses(): int
+    {
+        return match ($this) {
+            self::Bachelor      => 4,
+            self::Specialist    => 5,
+            self::Master        => 2,
+            self::Colleges      => 2,
+        };
+    }
     public function getName(): string
     {
         return match ($this) {
