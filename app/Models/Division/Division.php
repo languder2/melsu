@@ -226,6 +226,13 @@ class Division extends Model
 
         return $response;
     }
+    public function staffsAll(): MorphMany
+    {
+        return $this->morphMany(StaffAffiliation::class, 'relation')
+            ->orderBy('order')
+            ->where('show',1)
+        ;
+    }
 
     public function news(): MorphMany
     {

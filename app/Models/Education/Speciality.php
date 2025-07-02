@@ -8,6 +8,7 @@ use App\Models\Division\Division;
 use App\Models\Documents\Document;
 use App\Models\Gallery\Image;
 use App\Models\Global\Options;
+use App\Models\Info\Info;
 use App\Models\Page\Content as PageContent;
 use App\Models\Sections\Career;
 use App\Models\Sections\FAQ;
@@ -35,6 +36,7 @@ class Speciality extends Model
         'faculty_id',
         'department_id',
         'level',
+        'courses',
         'favorite',
         'description',
         'sort',
@@ -280,9 +282,14 @@ class Speciality extends Model
         return $this->options()->where('code',$code)->first()
             ?? (new Options(['code' => $code]))->relation()->associate($this);
     }
-    public function optionValue(string $code): string
+    public function optionValue(string $code): ?string
     {
         return $this->option($code)->property;
+    }
+
+    public function infos(): MorphMany
+    {
+        return $this->morphMany(Info::class, 'relation');
     }
 
 }

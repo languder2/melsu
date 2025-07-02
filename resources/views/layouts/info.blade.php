@@ -17,15 +17,15 @@
 </head>
 <body class="bg-neutral-100 relative grid grid-rows-[auto_1fr_auto] min-h-screen gap-0">
 
-<main class="min-h-full bg-amber grid grid-cols-[400px_1fr]">
+<main class="min-h-full bg-amber grid grid-cols-[400px_1fr] w-full ">
     <div class="bg-red">
         @include('info.menu')
     </div>
-    <div class="h-screen overflow-y-scroll relative">
+    <div class="h-screen overflow-auto relative">
 
         @include("info.header")
 
-        <div class="flex flex-col gap-4 p-4 m">
+        <div class="flex flex-col gap-4 px-3 py-4">
             <div class="content-header text-2xl font-semibold">
                 @hasSection('content-header')
                     @yield('content-header')
@@ -36,8 +36,6 @@
         </div>
     </div>
 </main>
-
-{{--@include("info.footer")--}}
 
 </body>
 </html>

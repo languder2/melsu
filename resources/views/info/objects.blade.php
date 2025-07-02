@@ -34,7 +34,7 @@
         'dormitoryPlacesForDisabilities'    => $objects->getProperty('hostelNumOvz'),
         'boardingNumbers'                   => $objects->getProperty('interInfo'),
         'boardingPlaces'                    => $objects->getProperty('interNum'),
-        'boardingPlacesForDisabilities'     => $objects->getProperty('hostelInterOvz'),
+        'boardingPlacesForDisabilities'     => $objects->getProperty('interNumOvz'),
     ])@endcomponent
 
     @component('components.info.text',$objects->content('hostelInterOvz'))@endcomponent

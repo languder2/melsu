@@ -10,6 +10,7 @@ use App\Models\Info\InfoCatering;
 use App\Models\Info\InfoCommon;
 use App\Models\Info\InfoDocuments;
 use App\Models\Info\InfoEducation;
+use App\Models\Info\InfoEmployees;
 use App\Models\Info\InfoFounder;
 use App\Models\Info\InfoGrants;
 use App\Models\Info\InfoInter;
@@ -55,9 +56,9 @@ class InfoController extends Controller
         return view('info.managers', compact('info', 'managers'));
     }
 
-    public function employees(InfoBase $info):View
+    public function employees(InfoBase $info, InfoEmployees $employees):View
     {
-        return view('info.wip', compact('info'));
+        return view('info.employees', compact('info','employees'));
     }
 
     public function objects(InfoBase $info, InfoObjects $objects):View

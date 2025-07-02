@@ -7,6 +7,7 @@ enum Types
     case Common;
     case Founder;
     case Places;
+    case Education;
     case Documents;
     case Standards;
     case Managers;
@@ -16,6 +17,7 @@ enum Types
     case Budget;
     case Vacant;
     case Inter;
+    case Employees;
     case Catering;
 
 

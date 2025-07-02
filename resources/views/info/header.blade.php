@@ -1,5 +1,5 @@
 <header
-    class="py-1 text-white bg-cover bg-[image:var(--bg-sveden-header)] sticky top-0"
+    class="w-full py-1 text-white bg-cover bg-[image:var(--bg-sveden-header)] sticky top-0 left-0"
 >
     <nav class="px-4 flex items-center gap-4 :bg-red-300">
         <div>

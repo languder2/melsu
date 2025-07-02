@@ -4,6 +4,7 @@ namespace App\Models\Staff;
 
 use App\Models\Division\Division;
 use App\Models\Gallery\Image;
+use App\Models\Global\Options;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -11,6 +12,7 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Staff\Post;
+use PhpOption\Option;
 
 class Staff extends Model
 {
@@ -138,5 +140,13 @@ class Staff extends Model
         return $this->hasMany(Affiliation::class,'staff_id', 'id')->select('post_alt')->groupBy('post_alt');
     }
 
+    public function options():MorphMany
+    {
+        return $this->morphMany(Options::class,'relation');
+    }
+    public function option(string $code):Options
+    {
+        return $this->options->where('code',$code)->first() ?? $this->options()->create(['code' => 'is_teacher']);
+    }
 
 }

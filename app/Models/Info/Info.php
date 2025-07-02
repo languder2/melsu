@@ -67,9 +67,10 @@ use Illuminate\Support\Collection;
     {
         return $this->getFields($type,$code)->first();
     }
-    public function getProperty(string $code): ?object
+    public function getProperty($code): ?object
     {
-        $code = $this->getCode($code);
+        if(!is_object($code))
+            $code = $this->getCode($code);
 
         if(!$code)
             return null;
@@ -120,6 +121,14 @@ use Illuminate\Support\Collection;
                 "prop"      => $code->name,
             ];
 
+    }
+    public function getSubByCode($code): ?Info
+    {
+        return $this->subs->where('code',$code)->first()
+            ?? new Info([
+                'code' => $code,
+                'type' => $this->type,
+            ]);
     }
 
     public function getCode(?string $code = null)
@@ -172,19 +181,23 @@ use Illuminate\Support\Collection;
             ;
     }
 
-    public function getInfos($code, $content = null): Info
+    public function getInfos($code, $content = null): Collection
     {
-        $this->where('code',$code);
+        $query = $this->where('code',$code);
 
         if($content)
-            $this->where('content',$content);
+            $query->where('content',$content);
 
-        return $this->get();
+        return $query->get();
     }
-    public function getInfo($code, $content = null): Info
+    public function getInfo($code, $content = null): ?Info
     {
         return $this->getInfos($code, $content)->first();
     }
 
+    public function getPropAttribute(): ?string
+    {
+        return $this->code->name ?? null;
+    }
 
 }

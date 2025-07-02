@@ -2,18 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\DivisionType;
 use App\Enums\Info\Base;
 use App\Enums\Info\Common;
 use App\Enums\Info\Types;
+use App\Models\Division\Division;
 use App\Models\Documents\Document;
 use App\Models\Education\Profile;
 use App\Models\Education\Speciality;
+use App\Models\Global\Options;
 use App\Models\Info\Info;
 use App\Models\Info\InfoCommon;
 use App\Models\Info\InfoFounder;
 use App\Models\News\Events;
+use App\Models\Staff\Staff;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
+use PhpOption\Option;
 
 class TestController extends Controller
 {
@@ -55,18 +60,27 @@ class TestController extends Controller
         $list = collect([]);
 
 
-        $list = Speciality::all();
+        $item = Staff::class;
 
-        foreach ($list as $item) {
-            $courses = $item->level->getCurses();
+        $faculties = Division::where('type',DivisionType::Faculty)->get();
 
-            if($item->spec_code === '44.03.05')
-                $courses = 5;
+        foreach ($faculties as $faculty)
+            foreach ($faculty->staffsAll as $staff)
+                $option = $staff->option('is_teacher')->fill(["property" => true])->save();
+        dd();
 
-            if($courses)
-                $item->option('courses')->fill(['property' => $courses])->save();
-
-        }
+//        $list = Speciality::all();
+//
+//        foreach ($list as $item) {
+//            $courses = $item->level->getCurses();
+//
+//            if($item->spec_code === '44.03.05')
+//                $courses = 5;
+//
+//            if($courses)
+//                $item->fill(['courses' => $courses])->save();
+//
+//        }
 
 
 //        $host = Info::find(1);

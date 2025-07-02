@@ -13,10 +13,14 @@ enum Education
     case learningTerm;
     case eduPred;
     case eduPrac;
+
+    /**/
     case languageEl;
     case eduChislenEl;
     case eduPriemEl;
     case eduPerevodEl;
+
+    /**/
     case eduOp;
     case opMain;
     case educationPlan;
@@ -30,6 +34,8 @@ enum Education
     case napravNir;
     case resultNir;
     case baseNir;
+
+    /**/
     case graduateJob;
     case v1;
     case t1;

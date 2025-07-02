@@ -2,11 +2,17 @@
 
 namespace App\Models\Staff;
 
+use App\Enums\Info\Employees;
+use App\Enums\Info\Types;
 use App\Models\Gallery\Image;
+use App\Models\Global\Options;
+use App\Models\Info\Info;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Ramsey\Collection\Collection;
 
 
 class Affiliation extends Model
@@ -99,6 +105,28 @@ class Affiliation extends Model
     public function getLinkAttribute():string
     {
         return $this->card->link;
+    }
+    public function options():MorphMany
+    {
+        return $this->morphMany(Options::class,'relation');
+    }
+    public function option(string $code):Options
+    {
+        return $this->options->where('code',$code)->first() ?? $this->options()->create(['code' => 'is_teacher']);
+    }
+
+    public function morphInfo(): MorphMany
+    {
+        return $this->morphMany( Info::class, 'relation');
+    }
+    public function infos($type,$code): Collection
+    {
+        return $this->morphInfo->where('type',$type)->where('code',$code);
+    }
+    public function info($code): Info
+    {
+        return $this->morphInfo->where('code',$code)->first()
+            ?? $this->morphInfo()->create(['type' => Types::Employees,'code' => $code]);
     }
 
 }

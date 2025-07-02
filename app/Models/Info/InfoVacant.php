@@ -7,6 +7,7 @@ use App\Enums\Info\Budget;
 use App\Enums\Info\Types;
 use App\Enums\Info\Vacant;
 use App\Models\Education\Profile;
+use App\Models\Education\Speciality;
 use Illuminate\Support\Collection;
 
 class InfoVacant extends Info
@@ -40,25 +41,36 @@ class InfoVacant extends Info
     {
         $list = collect([]);
 
-        $profiles = Profile::where('show', true)
-            ->get()
-            ->where(function($item){
-                return $item->speciality && $item->speciality->show && $item->speciality->level !== EducationLevel::Postgraduate;
-            });
+        $specialities = Speciality::where('show', true)
+            ->orderByRaw(EducationLevel::getOrder())
+            ->orderBy('spec_code')
+            ->orderBy('name')
+            ->orderBy('name_profile')
+            ->get();
 
-        foreach($profiles as $profile)
-            if($profile->speciality->optionValue('courses'))
-                for($i=1; $i<=$profile->speciality->optionValue('courses'); $i++){
+        foreach($specialities as $speciality){
+            foreach($speciality->public_profiles as $profile){
+                if($speciality->courses)
+                    for($i=1; $i<=$speciality->courses; $i++){
 
-                    $profile->curse = $this->getContent($this::Type, Vacant::eduCourse);
+                        $course = $profile->getCourse($i);
 
-                    $list->push($profile);
-
-                }
-
+                        $list->push(
+                            (object)[
+                                'speciality'        => $speciality,
+                                'profile'           => $profile,
+                                'course'            => $course,
+                                'numberBFVacant'    => $course->getSubByCode(Vacant::numberBFVacant),
+                                'numberBRVacant'    => $course->getSubByCode(Vacant::numberBRVacant),
+                                'numberBMVacant'    => $course->getSubByCode(Vacant::numberBMVacant),
+                                'numberPVacant'     => $course->getSubByCode(Vacant::numberPVacant),
+                            ]
+                        );
+                    }
+            }
+        }
 
         return $list;
-
     }
     public function template(string $code = 'vacant') : array
     {
@@ -81,4 +93,8 @@ class InfoVacant extends Info
             'list'              => $this->getContent(self::Type, $code),
         ];
     }
+
+
 }
+
+

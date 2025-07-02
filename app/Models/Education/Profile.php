@@ -5,6 +5,8 @@ namespace App\Models\Education;
 use App\Enums\DurationType;
 use App\Enums\EducationBasis;
 use App\Enums\EducationForm;
+use App\Enums\Info\Types;
+use App\Enums\Info\Vacant;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\Relations\MorphOneOrMany;
@@ -95,7 +97,7 @@ class Profile extends Model
 
     public function speciality(): BelongsTo
     {
-        return $this->belongsTo(Speciality::class, 'speciality_code', 'code');
+        return $this->belongsTo(Speciality::class, 'speciality_id', 'id');
     }
 
     public function documents($all = null, $trashed = null): MorphMany
@@ -384,24 +386,47 @@ class Profile extends Model
 
     public function info(): MorphMany
     {
-        return $this-> morphMany(Info::class,'relation');
+        return $this->morphMany(Info::class,'relation');
     }
 
     public function getInfoByCode($code): ?Info
     {
-        return $this->info()->where('code',$code)->first();
+        return $this->info->where('code',$code)->first();
+    }
+    public function getInfoByTypeCode($type,$code): ?Info
+    {
+        return $this->info->where('code',$code)->first();
     }
     public function getInfos(): Collection
     {
-        return $this->info()->get()->keyBy('code');
+        return $this->info->get()->keyBy('code');
     }
     public function getInfosByType($type): Collection
     {
-        return $this->info()->where('type',$type)->get()->keyBy('code');
+        return $this->info->where('type',$type)->get()->keyBy('code');
     }
     public function getInfoContent($code): string|int|null
     {
-        return $this->info()->where('code',$code)->first()->content ?? null;
+        return $this->info->where('code',$code)->first()->content ?? null;
+    }
+
+    public function getCourses($type, $code, int $course): Collection
+    {
+        return $this->getInfosByType($type)->where('code',$code);
+    }
+    public function getCourse(int $course): ?Info
+    {
+        return
+            $this->info
+                ->where('type',Types::Vacant)
+                ->where('code',Vacant::eduCourse)
+                ->where('content',$course)
+                ->first()
+        ?? new Info([
+            'type'      => Types::Vacant,
+            'code'      => Vacant::eduCourse,
+            'content'   => $course
+        ]);
     }
 
 
