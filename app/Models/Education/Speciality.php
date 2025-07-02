@@ -7,6 +7,7 @@ use App\Enums\EducationLevel;
 use App\Models\Division\Division;
 use App\Models\Documents\Document;
 use App\Models\Gallery\Image;
+use App\Models\Global\Options;
 use App\Models\Page\Content as PageContent;
 use App\Models\Sections\Career;
 use App\Models\Sections\FAQ;
@@ -270,5 +271,18 @@ class Speciality extends Model
         return $this->is_recruitment;
     }
 
+    public function options(): MorphMany
+    {
+        return $this->morphMany(Options::class, 'relation');
+    }
+    public function option(string $code): Options
+    {
+        return $this->options()->where('code',$code)->first()
+            ?? (new Options(['code' => $code]))->relation()->associate($this);
+    }
+    public function optionValue(string $code): string
+    {
+        return $this->option($code)->property;
+    }
 
 }

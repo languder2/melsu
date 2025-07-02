@@ -46,9 +46,16 @@ class InfoVacant extends Info
                 return $item->speciality && $item->speciality->show && $item->speciality->level !== EducationLevel::Postgraduate;
             });
 
-        foreach($profiles as $profile){
-            $list->push($profile);
-        }
+        foreach($profiles as $profile)
+            if($profile->speciality->optionValue('courses'))
+                for($i=1; $i<=$profile->speciality->optionValue('courses'); $i++){
+
+                    $profile->curse = $this->getContent($this::Type, Vacant::eduCourse);
+
+                    $list->push($profile);
+
+                }
+
 
         return $list;
 

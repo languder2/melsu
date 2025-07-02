@@ -172,5 +172,19 @@ use Illuminate\Support\Collection;
             ;
     }
 
+    public function getInfos($code, $content = null): Info
+    {
+        $this->where('code',$code);
+
+        if($content)
+            $this->where('content',$content);
+
+        return $this->get();
+    }
+    public function getInfo($code, $content = null): Info
+    {
+        return $this->getInfos($code, $content)->first();
+    }
+
 
 }

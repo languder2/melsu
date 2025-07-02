@@ -54,15 +54,30 @@ class TestController extends Controller
     {
         $list = collect([]);
 
-        $host = Info::find(1);
 
-        $item = Info::find(2);
+        $list = Speciality::all();
 
-        $item->relation()->associate($host)->save();
+        foreach ($list as $item) {
+            $courses = $item->level->getCurses();
 
-        dd($host->subs);
+            if($item->spec_code === '44.03.05')
+                $courses = 5;
 
-        dd($host,$item);
+            if($courses)
+                $item->option('courses')->fill(['property' => $courses])->save();
+
+        }
+
+
+//        $host = Info::find(1);
+//
+//        $item = Info::find(2);
+//
+//        $item->relation()->associate($host)->save();
+//
+//        dd($host->subs);
+//
+//        dd($host,$item);
 
 
 //        Info::create([
