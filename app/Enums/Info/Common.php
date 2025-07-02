@@ -35,4 +35,8 @@ enum Common : string
     {
         return __("info.common.{$this->name}");
     }
+    public function label(): string
+    {
+        return __("info.common.{$this->name}");
+    }
 }

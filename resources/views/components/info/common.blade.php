@@ -1,13 +1,11 @@
-@isset($itemprop)
-    <div class="bg-white px-4 py-2 hidden lg:flex items-center">
-        {!! $label ?? '-' !!}
-    </div>
-    <div class="bg-white py-2 flex flex-col gap-2 justify-center text-center lg:text-left">
-        <p class="px-4 pb-2 lg:hidden font-semibold border-b">
-            {!! $label ?? '-' !!}
-        </p>
-        <p class="px-4" itemprop="{{ $itemprop }}">
-            {!! $content ?? 'отсутствует' !!}
-        </p>
-    </div>
-@endisset
+<div class="grid grid-cols-1 lg:grid-cols-[500px_1fr] gap-2">
+    @foreach($list as $code=>$item)
+        <div class="p-4 bg-white flex items-center font-semibold">
+            {!! __("info.common.{$code}") !!}
+        </div>
+        <div class="p-4 bg-white flex items-center">
+            {{ $item->content ?? __('info.empty') }}
+        </div>
+
+    @endforeach
+</div>

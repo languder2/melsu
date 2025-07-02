@@ -17,7 +17,7 @@
                 {{ $loop->iteration }}
             </td>
             <td class="p-4 border-b">
-                {!! $item ?? __('info.empty') !!}
+                {!! $item->content ?? __('info.empty') !!}
             </td>
         </tr>
     @empty
