@@ -63,9 +63,9 @@ use Illuminate\Support\Collection;
             ->where('type',$type)
             ->get()->keyBy('id');
     }
-    public function getField($type,$code): ?Info
+    public function getField($type,$code): Info
     {
-        return $this->getFields($type,$code)->first();
+        return $this->getFields($type,$code)->first() ?? new self(['type' => $type, 'code' => $code]);
     }
     public function getProperty($code): ?object
     {
@@ -199,5 +199,15 @@ use Illuminate\Support\Collection;
     {
         return $this->code->name ?? null;
     }
+    /* Links */
+    public function getFormAttribute(): string
+    {
+        return url(route('info:form:common',[
+            'type'  => $this->type->name,
+            'code'  => $this->code->name,
+            'id'    => $this->exists ? $this->id : null,
+        ]));
+    }
+
 
 }

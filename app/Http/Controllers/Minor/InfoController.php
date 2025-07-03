@@ -20,6 +20,7 @@ use App\Models\Info\InfoPaid;
 use App\Models\Info\InfoStandarts;
 use App\Models\Info\InfoStructure;
 use App\Models\Info\InfoVacant;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
 class InfoController extends Controller
@@ -93,6 +94,20 @@ class InfoController extends Controller
     public function catering(InfoBase $info, InfoCatering $catering):View
     {
         return view('info.catering', compact('info', 'catering'));
+    }
+
+    public function login(InfoBase $info):View|RedirectResponse
+    {
+        if(auth()->check())
+            return redirect()->route('info:common');
+
+        return view('info.login', compact('info'));
+    }
+    public function exit(InfoBase $info):RedirectResponse
+    {
+        auth()->logout();
+
+        return redirect()->back();
     }
 
 

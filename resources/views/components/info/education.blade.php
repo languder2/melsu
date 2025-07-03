@@ -4,7 +4,7 @@
     </h4>
 @endisset
 <table>
-    <tr class="top-9 sticky">
+    <tr class="top-0 sticky">
         @foreach($captions as $label)
             <td class="p-4 bg-red text-white content-center">
                 {!! $label->getName() !!}

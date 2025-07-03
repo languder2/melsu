@@ -5,9 +5,9 @@
 @endisset
 
 <table class="min-w-[3500px]">
-    <tr class="text-center sticky top-[2.15rem]" >
+    <tr class="text-center sticky top-0" >
         @foreach($captions as $label)
-            <td class="p-4 bg-red text-white content-center">
+            <td class="p-4 {{ auth()->check() ? 'bg-blue' : 'bg-red' }} text-white content-center">
                 {!! $label->getName() !!}
             </td>
         @endforeach

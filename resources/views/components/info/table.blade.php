@@ -7,16 +7,21 @@
 <table>
 
     @isset($caption)
-        <tr class="top-9 sticky border-b">
-                <td class="p-4 bg-red text-white content-center text-center" colspan="{!! count($captions) !!}">
+        <tr class="top-0 sticky border-b {{ auth()->check() ? 'bg-blue' : 'bg-red' }} text-white content-center text-center">
+                <td class="p-4" colspan="{!! count($captions) !!}">
                     {!! $caption !!}
                 </td>
         </tr>
     @endisset
 
-    <tr @class(["sticky ", isset($caption) ? "top-23" : "top-9"]) cellpadding="1" >
+    <tr @class([
+            "sticky text-white content-center",
+            isset($caption) ? "top-14" : "top-0",
+            auth()->check() ? 'bg-blue' : 'bg-red',
+         ])
+    >
         @foreach($captions as $label)
-            <td class="p-4 bg-red text-white content-center">
+            <td class="p-4 border-r border-r-white last:border-none">
                 {!! $label->getName() !!}
             </td>
         @endforeach

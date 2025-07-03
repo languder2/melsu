@@ -2,14 +2,14 @@
     {{ __('info.caption.dormitories') }}
 </h4>
 <table>
-    <tr class="top-9 sticky">
-        <td class="p-4 bg-red text-white content-center">
+    <tr class="top-0 sticky {{ auth()->check() ? 'bg-blue' : 'bg-red' }} text-white content-center">
+        <td class="p-4">
             {{ __('info.dormitories.row-name') }}
         </td>
-        <td class="p-4 bg-red text-white content-center">
+        <td class="p-4 border-x-1 border-x-white">
             {{ __('info.dormitories.dormitories') }}
         </td>
-        <td class="p-4 bg-red text-white content-center">
+        <td class="p-4">
             {{ __('info.dormitories.boarding') }}
         </td>
     </tr>

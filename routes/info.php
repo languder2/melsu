@@ -23,4 +23,10 @@ Route::prefix('sveden')->group(function () {
     Route::get('vacant',            [InfoController::class, 'vacant'])->name('info:vacant');
     Route::get('inter',             [InfoController::class, 'inter'])->name('info:inter');
     Route::get('catering',          [InfoController::class, 'catering'])->name('info:catering');
+
+    Route::get('login',             [InfoController::class, 'login'])->name('info:login');
+    Route::get('exit',              [InfoController::class, 'exit'])->name('info:exit');
+
+
+    Route::get('form/{type}/{code}/{id?}',       [InfoController::class, 'form'])->name('info:form:common');
 });

@@ -1,5 +1,9 @@
-<footer
-    class="py-2 text-white bg-cover bg-[image:var(--bg-sveden-header)] text-center text-sm"
+<div
+    class="
+        flex items-center justify-center h-full w-full
+        text-white
+        bg-[image:var({{ auth()->check() ? "--bg-cabinet-header" : "--bg-sveden-header" }})]
+    "
 >
-    &copy; 2025 ФГБОУ ВО "МелГу"
-</footer>
+    &copy; 2025 ФГБОУ ВО "МелГУ"
+</div>

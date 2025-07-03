@@ -4,9 +4,9 @@
     </h4>
 @endisset
 <table>
-    <tr class="top-9 sticky">
+    <tr class="top-0 sticky {{ auth()->check() ? 'bg-blue' : 'bg-red' }} text-white content-center">
         @foreach($captions as $label)
-            <td class="p-4 bg-red text-white content-center">
+            <td class="p-4 border-r border-r-white last:border-none">
                 {!! $label->getName() !!}
             </td>
         @endforeach

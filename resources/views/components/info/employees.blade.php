@@ -4,9 +4,9 @@
     </h4>
 @endisset
     <table class="min-w-[3000px]">
-        <tr @class(["sticky text-center", isset($caption) ? "top-23" : "top-9"]) cellpadding="1" >
+        <tr @class(["sticky text-center", isset($caption) ? "top-23" : "top-0"]) cellpadding="1" >
             @foreach($captions as $label)
-                <td class="p-4 bg-red text-white content-center">
+                <td class="p-4 {{ auth()->check() ? 'bg-blue' : 'bg-red' }} text-white content-center">
                     {!! $label->getName() !!}
                 </td>
             @endforeach

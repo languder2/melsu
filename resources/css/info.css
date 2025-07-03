@@ -1,0 +1,91 @@
+@import '../css/font-import.css' layer(base);
+@import '@fortawesome/fontawesome-free/css/all.css' layer(base);
+
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+
+@theme {
+    --font-sans: "Montserrat", ui-sans-serif, system-ui, sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+
+    --color-red: #820000;
+    --color-blue: #374573;
+    --color-blue-hover: #556391;
+    --color-neutral-150: #EEEEEE;
+    --color-base-red: #820000;
+    --spacing-2px: 2px;
+    --spacing-300: 300px;
+    --spacing-400: 400px;
+    --spacing-800: 800px;
+    --spacing-1000: 1000px;
+    --spacing-1200: 1200px;
+    --spacing-1400: 1400px;
+    --spacing-1600: 1600px;
+
+    --list-style-type-none: none;
+    --list-style-type-disc: disc;
+    --list-style-type-decimal: decimal;
+    --list-style-type-square: square;
+    --list-style-type-roman: upper-roman;
+
+    --bg-cabinet-header: url('../../public_html/img/cabinet/bg-header.png');
+    --bg-sveden-header: url('../../public_html/img/sveden/bg-sved.jpg');
+    --bg-panel-1: url('../../public_html/img/cabinet/bg-panel.jpg');
+
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+        border-color: var(--color-gray-200, currentColor);
+    }
+}
+
+/* Change Autocomplete styles in Chrome*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+    -webkit-text-fill-color: inherit;
+    -webkit-box-shadow: inherit;
+    box-shadow: inherit;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+/* CUSTOM CLASSES */
+
+
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+::-webkit-scrollbar-track {
+    background: transparent;
+
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 20px;
+    border: 1px solid var(--color-blue-hover);
+}
+/*aside.right > .wrapper{*/
+/*    direction: rtl;*/
+/*}*/

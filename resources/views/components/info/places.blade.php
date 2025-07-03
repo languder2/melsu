@@ -3,11 +3,11 @@
 </h4>
 
 <table>
-    <tr class="top-9 sticky">
-        <td class="p-4 bg-red text-white content-center">
+    <tr class="top-0 sticky {{ auth()->check() ? 'bg-blue' : 'bg-red' }} text-white content-center ">
+        <td class="p-4 border-r border-r-white last:border-none">
             № п/п
         </td>
-        <td class="p-4 bg-red text-white content-center">
+        <td class="p-4 border-r border-r-white last:border-none">
             {{ __('info.places.label') }}
         </td>
     </tr>
