@@ -132,3 +132,22 @@
         z-index: 5;
     }
 </style>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const menuLinks = document.querySelectorAll('.left-side-menu a');
+        const currentUrl = window.location.href;
+
+        menuLinks.forEach(link => {
+            const linkUrl = new URL(link.href);
+            const cleanLinkUrl = linkUrl.origin + linkUrl.pathname;
+
+            const cleanCurrentUrl = new URL(currentUrl);
+            const cleanCurrent = cleanCurrentUrl.origin + cleanCurrentUrl.pathname;
+
+            if (cleanCurrent === cleanLinkUrl) {
+            link.classList.add('active-menu-item');
+            link.closest('li').classList.add('active');
+            }
+        });
+});
+</script>
