@@ -4,21 +4,21 @@ namespace App\Enums\Info;
 
 enum Types
 {
-    case Common;
-    case Founder;
-    case Places;
-    case Education;
-    case Documents;
-    case Standards;
-    case Managers;
-    case Objects;
-    case Grants;
-    case Paid;
-    case Budget;
-    case Vacant;
-    case Inter;
-    case Employees;
-    case Catering;
+    case common;
+    case founder;
+    case places;
+    case education;
+    case documents;
+    case standards;
+    case managers;
+    case objects;
+    case grants;
+    case paid;
+    case budget;
+    case vacant;
+    case inter;
+    case employees;
+    case catering;
 
 
     public function label():string

@@ -6,6 +6,8 @@ use AllowDynamicProperties;
 use App\Enums\Info\Types;
 use App\Models\Documents\Document;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
@@ -32,18 +34,26 @@ use Illuminate\Support\Collection;
     public function __construct(array $attributes = [])
     {
         parent::__construct($attributes);
-//        $this->id = now()->format('Uv');
+        $this->id = now()->format('Uv');
+    }
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($division) {
+            $division->subs()->delete();
+        });
     }
 
-    public function fill(array $attributes):void
+    public function fill(array $attributes): self
     {
-
         parent::fill($attributes);
+        return $this;
     }
     public function save(array $options = []): void
     {
-//        if(!$this->exists)
-//            $this->id = null;
+        if(!$this->exists)
+            $this->id = null;
 
         parent::save($options);
     }
@@ -51,11 +61,26 @@ use Illuminate\Support\Collection;
     {
         return $this->morphTo();
     }
-    public function subs():MorphMany
+
+    public function parent(): BelongsTo
     {
-        return $this->morphMany(self::class, 'relation');
+        return $this->belongsTo(self::class, 'parent_id','id');
     }
 
+    public function subs(): HasMany
+    {
+        return $this->hasMany(self::class, 'parent_id','id');
+    }
+
+    public function getRecords($type,$code): Collection
+    {
+        return self::orderBy('sort','desc')
+            ->where('code',$code)
+            ->where('type',$type)
+            ->get()
+            ->keyBy('id')
+            ;
+    }
     public function getFields($type,$code): Collection
     {
         return self::orderBy('sort','desc')
@@ -105,6 +130,12 @@ use Illuminate\Support\Collection;
                     'link'      => "link#{$item->id}"
                 ];
             });
+    }
+
+    public function getRelationInfo($code): ?Info
+    {
+        return $this->subs->where('code',$code)->first()
+            ?? $this->subs()->create(['type' => $this::Type, 'code' => $code]);
     }
     public function getRelationArgs($code): object
     {
@@ -200,6 +231,10 @@ use Illuminate\Support\Collection;
         return $this->code->name ?? null;
     }
     /* Links */
+    public function getDeleteAttribute(): string
+    {
+        return url(route('info:delete',[$this->id]));
+    }
     public function getFormAttribute(): string
     {
         return url(route('info:form:common',[
@@ -207,6 +242,10 @@ use Illuminate\Support\Collection;
             'code'  => is_string($this->code) ? $this->code : $this->code->name,
             'id'    => $this->exists ? $this->id : null,
         ]));
+    }
+    public function getFormFounderAttribute(): string
+    {
+        return url(route('info:form:founder',[$this->id]));
     }
 
 

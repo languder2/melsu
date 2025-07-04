@@ -9,7 +9,7 @@ use Illuminate\Support\Collection;
 class InfoCatering extends Info
 {
 
-    protected const Types Type = Types::Catering;
+    protected const Types Type = Types::catering;
 
     protected const array Fields = [
         Catering::objName,

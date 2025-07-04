@@ -24,9 +24,20 @@ Route::prefix('sveden')->group(function () {
     Route::get('inter',             [InfoController::class, 'inter'])->name('info:inter');
     Route::get('catering',          [InfoController::class, 'catering'])->name('info:catering');
 
+    Route::get('wip', function (\App\Models\Info\InfoBase $info){
+        return view('info.wip', compact('info'));
+    });
+
     Route::get('login',             [InfoController::class, 'login'])->name('info:login');
     Route::get('exit',              [InfoController::class, 'exit'])->name('info:exit');
 
+    Route::get('delete/{item}',  [InfoController::class, 'delete'])->name('info:delete');
 
-    Route::get('form/{type}/{code}/{id?}',       [InfoController::class, 'form'])->name('info:form:common');
+    Route::get('form/{type}/{code}/{id?}',  [InfoController::class, 'form'])->name('info:form:common');
+    Route::post('save/{type}/{code}/{id?}',  [InfoController::class, 'save'])->name('info:save');
+
+    Route::get('founder/form/{founder?}',  [InfoController::class, 'formFounder'])->name('info:form:founder');
+    Route::post('founder/save/{founder?}',  [InfoController::class, 'saveFounder'])->name('info:founder:save');
+
+
 });

@@ -13,7 +13,7 @@ use Illuminate\Support\Collection;
 class InfoVacant extends Info
 {
 
-    protected const Types Type = Types::Vacant;
+    protected const Types Type = Types::vacant;
 
     protected Collection $codes;
 

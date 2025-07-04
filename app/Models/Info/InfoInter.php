@@ -8,7 +8,7 @@ use Illuminate\Support\Collection;
 
 class InfoInter extends Info
 {
-    protected const Types Type = Types::Inter;
+    protected const Types Type = Types::inter;
 
     protected const array Fields = [
         InterFields::stateName,

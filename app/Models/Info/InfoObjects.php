@@ -11,7 +11,7 @@ use Illuminate\Support\Collection;
 class InfoObjects extends Info
 {
 
-    protected const Types Type = Types::Objects;
+    protected const Types Type = Types::objects;
 
     protected Collection $codes;
 

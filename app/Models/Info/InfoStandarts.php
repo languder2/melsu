@@ -10,7 +10,7 @@ use Illuminate\Support\Collection;
 
 class InfoStandarts extends Info
 {
-    protected const Types Type = Types::Standards;
+    protected const Types Type = Types::standards;
 
     protected Collection $codes;
 

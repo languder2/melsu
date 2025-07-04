@@ -8,8 +8,6 @@ use App\Enums\EducationForm;
 use App\Enums\Info\Types;
 use App\Enums\Info\Vacant;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\MorphOne;
-use Illuminate\Database\Eloquent\Relations\MorphOneOrMany;
 use App\Models\{Info\Info, Link, Sections\FAQ, Staff\Affiliation};
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
@@ -20,7 +18,7 @@ use App\Models\Documents\Document;
 /**
  * @method static find(int $int)
  */
-class Profile extends Model
+#[\AllowDynamicProperties] class Profile extends Model
 {
     use SoftDeletes;
 
@@ -32,6 +30,7 @@ class Profile extends Model
         'speciality_id',
         'speciality_code',
         'form',
+        'duration',
         'total_places',
         'director',
         'address',
@@ -55,7 +54,9 @@ class Profile extends Model
             'speciality_id'     => '',
             'speciality_code'   => '',
             'form'              => '',
-            'total_places'      => 'nullable|numeric',
+            'duration'          => '',
+            'years'             => 'nullable|numeric',
+            'months'            => 'nullable|numeric',
             'director'          => '',
             'address'           => '',
             'afc'               => 'boolean',
@@ -86,6 +87,9 @@ class Profile extends Model
 
             if(array_key_exists('show', $attributes))
                 $attributes['show']             = (bool) $attributes['show'];
+
+            if(array_key_exists('duration', $attributes))
+                $attributes['duration'] = $attributes['duration'] === 0 ? null : $attributes['duration'];
 
             if(array_key_exists('afc', $attributes))
                 $attributes['afc']              = (bool) ($attributes['afc']);
@@ -158,40 +162,42 @@ class Profile extends Model
     {
         return intdiv($this->duration($type),12);
     }
-
     public function months($type = null): ?int
     {
-            return $this->duration($type) % 12;
+        return $this->duration($type) % 12;
     }
 
-    public function durationYear($type = null, $full = true): string
+    public function getMonthsAttribute(): int
     {
-        $duration = $this->years($type);
+        return $this->duration % 12;
+    }
+    public function getYearsAttribute(): int
+    {
+        return intdiv($this->duration,12);
+    }
 
-        if(!$duration)  return '';
+    public function durationYear($full = true): string
+    {
+        return $full
+            ? match(true){
+                $this->years === 1  => $this->years.__('duration-append.year-one'),
+                $this->years > 4    => $this->years.__('duration-append.year-many'),
+                default             => $this->years.__('duration-append.year-some'),
+            }
+            : $this->years.__('duration-append.short-year');
+    }
+
+    public function durationMonth($full = true): string
+    {
+        if(!$this->months)  return '';
 
         return $full
             ? match(true){
-                $duration === 1 => "$duration".__('duration-append.year-one'),
-                $duration > 4   => "$duration".__('duration-append.year-many'),
-                default         => "$duration".__('duration-append.year-some'),
+                $this->months === 1 => $this->months.__('duration-append.month-one'),
+                $this->months > 4   => $this->months.__('duration-append.month-many'),
+                default             => $this->months.__('duration-append.month-some'),
             }
-            : "$duration".__('duration-append.short-year');
-    }
-
-    public function durationMonth($type = null, $full = true): string
-    {
-        $duration = $this->months($type);
-
-        if(!$duration)  return '';
-
-        return $full
-            ? match(true){
-                $duration === 1 => "$duration".__('duration-append.month-one'),
-                $duration > 4   => "$duration".__('duration-append.month-many'),
-                default         => "$duration".__('duration-append.month-some'),
-            }
-            : "$duration".__('duration-append.short-month');
+            : $this->months.__('duration-append.short-month');
     }
 
     public function staffs($all = null, $trashed = null): MorphMany
@@ -249,39 +255,39 @@ class Profile extends Model
             ->get();
     }
 
+    public function places(): MorphMany
+    {
+        return $this->morphMany(Place::class, 'relation');
+    }
+
+    public function placesByType($code): ?int
+    {
+        return $this->places->firstWhere('type', $code)->count ?? null;
+    }
+
+    public function budgetPlaces(): ?Place
+    {
+        return $this->places->firstWhere('type', EducationBasis::Budget)->first();
+    }
+
     public function getBudgetPlacesAttribute(): ?int
     {
-        return $this->places()->where('type', EducationBasis::Budget)->first()->count ?? null;
+        return $this->budgetPlaces()->count ?? null;
+    }
+
+    public function contractPlaces(): ?Place
+    {
+        return $this->places->firstWhere('type', EducationBasis::Contract)->first();
     }
 
     public function getContractPlacesAttribute(): ?int
     {
-        return $this->places()->where('type', EducationBasis::Contract)->first()->count ?? null;
-    }
-
-    public function places($all = null, $trashed = null): MorphMany
-    {
-
-        $result = $this->morphMany(Place::class, 'relation');
-
-        if (is_null($all))
-            $result->where('show', true);
-
-        if (!is_null($trashed))
-            $result->withTrashed();
-
-        return $result;
-    }
-
-    public function placesByType($type):?int
-    {
-        return $this->places()->firstWhere('type', $type)->count ?? null;
+        return $this->contractPlaces()->count ?? null;
     }
 
     public function showByBasis($basis):bool
     {
         return $this->scoreByType($basis)
-//            || $this->placesByType($basis)
             || $this->requiredExamsByType($basis)->count()
             || $this->selectableExamsByType($basis)->count();
     }
@@ -311,9 +317,9 @@ class Profile extends Model
                 ]
             );
 
-            $profile->fill($form)->save();
+            $form['duration'] = (int) $form['years'] * 12 + (int) $form['months'];
 
-            Duration::processing($profile,$form['duration']);
+            $profile->fill($form)->save();
 
             foreach($form['score'] as $type=>$count){
                 if(!$count) continue;
@@ -323,10 +329,8 @@ class Profile extends Model
                 $score->fill(['score'=>$count])->save();
             }
 
-            foreach ($form['places'] as $type => $count) {
-                $place = $profile->places->where('type', $type)->first() ?? $profile->places()->create(['type' => $type]);
-                $place->fill(['count'=>$count])->save();
-            }
+            foreach ($form['places'] as $type => $count)
+                $profile->places()->firstOrCreate(['type'=>$type])->fill(['count'=>$count])->save();
 
             foreach ($form['exams'] as $type => $list) {
                 foreach ($list as $subject_id => $item) {
@@ -360,11 +364,11 @@ class Profile extends Model
             : null;
     }
 
-    public function formatedDuration(DurationType $type, $full = true): ?string
+    public function formatedDuration($full = true): ?string
     {
-        if( !$this->duration($type) ) return null;
+        if( !$this->duration ) return null;
 
-        return trim($this->durationYear($type, $full)." ".$this->durationMonth($type, $full));
+        return trim($this->durationYear($full)." ".$this->durationMonth($full));
     }
     public function getFormatedDurationOOOAttribute(): ?string
     {
@@ -418,12 +422,12 @@ class Profile extends Model
     {
         return
             $this->info
-                ->where('type',Types::Vacant)
+                ->where('type',Types::vacant)
                 ->where('code',Vacant::eduCourse)
                 ->where('content',$course)
                 ->first()
         ?? new Info([
-            'type'      => Types::Vacant,
+            'type'      => Types::vacant,
             'code'      => Vacant::eduCourse,
             'content'   => $course
         ]);

@@ -21,14 +21,6 @@ enum Common : string
     case addressPlaceOppo               = 'addressPlaceOppo';
     case availabilityOfBranches         = 'availabilityOfBranches';
     case availabilityOfRepresentative   = 'availabilityOfRepresentative';
-    /* uchred */
-    case uchredLaw                      = 'uchredLaw';
-    case nameUchred                     = 'nameUchred';
-    case addressUchred                  = 'addressUchred';
-    case telUchred                      = 'telUchred';
-    case mailUchred                     = 'mailUchred';
-    case websiteUchred                  = 'websiteUchred';
-
 
     /* methods */
     public function getName(): string

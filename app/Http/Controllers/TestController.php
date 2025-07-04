@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Enums\DivisionType;
+use App\Enums\DurationType;
+use App\Enums\EducationBasis;
 use App\Enums\Info\Base;
 use App\Enums\Info\Common;
 use App\Enums\Info\Types;
@@ -59,14 +61,12 @@ class TestController extends Controller
     {
         $list = collect([]);
 
+        $list = Profile::all();
 
-        $item = Staff::class;
+        foreach ($list as $item) {
+            $item->fill(['duration' => $item->duration(DurationType::OOO)])->save();
+        }
 
-        $faculties = Division::where('type',DivisionType::Faculty)->get();
-
-        foreach ($faculties as $faculty)
-            foreach ($faculty->staffsAll as $staff)
-                $option = $staff->option('is_teacher')->fill(["property" => true])->save();
         dd();
 
 //        $list = Speciality::all();

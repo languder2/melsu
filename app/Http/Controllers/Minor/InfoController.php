@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Minor;
 
 use App\Enums\Info\Documents;
+use App\Enums\Info\Founder;
 use App\Http\Controllers\Controller;
 use App\Models\Info\Info;
 use App\Models\Info\InfoBase;
@@ -21,6 +22,7 @@ use App\Models\Info\InfoPaid;
 use App\Models\Info\InfoStandarts;
 use App\Models\Info\InfoStructure;
 use App\Models\Info\InfoVacant;
+use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
@@ -119,6 +121,59 @@ class InfoController extends Controller
         $item = Info::find($item) ?? new Info(['type' => $type,'code' => $code]);
 
         return view('components.info.forms.info.text', compact('type','code','item'));
+    }
+    public function formPlace($type,$code,$item = null):View
+    {
+        $item = Info::find($item) ?? new Info(['type' => $type,'code' => $code]);
+
+        return view('components.info.forms.info.text', compact('type','code','item'));
+    }
+
+    public function save($type,$code,$item = null):RedirectResponse
+    {
+        if(!auth()->check()) return redirect()->route('info:common');
+
+        $item = Info::find($item) ?? new Info(['type' => $type,'code' => $code]);
+
+        $item->fill(['content' => request('content')])->save();
+
+        return redirect()->back();
+    }
+
+    public function delete(?Info $item):RedirectResponse
+    {
+        if(!auth()->check()) return redirect()->route('info:common');
+
+        $item->delete();
+
+        return redirect()->back();
+    }
+
+
+    /* Founder */
+
+    public function formFounder(?InfoFounder $founder):View
+    {
+        return view('components.info.forms.common.founder', compact('founder'));
+    }
+
+    public function saveFounder(Request $request, ?InfoFounder $founder):RedirectResponse
+    {
+        if(!auth()->check()) return redirect()->route('info:common');
+
+        if(!$founder->exists)
+            $founder->fill([
+                'type'  => $founder::Type,
+                'code'  => $founder::Base,
+            ])->save();
+
+        foreach ($founder::Fields as $field)
+            $founder->getRelationInfo($field)
+                ->fill([
+                    'content' => $request->get($field->name)
+                ])->save();
+
+        return redirect()->back();
     }
 
 }

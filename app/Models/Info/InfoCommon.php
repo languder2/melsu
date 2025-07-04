@@ -10,7 +10,7 @@ use Illuminate\Support\Collection;
 
 class InfoCommon extends Info
 {
-    protected const Types Type = Types::Common;
+    protected const Types Type = Types::common;
 
     protected Collection $codes;
     public function __construct(...$arguments)
@@ -46,7 +46,7 @@ class InfoCommon extends Info
 
     public function branches():Collection
     {
-        $result = $this->getContent(Types::Common,Common::availabilityOfBranches)
+        $result = $this->getContent(Types::common,Common::availabilityOfBranches)
             ->map(function ($item){
                 return (bool) $item ? 'Имеются' : 'Отсутствуют';
             });
@@ -59,7 +59,7 @@ class InfoCommon extends Info
 
     public function representative():Collection
     {
-        $result = $this->getContent(Types::Common,Common::availabilityOfBranches)
+        $result = $this->getContent(Types::common,Common::availabilityOfBranches)
             ->map(function ($item){
                 return (bool) $item ? 'Имеются' : 'Отсутствуют';
             });
@@ -77,9 +77,7 @@ class InfoCommon extends Info
         return [
             'prop'      => $code->name,
             'label'     => $code->getName(),
-            'list'      => $this->getContent(Types::Places,$code)->each(function ($item){
-                $item->content = empty(trim($item->content)) ? __('info.empty') : $item->content;
-            }),
+            'list'      => $this->getFields(Types::places,$code),
         ];
     }
 

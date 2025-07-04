@@ -9,7 +9,7 @@ use Illuminate\Support\Collection;
 class InfoBudget extends Info
 {
 
-    protected const Types Type = Types::Budget;
+    protected const Types Type = Types::budget;
 
     protected Collection $codes;
 

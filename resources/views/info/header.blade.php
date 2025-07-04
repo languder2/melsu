@@ -1,9 +1,10 @@
 <header
     class="
         w-full py-4 text-white bg-cover
-        bg-[image:var({{ auth()->check() ? "--bg-cabinet-header" : "--bg-sveden-header" }})]
+{{--        bg-[image:var({{ auth()->check() ? "--bg-cabinet-header" : "--bg-sveden-header" }})]--}}
         sticky top-0 left-0
     "
+    style="background-image: url({{ auth()->check() ? asset("img/cabinet/bg-header.png") : asset("img/sveden/bg-sved.jpg") }})"
 >
     <nav class="px-4 flex items-center gap-4 :bg-red-300">
         <a href="{{ url('/') }}" class="text-white flex gap-4 items-center">

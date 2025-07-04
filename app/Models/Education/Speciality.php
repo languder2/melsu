@@ -180,15 +180,6 @@ class Speciality extends Model
         return  $result->firstWhere('form', $form)?? null;
     }
 
-    public function getPlacesAttribute(): int
-    {
-        $places = 0;
-
-        foreach ($this->profiles()->where('show',true)->get() as $profile)
-            $places += $profile->placesByType(EducationBasis::Budget);
-        return $places;
-    }
-
     public function getLinkAttribute(): string
     {
         return route('public:education:speciality',$this->code ?? $this->id);

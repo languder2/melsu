@@ -12,6 +12,8 @@ export default defineConfig({
                 'resources/js/app.js',
                 'resources/css/cabinet.css',
                 'resources/js/cabinet.js',
+                'resources/css/info.css',
+                'resources/js/info.js',
                 'resources/css/admin.css',
                 'resources/js/admin.js',
             ],

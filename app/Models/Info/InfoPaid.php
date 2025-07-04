@@ -10,7 +10,7 @@ use Illuminate\Support\Collection;
 class InfoPaid extends Info
 {
 
-    protected const Types Type = Types::Paid;
+    protected const Types Type = Types::paid;
 
     protected Collection $codes;
 

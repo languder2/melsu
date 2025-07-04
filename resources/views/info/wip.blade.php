@@ -11,7 +11,15 @@
 @endsection
 
 @section('content')
-    Work in Process
+
+    <div
+        id="dropZone"
+        class="mr-4 p-4 min-h-60 border">
+
+        123
+    </div>
+
+
 @endsection
 
 

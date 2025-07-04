@@ -8,7 +8,7 @@ use Illuminate\Support\Collection;
 
 class InfoDocuments extends Info
 {
-    protected const Types Type = Types::Documents;
+    protected const Types Type = Types::documents;
 
     protected Collection $codes;
 

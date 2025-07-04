@@ -10,7 +10,7 @@ use Illuminate\Support\Collection;
 
 class InfoEmployees extends Info
 {
-    protected const Types Type = Types::Employees;
+    protected const Types Type = Types::employees;
 
     protected Collection $codes;
 

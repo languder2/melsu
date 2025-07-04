@@ -71,46 +71,25 @@
         <div class="grid grid-cols-2 gap-x-4 mt-3">
 
             <div class="grid gap-4 grid-cols-3 items-end">
-                <span class="pb-2"> Срок обучения ООО </span>
+                <span class="pb-2"> Срок обучения </span>
                 <x-form.input
-                    id="form_profiles_{{$form->name}}_duration_years"
-                    name="profiles[{{$form->name}}][duration][OOO][years]"
+                    id="form_profiles_{{$form->name}}_years"
+                    name="profiles[{{$form->name}}][years]"
                     type="number"
                     class="text-center"
                     step="1"
                     label="Срок обучения, лет"
                     value="0"
-                    value='{{old("_token") ? old("profiles.{$form->name}.duration.OOO.years") : $profile->years("OOO")}}'
+                    value='{{old("_token") ? old("profiles.{$form->name}.years") : $profile->years}}'
                 />
                 <x-form.input
                     id="form_profiles_{{$form->name}}_duration_month"
-                    name="profiles[{{$form->name}}][duration][OOO][months]"
+                    name="profiles[{{$form->name}}][months]"
                     type="number"
                     class="text-center"
                     step="1"
                     label="Срок обучения, месяцев"
-                    value='{{old("_token") ? old("profiles.{$form->name}.duration.OOO.months") : $profile->months("OOO")}}'
-                />
-
-                <span class="pb-2"> Срок обучения СОО </span>
-                <x-form.input
-                    id="form_profiles_{{$form->name}}_duration_years"
-                    name="profiles[{{$form->name}}][duration][SOO][years]"
-                    type="number"
-                    class="text-center"
-                    step="1"
-                    label="Срок обучения, лет"
-                    value="0"
-                    value='{{old("_token") ? old("profiles.{$form->name}.duration.SOO.years") : $profile->years("SOO")}}'
-                />
-                <x-form.input
-                    id="form_profiles_{{$form->name}}_duration_month"
-                    name="profiles[{{$form->name}}][duration][SOO][months]"
-                    type="number"
-                    class="text-center"
-                    step="1"
-                    label="Срок обучения, месяцев"
-                    value='{{old("_token") ? old("profiles.{$form->name}.duration.SOO.months") : $profile->months("SOO")}}'
+                    value='{{old("_token") ? old("profiles.{$form->name}.months") : $profile->months}}'
                 />
             </div>
 
@@ -133,16 +112,8 @@
                         id="form_profiles_{{$form->name}}_places_{{$basis}}"
                         name="profiles[{{$form->name}}][places][{{$basis->value}}]"
                         type="number"
-                        label="Кол-во мест ООО"
-                        :value='old("profiles.{$form->name}.places.{$basis->value}") ?? $profile->placesByType($basis) ?? null'
-                    />
-
-                    <x-form.input
-                        id="form_profiles_{{$form->name}}_places_{{$basis}}"
-                        name="profiles[{{$form->name}}][places][{{ $basis->value == 'budget' ? 'budgetooo' : 'contractooo' }}]"
-                        type="number"
-                        label="Кол-во мест СОО"
-                        :value='($basis->value == "budget" ? $profile->placesByType("budgetooo") : ($basis->value == "contract" ? $profile->placesByType("contractooo") : null))'
+                        label="Кол-во мест"
+                        :value='old("profiles.{$form->name}.places.{$basis->value}") ?? $profile->placesByType($basis)->count ?? null'
                     />
 
                     <x-form.input

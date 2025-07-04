@@ -1,5 +1,15 @@
-<h4 class="font-semibold mt-4 -mb-2">
+<h4 class="font-semibold mt-4 -mb-2 flex gap-2 justify-between items-center">
     {!! $label !!}
+    @if(auth()->check())
+        <a
+            href="{{ route('info:form:common',['type'=> 'places', 'code' => $prop]) }}"
+            onclick="Modal.showModal(this.href); return false;"
+            class="inline-block p-2 bg-green-950 rounded hover:bg-green-700 mr-4"
+        >
+            <x-info.forms.icons.add width="20px" height="20px" />
+        </a>
+    @endif
+
 </h4>
 
 <table>
@@ -9,6 +19,7 @@
         </td>
         <td class="p-4 border-r border-r-white last:border-none">
             {{ __('info.places.label') }}
+
         </td>
     </tr>
     @forelse($list as $item)
@@ -16,8 +27,24 @@
             <td class="p-4 border-b">
                 {{ $loop->iteration }}
             </td>
-            <td class="p-4 border-b">
-                {!! $item->content ?? __('info.empty') !!}
+            <td class="p-4 border-b flex gap-2 justify-between items-center">
+                @if(auth()->user())
+                    <a
+                        href="{{ $item->form }}"
+                        onclick="Modal.showModal(this.href); return false;"
+                        class="underline hover:text-blue"
+                    >
+                        {!! $item->content ?? __('info.empty') !!}
+                    </a>
+
+                    <a href="{{ $item->delete }}"
+                       class="inline-block p-2 bg-red rounded hover:bg-red-700"
+                    >
+                        <x-info.forms.icons.delete width="20px" height="20px" />
+                    </a>
+                @else
+                    {!! $item->content ?? __('info.empty') !!}
+                @endif
             </td>
         </tr>
     @empty

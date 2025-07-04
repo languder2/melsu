@@ -18,7 +18,7 @@ use Illuminate\Support\Collection;
 
 class InfoEducation extends Info
 {
-    protected const Types Type = Types::Education;
+    protected const Types Type = Types::education;
 
     protected Collection $codes;
 

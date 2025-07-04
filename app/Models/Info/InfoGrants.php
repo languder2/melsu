@@ -9,7 +9,7 @@ use Illuminate\Support\Collection;
 class InfoGrants extends Info
 {
 
-    protected const Types Type = Types::Grants;
+    protected const Types Type = Types::grants;
 
     protected Collection $codes;
 
