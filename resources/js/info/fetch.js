@@ -6,5 +6,12 @@ export async function FetchPost(link,data) {
         return response.text();
     }
 }
+export async function FetchGet(link) {
+    const response = await fetch(link, { method: "GET" });
+
+    if (response.ok)
+        return response.text();
+
+}
 
 

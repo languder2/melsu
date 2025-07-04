@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Minor;
 
 use App\Enums\Info\Documents;
 use App\Http\Controllers\Controller;
+use App\Models\Info\Info;
 use App\Models\Info\InfoBase;
 use App\Models\Info\InfoBudget;
 use App\Models\Info\InfoCatering;
@@ -96,6 +97,7 @@ class InfoController extends Controller
         return view('info.catering', compact('info', 'catering'));
     }
 
+    /* Auth */
     public function login(InfoBase $info):View|RedirectResponse
     {
         if(auth()->check())
@@ -110,5 +112,13 @@ class InfoController extends Controller
         return redirect()->back();
     }
 
+    /* data */
+
+    public function form($type,$code,$item = null):View
+    {
+        $item = Info::find($item) ?? new Info(['type' => $type,'code' => $code]);
+
+        return view('components.info.forms.info.text', compact('type','code','item'));
+    }
 
 }

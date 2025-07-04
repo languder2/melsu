@@ -32,7 +32,7 @@ use Illuminate\Support\Collection;
     public function __construct(array $attributes = [])
     {
         parent::__construct($attributes);
-        $this->id = now()->format('Uv');
+//        $this->id = now()->format('Uv');
     }
 
     public function fill(array $attributes):void
@@ -42,8 +42,8 @@ use Illuminate\Support\Collection;
     }
     public function save(array $options = []): void
     {
-        if(!$this->exists)
-            $this->id = null;
+//        if(!$this->exists)
+//            $this->id = null;
 
         parent::save($options);
     }
@@ -203,8 +203,8 @@ use Illuminate\Support\Collection;
     public function getFormAttribute(): string
     {
         return url(route('info:form:common',[
-            'type'  => $this->type->name,
-            'code'  => $this->code->name,
+            'type'  => is_string($this->type) ? $this->type : $this->type->name,
+            'code'  => is_string($this->code) ? $this->code : $this->code->name,
             'id'    => $this->exists ? $this->id : null,
         ]));
     }
