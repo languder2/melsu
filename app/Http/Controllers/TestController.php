@@ -10,6 +10,7 @@ use App\Enums\Info\Common;
 use App\Enums\Info\Types;
 use App\Models\Division\Division;
 use App\Models\Documents\Document;
+use App\Models\Education\Duration;
 use App\Models\Education\Profile;
 use App\Models\Education\Speciality;
 use App\Models\Global\Options;
@@ -40,7 +41,6 @@ class TestController extends Controller
     {
         $list = collect([]);
 
-
         $list = Events::whereNotNull('event_datetime')->get();
 
         foreach ($list as $item) {
@@ -61,13 +61,23 @@ class TestController extends Controller
     {
         $list = collect([]);
 
-        $list = Profile::all();
+        dd();
 
-        foreach ($list as $item) {
-            $item->fill(['duration' => $item->duration(DurationType::OOO)])->save();
-        }
+
+        $item = Profile::find(683);
+
+        dump($item->placesByType('contract'));
 
         dd();
+        $list = Duration::where('duration','!=',0)->get();
+
+        foreach ($list as $item) {
+            if($item->relation)
+                $item->relation->fill(['duration' => $item->duration])->save();
+        }
+
+
+        dd($list);
 
 //        $list = Speciality::all();
 //

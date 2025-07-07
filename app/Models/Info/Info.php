@@ -186,6 +186,7 @@ use Illuminate\Support\Collection;
         return [
             'label'             => $code->getName(),
             'prop'              => $code->name,
+            'type'              => $type,
             'list'              =>
                 match ($type){
                     'records'   => $this->getList($code),
@@ -248,5 +249,8 @@ use Illuminate\Support\Collection;
         return url(route('info:form:founder',[$this->id]));
     }
 
-
+    public function getContentAttribute($content): ?string
+    {
+        return empty($content) ? __('info.empty') : $content;
+    }
 }

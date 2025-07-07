@@ -1,5 +1,16 @@
-<h4 class="font-semibold mt-4 -mb-2">
-    {!! $label !!}
+<h4 class="font-semibold mt-4 -mb-2 flex gap-2 justify-between items-center">
+{!! $label !!}
+
+    @if(auth()->check())
+        <a
+            href="{{ route('info:document:form',['type'=> $type ?? '', 'code' => $prop]) }}"
+            onclick="Modal.showModal(this.href); return false;"
+            class="inline-block p-2 bg-green-950 rounded hover:bg-green-700 mr-4"
+        >
+            <x-info.forms.icons.add width="20px" height="20px" />
+        </a>
+    @endif
+
 </h4>
 
 <div class="bg-white px-4 py-2 flex flex-col gap-4">

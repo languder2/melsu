@@ -92,13 +92,13 @@
                                 @if($profile->duration)
                                     <div class="flex flex-col">
                                             <span class="font-[400] text-sm">
-                                                {{$profile->durationYear('OOO')}}
-                                                {{$profile->durationMonth('OOO')}}
+                                                {{$profile->durationYear()}}
+                                                {{$profile->durationMonth()}}
                                         </span>
                                         <span class="font-[400] text-sm text-neutral-700 group-hover:text-white ">Срок обучения</span>
                                     </div>
+                                @endif
                             </div>
-                            @endif
                             <span class="aware-bg"></span>
                         </a>
                     </div>

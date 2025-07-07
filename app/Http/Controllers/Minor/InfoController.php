@@ -176,4 +176,30 @@ class InfoController extends Controller
         return redirect()->back();
     }
 
+    /* Documents */
+
+    public function formDocument($type, $code, ?Info $info):View
+    {
+        return view('components.info.forms.info.document', compact('type','code','info'));
+    }
+
+    public function saveDocument(Request $request, ?InfoFounder $founder):RedirectResponse
+    {
+        if(!auth()->check()) return redirect()->route('info:common');
+
+        if(!$founder->exists)
+            $founder->fill([
+                'type'  => $founder::Type,
+                'code'  => $founder::Base,
+            ])->save();
+
+        foreach ($founder::Fields as $field)
+            $founder->getRelationInfo($field)
+                ->fill([
+                    'content' => $request->get($field->name)
+                ])->save();
+
+        return redirect()->back();
+    }
+
 }

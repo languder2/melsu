@@ -113,7 +113,7 @@
                         name="profiles[{{$form->name}}][places][{{$basis->value}}]"
                         type="number"
                         label="Кол-во мест"
-                        :value='old("profiles.{$form->name}.places.{$basis->value}") ?? $profile->placesByType($basis)->count ?? null'
+                        :value='old("profiles.{$form->name}.places.{$basis->value}") ?? $profile->placesByType($basis->name) ?? null'
                     />
 
                     <x-form.input

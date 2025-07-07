@@ -207,11 +207,8 @@ class SpecialityController extends Controller
                                                   return [$place->type => $place->count];
                                               })->toArray() ?? null
                                           ],
-                                          'duration'      => [
-                                              $profile->duration->mapWithKeys(function($duration){
-                                                  return [$duration->type => $duration->DurationString];
-                                              })->toArray() ?? null
-                                          ],
+                                          'duration'        => $profile->duration,
+                                          'formatDuration'  => $profile->formatedDuration(),
                                       ]
                               ];
                             })->toArray() ?? null,

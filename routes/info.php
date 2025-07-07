@@ -39,5 +39,10 @@ Route::prefix('sveden')->group(function () {
     Route::get('founder/form/{founder?}',  [InfoController::class, 'formFounder'])->name('info:form:founder');
     Route::post('founder/save/{founder?}',  [InfoController::class, 'saveFounder'])->name('info:founder:save');
 
+    Route::get('documents/form/{type}/{code}/{info?}',
+        [InfoController::class, 'formDocument'])->name('info:document:form');
+    Route::get('save/form/{type}/{code}/{info?}',
+        [InfoController::class, 'saveDocument'])->name('info:document:save');
+
 
 });

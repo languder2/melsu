@@ -145,18 +145,18 @@ use App\Models\Documents\Document;
         return $object;
     }
 
-    public function duration($type = null, bool $record = false): MorphMany|Duration|int|null
-    {
-        if (!$type)
-            return $this->morphMany(Duration::class, 'relation');
-
-        if (!$type instanceof DurationType)
-            $type = DurationType::tryFrom($type);
-
-        $result = $this->morphMany(Duration::class, 'relation')->where('type', $type)->first();
-
-        return $record ? $result : $result->duration ?? null;
-    }
+//    public function duration($type = null, bool $record = false): MorphMany|Duration|int|null
+//    {
+//        if (!$type)
+//            return $this->morphMany(Duration::class, 'relation');
+//
+//        if (!$type instanceof DurationType)
+//            $type = DurationType::tryFrom($type);
+//
+//        $result = $this->morphMany(Duration::class, 'relation')->where('type', $type)->first();
+//
+//        return $record ? $result : $result->duration ?? null;
+//    }
 
     public function years($type = null): ?int
     {
@@ -262,12 +262,12 @@ use App\Models\Documents\Document;
 
     public function placesByType($code): ?int
     {
-        return $this->places->firstWhere('type', $code)->count ?? null;
+        return $this->places()->where('type', $code)->first()->count ?? null;
     }
 
     public function budgetPlaces(): ?Place
     {
-        return $this->places->firstWhere('type', EducationBasis::Budget)->first();
+        return $this->places->where('type', EducationBasis::Budget)->first();
     }
 
     public function getBudgetPlacesAttribute(): ?int

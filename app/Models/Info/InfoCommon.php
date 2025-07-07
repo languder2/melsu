@@ -77,7 +77,7 @@ class InfoCommon extends Info
         return [
             'prop'      => $code->name,
             'label'     => $code->getName(),
-            'list'      => $this->getFields(Types::places,$code),
+            'list'      => $this->getRecords(Types::places,$code),
         ];
     }
 

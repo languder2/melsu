@@ -1,5 +1,6 @@
 <h4 class="font-semibold mt-4 -mb-2 flex gap-2 justify-between items-center">
     {!! $label !!}
+
     @if(auth()->check())
         <a
             href="{{ route('info:form:common',['type'=> 'places', 'code' => $prop]) }}"
@@ -50,7 +51,7 @@
     @empty
         <tr class="bg-white" itemprop="{{ $prop }}">
             <td class="p-4 border-b">
-                1
+                {!! __('info.empty') !!}
             </td>
             <td class="p-4 border-b">
                 {!! __('info.empty') !!}
