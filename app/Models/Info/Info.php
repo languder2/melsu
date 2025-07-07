@@ -18,6 +18,8 @@ use Illuminate\Support\Collection;
 {
     use SoftDeletes;
 
+    public const string Path = 'info/documents';
+
     protected $table = 'info';
 
     protected $fillable = [
@@ -47,6 +49,9 @@ use Illuminate\Support\Collection;
 
     public function fill(array $attributes): self
     {
+        if(array_key_exists('sort', $attributes))
+            $attributes['sort'] = (int)$attributes['sort'];
+
         parent::fill($attributes);
         return $this;
     }
@@ -174,6 +179,11 @@ use Illuminate\Support\Collection;
     {
         return $this->morphOne(Document::class,'relation');
     }
+    public function getDocument():Document
+    {
+        return $this->document ?? (new Document())->relation()->associate($this);
+    }
+
     public function documents():MorphMany
     {
         return $this->morphMany(Document::class,'relation');
@@ -183,6 +193,8 @@ use Illuminate\Support\Collection;
     {
         $code = $this->getCode($code);
 
+        $infoDocs = InfoDocuments::find($this->id) ?? new InfoDocuments(['types' => $this::Type, 'code' => $this->code]);
+
         return [
             'label'             => $code->getName(),
             'prop'              => $code->name,
@@ -190,7 +202,7 @@ use Illuminate\Support\Collection;
             'list'              =>
                 match ($type){
                     'records'   => $this->getList($code),
-                    'documents' => $this->getDocuments($code),
+                    'documents' => $infoDocs->getDocuments($code),
                 },
         ];
     }

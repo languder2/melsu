@@ -93,8 +93,8 @@ class Document extends Model
 
     public static function FileSave(array &$form, ?Model $model = null):void
     {
-        $folder = "documents/".($model && $model::Path ? $model::Path : 'custom')."/".time();
 
+        $folder = "documents/".($model && $model::Path ? $model::Path : 'custom')."/".time();
 
         $filename = transliterate($form['title']);
 

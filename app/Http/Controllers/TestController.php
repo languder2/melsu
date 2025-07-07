@@ -61,6 +61,13 @@ class TestController extends Controller
     {
         $list = collect([]);
 
+        $list = Info::all();
+
+        foreach ($list as $item) {
+            $item->type = strtolower($item->type);
+            $item->save();
+        }
+
         dd();
 
 

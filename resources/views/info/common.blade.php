@@ -14,9 +14,9 @@
 
     @component('components.info.common',$common->template()) @endcomponent
 
-    @component('components.info.documents', $common->getTemplate('licenseDocLink','documents'))@endcomponent
+    @component('components.info.documents', $documents->getTemplate('licenseDocLink','documents'))@endcomponent
 
-    @component('components.info.documents', $common->getTemplate('accreditationDocLink','documents'))@endcomponent
+    @component('components.info.documents', $documents->getTemplate('accreditationDocLink','documents'))@endcomponent
 
     @component('components.info.founder',$founder->template())@endcomponent
 

@@ -14,13 +14,23 @@
 <form action="{{route('info:save',[$type,$code,$item->id])}}" method="POST" class="p-4 pt-0 flex flex-col gap-2">
     @csrf
 
-    <textarea name="content" class="w-full border p-2 min-h-40">{!! $item->content !!}</textarea>
+    <textarea name="content" class="w-full border p-2 min-h-40"
+        placeholder="Текст / значение"
+    >{!! $item->content !!}</textarea>
 
-        @component('components.form.submit',[
-            'name'          => 'save',
-            'class'         => "uppercase",
-            'value'         => "сохранить",
-            'position'      => "text-center",
-        ])@endcomponent
+    <x-form.input
+        id="form-sort"
+        type="number"
+        name="sort"
+        label="Порядок вывода"
+        value="{!! $item->sort  !!}"
+    />
+
+    @component('components.form.submit',[
+        'name'          => 'save',
+        'class'         => "uppercase",
+        'value'         => "сохранить",
+        'position'      => "text-center",
+    ])@endcomponent
 
 </form>

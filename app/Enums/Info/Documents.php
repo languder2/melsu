@@ -16,6 +16,10 @@ enum Documents
     case perevodDocLink;
     case vozDocLink;
 
+    case licenseDocLink;
+    case accreditationDocLink;
+
+
     /* methods */
     public function getName(): string
     {

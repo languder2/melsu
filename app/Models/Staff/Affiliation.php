@@ -126,7 +126,7 @@ class Affiliation extends Model
     public function info($code): Info
     {
         return $this->morphInfo->where('code',$code)->first()
-            ?? $this->morphInfo()->create(['type' => Types::Employees,'code' => $code]);
+            ?? $this->morphInfo()->create(['type' => Types::employees,'code' => $code]);
     }
 
 }

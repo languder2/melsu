@@ -12,9 +12,9 @@
 
 @section('content')
 
-    @component('components.info.table',$catering->template('meals'))@endcomponent
+    @component('components.info.catering.section',$catering->template('meals'))@endcomponent
 
-    @component('components.info.table',$catering->template('health'))@endcomponent
+    @component('components.info.catering.section',$catering->template('health'))@endcomponent
 
 @endsection
 

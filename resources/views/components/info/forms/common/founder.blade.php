@@ -24,6 +24,13 @@
         />
     @endforeach
 
+    <x-form.input
+        id="form-sort"
+        type="number"
+        name="sort"
+        label="Порядок вывода"
+        value="{!! $founder->sort  !!}"
+    />
 
     @component('components.form.submit',[
         'name'          => 'save',

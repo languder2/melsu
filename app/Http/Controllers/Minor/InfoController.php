@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers\Minor;
 
-use App\Enums\Info\Documents;
-use App\Enums\Info\Founder;
 use App\Http\Controllers\Controller;
+use App\Models\Documents\Document;
 use App\Models\Info\Info;
 use App\Models\Info\InfoBase;
 use App\Models\Info\InfoBudget;
@@ -28,10 +27,10 @@ use Illuminate\View\View;
 
 class InfoController extends Controller
 {
-    public function common(InfoBase $info, InfoCommon $common, InfoFounder $founder):View
+    public function common(InfoBase $info, InfoCommon $common, InfoFounder $founder, InfoDocuments $documents):View
     {
 
-        return view('info.common', compact('common', 'info', 'founder'));
+        return view('info.common', compact('common', 'info', 'founder', 'documents'));
     }
 
     public function struct(InfoBase $info, InfoStructure $structure):View
@@ -94,10 +93,6 @@ class InfoController extends Controller
         return view('info.inter', compact('info','inter'));
     }
 
-    public function catering(InfoBase $info, InfoCatering $catering):View
-    {
-        return view('info.catering', compact('info', 'catering'));
-    }
 
     /* Auth */
     public function login(InfoBase $info):View|RedirectResponse
@@ -129,13 +124,16 @@ class InfoController extends Controller
         return view('components.info.forms.info.text', compact('type','code','item'));
     }
 
-    public function save($type,$code,$item = null):RedirectResponse
+    public function save(Request $request, $type,$code,$item = null):RedirectResponse
     {
         if(!auth()->check()) return redirect()->route('info:common');
 
         $item = Info::find($item) ?? new Info(['type' => $type,'code' => $code]);
 
-        $item->fill(['content' => request('content')])->save();
+        $item->fill([
+            'content'   => $request->get('content'),
+            'sort'      => $request->get('sort'),
+        ])->save();
 
         return redirect()->back();
     }
@@ -167,6 +165,8 @@ class InfoController extends Controller
                 'code'  => $founder::Base,
             ])->save();
 
+        $founder->fill(['sort'  => $request->get('sort')])->save();
+
         foreach ($founder::Fields as $field)
             $founder->getRelationInfo($field)
                 ->fill([
@@ -178,26 +178,28 @@ class InfoController extends Controller
 
     /* Documents */
 
-    public function formDocument($type, $code, ?Info $info):View
+    public function formDocument($type, $code, ?InfoDocuments $info):View
     {
         return view('components.info.forms.info.document', compact('type','code','info'));
     }
 
-    public function saveDocument(Request $request, ?InfoFounder $founder):RedirectResponse
+    public function saveDocument(Request $request, $type, $code, ?InfoDocuments $info):RedirectResponse
     {
         if(!auth()->check()) return redirect()->route('info:common');
 
-        if(!$founder->exists)
-            $founder->fill([
-                'type'  => $founder::Type,
-                'code'  => $founder::Base,
-            ])->save();
+        if(!$info->exists)
+            $info->fill(['type' => $type,'code' => $code])->save();
 
-        foreach ($founder::Fields as $field)
-            $founder->getRelationInfo($field)
-                ->fill([
-                    'content' => $request->get($field->name)
-                ])->save();
+        $info->fill(['content' => $request->get('content'), 'sort' => $request->get('sort')])->save();
+
+        if(request()->hasFile('file')){
+
+            $form = ['title' => $request->get('content'), 'file' => $request->file('file')];
+
+            Document::FileSave($form, $info);
+
+            $info->getDocument()->fill($form)->save();
+        }
 
         return redirect()->back();
     }

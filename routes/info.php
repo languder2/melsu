@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Minor\InfoController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Info\CateringController;
+
 
 
 Route::prefix('sveden')->group(function () {
@@ -22,7 +24,6 @@ Route::prefix('sveden')->group(function () {
     Route::get('budget',            [InfoController::class, 'budget'])->name('info:budget');
     Route::get('vacant',            [InfoController::class, 'vacant'])->name('info:vacant');
     Route::get('inter',             [InfoController::class, 'inter'])->name('info:inter');
-    Route::get('catering',          [InfoController::class, 'catering'])->name('info:catering');
 
     Route::get('wip', function (\App\Models\Info\InfoBase $info){
         return view('info.wip', compact('info'));
@@ -31,7 +32,7 @@ Route::prefix('sveden')->group(function () {
     Route::get('login',             [InfoController::class, 'login'])->name('info:login');
     Route::get('exit',              [InfoController::class, 'exit'])->name('info:exit');
 
-    Route::get('delete/{item}',  [InfoController::class, 'delete'])->name('info:delete');
+    Route::get('delete/{item}',     [InfoController::class, 'delete'])->name('info:delete');
 
     Route::get('form/{type}/{code}/{id?}',  [InfoController::class, 'form'])->name('info:form:common');
     Route::post('save/{type}/{code}/{id?}',  [InfoController::class, 'save'])->name('info:save');
@@ -41,8 +42,17 @@ Route::prefix('sveden')->group(function () {
 
     Route::get('documents/form/{type}/{code}/{info?}',
         [InfoController::class, 'formDocument'])->name('info:document:form');
-    Route::get('save/form/{type}/{code}/{info?}',
+    Route::post('documents/save/{type}/{code}/{info?}',
         [InfoController::class, 'saveDocument'])->name('info:document:save');
 
+
+    /* catering */
+
+    Route::get('catering',                      [CateringController::class, 'index'])->name('info:catering');
+    Route::get('catering/form/{code}/{info?}',  [CateringController::class, 'form'])->name('info:catering:form');
+    Route::post('catering/save/{info?}', [CateringController::class, 'save'])->name('info:catering:save');
+    Route::get('catering/delete/{item}',        [CateringController::class, 'delete'])->name('info:catering:delete');
+
+    /* end catering */
 
 });

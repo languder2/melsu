@@ -11,8 +11,6 @@ enum Common : string
     case workTime                       = 'workTime';
     case telephone                      = 'telephone';
     case email                          = 'email';
-    case licenseDocLink                 = 'licenseDocLink';
-    case accreditationDocLink           = 'accreditationDocLink';
     case addressPlaceSet                = 'addressPlaceSet';
     case addressPlacePrac               = 'addressPlacePrac';
     case addressPlacePodg               = 'addressPlacePodg';
