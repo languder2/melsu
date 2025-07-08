@@ -216,7 +216,9 @@ use Illuminate\Support\Collection;
 
     public function getDocuments($code) : Collection
     {
-        return $this->orderBy('sort','desc')
+        return $this
+            ->orderBy('sort','desc')
+            ->orderBy('content','asc')
             ->where('code',$code)
             ->where('type',$this::Type)
             ->get()

@@ -17,6 +17,7 @@ use App\Models\Global\Options;
 use App\Models\Info\Info;
 use App\Models\Info\InfoCommon;
 use App\Models\Info\InfoFounder;
+use App\Models\Info\InfoStandarts;
 use App\Models\News\Events;
 use App\Models\Staff\Staff;
 use Illuminate\Support\Str;
@@ -61,11 +62,18 @@ class TestController extends Controller
     {
         $list = collect([]);
 
-        $list = Info::all();
+        $standards = new InfoStandarts();
 
-        foreach ($list as $item) {
-            $item->type = strtolower($item->type);
-            $item->save();
+        $standards->getTemplate('eduFedDoc','documents');
+
+        foreach ($standards->getTemplate('eduFedDoc','documents')['list'] as $item){
+            dump($item->content);
+            if(mb_strpos($item->content,'.03.'))
+                $item->fill(['sort' => 3000])->save();
+            if(mb_strpos($item->content,'.04.'))
+                $item->fill(['sort' => 2000])->save();
+            if(mb_strpos($item->content,'.02.'))
+                $item->fill(['sort' => 1000])->save();
         }
 
         dd();
