@@ -826,3 +826,8 @@
     </div>
     <script src="{{asset('js/campus-map-script.js')}}"></script>
 </section>
+<style>
+    .my-6{
+        display: none;
+    }
+</style>

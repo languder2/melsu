@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded',()=>{
     const scrollToTopBtn = document.querySelector(".scroll-to-top-box");
     const applyButton = document.querySelector(".apply-online-button");
-    console.log(applyButton)
 
     function scrollToTop() {
         window.scrollTo({
