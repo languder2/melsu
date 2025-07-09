@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Info\CateringController;
 use App\Http\Controllers\Info\InfoController;
+use App\Http\Controllers\Education\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -53,5 +54,18 @@ Route::prefix('sveden')->group(function () {
     Route::get('catering/delete/{item}',        [CateringController::class, 'delete'])->name('info:catering:delete');
 
     /* end catering */
+    /* Education */
+
+
+    /* End education */
 
 });
+
+Route::prefix('education-profile/document/')->group(function (){
+    Route::post('save/{profile?}/{document?}',    [ProfileController::class, 'saveDocument'])
+        ->name('education-profile.document.save');
+
+    Route::get('modal/{profile?}/{document?}',    [ProfileController::class, 'modalDocument'])
+        ->name('education-profile.document.modal');
+});
+

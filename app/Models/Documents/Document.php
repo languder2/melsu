@@ -178,6 +178,10 @@ class Document extends Model
     {
         return $this->getType()->property;
     }
+    public function getCodeAttribute():?string
+    {
+        return $this->getOption('code')->property ?? null;
+    }
     public function getSpecialityForm():Options
     {
         return $this->getOption('form');
@@ -185,6 +189,11 @@ class Document extends Model
     public function getSpecialityFormAttribute():?string
     {
         return $this->getSpecialityForm()->property;
+    }
+
+    public function getDeleteAttribute(): string
+    {
+        return route('documents:delete', $this);
     }
 
 }

@@ -21,6 +21,7 @@ use App\Models\Documents\Document;
 #[\AllowDynamicProperties] class Profile extends Model
 {
     use SoftDeletes;
+    public const string Path = 'documents/education/profile';
 
     protected $table = 'education_profiles';
 

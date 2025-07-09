@@ -62,94 +62,21 @@ class TestController extends Controller
     {
         $list = collect([]);
 
-        $standards = new InfoStandarts();
-
-        $standards->getTemplate('eduFedDoc','documents');
-
-        foreach ($standards->getTemplate('eduFedDoc','documents')['list'] as $item){
-            dump($item->content);
-            if(mb_strpos($item->content,'.03.'))
-                $item->fill(['sort' => 3000])->save();
-            if(mb_strpos($item->content,'.04.'))
-                $item->fill(['sort' => 2000])->save();
-            if(mb_strpos($item->content,'.02.'))
-                $item->fill(['sort' => 1000])->save();
-        }
-
-        dd();
-
-
-        $item = Profile::find(683);
-
-        dump($item->placesByType('contract'));
-
-        dd();
-        $list = Duration::where('duration','!=',0)->get();
-
-        foreach ($list as $item) {
-            if($item->relation)
-                $item->relation->fill(['duration' => $item->duration])->save();
-        }
-
-
-        dd($list);
-
-//        $list = Speciality::all();
+//        $profiles = Profile::all();
 //
-//        foreach ($list as $item) {
-//            $courses = $item->level->getCurses();
 //
-//            if($item->spec_code === '44.03.05')
-//                $courses = 5;
+//        $profiles->each(function ($profile){
+//            $documents = $profile->speciality->documents->where(function ($document) use ($profile){
+//                return $document->SpecialityForm === $profile->form->value;
+//            })
+//            ->each(function ($document) use ($profile){
+//                $document->getOption('code')->fill(['property' => 'eduPred'])->save();
+//                $document->relation()->associate($profile)->save();
+//            })
+//            ;
 //
-//            if($courses)
-//                $item->fill(['courses' => $courses])->save();
 //
-//        }
-
-
-//        $host = Info::find(1);
-//
-//        $item = Info::find(2);
-//
-//        $item->relation()->associate($host)->save();
-//
-//        dd($host->subs);
-//
-//        dd($host,$item);
-
-
-//        Info::create([
-//            'type' => InfoType::Places,
-//            'code' => CommonFields::addressPlaceSet,
-//            'content' => 'address 1',
-//        ]);
-//        Info::create([
-//            'type' => InfoType::Places,
-//            'code' => CommonFields::addressPlaceSet,
-//            'content' => 'address 2',
-//        ]);
-//        Info::create([
-//            'type' => InfoType::Places,
-//            'code' => CommonFields::addressPlaceSet,
-//        ]);
-//        Info::create([
-//            'type' => InfoType::Places,
-//            'code' => CommonFields::addressPlaceSet,
-//            'content' => 'address 3',
-//        ]);
-
-
-//        $info = Info::Find(9);
-//
-//        $item = Info::find(11);
-//
-//        $item->relation()->associate($info)->save();
-//
-//        dd(
-//            $item
-//        );
-//
+//        });
 
         return view('test.index',compact('list'));
     }

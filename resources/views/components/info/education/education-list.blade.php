@@ -12,7 +12,6 @@
             </td>
         @endforeach
     </tr>
-
     @forelse($list as $item)
         <tr @class([ $loop->index % 2 ? 'bg-white' : 'bg-white/50', 'text-center' ]) itemprop="{{ $prop }}">
             <td class="p-4 border-b" itemprop="eduCode">
@@ -33,14 +32,17 @@
             <td class="p-4 border-b" itemprop="learningTerm">
                 {!! $item->profile->formatedDuration()  !!}
             </td>
-            <td class="p-4 border-b" itemprop="eduPred">
-
-                <x-info.education.document-form />
-
-
+            <td class="p-4 border-b">
+                <x-info.education.document-list
+                    :profileId="$item->profile->id"
+                    code="eduPred"
+                />
             </td>
-            <td class="p-4 border-b" itemprop="eduPrac">
-                {{ __('info.empty') }}
+            <td class="p-4 border-b">
+                <x-info.education.document-list
+                    :profileId="$item->profile->id"
+                    code="eduPrac"
+                />
             </td>
         </tr>
     @empty

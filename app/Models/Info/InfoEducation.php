@@ -88,18 +88,14 @@ class InfoEducation extends Info
         foreach($specialities as $speciality){
             foreach($speciality->public_profiles as $profile){
                 if($speciality->courses)
-                    for($i=1; $i<=$speciality->courses; $i++){
 
-                        $course = $profile->getCourse($i);
-
-                        $list->push(
-                            (object)[
-                                'speciality'        => $speciality,
-                                'profile'           => $profile,
-                                'infos'              => $speciality->infos
-                            ]
-                        );
-                    }
+                $list->push(
+                    (object)[
+                        'speciality'        => $speciality,
+                        'profile'           => $profile,
+                        'infos'              => $speciality->infos
+                    ]
+                );
             }
         }
 
@@ -232,7 +228,7 @@ class InfoEducation extends Info
             ->get();
 
     }
-        public function graduateJob() : array
+    public function graduateJob() : array
     {
         return [
             'label'             => Education::graduateJob->getName(),
