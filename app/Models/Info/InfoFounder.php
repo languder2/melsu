@@ -71,12 +71,4 @@ class InfoFounder extends Info
         return $list;
     }
 
-    public function getSubsValue($code): ?string
-    {
-
-        $record = $this->subs->where('code',$code)->first();
-
-        return $record ? $record->content : null;
-    }
-
 }

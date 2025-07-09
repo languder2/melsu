@@ -13,26 +13,25 @@
     </a>
 </div>
 <form action="{{ $info->save }}" method="POST" class="p-4 pt-0 flex flex-col gap-2">
-    @csrf
+@csrf
+    <input type="hidden" name="code" value="{{ $code }}">
 
-{{--    @foreach($founder::Fields as $field)--}}
-{{--        <x-form.input--}}
-{{--            id="form-{{ $field->name }}"--}}
-{{--            name="{{ $field->name }}"--}}
-{{--            label="{!! $field->label() !!}"--}}
-{{--            value="{!! $founder->getSubsValue($field->name)  !!}"--}}
-{{--        />--}}
-{{--    @endforeach--}}
+    @foreach($info::Fields as $field)
+        <x-form.input
+            id="form-{{ $field->name }}"
+            name="{{ $field->name }}"
+            label="{!! $field->label() !!}"
+            value="{!! $info->getSubsValue($field->name)  !!}"
+        />
+    @endforeach
 
-{{--    <x-form.input--}}
-{{--        id="form-sort"--}}
-{{--        type="number"--}}
-{{--        name="sort"--}}
-{{--        label="Порядок вывода"--}}
-{{--        value="{!! $founder->sort  !!}"--}}
-{{--    />--}}
-
-    321
+    <x-form.input
+        id="form-sort"
+        type="number"
+        name="sort"
+        label="Порядок вывода"
+        value="{!! $info->sort  !!}"
+    />
 
     @component('components.form.submit',[
         'name'          => 'save',

@@ -16,6 +16,10 @@ enum Catering
     {
         return __("info.catering.{$this->name}");
     }
+    public function label(): string
+    {
+        return __("info.catering.{$this->name}");
+    }
 
     public static function get($value): ?self
     {

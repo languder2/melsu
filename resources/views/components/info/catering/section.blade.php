@@ -4,7 +4,7 @@
 
         @if(auth()->check())
             <a
-                href="{{ $add }}"
+                href="{{ route('info:catering:form',[$prop]) }}"
                 onclick="Modal.showModal(this.href); return false;"
                 class="inline-block p-2 bg-green-950 rounded hover:bg-green-700 mr-4"
             >
@@ -17,20 +17,13 @@
 
 <table>
 
-    @isset($caption)
-        <tr class="top-0 sticky border-b {{ auth()->check() ? 'bg-blue' : 'bg-red' }} text-white content-center text-center">
-                <td class="p-4" colspan="{!! count($captions) !!}">
-                    {!! $caption !!}
-                </td>
-        </tr>
-    @endisset
-
-    <tr @class([
-            "sticky text-white content-center",
-            isset($caption) ? "top-14" : "top-0",
-            auth()->check() ? 'bg-blue' : 'bg-red',
-         ])
-    >
+    <tr @class(["sticky text-white content-center top-0",auth()->check() ? 'bg-blue' : 'bg-red'])>
+        @if(auth()->check())
+            <td class="p-4 border-r border-r-white last:border-none">
+            </td>
+            <td class="p-4 border-r border-r-white last:border-none">
+            </td>
+        @endif
         @foreach($captions as $label)
             <td class="p-4 border-r border-r-white last:border-none">
                 {!! $label->getName() !!}
@@ -38,9 +31,30 @@
         @endforeach
     </tr>
 
+
+
     @forelse($list as $item)
         <tr @class([ $loop->index % 2 ? 'bg-white' : 'bg-white/50' ]) itemprop="{{ $prop }}">
-            @foreach($item as $code => $field)
+            @if(auth()->check())
+                <td class="p-4 border-b text-center">
+                    <a href="{{ $item->delete }}"
+                       class="inline-block p-2 bg-red rounded hover:bg-red-700"
+                    >
+                        <x-info.forms.icons.delete width="20px" height="20px" />
+                    </a>
+                </td>
+
+                <td class="p-4 border-b text-center">
+                    <a href="{{ route('info:catering:form',[$prop,$item->id]) }}"
+                       class="inline-block p-2 bg-blue rounded hover:bg-blue-700"
+                       onclick="Modal.showModal(this.href); return false;"
+                    >
+                        <x-info.forms.icons.edit width="20px" height="20px" />
+                    </a>
+                </td>
+            @endif
+
+            @foreach($item->fields as $code => $field)
                 <td class="p-4 border-b" itemprop="{{ $code }}">
                     {!! $field !!}
                 </td>

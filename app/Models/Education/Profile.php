@@ -104,19 +104,13 @@ use App\Models\Documents\Document;
         return $this->belongsTo(Speciality::class, 'speciality_id', 'id');
     }
 
-    public function documents($all = null, $trashed = null): MorphMany
+    public function getDocuments(): MorphMany
     {
-
-        $object = $this->morphMany(Document::class, 'relation');
-
-        if (is_null($all))
-            $object = $object->where('show', true);
-
-        if (!is_null($trashed))
-            $object = $object->withTrashed();
-
-
-        return $object;
+        return $this->morphMany(Document::class, 'relation');
+    }
+    public function documents(): Collection
+    {
+        return $this->getDocuments;
     }
 
     public function faq($all = null, $trashed = null): MorphMany
@@ -369,23 +363,6 @@ use App\Models\Documents\Document;
         if( !$this->duration ) return null;
 
         return trim($this->durationYear($full)." ".$this->durationMonth($full));
-    }
-    public function getFormatedDurationOOOAttribute(): ?string
-    {
-        return  $this->formatedDuration(DurationType::OOO);
-    }
-    public function getFormatedDurationSOOAttribute(): ?string
-    {
-        return  $this->formatedDuration(DurationType::SOO);
-    }
-
-    public function getShortFormatedDurationOOOAttribute(): ?string
-    {
-        return  $this->formatedDuration(DurationType::OOO,false);
-    }
-    public function getShortFormatedDurationSOOAttribute(): ?string
-    {
-        return  $this->formatedDuration(DurationType::SOO,false);
     }
 
     public function info(): MorphMany

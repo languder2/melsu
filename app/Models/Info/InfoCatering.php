@@ -10,11 +10,11 @@ use Illuminate\Support\Collection;
 class InfoCatering extends Info
 {
 
-    protected const Types Type = Types::catering;
+    public const Types Type = Types::catering;
 
     public Catering $code;
 
-    protected const array Fields = [
+    public const array Fields = [
         Catering::objName,
         Catering::objAddress,
         Catering::objSq,
@@ -24,12 +24,12 @@ class InfoCatering extends Info
 
     public function template(string $code) : array
     {
+
         $this->code = Catering::get($code);
 
         return [
             'label'             => $this->code->getName(),
             'prop'              => $this->code->name,
-            'add'               => $this->form,
             'captions'          => self::Fields,
             'list'              => $this->list($this->code)
 
@@ -37,21 +37,25 @@ class InfoCatering extends Info
     }
     public function list(Catering $code):Collection
     {
-        return Info::with('subs')->where('type',self::Type)->where('code',$code)->get()->keyBy('id')
+        return self::where('type',self::Type)->where('code',$code)
+            ->orderBy('sort','desc')->orderBy('content','asc')
+            ->get()->keyBy('id')
             ->each(function($item) use ($code){
-                $item->linkAdd = $item->linkAdd($code);
+                $item->fields = $item->getFieldsByCaptions();
             })
             ;
     }
 
-    public static function getFieldsByCaptions($item): Collection
+    public function getFieldsByCaptions(): Collection
     {
         $list = collect([]);
+
+        $subs = $this->subs;
 
         foreach (self::Fields as $field)
             $list->put(
                 $field->name,
-                    $item->subs()->where('code',$field)->first()->content
+                    $subs->where('code',$field)->first()->content
                     ?? __('info.empty')
             );
 
@@ -60,13 +64,6 @@ class InfoCatering extends Info
 
     /* Links */
 
-    public function getFormAttribute():string
-    {
-        return route('info:catering:form',[
-            $this->code->name,
-            $this->exists ? $this->id : null
-        ]);
-    }
     public function getSaveAttribute():string
     {
         return route('info:catering:save',[$this->exists ? $this->id : null]);
@@ -75,4 +72,5 @@ class InfoCatering extends Info
     {
         return route('info:catering:delete',$this->id);
     }
+
 }

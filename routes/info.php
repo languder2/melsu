@@ -1,9 +1,8 @@
 <?php
 
-use App\Http\Controllers\Minor\InfoController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Info\CateringController;
-
+use App\Http\Controllers\Info\InfoController;
+use Illuminate\Support\Facades\Route;
 
 
 Route::prefix('sveden')->group(function () {
@@ -50,7 +49,7 @@ Route::prefix('sveden')->group(function () {
 
     Route::get('catering',                      [CateringController::class, 'index'])->name('info:catering');
     Route::get('catering/form/{code}/{info?}',  [CateringController::class, 'form'])->name('info:catering:form');
-    Route::post('catering/save/{info?}', [CateringController::class, 'save'])->name('info:catering:save');
+    Route::post('catering/save/{info?}',        [CateringController::class, 'save'])->name('info:catering:save');
     Route::get('catering/delete/{item}',        [CateringController::class, 'delete'])->name('info:catering:delete');
 
     /* end catering */

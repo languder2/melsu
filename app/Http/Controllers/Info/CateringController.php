@@ -21,27 +21,27 @@ class CateringController extends Controller
 
     public function form($code, ?InfoCatering $info):View
     {
-        dd($info->save);
+
         return view('components.info.catering.form', compact('code','info'));
     }
 
-    public function save(Request $request, $type, $code, ?InfoDocuments $info):RedirectResponse
+    public function save(Request $request, ?InfoCatering $info):RedirectResponse
     {
         if(!auth()->check()) return redirect()->route('info:common');
 
         if(!$info->exists)
-            $info->fill(['type' => $type,'code' => $code])->save();
+            $info->fill([
+                'type'  => $info::Type,
+                'code'  => $request->get('code'),
+            ])->save();
 
-        $info->fill(['content' => $request->get('content'), 'sort' => $request->get('sort')])->save();
+        $info->fill(['sort'  => $request->get('sort')])->save();
 
-        if(request()->hasFile('file')){
-
-            $form = ['title' => $request->get('content'), 'file' => $request->file('file')];
-
-            Document::FileSave($form, $info);
-
-            $info->getDocument()->fill($form)->save();
-        }
+        foreach ($info::Fields as $field)
+            $info->getRelationInfo($field)
+                ->fill([
+                    'content' => $request->get($field->name)
+                ])->save();
 
         return redirect()->back();
     }

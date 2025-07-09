@@ -267,4 +267,18 @@ use Illuminate\Support\Collection;
     {
         return empty($content) ? __('info.empty') : $content;
     }
+
+    public function getSubsValue($code): ?string
+    {
+        $record = $this->subs->where('code',$code)->first();
+
+        return $record ? $record->content : null;
+
+    }
+
+    public function linkAdd():string
+    {
+        return '#';
+    }
+
 }

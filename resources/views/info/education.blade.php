@@ -12,7 +12,7 @@
 
 @section('content')
 
-    @component('components.info.education-list', $education->eduAccred())@endcomponent
+    @component('components.info.education.education-list', $education->eduAccred())@endcomponent
 
     @component('components.info.documents', $education->getTemplate('languageEl','documents') )@endcomponent
 
