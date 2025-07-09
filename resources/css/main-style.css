@@ -11,6 +11,9 @@
 body{
 
 }
+.radio-custom {
+        accent-color: #820000;
+    }
 @media screen and (max-width: 1024px){
     .main-content {
         padding-left: 10px;
@@ -428,9 +431,6 @@ header{
         width: 120px;
     }
 }
-@media screen and (max-width: 1430px){
-
-}
 @media screen and (max-width: 1366px){
     .upper-menu {
         .box-header-address {
@@ -463,6 +463,9 @@ header{
     }
 }
 @media screen and (max-width: 1280px){
+    .new-menu{
+        top: 164px !important;
+    }
     .upper-menu {
         h2{
             font-size: 12px;
@@ -736,7 +739,7 @@ header{
         overflow: scroll;
         min-width: 100%;
         z-index: 9998;
-        top: 90px;
+        top: 90px !important;
         transform: translateX(100%);
         transition: transform .3s cubic-bezier(.645,.045,.355,1);
         padding-bottom: env(safe-area-inset-bottom);
@@ -1149,7 +1152,7 @@ header{
 @media screen and (max-width: 1536px) {
     .slider-section{
         .info-under-slider{
-            width: 90%;
+            width: 100%;
         }
     }
 }
@@ -1530,13 +1533,21 @@ header{
 .btn-more-box:hover i:before{
     color: var(--secondary-color);
 }
-@media screen and (max-width: 1300px){
-    .melsu-today-section {
-        .info-box {
-            max-height: 518px;
+@media screen and (max-width: 1410px){
+    .melsu-today-section{
+        .info-box{
+            max-height: 529px;
         }
     }
 }
+@media screen and (max-width: 1370px){
+    .melsu-today-section{
+        .info-box{
+            max-height: 560px;
+        }
+    }
+}
+
 @media screen and (max-width: 1280px){
     .melsu-today-section {
         .wrapper-info-box:last-child {
@@ -7009,4 +7020,3 @@ li.h--timeline-event.h--timeline-event--selected.text-component {
     transform: translateX(-75px);
 }
 /*apply-online-button style*/
-
