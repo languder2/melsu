@@ -62,6 +62,13 @@
         </tr>
     @empty
         <tr class="bg-white" itemprop="{{ $prop }}">
+            @if(auth()->check())
+                <td class="p-4 border-b text-center">
+                </td>
+
+                <td class="p-4 border-b text-center">
+                </td>
+            @endif
             @foreach($captions as $label)
                 <td class="p-4 border-b" itemprop="{{ $label->name }}">
                     {{ __('info.empty') }}

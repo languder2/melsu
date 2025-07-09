@@ -32,22 +32,40 @@
             </td>
 
             <td class="p-4 border-b" itemprop="opMain">
-                {{ __('info.empty') }}
+                <x-info.education.document-list
+                    :profileId="$item->profile->id"
+                    code="opMain"
+                />
             </td>
             <td class="p-4 border-b" itemprop="educationPlan">
-                {{ __('info.empty') }}
+                <x-info.education.document-list
+                    :profileId="$item->profile->id"
+                    code="educationPlan"
+                />
             </td>
             <td class="p-4 border-b" itemprop="educationRpd">
-                {{ __('info.empty') }}
+                <x-info.education.document-list
+                    :profileId="$item->profile->id"
+                    code="educationRpd"
+                />
             </td>
             <td class="p-4 border-b" itemprop="educationShedule">
-                {{ __('info.empty') }}
+                <x-info.education.document-list
+                    :profileId="$item->profile->id"
+                    code="eduPred"
+                />
             </td>
             <td class="p-4 border-b" itemprop="eduPr">
-                {{ __('info.empty') }}
+                <x-info.education.document-list
+                    :profileId="$item->profile->id"
+                    code="educationShedule"
+                />
             </td>
             <td class="p-4 border-b" itemprop="methodology">
-                {{ __('info.empty') }}
+                <x-info.education.document-list
+                    :profileId="$item->profile->id"
+                    code="methodology"
+                />
             </td>
         </tr>
     @empty

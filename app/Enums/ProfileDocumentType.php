@@ -7,9 +7,12 @@ use Illuminate\Support\Collection;
 enum ProfileDocumentType
 {
     case curriculum;
-    case workPrograms;
+    case workProgram;
     case trainingSchedule;
-    case practicePrograms;
+
+    case description;
+    case practiceProgram;
+    case methodical;
     case other;
 
     public function label(): string

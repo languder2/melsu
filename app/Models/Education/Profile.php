@@ -8,7 +8,7 @@ use App\Enums\EducationForm;
 use App\Enums\Info\Types;
 use App\Enums\Info\Vacant;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use App\Models\{Info\Info, Link, Sections\FAQ, Staff\Affiliation};
+use App\Models\{Global\Options, Info\Info, Link, Sections\FAQ, Staff\Affiliation};
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -373,7 +373,7 @@ use App\Models\Documents\Document;
 
     public function getInfoByCode($code): ?Info
     {
-        return $this->info->where('code',$code)->first();
+        return $this->info->where('code',$code)->first() ?? (new Info(['code' => $code]))->relation()->associate($this);
     }
     public function getInfoByTypeCode($type,$code): ?Info
     {
@@ -411,6 +411,11 @@ use App\Models\Documents\Document;
         ]);
     }
 
+    public function getOption($option):Options
+    {
+        return $this->options()->where('code',$option)->first()
+            ?? (new Options(['code' => $option]))->relation()->associate($this);
+    }
 
 
 }

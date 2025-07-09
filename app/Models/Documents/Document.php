@@ -182,6 +182,10 @@ class Document extends Model
     {
         return $this->getOption('code')->property ?? null;
     }
+    public function getYearAttribute():?string
+    {
+        return $this->getOption('year')->property ?? null;
+    }
     public function getSpecialityForm():Options
     {
         return $this->getOption('form');

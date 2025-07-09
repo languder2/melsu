@@ -282,5 +282,14 @@ class Speciality extends Model
     {
         return $this->morphMany(Info::class, 'relation');
     }
+    public function info(): MorphMany
+    {
+        return $this->morphMany(Info::class,'relation');
+    }
+
+    public function getInfoByCode($code): ?Info
+    {
+        return $this->info->where('code',$code)->first() ?? (new Info(['code' => $code]))->relation()->associate($this);
+    }
 
 }

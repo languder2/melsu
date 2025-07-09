@@ -22,11 +22,11 @@
 
     @component('components.info.documents', $education->getTemplate('eduPerevodEl','documents') )@endcomponent
 
-    @component('components.info.education-eduOp', $education->eduOp())@endcomponent
+    @component('components.info.education.education-eduOp', $education->eduOp())@endcomponent
 
-    @component('components.info.education-eduOp', $education->eduAdOp())@endcomponent
+    @component('components.info.education.education-eduOp', $education->eduAdOp())@endcomponent
 
-    @component('components.info.education-eduNir', $education->eduNir())@endcomponent
+    @component('components.info.education.education-eduNir', $education->eduNir())@endcomponent
 
     @component('components.info.education-graduateJob', $education->graduateJob())@endcomponent
 

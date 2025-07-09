@@ -61,11 +61,21 @@ Route::prefix('sveden')->group(function () {
 
 });
 
-Route::prefix('education-profile/document/')->group(function (){
-    Route::post('save/{profile?}/{document?}',    [ProfileController::class, 'saveDocument'])
+Route::prefix('education-profile')->group(function (){
+    Route::post('document/save/{profile?}/{document?}',    [ProfileController::class, 'saveDocument'])
         ->name('education-profile.document.save');
 
-    Route::get('modal/{profile?}/{document?}',    [ProfileController::class, 'modalDocument'])
+    Route::get('document/modal/{profile?}/{document?}',    [ProfileController::class, 'modalDocument'])
         ->name('education-profile.document.modal');
+
+    Route::get('nir/{profile?}',    [ProfileController::class, 'modalNir'])
+        ->name('education-profile.nir.modal');
+    Route::post('nir/save/{profile?}',    [ProfileController::class, 'saveNir'])
+        ->name('education-profile.nir.save');
+
+    Route::get('job/{item?}',    [ProfileController::class, 'modalJob'])
+        ->name('education-profile.job.modal');
+    Route::post('job/save/{item?}',    [ProfileController::class, 'saveJob'])
+        ->name('education-profile.job.save');
 });
 

@@ -199,7 +199,14 @@ class InfoEducation extends Info
                     (object)[
                         'speciality'        => $speciality,
                         'profile'           => $profile,
-                        'infos'              => $speciality->infos
+                        'info'              => (object)[
+                            'perechenNir'       => $profile->getInfoByCode('perechenNir')->content,
+                            'napravNir'         => $profile->getInfoByCode('napravNir')->content,
+                            'resultNir'         => $profile->getInfoByCode('resultNir')->content,
+                            'baseNir'           => $profile->getInfoByCode('baseNir')->content,
+                        ],
+                        'edit'              => route('education-profile.nir.modal',$profile),
+
                     ]
                 );
             }
@@ -225,7 +232,10 @@ class InfoEducation extends Info
             ->orderBy('spec_code')
             ->orderBy('name')
             ->orderBy('name_profile')
-            ->get();
+            ->get()->each(function ($item){
+                $item->v1   = $item->getInfoByCode('v1')->content;
+                $item->t1   = $item->getInfoByCode('t1')->content;
+            });
 
     }
     public function graduateJob() : array

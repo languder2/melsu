@@ -29,7 +29,15 @@ class DocumentList extends Component
         if($documents)
             $this->list = $documents->where(function ($item) use ($code) {
                 return $item->code === $code;
-            });
+            })
+            ->each(function ($item) use ($profileId, $code) {
+                $item->edit = route('education-profile.document.modal',[
+                    $profileId, $item->id, "code"=> $code
+                ]);
+            })
+            ->sortBy('sort')
+            ->reverse()
+            ;
     }
 
     /**

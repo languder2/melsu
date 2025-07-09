@@ -11,7 +11,7 @@
         id="title"
         name="title"
         label="Название файла"
-        value=""
+        value="{{ $document->title }}"
         required
     />
 
@@ -27,7 +27,7 @@
         <x-form.select2
             id="type"
             name="optional[type]"
-            value=""
+            value="{{ $document->type }}"
             null="Тип"
             :list="$types"
         />
@@ -35,7 +35,7 @@
         <x-form.select2
             id="type"
             name="optional[year]"
-            value=""
+            value="{{ $document->year }}"
             null="Год"
             :list="$years"
         />
@@ -46,7 +46,7 @@
         type="number"
         name="sort"
         label="Порядок вывода"
-        value=""
+        value="{{ $document->sort ?? null }}"
     />
 
     @component('components.form.submit',[
@@ -55,5 +55,4 @@
         'value'         => "сохранить",
         'position'      => "text-center",
     ])@endcomponent
-
 </form>

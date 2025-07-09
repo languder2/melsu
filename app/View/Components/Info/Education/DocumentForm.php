@@ -16,6 +16,7 @@ class DocumentForm extends Component
     public Collection $years;
     public string $save;
     public ?string $code = null;
+    public ?Document $document = null;
     public function __construct($profileId,$documentId,$code)
     {
         $this->types    = ProfileDocumentType::list();
@@ -30,6 +31,8 @@ class DocumentForm extends Component
         ]);
 
         $this->code     = $code;
+
+        $this->document = Document::find($documentId) ?? new Document();
     }
 
     public function render(): View|Closure|string
