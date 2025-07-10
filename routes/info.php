@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\Info\CateringController;
 use App\Http\Controllers\Info\InfoController;
+use App\Http\Controllers\Info\CateringController;
+use App\Http\Controllers\Info\ObjectsController;
 use App\Http\Controllers\Education\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,7 +19,7 @@ Route::prefix('sveden')->group(function () {
     Route::get('eduStandarts',      [InfoController::class, 'standards'])->name('info:eduStandarts');
     Route::get('managers',          [InfoController::class, 'managers'])->name('info:managers');
     Route::get('employees',         [InfoController::class, 'employees'])->name('info:employees');
-    Route::get('objects',           [InfoController::class, 'objects'])->name('info:objects');
+//    Route::get('objects',           [InfoController::class, 'objects'])->name('info:objects');
     Route::get('grants',            [InfoController::class, 'grants'])->name('info:grants');
     Route::get('paid_edu',          [InfoController::class, 'paid'])->name('info:paid_edu');
     Route::get('budget',            [InfoController::class, 'budget'])->name('info:budget');
@@ -77,5 +78,13 @@ Route::prefix('education-profile')->group(function (){
         ->name('education-profile.job.modal');
     Route::post('job/save/{item?}',    [ProfileController::class, 'saveJob'])
         ->name('education-profile.job.save');
+});
+
+Route::prefix('sveden/objects')->group(function (){
+    Route::get('', [ObjectsController::class, 'index'])->name('info:objects');
+
+    Route::get('form/{code}/{item?}', [ObjectsController::class, 'form'])->name('info:objects:form');
+
+    Route::post('save/{code}/{info?}', [ObjectsController::class, 'save'])->name('info:objects:save');
 });
 

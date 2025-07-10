@@ -97,7 +97,7 @@
         id="awards"
         name="awards"
         label="Награды, поощрение"
-        value="{{ old('_token') ? old('awards') : $current->awards }}"
+        value="{{ old('_token') ? old('awards') : $current->awards ?? null }}"
     />
 
     <x-form.input

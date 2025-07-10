@@ -10,10 +10,12 @@ use Illuminate\Support\Collection;
 
 class InfoObjects extends Info
 {
+    public const string routeNameForm = 'info:objects:form';
+    public const string routeNameSave = 'info:objects:save';
 
-    protected const Types Type = Types::objects;
+    public const Types Type = Types::objects;
 
-    protected Collection $codes;
+    public Collection $codes;
 
     public function __construct(...$arguments)
     {
@@ -22,7 +24,7 @@ class InfoObjects extends Info
         parent::__construct($arguments);
     }
 
-    protected const array Fields = [
+    public const array Fields = [
         Objects::purposeCab->name => [
             Objects::addressCab,
             Objects::nameCab,
@@ -69,6 +71,8 @@ class InfoObjects extends Info
     {
         return Info::where('type',self::Type)
             ->where('code',$code)
+            ->orderBy('sort','desc')
+            ->orderBy('content','asc')
             ->get()
             ->keyBy('id')
             ->map(fn($item) => self::getFieldsByCaptions($item,$code));
@@ -80,6 +84,7 @@ class InfoObjects extends Info
         return [
             'label'             => $code->getName(),
             'prop'              => $code->name,
+            'routeName'         => $this::routeNameForm,
             'captions'          => self::Fields[$code->name],
             'list'              => $this->list($code)
 

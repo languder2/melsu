@@ -12,7 +12,9 @@
 
 @section('content')
 
-    @component('components.info.table',$objects->template('purposeCab'))@endcomponent
+    @component('components.info.objects.purpose-cab',$objects->template('purposeCab'))@endcomponent
+
+
     @component('components.info.table',$objects->template('purposePrac'))@endcomponent
     @component('components.info.table',$objects->template('purposeLibr'))@endcomponent
     @component('components.info.table',$objects->template('purposeSport'))@endcomponent

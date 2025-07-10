@@ -63,10 +63,6 @@ class InfoController extends Controller
         return view('info.employees', compact('info','employees'));
     }
 
-    public function objects(InfoBase $info, InfoObjects $objects):View
-    {
-        return view('info.objects', compact('info','objects'));
-    }
     public function grants(InfoBase $info, InfoObjects $objects, InfoGrants $grants):View
     {
         return view('info.grants', compact('info','objects','grants'));

@@ -2,6 +2,8 @@
 
 namespace App\Enums\Info;
 
+use Illuminate\Support\Collection;
+
 enum Objects
 {
     /* cabinets */
@@ -57,4 +59,30 @@ enum Objects
     {
         return __("info.objects.{$this->name}");
     }
+
+    public function label(): string
+    {
+        return __("info.objects.{$this->name}");
+    }
+    public static function list(): Collection
+    {
+        $list = collect();
+
+        foreach (self::cases() as $case)
+            $list->put($case->name, $case->label());
+
+        return $list;
+    }
+
+    public function getModalForm(): string
+    {
+        return match ($this) {
+            self::purposeCab    => "components.info.objects.forms.purpose-cab",
+            self::purposePrac   => "components.info.objects.forms.purpose-prac",
+            self::purposeLibr   => "components.info.objects.forms.purpose-libr",
+            self::purposeSport  => "components.info.objects.forms.purpose-sport",
+            default => null,
+        };
+    }
+
 }
