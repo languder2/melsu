@@ -277,7 +277,7 @@
                         <li><a class="hover:underline hover:text-base-red" href="https://melsu.ru/specialities/speciality_166">Агрохимия и агропочвоведение</a></li>
                         <li><a class="hover:underline hover:text-base-red" href="https://melsu.ru/specialities/speciality_21">Садоводство (Бакалавриат)</a></li>
                         <li><a class="hover:underline hover:text-base-red" href="https://melsu.ru/specialities/speciality_167">Садоводство (Магистратура)</a></li>
-                        <li><a class="hover:underline hover:text-base-red" href="https://melsu.ru/specialities/ugolovno-pravovoi">Правоохранительная деятельность</a></li>
+                        <li><a class="hover:underline hover:text-base-red" href="https://melsu.ru/specialities/speciality_194">Правоохранительная деятельность</a></li>
                         <li><a class="hover:underline hover:text-base-red" href="https://melsu.ru/specialities/40-05-04">Судебная и прокурорская деятельность</a></li>
                         <li><a class="hover:underline hover:text-base-red" href="https://melsu.ru/specialities/speciality_182">Журналистика</a></li>
                         <li><a class="hover:underline hover:text-base-red" href="https://melsu.ru/specialities/speciality_183">Медиакоммуникации</a></li>
