@@ -94,9 +94,9 @@ class InfoController extends Controller
     }
     public function educationTest(InfoBase $info, InfoEducation $education):View
     {
+        dd(1);
 
-
-        return view('info.education-test', compact('info', 'education'));
+        return view('info.education-test');
     }
 
     public function standards(InfoBase $info, InfoStandarts $standards):View
