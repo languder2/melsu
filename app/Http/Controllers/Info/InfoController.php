@@ -94,7 +94,7 @@ class InfoController extends Controller
     }
     public function educationTest(InfoBase $info, InfoEducation $education):View
     {
-        dd(3);
+        dd(5);
 
         return view('info.education-test');
     }
