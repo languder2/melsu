@@ -105,9 +105,13 @@ use Illuminate\Support\Collection;
         if(!$code)
             return null;
 
+        $property = $this->getField($this::Type, $code);
+
         return (object)[
+            'type'          => $this::Type->name,
             'prop'          => $code->name,
-            'value'         => $this->getField($this::Type, $code)->content ?? __('info.empty'),
+            'value'         => $property->content ?? __('info.empty'),
+            'id'            => $property->exists ? $property->id : null,
         ];
     }
     public function getProperties(string $code): ?array
@@ -252,10 +256,10 @@ use Illuminate\Support\Collection;
     }
     public function getFormAttribute(): string
     {
-        return url(route('info:form:common',[
+        return url(route('info:form',[
             'type'  => is_string($this->type) ? $this->type : $this->type->name,
             'code'  => is_string($this->code) ? $this->code : $this->code->name,
-            'id'    => $this->exists ? $this->id : null,
+            'info'  => $this->exists ? $this->id : null,
         ]));
     }
     public function getFormFounderAttribute(): string

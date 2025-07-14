@@ -52,13 +52,13 @@
             <td class="p-4 border-b" itemprop="educationShedule">
                 <x-info.education.document-list
                     :profileId="$item->profile->id"
-                    code="eduPred"
+                    code="educationShedule"
                 />
             </td>
             <td class="p-4 border-b" itemprop="eduPr">
                 <x-info.education.document-list
                     :profileId="$item->profile->id"
-                    code="educationShedule"
+                    code="eduPr"
                 />
             </td>
             <td class="p-4 border-b" itemprop="methodology">

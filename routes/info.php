@@ -16,6 +16,7 @@ Route::prefix('sveden')->group(function () {
     Route::get('struct',            [InfoController::class, 'struct'])->name('info:struct');
     Route::get('document',          [InfoController::class, 'document'])->name('info:document');
     Route::get('education',         [InfoController::class, 'education'])->name('info:education');
+    Route::get('education-summary', [InfoController::class, 'educationSummary'])->name('info:education:summary');
     Route::get('eduStandarts',      [InfoController::class, 'standards'])->name('info:eduStandarts');
     Route::get('managers',          [InfoController::class, 'managers'])->name('info:managers');
     Route::get('employees',         [InfoController::class, 'employees'])->name('info:employees');
@@ -80,11 +81,16 @@ Route::prefix('education-profile')->group(function (){
         ->name('education-profile.job.save');
 });
 
+Route::get('info/form/{type}/{code}/{info?}',  [InfoController::class, 'form'])->name('info:form');
+
+
 Route::prefix('sveden/objects')->group(function (){
-    Route::get('', [ObjectsController::class, 'index'])->name('info:objects');
+    Route::get('',                      [ObjectsController::class, 'index'])->name('info:objects');
 
-    Route::get('form/{code}/{item?}', [ObjectsController::class, 'form'])->name('info:objects:form');
+    Route::get('form/{code}/{info?}',   [ObjectsController::class, 'form'])->name('info:objects:form');
 
-    Route::post('save/{code}/{info?}', [ObjectsController::class, 'save'])->name('info:objects:save');
+    Route::post('save/{code}/{info?}',  [ObjectsController::class, 'save'])->name('info:objects:save');
+
+    Route::get('delete/{info?}',        [ObjectsController::class, 'delete'])->name('info:objects:delete');
 });
 

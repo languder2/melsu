@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Education;
 
+use App\Enums\ProfileDocumentType;
 use App\Http\Controllers\Controller;
 use App\Models\Documents\Document;
 use App\Models\Education\Profile;
@@ -16,14 +17,27 @@ class ProfileController extends Controller
     {
         $code = request()->get('code');
 
-        return view('components.info.education.modal', compact('profile', 'document', 'code'));
+        $case = ProfileDocumentType::getByCode($code);
+
+        $type = $case->name;
+
+        return view('components.info.education.modal', compact('profile', 'document', 'code','type'));
     }
     public function saveDocument(Request $request, Profile $profile, ?Document $document): RedirectResponse
     {
         $document->relation()->associate($profile);
 
+        $options = collect($request->get('optional'));
+
+        if($options->get('type')){
+            $type = ProfileDocumentType::getByName($options->get('type'));
+
+            if($type->code())
+                $options->put('code', $type->code());
+        }
+
         $form = [
-            'title' => $request->get('title'),
+            'title' => $request->get('title') ?? $type->label()." ".$options->get('year'),
             'file' => $request->file('file'),
             'sort' => $request->get('sort'),
         ];
@@ -33,7 +47,7 @@ class ProfileController extends Controller
 
         $document->fill($form)->relation()->associate($profile)->save();
 
-        foreach ($request->get('optional') as $code=>$value)
+        foreach ($options as $code=>$value)
             if($value)
                 $document->getOption($code)->fill(['property' => $value])->save();
             else

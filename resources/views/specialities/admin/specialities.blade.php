@@ -85,7 +85,7 @@
         </div>
 
         <div class="" >
-            <a href="{{ url('education-programs') }}"
+            <a href="{{ route('info:education:summary') }}"
                 class="
                     inline-block
                     bg-red-800 px-4 py-2 text-white rounded-md

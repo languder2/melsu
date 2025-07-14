@@ -14,4 +14,19 @@
             {{ $item->label }}
         </a>
     @endforeach
+    @if(auth()->check())
+        <a
+            href="{{ route('info:education:summary') }}"
+            @class([
+                "
+                    px-6 py-3
+                    hover:bg-white
+                    hover:text-black
+                    text-gray-100
+                ",
+            ])
+        >
+            Образование. Сводная
+        </a>
+        @endif
 </div>

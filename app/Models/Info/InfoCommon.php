@@ -10,9 +10,9 @@ use Illuminate\Support\Collection;
 
 class InfoCommon extends Info
 {
-    protected const Types Type = Types::common;
+    public const Types Type = Types::common;
 
-    protected Collection $codes;
+    public Collection $codes;
     public function __construct(...$arguments)
     {
         $this->codes = collect(Common::cases());
@@ -20,7 +20,7 @@ class InfoCommon extends Info
         parent::__construct($arguments);
     }
 
-    protected const array Fields = [
+    public const array Fields = [
         Common::fullName,
         Common::shortName,
         Common::regDate,

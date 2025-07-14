@@ -26,7 +26,7 @@ class DocumentList extends Component
 
         $this->list = collect();
 
-        if($documents)
+        if($documents->count())
             $this->list = $documents->where(function ($item) use ($code) {
                 return $item->code === $code;
             })
@@ -38,6 +38,7 @@ class DocumentList extends Component
             ->sortBy('sort')
             ->reverse()
             ;
+
     }
 
     /**

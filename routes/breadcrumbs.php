@@ -94,7 +94,7 @@ Breadcrumbs::for('branch', function (BreadcrumbTrail $trail, ?Division $division
 
 Breadcrumbs::for('department', function (BreadcrumbTrail $trail, ?Division $division) {
 
-    if($division->parent)
+    if($division->parent && $division->parent->type)
         $trail->parent($division->parent->type->value,$division->parent);
     else
         $trail->parent('home');
@@ -102,7 +102,11 @@ Breadcrumbs::for('department', function (BreadcrumbTrail $trail, ?Division $divi
 });
 
 Breadcrumbs::for('lab', function (BreadcrumbTrail $trail, ?Division $division) {
-    $trail->parent($division->parent->type->value,$division->parent);
+    if($division->parent && $division->parent->type)
+        $trail->parent($division->parent->type->value,$division->parent);
+    else
+        $trail->parent('home');
+
     $trail->push($division->name, $division->link);
 });
 

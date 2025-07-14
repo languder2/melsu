@@ -1,6 +1,6 @@
 <div class="flex gap-4 p-4 items-center">
     <div id="modal-header" class="flex-1 text-center font-semibold">
-        {{ __("info.founder.add") }}
+        {{ $case->label() }}
     </div>
 
     <a
@@ -13,27 +13,46 @@
     </a>
 </div>
 
-<form action="{{ $info->save ?? "#" }}" method="POST" class="p-4 pt-0 flex flex-col gap-2">
-@csrf
+<form action="{{ route($info::routeNameSave,[$code,$info->exists ? $info->id : null]) }}" method="POST" class="p-4 pt-0 flex flex-col gap-2">
+    @csrf
 
-{{--    <input type="hidden" name="code" value="{{ $code }}">--}}
+    <x-form.input
+        id="form-subs-addressPrac"
+        name="subs[addressPrac]"
+        :label="$cases->get('addressPrac')"
+        value="{!! $info->getSubsValue('addressPrac') !!}"
+    />
 
-{{--    @foreach($info::Fields as $field)--}}
-{{--        <x-form.input--}}
-{{--            id="form-{{ $field->name }}"--}}
-{{--            name="{{ $field->name }}"--}}
-{{--            label="{!! $field->label() !!}"--}}
-{{--            value="{!! $info->getSubsValue($field->name)  !!}"--}}
-{{--        />--}}
-{{--    @endforeach--}}
+    <x-form.input
+        id="form-subs-namePrac"
+        name="subs[namePrac]"
+        :label="$cases->get('namePrac')"
+        value="{!! $info->getSubsValue('namePrac') !!}"
+    />
 
-{{--    <x-form.input--}}
-{{--        id="form-sort"--}}
-{{--        type="number"--}}
-{{--        name="sort"--}}
-{{--        label="Порядок вывода"--}}
-{{--        value="{!! $info->sort  !!}"--}}
-{{--    />--}}
+    <x-form.textarea
+        id="form-subs-osnPrac"
+        name="subs[osnCab]"
+        class="w-full h-20 border resize-y p-2 outline-0 focus:border-blue"
+        :placeholder="$cases->get('osnPrac')"
+        value="{!! $info->getSubsValue('osnPrac') !!}"
+    />
+
+    <x-form.textarea
+        id="form-subs-ovzPrac"
+        name="subs[ovzPrac]"
+        class="w-full h-20 border resize-y p-2 outline-0 focus:border-blue"
+        :placeholder="$cases->get('ovzPrac')"
+        value="{!! $info->getSubsValue('ovzPrac') !!}"
+    />
+
+    <x-form.input
+        id="form-sort"
+        type="number"
+        name="sort"
+        label="Порядок вывода"
+        value="{!! $info->sort  !!}"
+    />
 
     @component('components.form.submit',[
         'name'          => 'save',

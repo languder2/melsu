@@ -11,20 +11,20 @@
         <x-info.forms.icons.close width="24px" height="24px" />
     </a>
 </div>
-<form action="{{route('info:save',[$type,$code,$item->id])}}" method="POST" class="p-4 pt-0 flex flex-col gap-2">
+<form action="{{route('info:save',[$type,$code,$info->id])}}" method="POST" class="p-4 pt-0 flex flex-col gap-2">
     @csrf
 
     <textarea name="content" class="w-full border p-2 min-h-40"
         placeholder="Текст / значение"
-    >{!! $item->content !!}</textarea>
+    >{!! $info->content !!}</textarea>
 
-    <x-form.input
-        id="form-sort"
-        type="number"
-        name="sort"
-        label="Порядок вывода"
-        value="{!! $item->sort  !!}"
-    />
+{{--    <x-form.input--}}
+{{--        id="form-sort"--}}
+{{--        type="number"--}}
+{{--        name="sort"--}}
+{{--        label="Порядок вывода"--}}
+{{--        value="{!! $info->sort  !!}"--}}
+{{--    />--}}
 
     @component('components.form.submit',[
         'name'          => 'save',

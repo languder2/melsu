@@ -10,8 +10,9 @@ use Illuminate\Support\Collection;
 
 class InfoObjects extends Info
 {
-    public const string routeNameForm = 'info:objects:form';
-    public const string routeNameSave = 'info:objects:save';
+    public const string routeNameForm   = 'info:objects:form';
+    public const string routeNameSave   = 'info:objects:save';
+    public const string routeNameDelete = 'info:objects:delete';
 
     public const Types Type = Types::objects;
 
@@ -84,7 +85,8 @@ class InfoObjects extends Info
         return [
             'label'             => $code->getName(),
             'prop'              => $code->name,
-            'routeName'         => $this::routeNameForm,
+            'routeForm'         => $this::routeNameForm,
+            'routeDelete'       => $this::routeNameDelete,
             'captions'          => self::Fields[$code->name],
             'list'              => $this->list($code)
 
@@ -97,6 +99,8 @@ class InfoObjects extends Info
         return [
             'label'             => $code->getName(),
             'prop'              => $code->name,
+            'type'              => $this::Type->name,
+            'route'             => 'info:form',
             'list'              => $this->getContent(self::Type, $code),
         ];
     }

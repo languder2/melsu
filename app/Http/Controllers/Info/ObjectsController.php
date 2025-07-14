@@ -24,7 +24,7 @@ class ObjectsController extends Controller
         $case = $info->getCode($code);
         $cases = Objects::list();
 
-        return view($case->getModalForm(), compact('code','info', 'case','cases'));
+        return view($case->getModalForm(), compact('code','info','case','cases'));
     }
 
     public function save(Request $request, string $code, ?InfoObjects $info):RedirectResponse
@@ -50,11 +50,11 @@ class ObjectsController extends Controller
         return redirect()->back();
     }
 
-    public function delete(?InfoCatering $item):RedirectResponse
+    public function delete(?InfoObjects $info):RedirectResponse
     {
         if(!auth()->check()) return redirect()->route('info:common');
 
-        $item->delete();
+        $info->delete();
 
         return redirect()->back();
     }

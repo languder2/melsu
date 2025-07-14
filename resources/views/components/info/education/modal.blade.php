@@ -17,5 +17,6 @@
     profileId="{{ $profile->id }}"
     documentId="{{ $document->exists ? $document->id : null }}"
     code="{{ $code ?? null }}"
+    type="{{ $type ?? null }}"
 />
 

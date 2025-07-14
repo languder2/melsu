@@ -5,6 +5,7 @@
 >
     @csrf
 
+
     <input type="hidden" name="optional[code]" value="{{ $code }}">
 
     <x-form.input
@@ -12,7 +13,6 @@
         name="title"
         label="Название файла"
         value="{{ $document->title }}"
-        required
     />
 
 
@@ -27,7 +27,7 @@
         <x-form.select2
             id="type"
             name="optional[type]"
-            value="{{ $document->type }}"
+            value="{{ $document->exists ? $document->type : $type }}"
             null="Тип"
             :list="$types"
         />

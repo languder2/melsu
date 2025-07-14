@@ -15,10 +15,12 @@ class DocumentForm extends Component
     public Collection $types;
     public Collection $years;
     public string $save;
+    public ?string $type = null;
     public ?string $code = null;
     public ?Document $document = null;
-    public function __construct($profileId,$documentId,$code)
+    public function __construct($profileId,$documentId,$code, $type = null)
     {
+
         $this->types    = ProfileDocumentType::list();
 
         $this->years    = collect(range(2020, now()->year))->mapWithKeys(function ($item){
@@ -33,6 +35,9 @@ class DocumentForm extends Component
         $this->code     = $code;
 
         $this->document = Document::find($documentId) ?? new Document();
+
+        $this->type = $type;
+
     }
 
     public function render(): View|Closure|string

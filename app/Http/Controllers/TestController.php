@@ -62,21 +62,18 @@ class TestController extends Controller
     {
         $list = collect([]);
 
-//        $profiles = Profile::all();
-//
-//
-//        $profiles->each(function ($profile){
-//            $documents = $profile->speciality->documents->where(function ($document) use ($profile){
-//                return $document->SpecialityForm === $profile->form->value;
-//            })
-//            ->each(function ($document) use ($profile){
-//                $document->getOption('code')->fill(['property' => 'eduPred'])->save();
-//                $document->relation()->associate($profile)->save();
-//            })
-//            ;
-//
-//
-//        });
+
+
+        $profiles = Profile::all();
+
+
+        $profiles->each(function ($profile){
+            $documents = $profile->documents()->each(function ($document) use ($profile){
+                if($document->type === 'curriculum')
+                    $document->getOption('code')->fill(['property' => 'educationPlan'])->save();
+            })
+            ;
+        });
 
         return view('test.index',compact('list'));
     }

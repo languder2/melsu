@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Info;
 
+use App\Enums\EducationLevel;
 use App\Http\Controllers\Controller;
 use App\Models\Documents\Document;
+use App\Models\Education\Profile;
+use App\Models\Education\Speciality;
 use App\Models\Info\Info;
 use App\Models\Info\InfoBase;
 use App\Models\Info\InfoBudget;
@@ -47,6 +50,32 @@ class InfoController extends Controller
     {
 
         return view('info.education', compact('info', 'education'));
+    }
+    public function educationSummary(InfoBase $info, InfoEducation $education):View
+    {
+        $filters = request()->all();
+
+        $specialities = Speciality::orderBy('spec_code')->orderBy('name')->orderBy('name_profile');
+
+        if(request()->get('show'))
+            $specialities->where('show',$filters['show'] === 'show');
+
+        if(request()->get('level'))
+            $specialities->where('level',$filters['level']);
+
+        if(request()->get('search'))
+            $specialities->where(function ($query) use ($filters) {
+                $query->where('name', 'like', '%'.$filters['search'].'%')
+                    ->orWhere('name_profile', 'like', '%'.$filters['search'].'%')
+                    ->orWhere('spec_code', 'like', '%'.$filters['search'].'%');
+            });
+
+        if(request()->get('is_recruitment'))
+            $specialities->where('is_recruitment',$filters['is_recruitment'] === 'true');
+
+        $list   = $specialities->get();
+
+        return view('info.education-summary', compact('info', 'education', 'filters','list'));
     }
 
     public function standards(InfoBase $info, InfoStandarts $standards):View
@@ -106,11 +135,9 @@ class InfoController extends Controller
 
     /* data */
 
-    public function form($type,$code,$item = null):View
+    public function form($type,$code,Info $info):View
     {
-        $item = Info::find($item) ?? new Info(['type' => $type,'code' => $code]);
-
-        return view('components.info.forms.info.text', compact('type','code','item'));
+        return view('components.info.forms.info.text', compact('type','code','info'));
     }
     public function formPlace($type,$code,$item = null):View
     {

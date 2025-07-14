@@ -13,11 +13,10 @@
 @section('content')
 
     @component('components.info.objects.purpose-cab',$objects->template('purposeCab'))@endcomponent
+    @component('components.info.objects.purpose-cab',$objects->template('purposePrac'))@endcomponent
+    @component('components.info.objects.purpose-prac',$objects->template('purposeLibr'))@endcomponent
+    @component('components.info.objects.purpose-libr',$objects->template('purposeSport'))@endcomponent
 
-
-    @component('components.info.table',$objects->template('purposePrac'))@endcomponent
-    @component('components.info.table',$objects->template('purposeLibr'))@endcomponent
-    @component('components.info.table',$objects->template('purposeSport'))@endcomponent
 
     @component('components.info.text',$objects->content('ovz'))@endcomponent
     @component('components.info.text',$objects->content('purposeFacil'))@endcomponent
