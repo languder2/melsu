@@ -8,7 +8,8 @@
                 <div class="slide_group sldr">
                     <div class="slide">
                         <a href="https://melsu.ru/tselevoe-obuchenie" class="slide-link cursor-pointer">
-                            <img src="{{asset('img/slider/Celevoe_banner.png')}}" alt="">
+                            <img src="{{asset('img/slider/Celevoe_banner.png')}}" alt="" class="hidden sm:block w-max">
+                            <img src="{{asset('img/slider/Celevoe_banner_mob.png')}}" alt="" class="block sm:hidden">
                         </a>
                     </div>
                     <div class="slide">
