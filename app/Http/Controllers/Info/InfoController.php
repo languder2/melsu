@@ -92,44 +92,6 @@ class InfoController extends Controller
 
         return view('info.education-summary', compact('info', 'education', 'filters','list'));
     }
-    public function educationTest(InfoBase $info, InfoEducation $education):View
-    {
-        $filters = request()->all();
-
-        $priority= EducationLevel::priority();
-
-        $list = Profile::orderBy('form')->where('show',true)->with(['speciality' => function ($query) use ($filters) {
-            if(array_key_exists('search', $filters))
-                $query->where('name', 'like', '%'.$filters['search'].'%')
-                    ->orWhere('name_profile', 'like', '%'.$filters['search'].'%')
-                    ->orWhere('spec_code', 'like', '%'.$filters['search'].'%');
-
-            if(array_key_exists('level', $filters))
-                $query->where('level',$filters['level']);
-
-        }])
-            ->get()
-            ->where(fn($item) => $item->speciality)
-            ->each(function($item){
-                $speciality = $item->speciality;
-                $item->specID = $speciality->id;
-                $item->code = $speciality->spec_code;
-                $item->level = $speciality->level;
-                $item->name = $speciality->name;
-                $item->profile = $speciality->name_profile;
-
-                $item->docs = $item->documentsByCodes();
-            })
-            ->sortBy(function ($profile) use ($priority) {
-                return [
-                    $priority[$profile->level->value] ?? 999,
-                    $profile->code ?? 999,
-                ];
-            });
-        ;
-
-        return view('info.education-test', compact('info', 'education', 'filters','list'));
-    }
 
     public function standards(InfoBase $info, InfoStandarts $standards):View
     {
