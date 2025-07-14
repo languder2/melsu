@@ -130,82 +130,82 @@
         </td>
     </tr>
     @foreach($list as $item)
-        <tr @class([ $loop->index % 2 ? 'bg-white' : 'bg-white/50', 'text-center' ])>
-            <td class="p-4 border-b" itemprop="eduCode">
-                {!! $item->code !!}
-            </td>
-            <td class="p-4 border-b" itemprop="eduName">
-                <p>
-                    {!! $item->name !!}
-                </p>
-                <p>
-                    {!! $item->profile !!}
-                </p>
-            </td>
-            <td class="p-4 border-b" itemprop="eduLevel">
-                <p>
-                    {!! $item->level->getAltName() !!}
-                </p>
-                <p>
-                    {!! $item->form->getName() !!}
-                </p>
-            </td>
-            <td class="p-4 border-b" valign="top">
-                <x-info.education.test
-                    :list="$item->docs->get('eduPred')"
-                    :profileID="$item->id"
-                    code="eduPred"
-                />
-            </td>
-            <td class="p-4 border-b" valign="top">
-                <x-info.education.test
-                    :list="$item->docs->get('eduPrac')"
-                    :profileID="$item->id"
-                    code="eduPrac"
-                />
-            </td>
-            <td class="p-4 border-b" itemprop="opMain" valign="top">
-                <x-info.education.test
-                    :list="$item->docs->get('opMain')"
-                    :profileID="$item->id"
-                    code="opMain"
-                />
-            </td>
-            <td class="p-4 border-b" itemprop="educationPlan" valign="top">
-                <x-info.education.test
-                    :list="$item->docs->get('educationPlan')"
-                    :profileID="$item->id"
-                    code="educationPlan"
-                />
-            </td>
-            <td class="p-4 border-b" itemprop="educationRpd" valign="top">
-                <x-info.education.test
-                    :list="$item->docs->get('educationRpd')"
-                    :profileID="$item->id"
-                    code="educationRpd"
-                />
-            </td>
-            <td class="p-4 border-b" itemprop="educationShedule" valign="top">
-                <x-info.education.test
-                    :list="$item->docs->get('educationShedule')"
-                    :profileID="$item->id"
-                    code="educationShedule"
-                />
-            </td>
-            <td class="p-4 border-b" itemprop="eduPr" valign="top">
-                <x-info.education.test
-                    :list="$item->docs->get('eduPr')"
-                    :profileID="$item->id"
-                    code="eduPr"
-                />
-            </td>
-            <td class="p-4 border-b" itemprop="methodology" valign="top">
-                <x-info.education.test
-                    :list="$item->docs->get('methodology')"
-                    :profileID="$item->id"
-                    code="methodology"
-                />
-            </td>
-        </tr>
+            <tr @class([ $loop->index % 2 ? 'bg-white' : 'bg-white/50', 'text-center' ])>
+                <td class="p-4 border-b" itemprop="eduCode">
+                    {!! $item->code !!}
+                </td>
+                <td class="p-4 border-b" itemprop="eduName">
+                    <p>
+                        {!! $item->name !!}
+                    </p>
+                    <p>
+                        {!! $item->profile !!}
+                    </p>
+                </td>
+                <td class="p-4 border-b" itemprop="eduLevel">
+                    <p>
+                        {!! $item->level->getAltName() !!}
+                    </p>
+                    <p>
+                        {!! $item->form->getName() !!}
+                    </p>
+                </td>
+                <td class="p-4 border-b" valign="top">
+                    <x-info.education.test
+                        :list="$item->docs->get('eduPred')"
+                        :profileID="$item->id"
+                        code="eduPred"
+                    />
+                </td>
+                <td class="p-4 border-b" valign="top">
+                    <x-info.education.test
+                        :list="$item->docs->get('eduPrac')"
+                        :profileID="$item->id"
+                        code="eduPrac"
+                    />
+                </td>
+                <td class="p-4 border-b" itemprop="opMain" valign="top">
+                    <x-info.education.test
+                        :list="$item->docs->get('opMain')"
+                        :profileID="$item->id"
+                        code="opMain"
+                    />
+                </td>
+                <td class="p-4 border-b" itemprop="educationPlan" valign="top">
+                    <x-info.education.test
+                        :list="$item->docs->get('educationPlan')"
+                        :profileID="$item->id"
+                        code="educationPlan"
+                    />
+                </td>
+                <td class="p-4 border-b" itemprop="educationRpd" valign="top">
+                    <x-info.education.test
+                        :list="$item->docs->get('educationRpd')"
+                        :profileID="$item->id"
+                        code="educationRpd"
+                    />
+                </td>
+                <td class="p-4 border-b" itemprop="educationShedule" valign="top">
+                    <x-info.education.test
+                        :list="$item->docs->get('educationShedule')"
+                        :profileID="$item->id"
+                        code="educationShedule"
+                    />
+                </td>
+                <td class="p-4 border-b" itemprop="eduPr" valign="top">
+                    <x-info.education.test
+                        :list="$item->docs->get('eduPr')"
+                        :profileID="$item->id"
+                        code="eduPr"
+                    />
+                </td>
+                <td class="p-4 border-b" itemprop="methodology" valign="top">
+                    <x-info.education.test
+                        :list="$item->docs->get('methodology')"
+                        :profileID="$item->id"
+                        code="methodology"
+                    />
+                </td>
+            </tr>
     @endforeach
 </table>

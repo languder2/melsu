@@ -17,6 +17,7 @@ Route::prefix('sveden')->group(function () {
     Route::get('document',          [InfoController::class, 'document'])->name('info:document');
     Route::get('education',         [InfoController::class, 'education'])->name('info:education');
     Route::get('education-summary', [InfoController::class, 'educationSummary'])->name('info:education:summary');
+    Route::get('education-test',    [InfoController::class, 'educationTest'])->name('info:education:test');
     Route::get('eduStandarts',      [InfoController::class, 'standards'])->name('info:eduStandarts');
     Route::get('managers',          [InfoController::class, 'managers'])->name('info:managers');
     Route::get('employees',         [InfoController::class, 'employees'])->name('info:employees');

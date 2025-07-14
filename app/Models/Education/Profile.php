@@ -114,6 +114,14 @@ use App\Models\Documents\Document;
         return $this->getDocuments;
     }
 
+    public function documentsByCodes():Collection
+    {
+        return $this->getDocuments
+            ->filter(fn(Document $document) => $document->code)
+            ->groupBy('code')
+            ->map(fn(Collection $documents) => $documents->keyBy('id'));
+    }
+
     public function faq($all = null, $trashed = null): MorphMany
     {
         $object = $this->morphMany(FAQ::class, 'relation');

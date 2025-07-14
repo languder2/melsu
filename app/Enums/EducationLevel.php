@@ -64,6 +64,17 @@ enum EducationLevel: string
     {
         return "FIELD(level, 'bachelor', 'specialist', 'master', 'postgraduate', 'colleges')";
     }
+
+    public static function priority(): array
+    {
+        return [
+            'bachelor'      => 1,
+            'specialist'    => 2,
+            'master'        => 3,
+            'postgraduate'  => 4,
+            'colleges'      => 5,
+        ];
+    }
     public static function getAdminOrder(): string
     {
         return "FIELD(level, 'colleges', 'bachelor', 'specialist', 'master', 'postgraduate')";
