@@ -7033,4 +7033,10 @@ li.h--timeline-event.h--timeline-event--selected.text-component {
 .apply-online-button.scroll{
     transform: translateX(-75px);
 }
-/*apply-online-button style*/
+/*END apply-online-button style*/
+
+.gallery-item {
+    flex: auto;
+    min-width: calc(33% - 16px);
+}
+/*END gallery style*/
