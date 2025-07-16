@@ -7037,6 +7037,11 @@ li.h--timeline-event.h--timeline-event--selected.text-component {
 
 .gallery-item {
     flex: auto;
-    min-width: calc(33% - 16px);
+    min-width: calc(33% - 3px);
+}
+@media screen and (max-width: 1023px){
+    .gallery-item{
+        min-width: 100%;
+    }
 }
 /*END gallery style*/

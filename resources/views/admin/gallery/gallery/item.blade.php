@@ -17,6 +17,8 @@
             h-80
             relative rounded-lg
             transition-all duration-300
+            object-cover
+            w-full
         "
     >
 
