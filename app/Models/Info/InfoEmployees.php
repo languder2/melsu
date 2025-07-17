@@ -5,6 +5,7 @@ namespace App\Models\Info;
 use App\Enums\Info\Objects;
 use App\Enums\Info\Employees;
 use App\Enums\Info\Types;
+use App\Models\Employees\Employee;
 use App\Models\Global\Options;
 use Illuminate\Support\Collection;
 
@@ -40,7 +41,7 @@ class InfoEmployees extends Info
             'label'             => Employees::teachingStaff->label(),
             'prop'              => Employees::teachingStaff->name,
             'captions'          => self::Fields,
-            'list'              => Options::where('code','is_teacher')->get()->map(fn($item) => $item->relation)
+            'list'              => Employee::orderBy('fio')->orderBy('post')->get()
         ];
     }
 

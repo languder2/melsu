@@ -4,15 +4,20 @@
 
 @section('content')
 
-    <div class="grid grid-cols-[auto_auto_auto] gap-4 ">
-        @foreach($list as $item)
-            <div>
+    @dump($json ?? null)
 
+    <div class="grid grid-cols-[{{ $list->first()->count() }}]">
+        @foreach($list->first() as $field)
+            <div class="bg-blue text-white">
+                {{ $field }}
             </div>
-            <div class="flex flex-col gap-2">
-            </div>
-            <div>
-            </div>
+        @endforeach
+        @foreach($list as $item)
+            @foreach($item as $field)
+                <div class=" {{ $loop->iteration % 2 ? 'bg-green-50': 'bg-blue-50' }}">
+                    {{ $field }}
+                </div>
+            @endforeach
         @endforeach
     </div>
 

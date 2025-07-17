@@ -13,6 +13,7 @@ use App\Models\Documents\Document;
 use App\Models\Education\Duration;
 use App\Models\Education\Profile;
 use App\Models\Education\Speciality;
+use App\Models\Employees\Employee;
 use App\Models\Global\Options;
 use App\Models\Info\Info;
 use App\Models\Info\InfoCommon;
@@ -20,6 +21,7 @@ use App\Models\Info\InfoFounder;
 use App\Models\Info\InfoStandarts;
 use App\Models\News\Events;
 use App\Models\Staff\Staff;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
 use PhpOption\Option;
@@ -62,20 +64,16 @@ class TestController extends Controller
     {
         $list = collect([]);
 
+        $json = Storage::json('employees.json');
 
+        Employee::truncate();
 
-        $profiles = Profile::all();
+        foreach ($json as $employee)
+            Employee::create($employee);
 
+        $list = Employee::all();
 
-        $profiles->each(function ($profile){
-            $documents = $profile->documents()->each(function ($document) use ($profile){
-                if($document->type === 'curriculum')
-                    $document->getOption('code')->fill(['property' => 'educationPlan'])->save();
-            })
-            ;
-        });
-
-        return view('test.index',compact('list'));
+        return view('test.index',compact('list','json'));
     }
 
 

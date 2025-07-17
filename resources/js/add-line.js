@@ -1,5 +1,3 @@
-import {document} from "postcss";
-
 document.addEventListener("DOMContentLoaded", () => {
     initRemoveBlock();
     initShowHideSection();
