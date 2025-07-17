@@ -7045,3 +7045,9 @@ li.h--timeline-event.h--timeline-event--selected.text-component {
     }
 }
 /*END gallery style*/
+@media screen and (max-width: 767px){
+    .grd-custom{
+        display: grid;
+        grid-template-columns: 10% 30% 30% 30% !important;
+    }
+}
