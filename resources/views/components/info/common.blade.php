@@ -13,7 +13,9 @@
 
                 </a>
             @else
-                {!! $item->content ?? __('info.empty') !!}
+                <div>
+                    {!! $item->content ?? __('info.empty') !!}
+                </div>
             @endif
         </div>
     @endforeach
