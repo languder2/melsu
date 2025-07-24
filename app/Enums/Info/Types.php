@@ -19,6 +19,7 @@ enum Types
     case inter;
     case employees;
     case catering;
+    case records;
 
 
     public function label():string

@@ -5,6 +5,7 @@ namespace App\Models\News;
 use App\Models\Gallery\Image;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\News\Category;
@@ -94,21 +95,26 @@ class Events extends Model
 
     }
 
+    /* Links */
     public function getLinkAttribute():string
     {
         return route('public:event:show',$this->id);
     }
 
-    public function getEventDatetimeAttribute($value):Carbon
+
+    /* Values */
+    public function getEventDatetimeAttribute($value): Carbon
     {
         return $value ? ( $value instanceof Carbon ? $value : Carbon::createFromDate($value)) : now();
     }
 
-    public function FormatedEventDatetime(string $format = "d.m.Y H:i"):string
+    public function FormatedEventDatetime(string $format = "d.m.Y H:i"): string
     {
         return $this->event_datetime->format($format);
     }
-    public function category()
+
+    /* Relations */
+    public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class, 'category_id');
     }

@@ -8,11 +8,9 @@ use Illuminate\Support\Collection;
 
 class InfoGrants extends Info
 {
-
     protected const Types Type = Types::grants;
 
     protected Collection $codes;
-
     public function __construct(...$arguments)
     {
         $this->codes = collect(Grants::cases());

@@ -227,6 +227,8 @@ class InfoController extends Controller
         if(!$info->exists)
             $info->fill(['type' => $type,'code' => $code])->save();
 
+
+
         $info->fill(['content' => $request->get('content'), 'sort' => $request->get('sort')])->save();
 
         if(request()->hasFile('file')){

@@ -14,9 +14,9 @@
 
     @component('components.info.documents',$grants->getTemplate('localAct','documents'))@endcomponent
 
-    @component('components.info.documents',$grants->getTemplate('grant'))@endcomponent
+    @component('components.info.documents',$grants->getTemplate('grant','documents'))@endcomponent
 
-    @component('components.info.documents',$grants->getTemplate('support'))@endcomponent
+    @component('components.info.documents',$grants->getTemplate('support','documents'))@endcomponent
 
     @component('components.info.dormitories',[
         'dormitoryNumbers'                  => $objects->getProperty('hostelInfo'),
