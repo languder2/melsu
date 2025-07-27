@@ -73,7 +73,7 @@
         <div class="slider-container">
             <div class="slider-wrapper">
                 <div class="box-info-under-slider ">
-                    <a href="{{ route('clusters.list') }}" class="under-info flex gap-2 items-center justify-between bg-[#C10F1A]">
+                    <a href="{{ route('clusters.list') }}" class="under-info hidden xl:flex gap-2 items-center justify-between bg-[#C10F1A]">
                         <span class="text-under-info font-semibold">
                             Флагманские проекты
                         </span>
@@ -93,8 +93,29 @@
                             </svg>
                         </div>
                     </a>
+                    <a href="https://abiturient.mgu-mlt.ru/competition-lists" class="under-info flex gap-2 items-center justify-between bg-[#C10F1A]">
+                        <span class="text-under-info font-semibold">
+                            Конкурсные списки
+                        </span>
+                        <div class="ico-link bg-white rounded-full w-[40px] h-[40px] sm:w-[60px] sm:h-[60px] flex items-center justify-center">
+                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3.66667 1H17M17 1V14.3333M17 1L1 17" stroke="#252525" stroke-width="2"/>
+                            </svg>
+                        </div>
+                    </a>
+
                 </div>
                 <div class="box-info-under-slider ">
+                    <a href="{{ route('clusters.list') }}" class="under-info flex xl:hidden gap-2 items-center justify-between bg-[#C10F1A]">
+                        <span class="text-under-info font-semibold">
+                            Флагманские проекты
+                        </span>
+                        <div class="ico-link bg-white rounded-full w-[40px] h-[40px] sm:w-[60px] sm:h-[60px] flex items-center justify-center">
+                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3.66667 1H17M17 1V14.3333M17 1L1 17" stroke="#252525" stroke-width="2"/>
+                            </svg>
+                        </div>
+                    </a>
                     <a href="{{ url('selekcionno-semenovodcheskij-centr-vysokotekhnologichnyj-selekcionno-pitomnikovodcheskij-kompleks-plodovyh-kultur-novorossii') }}" class="under-info flex gap-2 items-center justify-between">
                         <span class="text-under-info font-semibold text-wrap text-center">
                             Селекционно-семеноводческий центр
@@ -150,28 +171,28 @@ document.addEventListener('DOMContentLoaded', function() {
         // Клон слайдов для бесконойной прокрутки
         const firstClone = slides[0].cloneNode(true);
         const lastClone = slides[slides.length - 1].cloneNode(true);
-        
+
         firstClone.classList.add('clone');
         lastClone.classList.add('clone');
-        
+
         sliderWrapper.appendChild(firstClone);
         sliderWrapper.insertBefore(lastClone, slides[0]);
-        
+
         state.allSlides = document.querySelectorAll('.box-info-under-slider');
-        
+
         // Установка начальной позиции
         setSlidePosition(state.currentIndex, false);
-        
+
         // Добавление обработчиков событий
         addEventListeners();
-        
+
         // Запуск автопрокрутки
         startAutoSlide();
     }
 
     // Установка позиции слайда
     function setSlidePosition(index, animate = true) {
-        sliderWrapper.style.transition = animate ? 
+        sliderWrapper.style.transition = animate ?
             `transform ${settings.slideDuration}ms ease-in-out` : 'none';
         sliderWrapper.style.transform = `translateX(${-index * 100}%)`;
     }
@@ -179,7 +200,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Переход к слайду
     function goToSlide(index, animate = true) {
         if (state.isAnimating) return;
-        
+
         state.isAnimating = true;
         setSlidePosition(index, animate);
 
@@ -208,7 +229,7 @@ document.addEventListener('DOMContentLoaded', function() {
         Math.floor(swipeRatio / settings.swipeThreshold),
         settings.maxDragSlides
         );
-        
+
         const direction = state.dragOffset > 0 ? -1 : 1;
         goToSlide(state.currentIndex + (direction * slidesToMove));
     }
@@ -235,7 +256,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Обработчики перетаскивания
     function handleDragStart(e) {
         if (state.isAnimating) return;
-        
+
         state.isDragging = true;
         state.startX = e.clientX || e.touches[0].clientX;
         state.currentX = state.startX;
@@ -246,10 +267,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function handleDragMove(e) {
         if (!state.isDragging) return;
-        
+
         state.currentX = e.clientX || e.touches[0].clientX;
         state.dragOffset = state.currentX - state.startX;
-        
+
         const limitedOffset = state.dragOffset * 0.7; // скорость перетаскивания
         const position = (-state.currentIndex * 100) + (limitedOffset / sliderWrapper.offsetWidth * 100);
         sliderWrapper.style.transform = `translateX(${position}%)`;
@@ -257,16 +278,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function handleDragEnd() {
         if (!state.isDragging) return;
-        
+
         state.isDragging = false;
         sliderWrapper.style.cursor = 'grab';
-        
+
         if (Math.abs(state.dragOffset) > sliderWrapper.offsetWidth * settings.swipeThreshold) {
         handleSwipe();
         } else {
         goToSlide(state.currentIndex);
         }
-        
+
         resetAutoSlide();
         state.dragOffset = 0;
     }
@@ -277,23 +298,23 @@ document.addEventListener('DOMContentLoaded', function() {
         sliderWrapper.addEventListener('mousedown', handleDragStart);
         document.addEventListener('mousemove', handleDragMove);
         document.addEventListener('mouseup', handleDragEnd);
-        
+
         // Тач
         sliderWrapper.addEventListener('touchstart', handleDragStart, { passive: true });
         document.addEventListener('touchmove', handleDragMove, { passive: true });
         document.addEventListener('touchend', handleDragEnd);
-        
+
         // Кнопки
         prevBtn.addEventListener('click', function() {
         goToSlide(state.currentIndex - 1);
         resetAutoSlide();
         });
-        
+
         nextBtn.addEventListener('click', function() {
         goToSlide(state.currentIndex + 1);
         resetAutoSlide();
         });
-        
+
         // Пауза при наведении
         sliderWrapper.addEventListener('mouseenter', stopAutoSlide);
         sliderWrapper.addEventListener('mouseleave', startAutoSlide);

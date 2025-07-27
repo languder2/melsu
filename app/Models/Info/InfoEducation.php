@@ -88,14 +88,13 @@ class InfoEducation extends Info
         foreach($specialities as $speciality){
             foreach($speciality->public_profiles as $profile){
                 if($speciality->courses)
-
-                $list->push(
-                    (object)[
-                        'speciality'        => $speciality,
-                        'profile'           => $profile,
-                        'infos'              => $speciality->infos
-                    ]
-                );
+                    $list->push(
+                        (object)[
+                            'speciality'        => $speciality,
+                            'profile'           => $profile,
+                            'documents'         => $profile->documentsByCodes(),
+                        ]
+                    );
             }
         }
 
@@ -128,7 +127,7 @@ class InfoEducation extends Info
                     (object)[
                         'speciality'        => $speciality,
                         'profile'           => $profile,
-                        'infos'              => $speciality->infos
+                        'documents'         => $profile->documentsByCodes(),
                     ]
                 );
             }
@@ -164,7 +163,7 @@ class InfoEducation extends Info
                     (object)[
                         'speciality'        => $speciality,
                         'profile'           => $profile,
-                        'infos'              => $speciality->infos
+                        'documents'         => $profile->documentsByCodes(),
                     ]
                 );
             }

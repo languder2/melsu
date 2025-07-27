@@ -31,39 +31,39 @@
                 {!! $item->profile->form->getName() !!}
             </td>
 
-            <td class="p-4 border-b" itemprop="opMain">
-                <x-info.education.document-list
-                    :profileId="$item->profile->id"
+            <td class="p-4 border-b">
+                <x-info.education.show-documents
+                    :documents="$item->documents"
                     code="opMain"
                 />
             </td>
-            <td class="p-4 border-b" itemprop="educationPlan">
-                <x-info.education.document-list
-                    :profileId="$item->profile->id"
+            <td class="p-4 border-b">
+                <x-info.education.show-documents
+                    :documents="$item->documents"
                     code="educationPlan"
                 />
             </td>
-            <td class="p-4 border-b" itemprop="educationRpd">
-                <x-info.education.document-list
-                    :profileId="$item->profile->id"
+            <td class="p-4 border-b">
+                <x-info.education.show-documents
+                    :documents="$item->documents"
                     code="educationRpd"
                 />
             </td>
-            <td class="p-4 border-b" itemprop="educationShedule">
-                <x-info.education.document-list
-                    :profileId="$item->profile->id"
+            <td class="p-4 border-b">
+                <x-info.education.show-documents
+                    :documents="$item->documents"
                     code="educationShedule"
                 />
             </td>
-            <td class="p-4 border-b" itemprop="eduPr">
-                <x-info.education.document-list
-                    :profileId="$item->profile->id"
+            <td class="p-4 border-b">
+                <x-info.education.show-documents
+                    :documents="$item->documents"
                     code="eduPr"
                 />
             </td>
-            <td class="p-4 border-b" itemprop="methodology">
-                <x-info.education.document-list
-                    :profileId="$item->profile->id"
+            <td class="p-4 border-b">
+                <x-info.education.show-documents
+                    :documents="$item->documents"
                     code="methodology"
                 />
             </td>

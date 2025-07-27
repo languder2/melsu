@@ -33,14 +33,14 @@
                 {!! $item->profile->formatedDuration()  !!}
             </td>
             <td class="p-4 border-b">
-                <x-info.education.document-list
-                    :profileId="$item->profile->id"
+                <x-info.education.show-documents
+                    :documents="$item->documents"
                     code="eduPred"
                 />
             </td>
             <td class="p-4 border-b">
-                <x-info.education.document-list
-                    :profileId="$item->profile->id"
+                <x-info.education.show-documents
+                    :documents="$item->documents"
                     code="eduPrac"
                 />
             </td>

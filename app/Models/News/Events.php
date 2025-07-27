@@ -2,6 +2,7 @@
 
 namespace App\Models\News;
 
+use App\Models\Gallery\Gallery;
 use App\Models\Gallery\Image;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
@@ -118,4 +119,25 @@ class Events extends Model
     {
         return $this->belongsTo(Category::class, 'category_id');
     }
+
+    public function getNewsAttribute($value)
+    {
+        $pattern = '/image-gallery:([a-zA-Z0-9-_]+):end-gallery/';
+
+        if (preg_match($pattern, $value, $matches)) {
+
+            $code= $matches[1];
+
+            $gallery = Gallery::where('code',$code)->first();
+
+            return str_replace(
+                "image-gallery:$code:end-gallery",
+                $gallery ? view('gallery.images.public.includes.gallery',compact('gallery')) : null,
+                $value
+            );
+        }
+        else
+            return $value;
+    }
+
 }
