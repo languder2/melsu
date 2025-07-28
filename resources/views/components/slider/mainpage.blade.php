@@ -73,9 +73,9 @@
         <div class="slider-container">
             <div class="slider-wrapper">
                 <div class="box-info-under-slider ">
-                    <a href="{{ route('clusters.list') }}" class="under-info hidden xl:flex gap-2 items-center justify-between bg-[#C10F1A]">
+                    <a href="https://abiturient.mgu-mlt.ru/competition-lists" class="under-info flex gap-2 items-center justify-between bg-[#C10F1A]">
                         <span class="text-under-info font-semibold">
-                            Флагманские проекты
+                            Конкурсные списки поступающих
                         </span>
                         <div class="ico-link bg-white rounded-full w-[40px] h-[40px] sm:w-[60px] sm:h-[60px] flex items-center justify-center">
                             <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -93,9 +93,9 @@
                             </svg>
                         </div>
                     </a>
-                    <a href="https://abiturient.mgu-mlt.ru/competition-lists" class="under-info flex gap-2 items-center justify-between bg-[#C10F1A]">
+                    <a href="{{ route('clusters.list') }}" class="under-info hidden xl:flex gap-2 items-center justify-between bg-[#C10F1A]">
                         <span class="text-under-info font-semibold">
-                            Конкурсные списки
+                            Флагманские проекты
                         </span>
                         <div class="ico-link bg-white rounded-full w-[40px] h-[40px] sm:w-[60px] sm:h-[60px] flex items-center justify-center">
                             <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -103,7 +103,6 @@
                             </svg>
                         </div>
                     </a>
-
                 </div>
                 <div class="box-info-under-slider ">
                     <a href="{{ route('clusters.list') }}" class="under-info flex xl:hidden gap-2 items-center justify-between bg-[#C10F1A]">
@@ -150,7 +149,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Настройки
     const settings = {
         slideDuration: 500,
-        autoSlideInterval: 3000,
+        autoSlideInterval: 20000,
         swipeThreshold: 0.2,
         maxDragSlides: 2
     };
