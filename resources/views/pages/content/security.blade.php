@@ -26,7 +26,7 @@
             </li>
             <li>
                 <a
-                    href="{{ Storage::url('Instructions on the procedure of actions during evacuation in case of terrorist threat, armed attack and other emergency situations of students, teachers, employees, visitors of the Federal State budgetary edu.pdf') }}"
+                    href="{{ Storage::url('documents/security-and-regime-management/Instructions on the procedure of actions during evacuation in case of terrorist threat, armed attack and other emergency situations of students, teachers, employees, visitors of the Federal State budgetary edu.pdf') }}"
                     target="_blank"
                     class="underline hover:text-red-base"
                 >
