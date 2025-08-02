@@ -466,7 +466,117 @@
     </div>
 </section>
 <div class="box-heading container custom1">
-    <h2 class="font-bold text-3xl my-6 lg:text-end">Кандидатские экзамены</h2>
+    <h2 class="font-bold text-3xl my-6 lg:text-end">Вступительные экзамены</h2>
+</div>
+<section class="container">
+    <div class="bg-white p-6 mb-5">
+        <div class="flex items-center border-b-[1px] border-[var(--primary-color)] pb-3 mb-3">
+            <span class="text-[var(--primary-color)] text-lg font-[600]"><i
+                    class="bi bi-lightbulb text-[var(--secondary-color)] me-2"></i>Обратите внимание</span>
+        </div>
+        <div class='accordion-group grid grid-cols-1 gap-1' data-accordion="default-accordion">
+            <div class='accordion-box accordion p-6' style="height: 73px;">
+                <button
+                    class='accordion-toggle cursor-pointer group accordion-active:text-indigo-600 inline-flex items-center justify-between text-[var(--primary-color)] w-full transition duration-500 hover:text-[var(--secondary-color)] active:text-[var(--secondary-color)]'
+                    aria-controls='basic-collapse-one-default'>
+                    <h5 class="font-[600] text-lg">Вступительные экзамены</h5>
+                    <svg
+                        class='text-[var(--primary-color)] transition duration-500 group-hover:text-[var(--secondary-color)]'
+                        width='22' height='22' viewBox='0 0 22 22' fill='none' xmlns='http://www.w3.org/2000/svg'>
+                        <path
+                            d='M16.5 8.25L12.4142 12.3358C11.7475 13.0025 11.4142 13.3358 11 13.3358C10.5858 13.3358 10.2525 13.0025 9.58579 12.3358L5.5 8.25'
+                            stroke='currentColor' stroke-width='1.6' stroke-linecap='round'
+                            stroke-linejoin='round'></path>
+                    </svg>
+                </button>
+                <div class='accordion-content-box accordion-content px-0 overflow-hidden max-w-[930px] w-[100%]'
+                     aria-labelledby='basic-heading-one-default'>
+                    <div class="accordion-text py-3">
+                        <ul class="list-disc list-inside marker:text-[var(--secondary-color)] text-[var(--main-color)]">
+                            <li class="leading-[1.8rem]">
+                                <a href="../../../storage/documents/aspirant/philosophy.pdf" target="_blank" class="hover:text-[#C10F1A] transition duration-300 ease-linear">
+                                    Философия
+                                </a>
+                            </li>
+                            <li class="leading-[1.8rem]">
+                                <a href="../../../storage/documents/aspirant/foreign_language.pdf" target="_blank" class="hover:text-[#C10F1A] transition duration-300 ease-linear">
+                                    Иностранный язык
+                                </a>
+                            </li>
+                            <li class="leading-[1.8rem]">
+                                <a href="../../../storage/documents/aspirant/agriculture_and_plant_growing.pdf" target="_blank" class="hover:text-[#C10F1A] transition duration-300 ease-linear">
+                                    4.1.1. Общее земледелие и растениеводство
+                                </a>
+                            </li>
+                            <li class="leading-[1.8rem]">
+                                <a href="../../../storage/documents/aspirant/pedagogy.pdf" target="_blank" class="hover:text-[#C10F1A] transition duration-300 ease-linear">
+                                    5.8.1 Общая педагогика, история педагогики и образования
+                                </a>
+                            </li>
+                            <li class="leading-[1.8rem]">
+                                <a href="../../../storage/documents/aspirant/pedagogy.pdf" target="_blank" class="hover:text-[#C10F1A] transition duration-300 ease-linear">
+                                    5.8.2 Теория и методика обучения и воспитания (по областям и уровням образования)
+                                </a>
+                            </li>
+                            <li class="leading-[1.8rem]">
+                                <a href="../../../storage/documents/aspirant/pedagogy.pdf" target="_blank" class="hover:text-[#C10F1A] transition duration-300 ease-linear">
+                                    5.8.3 Коррекционная педагогика
+                                </a>
+                            </li>
+                            <li class="leading-[1.8rem]">
+                                <a href="../../../storage/documents/aspirant/pedagogy.pdf" target="_blank" class="hover:text-[#C10F1A] transition duration-300 ease-linear">
+                                    5.8.7 Методология и технология профессионального образования
+                                </a>
+                            </li>
+                            <li class="leading-[1.8rem]">
+                                <a href="../../../storage/documents/aspirant/history.pdf" target="_blank" class="hover:text-[#C10F1A] transition duration-300 ease-linear">
+                                    5.6.1 Отечественная история
+                                </a>
+                            </li>
+                            <li class="leading-[1.8rem]">
+                                <a href="../../../storage/documents/aspirant/electrotechnology.pdf" target="_blank" class="hover:text-[#C10F1A] transition duration-300 ease-linear">
+                                    2.4.4 Электротехнология и электрофизика
+                                </a>
+                            </li>
+                            <li class="leading-[1.8rem]">
+                                <a href="../../../storage/documents/aspirant/economy.pdf" target="_blank" class="hover:text-[#C10F1A] transition duration-300 ease-linear">
+                                    5.2.3 Региональная и отраслевая экономика
+                                </a>
+                            </li>
+                            <li class="leading-[1.8rem]">
+                                <a href="../../../storage/documents/aspirant/economy.pdf" target="_blank" class="hover:text-[#C10F1A] transition duration-300 ease-linear">
+                                    5.2.4 Финансы
+                                </a>
+                            </li>
+                            <li class="leading-[1.8rem]">
+                                <a href="../../../storage/documents/aspirant/jurisprudence.pdf" target="_blank" class="hover:text-[#C10F1A] transition duration-300 ease-linear">
+                                    5.1.2 Публично-правовые (государственно-правовые) науки
+                                </a>
+                            </li>
+                            <li class="leading-[1.8rem]">
+                                <a href="../../../storage/documents/aspirant/jurisprudence.pdf" target="_blank" class="hover:text-[#C10F1A] transition duration-300 ease-linear">
+                                    5.1.1 Теоретико-исторические правовые науки
+                                </a>
+                            </li>
+                            <li class="leading-[1.8rem]">
+                                <a href="../../../storage/documents/aspirant/jurisprudence.pdf" target="_blank" class="hover:text-[#C10F1A] transition duration-300 ease-linear">
+                                    5.1.3 Частно-правовые (цивилистические) науки
+                                </a>
+                            </li>
+                            <li class="leading-[1.8rem]">
+                                <a href="../../../storage/documents/aspirant/jurisprudence.pdf" target="_blank" class="hover:text-[#C10F1A] transition duration-300 ease-linear">
+                                    5.1.4 Уголовно-правовые науки
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="box-heading container custom1">
+    <h2 class="font-bold text-3xl my-6">Кандидатские экзамены</h2>
 </div>
 <section class="container custom1">
     <div class="bg-white p-6 mb-5">
@@ -481,7 +591,7 @@
     </div>
 </section>
 <div class="box-heading container custom1">
-    <h2 class="font-bold text-3xl my-6">Программы кандидатские экзамены</h2>
+    <h2 class="font-bold text-3xl my-6 lg:text-end">Программы кандидатские экзамены</h2>
 </div>
 <section class="container custom1">
     <div class="bg-white p-6 mb-5">
@@ -575,7 +685,7 @@
     </div>
 </section>
 <div class="box-heading container custom1">
-    <h2 class="font-bold text-3xl my-6 lg:text-end">Контакты</h2>
+    <h2 class="font-bold text-3xl my-6">Контакты</h2>
 </div>
 <section class="container custom1">
     <div class="bg-white p-6 mb-5">
