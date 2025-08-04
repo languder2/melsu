@@ -35,9 +35,13 @@ class Affiliation extends Model
     {
         return $this->morphTo();
     }
-    public function card(): BelongsTo
+    public function getCard(): BelongsTo
     {
         return $this->belongsTo(Staff::class, 'staff_id','id');
+    }
+    public function getCardAttribute(): Staff
+    {
+        return $this->getCard ?? new Staff;
     }
 
     public function getOrderAttribute($order): int|null
@@ -129,4 +133,15 @@ class Affiliation extends Model
             ?? $this->morphInfo()->create(['type' => Types::employees,'code' => $code]);
     }
 
+
+    /* Links */
+    public function getEditAttribute():?string
+    {
+        return route('division:admin:staffs:form',[$this->relation,$this]);
+    }
+    public function getDeleteAttribute():?string
+    {
+        return route('division:admin:staffs:delete',$this);
+    }
+    /* End Links */
 }

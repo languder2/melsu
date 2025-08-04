@@ -16,5 +16,10 @@ Route::controller(DivisionController::class)
         Route::post('save', 'save')->name('admin:division:save');
         Route::get('delete/{id}', 'delete')->name('admin:division:delete');
 
-        Route::get('{group?}', 'adminList')->name('admin:division:list');
+        Route::get('{division}/staffs',                 'staffsAdmin')->name('division:admin:staffs:list');
+        Route::get('{division}/staffs/form/{staff?}',   'staffsForm')->name('division:admin:staffs:form');
+        Route::get('{division}/staffs/save/{staff?}',   'staffsSave')->name('division:admin:staffs:save');
+        Route::post('staffs/delete/{staff?}',           'staffsDelete')->name('division:admin:staffs:delete');
+
+        Route::get('', 'adminList')->name('admin:division:list');
     });

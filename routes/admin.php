@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\Division\DivisionController;
 use App\Http\Controllers\History\HistoryController;
 use App\Http\Controllers\Education\{DepartmentController, FacultyController, LabsController, };
 use App\Http\Controllers\Handbook\HandbookController;

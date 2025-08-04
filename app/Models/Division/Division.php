@@ -13,7 +13,7 @@ use App\Models\News\RelationNews;
 use App\Models\Page\Content as PageContent;
 use App\Models\Partner\Partner;
 use App\Models\Sections\Contact;
-use App\Models\Staff\Affiliation as StaffAffiliation;
+use App\Models\Staff\Affiliation;
 use App\Models\Staff\Staff;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
@@ -208,15 +208,22 @@ class Division extends Model
         return $this->belongsTo(Staff::class, 'Coordinator_id','id');
     }
 
-    public function chief(): MorphOne
+    public function getChief(): MorphOne
     {
-        return $this->MorphOne(StaffAffiliation::class, 'relation')->where('type','chief');
+        return $this->MorphOne(Affiliation::class, 'relation')->where('type','chief');
+    }
+
+    public function getChiefAttribute(): Affiliation
+    {
+        $staff = (new Affiliation())->fill(['type'=>'chief'])->relation()->associate($this);
+
+        return $this->getChief ?? $staff;
     }
 
     public function staffs($all= false): MorphMany
     {
 
-        $response = $this->morphMany(StaffAffiliation::class, 'relation')->orderBy('order');
+        $response = $this->morphMany(Affiliation::class, 'relation')->orderBy('order');
 
         if(!$all)
             $response->where('type','staff');
@@ -228,7 +235,7 @@ class Division extends Model
     }
     public function staffsAll(): MorphMany
     {
-        return $this->morphMany(StaffAffiliation::class, 'relation')
+        return $this->morphMany(Affiliation::class, 'relation')
             ->orderBy('order')
             ->where('show',1)
         ;
@@ -534,7 +541,16 @@ class Division extends Model
     }
 
     /* end  collections */
-
+    /* Staff Links*/
+    public function getStaffsAdminListAttribute():?string
+    {
+        return route('division:admin:staffs:list',$this);
+    }
+    public function getStaffAddAttribute():?string
+    {
+        return route('division:admin:staffs:form',$this);
+    }
+    /* end Staff Links*/
 
 
 

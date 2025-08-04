@@ -42,6 +42,24 @@
                     Инструкция (алгоритмы) по действиям при возникновении чрезвычайных ситуаций
                 </a>
             </li>
+            <li>
+                <a
+                    href="{{ Storage::url('documents/security-and-regime-management/instructions_for_857.pdf') }}"
+                    target="_blank"
+                    class="underline hover:text-red-base"
+                >
+                    Инструкция о порядке действий при угрозе и возникновении чрезвычайной ситуации террористического характера
+                </a>
+            </li>
+            <li>
+                <a
+                    href="{{ Storage::url('documents/security-and-regime-management/standard_model_for_857.pdf') }}"
+                    target="_blank"
+                    class="underline hover:text-red-base"
+                >
+                    Типовая модель действий нарушителя, совершающего на объекте образования преступления террористической направленности в формах вооруженного нападения, размещения взрывного устройства, захвата заложников
+                </a>
+            </li>
         </ul>
     </div>
 

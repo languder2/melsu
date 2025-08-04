@@ -21,7 +21,7 @@ use Illuminate\View\View;
 
 class DivisionController extends Controller
 {
-    public function adminList($code = 'without-group'): string
+    public function adminList(): string
     {
         $list = Division::whereNull('parent_id')->orderBy('name')->get();
 
@@ -222,5 +222,21 @@ class DivisionController extends Controller
         return view('divisions.branches.admin.admin', compact('list'));
     }
 
+
+
+    /* Staffs */
+
+    public function staffsAdmin(Division $division):View
+    {
+        return view('divisions.staffs.admin', compact('division'));
+    }
+
+    public function staffsForm(Division $division, Affiliation $staff):View
+    {
+        return view('divisions.staffs.form', compact('division','staff'));
+    }
+
+
+    /* end Staffs */
 
 }

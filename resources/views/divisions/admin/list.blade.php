@@ -23,7 +23,7 @@
                 class="
                 grid gap-4 items-center
                 grid-cols-1
-                md:grid-cols-[auto_3fr_3fr_auto]
+                md:grid-cols-[auto_3fr_auto]
             "
             >
                 <div class="font-semibold">
@@ -32,10 +32,6 @@
 
                 <div class="font-semibold">
                     Отдел
-                </div>
-
-                <div class="font-semibold">
-                    Parent
                 </div>
 
                 <div></div>

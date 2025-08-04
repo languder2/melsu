@@ -1,5 +1,5 @@
 <div class="bg-white p-4 shadow mb-4 flex gap-4 justify-between items-center">
-    <div class="text-xl ">
+    <div class="text-xl flex-1">
         {!! $slot !!}
     </div>
 
