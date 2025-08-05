@@ -137,11 +137,15 @@ class Affiliation extends Model
     /* Links */
     public function getEditAttribute():?string
     {
-        return route('division:admin:staffs:form',[$this->relation,$this]);
+        return route('division:admin:staffs:form', [$this->relation ?? 0, $this]);
+    }
+    public function getSaveAttribute():?string
+    {
+        return route('division:admin:staffs:save', [$this->relation ?? 0, $this]);
     }
     public function getDeleteAttribute():?string
     {
-        return route('division:admin:staffs:delete',$this);
+        return route('division:admin:staffs:delete', $this);
     }
     /* End Links */
 }

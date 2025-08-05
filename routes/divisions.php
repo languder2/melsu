@@ -18,8 +18,8 @@ Route::controller(DivisionController::class)
 
         Route::get('{division}/staffs',                 'staffsAdmin')->name('division:admin:staffs:list');
         Route::get('{division}/staffs/form/{staff?}',   'staffsForm')->name('division:admin:staffs:form');
-        Route::get('{division}/staffs/save/{staff?}',   'staffsSave')->name('division:admin:staffs:save');
-        Route::post('staffs/delete/{staff?}',           'staffsDelete')->name('division:admin:staffs:delete');
+        Route::put ('{division}/staffs/save/{staff?}',   'staffsSave')->name('division:admin:staffs:save');
+        Route::delete('staffs/delete/{staff?}',           'staffsDelete')->name('division:admin:staffs:delete');
 
         Route::get('', 'adminList')->name('admin:division:list');
     });

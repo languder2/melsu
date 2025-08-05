@@ -236,6 +236,17 @@ class DivisionController extends Controller
         return view('divisions.staffs.form', compact('division','staff'));
     }
 
+    public function staffsSave(Request $request, Division $division, Affiliation $staff)
+    {
+
+        dump((bool)$request->get('show'));
+
+        dump($request->all());
+
+        dd($division, $staff);
+
+    }
+
 
     /* end Staffs */
 
