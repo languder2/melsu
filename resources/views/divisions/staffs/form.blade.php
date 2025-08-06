@@ -16,19 +16,23 @@
 @endsection
 
 @section('content')
-    <form
-        action="{{ $staff->save }}"
-        method="POST"
+    <div
         class="grid gap-3 grid-cols-2"
     >
         @csrf
         @method('PUT')
 
-        <div class="bg-indigo-900/50 p-4">
-
+        <div class="bg-white p-4">
+            <x-divisions.staff-select
+                :staff="3133123"
+            />
         </div>
 
-        <div class="bg-white p-4">
+        <form
+            action="{{ $staff->save }}"
+            method="POST"
+            class="bg-white p-4"
+        >
             <x-form.input
                 id="form_lastname"
                 name="lastname"
@@ -91,7 +95,7 @@
                 ])@endcomponent
             </div>
 
-        </div>
-    </form>
+        </form>
+    </div>
 
 @endsection

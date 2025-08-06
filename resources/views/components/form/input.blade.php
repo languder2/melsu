@@ -23,11 +23,19 @@
 
             {{@$class}}
         "
-        @if(isset($step))
+        @isset($step)
             step="{{$step}}"
-        @endif
+        @endisset
 
-        @required(@$required)
+        @isset($onclick)
+            onclick="{{$onclick}}"
+        @endisset
+
+        @isset($onchange)
+            onchange="{{$onchange}}"
+        @endisset
+
+        @required( $required ?? null )
         placeholder=""
     >
 
