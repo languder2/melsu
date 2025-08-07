@@ -19,7 +19,6 @@ class DocumentCategoriesController extends Controller
     }
     public function form(DocumentCategory $category):View
     {
-
         $sort   = DocumentCategory::orderBy('sort','desc')->first()->sort ?? 0;
         $sort   = $sort >= 1000 ? null : $sort+10;
 
