@@ -21,6 +21,10 @@
                 <a target="_blank" href="../../../storage/documents/board-of-trustees/polozhenie_o_nauchnom_rukovoditele_aspiranta_i_nauchnom_konsultante.pdf" class="flex items-center"><i
                         class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>Положение о научном руководителе аспиранта и научном консультанте докторанта в Мелитопольском государственном университете</a>
             </li>
+            <li class="leading-[1.8rem] pb-3">
+                <a target="_blank" href="../../../storage/documents/board-of-trustees/polozh-o-aspiranture.pdf" class="flex items-center"><i
+                        class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>Положение об отделе аспирантуры и докторантуры «Мелитопольского государственного университета»</a>
+            </li>
         </ul>
     </div>
 </section>
