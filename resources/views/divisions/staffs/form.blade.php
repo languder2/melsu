@@ -19,9 +19,6 @@
     <div
         class="grid gap-3 grid-cols-2"
     >
-        @csrf
-        @method('PUT')
-
         <div class="bg-white p-4">
             <x-divisions.staff-select
                 :staff="3133123"
@@ -33,6 +30,11 @@
             method="POST"
             class="bg-white p-4"
         >
+            @csrf
+            @method('PUT')
+
+            <input id="form_staff_id" type="hidden" name="staff_id" value="{{ $staff->card->id }}">
+
             <x-form.input
                 id="form_lastname"
                 name="lastname"
@@ -73,25 +75,37 @@
                 required
             />
 
-            <x-form.checkbox.block
-                id="form_show"
-                name="show"
-                :default=" false "
-                label="публиковать на сайте"
-                :checked=" old('show', $staff->show) "
+            <x-form.input
+                id="form_order"
+                name="order"
+                type="number"
+                label="Порядок вывод"
+                value="{!! old('order', $staff->order) !!}"
             />
 
-            <div class="flex flex-row justify-between mt-4">
-                @component('components.form.submit',[
-                    'name'          => 'save-return',
-                    'class'         => "uppercase",
-                    'value'         => "сохранить",
-                ])@endcomponent
+            <div class="flex gap-2 justify-between">
+                <x-form.checkbox.block
+                    id="form_show"
+                    name="show"
+                    :default=" false "
+                    label="Публиковать на сайте"
+                    :checked=" old('show', $staff->exists ? $staff->show : true ) "
+                />
 
+                <x-form.checkbox.block
+                    id="form_new"
+                    name="new"
+                    :default=" false "
+                    label=" Создать запись сотрудника "
+                />
+            </div>
+
+
+            <div class="flex flex-row justify-end mt-4">
                 @component('components.form.submit',[
                     'name'          => 'save-close',
                     'class'         => "uppercase",
-                    'value'         => "сохранить и закрыть",
+                    'value'         => "сохранить",
                 ])@endcomponent
             </div>
 

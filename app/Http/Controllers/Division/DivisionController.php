@@ -13,6 +13,7 @@ use App\Models\Page\Content as PageContent;
 use App\Models\Partner\Partner;
 use App\Models\Sections\Contact;
 use App\Models\Staff\Affiliation;
+use App\Models\Staff\Staff;
 use App\Models\Upbringing\Upbringing;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
@@ -231,20 +232,44 @@ class DivisionController extends Controller
         return view('divisions.staffs.admin', compact('division'));
     }
 
-    public function staffsForm(Division $division, Affiliation $staff):View
+    public function staffsForm(Division $division, $type, Affiliation $staff):View
     {
+        $staff->fill(['type'=>$type])->relation()->associate($division);
+
         return view('divisions.staffs.form', compact('division','staff'));
     }
 
-    public function staffsSave(Request $request, Division $division, Affiliation $staff)
+    public function staffsSave(Request $request, Division $division, $type, Affiliation $staff)
     {
 
-        dump((bool)$request->get('show'));
+        $staff->fill([
+            'staff_id'  => $request->get('staff_id'),
+            'show'      => (bool) $request->get('show'),
+            'post'      => $request->get('post'),
+            'post_alt'  => $request->get('post_alt'),
+            'full_name' => $staff->card->full_name,
+            'order'     => $request->get('order'),
+        ]);
 
-        dump($request->all());
+        if((bool)$request->get('new') || !$request->get('staff_id')){
+            $item = Staff::create([
+                'lastname' => $request->get('lastname'),
+                'firstname' => $request->get('firstname'),
+                'middle_name' => $request->get('middle_name'),
+            ]);
 
-        dd($division, $staff);
+            $staff->staff_id = $item->id;
+        }
 
+
+
+
+        $staff->fill(['type'=>$type])->relation()->associate($division);
+
+        if($staff->staff_id)
+            $staff->save();
+
+        return redirect()->to( $division->staffs_admin_list );
     }
 
 

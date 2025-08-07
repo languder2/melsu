@@ -4,8 +4,9 @@
 
 @section('content-header')
     @component('admin.components.content-header')
-        {{ $division->name }}
-
+        <a href="{{ $division->link }}" class="underline hover:text-red" target="_blank">
+            {{ $division->name }}
+        </a>
         @slot('link')
             {{ $division->staff_add }}
         @endslot
@@ -20,11 +21,19 @@
             class="
                 grid gap-4 items-center
                 grid-cols-1
-                md:grid-cols-[auto_1fr_2fr_auto]
+                md:grid-cols-[auto_auto_auto_1fr_2fr_auto]
             "
         >
             <div class="font-semibold">
                 StaffID
+            </div>
+
+            <div class="font-semibold">
+                Тип
+            </div>
+
+            <div class="font-semibold">
+                Порядок вывода
             </div>
 
             <div class="font-semibold">
@@ -44,7 +53,15 @@
                 {{ $division->chief->card->id }}
             </div>
 
-            <div class="font-semibold">
+            <div class="text-center">
+                руководитель
+            </div>
+
+            <div class="text-center">
+
+            </div>
+
+            <div>
                 <a
                     href="{{ $division->chief->edit }}"
                     class="underline hover:text-blue-700"
@@ -53,7 +70,7 @@
                 </a>
             </div>
 
-            <div class="font-semibold">
+            <div>
                 <a
                     href="{{ $division->chief->edit }}"
                     class="underline hover:text-blue-700"
@@ -79,22 +96,36 @@
                     </div>
                 @endif
             </div>
-            <hr class="md:col-span-4 last:hidden opacity-70">
+
+            <hr class="md:col-span-6 last:hidden opacity-70">
+
             @forelse($division->staffs as $staff)
                 <div class="text-center">
                     {{ $staff->card->id }}
                 </div>
 
-                <div class="font-semibold">
+                <div class="text-center">
+                    сотрудник
+                </div>
+
+                <div class="text-center">
+                    {{ $staff->order }}
+                </div>
+
+
+                <div>
                     <a
                         href="{{ $staff->edit }}"
                         class="underline hover:text-blue-700"
                     >
-                        {{ $staff->post ?? __('staffs.chief') }}
+                        {{ $staff->post }}
+                        <br>
+                        full: {{ $staff->post_alt }}
+
                     </a>
                 </div>
 
-                <div class="font-semibold">
+                <div>
                     <a
                         href="{{ $staff->edit }}"
                         class="underline hover:text-blue-700"
@@ -118,9 +149,9 @@
                         </a>
                     </div>
                 </div>
-                <hr class="md:col-span-4 last:hidden opacity-70">
+                <hr class="md:col-span-6 last:hidden opacity-70">
             @empty
-                <div class="col-span-4 text-center">
+                <div class="col-span-6 text-center">
                     Нет сотрудников
                 </div>
             @endforelse

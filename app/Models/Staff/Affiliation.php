@@ -24,6 +24,7 @@ class Affiliation extends Model
     protected $fillable = [
         'type',
         'staff_id',
+        'full_name',
         'alt_name',
         'post',
         'post_alt',
@@ -137,11 +138,11 @@ class Affiliation extends Model
     /* Links */
     public function getEditAttribute():?string
     {
-        return route('division:admin:staffs:form', [$this->relation ?? 0, $this]);
+        return route('division:admin:staffs:form', [$this->relation ?? 0, $this->type ?? 'staff', $this]);
     }
     public function getSaveAttribute():?string
     {
-        return route('division:admin:staffs:save', [$this->relation ?? 0, $this]);
+        return route('division:admin:staffs:save', [$this->relation ?? 0, $this->type ?? 'staff', $this]);
     }
     public function getDeleteAttribute():?string
     {

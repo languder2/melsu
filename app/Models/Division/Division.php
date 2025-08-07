@@ -482,6 +482,8 @@ class Division extends Model
 
     /* Links */
 
+
+
     public function getAddSpecialityAttribute():?string
     {
         $route = route('speciality:admin:form');
@@ -548,7 +550,7 @@ class Division extends Model
     }
     public function getStaffAddAttribute():?string
     {
-        return route('division:admin:staffs:form',$this);
+        return route('division:admin:staffs:form',[$this, 'staff']);
     }
     /* end Staff Links*/
 
