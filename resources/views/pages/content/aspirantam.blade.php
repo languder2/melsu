@@ -451,6 +451,37 @@
     </div>
 </section>
 <div class="box-heading container custom1">
+    <h2 class="font-bold text-3xl my-6 lg:text-end">Расписание вступительных испытаний</h2>
+</div>
+<section class="container custom1">
+    <div class="bg-white p-6 mb-5">
+        <div class="flex items-center border-b-[1px] border-[var(--primary-color)] pb-3 mb-3">
+            <span class="text-[var(--primary-color)] text-lg font-[600]"><i
+                    class="bi bi-lightbulb text-[var(--secondary-color)] me-2"></i>Обратите внимание</span>
+        </div>
+        <ul class="doc-list list-none list-inside marker:text-[var(--secondary-color)] text-[var(--main-color)] mb-5">
+            <li class="leading-[1.8rem] pb-3">
+                <a target="_blank" href="../../../storage/documents/board-of-trustees/VI-aspirant.pdf" class="flex items-center"><i
+                        class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>Расписание вступительных испытаний</a>
+            </li>
+        </ul>
+        <p class="text-[#4C4C4C] mb-2">
+            На экзамен с собой необходимо взять:
+        </p>
+        <ul class="doc-list list-disc list-inside marker:text-[var(--secondary-color)] text-[var(--main-color)] mb-5">
+            <li class="">
+                Паспорт
+            </li>
+            <li class="">
+                Ручку
+            </li>
+            <li class="">
+                Питьевая вода (если необходимо)
+            </li>
+        </ul>
+    </div>
+</section>
+<div class="box-heading container custom1">
     <h2 class="font-bold text-3xl my-6">Важные даты</h2>
 </div>
 <section class="container custom1">
