@@ -58,6 +58,16 @@ class DocumentCategory extends Model
             ->get();
     }
 
+    public function getDocuments(): Collection
+    {
+        return $this->documents()
+            ->where('is_show', true)
+            ->whereNull('parent_id')
+            ->orderBy('sort')
+            ->get();
+    }
+
+
     public function fill(array $attributes): ?self
     {
         if (!empty($attributes)) {

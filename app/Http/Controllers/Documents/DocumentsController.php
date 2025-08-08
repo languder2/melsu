@@ -20,7 +20,7 @@ DocumentsController extends Controller
     public function admin(string $field,string $direction):View
     {
 
-        $list = DocumentCategory::orderBy('sort','desc')->get();
+        $list = DocumentCategory::whereNull('parent_id')->orderBy('sort','desc')->get();
 
         $documents = Document::whereNull('category_id')->whereNull('parent_id')->whereNull('relation_id')
             ->orderBy($field,$direction)->get();
@@ -29,7 +29,10 @@ DocumentsController extends Controller
     }
     public function form(Document $document):View
     {
-        $categories     = DocumentCategory::orderBy('name')->get()->pluck('name', 'id');
+        $categories     = DocumentCategory::orderBy('name')->get()
+            ->mapWithKeys(fn($item) =>
+                [$item->id => $item->parent ? "{$item->parent->name} → {$item->name}" : $item->name]
+            );
 
         $category_id    = request('category_id') ?? null;
         $parent_id      = request('parent_id') ?? null;

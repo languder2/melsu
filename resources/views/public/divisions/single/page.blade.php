@@ -22,6 +22,9 @@
         </div>
     @endif
 
+    @component('public.divisions.includes.documents',['categories' => $division->documentCategories]) @endcomponent
+
+
     @component('public.staffs.division.staffs',[
         'staffs'    => $division->staffs(true)->get(),
         'full_post' => in_array($division->code,['academic-council'])

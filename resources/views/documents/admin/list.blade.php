@@ -39,6 +39,17 @@
                 'direction'     => $direction,
             ])@endcomponent
 
+            @foreach($category->subs as $sub)
+                    @component('documents.admin.category',[
+                        'documents'     => $sub->customDocuments()->orderBy($field,$direction)->get(),
+                        'name'          => "{$category->name}: {$sub->name}",
+                        'field'         => $field,
+                        'category'      => $sub,
+                        'direction'     => $direction,
+                    ])@endcomponent
+            @endforeach
+
+
         @endforeach
     </div>
 @endsection

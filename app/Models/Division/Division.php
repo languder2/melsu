@@ -5,6 +5,8 @@ namespace App\Models\Division;
 use App\Enums\ContactType;
 use App\Enums\DivisionType;
 use App\Enums\EducationLevel;
+use App\Models\Documents\Document;
+use App\Models\Documents\DocumentCategory;
 use App\Models\Education\Speciality;
 use App\Models\Gallery\Image;
 use App\Models\Global\Options;
@@ -553,6 +555,22 @@ class Division extends Model
         return route('division:admin:staffs:form',[$this, 'staff']);
     }
     /* end Staff Links*/
+
+    /* Documents */
+
+    public function documentCategories():MorphMany
+    {
+        return $this->morphMany(DocumentCategory::class, 'relation')
+            ->whereNull('parent_id')
+            ->orderBy('sort', 'desc')
+            ->orderBy('name')
+        ;
+    }
+//    public function getDocumentsAttribute():?string
+//    {
+//        return $this->documents;
+//    }
+    /* end Documents */
 
 
 

@@ -12,7 +12,13 @@
 @section('content-header')
     <x-html.admin.content-header>
         @if($current)
-            Изменение структурного подразделения: {{$current->name}}
+            <a
+                href="{{ $current->link }}"
+                target="_blank"
+                class="underline hover:text-blue"
+            >
+                {{$current->name}}
+            </a>
         @else
             Добавление структурного подразделения
         @endif

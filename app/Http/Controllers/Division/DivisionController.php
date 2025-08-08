@@ -160,7 +160,7 @@ class DivisionController extends Controller
     }
 
     /* Public */
-    public function publicList(Request $request):View
+    public function publicList():View
     {
         $division   = Division::where('code', 'rectorate')->first();
         $menu       = Menu::where('code','university')->first();
@@ -169,11 +169,10 @@ class DivisionController extends Controller
         return view('divisions.public.list.page',compact('division','depth','menu'));
     }
 
-    public function show($code = null):View|RedirectResponse
+    public function show(?Division $division):View|RedirectResponse
     {
-        $division   = Division::where('code', $code)->orWhere('id',(int)$code)->first();
 
-        if (!$division || !$division->show)
+        if (!$division->exists || !$division->show)
             return redirect()->route('public:division:list');
 
         $menu = Menu::where('code','university')->first();
