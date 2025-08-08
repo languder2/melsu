@@ -7,7 +7,7 @@ Route::prefix('admin/document-categories')->group(function(){
     Route::get('form/{category?}',      [DocumentCategoriesController::class,'form'])
         ->name('document-categories:admin:form');
 
-    Route::post('save/{category?}',     [DocumentCategoriesController::class,'save'])
+    Route::put('save/{category?}',     [DocumentCategoriesController::class,'save'])
         ->name('document-categories:admin:save');
 
     Route::get('delete/{category?}',    [DocumentCategoriesController::class,'delete'])

@@ -3,6 +3,7 @@
 namespace App\Models\Documents;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
@@ -13,69 +14,90 @@ class DocumentCategory extends Model
 {
     use SoftDeletes;
 
-    protected $table        = 'document_categories';
+    protected $table = 'document_categories';
 
-    protected $fillable     = [
+    protected $fillable = [
         'name',
+        'parent_id',
         'is_show',
         'sort'
     ];
 
-    protected $casts        = [
-        'is_show'           => 'boolean',
-        'sort'              => 'integer',
+    protected $casts = [
+        'is_show' => 'boolean',
+        'sort' => 'integer',
     ];
 
     public static function FormRules(): array
     {
         return [
 //            'test'              => "required",
-            'name'              => "required",
-            'sort'              => '',
-            'is_show'           => '',
+            'name'          => "required",
+            'parent_id'     => '',
+            'sort'          => '',
+            'is_show'       => '',
         ];
     }
+
     public static function FormMessage(): array
     {
         return [
-            'name'              => 'Укажите названию категории',
+            'name' => 'Укажите названию категории',
         ];
     }
-    public function documents():HasMany
+
+    public function documents(): HasMany
     {
-        return $this->hasMany(Document::class, 'category_id','id');
+        return $this->hasMany(Document::class, 'category_id', 'id');
     }
-    public function publicDocuments():Collection
+
+    public function publicDocuments(): Collection
     {
-        return $this->documents()->where('is_show',true)
+        return $this->documents()->where('is_show', true)
             ->whereNull('relation_id')->whereNull('parent_id')->orderBy('sort')
             ->get();
     }
 
-    public function fill(array $attributes):?self
+    public function fill(array $attributes): ?self
     {
-        if(!empty($attributes)){
-            $attributes['is_show']      = array_key_exists('is_show', $attributes);
-            $attributes['sort']         = $attributes['sort'] ?? 1000;
+        if (!empty($attributes)) {
+            $attributes['is_show'] = array_key_exists('is_show', $attributes);
+            $attributes['sort'] = $attributes['sort'] ?? 1000;
         }
 
         return parent::fill($attributes);
     }
 
-    public function relation():MorphTo
+    public function relation(): MorphTo
     {
         return $this->morphTo();
     }
 
-
-    public function customDocuments():HasMany
+    public function parent(): BelongsTo
     {
-        return $this->hasMany(Document::class, 'category_id','id')
+        return $this->belongsTo(self::class, 'parent_id', 'id');
+    }
+
+    public function subs(): HasMany
+    {
+        return $this->hasMany(self::class, 'parent_id', 'id');
+    }
+
+    public function customDocuments(): HasMany
+    {
+        return $this->hasMany(Document::class, 'category_id', 'id')
             ->whereNull('relation_id')->whereNull('parent_id');
     }
 
-    public static function getPublic():Collection
+    public static function getPublic(): Collection
     {
-        return self::where('is_show',true)->orderBy('sort')->orderBy('name')->get();
+        return self::where('is_show', true)->orderBy('sort')->orderBy('name')->get();
     }
+
+
+    public function getSaveAttribute():string
+    {
+        return route('document-categories:admin:save', $this);
+    }
+
 }

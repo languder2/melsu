@@ -22,7 +22,17 @@ class DocumentCategoriesController extends Controller
         $sort   = DocumentCategory::orderBy('sort','desc')->first()->sort ?? 0;
         $sort   = $sort >= 1000 ? null : $sort+10;
 
-        return view('documents.categories.admin.form', compact('category', 'sort'));
+        $list   = DocumentCategory::whereNull('parent_id')
+            ->where('id', '!=', $category->id)
+            ->orderBy('name');
+
+        if($category->relation)
+            $list->where('relation_id',$category->relation_id)
+                ->where('relation_type',$category->relation_type);
+
+        $list   = $list->get()->pluck('name','id');
+
+        return view('documents.categories.admin.form', compact('category', 'sort', 'list'));
     }
     public function save(DocumentCategory $category):RedirectResponse
     {
