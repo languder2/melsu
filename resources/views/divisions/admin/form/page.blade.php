@@ -65,8 +65,6 @@
 
                 @include('divisions.admin.form.section-base')
                 @component('components.form.sections.contacts',compact('current')) @endcomponent
-                @component('components.form.sections.staffs',compact('current')) @endcomponent
-                @component('components.form.sections.documents',compact('current')) @endcomponent
                 @component('components.form.sections.contents',compact('current')) @endcomponent
                 @component('components.form.upbringing.tab_upbringing',compact('current')) @endcomponent
                 @component('components.form.partner.tab_partner',compact('current')) @endcomponent

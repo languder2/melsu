@@ -88,12 +88,10 @@ class Division extends Model
             'parent_id'         => '',
             'sections'          => '',
             'chief'             => '',
-            'documents'         => '',
             'description'       => '',
             'image'             => '',
             'preview'           => '',
             'show'              => '',
-            'staffs'            => '',
         ];
     }
     public function resolveRouteBinding($value, $field = null): ?Division
@@ -557,7 +555,6 @@ class Division extends Model
     /* end Staff Links*/
 
     /* Documents */
-
     public function documentCategories():MorphMany
     {
         return $this->morphMany(DocumentCategory::class, 'relation')
@@ -566,10 +563,21 @@ class Division extends Model
             ->orderBy('name')
         ;
     }
-//    public function getDocumentsAttribute():?string
-//    {
-//        return $this->documents;
-//    }
+
+
+    public function getDocumentsAdminListAttribute():?string
+    {
+        return route('division:admin:documents:list',$this);
+    }
+    public function getDocumentAddAttribute():?string
+    {
+        return route('division:admin:staffs:form',[$this, 'staff']);
+    }
+    public function getDocumentCategoryAddAttribute():?string
+    {
+        return route('division:admin:staffs:form',[$this, 'staff']);
+    }
+
     /* end Documents */
 
 

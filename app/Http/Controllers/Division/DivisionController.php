@@ -22,7 +22,7 @@ use Illuminate\View\View;
 
 class DivisionController extends Controller
 {
-    public function adminList(): string
+    public function admin(): string
     {
         $list = Division::whereNull('parent_id')->orderBy('name')->get();
 
@@ -64,19 +64,6 @@ class DivisionController extends Controller
         if(in_array($record->type,[DivisionType::Faculty,DivisionType::Department]))
             foreach ($record->specialities as $speciality)
                 Speciality::updateAffiliation($speciality,$record);
-
-
-
-//        $record->partnerSections()->updateOrCreate();
-//        /* chief */
-//        if(array_key_exists('chief',$form))
-//            Affiliation::ProcessingChief($record,$form['chief']);
-//
-//        /* staffs */
-//        if(array_key_exists('staffs',$form))
-//            foreach ($form['staffs'] as $aID=>$staff)
-//                Affiliation::ProcessingStaff($record,$aID,$staff);
-
 
         if($request->has('ico')){
             $ico = $record->ico ?? ( new Image(['type'=>'ico','name'=>$record->name]))->relation()->associate($record);
@@ -140,8 +127,6 @@ class DivisionController extends Controller
         }
 
         return redirect()->to($request->has('save') ? $record->edit : $record->admin);
-
-
     }
 
     public function delete(int $id)
@@ -222,10 +207,7 @@ class DivisionController extends Controller
         return view('divisions.branches.admin.admin', compact('list'));
     }
 
-
-
     /* Staffs */
-
     public function staffsAdmin(Division $division):View
     {
         return view('divisions.staffs.admin', compact('division'));
@@ -260,8 +242,50 @@ class DivisionController extends Controller
             $staff->staff_id = $item->id;
         }
 
+        $staff->fill(['type'=>$type])->relation()->associate($division);
 
+        if($staff->staff_id)
+            $staff->save();
 
+        return redirect()->to( $division->staffs_admin_list );
+    }
+    /* end Staffs */
+
+    /* Documents */
+    public function documentsAdmin(Division $division):View
+    {
+
+        dd($division);
+        return view('divisions.documents.admin', compact('division'));
+    }
+
+    public function documentsForm(Division $division, $type, Affiliation $staff):View
+    {
+        $staff->fill(['type'=>$type])->relation()->associate($division);
+
+        return view('divisions.staffs.form', compact('division','staff'));
+    }
+
+    public function documentsSave(Request $request, Division $division, $type, Affiliation $staff)
+    {
+        $staff->fill([
+            'staff_id'  => $request->get('staff_id'),
+            'show'      => (bool) $request->get('show'),
+            'post'      => $request->get('post'),
+            'post_alt'  => $request->get('post_alt'),
+            'full_name' => $staff->card->full_name,
+            'order'     => $request->get('order'),
+        ]);
+
+        if((bool)$request->get('new') || !$request->get('staff_id')){
+            $item = Staff::create([
+                'lastname' => $request->get('lastname'),
+                'firstname' => $request->get('firstname'),
+                'middle_name' => $request->get('middle_name'),
+            ]);
+
+            $staff->staff_id = $item->id;
+        }
 
         $staff->fill(['type'=>$type])->relation()->associate($division);
 
@@ -270,8 +294,6 @@ class DivisionController extends Controller
 
         return redirect()->to( $division->staffs_admin_list );
     }
-
-
-    /* end Staffs */
+    /* end Documents */
 
 }

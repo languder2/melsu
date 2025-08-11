@@ -2,6 +2,10 @@
 
 @section('title', 'Админ панель: Структура университета')
 
+@section('top-menu')
+    @include('divisions.admin.menu')
+@endsection
+
 @section('content-header')
     @component('admin.components.content-header')
         Подразделения
