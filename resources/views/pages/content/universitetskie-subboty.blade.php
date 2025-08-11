@@ -30,7 +30,7 @@
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-20">
         <div>
             <div class='accordion-group grid grid-cols-1 gap-1' data-accordion="default-accordion">
-                <div class='accordion-box accordion' style="height: 73px;">
+                <div class='accordion-box accordion accord-custm' style="height: 98px;">
                     <button
                         class='accordion-toggle relative cursor-pointer p-6 group accordion-active:text-indigo-600 inline-flex items-center justify-between w-full transition duration-500 hover:text-[var(--secondary-color)] active:text-[var(--secondary-color)]'
                         aria-controls='basic-collapse-one-default'>
@@ -84,8 +84,7 @@
                     <div class='accordion-content-box px-6 accordion-content overflow-hidden max-w-[930px] w-[100%]'
                          aria-labelledby='basic-heading-one-default'>
                         <div class="accordion-text pt-3 pb-9">
-                            <p class="mb-3">Сегодня у тебя есть возможность, а завтра целое будущее!</p>
-                            <p>Мелитопольский государственный университет приглашает вас посетить ряд просветительских мероприятий «Университетские субботы»</p>
+                            <p>«Университетские субботы» – это прекрасная возможность познакомиться со всеми специальностями нашего вуза, получить интересующую вас информацию.</p>
                         </div>
                     </div>
                 </div>
@@ -116,8 +115,32 @@
                     <div class='accordion-content-box px-6 accordion-content overflow-hidden max-w-[930px] w-[100%]'
                          aria-labelledby='basic-heading-one-default'>
                         <div class="accordion-text pt-3 pb-9">
-                            <p class="mb-3">Сегодня у тебя есть возможность, а завтра целое будущее!</p>
-                            <p>Мелитопольский государственный университет приглашает вас посетить ряд просветительских мероприятий «Университетские субботы»</p>
+                            <ul class="list-inside list-disc">
+                                <li>
+                                    мастер-классы,
+                                </li>
+                                <li>
+                                    брейн-ринги,
+                                </li>
+                                <li>
+                                    квесты,
+                                </li>
+                                <li>
+                                    круглые столы,
+                                </li>
+                                <li>
+                                    участие в спортивных соревнованиях,
+                                </li>
+                                <li>
+                                    выставки,
+                                </li>
+                                <li>
+                                    экскурсии по новейшим учебным лабораториям,
+                                </li>
+                                <li>
+                                    музыкальные конкурсы и многое другое.
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -143,10 +166,16 @@
                         </svg>
                     </button>
                     <div class='accordion-content-box px-6 accordion-content overflow-hidden max-w-[930px] w-[100%]'
-                         aria-labelledby='basic-heading-one-default'>
+                        aria-labelledby='basic-heading-one-default'>
                         <div class="accordion-text pt-3 pb-9">
-                            <p class="mb-3">Сегодня у тебя есть возможность, а завтра целое будущее!</p>
-                            <p>Мелитопольский государственный университет приглашает вас посетить ряд просветительских мероприятий «Университетские субботы»</p>
+                            <div class="flex flex-col gap-3">
+                                <p>
+                                Мероприятия будут проходить с 12.10.24 по 31.05.25 гг.
+                                </p>
+                                <p>
+                                    График проведения профориентационных мероприятий «Университетские субботы» смотри в <a href="http://old.melsu.ru/wp-content/uploads/2025/03/grafik-univer.subbot-2603.pdf" target="_blank" class="font-bold underline hover:text-[#C10F1A] transition duration-300 ease-linear">прикрепленном файле.</a>
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -170,7 +199,7 @@
         </div>
     </div>
     <div class="flex flex-col gap-4">
-        <a href="https://melsu.ru/department/347" class="grid grid-cols-1 lg:grid-cols-[minmax(0,_240px)_1fr] gap-4 py-4 px-7 bg-white group transition duration-300 ease-linear hover:bg-[#C10F1A]">
+        <button popovertarget="my-popover-1" class="grid grid-cols-1 lg:grid-cols-[minmax(0,_240px)_1fr] gap-4 py-4 px-7 cursor-pointer bg-white group transition duration-300 ease-linear hover:bg-[#C10F1A]">
             <div class="flex justify-center xl:justify-start items-center">
                 <div class="h-[240px]">
                     <img class="object-cover rounded-full h-[240px] w-[240px]" src="{{asset('img/univer-subbot/subbot-1.jpg')}}" alt="">
@@ -181,8 +210,8 @@
                 <p>Университетские недели -это дорога в будущее, выбор своей профессии .На кафедре биологии и биологического образования состоялась встреча с учениками школы 25.Учеников познакомили со специальностями, которые готовит кафедра.</p>
                 <span class="w-fit border-b border-black group-hover:border-white group-hover:text-white transition duration-300 ease-linear">Подробнее</span>
             </div>
-        </a>
-        <a href="https://melsu.ru/department/255" class="grid grid-cols-1 lg:grid-cols-[1fr_minmax(0,_240px)] gap-4 py-4 px-7 bg-white group transition duration-300 ease-linear hover:bg-[#C10F1A]">
+        </button>
+        <button popovertarget="my-popover-2" class="cursor-pointer grid grid-cols-1 lg:grid-cols-[1fr_minmax(0,_240px)] gap-4 py-4 px-7 bg-white group transition duration-300 ease-linear hover:bg-[#C10F1A]">
             <div class="flex justify-center xl:justify-start items-center order-1 lg:order-2">
                 <div class="h-[240px]">
                     <img class="object-cover rounded-full h-[240px] w-[240px]" src="{{asset('img/univer-subbot/subbot-6.jpg')}}" alt="">
@@ -195,8 +224,8 @@
                 </p>
                 <span class="w-fit border-b border-black group-hover:border-white group-hover:text-white transition duration-300 ease-linear">Подробнее</span>
             </div>
-        </a>
-        <a href="https://melsu.ru/department/328" class="grid grid-cols-1 lg:grid-cols-[minmax(0,_240px)_1fr] gap-4 py-4 px-7 bg-white group transition duration-300 ease-linear hover:bg-[#C10F1A]">
+        </button>
+        <button popovertarget="my-popover-3" class="cursor-pointer grid grid-cols-1 lg:grid-cols-[minmax(0,_240px)_1fr] gap-4 py-4 px-7 bg-white group transition duration-300 ease-linear hover:bg-[#C10F1A]">
             <div class="flex justify-center xl:justify-start items-center">
                 <div class="h-[240px]">
                     <img class="object-cover rounded-full h-[240px] w-[240px]" src="{{asset('img/univer-subbot/subbot-7.jpg')}}" alt="">
@@ -208,8 +237,8 @@
                     5 апреля 2025 года кафедра “Географическое образование и лесное дело” провела университетскую субботу под названием “Увлекательный мир геологии”, которая была направлена на привлечение внимания школьников к увлекательному миру географии. Мероприятие включало в том числе и экскурсию по геологическому музею                </p>
                 <span class="w-fit border-b border-black group-hover:border-white group-hover:text-white transition duration-300 ease-linear">Подробнее</span>
             </div>
-        </a>
-        <a href="https://melsu.ru/department/248" class="grid grid-cols-1 lg:grid-cols-[1fr_minmax(0,_240px)] gap-4 py-4 px-7 bg-white group transition duration-300 ease-linear hover:bg-[#C10F1A]">
+        </button>
+        <button popovertarget="my-popover-4" class="cursor-pointer grid grid-cols-1 lg:grid-cols-[1fr_minmax(0,_240px)] gap-4 py-4 px-7 bg-white group transition duration-300 ease-linear hover:bg-[#C10F1A]">
             <div class="flex justify-center xl:justify-start items-center order-1 lg:order-2">
                 <div class="h-[240px]">
                     <img class="object-cover rounded-full h-[240px] w-[240px]" src="{{asset('img/univer-subbot/subbot-8.jpg')}}" alt="">
@@ -222,8 +251,8 @@
                 </p>
                 <span class="w-fit border-b border-black group-hover:border-white group-hover:text-white transition duration-300 ease-linear">Подробнее</span>
             </div>
-        </a>
-        <a href="https://melsu.ru/department/114" class="grid grid-cols-1 lg:grid-cols-[minmax(0,_240px)_1fr] gap-4 py-4 px-7 bg-white group transition duration-300 ease-linear hover:bg-[#C10F1A]">
+        </button>
+        <button popovertarget="my-popover-5" class="cursor-pointer grid grid-cols-1 lg:grid-cols-[minmax(0,_240px)_1fr] gap-4 py-4 px-7 bg-white group transition duration-300 ease-linear hover:bg-[#C10F1A]">
             <div class="flex justify-center xl:justify-start items-center">
                 <div class="h-[240px]">
                     <img class="object-cover rounded-full h-[240px] w-[240px]" src="{{asset('img/univer-subbot/subbot-4.jpg')}}" alt="">
@@ -236,8 +265,8 @@
                 </p>
                     <span class="w-fit border-b border-black group-hover:border-white group-hover:text-white transition duration-300 ease-linear">Подробнее</span>
             </div>
-        </a>
-        <a href="https://melsu.ru/department/115" class="grid grid-cols-1 lg:grid-cols-[1fr_minmax(0,_240px)] gap-4 py-4 px-7 bg-white group transition duration-300 ease-linear hover:bg-[#C10F1A]">
+        </button>
+        <button popovertarget="my-popover-6" class="cursor-pointer grid grid-cols-1 lg:grid-cols-[1fr_minmax(0,_240px)] gap-4 py-4 px-7 bg-white group transition duration-300 ease-linear hover:bg-[#C10F1A]">
             <div class="flex justify-center xl:justify-start items-center order-1 lg:order-2">
                 <div class="h-[240px]">
                     <img class="object-cover rounded-full h-[240px] w-[240px]" src="{{asset('img/univer-subbot/subbot-9.jpg')}}" alt="">
@@ -250,8 +279,8 @@
                 </p>
                 <span class="w-fit border-b border-black group-hover:border-white group-hover:text-white transition duration-300 ease-linear">Подробнее</span>
             </div>
-        </a>
-        <a href="https://melsu.ru/department/269" class="grid grid-cols-1 lg:grid-cols-[minmax(0,_240px)_1fr] gap-4 py-4 px-7 bg-white group transition duration-300 ease-linear hover:bg-[#C10F1A]">
+        </button>
+        <button popovertarget="my-popover-7" class="cursor-pointer grid grid-cols-1 lg:grid-cols-[minmax(0,_240px)_1fr] gap-4 py-4 px-7 bg-white group transition duration-300 ease-linear hover:bg-[#C10F1A]">
             <div class="flex justify-center xl:justify-start items-center">
                 <div class="h-[240px]">
                     <img class="object-cover rounded-full h-[240px] w-[240px]" src="{{asset('img/univer-subbot/subbot-10.jpg')}}" alt="">
@@ -260,12 +289,12 @@
             <div class="flex flex-col justify-center gap-6 transition duration-300 ease-linear group-hover:text-white">
                 <h2 class="text-2xl font-semibold">Кафедра растениеводства имени профессора В.В. Калитки</h2>
                 <p>
-                    В рамках просветительского проекта «Университетские субботы» обучающиеся Васильевского колледжа МелГУ посетили кафедру растениеводства имени профессора В.В. Калитки.          В ходе встречи для ребят провели увлекательную викторину «На пути к профессии» и организовали ознакомительную экскурсию в Лабораторию мониторинга качества почв и продукции растениеводства. Присутствующие погрузились в мир агрономии, ознакомились со значимостью этой профессия в сфере сельского хозяйства.
+                    В рамках просветительского проекта «Университетские субботы» обучающиеся Васильевского колледжа МелГУ посетили кафедру растениеводства имени профессора В.В. Калитки.         В ходе встречи для ребят провели увлекательную викторину «На пути к профессии» и организовали ознакомительную экскурсию в Лабораторию мониторинга качества почв и продукции растениеводства. Присутствующие погрузились в мир агрономии, ознакомились со значимостью этой профессия в сфере сельского хозяйства.
                 </p>
                 <span class="w-fit border-b border-black group-hover:border-white group-hover:text-white transition duration-300 ease-linear">Подробнее</span>
             </div>
-        </a>
-        <a href="https://melsu.ru/department/349" class="grid grid-cols-1 lg:grid-cols-[1fr_minmax(0,_240px)] gap-4 py-4 px-7 bg-white group transition duration-300 ease-linear hover:bg-[#C10F1A]">
+        </button>
+        <button popovertarget="my-popover-8" class="cursor-pointer grid grid-cols-1 lg:grid-cols-[1fr_minmax(0,_240px)] gap-4 py-4 px-7 bg-white group transition duration-300 ease-linear hover:bg-[#C10F1A]">
             <div class="flex justify-center xl:justify-start items-center order-1 lg:order-2">
                 <div class="h-[240px]">
                     <img class="object-cover rounded-full h-[240px] w-[240px]" src="{{asset('img/univer-subbot/subbot-11.jpg')}}" alt="">
@@ -279,8 +308,8 @@
                 </p>
                 <span class="w-fit border-b border-black group-hover:border-white group-hover:text-white transition duration-300 ease-linear">Подробнее</span>
             </div>
-        </a>
-        <a href="https://melsu.ru/department/146" class="grid grid-cols-1 lg:grid-cols-[minmax(0,_240px)_1fr] gap-4 py-4 px-7 bg-white group transition duration-300 ease-linear hover:bg-[#C10F1A]">
+        </button>
+        <button popovertarget="my-popover-9" class="cursor-pointer grid grid-cols-1 lg:grid-cols-[minmax(0,_240px)_1fr] gap-4 py-4 px-7 bg-white group transition duration-300 ease-linear hover:bg-[#C10F1A]">
             <div class="flex justify-center xl:justify-start items-center">
                 <div class="h-[240px]">
                     <img class="object-cover rounded-full h-[240px] w-[240px]" src="{{asset('img/univer-subbot/subbot-12.jpg')}}" alt="">
@@ -297,8 +326,8 @@
                 </p>
                 <span class="w-fit border-b border-black group-hover:border-white group-hover:text-white transition duration-300 ease-linear">Подробнее</span>
             </div>
-        </a>
-        <a href="https://melsu.ru/department/115" class="grid grid-cols-1 lg:grid-cols-[1fr_minmax(0,_240px)] gap-4 py-4 px-7 bg-white group transition duration-300 ease-linear hover:bg-[#C10F1A]">
+        </button>
+        <button popovertarget="my-popover-10" class="cursor-pointer grid grid-cols-1 lg:grid-cols-[1fr_minmax(0,_240px)] gap-4 py-4 px-7 bg-white group transition duration-300 ease-linear hover:bg-[#C10F1A]">
             <div class="flex justify-center xl:justify-start items-center order-1 lg:order-2">
                 <div class="h-[240px]">
                     <img class="object-cover rounded-full h-[240px] w-[240px]" src="{{asset('img/univer-subbot/subbot-13.jpg')}}" alt="">
@@ -313,7 +342,7 @@
                 </p>
                 <span class="w-fit border-b border-black group-hover:border-white group-hover:text-white transition duration-300 ease-linear">Подробнее</span>
             </div>
-        </a>
+        </button>
 
     </div>
 </section>
@@ -342,3 +371,448 @@
         color: white !important;
     }
 </style>
+<div popover id="my-popover-1"
+    class="transition-discrete starting:open:opacity-0 fixed open:backdrop-brightness-50 overflow-y-scroll w-[80%] mx-auto max-h-[80%] border-2 border-white shadow-md shadow-white">
+    <div class="flex flex-col gap-5 p-5">
+        <div>
+            <p>
+                Путешествие по пряничной России» организовали преподаватели факультета Туризма и сервиса для выпускников школ и колледжа. Гости приняли участие в Мастер-классе «Русские пряники», познакомились с искусством их росписи айсингом, приобщились к традиции чаепития «Пряничные посиделки».
+            </p>
+        </div>
+        <div class="grid grid-cols-2 gap-5">
+            <div>
+                <img class="h-full object-cover" src="{{asset('img/univer-subbot/subbot-14.jpg')}}" alt="">
+            </div>
+            <div>
+                <img class="h-full object-cover" src="{{asset('img/univer-subbot/subbot-15.jpg')}}" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div popover id="my-popover-2"
+    class="modal-image transition-discrete starting:open:opacity-0 fixed open:backdrop-brightness-50 overflow-y-scroll w-[80%] mx-auto max-h-[80%] border-2 border-white shadow-md shadow-white">
+    <div class="flex flex-col gap-5 p-5">
+        <div class="flex flex-col gap-3">
+            <p>
+                22 марта 2025 года на кафедре менеджмента Мелитопольского государственного университета в рамках проекта "Университетские субботы" прошло профориентационное мероприятие, посвященное погружению в многогранный, яркий, креативный мир возможностей современного человека - мир менеджмента.
+            </p>
+            <p>
+                Во встрече приняли участие гости из 5 школ города: 1, 9, 11, 19 и 24.
+            </p>
+            <p>
+                Программа включала небольшой экскурс в мир управления; ознакомление с тонкостями менеджмента как искусства.
+            </p>
+            <p>
+                Далее - вторым блоком программы - шла разминка и мини-блок по командообразованию и лидерству.
+            </p>
+            <p>
+                Основным этапом мероприятия стал упор на проектную деятельность. Ребята с помощью студентов-наставников учились составлять и презентовать бизнесс-проекты.
+            </p>
+            <p>
+                Финальным моментом был креативный блок на выявление и проработку навыков деловой коммуникации.
+            </p>
+            <p>
+                Также ребята узнали про образовательные программы МелГУ и новшества в правилах приема грядущей вступительной кампании 2025-2026 учебного года. Все присутствующие школьники и их родители были лично приглашены на День открытых дверей МелГУ - 29 марта 2025 года.
+            </p>
+            <p>
+                Для создания настроения праздника мероприятие сопровождали участники команды КВН "ЛЕГО"; не без их "помощи" сброные команды- участники получили свои неординарные названия "Бантики", "Управленцы", "Премиум" и "Бизнес- элита".
+            </p>
+            <p>
+                Жюри, которое в конечном счете огласило, что победила дружба, было представлено профессорско-преподавательским составом кафедры. Его возглавила заведующая кафедры менеджмент - доктор экономических наук, профессор Светлана Анатольевна Нестеренко. Она выразила единогласное мнение про высокий уровень работы команд, креативность, смелость идей, яркость подачи, признав проекты этого года и их презентацию одними из лучших за всю историю проведения данного мероприятия.
+            </p>
+            <p>
+                Мероприятие прошло в теплой, дружеской атмосфере, а познавательно деловой характер был приукрашен нотками доброты, наставничества и юмора.
+            </p>
+        </div>
+        <div class="grid grid-cols-3 gap-5">
+            <div>
+                <img class="h-full object-cover" src="{{asset('img/univer-subbot/subbot-16.jpg')}}" alt="">
+            </div>
+            <div>
+                <img class="h-full object-cover" src="{{asset('img/univer-subbot/subbot-17.jpg')}}" alt="">
+            </div>
+            <div>
+                <img class="h-full object-cover" src="{{asset('img/univer-subbot/subbot-18.jpg')}}" alt="">
+            </div>
+            <div>
+                <img class="h-full object-cover" src="{{asset('img/univer-subbot/subbot-19.jpg')}}" alt="">
+            </div>
+            <div>
+                <img class="h-full object-cover" src="{{asset('img/univer-subbot/subbot-20.jpg')}}" alt="">
+            </div>
+            <div>
+                <img class="h-full object-cover" src="{{asset('img/univer-subbot/subbot-21.jpg')}}" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div popover id="my-popover-3"
+    class="modal-image transition-discrete starting:open:opacity-0 fixed open:backdrop-brightness-50 overflow-y-scroll w-[80%] mx-auto max-h-[80%] border-2 border-white shadow-md shadow-white">
+    <div class="flex flex-col gap-5 p-5">
+        <div class="flex flex-col gap-3">
+            <p>
+                5 апреля 2025 года кафедра “Географическое образование и лесное дело” провела университетскую субботу под названием “Увлекательный мир геологии”, которая была направлена на привлечение внимания школьников к увлекательному миру географии. Мероприятие включало в том числе и экскурсию по геологическому музею
+            </p>
+        </div>
+        <div class="grid grid-cols-3 gap-5">
+            <div>
+                <img class="h-full object-cover" src="{{asset('img/univer-subbot/subbot-22.jpg')}}" alt="">
+            </div>
+            <div>
+                <img class="h-full object-cover" src="{{asset('img/univer-subbot/subbot-23.jpg')}}" alt="">
+            </div>
+            <div>
+                <img class="h-full object-cover" src="{{asset('img/univer-subbot/subbot-24.jpg')}}" alt="">
+            </div>
+        </div>
+        <div class="flex flex-col gap-3">
+            <p> 
+                В рамках проекта «Университетские субботы» состоялся незабываемый мастер-класс по акварельной живописи. 
+            </p>
+            <p>
+                Студенты и гости университета погрузились в атмосферу зимней сказки, создавая собственные неповторимые пейзажи под чутким руководством Татьяны Витальевны преподавателя кафедры географического образования и лесного дела.
+            </p>
+        </div>
+        <div class="grid grid-cols-2 gap-5">
+            <div>
+                <img class="h-full object-cover" src="{{asset('img/univer-subbot/subbot-70.jpg')}}" alt="">
+            </div>
+            <div>
+                <img class="h-full object-cover" src="{{asset('img/univer-subbot/subbot-71.jpg')}}" alt="">
+            </div>
+        </div>
+        <div>
+            <div>
+                <video controls playsinline  class="object-cover" poster="{{asset('img/poster.jpg')}}">
+                    <source src="{{asset('img/univer-subbot/subbot-vid-4.mp4')}}" type='video/mp4'>
+                </video>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div popover id="my-popover-4"
+    class="modal-image transition-discrete starting:open:opacity-0 fixed open:backdrop-brightness-50 overflow-y-scroll w-[80%] mx-auto max-h-[80%] border-2 border-white shadow-md shadow-white">
+    <div class="flex flex-col gap-5 p-5">
+        <div class="flex flex-col gap-3">
+            <p>
+                21.12.24 на юридическом факультете Мелитопольского государственного университета кафедрой государственно-правовых дисциплин (Тирон В.О., Кулида О.А.) при участии кафедры гражданско-правовых дисциплин (Минкова О.Г., Гапон С.Н.) в рамках «Университетских суббот» проведён День открытых дверей. Декан факультета, к.ю.н., доцент Минкова Ольга Геннадьевна ознакомила абитуриентов со статусом юридического факультета, условиями поступления в университет, перспективами открытия новых юридических специальностей. С будущими студентами был проведён психологический тест на определение профессиональной направленности, продемонстрировано видео о юридических профессиях.
+            </p>
+            <p>
+                Старшие преподаватели Тирон В.О. и Гапон С.Н. провели квест-игру «Правовой марафон», которая состояла из интересных конкурсов: «Разминка», «Ориентировка», «Коллекция анаграмм», «Детективы ищут ответы» и др. Команды абитуриентов-участников игры были награждены сладкими новогодними призами. Следующий День открытых дверей кафедра государственно-правовых дисциплин планирует провести весной. Ждём всех абитуриентов на юридическом факультете Мелитопольского государственного университета! Добро пожаловать!
+            </p>
+        </div>
+        <div class="grid grid-cols-3 gap-5">
+            <div>
+                <img class="h-full object-cover" src="{{asset('img/univer-subbot/subbot-25.jpg')}}" alt="">
+            </div>
+            <div>
+                <img class="h-full object-cover" src="{{asset('img/univer-subbot/subbot-26.jpg')}}" alt="">
+            </div>
+            <div>
+                <img class="h-full object-cover" src="{{asset('img/univer-subbot/subbot-27.jpg')}}" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div popover id="my-popover-5"
+    class="modal-image transition-discrete starting:open:opacity-0 fixed open:backdrop-brightness-50 overflow-y-scroll w-[80%] mx-auto max-h-[80%] border-2 border-white shadow-md shadow-white">
+    <div class="flex flex-col gap-5 p-5">
+        <div class="flex flex-col gap-3">
+            <p>
+                Университетские недели -это дорога в будущее, выбор своей профессии .На кафедре биологии и биологического образования состоялась встреча с учениками школы 25.Учеников познакомили со специальностями,которые готовит кафедра.
+            </p>
+            <p>
+                Была проведена экскурсия по учебной лаборатории Биологии,по анатомическому и зоологическом у музеям.
+            </p>
+            <p>
+                Также им были предложены современные методы исследований и диагностики человеческого организма:УЗИ,КТ,МРТ и др.
+            </p>
+            <p>
+                В ходе знакомства с оснащением  кафедры ,ребята сами попробовали работу на о ряде приборов.
+            </p>
+            <p>
+                Школьники задавали много различных вопросов ,касающихся здоровья человеческого организма и реакция его на влияние разных факторов окружающей среды.
+            </p>
+            <p>
+                Мероприятие прошло познавательно и интересно.
+            </p>
+            <p>
+                Пожелаем нашим ученикам найти свой путь в жизни и быть полезным для нашего общества.
+            </p>
+        </div>
+        <div class="grid grid-cols-3 gap-5">
+            <div>
+                <img class="h-full w-full object-cover sm:max-h-[420px]" src="{{asset('img/univer-subbot/subbot-28.jpg')}}" alt="">
+            </div>
+            <div>
+                <img class="h-full w-full object-cover sm:max-h-[420px]" src="{{asset('img/univer-subbot/subbot-29.jpg')}}" alt="">
+            </div>
+            <div>
+                <img class="h-full w-full object-cover sm:max-h-[420px]" src="{{asset('img/univer-subbot/subbot-30.jpg')}}" alt="">
+            </div>
+            <div>
+                <img class="h-full w-full object-cover sm:max-h-[420px]" src="{{asset('img/univer-subbot/subbot-31.jpg')}}" alt="">
+            </div>
+            <div>
+                <img class="h-full w-full object-cover sm:max-h-[420px]" src="{{asset('img/univer-subbot/subbot-32.jpg')}}" alt="">
+            </div>
+            <div>
+                <img class="h-full w-full object-cover sm:max-h-[420px]" src="{{asset('img/univer-subbot/subbot-33.jpg')}}" alt="">
+            </div>
+            <div class="lg:col-span-3">
+                <img class="h-full w-full object-cover sm:max-h-[560px]" src="{{asset('img/univer-subbot/subbot-34.jpg')}}" alt="">
+            </div>
+        </div>
+        <div class="grid grid-cols-3 gap-5">
+            <div>
+                <video controls playsinline  class="object-cover" poster="{{asset('img/poster.jpg')}}">
+                    <source src="{{asset('img/univer-subbot/subbot-vid-1.mp4')}}" type='video/mp4'>
+                </video>
+            </div>
+            <div>
+                <video controls playsinline  class="object-cover" poster="{{asset('img/poster.jpg')}}">
+                    <source src="{{asset('img/univer-subbot/subbot-vid-2.mp4')}}" type='video/mp4'>
+                </video>
+            </div>
+            <div>
+                <video controls playsinline  class="object-cover" poster="{{asset('img/poster.jpg')}}">
+                    <source src="{{asset('img/univer-subbot/subbot-vid-3.mp4')}}" type='video/mp4'>
+                </video>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div popover id="my-popover-6"
+    class="modal-image transition-discrete starting:open:opacity-0 fixed open:backdrop-brightness-50 overflow-y-scroll w-[80%] mx-auto max-h-[80%] border-2 border-white shadow-md shadow-white">
+    <div class="flex flex-col gap-5 p-5">
+        <div class="flex flex-col gap-3">
+            <p>
+                Тематическая встреча с будущими абитуриентами День космонавтики: наука, эксперименты и звёздные горизонты!
+            </p>
+            <p>
+                В субботу 12.04.2025 г. кафедра высшей математики, физики и методики преподавания физико-математических дисциплин распахнула двери для юных исследователей и их педагогов, чтобы вместе погрузиться в удивительный мир космоса и технологий! Мероприятие объединило школьников и студентов, готовых раскрывать тайны Вселенной.
+            </p>
+            <p>
+                Программа дня:
+            </p>
+            <ul class="list-inside list-disc">
+                <li>
+                    Космическая викторина – интеллектуальный старт, где участники проверили свои знания о космонавтике, звёздах и покорении небесных просторов.
+                </li>
+                <li>
+                    Экскурсии в лаборатории – настоящий взрыв впечатлений!
+                </li>
+                <li>
+                    В лаборатории «Математики и ИТ» гости попробовали себя в роботостроении, конструируя модели ракет. 
+                </li>
+                <li>
+                    В лаборатории «Физики» участники наблюдали за волшебством света: физические эксперименты по изучению дисперсии и дифракции света показали, как наука превращает обычное в невероятное!
+                </li>
+            </ul>
+            <p>
+                Особенными гостями стали
+            </p>
+            <ul class="list-inside list-disc">
+                <li>
+                    ГБПОУ «Мелитопольский многопрофильный колледж» г. Мелитополь <br>
+                    Руководитель: Семёнова Ольга Николаевна - преподаватель физики высшей квалификационной категории.
+                </li>
+                <li>
+                    Васильевский колледж (филиал) ФГБОУ ВО «Мелитопольский государственный университет» (г. Васильевка) <br>
+                    Руководитель: Лысак Олег Анатольевич – старший преподаватель физики
+                </li>
+                <li>
+                    ГБУ ОО ЗО «Новобогдановская СОШ №49» Мелитопольского района 
+                    Руководитель: Широян Анастасия Анатольевна - учитель математики
+                </li>
+                <li>
+                    ГБУ ОО ЗО "Семёновская СОШ № 24" г.о. Мелитополь <br>
+                    Руководители: Мирошниченко Юлия Александровна - директор школы, учитель английского языка высшей категории; <br>
+                    Иванова Наталья Викторовна - учитель химии и математики
+                </li>
+            </ul>
+            <p>
+                Мероприятие посетило более 25 учеников и студентов колледжей, которых сплотило море открытий и уверенность - космос ближе, чем кажется!
+            </p>
+        </div>
+        <div class="grid grid-cols-3 gap-5">
+            <div>
+                <img class="h-full w-full object-cover" src="{{asset('img/univer-subbot/subbot-35.jpg')}}" alt="">
+            </div>
+            <div>
+                <img class="h-full w-full object-cover" src="{{asset('img/univer-subbot/subbot-36.jpg')}}" alt="">
+            </div>
+            <div>
+                <img class="h-full w-full object-cover" src="{{asset('img/univer-subbot/subbot-37.jpg')}}" alt="">
+            </div>
+            <div>
+                <img class="h-full w-full object-cover" src="{{asset('img/univer-subbot/subbot-38.jpg')}}" alt="">
+            </div>
+            <div>
+                <img class="h-full w-full object-cover" src="{{asset('img/univer-subbot/subbot-39.jpg')}}" alt="">
+            </div>
+            <div>
+                <img class="h-full w-full object-cover" src="{{asset('img/univer-subbot/subbot-40.jpg')}}" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div popover id="my-popover-7"
+    class="modal-image transition-discrete starting:open:opacity-0 fixed open:backdrop-brightness-50 overflow-y-scroll w-[80%] mx-auto max-h-[80%] border-2 border-white shadow-md shadow-white">
+    <div class="flex flex-col gap-5 p-5">
+        <div class="flex flex-col gap-3">
+            <p>
+                В рамках просветительского проекта «Университетские субботы» обучающиеся Васильевского колледжа МелГУ посетили кафедру растениеводства имени профессора В.В. Калитки.
+            </p>
+            <p>
+                В ходе встречи для ребят провели увлекательную викторину «На пути к профессии» и организовали ознакомительную экскурсию в Лабораторию мониторинга качества почв и продукции растениеводства. Присутствующие погрузились в мир агрономии, ознакомились со значимостью этой профессия в сфере сельского хозяйства.
+            </p>
+            <p>
+                Встреча оказалась не только познавательной, но и увлекательной!
+            </p>
+        </div>
+        <div class="grid grid-cols-3 gap-5">
+            <div>
+                <img class="h-full w-full object-cover" src="{{asset('img/univer-subbot/subbot-41.jpg')}}" alt="">
+            </div>
+            <div>
+                <img class="h-full w-full object-cover" src="{{asset('img/univer-subbot/subbot-42.jpg')}}" alt="">
+            </div>
+            <div>
+                <img class="h-full w-full object-cover" src="{{asset('img/univer-subbot/subbot-43.jpg')}}" alt="">
+            </div>
+            <div>
+                <img class="h-full w-full object-cover" src="{{asset('img/univer-subbot/subbot-44.jpg')}}" alt="">
+            </div>
+            <div>
+                <img class="h-full w-full object-cover" src="{{asset('img/univer-subbot/subbot-45.jpg')}}" alt="">
+            </div>
+            <div>
+                <img class="h-full w-full object-cover" src="{{asset('img/univer-subbot/subbot-46.jpg')}}" alt="">
+            </div>
+            <div>
+                <img class="h-full w-full object-cover" src="{{asset('img/univer-subbot/subbot-47.jpg')}}" alt="">
+            </div>
+            <div>
+                <img class="h-full w-full object-cover" src="{{asset('img/univer-subbot/subbot-48.jpg')}}" alt="">
+            </div>
+            <div>
+                <img class="h-full w-full object-cover" src="{{asset('img/univer-subbot/subbot-49.jpg')}}" alt="">
+            </div>
+            <div>
+                <img class="h-full w-full object-cover" src="{{asset('img/univer-subbot/subbot-50.jpg')}}" alt="">
+            </div>
+            <div>
+                <img class="h-full w-full object-cover" src="{{asset('img/univer-subbot/subbot-51.jpg')}}" alt="">
+            </div>
+            <div>
+                <img class="h-full w-full object-cover" src="{{asset('img/univer-subbot/subbot-52.jpg')}}" alt="">
+            </div>
+            <div>
+                <img class="h-full w-full object-cover" src="{{asset('img/univer-subbot/subbot-53.jpg')}}" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div popover id="my-popover-8"
+    class="modal-image transition-discrete starting:open:opacity-0 fixed open:backdrop-brightness-50 overflow-y-scroll w-[80%] mx-auto max-h-[80%] border-2 border-white shadow-md shadow-white">
+    <div class="flex flex-col gap-5 p-5">
+        <div class="flex flex-col gap-3">
+            <p>
+                26 октября 2024 года кафедра специального (дефектологического) образования продолжила цикл «Университетских суббот» для старшеклассников города Мелитополя и Мелитопольского района на базе учебно-научного центра развития ребенка «Академия детства». Сотрудники кафедры подготовили для школьников логопедический квест " Путешествие в город правильной речи". 
+            </p>
+            <p>
+                В ходе мероприятия специалисты кафедры ознакомили потенциальных абитуриентов с профессией логопеда, в этом активно помогали студенты 1 и 2 курса данной специальности.
+            </p>
+            <p>
+                Ребята узнавали интересную и полезную информацию, выполняли различные упражнения, которые используют логопеды в своей работе, а также участвовали в играх, поделившись на команды. На встречи впервые прозвучал гимн Логопеда который старшеклассники спели со студентами. Квест помог будущим студентам найти явные преимущества профессии логопеда.
+            </p>
+        </div>
+        <div class="grid grid-cols-2 gap-5">
+            <div>
+                <img class="h-full w-full object-cover" src="{{asset('img/univer-subbot/subbot-56.jpg')}}" alt="">
+            </div>
+            <div>
+                <img class="h-full w-full object-cover" src="{{asset('img/univer-subbot/subbot-57.jpg')}}" alt="">
+            </div>
+            <div>
+                <img class="h-full w-full object-cover" src="{{asset('img/univer-subbot/subbot-58.jpg')}}" alt="">
+            </div>
+            <div>
+                <img class="h-full w-full object-cover" src="{{asset('img/univer-subbot/subbot-59.jpg')}}" alt="">
+            </div>
+            <div>
+                <img class="h-full w-full object-cover" src="{{asset('img/univer-subbot/subbot-60.png')}}" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div popover id="my-popover-9"
+    class="modal-image transition-discrete starting:open:opacity-0 fixed open:backdrop-brightness-50 overflow-y-scroll w-[80%] mx-auto max-h-[80%] border-2 border-white shadow-md shadow-white">
+    <div class="flex flex-col gap-5 p-5">
+        <div class="flex flex-col gap-3">
+            <p>
+                Кафедра физической культуры и спорта провела яркое и познавательное мероприятие "Полёт мяча" (волейбол) 12.04.2025 на Университетской субботе.
+            </p>
+            <p>
+                Преподаватели кафедры рассказали о возможностях обучения, актуальности профессии.
+            </p>
+            <p>
+                Абитуриентам было предложено проверить свои силы в игре волейбол с преподавателями и участниками членами сборной команды МелГУ.
+            </p>
+        </div>
+        <div class="grid grid-cols-2 gap-5">
+            <div>
+                <img class="h-full w-full object-cover" src="{{asset('img/univer-subbot/subbot-61.jpg')}}" alt="">
+            </div>
+            <div>
+                <img class="h-full w-full object-cover" src="{{asset('img/univer-subbot/subbot-62.jpg')}}" alt="">
+            </div>
+            <div>
+                <img class="h-full w-full object-cover" src="{{asset('img/univer-subbot/subbot-63.jpg')}}" alt="">
+            </div>
+            <div>
+                <img class="h-full w-full object-cover" src="{{asset('img/univer-subbot/subbot-64.jpg')}}" alt="">
+            </div>
+            <div>
+                <img class="h-full w-full object-cover" src="{{asset('img/univer-subbot/subbot-65.jpg')}}" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div popover id="my-popover-10"
+    class="modal-image transition-discrete starting:open:opacity-0 fixed open:backdrop-brightness-50 overflow-y-scroll w-[80%] mx-auto max-h-[80%] border-2 border-white shadow-md shadow-white">
+    <div class="flex flex-col gap-5 p-5">
+        <div class="flex flex-col gap-3">
+            <p>
+                «Университетская суббота» 12.04.25 на юридическом факультете прошла интересно и увлекательно.
+            </p>
+            <p>
+                Студенты и преподаватели кафедры государственно-правовых дисциплин подготовили и провели для абитуриентов интеллектуально-познавательную игру «Правовое колесо», которая состояла из конкурсов «Знаешь ли ты право?», «Правовая ситуация», «Де-юре - де-факто» и др. Также были презентованы специальности юридического факультета, условия и правила приёма в МелГУ в 2025 году
+            </p>
+        </div>
+        <div class="grid grid-cols-2 gap-5">
+            <div>
+                <img class="h-full w-full object-cover" src="{{asset('img/univer-subbot/subbot-66.jpg')}}" alt="">
+            </div>
+            <div>
+                <img class="h-full w-full object-cover" src="{{asset('img/univer-subbot/subbot-67.jpg')}}" alt="">
+            </div>
+            <div>
+                <img class="h-full w-full object-cover" src="{{asset('img/univer-subbot/subbot-68.jpg')}}" alt="">
+            </div>
+            <div>
+                <img class="h-full w-full object-cover" src="{{asset('img/univer-subbot/subbot-69.jpg')}}" alt="">
+            </div>
+        </div>
+    </div>
+</div>
