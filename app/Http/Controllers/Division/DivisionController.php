@@ -288,7 +288,7 @@ class DivisionController extends Controller
     {
         return view('divisions.documents.admin', compact('division'));
     }
-    public function documentsForm(Division $division, ?Document $document):View
+    public function documentsForm(Division $division, ?Document $document, ?DocumentCategory $category):View
     {
         $document->relation()->associate($division);
 

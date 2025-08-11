@@ -38,9 +38,8 @@
 
 @section('content')
     @forelse($division->DocumentCategories as $category)
-
+        @component('divisions.documents.category',compact('category')) @endcomponent
     @empty
-
         <div class="text-center p-4 bg-white">
             Нет категорий
         </div>

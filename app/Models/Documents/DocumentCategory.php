@@ -111,6 +111,14 @@ class DocumentCategory extends Model
     {
         return route('division:admin:document-categories:save', [$this->relation->id ?? null, $this]);
     }
+    public function getNameWithParentsAttribute():?string
+    {
+        return $this->parent_id ? "{$this->parent->name_with_parents} → {$this->name}" : $this->name;
+    }
 
+    public function getRelationDocumentAddAttribute():string
+    {
+        return route('division:admin:documents:form', [$this->relation->id ?? null, $this]);
+    }
 
 }

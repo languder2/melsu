@@ -563,7 +563,7 @@ class Division extends Model
 
     public function getNewDocumentCategorySortAttribute():int
     {
-        return ($this->document_categories->sortByDesc('sort')->first()->sort ?? 0) + 10;
+        return ($this->DocumentCategories->sortByDesc('sort')->first()->sort ?? 0) + 10;
     }
 
     public function getDocuments():MorphMany
