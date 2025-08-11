@@ -36,7 +36,7 @@
     <div class="flex w-full gap-4 items-center">
         <div class="flex-none text-white">
             <a
-                href="{{ $record->staffs_admin_list }}"
+                href="{{ $record->documents_admin_list }}"
                 class="
                     py-2 px-4 rounded-md
                     bg-blue-950

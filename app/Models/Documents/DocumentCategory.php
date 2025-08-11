@@ -103,11 +103,14 @@ class DocumentCategory extends Model
     {
         return self::where('is_show', true)->orderBy('sort')->orderBy('name')->get();
     }
-
-
     public function getSaveAttribute():string
     {
         return route('document-categories:admin:save', $this);
     }
+    public function getRelationDocumentCategorySaveAttribute():?string
+    {
+        return route('division:admin:document-categories:save', [$this->relation->id ?? null, $this]);
+    }
+
 
 }

@@ -22,7 +22,7 @@
 
         @slot('alterLink')
             <a
-                href="{{ $division->document_category_form }}"
+                href="{{ $division->document_category_add }}"
                 class="
                 rounded-md
                 text-white
@@ -37,14 +37,7 @@
 @endsection
 
 @section('content')
-    @forelse($division->DocumentCategories as $category)
 
-    @empty
-
-        <div class="text-center p-4 bg-white">
-            Нет категорий
-        </div>
-    @endforelse
 {{--    <div class="bg-white rounded-md p-4 mb-4">--}}
 {{--        <div--}}
 {{--            class="--}}
@@ -76,7 +69,7 @@
 {{--            <div>--}}
 {{--            </div>--}}
 
-
+{{--            --}}{{----}}
 
 {{--            <div class="text-center">--}}
 {{--                {{ $division->chief->card->id }}--}}
@@ -186,4 +179,5 @@
 {{--            @endforelse--}}
 {{--        </div>--}}
 {{--    </div>--}}
+
 @endsection

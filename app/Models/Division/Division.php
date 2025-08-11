@@ -481,9 +481,6 @@ class Division extends Model
     }
 
     /* Links */
-
-
-
     public function getAddSpecialityAttribute():?string
     {
         $route = route('speciality:admin:form');
@@ -555,7 +552,7 @@ class Division extends Model
     /* end Staff Links*/
 
     /* Documents */
-    public function documentCategories():MorphMany
+    public function DocumentCategories():MorphMany
     {
         return $this->morphMany(DocumentCategory::class, 'relation')
             ->whereNull('parent_id')
@@ -564,6 +561,23 @@ class Division extends Model
         ;
     }
 
+    public function getNewDocumentCategorySortAttribute():int
+    {
+        return ($this->document_categories->sortByDesc('sort')->first()->sort ?? 0) + 10;
+    }
+
+    public function getDocuments():MorphMany
+    {
+        return $this->morphMany(Document::class, 'relation')
+            ->whereNull('parent_id')
+            ->orderBy('sort', 'desc')
+            ->orderBy('name')
+        ;
+    }
+    public function getDocumentsAttribute():Collection
+    {
+        return $this->documents;
+    }
 
     public function getDocumentsAdminListAttribute():?string
     {
@@ -571,11 +585,11 @@ class Division extends Model
     }
     public function getDocumentAddAttribute():?string
     {
-        return route('division:admin:staffs:form',[$this, 'staff']);
+        return route('division:admin:documents:form', $this);
     }
-    public function getDocumentCategoryAddAttribute():?string
+    public function getDocumentCategoryFormAttribute():?string
     {
-        return route('division:admin:staffs:form',[$this, 'staff']);
+        return route('division:admin:document-categories:form', $this);
     }
 
     /* end Documents */

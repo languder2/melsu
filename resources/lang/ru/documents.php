@@ -1,8 +1,11 @@
 <?php
 
 return [
-    'Documents categories'  => 'Категории документов',
-    'Documents'             => 'Документы',
+    'Documents categories'          => 'Категории документов',
+    'Documents'                     => 'Документы',
+    'DocumentCategories'            => 'Категории документов',
+    'New'                           => 'Новый документ',
+    'NewCategory'                   => 'Новая категория документов',
 
     'profile.type.listSpecialities' => 'Список учебных предметов, курсов, дисциплин',
     'profile.type.listPractices'    => 'Список практик',

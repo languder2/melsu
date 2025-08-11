@@ -22,8 +22,12 @@ Route::middleware('isAdmin')
         Route::delete('staffs/delete/{staff?}',                 [DivisionController::class, 'staffsDelete'])    ->name('division:admin:staffs:delete');
 
         Route::get('{division}/documents',                      [DivisionController::class, 'documentsAdmin'])  ->name('division:admin:documents:list');
-        Route::get('{division}/documents/form/{documents?}',    [DivisionController::class, 'documentsForm'])   ->name('division:admin:documents:form');
+        Route::get('{division}/documents/form/{documents?}',    [DivisionController::class, 'documentsForm'])   ->name('division:admin:documents0:form');
         Route::put ('{division}/documents/save/{documents?}',   [DivisionController::class, 'documentsSave'])   ->name('division:admin:documents:save');
         Route::delete('documents/delete/{documents?}',          [DivisionController::class, 'documentsDelete']) ->name('division:admin:documents:delete');
+
+        Route::get('{division}/document-categories/form/{category?}',   [DivisionController::class, 'documentCategoryForm'])    ->name('division:admin:document-categories:form');
+        Route::put ('{division}/document-categories/save/{category?}',  [DivisionController::class, 'documentCategorySave'])    ->name('division:admin:document-categories:save');
+        Route::delete('document-categories/delete/{category?}',         [DivisionController::class, 'documentCategoryDelete'])  ->name('division:admin:document-categories:delete');
 
     });

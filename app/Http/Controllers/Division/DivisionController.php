@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Division;
 use App\Enums\DivisionType;
 use App\Http\Controllers\Controller;
 use App\Models\Division\Division;
+use App\Models\Documents\Document;
+use App\Models\Documents\DocumentCategory;
 use App\Models\Education\Speciality;
 use App\Models\Gallery\Image;
 use App\Models\Menu\Menu;
@@ -251,21 +253,47 @@ class DivisionController extends Controller
     }
     /* end Staffs */
 
+    /* Document Categories */
+
+    public function documentCategoryForm(Division $division, ?DocumentCategory $category):View
+    {
+        $category->relation()->associate($division);
+
+        $sort = $division->new_document_category_sort;
+
+        $list   = DocumentCategory::whereNull('parent_id')
+            ->where('id', '!=', $category->id)
+            ->where('relation_id',$category->relation_id)
+            ->where('relation_type',$category->relation_type)
+            ->orderBy('name')
+            ->get()
+            ->pluck('name','id')
+        ;
+
+        return view('divisions.document-categories.form', compact('division','category','list','sort'));
+    }
+
+    public function documentCategorySave(Request $request, Division $division, ?DocumentCategory $category)
+    {
+        $category->relation()->associate($division);
+
+        $form = $request->validate($category::FormRules(),$category::FormMessage());
+
+        $category->fill($form)->relation()->associate($division)->save();
+
+        return redirect()->to( $division->documents_admin_list );
+    }
     /* Documents */
     public function documentsAdmin(Division $division):View
     {
-
-        dd($division);
         return view('divisions.documents.admin', compact('division'));
     }
-
-    public function documentsForm(Division $division, $type, Affiliation $staff):View
+    public function documentsForm(Division $division, ?Document $document):View
     {
-        $staff->fill(['type'=>$type])->relation()->associate($division);
+        $document->relation()->associate($division);
 
-        return view('divisions.staffs.form', compact('division','staff'));
+        return view('divisions.documents.form', compact('division','document'));
     }
-
     public function documentsSave(Request $request, Division $division, $type, Affiliation $staff)
     {
         $staff->fill([

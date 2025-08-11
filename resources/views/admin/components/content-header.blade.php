@@ -13,8 +13,12 @@
                 flex h-8 w-8 items-center justify-center
             "
         >
-            <i class="fas fa-plus w-4 py-2"></i>
+                <i class="fas fa-plus w-4 py-2"></i>
         </a>
+    @endisset
+
+    @isset($alterLink)
+        {!! $alterLink !!}
     @endisset
 
     @isset($info)
