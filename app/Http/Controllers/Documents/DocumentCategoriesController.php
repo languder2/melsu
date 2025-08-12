@@ -13,7 +13,7 @@ class DocumentCategoriesController extends Controller
     /* ADMIN */
     public function admin(string $field,string $direction):View
     {
-        $categories = DocumentCategory::whereNull('parent_id')->orderBy($field,$direction)->get();
+        $categories = DocumentCategory::whereNull('parent_id')->whereNull('relation_id')->orderBy($field,$direction)->get();
 
         return view('documents.categories.admin.list', compact('categories','field','direction'));
     }

@@ -14,6 +14,7 @@ use App\Models\News\RelationNews;
 use App\Models\Page\Content as PageContent;
 use App\Models\Partner\Partner;
 use App\Models\Sections\Contact;
+use App\Models\Services\Log;
 use App\Models\Staff\Affiliation;
 use App\Models\Staff\Staff;
 use App\Models\Upbringing\Upbringing;
@@ -158,7 +159,6 @@ class DivisionController extends Controller
 
     public function show(?Division $division):View|RedirectResponse
     {
-
         if (!$division->exists || !$division->show)
             return redirect()->route('public:division:list');
 
@@ -167,7 +167,7 @@ class DivisionController extends Controller
         if (strtolower($division->code) === 'rectorate')
             return view('public.divisions.rectorate.page', compact('menu','division'));
         else
-            return view('public.divisions.single.page', compact('menu','division'));
+            return view('divisions.public.single.page', compact('menu','division'));
     }
 
     /* API */
@@ -283,44 +283,51 @@ class DivisionController extends Controller
 
         return redirect()->to( $division->documents_admin_list );
     }
+
+    public function documentCategoryDelete(?DocumentCategory $category):RedirectResponse
+    {
+        $category->delete();
+
+        return redirect()->to( $category->relation_admin );
+    }
+
+
     /* Documents */
-    public function documentsAdmin(Division $division):View
+    public function documentsAdmin(Request $request, Division $division):View
     {
-        return view('divisions.documents.admin', compact('division'));
+        $field      = $request->get('field') ?? 'name';
+        $direction  = $request->get('direction') ?? 'asc';
+
+        return view('divisions.documents.admin', compact('division','field', 'direction'));
     }
-    public function documentsForm(Division $division, ?Document $document, ?DocumentCategory $category):View
+    public function documentsForm(Division $division, ?DocumentCategory $category, ?Document $document):View
     {
-        $document->relation()->associate($division);
+        if(!$document->relation)
+            $document->relation()->associate($division);
 
-        return view('divisions.documents.form', compact('division','document'));
+        if($category->exists && $category->id !== $document->category_id)
+            $document->category_id = $category->id;
+
+        if(!$document->exists)
+            $document->sort = ($category->documents()->latest()->first()->sort ?? 0) + 10;
+
+        $categories = $division->AllDocumentCategories();
+
+        return view('divisions.documents.form', compact('division','document','categories'));
     }
-    public function documentsSave(Request $request, Division $division, $type, Affiliation $staff)
+    public function documentsSave(Request $request, Division $division, ?Document $document)
     {
-        $staff->fill([
-            'staff_id'  => $request->get('staff_id'),
-            'show'      => (bool) $request->get('show'),
-            'post'      => $request->get('post'),
-            'post_alt'  => $request->get('post_alt'),
-            'full_name' => $staff->card->full_name,
-            'order'     => $request->get('order'),
-        ]);
 
-        if((bool)$request->get('new') || !$request->get('staff_id')){
-            $item = Staff::create([
-                'lastname' => $request->get('lastname'),
-                'firstname' => $request->get('firstname'),
-                'middle_name' => $request->get('middle_name'),
-            ]);
+        $form = $request->validate($document::FormRules(),$document::FormMessage());
 
-            $staff->staff_id = $item->id;
-        }
+        if(request()->file('file'))
+            Document::FileSave($form);
 
-        $staff->fill(['type'=>$type])->relation()->associate($division);
+        $document->fill($form)->relation()->associate($division)->save();
 
-        if($staff->staff_id)
-            $staff->save();
+        Log::withOrigin($document->category, $document);
 
-        return redirect()->to( $division->staffs_admin_list );
+        return redirect()->to( $document->category->relation_admin );
     }
     /* end Documents */
 

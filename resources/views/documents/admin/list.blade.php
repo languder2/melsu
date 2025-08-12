@@ -29,8 +29,6 @@
         ])@endcomponent
 
         @foreach($list as $category)
-            {{--        @continue($category->customDocuments->isEmpty())--}}
-
             @component('documents.admin.category',[
                 'documents'     => $category->customDocuments()->orderBy($field,$direction)->get(),
                 'name'          => $category->name,

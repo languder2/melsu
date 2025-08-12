@@ -1,13 +1,19 @@
+@php
+    $rowCount = session()->get('rowCount');
+    session()->put('rowCount', $rowCount + 1);
+@endphp
+
 <div
     @class([
-        "text-right",
-        $record->show?'text-green-700':'text-red-700'
+        "text-center p-3",
+        $record->show?'text-green-700':'text-red-700',
+        $rowCount % 2 ? 'bg-sky-100/30' : ''
     ])
 >
     {{$record->id}}
 </div>
 
-<div class="flex items-center">
+<div @class(["flex items-center p-3", $rowCount % 2 ? 'bg-sky-100/30' : ''])>
 
     @if($record->parent_id)
 
@@ -32,7 +38,7 @@
     </div>
 </div>
 
-<div>
+<div @class(["p-2", $rowCount % 2 ? 'bg-sky-100/30' : ''])>
     <div class="flex w-full gap-4 items-center">
         <div class="flex-none text-white">
             <a
@@ -79,7 +85,6 @@
         </div>
     </div>
 </div>
-<hr class="md:col-span-3 last:hidden opacity-70">
 
 @if($record->subs)
     @foreach($record->subs as $record)

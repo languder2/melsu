@@ -17,7 +17,12 @@
                     →
                 </div>
                 <div>
-                    {{ __('documents.DocumentCategories') }}
+                    <a
+                        href="{{ $division->documents_admin_list }}"
+                        class="underline"
+                    >
+                        {{ __('documents.Documents') }}
+                    </a>
                 </div>
             </div>
             <div>
@@ -41,13 +46,13 @@
         <x-form.errors setTheme/>
 
         <div class="p-4 bg-white flex flex-col gap-4">
-            <x-form.select2
-                id="parent_id"
-                name="parent_id"
-                :value="old('parent_id', $category->parent_id) "
-                null="Родительская категория"
-                :list="$list"
-            />
+{{--            <x-form.select2--}}
+{{--                id="parent_id"--}}
+{{--                name="parent_id"--}}
+{{--                :value="old('parent_id', $category->parent_id) "--}}
+{{--                null="Родительская категория"--}}
+{{--                :list="$list"--}}
+{{--            />--}}
 
             <x-form.input
                 id="name"

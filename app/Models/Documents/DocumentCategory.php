@@ -45,6 +45,15 @@ class DocumentCategory extends Model
             'name' => 'Укажите названию категории',
         ];
     }
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($item) {
+            $item->documents()->delete();
+            $item->subs()->delete();
+        });
+    }
 
     public function documents(): HasMany
     {
@@ -101,7 +110,7 @@ class DocumentCategory extends Model
 
     public static function getPublic(): Collection
     {
-        return self::where('is_show', true)->orderBy('sort')->orderBy('name')->get();
+        return self::where('is_show', true)->whereNull('relation_id')->orderBy('sort')->orderBy('name')->get();
     }
     public function getSaveAttribute():string
     {
@@ -120,5 +129,19 @@ class DocumentCategory extends Model
     {
         return route('division:admin:documents:form', [$this->relation->id ?? null, $this]);
     }
+
+    public function getRelationAdminAttribute():?string
+    {
+        return route('division:admin:documents:list', $this->relation);
+    }
+    public function getRelationFormAttribute():?string
+    {
+        return route('division:admin:document-categories:form', [$this->relation->id ?? null, $this]);
+    }
+    public function getRelationDeleteAttribute():?string
+    {
+        return route('division:admin:document-categories:delete', $this);
+    }
+
 
 }

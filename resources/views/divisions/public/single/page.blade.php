@@ -16,11 +16,13 @@
         @include('public.staffs.division.chief')
     @endif
 
-    @if($division->publicSections->count())
+    @if($division->sections->count())
         <div class="flex flex-col gap-3">
-            @each('public.page.content-section',$division->publicSections,'section')
+            @each('public.page.content-section',$division->sections,'section')
         </div>
     @endif
+
+    @component('divisions.public.includes.documents',['categories' => $division->public_document_categories]) @endcomponent
 
     @component('public.staffs.division.staffs',[
         'staffs'    => $division->staffs(true)->get(),

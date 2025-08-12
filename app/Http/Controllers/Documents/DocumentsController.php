@@ -20,7 +20,7 @@ DocumentsController extends Controller
     public function admin(string $field,string $direction):View
     {
 
-        $list = DocumentCategory::whereNull('parent_id')->orderBy('sort','desc')->get();
+        $list = DocumentCategory::whereNull('parent_id')->whereNull('relation_id')->orderBy('sort','desc')->get();
 
         $documents = Document::whereNull('category_id')->whereNull('parent_id')->whereNull('relation_id')
             ->orderBy($field,$direction)->get();

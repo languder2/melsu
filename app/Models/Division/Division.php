@@ -556,14 +556,17 @@ class Division extends Model
     {
         return $this->morphMany(DocumentCategory::class, 'relation')
             ->whereNull('parent_id')
-            ->orderBy('sort', 'desc')
+            ->orderBy('sort')
             ->orderBy('name')
         ;
     }
-
     public function getNewDocumentCategorySortAttribute():int
     {
         return ($this->DocumentCategories->sortByDesc('sort')->first()->sort ?? 0) + 10;
+    }
+    public function getPublicDocumentCategoriesAttribute(): Collection
+    {
+        return $this->DocumentCategories->where('is_show',true);
     }
 
     public function getDocuments():MorphMany
@@ -593,6 +596,20 @@ class Division extends Model
     }
 
     /* end Documents */
+
+    public function AllDocumentCategories(): Collection
+    {
+        $result = collect();
+
+        foreach ($this->DocumentCategories as $category){
+            $result->put($category->id, $category->name_with_parents);
+
+            foreach($category->subs as $sub)
+                   $result->put($sub->id, $sub->name_with_parents);
+        }
+
+        return $result;
+    }
 
 
 

@@ -2,9 +2,7 @@
 
 namespace App\Models\Documents;
 
-use App\Enums\EducationForm;
 use App\Models\Global\Options;
-use App\Models\Services\Content;
 use App\Models\Services\Log;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -58,7 +56,7 @@ class Document extends Model
     public function __construct(array $attributes = [])
     {
         parent::__construct($attributes);
-        $this->id = now()->format('Uv');
+//        $this->id = now()->format('Uv');
     }
 
     public function save(array $options = []): void
@@ -194,10 +192,21 @@ class Document extends Model
     {
         return $this->getSpecialityForm()->property;
     }
-
     public function getDeleteAttribute(): string
     {
         return route('documents:delete', $this);
+    }
+    public function getRelationFormAttribute(): string
+    {
+        return route('division:admin:documents:form', [$this->relation ?? null, $this->category ?? null, $this ]);
+    }
+    public function getRelationSaveAttribute(): string
+    {
+        return route('division:admin:documents:save', [$this->relation, $this ]);
+    }
+    public function getRelationDeleteAttribute(): string
+    {
+        return route('division:admin:documents:delete', [$this->relation, $this ]);
     }
 
 }
