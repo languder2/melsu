@@ -372,7 +372,7 @@
     }
 </style>
 <div popover id="my-popover-1"
-    class="transition-discrete starting:open:opacity-0 fixed open:backdrop-brightness-50 overflow-y-scroll w-[80%] mx-auto max-h-[80%] border-2 border-white shadow-md shadow-white">
+    class="modal-image transition-discrete starting:open:opacity-0 fixed open:backdrop-brightness-50 overflow-y-scroll w-[80%] mx-auto max-h-[80%] border-2 border-white shadow-md shadow-white">
     <div class="flex flex-col gap-5 p-5">
         <div>
             <p>
