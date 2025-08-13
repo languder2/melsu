@@ -41,7 +41,20 @@ class InfoEmployees extends Info
             'label'             => Employees::teachingStaff->label(),
             'prop'              => Employees::teachingStaff->name,
             'captions'          => self::Fields,
-            'list'              => Employee::orderBy('fio')->orderBy('post')->get()
+            'list'              =>
+                Employee::orderBy('fio')->orderBy('post')->get()->groupBy('fio')
+                    ->map(function ($group) {
+                        $item = $group->first();
+
+                        if($group->count() > 1)
+                            $item->post = implode(',<br>', $group->map(
+                                fn($item) => mb_ucfirst(trim($item->post))
+                            )->toArray());
+                        else
+                            $item->post = mb_ucfirst(trim($item->post));
+
+                        return $item;
+                    })
         ];
     }
 

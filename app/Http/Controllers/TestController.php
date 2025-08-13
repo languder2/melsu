@@ -64,6 +64,19 @@ class TestController extends Controller
     {
         $list = collect([]);
 
+
+        dd(Employee::where('fio','Бакшеева Юлия Владимировна')->orderBy('fio')->orderBy('post')->get()->groupBy('fio')
+            ->map(function ($group) {
+                $item = $group->first();
+
+                if($group->count() > 1)
+                    $item->post = implode(', ', $group->map(
+                        fn($item) => mb_ucfirst(trim($item->post))
+                    )->toArray());
+
+                return $item;
+            }));
+
         $json = Storage::json('employees.json');
 
         Employee::truncate();
