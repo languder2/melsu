@@ -165,7 +165,7 @@ class DivisionController extends Controller
         $menu = Menu::where('code','university')->first();
 
         if (strtolower($division->code) === 'rectorate')
-            return view('public.divisions.rectorate.page', compact('menu','division'));
+            return view('divisions.public.rectorate.page', compact('menu','division'));
         else
             return view('divisions.public.single.page', compact('menu','division'));
     }
@@ -173,7 +173,6 @@ class DivisionController extends Controller
     /* API */
     public function ApiVacatePosition(Request $request,$affiliation_id = null): JsonResponse
     {
-
         $item = Affiliation::find($affiliation_id);
 
         if($item)
@@ -225,14 +224,10 @@ class DivisionController extends Controller
     public function staffsSave(Request $request, Division $division, $type, Affiliation $staff)
     {
 
-        $staff->fill([
-            'staff_id'  => $request->get('staff_id'),
-            'show'      => (bool) $request->get('show'),
-            'post'      => $request->get('post'),
-            'post_alt'  => $request->get('post_alt'),
-            'full_name' => $staff->card->full_name,
-            'order'     => $request->get('order'),
-        ]);
+
+        $form = $request->validate(Affiliation::formRules(), Affiliation::FormMessage());
+
+        $staff->fill($form);
 
         if((bool)$request->get('new') || !$request->get('staff_id')){
             $item = Staff::create([

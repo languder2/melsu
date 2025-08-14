@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Staffs;
 use App\Http\Controllers\Controller;
 use App\Models\Division\Division;
 use App\Models\Menu\Menu;
+use App\Models\Staff\Affiliation;
 use App\Models\Staff\Post;
 use App\Models\Staff\Staff;
 use Carbon\Carbon;
@@ -71,6 +72,13 @@ class StaffController extends Controller
         $record->fill($form);
 
         $record->save();
+
+        foreach ($request->get('affiliation') as $aID=>$aForm){
+            $affiliation = Affiliation::find($aID);
+
+            if($affiliation->exists)
+                $affiliation->fill($aForm)->save();
+        }
 
         if($form['posts'])
             foreach($form['posts'] as $postData){

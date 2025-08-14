@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Staff\Post;
+use Illuminate\Support\Collection;
 use PhpOption\Option;
 
 class Staff extends Model
@@ -135,9 +136,16 @@ class Staff extends Model
         return $staff;
     }
 
-    public function AffiliationPosts():HasMany
+    public function Affiliations(): HasMany
     {
-        return $this->hasMany(Affiliation::class,'staff_id', 'id')->select('post_alt')->groupBy('post_alt');
+        return $this->hasMany(Affiliation::class,'staff_id', 'id');
+    }
+
+    public function AffiliationPosts(): Collection
+    {
+        return $this->Affiliations->sortByDesc('post_weight')->where('show', true)
+            ->mapWithKeys( fn($item) => [$item->id => $item->post_alt ?? $item->post] )
+            ->unique();
     }
 
     public function options():MorphMany

@@ -35,13 +35,12 @@
                 <div class="mb-2">
                     <div class="text-red-700 text-md font-bold">Должность:</div>
                     <div>
-                        @if($staff->AffiliationPosts)
-                            @foreach($staff->AffiliationPosts as $post)
+                        @if($staff->AffiliationPosts())
+                            @foreach($staff->AffiliationPosts() as $post)
                                 <span class="lg:text-nowrap">
-                                {{$post->post_alt ?? $post->post}}@if(!$loop->last && $loop->count>1),@endif
+                                    {!! $post !!}@if(!$loop->last && $loop->count>1),@endif
                                 </span>
                             @endforeach
-
                         @endif
                     </div>
                 </div>

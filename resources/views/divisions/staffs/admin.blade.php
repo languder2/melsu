@@ -28,52 +28,68 @@
 @section('content')
 
 
-    <div class="bg-white rounded-md p-4 mb-4">
+    <div class="bg-white rounded-md mb-4">
         <div
             class="
-                grid gap-4 items-center
+                grid
                 grid-cols-1
-                md:grid-cols-[auto_auto_auto_1fr_2fr_auto]
+                md:grid-cols-[auto_auto_auto_auto_auto_1fr_2fr_auto]
             "
         >
-            <div class="font-semibold">
+            <div class="font-semibold p-3 ps-6 bg-blue text-white sticky top-0">
+                ✓
+            </div>
+
+            <div class="font-semibold p-3 bg-blue text-white sticky top-0">
                 StaffID
             </div>
 
-            <div class="font-semibold">
+            <div class="font-semibold p-3 bg-blue text-white sticky top-0">
                 Тип
             </div>
 
-            <div class="font-semibold">
+            <div class="font-semibold p-3 bg-blue text-white sticky top-0">
                 Порядок вывода
             </div>
 
-            <div class="font-semibold">
-                Должность
+            <div class="font-semibold p-3 bg-blue text-white sticky top-0">
+                Вес должности
             </div>
 
-            <div class="font-semibold">
+            <div class="font-semibold p-3 bg-blue text-white sticky top-0">
                 ФИО
             </div>
 
-            <div>
+            <div class="font-semibold p-3 bg-blue text-white sticky top-0">
+                Должность
+            </div>
+
+            <div class="p-3 bg-blue text-white sticky top-0">
             </div>
 
             {{----}}
 
-            <div class="text-center">
+            <div class="p-3 ps-6 bg-sky-100/30 flex items-center justify-center">
+                @if($division->chief->show) ✓ @else &nbsp; @endif
+            </div>
+
+            <div class="text-center p-3 bg-sky-100/30">
                 {{ $division->chief->card->id }}
             </div>
 
-            <div class="text-center">
+            <div class="text-center p-3 bg-sky-100/30">
                 руководитель
             </div>
 
-            <div class="text-center">
-
+            <div class="text-center col-span-2 p-3 bg-sky-100/30">
+                &nbsp;
             </div>
 
-            <div>
+            <div class="p-3 bg-sky-100/30 items-center">
+                {{ $division->chief->card->exists ? $division->chief->card->full_name : __('staffs.empty') }}
+            </div>
+
+            <div class="p-3 bg-sky-100/30">
                 <a
                     href="{{ $division->chief->edit }}"
                     class="underline hover:text-blue-700"
@@ -82,25 +98,15 @@
                 </a>
             </div>
 
-            <div>
-                <a
-                    href="{{ $division->chief->edit }}"
-                    class="underline hover:text-blue-700"
-                >
-                    {{ $division->chief->card->exists ? $division->chief->card->full_name : __('staffs.empty') }}
-                </a>
-            </div>
-
-            <div>
+            <div class="p-3 px-4 bg-sky-100/30">
                 @if($division->chief->exists)
-                    <div class="flex-none w-14 text-white">
+                    <div class="flex w-14 text-white justify-end items-center">
                         <a
                             href="{{ $division->chief->delete }}"
                             class="
-                                py-2 px-4 rounded-md
-                                bg-red-950
-                                hover:bg-red-700
-                                active:bg-gray-700
+                                text-red-950
+                                hover:text-red-700
+                                active:text-gray-700
                             "
                         >
                             <i class="fas fa-trash w-4 h-4"></i>
@@ -109,35 +115,30 @@
                 @endif
             </div>
 
-            <hr class="md:col-span-6 last:hidden opacity-70">
+            @forelse($division->allStaff as $staff)
+                <div class="p-3 ps-6 {{ $loop->index % 2 ? 'bg-sky-100/30' : '' }}  flex items-center justify-center">
+                    @if($staff->show) ✓ @else &nbsp; @endif
+                </div>
 
-            @forelse($division->staffs as $staff)
-                <div class="text-center">
+                <div class="p-3 px-4 {{ $loop->index % 2 ? 'bg-sky-100/30' : '' }} flex items-center justify-center">
                     {{ $staff->card->id }}
                 </div>
 
-                <div class="text-center">
+                <div class="text-center p-3 px-4 {{ $loop->index % 2 ? 'bg-sky-100/30' : '' }} flex items-center">
                     сотрудник
                 </div>
 
-                <div class="text-center">
+                <div class="p-3 px-4 {{ $loop->index % 2 ? 'bg-sky-100/30' : '' }} flex items-center justify-center">
                     {{ $staff->order }}
                 </div>
 
-
-                <div>
-                    <a
-                        href="{{ $staff->edit }}"
-                        class="underline hover:text-blue-700"
-                    >
-                        {{ $staff->post }}
-                        <br>
-                        full: {{ $staff->post_alt }}
-
-                    </a>
+                <div class="p-3 px-4 {{ $loop->index % 2 ? 'bg-sky-100/30' : '' }} flex items-center justify-center">
+                    @if($staff->post_show)
+                        {{ $staff->post_weight }}
+                    @endif
                 </div>
 
-                <div>
+                <div class="p-3 px-4 {{ $loop->index % 2 ? 'bg-sky-100/30' : '' }} flex items-center">
                     <a
                         href="{{ $staff->edit }}"
                         class="underline hover:text-blue-700"
@@ -146,24 +147,33 @@
                     </a>
                 </div>
 
-                <div>
-                    <div class="flex-none w-14 text-white">
+                <div class="p-3 px-4 {{ $loop->index % 2 ? 'bg-sky-100/30' : '' }} flex flex-col gap-2">
+                     <p class="text-start">
+                        {{ $staff->post }}
+                     </p>
+                    <p class="text-start">
+                        full: {{ $staff->post_alt }}
+                     </p>
+
+                </div>
+
+                <div class="p-3 px-4 {{ $loop->index % 2 ? 'bg-sky-100/30' : '' }} flex items-center">
+                    <div class="flex w-14 text-white justify-end">
                         <a
                             href="{{ $staff->delete }}"
                             class="
-                                py-2 px-4 rounded-md
-                                bg-red-950
-                                hover:bg-red-700
-                                active:bg-gray-700
+
+                                text-red-950
+                                hover:text-red-700
+                                active:text-gray-700
                             "
                         >
                             <i class="fas fa-trash w-4 h-4"></i>
                         </a>
                     </div>
                 </div>
-                <hr class="md:col-span-6 last:hidden opacity-70">
             @empty
-                <div class="col-span-6 text-center">
+                <div class="p-3 col-span-8 text-center">
                     Нет сотрудников
                 </div>
             @endforelse

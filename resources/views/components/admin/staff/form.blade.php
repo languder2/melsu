@@ -195,7 +195,6 @@
     <hr>
 
     <div id="posts">
-
         @if(is_array(old('posts')))
             @foreach(old('posts') as $key=>$post)
                 @if($post->post)
@@ -215,6 +214,64 @@
         @else
             <x-admin.staff.post :i="0" :post="null"/>
         @endif
+    </div>
+
+    <h2 class="flex-1 text-xl font-semibold mt-4">
+        Должности
+    </h2>
+    <div class="py-3 mt-2 border-y border-dashed">
+
+        <div class="grid grid-cols-[auto_3fr_1fr]">
+            @forelse($current->affiliations as $affiliation)
+                <div class="{{ $loop->index % 2 ? 'bg-sky-100/30' : '' }} p-3 flex items-center justify-center">
+
+                        {{ $affiliation->id }}
+                </div>
+
+                <div class="flex flex-col gap-2 {{ $loop->index % 2 ? 'bg-sky-100/30' : '' }} p-3">
+                    <x-form.input
+                        id="form_post_{{ $affiliation->id }}"
+                        name="affiliation[{{ $affiliation->id }}][post]"
+                        label="Должность"
+                        :value="old('affiliation.'.$affiliation->id.'.post', $affiliation->post )"
+                        required
+                    />
+
+                    <x-form.input
+                        id="form_post_alt_{{ $affiliation->id }}"
+                        name="affiliation[{{ $affiliation->id }}][post_alt]"
+                        label="Должность полностью"
+                        :value="old('affiliation.'.$affiliation->id.'.post_alt', $affiliation->post_alt )"
+                        required
+                    />
+                </div>
+
+                <div class="flex flex-col gap-2 {{ $loop->index % 2 ? 'bg-sky-100/30' : '' }} p-3">
+                    <x-form.input
+                        id="form_post_weight_{{ $affiliation->id }}"
+                        name="affiliation[{{ $affiliation->id }}][post_weight]"
+                        type="number"
+                        label="Вес должности в порядке вывода"
+                        :value="old('affiliation.'.$affiliation->id.'.post_weight', $affiliation->post_weight )"
+                        block="flex-1"
+                    />
+
+                    <x-form.checkbox.block
+                        id="form_post_show_{{ $affiliation->id }}"
+                        name="affiliation[{{ $affiliation->id }}][post_show]"
+                        :default="0"
+                        :value="1"
+                        label="Учитывать в списке должностей"
+                        :checked="old('affiliation.'.$affiliation->id.'.post_show', $affiliation->post_show )"
+                        block="w-68"
+                    />
+                </div>
+            @empty
+                <div class="text-center col-span-3">
+                    Нет действующих должностей
+                </div>
+            @endforelse
+        </div>
     </div>
 
     <x-form.submit

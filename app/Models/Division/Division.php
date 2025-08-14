@@ -94,16 +94,16 @@ class Division extends Model
             'show'              => '',
         ];
     }
-    public function resolveRouteBinding($value, $field = null): ?Division
-    {
-        return $this->where('code', $value)->first() ??  $this->where('id', $value)->first();
-    }
     public static function FormMessage(): array
     {
         return [
             'name.required' => 'Укажите название',
             'name.unique' => 'Название уже занято',
         ];
+    }
+    public function resolveRouteBinding($value, $field = null): ?Division
+    {
+        return $this->where('code', $value)->first() ??  $this->where('id', $value)->first();
     }
 
     public function getSortAttribute($sort): int|null
@@ -238,6 +238,14 @@ class Division extends Model
         return $this->morphMany(Affiliation::class, 'relation')
             ->orderBy('order')
             ->where('show',1)
+        ;
+    }
+
+    public function allStaff(): MorphMany
+    {
+        return $this->morphMany(Affiliation::class, 'relation')
+            ->where('type','staff')
+            ->orderBy('order')
         ;
     }
 

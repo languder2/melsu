@@ -16,9 +16,8 @@
         name = "{{$name}}"
         type="checkbox"
 
-        @if(isset($value))
-            value = "{{$value}}"
-        @endif
+        value = "{{ $value ?? 'on'}}"
+
         class="
             w-4 h-4 text-baseRed bg-gray-100 border-gray-300 rounded
             focus:ring-blue-700 focus:ring-2

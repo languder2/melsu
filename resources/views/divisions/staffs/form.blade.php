@@ -32,9 +32,7 @@
         class="grid gap-3 grid-cols-2"
     >
         <div class="bg-white p-4">
-            <x-divisions.staff-select
-                :staff="3133123"
-            />
+            <x-divisions.staff-select />
         </div>
 
         <form
@@ -68,7 +66,6 @@
                 name="middle_name"
                 label="Отчество"
                 value="{!! old('middle_name', $staff->card->middle_name) !!}"
-                required
             />
 
             <x-form.input
@@ -87,30 +84,55 @@
                 required
             />
 
-            <x-form.input
-                id="form_order"
-                name="order"
-                type="number"
-                label="Порядок вывод"
-                value="{!! old('order', $staff->order) !!}"
-            />
 
-            <div class="flex gap-2 justify-between">
+            <div class="flex gap-2 justify-between flex-col xl:flex-row">
+                <x-form.input
+                    id="form_order"
+                    name="order"
+                    type="number"
+                    label="Порядок вывод"
+                    value="{!! old('order', $staff->order) !!}"
+                    block="flex-1"
+                />
+
                 <x-form.checkbox.block
                     id="form_show"
                     name="show"
-                    :default=" false "
-                    label="Публиковать на сайте"
+                    :default="0"
+                    :value="1"
+                    label="Публиковать на странице подразделения"
                     :checked=" old('show', $staff->exists ? $staff->show : true ) "
+                />
+            </div>
+
+            <div class="flex gap-2 justify-between flex-col xl:flex-row">
+                <x-form.input
+                    id="form_post_weight"
+                    name="post_weight"
+                    type="number"
+                    label="Вес должности в порядке вывода"
+                    value="{!! old('post_weight', $staff->post_weight ) !!}"
+                    block="flex-1"
                 />
 
                 <x-form.checkbox.block
-                    id="form_new"
-                    name="new"
-                    :default=" false "
-                    label=" Создать запись сотрудника "
+                    id="form_post_show"
+                    name="post_show"
+                    :default="0"
+                    :value="1"
+                    label="Учитывать в списке должностей"
+                    :checked=" old('post_show', $staff->exists ? $staff->post_show : true ) "
                 />
             </div>
+
+            <x-form.checkbox.block
+                id="form_new"
+                name="new"
+                :default="0"
+                :value="1"
+                label=" Создать запись сотрудника "
+                block="justify-end"
+            />
 
 
             <div class="flex flex-row justify-end mt-4">

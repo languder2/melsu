@@ -29,9 +29,39 @@ class Affiliation extends Model
         'post',
         'post_alt',
         'order',
+        'post_weight',
+        'post_show',
         'show',
-        'relation_type'
     ];
+
+    public static function FormRules(): array
+    {
+        return [
+//            'test'              => "required",
+            'type'              => "",
+            'staff_id'          => "required",
+            'post'              => '',
+            'post_alt'          => '',
+            'order'             => '',
+            'post_weight'       => '',
+            'post_show'         => '',
+            'show'              => '',
+        ];
+    }
+    public static function FormMessage(): array
+    {
+        return [
+            'name.required' => 'Укажите название',
+            'name.unique' => 'Название уже занято',
+        ];
+    }
+
+    public function fill(array $attributes):self
+    {
+        return parent::fill($attributes);
+    }
+
+
     public function relation(): MorphTo
     {
         return $this->morphTo();

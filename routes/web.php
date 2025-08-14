@@ -78,7 +78,7 @@ Route::get('labs', [EducationController::class, 'showAllLabs'])
 
 Route::get('divisions', [DivisionController::class,'publicList'])->name('public:division:list');
 Route::get('division/{division?}',[DivisionController::class,'show'])->name('public:division:show');
-Route::get('rectorate',[DivisionController::class,'show'])->setDefaults(['code'=>'rectorate']);
+Route::get('rectorate',[DivisionController::class,'show'])->setDefaults(['division'=>'rectorate']);
 
 /* Staffs: public */
 

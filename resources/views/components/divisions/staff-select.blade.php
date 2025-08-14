@@ -6,7 +6,7 @@
 />
 
 
-<div class="flex flex-col h-80 overflow-y-scroll mt-2">
+<div class="flex flex-col h-[440px] overflow-y-scroll mt-2">
     @foreach($list as $item)
         <div
             data-id="{{ $item->id }}"

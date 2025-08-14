@@ -1,6 +1,6 @@
-<div class="block relative mt-2">
+<div class="block relative mt-2 @isset($block) {{ $block }} @endisset">
     <input
-        type="{{$type??'text'}}"
+        type="{{ $type ?? 'text' }}"
         @if(isset($id))
             id="{{$id}}"
         @endif
