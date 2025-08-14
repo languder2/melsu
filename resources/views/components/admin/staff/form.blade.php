@@ -92,19 +92,18 @@
         value="{{old('residence')??@$current->residence}}"
     />
 
-
     <x-form.editor
         id="awards"
         name="awards"
         label="Награды, поощрение"
-        value="{{ old('_token') ? old('awards') : $current->awards ?? null }}"
+        value="{{ old('awards', $current->awards ?? null) }}"
     />
 
-    <x-form.input
+    <x-form.editor
         id="education"
         name="education"
         label="Образование"
-        value="{{old('education')??@$current->education}}"
+        value="{{ old('education', $current->education ?? null) }}"
     />
 
     <x-form.input
@@ -231,7 +230,7 @@
                 <div class="flex flex-col gap-2 {{ $loop->index % 2 ? 'bg-sky-100/30' : '' }} p-3">
                     <x-form.input
                         id="form_post_{{ $affiliation->id }}"
-                        name="affiliation[{{ $affiliation->id }}][post]"
+                        name="affiliations[{{ $affiliation->id }}][post]"
                         label="Должность"
                         :value="old('affiliation.'.$affiliation->id.'.post', $affiliation->post )"
                         required
@@ -239,7 +238,7 @@
 
                     <x-form.input
                         id="form_post_alt_{{ $affiliation->id }}"
-                        name="affiliation[{{ $affiliation->id }}][post_alt]"
+                        name="affiliations[{{ $affiliation->id }}][post_alt]"
                         label="Должность полностью"
                         :value="old('affiliation.'.$affiliation->id.'.post_alt', $affiliation->post_alt )"
                         required
@@ -249,7 +248,7 @@
                 <div class="flex flex-col gap-2 {{ $loop->index % 2 ? 'bg-sky-100/30' : '' }} p-3">
                     <x-form.input
                         id="form_post_weight_{{ $affiliation->id }}"
-                        name="affiliation[{{ $affiliation->id }}][post_weight]"
+                        name="affiliations[{{ $affiliation->id }}][post_weight]"
                         type="number"
                         label="Вес должности в порядке вывода"
                         :value="old('affiliation.'.$affiliation->id.'.post_weight', $affiliation->post_weight )"
@@ -258,7 +257,7 @@
 
                     <x-form.checkbox.block
                         id="form_post_show_{{ $affiliation->id }}"
-                        name="affiliation[{{ $affiliation->id }}][post_show]"
+                        name="affiliations[{{ $affiliation->id }}][post_show]"
                         :default="0"
                         :value="1"
                         label="Учитывать в списке должностей"

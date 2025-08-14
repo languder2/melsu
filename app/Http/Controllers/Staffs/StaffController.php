@@ -73,7 +73,7 @@ class StaffController extends Controller
 
         $record->save();
 
-        foreach ($request->get('affiliation') as $aID=>$aForm){
+        foreach ($request->get('affiliations') as $aID=>$aForm){
             $affiliation = Affiliation::find($aID);
 
             if($affiliation->exists)
@@ -88,6 +88,8 @@ class StaffController extends Controller
 
                 if(!$post)
                     $post = $record->posts()->create($postData);
+
+                $post->fill($postData);
 
                 $post->show =  array_key_exists('show', $postData);;
 

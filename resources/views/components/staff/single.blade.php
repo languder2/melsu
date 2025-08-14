@@ -8,13 +8,11 @@
                 <div class="mb-2">
                     <div class="text-red-700 text-md font-bold">Должность:</div>
                     <div>
-                        @if($staff->AffiliationPosts)
-                            @foreach($staff->AffiliationPosts as $post)
-                                <span class="lg:text-nowrap">
-                                    {{$post->post_alt ?? $post->post}}@if(!$loop->last && $loop->count>1),@endif
-                                </span>
-                            @endforeach
-                        @endif
+                        @foreach($staff->AffiliationPosts() as $post)
+                            <span class="lg:text-nowrap">
+                                {{ $post }}@if(!$loop->last && $loop->count>1),@endif
+                            </span>
+                        @endforeach
                     </div>
                 </div>
 
@@ -112,9 +110,9 @@
         @if($staff->education)
             <span class="text-[var(--secondary-color)] text-md font-bold">Образование:</span>
             <div class="flex items-center">
-            <span class="text-[#4C4C4C] text-md pt-3 sm:ps-3 sm:pt-0">
-                {{$staff->education}}
-            </span>
+            <div class="text-[#4C4C4C] text-md pt-3 sm:ps-3 sm:pt-0 ul-correct">
+                {!! $staff->education !!}
+            </div>
             </div>
         @endif
 
