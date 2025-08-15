@@ -19,7 +19,7 @@ enum EducationLevel: string
             self::Specialist    => 5,
             self::Master        => 2,
             self::Colleges      => 2,
-            default             => null,
+            default             => 3,
         };
     }
     public function getName(): string

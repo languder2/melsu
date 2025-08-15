@@ -31,7 +31,11 @@
         <tr @class([ $loop->index % 2 ? 'bg-white' : 'bg-white/50' ]) itemprop="{{ $prop }}">
             @foreach($item as $code => $field)
                 <td class="p-4 border-b" itemprop="{{ $code }}">
-                    {!! $field !!}
+                    @if(auth()->user())
+                            {!! $field !!}
+                    @else
+                        {!! $field !!}
+                    @endif
                 </td>
             @endforeach
         </tr>

@@ -32,7 +32,7 @@
 
     <x-form.textarea
         id="form-subs-osnPrac"
-        name="subs[osnCab]"
+        name="subs[osnPrac]"
         class="w-full h-20 border resize-y p-2 outline-0 focus:border-blue"
         :placeholder="$cases->get('osnPrac')"
         value="{!! $info->getSubsValue('osnPrac') !!}"

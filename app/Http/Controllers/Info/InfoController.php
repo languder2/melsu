@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Info;
 
 use App\Enums\EducationLevel;
+use App\Enums\Info\Budget;
 use App\Http\Controllers\Controller;
 use App\Models\Documents\Document;
 use App\Models\Education\Profile;
@@ -118,6 +119,7 @@ class InfoController extends Controller
     }
     public function budget(InfoBase $info, InfoBudget $budget):View
     {
+
         return view('info.budget', compact('info','budget'));
     }
 

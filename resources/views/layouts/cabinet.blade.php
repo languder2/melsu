@@ -25,20 +25,19 @@
         @include('cabinet.auth')
     @else
         <div class="flex gap-4 min-h-full">
-            <div class="hidden">
-                123
-            </div>
 
-            @include('cabinet.template.aside-left')
+{{--            @include('cabinet.template.aside-left')--}}
+            @include('cabinet.template.aside-left2')
 
             <div class="flex-1">
                 @hasSection('content-header')
                     @yield('content-header')
                 @endif
+
                 @yield('content')
             </div>
 
-            @include('cabinet.template.aside-right')
+{{--            @include('cabinet.template.aside-right')--}}
         </div>
     @endguest
 </main>

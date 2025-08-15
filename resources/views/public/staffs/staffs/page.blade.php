@@ -13,6 +13,7 @@
 
 @section('content')
     @include('public.staffs.staffs.search')
+
     <div id="PersonnelStructure">
         @include('public.staffs.staffs.list',compact('staffs'))
     </div>

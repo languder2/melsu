@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Enums\DivisionType;
 use App\Enums\DurationType;
 use App\Enums\EducationBasis;
+use App\Enums\EducationForm;
 use App\Enums\Info\Base;
 use App\Enums\Info\Common;
 use App\Enums\Info\Types;
@@ -25,6 +26,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
 use PhpOption\Option;
+use function PHPUnit\Framework\matches;
 
 class TestController extends Controller
 {
@@ -65,17 +67,27 @@ class TestController extends Controller
         $list = collect([]);
 
 
-        dd(Employee::where('fio','Бакшеева Юлия Владимировна')->orderBy('fio')->orderBy('post')->get()->groupBy('fio')
-            ->map(function ($group) {
-                $item = $group->first();
+        $list = Profile::get()->where(fn($item) => $item->speciality);
 
-                if($group->count() > 1)
-                    $item->post = implode(', ', $group->map(
-                        fn($item) => mb_ucfirst(trim($item->post))
-                    )->toArray());
+        foreach ($list as $item)
+            if($item->speciality && $item->speciality->level){
 
-                return $item;
-            }));
+                $item->duration = $item->speciality->level->getCurses()*12;
+
+                if($item->speciality->spec_code === '44.03.05')
+                    $item->duration = 60;
+
+                if( in_array($item->speciality->spec_code,['2.4.4', '4.1.1', '1.5.9', '2.5.21']) )
+                    $item->duration = 48;
+
+                if($item->form !== EducationForm::Full)
+                    $item->duration += 6;
+
+                if($item->duration)
+                    $item->save();
+            }
+
+        dd($list);
 
         $json = Storage::json('employees.json');
 

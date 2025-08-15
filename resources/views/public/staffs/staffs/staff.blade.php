@@ -17,13 +17,11 @@
         >
             {{$staff->full_name}}
         </h3>
-        @if($staff->AffiliationPosts)
-            @foreach($staff->AffiliationPosts as $post)
-                <div class="py-2 border-b border-stone-200/70 w-full last:border-none">
-                    {{$post->post_alt ?? $post->post}}
-                </div>
-            @endforeach
-        @endif
+        @foreach($staff->AffiliationPosts() as $post)
+            <div class="py-2 border-b border-stone-200/70 w-full last:border-none">
+                {!! $post !!}
+            </div>
+        @endforeach
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-[2fr_1fr] gap-4">
         @if($staff->address)
