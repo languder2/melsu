@@ -246,6 +246,8 @@ class Division extends Model
         return $this->morphMany(Affiliation::class, 'relation')
             ->where('type','staff')
             ->orderBy('order')
+            ->orderBy('full_name')
+
         ;
     }
 

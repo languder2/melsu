@@ -2,6 +2,7 @@
 
 namespace App\Models\Documents;
 
+use App\Enums\DocumentTypes;
 use App\Models\Global\Options;
 use App\Models\Services\Log;
 use Illuminate\Database\Eloquent\Model;
@@ -22,6 +23,7 @@ class Document extends Model
         'title',
         'parent_id',
         'category_id',
+        'type',
         'filename',
         'filetype',
         'is_show',
@@ -33,6 +35,7 @@ class Document extends Model
         return [
 //            'test'          => "required",
             'title'         => 'required',
+            'type'          => '',
             'file'          => '',
             'parent_id'     => '',
             'category_id'   => '',
@@ -51,6 +54,7 @@ class Document extends Model
     protected $casts        = [
         'is_show'   => 'boolean',
         'sort'      => 'integer',
+        'type'      => DocumentTypes::class,
     ];
 
     public function __construct(array $attributes = [])
@@ -172,7 +176,7 @@ class Document extends Model
     {
         return $this->getOption('type');
     }
-    public function getTypeAttribute():?string
+    public function getOptionTypeAttribute($value):?string
     {
         return $this->getType()->property;
     }

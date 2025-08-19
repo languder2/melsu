@@ -245,6 +245,13 @@ class DivisionController extends Controller
 
         return redirect()->to( $division->staffs_admin_list );
     }
+
+    public function staffsDelete(?Affiliation $staff):RedirectResponse
+    {
+        $staff->delete();
+
+        return redirect()->back();
+    }
     /* end Staffs */
 
     /* Document Categories */

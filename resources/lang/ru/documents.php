@@ -1,6 +1,15 @@
 <?php
 
 return [
+    'types.instruction'             => 'Инструкция',
+    'types.jobDescription'          => 'Должностная инструкция',
+    'types.order'                   => 'Приказ',
+    'types.plan'                    => 'План',
+    'types.regulation'              => 'Положение',
+    'types.appendix'                => 'Приложение',
+    'types.articlesCollection'      => 'Коллекция статей',
+    'types.other'                   => 'Иное',
+
     'Documents categories'          => 'Категории документов',
     'Documents'                     => 'Документы',
     'DocumentCategories'            => 'Категории документов',

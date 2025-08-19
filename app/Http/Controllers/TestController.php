@@ -21,6 +21,7 @@ use App\Models\Info\InfoCommon;
 use App\Models\Info\InfoFounder;
 use App\Models\Info\InfoStandarts;
 use App\Models\News\Events;
+use App\Models\Staff\Affiliation;
 use App\Models\Staff\Staff;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -66,6 +67,16 @@ class TestController extends Controller
     {
         $list = collect([]);
 
+        Affiliation::whereNotNull('staff_id')->get()->each(function ($item){
+            $item->full_name = $item->card->full_name;
+
+            $item->save();
+        });
+
+
+
+
+        dd();
 
         $list = Profile::get()->where(fn($item) => $item->speciality);
 

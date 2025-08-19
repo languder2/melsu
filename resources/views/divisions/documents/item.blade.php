@@ -82,18 +82,20 @@
             </div>
             <hr>
             <div class="text-right px-4">
-                    <a
-                        href="{{ route('documents:delete',$item) }}"
-                        class="
-                            inline-block relative
-                            py-2 px-4 text-white rounded-md shadow-md
-                            shadow-gray-300
-                            bg-red-800 hover:bg-red-700 active:bg-gray-700
-                            hover:-mt-px hover:mb-px
-                        "
-                    >
-                        удалить
-                    </a>
+
+
+                <a
+                    href="{{ route('documents:delete',$item) }}"
+                    class="
+                        inline-block relative
+                        py-2 px-4 text-white rounded-md shadow-md
+                        shadow-gray-300
+                        bg-red-800 hover:bg-red-700 active:bg-gray-700
+                        hover:-mt-px hover:mb-px
+                    "
+                >
+                    удалить
+                </a>
             </div>
         </div>
     </div>

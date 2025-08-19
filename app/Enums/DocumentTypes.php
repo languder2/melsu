@@ -9,6 +9,7 @@ enum DocumentTypes
     case instruction;
     case jobDescription;
     case order;
+    case plan;
     case regulation;
     case appendix;
     case articlesCollection;
