@@ -448,6 +448,11 @@
                 </div>
             </div>
         </div>
+        <p class="font-[600] text-[#4C4C4C] text-2xl">
+            Ознакомиться с конкурсными списками можно перейдя по ссылке:
+            <a href="https://abiturient.mgu-mlt.ru/competition-lists" class="text-base-red hover:text-red-700 underline" target="_blank"> конкурсные списки </a>
+        </p>
+
     </div>
 </section>
 <div class="box-heading container custom1">
