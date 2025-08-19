@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Division;
 
 use App\Enums\DivisionType;
+use App\Enums\DocumentTypes;
 use App\Http\Controllers\Controller;
 use App\Models\Division\Division;
 use App\Models\Documents\Document;
@@ -223,9 +224,7 @@ class DivisionController extends Controller
 
     public function staffsSave(Request $request, Division $division, $type, Affiliation $staff)
     {
-
-
-        $form = $request->validate(Affiliation::formRules(), Affiliation::FormMessage());
+        $form = $request->validate(Affiliation::formRules2(), Affiliation::FormMessage());
 
         $staff->fill($form);
 
@@ -308,7 +307,9 @@ class DivisionController extends Controller
 
         $categories = $division->AllDocumentCategories();
 
-        return view('divisions.documents.form', compact('division','document','categories'));
+        $types = DocumentTypes::list();
+
+        return view('divisions.documents.form', compact('division','document','categories','types'));
     }
     public function documentsSave(Request $request, Division $division, ?Document $document)
     {

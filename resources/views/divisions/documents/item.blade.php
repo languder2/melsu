@@ -16,6 +16,9 @@
 <div class="text-center">
     {!! $item->sort !!}
 </div>
+<div class="text-center">
+    {!! $item->type ? $item->type->label() : null !!}
+</div>
 <div>
     <a href="{{ $item->relation_form }}"
        class="underline hover:text-blue"
@@ -31,7 +34,7 @@
             </svg>
 
             <span class="underline">
-                {{ $item->filename }}
+                link
             </span>
         </a>
     @endif
@@ -96,7 +99,7 @@
     </div>
 </div>
 
-<hr class="col-span-6 last:hidden">
+<hr class="col-span-7 last:hidden">
 
 @if(!$item->subs->isEmpty())
     @each('documents.admin.item',$item->subs,'item')

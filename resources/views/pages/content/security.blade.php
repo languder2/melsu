@@ -60,6 +60,33 @@
                     Типовая модель действий нарушителя, совершающего на объекте образования преступления террористической направленности в формах вооруженного нападения, размещения взрывного устройства, захвата заложников
                 </a>
             </li>
+            <li>
+                <a
+                    href="{{ Storage::url('documents/security-and-regime-management/order-9-r.pdf') }}"
+                    target="_blank"
+                    class="underline hover:text-red-base"
+                >
+                    Распоряжение № 9-Р/ПБ от 15.08.2025. О проведении дополнительных занятий.
+                </a>
+            </li>
+            <li>
+                <a
+                    href="{{ Storage::url('documents/security-and-regime-management/order-10-r.pdf') }}"
+                    target="_blank"
+                    class="underline hover:text-red-base"
+                >
+                    Распоряжение № 10-Р/ПБ от 15.08.2025. Об обеспечении мер пожарной безопасности во время проведения Дня знаний.
+                </a>
+            </li>
+            <li>
+                <a
+                    href="{{ Storage::url('documents/security-and-regime-management/order-11-r.pdf') }}"
+                    target="_blank"
+                    class="underline hover:text-red-base"
+                >
+                    Распоряжение № 11-Р/ПБ от 15.08.2025. О подготовки лиц на право работы с опасными отходами.
+                </a>
+            </li>
         </ul>
     </div>
 

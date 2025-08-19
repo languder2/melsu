@@ -39,7 +39,22 @@ class Affiliation extends Model
         return [
 //            'test'              => "required",
             'type'              => "",
-            'staff_id'          => "required",
+            'staff_id'          => "nullable|required",
+            'post'              => '',
+            'post_alt'          => '',
+            'order'             => '',
+            'post_weight'       => '',
+            'post_show'         => '',
+            'show'              => '',
+        ];
+    }
+
+    public static function FormRules2(): array
+    {
+        return [
+//            'test'              => "required",
+            'type'              => "",
+            'staff_id'          => "",
             'post'              => '',
             'post_alt'          => '',
             'order'             => '',
@@ -58,6 +73,9 @@ class Affiliation extends Model
 
     public function fill(array $attributes):self
     {
+        if(array_key_exists('post_weight', $attributes))
+            $attributes['post_weight'] = (int) $attributes['post_weight'];
+
         return parent::fill($attributes);
     }
 

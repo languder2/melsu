@@ -46,20 +46,29 @@
         <x-form.errors setTheme="2"/>
 
         <div class="flex flex-col gap-4 p-4 bg-white">
-            <x-form.input
-                id="title"
-                name="title"
-                label="Название файла"
-                value="{{ old('title', $document->title) }}"
-                required
-            />
-
             <x-form.select2
                 id="category_id"
                 name="category_id"
                 :value=" old('category_id', $document->category_id) "
                 null="Категория"
                 :list="$categories"
+            />
+
+            <x-form.select2
+                id="form-type"
+                name="type"
+                :value=" old('type', $document->type->name ?? null )"
+                null="Тип документа"
+                :list="$types"
+            />
+
+
+            <x-form.input
+                id="title"
+                name="title"
+                label="Название файла"
+                value="{{ old('title', $document->title) }}"
+                required
             />
 
             <div class="flex flex-row gap-4 items-center">

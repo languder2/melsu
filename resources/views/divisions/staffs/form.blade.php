@@ -73,7 +73,6 @@
                 name="post"
                 label="Должность"
                 value="{!! old('post', $staff->post) !!}"
-                required
             />
 
             <x-form.input
@@ -81,7 +80,6 @@
                 name="post_alt"
                 label="Должность полностью"
                 value="{!! old('post_alt', $staff->post_alt) !!}"
-                required
             />
 
 
@@ -133,7 +131,6 @@
                 label=" Создать запись сотрудника "
                 block="justify-end"
             />
-
 
             <div class="flex flex-row justify-end mt-4">
                 @component('components.form.submit',[

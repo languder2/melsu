@@ -43,7 +43,7 @@
     </div>
 </div>
 
-<div class="grid gap-4 grid-cols-[auto_auto_auto_1fr_1fr_auto] items-center p-4 bg-white shadow">
+<div class="grid gap-4 grid-cols-[auto_auto_auto_auto_1fr_auto_auto] items-center p-4 bg-white shadow">
     <div class="font-semibold">
         ID
     </div>
@@ -51,6 +51,9 @@
     </div>
     <div class="font-semibold">
         Порядок вывода
+    </div>
+    <div class="font-semibold">
+        Тип
     </div>
     <div class="font-semibold">
         Название
