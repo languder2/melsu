@@ -157,4 +157,9 @@ class Staff extends Model
         return $this->options->where('code',$code)->first() ?? $this->options()->create(['code' => 'is_teacher']);
     }
 
+    public function getFormAttribute(): string
+    {
+        return route('admin:staff:edit', $this);
+    }
+
 }

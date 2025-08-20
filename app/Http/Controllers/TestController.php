@@ -113,4 +113,18 @@ class TestController extends Controller
     }
 
 
+    public function staffs(): View
+    {
+        $list   = Staff::all()->groupBy('full_name')->where(fn($item) => $item->count()>1);
+
+        $list2  = Staff::all()->where(fn($item) => $item->Affiliations->count() === 0)->groupBy('full_name');
+
+        foreach ($list2 as $code=>$item)
+            if(!$list->has($code))
+                $list->put($code,$item);
+
+        return view('test.staffs',compact('list'));
+    }
+
+
 }
