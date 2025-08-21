@@ -5,6 +5,7 @@ return [
     'types.jobDescription'          => 'Должностная инструкция',
     'types.order'                   => 'Приказ',
     'types.plan'                    => 'План',
+    'types.protocol'                => 'Протокол',
     'types.regulation'              => 'Положение',
     'types.appendix'                => 'Приложение',
     'types.articlesCollection'      => 'Коллекция статей',
