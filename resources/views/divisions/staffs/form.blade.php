@@ -123,14 +123,33 @@
                 />
             </div>
 
-            <x-form.checkbox.block
-                id="form_new"
-                name="new"
-                :default="0"
-                :value="1"
-                label=" Создать запись сотрудника "
-                block="justify-end"
-            />
+
+
+
+            <div class="flex gap-x-4 justify-between">
+
+                @if($staff->relation->type && $staff->relation->type->name === "Department")
+                    <x-form.checkbox.block
+                        id="form_is_teacher"
+                        name="is_teacher"
+                        :default="0"
+                        :value="1"
+                        label=" Должность подразумевает преподавание "
+                        :checked=" old('is_teacher', $staff->exists ? $staff->is_teacher : true ) "
+                    />
+                @else
+                    <div></div>
+                @endif
+
+                <x-form.checkbox.block
+                    id="form_new"
+                    name="new"
+                    :default="0"
+                    :value="1"
+                    label=" Создать запись сотрудника "
+                    block="justify-end"
+                />
+            </div>
 
             <div class="flex flex-row justify-end mt-4">
                 @component('components.form.submit',[

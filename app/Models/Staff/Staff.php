@@ -3,9 +3,11 @@
 namespace App\Models\Staff;
 
 use App\Models\Division\Division;
+use App\Models\Employees\Employee;
 use App\Models\Gallery\Image;
 use App\Models\Global\Options;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
@@ -74,6 +76,10 @@ class Staff extends Model
             'lastname' => 'Укажите фамилию',
             'firstname' => 'Укажите имя',
         ];
+    }
+    public function employee(): BelongsTo
+    {
+        return $this->belongsTo(Employee::class, 'id','staff_id');
     }
 
     public function getLinkAttribute(): string

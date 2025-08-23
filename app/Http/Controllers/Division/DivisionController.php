@@ -243,6 +243,8 @@ class DivisionController extends Controller
         if($staff->staff_id)
             $staff->save();
 
+
+
         return redirect()->to( $division->staffs_admin_list );
     }
 

@@ -9,11 +9,8 @@ enum DocumentTypes
     case instruction;
     case jobDescription;
     case order;
-    case plan;
-    case protocol;
     case regulation;
     case appendix;
-    case articlesCollection;
     case other;
     public function label(): string
     {

@@ -31,3 +31,8 @@
         @endif
     </div>
 </section>
+<section class="container block lg:hidden">
+    <h1 class="text-3xl sm:text-5xl font-bold">
+        {{$current->name??''}}
+    </h1>
+</section>

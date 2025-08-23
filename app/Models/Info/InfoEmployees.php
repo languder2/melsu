@@ -42,20 +42,28 @@ class InfoEmployees extends Info
             'prop'              => Employees::teachingStaff->name,
             'captions'          => self::Fields,
             'list'              =>
-                Employee::orderBy('fio')->orderBy('post')->get()->groupBy('fio')
-                    ->map(function ($group) {
-                        $item = $group->first();
+                Employee::all()->mapWithKeys(function ($item) {
 
-                        if($group->count() > 1)
-                            $item->post = implode(',<br>', $group->map(
-                                fn($item) => mb_ucfirst(trim($item->post))
-                            )->toArray());
-                        else
-                            $item->post = mb_ucfirst(trim($item->post));
 
-                        return $item;
-                    })
+                    $item->fio  = $item->staff->full_name;
+                    $item->post = $item->staff->AffiliationPosts()->implode('; ');
+                    return [$item->staff->full_name => $item];
+                })->sortBy('fio')
         ];
     }
 
 }
+
+//Employee::orderBy('fio')->orderBy('post')->get()->groupBy('fio')
+//    ->map(function ($group) {
+//        $item = $group->first();
+//
+//        if($group->count() > 1)
+//            $item->post = implode(',<br>', $group->map(
+//                fn($item) => mb_ucfirst(trim($item->post))
+//            )->toArray());
+//        else
+//            $item->post = mb_ucfirst(trim($item->post));
+//
+//        return $item;
+//    })

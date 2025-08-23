@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Enums\DivisionType;
+use App\Enums\DocumentTypes;
 use App\Enums\DurationType;
 use App\Enums\EducationBasis;
 use App\Enums\EducationForm;
@@ -38,9 +39,7 @@ class TestController extends Controller
 
     public function phpinfo():void
     {
-
         phpinfo();
-
     }
 
     public function view()
@@ -67,47 +66,20 @@ class TestController extends Controller
     {
         $list = collect([]);
 
-        Affiliation::whereNotNull('staff_id')->get()->each(function ($item){
-            $item->full_name = $item->card->full_name;
-
-            $item->save();
+        $employees = Employee::all()->mapWithKeys(function ($employee) {
+            return [$employee->staff->full_name => $employee];
         });
 
 
-
+        for( $i=1; $i <= 4; $i++) {
+            $json = json_decode(Storage::get("json/employees/{$i}.json"));
+            foreach ($json as $record) {
+                if(!$employees->has($record->fio)) continue;
+                $employees->get($record->fio)->fill((array)$record)->save();
+            }
+        }
 
         dd();
-
-        $list = Profile::get()->where(fn($item) => $item->speciality);
-
-        foreach ($list as $item)
-            if($item->speciality && $item->speciality->level){
-
-                $item->duration = $item->speciality->level->getCurses()*12;
-
-                if($item->speciality->spec_code === '44.03.05')
-                    $item->duration = 60;
-
-                if( in_array($item->speciality->spec_code,['2.4.4', '4.1.1', '1.5.9', '2.5.21']) )
-                    $item->duration = 48;
-
-                if($item->form !== EducationForm::Full)
-                    $item->duration += 6;
-
-                if($item->duration)
-                    $item->save();
-            }
-
-        dd($list);
-
-        $json = Storage::json('employees.json');
-
-        Employee::truncate();
-
-        foreach ($json as $employee)
-            Employee::create($employee);
-
-        $list = Employee::all();
 
         return view('test.index',compact('list','json'));
     }
@@ -115,6 +87,22 @@ class TestController extends Controller
 
     public function staffs(): View
     {
+
+        Employee::truncate();
+
+        Division::where('type',DivisionType::Department)->get()->each(function ($item){
+            $item->staffs->each(function ($staff){
+
+                $staff->fill(['is_teacher' => 1])->save();
+
+                if(!$staff->card->employee)
+                    (new Employee([
+                        "staff_id" => $staff->card->id,
+                    ]))->save();
+            });
+        });
+
+
 //        $list   = Staff::all()->groupBy('full_name')->where(fn($item) => $item->count()>1);
 //
 //        $list2  = Staff::all()->where(fn($item) => $item->Affiliations->count() === 0)->groupBy('full_name');

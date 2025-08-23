@@ -27,7 +27,7 @@
         <x-form.select2
             id="type"
             name="optional[type]"
-            value="{{ $document->exists ? $document->type : $type }}"
+            value="{{ $document->exists ? $document->optionType : $type }}"
             null="Тип"
             :list="$types"
         />

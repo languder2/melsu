@@ -26,3 +26,8 @@
         </h1>
     </div>
 </section>
+<section class="container block lg:hidden">
+    <h1 class="text-xl font-bold">
+        {!! $breadcrumb->title !!}
+    </h1>
+</section>
