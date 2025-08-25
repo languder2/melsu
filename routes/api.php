@@ -14,8 +14,8 @@ use App\Http\Controllers\Sections\CareerController;
 use App\Http\Controllers\News\ApiNews;
 use App\Http\Controllers\Staffs\ApiStaff;
 use App\Http\Controllers\Education\SpecialityController;
-Route::get('departments-by-faculty-shorts/{faculty?}', function (Request $request, $faculty = null) {
 
+Route::get('departments-by-faculty-shorts/{faculty?}', function (Request $request, $faculty = null) {
     if (is_null($faculty))
         return Division::orderBy('name')->get()->pluck('name', 'code')->toJson(JSON_UNESCAPED_UNICODE);
     else
@@ -229,10 +229,6 @@ Route::get('set-score',[\App\Http\Controllers\ImportController::class,'setScores
 
 Route::get('set-score',[\App\Http\Controllers\ImportController::class,'setScores']);
 
-Route::get('news/categories',           [ApiNews::class,'getCategories']);
-Route::get('news/list/{count?}',        [ApiNews::class,'getList'])->setDefaults(['count'=>10]);
-Route::get('news/from/{date?}',         [ApiNews::class,'getListFrom']);
-
 
 Route::get('staff/teachers',            [ApiStaff::class,'getTeachersByDepartments']);
 
@@ -265,3 +261,14 @@ Route::middleware(['web', 'auth.api'])
         Route::get('/delete/{id}', 'ApiDeletePartnerSection')
             ->name('api:partner:sections:delete');
     });
+
+/* API News */
+Route::prefix('news')->group(function (){
+    Route::get('categories',                                [ApiNews::class,'getCategories']);
+    Route::get('list/{count?}/{offset?}',                   [ApiNews::class,'getList']);
+    Route::get('category/{category}/{count?}/{offset?}',    [ApiNews::class,'getCategory']);
+    Route::get('date/{date?}',                              [ApiNews::class,'getListByDate']);
+    Route::get('{item}',                                    [ApiNews::class,'getNews'])->name('api:news:get');
+});
+
+

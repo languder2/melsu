@@ -49,8 +49,8 @@ class TestController extends Controller
         $list = Events::whereNotNull('event_datetime')->get();
 
         foreach ($list as $item) {
-            @dump($item->event_datetime->format('H:i:s'));
-            @dump($item->FormatedEventDatetime('H:i'));
+            dump($item->event_datetime->format('H:i:s'));
+            dump($item->FormatedEventDatetime('H:i'));
         }
 
 //        return view('test.view',compact('list'));

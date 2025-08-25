@@ -33,17 +33,17 @@ class Category extends Model
     protected $table = 'news_categories';
     protected $primaryKey = 'id';
     protected $fillable = [
-        'id',
         'name',
         'code',
         'sort',
     ];
     protected $visible = [
+        'id',
         'name',
         'code',
-        'sort',
+        'link',
     ];
-
+    protected $appends = ['link'];
     public function fill(array $attributes):?self
     {
         if(!empty($attributes)){
