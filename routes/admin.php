@@ -4,7 +4,6 @@ use App\Http\Controllers\History\HistoryController;
 use App\Http\Controllers\Education\{DepartmentController, FacultyController, LabsController, };
 use App\Http\Controllers\Handbook\HandbookController;
 use App\Http\Controllers\Menu\{ItemsController as MenuItems, MenuController};
-use App\Http\Controllers\PagesController;
 use App\Http\Controllers\Schedule\ScheduleController;
 use App\Http\Controllers\Staffs\StaffController;
 use App\Http\Controllers\Users\UserController;
@@ -38,17 +37,6 @@ Route::controller(MenuController::class)
 
     });
 
-Route::controller(PagesController::class)
-    ->prefix('pages')
-    ->group(function () {
-
-        Route::get('', 'list')->name('admin:pages');
-        Route::get('add', 'form')->name('admin:pages:add');
-        Route::get('edit/{id}', 'form')->name('admin:pages:edit');
-        Route::post('save', 'save')->name('admin:pages:save');
-        Route::get('delete/{id}', 'delete')->name('admin:pages:delete');
-
-    });
 
 
 Route::controller(StaffController::class)

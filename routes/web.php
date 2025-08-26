@@ -34,18 +34,6 @@ Route::prefix('admin')->group(function () {
     require __DIR__.'/admin.php';
 });
 
-require __DIR__.'/test.php';
-require __DIR__.'/info.php';
-require __DIR__.'/regiment.php';
-require __DIR__.'/divisions.php';
-require __DIR__.'/documents.php';
-require __DIR__.'/news.php';
-require __DIR__.'/projects.php';
-require __DIR__.'/education.php';
-require __DIR__.'/gallery.php';
-
-require __DIR__.'/system.php';
-
 Route::prefix('cabinet')->group(function () {
     require __DIR__.'/cabinet.php';
 });
@@ -129,4 +117,16 @@ Route::get('control/staffs',    [ControlController::class,'staffs']);
 
 Route::get('/history', [HistoryController::class, 'indexPage'])->name('public.history.index');
 
-Route::get('{alias}', [PagesController::class, 'showPage']);
+
+require __DIR__.'/test.php';
+require __DIR__.'/info.php';
+require __DIR__.'/regiment.php';
+require __DIR__.'/divisions.php';
+require __DIR__.'/documents.php';
+require __DIR__.'/news.php';
+require __DIR__.'/projects.php';
+require __DIR__.'/education.php';
+require __DIR__.'/gallery.php';
+
+require __DIR__.'/system.php';
+require __DIR__.'/pages.php';

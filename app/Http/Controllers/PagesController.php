@@ -17,6 +17,7 @@ class PagesController extends Controller
 {
     public function list(): string
     {
+
         return view('pages.admin', [
             'contents' => [
 

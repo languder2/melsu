@@ -2,20 +2,13 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Documents\DocumentCategoriesController;
 use App\Http\Controllers\Documents\DocumentsController;
+use App\Http\Controllers\Documents\RelationDocumentsController;
 
 Route::prefix('admin/document-categories')->group(function(){
-    Route::get('form/{category?}',      [DocumentCategoriesController::class,'form'])
-        ->name('document-categories:admin:form');
-
-    Route::put('save/{category?}',     [DocumentCategoriesController::class,'save'])
-        ->name('document-categories:admin:save');
-
-    Route::get('delete/{category?}',    [DocumentCategoriesController::class,'delete'])
-        ->name('document-categories:delete');
-
-    Route::get('{field?}/{direction?}', [DocumentCategoriesController::class,'admin'])
-        ->setDefaults(['field' => 'sort', 'direction' => 'asc'])
-        ->name('document-categories:admin:list');
+    Route::get('form/{category?}',      [DocumentCategoriesController::class,'form'])->name('document-categories:admin:form');
+    Route::put('save/{category?}',      [DocumentCategoriesController::class,'save'])->name('document-categories:admin:save');
+    Route::get('delete/{category?}',    [DocumentCategoriesController::class,'delete'])->name('document-categories:delete');
+    Route::get('{field?}/{direction?}', [DocumentCategoriesController::class,'admin'])->setDefaults(['field' => 'sort', 'direction' => 'asc'])->name('document-categories:admin:list');
 });
 
 Route::prefix('admin/documents')->group(function(){
@@ -27,7 +20,9 @@ Route::prefix('admin/documents')->group(function(){
         ->name('documents:admin:list');
 });
 
-Route::get('documents',             [DocumentsController::class,'public'])  ->name('documents:public:list');
+Route::get('documents',                 [DocumentsController::class,'public'])  ->name('documents:public:list');
+
+Route::get('admin/documents/relation/{model}/{id}/', [RelationDocumentsController::class,'admin'])->name('documents:relation:admin');
 
 /* API */
 Route::middleware(['web','auth.api'])->prefix('api/documents')->group(function () {
