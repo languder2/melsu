@@ -22,7 +22,8 @@ Route::prefix('admin/documents')->group(function(){
 
 Route::get('documents',                 [DocumentsController::class,'public'])  ->name('documents:public:list');
 
-Route::get('admin/documents/relation/{model}/{id}/', [RelationDocumentsController::class,'admin'])->name('documents:relation:admin');
+Route::resource('photos', RelationDocumentsController::class);
+Route::resource('admin/documents/relation/{model}/{id}/', RelationDocumentsController::class);
 
 /* API */
 Route::middleware(['web','auth.api'])->prefix('api/documents')->group(function () {
