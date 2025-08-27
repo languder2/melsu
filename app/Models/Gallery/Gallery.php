@@ -124,7 +124,4 @@ class Gallery extends Model
         return route('gallery:admin:save',$this);
     }
     /* end links */
-
-
-
 }

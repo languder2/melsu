@@ -2,47 +2,34 @@
 
 namespace App\Http\Controllers\Documents;
 
+use App\Enums\Entities;
 use App\Http\Controllers\Controller;
-use App\Models\Division\Division;
 use App\Models\Documents\Document;
-use App\Models\Education\Speciality;
-use App\Models\Page;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Http\Request;
+use App\Models\Documents\DocumentCategory;
+use Illuminate\Support\Facades\Route;
 use Illuminate\View\View;
 
 class RelationDocumentsController extends Controller
 {
+    public function admin(Entities $model, int $id):View
+    {
+        $relation = $model->model()::find($id) ?? abort(404);
 
-//    protected function getModel($model, $id): ?Model
-//    {
-//        return match($model) {
-//            'page'          => Page::find($id),
-//            'division'      => Division::find($id),
-//            'speciality'    => Speciality::find($id),
-//            default         => null
-//        };
-//    }
-//
-//    public function admin(string $model, int $id):View
-//    {
-//        $entity = $this->getModel($model, $id);
-//
-//        if(!$entity)
-//            abort(404);
-//
-//        dd($entity);
-//
-//        return view('divisions.documents.admin');
-//    }
+        return view('documents.relation.admin', compact('relation'));
+    }
 
-    public function show($item){
-        dd(123);
-    }
-    public function edit(?Document $photo){
-        dd($photo);
-    }
-    public function create(?Document $document){
-        dd($document);
+    public function formCategory(Entities $model, int $id, ?DocumentCategory $category):View
+    {
+        $relation = $model->model()::find($id) ?? abort(404);
+
+        if($category->exists && $category->relation->id !== $relation->id)
+            abort(402);
+
+        if(!$category->exists){
+            $last = $relation->documentCategories()->orderBy('sort','desc')->first();
+            $category->sort =  $last ? $last->sort + 10 : 10;
+        }
+
+        return view('documents.relation.category-form', compact('relation', 'category'));
     }
 }

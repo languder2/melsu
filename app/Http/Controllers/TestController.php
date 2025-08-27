@@ -7,6 +7,7 @@ use App\Enums\DocumentTypes;
 use App\Enums\DurationType;
 use App\Enums\EducationBasis;
 use App\Enums\EducationForm;
+use App\Enums\Entities;
 use App\Enums\Info\Base;
 use App\Enums\Info\Common;
 use App\Enums\Info\Types;
@@ -62,26 +63,16 @@ class TestController extends Controller
         return view('test.admin',compact('list'));
     }
 
-    public function index(InfoCommon $common): View
+    public function index(): View
     {
-        $list = collect([]);
 
-        $employees = Employee::all()->mapWithKeys(function ($employee) {
-            return [$employee->staff->full_name => $employee];
-        });
+        $list = collect();
 
+        dd(Entities::list());
 
-        for( $i=1; $i <= 4; $i++) {
-            $json = json_decode(Storage::get("json/employees/{$i}.json"));
-            foreach ($json as $record) {
-                if(!$employees->has($record->fio)) continue;
-                $employees->get($record->fio)->fill((array)$record)->save();
-            }
-        }
+        $page = Entities::page;
 
-        dd();
-
-        return view('test.index',compact('list','json'));
+        return view('test.index',compact('list', 'page'));
     }
 
 

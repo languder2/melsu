@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Menu\Menu;
+use App\Models\Page\Content;
 use App\Models\Page\Content as PageContent;
+use App\Models\Page\Page;
 use App\Models\Partner\Partner;
 use App\Models\Upbringing\Upbringing;
 use Illuminate\Http\JsonResponse;
-use App\Models\Menu\Menu;
-use App\Models\Page;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
-use App\Models\Page\Content;
 
 class PagesController extends Controller
 {

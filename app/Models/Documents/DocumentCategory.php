@@ -2,17 +2,17 @@
 
 namespace App\Models\Documents;
 
+use App\Traits\HasRelations;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Collection;
+use Illuminate\Database\Eloquent\Builder;
 
 class DocumentCategory extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, HasRelations;
 
     protected $table = 'document_categories';
 
@@ -44,6 +44,17 @@ class DocumentCategory extends Model
         return [
             'name' => 'Укажите названию категории',
         ];
+    }
+
+    /**
+     * Scope a query to include only publicly visible document categories.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return void
+     */
+    public function scopePublic(Builder $query): void
+    {
+        $query->where('is_show', true);
     }
     protected static function boot()
     {
@@ -85,11 +96,6 @@ class DocumentCategory extends Model
         }
 
         return parent::fill($attributes);
-    }
-
-    public function relation(): MorphTo
-    {
-        return $this->morphTo();
     }
 
     public function parent(): BelongsTo

@@ -17,7 +17,9 @@ use App\Models\Partner\Partner;
 use App\Models\Sections\Contact;
 use App\Models\Staff\Affiliation;
 use App\Models\Staff\Staff;
+use App\Traits\HasLinks;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -32,7 +34,7 @@ use App\Models\Upbringing\Upbringing;
  */
 class Division extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, HasLinks;
 
     protected $table = 'divisions';
 
@@ -605,6 +607,10 @@ class Division extends Model
         return route('division:admin:document-categories:form', $this);
     }
 
+    protected function test(): Attribute
+    {
+        return Attribute::make(get: fn () => $this->id);
+    }
     /* end Documents */
 
     public function AllDocumentCategories(): Collection

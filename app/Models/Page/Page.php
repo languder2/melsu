@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Page;
 
 use App\Models\Page\Content as PageContent;
+use App\Traits\HasDocuments;
+use App\Traits\HasLinks;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
@@ -12,13 +14,12 @@ use Illuminate\Support\Facades\Route;
 
 class Page extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, HasLinks, HasDocuments;
 
     protected $table = 'pages';
 
     protected $fillable = [
         'id',
-
         'name',
         'alias',
         'route',

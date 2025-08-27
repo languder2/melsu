@@ -3,7 +3,7 @@
 namespace App\Models\Menu;
 
 use App\Models\Gallery\Image;
-use App\Models\Page;
+use App\Models\Page\Page;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\hasMany;

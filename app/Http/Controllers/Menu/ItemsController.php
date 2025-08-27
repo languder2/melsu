@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Menu;
 
 use App\Http\Controllers\Controller;
-use App\Models\Menu\Menu;
 use App\Models\Menu\Item as MenuItem;
-use App\Models\Page;
+use App\Models\Menu\Menu;
+use App\Models\Page\Page;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;

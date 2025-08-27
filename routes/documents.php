@@ -22,9 +22,6 @@ Route::prefix('admin/documents')->group(function(){
 
 Route::get('documents',                 [DocumentsController::class,'public'])  ->name('documents:public:list');
 
-Route::resource('photos', RelationDocumentsController::class);
-Route::resource('admin/documents/relation/{model}/{id}/', RelationDocumentsController::class);
-
 /* API */
 Route::middleware(['web','auth.api'])->prefix('api/documents')->group(function () {
     Route::get('add-block',             [DocumentsController::class,'ApiAddBlock'])
@@ -35,3 +32,7 @@ Route::middleware(['web','auth.api'])->prefix('api/documents')->group(function (
 
     Route::get('delete/{item?}', [DocumentsController::class,'ApiDelete'])->name('documents:api:delete');
 });
+
+
+Route::get('admin/documents/relation/{model}/{id}/category/form/{category?}',   [RelationDocumentsController::class, 'formCategory'])->name('relation:document:categories:admin:form');
+Route::get('admin/documents/relation/{model}/{id}/',                            [RelationDocumentsController::class, 'admin'])->name('relation:documents:admin');

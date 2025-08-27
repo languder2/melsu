@@ -1,16 +1,15 @@
 <?php
 
+use App\Models\Division\Division;
 use App\Models\Education\Faculty;
 use App\Models\Education\Speciality;
 use App\Models\Menu\Menu;
+use App\Models\News\Events;
 use App\Models\News\News;
-use App\Models\Page;
+use App\Models\Page\Page;
 use App\Models\Staff\Staff;
 use Diglactic\Breadcrumbs\Breadcrumbs;
 use Diglactic\Breadcrumbs\Generator as BreadcrumbTrail;
-use App\Models\Division\Division;
-use App\Enums\DivisionType;
-use App\Models\News\Events;
 
 Breadcrumbs::for('home', function (BreadcrumbTrail $trail) {
     $trail->push('Главная', route('pages:main'));
