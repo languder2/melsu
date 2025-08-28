@@ -18,7 +18,7 @@
                 </div>
                 <div>
                     <a
-                        href="{{ $relation->documentLinks->get('admin') }}"
+{{--                        href="{{ $relation->documentLinks->get('admin') }}"--}}
                         class="underline"
                     >
                         {{ __('documents.Documents') }}

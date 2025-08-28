@@ -3,12 +3,14 @@
 namespace App\Models\Documents;
 
 use App\Traits\HasRelations;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Route;
 
 class DocumentCategory extends Model
 {
@@ -65,6 +67,23 @@ class DocumentCategory extends Model
             $item->subs()->delete();
         });
     }
+
+    protected array $routes = [
+        'categoryAdd'   => 'relation:document:categories:admin:form',
+        'admin'         => 'relation:documents:admin',
+    ];
+    protected function documentLinks(): Attribute
+    {
+        return Attribute::make(
+            get: function (): Collection
+            {
+                return collect($this->routes)->mapWithKeys(
+                    fn ($route, $code) => [$code => Route::has($route) ? route($route, [$this->getTable(), $this]) : "#"]
+                );
+            }
+        );
+    }
+
 
     public function documents(): HasMany
     {

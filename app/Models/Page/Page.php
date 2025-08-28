@@ -3,6 +3,7 @@
 namespace App\Models\Page;
 
 use App\Models\Page\Content as PageContent;
+use App\Traits\HasDocumentCategories;
 use App\Traits\HasDocuments;
 use App\Traits\HasLinks;
 use Illuminate\Database\Eloquent\Model;
@@ -14,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 class Page extends Model
 {
-    use SoftDeletes, HasLinks, HasDocuments;
+    use SoftDeletes, HasLinks, HasDocumentCategories, HasDocuments;
 
     protected $table = 'pages';
 

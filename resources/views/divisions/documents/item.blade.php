@@ -2,16 +2,16 @@
     {!! $item->id !!}
 </div>
 <div class="text-center">
-{{--    <a--}}
-{{--        href="{{ route('documents:admin:form') }}?category_id={{$item->category->id ?? null}}&parent_id={{$item->id}}"--}}
-{{--        class="--}}
-{{--                rounded-md--}}
-{{--                text-blue-950 hover:text-blue-700 active:text-gray-700--}}
-{{--                flex items-center justify-center--}}
-{{--            "--}}
-{{--    >--}}
-{{--        <i class="far fa-plus-square text-2xl"></i>--}}
-{{--    </a>--}}
+    {{--    <a--}}
+    {{--        href="{{ route('documents:admin:form') }}?category_id={{$item->category->id ?? null}}&parent_id={{$item->id}}"--}}
+    {{--        class="--}}
+    {{--                rounded-md--}}
+    {{--                text-blue-950 hover:text-blue-700 active:text-gray-700--}}
+    {{--                flex items-center justify-center--}}
+    {{--            "--}}
+    {{--    >--}}
+    {{--        <i class="far fa-plus-square text-2xl"></i>--}}
+    {{--    </a>--}}
 </div>
 <div class="text-center">
     {!! $item->sort !!}
@@ -38,6 +38,14 @@
             </span>
         </a>
     @endif
+</div>
+<div class="flex flex-col">
+    <p>
+        {{ $item->updated_at->format('H:i d-m-Y') }}
+    </p>
+    <p>
+        {{ $item->created_at->format('H:i d-m-Y') }}
+    </p>
 </div>
 <div>
     <div>

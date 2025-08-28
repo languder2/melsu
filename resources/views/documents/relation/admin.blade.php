@@ -17,7 +17,7 @@
             </div>
             <div>
                 <a
-                    href="{{ $relation->documentLinks->get('admin') }}"
+{{--                    href="{{ $relation->documentLinks->get('admin') }}"--}}
                     class="underline"
                 >
                     {{ __('documents.Documents') }}
@@ -27,7 +27,7 @@
 
         @slot('alterLink')
             <a
-                href="{{ $relation->documentLinks->get('categoryAdd') }}"
+{{--                href="{{ $relation->documentLinks->get('categoryAdd') }}"--}}
                 class="
                 rounded-md
                 text-white
@@ -42,7 +42,9 @@
 @endsection
 
 @section('content')
-    @forelse($relation->DocumentCategories as $category)
+    @dump($relation->links, $relation->test2)
+
+    @forelse($relation->documentCategories as $category)
 {{--        @component('divisions.documents.category', compact('category', 'field', 'direction'))@endcomponent--}}
     @empty
         <div class="text-center p-4 bg-white">

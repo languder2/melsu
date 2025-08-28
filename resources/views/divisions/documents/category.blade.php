@@ -43,7 +43,7 @@
     </div>
 </div>
 
-<div class="grid gap-4 grid-cols-[auto_auto_auto_auto_1fr_auto_auto] items-center p-4 bg-white shadow">
+<div class="grid gap-4 grid-cols-[auto_auto_auto_auto_1fr_auto_auto_auto] items-center p-4 bg-white shadow">
     <div class="font-semibold">
         ID
     </div>
@@ -57,6 +57,9 @@
     </div>
     <div class="font-semibold">
         Название
+    </div>
+    <div class="font-semibold">
+        Даты
     </div>
     <div class="font-semibold">
         Ссылка на файл
