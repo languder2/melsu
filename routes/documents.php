@@ -36,4 +36,3 @@ Route::middleware(['web','auth.api'])->prefix('api/documents')->group(function (
 
 Route::get('admin/documents/relation/{model}/{id}/category/form/{category?}',   [RelationDocumentsController::class, 'formCategory'])->name('relation:document:categories:admin:form');
 Route::get('admin/documents/relation/{model}/{id}/',                            [RelationDocumentsController::class, 'admin'])->name('relation:documents:admin');
-Route::get('admin/documents/relation/{model}/{id}/',                            [RelationDocumentsController::class, 'admin'])->name('relation:documents:admin');
