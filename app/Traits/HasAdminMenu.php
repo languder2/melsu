@@ -2,16 +2,14 @@
 
 namespace App\Traits;
 
-use Illuminate\View\View;
+use Illuminate\Support\Facades\View;
 
 trait HasAdminMenu
 {
-    public function adminMenu(): View
+    public function adminMenu(): ?string
     {
         $entity = $this->entity ?? $this->getTable();
 
-        dd($entity);
-
-        return view('melsu.admin.menu');
+        return View::exists("{$entity}.includes.admin-menu") ? "{$entity}.includes.admin-menu" : null;
     }
 }

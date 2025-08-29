@@ -1,13 +1,12 @@
 @extends("layouts.admin")
 
-@section('title', 'Админ панель: Структура университета')
+@section('title', "Админ панель: $relation->name: ".__('documents.Documents'))
 
-@section('top-menu')
-
-    @dump($relation->adminMenu());
-
-    @include('divisions.admin.menu')
-@endsection
+@if($relation->adminMenu())
+    @section('top-menu')
+        @include($relation->adminMenu())
+    @endsection
+@endif
 
 @section('content-header')
     @component('admin.components.content-header')
@@ -20,7 +19,7 @@
             </div>
             <div>
                 <a
-{{--                    href="{{ $relation->documentLinks->get('admin') }}"--}}
+                    href="{{ $relation->links['admin'] }}"
                     class="underline"
                 >
                     {{ __('documents.Documents') }}
@@ -30,7 +29,7 @@
 
         @slot('alterLink')
             <a
-{{--                href="{{ $relation->documentLinks->get('categoryAdd') }}"--}}
+                href="{{ $relation->links->get('documentCategoriesAdd') }}"
                 class="
                 rounded-md
                 text-white
@@ -48,7 +47,7 @@
     @dump($relation->links, $relation->test2)
 
     @forelse($relation->documentCategories as $category)
-{{--        @component('divisions.documents.category', compact('category', 'field', 'direction'))@endcomponent--}}
+        {{--        @component('divisions.documents.category', compact('category', 'field', 'direction'))@endcomponent--}}
     @empty
         <div class="text-center p-4 bg-white">
             Нет категорий

@@ -7,6 +7,7 @@ use App\Models\Documents\Document;
 use App\Models\Documents\DocumentCategory;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
+use PhpParser\Comment\Doc;
 
 class DocumentCategoriesController extends Controller
 {
@@ -19,6 +20,7 @@ class DocumentCategoriesController extends Controller
     }
     public function form(DocumentCategory $category):View
     {
+
         $sort   = DocumentCategory::orderBy('sort','desc')->first()->sort ?? 0;
         $sort   = $sort >= 1000 ? null : $sort+10;
 
@@ -41,7 +43,11 @@ class DocumentCategoriesController extends Controller
 
         $category->fill($form)->save();
 
-        return redirect()->route('document-categories:admin:list');
+        return redirect()->to(
+            $category->relation
+                ? $category->relation->links['documentsAdmin']
+                : route('document-categories:admin:list')
+            );
     }
     public function delete(DocumentCategory $category):RedirectResponse
     {

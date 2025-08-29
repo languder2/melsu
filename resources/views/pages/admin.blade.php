@@ -7,7 +7,6 @@
         @foreach($contents as $content)
             {!! $content !!}
         @endforeach
-
     @endif
 @endsection
 

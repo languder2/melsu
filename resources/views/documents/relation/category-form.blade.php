@@ -1,10 +1,12 @@
 @extends("layouts.admin")
 
-@section('title', 'Админ панель: Структура университета')
+@section('title', "Админ панель: $relation->name: ".__('documents.Documents'))
 
-@section('top-menu')
-    @include('divisions.admin.menu')
-@endsection
+@if($relation->adminMenu())
+    @section('top-menu')
+        @include($relation->adminMenu())
+    @endsection
+@endif
 
 @section('content-header')
     @component('admin.components.content-header')
@@ -18,7 +20,7 @@
                 </div>
                 <div>
                     <a
-{{--                        href="{{ $relation->documentLinks->get('admin') }}"--}}
+                        href="{{ $relation->links['admin'] }}"
                         class="underline"
                     >
                         {{ __('documents.Documents') }}
@@ -26,7 +28,7 @@
                 </div>
             </div>
             <div>
-                {!! $category->exists ? "{$category->name}" : __('documents.NewCategory') !!}
+                {!! $category->exists ? "$category->name" : __('documents.NewCategory') !!}
             </div>
         </div>
     @endcomponent
@@ -35,7 +37,7 @@
 @section('content')
     <x-head.tinymce-config/>
     <form
-{{--        action="{{ $category->relation_document_category_save }}"--}}
+        action="{{ $category->links['save'] }}"
         method="POST"
         enctype="multipart/form-data"
         class="flex flex-col gap-4 max-w-1200"
@@ -45,15 +47,10 @@
 
         <x-form.errors setTheme/>
 
-        <div class="p-4 bg-white flex flex-col gap-4">
-{{--            <x-form.select2--}}
-{{--                id="parent_id"--}}
-{{--                name="parent_id"--}}
-{{--                :value="old('parent_id', $category->parent_id) "--}}
-{{--                null="Родительская категория"--}}
-{{--                :list="$list"--}}
-{{--            />--}}
+        <input type="hidden" name="relation_type"   value="{{ $relation ? $relation::class : null }}">
+        <input type="hidden" name="relation_id"     value="{{ $relation ? $relation->id : null }}">
 
+        <div class="p-4 bg-white flex flex-col gap-4">
             <x-form.input
                 id="name"
                 name="name"
@@ -84,5 +81,7 @@
             value="сохранить"
         />
     </form>
+
+    @dump($category->links)
 
 @endsection

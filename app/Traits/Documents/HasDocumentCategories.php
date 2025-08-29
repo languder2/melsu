@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Traits;
+namespace App\Traits\Documents;
 
 use App\Models\Documents\DocumentCategory;
+use App\Traits\GenerateLinks;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Support\Collection;
 
@@ -14,9 +15,9 @@ trait HasDocumentCategories
     {
         static::retrieved(function ($model) {
             $model->generate(
-                'documentCategories',
                 [
-                    'categoryAdd'   => 'relation:document:categories:admin:form',
+                    'documentCategoriesAdd'     => 'relation:document:categories:admin:form',
+                    'documentsAdmin'            => 'relation:documents:admin',
                 ],
                 [$model->getTable(), $model->id]
             );

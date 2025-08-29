@@ -26,7 +26,9 @@ class RelationDocumentsController extends Controller
         if(!$category->exists){
             $last = $relation->documentCategories()->orderBy('sort','desc')->first();
             $category->sort =  $last ? $last->sort + 10 : 10;
+            $category->getLinksCollection();
         }
+
 
         return view('documents.relation.category-form', compact('relation', 'category'));
     }

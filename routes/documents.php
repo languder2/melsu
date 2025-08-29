@@ -7,6 +7,8 @@ use App\Http\Controllers\Documents\RelationDocumentsController;
 Route::prefix('admin/document-categories')->group(function(){
     Route::get('form/{category?}',      [DocumentCategoriesController::class,'form'])->name('document-categories:admin:form');
     Route::put('save/{category?}',      [DocumentCategoriesController::class,'save'])->name('document-categories:admin:save');
+
+
     Route::get('delete/{category?}',    [DocumentCategoriesController::class,'delete'])->name('document-categories:delete');
     Route::get('{field?}/{direction?}', [DocumentCategoriesController::class,'admin'])->setDefaults(['field' => 'sort', 'direction' => 'asc'])->name('document-categories:admin:list');
 });
@@ -36,3 +38,5 @@ Route::middleware(['web','auth.api'])->prefix('api/documents')->group(function (
 
 Route::get('admin/documents/relation/{model}/{id}/category/form/{category?}',   [RelationDocumentsController::class, 'formCategory'])->name('relation:document:categories:admin:form');
 Route::get('admin/documents/relation/{model}/{id}/',                            [RelationDocumentsController::class, 'admin'])->name('relation:documents:admin');
+
+Route::put('admin/document-categories/save/{category?}',      [DocumentCategoriesController::class,'save'])->name('document_categories:save');

@@ -2,27 +2,30 @@
 
 namespace App\Models\Documents;
 
+use App\Traits\Documents\HasDocumentCategoriesRelationLinks;
+use App\Traits\HasLinks;
 use App\Traits\HasRelations;
-use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Support\Facades\Route;
 
 class DocumentCategory extends Model
 {
-    use SoftDeletes, HasRelations;
+    use SoftDeletes, HasRelations, HasLinks, HasDocumentCategoriesRelationLinks;
 
     protected $table = 'document_categories';
+    protected static string $entity = 'document_categories';
 
     protected $fillable = [
         'name',
         'parent_id',
         'is_show',
-        'sort'
+        'sort',
+        'relation_type',
+        'relation_id',
     ];
 
     protected $casts = [
@@ -38,6 +41,8 @@ class DocumentCategory extends Model
             'parent_id'     => '',
             'sort'          => '',
             'is_show'       => '',
+            'relation_type' => 'nullable',
+            'relation_id'   => 'nullable',
         ];
     }
 
@@ -72,17 +77,6 @@ class DocumentCategory extends Model
         'categoryAdd'   => 'relation:document:categories:admin:form',
         'admin'         => 'relation:documents:admin',
     ];
-    protected function documentLinks(): Attribute
-    {
-        return Attribute::make(
-            get: function (): Collection
-            {
-                return collect($this->routes)->mapWithKeys(
-                    fn ($route, $code) => [$code => Route::has($route) ? route($route, [$this->getTable(), $this]) : "#"]
-                );
-            }
-        );
-    }
 
 
     public function documents(): HasMany

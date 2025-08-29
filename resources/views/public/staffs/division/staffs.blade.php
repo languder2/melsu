@@ -1,3 +1,4 @@
+@if($staffs->count())
 <h4 class="font-semibold py-6 text-xl">
     {{ $title }}
 </h4>
@@ -12,3 +13,5 @@
 {{--    @each('public.staffs.division.staff',$staffs,'staff')--}}
 
 </div>
+
+@endif
