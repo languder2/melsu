@@ -9,6 +9,5 @@
         @endforeach
 
     @endif
-
 @endsection
 

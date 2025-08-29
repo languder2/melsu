@@ -3,6 +3,7 @@
 namespace App\Models\Page;
 
 use App\Models\Page\Content as PageContent;
+use App\Traits\HasAdminMenu;
 use App\Traits\HasDocumentCategories;
 use App\Traits\HasDocuments;
 use App\Traits\HasLinks;
@@ -15,9 +16,11 @@ use Illuminate\Support\Facades\Route;
 
 class Page extends Model
 {
-    use SoftDeletes, HasLinks, HasDocumentCategories, HasDocuments;
+    use SoftDeletes, HasLinks, HasAdminMenu, HasDocumentCategories, HasDocuments;
 
     protected $table = 'pages';
+
+    protected string $entity = 'pages';
 
     protected $fillable = [
         'id',
@@ -39,7 +42,6 @@ class Page extends Model
         'without_bg'
 
     ];
-
     protected static function boot()
     {
         parent::boot();

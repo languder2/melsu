@@ -3,6 +3,9 @@
 @section('title', 'Админ панель: Структура университета')
 
 @section('top-menu')
+
+    @dump($relation->adminMenu());
+
     @include('divisions.admin.menu')
 @endsection
 
