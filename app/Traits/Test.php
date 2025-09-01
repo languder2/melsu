@@ -7,6 +7,10 @@ trait Test
 {
     protected static function bootTest(): void
     {
-        dump(Carbon::now()->format('H:i:s'));
+        $model = new (static::class);
+
+        dump($model->getTable());
+
+        dd(Carbon::now()->format('H:i:s'));
     }
 }

@@ -5,6 +5,7 @@ namespace App\Models\Documents;
 use App\Traits\Documents\HasDocumentCategoriesRelationLinks;
 use App\Traits\HasLinks;
 use App\Traits\HasRelations;
+use App\Traits\Test;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -14,10 +15,12 @@ use Illuminate\Database\Eloquent\Builder;
 
 class DocumentCategory extends Model
 {
-    use SoftDeletes, HasRelations, HasLinks, HasDocumentCategoriesRelationLinks;
+    use SoftDeletes, HasRelations, HasLinks;
+//    use SoftDeletes, HasRelations, HasLinks, HasDocumentCategoriesRelationLinks;
 
     protected $table = 'document_categories';
-    protected static string $entity = 'document_categories';
+    protected string $entity = 'document-categories';
+
 
     protected $fillable = [
         'name',
@@ -133,7 +136,7 @@ class DocumentCategory extends Model
     }
     public function getSaveAttribute():string
     {
-        return route('document-categories:admin:save', $this);
+        return route('document-categories:save', $this);
     }
     public function getRelationDocumentCategorySaveAttribute():?string
     {

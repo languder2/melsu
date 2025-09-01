@@ -6,10 +6,10 @@ use App\Http\Controllers\Documents\RelationDocumentsController;
 
 Route::prefix('admin/document-categories')->group(function(){
     Route::get('form/{category?}',      [DocumentCategoriesController::class,'form'])->name('document-categories:admin:form');
-    Route::put('save/{category?}',      [DocumentCategoriesController::class,'save'])->name('document-categories:admin:save');
-
+    Route::put('save/{category?}',      [DocumentCategoriesController::class,'save'])->name('document-categories:save');
 
     Route::get('delete/{category?}',    [DocumentCategoriesController::class,'delete'])->name('document-categories:delete');
+
     Route::get('{field?}/{direction?}', [DocumentCategoriesController::class,'admin'])->setDefaults(['field' => 'sort', 'direction' => 'asc'])->name('document-categories:admin:list');
 });
 

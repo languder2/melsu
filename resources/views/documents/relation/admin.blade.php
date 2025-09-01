@@ -44,15 +44,13 @@
 @endsection
 
 @section('content')
-    @dump($relation->links, $relation->test2)
 
     @forelse($relation->documentCategories as $category)
-        {{--        @component('divisions.documents.category', compact('category', 'field', 'direction'))@endcomponent--}}
+        @component('documents.relation.category', compact('category'))@endcomponent
     @empty
         <div class="text-center p-4 bg-white">
             Нет категорий
         </div>
     @endforelse
 
-    @dump($relation->documentLinks)
 @endsection

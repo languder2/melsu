@@ -1,3 +1,4 @@
+
 <div class="flex gap-4 justify-between items-center pr-4">
     <h3>
         <a
@@ -65,10 +66,11 @@
         Del
     </div>
 
-    @each('divisions.documents.item',$category->documents,'item')
+{{--    @each('divisions.documents.item',$category->documents,'item')--}}
 
 </div>
+@dd($category->links->toArray())
 
 @foreach($category->subs as $category)
-    @component('divisions.documents.category',compact('category','field','direction')) @endcomponent
+{{--    @component('divisions.documents.category',compact('category','field','direction')) @endcomponent--}}
 @endforeach
