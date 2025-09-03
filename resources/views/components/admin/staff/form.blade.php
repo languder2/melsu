@@ -222,6 +222,19 @@
 
         <div class="grid grid-cols-[auto_3fr_1fr]">
             @forelse($current->affiliations as $affiliation)
+                @if($affiliation->relation)
+                    <div class="{{ $loop->index % 2 ? 'bg-sky-100/30' : '' }}"></div>
+                    <div class="col-span-2 {{ $loop->index % 2 ? 'bg-sky-100/30' : '' }}">
+                        <p class="px-3 pt-2 mt-4">
+                            <a href="{{ $affiliation->relation->StaffsAdminList }}"
+                               class="underline hover:text-base-700 text-lg"
+                               target="_blank"
+                            >
+                                {!!  $affiliation->relation->name !!}
+                            </a>
+                        </p>
+                    </div>
+                @endif
                 <div class="{{ $loop->index % 2 ? 'bg-sky-100/30' : '' }} p-3 flex items-center justify-center">
 
                         {{ $affiliation->id }}
