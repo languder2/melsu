@@ -62,11 +62,10 @@ class InfoController extends Controller
             if(array_key_exists('level', $filters))
                 $query->where('level',$filters['level']);
 
-            if(array_key_exists('search', $filters))
+            if(array_key_exists('search', $filters) && $filters['search'])
                 $query->orWhere('name', 'like', '%'.$filters['search'].'%')
                     ->orWhere('name_profile', 'like', '%'.$filters['search'].'%')
                     ->orWhere('spec_code', 'like', '%'.$filters['search'].'%');
-
         }])
             ->get()
             ->where(fn($item) => $item->speciality)
