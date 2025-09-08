@@ -205,6 +205,101 @@
         </div>
     </div>
 </section>
+<section id="climate-region">
+    <h2 class="text-2xl 2xl:text-3xl font-bold py-5 sm:pt-16 sm:pb-8 text-[#252525]">
+        Климат областии
+    </h2>
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-x-5 mb-5">
+        <div class="relative overflow-hidden red-custom-text-mob">
+            <img class="h-full w-full object-cover" src="{{asset('img/vozmozhnosti/voz-3.jpg')}}" alt="">
+            <div class="custom-text-white absolute lg:hidden">
+                <h3 class="font-black uppercase w-fit">Благоприятный</h3>
+                <h2 class="font-black uppercase w-fit">Климат</h2>
+            </div>
+        </div>
+        <div class="relative overflow-hidden red-custom-text">
+            <div class="custom-text-white">
+                <h3 class="font-black uppercase w-fit">Благоприятный</h3>
+                <h2 class="font-black uppercase w-fit">Климат</h2>
+            </div>
+            <img class="h-full w-full object-cover" src="{{asset('img/vozmozhnosti/voz-4.jpg')}}" alt="">
+        </div>
+        <div class="relative col-span-2 flex flex-col justify-end xl:pb-12 red-custom-text pt-18 lg:pt-0 p-5 lg:p-0 bg-white lg:bg-transparent">
+            <div class="custom-text">
+                <h3 class="font-black uppercase w-fit">Благоприятный</h3>
+                <h2 class="font-black uppercase w-fit">Климат</h2>
+            </div>
+            <div class="xl:w-3/5 lg:text-sm xl:text-base">
+                <p class="mb-3">
+                    и близость моря дарят региону раннее изобилие вкусных и полезных фруктов и ягод.
+                </p>
+                <p>
+                    средняя температура в году +25°C, зимой +5°C
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-[1fr_2fr] lg:gap-5 mb-5">
+        <div class="relative black-custom-text flex flex-col justify-end items-end xl:pb-16 2xl:pb-24 order-2 lg:order-1 pt-22 p-5 lg:p-0 bg-white lg:bg-transparent">
+            <div class="custom-text">
+                <h3 class="font-black uppercase w-fit">Тёплое</h3>
+                <h2 class="font-black uppercase w-fit">Море</h2>
+            </div>
+            <div class="w-full 2xl:w-3/4 lg:text-sm xl:text-base">
+                <p>
+                    температура воды выше +20°C до середины октября
+                </p>
+            </div>
+        </div>
+        <div class="relative overflow-hidden black-custom-text order-1 lg:order-2">
+            <div class="custom-text-white">
+                <h3 class="font-black uppercase w-fit">Тёплое</h3>
+                <h2 class="font-black uppercase w-fit">Море</h2>
+            </div>
+            <img class="h-full w-full object-cover" src="{{asset('img/vozmozhnosti/voz-5.jpg')}}" alt="">
+        </div>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-[55%_auto] lg:gap-5">
+        <div class="grid grid-cols-2 gap-5">
+            <div>
+                <img class="h-full w-full object-cover" src="{{asset('img/vozmozhnosti/voz-6.jpg')}}" alt="">
+            </div>
+            <div class="relative overflow-hidden black-custom-text-second">
+                <img class="h-full w-full object-cover" src="{{asset('img/vozmozhnosti/voz-7.jpg')}}" alt="">
+                <div class="custom-text-white hidden lg:block">
+                    <h3 class="font-black uppercase w-fit">Фруктово -</h3>
+                    <h2 class="font-black uppercase w-fit">ягодный край</h2>
+                </div>
+            </div>
+            <div class="col-span-2 black-custom-text-second-mob overflow-hidden relative">
+                <img class="h-full md:max-h-[200px] lg:max-h-[190px] w-full object-cover" src="{{asset('img/vozmozhnosti/voz-8.jpg')}}" alt="">
+                <div class="custom-text-white absolute block lg:hidden text-white">
+                    <h3 class="font-black uppercase w-fit">Фруктово -</h3>
+                    <h2 class="font-black uppercase w-fit">ягодный край</h2>
+                </div>
+            </div>
+        </div>
+        <div class="relative black-custom-text-second flex flex-col justify-end 2xl:pb-24 pt-16 p-5 lg:p-0 bg-white lg:bg-transparent">
+            <div class="custom-text">
+                <h3 class="font-black uppercase w-fit">Фруктово -</h3>
+                <h2 class="font-black uppercase w-fit ">ягодный край</h2>
+            </div>
+            <div class="2xl:w-3/4 lg:text-sm xl:text-base">
+                <ul class="list-disc list-inside">
+                    <li class="mb-2">
+                        клубника и черешня спеют в мае
+                    </li>
+                    <li class="mb-2">
+                        массовый сбор черешни достигает сотни тыс. тонн и начинается уже в июне!
+                    </li>
+                    <li class="mb-2">
+                        арбузы спеют в июле и по сентябрь радуют своими ягодами
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
 <section id="milk-estuary">
     <h2 class="text-2xl 2xl:text-3xl font-bold py-5 sm:pt-16 sm:pb-8 text-[#252525]">
         Молочный лиман
