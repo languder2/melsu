@@ -143,6 +143,68 @@
         <img class="object-cover object-[100%_40%] h-full w-full lg:max-h-[200px]" src="{{asset('img/zp-region/zp-2.jpg')}}" alt="">
     </div>
 </section>
+<section id="priority">
+    <h2 class="text-2xl 2xl:text-3xl font-bold py-5 sm:pt-16 sm:pb-8 text-[#252525]">
+        Приоритеты Запорожской области
+    </h2>
+    <div class="relative mb-15">
+        <div class="bg-[rgba(255,255,255,0.3)] p-5 relative xl:absolute w-full xl:w-2/5 xl:left-[20px] xl:top-[20px] xl:border">
+            <p class="font-semibold">
+                Мелитополь, один из важнейших городов Запорожской области, который обладает уникальным сочетанием географических, исторических и климатических преимуществ:
+            </p>
+        </div>
+
+        <img class="h-full w-full object-cover" src="{{asset('img/vozmozhnosti/voz-2.jpg')}}" alt="">
+
+        <div class="grid grid-cols-1 px-5 xl:px-0 xl:grid-cols-[31%_25%_auto] xl:absolute bottom-[-60px]">
+            <div class="flex">
+                <div class="bg-[#C10F1A] px-3 flex items-center">
+                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M23.3327 13.333H16.666C12.5293 13.333 11.666 14.1963 11.666 18.333V36.6663H28.3327V18.333C28.3327 14.1963 27.4694 13.333 23.3327 13.333Z" stroke="white" stroke-width="3" stroke-linejoin="round"/>
+                        <path d="M18.334 20L21.6673 20M18.334 25H21.6673M18.334 30H21.6673" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M34.9993 36.6663V13.6424C34.9993 11.5953 34.9993 10.5717 34.5015 9.74911C34.0037 8.92654 33.1072 8.46879 31.3141 7.55327L24.078 3.85861C22.1439 2.87108 21.666 3.21911 21.666 5.3809V12.8388" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M5 36.6667V21.6667C5 20.2878 5.28778 20 6.66667 20H11.6667" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M36.6673 36.667H3.33398" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div class="text-white bg-[#252525] p-4 flex items-center w-full">
+                    <p>
+                        около 400 км до ближайших крупных городов (Ростов-на-Дону, Одесса, Севастополь, Харьков)
+                    </p>
+                </div>
+            </div>
+            <div class="flex">
+                <div class="bg-[#C10F1A] px-3 flex items-center">
+                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 13.333V19.9997L22.5 22.4997" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M32.5751 27.4223C35.3024 28.8951 36.666 29.6315 36.666 30.8333C36.666 32.0352 35.3024 32.7716 32.5751 34.2444L30.7179 35.2473C28.6234 36.3784 27.5761 36.9439 27.0726 36.5327C25.8393 35.5257 27.7606 32.9269 28.2333 32.0062C28.7122 31.0733 28.7036 30.5765 28.2333 29.6604C27.7606 28.7398 25.8393 26.141 27.0726 25.1339C27.5761 24.7228 28.6234 25.2883 30.7179 26.4194L32.5751 27.4223Z" stroke="white" stroke-width="3"/>
+                        <path d="M21.7108 36.5797C21.1486 36.637 20.578 36.6663 20.0007 36.6663C10.7959 36.6663 3.33398 29.2044 3.33398 19.9997C3.33398 10.7949 10.7959 3.33301 20.0007 3.33301C29.2054 3.33301 36.6673 10.7949 36.6673 19.9997C36.6673 21.1412 36.5526 22.256 36.3339 23.333" stroke="white" stroke-width="3" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <div class="text-white bg-[#252525] p-4 flex items-center w-full">
+                    <p>
+                        45 минут езды до Азовского моря (пос. Кирилловка)
+                    </p>
+                </div>
+            </div>
+            <div class="flex">
+                <div class="bg-[#C10F1A] px-3 flex items-center">
+                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3.33398 26.2501C3.33398 26.2501 6.32622 25 11.6673 25C20.0007 25 26.6673 30 36.6673 30" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M3.33398 35L36.6673 35" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M20.9907 5.37935C16.2479 6.73947 13.1652 11.4204 13.3411 16.4584C13.3777 17.5048 13.396 18.028 13.8431 18.2594C14.2902 18.4907 14.7543 18.1628 15.6824 17.5069L17.7517 16.0447C18.0625 15.825 18.4315 15.7192 18.8032 15.7431L23.6635 16.0554L27.7268 13.184C28.0376 12.9644 28.4065 12.8586 28.7783 12.8825L31.3138 13.0454C32.4018 13.1153 32.9458 13.1502 33.2158 12.7314C33.4859 12.3126 33.2663 11.8597 32.8272 10.954C30.6433 6.44982 25.7595 4.01178 20.9907 5.37935Z" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M24.1667 15.833L27.5 28.333M20.4762 4.99967L20 3.33301" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div class="text-white bg-[#252525] p-4 flex items-center w-full">
+                    <p>
+                        «Жемчужина Приазовья» – Обиточная коса: здесь планируется создание круглогодичного курорта для детского и семейного отдыха «Приморск»
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 <section id="milk-estuary">
     <h2 class="text-2xl 2xl:text-3xl font-bold py-5 sm:pt-16 sm:pb-8 text-[#252525]">
         Молочный лиман
