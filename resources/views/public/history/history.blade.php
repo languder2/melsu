@@ -29,9 +29,9 @@
                             </div>
                         </div>
                         <div class="h--timeline-event-description z-5">
-                            <p class="font-semibold text-md md:text-lg xl:text-xl line-clamp-6 lg:line-clamp-none">
-                                {{ strip_tags($history->description) }}
-                            </p>
+                            <div class="font-semibold text-md md:text-lg xl:text-xl line-clamp-6 lg:line-clamp-none">
+                                {!! $history->description !!}
+                            </в>
                             @if($history->content)
                             <div class="btn-more-box flex items-center">
                                 <button class="btn-more flex items-center cursor-pointer" style="font-size: 16px;" popovertarget="modal-{{$history->id}}">
@@ -68,7 +68,7 @@
 
         <nav class="h--timeline-navigation-container">
             <ul>
-                <li><a href="#0" class="text-replace h--timeline-navigation h--timeline-navigation--prev h--timeline-navigation--inactive flex items-center">
+                <li><a href="#0" class="text-replace h--timeline-navigation h--timeline-navigation--prev flex items-center">
                         <svg width="31" height="20" viewBox="0 0 31 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M31 10.2571H0.999999M0.999999 10.2571L13.7869 1M0.999999 10.2571L13.7869 19" stroke="" stroke-width="2" stroke-linejoin="round"/>
                         </svg>
@@ -88,9 +88,9 @@
     @foreach ($histories as $history)
         @if($history->content)
     <div popover="manual" id="modal-{{$history->id}}"
-         class="modal-image transition-discrete starting:open:opacity-0 fixed bg-gray-700 p-8 open:backdrop-brightness-50 w-[95%] sm:w-[97%] md:w-[98%] xl:w-[80%] h-[80%] shadow-md shadow-gray-800 z-40">
+        class="modal-image transition-discrete starting:open:opacity-0 fixed bg-gray-700 p-8 open:backdrop-brightness-50 w-[95%] sm:w-[97%] md:w-[98%] 2xl:w-[80%] max-h-[80%] h-fit shadow-md shadow-gray-800 z-40">
         <div class="wrapp-modal-video relative text-white">
-            <span class="close-modal absolute border border-[#820000] right-[-20px] top-[-20px] bg-[#820000] rounded-full text-white py-1 px-2 cursor-pointer transition duration-300 ease-linear hover:bg-white hover:text-[#820000] z-20">X</span>
+            <span class="close-modal absolute border border-[#820000] right-[-20px] top-[-20px] bg-[#820000] rounded-full text-white py-[2px] px-[8px] cursor-pointer transition duration-300 ease-linear hover:bg-white hover:text-[#820000] z-20">X</span>
             {!! $history->content !!}
         </div>
     </div>
