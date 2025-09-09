@@ -7,7 +7,7 @@
                 </div>
                 <div class="slide_group sldr">
                     <div class="slide">
-                        <a href="https://melsu.ru/" class="slide-link cursor-pointer">
+                        <a href="https://abiturient.mgu-mlt.ru/" class="slide-link cursor-pointer">
                             <img src="{{asset('img/slider/Platnoe.png')}}" alt="" class="hidden sm:block w-max">
                             <img src="{{asset('img/slider/Platnoe_mob_4x.png')}}" alt="" class="block sm:hidden">
                         </a>

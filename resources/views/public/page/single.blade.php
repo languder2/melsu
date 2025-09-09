@@ -35,6 +35,9 @@
                 @each('public.page.content-section',$page->sections,'section')
             </div>
         @endif
+
+        @component('divisions.public.includes.documents',['categories' => $page->public_document_categories]) @endcomponent
+
     @endif
 
 

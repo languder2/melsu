@@ -2,11 +2,9 @@
 
 namespace App\Models\Page;
 
+use App\Models\Documents\Document;
+use App\Models\Documents\DocumentCategory;
 use App\Models\Page\Content as PageContent;
-use App\Traits\Documents\HasDocumentCategories;
-use App\Traits\Documents\HasDocuments;
-use App\Traits\HasAdminMenu;
-use App\Traits\HasLinks;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
@@ -16,8 +14,9 @@ use Illuminate\Support\Facades\Route;
 
 class Page extends Model
 {
-    use SoftDeletes, HasLinks, HasAdminMenu;
-    use HasDocumentCategories, HasDocuments;
+//    use SoftDeletes, HasLinks, HasAdminMenu;
+//    use HasDocumentCategories, HasDocuments;
+    use SoftDeletes;
 
     protected $table = 'pages';
 
@@ -131,47 +130,30 @@ class Page extends Model
         ];
 
     }
-
-
-//    public static function breadcrumbs($pageID): array
-//    {
-//        $breadcrumbs = self::getBreadCrumbs($pageID);
-//
-//        return [
-//            'current' => array_slice($breadcrumbs, -1)[0],
-//            'last' => array_slice($breadcrumbs, -2, 1)[0],
-//            'list' => array_slice($breadcrumbs, 0, count($breadcrumbs) - 2),
-//        ];
-//    }
-//
-//    public static function getBreadCrumbs($pageID)
-//    {
-//        $breadcrumbs = [];
-//
-//        $page = self::with('parent')->find($pageID);
-//
-//        if (!is_null($page->parent))
-//            $breadcrumbs = array_merge($breadcrumbs, self::getBreadCrumbs($page->parent->id));
-//
-//        $link = '#';
-//
-//        if (Route::has($page->route))
-//            $link = url(route($page->route));
-//
-//        if ($page->alias)
-//            $link = url($page->alias);
-//
-//        $breadcrumbs[] = (object)[
-//            'name' => $page->name,
-//            'link' => $link
-//        ];
-//
-//        return $breadcrumbs;
-//    }
-
     public function parent(): BelongsTo
     {
         return $this->belongsTo(Page::class, 'parent_id', 'id');
     }
 
+    public function DocumentCategories():MorphMany
+    {
+        return $this->morphMany(DocumentCategory::class, 'relation')
+            ->whereNull('parent_id')
+            ->orderBy('sort')
+            ->orderBy('name')
+            ;
+    }
+    public function getPublicDocumentCategoriesAttribute(): Collection
+    {
+        return $this->DocumentCategories->where('is_show',true);
+    }
+
+    public function getDocuments():MorphMany
+    {
+        return $this->morphMany(Document::class, 'relation')
+            ->whereNull('parent_id')
+            ->orderBy('sort', 'desc')
+            ->orderBy('name')
+            ;
+    }
 }

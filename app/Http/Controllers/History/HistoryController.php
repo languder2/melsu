@@ -18,7 +18,17 @@ class HistoryController extends Controller
     }
     public function indexPage()
     {
-        $histories = History::orderBy('order', 'asc')->get();
+        $histories = History::orderBy('year', 'asc')->orderBy('order', 'asc')->get()->groupBy('year')
+        ->map(function ($items) {
+
+            $first = $items->first();
+
+            $first->description  = $items->pluck('description')->map(fn($item)=> "<div>$item</div>")->implode('');
+            $first->content      = $items->pluck('content')->map(fn($item)=> "<div>$item</div>")->implode('');
+
+            return $first;
+        });
+
         return view('public.history.history', compact('histories'));
     }
     /**
@@ -36,7 +46,7 @@ class HistoryController extends Controller
     {
         $validated = $request->validate([
             'year' => 'required|integer',
-            'image' => 'required|file|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'required|file|mimes:jpeg,png,jpg,gif,svg|max:20048',
             'description' => 'required|string',
             'content' => 'nullable|string',
             'order' => 'nullable|integer',

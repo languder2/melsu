@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else {
                     move(0);
                 }
-            }, 4000);
+            }, 15000);
         }
 
         $('.next_btn').on('click', function () {

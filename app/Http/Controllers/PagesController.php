@@ -130,49 +130,23 @@ class PagesController extends Controller
         if (!$page)
             return redirect()->route('pages:main');
 
-        $show = false;
+        $show = true;
 
-        if($page->view && View::exists("pages.content.{$page->view}"))
-            $show = true;
-        elseif($page->content || $page->sections->count())
-            $show = true;
+        if($page->view && !View::exists("pages.content.{$page->view}"))
+            $show = false;
+
+
+
 
         if(!$show)
             return redirect()->route('pages:main');
 
+
+
+
         $menu = Menu::where('show',1)->find($page->menu_id);
 
         return view('public.page.single',compact('page','menu'));
-
-
-
-
-
-        dd();
-
-        return view($menu?'pages.page-with-menu':'pages.page', [
-            'breadcrumbs' => (object)[
-                'view'      => null,
-                'route'     => 'pages',
-                'element'   => $page,
-            ],
-
-
-            'sidebar' => @$aside,
-
-            'includes'    =>[
-                'jquery',
-            ],
-
-            'nobg' => !empty($page->without_bg),
-
-            'news' => false,
-
-            'contents' => [
-                &$content,
-            ]
-
-        ]);
     }
 
 }
