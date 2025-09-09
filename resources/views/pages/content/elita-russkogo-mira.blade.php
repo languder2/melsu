@@ -60,20 +60,21 @@
                 </span>
         </a>
     </div>
-    <div class="">
-        <div class="relative">
-            <div class="absolute z-10 top-[50px] bg-white p-8 lg:text-sm 2xl:text-base">
+    <div class="mt-5">
+        <div class="grid grid-cols-1 lg:grid-cols-2">
+            <div>
+                <img src="{{ asset('img/elite/s5.jpg') }}" alt="img" class="w-full h-full object-cover">
+            </div>
+            <div class="bg-white p-8 lg:text-sm 2xl:text-base">
                 <h3 class="font-bold mb-2.5">МелГУ</h3>
                 <p>
                     – это не просто университет, это сообщество талантливых и амбициозных людей, которые стремятся к успеху и готовы менять мир к лучшему. Присоединяйся к нам и стань частью элиты будущего!
                 </p>
             </div>
-            <div class="absolute bg-[rgba(130,0,0,0.6)] w-full h-full"></div>
-            <img src="{{ asset('img/elite/s5.jpg') }}" alt="img" class="w-full h-full object-cover">
         </div>
     </div>
 </section>
-<section id="stud-com">
+<section id="stud-com" class="overflow-hidden">
     <h2 class="text-2xl 2xl:text-3xl font-bold py-5 sm:pt-16 sm:pb-8 text-[#252525]">
         Студенческий комитет: твой голос важен!
     </h2>
