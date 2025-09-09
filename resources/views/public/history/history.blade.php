@@ -29,7 +29,7 @@
                             </div>
                         </div>
                         <div class="h--timeline-event-description z-5">
-                            <div class="font-semibold text-md md:text-lg xl:text-xl line-clamp-6 lg:line-clamp-none">
+                            <div class="font-semibold text-md md:text-lg xl:text-xl line-clamp-6 lg:line-clamp-none flex flex-col gap-3">
                                 {!! $history->description !!}
                             </в>
                             @if($history->content)
@@ -88,10 +88,12 @@
     @foreach ($histories as $history)
         @if($history->content)
     <div popover="manual" id="modal-{{$history->id}}"
-        class="modal-image transition-discrete starting:open:opacity-0 fixed bg-gray-700 p-8 open:backdrop-brightness-50 w-[95%] sm:w-[97%] md:w-[98%] 2xl:w-[80%] max-h-[80%] h-fit shadow-md shadow-gray-800 z-40">
+        class="modal-image transition-discrete starting:open:opacity-0 fixed bg-gray-700 p-8 open:backdrop-brightness-50 w-[95%] sm:w-[97%] md:w-[98%] max-w-[90%] max-h-[80%] lg:w-fit min-w-[40%] h-fit shadow-md shadow-gray-800 z-40 mx-auto">
         <div class="wrapp-modal-video relative text-white">
             <span class="close-modal absolute border border-[#820000] right-[-20px] top-[-20px] bg-[#820000] rounded-full text-white py-[2px] px-[8px] cursor-pointer transition duration-300 ease-linear hover:bg-white hover:text-[#820000] z-20">X</span>
-            {!! $history->content !!}
+            <div class="flex flex-col gap-6">
+                {!! $history->content !!}
+            </div>
         </div>
     </div>
         @endif
