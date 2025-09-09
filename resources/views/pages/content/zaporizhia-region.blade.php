@@ -1,7 +1,29 @@
 <section>
     <div class="flex flex-col gap-2.5 py-4 lg:hidden">
+        <a href="javascript:window.Scrolls.scrollToElementWithOffset(document.getElementById('priority'),180);" class="bg-white py-8 px-4 flex justify-between items-center group transition duration-300 ease-linear hover:bg-[#C10F1A]">
+            <span class="flex gap-2 group-hover:text-white transition duration-300 ease-linear"><span>1.</span> Приоритеты Запорожской области</span>
+            <span>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M14 12C14 13.1046 13.1046 14 12 14C10.8954 14 10 13.1046 10 12C10 10.8954 10.8954 10 12 10C13.1046 10 14 10.8954 14 12Z" class="stroke-[#252525] group-hover:stroke-[white] transition duration-300 ease-linear" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M8 6.99997C8 6.99997 10.946 3.00001 12 3C13.0541 2.99999 16 7 16 7" class="stroke-[#252525] group-hover:stroke-[white] transition duration-300 ease-linear" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M16 17C16 17 13.054 21 12 21C10.9459 21 8 17 8 17" class="stroke-[#252525] group-hover:stroke-[white] transition duration-300 ease-linear" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+
+                </span>
+        </a>
+        <a href="javascript:window.Scrolls.scrollToElementWithOffset(document.getElementById('climate-region'),180);" class="bg-white py-8 px-4 flex justify-between items-center group transition duration-300 ease-linear hover:bg-[#C10F1A]">
+            <span class="flex gap-2 group-hover:text-white transition duration-300 ease-linear"><span>2.</span> Климат области</span>
+            <span>
+                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M14 12C14 13.1046 13.1046 14 12 14C10.8954 14 10 13.1046 10 12C10 10.8954 10.8954 10 12 10C13.1046 10 14 10.8954 14 12Z" class="stroke-[#252525] group-hover:stroke-[white] transition duration-300 ease-linear" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M8 6.99997C8 6.99997 10.946 3.00001 12 3C13.0541 2.99999 16 7 16 7" class="stroke-[#252525] group-hover:stroke-[white] transition duration-300 ease-linear" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M16 17C16 17 13.054 21 12 21C10.9459 21 8 17 8 17" class="stroke-[#252525] group-hover:stroke-[white] transition duration-300 ease-linear" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+
+                </span>
+        </a>
         <a href="javascript:window.Scrolls.scrollToElementWithOffset(document.getElementById('milk-estuary'),180);" class="bg-white py-8 px-4 flex justify-between items-center group transition duration-300 ease-linear hover:bg-[#C10F1A]">
-            <span class="flex gap-2 group-hover:text-white transition duration-300 ease-linear"><span>1.</span> Молочный лиман</span>
+            <span class="flex gap-2 group-hover:text-white transition duration-300 ease-linear"><span>3.</span> Молочный лиман</span>
             <span>
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M14 12C14 13.1046 13.1046 14 12 14C10.8954 14 10 13.1046 10 12C10 10.8954 10.8954 10 12 10C13.1046 10 14 10.8954 14 12Z" class="stroke-[#252525] group-hover:stroke-[white] transition duration-300 ease-linear" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -11,7 +33,7 @@
                 </span>
         </a>
         <a href="javascript:window.Scrolls.scrollToElementWithOffset(document.getElementById('utlyuk-estuary'),180);" class="bg-white py-8 px-4 flex justify-between items-center group transition duration-300 ease-linear hover:bg-[#C10F1A]">
-            <span class="flex gap-2 group-hover:text-white transition duration-300 ease-linear"><span>2.</span> Утлюкский лиман</span>
+            <span class="flex gap-2 group-hover:text-white transition duration-300 ease-linear"><span>4.</span> Утлюкский лиман</span>
             <span>
                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M14 12C14 13.1046 13.1046 14 12 14C10.8954 14 10 13.1046 10 12C10 10.8954 10.8954 10 12 10C13.1046 10 14 10.8954 14 12Z" class="stroke-[#252525] group-hover:stroke-[white] transition duration-300 ease-linear" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -21,7 +43,7 @@
                 </span>
         </a>
         <a href="javascript:window.Scrolls.scrollToElementWithOffset(document.getElementById('biryuchy-island'),180);" class="bg-white py-8 px-4 flex justify-between items-center group transition duration-300 ease-linear hover:bg-[#C10F1A]">
-            <span class="flex gap-2 group-hover:text-white transition duration-300 ease-linear"><span>3.</span> Бирючий Остров</span>
+            <span class="flex gap-2 group-hover:text-white transition duration-300 ease-linear"><span>5.</span> Бирючий Остров</span>
             <span>
                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M14 12C14 13.1046 13.1046 14 12 14C10.8954 14 10 13.1046 10 12C10 10.8954 10.8954 10 12 10C13.1046 10 14 10.8954 14 12Z" class="stroke-[#252525] group-hover:stroke-[white] transition duration-300 ease-linear" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -31,7 +53,7 @@
                 </span>
         </a>
         <a href="javascript:window.Scrolls.scrollToElementWithOffset(document.getElementById('berdyansk-spit'),180);" class="bg-white py-8 px-4 flex justify-between items-center group transition duration-300 ease-linear hover:bg-[#C10F1A]">
-            <span class="flex gap-2 group-hover:text-white transition duration-300 ease-linear"><span>4.</span> Бердянская коса</span>
+            <span class="flex gap-2 group-hover:text-white transition duration-300 ease-linear"><span>6.</span> Бердянская коса</span>
             <span>
                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M14 12C14 13.1046 13.1046 14 12 14C10.8954 14 10 13.1046 10 12C10 10.8954 10.8954 10 12 10C13.1046 10 14 10.8954 14 12Z" class="stroke-[#252525] group-hover:stroke-[white] transition duration-300 ease-linear" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -41,7 +63,7 @@
                 </span>
         </a>
         <a href="javascript:window.Scrolls.scrollToElementWithOffset(document.getElementById('stepanovka'),180);" class="bg-white py-8 px-4 flex justify-between items-center group transition duration-300 ease-linear hover:bg-[#C10F1A]">
-            <span class="flex gap-2 group-hover:text-white transition duration-300 ease-linear"><span>5.</span> Степановка</span>
+            <span class="flex gap-2 group-hover:text-white transition duration-300 ease-linear"><span>7.</span> Степановка</span>
             <span>
                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M14 12C14 13.1046 13.1046 14 12 14C10.8954 14 10 13.1046 10 12C10 10.8954 10.8954 10 12 10C13.1046 10 14 10.8954 14 12Z" class="stroke-[#252525] group-hover:stroke-[white] transition duration-300 ease-linear" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -51,7 +73,7 @@
                 </span>
         </a>
         <a href="javascript:window.Scrolls.scrollToElementWithOffset(document.getElementById('botievskaya-wind-farm'),180);" class="bg-white py-8 px-4 flex justify-between items-center group transition duration-300 ease-linear hover:bg-[#C10F1A]">
-            <span class="flex gap-2 group-hover:text-white transition duration-300 ease-linear"><span>6.</span> Ботиевская ВЭС</span>
+            <span class="flex gap-2 group-hover:text-white transition duration-300 ease-linear"><span>8.</span> Ботиевская ВЭС</span>
             <span>
                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M14 12C14 13.1046 13.1046 14 12 14C10.8954 14 10 13.1046 10 12C10 10.8954 10.8954 10 12 10C13.1046 10 14 10.8954 14 12Z" class="stroke-[#252525] group-hover:stroke-[white] transition duration-300 ease-linear" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -61,7 +83,7 @@
                 </span>
         </a>
         <a href="javascript:window.Scrolls.scrollToElementWithOffset(document.getElementById('wotan-line'),180);" class="bg-white py-8 px-4 flex justify-between items-center group transition duration-300 ease-linear hover:bg-[#C10F1A]">
-            <span class="flex gap-2 group-hover:text-white transition duration-300 ease-linear"><span>7.</span> Мемориал на месте прорыва «Линии Вотан»</span>
+            <span class="flex gap-2 group-hover:text-white transition duration-300 ease-linear"><span>9.</span> Мемориал на месте прорыва «Линии Вотан»</span>
             <span>
                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M14 12C14 13.1046 13.1046 14 12 14C10.8954 14 10 13.1046 10 12C10 10.8954 10.8954 10 12 10C13.1046 10 14 10.8954 14 12Z" class="stroke-[#252525] group-hover:stroke-[white] transition duration-300 ease-linear" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -71,7 +93,7 @@
                 </span>
         </a>
         <a href="javascript:window.Scrolls.scrollToElementWithOffset(document.getElementById('healing-springs'),180);" class="bg-white py-8 px-4 flex justify-between items-center group transition duration-300 ease-linear hover:bg-[#C10F1A]">
-            <span class="flex gap-2 group-hover:text-white transition duration-300 ease-linear"><span>8.</span> Целебные источники</span>
+            <span class="flex gap-2 group-hover:text-white transition duration-300 ease-linear"><span>10.</span> Целебные источники</span>
             <span>
                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M14 12C14 13.1046 13.1046 14 12 14C10.8954 14 10 13.1046 10 12C10 10.8954 10.8954 10 12 10C13.1046 10 14 10.8954 14 12Z" class="stroke-[#252525] group-hover:stroke-[white] transition duration-300 ease-linear" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -81,7 +103,7 @@
                 </span>
         </a>
         <a href="javascript:window.Scrolls.scrollToElementWithOffset(document.getElementById('kamennaya-mogila'),180);" class="bg-white py-8 px-4 flex justify-between items-center group transition duration-300 ease-linear hover:bg-[#C10F1A]">
-            <span class="flex gap-2 group-hover:text-white transition duration-300 ease-linear"><span>9.</span>  Каменная могила</span>
+            <span class="flex gap-2 group-hover:text-white transition duration-300 ease-linear"><span>11.</span>  Каменная могила</span>
             <span>
                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M14 12C14 13.1046 13.1046 14 12 14C10.8954 14 10 13.1046 10 12C10 10.8954 10.8954 10 12 10C13.1046 10 14 10.8954 14 12Z" class="stroke-[#252525] group-hover:stroke-[white] transition duration-300 ease-linear" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -91,7 +113,7 @@
                 </span>
         </a>
         <a href="javascript:window.Scrolls.scrollToElementWithOffset(document.getElementById('spasskij-karer'),180);" class="bg-white py-8 px-4 flex justify-between items-center group transition duration-300 ease-linear hover:bg-[#C10F1A]">
-            <span class="flex gap-2 group-hover:text-white transition duration-300 ease-linear"><span>10.</span>  Спасский песчаный карьер</span>
+            <span class="flex gap-2 group-hover:text-white transition duration-300 ease-linear"><span>12.</span>  Спасский песчаный карьер</span>
             <span>
                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M14 12C14 13.1046 13.1046 14 12 14C10.8954 14 10 13.1046 10 12C10 10.8954 10.8954 10 12 10C13.1046 10 14 10.8954 14 12Z" class="stroke-[#252525] group-hover:stroke-[white] transition duration-300 ease-linear" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -101,7 +123,7 @@
                 </span>
         </a>
         <a href="javascript:window.Scrolls.scrollToElementWithOffset(document.getElementById('eliseevskij-karer'),180);" class="bg-white py-8 px-4 flex justify-between items-center group transition duration-300 ease-linear hover:bg-[#C10F1A]">
-            <span class="flex gap-2 group-hover:text-white transition duration-300 ease-linear"><span>11.</span>  Елисеевский карьер</span>
+            <span class="flex gap-2 group-hover:text-white transition duration-300 ease-linear"><span>13.</span>  Елисеевский карьер</span>
             <span>
                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M14 12C14 13.1046 13.1046 14 12 14C10.8954 14 10 13.1046 10 12C10 10.8954 10.8954 10 12 10C13.1046 10 14 10.8954 14 12Z" class="stroke-[#252525] group-hover:stroke-[white] transition duration-300 ease-linear" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -207,7 +229,7 @@
 </section>
 <section id="climate-region">
     <h2 class="text-2xl 2xl:text-3xl font-bold py-5 sm:pt-16 sm:pb-8 text-[#252525]">
-        Климат областии
+        Климат области
     </h2>
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-x-5 mb-5">
         <div class="relative overflow-hidden red-custom-text-mob">

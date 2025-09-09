@@ -1,84 +1,7 @@
 <section>
     <div class="flex flex-col gap-2.5 py-4 lg:hidden">
-        <a href="javascript:window.Scrolls.scrollToElementWithOffset(document.getElementById('priority'),180);" class="bg-white py-8 px-4 flex justify-between items-center group transition duration-300 ease-linear hover:bg-[#C10F1A]">
-            <span class="flex gap-2 group-hover:text-white transition duration-300 ease-linear"><span>1.</span> Приоритеты Запорожской области</span>
-            <span>
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M14 12C14 13.1046 13.1046 14 12 14C10.8954 14 10 13.1046 10 12C10 10.8954 10.8954 10 12 10C13.1046 10 14 10.8954 14 12Z" class="stroke-[#252525] group-hover:stroke-[white] transition duration-300 ease-linear" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M8 6.99997C8 6.99997 10.946 3.00001 12 3C13.0541 2.99999 16 7 16 7" class="stroke-[#252525] group-hover:stroke-[white] transition duration-300 ease-linear" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M16 17C16 17 13.054 21 12 21C10.9459 21 8 17 8 17" class="stroke-[#252525] group-hover:stroke-[white] transition duration-300 ease-linear" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-
-                </span>
-        </a>
-        <a href="javascript:window.Scrolls.scrollToElementWithOffset(document.getElementById('climate-region'),180);" class="bg-white py-8 px-4 flex justify-between items-center group transition duration-300 ease-linear hover:bg-[#C10F1A]">
-            <span class="flex gap-2 group-hover:text-white transition duration-300 ease-linear"><span>2.</span> Климат области</span>
-            <span>
-                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M14 12C14 13.1046 13.1046 14 12 14C10.8954 14 10 13.1046 10 12C10 10.8954 10.8954 10 12 10C13.1046 10 14 10.8954 14 12Z" class="stroke-[#252525] group-hover:stroke-[white] transition duration-300 ease-linear" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M8 6.99997C8 6.99997 10.946 3.00001 12 3C13.0541 2.99999 16 7 16 7" class="stroke-[#252525] group-hover:stroke-[white] transition duration-300 ease-linear" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M16 17C16 17 13.054 21 12 21C10.9459 21 8 17 8 17" class="stroke-[#252525] group-hover:stroke-[white] transition duration-300 ease-linear" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-
-                </span>
-        </a>
-        <a href="javascript:window.Scrolls.scrollToElementWithOffset(document.getElementById('seaport'),180);" class="bg-white py-8 px-4 flex justify-between items-center group transition duration-300 ease-linear hover:bg-[#C10F1A]">
-            <span class="flex gap-2 group-hover:text-white transition duration-300 ease-linear"><span>3.</span> Морской порт на Азовском море — Бердянск</span>
-            <span>
-                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M14 12C14 13.1046 13.1046 14 12 14C10.8954 14 10 13.1046 10 12C10 10.8954 10.8954 10 12 10C13.1046 10 14 10.8954 14 12Z" class="stroke-[#252525] group-hover:stroke-[white] transition duration-300 ease-linear" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M8 6.99997C8 6.99997 10.946 3.00001 12 3C13.0541 2.99999 16 7 16 7" class="stroke-[#252525] group-hover:stroke-[white] transition duration-300 ease-linear" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M16 17C16 17 13.054 21 12 21C10.9459 21 8 17 8 17" class="stroke-[#252525] group-hover:stroke-[white] transition duration-300 ease-linear" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-
-                </span>
-        </a>
-        <a href="javascript:window.Scrolls.scrollToElementWithOffset(document.getElementById('minerals'),180);" class="bg-white py-8 px-4 flex justify-between items-center group transition duration-300 ease-linear hover:bg-[#C10F1A]">
-            <span class="flex gap-2 group-hover:text-white transition duration-300 ease-linear"><span>4.</span> Полезные ископаемые</span>
-            <span>
-                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M14 12C14 13.1046 13.1046 14 12 14C10.8954 14 10 13.1046 10 12C10 10.8954 10.8954 10 12 10C13.1046 10 14 10.8954 14 12Z" class="stroke-[#252525] group-hover:stroke-[white] transition duration-300 ease-linear" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M8 6.99997C8 6.99997 10.946 3.00001 12 3C13.0541 2.99999 16 7 16 7" class="stroke-[#252525] group-hover:stroke-[white] transition duration-300 ease-linear" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M16 17C16 17 13.054 21 12 21C10.9459 21 8 17 8 17" class="stroke-[#252525] group-hover:stroke-[white] transition duration-300 ease-linear" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-
-                </span>
-        </a>
-        <a href="javascript:window.Scrolls.scrollToElementWithOffset(document.getElementById('botievskaya-wind-farm'),180);" class="bg-white py-8 px-4 flex justify-between items-center group transition duration-300 ease-linear hover:bg-[#C10F1A]">
-            <span class="flex gap-2 group-hover:text-white transition duration-300 ease-linear"><span>5.</span> Ботиевская ВЭС</span>
-            <span>
-                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M14 12C14 13.1046 13.1046 14 12 14C10.8954 14 10 13.1046 10 12C10 10.8954 10.8954 10 12 10C13.1046 10 14 10.8954 14 12Z" class="stroke-[#252525] group-hover:stroke-[white] transition duration-300 ease-linear" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M8 6.99997C8 6.99997 10.946 3.00001 12 3C13.0541 2.99999 16 7 16 7" class="stroke-[#252525] group-hover:stroke-[white] transition duration-300 ease-linear" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M16 17C16 17 13.054 21 12 21C10.9459 21 8 17 8 17" class="stroke-[#252525] group-hover:stroke-[white] transition duration-300 ease-linear" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-
-                </span>
-        </a>
-        <a href="javascript:window.Scrolls.scrollToElementWithOffset(document.getElementById('zp-npp'),180);" class="bg-white py-8 px-4 flex justify-between items-center group transition duration-300 ease-linear hover:bg-[#C10F1A]">
-            <span class="flex gap-2 group-hover:text-white transition duration-300 ease-linear"><span>6.</span> Запорожская АЭС</span>
-            <span>
-                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M14 12C14 13.1046 13.1046 14 12 14C10.8954 14 10 13.1046 10 12C10 10.8954 10.8954 10 12 10C13.1046 10 14 10.8954 14 12Z" class="stroke-[#252525] group-hover:stroke-[white] transition duration-300 ease-linear" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M8 6.99997C8 6.99997 10.946 3.00001 12 3C13.0541 2.99999 16 7 16 7" class="stroke-[#252525] group-hover:stroke-[white] transition duration-300 ease-linear" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M16 17C16 17 13.054 21 12 21C10.9459 21 8 17 8 17" class="stroke-[#252525] group-hover:stroke-[white] transition duration-300 ease-linear" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-
-                </span>
-        </a>
-        <a href="javascript:window.Scrolls.scrollToElementWithOffset(document.getElementById('agricultural'),180);" class="bg-white py-8 px-4 flex justify-between items-center group transition duration-300 ease-linear hover:bg-[#C10F1A]">
-            <span class="flex gap-2 group-hover:text-white transition duration-300 ease-linear"><span>7.</span> Сельское хозяйство</span>
-            <span>
-                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M14 12C14 13.1046 13.1046 14 12 14C10.8954 14 10 13.1046 10 12C10 10.8954 10.8954 10 12 10C13.1046 10 14 10.8954 14 12Z" class="stroke-[#252525] group-hover:stroke-[white] transition duration-300 ease-linear" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M8 6.99997C8 6.99997 10.946 3.00001 12 3C13.0541 2.99999 16 7 16 7" class="stroke-[#252525] group-hover:stroke-[white] transition duration-300 ease-linear" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M16 17C16 17 13.054 21 12 21C10.9459 21 8 17 8 17" class="stroke-[#252525] group-hover:stroke-[white] transition duration-300 ease-linear" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-
-                </span>
-        </a>
-        <a href="javascript:window.Scrolls.scrollToElementWithOffset(document.getElementById('practice-and-employment'),180);" class="bg-white py-8 px-4 flex justify-between items-center group transition duration-300 ease-linear hover:bg-[#C10F1A]">
-            <span class="flex gap-2 group-hover:text-white transition duration-300 ease-linear"><span>8.</span> Практика и трудоустройство</span>
+        <a href="javascript:window.Scrolls.scrollToElementWithOffset(document.getElementById('opportunities-for-growth'),180);" class="bg-white py-8 px-4 flex justify-between items-center group transition duration-300 ease-linear hover:bg-[#C10F1A]">
+            <span class="flex gap-2 group-hover:text-white transition duration-300 ease-linear"><span>1.</span> Возможности для роста студентов МелГУ</span>
             <span>
                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M14 12C14 13.1046 13.1046 14 12 14C10.8954 14 10 13.1046 10 12C10 10.8954 10.8954 10 12 10C13.1046 10 14 10.8954 14 12Z" class="stroke-[#252525] group-hover:stroke-[white] transition duration-300 ease-linear" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -89,7 +12,7 @@
                 </span>
         </a>
         <a href="javascript:window.Scrolls.scrollToElementWithOffset(document.getElementById('students-practice'),180);" class="bg-white py-8 px-4 flex justify-between items-center group transition duration-300 ease-linear hover:bg-[#C10F1A]">
-            <span class="flex gap-2 group-hover:text-white transition duration-300 ease-linear"><span>9.</span> Наши студенты практикуются и трудоустроены</span>
+            <span class="flex gap-2 group-hover:text-white transition duration-300 ease-linear"><span>2.</span> Наши студенты практикуются и трудоустроены</span>
             <span>
                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M14 12C14 13.1046 13.1046 14 12 14C10.8954 14 10 13.1046 10 12C10 10.8954 10.8954 10 12 10C13.1046 10 14 10.8954 14 12Z" class="stroke-[#252525] group-hover:stroke-[white] transition duration-300 ease-linear" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -99,8 +22,63 @@
 
                 </span>
         </a>
-        <a href="javascript:window.Scrolls.scrollToElementWithOffset(document.getElementById('opportunities-for-growth'),180);" class="bg-white py-8 px-4 flex justify-between items-center group transition duration-300 ease-linear hover:bg-[#C10F1A]">
-            <span class="flex gap-2 group-hover:text-white transition duration-300 ease-linear"><span>10.</span> Возможности для роста студентов МелГУ</span>
+        <a href="javascript:window.Scrolls.scrollToElementWithOffset(document.getElementById('practice-and-employment'),180);" class="bg-white py-8 px-4 flex justify-between items-center group transition duration-300 ease-linear hover:bg-[#C10F1A]">
+            <span class="flex gap-2 group-hover:text-white transition duration-300 ease-linear"><span>3.</span> Практика и трудоустройство</span>
+            <span>
+                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M14 12C14 13.1046 13.1046 14 12 14C10.8954 14 10 13.1046 10 12C10 10.8954 10.8954 10 12 10C13.1046 10 14 10.8954 14 12Z" class="stroke-[#252525] group-hover:stroke-[white] transition duration-300 ease-linear" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M8 6.99997C8 6.99997 10.946 3.00001 12 3C13.0541 2.99999 16 7 16 7" class="stroke-[#252525] group-hover:stroke-[white] transition duration-300 ease-linear" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M16 17C16 17 13.054 21 12 21C10.9459 21 8 17 8 17" class="stroke-[#252525] group-hover:stroke-[white] transition duration-300 ease-linear" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+
+                </span>
+        </a>
+        <a href="javascript:window.Scrolls.scrollToElementWithOffset(document.getElementById('agricultural'),180);" class="bg-white py-8 px-4 flex justify-between items-center group transition duration-300 ease-linear hover:bg-[#C10F1A]">
+            <span class="flex gap-2 group-hover:text-white transition duration-300 ease-linear"><span>4.</span> Сельское хозяйство</span>
+            <span>
+                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M14 12C14 13.1046 13.1046 14 12 14C10.8954 14 10 13.1046 10 12C10 10.8954 10.8954 10 12 10C13.1046 10 14 10.8954 14 12Z" class="stroke-[#252525] group-hover:stroke-[white] transition duration-300 ease-linear" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M8 6.99997C8 6.99997 10.946 3.00001 12 3C13.0541 2.99999 16 7 16 7" class="stroke-[#252525] group-hover:stroke-[white] transition duration-300 ease-linear" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M16 17C16 17 13.054 21 12 21C10.9459 21 8 17 8 17" class="stroke-[#252525] group-hover:stroke-[white] transition duration-300 ease-linear" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+
+                </span>
+        </a>
+        <a href="javascript:window.Scrolls.scrollToElementWithOffset(document.getElementById('zp-npp'),180);" class="bg-white py-8 px-4 flex justify-between items-center group transition duration-300 ease-linear hover:bg-[#C10F1A]">
+            <span class="flex gap-2 group-hover:text-white transition duration-300 ease-linear"><span>5.</span> Запорожская АЭС</span>
+            <span>
+                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M14 12C14 13.1046 13.1046 14 12 14C10.8954 14 10 13.1046 10 12C10 10.8954 10.8954 10 12 10C13.1046 10 14 10.8954 14 12Z" class="stroke-[#252525] group-hover:stroke-[white] transition duration-300 ease-linear" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M8 6.99997C8 6.99997 10.946 3.00001 12 3C13.0541 2.99999 16 7 16 7" class="stroke-[#252525] group-hover:stroke-[white] transition duration-300 ease-linear" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M16 17C16 17 13.054 21 12 21C10.9459 21 8 17 8 17" class="stroke-[#252525] group-hover:stroke-[white] transition duration-300 ease-linear" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+
+                </span>
+        </a>
+        <a href="javascript:window.Scrolls.scrollToElementWithOffset(document.getElementById('botievskaya-wind-farm'),180);" class="bg-white py-8 px-4 flex justify-between items-center group transition duration-300 ease-linear hover:bg-[#C10F1A]">
+            <span class="flex gap-2 group-hover:text-white transition duration-300 ease-linear"><span>6.</span> Ботиевская ВЭС</span>
+            <span>
+                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M14 12C14 13.1046 13.1046 14 12 14C10.8954 14 10 13.1046 10 12C10 10.8954 10.8954 10 12 10C13.1046 10 14 10.8954 14 12Z" class="stroke-[#252525] group-hover:stroke-[white] transition duration-300 ease-linear" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M8 6.99997C8 6.99997 10.946 3.00001 12 3C13.0541 2.99999 16 7 16 7" class="stroke-[#252525] group-hover:stroke-[white] transition duration-300 ease-linear" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M16 17C16 17 13.054 21 12 21C10.9459 21 8 17 8 17" class="stroke-[#252525] group-hover:stroke-[white] transition duration-300 ease-linear" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+
+                </span>
+        </a>
+        <a href="javascript:window.Scrolls.scrollToElementWithOffset(document.getElementById('minerals'),180);" class="bg-white py-8 px-4 flex justify-between items-center group transition duration-300 ease-linear hover:bg-[#C10F1A]">
+            <span class="flex gap-2 group-hover:text-white transition duration-300 ease-linear"><span>7.</span> Полезные ископаемые</span>
+            <span>
+                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M14 12C14 13.1046 13.1046 14 12 14C10.8954 14 10 13.1046 10 12C10 10.8954 10.8954 10 12 10C13.1046 10 14 10.8954 14 12Z" class="stroke-[#252525] group-hover:stroke-[white] transition duration-300 ease-linear" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M8 6.99997C8 6.99997 10.946 3.00001 12 3C13.0541 2.99999 16 7 16 7" class="stroke-[#252525] group-hover:stroke-[white] transition duration-300 ease-linear" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M16 17C16 17 13.054 21 12 21C10.9459 21 8 17 8 17" class="stroke-[#252525] group-hover:stroke-[white] transition duration-300 ease-linear" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+
+                </span>
+        </a>
+        <a href="javascript:window.Scrolls.scrollToElementWithOffset(document.getElementById('seaport'),180);" class="bg-white py-8 px-4 flex justify-between items-center group transition duration-300 ease-linear hover:bg-[#C10F1A]">
+            <span class="flex gap-2 group-hover:text-white transition duration-300 ease-linear"><span>8.</span> Морской порт на Азовском море — Бердянск</span>
             <span>
                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M14 12C14 13.1046 13.1046 14 12 14C10.8954 14 10 13.1046 10 12C10 10.8954 10.8954 10 12 10C13.1046 10 14 10.8954 14 12Z" class="stroke-[#252525] group-hover:stroke-[white] transition duration-300 ease-linear" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -128,200 +106,132 @@
         </div>
     </div>
 </section>
-<section id="seaport">
+
+<section id="opportunities-for-growth">
     <h2 class="text-2xl 2xl:text-3xl font-bold py-5 sm:pt-16 sm:pb-8 text-[#252525]">
-        Морской порт на Азовском море — Бердянск
+        Возможности для роста студентов МелГУ
     </h2>
-    <div class="bg-white p-5">
-        <img class="h-full w-full object-cover" src="{{asset('img/vozmozhnosti/voz-9.jpg')}}" alt="">
+    <div class="grid grid-cols-1 lg:grid-cols-[60%_auto] sm:gap-5">
+        <div class="flex gap-5 overflow-x-auto sm:overflow-x-hidden snap-mandatory snap-x" id="ScrollImageContainer">
+            <div class="grid grid-cols-2 gap-5">
+                <img class="h-full lg:h-[500px] w-full object-cover" src="{{asset('img/vozmozhnosti/voz-21.jpg')}}" alt="">
+                <img class="h-full lg:h-[500px] w-full object-cover" src="{{asset('img/vozmozhnosti/voz-22.jpg')}}" alt="">
+            </div>
+            <div class="grid grid-cols-2 gap-5">
+                <img class="h-full lg:h-[500px] w-full object-cover" src="{{asset('img/vozmozhnosti/voz-21.jpg')}}" alt="">
+                <img class="h-full lg:h-[500px] w-full object-cover" src="{{asset('img/vozmozhnosti/voz-22.jpg')}}" alt="">
+            </div>
+        </div>
+        <div class="px-5 py-2.5 sm:hidden bg-[#FAFAFA]">
+            <div class="horizontal-scrollbar top-scrollbar">
+                <div class="scroll-handle"></div>
+            </div>
+        </div>
+        <div class="bg-white px-5 py-8 flex flex-col justify-between">
+            <p>
+                Современные аудитории и лаборатории: Оснащённые новейшим оборудованием пространства для эффективного освоения теории и практики.
+            </p>
+            <div class="hidden sm:block">
+                <div class="flex justify-between items-center mb-3 sm:mb-0 w-fit gap-3">
+                    <a id="prev-btn" class="hover:border-[#820000] hover:bg-[#820000] p-4 rounded-full border border-[#252525] transition duration-300 ease-linear cursor-pointer group">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#252525" class="bi bi-arrow-left group-hover:fill-white" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"></path>
+                        </svg>
+                    </a>
+                    <a id="next-btn" class="hover:border-[#820000] hover:bg-[#820000] p-4 rounded-full border border-[#252525] transition duration-300 ease-linear cursor-pointer group">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#252525" class="bi bi-arrow-right group-hover:fill-white" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
-<section id="minerals">
-    <h2 class="text-2xl 2xl:text-3xl font-bold py-5 sm:pt-16 sm:pb-8 text-[#252525]">
-        Полезные ископаемые
-    </h2>
-    <div class="grid grid-cols-1 xl:grid-cols-[1fr_2fr] gap-5">
-        <div class="bg-white p-5 lg:text-sm xl:text-base">
-            <p class="mb-3">
-                В Запорожье добывается железная руда (Белозерское месторождение), начато освоение Токмакского месторождения марганцевых руд, в Гуляйпольском, Ореховском и Вольнянском районах встречается в небольших количествах бурый уголь.
-            </p>
-            <p class="mb-3">
-                Разрабатываются такие полезные ископаемые, как граниты, известняки, глины, каолин, песчаники, пегматиты. Есть лечебные грязи, минеральные воды.
-            </p>
-            <div class="block sm:flex gap-2 flex-wrap lg:block">
-                <div class="block sm:flex flex-col lg:block">
 
-                    <p class="flex items-center gap-3 mb-2">
-                        <span>
-                            <img class="h-full w-full object-cover" src="{{asset('img/vozmozhnosti/ico-voz-1.jpg')}}" alt="">
-                        </span>
-                        - железная руда
-                    </p>
-                    <p class="flex items-center gap-3 mb-2">
-                        <span>
-                            <img class="h-full w-full object-cover" src="{{asset('img/vozmozhnosti/ico-voz-2.jpg')}}" alt="">
-                        </span>
-                        - марганцевая руда
-                    </p>
+<section id="students-practice">
+    <h2 class="text-2xl 2xl:text-3xl font-bold py-5 sm:pt-16 sm:pb-8 text-[#252525]">
+        Наши студенты практикуются и трудоустроены
+    </h2>
+    <div class="bg-[#252525] p-5">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-9">
+            <div class="grid grid-cols-1 lg:grid-cols-[45%_auto]">
+                <div class="flex flex-col gap-5">
+                    <h2 class="text-[#474747] font-bold text-3xl">со <span class="text-white text-7xl">2</span> курса</h2>
+                   <p class="text-white">
+                       Студенты вуза проходят практику на предприятиях
+                   </p>
                 </div>
-                <div class="block sm:flex flex-col lg:block">
-                    <p class="flex items-center gap-3 mb-2">
-                        <span>
-                            <img class="h-full w-full object-cover" src="{{asset('img/vozmozhnosti/ico-voz-3.jpg')}}" alt="">
-                        </span>
-                        - уголь (бурый)
-                    </p>
-                    <p class="flex items-center gap-3 mb-2">
-                        <span>
-                            <img class="h-full w-full object-cover" src="{{asset('img/vozmozhnosti/ico-voz-4.jpg')}}" alt="">
-                        </span>
-                        - известняк
-                    </p>
-                </div>
-                <div class="block sm:flex flex-col lg:block">
-                    <p class="flex items-center gap-3 mb-2">
-                        <span>
-                            <img class="h-full w-full object-cover" src="{{asset('img/vozmozhnosti/ico-voz-5.jpg')}}" alt="">
-                        </span>
-                        - каолины
-                    </p>
-                    <p class="flex items-center gap-3 mb-2">
-                        <span>
-                            <img class="h-full w-full object-cover" src="{{asset('img/vozmozhnosti/ico-voz-6.jpg')}}" alt="">
-                        </span>
-                        - гранит
-                    </p>
-                </div>
-                <div class="block sm:flex flex-col lg:block">
-                    <p class="flex items-center gap-3 mb-2">
-                        <span>
-                            <img class="h-full w-full object-cover" src="{{asset('img/vozmozhnosti/ico-voz-7.jpg')}}" alt="">
-                        </span>
-                        - глина
+                <div class="flex flex-col gap-5">
+                    <h2 class="text-[#474747] font-bold text-3xl">более <span class="text-white text-7xl">24</span></h2>
+                    <p class="text-white">
+                        соглашений о сотрудничестве с научными, образовательными и промышленные предприятиями
                     </p>
                 </div>
             </div>
+            <div class="flex flex-col gap-6">
+                <div>
+                    <svg width="142" height="70" viewBox="0 0 142 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M133.695 61.3748L129.65 55.8053L124.816 54.552L122.91 58.1065L120.131 57.957L119.314 46.4221L122.691 39.2193L125.483 37.7887L122.746 30.232L124.68 25.6019L126.831 26.8957L131.161 35.5019L133.544 37.2177L141.892 39.273L135.206 27.8488L131.189 28.257L128.411 25.8057L128.424 19.5012L125.197 11.3985L121.071 8.90617L119.437 5.8423L121.724 2.66931L117.748 0.191406L117.013 4.09934L111.757 9.62784L109.973 15.0206L110.667 17.8264L105.847 22.8371L104.512 26.5002L101.462 26.7589L97.6082 30.1639L98.2207 32.9686L94.6805 37.8031L92.1201 35.025L89.1925 37.4492L82.1387 38.9335L82.0251 39.1501L81.1994 33.8808L78.5575 34.0718L70.2232 37.7206L68.4122 41.0575L64.9401 41.3427L63.129 43.4545L59.8059 43.7808L57.6819 41.1793L52.5478 46.4902L43.1114 41.5244L30.2289 38.6195L28.0639 39.6956L30.5967 34.3576L30.58 34.2984L32.1491 38.1432L36.221 38.0479L35.1448 29.4012L32.0267 29.1559L24.3736 34.9153L23.7201 37.0404L17.7557 38.3885L15.0867 37.4619L10.3342 40.703L11.083 43.8627L6.69819 53.4083L8.71364 60.2992L3.40281 61.9464L0.107422 62.3008L0.583729 68.3466L4.76471 75.6457L5.74502 79.7719L9.02656 73.848L10.7562 73.3717L13.6706 74.0523L13.793 68.1965L16.843 66.6037L24.5054 68.0265L31.6966 75.5261L35.9618 71.8735L47.006 73.9709L49.4025 78.5185L52.5074 78.0151L56.6606 85.4361L62.1758 86.4984L66.5606 89.8081L72.6474 86.7847L80.45 87.9965L82.0024 83.1487L86.5373 83.8565L89.0158 85.6272L94.5576 84.4021L99.0382 84.4968L102.81 80.5883L107.794 79.7719L108.706 77.4158L109.02 70.4296L113.445 68.4961L118.974 71.9278L123.522 70.5526L125.442 71.8735L128.138 67.584L130.031 70.3482L131.842 77.4972L134.157 76.5984L135.397 73.2764L133.695 61.3748Z" fill="white"/>
+                    </svg>
+                </div>
+                <p class="text-white w-4/6">
+                    Наши студенты получают возможность трудоустройства не только на территории региона, но и по всей стране
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-2">
+        <div>
+            <img class="h-full w-full object-cover" src="{{asset('img/vozmozhnosti/voz-20.jpg')}}" alt="">
         </div>
         <div class="bg-white p-5">
-            <img class="h-full w-full object-cover" src="{{asset('img/vozmozhnosti/voz-10.jpg')}}" alt="">
-        </div>
-    </div>
-</section>
-<section id="botievskaya-wind-farm">
-    <h2 class="text-2xl 2xl:text-3xl font-bold py-5 sm:pt-16 sm:pb-8 text-[#252525]">
-        Ботиевская ВЭС
-    </h2>
-    <div class="grid grid-cols-1 lg:grid-cols-[1fr_2fr] lg:gap-5 lg:mb-5">
-        <div class="hidden lg:block">
-
-        </div>
-        <div class="bg-white lg:p-5">
-            <img class="h-full lg:max-h-[370px] w-full object-cover" src="{{asset('img/vozmozhnosti/voz-11.jpg')}}" alt="">
-        </div>
-    </div>
-    <div class="bg-transparent lg:bg-[#252525] lg:p-5 flex flex-col lg:flex-row justify-end text-white relative lg:text-sm xl:text-base">
-        <div class="text-black lg:text-white bg-white p-5 lg:p-0 lg:bg-transparent lg:w-3/4 order-2">
             <p class="mb-3">
-                Ботиевская ветроэлектростанция расположена в селе Ботиево Приазовского района
+                В рамках взаимодействия с работодателями на данный момент Университет сотрудничает с целым рядом организаций, среди которых:
             </p>
-            <p class="mb-3">
-                Это самая мощная электростанция в Запорожской области, которая находится практически на берегу Азовского моря
-            </p>
-            <p>
-                Размеры ветряков просто поражают. Площадь поверхности, которую проходят лопасти ветротурбины, равна 1 га, это размер, практически равный площади футбольного поля. Высота башни одной турбины составляет 94 метра, что всего на метр меньше высоты Статуи Свободы.
-            </p>
-        </div>
-        <div class="absolute lg:bottom-0 lg:left-[-19px] xl:left-0 hidden lg:block">
-            <img class="h-full lg:w-[80%] xl:w-full object-cover" src="{{asset('img/vozmozhnosti/voz-12.png')}}" alt="">
-        </div>
-        <div class="block relative lg:hidden bg-[#252525] md:min-h-[300px] w-full">
-            <div class="absolute bottom-0 left-0">
-                <img class="h-full xl:w-full object-cover" src="{{asset('img/vozmozhnosti/voz-12.png')}}" alt="">
-            </div>
+            <ul class="list-inside list-disc">
+                <li class="mb-2">
+                    Федеральное агентство по управлению государственным имуществом;
+                </li>
+                <li class="mb-2">
+                    Федеральная служба государственной статистики по Запорожской области;
+                </li>
+                <li class="mb-2">
+                    Управление Минюста России по Запорожской области;
+                </li>
+                <li class="mb-2">
+                    Министерство здравоохранения Запорожской области;
+                </li>
+                <li class="mb-2">
+                    ГКУ «Центр занятости населения Запорожской области;
+                </li>
+                <li class="mb-2">
+                    Военно-гражданская администрация Запорожской области;
+                </li>
+                <li class="mb-2">
+                    Прокуратура Запорожской области;
+                </li>
+                <li class="mb-2">
+                    Пункт отбора на военную службу по контракту;
+                </li>
+                <li class="mb-2">
+                    ПСБ Банк;
+                </li>
+                <li class="mb-2">
+                    Ассоциация работодателей и предпринимателей Запорожской области;
+                </li>
+                <li class="mb-2">
+                    Компания «МАНА АГРО»;
+                </li>
+                <li>
+                    И ряд других кадровых партнеров.
+                </li>
+            </ul>
         </div>
     </div>
+
 </section>
-<section class="mb-17" id="zp-npp">
-    <h2 class="text-2xl 2xl:text-3xl font-bold py-5 sm:pt-16 sm:pb-8 text-[#252525]">
-        Запорожская АЭС
-    </h2>
-    <div class="relative flex flex-col md:block">
-        <img class="h-full w-full object-cover order-2" src="{{asset('img/vozmozhnosti/voz-13.jpg')}}" alt="">
-        <div class="md:absolute order-1 bottom-[20px] right-[20px] p-5 bg-white md:bg-[rgba(37,37,37,0.4)] text-black md:text-white md:w-5/12 md:font-semibold md:backdrop-blur border border-[rgba(255,255,255,0.04)]">
-            <p>
-                Запорожская АЭС, или сокращенно ЗАЭС — это самая большая в Европе и девятая крупнейшая в мире атомная электростанция. Она находится на южном берегу Каховского водохранилища реки Днепр, недалеко от города Энергодара в Запорожской области
-            </p>
-        </div>
-    </div>
-</section>
-<section id="agricultural">
-    <h2 class="text-2xl 2xl:text-3xl font-bold py-5 sm:pt-16 sm:pb-8 text-[#252525] block lg:hidden">
-        Сельское хозяйство
-    </h2>
-    <div class="grid grid-cols-1 lg:grid-cols-2 lg:gap-10">
-        <div>
-            <div class="relative py-5 lg:p-6 pr-0 flex flex-col lg:gap-5">
-                <div class="absolute bg-[#252525] h-[1px] w-[100%] left-0 lg:w-[103%] top-0 lg:left-[-16px]">
 
-                </div>
-                <img class="h-full lg:max-h-[240px] w-full object-cover" src="{{asset('img/vozmozhnosti/voz-14.jpg')}}" alt="">
-                <div class="lg:w-11/12 bg-white lg:bg-transparent p-5 lg:p-0">
-                    <h3 class="text-xl lg:text-3xl font-bold mb-3">Площадь</h3>
-                    <p class="mb-3">
-                        сельскохозяйственных угодий области составляет 2,246 млн га.
-                    </p>
-                    <p>
-                        Для сравнения: в Алтайском крае сельхозугодия занимают 11,5 млн га, однако климат в Запорожье позволяет производить аграриям больше другой продукции, чем их алтайским коллегам.
-                    </p>
-                </div>
-                <img class="h-full lg:max-h-[240px] w-full object-cover" src="{{asset('img/vozmozhnosti/voz-15.jpg')}}" alt="">
-            </div>
-            <div class="relative py-5 lg:p-6 pr-0 flex flex-col lg:gap-5">
-                <div class="absolute bg-[#252525] h-[1px] w-[100%] left-0 lg:w-[103%] top-0 lg:left-[-16px]">
-
-                </div>
-                <img class="h-full lg:max-h-[240px] w-full object-cover" src="{{asset('img/vozmozhnosti/voz-16.jpg')}}" alt="">
-                <div class="lg:w-11/12 bg-white lg:bg-transparent p-5 lg:p-0">
-                    <h3 class="text-xl lg:text-3xl font-bold mb-3">Животноводство</h3>
-                    <p class="mb-3">
-                        Приоритетным направлением в развитии животноводства в области — птицеводство и свиноводство.
-                    </p>
-                    <p>
-                        В регионе работают 546 предприятий пищевой и перерабатывающей промышленности.
-                    </p>
-                </div>
-                <img class="h-full lg:max-h-[240px] w-full object-cover" src="{{asset('img/vozmozhnosti/voz-17.jpg')}}" alt="">
-            </div>
-        </div>
-        <div>
-            <div class="lg:min-h-[300px]">
-                <h2 class="text-2xl 2xl:text-3xl font-bold text-[#252525] hidden lg:block" id="agricultural">Сельское хозяйство</h2>
-            </div>
-            <div class="relative py-5 lg:p-6 pr-0 flex flex-col lg:gap-5">
-                <div class="absolute bg-[#252525] h-[1px] w-[100%] top-0 left-0">
-
-                </div>
-                <img class="h-full lg:max-h-[240px] w-full object-cover" src="{{asset('img/vozmozhnosti/voz-18.jpg')}}" alt="">
-                <div class="lg:w-11/12 bg-white lg:bg-transparent p-5 lg:p-0">
-                    <h3 class="text-xl lg:text-3xl font-bold mb-3">Растениеводство</h3>
-                    <p class="mb-3">
-                        В структуре сельскохозяйственного производства преобладает продукция растениеводства. Больше всего сеют зерновых.
-                    </p>
-                    <p class="mb-3">
-                        Основная техническая культура — подсолнечник.
-                    </p>
-                    <p>
-                        В области благоприятные климатические условия для выращивания овощей и бахчевых культур.
-                    </p>
-                </div>
-                <img class="h-full lg:max-h-[240px] w-full object-cover" src="{{asset('img/vozmozhnosti/voz-19.jpg')}}" alt="">
-                <div class="absolute bg-[#252525] h-[1px] w-[100%] bottom-0 left-0">
-
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 <section id="practice-and-employment">
     <h2 class="text-2xl 2xl:text-3xl font-bold py-5 sm:pt-16 sm:pb-8 text-[#252525]">
         Практика и трудоустройство
@@ -635,129 +545,206 @@
         </div>
     </div>
 </section>
-<section id="students-practice">
-    <h2 class="text-2xl 2xl:text-3xl font-bold py-5 sm:pt-16 sm:pb-8 text-[#252525]">
-        Наши студенты практикуются и трудоустроены
+
+<section id="agricultural">
+    <h2 class="text-2xl 2xl:text-3xl font-bold py-5 sm:pt-16 sm:pb-8 text-[#252525] block lg:hidden">
+        Сельское хозяйство
     </h2>
-    <div class="bg-[#252525] p-5">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-9">
-            <div class="grid grid-cols-1 lg:grid-cols-[45%_auto]">
-                <div class="flex flex-col gap-5">
-                    <h2 class="text-[#474747] font-bold text-3xl">со <span class="text-white text-7xl">2</span> курса</h2>
-                   <p class="text-white">
-                       Студенты вуза проходят практику на предприятиях
-                   </p>
+    <div class="grid grid-cols-1 lg:grid-cols-2 lg:gap-10">
+        <div>
+            <div class="relative py-5 lg:p-6 pr-0 flex flex-col lg:gap-5">
+                <div class="absolute bg-[#252525] h-[1px] w-[100%] left-0 lg:w-[103%] top-0 lg:left-[-16px]">
+
                 </div>
-                <div class="flex flex-col gap-5">
-                    <h2 class="text-[#474747] font-bold text-3xl">более <span class="text-white text-7xl">24</span></h2>
-                    <p class="text-white">
-                        соглашений о сотрудничестве с научными, образовательными и промышленные предприятиями
+                <img class="h-full lg:max-h-[240px] w-full object-cover" src="{{asset('img/vozmozhnosti/voz-14.jpg')}}" alt="">
+                <div class="lg:w-11/12 bg-white lg:bg-transparent p-5 lg:p-0">
+                    <h3 class="text-xl lg:text-3xl font-bold mb-3">Площадь</h3>
+                    <p class="mb-3">
+                        сельскохозяйственных угодий области составляет 2,246 млн га.
+                    </p>
+                    <p>
+                        Для сравнения: в Алтайском крае сельхозугодия занимают 11,5 млн га, однако климат в Запорожье позволяет производить аграриям больше другой продукции, чем их алтайским коллегам.
+                    </p>
+                </div>
+                <img class="h-full lg:max-h-[240px] w-full object-cover" src="{{asset('img/vozmozhnosti/voz-15.jpg')}}" alt="">
+            </div>
+            <div class="relative py-5 lg:p-6 pr-0 flex flex-col lg:gap-5">
+                <div class="absolute bg-[#252525] h-[1px] w-[100%] left-0 lg:w-[103%] top-0 lg:left-[-16px]">
+
+                </div>
+                <img class="h-full lg:max-h-[240px] w-full object-cover" src="{{asset('img/vozmozhnosti/voz-16.jpg')}}" alt="">
+                <div class="lg:w-11/12 bg-white lg:bg-transparent p-5 lg:p-0">
+                    <h3 class="text-xl lg:text-3xl font-bold mb-3">Животноводство</h3>
+                    <p class="mb-3">
+                        Приоритетным направлением в развитии животноводства в области — птицеводство и свиноводство.
+                    </p>
+                    <p>
+                        В регионе работают 546 предприятий пищевой и перерабатывающей промышленности.
+                    </p>
+                </div>
+                <img class="h-full lg:max-h-[240px] w-full object-cover" src="{{asset('img/vozmozhnosti/voz-17.jpg')}}" alt="">
+            </div>
+        </div>
+        <div>
+            <div class="lg:min-h-[300px]">
+                <h2 class="text-2xl 2xl:text-3xl font-bold text-[#252525] hidden lg:block" id="agricultural">Сельское хозяйство</h2>
+            </div>
+            <div class="relative py-5 lg:p-6 pr-0 flex flex-col lg:gap-5">
+                <div class="absolute bg-[#252525] h-[1px] w-[100%] top-0 left-0">
+
+                </div>
+                <img class="h-full lg:max-h-[240px] w-full object-cover" src="{{asset('img/vozmozhnosti/voz-18.jpg')}}" alt="">
+                <div class="lg:w-11/12 bg-white lg:bg-transparent p-5 lg:p-0">
+                    <h3 class="text-xl lg:text-3xl font-bold mb-3">Растениеводство</h3>
+                    <p class="mb-3">
+                        В структуре сельскохозяйственного производства преобладает продукция растениеводства. Больше всего сеют зерновых.
+                    </p>
+                    <p class="mb-3">
+                        Основная техническая культура — подсолнечник.
+                    </p>
+                    <p>
+                        В области благоприятные климатические условия для выращивания овощей и бахчевых культур.
+                    </p>
+                </div>
+                <img class="h-full lg:max-h-[240px] w-full object-cover" src="{{asset('img/vozmozhnosti/voz-19.jpg')}}" alt="">
+                <div class="absolute bg-[#252525] h-[1px] w-[100%] bottom-0 left-0">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="mb-17" id="zp-npp">
+    <h2 class="text-2xl 2xl:text-3xl font-bold py-5 sm:pt-16 sm:pb-8 text-[#252525]">
+        Запорожская АЭС
+    </h2>
+    <div class="relative flex flex-col md:block">
+        <img class="h-full w-full object-cover order-2" src="{{asset('img/vozmozhnosti/voz-13.jpg')}}" alt="">
+        <div class="md:absolute order-1 bottom-[20px] right-[20px] p-5 bg-white md:bg-[rgba(37,37,37,0.4)] text-black md:text-white md:w-5/12 md:font-semibold md:backdrop-blur border border-[rgba(255,255,255,0.04)]">
+            <p>
+                Запорожская АЭС, или сокращенно ЗАЭС — это самая большая в Европе и девятая крупнейшая в мире атомная электростанция. Она находится на южном берегу Каховского водохранилища реки Днепр, недалеко от города Энергодара в Запорожской области
+            </p>
+        </div>
+    </div>
+</section>
+
+<section id="botievskaya-wind-farm">
+    <h2 class="text-2xl 2xl:text-3xl font-bold py-5 sm:pt-16 sm:pb-8 text-[#252525]">
+        Ботиевская ВЭС
+    </h2>
+    <div class="grid grid-cols-1 lg:grid-cols-[1fr_2fr] lg:gap-5 lg:mb-5">
+        <div class="hidden lg:block">
+
+        </div>
+        <div class="bg-white lg:p-5">
+            <img class="h-full lg:max-h-[370px] w-full object-cover" src="{{asset('img/vozmozhnosti/voz-11.jpg')}}" alt="">
+        </div>
+    </div>
+    <div class="bg-transparent lg:bg-[#252525] lg:p-5 flex flex-col lg:flex-row justify-end text-white relative lg:text-sm xl:text-base">
+        <div class="text-black lg:text-white bg-white p-5 lg:p-0 lg:bg-transparent lg:w-3/4 order-2">
+            <p class="mb-3">
+                Ботиевская ветроэлектростанция расположена в селе Ботиево Приазовского района
+            </p>
+            <p class="mb-3">
+                Это самая мощная электростанция в Запорожской области, которая находится практически на берегу Азовского моря
+            </p>
+            <p>
+                Размеры ветряков просто поражают. Площадь поверхности, которую проходят лопасти ветротурбины, равна 1 га, это размер, практически равный площади футбольного поля. Высота башни одной турбины составляет 94 метра, что всего на метр меньше высоты Статуи Свободы.
+            </p>
+        </div>
+        <div class="absolute lg:bottom-0 lg:left-[-19px] xl:left-0 hidden lg:block">
+            <img class="h-full lg:w-[80%] xl:w-full object-cover" src="{{asset('img/vozmozhnosti/voz-12.png')}}" alt="">
+        </div>
+        <div class="block relative lg:hidden bg-[#252525] md:min-h-[300px] w-full">
+            <div class="absolute bottom-0 left-0">
+                <img class="h-full xl:w-full object-cover" src="{{asset('img/vozmozhnosti/voz-12.png')}}" alt="">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="minerals">
+    <h2 class="text-2xl 2xl:text-3xl font-bold py-5 sm:pt-16 sm:pb-8 text-[#252525]">
+        Полезные ископаемые
+    </h2>
+    <div class="grid grid-cols-1 xl:grid-cols-[1fr_2fr] gap-5">
+        <div class="bg-white p-5 lg:text-sm xl:text-base">
+            <p class="mb-3">
+                В Запорожье добывается железная руда (Белозерское месторождение), начато освоение Токмакского месторождения марганцевых руд, в Гуляйпольском, Ореховском и Вольнянском районах встречается в небольших количествах бурый уголь.
+            </p>
+            <p class="mb-3">
+                Разрабатываются такие полезные ископаемые, как граниты, известняки, глины, каолин, песчаники, пегматиты. Есть лечебные грязи, минеральные воды.
+            </p>
+            <div class="block sm:flex gap-2 flex-wrap lg:block">
+                <div class="block sm:flex flex-col lg:block">
+
+                    <p class="flex items-center gap-3 mb-2">
+                        <span>
+                            <img class="h-full w-full object-cover" src="{{asset('img/vozmozhnosti/ico-voz-1.jpg')}}" alt="">
+                        </span>
+                        - железная руда
+                    </p>
+                    <p class="flex items-center gap-3 mb-2">
+                        <span>
+                            <img class="h-full w-full object-cover" src="{{asset('img/vozmozhnosti/ico-voz-2.jpg')}}" alt="">
+                        </span>
+                        - марганцевая руда
+                    </p>
+                </div>
+                <div class="block sm:flex flex-col lg:block">
+                    <p class="flex items-center gap-3 mb-2">
+                        <span>
+                            <img class="h-full w-full object-cover" src="{{asset('img/vozmozhnosti/ico-voz-3.jpg')}}" alt="">
+                        </span>
+                        - уголь (бурый)
+                    </p>
+                    <p class="flex items-center gap-3 mb-2">
+                        <span>
+                            <img class="h-full w-full object-cover" src="{{asset('img/vozmozhnosti/ico-voz-4.jpg')}}" alt="">
+                        </span>
+                        - известняк
+                    </p>
+                </div>
+                <div class="block sm:flex flex-col lg:block">
+                    <p class="flex items-center gap-3 mb-2">
+                        <span>
+                            <img class="h-full w-full object-cover" src="{{asset('img/vozmozhnosti/ico-voz-5.jpg')}}" alt="">
+                        </span>
+                        - каолины
+                    </p>
+                    <p class="flex items-center gap-3 mb-2">
+                        <span>
+                            <img class="h-full w-full object-cover" src="{{asset('img/vozmozhnosti/ico-voz-6.jpg')}}" alt="">
+                        </span>
+                        - гранит
+                    </p>
+                </div>
+                <div class="block sm:flex flex-col lg:block">
+                    <p class="flex items-center gap-3 mb-2">
+                        <span>
+                            <img class="h-full w-full object-cover" src="{{asset('img/vozmozhnosti/ico-voz-7.jpg')}}" alt="">
+                        </span>
+                        - глина
                     </p>
                 </div>
             </div>
-            <div class="flex flex-col gap-6">
-                <div>
-                    <svg width="142" height="70" viewBox="0 0 142 90" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M133.695 61.3748L129.65 55.8053L124.816 54.552L122.91 58.1065L120.131 57.957L119.314 46.4221L122.691 39.2193L125.483 37.7887L122.746 30.232L124.68 25.6019L126.831 26.8957L131.161 35.5019L133.544 37.2177L141.892 39.273L135.206 27.8488L131.189 28.257L128.411 25.8057L128.424 19.5012L125.197 11.3985L121.071 8.90617L119.437 5.8423L121.724 2.66931L117.748 0.191406L117.013 4.09934L111.757 9.62784L109.973 15.0206L110.667 17.8264L105.847 22.8371L104.512 26.5002L101.462 26.7589L97.6082 30.1639L98.2207 32.9686L94.6805 37.8031L92.1201 35.025L89.1925 37.4492L82.1387 38.9335L82.0251 39.1501L81.1994 33.8808L78.5575 34.0718L70.2232 37.7206L68.4122 41.0575L64.9401 41.3427L63.129 43.4545L59.8059 43.7808L57.6819 41.1793L52.5478 46.4902L43.1114 41.5244L30.2289 38.6195L28.0639 39.6956L30.5967 34.3576L30.58 34.2984L32.1491 38.1432L36.221 38.0479L35.1448 29.4012L32.0267 29.1559L24.3736 34.9153L23.7201 37.0404L17.7557 38.3885L15.0867 37.4619L10.3342 40.703L11.083 43.8627L6.69819 53.4083L8.71364 60.2992L3.40281 61.9464L0.107422 62.3008L0.583729 68.3466L4.76471 75.6457L5.74502 79.7719L9.02656 73.848L10.7562 73.3717L13.6706 74.0523L13.793 68.1965L16.843 66.6037L24.5054 68.0265L31.6966 75.5261L35.9618 71.8735L47.006 73.9709L49.4025 78.5185L52.5074 78.0151L56.6606 85.4361L62.1758 86.4984L66.5606 89.8081L72.6474 86.7847L80.45 87.9965L82.0024 83.1487L86.5373 83.8565L89.0158 85.6272L94.5576 84.4021L99.0382 84.4968L102.81 80.5883L107.794 79.7719L108.706 77.4158L109.02 70.4296L113.445 68.4961L118.974 71.9278L123.522 70.5526L125.442 71.8735L128.138 67.584L130.031 70.3482L131.842 77.4972L134.157 76.5984L135.397 73.2764L133.695 61.3748Z" fill="white"/>
-                    </svg>
-                </div>
-                <p class="text-white w-4/6">
-                    Наши студенты получают возможность трудоустройства не только на территории региона, но и по всей стране
-                </p>
-            </div>
-        </div>
-    </div>
-    <div class="grid grid-cols-1 lg:grid-cols-2">
-        <div>
-            <img class="h-full w-full object-cover" src="{{asset('img/vozmozhnosti/voz-20.jpg')}}" alt="">
         </div>
         <div class="bg-white p-5">
-            <p class="mb-3">
-                В рамках взаимодействия с работодателями на данный момент Университет сотрудничает с целым рядом организаций, среди которых:
-            </p>
-            <ul class="list-inside list-disc">
-                <li class="mb-2">
-                    Федеральное агентство по управлению государственным имуществом;
-                </li>
-                <li class="mb-2">
-                    Федеральная служба государственной статистики по Запорожской области;
-                </li>
-                <li class="mb-2">
-                    Управление Минюста России по Запорожской области;
-                </li>
-                <li class="mb-2">
-                    Министерство здравоохранения Запорожской области;
-                </li>
-                <li class="mb-2">
-                    ГКУ «Центр занятости населения Запорожской области;
-                </li>
-                <li class="mb-2">
-                    Военно-гражданская администрация Запорожской области;
-                </li>
-                <li class="mb-2">
-                    Прокуратура Запорожской области;
-                </li>
-                <li class="mb-2">
-                    Пункт отбора на военную службу по контракту;
-                </li>
-                <li class="mb-2">
-                    ПСБ Банк;
-                </li>
-                <li class="mb-2">
-                    Ассоциация работодателей и предпринимателей Запорожской области;
-                </li>
-                <li class="mb-2">
-                    Компания «МАНА АГРО»;
-                </li>
-                <li>
-                    И ряд других кадровых партнеров.
-                </li>
-            </ul>
+            <img class="h-full w-full object-cover" src="{{asset('img/vozmozhnosti/voz-10.jpg')}}" alt="">
         </div>
     </div>
+</section>
 
-</section>
-<section id="opportunities-for-growth">
+<section id="seaport">
     <h2 class="text-2xl 2xl:text-3xl font-bold py-5 sm:pt-16 sm:pb-8 text-[#252525]">
-        Возможности для роста студентов МелГУ
+        Морской порт на Азовском море — Бердянск
     </h2>
-    <div class="grid grid-cols-1 lg:grid-cols-[60%_auto] sm:gap-5">
-        <div class="flex gap-5 overflow-x-auto sm:overflow-x-hidden snap-mandatory snap-x" id="ScrollImageContainer">
-            <div class="grid grid-cols-2 gap-5">
-                <img class="h-full lg:h-[500px] w-full object-cover" src="{{asset('img/vozmozhnosti/voz-21.jpg')}}" alt="">
-                <img class="h-full lg:h-[500px] w-full object-cover" src="{{asset('img/vozmozhnosti/voz-22.jpg')}}" alt="">
-            </div>
-            <div class="grid grid-cols-2 gap-5">
-                <img class="h-full lg:h-[500px] w-full object-cover" src="{{asset('img/vozmozhnosti/voz-21.jpg')}}" alt="">
-                <img class="h-full lg:h-[500px] w-full object-cover" src="{{asset('img/vozmozhnosti/voz-22.jpg')}}" alt="">
-            </div>
-        </div>
-        <div class="px-5 py-2.5 sm:hidden bg-[#FAFAFA]">
-            <div class="horizontal-scrollbar top-scrollbar">
-                <div class="scroll-handle"></div>
-            </div>
-        </div>
-        <div class="bg-white px-5 py-8 flex flex-col justify-between">
-            <p>
-                Современные аудитории и лаборатории: Оснащённые новейшим оборудованием пространства для эффективного освоения теории и практики.
-            </p>
-            <div class="hidden sm:block">
-                <div class="flex justify-between items-center mb-3 sm:mb-0 w-fit gap-3">
-                    <a id="prev-btn" class="hover:border-[#820000] hover:bg-[#820000] p-4 rounded-full border border-[#252525] transition duration-300 ease-linear cursor-pointer group">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#252525" class="bi bi-arrow-left group-hover:fill-white" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"></path>
-                        </svg>
-                    </a>
-                    <a id="next-btn" class="hover:border-[#820000] hover:bg-[#820000] p-4 rounded-full border border-[#252525] transition duration-300 ease-linear cursor-pointer group">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#252525" class="bi bi-arrow-right group-hover:fill-white" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"></path>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-        </div>
+    <div class="bg-white p-5">
+        <img class="h-full w-full object-cover" src="{{asset('img/vozmozhnosti/voz-9.jpg')}}" alt="">
     </div>
 </section>
+
 <style>
     .left-side-menu li.active a {
         color: #C10F1A !important;
