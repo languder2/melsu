@@ -22,7 +22,7 @@
                 <div class="point-menu-list">
                     <ul>
                         <li>
-                            <a href="https://melsu.ru/schedule/show ">Расписание</a>
+                            <a href="https://rasp.melsu.ru/rasp-public" target="_blank">Расписание</a>
                         </li>
                         <li>
                             <a href="#">Личный кабинет</a>

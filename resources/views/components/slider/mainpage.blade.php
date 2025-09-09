@@ -79,6 +79,18 @@
         <div class="slider-container">
             <div class="slider-wrapper">
                 <div class="box-info-under-slider ">
+                    <a href="https://melsu.ru/conference-of-workers-and-students-2025" class="under-info flex gap-2 items-center justify-between bg-[#252525]">
+                        <span class="text-under-info font-semibold">
+                            Конференция работников и обучающихся 2025
+                        </span>
+                        <div class="ico-link bg-white rounded-full w-[40px] h-[40px] sm:w-[60px] sm:h-[60px] flex items-center justify-center">
+                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3.66667 1H17M17 1V14.3333M17 1L1 17" stroke="#252525" stroke-width="2"/>
+                            </svg>
+                        </div>
+                    </a>
+                </div>
+                <div class="box-info-under-slider ">
                     <a href="https://abiturient.mgu-mlt.ru/documents" class="under-info flex gap-2 items-center justify-between bg-[#252525]">
                         <span class="text-under-info font-semibold">
                             Приказы о зачислении
@@ -99,7 +111,6 @@
                             </svg>
                         </div>
                     </a>
-
                 </div>
                 <div class="box-info-under-slider ">
                     <a href="{{url('programma-razvitiya-melsu')}}" class="under-info flex gap-2 items-center justify-between bg-[#252525]">
@@ -159,7 +170,8 @@
         // Настройки
         const settings = {
             slideDuration: 500,
-            autoSlideInterval: 20000,
+            autoSlideInterval: 15000,
+            firstAutoSlideInterval: 25000,
             swipeThreshold: 0.2,
             maxDragSlides: 2
         };
@@ -246,11 +258,12 @@
         // Автопрокрутка
         function startAutoSlide() {
             stopAutoSlide();
+
             state.slideInterval = setInterval(function() {
                 if (!state.isDragging && !state.isAnimating) {
                     goToSlide(state.currentIndex + 1);
                 }
-            }, settings.autoSlideInterval);
+            }, state.currentIndex === 1 ? settings.firstAutoSlideInterval : settings.autoSlideInterval);
         }
 
         function stopAutoSlide() {

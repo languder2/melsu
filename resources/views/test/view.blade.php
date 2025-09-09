@@ -4,28 +4,40 @@
 
 @section('content')
 
-    @dump(123)
+        <div class="relative h-screen w-full">
+            <div class="bg-fixed w-full bg-cover bg-center bg-pos h-screen absolute" style="background-image: url('{{ Storage::url('test/0od77Zln1QI.jpg') }}')"></div>
+        </div>
 
-{{--    <div class="flex flex-col gap-4 mx-4">--}}
-{{--        @foreach($list ?? [] as $item)--}}
-{{--            <div class="flex gap-4">--}}
-{{--                <div class="w-15 text-center">--}}
-{{--                    {{ $item->id }}--}}
-{{--                </div>--}}
+        <div class="relative h-screen w-full">
+            <div class="bg-fixed w-full bg-cover bg-center bg-pos h-screen absolute" style="background-image: url('{{ Storage::url('test/7Xc7Dm7DU4MY8ZWt1P7YOKpgt2HtiYRkQkGy66vBoPFZ17zvzqv-COEud_pCUUsE3XZPSAHNGNDh18WESZDBQU2C.jpg') }}')"></div>
+        </div>
 
-{{--                <a href="{{$item->speciality->edit ?? '#'}}" target="_blank" class="underline hover:text-base-red">--}}
-{{--                        @if($item->speciality)--}}
-{{--                            {!! $item->speciality->name !!}--}}
-{{--                            {!! $item->speciality->name_profile !!}--}}
-{{--                       @endif--}}
-{{--                </a>--}}
+        <div class="relative h-screen w-full">
+            <div class="bg-fixed w-full bg-cover bg-center bg-pos h-screen absolute" style="background-image: url('{{ Storage::url('test/1920x1200_517543.jpg') }}')"></div>
+        </div>
 
-{{--                <span>--}}
-{{--                    {{ $item->FormatedPrice }}--}}
-{{--                </span>--}}
-{{--            </div>--}}
-{{--        @endforeach--}}
-{{--    </div>--}}
+        <div class="relative h-screen w-full">
+            <div class="bg-fixed w-full bg-cover bg-center bg-pos h-screen absolute" style="background-image: url('{{ Storage::url('test/-7vW7luvWbI.jpg') }}')"></div>
+        </div>
 
+        <div class="relative h-screen w-full">
+            <div class="bg-fixed w-full bg-cover bg-center bg-pos h-screen absolute" style="background-image: url('{{ Storage::url('test/ctv7PXoYLynAL2UO8AiFXdxRI8mOjDWX7NcPv_FDc6f4wsIlRaXmrLrVetmrgMtLPM0DgFwPfgm25q_oQ6fX9F7b.jpg') }}')"></div>
+        </div>
+
+        <div class="relative h-screen w-full">
+            <div class="bg-fixed w-full bg-cover bg-center bg-pos h-screen absolute" style="background-image: url('{{ Storage::url('test/GG_XZV_tvnE.jpg') }}')"></div>
+        </div>
+
+        <div class="relative h-screen w-full">
+            <div class="bg-fixed w-full bg-cover bg-center bg-pos h-screen absolute" style="background-image: url('{{ Storage::url('test/LWavBW0nCZfAWl6aO7gvNc_W0Dp1dUW-ilKwxhybALL3GoP-wxNicGSwkFZwsrjKa41dONSN0SXXJS8zBKNjzynE.jpg') }}')"></div>
+        </div>
+
+        <div class="relative h-screen w-full">
+            <div class="bg-fixed w-full bg-cover bg-center bg-pos h-screen absolute" style="background-image: url('{{ Storage::url('test/M4u64BFlwjtvMp2T_mpca8WzAbgMzuzaGbG2IEbCXDlblRA9nIlA1nciBvtDJ6Rnq6UESIcvLY67Qom8LF0dbJyJ.jpg') }}')"></div>
+        </div>
+
+        <div class="relative h-screen w-full">
+            <div class="bg-fixed w-full bg-cover bg-center bg-pos h-screen absolute" style="background-image: url('{{ Storage::url('test/xr15N8O7x1rSnVMQfIGpVCHusUi4DDjfT9nOwbpdnWJ0tOMobTtjL3U8RxJ03UmN8eadCvlmH_lsNdmqurgGLz0b.jpg') }}')"></div>
+        </div>
 @endsection
 

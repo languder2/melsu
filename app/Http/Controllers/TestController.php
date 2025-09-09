@@ -47,14 +47,7 @@ class TestController extends Controller
     {
         $list = collect([]);
 
-        $list = Events::whereNotNull('event_datetime')->get();
-
-        foreach ($list as $item) {
-            dump($item->event_datetime->format('H:i:s'));
-            dump($item->FormatedEventDatetime('H:i'));
-        }
-
-//        return view('test.view',compact('list'));
+        return view('test.view',compact('list'));
     }
 
     public function admin()

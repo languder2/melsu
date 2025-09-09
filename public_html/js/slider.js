@@ -57,13 +57,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         function advance() {
             clearTimeout(timeout);
+
+            let time = currentIndex === 0 ? 25000 : 15000;
+
             timeout = setTimeout(function () {
                 if (currentIndex < ($slides.length - 1)) {
                     move(currentIndex + 1);
                 } else {
                     move(0);
                 }
-            }, 15000);
+            }, time);
         }
 
         $('.next_btn').on('click', function () {
