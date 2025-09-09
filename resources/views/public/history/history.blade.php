@@ -31,7 +31,7 @@
                         <div class="h--timeline-event-description z-5">
                             <div class="font-semibold text-md md:text-lg xl:text-xl line-clamp-6 lg:line-clamp-none flex flex-col gap-3">
                                 {!! $history->description !!}
-                            </в>
+                            </div>
                             @if($history->content)
                             <div class="btn-more-box flex items-center">
                                 <button class="btn-more flex items-center cursor-pointer" style="font-size: 16px;" popovertarget="modal-{{$history->id}}">
