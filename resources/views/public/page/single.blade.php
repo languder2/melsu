@@ -30,6 +30,8 @@
             </div>
         @endif
 
+{{--        @dump($page->sections)--}}
+
         @if($page->sections->count())
             <div class="flex flex-col gap-4">
                 @each('public.page.content-section',$page->sections,'section')

@@ -23,6 +23,8 @@ use App\Models\Info\InfoCommon;
 use App\Models\Info\InfoFounder;
 use App\Models\Info\InfoStandarts;
 use App\Models\News\Events;
+use App\Models\Page\Content;
+use App\Models\Page\Page;
 use App\Models\Staff\Affiliation;
 use App\Models\Staff\Staff;
 use Illuminate\Support\Facades\Storage;
@@ -61,7 +63,11 @@ class TestController extends Controller
 
         $list = collect();
 
-        dd(Entities::list());
+        $page= Page::find(51);
+
+        dd($page->sections);
+
+        dd(Content::where('relation_id','51')->get());
 
         $page = Entities::page;
 

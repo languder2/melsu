@@ -137,12 +137,8 @@ class PagesController extends Controller
 
 
 
-
         if(!$show)
             return redirect()->route('pages:main');
-
-
-
 
         $menu = Menu::where('show',1)->find($page->menu_id);
 
