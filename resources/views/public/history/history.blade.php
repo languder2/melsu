@@ -13,7 +13,8 @@
                 </svg>
             </button>
             <div class="absolute w-full h-full">
-                <div class="dropdown-date flex flex-col flex-wrap gap-3 bg-white min-w-[130px] max-w-[130px]  z-50 relative p-5 h-max max-h-[200px] overflow-scroll hidden border border-[#C10F1A] left-[-102px] rounded">
+                <div class="dropdown-date gap-3 bg-white min-w-[130px] max-w-[130px]  z-50 relative p-5 h-max max-h-[200px] overflow-scroll hidden border border-[#C10F1A] left-[-102px] rounded"
+                style="column-count: 2; gap: 12px;">
                     @foreach ($histories as $history)
                         <a data-date="01/01/{{$history->year}}" class="h--timeline-date cursor-pointer @if($loop->first) h--timeline-date--selected @endif">
                             {{$history->year}}
@@ -58,9 +59,11 @@
                     </svg>
                 </button>
                 <div class="absolute w-full h-full">
-                    <div class="dropdown-date flex flex-col flex-wrap gap-3 bg-white min-w-[130px] max-w-[130px] z-50 relative p-5 h-max max-h-[200px] overflow-scroll hidden">
-                        @foreach ($histories as $history)
-                            <a data-date="01/01/{{$history->year}}" class="h--timeline-date cursor-pointer @if($loop->first) h--timeline-date--selected @endif">
+                    <div class="dropdown-date bg-white min-w-[170px] max-w-[170px] z-50 relative p-5 h-max max-h-[200px] overflow-scroll hidden" 
+                        style="column-count: 2; column-gap: 12px;">
+                        @foreach ($histories->sortBy('year') as $history)
+                            <a data-date="01/01/{{$history->year}}" 
+                            class="h--timeline-date cursor-pointer text-center block mb-2 @if($loop->first) h--timeline-date--selected @endif">
                                 {{$history->year}}
                             </a>
                         @endforeach
@@ -112,7 +115,7 @@
                             </div>
                         </div>
                         <div class="w-full full-img-history">
-                            <img src="{{ Storage::url($history->image) }}" class="object-cover h-full w-full" alt="">
+                            <img src="{{ Storage::url($history->image) }}" class="object-cover h-full w-full" loading="lazy" alt="">
                         </div>
                     </li>
                 @endforeach
