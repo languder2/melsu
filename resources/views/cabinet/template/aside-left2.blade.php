@@ -1,27 +1,37 @@
-@hasSection('instruction')
-    <aside class="left bg-neutral-150 w-100 border-r drop-shadow-md relative">
-        <h3 class="font-semibold p-4 ">
-            Меню
-        </h3>
-        <hr class="border-blue">
-        <div class="absolute inset-0 top-15 overflow-y-scroll flex flex-col gap-4 ">
-            <ul>
-                <li class="bg-sky-100">
-                    <a href="#">
-                        Новости
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        Заявки
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        Уведомления
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </aside>
-@endif
+<aside class="left bg-neutral-150 w-80 border-r drop-shadow-md relative">
+    <h3 class="font-semibold p-4 ">
+        Меню
+    </h3>
+    <hr class="border-blue">
+    <div class="absolute inset-0 top-15 overflow-y-scroll flex flex-col">
+        <a
+            href="{{ route('news.cabinet.list') }}"
+
+            {{ Route::is('news.cabinet.*') ? "open" : "" }}
+
+            class="
+                cursor-pointer block p-3
+                hover:bg-slate-200
+                open:text-white open:bg-sky-800
+                open:hover:text-white open:hover:bg-sky-800
+            "
+        >
+            Новости
+        </a>
+        <a
+            href="{{ route('divisions.cabinet.list') }}"
+
+            {{ Route::is('divisions.cabinet.*') ? "open" : "" }}
+
+            class="
+                cursor-pointer block p-3
+                hover:bg-slate-200
+                open:text-white open:bg-sky-800
+                open:hover:text-white open:hover:bg-sky-800
+            "
+        >
+            Подразделения
+        </a>
+    </div>
+</aside>
+

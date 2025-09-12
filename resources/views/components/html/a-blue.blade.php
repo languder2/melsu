@@ -5,10 +5,10 @@
 @endif
 
 <a
-    href="{{@$href}}"
+    href="{{ $href }}"
     @class([
         'hover:text-red-700 hover:underline active:text-gray-700',
-        str_contains(url()->current(),$href)
+        str_contains(url()->current(), $href )
         ?"text-base-red"
         :"text-blue-900"
     ])

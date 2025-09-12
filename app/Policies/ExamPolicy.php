@@ -3,7 +3,7 @@
 namespace App\Policies;
 
 use App\Models\Education\Exam;
-use App\Models\User;
+use App\Models\Users\User;
 
 class ExamPolicy
 {

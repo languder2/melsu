@@ -626,7 +626,10 @@ class Division extends Model
 
         return $result;
     }
-
+    public static function educationDepartments(): Collection
+    {
+        return self::where('type',DivisionType::Department)->get();
+    }
 
 
 

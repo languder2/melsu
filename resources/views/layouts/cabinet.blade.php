@@ -29,6 +29,7 @@
 {{--            @include('cabinet.template.aside-left')--}}
             @include('cabinet.template.aside-left2')
 
+
             <div class="flex-1">
                 @hasSection('content-header')
                     @yield('content-header')

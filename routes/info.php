@@ -48,7 +48,6 @@ Route::prefix('sveden')->group(function () {
     Route::post('documents/save/{type}/{code}/{info?}',
         [InfoController::class, 'saveDocument'])->name('info:document:save');
 
-
     /* catering */
 
     Route::get('catering',                      [CateringController::class, 'index'])->name('info:catering');

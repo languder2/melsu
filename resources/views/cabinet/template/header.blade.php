@@ -1,7 +1,7 @@
 <header
     class="py-1 text-white bg-cover bg-[image:var(--bg-cabinet-header)]"
 >
-    <nav class="px-2 lg:mx-auto max-w-1600 flex items-center gap-4 :bg-red-300">
+    <nav class="px-2 flex items-center gap-4 :bg-red-300">
         <a href="{{route('pages:main')}}" target="_blank" class="focus:outline-0">
             <img src="{{asset('img/cabinet/logo.svg')}}" alt="" />
         </a>
@@ -19,13 +19,13 @@
                 <li></li>
                 <li></li>
                 <li></li>
-                <li>
-                    <a href="{{route('cabinet:index')}}"
-                       class="flex gap-3 py-3 px-5 hover:bg-blue-hover rounded-md focus:outline-0"
-                    >
-                        Тикет система
-                    </a>
-                </li>
+{{--                <li>--}}
+{{--                    <a href="{{route('cabinet:index')}}"--}}
+{{--                       class="flex gap-3 py-3 px-5 hover:bg-blue-hover rounded-md focus:outline-0"--}}
+{{--                    >--}}
+{{--                        Тикет система--}}
+{{--                    </a>--}}
+{{--                </li>--}}
                 <li>
                     <a href="{{route('cabinet:exit')}}"
                        class="flex gap-3 py-3 px-5 hover:bg-blue-hover rounded-md focus:outline-0"

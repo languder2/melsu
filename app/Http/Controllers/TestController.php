@@ -63,15 +63,9 @@ class TestController extends Controller
 
         $list = collect();
 
-        $page= Page::find(51);
+        $list= Division::educationDepartments()->where(fn($item) => $item->specialities->count() === 0);
 
-        dd($page->sections);
-
-        dd(Content::where('relation_id','51')->get());
-
-        $page = Entities::page;
-
-        return view('test.index',compact('list', 'page'));
+        return view('test.index',compact('list'));
     }
 
 

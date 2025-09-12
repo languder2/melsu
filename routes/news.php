@@ -14,8 +14,6 @@ Route::controller(NewsController::class)
         Route::get('category/{category?}', [NewsController::class,'showAll'])->name('news-categories:public');
 
         Route::post('set-filter', [NewsController::class,'publicSetFilter'])->name('news:public:set-filter');
-
-
     });
 
 Route::controller(NewsController::class)
@@ -69,8 +67,4 @@ Route::prefix('admin/categories-news')->group(function () {
     Route::get('delete/{category?}',[CategoriesController::class,'delete'])->name('news-categories:delete');
 });
 /**/
-
-/* Relation News */
-
-
 

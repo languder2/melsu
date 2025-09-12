@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Users;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Enums\UserRoles;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Http\Request;
 
 /**
  * @property mixed $lastname
@@ -90,5 +91,11 @@ class User extends Authenticatable
     {
         return "{$this->firstname} {$this->middlename}";
     }
+
+    public function access(): HasMany
+    {
+        return $this->hasMany(UserAccess::class);
+    }
+
 
 }
