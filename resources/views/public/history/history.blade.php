@@ -115,7 +115,7 @@
                             </div>
                         </div>
                         <div class="w-full full-img-history">
-                            <img src="{{ Storage::url($history->image) }}" class="object-cover h-full w-full" loading="lazy" alt="">
+                            <img src="../../../storage/images/history/history-img.jpg" class="object-cover h-full w-full" loading="lazy" alt="">
                         </div>
                     </li>
                 @endforeach
