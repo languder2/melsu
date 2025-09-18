@@ -27,6 +27,9 @@ use App\Models\Page\Content;
 use App\Models\Page\Page;
 use App\Models\Staff\Affiliation;
 use App\Models\Staff\Staff;
+use App\Models\Users\User;
+use App\Models\Users\UserAccess;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
@@ -63,7 +66,30 @@ class TestController extends Controller
 
         $list = collect();
 
-        $list= Division::educationDepartments()->where(fn($item) => $item->specialities->count() === 0);
+//        Division::all()->each(function ($division){
+//            $user = User::where('name', "d{$division->id}")->get()->first();
+//
+//            if(!$user){
+//                $password = Str::random(3)."-".Str::random(3)."-".Str::random(3)."-".Str::random(3);
+//                $user = new User(['name'=>"d{$division->id}",'email'=> "d{$division->id}@melsu.ru", 'password'=> bcrypt($password)]);
+//                $user->save();
+//            }
+//
+//            $division->getAccess($user);
+//        });
+
+
+        $time = microtime(true);
+
+        $list = User::where('email','like','d%@melsu.ru')->get()
+        ->each(function ($item){
+//            $password = Str::random(3)."-".Str::random(3)."-".Str::random(3)."-".Str::random(3);
+//            $item->password = bcrypt($password);
+//            $item->save();
+//            $item->pass = $password;
+//            $item->divisions = $item->access->map->relation->pluck('name');
+            return $item;
+        });
 
         return view('test.index',compact('list'));
     }

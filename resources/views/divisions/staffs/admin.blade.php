@@ -117,6 +117,7 @@
                     >
                         <i class="fas fa-trash w-4 h-4"></i>
                     </button>
+
                     <div popover=""
                          id="link-for-delete-{{$division->chief->id}}"
                          class="

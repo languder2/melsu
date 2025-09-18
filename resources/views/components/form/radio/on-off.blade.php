@@ -1,4 +1,11 @@
 <label class="group pt-3 cursor-pointer w-22 select-none">
+
+    <input
+        type="hidden"
+        name="{{ $name ?? 'is_show' }}"
+        value=""
+    >
+
     <input
         type="checkbox"
         name="{{$name ?? 'is_show'}}"

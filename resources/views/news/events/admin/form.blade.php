@@ -89,7 +89,7 @@
                         value="{{old('post')??($event?->getAttributes()['published_at']??now())}}"
                 />
 
-                
+
     <x-form.input
         id="event_datetime"
         type="datetime-local"

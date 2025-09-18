@@ -9,20 +9,13 @@
     --font-sans: "Montserrat", ui-sans-serif, system-ui, sans-serif,
     'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 
-
     --color-red: #820000;
     --color-blue: #374573;
     --color-blue-hover: #556391;
     --color-neutral-150: #EEEEEE;
     --color-base-red: #820000;
-    --spacing-2px: 2px;
-    --spacing-300: 300px;
-    --spacing-400: 400px;
-    --spacing-800: 800px;
-    --spacing-1000: 1000px;
-    --spacing-1200: 1200px;
-    --spacing-1400: 1400px;
-    --spacing-1600: 1600px;
+
+    --breakpoint-bp100: 100rem;
 
     --list-style-type-none: none;
     --list-style-type-disc: disc;
@@ -33,7 +26,6 @@
     --bg-cabinet-header: url('../../public_html/img/cabinet/bg-header.png');
     --bg-sveden-header: url('../../public_html/img/sveden/bg-sved.jpg');
     --bg-panel-1: url('../../public_html/img/cabinet/bg-panel.jpg');
-
 }
 
 /*

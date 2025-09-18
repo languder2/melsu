@@ -20,7 +20,7 @@
     name="{{$name}}"
 
     @if(!isset($editor))
-        class="editor {{@$class}}"
+        class="{{@$class}}"
     @else
         class=""
     @endif

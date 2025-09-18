@@ -29,6 +29,3 @@ Route::prefix('clusters')->group(function () {
     Route::get('/', [ClustersController::class, 'public'])->name('clusters.list');
     Route::get('{current?}', [ClustersController::class, 'single'])->name('cluster.single');
 });
-
-
-Route::get('menu/projects',[ClustersController::class, 'public']);

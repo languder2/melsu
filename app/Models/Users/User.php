@@ -6,10 +6,10 @@ namespace App\Models\Users;
 use App\Enums\UserRoles;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Collection;
 
 /**
  * @property mixed $lastname
@@ -92,10 +92,12 @@ class User extends Authenticatable
         return "{$this->firstname} {$this->middlename}";
     }
 
-    public function access(): HasMany
+    public function getAccess(): HasMany
     {
         return $this->hasMany(UserAccess::class);
     }
-
-
+    public function getAccessAttribute(): Collection
+    {
+        return $this->getAccess ?? collect();
+    }
 }

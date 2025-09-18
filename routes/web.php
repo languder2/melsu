@@ -90,6 +90,8 @@ Route::controller(PublicGallery::class)
 
 
 /* Menu Page */
+    Route::get('menu/projects',fn() => redirect()->route('clusters.list'));
+
     Route::get('menu/{code?}', [MenuController::class,'show'])
         ->name('public:menu:show');
 

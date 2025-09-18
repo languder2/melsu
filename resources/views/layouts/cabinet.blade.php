@@ -11,26 +11,21 @@
     <title>@yield('title', 'ФГБОУ ВО "МелГУ"')</title>
 
     @vite(['resources/css/cabinet.css', 'resources/js/cabinet.js'])
-
-    @hasSection('includes')
-        @yield('includes')
-    @endif
 </head>
 <body class="bg-neutral-100 relative grid grid-rows-[auto_1fr_auto] min-h-screen gap-px">
 
 @include("cabinet.template.header")
 
 <main class="min-h-full bg-amber" >
+
     @guest
         @include('cabinet.auth')
     @else
         <div class="flex gap-4 min-h-full">
 
-{{--            @include('cabinet.template.aside-left')--}}
             @include('cabinet.template.aside-left2')
 
-
-            <div class="flex-1">
+            <div class="flex-1 p-3 pl-0 @container">
                 @hasSection('content-header')
                     @yield('content-header')
                 @endif

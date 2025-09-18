@@ -5,10 +5,11 @@ namespace App\Models\News;
 use App\Models\Gallery\Image;
 use App\Models\Services\Content;
 use App\Models\Services\Log;
+use App\Models\Users\User;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
-use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class RelationNews extends Model
@@ -30,19 +31,45 @@ class RelationNews extends Model
         'deleted_at'
     ];
 
-    public function getIdAttribute($value):int
-    {
-        return $value ?? now()->format('Uv');
-    }
+    protected $casts = [
+        'published_at' => 'datetime',
+    ];
+
     public function fill(array $attributes):?self
     {
         if(!empty($attributes)){
-            $attributes['is_show']      = (int) array_key_exists('is_show', $attributes);
-            $attributes['is_favorite']  = (int) array_key_exists('is_favorite', $attributes);
-            $attributes['sort']         = $attributes['sort'] ?? 1000;
+            $attributes['is_show']      = (bool)$attributes['is_show'];
         }
 
         return parent::fill($attributes);
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($item) {
+            $item->getContentRecord()->delete();
+            $item->getShortRecord()->delete();
+            $item->getPreview()->delete();
+        });
+    }
+
+    public function validateRules(): array
+    {
+        return
+            [
+                'title' => 'required',
+                'published_at' => '',
+                'is_show'   => '',
+                'image'     => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:20480',
+            ];
+    }
+    public function validateMessage(): array
+    {
+        return [
+            'title' => 'Укажите заголовок',
+        ];
     }
 
     public function relation():MorphTo
@@ -117,10 +144,6 @@ class RelationNews extends Model
         if(array_key_exists('image', $form) && $form['image']){
             $item->preview->saveImage($form['image']);
         }
-        elseif($form['preview']){
-            $item->preview->fill(['name' => $item->title]);
-            $item->preview->getReferenceID($form['preview']);
-        }
         else{
             $item->preview->reference_id = null;
             $item->preview->filename = null;
@@ -128,5 +151,23 @@ class RelationNews extends Model
             $item->preview->save();
         }
     }
+
+    public function author():BelongsTo
+    {
+        return $this->belongsTo(User::class, 'author_id');
+    }
+    public function getFormAttribute(): string
+    {
+        return route('news.cabinet.form',$this);
+    }
+    public function getSaveAttribute(): string
+    {
+        return route('news.cabinet.save',$this);
+    }
+    public function getDeleteAttribute(): string
+    {
+        return route('news.cabinet.delete',$this);
+    }
+
 
 }

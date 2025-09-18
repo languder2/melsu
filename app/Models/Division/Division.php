@@ -17,6 +17,8 @@ use App\Models\Partner\Partner;
 use App\Models\Sections\Contact;
 use App\Models\Staff\Affiliation;
 use App\Models\Staff\Staff;
+use App\Models\Users\User;
+use App\Models\Users\UserAccess;
 use App\Traits\HasLinks;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Casts\Attribute;
@@ -632,6 +634,17 @@ class Division extends Model
     }
 
 
+    public function getAccess(User $user):void
+    {
+        if(!UserAccess::where('user_id',$user->id)->where('relation_id',$this->id)->exists()){
+            $access = new UserAccess();
+            $access->user()->associate($user)->relation()->associate($this)->save();
+        }
+
+        foreach ($this->subs as $sub)
+            $sub->getAccess($user);
+
+    }
 
 
 }
