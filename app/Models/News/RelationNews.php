@@ -22,6 +22,7 @@ class RelationNews extends Model
         'title',
         'is_show',
         'is_favorite',
+        'has_approval',
         'sort',
         'published_at',
     ];
@@ -62,6 +63,7 @@ class RelationNews extends Model
                 'title' => 'required',
                 'published_at' => '',
                 'is_show'   => '',
+                'has_approval'   => '',
                 'image'     => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:20480',
             ];
     }

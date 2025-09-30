@@ -59,10 +59,10 @@
                     </svg>
                 </button>
                 <div class="absolute w-full h-full">
-                    <div class="dropdown-date bg-white min-w-[170px] max-w-[170px] z-50 relative p-5 h-max max-h-[200px] overflow-scroll hidden" 
+                    <div class="dropdown-date bg-white min-w-[170px] max-w-[170px] z-50 relative p-5 h-max max-h-[200px] overflow-scroll hidden"
                         style="column-count: 2; column-gap: 12px;">
                         @foreach ($histories->sortBy('year') as $history)
-                            <a data-date="01/01/{{$history->year}}" 
+                            <a data-date="01/01/{{$history->year}}"
                             class="h--timeline-date cursor-pointer text-center block mb-2 @if($loop->first) h--timeline-date--selected @endif">
                                 {{$history->year}}
                             </a>
@@ -125,15 +125,15 @@
 </section>
     @foreach ($histories as $history)
         @if($history->content)
-    <div popover="manual" id="modal-{{$history->id}}"
-        class="modal-image transition-discrete starting:open:opacity-0 fixed bg-gray-700 p-8 open:backdrop-brightness-50 w-[95%] sm:w-[97%] md:w-[98%] max-w-[90%] max-h-[80%] lg:w-fit min-w-[40%] h-fit shadow-md shadow-gray-800 z-40 mx-auto">
-        <div class="wrapp-modal-video relative text-white">
-            <span class="close-modal absolute border border-[#820000] right-[-20px] top-[-20px] bg-[#820000] rounded-full text-white py-[2px] px-[8px] cursor-pointer transition duration-300 ease-linear hover:bg-white hover:text-[#820000] z-20">X</span>
-            <div class="flex flex-col gap-6">
-                {!! $history->content !!}
+            <div popover="manual" id="modal-{{$history->id}}"
+                class="modal-image transition-discrete starting:open:opacity-0 fixed bg-gray-700 p-8 open:backdrop-brightness-50 w-[95%] sm:w-[97%] md:w-[98%] max-w-[90%] max-h-[80%] lg:w-fit min-w-[40%] h-fit shadow-md shadow-gray-800 z-40 mx-auto">
+                <div class="wrapp-modal-video relative text-white">
+                    <span class="close-modal absolute border border-[#820000] right-[-20px] top-[-20px] bg-[#820000] rounded-full text-white py-[2px] px-[8px] cursor-pointer transition duration-300 ease-linear hover:bg-white hover:text-[#820000] z-20">X</span>
+                    <div class="flex flex-col gap-6">
+                        {!! $history->content !!}
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
         @endif
     @endforeach
 <script src="{{asset('js/history-slider.js')}}"></script>

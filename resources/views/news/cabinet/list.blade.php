@@ -31,4 +31,6 @@
         @endforelse
     </div>
 
+    {!! $list->links() !!}
+
 @endsection

@@ -20,6 +20,10 @@
         </div>
 
         <div class="flex gap-3">
+            <a href="{{ $item->form }}" class="p-1 px-2 bg-indigo-200/55 hover:bg-white rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm border border-gray-100 flex items-center">
+                <x-lucide-square-pen class="w-6 text-blue-700"/>
+            </a>
+
             <div class="py-1 px-3 bg-indigo-200/55 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm border border-gray-100 flex items-center">
                 {!! $item->id !!}
             </div>
@@ -27,31 +31,33 @@
                 {!! $item->published_at->format('d-m-Y') !!}
             </div>
 
-            <div class="flex-1 flex gap-3 ">
-                <a href="{{ $item->form }}" class="p-1 px-2 bg-indigo-200/55 hover:bg-white rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm border border-gray-100 flex items-center">
-                    <x-lucide-square-pen class="w-6 text-blue-700"/>
-                </a>
-                <a href="{{ $item->link }}" target="_blank" class="p-1 px-2 bg-indigo-200/55 hover:bg-white rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm border border-gray-100 flex items-center">
-                    <x-lucide-square-arrow-out-up-right class="w-6 text-green-700"/>
-                </a>
-                <div class="flex-1"></div>
-                <div class="p-1 px-2 bg-indigo-200/55 hover:bg-white rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm border border-gray-100 flex items-center">
-                    <button
-                        popovertarget="link-for-delete-{{ $item->id }}"
-                        class="
+            <a href="{{ $item->link }}" target="_blank" class="p-1 px-2 bg-indigo-200/55 hover:bg-white rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm border border-gray-100 flex items-center">
+                <x-lucide-square-arrow-out-up-right class="w-6 text-green-700"/>
+            </a>
+
+            <div class="flex-1"></div>
+
+            <div class="py-1 px-3 bg-indigo-200/55 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm border border-gray-100 flex items-center">
+                {!! $item->author->name ?? $item->author->email ?? null !!}
+            </div>
+
+            <div class="p-1 px-2 bg-indigo-200/55 hover:bg-white rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm border border-gray-100 flex items-center">
+                <button
+                    popovertarget="link-for-delete-{{ $item->id }}"
+                    class="
                         p-1 rounded-md
                         text-red-700
                         hover:text-red-700
                         active:text-gray-700
                         cursor-pointer
                     "
-                    >
-                        <x-lucide-trash-2 class="w-6 cursor-pointer"/>
-                    </button>
+                >
+                    <x-lucide-trash-2 class="w-6 cursor-pointer"/>
+                </button>
 
-                    <div popover=""
-                         id="link-for-delete-{{ $item->id }}"
-                         class="
+                <div popover=""
+                     id="link-for-delete-{{ $item->id }}"
+                     class="
                         relative inset-y-0 mx-auto my-auto
                         transform overflow-hidden
                         rounded-lg bg-white text-left
@@ -60,30 +66,30 @@
                         [@starting-style]:[&:is([open],:popover-open)]:opacity-0
                     "
 
-                    >
-                        <h3 class="p-4 font-semibold">
-                            Удалить новость?
-                        </h3>
-                        <hr>
-                        <div class="p-4 flex flex-col gap-3">
-                            @if($item->relation)
-                                <div>
-                                    {!! $item->relation->name !!}
-                                </div>
-                            @endif
+                >
+                    <h3 class="p-4 font-semibold">
+                        Удалить новость?
+                    </h3>
+                    <hr>
+                    <div class="p-4 flex flex-col gap-3">
+                        @if($item->relation)
                             <div>
-                                {!! $item->title !!}
+                                {!! $item->relation->name !!}
                             </div>
-
+                        @endif
+                        <div>
+                            {!! $item->title !!}
                         </div>
-                        <hr>
-                        <div class="text-right px-4 py-2">
 
-                            <form method="POST" action="{{ $item->delete }}">
-                                @csrf
-                                @method('DELETE')
-                                <input type="submit" value="удалить"
-                                       class="
+                    </div>
+                    <hr>
+                    <div class="text-right px-4 py-2">
+
+                        <form method="POST" action="{{ $item->delete }}">
+                            @csrf
+                            @method('DELETE')
+                            <input type="submit" value="удалить"
+                                   class="
                                             cursor-pointer
                                             inline-block relative
                                             py-2 px-4 text-white rounded-md shadow-md
@@ -91,15 +97,10 @@
                                             bg-red-800 hover:bg-red-700 active:bg-gray-700
                                             hover:-mt-px hover:mb-px
                                        "
-                                >
-                            </form>
-                        </div>
+                            >
+                        </form>
                     </div>
                 </div>
-            </div>
-
-            <div class="py-1 px-3 bg-indigo-200/55 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm border border-gray-100 flex items-center">
-                {!! $item->author->name ?? $item->author->email ?? null !!}
             </div>
         </div>
     </div>

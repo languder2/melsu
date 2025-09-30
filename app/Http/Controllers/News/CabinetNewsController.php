@@ -18,18 +18,28 @@ class CabinetNewsController extends Controller
 
     protected Collection $divisions;
 
+    protected int $perPage = 30;
+
     public function __construct(){
-        $this->divisions = auth()->user()->access->map->relation->pluck('name', 'id');
+        $this->divisions =
+            auth()->user()->isEditor()
+            ? Division::all()
+            : auth()->user()->access->map->relation;
     }
     public function list(Request $request): View
     {
 
-        $list = auth()->user()->access->flatMap(fn($access) => $access->relation->news)->sortByDesc('published_at');
+        $list = $this->divisions->flatMap(fn($division) => $division->news)->sortByDesc('published_at');
 
         $filters = $request->session()->get('cabinetNewsFilters', collect());
 
         if($filters->has('division'))
             $list= $list->where(fn($item)  => $item->relation_id == $filters->get('division') && $item->relation_type == Division::class);
+
+        if($filters->has('onApproval'))
+            $list= $list->where(fn($item)  => !$item->has_approval);
+
+        $list = $list->paginate($this->perPage);
 
 //        $list->groupBy('relation_id')->map(fn($item) => $item->first() )->random(3)->each(function ($item){
 //            $access = new UserAccess();
@@ -37,7 +47,7 @@ class CabinetNewsController extends Controller
 //        });
 
         $byFilter = collect([
-            'divisions' => auth()->user()->access->map->relation->pluck('name','id')
+            'divisions' => $this->divisions->pluck('name', 'id'),
         ]);
 
         return view('news.cabinet.list', compact('list', 'filters', 'byFilter'));
@@ -54,7 +64,7 @@ class CabinetNewsController extends Controller
 
     public function form(RelationNews $news): View
     {
-        $divisions = $this->divisions;
+        $divisions = $this->divisions->pluck('name', 'id');
 
         return view('news.cabinet.form', compact('news', 'divisions'));
     }

@@ -91,12 +91,29 @@
                             />
                         </div>
 
-                        <x-form.file
-                            id="form_image"
-                            label="Установить / сменить изображение"
-                            name="image"
-                        />
 
+                        <div class="flex gap-3">
+                            <x-form.file
+                                id="form_image"
+                                label="Установить / сменить изображение"
+                                name="image"
+                                block="flex-1"
+                            />
+
+                            @if(auth()->user()->isEditor())
+                                <x-form.checkbox.block
+                                    id="has_approval"
+                                    name="has_approval"
+                                    :default="0"
+                                    :value="1"
+                                    label="Утвердить"
+                                    :checked=" old('has_approval', $news->exists ? $news->has_approval : true)"
+                                    block="pe-2"
+                                />
+                            @else
+                                <input type="hidden" name="has_approval" value="0">
+                            @endif
+                        </div>
                     </div>
 
                 </div>
@@ -108,6 +125,7 @@
                         value="{{ old('short', $news->short) }}"
                         hideLabel
                         height="200px"
+                        required
                     />
                 </div>
             </div>
@@ -120,6 +138,7 @@
                         value="{{ old('content', $news->content) }}"
                         hideLabel
                         height="200px"
+                        required
                     />
                 </div>
             </div>

@@ -265,6 +265,7 @@ class Division extends Model
         return $this->news()
             ->where('published_at','<=', Carbon::now())
             ->where('is_show',1)
+            ->where('has_approval',true)
             ->orderBy('is_favorite', 'desc')
             ->orderBy('sort', 'asc')
             ->orderBy('published_at', 'desc')
@@ -274,7 +275,7 @@ class Division extends Model
     public function NewsLink(?string $op): string
     {
         return match($this->type){
-            default => null,
+            default => route('news.relation.show',$op),
             DivisionType::Institute, DivisionType::Faculty, DivisionType::Department, DivisionType::Branch
             => route('public:education:division', [$this->type->value,$this->code ?? $this->id,'news',$op]),
         };
@@ -474,6 +475,7 @@ class Division extends Model
         $ids    = $this->getIDCollection();
 
         $news   = RelationNews::where('is_show',true)
+            ->where('has_approval', true)
             ->whereIn('relation_id',$ids)
             ->where('relation_type',Division::class)
             ->where('published_at', '<=', Carbon::now())

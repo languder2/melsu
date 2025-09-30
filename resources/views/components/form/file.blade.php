@@ -1,4 +1,4 @@
-<div class="block relative mt-2">
+<div class="block relative mt-2 {{ $block ?? "" }}">
     <input
         type="file"
         @if(isset($id))

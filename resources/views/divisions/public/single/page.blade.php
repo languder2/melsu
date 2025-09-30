@@ -37,4 +37,8 @@
         @endslot
     @endcomponent
 
+    @component('news.public.relations.list', ['list' => $division->publicNews])
+
+    @endcomponent
+
 @endsection

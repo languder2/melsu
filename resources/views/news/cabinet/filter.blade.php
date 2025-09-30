@@ -1,5 +1,6 @@
 <form action="{{ route('news.cabinet.set-filter') }}" method="post"
-    class="grid grid-cols-[1fr_repeat(1,auto)] mb-3 gap-3 bg-white p-3"
+    class="flex mb-3 gap-3 bg-white p-3"
+{{--    class="grid grid-cols-[1fr_repeat(1,auto)] mb-3 gap-3 bg-white p-3"--}}
 >
     @csrf
 
@@ -9,6 +10,17 @@
         value="{{ $filters->get('division') }}"
         null="Выбрать подразделение"
         :list=" $byFilter->get('divisions') "
+    />
+
+
+    <x-form.checkbox.block
+        id="onApproval"
+        name="setFilter[onApproval]"
+        :default="0"
+        :value="1"
+        label="Требует утверждения"
+        :checked=" $filters->get('onApproval')"
+        block="w-68"
     />
 
     <div class="flex items-center">

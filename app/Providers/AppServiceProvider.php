@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use App\Models\Users\User;
 use App\Policies\UserPolicy;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
@@ -38,6 +40,24 @@ class AppServiceProvider extends ServiceProvider
             $args = substr_replace($args, $viewBasePath.'.', 1, 0);
             return "<?php echo \$__env->make({$args}, \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>";
         });
+
+        if (!Collection::hasMacro('paginate')) {
+            Collection::macro('paginate', function ($perPage = 15, $page = null, $options = []) {
+                $page = $page ?: (LengthAwarePaginator::resolveCurrentPage() ?: 1);
+
+                return new LengthAwarePaginator(
+                    $this->forPage($page, $perPage)->values(), // Items for the current page
+                    $this->count(), // Total count
+                    $perPage,
+                    $page,
+                    [
+                        'path' => LengthAwarePaginator::resolveCurrentPath(),
+                        ...$options
+                    ]
+                );
+            });
+        }
+
     }
 
 

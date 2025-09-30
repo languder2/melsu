@@ -49,8 +49,6 @@ class NewsController extends Controller
 
     public function save(Request $request)
     {
-
-
         $form = $request->validate(News::$FormRules, News::$FormMessage);
 
             if (empty($request->get('id')))
@@ -161,7 +159,5 @@ class NewsController extends Controller
             session()->remove('newsPublicSearch');
 
         return redirect()->back();
-
     }
-
 }

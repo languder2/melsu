@@ -14,20 +14,18 @@ class HistoryController extends Controller
     public function index()
     {
         $histories = History::orderBy('order', 'asc')->get();
+
         return view('admin.history.page', compact('histories'));
     }
     public function indexPage()
     {
         $histories = History::orderBy('year', 'asc')->orderBy('order', 'asc')->get()->groupBy('year')
         ->map(function ($items) {
-
             $first = $items->first();
-
             $first->description  = $items->pluck('description')->map(fn($item)=> "<div>$item</div>")->implode('');
             $first->content      = $items->pluck('content')->map(fn($item)=> "<div>$item</div>")->implode('');
-
             return $first;
-        });
+        })->skip(10)->take(10);
 
         return view('public.history.history', compact('histories'));
     }

@@ -210,3 +210,15 @@ Breadcrumbs::for('education-programs:higher-education', function (BreadcrumbTrai
     $trail->push('Образовательная инфраструктура', url('obrazovatelnaya-infrastruktura'));
     $trail->push('Образовательные программы высшего образования', route('education-programs:higher-education'));
 });
+
+Breadcrumbs::for('relation-news', function (BreadcrumbTrail $trail, \App\Models\News\RelationNews $news) {
+    $trail->parent('home');
+
+    if($news->relation)
+        $trail->push($news->relation->name, $news->relation->link);
+
+    $trail->push("Новости");
+
+
+
+});

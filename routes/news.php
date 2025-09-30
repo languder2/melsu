@@ -3,6 +3,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\News\NewsController;
 use App\Http\Controllers\News\EventsController;
 use App\Http\Controllers\News\CategoriesController;
+use App\Http\Controllers\News\RelationNewsController;
 /* News */
 Route::controller(NewsController::class)
     ->prefix('news')
@@ -67,4 +68,9 @@ Route::prefix('admin/categories-news')->group(function () {
     Route::get('delete/{category?}',[CategoriesController::class,'delete'])->name('news-categories:delete');
 });
 /**/
+
+Route::get('relation-news/{news?}', [RelationNewsController::class, 'show'])->name('news.relation.show');
+
+/**/
+
 
