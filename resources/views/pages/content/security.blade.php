@@ -87,6 +87,15 @@
                     Распоряжение № 11-Р/ПБ от 15.08.2025. О подготовки лиц на право работы с опасными отходами.
                 </a>
             </li>
+            <li>
+                <a
+                    href="{{ Storage::url('documents/custom/1759384756/Rasporyazhenie_Rektora_№_29___R/R_ot_29.09.2025._O_provedenii_shtabnoy_trenirovki_po_grazhdanskoy_.pdf') }}"
+                    target="_blank"
+                    class="underline hover:text-red-base"
+                >
+                    Распоряжение Ректора № 29 - Р/Р от 29.09.2025. О проведении штабной тренировки по гражданской обороне.
+                </a>
+            </li>
         </ul>
     </div>
 

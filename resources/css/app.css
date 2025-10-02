@@ -126,8 +126,6 @@ ol{
     li:last-child{
         padding-bottom: 0;
     }
-
-
 }
 
 .ul-correct ul{
@@ -137,4 +135,29 @@ ol{
 .ul-correct ul ul{
     padding-left: 24px;
     list-style: circle;
+}
+
+.no-tailwind-styles {
+    /* Сбрасывает ВСЕ унаследованные и примененные свойства
+       к значениям по умолчанию */
+    all: initial;
+    /* Явно указываем, что этот блок должен быть блочным элементом */
+    display: block;
+}
+
+/* Дополнительные корректировки для элементов внутри */
+.no-tailwind-styles * {
+    all: revert; /* Восстанавливает стили браузера для дочерних элементов */
+    box-sizing: border-box;
+}
+
+/* Конкретные элементы, которые часто "ломаются" и требуют восстановления: */
+.no-tailwind-styles ul, .no-tailwind-styles ol {
+    list-style: initial;    /* Восстанавливает маркеры/нумерацию */
+    padding-left: 40px;     /* Восстанавливает отступ списка */
+}
+
+.no-tailwind-styles a {
+    color: initial;
+    text-decoration: initial;
 }

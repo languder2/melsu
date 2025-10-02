@@ -20,7 +20,7 @@
         </section>
 
         <div class="container">
-            <div class="content-news mb-3 text-section">
+            <div class="content-news mb-3 text-section no-tailwind-styles">
                 {!! $news->content !!}
             </div>
 

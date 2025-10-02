@@ -20,5 +20,6 @@ export default defineConfig({
             publicDirectory: 'public_html',
             refresh: true,
         }),
+        '@tailwindcss/typography',
     ],
 });

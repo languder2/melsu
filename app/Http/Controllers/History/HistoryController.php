@@ -22,10 +22,12 @@ class HistoryController extends Controller
         $histories = History::orderBy('year', 'asc')->orderBy('order', 'asc')->get()->groupBy('year')
         ->map(function ($items) {
             $first = $items->first();
-            $first->description  = $items->pluck('description')->map(fn($item)=> "<div>$item</div>")->implode('');
-            $first->content      = $items->pluck('content')->map(fn($item)=> "<div>$item</div>")->implode('');
+//            $first->description  = $items->pluck('description')->map(fn($item)=> "<div>$item</div>")->implode('');
+//            $first->content      = $items->pluck('content')->map(fn($item)=> "<div>$item</div>")->implode('');
             return $first;
-        })->skip(10)->take(10);
+        })
+        ->take(100)
+        ;
 
         return view('public.history.history', compact('histories'));
     }
