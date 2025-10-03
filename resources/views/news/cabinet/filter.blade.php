@@ -1,6 +1,5 @@
 <form action="{{ route('news.cabinet.set-filter') }}" method="post"
     class="flex mb-3 gap-3 bg-white p-3"
-{{--    class="grid grid-cols-[1fr_repeat(1,auto)] mb-3 gap-3 bg-white p-3"--}}
 >
     @csrf
 
@@ -13,15 +12,15 @@
     />
 
 
-    <x-form.checkbox.block
-        id="onApproval"
-        name="setFilter[onApproval]"
-        :default="0"
-        :value="1"
-        label="Требует утверждения"
-        :checked=" $filters->get('onApproval')"
-        block="w-68"
-    />
+{{--    <x-form.checkbox.block--}}
+{{--        id="onApproval"--}}
+{{--        name="setFilter[onApproval]"--}}
+{{--        :default="0"--}}
+{{--        :value="1"--}}
+{{--        label="Требует утверждения"--}}
+{{--        :checked=" $filters->get('onApproval')"--}}
+{{--        block="w-68"--}}
+{{--    />--}}
 
     <div class="flex items-center">
         <button

@@ -27,6 +27,8 @@ Route::prefix('news')->middleware(AuthCabinet::class)->group(function () {
     Route::get('form/{news?}',  [CabinetNewsController::class, 'form'])->name('news.cabinet.form');
     Route::put('save/{news?}',  [CabinetNewsController::class, 'save'])->name('news.cabinet.save');
     Route::delete('delete/{news?}',  [CabinetNewsController::class, 'delete'])->name('news.cabinet.delete');
+    Route::get('on-approval', [CabinetNewsController::class, 'onApproval'])->name('cabinet.news.onApproval');
+
 });
 
 Route::prefix('divisions')->middleware(AuthCabinet::class)->group(function () {

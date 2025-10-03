@@ -7,7 +7,6 @@ use App\Http\Controllers\Gallery\PublicGallery;
 use App\Http\Controllers\Handbook\HandbookController;
 use App\Http\Controllers\History\HistoryController;
 use App\Http\Controllers\Menu\MenuController;
-use App\Http\Controllers\PagesController;
 use App\Http\Controllers\Schedule\ScheduleController;
 use App\Http\Controllers\Staffs\StaffController;
 use Illuminate\Support\Facades\Route;

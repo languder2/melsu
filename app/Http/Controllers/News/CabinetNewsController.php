@@ -5,8 +5,7 @@ namespace App\Http\Controllers\News;
 use App\Http\Controllers\Controller;
 use App\Models\Division\Division;
 use App\Models\News\RelationNews;
-use App\Models\Services\Log;
-use App\Models\Users\UserAccess;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Collection;
 use Illuminate\View\View;
@@ -17,9 +16,7 @@ class CabinetNewsController extends Controller
 {
 
     protected Collection $divisions;
-
     protected int $perPage = 30;
-
     public function __construct(){
         $this->divisions =
             auth()->user()->isEditor()
@@ -36,9 +33,6 @@ class CabinetNewsController extends Controller
         if($filters->has('division'))
             $list= $list->where(fn($item)  => $item->relation_id == $filters->get('division') && $item->relation_type == Division::class);
 
-        if($filters->has('onApproval'))
-            $list= $list->where(fn($item)  => !$item->has_approval);
-
         $list = $list->paginate($this->perPage);
 
 //        $list->groupBy('relation_id')->map(fn($item) => $item->first() )->random(3)->each(function ($item){
@@ -50,8 +44,32 @@ class CabinetNewsController extends Controller
             'divisions' => $this->divisions->pluck('name', 'id'),
         ]);
 
+        $request->session()->put('cabinet-news-route', Route::current()->uri());
+
         return view('news.cabinet.list', compact('list', 'filters', 'byFilter'));
     }
+
+    public function onApproval(Request $request): View
+    {
+
+        $list = $this->divisions->flatMap(fn($division) => $division->news)->sortByDesc('published_at');
+
+        $filters = $request->session()->get('cabinetNewsFilters', collect());
+
+        if($filters->has('division'))
+            $list= $list->where(fn($item)  => $item->relation_id == $filters->get('division') && $item->relation_type == Division::class);
+
+        $byFilter = collect([
+            'divisions' => $this->divisions->pluck('name', 'id'),
+        ]);
+
+        $list= $list->where(fn($item)  => !$item->has_approval)->paginate($this->perPage);
+
+        $request->session()->put('cabinet-news-route', Route::current()->uri());
+
+        return view('news.cabinet.list', compact('list', 'filters', 'byFilter'));
+    }
+
 
     public function setFilter(Request $request): RedirectResponse
     {
@@ -71,7 +89,6 @@ class CabinetNewsController extends Controller
 
     public function save(Request $request, RelationNews $news): RedirectResponse
     {
-
         $division = Division::find($request->input('division'));
 
         $form = $request->validate($news->validateRules(), $news->validateMessage());
@@ -89,7 +106,7 @@ class CabinetNewsController extends Controller
             $news->preview->saveImage($request->file('image'));
         }
 
-        return redirect()->to( $request->has('save-close') ? route('news.cabinet.list') : $news->form);
+        return redirect()->to( $request->has('save-close') ? $request->session()->get('cabinet-news-route') : $news->form);
     }
 
     public function delete(RelationNews $news): RedirectResponse

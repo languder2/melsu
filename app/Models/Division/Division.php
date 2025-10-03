@@ -37,9 +37,7 @@ use App\Models\Upbringing\Upbringing;
 class Division extends Model
 {
     use SoftDeletes, HasLinks;
-
     protected $table = 'divisions';
-
     protected $fillable = [
         'id',
         'acronym',
@@ -648,6 +646,40 @@ class Division extends Model
 
     }
 
+    protected static function tree($list): Collection
+    {
 
+        $result = collect();
+
+        dump($list->count());
+
+//        $list = $list->except(3);
+
+        $list->whereNull('parent_id')->each(fn($item, $key) => $result->put($key, $item));
+
+        dd($result);
+
+
+        return $list;
+    }
+
+    protected static function flattenNestedCollection(Collection $flatCollection, $parentId = null, $level = 0): Collection
+    {
+        $children = $flatCollection->where('parent_id', $parentId);
+
+        $result = collect();
+
+        foreach ($children as $item) {
+            $itemWithLevel = (object) array_merge($item instanceof Model ? $item->toArray() : (array) $item, ['level' => $level]);
+
+            $result->push($itemWithLevel);
+
+            $nestedChildren = self::flattenNestedCollection( $flatCollection, $item->id, $level + 1);
+
+            $result = $result->concat($nestedChildren);
+        }
+
+        return $result->keyBy('id');
+    }
 }
 

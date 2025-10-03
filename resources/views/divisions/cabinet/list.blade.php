@@ -17,7 +17,16 @@
             <div class="p-3 {{ $loop->iteration % 2 ? "bg-slate-200" : "" }}">
                 {!! $division->id !!}
             </div>
-            <div class="p-3 {{ $loop->iteration % 2 ? "bg-slate-200" : "" }}">
+            <div class="p-3 {{ $loop->iteration % 2 ? "bg-slate-200" : "" }} flex gap-3 items-center">
+
+                @for($i=1; $i <= $division->level; $i++)
+                    <span class="px-1"></span>
+                @endfor
+
+                @if($division->level)
+                    <x-lucide-corner-down-right class="w-4" />
+                @endif
+
                 {!! $division->name !!}
             </div>
             <div class="p-3 {{ $loop->iteration % 2 ? "bg-slate-200" : "" }}">
@@ -37,5 +46,4 @@
             </div>
         @endforelse
     </div>
-
 @endsection
