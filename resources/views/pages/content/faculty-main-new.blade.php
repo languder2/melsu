@@ -615,23 +615,30 @@ style="background-image: url({{asset('img/faculty/faculty-1.png')}})">
         let goalsBox = document.querySelector('#goals-faculty');
         let directionBox = document.querySelector('#areas-training');
         
-        goalsBtn.addEventListener('click', (e) => {
-            if(!goalsBtn.classList.contains('text-white','bg-[#C10F1A]')){
-                goalsBtn.classList.add('text-white','bg-[#C10F1A]');
-                directionBtn.classList.remove('text-white','bg-[#C10F1A]');
-                goalsBox.classList.remove('hidden');
-                directionBox.classList.add('hidden');
-            }
-        })
+        const activeClasses = ['text-white', 'bg-[#C10F1A]'];
 
-        directionBtn.addEventListener('click', (e) => {
-            if(!directionBtn.classList.contains('text-white','bg-[#C10F1A]')){
-                directionBtn.classList.add('text-white','bg-[#C10F1A]');
-                goalsBtn.classList.remove('text-white','bg-[#C10F1A]');
-                directionBox.classList.remove('hidden');
-                goalsBox.classList.add('hidden');
+        function setActiveTab(activeBtn, activeBox, inactiveBtn, inactiveBox) {
+            const isActive = activeBtn.classList.contains(activeClasses[0]) &&
+                            activeBtn.classList.contains(activeClasses[1]);
+
+            if (isActive) {
+                return;
             }
-        })
+
+            activeBtn.classList.add(...activeClasses);
+            activeBox.classList.remove('hidden');
+
+            inactiveBtn.classList.remove(...activeClasses);
+            inactiveBox.classList.add('hidden');
+        }
+
+        goalsBtn.addEventListener('click', () => {
+            setActiveTab(goalsBtn, goalsBox, directionBtn, directionBox);
+        });
+
+        directionBtn.addEventListener('click', () => {
+            setActiveTab(directionBtn, directionBox, goalsBtn, goalsBox);
+        });
 
         let nextHistoryBtn = document.querySelector('#nextHistoryBtn');
         let prevHistoryBtn = document.querySelector('#prevHistoryBtn');
