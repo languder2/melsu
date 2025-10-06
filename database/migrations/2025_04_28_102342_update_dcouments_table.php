@@ -17,7 +17,7 @@ return new class extends Migration
             $table->renameColumn('order','sort');
             $table->integer('sort')->after('is_show')->change();
 
-            $table->title('filename')->nullable()->change();
+            $table->string('filename')->nullable()->change();
             $table->text('filename')->nullable()->change();
             $table->string('filetype')->nullable()->change();
 
