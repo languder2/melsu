@@ -4,6 +4,8 @@ namespace App\Http\Controllers\News;
 
 use App\Http\Controllers\Controller;
 use App\Models\Division\Division;
+use App\Models\News\Category;
+use App\Models\News\News;
 use App\Models\News\RelationNews;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\RedirectResponse;
@@ -16,7 +18,7 @@ class CabinetNewsController extends Controller
 {
 
     protected Collection $divisions;
-    protected int $perPage = 30;
+    protected int $perPage = 40;
     public function __construct(){
         $this->divisions =
             auth()->user()->isEditor()
@@ -26,7 +28,9 @@ class CabinetNewsController extends Controller
     public function list(Request $request): View
     {
 
-        $list = $this->divisions->flatMap(fn($division) => $division->news)->sortByDesc('published_at');
+        $list = auth()->user()->isEditor()
+            ? News::all()->sortByDesc('published_at')
+            : $this->divisions->flatMap(fn($division) => $division->news)->sortByDesc('published_at');
 
         $filters = $request->session()->get('cabinetNewsFilters', collect());
 
@@ -52,7 +56,9 @@ class CabinetNewsController extends Controller
     public function onApproval(Request $request): View
     {
 
-        $list = $this->divisions->flatMap(fn($division) => $division->news)->sortByDesc('published_at');
+        $list = auth()->user()->isEditor()
+            ? News::all()->sortByDesc('published_at')
+            : $this->divisions->flatMap(fn($division) => $division->news)->sortByDesc('published_at');
 
         $filters = $request->session()->get('cabinetNewsFilters', collect());
 
@@ -80,36 +86,47 @@ class CabinetNewsController extends Controller
         return redirect()->route('news.cabinet.list');
     }
 
-    public function form(RelationNews $news): View
+    public function form(News $news): View
     {
-        $divisions = $this->divisions->pluck('name', 'id');
+        $divisions  = $this->divisions->pluck('name', 'id');
 
-        return view('news.cabinet.form', compact('news', 'divisions'));
+        $categories = Category::all()->pluck('name', 'id');
+
+        return view('news.cabinet.form', compact('news', 'divisions', 'categories'));
     }
 
-    public function save(Request $request, RelationNews $news): RedirectResponse
+    public function save(Request $request, News $news): RedirectResponse
     {
-        $division = Division::find($request->input('division'));
 
         $form = $request->validate($news->validateRules(), $news->validateMessage());
 
-        if(!$news->exists)
-            $news->author()->associate(auth()->user());
+        $news->fill($form)->save();
 
-        $news->fill($form)->relation()->associate($division)->save();
+        if(!$news->exists || !$news->author)
+            $news->author()->associate(auth()->user())->save();
 
-        $news->getShortRecord()->fill(['type'=>'short', 'content' => $request->get('short')])->save();
+        if($request->get('short'))
+            $news->getShortRecord()->fill(['content'=> $request->get('short')])->save();
 
-        $news->getContentRecord()->fill(['type'=>'content', 'content' => $request->get('content')])->save();
+        if($request->get('full'))
+            $news->getFullRecord()->fill(['content'=> $request->get('full')])->save();
 
-        if($request->file('image')){
-            $news->preview->saveImage($request->file('image'));
+        if($request->get('content'))
+            $news->getContentRecord()->fill(['content'=> $request->get('content')])->save();
+
+        if($request->input('division')){
+            $division = Division::find($request->input('division'));
+
+            $news->fill($form)->relation()->associate($division)->save();
         }
 
-        return redirect()->to( $request->has('save-close') ? $request->session()->get('cabinet-news-route') : $news->form);
+        if($request->file('image'))
+            $news->preview->saveImage($request->file('image'));
+
+        return redirect()->to( $request->has('save-close') ? $request->session()->get('cabinet-news-route') : $news->cabinet_form);
     }
 
-    public function delete(RelationNews $news): RedirectResponse
+    public function delete(News $news): RedirectResponse
     {
         $news->delete();
         return redirect()->route('news.cabinet.list');

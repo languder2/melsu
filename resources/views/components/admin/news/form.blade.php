@@ -11,7 +11,7 @@
 >
     @csrf
 
-    <h3 class="pb-2 font-semibold text  -xl uppercase text-center">
+    <h3 class="pb-2 font-semibold text-xl uppercase text-center">
         @if(isset($current->id))
             Внести изменения
         @else
@@ -123,10 +123,10 @@
     />
 
     <x-form.editor
-        name="news"
-        id="news"
+        name="content"
+        id="form-content"
         label="Новость"
-        value="{{old('_token') ? old('news') : ($current ? $current->getAttributes()['news'] : null)}}"
+        value="{{old('_token') ? old('content') : ($current ? $current->content : null)}}"
         borderTop
         class="min-h-screen"
     />

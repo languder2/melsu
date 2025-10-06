@@ -11,6 +11,7 @@ use App\Models\Education\Speciality;
 use App\Models\Gallery\Image;
 use App\Models\Global\Options;
 use App\Models\Menu\Menu;
+use App\Models\News\News;
 use App\Models\News\RelationNews;
 use App\Models\Page\Content as PageContent;
 use App\Models\Partner\Partner;
@@ -255,7 +256,7 @@ class Division extends Model
 
     public function news(): MorphMany
     {
-        return $this->morphMany(RelationNews::class, 'relation')
+        return $this->morphMany(News::class, 'relation')
             ->orderBy('published_at');
     }
     public function publicNews(): MorphMany

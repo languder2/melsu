@@ -23,6 +23,8 @@ use App\Models\Info\InfoCommon;
 use App\Models\Info\InfoFounder;
 use App\Models\Info\InfoStandarts;
 use App\Models\News\Events;
+use App\Models\News\News;
+use App\Models\News\RelationNews;
 use App\Models\Page\Content;
 use App\Models\Page\Page;
 use App\Models\Staff\Affiliation;
@@ -57,8 +59,49 @@ class TestController extends Controller
 
     public function admin()
     {
-        $list = Speciality::all();
-        return view('test.admin',compact('list'));
+//        $i = 0;
+//
+//        while(News::skip($i*10)->take(10)->get()->count()){
+//            $i++;
+//            News::skip($i*10)->take(10)->get()->each(function ($news) use ($i) {
+//
+//                if($news->getRawOriginal('short'))
+//                    $news->getShortRecord()->fill(['content'=> $news->getRawOriginal('short')])->save();
+//
+//                if($news->getRawOriginal('full'))
+//                    $news->getFullRecord()->fill(['content'=> $news->getRawOriginal('full')])->save();
+//
+//                if($news->getRawOriginal('news'))
+//                    $news->getContentRecord()->fill(['content'=> $news->getRawOriginal('news')])->save();
+//            });
+//        }
+
+//        RelationNews::all()->each(function ($rn) {
+//            $news = new News();
+//
+//            $news->fill($rn->toArray());
+//
+//            if($rn->author)
+//                $news->author()->associate($rn->author);
+//
+//            $news->save();
+//
+//            if($rn->getShortRecord()->exists)
+//                $rn->getShortRecord()->relation()->associate($news)->save();
+//
+//            if($rn->getContentRecord()->exists)
+//                $rn->getContentRecord()->relation()->associate($news)->save();
+//
+//            $rn->delete();
+//        });
+
+
+        $news = News::find(793);
+
+        dd($news->preview->src);
+
+        dd('completed');
+
     }
 
     public function index(): View

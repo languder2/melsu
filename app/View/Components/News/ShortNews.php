@@ -25,12 +25,11 @@ class ShortNews extends Component
     {
         $this->news = News
             ::where('published_at', '<=', Carbon::now())
+            ->whereNull('relation_id')
             ->select(
                 'id',
                 'category',
                 'title',
-                'short',
-                'image',
                 'published_at',
             )
             ->orderBy('is_favorite', 'desc')
@@ -38,14 +37,16 @@ class ShortNews extends Component
             ->orderBy('published_at', 'desc')
             ->paginate(6);
 
+//        if(auth()->check()){
+//            dd($this->news->items());
+//        }
+
         $this->reports = Events
             ::where('published_at', '<=', Carbon::now())
             ->where('type', 'report')
             ->select(
                 'id',
                 'title',
-                'short',
-                'image',
                 'published_at',
             )
             ->orderBy('published_at', 'desc')
@@ -58,8 +59,6 @@ class ShortNews extends Component
             ->select(
                 'id',
                 'title',
-                'short',
-                'image',
                 'published_at',
             )
             ->orderBy('published_at', 'desc')

@@ -51,35 +51,44 @@ class NewsController extends Controller
     {
         $form = $request->validate(News::$FormRules, News::$FormMessage);
 
-            if (empty($request->get('id')))
-            $record = new News();
+        if (empty($request->get('id')))
+            $news = new News();
         else
-            $record = News::find($request->get('id'));
+            $news = News::find($request->get('id'));
 
-        $record->fill($form);
+        if($request->get('short'))
+            $news->getShortRecord()->fill(['content'=> $request->get('short')])->save();
 
-        $record->save();
+        if($request->get('full'))
+            $news->getFullRecord()->fill(['content'=> $request->get('full')])->save();
 
-        if(!$record->preview)
-            $record->preview = $record->preview()->create([
-                'name'          => $record->title,
+        if($request->get('content'))
+            $news->getContentRecord()->fill(['content'=> $request->get('content')])->save();
+
+        $news->fill($form);
+
+        $news->save();
+
+        if(!$news->preview)
+            $news->preview = $news->preview()->create([
+                'name'          => $news->title,
                 'type'          => 'preview',
             ]);
 
         if($request->file('image')){
-            $record->preview->relation()->associate($record)->saveImage($request->file('image'));
+            $news->preview->relation()->associate($news)->saveImage($request->file('image'));
         }
         elseif($form['preview']){
-            $record->preview->name = $record->title;
-            $record->preview->getReferenceID($form['preview']);
+            $news->preview->name = $news->title;
+            $news->preview->getReferenceID($form['preview']);
         }
         else{
-            $record->preview->reference_id = null;
-            $record->preview->filename = null;
-            $record->preview->filetype = null;
+            $news->preview->reference_id = null;
+            $news->preview->filename = null;
+            $news->preview->filetype = null;
         }
 
-        $record->preview->save();
+        $news->preview->save();
 
         return redirect()->route('admin:news');
     }

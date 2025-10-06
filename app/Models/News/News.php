@@ -4,11 +4,14 @@ namespace App\Models\News;
 
 use App\Models\Gallery\Gallery;
 use App\Models\Gallery\Image;
+use App\Models\Services\Content;
+use App\Models\Users\User;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Collection;
 
@@ -22,37 +25,44 @@ class News extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'id',
         'category',
         'title',
-        'short',
-        'full',
-        'news',
-        'image',
-        'author',
+        'author_id',
         'published_at',
+        'has_approval',
         'is_favorite',
+        'is_show',
         'sort',
     ];
 
-    public static $FormRules = [
-        'category' => 'required',
-        'title' => 'required',
-        'short' => '',
-        'full' => '',
-        'news' => '',
-        'author' => '',
-        'is_favorite' => '',
-        'sort' => '',
-        'published_at' => '',
-        'image'     => 'nullable|image|mimes:jpeg,png,jpg,gif,svg',
-        'preview'   => 'nullable|string',
-    ];
+    public function validateRules(): array
+    {
+        return [
+            'category'      => '',
+            'title'         => 'required',
+            'is_favorite'   => '',
+            'sort'          => '',
+            'published_at'  => '',
+            'has_approval'  => '',
+            'is_show'       => '',
+            'image'         => 'nullable|image|mimes:jpeg,png,jpg,gif,svg',
+            'preview'       => 'nullable|string',
+        ];
+    }
+    public function validateMessage(): array
+    {
+        return  [
+            'category'      => 'Выберите категорию',
+            'title'         => 'Укажите заголовок',
+        ];
+    }
 
-    public static $FormMessage = [
-        'category' => 'Выберите категорию',
-        'title' => 'Укажите заголовок',
-    ];
+    public function relation():MorphTo
+    {
+        return $this->morphTo();
+    }
+
+
     public static $month = [
         'Янв',
         'Фев',
@@ -67,7 +77,19 @@ class News extends Model
         'Ноя',
         'Дек'
     ];
+    protected $dates = [
+        'published_at',
+        'deleted_at'
+    ];
 
+    protected $casts = [
+        'published_at' => 'datetime',
+    ];
+
+    public function author():BelongsTo
+    {
+        return $this->belongsTo(User::class, 'author_id');
+    }
 
     public static function getList(?int $cid = null): object
     {
@@ -124,18 +146,16 @@ class News extends Model
         return $image?asset("images/news/600x600_$image.jpg"):null;
     }
 
-    public function preview(): MorphOne
+    public function getPreview(): MorphOne
     {
-        $image = $this->MorphOne(Image::class, 'relation')->where('type', 'preview');
-
-        if(!$image->count())
-            $image->create([
-                'type'      => 'preview',
-                'name'      => 'preview',
-            ])->save();
-
-        return $image;
+        return $this->MorphOne(Image::class, 'relation')->where('type', 'preview');
     }
+
+    public function getPreviewAttribute(): Image
+    {
+        return $this->getPreview()->first() ?? (new Image(['type' => 'preview']))->relation()->associate($this);
+    }
+
 
     public function fill(array $attributes):?self
     {
@@ -155,13 +175,48 @@ class News extends Model
     {
         return News::
             where('published_at', '<=', Carbon::now())
+            ->where('has_approval', true)
             ->orderBy('is_favorite', 'desc')->orderBy('sort')
             ->orderBy('published_at', 'desc')
-            ->select('id', 'title', 'short', 'full', 'published_at', 'image', 'category');
+            ;
+
     }
 
-    public function getNewsAttribute($value)
+    public function getContent(?string $type):MorphOne
     {
+        return $this->MorphOne(Content::class, 'relation')->where('type', $type);
+    }
+    public function getContentRecord():Content
+    {
+        return $this->getContent('content')->first()
+            ?? (new Content(['type' => 'content']))->relation()->associate($this);
+    }
+    public function getContentAttribute():?string
+    {
+        return $this->getContentRecord()->content;
+    }
+    public function getShortRecord():Content
+    {
+        return $this->getContent('short')->first()
+            ?? (new Content(['type' => 'short']))->relation()->associate($this);
+    }
+    public function getShortAttribute(): ?string
+    {
+        return $this->getShortRecord()->content;
+    }
+    public function getFullRecord():Content
+    {
+        return $this->getContent('full')->first()
+            ?? (new Content(['type' => 'full']))->relation()->associate($this);
+    }
+    public function getFullAttribute(): ?string
+    {
+        return $this->getFullRecord()->content;
+    }
+    public function getNewsAttribute()
+    {
+        $value = $this->getContentRecord()->content;
+
         $pattern = '/image-gallery:([a-zA-Z0-9-_]+):end-gallery/';
 
         if (preg_match($pattern, $value, $matches)) {
@@ -179,5 +234,20 @@ class News extends Model
         else
             return $value;
     }
+
+    public function getCabinetFormAttribute(): string
+    {
+        return route('news.cabinet.form',$this);
+    }
+
+    public function getCabinetSaveAttribute(): string
+    {
+        return route('news.cabinet.save',$this);
+    }
+    public function getCabinetDeleteAttribute(): string
+    {
+        return route('news.cabinet.delete',$this);
+    }
+
 
 }

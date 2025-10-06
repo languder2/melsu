@@ -60,11 +60,11 @@ class RelationNews extends Model
     {
         return
             [
-                'title' => 'required',
-                'published_at' => '',
-                'is_show'   => '',
-                'has_approval'   => '',
-                'image'     => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:20480',
+                'title'             => 'required',
+                'published_at'      => '',
+                'is_show'           => '',
+                'has_approval'      => '',
+                'image'             => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:20480',
             ];
     }
     public function validateMessage(): array
@@ -93,10 +93,10 @@ class RelationNews extends Model
         return $this->getPreview()->first() ?? (new Image(['type' => 'preview']))->relation()->associate($this);
     }
 
-    public function getContent(?string $type):MorphOne
-    {
-        return $this->MorphOne(Content::class, 'relation')->where('type', $type);
-    }
+        public function getContent(?string $type):MorphOne
+        {
+            return $this->MorphOne(Content::class, 'relation')->where('type', $type);
+        }
 
     public function getContentRecord():Content
     {

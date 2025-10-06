@@ -5,7 +5,7 @@
 @section('content')
     <x-head.tinymce-config/>
 
-    <form action="{{ $news->save }}" method="POST" class="flex flex-col gap-3" enctype="multipart/form-data">
+    <form action="{{ $news->cabinet_save }}" method="POST" class="flex flex-col gap-3" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 
@@ -66,6 +66,14 @@
                             :list=" $divisions "
                         />
 
+                        <x-form.select2
+                            id="form_category"
+                            name="category"
+                            value="{{ $news->category }}"
+                            null="Выбрать категорию"
+                            :list=" $categories "
+                        />
+
                         <x-form.input
                             id="title"
                             name="title"
@@ -85,9 +93,14 @@
                                 block="flex-1"
                             />
 
-                            <x-form.radio.on-off
+                            <x-form.checkbox.block
+                                id="is_show"
                                 name="is_show"
-                                :value="old('_token') ? old('is_show') : ($news->exists ? $news->is_show : true)"
+                                :default="0"
+                                :value="1"
+                                label="Опубликовать"
+                                :checked=" old('is_show', $news->exists ? $news->is_show : true)"
+                                block="pe-2"
                             />
                         </div>
 

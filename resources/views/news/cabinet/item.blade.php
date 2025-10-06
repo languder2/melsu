@@ -12,7 +12,11 @@
             {{ $item->has_approval ? "bg-indigo-200/55" : "bg-red-700/55 text-white" }}
         "
         >
-            {!! $item->relation->name !!}
+            @if($item->relation)
+                {!! $item->relation->name !!}
+            @elseif($item->category)
+                {!! $item->tag->name !!}
+            @endif
         </div>
 
         <div class="flex-grow"></div>
@@ -24,7 +28,7 @@
         </div>
 
         <div class="flex gap-3">
-            <a  href="{{ $item->form }}"
+            <a  href="{{ $item->cabinet_form }}"
                 class="
                     p-1 px-2 hover:bg-white rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm border border-gray-100 flex items-center
                     {{ $item->has_approval ? "bg-indigo-200/55 text-blue-700" : "bg-red-700/55 text-white hover:text-blue-700" }}
@@ -103,7 +107,7 @@
                     <hr>
                     <div class="text-right px-4 py-2">
 
-                        <form method="POST" action="{{ $item->delete }}">
+                        <form method="POST" action="{{ $item->cabinet_delete }}">
                             @csrf
                             @method('DELETE')
                             <input type="submit" value="удалить"

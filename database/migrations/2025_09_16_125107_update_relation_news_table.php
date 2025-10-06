@@ -8,7 +8,6 @@ return new class extends Migration
 {
 
     protected string $table;
-
     public function __construct()
     {
         $model = new \App\Models\News\RelationNews();
@@ -21,7 +20,6 @@ return new class extends Migration
         if(!Schema::hasColumn($this->table, 'author_id')) {
             Schema::table($this->table, function (Blueprint $table) {
                 $table->unsignedBigInteger('author_id')->nullable()->after('id');
-
                 $table->foreign('author_id')->references('id')->on('users')
                     ->onDelete('set null')
                     ->onUpdate('cascade')
