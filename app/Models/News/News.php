@@ -176,7 +176,8 @@ class News extends Model
         return News::
             where('published_at', '<=', Carbon::now())
             ->where('has_approval', true)
-            ->orderBy('is_favorite', 'desc')->orderBy('sort')
+            ->orderBy('is_favorite', 'desc')
+            ->orderBy('sort')
             ->orderBy('published_at', 'desc')
             ;
 

@@ -135,8 +135,7 @@ class NewsController extends Controller
         $search = session('newsPublicSearch');
 
         if($search)
-            $list= $list->where('title', 'like', '%' . $search . '%')
-                    ->orWhere('news', 'like', '%' . $search . '%');
+            $list= $list->where('title', 'like', '%' . $search . '%');
 
         $list= $list->paginate(13);
 
@@ -161,7 +160,6 @@ class NewsController extends Controller
 
     public function publicSetFilter(Request $request): RedirectResponse
     {
-
         if($request->get('search'))
             session()->put('newsPublicSearch',$request->get('search'));
         else
