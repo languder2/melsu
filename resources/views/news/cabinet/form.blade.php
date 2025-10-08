@@ -156,5 +156,8 @@
                 </div>
             </div>
         </div>
+
+        <x-component
+
     </form>
 @endsection

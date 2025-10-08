@@ -5,6 +5,7 @@ namespace App\Models\Gallery;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Collection;
 
@@ -47,7 +48,6 @@ class Gallery extends Model
             'code.unique' => 'Код должен быть уникальным',
         ];
     }
-
     public function fill(array $attributes):?self
     {
         if(!empty($attributes)){
@@ -57,6 +57,10 @@ class Gallery extends Model
         }
 
         return parent::fill($attributes);
+    }
+    public function relation(): MorphTo
+    {
+        return $this->morphTo();
     }
 
     public function images(): MorphMany
@@ -124,4 +128,9 @@ class Gallery extends Model
         return route('gallery:admin:save',$this);
     }
     /* end links */
+
+    public static function getImagesFromContent(&$content, $object){
+
+    }
+
 }

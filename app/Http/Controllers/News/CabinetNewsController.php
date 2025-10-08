@@ -105,14 +105,15 @@ class CabinetNewsController extends Controller
         if(!$news->exists || !$news->author)
             $news->author()->associate(auth()->user())->save();
 
-        if($request->get('short'))
+
+        if($request->filled('content'))
+            $news->getContentRecord()->fill(['content'=> $request->get('content')])->save();
+
+        if($request->filled('short'))
             $news->getShortRecord()->fill(['content'=> $request->get('short')])->save();
 
-        if($request->get('full'))
+        if($request->filled('full'))
             $news->getFullRecord()->fill(['content'=> $request->get('full')])->save();
-
-        if($request->get('content'))
-            $news->getContentRecord()->fill(['content'=> $request->get('content')])->save();
 
         if($request->input('division')){
             $division = Division::find($request->input('division'));

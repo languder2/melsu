@@ -20,8 +20,8 @@ class News extends Model
     use SoftDeletes;
 
     protected $table = 'news';
-
     public static int $adminPerPage = 10;
+    public string $imagePath = 'images/news';
     protected $primaryKey = 'id';
 
     protected $fillable = [
@@ -34,7 +34,6 @@ class News extends Model
         'is_show',
         'sort',
     ];
-
     public function validateRules(): array
     {
         return [

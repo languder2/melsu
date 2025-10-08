@@ -322,5 +322,4 @@ class Image extends Model
     }
 
     /* End links */
-
 }

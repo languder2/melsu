@@ -33,8 +33,8 @@
 
     tinymce.init({
         selector: 'textarea.editor',
-        plugins: [ "uploadcare", "code", "image", "media", "link", "preview", "lists", "table", "autoresize" ],
-        toolbar: 'undo redo | styles  | bold italic | alignleft aligncenter alignright | indent outdent bullist numlist | table | link image media | code | preview',
+        plugins: [ "code", "image", "media", "link", "preview", "lists", "table", "autoresize", 'wordcount' ],
+        toolbar: 'undo redo | styles  | bold italic | alignleft aligncenter alignright | indent outdent bullist numlist | table | link image gallery media | code | preview',
         min_height: 553,
         max_height: 1053,
         ...commonConfig

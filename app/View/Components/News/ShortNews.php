@@ -25,6 +25,7 @@ class ShortNews extends Component
     {
         $this->news = News
             ::where('published_at', '<=', Carbon::now())
+            ->where('has_approval', true)
             ->whereNull('relation_id')
             ->select(
                 'id',
