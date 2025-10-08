@@ -11,7 +11,7 @@ style="background-image: url({{asset('img/faculty/faculty-2.png')}})">
 <!--Педагогический состав имеет такую же структуру-->
 <section class="overflow-hidden">
     <div class="container">
-        <div class="grid lg:grid-cols-[2fr_1fr] gap-5 px-2.5 2xl:px-0 mt-7">
+        <div class="grid lg:grid-cols-[2fr_1fr] xl:grid-cols-[75%_auto] gap-5 px-2.5 2xl:px-0 mt-7">
             <div class="order-2 lg:order-1 flex flex-col gap-7">
                 <!--Деканат-->
                 <div class="flex flex-col gap-7">
