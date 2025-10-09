@@ -16,105 +16,105 @@ style="background-image: url({{asset('img/faculty/faculty-7.png')}})">
                 <div class="flex flex-col gap-7">
                     <h2 class="font-bold text-xl md:text-3xl">Партнеры</h2>
                     <section class="container">
-    <div class="overflow-x-scroll">
-        <div class="flex flex-col sm:flex-row border-b relative mb-6">
-            <div class="point-partner p-2.5 sm:pb-5 sm:px-5 border-b border-transparent relative bottom-[-1px] cursor-pointer group active">
-                <h3 class="w-max transition duration-300 ease-linear group-hover:text-[#C10F1A]">Организации</h3>
-            </div>
-            <div class="point-partner p-2.5 sm:pb-5 sm:px-5 border-b border-transparent relative bottom-[-1px] cursor-pointer group">
-                <h3 class="w-max transition duration-300 ease-linear group-hover:text-[#C10F1A]">Общества</h3>
-            </div>
-            <div class="point-partner p-2.5 sm:pb-5 sm:px-5 border-b border-transparent relative bottom-[-1px] cursor-pointer group">
-                <h3 class="w-max transition duration-300 ease-linear group-hover:text-[#C10F1A]">Фонды</h3>
-            </div>
-            <div class="point-partner p-2.5 sm:pb-5 sm:px-5 border-b border-transparent relative bottom-[-1px] cursor-pointer group">
-                <h3 class="w-max transition duration-300 ease-linear group-hover:text-[#C10F1A]">Образовательные учреждения</h3>
-            </div>
-        </div>
-    </div>
-    <div class="box-partner mb-5">
-        <div class="card-partner">
-            <div class="grid xl:grid-cols-2 gap-5">
-                <div class="bg-white flex flex-col items-center sm:flex-row">
-                    <div class="h-full flex items-center justify-center w-full max-h-[120px] max-w-[120px] box-border p-2.5">
-                        <img class="max-w-[110px] max-h-[90px]" src="{{asset('img/logo-peterb.png')}}" alt="">
-                    </div>
-                    <div class="p-5">
-                        <h3 class="font-bold">Министерство АПК и продовольственной политики Запорожской области</h3>
-                    </div>
-                </div>
-                <div class="bg-white flex flex-col items-center sm:flex-row">
-                    <div class="h-full flex items-center justify-center w-full max-h-[110px] max-w-[110px] box-border p-2.5">
-                        <img class="max-w-[110px] max-h-[90px]" src="{{asset('img/logo-peterb.png')}}" alt="">
-                    </div>
-                    <div class="p-5">
-                        <h3 class="font-bold">Министерство АПК и продовольственной политики Запорожской области</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="card-partner hidden">
-            <div class="grid xl:grid-cols-2 gap-5">
-                <div class="bg-white flex flex-col items-center sm:flex-row">
-                    <div class="h-full flex items-center justify-center w-full max-h-[110px] max-w-[110px] box-border p-2.5">
-                        <img class="max-w-[110px] max-h-[90px]" src="{{asset('img/logo-peterb.png')}}" alt="">
-                    </div>
-                    <div class="p-5">
-                        <h3 class="font-bold">ФГБНУ «Аграрный научный центр «Донской»</h3>
-                    </div>
-                </div>
-                <div class="bg-white flex flex-col items-center sm:flex-row">
-                    <div class="h-full flex items-center justify-center w-full max-h-[110px] max-w-[110px] box-border p-2.5">
-                        <img class="max-w-[110px] max-h-[90px]" src="{{asset('img/logo-peterb.png')}}" alt="">
-                    </div>
-                    <div class="p-5">
-                        <h3 class="font-bold">ФГБНУ «Аграрный научный центр «Донской»</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="card-partner hidden">
-            <div class="grid xl:grid-cols-2 gap-5">
-                <div class="bg-white flex flex-col items-center sm:flex-row">
-                    <div class="h-full flex items-center justify-center w-full max-h-[110px] max-w-[110px] box-border p-2.5">
-                        <img class="max-w-[110px] max-h-[90px]" src="{{asset('img/logo-peterb.png')}}" alt="">
-                    </div>
-                    <div class="p-5">
-                        <h3 class="font-bold">ФГБУ ЦАС «Краснодарский»</h3>
-                    </div>
-                </div>
-                <div class="bg-white flex flex-col items-center sm:flex-row">
-                    <div class="h-full flex items-center justify-center w-full max-h-[110px] max-w-[110px] box-border p-2.5">
-                        <img class="max-w-[110px] max-h-[90px]" src="{{asset('img/logo-peterb.png')}}" alt="">
-                    </div>
-                    <div class="p-5">
-                        <h3 class="font-bold">ФГБУ ЦАС «Краснодарский»</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="card-partner hidden">
-            <div class="grid xl:grid-cols-2 gap-5">
-                <div class="bg-white flex flex-col items-center sm:flex-row">
-                    <div class="h-full flex items-center justify-center w-full max-h-[110px] max-w-[110px] box-border p-2.5">
-                        <img class="max-w-[110px] max-h-[90px]" src="{{asset('img/logo-peterb.png')}}" alt="">
-                    </div>
-                    <div class="p-5">
-                        <h3 class="font-bold">ФГБНУ Национальный центр зерна имени П.П. Лукьяненко</h3>
-                    </div>
-                </div>
-                <div class="bg-white flex flex-col items-center sm:flex-row">
-                    <div class="h-full flex items-center justify-center w-full max-h-[110px] max-w-[110px] box-border p-2.5">
-                        <img class="max-w-[110px] max-h-[90px]" src="{{asset('img/logo-peterb.png')}}" alt="">
-                    </div>
-                    <div class="p-5">
-                        <h3 class="font-bold">ФГБНУ Национальный центр зерна имени П.П. Лукьяненко</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+                        <div class="overflow-x-scroll">
+                            <div class="flex flex-col sm:flex-row border-b relative mb-6">
+                                <div class="point-partner p-2.5 sm:pb-5 sm:px-5 border-b border-transparent relative bottom-[-1px] cursor-pointer group active">
+                                    <h3 class="w-max transition duration-300 ease-linear group-hover:text-[#C10F1A]">Организации</h3>
+                                </div>
+                                <div class="point-partner p-2.5 sm:pb-5 sm:px-5 border-b border-transparent relative bottom-[-1px] cursor-pointer group">
+                                    <h3 class="w-max transition duration-300 ease-linear group-hover:text-[#C10F1A]">Общества</h3>
+                                </div>
+                                <div class="point-partner p-2.5 sm:pb-5 sm:px-5 border-b border-transparent relative bottom-[-1px] cursor-pointer group">
+                                    <h3 class="w-max transition duration-300 ease-linear group-hover:text-[#C10F1A]">Фонды</h3>
+                                </div>
+                                <div class="point-partner p-2.5 sm:pb-5 sm:px-5 border-b border-transparent relative bottom-[-1px] cursor-pointer group">
+                                    <h3 class="w-max transition duration-300 ease-linear group-hover:text-[#C10F1A]">Образовательные учреждения</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box-partner mb-5">
+                            <div class="card-partner">
+                                <div class="grid xl:grid-cols-2 gap-5">
+                                    <div class="bg-white flex flex-col items-center sm:flex-row">
+                                        <div class="h-full flex items-center justify-center w-full max-h-[120px] max-w-[120px] box-border p-2.5">
+                                            <img class="max-w-[110px] max-h-[90px]" src="{{asset('img/logo-peterb.png')}}" alt="">
+                                        </div>
+                                        <div class="p-5">
+                                            <h3 class="font-bold">Министерство АПК и продовольственной политики Запорожской области</h3>
+                                        </div>
+                                    </div>
+                                    <div class="bg-white flex flex-col items-center sm:flex-row">
+                                        <div class="h-full flex items-center justify-center w-full max-h-[110px] max-w-[110px] box-border p-2.5">
+                                            <img class="max-w-[110px] max-h-[90px]" src="{{asset('img/logo-peterb.png')}}" alt="">
+                                        </div>
+                                        <div class="p-5">
+                                            <h3 class="font-bold">Министерство АПК и продовольственной политики Запорожской области</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-partner hidden">
+                                <div class="grid xl:grid-cols-2 gap-5">
+                                    <div class="bg-white flex flex-col items-center sm:flex-row">
+                                        <div class="h-full flex items-center justify-center w-full max-h-[110px] max-w-[110px] box-border p-2.5">
+                                            <img class="max-w-[110px] max-h-[90px]" src="{{asset('img/logo-peterb.png')}}" alt="">
+                                        </div>
+                                        <div class="p-5">
+                                            <h3 class="font-bold">ФГБНУ «Аграрный научный центр «Донской»</h3>
+                                        </div>
+                                    </div>
+                                    <div class="bg-white flex flex-col items-center sm:flex-row">
+                                        <div class="h-full flex items-center justify-center w-full max-h-[110px] max-w-[110px] box-border p-2.5">
+                                            <img class="max-w-[110px] max-h-[90px]" src="{{asset('img/logo-peterb.png')}}" alt="">
+                                        </div>
+                                        <div class="p-5">
+                                            <h3 class="font-bold">ФГБНУ «Аграрный научный центр «Донской»</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-partner hidden">
+                                <div class="grid xl:grid-cols-2 gap-5">
+                                    <div class="bg-white flex flex-col items-center sm:flex-row">
+                                        <div class="h-full flex items-center justify-center w-full max-h-[110px] max-w-[110px] box-border p-2.5">
+                                            <img class="max-w-[110px] max-h-[90px]" src="{{asset('img/logo-peterb.png')}}" alt="">
+                                        </div>
+                                        <div class="p-5">
+                                            <h3 class="font-bold">ФГБУ ЦАС «Краснодарский»</h3>
+                                        </div>
+                                    </div>
+                                    <div class="bg-white flex flex-col items-center sm:flex-row">
+                                        <div class="h-full flex items-center justify-center w-full max-h-[110px] max-w-[110px] box-border p-2.5">
+                                            <img class="max-w-[110px] max-h-[90px]" src="{{asset('img/logo-peterb.png')}}" alt="">
+                                        </div>
+                                        <div class="p-5">
+                                            <h3 class="font-bold">ФГБУ ЦАС «Краснодарский»</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-partner hidden">
+                                <div class="grid xl:grid-cols-2 gap-5">
+                                    <div class="bg-white flex flex-col items-center sm:flex-row">
+                                        <div class="h-full flex items-center justify-center w-full max-h-[110px] max-w-[110px] box-border p-2.5">
+                                            <img class="max-w-[110px] max-h-[90px]" src="{{asset('img/logo-peterb.png')}}" alt="">
+                                        </div>
+                                        <div class="p-5">
+                                            <h3 class="font-bold">ФГБНУ Национальный центр зерна имени П.П. Лукьяненко</h3>
+                                        </div>
+                                    </div>
+                                    <div class="bg-white flex flex-col items-center sm:flex-row">
+                                        <div class="h-full flex items-center justify-center w-full max-h-[110px] max-w-[110px] box-border p-2.5">
+                                            <img class="max-w-[110px] max-h-[90px]" src="{{asset('img/logo-peterb.png')}}" alt="">
+                                        </div>
+                                        <div class="p-5">
+                                            <h3 class="font-bold">ФГБНУ Национальный центр зерна имени П.П. Лукьяненко</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
                 </div>
             </div>
             <div class="order-1 lg:order-2 flex flex-col gap-5">

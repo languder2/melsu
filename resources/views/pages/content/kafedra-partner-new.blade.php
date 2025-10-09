@@ -52,7 +52,6 @@ style="background-image: url({{asset('img/kafedra/kafedra-1.png')}})">
         </div>
         <div class="grid lg:grid-cols-[2fr_1fr] xl:grid-cols-[75%_auto] gap-5 px-2.5 2xl:px-0 mt-7">
             <div class="order-2 lg:order-1 flex flex-col gap-7">
-                <!--О кафедре-->
                 <div class="flex flex-col gap-7">
                     <div class="flex flex-col xl:flex-row gap-5">
                         <div class="flex flex-col sm:max-w-[240px]">
@@ -124,393 +123,109 @@ style="background-image: url({{asset('img/kafedra/kafedra-1.png')}})">
                             </div>
                         </div>
                     </div>
+                    <!--Лаборатории-->
+                    <h2 class="font-bold text-xl md:text-3xl">Партнеры</h2>
+                    <section class="container">
+                        <div class="overflow-x-scroll">
+                            <div class="flex flex-col sm:flex-row border-b relative mb-6">
+                                <div class="point-partner p-2.5 sm:pb-5 sm:px-5 border-b border-transparent relative bottom-[-1px] cursor-pointer group active">
+                                    <h3 class="w-max transition duration-300 ease-linear group-hover:text-[#C10F1A]">Организации</h3>
+                                </div>
+                                <div class="point-partner p-2.5 sm:pb-5 sm:px-5 border-b border-transparent relative bottom-[-1px] cursor-pointer group">
+                                    <h3 class="w-max transition duration-300 ease-linear group-hover:text-[#C10F1A]">Общества</h3>
+                                </div>
+                                <div class="point-partner p-2.5 sm:pb-5 sm:px-5 border-b border-transparent relative bottom-[-1px] cursor-pointer group">
+                                    <h3 class="w-max transition duration-300 ease-linear group-hover:text-[#C10F1A]">Фонды</h3>
+                                </div>
+                                <div class="point-partner p-2.5 sm:pb-5 sm:px-5 border-b border-transparent relative bottom-[-1px] cursor-pointer group">
+                                    <h3 class="w-max transition duration-300 ease-linear group-hover:text-[#C10F1A]">Образовательные учреждения</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box-partner mb-5">
+                            <div class="card-partner">
+                                <div class="grid xl:grid-cols-2 gap-5">
+                                    <div class="bg-white flex flex-col items-center sm:flex-row">
+                                        <div class="h-full flex items-center justify-center w-full max-h-[120px] max-w-[120px] box-border p-2.5">
+                                            <img class="max-w-[110px] max-h-[90px]" src="{{asset('img/logo-peterb.png')}}" alt="">
+                                        </div>
+                                        <div class="p-5">
+                                            <h3 class="font-bold">Министерство АПК и продовольственной политики Запорожской области</h3>
+                                        </div>
+                                    </div>
+                                    <div class="bg-white flex flex-col items-center sm:flex-row">
+                                        <div class="h-full flex items-center justify-center w-full max-h-[110px] max-w-[110px] box-border p-2.5">
+                                            <img class="max-w-[110px] max-h-[90px]" src="{{asset('img/logo-peterb.png')}}" alt="">
+                                        </div>
+                                        <div class="p-5">
+                                            <h3 class="font-bold">Министерство АПК и продовольственной политики Запорожской области</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-partner hidden">
+                                <div class="grid xl:grid-cols-2 gap-5">
+                                    <div class="bg-white flex flex-col items-center sm:flex-row">
+                                        <div class="h-full flex items-center justify-center w-full max-h-[110px] max-w-[110px] box-border p-2.5">
+                                            <img class="max-w-[110px] max-h-[90px]" src="{{asset('img/logo-peterb.png')}}" alt="">
+                                        </div>
+                                        <div class="p-5">
+                                            <h3 class="font-bold">ФГБНУ «Аграрный научный центр «Донской»</h3>
+                                        </div>
+                                    </div>
+                                    <div class="bg-white flex flex-col items-center sm:flex-row">
+                                        <div class="h-full flex items-center justify-center w-full max-h-[110px] max-w-[110px] box-border p-2.5">
+                                            <img class="max-w-[110px] max-h-[90px]" src="{{asset('img/logo-peterb.png')}}" alt="">
+                                        </div>
+                                        <div class="p-5">
+                                            <h3 class="font-bold">ФГБНУ «Аграрный научный центр «Донской»</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-partner hidden">
+                                <div class="grid xl:grid-cols-2 gap-5">
+                                    <div class="bg-white flex flex-col items-center sm:flex-row">
+                                        <div class="h-full flex items-center justify-center w-full max-h-[110px] max-w-[110px] box-border p-2.5">
+                                            <img class="max-w-[110px] max-h-[90px]" src="{{asset('img/logo-peterb.png')}}" alt="">
+                                        </div>
+                                        <div class="p-5">
+                                            <h3 class="font-bold">ФГБУ ЦАС «Краснодарский»</h3>
+                                        </div>
+                                    </div>
+                                    <div class="bg-white flex flex-col items-center sm:flex-row">
+                                        <div class="h-full flex items-center justify-center w-full max-h-[110px] max-w-[110px] box-border p-2.5">
+                                            <img class="max-w-[110px] max-h-[90px]" src="{{asset('img/logo-peterb.png')}}" alt="">
+                                        </div>
+                                        <div class="p-5">
+                                            <h3 class="font-bold">ФГБУ ЦАС «Краснодарский»</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-partner hidden">
+                                <div class="grid xl:grid-cols-2 gap-5">
+                                    <div class="bg-white flex flex-col items-center sm:flex-row">
+                                        <div class="h-full flex items-center justify-center w-full max-h-[110px] max-w-[110px] box-border p-2.5">
+                                            <img class="max-w-[110px] max-h-[90px]" src="{{asset('img/logo-peterb.png')}}" alt="">
+                                        </div>
+                                        <div class="p-5">
+                                            <h3 class="font-bold">ФГБНУ Национальный центр зерна имени П.П. Лукьяненко</h3>
+                                        </div>
+                                    </div>
+                                    <div class="bg-white flex flex-col items-center sm:flex-row">
+                                        <div class="h-full flex items-center justify-center w-full max-h-[110px] max-w-[110px] box-border p-2.5">
+                                            <img class="max-w-[110px] max-h-[90px]" src="{{asset('img/logo-peterb.png')}}" alt="">
+                                        </div>
+                                        <div class="p-5">
+                                            <h3 class="font-bold">ФГБНУ Национальный центр зерна имени П.П. Лукьяненко</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
                     
-                    <h2 class="font-bold text-xl md:text-3xl">О кафедре</h2>
-
-                    <div class="flex flex-col gap-5">
-                        <div class="grid xl:grid-cols-2 gap-5">
-                            <div class="flex flex-col gap-5">
-                                <p>
-                                    Кафедра осуществляет реализацию основных профессиональных образовательных программ высшего образования
-                                </p>
-                                <a href="#" class="flex items-center justify-between bg-[#C10F1A] hover:bg-[#820000] text-white font-semibold py-2.5 px-5 transition duration-300 ease-linear">
-                                    Перейти к списку образовательных программ
-                                    <span>
-                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M7 7H17V17" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                            <path d="M7 17L17 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                        </svg>
-                                    </span>
-                                </a>
-                                <p>
-                                    Основная миссия кафедры: Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived
-                                </p>
-                            </div>
-                            <div class="flex flex-col gap-5">
-                                <div>
-                                    <h2 class="font-bold text-xl">Образовательный процесс ориентирован на:</h2>
-                                </div>
-                                <div class="bg-[#EEEEEE] px-5 py-4">
-                                    <p>
-                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centurie
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="grid xl:grid-cols-2 gap-5">
-                            <div class="flex flex-col gap-5">
-                                <div>
-                                    <h2 class="font-bold text-xl">Основные задачи деятельности кафедры:</h2>
-                                </div>
-                                <div class="flex flex-col gap-4">
-                                    <div class="flex items-center gap-6">
-                                        <div class="relative">
-                                            <span class="bg-red-700 absolute text-white text-xs rounded-full h-4 w-4 flex items-center justify-center animate-ping"></span>
-                                        <span class="bg-red-700 relative text-white text-xs rounded-full h-4 w-4 flex items-center justify-center"></span>
-                                        </div>
-                                        <p>
-                                            осуществление профессиональной подготовки студентов, обеспечение преподавания дисциплин и курсов в соответствии с учебными планами по направлениям и профилям подготовки, закрепленными за кафедрой;
-                                        </p>
-                                    </div>
-                                    <div class="flex items-center gap-6">
-                                        <div class="relative">
-                                            <span class="bg-red-700 absolute text-white text-xs rounded-full h-4 w-4 flex items-center justify-center animate-ping"></span>
-                                        <span class="bg-red-700 relative text-white text-xs rounded-full h-4 w-4 flex items-center justify-center"></span>
-                                        </div>
-                                        <p>
-                                            совершенствование организации учебного процесса и развитие учебно-методического потенциала кафедры;
-                                        </p>
-                                    </div>
-                                    <div class="flex items-center gap-6">
-                                        <div class="relative">
-                                            <span class="bg-red-700 absolute text-white text-xs rounded-full h-4 w-4 flex items-center justify-center animate-ping"></span>
-                                        <span class="bg-red-700 relative text-white text-xs rounded-full h-4 w-4 flex items-center justify-center"></span>
-                                        </div>
-                                        <p>
-                                            развитие кадрового потенциала кафедры, совершенствование качества обучения на основе повышения квалификации профессорско-преподавательского состава;
-                                        </p>
-                                    </div>
-                                    <div class="flex items-center gap-6">
-                                        <div class="relative">
-                                            <span class="bg-red-700 absolute text-white text-xs rounded-full h-4 w-4 flex items-center justify-center animate-ping"></span>
-                                        <span class="bg-red-700 relative text-white text-xs rounded-full h-4 w-4 flex items-center justify-center"></span>
-                                        </div>
-                                        <p>
-                                            повышение эффективности научно-исследовательской работы кафедры;
-                                        </p>
-                                    </div>
-                                    <div class="flex items-center gap-6">
-                                        <div class="relative">
-                                            <span class="bg-red-700 absolute text-white text-xs rounded-full h-4 w-4 flex items-center justify-center animate-ping"></span>
-                                        <span class="bg-red-700 relative text-white text-xs rounded-full h-4 w-4 flex items-center justify-center"></span>
-                                        </div>
-                                        <p>
-                                            обеспечение социокультурной среды для формирования универсальных, общепрофессиональных, профессиональных и личных компетенций обучающихся;
-                                        </p>
-                                    </div>
-                                    <div class="flex items-center gap-6">
-                                        <div class="relative">
-                                            <span class="bg-red-700 absolute text-white text-xs rounded-full h-4 w-4 flex items-center justify-center animate-ping"></span>
-                                        <span class="bg-red-700 relative text-white text-xs rounded-full h-4 w-4 flex items-center justify-center"></span>
-                                        </div>
-                                        <p>
-                                            развитие международного образовательного и научного сотрудничества;
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="flex flex-col gap-5">
-                                <div>
-                                    <h2 class="font-bold text-xl">Базовые дисциплины кафедры</h2>
-                                </div>
-                                <ul class="list-inside list-disc flex flex-col gap-2">
-                                    <li>
-                                        Агрохимия и агрометеорология;
-                                    </li>
-                                    <li>
-                                        Агрофармакология;
-                                    </li>
-                                    <li>
-                                        Биохимия растений;
-                                    </li>
-                                    <li>
-                                        Ботаника;
-                                    </li>
-                                    <li>
-                                        Введение в профессиональную деятельность;
-                                    </li>
-                                    <li>
-                                        Генетика и селекция сельскохозяйственных культур;
-                                    </li>
-                                    <li>
-                                        География почв;
-                                    </li>
-                                    <li>
-                                        Земледелие;
-                                    </li>
-                                    <li>
-                                        Интегрированная защита растений;
-                                    </li>
-                                    <li>
-                                        Картография и агрохимическое исследование почв;
-                                    </li>
-                                    <li>
-                                        Кормопроизводство;
-                                    </li>
-                                    <li>
-                                        Менеджмент агроценозами;
-                                    </li>
-                                    <li>
-                                        Овощеводство защищенного грунта;
-                                    </li>
-                                    <li>
-                                        Основы научных исследований;
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <h2 class="font-bold text-xl md:text-3xl">История кафедры</h2>
-                    <div class="flex flex-col gap-5">
-                        <p>
-                            Кафедра растениеводства имени профессора В.В. Калитки была создана на базе кафедр «Растениеводство и садоводство» и «Химия и биотехнология», которые были организованы со дня основания Мелитопольского института механизации сельского хозяйства в 1932 году. В 1999 году в результате объединения этих кафедр была создана кафедра «Общее земледелие», которая по количеству преподавателей и лаборантов была самой большой в вузе (около 30 человек). В 2012 году снова произошло разделение большой кафедры на 2 выпуска: «Растениеводство» и «Химии и биотехнологий». А в 2018 году кафедру переименовали в кафедру растениеводства имени профессора В.В. Калитки.
-                        </p>
-                        <p>
-                            Основателем и первым заведующим кафедрой «Земледелие с основами почвоведения» (начальное название кафедры) до 1941 года был доктор сельскохозяйственных наук, профессор Я.Я. Вербин. За акклиматизацию африканского проса профессор Вербин Я.Я. был награжден орденом Трудового Красного Знамени (один из первых орденоносцев г. Мелитополя). В годы Великой Отечественной войны (с сентября 1941 по октябрь 1944 г.) кафедра продолжала свою работу при Туркменском сельскохозяйственном университете (г. Ашхабад), куда был эвакуирован институт и действовал как факультет механизации сельского хозяйства. В ноябре 1944 года кафедра «Земледелие с основами почвоведения» возобновила свою работу в г. Мелитополе.
-                        </p>
-                        <p>
-                            С 1944 по 1953 годы кафедрой заведовал кандидат биологических наук, доцент Пархоменко Марк Лукич. В период эвакуации института в г. Ашхабад, он участвовал в экспедиции на Каракумах. За большие успехи в учебно-воспитательной и научно-исследовательской работе Марк Лукич Пархоменко был награжден правительством в 1946 году медалью «За доблестный труд в ВОВ» и в 1953 году орденом «Знак Почета».
-                        </p>
-                        <p>
-                            С 1953 по 1968 годы кафедру возглавлял кандидат сельскохозяйственных наук доцент Бойко Иван Никифорович. В этот период большое место в учебном процессе отводилось учебно-ознакомительной практике студентов и работе Студенческого научного центра. Кафедра к тому времени имела коллекционный питомник площадью 10 га, в котором выращивали лучшие сорта кукурузы, озимой пшеницы, бобовых и технических культур. В последующие годы заведующими кафедрой являлись Тихонов И.Ф. (1968-1969 г.г.), Беленько Павел Яковлевич (1969-1975 г.г.), Шабаршина М.Л. (1975-1976 г.г.), Никитинец Зинаида Григорьевна (1980-1985 г.г.), Янченко Федор Нестерович (1986-1991 г.г.), Ткачук Александр Ефимович. В 1995 году кафедра сменила свое название на «Растениеводство и садоводство». Ее возглавил к.б.н., профессор Каленич Федор Семенович.
-                        </p>
-                        <p>
-                            С 1999 года заведующей кафедрой стала доктор сельскохозяйственных наук, профессор Калитка Валентина Васильевна. Научная школа профессора Калитки занималась выяснением роли системы антиоксидантной защиты организма различных птиц в их адаптации к условиям содержания и разработке технологий применения антиоксидантных препаратов для повышения эффективности выращивания и длительного хранения продукции растениеводства.
-                        </p>
-                        <p>
-                            С февраля 2010 года заведующей кафедрой стала кандидат сельскохозяйственных наук, доцент Ерёменко Оксана Анатольевна, а с марта 2015, после поступления Оксаны Анатольевны в докторантуру, обязанности заведующего кафедрой исполняет Тодорова Людмила Владимировна.
-                        </p>
-                        <p>
-                            Коллектив кафедры приложил много усилий для оборудования учебных лабораторий современными техническими средствами обучения, приборами, образцами растений, продуктов растениеводства. На кафедре хранится уникальная коллекция почвенных монолитов, которая до сих пор является наглядным пособием для студентов при изучении почвоведения и земледелия. Все учебные аудитории в полном объеме обеспечены необходимой мебелью, учебным оборудованием и наглядными материалами.
-                        </p>
-                    </div>
-                    <h2 class="font-bold text-xl md:text-3xl">Образовательная среда</h2>
-                    <div class="grid lg:grid-cols-2 gap-5">
-                        <div class="flex flex-col gap-5">
-                            <div>
-                                <h3 class="font-bold text-xl">Лаборатории</h3>
-                            </div>
-                            <div>
-                                <p>
-                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="flex flex-col gap-5">
-                            <div>
-                                <h3 class="font-bold text-xl">Кружки</h3>
-                            </div>
-                            <div>
-                                <p>
-                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="grid md:grid-cols-2 2xl:grid-cols-[60%_auto] gap-5">
-                        <div class="flex flex-col gap-7">
-                            <div class="flex items-center gap-7">
-                                <h2 class="text-normal 2xl:text-xl font-bold">Новости</h2>
-                                <a href="#" class="text-[#CCCCCC] group flex items-center gap-2 hover:text-[#C10F1A] transition duration-300 ease-linear">
-                                    Все новости
-                                    <span>
-                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M3.33398 3.33398H16.6673M16.6673 3.33398V16.6673M16.6673 3.33398L3.33399 16.6673" stroke="#CCCCCC" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-width="2"/>
-                                        </svg>
-                                    </span>
-                                </a>
-                            </div>
-                            <div class="grid md:grid-cols-2 gap-5">
-                                <div class="sm:col-span-2">
-                                    <a href="#" class="min-h-[300px] max-h-[400px] block relative ">
-                                        <img src="{{asset('img/3korp.jpg')}}" class="w-full min-h-[300px] max-h-[400px] object-cover box-border" alt="">
-                                        <div class="flex items-center absolute top-5 left-5 w-ful">
-                                            <div class="liquid-glass w-fit p-2.5">
-                                                <div class="liquid-glass--bend"></div>
-                                                <div class="liquid-glass--face"></div>
-                                                <div class="liquid-glass--edge"></div>
-                                                <div class="liquid-glass__menus"></div>
-                                                <div class="liquid-glass__content">
-                                                    <h3 class="text-white font-semibold">30 апреля</h3>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="absolute bottom-5 left-5 right-5">
-                                            <p class="font-semibold text-white [text-shadow:3px_1px_2px_rgba(0,0,0,1)]">
-                                                Приоритет – кадровое обеспечение региона: Мелитопольский госуниверситет посетил заместитель Председателя Правительства РФ Дмитрий Чернышенко
-                                            </p>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div>
-                                    <a href="#" class="max-h-[300px] block relative overflow-hidden">
-                                        <img src="{{asset('img/3korp.jpg')}}" class="w-full h-[300px] filter brightness-75 object-cover box-border" alt="">
-                                        <div class="flex items-center absolute top-5 left-5 w-ful">
-                                            <div class="liquid-glass w-fit p-2.5">
-                                                <div class="liquid-glass--bend"></div>
-                                                <div class="liquid-glass--face"></div>
-                                                <div class="liquid-glass--edge"></div>
-                                                <div class="liquid-glass__menus"></div>
-                                                <div class="liquid-glass__content">
-                                                    <h3 class="text-white font-semibold">30 апреля</h3>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="absolute bottom-5 left-5 right-5">
-                                            <p class="font-semibold text-white [text-shadow:3px_1px_2px_rgba(0,0,0,1)] line-clamp-3">
-                                                Приоритет – кадровое обеспечение региона: Мелитопольский госуниверситет посетил заместитель Председателя Правительства РФ Дмитрий Чернышенко
-                                            </p>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div>
-                                    <a href="#" class="max-h-[300px] block relative overflow-hidden">
-                                        <img src="{{asset('img/3korp.jpg')}}" class="w-full h-[300px] filter brightness-75 object-cover box-border" alt="">
-                                        <div class="flex items-center absolute top-5 left-5 w-ful">
-                                            <div class="liquid-glass w-fit p-2.5">
-                                                <div class="liquid-glass--bend"></div>
-                                                <div class="liquid-glass--face"></div>
-                                                <div class="liquid-glass--edge"></div>
-                                                <div class="liquid-glass__menus"></div>
-                                                <div class="liquid-glass__content">
-                                                    <h3 class="text-white font-semibold">30 апреля</h3>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="absolute bottom-5 left-5 right-5">
-                                            <p class="font-semibold text-white [text-shadow:3px_1px_2px_rgba(0,0,0,1)] line-clamp-3">
-                                                Приоритет – кадровое обеспечение региона: Мелитопольский госуниверситет посетил заместитель Председателя Правительства РФ Дмитрий Чернышенко
-                                            </p>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex flex-col gap-7">
-                            <div class="flex items-center gap-7">
-                                <h2 class="text-normal 2xl:text-xl font-bold">Мероприятия</h2>
-                                <a href="#" class="text-[#CCCCCC] group flex text-sm 2xl:text-normal items-center gap-2 hover:text-[#C10F1A] transition duration-300 ease-linear">
-                                    Все мероприятия
-                                    <span>
-                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M3.33398 3.33398H16.6673M16.6673 3.33398V16.6673M16.6673 3.33398L3.33399 16.6673" stroke="#CCCCCC" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-width="2"/>
-                                        </svg>
-                                    </span>
-                                </a>
-                            </div>
-                            <div class="flex flex-col gap-2.5">
-                                <a href="#" class="flex w-full flex-col border-b border-[#EEEEEE] py-5">
-                                    <h3 class="text-[#C10F1A] text-xl font-bold">24 сентября</h3>
-                                    <p class="line-clamp-2 2xl:line-clamp-3 font-semibold">
-                                        В рамках профилактической работы в МелГУ состоялось мероприятие для студентов 1-го и 2-го курсов, посвященное теме «Противодействие вербовке».
-                                    </p>
-                                    <div class="flex items-center gap-2.5 text-[#BBBBBB]">
-                                        <span>15:00-16:00</span>
-                                        <span>Местоположение события</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="flex flex-col border-b border-[#EEEEEE] py-5">
-                                    <h3 class="text-[#C10F1A] text-xl font-bold">24 сентября</h3>
-                                    <p class="line-clamp-2 2xl:line-clamp-3 font-semibold">
-                                        В рамках профилактической работы в МелГУ состоялось мероприятие для студентов 1-го и 2-го курсов, посвященное теме «Противодействие вербовке».
-                                    </p>
-                                    <div class="flex items-center gap-2.5 text-[#BBBBBB]">
-                                        <span>15:00-16:00</span>
-                                        <span>Местоположение события</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="flex flex-col border-b border-[#EEEEEE] py-5">
-                                    <h3 class="text-[#C10F1A] text-xl font-bold">24 сентября</h3>
-                                    <p class="line-clamp-2 2xl:line-clamp-3 font-semibold">
-                                        В рамках профилактической работы в МелГУ состоялось мероприятие для студентов 1-го и 2-го курсов, посвященное теме «Противодействие вербовке».
-                                    </p>
-                                    <div class="flex items-center gap-2.5 text-[#BBBBBB]">
-                                        <span>15:00-16:00</span>
-                                        <span>Местоположение события</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="flex flex-col border-b border-[#EEEEEE] py-5">
-                                    <h3 class="text-[#C10F1A] text-xl font-bold">24 сентября</h3>
-                                    <p class="line-clamp-2 2xl:line-clamp-3 font-semibold">
-                                        В рамках профилактической работы в МелГУ состоялось мероприятие для студентов 1-го и 2-го курсов, посвященное теме «Противодействие вербовке».
-                                    </p>
-                                    <div class="flex items-center gap-2.5 text-[#BBBBBB]">
-                                        <span>15:00-16:00</span>
-                                        <span>Местоположение события</span>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <h2 class="font-bold text-xl md:text-3xl">Положения</h2>
-                    <div class="grid xl:grid-cols-2 gap-5">
-                        <a href="#" class="flex items-center hover:bg-[#C10F1A] group transition duration-300 ease-linear bg-white">
-                            <div class="px-5 py-5 xl:py-8 w-fit flex items-center justify-cente bg-[radial-gradient(65%_75%_at_50%_50%,rgba(247,141,30,0.25)_0%,rgba(247,141,30,0)_100%)]">
-                                <svg width="58" height="61" viewBox="0 0 58 61" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M33.2188 0H16.2443C12.4378 0 9.35449 3.06585 9.35449 6.85091V44.5207C9.35449 48.3057 12.4378 51.3716 16.2443 51.3716H42.0718C45.8783 51.3716 48.9616 48.3057 48.9616 44.5207V15.6539C48.9616 13.8374 48.2342 12.0949 46.9447 10.8086L38.0917 2.00555C36.798 0.719204 35.0456 0 33.2188 0Z" fill="url(#paint0_linear_2719_10293)"/>
-                                    <foreignObject x="-15.7501" y="5.48376" width="89.8146" height="71.7761"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(8.24px);clip-path:url(#bgblur_0_2719_10293_clip_path);height:100%;width:100%"></div></foreignObject><path data-figma-bg-blur-radius="16.4766" d="M4.87695 22.8754H28.5352C30.3247 22.8756 31.7694 24.3205 31.7695 26.0903V30.31H52.2012C54.6757 30.3101 56.6728 32.3039 56.6729 34.7553V55.4223C56.6729 57.8737 54.6757 59.8675 52.2012 59.8676H6.11426C3.63965 59.8676 1.6416 57.8738 1.6416 55.4223V26.0903C1.64171 24.3204 3.08728 22.8755 4.87695 22.8754Z" fill="url(#paint1_linear_2719_10293)" stroke="url(#paint2_linear_2719_10293)" stroke-width="1.83074"/>
-                                    <defs>
-                                    <clipPath id="bgblur_0_2719_10293_clip_path" transform="translate(15.7501 -5.48376)"><path d="M4.87695 22.8754H28.5352C30.3247 22.8756 31.7694 24.3205 31.7695 26.0903V30.31H52.2012C54.6757 30.3101 56.6728 32.3039 56.6729 34.7553V55.4223C56.6729 57.8737 54.6757 59.8675 52.2012 59.8676H6.11426C3.63965 59.8676 1.6416 57.8738 1.6416 55.4223V26.0903C1.64171 24.3204 3.08728 22.8755 4.87695 22.8754Z"/>
-                                    </clipPath><linearGradient id="paint0_linear_2719_10293" x1="10.6812" y1="3.8015" x2="43.1296" y2="50.4879" gradientUnits="userSpaceOnUse">
-                                    <stop stop-color="#FFDC7C"/>
-                                    <stop offset="1" stop-color="#F78D1E"/>
-                                    </linearGradient>
-                                    <linearGradient id="paint1_linear_2719_10293" x1="3.93673" y1="58.5914" x2="36.012" y2="11.6125" gradientUnits="userSpaceOnUse">
-                                    <stop stop-color="white" stop-opacity="0.2"/>
-                                    <stop offset="1" stop-color="white" stop-opacity="0.49"/>
-                                    </linearGradient>
-                                    <linearGradient id="paint2_linear_2719_10293" x1="4.74036" y1="25.0137" x2="34.2468" y2="71.2222" gradientUnits="userSpaceOnUse">
-                                    <stop stop-color="white"/>
-                                    <stop offset="1" stop-color="white" stop-opacity="0"/>
-                                    </linearGradient>
-                                    </defs>
-                                </svg>
-                            </div>
-                            <div class="border-l border-[#505050] flex flex-col justify-center px-5 py-4">
-                                <p class="text-sm xl:text-base group-hover:text-white transition duration-300 ease-linear">
-                                    Регламент планирования, организации и осуществления деятельности Ученого совета федерального государственного бюджетного образовательного учреждения высшего образования
-                                </p>
-                            </div>
-                        </a>
-                        <a href="#" class="flex items-center hover:bg-[#C10F1A] group transition duration-300 ease-linear bg-white">
-                            <div class="px-5 py-5 xl:py-8 w-fit flex items-center justify-cente bg-[radial-gradient(65%_75%_at_50%_50%,rgba(247,141,30,0.25)_0%,rgba(247,141,30,0)_100%)]">
-                                <svg width="58" height="61" viewBox="0 0 58 61" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M33.2188 0H16.2443C12.4378 0 9.35449 3.06585 9.35449 6.85091V44.5207C9.35449 48.3057 12.4378 51.3716 16.2443 51.3716H42.0718C45.8783 51.3716 48.9616 48.3057 48.9616 44.5207V15.6539C48.9616 13.8374 48.2342 12.0949 46.9447 10.8086L38.0917 2.00555C36.798 0.719204 35.0456 0 33.2188 0Z" fill="url(#paint0_linear_2719_10293)"/>
-                                    <foreignObject x="-15.7501" y="5.48376" width="89.8146" height="71.7761"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(8.24px);clip-path:url(#bgblur_0_2719_10293_clip_path);height:100%;width:100%"></div></foreignObject><path data-figma-bg-blur-radius="16.4766" d="M4.87695 22.8754H28.5352C30.3247 22.8756 31.7694 24.3205 31.7695 26.0903V30.31H52.2012C54.6757 30.3101 56.6728 32.3039 56.6729 34.7553V55.4223C56.6729 57.8737 54.6757 59.8675 52.2012 59.8676H6.11426C3.63965 59.8676 1.6416 57.8738 1.6416 55.4223V26.0903C1.64171 24.3204 3.08728 22.8755 4.87695 22.8754Z" fill="url(#paint1_linear_2719_10293)" stroke="url(#paint2_linear_2719_10293)" stroke-width="1.83074"/>
-                                    <defs>
-                                    <clipPath id="bgblur_0_2719_10293_clip_path" transform="translate(15.7501 -5.48376)"><path d="M4.87695 22.8754H28.5352C30.3247 22.8756 31.7694 24.3205 31.7695 26.0903V30.31H52.2012C54.6757 30.3101 56.6728 32.3039 56.6729 34.7553V55.4223C56.6729 57.8737 54.6757 59.8675 52.2012 59.8676H6.11426C3.63965 59.8676 1.6416 57.8738 1.6416 55.4223V26.0903C1.64171 24.3204 3.08728 22.8755 4.87695 22.8754Z"/>
-                                    </clipPath><linearGradient id="paint0_linear_2719_10293" x1="10.6812" y1="3.8015" x2="43.1296" y2="50.4879" gradientUnits="userSpaceOnUse">
-                                    <stop stop-color="#FFDC7C"/>
-                                    <stop offset="1" stop-color="#F78D1E"/>
-                                    </linearGradient>
-                                    <linearGradient id="paint1_linear_2719_10293" x1="3.93673" y1="58.5914" x2="36.012" y2="11.6125" gradientUnits="userSpaceOnUse">
-                                    <stop stop-color="white" stop-opacity="0.2"/>
-                                    <stop offset="1" stop-color="white" stop-opacity="0.49"/>
-                                    </linearGradient>
-                                    <linearGradient id="paint2_linear_2719_10293" x1="4.74036" y1="25.0137" x2="34.2468" y2="71.2222" gradientUnits="userSpaceOnUse">
-                                    <stop stop-color="white"/>
-                                    <stop offset="1" stop-color="white" stop-opacity="0"/>
-                                    </linearGradient>
-                                    </defs>
-                                </svg>
-                            </div>
-                            <div class="border-l border-[#505050] flex flex-col justify-center px-5 py-4">
-                                <p class="text-sm xl:text-base group-hover:text-white transition duration-300 ease-linear">
-                                    Регламент планирования, организации и осуществления деятельности Ученого совета федерального государственного бюджетного образовательного учреждения высшего образования
-                                </p>
-                            </div>
-                        </a>
-                    </div>
                     <h2 class="font-bold text-xl md:text-3xl">График работы</h2>
                     <div class="flex flex-col sm:flex-row sm:items-center gap-5">
                         <div class="flex items-center gap-2">
@@ -596,7 +311,6 @@ style="background-image: url({{asset('img/kafedra/kafedra-1.png')}})">
                     </div>
                 </div>
             </div>
-            <!--Боковое меню-->
             <div class="order-1 lg:order-2 flex flex-col gap-5">
                 <h2 class="font-bold text-xl">Навигация по кафедре</h2>
                 <div class="flex flex-col">
@@ -739,3 +453,25 @@ style="background-image: url({{asset('img/kafedra/kafedra-1.png')}})">
 </svg>
 
 <script src="{{asset('js/remove-breadcrumbs.js')}}"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded',()=>{
+        const partnerBtns = document.querySelectorAll('.point-partner');
+        const partnerCards = document.querySelectorAll('.card-partner');
+        
+        partnerBtns.forEach((btn, index) => {
+            btn.addEventListener('click', () =>{
+                partnerBtns.forEach(btn => {
+                    btn.classList.remove('active');
+                })
+                partnerCards.forEach((card) => {
+                    card.classList.add('hidden');
+                })
+
+                btn.classList.add('active');
+
+                partnerCards[index].classList.remove('hidden');
+            });
+        });
+    })
+</script>

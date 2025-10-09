@@ -1,10 +1,10 @@
-<section class="px-2.5 h-[500px] lg:p-0 relative bg-no-repeat bg-center lg:bg-top bg-cover flex"
-style="background-image: url({{asset('img/faculty/faculty-8.png')}})">
+<section class="px-2.5 h-[500px] lg:p-0 relative bg-no-repeat bg-center lg:bg-bottom bg-cover flex"
+style="background-image: url({{asset('img/kafedra/kafedra-1.png')}})">
         <div class="bg-[rgba(40,13,13,0.6)] min-h-full min-w-full pointer-events-none absolute top-0 left-0">
         </div>
         <div class="container flex flex-row pt-25 lg:pt-0 justify-start items-end relative z-5 pb-5 lg:pb-10">
             <div class="2x:max-w-1/3">
-                <h2 class="text-white font-bold text-2xl md:text-4xl 2xl:text-6xl">Агротехнологический факультет</h2>
+                <h2 class="text-white font-bold text-2xl md:text-4xl 2xl:text-6xl">Кафедра государственно-правовых дисциплин</h2>
             </div>
         </div>
 </section>
@@ -12,9 +12,7 @@ style="background-image: url({{asset('img/faculty/faculty-8.png')}})">
     <div class="container">
         <div class="grid lg:grid-cols-[2fr_1fr] xl:grid-cols-[75%_auto] gap-5 px-2.5 2xl:px-0 mt-7">
             <div class="order-2 lg:order-1 flex flex-col gap-7">
-                <!--Деканат-->
                 <div class="flex flex-col gap-7">
-                    <h2 class="font-bold text-xl md:text-3xl">Направления подготовки</h2>
                     <div class="flex flex-col xl:flex-row gap-5">
                         <div class="flex flex-col sm:max-w-[240px]">
                             <div class="bg-[#CCCCCC] h-full">
@@ -221,7 +219,7 @@ style="background-image: url({{asset('img/faculty/faculty-8.png')}})">
                                         </li>
                                     </ul>
                                 </div>
-                                <div class="filters-select-box flex flex-col xl:grid xl:grid-cols-2 gap-[12px] lg:gap-3 md:min-h-[270px]">
+                                <div class="filters-select-box flex flex-col xl:grid xl:grid-cols-2 gap-[12px] lg:gap-3 ">
                                     <div class="select-wrapper relative max-h-[50px] z-10">
                                         <input
                                             type="text"
@@ -257,7 +255,7 @@ style="background-image: url({{asset('img/faculty/faculty-8.png')}})">
                                         </ul>
                                     </div>
 
-                                    <div class="select-wrapper relative max-h-[50px]">
+                                    <div class="select-wrapper relative max-h-[50px] z-5">
                                         <input
                                             type="text"
                                             name="type"
@@ -379,11 +377,94 @@ style="background-image: url({{asset('img/faculty/faculty-8.png')}})">
                                 </a>
                             </div>
                         </div>
+                        <h2 class="font-bold text-xl md:text-3xl">График работы</h2>
+                    <div class="flex flex-col sm:flex-row sm:items-center gap-5">
+                        <div class="flex items-center gap-2">
+                            <span>
+                                <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <foreignObject x="-8.26397" y="-5.26397" width="52.5279" height="37.5279"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(5.13px);clip-path:url(#bgblur_0_5075_26333_clip_path);height:100%;width:100%"></div></foreignObject><path data-figma-bg-blur-radius="10.264" d="M2 11.8938C2 9.84068 2 8.81413 2.30794 7.99758C2.77239 6.76599 3.72147 5.79236 4.92201 5.3159C5.71797 5 6.71865 5 8.72 5H27.28C29.2814 5 30.282 5 31.078 5.3159C32.2785 5.79236 33.2276 6.76599 33.6921 7.99758C34 8.81413 34 9.84068 34 11.8938V22H2V11.8938Z" fill="url(#paint0_linear_5075_26333)"/>
+                                    <foreignObject x="-4.26397" y="-9.26397" width="27.5279" height="28.5279"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(5.13px);clip-path:url(#bgblur_1_5075_26333_clip_path);height:100%;width:100%"></div></foreignObject><rect data-figma-bg-blur-radius="10.264" x="6.23601" y="1.23601" width="6.52797" height="7.52797" rx="3.26399" fill="#FFB7B5" fill-opacity="0.6" stroke="url(#paint1_linear_5075_26333)" stroke-width="0.472029"/>
+                                    <foreignObject x="11.736" y="-9.26397" width="28.5279" height="28.5279"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(5.13px);clip-path:url(#bgblur_2_5075_26333_clip_path);height:100%;width:100%"></div></foreignObject><rect data-figma-bg-blur-radius="10.264" x="22.236" y="1.23601" width="7.52797" height="7.52797" rx="3.76399" fill="#FFB7B5" fill-opacity="0.6" stroke="url(#paint2_linear_5075_26333)" stroke-width="0.472029"/>
+                                    <foreignObject x="-8.26397" y="1.73603" width="52.5279" height="42.5279"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(5.13px);clip-path:url(#bgblur_3_5075_26333_clip_path);height:100%;width:100%"></div></foreignObject><path data-figma-bg-blur-radius="10.264" d="M15.8838 13H20.1162C23.5515 13 25.0613 13.01 26.2695 13.3535C29.3563 14.2312 31.7688 16.6437 32.6465 19.7305C32.99 20.9387 33 22.4485 33 25.8838C33 27.9201 32.9905 28.7306 32.8096 29.3672C32.3359 31.0333 31.0333 32.3359 29.3672 32.8096C28.7306 32.9905 27.9201 33 25.8838 33H10.1162C8.07986 33 7.26937 32.9905 6.63281 32.8096C4.9667 32.3359 3.66412 31.0333 3.19043 29.3672C3.00949 28.7306 3 27.9201 3 25.8838C3 22.4485 3.01 20.9387 3.35352 19.7305C4.23118 16.6437 6.64366 14.2312 9.73047 13.3535C10.6368 13.0959 11.7127 13.0256 13.6436 13.0068L15.8838 13Z" fill="#FFB7B5" fill-opacity="0.6" stroke="url(#paint3_linear_5075_26333)" stroke-width="2"/>
+                                    <foreignObject x="0.736032" y="7.73603" width="34.5279" height="23.5279"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(5.13px);clip-path:url(#bgblur_4_5075_26333_clip_path);height:100%;width:100%"></div></foreignObject><rect data-figma-bg-blur-radius="10.264" x="24.8112" y="18.1888" width="2.62238" height="13.6224" rx="1.31119" transform="rotate(90 24.8112 18.1888)" fill="white" fill-opacity="0.9" stroke="url(#paint4_linear_5075_26333)" stroke-width="0.377623"/>
+                                    <foreignObject x="0.736032" y="14.736" width="34.5279" height="23.5279"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(5.13px);clip-path:url(#bgblur_5_5075_26333_clip_path);height:100%;width:100%"></div></foreignObject><rect data-figma-bg-blur-radius="10.264" x="24.8112" y="25.1888" width="2.62238" height="13.6224" rx="1.31119" transform="rotate(90 24.8112 25.1888)" fill="url(#paint5_linear_5075_26333)" fill-opacity="0.9" stroke="url(#paint6_linear_5075_26333)" stroke-width="0.377623"/>
+                                    <defs>
+                                    <clipPath id="bgblur_0_5075_26333_clip_path" transform="translate(8.26397 5.26397)"><path d="M2 11.8938C2 9.84068 2 8.81413 2.30794 7.99758C2.77239 6.76599 3.72147 5.79236 4.92201 5.3159C5.71797 5 6.71865 5 8.72 5H27.28C29.2814 5 30.282 5 31.078 5.3159C32.2785 5.79236 33.2276 6.76599 33.6921 7.99758C34 8.81413 34 9.84068 34 11.8938V22H2V11.8938Z"/>
+                                    </clipPath><clipPath id="bgblur_1_5075_26333_clip_path" transform="translate(4.26397 9.26397)"><rect x="6.23601" y="1.23601" width="6.52797" height="7.52797" rx="3.26399"/>
+                                    </clipPath><clipPath id="bgblur_2_5075_26333_clip_path" transform="translate(-11.736 9.26397)"><rect x="22.236" y="1.23601" width="7.52797" height="7.52797" rx="3.76399"/>
+                                    </clipPath><clipPath id="bgblur_3_5075_26333_clip_path" transform="translate(8.26397 -1.73603)"><path d="M15.8838 13H20.1162C23.5515 13 25.0613 13.01 26.2695 13.3535C29.3563 14.2312 31.7688 16.6437 32.6465 19.7305C32.99 20.9387 33 22.4485 33 25.8838C33 27.9201 32.9905 28.7306 32.8096 29.3672C32.3359 31.0333 31.0333 32.3359 29.3672 32.8096C28.7306 32.9905 27.9201 33 25.8838 33H10.1162C8.07986 33 7.26937 32.9905 6.63281 32.8096C4.9667 32.3359 3.66412 31.0333 3.19043 29.3672C3.00949 28.7306 3 27.9201 3 25.8838C3 22.4485 3.01 20.9387 3.35352 19.7305C4.23118 16.6437 6.64366 14.2312 9.73047 13.3535C10.6368 13.0959 11.7127 13.0256 13.6436 13.0068L15.8838 13Z"/>
+                                    </clipPath><clipPath id="bgblur_4_5075_26333_clip_path" transform="translate(-0.736032 -7.73603)"><rect x="24.8112" y="18.1888" width="2.62238" height="13.6224" rx="1.31119" transform="rotate(90 24.8112 18.1888)"/>
+                                    </clipPath><clipPath id="bgblur_5_5075_26333_clip_path" transform="translate(-0.736032 -14.736)"><rect x="24.8112" y="25.1888" width="2.62238" height="13.6224" rx="1.31119" transform="rotate(90 24.8112 25.1888)"/>
+                                    </clipPath><linearGradient id="paint0_linear_5075_26333" x1="32.5" y1="5" x2="2.81519" y2="13.8466" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#FF6161"/>
+                                    <stop offset="1" stop-color="#F52828"/>
+                                    </linearGradient>
+                                    <linearGradient id="paint1_linear_5075_26333" x1="5.65" y1="1.57143" x2="11.7033" y2="9.66081" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="white"/>
+                                    <stop offset="0.765625" stop-color="white" stop-opacity="0"/>
+                                    </linearGradient>
+                                    <linearGradient id="paint2_linear_5075_26333" x1="21.6" y1="1.57143" x2="27.3832" y2="10.4039" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="white"/>
+                                    <stop offset="0.765625" stop-color="white" stop-opacity="0"/>
+                                    </linearGradient>
+                                    <linearGradient id="paint3_linear_5075_26333" x1="0.4" y1="13.5714" x2="13.3892" y2="42.4267" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="white"/>
+                                    <stop offset="0.765625" stop-color="white" stop-opacity="0"/>
+                                    </linearGradient>
+                                    <linearGradient id="paint4_linear_5075_26333" x1="26.5" y1="18" x2="26.5" y2="32" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="white" stop-opacity="0"/>
+                                    <stop offset="1" stop-color="white"/>
+                                    </linearGradient>
+                                    <linearGradient id="paint5_linear_5075_26333" x1="28.9751" y1="24.8499" x2="27.2821" y2="36.1694" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="white" stop-opacity="0"/>
+                                    <stop offset="0.979167" stop-color="white"/>
+                                    </linearGradient>
+                                    <linearGradient id="paint6_linear_5075_26333" x1="26.5" y1="25" x2="26.5" y2="39" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="white" stop-opacity="0"/>
+                                    <stop offset="1" stop-color="white"/>
+                                    </linearGradient>
+                                    </defs>
+                                </svg>
+                            </span>
+                            <span class="sm:text-lg">
+                                Понедельник - Пятница
+                            </span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span>
+                                <svg width="36" height="32" viewBox="0 0 36 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M28.4382 15.3491C32.6142 15.3491 35.9995 11.9638 35.9995 7.78784C35.9995 3.61186 32.6142 0.226562 28.4382 0.226562C24.2623 0.226562 20.877 3.61186 20.877 7.78784C20.877 11.9638 24.2623 15.3491 28.4382 15.3491Z" fill="url(#paint0_linear_5075_26351)"/>
+                                    <path d="M8.03003 15.3491C12.206 15.3491 15.5913 11.9638 15.5913 7.78784C15.5913 3.61186 12.206 0.226562 8.03003 0.226562C3.85405 0.226562 0.46875 3.61186 0.46875 7.78784C0.46875 11.9638 3.85405 15.3491 8.03003 15.3491Z" fill="url(#paint1_linear_5075_26351)"/>
+                                    <foreignObject x="-13.4062" y="-15.293" width="63.2715" height="65.2949"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(9px);clip-path:url(#bgblur_0_5075_26351_clip_path);height:100%;width:100%"></div></foreignObject><path data-figma-bg-blur-radius="18" d="M18.2295 3.70703C25.2087 3.70703 30.8652 9.36357 30.8652 16.3428C30.8652 19.7703 29.4997 22.8771 27.2832 25.1543L26.7969 25.6543L27.0977 26.2832L28.4707 29.1562V29.1572C28.7782 29.8024 28.5054 30.5696 27.8662 30.875C27.2213 31.1818 26.4548 30.9092 26.1494 30.2705L26.1484 30.2695L25.1377 28.1562L24.7021 27.2441L23.7949 27.6895C22.1147 28.5158 20.228 28.9814 18.2295 28.9814C16.2311 28.9814 14.3452 28.5158 12.665 27.6895L11.7578 27.2441L11.3213 28.1562L10.3105 30.2695C10.0014 30.9114 9.23254 31.1807 8.59277 30.875C7.95163 30.5655 7.68195 29.7976 7.9873 29.1582L9.36133 26.2832L9.66211 25.6543L9.17578 25.1543C6.95926 22.8771 5.59375 19.7703 5.59375 16.3428C5.59382 9.36362 11.2503 3.7071 18.2295 3.70703Z" fill="#FFB7B5" fill-opacity="0.6" stroke="url(#paint2_linear_5075_26351)" stroke-width="2"/>
+                                    <path d="M19.3437 8.06933C19.3437 7.44532 18.8379 6.93945 18.2139 6.93945C17.5898 6.93945 17.084 7.44532 17.084 8.06933V16.5643C17.084 17.1883 17.5898 17.6941 18.2139 17.6941C18.8379 17.6941 19.3437 17.1883 19.3437 16.5643V8.06933Z" fill="white"/>
+                                    <path d="M23.4658 17.6973C24.0898 17.6973 24.5957 17.1914 24.5957 16.5674C24.5957 15.9434 24.0898 15.4375 23.4658 15.4375H18.2178C17.5938 15.4375 17.0879 15.9434 17.0879 16.5674C17.0879 17.1914 17.5938 17.6973 18.2178 17.6973H23.4658Z" fill="white"/>
+                                    <defs>
+                                    <clipPath id="bgblur_0_5075_26351_clip_path" transform="translate(13.4062 15.293)"><path d="M18.2295 3.70703C25.2087 3.70703 30.8652 9.36357 30.8652 16.3428C30.8652 19.7703 29.4997 22.8771 27.2832 25.1543L26.7969 25.6543L27.0977 26.2832L28.4707 29.1562V29.1572C28.7782 29.8024 28.5054 30.5696 27.8662 30.875C27.2213 31.1818 26.4548 30.9092 26.1494 30.2705L26.1484 30.2695L25.1377 28.1562L24.7021 27.2441L23.7949 27.6895C22.1147 28.5158 20.228 28.9814 18.2295 28.9814C16.2311 28.9814 14.3452 28.5158 12.665 27.6895L11.7578 27.2441L11.3213 28.1562L10.3105 30.2695C10.0014 30.9114 9.23254 31.1807 8.59277 30.875C7.95163 30.5655 7.68195 29.7976 7.9873 29.1582L9.36133 26.2832L9.66211 25.6543L9.17578 25.1543C6.95926 22.8771 5.59375 19.7703 5.59375 16.3428C5.59382 9.36362 11.2503 3.7071 18.2295 3.70703Z"/>
+                                    </clipPath><linearGradient id="paint0_linear_5075_26351" x1="33.999" y1="3.50098" x2="30.637" y2="12.9702" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#FF6161"/>
+                                    <stop offset="1" stop-color="#F52828"/>
+                                    </linearGradient>
+                                    <linearGradient id="paint1_linear_5075_26351" x1="12.499" y1="2.00098" x2="7.95517" y2="14.4866" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#FF6161"/>
+                                    <stop offset="1" stop-color="#F52828"/>
+                                    </linearGradient>
+                                    <linearGradient id="paint2_linear_5075_26351" x1="31.998" y1="12.5015" x2="16.6993" y2="31.3681" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#FF6161"/>
+                                    <stop offset="1" stop-color="#F52828"/>
+                                    </linearGradient>
+                                    </defs>
+                                </svg>
+                            </span>
+                            <span class="sm:text-lg">
+                                08:00 - 16:30
+                            </span>
+                        </div>
+                    </div>
                     </div>
                 </div>
             </div>
             <div class="order-1 lg:order-2 flex flex-col gap-5">
-                <h2 class="font-bold text-xl">Навигация по факультету</h2>
+                <h2 class="font-bold text-xl">Навигация по кафедре</h2>
                 <div class="flex flex-col">
                     <a href="#" class="flex items-center gap-2.5 group hover:bg-[#EEEEEE] py-3 px-2.5 transition duration-300 ease-linear">
                         <span>
@@ -394,23 +475,7 @@ style="background-image: url({{asset('img/faculty/faculty-8.png')}})">
                             </svg>
                         </span>
                         <span class="flex group-hover:text-[#C10F1A] transition duration-300 ease-linear">
-                            О факультете
-                        </span>
-                    </a>
-                    <a href="#" class="flex items-center gap-2.5 group hover:bg-[#EEEEEE] py-3 px-2.5 transition duration-300 ease-linear">
-                        <span>
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M11.6673 17.4997V14.9997C11.6673 14.5576 11.4917 14.1337 11.1792 13.8212C10.8666 13.5086 10.4427 13.333 10.0007 13.333C9.55862 13.333 9.1347 13.5086 8.82214 13.8212C8.50958 14.1337 8.33398 14.5576 8.33398 14.9997V17.4997" stroke="black" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M15 10H15.0083" stroke="black" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M15 13.333H15.0083" stroke="black" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M18.3327 5.83307C18.3327 5.61206 18.2449 5.4001 18.0886 5.24382C17.9323 5.08754 17.7204 4.99974 17.4993 4.99974H15.8327C15.4921 4.99969 15.1597 4.89528 14.8802 4.70057L10.9518 1.96641C10.6724 1.77163 10.3401 1.66714 9.99948 1.66699C9.65889 1.66684 9.32643 1.77105 9.04685 1.96557L5.11852 4.69974C4.83914 4.89474 4.50672 4.99944 4.16602 4.99974H2.49935C2.27834 4.99974 2.06637 5.08754 1.91009 5.24382C1.75381 5.4001 1.66602 5.61206 1.66602 5.83307V15.8331C1.66602 16.2751 1.84161 16.699 2.15417 17.0116C2.46673 17.3241 2.89065 17.4997 3.33268 17.4997H16.666C17.108 17.4997 17.532 17.3241 17.8445 17.0116C18.1571 16.699 18.3327 16.2751 18.3327 15.8331V5.83307Z" stroke="black" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M5 10H5.00833" stroke="black" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M5 13.333H5.00833" stroke="black" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M10.0007 10.0003C10.9211 10.0003 11.6673 9.25413 11.6673 8.33366C11.6673 7.41318 10.9211 6.66699 10.0007 6.66699C9.08018 6.66699 8.33398 7.41318 8.33398 8.33366C8.33398 9.25413 9.08018 10.0003 10.0007 10.0003Z" stroke="black" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </span>
-                        <span class="flex group-hover:text-[#C10F1A] transition duration-300 ease-linear">
-                            Деканат
+                            О кафедре
                         </span>
                     </a>
                     <a href="#" class="flex items-center gap-2.5 group hover:bg-[#EEEEEE] py-3 px-2.5 transition duration-300 ease-linear">
@@ -429,35 +494,6 @@ style="background-image: url({{asset('img/faculty/faculty-8.png')}})">
                     <a href="#" class="flex items-center gap-2.5 group hover:bg-[#EEEEEE] py-3 px-2.5 transition duration-300 ease-linear">
                         <span>
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M5 15H11.6667" stroke="black" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M2.5 18.333H17.5" stroke="black" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M11.6673 18.3337C13.2144 18.3337 14.6981 17.7191 15.7921 16.6251C16.8861 15.5312 17.5007 14.0474 17.5007 12.5003C17.5007 10.9532 16.8861 9.4695 15.7921 8.37554C14.6981 7.28157 13.2144 6.66699 11.6673 6.66699H10.834" stroke="black" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M7.5 11.667H9.16667" stroke="black" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M7.50065 10C7.05862 10 6.6347 9.8244 6.32214 9.51184C6.00958 9.19928 5.83398 8.77536 5.83398 8.33333V5H10.834V8.33333C10.834 8.77536 10.6584 9.19928 10.3458 9.51184C10.0333 9.8244 9.60934 10 9.16732 10H7.50065Z" stroke="black" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M9.99935 5.00033V2.50033C9.99935 2.27931 9.91155 2.06735 9.75527 1.91107C9.59899 1.75479 9.38703 1.66699 9.16602 1.66699H7.49935C7.27834 1.66699 7.06637 1.75479 6.91009 1.91107C6.75381 2.06735 6.66602 2.27931 6.66602 2.50033V5.00033" stroke="black" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </span>
-                        <span class="flex group-hover:text-[#C10F1A] transition duration-300 ease-linear">
-                            Наука
-                        </span>
-                    </a>
-                    <a href="#" class="flex items-center gap-2.5 group hover:bg-[#EEEEEE] py-3 px-2.5 transition duration-300 ease-linear">
-                        <span>
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M9.16602 14.1663L10.8327 15.833C10.9968 15.9972 11.1917 16.1274 11.4062 16.2162C11.6207 16.3051 11.8505 16.3508 12.0827 16.3508C12.3148 16.3508 12.5447 16.3051 12.7592 16.2162C12.9737 16.1274 13.1685 15.9972 13.3327 15.833C13.4968 15.6689 13.627 15.474 13.7159 15.2595C13.8047 15.045 13.8504 14.8152 13.8504 14.583C13.8504 14.3509 13.8047 14.121 13.7159 13.9065C13.627 13.692 13.4968 13.4972 13.3327 13.333" stroke="black" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M11.6669 11.6671L13.7502 13.7504C14.0817 14.0819 14.5313 14.2682 15.0002 14.2682C15.469 14.2682 15.9187 14.0819 16.2502 13.7504C16.5817 13.4189 16.768 12.9693 16.768 12.5004C16.768 12.0316 16.5817 11.5819 16.2502 11.2504L13.0169 8.01709C12.5481 7.54892 11.9127 7.28595 11.2502 7.28595C10.5877 7.28595 9.95227 7.54892 9.48352 8.01709L8.75019 8.75042C8.41867 9.08194 7.96903 9.26819 7.50019 9.26819C7.03135 9.26819 6.58171 9.08194 6.25019 8.75042C5.91867 8.4189 5.73242 7.96926 5.73242 7.50042C5.73242 7.03158 5.91867 6.58194 6.25019 6.25042L8.59186 3.90875C9.35206 3.15054 10.3434 2.66755 11.4091 2.53623C12.4747 2.40491 13.5537 2.63278 14.4752 3.18375L14.8669 3.41709C15.2217 3.63124 15.6436 3.70552 16.0502 3.62542L17.5002 3.33375" stroke="black" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M17.4993 2.5L18.3327 11.6667H16.666" stroke="black" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M2.49935 2.5L1.66602 11.6667L7.08268 17.0833C7.4142 17.4149 7.86384 17.6011 8.33268 17.6011C8.80152 17.6011 9.25116 17.4149 9.58268 17.0833C9.9142 16.7518 10.1004 16.3022 10.1004 15.8333C10.1004 15.3645 9.9142 14.9149 9.58268 14.5833" stroke="black" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M2.5 3.33301H9.16667" stroke="black" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </span>
-                        <span class="flex group-hover:text-[#C10F1A] transition duration-300 ease-linear">
-                            Партнеры
-                        </span>
-                    </a>
-                    <a href="#" class="flex items-center gap-2.5 group hover:bg-[#EEEEEE] py-3 px-2.5 transition duration-300 ease-linear">
-                        <span>
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M8.33398 4.16699H17.5007" stroke="black" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
                                 <path d="M8.33398 10H17.5007" stroke="black" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
                                 <path d="M8.33398 15.833H17.5007" stroke="black" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
@@ -466,7 +502,7 @@ style="background-image: url({{asset('img/faculty/faculty-8.png')}})">
                             </svg>
                         </span>
                         <span class="flex group-hover:text-[#C10F1A] transition duration-300 ease-linear">
-                            Кафедры и лаборатории
+                            Лаборатории
                         </span>
                     </a>
                     <a href="#" class="flex items-center gap-2.5 group hover:bg-[#EEEEEE] py-3 px-2.5 transition duration-300 ease-linear">
@@ -498,6 +534,58 @@ style="background-image: url({{asset('img/faculty/faculty-8.png')}})">
                             Поступающим
                         </span>
                     </a>
+                    <a href="#" class="flex items-center gap-2.5 group hover:bg-[#EEEEEE] py-3 px-2.5 transition duration-300 ease-linear">
+                        <span>
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5 15H11.6667" stroke="black" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M2.5 18.333H17.5" stroke="black" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M11.6673 18.3337C13.2144 18.3337 14.6981 17.7191 15.7921 16.6251C16.8861 15.5312 17.5007 14.0474 17.5007 12.5003C17.5007 10.9532 16.8861 9.4695 15.7921 8.37554C14.6981 7.28157 13.2144 6.66699 11.6673 6.66699H10.834" stroke="black" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M7.5 11.667H9.16667" stroke="black" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M7.50065 10C7.05862 10 6.6347 9.8244 6.32214 9.51184C6.00958 9.19928 5.83398 8.77536 5.83398 8.33333V5H10.834V8.33333C10.834 8.77536 10.6584 9.19928 10.3458 9.51184C10.0333 9.8244 9.60934 10 9.16732 10H7.50065Z" stroke="black" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M9.99935 5.00033V2.50033C9.99935 2.27931 9.91155 2.06735 9.75527 1.91107C9.59899 1.75479 9.38703 1.66699 9.16602 1.66699H7.49935C7.27834 1.66699 7.06637 1.75479 6.91009 1.91107C6.75381 2.06735 6.66602 2.27931 6.66602 2.50033V5.00033" stroke="black" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <span class="flex group-hover:text-[#C10F1A] transition duration-300 ease-linear">
+                            Наука
+                        </span>
+                    </a>
+                    <a href="#" class="flex items-center gap-2.5 group hover:bg-[#EEEEEE] py-3 px-2.5 transition duration-300 ease-linear">
+                        <span>
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8.33398 1.66602V8.33268L10.834 5.83268L13.334 8.33268V1.66602" stroke="black" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M3.33398 16.2493V3.74935C3.33398 3.19681 3.55348 2.66691 3.94418 2.27621C4.33488 1.88551 4.86478 1.66602 5.41732 1.66602H15.834C16.055 1.66602 16.267 1.75381 16.4232 1.91009C16.5795 2.06637 16.6673 2.27834 16.6673 2.49935V17.4993C16.6673 17.7204 16.5795 17.9323 16.4232 18.0886C16.267 18.2449 16.055 18.3327 15.834 18.3327H5.41732C4.86478 18.3327 4.33488 18.1132 3.94418 17.7225C3.55348 17.3318 3.33398 16.8019 3.33398 16.2493ZM3.33398 16.2493C3.33398 15.6968 3.55348 15.1669 3.94418 14.7762C4.33488 14.3855 4.86478 14.166 5.41732 14.166H16.6673" stroke="black" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <span class="flex group-hover:text-[#C10F1A] transition duration-300 ease-linear">
+                            История
+                        </span>
+                    </a>
+                    <a href="#" class="flex items-center gap-2.5 group hover:bg-[#EEEEEE] py-3 px-2.5 transition duration-300 ease-linear">
+                        <span>
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5.83398 1.66602H14.1673" stroke="black" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M4.16602 5H15.8327" stroke="black" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M15.8333 8.33398H4.16667C3.24619 8.33398 2.5 9.08018 2.5 10.0007V16.6673C2.5 17.5878 3.24619 18.334 4.16667 18.334H15.8333C16.7538 18.334 17.5 17.5878 17.5 16.6673V10.0007C17.5 9.08018 16.7538 8.33398 15.8333 8.33398Z" stroke="black" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <span class="flex group-hover:text-[#C10F1A] transition duration-300 ease-linear">
+                            Фотогаллерея
+                        </span>
+                    </a>
+                    <a href="#" class="flex items-center gap-2.5 group hover:bg-[#EEEEEE] py-3 px-2.5 transition duration-300 ease-linear">
+                        <span>
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9.16602 14.1663L10.8327 15.833C10.9968 15.9972 11.1917 16.1274 11.4062 16.2162C11.6207 16.3051 11.8505 16.3508 12.0827 16.3508C12.3148 16.3508 12.5447 16.3051 12.7592 16.2162C12.9737 16.1274 13.1685 15.9972 13.3327 15.833C13.4968 15.6689 13.627 15.474 13.7159 15.2595C13.8047 15.045 13.8504 14.8152 13.8504 14.583C13.8504 14.3509 13.8047 14.121 13.7159 13.9065C13.627 13.692 13.4968 13.4972 13.3327 13.333" stroke="black" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M11.6669 11.6671L13.7502 13.7504C14.0817 14.0819 14.5313 14.2682 15.0002 14.2682C15.469 14.2682 15.9187 14.0819 16.2502 13.7504C16.5817 13.4189 16.768 12.9693 16.768 12.5004C16.768 12.0316 16.5817 11.5819 16.2502 11.2504L13.0169 8.01709C12.5481 7.54892 11.9127 7.28595 11.2502 7.28595C10.5877 7.28595 9.95227 7.54892 9.48352 8.01709L8.75019 8.75042C8.41867 9.08194 7.96903 9.26819 7.50019 9.26819C7.03135 9.26819 6.58171 9.08194 6.25019 8.75042C5.91867 8.4189 5.73242 7.96926 5.73242 7.50042C5.73242 7.03158 5.91867 6.58194 6.25019 6.25042L8.59186 3.90875C9.35206 3.15054 10.3434 2.66755 11.4091 2.53623C12.4747 2.40491 13.5537 2.63278 14.4752 3.18375L14.8669 3.41709C15.2217 3.63124 15.6436 3.70552 16.0502 3.62542L17.5002 3.33375" stroke="black" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M17.4993 2.5L18.3327 11.6667H16.666" stroke="black" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M2.49935 2.5L1.66602 11.6667L7.08268 17.0833C7.4142 17.4149 7.86384 17.6011 8.33268 17.6011C8.80152 17.6011 9.25116 17.4149 9.58268 17.0833C9.9142 16.7518 10.1004 16.3022 10.1004 15.8333C10.1004 15.3645 9.9142 14.9149 9.58268 14.5833" stroke="black" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M2.5 3.33301H9.16667" stroke="black" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <span class="flex group-hover:text-[#C10F1A] transition duration-300 ease-linear">
+                            Партнеры и выпускники
+                        </span>
+                    </a>
                 </div>
             </div>
         </div>
@@ -527,35 +615,42 @@ style="background-image: url({{asset('img/faculty/faculty-8.png')}})">
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        var filtersSelectBox = document.querySelector('.filters-select-box')
-        function initLevelDropdown() {
-            const dropdown = document.querySelector('.select-wrapper');
-            if (!dropdown) return;
-            
-            const listItems = dropdown.querySelectorAll('.drop-li');
-            const chosenValue = dropdown.querySelector('.chosen-value');
+        const filtersSelectBox = document.querySelector('.filters-select-box');
         
+        const allDropdowns = document.querySelectorAll('.select-wrapper');
+        if (allDropdowns.length === 0) return;
+
+        function initDropdown(dropdown, index) {
+            const listItems = dropdown.querySelectorAll('.drop-li');
+            const chosenValue = dropdown.querySelector('.chosen-value'); 
+            
+            const shouldHandleRadio = index === 0;
+            const radioName = 'level';
+
             if (chosenValue && filtersSelectBox) {
                 chosenValue.addEventListener('click', function() {
                     filtersSelectBox.style.minHeight = '270px';
                 });
             }
-            
+
             listItems.forEach(item => {
                 const originalClick = item.onclick;
-                
+
                 item.addEventListener('click', function(e) {
                     setTimeout(() => {
-                        const value = this.getAttribute('data-value') || this.getAttribute('data-id');
-                        const radio = document.querySelector(`input[name="level"][type="radio"][value="${value}"]`);
                         
-                        if (radio) {
-                            radio.checked = true;
-                            const event = new Event('change', { 
-                                bubbles: true,
-                                cancelable: true 
-                            });
-                            radio.dispatchEvent(event);
+                        if (shouldHandleRadio) {
+                            const value = this.getAttribute('data-value') || this.getAttribute('data-id');
+                            const radio = document.querySelector(`input[name="${radioName}"][type="radio"][value="${value}"]`);
+
+                            if (radio) {
+                                radio.checked = true;
+                                const event = new Event('change', { 
+                                    bubbles: true,
+                                    cancelable: true 
+                                });
+                                radio.dispatchEvent(event);
+                            }
                         }
                         
                         if (filtersSelectBox) {
@@ -564,43 +659,49 @@ style="background-image: url({{asset('img/faculty/faculty-8.png')}})">
                             }, 300);
                         }
                     }, 50);
-                    
+
                     if (originalClick) {
                         originalClick.call(this, e);
                     }
                 });
             });
             
-            document.addEventListener('click', function(e) {
-                if (!dropdown.contains(e.target) && filtersSelectBox) {
-                    setTimeout(() => {
-                        filtersSelectBox.style.minHeight = '';
-                    }, 300);
-                }
-            });
-            
-            document.querySelectorAll('input[name="level"][type="radio"]').forEach(radio => {
-                radio.addEventListener('change', function() {
-                    if (this.checked) {
-                        const selectedText = this.parentElement.textContent.trim();
-                        const chosenValue = document.querySelector('.select-wrapper .chosen-value');
-                        if (chosenValue) {
-                            chosenValue.value = selectedText;
+            if (shouldHandleRadio) {
+                document.querySelectorAll(`input[name="${radioName}"][type="radio"]`).forEach(radio => {
+                    radio.addEventListener('change', function() {
+                        if (this.checked) {
+                            const selectedText = this.parentElement.textContent.trim();
+                            if (chosenValue) {
+                                chosenValue.value = selectedText;
+                            }
                         }
-                    }
+                    });
                 });
-            });
-            
-            const initialRadio = document.querySelector('input[name="level"][type="radio"]:checked');
-            if (initialRadio) {
-                const selectedText = initialRadio.parentElement.textContent.trim();
-                const chosenValue = document.querySelector('.select-wrapper .chosen-value');
-                if (chosenValue) {
-                    chosenValue.value = selectedText;
+
+                const initialRadio = document.querySelector(`input[name="${radioName}"][type="radio"]:checked`);
+                if (initialRadio) {
+                    const selectedText = initialRadio.parentElement.textContent.trim();
+                    if (chosenValue) {
+                        chosenValue.value = selectedText;
+                    }
                 }
             }
         }
         
-        setTimeout(initLevelDropdown, 100);
+        allDropdowns.forEach((dropdown, index) => {
+            initDropdown(dropdown, index);
+        });
+
+        document.addEventListener('click', function(e) {
+            const clickedInsideAnyDropdown = Array.from(allDropdowns).some(dropdown => 
+                dropdown.contains(e.target)
+            );
+            
+            if (!clickedInsideAnyDropdown && filtersSelectBox) {
+                setTimeout(() => {
+                    filtersSelectBox.style.minHeight = '';
+                }, 300);
+            }
+        });
     });
 </script>

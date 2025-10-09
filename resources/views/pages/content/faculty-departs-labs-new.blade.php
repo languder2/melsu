@@ -8,7 +8,6 @@ style="background-image: url({{asset('img/faculty/faculty-2.png')}})">
             </div>
         </div>
 </section>
-<!--Педагогический состав имеет такую же структуру-->
 <section class="overflow-hidden">
     <div class="container">
         <div class="grid lg:grid-cols-[2fr_1fr] xl:grid-cols-[75%_auto] gap-5 px-2.5 2xl:px-0 mt-7">

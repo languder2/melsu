@@ -372,7 +372,7 @@ style="background-image: url({{asset('img/faculty/faculty-1.png')}})">
                             </div>
                             <div>
                                 <a href="#" class="max-h-[300px] block relative overflow-hidden">
-                                    <img src="{{asset('img/3korp.jpg')}}" class="w-full h-[300px] blur-[2px] object-cover box-border" alt="">
+                                    <img src="{{asset('img/3korp.jpg')}}" class="w-full h-[300px] filter brightness-75 object-cover box-border" alt="">
                                     <div class="flex items-center absolute top-5 left-5 w-ful">
                                         <div class="liquid-glass w-fit p-2.5">
                                             <div class="liquid-glass--bend"></div>
@@ -393,7 +393,7 @@ style="background-image: url({{asset('img/faculty/faculty-1.png')}})">
                             </div>
                             <div>
                                 <a href="#" class="max-h-[300px] block relative overflow-hidden">
-                                    <img src="{{asset('img/3korp.jpg')}}" class="w-full h-[300px] blur-[2px] object-cover box-border" alt="">
+                                    <img src="{{asset('img/3korp.jpg')}}" class="w-full h-[300px] filter brightness-75 object-cover box-border" alt="">
                                     <div class="flex items-center absolute top-5 left-5 w-ful">
                                         <div class="liquid-glass w-fit p-2.5">
                                             <div class="liquid-glass--bend"></div>
