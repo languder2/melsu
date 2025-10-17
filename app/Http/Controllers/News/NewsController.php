@@ -111,6 +111,10 @@ class NewsController extends Controller
         if (is_null($news))
             return redirect()->route('pages:main');
 
+        if( !($news->has_approval && $news->is_show) && !auth()->check() )
+            return redirect()->route('pages:main');
+
+
         $previousNews = News::where('id', '<', $news->id)->orderBy('id', 'desc')->first();
 
         $nextNews = News::where('id', '>', $news->id)->orderBy('id', 'asc')->first();

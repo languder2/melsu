@@ -7,10 +7,10 @@
 @if(count($block->data->files)<=3)
     <div class="flex flex-col lg:flex-row gap-3 justify-center-safe">
         @foreach($block->data->files as $i=>$image)
-            <button popovertarget="modal-img-{{$key}}-{{$i}}" class="cursor-pointer flex-auto">
+            <button popovertarget="modal-img-{{$block->id}}-{{$i}}" class="cursor-pointer flex-auto">
                 <img src="{{$image->url}}" alt="" class="h-full w-full object-cover">
             </button>
-            <div popover="" id="modal-img-{{$key}}-{{$i}}" class="modal-image transition-discrete starting:open:opacity-0 fixed open:backdrop-brightness-50 max-w-4/5 max-h-4/5 border-2 border-white shadow-md shadow-white">
+            <div popover="" id="modal-img-{{$block->id}}-{{$i}}" class="modal-image transition-discrete starting:open:opacity-0 fixed open:backdrop-brightness-50 max-w-4/5 max-h-4/5 border-2 border-white shadow-md shadow-white">
                 <img src="{{$image->url}}" alt="" class="object-contain">
             </div>
         @endforeach

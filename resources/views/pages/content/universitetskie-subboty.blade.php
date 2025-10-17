@@ -170,7 +170,7 @@
                         <div class="accordion-text pt-3 pb-9">
                             <div class="flex flex-col gap-3">
                                 <p>
-                                Мероприятия будут проходить с 12.10.24 по 31.05.25 гг.
+                                Мероприятия будут проходить с 04.10.2025 по 16.05.2026 гг.
                                 </p>
                                 <p>
                                     График проведения профориентационных мероприятий «Университетские субботы» смотри в <a href="https://melsu.ru/storage/documents/students/schedule-of-university-saturdays.pdf" target="_blank" class="font-bold underline hover:text-[#C10F1A] transition duration-300 ease-linear">прикрепленном файле.</a>

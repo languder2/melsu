@@ -10,6 +10,8 @@ import EditorJSList from '@editorjs/list';
 import Embed from '@editorjs/embed';
 import Quote from '@editorjs/quote';
 import Table from '@editorjs/table';
+import Hr from '@ignweb/hr-tool';
+import AttachesTool from '@editorjs/attaches';
 import Columns from '@calumk/editorjs-columns';
 import Accordion from 'editorjs-collapsible-block';
 
@@ -25,6 +27,12 @@ const editorShort = new EditorJS({
     placeholder: 'Напишите краткое описание',
     tools: {
         raw: RawTool,
+        attaches: {
+            class: AttachesTool,
+            config: {
+                endpoint: 'http://localhost:8008/uploadFile'
+            }
+        }
     }
 });
 
@@ -107,6 +115,7 @@ const editor = new EditorJS({
             },
         },
         table: Table,
+        hr: Hr,
         // columns: {
         //     class: Columns,
         //     config: {

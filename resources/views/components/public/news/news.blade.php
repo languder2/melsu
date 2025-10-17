@@ -14,6 +14,7 @@
         </div>
     </section>
 
+    <div class="hidden aspect-video"></div>
     <div class="container custom">
         <div class="content-news mb-3 codex-editor flex flex-col gap-4">
             {!! $news->ContentHTML !!}

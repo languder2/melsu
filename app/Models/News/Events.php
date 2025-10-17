@@ -33,9 +33,10 @@ class Events extends Model
     ];
     public static int $adminPerPage = 20;
     protected $casts = [
-    'event_datetime' => 'datetime',
-    'published_at' => 'datetime',
+        'event_datetime' => 'datetime',
+        'published_at' => 'datetime',
     ];
+
     public static function FormRules():array
     {
         return [

@@ -34,6 +34,7 @@
     --spacing-600: 600px;
     --spacing-800: 800px;
     --spacing-1200: 1200px;
+    --spacing-base-container: 1320px;
 
     --list-style-type-none: none;
     --list-style-type-disc: disc;
