@@ -22,6 +22,11 @@
     --color-blue: #374573;
     --color-neutral-150: #EEEEEE;
     --color-base-red: #820000;
+
+    --color-news-table-head: #8481FF;
+    --color-news-table-row-1: #E2E2FF;
+    --color-news-table-row-2: #ECECFF;
+
     --spacing-1px: 1px;
     --spacing-2px: 2px;
     --spacing-300: 300px;
@@ -32,11 +37,33 @@
 
     --list-style-type-none: none;
     --list-style-type-disc: disc;
-    --list-style-type-decimal: decimal;
     --list-style-type-square: square;
-    --list-style-type-roman: upper-roman;
+    --list-style-type-decimal: decimal;
+    /*--list-style-type-numeric: decimal;*/
+    /*--list-style-type-lower-roman: lower-roman;*/
+    /*--list-style-type-upper-roman: upper-roman;*/
+    /*--list-style-type-lower-alpha: lower-alpha;*/
+    /*--list-style-type-upper-alpha: upper-alpha;*/
 
     --3xl: 2000px;
+}
+
+@layer components {
+    .list-upper-roman {
+        list-style-type: upper-roman;
+    }
+    .list-lower-roman {
+        list-style-type: lower-roman;
+    }
+    .list-upper-alpha {
+        list-style-type: upper-alpha;
+    }
+    .list-lower-alpha {
+        list-style-type: lower-alpha;
+    }
+    .list-numeric {
+        list-style-type: decimal;
+    }
 }
 
 @layer base {
@@ -81,6 +108,7 @@ img {
     -moz-user-drag: none; /* Для Firefox */
     -o-user-drag: none; /* Для Opera */
 }
+
 .about-otdel, .text, .text-section{
     p,li{
         padding: .25rem 0;
@@ -105,20 +133,6 @@ img {
         color: #820000;
     }
 
-}
-
-ol{
-    list-style: decimal;
-    margin-left: 24px;
-    li{
-        padding: 10px 0 !important;
-    }
-    li:first-child{
-        padding-top: 0;
-    }
-    li:last-child{
-        padding-bottom: 0;
-    }
 }
 
 .ul-correct ul{
