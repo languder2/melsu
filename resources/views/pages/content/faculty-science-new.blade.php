@@ -14,10 +14,11 @@ style="background-image: url({{asset('img/faculty/faculty-4.png')}})">
             <div class="order-2 lg:order-1 flex flex-col gap-7">
                 <!--Наука-->
                 <div class="flex flex-col gap-7">
-                    <h2 class="font-bold text-xl md:text-3xl">Наука</h2>
                     <div>
-                        <h1 class="uppercase text-[#820000] font-bold text-3xl xl:text-[42px] 2xl:text-[57px] text-justify">Научно-исследовательская</h1>
-                        <div class="grid xl:grid-cols-[auto_auto] mb-5">
+                        <div class="grid xl:grid-cols-2 gap-5 mb-5">
+                            <div>
+                                <h1 class="uppercase text-[#820000] font-bold text-2xl 2xl:text-3xl text-justify">Научно-исследовательская работа</h1>
+                            </div>
                             <div class="flex flex-col gap-5 text-sm order-2 xl:order-1">
                                 <p>
                                     на агротехнологическом факультете проводится согласно утвержденного плана работы научной и инновационной деятельности. Курируют работу на факультете декан и заместитель декана по научной и международной работе.
@@ -26,9 +27,7 @@ style="background-image: url({{asset('img/faculty/faculty-4.png')}})">
                                     На факультете научные коллективы кафедр работают над выполнением государственных заданий:
                                 </p>
                             </div>
-                            <div class="order-1 xl:order-2">
-                                <h1 class="uppercase text-[#820000] font-bold text-3xl xl:text-[42px] 2xl:text-[57px] leading-[42px]">работа</h1>
-                            </div>
+                            
                         </div>
                         <div class="p-5 bg-[#C10F1A] mb-5" style="background: linear-gradient(330deg,rgba(193, 15, 26, 1) 0%, rgba(193, 15, 26, 0.77) 53%, rgba(217, 91, 99, 1) 100%);">
                             <div class="grid sm:grid-cols-2 xl:grid-cols-3 gap-5 text-white text-sm">

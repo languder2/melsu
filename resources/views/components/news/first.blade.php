@@ -1,37 +1,56 @@
-<div class="first-news-box col-span-2 row-span-2 border border-[#e5e7eb] sm:max-h-[758px]">
-    <a href="{{route('news:show',$news->id)}}">
-        <div class="img-news-box relative">
+<div class="first-news-box sm:max-h-[758px]">
+    <a href="{{route('news:show',$news->id)}}" class="hover:opacity-80 transition duration-300 ease-linear">
+        <div class="relative">
 
             @if($news->preview && $news->preview->src)
                 <img src="{{$news->preview->src}}" alt="{{$news->preview->alt??$news->preview->name}}"
-                     class="object-cover object-top max-h-[353px] w-full">
+                    class="object-cover object-top 2xl:h-full h-[275px] 2xl:max-h-[330px] w-full">
             @elseif($news->image)
                 <img src="{{$news->image}}" alt=""
-                     class="object-cover object-top max-h-[353px] w-full">
+                    class="object-cover object-top 2xl:h-full h-[275px] 2xl:max-h-[330px] w-full">
             @endif
-
             <span
-                class="meta-category bg-[var(--primary-color)] text-white text-[12px] absolute top-[10px] py-[3px] px-[7px] font-[500]">
-                {{@$news->tag->name}}
+                class="meta-category liquid-glass border-0 text-white text-[12px] absolute top-[10px] px-5 py-3 font-[500]" style="background: rgba(0, 0, 0, 0.25);">
+                <div class="liquid-glass--bend"></div>
+                <div class="liquid-glass--face"></div>
+                <div class="liquid-glass--edge"></div>
+                <div class="liquid-glass__menus"></div>
+                <div class="liquid-glass__content h-full">
+                    <div class="flex lg:flex-col items-center lg:items-start justify-between gap-5 h-full">
+                        <span class="relative z-10 font-bold">{{@$news->tag->name}}</span>
+                    </div>
+                </div>
             </span>
         </div>
-        <div class="bg-[var(--primary-color)] p-5 text-white lg:max-h-[404px] h-auto lg:h-full">
-            <div class="grid grid-cols-[70%_29%] mb-3">
-                <h2 class="text-3xl font-[700]">
+        <div class="px-2.5 py-3">
+            <div class="flex justify-between mb-4">
+                <span class="text-[#C10F1A] font-bold text-lg">
+                    {{ $news->published_at->format('d.m.Y') }}
+                </span>
+                <span class="text-[#CCCCCC] text-lg">
+                    {{ $news->published_at->format('H:i') }}
+                </span>
+            </div>
+            <div class="mb-3">
+                <h2 class="font-semibold">
                     {!! $news->title !!}
                 </h2>
-                <div class="text-end">
-                    <span class="text-[12px] font-[500]">
-                        <i class="bi bi-calendar2-week"></i>
-                        {{$news->published_at}}
-                    </span>
-                </div>
             </div>
-            <div>
-                <p class="line-clamp-10">
+            <div class="line-clamp-3 text-[#BBBBBB]">
                     {!! $news->ShortHTML !!}
-                </p>
             </div>
         </div>
     </a>
 </div>
+<svg style="display: none" xmlns="http://www.w3.org/2000/svg">
+    <filter id="glass-blur" x="0" y="0" width="100%" height="100%" filterUnits="objectBoundingBox">
+        <feTurbulence type="fractalNoise" baseFrequency="0.003 0.007" numOctaves="1" result="turbulence" />
+        <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="400" xChannelSelector="R" yChannelSelector="G" /> 
+    </filter>
+
+    <filter id="lg-dist" x="0%" y="0%" width="100%" height="100%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.008 0.008" numOctaves="2" seed="94" result="noise" />
+        <feGaussianBlur in="noise" stdDeviation="2" result="blurred" />
+        <feDisplacementMap in="SourceGraphic" in2="blurred" scale="120" xChannelSelector="R" yChannelSelector="G" />
+    </filter>
+</svg>

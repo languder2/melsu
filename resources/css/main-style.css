@@ -3304,6 +3304,18 @@ footer{
     border-radius: 20px;
     border: 3px solid #820000;
 }
+.value-list.news-value::-webkit-scrollbar {
+    width: 5px;
+}
+.value-list.news-value::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.25);
+
+}
+.value-list.news-value::-webkit-scrollbar-thumb {
+    background-color: white;
+    border-radius: 20px;
+    border: 3px solid white;
+}
 .value-list{
     z-index: 11 !important;
     transition: .3s ease-in-out !important;
@@ -7183,6 +7195,12 @@ li.h--timeline-event.h--timeline-event--selected.text-component {
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(4.4px);
     -webkit-backdrop-filter: blur(6.4px);
+    }
+    .card-news-glass{
+    background: rgba(0, 0, 0, 0.25);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4.4px);
+    -webkit-backdrop-filter: blur(4.4px);
     }
     .liquid-glass {
         position: relative;
