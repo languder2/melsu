@@ -29,7 +29,7 @@
             </div>
             <div>
                 <p class="line-clamp-10">
-                    {!! $news->full !!}
+                    {!! $news->ShortHTML !!}
                 </p>
             </div>
         </div>

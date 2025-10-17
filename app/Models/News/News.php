@@ -7,6 +7,7 @@ use App\Models\Gallery\Image;
 use App\Models\Services\Content;
 use App\Models\Users\User;
 use Carbon\Carbon;
+use EditorJS\EditorJS;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -173,7 +174,7 @@ class News extends Model
     public static function getPublicList(): Builder
     {
         return News::
-            where('published_at', '<=', Carbon::now())
+        where('published_at', '<=', Carbon::now())
             ->where('has_approval', true)
             ->orderBy('is_favorite', 'desc')
             ->orderBy('sort')
@@ -247,6 +248,26 @@ class News extends Model
     public function getCabinetDeleteAttribute(): string
     {
         return route('news.cabinet.delete',$this);
+    }
+
+    public function getContentHTMLAttribute()
+    {
+        return $this->getContentRecord()->render();
+    }
+
+    public function getContentDataAttribute()
+    {
+        return $this->getContentRecord()->getDataForEditorJS();
+    }
+
+    public function getShortHTMLAttribute()
+    {
+        return $this->getShortRecord()->render();
+    }
+
+    public function getShortDataAttribute()
+    {
+        return $this->getShortRecord()->getDataForEditorJS();
     }
 
 

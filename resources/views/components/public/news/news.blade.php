@@ -15,9 +15,10 @@
     </section>
 
     <div class="container custom">
-        <div class="content-news mb-3 text-section">
-            {!! $news->news !!}
+        <div class="content-news mb-3 text-section codex-editor">
+            {!! $news->ContentHTML !!}
         </div>
+
 
         <div class="flex justify-between md:grid  md:grid-cols-[1fr_1fr] gap-[1px] bg-[#F1F1F1] p-[1px]">
             <div class="p-6 group/btnnews bg-white w-full">

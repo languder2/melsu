@@ -18,6 +18,7 @@ class Content extends Model
 
     protected $fillable = [
         'type',
+        'editor',
         'content',
     ];
     public function relation():MorphTo
@@ -105,5 +106,51 @@ class Content extends Model
         Log::withOrigin($this->relation, $this);
     }
 
+    public function render()
+    {
+        $html = collect();
+
+        $json = json_decode($this->getDataForEditorJS());
+
+        foreach ($json->blocks as $key=>$block)
+            $html->push(
+                match ($block->type) {
+                    'columns'   => view('components.editorjs.columns', ['data' => $block->data])->render(),
+                    'header'    => view('components.editorjs.header', ['data' => $block->data])->render(),
+                    'paragraph' => view('components.editorjs.paragraph', ['data' => $block->data])->render(),
+                    'image'     => view('components.editorjs.image', ['data' => $block->data])->render(),
+                    'gallery'   => view('components.editorjs.gallery', compact('block'))->render(),
+                    'table'     => view('components.editorjs.table', compact('block'))->render(),
+                    'raw'       => $block->data->html,
+                    default => $block->type,
+                }
+            );
+
+        return $html->implode('');
+    }
+
+
+    public function getDataForEditorJS(): ?string
+    {
+        $json = json_decode($this->content);
+
+        if($json || !$this->exists)
+            return $this->content;
+
+
+        return json_encode((object)[
+            "time" => 1760356864536,
+            "blocks" => [
+                (object)[
+                    'id'    => 'Ti1oTf2pvO',
+                    'type'  => 'raw',
+                    'data'  => (object)[
+                        'html'  => $this->content
+                    ]
+                ],
+            ],
+            "version" => "2.31.0"
+        ]);
+    }
 
 }

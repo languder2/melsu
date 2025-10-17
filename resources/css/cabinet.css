@@ -1,7 +1,8 @@
+@import 'tailwindcss';
 @import '../css/font-import.css' layer(base);
 @import '@fortawesome/fontawesome-free/css/all.css' layer(base);
 
-@import 'tailwindcss';
+@import 'codex-editor.css';
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 
@@ -77,6 +78,30 @@ select:-webkit-autofill:focus {
     border-radius: 20px;
     border: 1px solid var(--color-blue-hover);
 }
-/*aside.right > .wrapper{*/
-/*    direction: rtl;*/
-/*}*/
+
+.no-tailwind-styles {
+    all: initial;
+    display: block;
+    font-family: Figtree, ui-sans-serif, system-ui, sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji' !important;
+}
+
+.no-tailwind-styles * {
+    all: revert;
+    box-sizing: border-box;
+}
+
+.no-tailwind-styles ul, .no-tailwind-styles ol {
+    list-style: initial;
+    padding-left: 40px;
+}
+
+.no-tailwind-styles a {
+    color: initial;
+    text-decoration: initial;
+}
+
+.ce-editorjsColumns_col{
+    border: solid 1px #e5e5e5;
+}
+

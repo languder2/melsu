@@ -1,7 +1,0 @@
-<script src="https://cdn.jsdelivr.net/npm/@editorjs/editorjs@latest"></script>
-<div id="editorjs"></div>
-<script>
-    const editor = new EditorJS({
-        autofocus: true
-    });
-</script>

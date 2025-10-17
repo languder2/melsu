@@ -5,12 +5,11 @@
 @section('content')
     <x-head.tinymce-config/>
 
-    <form action="{{ $news->cabinet_save }}" method="POST" class="flex flex-col gap-3" enctype="multipart/form-data">
+    <form id="formWithEditorJS" action="{{ $news->cabinet_save }}" method="POST" class="flex flex-col gap-3" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 
         <x-form.errors/>
-
         <div class="flex gap3 bg-white p-3 justify-between sticky top-0 z-50 shadow">
             <div class="flex items-center">
                 {!! $news->exists ? $news->title : __('news.New news') !!}
@@ -132,32 +131,50 @@
                 </div>
                 <div>
                     <h4 class="font-semibold text-xl">Описание</h4>
-                    <x-form.editor2
-                        name="short"
-                        id="formNewsShort"
-                        value="{{ old('short', $news->short) }}"
-                        hideLabel
-                        height="200px"
-                        required
-                    />
+                    <div class="w-full bg-white p-4 ps-10">
+                        <input type="hidden" id="EditorJSShort" name="short">
+                        <div id="EditorJSShortBlock" class=" ps-6"
+                             data-initial-content="{{ $news->short_data }}"
+                        >
+                        </div>
+                    </div>
+
+
+{{--                    <x-form.editor2--}}
+{{--                        name="short"--}}
+{{--                        id="formNewsShort"--}}
+{{--                        value="{{ old('short', $news->short) }}"--}}
+{{--                        hideLabel--}}
+{{--                        height="200px"--}}
+{{--                        required--}}
+{{--                    />--}}
                 </div>
             </div>
             <div class="col-span-2 bp100:col-span-1">
                 <div>
                     <h4 class="font-semibold text-xl">Содержание новости</h4>
-                    <x-form.editor
-                        name="content"
-                        id="formNewsContent"
-                        value="{{ old('content', $news->content) }}"
-                        hideLabel
-                        height="200px"
-                        required
-                    />
+{{--                    <x-form.editor--}}
+{{--                        name="content"--}}
+{{--                        id="formNewsContent"--}}
+{{--                        value="{{ old('content', $news->content) }}"--}}
+{{--                        hideLabel--}}
+{{--                        height="200px"--}}
+{{--                        required--}}
+{{--                    />--}}
+
+                    <div class="w-full bg-white p-4 ps-10">
+                        <input type="hidden" id="editorJSContent" name="content">
+                        <div
+                            id="editorJSContentBlock"
+                            class="ps-6"
+                            data-initial-content="{{ $news->content_data }}"
+                        >
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
-
-        <x-component
-
     </form>
+
 @endsection

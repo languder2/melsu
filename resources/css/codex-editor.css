@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+
+.ce-block__content,
+.ce-toolbar__content {
+    max-width: unset;
+}
+
+.codex-editor h1{
+    @apply text-2xl font-extrabold mt-10 mb-4
+}
+.codex-editor h2{
+    @apply text-3xl font-bold mt-8 mb-3
+}
+.codex-editor h3{
+    @apply text-2xl font-semibold mt-6 mb-3
+}
+.codex-editor h4{
+    @apply text-xl font-semibold mt-5 mb-2
+}
+.codex-editor h5{
+    @apply text-lg font-medium mt-4 mb-2
+}
+.codex-editor h6{
+    @apply text-base font-medium mt-3 mb-1
+}
+
+@tailwind utilities;

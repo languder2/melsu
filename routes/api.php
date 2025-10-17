@@ -14,6 +14,8 @@ use App\Http\Controllers\Sections\CareerController;
 use App\Http\Controllers\News\ApiNews;
 use App\Http\Controllers\Staffs\ApiStaff;
 use App\Http\Controllers\Education\SpecialityController;
+use App\Http\Controllers\Gallery\MediaUploadController;
+use App\Http\Controllers\EditorJS\EditorjsController;
 
 Route::get('departments-by-faculty-shorts/{faculty?}', function (Request $request, $faculty = null) {
     if (is_null($faculty))
@@ -272,3 +274,7 @@ Route::prefix('news')->group(function (){
 });
 
 
+
+Route::post('/upload-image', [MediaUploadController::class, 'upload'])->name('editorjs.upload');
+Route::post('/upload-video', [MediaUploadController::class, 'uploadVideo'])->name('editorjs.upload');
+Route::get('/fetchUrl', [EditorjsController::class, 'fetchLinkMeta'])->name('editorjs.fetch.url');

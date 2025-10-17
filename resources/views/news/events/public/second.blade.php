@@ -38,7 +38,7 @@
                     </h3>
                 </div>
                 <div class="description-news line-clamp-3 max-h-[72px]">
-                    {!! $item->short !!}
+                    {!! $item->ShortHTML !!}
                 </div>
             </div>
         </div>

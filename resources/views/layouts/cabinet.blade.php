@@ -5,12 +5,13 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link rel="shortcut icon" href="{{url('favicons/favicon.ico')}}" type="image/x-icon" />
 
     <title>@yield('title', 'ФГБОУ ВО "МелГУ"')</title>
 
-    @vite(['resources/css/cabinet.css', 'resources/js/cabinet.js'])
+    @vite(['resources/css/cabinet.css', 'resources/js/cabinet.js', 'resources/js/editorjs/editor.js'])
 </head>
 <body class="bg-neutral-100 relative grid grid-rows-[auto_1fr_auto] min-h-screen gap-px">
 

@@ -243,7 +243,7 @@ header{
             color: var(--primary-color);
         }
         &:hover svg {
-            
+
         }
     }
     .bvi-shortcode{
@@ -1046,7 +1046,7 @@ header{
         position: absolute;
         bottom: 20px;
         text-align: center;
-        
+
         a.slide_btn {
             color: #6E6B6B;
             cursor: pointer;
@@ -1233,7 +1233,7 @@ header{
         & .sldr{
             max-height: 345px;
         }
-        
+
         .info-under-slider{
             bottom: -10px;
             width: 100%;
@@ -1256,7 +1256,7 @@ header{
 }
 @media screen and (max-width: 768px) {
     .slider-section{
-        
+
         .directional_nav {
             .previous_btn, .next_btn {
                 display: flex !important;
@@ -2435,7 +2435,7 @@ header{
 }
     /*END wrapper news*/
 
-    
+
 
 /*END news section style*/
 
@@ -3565,17 +3565,17 @@ footer{
     overflow: hidden;
     transition: var(--transition-link);
 }
-.slick-dots li:not(:last-child)::after::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 0;
-    background-color: #820000;
-    transition: width 0.3s ease-in-out;
-    z-index: 1;
-}
+/*.slick-dots li:not(:last-child)::after::before {*/
+/*    content: '';*/
+/*    position: absolute;*/
+/*    top: 0;*/
+/*    left: 0;*/
+/*    height: 100%;*/
+/*    width: 0;*/
+/*    background-color: #820000;*/
+/*    transition: width 0.3s ease-in-out;*/
+/*    z-index: 1;*/
+/*}*/
 .slick-dots li.filled:not(:last-child)::after {
     background-color: #820000;
     width: 50px;
