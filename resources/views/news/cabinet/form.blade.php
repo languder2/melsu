@@ -16,6 +16,12 @@
             </div>
 
             <div class="flex items-center gap-3">
+                @if( $news->exists )
+                    <a href="{{ $news->link }}" target="_blank">
+                        <x-lucide-external-link class="w-10 hover:text-blue-800" />
+                    </a>
+                @endif
+
                 <input
                     type="submit"
                     value="Сохранить"

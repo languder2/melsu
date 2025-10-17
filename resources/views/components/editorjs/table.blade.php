@@ -7,7 +7,7 @@
         <thead>
         <tr>
             @foreach($rows->first() as $value)
-                <td class="font-semibold text-center bg-neutral-200 px-3 py-2">
+                <td class="font-semibold text-center bg-news-table-head px-3 py-2 text-white">
                     {!! $value !!}
                 </td>
             @endforeach
@@ -19,7 +19,7 @@
         @continue(!$loop->index && $block->data->withHeadings)
         <tr>
             @foreach($row as $value)
-                <td class="px-3 py-2 @if($loop->parent->index % 2) bg-indigo-50/30 @else bg-indigo-50/50 @endif">
+                <td class="px-3 py-2 @if($loop->parent->index % 2) bg-news-table-row-1 @else bg-news-table-row-2 @endif">
                     {!! $value !!}
                 </td>
             @endforeach
