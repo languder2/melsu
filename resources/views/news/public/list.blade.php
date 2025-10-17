@@ -2,9 +2,9 @@
 
 @section('title', 'ФГБОУ ВО "Мелитопольский государственный университет": Новости')
 
-@section('breadcrumbs')
+{{--@section('breadcrumbs')
     {!! Breadcrumbs::view("vendor.breadcrumbs.base",'news',null)!!}
-@endsection
+@endsection --}}
 
 @section('includes')
     <script type="text/javascript" src="{{asset('js/jquery.min.js')}}"></script>

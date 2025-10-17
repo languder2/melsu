@@ -296,43 +296,31 @@ style="background-image: url({{asset('img/faculty/faculty-1.png')}})">
                 </div>
                 <!--История факультета-->
                 <div class="flex flex-col gap-7">
-                    <div class="bg-[#C10F1A] relative flex items-center justify-between p-2.5 lg:p-5 gap-5">
-                        <div class="h-full w-full bg-[#C10F1A] absolute left-[-100%] top-0">
-                        </div>
-                        <span class="text-white text-lg md:text-3xl lg:text-3xl font-bold">История факультета</span>
-                        <div class="flex items-center gap-7">
-                            <span class="font-bold text-xl md:text-3xl lg:text-6xl text-white yearBox">2022</span>
-                            <span class="font-bold text-xl md:text-6xl text-white yearBox hidden">2023</span>
-                            <div class="flex items-center gap-5">
-                                <span id="prevHistoryBtn" class="group cursor-pointer">
-                                    <svg viewBox="0 0 50 50" class="w-[40px] sm:w-[50px] h-[40px] sm:h-[50px]" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M49 25C49 11.7452 38.2548 1 25 0.999999C11.7452 0.999998 1 11.7452 1 25C1 38.2548 11.7452 49 25 49C38.2548 49 49 38.2548 49 25Z" stroke="#E93C42" class="group-hover:stroke-white transition duration-300 ease-linear" stroke-width="2"/>
-                                    <path d="M13 4.21539C9.35154 6.32183 6.32183 9.35154 4.21539 13C2.10895 16.6485 0.999998 20.7871 0.999997 25C0.999997 29.2129 2.10895 33.3515 4.21539 37C6.32183 40.6485 9.35154 43.6782 13 45.7846" stroke="white" stroke-width="2"/>
-                                    <path d="M29.5 34.5L20.3125 25L29.5 15.5" stroke="#E93C42"  class="group-hover:stroke-white transition duration-300 ease-linear" stroke-width="2"/>
-                                    </svg>
-                                </span>
-                                <span id="nextHistoryBtn" class="group cursor-pointer">
-                                    <svg viewBox="0 0 50 50" class="w-[40px] sm:w-[50px] h-[40px] sm:h-[50px]" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M0.999999 25C0.999999 11.7452 11.7452 1 25 0.999999C38.2548 0.999998 49 11.7452 49 25C49 38.2548 38.2548 49 25 49C11.7452 49 0.999999 38.2548 0.999999 25Z" stroke="#E93C42" class="group-hover:stroke-white transition duration-300 ease-linear" stroke-width="2"/>
-                                        <path d="M37 4.21539C40.6485 6.32183 43.6782 9.35154 45.7846 13C47.8911 16.6485 49 20.7871 49 25C49 29.2129 47.8911 33.3515 45.7846 37C43.6782 40.6485 40.6485 43.6782 37 45.7846" stroke="white" stroke-width="2"/>
-                                        <path d="M20.5 34.5L29.6875 25L20.5 15.5" stroke="#E93C42" class="group-hover:stroke-white transition duration-300 ease-linear" stroke-width="2"/>
-                                        </svg>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flex flex-col gap-3 box-history-faculty">
+                    <h2 class="font-bold text-xl md:text-3xl">История факультета</h2>
+                    <div class="history-box flex flex-col gap-5 max-h-[424px] overflow-hidden">
                         <p>
-                            Распоряжением Главы Военно-гражданской администрации Запорожской области № 25-Р от 27 мая 2022 года был создан Мелитопольский государственный университет, который является правопреемником Таврического государственного агротехнологического университета имени Дмитрия Моторного вместе со структурными подразделениями.
+                            Кафедра растениеводства имени профессора В.В. Калитки была создана на базе кафедр «Растениеводство и садоводство» и «Химия и биотехнология», которые были организованы со дня основания Мелитопольского института механизации сельского хозяйства в 1932 году. В 1999 году в результате объединения этих кафедр была создана кафедра «Общее земледелие», которая по количеству преподавателей и лаборантов была самой большой в вузе (около 30 человек). В 2012 году снова произошло разделение большой кафедры на 2 выпуска: «Растениеводство» и «Химии и биотехнологий». А в 2018 году кафедру переименовали в кафедру растениеводства имени профессора В.В. Калитки.
+                        </p>
+                        <p>
+                            Основателем и первым заведующим кафедрой «Земледелие с основами почвоведения» (начальное название кафедры) до 1941 года был доктор сельскохозяйственных наук, профессор Я.Я. Вербин. За акклиматизацию африканского проса профессор Вербин Я.Я. был награжден орденом Трудового Красного Знамени (один из первых орденоносцев г. Мелитополя). В годы Великой Отечественной войны (с сентября 1941 по октябрь 1944 г.) кафедра продолжала свою работу при Туркменском сельскохозяйственном университете (г. Ашхабад), куда был эвакуирован институт и действовал как факультет механизации сельского хозяйства. В ноябре 1944 года кафедра «Земледелие с основами почвоведения» возобновила свою работу в г. Мелитополе.
+                        </p>
+                        <p>
+                            С 1944 по 1953 годы кафедрой заведовал кандидат биологических наук, доцент Пархоменко Марк Лукич. В период эвакуации института в г. Ашхабад, он участвовал в экспедиции на Каракумах. За большие успехи в учебно-воспитательной и научно-исследовательской работе Марк Лукич Пархоменко был награжден правительством в 1946 году медалью «За доблестный труд в ВОВ» и в 1953 году орденом «Знак Почета».
+                        </p>
+                        <p>
+                            Кафедра растениеводства имени профессора В.В. Калитки была создана на базе кафедр «Растениеводство и садоводство» и «Химия и биотехнология», которые были организованы со дня основания Мелитопольского института механизации сельского хозяйства в 1932 году. В 1999 году в результате объединения этих кафедр была создана кафедра «Общее земледелие», которая по количеству преподавателей и лаборантов была самой большой в вузе (около 30 человек). В 2012 году снова произошло разделение большой кафедры на 2 выпуска: «Растениеводство» и «Химии и биотехнологий». А в 2018 году кафедру переименовали в кафедру растениеводства имени профессора В.В. Калитки.
+                        </p>
+                        <p>
+                            Основателем и первым заведующим кафедрой «Земледелие с основами почвоведения» (начальное название кафедры) до 1941 года был доктор сельскохозяйственных наук, профессор Я.Я. Вербин. За акклиматизацию африканского проса профессор Вербин Я.Я. был награжден орденом Трудового Красного Знамени (один из первых орденоносцев г. Мелитополя). В годы Великой Отечественной войны (с сентября 1941 по октябрь 1944 г.) кафедра продолжала свою работу при Туркменском сельскохозяйственном университете (г. Ашхабад), куда был эвакуирован институт и действовал как факультет механизации сельского хозяйства. В ноябре 1944 года кафедра «Земледелие с основами почвоведения» возобновила свою работу в г. Мелитополе.
+                        </p>
+                        <p>
+                            С 1944 по 1953 годы кафедрой заведовал кандидат биологических наук, доцент Пархоменко Марк Лукич. В период эвакуации института в г. Ашхабад, он участвовал в экспедиции на Каракумах. За большие успехи в учебно-воспитательной и научно-исследовательской работе Марк Лукич Пархоменко был награжден правительством в 1946 году медалью «За доблестный труд в ВОВ» и в 1953 году орденом «Знак Почета».
                         </p>
                     </div>
-                    <div class="flex flex-col gap-3 box-history-faculty hidden">
-                        <p>
-                            Факультет Агротехнологий и экологии был переименован в Агротехнологический. Возглавила факультет к.э.н., доцент Карман Татьяна Викторовна.
-                        </p>
-                        <p>
-                            Факультет основали четыре кафедры – растениеводство имени профессора В.В. Калитки (заведующая – к.с.-х.н., доцент Тодорова Л.В.), пищевых технологий и сферы услуг (заведующая – к.э.н., доцент Карман Т.В.), оборудования пищевых и перерабатывающих производств (заведующая – к.т.н. Клевцова Т.А.), гражданская безопасность (заведующая – к.т.н., доцент Мохнатко И.Н.).
-                        </p>
+                    <div class="flex justify-end">
+                        <div class="w-fit border border-[#CCCCCC] px-5 py-2.5 hover:bg-[#C10F1A] hover:text-white cursor-pointer transition duration-300 ease-linear">
+                            <span class="moreBtn font-semibold">Подробнее...</span>
+                        </div>
                     </div>
                 </div>
                 <div class="grid md:grid-cols-2 2xl:grid-cols-[60%_auto] gap-5">
@@ -640,53 +628,10 @@ style="background-image: url({{asset('img/faculty/faculty-1.png')}})">
             setActiveTab(directionBtn, directionBox, goalsBtn, goalsBox);
         });
 
-        let nextHistoryBtn = document.querySelector('#nextHistoryBtn');
-        let prevHistoryBtn = document.querySelector('#prevHistoryBtn');
-        let yearBox = document.querySelectorAll('.yearBox');
-
-        let listHistoryFaculty = document.querySelectorAll('.box-history-faculty');
-
-        let currentIndex = 0;
-
-        function showCurrentFaculty() {
-            listHistoryFaculty.forEach((faculty,index) => {
-                faculty.classList.add('hidden');
-                yearBox[index].classList.add('hidden');
-            });
-
-            if (listHistoryFaculty[currentIndex]) {
-                listHistoryFaculty[currentIndex].classList.add('flex');
-                listHistoryFaculty[currentIndex].classList.remove('hidden');
-
-                yearBox[currentIndex].classList.add('flex');
-                yearBox[currentIndex].classList.remove('hidden');
-            }
-
-            updateButtonState();
-        }
-
-        function updateButtonState() {
-            prevHistoryBtn.disabled = currentIndex === 0;
-
-            nextHistoryBtn.disabled = currentIndex === listHistoryFaculty.length - 1;
-        }
-
-        nextHistoryBtn.addEventListener('click', () => {
-            if (currentIndex < listHistoryFaculty.length - 1) {
-                currentIndex++;
-                showCurrentFaculty();
-            }
-        });
-
-        prevHistoryBtn.addEventListener('click', () => {
-            if (currentIndex > 0) {
-                currentIndex--;
-                showCurrentFaculty();
-            }
-        });
-
-        if (listHistoryFaculty.length > 0) {
-            showCurrentFaculty();
-        }
+        let moreBtn = document.querySelector('.moreBtn');
+        let historyBox = document.querySelector('.history-box');
+        moreBtn.addEventListener('click', ()=>{
+            historyBox.classList.toggle('max-h-[424px]');
+        })
     });
 </script>
