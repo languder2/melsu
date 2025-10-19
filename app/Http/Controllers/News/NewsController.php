@@ -141,7 +141,7 @@ class NewsController extends Controller
         if($search)
             $list= $list->where('title', 'like', '%' . $search . '%');
 
-        $list= $list->paginate(13);
+        $list= $list->paginate(15);
 
         $categories = Category::orderBy('sort')->orderBy('name')->get();
 
