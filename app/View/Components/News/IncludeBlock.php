@@ -12,7 +12,7 @@ use Illuminate\View\Component;
 
 class IncludeBlock extends Component
 {
-    public int $newsCount = 3;
+    public int $newsCount = 5;
     public int $eventCount = 5;
 
     public Collection $news;
