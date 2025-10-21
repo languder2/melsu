@@ -8,8 +8,8 @@
                 <div class="slide_group sldr">
                     <div class="slide">
                         <a href="https://abiturient.mgu-mlt.ru/" class="slide-link cursor-pointer">
-                            <img src="{{asset('img/slider/Platnoe.png')}}" alt="" class="hidden sm:block w-max">
-                            <img src="{{asset('img/slider/Platnoe_mob_4x.png')}}" alt="" class="block sm:hidden">
+                            <img src="{{asset('img/slider/Platnoe.webp')}}" alt="" class="hidden sm:block w-max">
+                            <img src="{{asset('img/slider/Platnoe_mob.webp')}}" alt="" class="block sm:hidden">
                         </a>
                     </div>
                     <div class="slide">

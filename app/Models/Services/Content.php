@@ -5,6 +5,7 @@ namespace App\Models\Services;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Intervention\Image\Drivers\Gd\Driver;
@@ -125,7 +126,7 @@ class Content extends Model
                     'table'     => view('components.editorjs.table', compact('block'))->render(),
                     'quote'     => view('components.editorjs.quote', compact('block'))->render(),
                     'List'      => view('components.editorjs.list.base', compact('block'))->render(),
-                    'raw'       => $block->data->html,
+                    'raw'       => Blade::render($block->data->html),
                     default => $block->type,
                 }
             );
