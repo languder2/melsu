@@ -531,6 +531,16 @@ class Division extends Model
         return route('division:toggle-show',$this);
     }
 
+
+    public function getCabinetFormAttribute(): string
+    {
+        return route('division.cabinet.form', $this);
+    }
+
+
+
+
+
     /* end Links*/
 
 
@@ -652,28 +662,19 @@ class Division extends Model
 
         $result = collect();
 
-        dump($list->count());
-
-//        $list = $list->except(3);
-
         $list->whereNull('parent_id')->each(fn($item, $key) => $result->put($key, $item));
-
-        dd($result);
-
 
         return $list;
     }
 
     protected static function flattenNestedCollection(Collection $flatCollection, $parentId = null, $level = 0): Collection
     {
-        $children = $flatCollection->where('parent_id', $parentId);
+        $children = $flatCollection->where('parent_id', $parentId)->each(fn($item) => $item->level = $level);
 
         $result = collect();
 
         foreach ($children as $item) {
-            $itemWithLevel = (object) array_merge($item instanceof Model ? $item->toArray() : (array) $item, ['level' => $level]);
-
-            $result->push($itemWithLevel);
+            $result->push($item);
 
             $nestedChildren = self::flattenNestedCollection( $flatCollection, $item->id, $level + 1);
 
@@ -682,5 +683,8 @@ class Division extends Model
 
         return $result->keyBy('id');
     }
+
+
+
 }
 

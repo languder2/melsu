@@ -24,4 +24,11 @@ class CabinetDivisionsController extends Controller
         return view('divisions.cabinet.list', compact('list'));
     }
 
+    public function form(?Division $division): View
+    {
+
+        return view('divisions.cabinet.form', compact('division'));
+    }
+
+
 }

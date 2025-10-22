@@ -38,7 +38,7 @@
         <a
             href="{{ route('divisions.cabinet.list') }}"
 
-            {{ Route::is('divisions.cabinet.*') ? "open" : "" }}
+            {{ Route::is('division*.cabinet.*') ? "open" : "" }}
 
             class="
                 cursor-pointer block p-3
@@ -49,6 +49,7 @@
         >
             Подразделения
         </a>
+
     </div>
 </aside>
 

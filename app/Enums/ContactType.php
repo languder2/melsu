@@ -8,6 +8,7 @@ enum ContactType: string
     case Email          = 'email';
     case Address        = 'address';
     case Telegram       = 'telegram';
+
     public function getName(): string
     {
         return match ($this) {

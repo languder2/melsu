@@ -16,9 +16,11 @@
 
     <x-sections.melsu-today/>
 
-    <x-news.short-news/>
+{{--    <x-news.short-news/>--}}
 
-    <x-events.short-list/>
+{{--    <x-events.short-list/>--}}
+
+    <x-news.include-block />
 
     <x-sections.melsu-numbers/>
 

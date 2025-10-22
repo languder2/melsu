@@ -33,5 +33,6 @@ Route::prefix('news')->middleware(AuthCabinet::class)->group(function () {
 
 Route::prefix('divisions')->middleware(AuthCabinet::class)->group(function () {
     Route::get('', [CabinetDivisionsController::class, 'list'])->name('divisions.cabinet.list');
+    Route::get('form/{division?}', [CabinetDivisionsController::class, 'form'])->name('division.cabinet.form');
 });
 
