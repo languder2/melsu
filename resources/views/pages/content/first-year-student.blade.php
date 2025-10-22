@@ -1608,6 +1608,53 @@ style="background-image: url({{asset('img/first-year-student-1.png')}})">
         if (secondList.length > 0) {
             showCurrentFaculty(secondList, currentSecondIndex, secondCurrentCount);
         }
+
+        const targetSections = document.querySelectorAll('#welcome, #important-dates, #first-steps, #dormitories, #first-year-memo, #contact-details, #video-guide, #news, #sport, #rules, #payment-information, #medical-care');
+        
+        const activeClass = 'bg-[#303030]';
+
+        const setActiveLink = (sectionId) => {
+            const allLinks = document.querySelectorAll('.card-news-glass a');
+            
+            allLinks.forEach(link => {
+                link.classList.remove(activeClass);
+                
+            });
+
+            if (sectionId) {
+                const activeLinks = document.querySelectorAll(
+                    `.card-news-glass a[href*="document.getElementById('${sectionId}')"]`
+                );
+                
+                activeLinks.forEach(link => {
+                    link.classList.add(activeClass);
+                });
+            }
+        };
+
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px 0px -50% 0px',
+            threshold: 0
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            let activeSectionId = null;
+
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    activeSectionId = entry.target.id;
+                }
+            });
+
+            if (activeSectionId) {
+                setActiveLink(activeSectionId);
+            }
+            
+        }, observerOptions);
+        targetSections.forEach(section => {
+            observer.observe(section);
+        });
     })
 </script>
 
