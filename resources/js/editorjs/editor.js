@@ -12,6 +12,11 @@ import Quote from '@editorjs/quote';
 import Table from '@editorjs/table';
 import Hr from '@ignweb/hr-tool';
 import AttachesTool from '@editorjs/attaches';
+import CodeTool from '@editorjs/code';
+import Paragraph from 'editorjs-paragraph-with-alignment';
+import BackgroundTune from 'editorjs-background';
+
+// import ToggleBlock from 'editorjs-toggle-block';
 import Columns from '@calumk/editorjs-columns';
 import Accordion from 'editorjs-collapsible-block';
 
@@ -26,6 +31,10 @@ const editorShort = new EditorJS({
     data: initialShortData,
     placeholder: 'Напишите краткое описание',
     tools: {
+        paragraph: {
+            class: Paragraph,
+            inlineToolbar: true,
+        },
         raw: RawTool,
         attaches: {
             class: AttachesTool,
@@ -48,15 +57,43 @@ const editor = new EditorJS({
     data: initialContentData,
     placeholder: 'Введите содержание новости',
     tools: {
+        paragraph: {
+            class: Paragraph,
+            inlineToolbar: true,
+        },
+        code: CodeTool,
         header: {
             class: Header,
             inlineToolbar: ['link']
         },
+        // toggle: {
+        //     class: ToggleBlock,
+        //     inlineToolbar: true,
+        // },
         linkTool: {
             class: LinkTool,
             config: {
                 endpoint: '/api/fetchUrl',
             }
+        },
+        backgroundTune: {
+            class: BackgroundTune,
+            config: {
+                colors: [
+                    {
+                        id: 'info',
+                        icon: '<svg></svg>',
+                        title: 'Info',
+                        color: 'rgba(92, 182, 255, 0.1)'
+                    },
+                    {
+                        id: 'warning',
+                        icon: '<svg></svg>',
+                        title: 'Warning',
+                        color: 'rgba(255, 208, 37, 0.1)'
+                    }
+                ]
+            },
         },
         image: {
             class: ImageTool,
@@ -144,6 +181,7 @@ const editor = new EditorJS({
         // },
         raw: RawTool,
     },
+    tunes: ['backgroundTune']
 });
 
 

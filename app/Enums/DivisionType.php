@@ -2,6 +2,8 @@
 
 namespace App\Enums;
 
+use Illuminate\Support\Collection;
+
 enum DivisionType: string
 {
     case Rectorate = 'rectorate';
@@ -17,19 +19,11 @@ enum DivisionType: string
     case Other          = 'other';
     public function getName():string
     {
-        return match ($this) {
-            self::Rectorate             => 'Ректорат',
-            self::Branch                => 'Филиал',
-            self::Institute             => 'Институт',
-            self::Faculty               => 'Факультет',
-            self::Department            => 'Кафедра',
-            self::Lab                   => 'Лаборатория',
-            self::Administration        => 'Управление',
-            self::Division              => 'Департамент',
-            self::Office                => 'Отдел',
-            self::Representative        => 'Представительство',
-            self::Other                 => 'Иное',
-        };
+        return __('divisions.type.'.$this->value);
+    }
+    public function label():string
+    {
+        return __('divisions.type.'.$this->value);
     }
     public function getSpecialityFiled():?string
     {
@@ -39,6 +33,16 @@ enum DivisionType: string
             self::Department            => 'department_id',
             default                     => null,
         };
+    }
+
+    public static function list():Collection
+    {
+        return collect(self::cases())->mapWithKeys(fn ($item) =>[$item->value => $item] );
+    }
+
+    public static function labels():Collection
+    {
+        return self::list()->mapWithKeys(fn($item, $key) => [$key => __('divisions.type.'.$item->value)]);
     }
 
     public static function forSelect():array

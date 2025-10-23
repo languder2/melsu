@@ -113,19 +113,18 @@ class Content extends Model
 
         $json = json_decode($this->getDataForEditorJS());
 
-//        if(is_null($json)) return $this->content;
-
         foreach ($json->blocks as $key=>$block)
             $html->push(
                 match ($block->type) {
                     'columns'   => view('components.editorjs.columns', ['data' => $block->data])->render(),
                     'header'    => view('components.editorjs.header', ['data' => $block->data])->render(),
-                    'paragraph' => view('components.editorjs.paragraph', ['data' => $block->data])->render(),
+                    'paragraph' => view('components.editorjs.paragraph', compact('block'))->render(),
                     'image'     => view('components.editorjs.image', compact('block'))->render(),
                     'gallery'   => view('components.editorjs.gallery', compact('block'))->render(),
                     'table'     => view('components.editorjs.table', compact('block'))->render(),
                     'quote'     => view('components.editorjs.quote', compact('block'))->render(),
                     'List'      => view('components.editorjs.list.base', compact('block'))->render(),
+                    'code'      => Blade::render($block->data->code),
                     'raw'       => Blade::render($block->data->html),
                     default => $block->type,
                 }

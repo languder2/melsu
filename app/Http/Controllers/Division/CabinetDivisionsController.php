@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Division;
 
+use App\Enums\DivisionType;
 use App\Http\Controllers\Controller;
 use App\Models\Division\Division;
 use Illuminate\Support\Collection;
@@ -26,8 +27,17 @@ class CabinetDivisionsController extends Controller
 
     public function form(?Division $division): View
     {
+        $divisions = Division::flattenNestedCollection($this->divisions)->keyBy('id')
+            ->map(
+                fn ($item) =>
+                    str_repeat('&nbsp;', $item->level*3)
+                    . ($item->level ? __('common.arrowT2R')  : '' )
+                    . $item->name
+            );
 
-        return view('divisions.cabinet.form', compact('division'));
+        $types = DivisionType::labels();
+
+        return view('divisions.cabinet.form', compact('division', 'divisions', 'types'));
     }
 
 
