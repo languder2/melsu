@@ -22,9 +22,8 @@ class ClustersController extends Controller
     {
         return view('projects.clusters.admin.form', compact("current"));
     }
-    public function save(Request $request, ?Cluster $current)
+    public function save(Request $request, Cluster $current)
     {
-
         $form = $request->validate($current->FormRules(),$current->FormMessage());
 
         $current->fill($form)->save();

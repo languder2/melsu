@@ -31,8 +31,6 @@ class Cluster extends Model
 
     protected $dates = ['deleted_at'];
 
-    public bool $open = true;
-
     public function FormRules():array
     {
         return [
@@ -123,6 +121,10 @@ class Cluster extends Model
         $result= $this->MorphOne(Image::class, 'relation');
         return $type ? $result->where('type', $type) : $result;
     }
+//    public function getNameAttribute($value): ?string
+//    {
+//        return html_entity_decode($value);
+//    }
     public function getPreviewAttribute(): Image
     {
         return $this->getImage('preview')->first()
@@ -131,7 +133,7 @@ class Cluster extends Model
     public function getIcoAttribute(): Image
     {
         return $this->getImage('ico')->first()
-            ?? (new Image(['type' => 'ico']))->relation()->associate($this);
+            ?? (new Image(['type' => 'ico', 'name' => 'ico to the cluster'. __('common.arrowR') . $this->name ]))->relation()->associate($this);
     }
     public function getContents(?string $type = null): MorphOne
     {
@@ -151,9 +153,13 @@ class Cluster extends Model
     {
         return $this->getContent('short')->content ?? null;
     }
+    public function full(): Content
+    {
+        return $this->getContent('full');
+    }
     public function getFullAttribute(): ?string
     {
-        return $this->getContent('full')->content ?? null;
+        return $this->full()->content ?? null;
     }
 
     public function relevance(): Content
@@ -197,16 +203,6 @@ class Cluster extends Model
     public function getAvailableResourcesAttribute(): ?string
     {
         return $this->availableResources()->content ?? null;
-    }
-
-    public function isOpen():bool
-    {
-        $response = $this->open;
-
-        if($this->open)
-            $this->open = false;
-
-        return $response;
     }
 
     public function projects(): HasMany

@@ -18,31 +18,23 @@
 
     </section>
 
+    <div class="max-w-[96rem] mx-auto mb-10">
 
-    <div class="max-w-[96rem] mx-auto -mb-10">
-
-        <h3 class="text-3xl font-semibold mb-4 pt-2">
+        <h3 class="text-3xl font-bold mb-4 pt-2 uppercase">
             Кластеры
         </h3>
 
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+        <div class="flex flex-col lg:flex-row gap-4">
             @foreach($list as $item)
-                <a href="{{ $item->link }}"
-                    class="bg-white p-6 border border-black hover:bg-red-700 hover:text-white group transition-all duration-500 "
-                >
-                    <div class="bg-cover bg-center flex flex-col gap-4 h-full min-h-72 group-hover:bg-opacity-0"
-                         style="background-image: url('{{asset('img/clusters/Component 19.svg')}}')"
-                    >
-                        <h4 class="font-semibold text-xl">
-                            {!! $item->name !!}
-                        </h4>
+                <a href="{{ $item->link }}" class="flex-1 flex flex-col gap-4 hover:text-base-red duration-300 hover:fill-base-red">
 
-                        <h4 class="">
-                            {!! $item->short !!}
-                        </h4>
+                    <x-html.svg>
+                        {!! $item->ico->content !!}
+                    </x-html.svg>
 
-
-                    </div>
+                    <span class="text-center font-semibold">
+                        {{ $item->name }}
+                    </span>
                 </a>
             @endforeach
         </div>

@@ -87,13 +87,13 @@ class Content extends Model
             'goals'         => __('projects.Goals and objectives'),
             'structure'     => __('projects.Structure'),
             'suggestions'   => __('projects.Suggestions for cooperation'),
-            'available_resources'
-            => __('projects.Available resources'),
+            'available_resources' => __('projects.Available resources'),
             'terms'         => __('projects.Terms of implementation'),
             'funding'       => __('projects.Amount of funding'),
             'description'   => __('projects.Project Description'),
             'results'       => __('projects.Results and achievements'),
             'prospects'     => __('projects.Development prospects'),
+            'full'          => __('projects.full'),
             default         => __('projects.Content'),
         };
     }

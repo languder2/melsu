@@ -9,6 +9,7 @@ return [
     'Available resources'           => 'Имеющиеся ресурсы',
 
     'Content'                       => 'Контент',
+    'full'                          => 'Описание кластера',
 
     'Projects'                      => 'Проекты',
     'Terms of implementation'       => 'Сроки реализации',

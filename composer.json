@@ -20,7 +20,9 @@
         "maatwebsite/excel": "^3.1",
         "mallardduck/blade-lucide-icons": "^1.23",
         "tinymce/tinymce": "^7.6",
-        "unisharp/laravel-filemanager": "^2.11"
+        "unisharp/laravel-filemanager": "^2.11",
+        "ext-dom": "*",
+        "ext-libxml": "*"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
@@ -38,7 +40,8 @@
             "Database\\Seeders\\": "database/seeders/"
         },
         "files": [
-            "app/Helpers/transliteration.php"
+            "app/Helpers/transliteration.php",
+            "app/Helpers/clearSVG.php"
         ]
     },
     "autoload-dev": {

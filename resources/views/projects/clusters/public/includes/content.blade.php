@@ -1,3 +1,9 @@
+@props([
+    "item"  => new \App\Models\Services\Content(),
+    'open'  => false
+
+])
+
 @if($item->content)
     <div @if($open ?? null) open @endif class="content-block group border-l border-l-base-red px-2">
         <a

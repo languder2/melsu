@@ -321,5 +321,17 @@ class Image extends Model
         return  route('image:api:delete', $this);
     }
 
+
+
+    public function isSVG(): bool
+    {
+        return pathinfo($this->path)['extension'] !== 'svg';
+    }
+
+    public function getContentAttribute():?string
+    {
+            return $this->path ? Storage::get($this->path) : null;
+    }
+
     /* End links */
 }
