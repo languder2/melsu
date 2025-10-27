@@ -20,7 +20,8 @@ use App\Models\Staff\Affiliation;
 use App\Models\Staff\Staff;
 use App\Models\Users\User;
 use App\Models\Users\UserAccess;
-use App\Traits\HasLinks;
+use App\Traits\hasContents;
+use App\Traits\hasLinks;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
@@ -37,8 +38,9 @@ use App\Models\Upbringing\Upbringing;
  */
 class Division extends Model
 {
-    use SoftDeletes, HasLinks;
+    use SoftDeletes, hasLinks, hasContents;
     protected $table = 'divisions';
+
     protected $fillable = [
         'id',
         'acronym',
@@ -78,6 +80,31 @@ class Division extends Model
         });
     }
 
+    public function validateRules(): array
+    {
+        return [
+            'acronym'           => "",
+            'name'              => "required",
+            'alt_name'          => "",
+            'code'              => "nullable|unique:divisions,code,{$this->id},id,deleted_at,NULL",
+            'type'              => "",
+            'sort'             => '',
+            'parent_id'         => '',
+            'sections'          => '',
+            'chief'             => '',
+            'description'       => '',
+            'image'             => '',
+            'preview'           => '',
+            'show'              => '',
+        ];
+    }
+    public function validateMessage(): array
+    {
+        return [
+            'name.required' => 'Укажите название',
+            'name.unique' => 'Название уже занято',
+        ];
+    }
     public static function FormRules($id): array
     {
         return [
@@ -531,15 +558,20 @@ class Division extends Model
         return route('division:toggle-show',$this);
     }
 
+    public function getCabinetListAttribute(): string
+    {
+        return route('divisions.cabinet.list');
+    }
 
     public function getCabinetFormAttribute(): string
     {
         return route('division.cabinet.form', $this);
     }
 
-
-
-
+    public function getCabinetSaveAttribute(): string
+    {
+        return route('division.cabinet.save', $this);
+    }
 
     /* end Links*/
 

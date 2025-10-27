@@ -38,4 +38,10 @@ trait hasContents
     {
         return $this->getFullRecord()->content;
     }
+
+    public function getContentHTMLAttribute()
+    {
+        return $this->getContentRecord()->render();
+    }
+
 }

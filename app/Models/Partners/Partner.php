@@ -6,7 +6,7 @@ use App\Models\Gallery\Image;
 use App\Traits\hasContents;
 use App\Traits\hasImage;
 use App\Traits\hasRelations;
-use App\Traits\HasRouteLinks;
+use App\Traits\hasLinks;
 use App\Traits\resolveRouteBinding;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
@@ -15,7 +15,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Partner extends Model
 {
 
-    use SoftDeletes, HasRouteLinks, hasRelations, hasImage, hasContents;
+    use SoftDeletes, hasLinks, hasRelations, hasImage, hasContents;
 
     protected array $links = [
         'form'      => 'partners.form',

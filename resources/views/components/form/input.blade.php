@@ -1,47 +1,37 @@
-<div class="block relative mt-2 @isset($block) {{ $block }} @endisset">
+@props([
+    'heading'           => null,
+    'id'                => 'form-' . \Illuminate\Support\Str::random(20),
+    'initialContent'    => json_encode(['blocks' => []]),
+    'type'              => 'text',
+    'name'              => null,
+    'label'             => null,
+    'value'             => '',
+    'required'          => false,
+])
+
+<div class="block relative mt-2 {{ $attributes->get('block') }}">
     <input
-        type="{{ $type ?? 'text' }}"
-        @if(isset($id))
-            id="{{$id}}"
-        @endif
-        name="{{$name}}"
-        value="{{@$value}}"
+        type="{{ $type }}"
+        id="{{ $id }}"
+
+        name="{{ $name }}"
+        value="{{ $value }}"
+
         class="
-            border-b
-            border-dashed
-            bg-none
-
-            outline-0
-            w-full
-            py-2
-            mt-2
-
-            peer
-            autofill:text-pink-800
-            focus:text-blue-700
-            focus:border-blue-700
-
-            {{@$class}}
+            border-b border-dashed bg-none outline-0 w-full py-2 mt-2 peer autofill:text-pink-800 focus:text-blue-700 focus:border-blue-700
+            {{ $attributes->get('class') }}
         "
-        @isset($step)
-            step="{{$step}}"
-        @endisset
 
-        @isset($onclick)
-            onclick="{{$onclick}}"
-        @endisset
+        {{ $attributes->except(['class','block', 'labelClass']) }}
 
-        @isset($onchange)
-            onchange="{{$onchange}}"
-        @endisset
+        @required( $required )
 
-        @required( $required ?? null )
         placeholder=""
     >
 
-    @if(isset($label) && isset($id))
+    @if( $label )
         <label
-            for="{{$id}}"
+            for="{{ $id }}"
             class="
                 absolute
                 left-0
@@ -57,11 +47,10 @@
                 peer-placeholder-shown:text-base
                 peer-autofill:text-xs
                 peer-autofill:top-0
+                {{ $attributes->get('labelBlock') }}
             "
         >
-            {{$label}}@if(isset($required))
-                *
-            @endif
+            {{ $label . ($required ? '*' : '') }}
         </label>
     @endif
 </div>

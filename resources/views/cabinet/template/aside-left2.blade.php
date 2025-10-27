@@ -50,6 +50,21 @@
             Подразделения
         </a>
 
+        <a
+            href="{{ route('divisions.cabinet.list') }}"
+
+{{--            {{ Route::is('division*.cabinet.*') ? "open" : "" }}--}}
+
+            class="
+                cursor-pointer block p-3
+                hover:bg-slate-200
+                open:text-white open:bg-sky-800
+                open:hover:text-white open:hover:bg-sky-800
+            "
+        >
+            Страницы
+        </a>
+
     </div>
 </aside>
 

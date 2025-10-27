@@ -107,7 +107,13 @@ class TestController extends Controller
     public function index(): View
     {
 
-        dd(DivisionType::labels());
+        Content::where('content', 'like', '%16:30%')->get()->each(function ($item) {
+            $content = str_replace('<li>Пн-Пт с 8:00 до 16:30</li>', '<li>Пн-Чт с 8:00 до 16:45</li>
+<li>Пт с 8:00 до 15:45</li>', $item->content);
+            $item->fill(['content' => $content])->save();
+        });
+
+        dd();
 
         $list = collect();
 

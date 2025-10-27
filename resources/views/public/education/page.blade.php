@@ -94,7 +94,12 @@
                     @break
 
             @default
-                @if($division->publicSections->count())
+
+                @if($division->content)
+                    <div class="content-news mb-3 codex-editor flex flex-col gap-4">
+                        {!! $division->contentHTML !!}
+                    </div>
+                @elseif($division->publicSections->count())
                     <div class="flex flex-col gap-4 mb-4">
                         @each('public.page.content-section',$division->publicSections,'section')
                     </div>

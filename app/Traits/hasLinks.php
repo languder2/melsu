@@ -4,7 +4,7 @@ namespace App\Traits;
 
 use Illuminate\Support\Facades\Route;
 
-trait HasRouteLinks
+trait hasLinks
 {
     public function __get($key)
     {
