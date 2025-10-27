@@ -2,7 +2,7 @@
 @import '../css/font-import.css' layer(base);
 @import '@fortawesome/fontawesome-free/css/all.css' layer(base);
 
-@import 'codex-editor.css';
+@import 'editorjs.css';
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 

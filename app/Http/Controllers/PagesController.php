@@ -6,7 +6,7 @@ use App\Models\Menu\Menu;
 use App\Models\Page\Content;
 use App\Models\Page\Content as PageContent;
 use App\Models\Page\Page;
-use App\Models\Partner\Partner;
+use App\Models\Partners\Partner;
 use App\Models\Upbringing\Upbringing;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;

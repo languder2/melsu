@@ -38,6 +38,7 @@
         </div>
     @endguest
 </main>
+
 @include("cabinet.template.footer")
 
 </body>

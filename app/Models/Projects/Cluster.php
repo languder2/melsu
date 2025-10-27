@@ -2,8 +2,10 @@
 
 namespace App\Models\Projects;
 
+use App\Enums\Entities;
 use App\Models\Gallery\Image;
 use App\Models\Services\Content;
+use App\Traits\hasPartners;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
@@ -12,8 +14,7 @@ use Illuminate\Support\Collection;
 
 class Cluster extends Model
 {
-
-    use SoftDeletes;
+    use SoftDeletes, hasPartners;
 
     protected $table = 'project_clusters';
 
@@ -30,6 +31,8 @@ class Cluster extends Model
     ];
 
     protected $dates = ['deleted_at'];
+
+    public Entities $entity = Entities::cluster;
 
     public function FormRules():array
     {
@@ -93,13 +96,17 @@ class Cluster extends Model
     }
     public function getAdminAttribute(): string
     {
-        return route('clusters.admin', $this->id);
+        return route('clusters.admin');
     }
     public function getNewAttribute(): string
     {
         return route('clusters.form');
     }
     public function getEditAttribute(): string
+    {
+        return route('clusters.form', $this->id);
+    }
+    public function getFormAttribute(): string
     {
         return route('clusters.form', $this->id);
     }
@@ -270,5 +277,6 @@ class Cluster extends Model
             ],
         ]);
     }
+    /* Links */
 
 }

@@ -14,7 +14,7 @@ use App\Models\Menu\Menu;
 use App\Models\News\News;
 use App\Models\News\RelationNews;
 use App\Models\Page\Content as PageContent;
-use App\Models\Partner\Partner;
+use App\Models\Partners\Partner;
 use App\Models\Sections\Contact;
 use App\Models\Staff\Affiliation;
 use App\Models\Staff\Staff;

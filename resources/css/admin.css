@@ -1,7 +1,11 @@
+@import 'tailwindcss';
+
 @import '../css/new-tailwind.css' layer(base);
+@import '../css/font-import.css' layer(base);
 @import '@fortawesome/fontawesome-free/css/all.css' layer(base);
 
-@import 'tailwindcss';
+@import 'editorJS.css';
+
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 
@@ -77,4 +81,15 @@ img {
     -khtml-user-drag: none; /* Для Konqueror */
     -moz-user-drag: none; /* Для Firefox */
     -o-user-drag: none; /* Для Opera */
+}
+
+
+.link{
+    @apply underline underline-offset-3 hover:text-blue-700
+}
+.flex-center{
+    @apply flex items-center justify-center;
+}
+.flex-end{
+    @apply flex items-end;
 }

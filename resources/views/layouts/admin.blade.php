@@ -5,12 +5,13 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link rel="shortcut icon" href="{{url('favicons/favicon.ico')}}" type="image/x-icon" />
 
     <title>@yield('title', 'ФГБОУ ВО "МелГУ"')</title>
 
-    @vite(['resources/css/admin.css', 'resources/js/admin.js'])
+    @vite(['resources/css/admin.css', 'resources/js/admin.js', 'resources/js/editorjs/editor.js'])
 
     @hasSection('includes')
         @yield('includes')

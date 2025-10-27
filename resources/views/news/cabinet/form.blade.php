@@ -3,7 +3,7 @@
 @section('title', 'Новости')
 
 @section('content')
-    <form id="formWithEditorJS" action="{{ $news->cabinet_save }}" method="POST" class="flex flex-col gap-3" enctype="multipart/form-data">
+    <form action="{{ $news->cabinet_save }}" method="POST" class="flex flex-col gap-3" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 
@@ -132,33 +132,23 @@
                         </div>
                     </div>
                 </div>
-                <div>
-                    <h4 class="font-semibold text-xl">Описание</h4>
 
-                    <div class="w-full bg-white p-4 ps-10">
-                        <input type="hidden" id="EditorJSShort" name="short">
-                        <div id="EditorJSShortBlock" class=" ps-6"
-                             data-initial-content="{{ $news->short_data }}"
-                        >
-                        </div>
-                    </div>
-                </div>
+                <x-editorjs.editor
+                    set="short"
+                    name="short"
+                    :initialContent=" $news->short_data "
+                />
+
             </div>
             <div class="col-span-2 bp100:col-span-1">
-                <div>
-                    <h4 class="font-semibold text-xl">Содержание новости</h4>
 
-                    <div class="w-full bg-white p-4 ps-10">
-                        <input type="hidden" id="editorJSContent" name="content">
-                        <div
-                            id="editorJSContentBlock"
-                            class="ps-6"
-                            data-initial-content="{{ $news->content_data }}"
-                        >
-                        </div>
-                    </div>
+                <x-editorjs.editor
+                    name="content"
+                    heading="test"
+                    placeholder="Введите содержание новости"
+                    :initialContent=" $news->content_data "
+                />
 
-                </div>
             </div>
         </div>
     </form>

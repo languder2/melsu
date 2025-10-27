@@ -126,6 +126,7 @@ require __DIR__.'/divisions.php';
 require __DIR__.'/documents.php';
 require __DIR__.'/news.php';
 require __DIR__.'/projects.php';
+require __DIR__.'/partners.php';
 require __DIR__.'/education.php';
 require __DIR__.'/gallery.php';
 

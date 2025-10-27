@@ -13,7 +13,7 @@ use App\Models\Gallery\Image;
 use App\Models\Menu\Menu;
 use App\Models\News\RelationNews;
 use App\Models\Page\Content as PageContent;
-use App\Models\Partner\Partner;
+use App\Models\Partners\Partner;
 use App\Models\Sections\Contact;
 use App\Models\Services\Log;
 use App\Models\Staff\Affiliation;

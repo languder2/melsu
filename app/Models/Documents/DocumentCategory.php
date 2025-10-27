@@ -4,7 +4,7 @@ namespace App\Models\Documents;
 
 use App\Traits\Documents\HasDocumentCategoriesRelationLinks;
 use App\Traits\HasLinks;
-use App\Traits\HasRelations;
+use App\Traits\hasRelations;
 use App\Traits\Test;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -15,7 +15,7 @@ use Illuminate\Database\Eloquent\Builder;
 
 class DocumentCategory extends Model
 {
-    use SoftDeletes, HasRelations, HasLinks;
+    use SoftDeletes, hasRelations, HasLinks;
 //    use SoftDeletes, HasRelations, HasLinks, HasDocumentCategoriesRelationLinks;
 
     protected $table = 'document_categories';

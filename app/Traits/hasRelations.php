@@ -4,7 +4,7 @@ namespace App\Traits;
 
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 
-trait HasRelations
+trait hasRelations
 {
     public function relation(): MorphTo
     {

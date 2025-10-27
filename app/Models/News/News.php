@@ -6,6 +6,7 @@ use App\Models\Gallery\Gallery;
 use App\Models\Gallery\Image;
 use App\Models\Services\Content;
 use App\Models\Users\User;
+use App\Traits\hasContents;
 use Carbon\Carbon;
 use EditorJS\EditorJS;
 use Illuminate\Database\Eloquent\Builder;
@@ -18,7 +19,7 @@ use Illuminate\Support\Collection;
 
 class News extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, hasContents;
 
     protected $table = 'news';
     public static int $adminPerPage = 10;
@@ -183,37 +184,6 @@ class News extends Model
 
     }
 
-    public function getContent(?string $type):MorphOne
-    {
-        return $this->MorphOne(Content::class, 'relation')->where('type', $type);
-    }
-    public function getContentRecord():Content
-    {
-        return $this->getContent('content')->first()
-            ?? (new Content(['type' => 'content']))->relation()->associate($this);
-    }
-    public function getContentAttribute():?string
-    {
-        return $this->getContentRecord()->content;
-    }
-    public function getShortRecord():Content
-    {
-        return $this->getContent('short')->first()
-            ?? (new Content(['type' => 'short']))->relation()->associate($this);
-    }
-    public function getShortAttribute(): ?string
-    {
-        return $this->getShortRecord()->content;
-    }
-    public function getFullRecord():Content
-    {
-        return $this->getContent('full')->first()
-            ?? (new Content(['type' => 'full']))->relation()->associate($this);
-    }
-    public function getFullAttribute(): ?string
-    {
-        return $this->getFullRecord()->content;
-    }
     public function getNewsAttribute()
     {
         $value = $this->getContentRecord()->content;

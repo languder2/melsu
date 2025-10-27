@@ -107,6 +107,8 @@ class TestController extends Controller
     public function index(): View
     {
 
+        dd(DivisionType::labels());
+
         $list = collect();
 
 //        Division::all()->each(function ($division){
