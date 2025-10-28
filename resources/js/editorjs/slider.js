@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded',(evt)=>{
 
         trigger.addEventListener('touchstart', handleStart, { passive: false });
         trigger.addEventListener('touchend', handleEnd);
-        trigger.addEventListener('touchcancel', handleEnd); // Добавляем touchcancel
+        trigger.addEventListener('touchcancel', handleEnd);
         trigger.addEventListener('touchmove', handleMove, { passive: false });
 
         trigger.style.cursor = 'grab';
