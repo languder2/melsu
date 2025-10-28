@@ -26,14 +26,11 @@ class Content extends Model
     {
         return $this->morphTo();
     }
-
     public function fill(array $attributes):?self
     {
-
         if(array_key_exists('content', $attributes)){
             self::getImagesFromContent($attributes['content'], $this->relation);
         }
-
 
         return parent::fill($attributes);
     }
@@ -136,10 +133,9 @@ class Content extends Model
 
     public function getDataForEditorJS(): ?string
     {
-
         $json = json_decode($this->content);
 
-        if($json)
+        if($json || is_null($this->content))
             return $this->content;
 
         return json_encode((object)[

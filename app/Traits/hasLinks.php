@@ -3,25 +3,26 @@
 namespace App\Traits;
 
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Str;
 trait hasLinks
 {
-    public function __get($key)
+    protected array $magicGetForLinks = [
+        'prefix'    => '_link',
+        'fn'        => 'link_get',
+    ];
+    public function link_get($key): ?string
     {
         if (property_exists($this, 'links')) {
-            if (\Illuminate\Support\Str::endsWith($key, '_link')) {
+            if (Str::endsWith($key, '_link')) {
 
-                $routeKey = \Illuminate\Support\Str::before($key, '_link');
+                $routeKey = Str::before($key, '_link');
 
                 if (isset($this->links[$routeKey])) {
                     $routeName = $this->links[$routeKey];
 
                     $params = [];
-                    if ($this->exists) {
-                        $params[$this->getRouteKeyName()] = $this->getRouteKey();
-                    }
-
-                    dump($params);
+                    if ($this->exists)
+                        $params[] = $this->getRouteKey();
 
                     if (Route::has($routeName)) {
                         return route($routeName, $params);
@@ -29,6 +30,7 @@ trait hasLinks
                 }
             }
         }
-        return parent::__get($key);
+
+        return null;
     }
 }

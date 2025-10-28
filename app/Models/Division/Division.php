@@ -22,6 +22,8 @@ use App\Models\Users\User;
 use App\Models\Users\UserAccess;
 use App\Traits\hasContents;
 use App\Traits\hasLinks;
+use App\Traits\MagicGet;
+use App\Traits\resolveRouteBinding;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
@@ -32,13 +34,19 @@ use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Collection;
 use App\Models\Upbringing\Upbringing;
+use Illuminate\Support\Str;
 
 /**
  * @property ?DivisionType $type
  */
 class Division extends Model
 {
-    use SoftDeletes, hasLinks, hasContents;
+    use SoftDeletes, resolveRouteBinding, MagicGet,  hasContents, hasLinks;
+
+    protected array $links = [
+        'test'    => 'division.cabinet.form',
+    ];
+
     protected $table = 'divisions';
 
     protected $fillable = [
@@ -131,11 +139,6 @@ class Division extends Model
             'name.unique' => 'Название уже занято',
         ];
     }
-    public function resolveRouteBinding($value, $field = null): ?Division
-    {
-        return $this->where('code', $value)->first() ??  $this->where('id', $value)->first();
-    }
-
     public function getSortAttribute($sort): int|null
     {
         return ($sort > 0 && $sort < 1000) ? $sort :  null ;

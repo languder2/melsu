@@ -4,8 +4,8 @@
 
 @section('content')
 
-    <div class="grid grid-cols-[auto_1fr_auto] gap-px">
-        <div class="grid grid-cols-subgrid col-span-3 bg-slate-700 sticky top-0 text-white">
+    <div class="grid grid-cols-[auto_1fr_auto_auto] gap-px">
+        <div class="grid grid-cols-subgrid col-span-4 bg-slate-700 sticky top-0 text-white">
             <div class="p-3">
                 id
             </div>
@@ -13,12 +13,13 @@
                 Подразделение
             </div>
             <div class="p-3 border-l border-white"></div>
+            <div class="p-3 border-l border-white"></div>
         </div>
 
 
         @forelse($list as $division)
 
-            <div class="grid grid-cols-subgrid col-span-3 odd:bg-slate-200">
+            <div class="grid grid-cols-subgrid col-span-4 odd:bg-slate-200">
 
                 <div class="p-3 flex items-center justify-center">
                     {!! $division->id !!}
@@ -37,6 +38,11 @@
                     {!! $division->name !!}
                 </div>
 
+                <div class="flex gap-3 p-3 border-l border-white items-center">
+                    <a href="{{ $division->link }}" target="_blank" class="flex-end hover:text-green-700">
+                        <x-lucide-square-arrow-out-up-right class="w-6"/>
+                    </a>
+                </div>
                 <div class="flex gap-3 p-3 ps-6 border-l border-white">
                     <div class="flex items-center justify-center">
                         <a href="{{ $division->cabinet_form }}" class="hover:text-amber-500">

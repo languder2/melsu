@@ -135,6 +135,7 @@
 
                 <x-editorjs.editor
                     set="short"
+                    heading="Краткое описание новости"
                     name="short"
                     :initialContent=" $news->short_data "
                 />
@@ -144,7 +145,7 @@
 
                 <x-editorjs.editor
                     name="content"
-                    heading="test"
+                    heading="Содержание новости"
                     placeholder="Введите содержание новости"
                     :initialContent=" $news->content_data "
                 />

@@ -5,12 +5,19 @@ namespace App\Http\Controllers\Gallery;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
+use Intervention\Image\Drivers\Gd\Driver;
+use Intervention\Image\ImageManager;
 
 class MediaUploadController extends Controller
 {
     public function upload(Request $request): JsonResponse
     {
+        $maxWidth = 1920;
+        $maxHeight = 1080;
+
         $request->validate([
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:20480', // 2MB max
         ]);
@@ -18,7 +25,18 @@ class MediaUploadController extends Controller
         if ($request->hasFile('image')) {
             $file = $request->file('image');
 
-            $path = $file->store('editorjs_images', 'public');
+            $manager = new ImageManager(new Driver());
+
+            $image = $manager->read($file)
+                ->scale($maxWidth, $maxHeight)
+                ->toWebp(90)
+            ;
+
+            $fileName = Str::random(20);
+
+            $path = 'images/'.date('Y').'/'.date('m').'/'.date('d').'/'.date('H_i_s').'_'.$fileName.'.webp';
+
+            Storage::put($path, $image);
 
             $fullUrl = Storage::disk('public')->url($path);
 
@@ -26,7 +44,6 @@ class MediaUploadController extends Controller
                 'success' => 1,
                 'file' => [
                     'url' => $fullUrl,
-                    // Можно добавить дополнительные данные, такие как 'title'
                 ]
             ]);
         }
@@ -34,35 +51,6 @@ class MediaUploadController extends Controller
         return response()->json([
             'success' => 0,
             'message' => 'File upload failed.'
-        ], 400);
-    }
-
-
-    public function uploadVideo(Request $request): JsonResponse
-    {
-        $request->validate([
-            'video' => 'required|file|mimes:mp4,webm,ogg|max:50000', // Макс. 50MB
-        ]);
-
-        if ($request->hasFile('video')) {
-            $file = $request->file('video');
-
-            $path = $file->store('editorjs_videos', 'public');
-
-            $fullUrl = Storage::disk('public')->url($path);
-
-            return response()->json([
-                'success' => 1,
-                'file' => [
-                    'url' => $fullUrl,
-                    'path' => $path,
-                ]
-            ]);
-        }
-
-        return response()->json([
-            'success' => 0,
-            'message' => 'Video upload failed.'
         ], 400);
     }
 }

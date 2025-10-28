@@ -4,9 +4,19 @@ namespace App\Traits;
 
 use App\Models\Services\Content;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
-
+use Illuminate\Support\Str;
 trait hasContents
 {
+    protected array $magicGetForContent = [
+        'prefix'    => '_html',
+        'fn'        => 'content_get',
+    ];
+    public function content_get($key): ?string
+    {
+        $type = str_replace('_html', '', $key);
+
+        return $this->getContent($type)->firstOrNew()->render();
+    }
     public function getContent(?string $type):MorphOne
     {
         return $this->MorphOne(Content::class, 'relation')->where('type', $type);
@@ -43,5 +53,9 @@ trait hasContents
     {
         return $this->getContentRecord()->render();
     }
+
+
+
+
 
 }

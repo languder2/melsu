@@ -127,10 +127,10 @@ class CabinetNewsController extends Controller
         return redirect()->to( $request->has('save-close') ? $request->session()->get('cabinet-news-route') : $news->cabinet_form);
     }
 
-    public function delete(News $news): RedirectResponse
+    public function delete(Request $request, News $news): RedirectResponse
     {
         $news->delete();
-        return redirect()->route('news.cabinet.list');
+        return redirect()->to($request->session()->get('cabinet-news-route') ?? route('news.cabinet.list'));
     }
 
 }

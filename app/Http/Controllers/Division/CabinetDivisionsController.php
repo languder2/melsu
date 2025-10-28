@@ -39,7 +39,6 @@ class CabinetDivisionsController extends Controller
         $types = DivisionType::labels();
 
         if(!$division->content && $division->sections->count()){
-//        if($division->sections->count()){
 
             $data = (object)['blocks' => []];
 
