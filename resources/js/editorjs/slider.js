@@ -52,47 +52,33 @@ document.addEventListener('DOMContentLoaded',(evt)=>{
             trigger.style.cursor = 'grab';
         };
 
-        // Объединенная функция движения (mousemove/touchmove)
         const handleMove = (e) => {
             if (!isDown) return;
-            e.preventDefault(); // Предотвращаем выделение текста или стандартную прокрутку
+            e.preventDefault();
 
             let currentX;
 
             if (e.type === 'touchmove') {
-                // Используем клиентскую координату для тач-событий
                 currentX = e.touches[0].clientX;
             } else {
-                // Используем координату страницы для мыши
                 currentX = e.pageX;
             }
 
-            // Вычисляем смещение
-            // (startX - currentX) - это расстояние, на которое мы "тянем"
             const walk = (currentX - startX) * 2; // Множитель 2 для ускорения
 
-            // Применяем прокрутку
-            // trigger.scrollLeft = НачальнаяПрокрутка - Смещение
             trigger.scrollLeft = scrollLeft - walk;
         };
 
-        // ----------------------------------------------------
-        // 2. НАЗНАЧЕНИЕ СЛУШАТЕЛЕЙ (Один раз на элемент)
-        // ----------------------------------------------------
-
-        // Мышь
         trigger.addEventListener('mousedown', handleStart);
         trigger.addEventListener('mouseup', handleEnd);
         trigger.addEventListener('mouseleave', handleEnd);
         trigger.addEventListener('mousemove', handleMove);
 
-        // Сенсорный ввод (Используем { passive: false } т.к. мы вызываем e.preventDefault())
         trigger.addEventListener('touchstart', handleStart, { passive: false });
         trigger.addEventListener('touchend', handleEnd);
         trigger.addEventListener('touchcancel', handleEnd); // Добавляем touchcancel
         trigger.addEventListener('touchmove', handleMove, { passive: false });
 
-        // Устанавливаем начальный курсор
         trigger.style.cursor = 'grab';
     });
 
