@@ -4,6 +4,8 @@
 
 @section('content')
 
+    @include('divisions.cabinet.filter')
+
     <div class="grid grid-cols-[auto_1fr_auto_auto] gap-px">
         <div class="grid grid-cols-subgrid col-span-4 bg-slate-700 sticky top-0 text-white">
             <div class="p-3">
@@ -15,7 +17,6 @@
             <div class="p-3 border-l border-white"></div>
             <div class="p-3 border-l border-white"></div>
         </div>
-
 
         @forelse($list as $division)
 
@@ -43,23 +44,24 @@
                         <x-lucide-square-arrow-out-up-right class="w-6"/>
                     </a>
                 </div>
-                <div class="flex gap-3 p-3 ps-6 border-l border-white">
+
+
+                <div class="flex gap-6 p-3 px-4 border-l border-white">
+
                     <div class="flex items-center justify-center">
                         <a href="{{ $division->cabinet_form }}" class="hover:text-amber-500">
                             <x-lucide-layout-template class="w-6" />
                         </a>
                     </div>
 
-                    <div class="p-3">
-                        <form action="{{ route('news.cabinet.set-filter') }}" method="post">
-                            @csrf
-                            <input type="hidden" name="setFilter[division]" value="{{ $division->id }}">
-                            <label>
-                                <x-lucide-notepad-text class="w-6 hover:text-amber-500 cursor-pointer"/>
-                                <input type="submit" class="hidden">
-                            </label>
-                        </form>
-                    </div>
+                    <form action="{{ route('news.cabinet.set-filter') }}" method="post">
+                        @csrf
+                        <input type="hidden" name="setFilter[division]" value="{{ $division->id }}">
+                        <label>
+                            <x-lucide-notepad-text class="w-6 hover:text-amber-500 cursor-pointer"/>
+                            <input type="submit" class="hidden">
+                        </label>
+                    </form>
                 </div>
             </div>
         @empty
@@ -68,4 +70,5 @@
             </div>
         @endforelse
     </div>
+
 @endsection

@@ -1,6 +1,8 @@
 <?php
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Division\DivisionController;
+use App\Http\Controllers\Division\CabinetDivisionsController;
+use App\Http\Middleware\AuthCabinet;
 
 Route::prefix('admin/divisions')->group(function () {
     Route::get('form/{current?}',  [DivisionController::class, 'form'])->name('division:admin:form');
@@ -31,3 +33,11 @@ Route::middleware('isAdmin')
         Route::delete('document-categories/delete/{category?}',         [DivisionController::class, 'documentCategoryDelete'])  ->name('division:admin:document-categories:delete');
 
     });
+
+Route::prefix('cabinet/divisions')->middleware(AuthCabinet::class)->group(function () {
+    Route::get('',                  [CabinetDivisionsController::class, 'list'])->name('divisions.cabinet.list');
+    Route::get('form/{division?}',  [CabinetDivisionsController::class, 'form'])->name('division.cabinet.form');
+    Route::put('save/{division?}',  [CabinetDivisionsController::class, 'save'])->name('division.cabinet.save');
+    Route::post('set-filter',       [CabinetDivisionsController::class, 'setFilter'])->name('divisions.cabinet.set-filter');
+});
+

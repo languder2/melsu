@@ -3,7 +3,6 @@
 @section('title', __('common.Cabinet') . __('common.arrowR') . __('common.Divisions') . __('common.arrowR') . ( $division->exists ? $division->name : __('common.New') )  )
 
 @section('content')
-
     <form action="{{ $division->cabinet_save }}" method="POST" class="flex flex-col gap-3" enctype="multipart/form-data">
         @csrf
         @method('PUT')
@@ -56,7 +55,7 @@
 
         <div class="flex flex-col gap-3 ">
             <div class="grid grid-cols-[auto_1fr] gap-3">
-                <div class="max-h-72 bg-red-700/20">
+                <div class="max-h-88 bg-red-700/20">
                     <img src="{{$division->preview->thumbnail}}" alt="1"
                          class="h-full drop-shadow-md"
                     />
@@ -79,11 +78,10 @@
                     />
 
                     <x-form.input
-                        id="name"
                         name="name"
                         label="Название"
                         value="{!! old('name', $division->name) !!}"
-                        required1
+                        required
                     />
 
                     <div class="flex flex-col md:flex-row gap-3">
@@ -102,6 +100,14 @@
                         />
 
                     </div>
+
+                    <x-form.input
+                        name="code"
+                        label="Code / Alias"
+                        value="{!! old('code', $division->code) !!}"
+                        required
+                    />
+
 
 
                     <div class="flex gap-3 justify-between items-center">
@@ -125,6 +131,11 @@
 
                 </div>
             </div>
+
+            <x-common.meta-form
+                :meta="$division->meta"
+                header="Метатеги"
+            />
 
             <x-editorjs.editor
                 set="content"

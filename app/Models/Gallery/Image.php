@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Intervention\Image\Drivers\Gd\Driver;
 use Intervention\Image\ImageManager;
 
@@ -331,6 +332,26 @@ class Image extends Model
     public function getContentAttribute():?string
     {
             return $this->path ? Storage::get($this->path) : null;
+    }
+
+
+    public static function saveUploadFile(UploadedFile $file, $scaleW = 1920, $scaleH = 1080): string
+    {
+        $manager = new ImageManager(new Driver());
+
+        $image = $manager->read($file)
+            ->scale($scaleW, $scaleH)
+            ->toWebp(90)
+        ;
+
+        $fileName = Str::random(20);
+
+        $path = 'images/' .date('Y'). '/' .date('m') .'/'. date('d')
+            .'/' .date('H_i_s') . '_' . $fileName.'.webp';
+
+        Storage::put($path, $image);
+
+        return Storage::disk('public')->url($path);
     }
 
     /* End links */

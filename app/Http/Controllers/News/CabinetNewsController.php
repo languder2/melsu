@@ -6,10 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Models\Division\Division;
 use App\Models\News\Category;
 use App\Models\News\News;
-use App\Models\News\RelationNews;
+use App\Models\Users\User;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Str;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 
@@ -18,12 +20,18 @@ class CabinetNewsController extends Controller
 {
 
     protected Collection $divisions;
+    protected Collection $accessUsers;
     protected int $perPage = 40;
     public function __construct(){
         $this->divisions =
             auth()->user()->isEditor()
             ? Division::all()
             : auth()->user()->access->map->relation;
+
+        $this->accessUsers = auth()->user()->isEditor()
+            ? User::orderBy('name')->get()->keyBy('id')
+            : $this->divisions->flatMap(fn($item) => $item->getAccessUsers());
+
     }
     public function list(Request $request): View
     {
@@ -32,10 +40,20 @@ class CabinetNewsController extends Controller
             ? News::all()->sortByDesc('published_at')
             : $this->divisions->flatMap(fn($division) => $division->news)->sortByDesc('published_at');
 
-        $filters = $request->session()->get('cabinetNewsFilters', collect());
+        $filter = Session::get('cabinetNewsFilters', collect());
 
-        if($filters->has('division'))
-            $list= $list->where(fn($item)  => $item->relation_id == $filters->get('division') && $item->relation_type == Division::class);
+        if($filter->has('search'))
+            $list= $list->filter(fn($item)  =>
+                $item->id == $filter->get('search') || Str::is('*'.$filter->get('search').'*', $item->title)
+            );
+
+        if($filter->has('author'))
+            $list= $list->filter(fn($item)  => $item->author_id == $filter->get('author'));
+
+        if($filter->has('division'))
+            $list= $list->filter(fn($item)  =>
+                $item->relation_id == $filter->get('division') && $item->relation_type == Division::class
+            );
 
         $list = $list->paginate($this->perPage);
 
@@ -45,12 +63,19 @@ class CabinetNewsController extends Controller
 //        });
 
         $byFilter = collect([
-            'divisions' => $this->divisions->pluck('name', 'id'),
+            'divisions' => Division::flattenNestedCollection($this->divisions)->keyBy('id')
+                ->map(
+                    fn ($item) =>
+                        str_repeat('&nbsp;', $item->level*3)
+                        . ($item->level ? __('common.arrowT2R')  : '' )
+                        . $item->name
+                ),
+            'authors' => $this->accessUsers->pluck('name', 'id')
         ]);
 
         $request->session()->put('cabinet-news-route', Route::current()->uri());
 
-        return view('news.cabinet.list', compact('list', 'filters', 'byFilter'));
+        return view('news.cabinet.list', compact('list', 'byFilter'));
     }
 
     public function onApproval(Request $request): View
@@ -79,11 +104,12 @@ class CabinetNewsController extends Controller
 
     public function setFilter(Request $request): RedirectResponse
     {
-        $filters = $request->collect('setFilter')->where(fn($item) => !empty($item));
+        if($request->has('clear'))
+            Session::remove('cabinetNewsFilters');
+        else
+            Session::put('cabinetNewsFilters', $request->collect()->filter(fn($item) => !empty($item)));
 
-        $request->session()->put('cabinetNewsFilters', $filters);
-
-        return redirect()->route('news.cabinet.list');
+        return redirect()->back();
     }
 
     public function form(News $news): View
@@ -132,5 +158,17 @@ class CabinetNewsController extends Controller
         $news->delete();
         return redirect()->to($request->session()->get('cabinet-news-route') ?? route('news.cabinet.list'));
     }
+
+//        public function setFilter(Request $request): RedirectResponse
+//    {
+//        if($request->has('clear'))
+//            Session::remove('divisionCabinetFilter');
+//        else{
+//            $filter = collect($request->all());
+//            Session::put('divisionCabinetFilter', $filter);
+//        }
+//
+//        return redirect()->back();
+//    }
 
 }

@@ -151,7 +151,7 @@ class Menu extends Model
                     (object)[
                         'name'  => "Новости",
                         'link'  => route('public:education:division', ['faculty',$code,'news']),
-                        'hide'  => $division->getNewsCollection()->isEmpty(),
+                        'hide'  => $division->news->isEmpty(),
                     ],
 
                 ],

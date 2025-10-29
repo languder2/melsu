@@ -63,10 +63,10 @@
             @break
 
             @case('news')
-                @if($division->getNewsCollection()->find($op))
-                    @component('news.public.relations.item',['news' => $division->getNewsCollection()->find($op)])@endcomponent
+                @if($division->publicNews->find($op))
+                    @component('news.public.relations.item',['news' => $division->publicNews->find($op)])@endcomponent
                 @else
-                    @component('news.public.relations.for-education',['list' => $division->getNewsCollection()])@endcomponent
+                    @component('news.public.relations.for-education',['list' => $division->publicNews])@endcomponent
                 @endif
             @break
 

@@ -101,7 +101,7 @@ enum DivisionType: string
                     (object)[
                         'name'  => "Новости",
                         'link'  => route('public:education:division', ['faculty',$op,'news']),
-                        'hide'  => $division->getNewsCollection()->isEmpty(),
+                        'hide'  => $division->news->isEmpty(),
                     ],
 
 //                    (object)[

@@ -4,7 +4,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Cabinet\CabinetController;
 use App\Http\Controllers\Cabinet\TicketController;
 use App\Http\Controllers\News\CabinetNewsController;
-use App\Http\Controllers\Division\CabinetDivisionsController;
 use App\Http\Middleware\AuthCabinet;
 
 Route::get('', [CabinetController::class,'index'])->name('cabinet:index');
@@ -29,11 +28,5 @@ Route::prefix('news')->middleware(AuthCabinet::class)->group(function () {
     Route::delete('delete/{news?}',  [CabinetNewsController::class, 'delete'])->name('news.cabinet.delete');
     Route::get('on-approval', [CabinetNewsController::class, 'onApproval'])->name('cabinet.news.onApproval');
 
-});
-
-Route::prefix('divisions')->middleware(AuthCabinet::class)->group(function () {
-    Route::get('', [CabinetDivisionsController::class, 'list'])->name('divisions.cabinet.list');
-    Route::get('form/{division?}', [CabinetDivisionsController::class, 'form'])->name('division.cabinet.form');
-    Route::put('save/{division?}', [CabinetDivisionsController::class, 'save'])->name('division.cabinet.save');
 });
 

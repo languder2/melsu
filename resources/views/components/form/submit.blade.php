@@ -1,36 +1,22 @@
+@props([
+    'id'                => 'form-' . \Illuminate\Support\Str::random(20),
+    'type'              => 'submit',
+    'name'              => null,
+    'value'             => null,
+])
+
 <div class="pt-2 {{ $position ?? 'text-right' }}">
     <input
-        type="{{$type??'submit'}}"
+        type="{{ $type }}"
+        id="{{ $id }}"
 
-        @if(isset($id))
-            id="{{$id}}"
-        @endif
+        name="{{$name}}"
 
-        @if(isset($name))
-            name="{{$name}}"
-        @endif
+        value="{{ $value }}"
 
-        @if(isset($onclick))
-            onclick="{{$onclick}}"
-        @endif
+        {{ $attributes->class('bg-blue-900 px-4 py-2 text-white rounded-md hover:bg-blue-700 active:bg-gray-700 cursor-pointer') }}
 
-        @if(isset($additional))
-            @foreach($additional as $code=>$filed)
-                data-{{$code}}="{{$filed}}"
-        @endforeach
-        @endif
-
-        value="{{$value??"submit"}}"
-        class="
-                bg-blue-900
-                px-4 py-2
-                text-white
-                rounded-md
-                hover:bg-blue-700
-                active:bg-gray-700
-                cursor-pointer
-                {{@$class}}
-            "
+        {{ $attributes }}
     >
 
 </div>

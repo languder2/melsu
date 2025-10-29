@@ -2,7 +2,7 @@
 
 namespace App\Traits;
 
-trait HasNews
+trait hasEvents
 {
     //
 }

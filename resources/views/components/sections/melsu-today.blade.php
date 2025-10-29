@@ -1,4 +1,4 @@
-<section class="melsu-today-section">
+<section class="melsu-today-section" >
     <div class="overlay-section"></div>
     <div class="wrapper-melsu-section p-2.5 2xl:p-0 container custom">
         <div class="header-today-box col-12 col-lg-12 col-xl-8 col-xxl-6">

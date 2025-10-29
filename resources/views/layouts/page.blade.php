@@ -7,7 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="shortcut icon" href="{{url('favicons/favicon.ico')}}" type="image/x-icon" />
 
-    <title>@yield('title', 'ФГБОУ ВО "Мелитопольский государственный университет"')</title>
+    <title>@yield('title', 'ФГБОУ ВО «Мелитопольский государственный университет»')</title>
+
+@yield('meta')
 
     <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 

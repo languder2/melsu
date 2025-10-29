@@ -5,9 +5,12 @@ namespace App\Http\Controllers\Division;
 use App\Enums\DivisionType;
 use App\Http\Controllers\Controller;
 use App\Models\Division\Division;
+use App\Models\Users\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Str;
 use Illuminate\View\View;
 
 class CabinetDivisionsController extends Controller
@@ -17,11 +20,23 @@ class CabinetDivisionsController extends Controller
         $this->divisions = auth()->user()->isEditor()
             ? Division::orderBy('name')->get()->keyBy('id')
             : auth()->user()->access->map(fn($item) => $item->relation)->keyBy('id');
-    }
+
+        }
 
     public function list(): View
     {
+        $filter = Session::get('divisionCabinetFilter');
+
         $list = Division::flattenNestedCollection($this->divisions);
+
+        if($filter && $filter->has('search'))
+            $list = $list->filter(fn($item) =>
+                $item->id == $filter->get('search') || Str::is('*'.$filter->get('search').'*', $item->name)
+                || Str::is('*'.$filter->get('search').'*', $item->code)
+                || Str::is('*'.$filter->get('search').'*', $item->acronym)
+                || Str::is('*'.$filter->get('search').'*', $item->alt_name)
+            );
+
 
         return view('divisions.cabinet.list', compact('list'));
     }
@@ -67,7 +82,22 @@ class CabinetDivisionsController extends Controller
 
         $division->getContentRecord()->fill(['content' => $request->get('content')])->save();
 
+        if($request->get('meta'))
+            $division->metaSave($request->get('meta'), $request->file('meta.image'));
+
         return redirect()->to( $request->has('save-close') ? $division->cabinet_list : $division->cabinet_form);
+    }
+
+    public function setFilter(Request $request): RedirectResponse
+    {
+        if($request->has('clear'))
+            Session::remove('divisionCabinetFilter');
+        else{
+            $filter = collect($request->all());
+            Session::put('divisionCabinetFilter', $filter);
+        }
+
+        return redirect()->back();
     }
 
 }

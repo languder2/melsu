@@ -11,8 +11,6 @@ use App\Models\Education\Speciality;
 use App\Models\Gallery\Image;
 use App\Models\Global\Options;
 use App\Models\Menu\Menu;
-use App\Models\News\News;
-use App\Models\News\RelationNews;
 use App\Models\Page\Content as PageContent;
 use App\Models\Partners\Partner;
 use App\Models\Sections\Contact;
@@ -22,9 +20,10 @@ use App\Models\Users\User;
 use App\Models\Users\UserAccess;
 use App\Traits\hasContents;
 use App\Traits\hasLinks;
+use App\Traits\hasMeta;
+use App\Traits\hasNews;
 use App\Traits\MagicGet;
 use App\Traits\resolveRouteBinding;
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -34,17 +33,16 @@ use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Collection;
 use App\Models\Upbringing\Upbringing;
-use Illuminate\Support\Str;
 
 /**
  * @property ?DivisionType $type
  */
 class Division extends Model
 {
-    use SoftDeletes, resolveRouteBinding, MagicGet,  hasContents, hasLinks;
+    use SoftDeletes, resolveRouteBinding, MagicGet,  hasContents, hasLinks, hasMeta, hasNews;
 
     protected array $links = [
-        'test'    => 'division.cabinet.form',
+        'test'          => 'division.cabinet.form',
     ];
 
     protected $table = 'divisions';
@@ -284,33 +282,6 @@ class Division extends Model
         ;
     }
 
-    public function news(): MorphMany
-    {
-        return $this->morphMany(News::class, 'relation')
-            ->orderBy('published_at');
-    }
-    public function publicNews(): MorphMany
-    {
-        return $this->news()
-            ->where('published_at','<=', Carbon::now())
-            ->where('is_show',1)
-            ->where('has_approval',true)
-            ->orderBy('is_favorite', 'desc')
-            ->orderBy('sort', 'asc')
-            ->orderBy('published_at', 'desc')
-            ;
-
-    }
-    public function NewsLink(?string $op): string
-    {
-        return match($this->type){
-            default => route('news.relation.show',$op),
-            DivisionType::Institute, DivisionType::Faculty, DivisionType::Department, DivisionType::Branch
-            => route('public:education:division', [$this->type->value,$this->code ?? $this->id,'news',$op]),
-        };
-    }
-
-
     public function getTeachingStaffAttribute(): Collection
     {
         $result = collect([]);
@@ -499,23 +470,6 @@ class Division extends Model
         return $list;
     }
 
-    public function getNewsCollection()
-    {
-        $ids    = $this->getIDCollection();
-
-        $news   = RelationNews::where('is_show',true)
-            ->where('has_approval', true)
-            ->whereIn('relation_id',$ids)
-            ->where('relation_type',Division::class)
-            ->where('published_at', '<=', Carbon::now())
-            ->orderBy('is_favorite', 'desc')
-            ->orderBy('sort', 'asc')
-            ->orderBy('published_at','desc')
-            ->orderBy('title')
-            ->get();
-
-        return $news;
-    }
     public function upbringingSections()
     {
         return $this->morphMany(Upbringing::class, 'relation');
@@ -690,6 +644,15 @@ class Division extends Model
         foreach ($this->subs as $sub)
             $sub->getAccess($user);
 
+    }
+    public function AccessUsers(): MorphMany
+    {
+        return $this->morphMany(UserAccess::class, 'relation');
+    }
+
+    public function getAccessUsers(): Collection
+    {
+        return $this->AccessUsers->unique('user_id')->keyBy('user_id')->map(fn($item) => $item->user);
     }
 
     protected static function tree($list): Collection

@@ -1,6 +1,10 @@
 @extends("layouts.page")
 
-@section('title', 'ФГБОУ ВО "МелГУ"')
+@section('title', $division->meta['title'] ?? "ФГБОУ ВО «МелГУ»")
+
+@section('meta')
+    <x-common.meta :meta="$division->meta"/>
+@endsection
 
 @section('breadcrumbs')
     {!!Breadcrumbs::view("vendor.breadcrumbs.base",'division',$division)!!}
