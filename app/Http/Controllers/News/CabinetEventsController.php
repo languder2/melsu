@@ -5,20 +5,19 @@ namespace App\Http\Controllers\News;
 use App\Http\Controllers\Controller;
 use App\Models\Division\Division;
 use App\Models\News\Category;
+use App\Models\News\Events;
 use App\Models\News\News;
 use App\Models\Users\User;
-use Illuminate\Support\Facades\Route;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
-use Illuminate\Http\Request;
 
-
-class CabinetNewsController extends Controller
+class CabinetEventsController extends Controller
 {
-
     protected Collection $divisions;
     protected Collection $accessUsers;
     protected int $perPage = 40;
@@ -36,8 +35,8 @@ class CabinetNewsController extends Controller
     public function list(Request $request): View
     {
         $list = auth()->user()->isEditor()
-            ? News::all()->sortByDesc('published_at')
-            : $this->divisions->flatMap(fn($division) => $division->news)->sortByDesc('published_at');
+            ? Events::all()->sortByDesc('published_at')
+            : $this->divisions->flatMap(fn($division) => $division->events)->sortByDesc('published_at');
 
         $filter = Session::get('cabinetNewsFilters', collect());
 
@@ -70,7 +69,7 @@ class CabinetNewsController extends Controller
 
         $request->session()->put('cabinet-news-route', Route::current()->uri());
 
-        return view('news.cabinet.list', compact('list', 'byFilter'));
+        return view('events.cabinet.list', compact('list', 'byFilter'));
     }
 
     public function onApproval(Request $request): View

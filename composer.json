@@ -41,7 +41,9 @@
         },
         "files": [
             "app/Helpers/transliteration.php",
-            "app/Helpers/clearSVG.php"
+            "app/Helpers/clearSVG.php",
+            "app/Helpers/flattenTree.php",
+            "app/Helpers/saveImagesFromContent.php"
         ]
     },
     "autoload-dev": {

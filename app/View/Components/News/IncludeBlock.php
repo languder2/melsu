@@ -23,8 +23,7 @@ class IncludeBlock extends Component
         $this->news = News::where('published_at', '<=', Carbon::now())->where('has_approval', true)->where('is_show',true)
             ->orderBy('published_at', 'desc')->limit($this->newsCount)->get();
 
-        $this->events = Events::where('published_at', '<=', Carbon::now())
-            ->orderBy('published_at', 'desc')->limit($this->eventCount)->get();
+        $this->events = Events::orderBy('event_datetime', 'desc')->limit($this->eventCount)->get();
     }
 
     public function render(): View|Closure|string

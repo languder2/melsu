@@ -4,6 +4,10 @@ namespace App\Models\News;
 
 use App\Models\Gallery\Gallery;
 use App\Models\Gallery\Image;
+use App\Traits\hasContents;
+use App\Traits\hasLinks;
+use App\Traits\hasMeta;
+use App\Traits\MagicGet;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -13,7 +17,7 @@ use App\Models\News\Category;
 
 class Events extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, MagicGet, hasContents, hasLinks, hasMeta;
 
     protected $table = 'events';
     protected $primaryKey = 'id';
@@ -32,6 +36,7 @@ class Events extends Model
         'deleted_at',
     ];
     public static int $adminPerPage = 20;
+
     protected $casts = [
         'event_datetime' => 'datetime',
         'published_at' => 'datetime',

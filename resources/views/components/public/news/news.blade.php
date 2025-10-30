@@ -5,11 +5,11 @@
             {{Breadcrumbs::view('vendor.breadcrumbs.news-item','news-item',$news)}}
 
             <h1 class="text-4xl font-bold block pb-2">
-                {!! @$news->title !!}
+                {!! $news->title !!}
             </h1>
             <span class="text-[var(--primary-color)]">
                 <i class="bi bi-calendar2-week"></i>
-                    {{$news->published_at}}
+                    {{ $news->published_at }}
             </span>
         </div>
     </section>
@@ -17,9 +17,8 @@
     <div class="hidden aspect-video"></div>
     <div class="container custom">
         <div class="content-news mb-3 codex-editor flex flex-col gap-4">
-            {!! Blade::render($news->ContentHTML) !!}
+            {!! $news->content_html !!}
         </div>
-
 
         <div class="flex justify-between md:grid  md:grid-cols-[1fr_1fr] gap-[1px] bg-[#F1F1F1] p-[1px]">
             <div class="p-6 group/btnnews bg-white w-full">

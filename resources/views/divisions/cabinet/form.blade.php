@@ -105,10 +105,7 @@
                         name="code"
                         label="Code / Alias"
                         value="{!! old('code', $division->code) !!}"
-                        required
                     />
-
-
 
                     <div class="flex gap-3 justify-between items-center">
                         <x-form.file

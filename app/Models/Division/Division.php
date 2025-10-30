@@ -19,9 +19,11 @@ use App\Models\Staff\Staff;
 use App\Models\Users\User;
 use App\Models\Users\UserAccess;
 use App\Traits\hasContents;
+use App\Traits\hasEvents;
 use App\Traits\hasLinks;
 use App\Traits\hasMeta;
 use App\Traits\hasNews;
+use App\Traits\hasSubordination;
 use App\Traits\MagicGet;
 use App\Traits\resolveRouteBinding;
 use Illuminate\Database\Eloquent\Casts\Attribute;
@@ -39,10 +41,11 @@ use App\Models\Upbringing\Upbringing;
  */
 class Division extends Model
 {
-    use SoftDeletes, resolveRouteBinding, MagicGet,  hasContents, hasLinks, hasMeta, hasNews;
+    use SoftDeletes, resolveRouteBinding, hasSubordination, MagicGet, hasContents,
+        hasLinks, hasMeta, hasNews, hasEvents;
 
     protected array $links = [
-        'test'          => 'division.cabinet.form',
+        'test'  => 'division.cabinet.form',
     ];
 
     protected $table = 'divisions';
@@ -152,16 +155,6 @@ class Division extends Model
         return $this->morphMany(Options::class, 'relation');
     }
 
-    public function parent(): BelongsTo
-    {
-        return $this->belongsTo(self::class, 'parent_id','id');
-    }
-
-    public function subs(): HasMany
-    {
-        return $this->hasMany(self::class, 'parent_id','id');
-    }
-
     public function faculties(): HasMany
     {
         return $this->hasMany(self::class, 'parent_id','id')
@@ -269,7 +262,7 @@ class Division extends Model
         return $this->morphMany(Affiliation::class, 'relation')
             ->orderBy('order')
             ->where('show',1)
-        ;
+            ;
     }
 
     public function allStaff(): MorphMany
@@ -279,7 +272,7 @@ class Division extends Model
             ->orderBy('order')
             ->orderBy('full_name')
 
-        ;
+            ;
     }
 
     public function getTeachingStaffAttribute(): Collection
@@ -572,7 +565,7 @@ class Division extends Model
             ->whereNull('parent_id')
             ->orderBy('sort')
             ->orderBy('name')
-        ;
+            ;
     }
     public function getNewDocumentCategorySortAttribute():int
     {
@@ -589,7 +582,7 @@ class Division extends Model
             ->whereNull('parent_id')
             ->orderBy('sort', 'desc')
             ->orderBy('name')
-        ;
+            ;
     }
     public function getDocumentsAttribute():Collection
     {
@@ -623,7 +616,7 @@ class Division extends Model
             $result->put($category->id, $category->name_with_parents);
 
             foreach($category->subs as $sub)
-                   $result->put($sub->id, $sub->name_with_parents);
+                $result->put($sub->id, $sub->name_with_parents);
         }
 
         return $result;
@@ -649,40 +642,10 @@ class Division extends Model
     {
         return $this->morphMany(UserAccess::class, 'relation');
     }
-
     public function getAccessUsers(): Collection
     {
         return $this->AccessUsers->unique('user_id')->keyBy('user_id')->map(fn($item) => $item->user);
     }
-
-    protected static function tree($list): Collection
-    {
-
-        $result = collect();
-
-        $list->whereNull('parent_id')->each(fn($item, $key) => $result->put($key, $item));
-
-        return $list;
-    }
-
-    protected static function flattenNestedCollection(Collection $flatCollection, $parentId = null, $level = 0): Collection
-    {
-        $children = $flatCollection->where('parent_id', $parentId)->each(fn($item) => $item->level = $level);
-
-        $result = collect();
-
-        foreach ($children as $item) {
-            $result->push($item);
-
-            $nestedChildren = self::flattenNestedCollection( $flatCollection, $item->id, $level + 1);
-
-            $result = $result->concat($nestedChildren);
-        }
-
-        return $result->keyBy('id');
-    }
-
-
 
 }
 

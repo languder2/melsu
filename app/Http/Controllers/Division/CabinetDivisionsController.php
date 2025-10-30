@@ -25,25 +25,26 @@ class CabinetDivisionsController extends Controller
 
     public function list(): View
     {
+
         $filter = Session::get('divisionCabinetFilter');
 
-        $list = Division::flattenNestedCollection($this->divisions);
+        $list = flattenTree($this->divisions)->keyBy('id');
 
         if($filter && $filter->has('search'))
             $list = $list->filter(fn($item) =>
-                $item->id == $filter->get('search') || Str::is('*'.$filter->get('search').'*', $item->name)
-                || Str::is('*'.$filter->get('search').'*', $item->code)
-                || Str::is('*'.$filter->get('search').'*', $item->acronym)
-                || Str::is('*'.$filter->get('search').'*', $item->alt_name)
+                $item->id == $filter->get('search')
+                || Str::is('*'.mb_strtolower($filter->get('search')).'*', mb_strtolower($item->name))
+                || Str::is('*'.mb_strtolower($filter->get('search')).'*', mb_strtolower($item->code))
+                || Str::is('*'.mb_strtolower($filter->get('search')).'*', mb_strtolower($item->acronym))
+                || Str::is('*'.mb_strtolower($filter->get('search')).'*', mb_strtolower($item->alt_name))
             );
-
 
         return view('divisions.cabinet.list', compact('list'));
     }
 
     public function form(?Division $division): View
     {
-        $divisions = Division::flattenNestedCollection($this->divisions)->keyBy('id')
+        $divisions = flattenTree($this->divisions)->keyBy('id')
             ->map(
                 fn ($item) =>
                     str_repeat('&nbsp;', $item->level*3)
@@ -68,6 +69,7 @@ class CabinetDivisionsController extends Controller
 
             $division->getContentRecord()->fill(['content' => json_encode($data)])->save();
         }
+
 
         return view('divisions.cabinet.form', compact('division', 'divisions', 'types'));
     }

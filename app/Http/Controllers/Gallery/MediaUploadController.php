@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Gallery;
 
 use App\Http\Controllers\Controller;
+use App\Models\Gallery\Image;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -23,27 +24,13 @@ class MediaUploadController extends Controller
         ]);
 
         if ($request->hasFile('image')) {
-            $file = $request->file('image');
 
-            $manager = new ImageManager(new Driver());
-
-            $image = $manager->read($file)
-                ->scale($maxWidth, $maxHeight)
-                ->toWebp(90)
-            ;
-
-            $fileName = Str::random(20);
-
-            $path = 'images/'.date('Y').'/'.date('m').'/'.date('d').'/'.date('H_i_s').'_'.$fileName.'.webp';
-
-            Storage::put($path, $image);
-
-            $fullUrl = Storage::disk('public')->url($path);
+            $path = Image::saveUploadFile($request->file('image'));
 
             return response()->json([
                 'success' => 1,
                 'file' => [
-                    'url' => $fullUrl,
+                    'url' => $path,
                 ]
             ]);
         }

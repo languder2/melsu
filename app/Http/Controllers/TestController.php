@@ -100,49 +100,54 @@ class TestController extends Controller
 
         dd($news->preview->src);
 
-        dd('completed');
-
     }
 
     public function index(): View
     {
 
-        Content::where('content', 'like', '%16:30%')->get()->each(function ($item) {
-            $content = str_replace('<li>Пн-Пт с 8:00 до 16:30</li>', '<li>Пн-Чт с 8:00 до 16:45</li>
-<li>Пт с 8:00 до 15:45</li>', $item->content);
-            $item->fill(['content' => $content])->save();
-        });
-
-        dd();
-
-        $list = collect();
-
-//        Division::all()->each(function ($division){
-//            $user = User::where('name', "d{$division->id}")->get()->first();
+//        $list = Events::all()->keyBy('id');
 //
-//            if(!$user){
-//                $password = Str::random(3)."-".Str::random(3)."-".Str::random(3)."-".Str::random(3);
-//                $user = new User(['name'=>"d{$division->id}",'email'=> "d{$division->id}@melsu.ru", 'password'=> bcrypt($password)]);
-//                $user->save();
-//            }
+//        $list->each(function ($event){
 //
-//            $division->getAccess($user);
+//            if($event->getRawOriginal('short'))
+//                $event->getContent('short')->firstOrCreate()->fill([
+//                    'type' => 'short',
+//                    'content' =>
+//                        json_encode ((object)['blocks' =>
+//                            [
+//                                (object)[
+//                                    'type' => 'code',
+//                                    'data' => (object)[
+//                                        'code' => saveImagesFromContent($event->getRawOriginal('short')),
+//                                    ]
+//                                ]
+//                            ]
+//                        ])
+//                ])->save();
+//
+//            if($event->getRawOriginal('news'))
+//                $event->getContent('content')->firstOrCreate()->fill([
+//                    'type' => 'content',
+//                    'content' =>
+//                        json_encode ((object)['blocks' =>
+//                            [
+//                                (object)[
+//                                    'type' => 'code',
+//                                    'data' => (object)[
+//                                        'code' => saveImagesFromContent($event->getRawOriginal('news')),
+//                                    ]
+//                                ]
+//                            ]
+//                        ])
+//                ])->save();
 //        });
+//
+//        $event  = $list->get(12);
+//        $news   = News::find(143);
 
+//        dd($event->getRawOriginal('short'), $event->short, $event->content);
 
-        $time = microtime(true);
-
-        $list = User::where('email','like','d%@melsu.ru')->get()
-        ->each(function ($item){
-//            $password = Str::random(3)."-".Str::random(3)."-".Str::random(3)."-".Str::random(3);
-//            $item->password = bcrypt($password);
-//            $item->save();
-//            $item->pass = $password;
-//            $item->divisions = $item->access->map->relation->pluck('name');
-            return $item;
-        });
-
-        return view('test.index',compact('list'));
+        return view('test.index',compact('list', 'event', 'news'));
     }
 
 

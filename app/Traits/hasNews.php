@@ -3,9 +3,7 @@
 namespace App\Traits;
 
 use App\Enums\DivisionType;
-use App\Models\Division\Division;
 use App\Models\News\News;
-use App\Models\News\RelationNews;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 

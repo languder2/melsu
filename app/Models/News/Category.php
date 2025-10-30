@@ -11,7 +11,6 @@ use Illuminate\Support\Collection;
 class Category extends Model
 {
     use SoftDeletes;
-
     public function FormRules():array
     {
         return [
