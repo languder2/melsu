@@ -66,63 +66,12 @@
                     {{ $item->has_approval ? "bg-indigo-200/55 text-red-700" : "bg-red-700/55 text-white hover:text-red-700" }}
                 "
             >
-                <button
-                    popovertarget="link-for-delete-{{ $item->id }}"
-                    class="
-                        p-1 rounded-md
-                        cursor-pointer
-
-                    "
-                >
-                    <x-lucide-trash-2 class="w-6 cursor-pointer"/>
-                </button>
-
-                <div popover=""
-                     id="link-for-delete-{{ $item->id }}"
-                     class="
-                        relative inset-y-0 mx-auto my-auto
-                        transform overflow-hidden
-                        rounded-lg bg-white text-left
-                        opacity-0 shadow-xl transition-all [transition-behavior:allow-discrete] duration-300
-                        sm:w-full sm:max-w-600 [&:is([open],:popover-open)]:opacity-100
-                        [@starting-style]:[&:is([open],:popover-open)]:opacity-0
-                    "
-
-                >
-                    <h3 class="p-4 font-semibold">
-                        Удалить новость?
-                    </h3>
-                    <hr>
-                    <div class="p-4 flex flex-col gap-3">
-                        @if($item->relation)
-                            <div>
-                                {!! $item->relation->name !!}
-                            </div>
-                        @endif
-                        <div>
-                            {!! $item->title !!}
-                        </div>
-
-                    </div>
-                    <hr>
-                    <div class="text-right px-4 py-2">
-
-                        <form method="POST" action="{{ $item->cabinet_delete }}">
-                            @csrf
-                            @method('DELETE')
-                            <input type="submit" value="удалить"
-                                   class="
-                                            cursor-pointer
-                                            inline-block relative
-                                            py-2 px-4 text-white rounded-md shadow-md
-                                            shadow-gray-300
-                                            bg-red-800 hover:bg-red-700 active:bg-gray-700
-                                            hover:-mt-px hover:mb-px
-                                       "
-                            >
-                        </form>
-                    </div>
-                </div>
+                <x-html.button-delete-with-modal
+                    question="Удалить новость"
+                    :action=" $item->cabinet_delete "
+                    :text=" $item->title "
+                    :relation=" $item->relation->name ?? null "
+                />
             </div>
         </div>
     </div>

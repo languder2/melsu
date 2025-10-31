@@ -24,7 +24,7 @@ Breadcrumbs::for('events', function (BreadcrumbTrail $trail, ?Events $event) {
     $trail->parent('home');
 
     if($event){
-        $trail->push('Мероприятия',route('public:events:list'));
+        $trail->push('Мероприятия',route('public:events:calendar'));
         $trail->push($event->title,route('public:event:show',$event));
 
     }

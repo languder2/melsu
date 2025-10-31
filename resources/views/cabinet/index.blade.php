@@ -17,7 +17,7 @@
             lucide="notebook-text"
             color="text-red-950"
             text="Новости на утверждении"
-            :link=" route('cabinet.news.onApproval') "
+            :link=" route('news.cabinet.onApproval') "
         />
 
         <x-cabinet.sections.index-link

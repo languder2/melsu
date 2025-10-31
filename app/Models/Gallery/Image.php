@@ -30,8 +30,6 @@ class Image extends Model
         'type',
         'show',
         'order',
-        'relation_id',
-        'relation_type',
     ];
 
     protected $casts    = [
@@ -334,7 +332,6 @@ class Image extends Model
             return $this->path ? Storage::get($this->path) : null;
     }
 
-
     public static function saveUploadFile(UploadedFile $file, $scaleW = 1920, $scaleH = 1080): string
     {
         $manager = new ImageManager(new Driver());
@@ -355,4 +352,18 @@ class Image extends Model
     }
 
     /* End links */
+
+    public function saveImageAndPath(UploadedFile $file, $scaleW = 1920, $scaleH = 1080): void
+    {
+        $path = static::saveUploadFile($file, $scaleW, $scaleH);
+
+        $this->fill([
+            'path'  => str_replace(url('storage') . '/', '', $path),
+            'name'  => '',
+        ])->save();
+    }
+    public function getUrlAttribute(): string
+    {
+        return Storage::disk('public')->url($this->path);
+    }
 }

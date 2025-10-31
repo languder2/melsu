@@ -43,7 +43,7 @@ Route::middleware(['web','auth.api'])->group(function () {
 
 /* Events */
 
-Route::get('events', [EventsController::class,'all'])->name('public:events:list');
+//Route::get('events', [EventsController::class,'all'])->name('public:events:list');
 Route::get('event/{event?}', [EventsController::class,'show'])->name('public:event:show');
 
 
@@ -59,7 +59,7 @@ Route::controller(EventsController::class)
 
     });
 
-    Route::get('/events/calendar', [EventsController::class, 'calendar'])->name('public:events:calendar');
+    Route::get('/events', [EventsController::class, 'calendar'])->name('public:events:calendar');
     Route::get('/events/day/{date}', [EventsController::class, 'getDayEvents']);
 /**/
 
@@ -83,7 +83,7 @@ Route::prefix('cabinet/news')->middleware(AuthCabinet::class)->group(function ()
     Route::get('form/{news?}',  [CabinetNewsController::class, 'form'])->name('news.cabinet.form');
     Route::put('save/{news?}',  [CabinetNewsController::class, 'save'])->name('news.cabinet.save');
     Route::delete('delete/{news?}',  [CabinetNewsController::class, 'delete'])->name('news.cabinet.delete');
-    Route::get('on-approval', [CabinetNewsController::class, 'onApproval'])->name('cabinet.news.onApproval');
+    Route::get('on-approval', [CabinetNewsController::class, 'onApproval'])->name('news.cabinet.onApproval');
 
 });
 
@@ -93,7 +93,7 @@ Route::prefix('cabinet/events')->middleware(AuthCabinet::class)->group(function 
     Route::get('form/{event?}',  [CabinetEventsController::class, 'form'])->name('events.cabinet.form');
     Route::put('save/{event?}',  [CabinetEventsController::class, 'save'])->name('events.cabinet.save');
     Route::delete('delete/{event?}',  [CabinetEventsController::class, 'delete'])->name('events.cabinet.delete');
-    Route::get('on-approval', [CabinetEventsController::class, 'onApproval'])->name('cabinet.events.onApproval');
+    Route::get('on-approval', [CabinetEventsController::class, 'onApproval'])->name('events.cabinet.onApproval');
 
 });
 

@@ -51,6 +51,17 @@ return new class extends Migration
                 $table->string('relation_type')->nullable()->after('relation_id');
             });
         }
+
+        if(!Schema::hasColumn($this->table, 'has_approval'))
+            Schema::table($this->table, function (Blueprint $table) {
+                $table->boolean('has_approval')->default(true)->after('sort');
+            });
+
+        if(!Schema::hasColumn($this->table, 'is_show'))
+            Schema::table($this->table, function (Blueprint $table) {
+                $table->boolean('is_show')->default(true)->after('sort');
+            });
+
     }
     public function down(): void
     {
@@ -91,5 +102,15 @@ return new class extends Migration
                 $table->dropColumn('relation_type');
             });
         }
+
+        if(Schema::hasColumn($this->table, 'has_approval'))
+            Schema::table($this->table, function (Blueprint $table) {
+                $table->dropColumn('has_approval');
+            });
+
+        if(!Schema::hasColumn($this->table, 'is_show'))
+            Schema::table($this->table, function (Blueprint $table) {
+                $table->dropColumn('is_show');
+            });
     }
 };

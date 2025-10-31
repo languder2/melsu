@@ -4,7 +4,7 @@ namespace App\Http\Controllers\News;
 
 use App\Http\Controllers\Controller;
 use App\Models\Division\Division;
-use App\Models\News\Category;
+use App\Models\News\EventCategories;
 use App\Models\News\Events;
 use App\Models\News\News;
 use App\Models\Users\User;
@@ -20,7 +20,7 @@ class CabinetEventsController extends Controller
 {
     protected Collection $divisions;
     protected Collection $accessUsers;
-    protected int $perPage = 40;
+    protected int $perPage = 50;
     public function __construct(){
         $this->divisions =
             auth()->user()->isEditor()
@@ -35,8 +35,8 @@ class CabinetEventsController extends Controller
     public function list(Request $request): View
     {
         $list = auth()->user()->isEditor()
-            ? Events::all()->sortByDesc('published_at')
-            : $this->divisions->flatMap(fn($division) => $division->events)->sortByDesc('published_at');
+            ? Events::orderBy('event_datetime', 'desc')->get()
+            : $this->divisions->flatMap(fn($division) => $division->events)->sortByDesc('event_datetime');
 
         $filter = Session::get('cabinetNewsFilters', collect());
 
@@ -67,32 +67,52 @@ class CabinetEventsController extends Controller
             'authors' => $this->accessUsers->pluck('name', 'id')
         ]);
 
-        $request->session()->put('cabinet-news-route', Route::current()->uri());
+        $request->session()->put('cabinet-events-route', Route::current()->uri());
 
         return view('events.cabinet.list', compact('list', 'byFilter'));
     }
 
     public function onApproval(Request $request): View
     {
-
         $list = auth()->user()->isEditor()
-            ? News::all()->sortByDesc('published_at')
-            : $this->divisions->flatMap(fn($division) => $division->news)->sortByDesc('published_at');
+            ? Events::orderBy('event_datetime', 'desc')->get()
+            : $this->divisions->flatMap(fn($division) => $division->events)->sortByDesc('event_datetime');
 
-        $filters = $request->session()->get('cabinetNewsFilters', collect());
+        $filter = Session::get('cabinetNewsFilters', collect());
 
-        if($filters->has('division'))
-            $list= $list->where(fn($item)  => $item->relation_id == $filters->get('division') && $item->relation_type == Division::class);
+        if($filter->has('search'))
+            $list= $list->filter(fn($item)  =>
+                $item->id == $filter->get('search') ||
+                Str::is('*'.mb_strtolower($filter->get('search')).'*', mb_strtolower($item->title))
+            );
+
+        if($filter->has('author'))
+            $list= $list->filter(fn($item)  => $item->author_id == $filter->get('author'));
+
+        if($filter->has('division'))
+            $list= $list->filter(fn($item)  =>
+                $item->relation_id == $filter->get('division') && $item->relation_type == Division::class
+            );
+
+        $list = $list->paginate($this->perPage);
 
         $byFilter = collect([
-            'divisions' => $this->divisions->pluck('name', 'id'),
+            'divisions' => flattenTree($this->divisions)->keyBy('id')
+                ->map(
+                    fn ($item) =>
+                        str_repeat('&nbsp;', $item->level*3)
+                        . ($item->level ? __('common.arrowT2R')  : '' )
+                        . $item->name
+                ),
+            'authors' => $this->accessUsers->pluck('name', 'id')
         ]);
 
-        $list= $list->where(fn($item)  => !$item->has_approval)->paginate($this->perPage);
 
-        $request->session()->put('cabinet-news-route', Route::current()->uri());
+        $list= $list->where(fn($item)  => !$item->has_approval || !$item->is_show)->paginate($this->perPage);
 
-        return view('news.cabinet.list', compact('list', 'filters', 'byFilter'));
+        $request->session()->put('cabinet-events-route', Route::current()->uri());
+
+        return view('events.cabinet.list', compact('list', 'byFilter'));
     }
 
 
@@ -106,50 +126,49 @@ class CabinetEventsController extends Controller
         return redirect()->back();
     }
 
-    public function form(News $news): View
+    public function form(Events $event): View
     {
         $divisions  = $this->divisions->pluck('name', 'id');
 
-        $categories = Category::all()->pluck('name', 'id');
+        $categories = EventCategories::all()->pluck('name', 'id');
 
-        return view('news.cabinet.form', compact('news', 'divisions', 'categories'));
+        return view('events.cabinet.form', compact('event', 'divisions', 'categories'));
     }
 
-    public function save(Request $request, News $news): RedirectResponse
+    public function save(Request $request, Events $event): RedirectResponse
     {
 
-        $form = $request->validate($news->validateRules(), $news->validateMessage());
+        $form = $request->validate($event->validateRules(), $event->validateMessages());
 
-        $news->fill($form)->save();
+        $event->fill($form)->save();
 
-        if(!$news->exists || !$news->author)
-            $news->author()->associate(auth()->user())->save();
+        if(!$event->exists || !$event->author)
+            $event->author()->associate(auth()->user())->save();
 
 
         if($request->filled('content'))
-            $news->getContentRecord()->fill(['content'=> $request->get('content')])->save();
+            $event->getContentRecord()->fill(['content'=> $request->get('content')])->save();
 
         if($request->filled('short'))
-            $news->getShortRecord()->fill(['content'=> $request->get('short')])->save();
-
-        if($request->filled('full'))
-            $news->getFullRecord()->fill(['content'=> $request->get('full')])->save();
+            $event->getShortRecord()->fill(['content'=> $request->get('short')])->save();
 
         if($request->input('division')){
             $division = Division::find($request->input('division'));
 
-            $news->fill($form)->relation()->associate($division)->save();
+            $event->fill($form)->relation()->associate($division)->save();
         }
 
-        if($request->file('image'))
-            $news->preview->saveImage($request->file('image'));
+        if($request->file('image')){
+            $event->image->saveImageAndPath($request->file('image'));
+            $event->preview->saveImageAndPath($request->file('image'), 300, 300);
+        }
 
-        return redirect()->to( $request->has('save-close') ? $request->session()->get('cabinet-news-route') : $news->cabinet_form);
+        return redirect()->to( $request->has('save-close') ? $request->session()->get('cabinet-events-route') : $event->cabinet_form_link);
     }
 
-    public function delete(Request $request, News $news): RedirectResponse
+    public function delete(Request $request, Events $event): RedirectResponse
     {
-        $news->delete();
-        return redirect()->to($request->session()->get('cabinet-news-route') ?? route('news.cabinet.list'));
+        $event->delete();
+        return redirect()->to($request->session()->get('cabinet-events-route') ?? $event->cabinet_list_link);
     }
 }

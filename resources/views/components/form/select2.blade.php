@@ -1,21 +1,23 @@
-@if(isset($label))
+@props([
+    'id'        => 'form-' . \Illuminate\Support\Str::random(20),
+    'name'      => 'form-' . \Illuminate\Support\Str::random(20),
+    'list'      => collect(),
+    'value'     => null,
+    'label'     => null,
+    'required'  => false,
+
+])
+@if($label)
     <div class="mt-1 -mb-2 text-xs">
-        {{@$label}}@if(isset($required))
-            *
-        @endif
+        {{ $label . ($required ? '*' : '') }}
     </div>
 @endif
 <select
-    id="{{@$id}}"
-    name="{{@$name}}"
+    id="{{ $id }}"
+    name="{{ $name }}"
 
-    @if(isset($onchange))
-        onchange="{{$onchange}}"
-    @endif
 
-    @if(isset($onload))
-        onload="{{$onload}}"
-    @endif
+    {{ $attributes->except('class') }}
 
     class="
             border-b

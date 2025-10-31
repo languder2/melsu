@@ -4,9 +4,12 @@ namespace App\Models\News;
 
 use App\Models\Gallery\Gallery;
 use App\Models\Gallery\Image;
+use App\Traits\hasAuthor;
 use App\Traits\hasContents;
+use App\Traits\hasImage;
 use App\Traits\hasLinks;
 use App\Traits\hasMeta;
+use App\Traits\hasRelations;
 use App\Traits\MagicGet;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
@@ -17,52 +20,67 @@ use App\Models\News\Category;
 
 class Events extends Model
 {
-    use SoftDeletes, MagicGet, hasContents, hasLinks, hasMeta;
+    use SoftDeletes, MagicGet, hasContents, hasLinks, hasMeta, hasImage, hasAuthor, hasRelations;
 
     protected $table = 'events';
-    protected $primaryKey = 'id';
+
     protected $fillable = [
         'id',
-        'type',
         'title',
         'event_datetime',
-        'short',
-        'full',
-        'news',
-        'image',
-        'author',
+        'author_id',
         'category_id',
-        'published_at',
-        'deleted_at',
+        'is_show',
+        'has_approval'
     ];
-    public static int $adminPerPage = 20;
 
-    protected $casts = [
-        'event_datetime' => 'datetime',
-        'published_at' => 'datetime',
+    protected $dates = ['event_datetime'];
+
+    protected $casts = [];
+
+    protected $links = [
+        'cabinet_list'          => 'events.cabinet.list',
+        'cabinet_on_approval'   => 'events.cabinet.onApproval',
+        'cabinet_set_filter'    => 'events.cabinet.set-filter',
+        'cabinet_form'          => 'events.cabinet.form',
+        'cabinet_save'          => 'events.cabinet.save',
+        'cabinet_delete'        => 'events.cabinet.delete',
+        'show'                  => 'public:event:show',
     ];
+
+    public function validateRules(): array
+    {
+        return [
+            'title' => 'required',
+            'event_datetime'    => 'required',
+            'category_id'       => 'nullable|exists:event_categories,id',
+            'has_approval'      => '',
+            'is_show'           => '',
+        ];
+    }
+
+    public function validateMessages(): array
+    {
+        return[
+            'title'             => 'Укажите заголовок',
+            'event_datetime'    => 'Дату мероприятия',
+        ];
+    }
 
     public static function FormRules():array
     {
         return [
-            'type' => 'required',
             'title' => 'required',
-            'event_datetime' => 'nullable|date_format:Y-m-d\TH:i',
-            'short' => '',
-            'full' => '',
-            'news' => '',
-            'author' => '',
-            'sort' => '',
-            'published_at' => '',
-            'category_id' => 'required|exists:news_categories,id',
+            'event_datetime'    => 'required|date_format:Y-m-d\TH:i',
+            'category_id'       => 'nullable|exists:event_categories,id',
         ];
     }
 
     public static function FormMessage():array
     {
         return[
-            'type' => 'Укажите тип',
-            'title' => 'Укажите заголовок',
+            'title'             => 'Укажите заголовок',
+            'event_datetime'    => 'Дату мероприятия',
         ];
     }
 

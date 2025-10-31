@@ -7,20 +7,42 @@ use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Support\Str;
 trait hasContents
 {
-    protected array $magicGetForContent = [
-        'prefix'    => '_html',
-        'fn'        => 'content_get',
+    protected array $magicGetForContentRecord = [
+        'prefix'    => '_record',
+        'fn'        => 'get_content_record',
     ];
-    public function content_get($key): ?string
+    public function get_content_record($key): ?string
+    {
+        $type = str_replace('_record', '', $key);
+
+        return $this->getContent($type)->firstOrNew();
+    }
+    protected array $magicGetForContentHtml = [
+        'prefix'    => '_html',
+        'fn'        => 'get_content_html',
+    ];
+    public function get_content_html($key): ?string
     {
         $type = str_replace('_html', '', $key);
 
         return $this->getContent($type)->firstOrNew()->render();
     }
+    protected array $magicGetForContentText = [
+        'prefix'    => '_text',
+        'fn'        => 'get_content_text',
+    ];
+    public function get_content_text($key): ?string
+    {
+        $type = str_replace('_text', '', $key);
+
+        return $this->getContent($type)->firstOrNew()->content;
+    }
     public function getContent(?string $type):MorphOne
     {
         return $this->MorphOne(Content::class, 'relation')->where('type', $type);
     }
+
+
     public function getContentRecord():Content
     {
         return $this->getContent('content')->first()

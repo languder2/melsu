@@ -2,6 +2,10 @@
 
 @section('title', 'Новости')
 
+@section('top-menu')
+    @include('news.cabinet.menu')
+@endsection
+
 @section('content')
     <form action="{{ $news->cabinet_save }}" method="POST" class="flex flex-col gap-3" enctype="multipart/form-data">
         @csrf
@@ -57,7 +61,7 @@
                 <div class="flex gap-3">
                     <div>
                         <img src="{{$news->preview->thumbnail}}" alt="1"
-                             class="max-h-60 shadow shadow-md"
+                             class="max-h-60 shadow-md"
                         />
                     </div>
                     <div class="flex-1 bg-white p-3 shadow">

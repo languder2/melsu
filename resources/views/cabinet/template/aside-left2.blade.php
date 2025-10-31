@@ -20,9 +20,9 @@
         </a>
 
         <a
-            href="{{ route('cabinet.news.onApproval') }}"
+            href="{{ route('events.cabinet.list') }}"
 
-            {{ Route::is('cabinet.news.onApproval') ? "open" : "" }}
+            {{ Route::is('events.cabinet.*') ? "open" : "" }}
 
             class="
                 cursor-pointer block p-3
@@ -31,9 +31,8 @@
                 open:hover:text-white open:hover:bg-sky-800
             "
         >
-            Новости на утверждении
+            Мероприятия
         </a>
-
 
         <a
             href="{{ route('divisions.cabinet.list') }}"

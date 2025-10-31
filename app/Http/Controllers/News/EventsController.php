@@ -4,8 +4,10 @@ namespace App\Http\Controllers\News;
 
 use App\Enums\EventType;
 use App\Http\Controllers\Controller;
+use App\Models\News\EventCategories;
 use App\Models\News\Events;
 use App\Models\News\News;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -14,34 +16,37 @@ use App\Models\News\Category;
 
 class EventsController extends Controller
 {
-    public function calendar(): View
+    public function calendar(): View|JsonResponse
     {
-        
+
         $now = Carbon::now();
         $month = request('month', $now->month);
         $year = request('year', $now->year);
         $selectedCategories = request('categories', []);
-        
+
         $startOfMonth = Carbon::create($year, $month, 1)->startOfMonth();
         $endOfMonth = $startOfMonth->copy()->endOfMonth();
-        
+
         $eventsQuery = Events::with('category')
             ->whereNotNull('event_datetime')
             ->whereBetween('event_datetime', [$startOfMonth, $endOfMonth]);
-        
+
         if (!empty($selectedCategories) && !in_array('all', $selectedCategories)) {
             $eventsQuery->whereIn('category_id', $selectedCategories);
         }
-        
-        $events = $eventsQuery->orderBy('event_datetime')->get();
+
+        $events = $eventsQuery->orderBy('event_datetime')
+            ->where('is_show',true)
+            ->where('has_approval',true)
+            ->get();
         $categories = Category::whereHas('eventsRelation')->orderBy('name')->get();
 
-        
+
         // Событие по дате
         $groupedEvents = $events->groupBy(function($event) {
             return $event->event_datetime->format('Y-m-d');
         });
-        
+
         // Календарь
         $calendar = [
             'month' => $startOfMonth->translatedFormat('F'),
@@ -51,20 +56,20 @@ class EventsController extends Controller
             'prev' => $startOfMonth->copy()->subMonth(),
             'next' => $startOfMonth->copy()->addMonth(),
         ];
-        
+
         $firstDayOfWeek = $startOfMonth->dayOfWeekIso;
         $daysInMonth = $startOfMonth->daysInMonth;
         $day = 1;
         $weekNumber = 0;
-        
+
         while ($day <= $daysInMonth) {
             $week = [];
-            
+
             for ($dow = 1; $dow <= 7; $dow++) {
                 if ($weekNumber === 0 && $dow < $firstDayOfWeek) {
                     $prevMonthDay = $startOfMonth->copy()->subMonth()->endOfMonth()->day - ($firstDayOfWeek - $dow - 1);
                     $prevMonthDate = Carbon::create($year, $month, 1)->subMonth()->setDay($prevMonthDay);
-                    
+
                     $week[] = (object)[
                         'day' => $prevMonthDay,
                         'date' => $prevMonthDate,
@@ -78,7 +83,7 @@ class EventsController extends Controller
                 } elseif ($day > $daysInMonth) {
                     $nextMonthDay = $day - $daysInMonth;
                     $nextMonthDate = $startOfMonth->copy()->addMonth()->setDay($nextMonthDay);
-                    
+
                     $week[] = (object)[
                         'day' => $nextMonthDay,
                         'date' => $nextMonthDate,
@@ -93,7 +98,7 @@ class EventsController extends Controller
                 } else {
                     $date = Carbon::create($year, $month, $day);
                     $dateKey = $date->format('Y-m-d');
-                    
+
                     $week[] = (object)[
                         'day' => $day,
                         'date' => $date,
@@ -104,27 +109,27 @@ class EventsController extends Controller
                         'is_adjacent_month' => false,
                         'month_type' => 'current',
                     ];
-                    
+
                     $day++;
                 }
             }
-            
+
             $calendar['weeks'][] = $week;
             $weekNumber++;
         }
-        
+
         if (request()->ajax()) {
             return response()->json([
                 'success' => true,
-                'html' => view('events.events.public.calendar', [
-                    'calendar' => (object)$calendar,
+                'html' => view('events.public.calendar', [
+                    'calendar' => (object) $calendar,
                     'categories' => $categories,
                     'selectedCategories' => $selectedCategories
                 ])->render()
             ]);
         }
-        
-        return view('events.events.public.calendar', [
+
+        return view('events.public.calendar', [
             'calendar' => (object)$calendar,
             'categories' => $categories,
             'selectedCategories' => $selectedCategories
@@ -135,24 +140,25 @@ class EventsController extends Controller
         try {
             $date = Carbon::parse($date);
             $selectedCategories = request('categories', []);
-            
+
             $eventsQuery = Events::whereDate('event_datetime', $date)
+                ->where('has_approval', true)
+                ->where('is_show', true)
                 ->orderBy('event_datetime');
-            
+
             // Категории если выбранны
             if (!empty($selectedCategories) && !in_array('all', $selectedCategories)) {
                 $eventsQuery->whereIn('category_id', $selectedCategories);
             }
-            
-            $events = $eventsQuery->get(['id', 'title', 'image', 'category_id', 'event_datetime', 'short']);
-            
-            // Категории которые есть в отфильтрованных событиях
+
+            $events = $eventsQuery->get(['id', 'title', 'category_id']);
+
             $categoryIds = $events->pluck('category_id')->filter()->unique();
-            
-            $categories = Category::whereIn('id', $categoryIds)
+
+            $categories = EventCategories::whereIn('id', $categoryIds)
                 ->get()
                 ->keyBy('id');
-            
+
             return response()->json([
                 'success' => true,
                 'year' => $date->format('Y'),
@@ -161,12 +167,12 @@ class EventsController extends Controller
                 'weekDay' => __('month.full-day-'.(($date->dayOfWeek + 6) % 7 + 1)),
                 'events' => $events->map(function($item) use ($categories) {
                     $category = $categories[$item->category_id] ?? null;
-                    
+
                     return [
                         'id' => $item->id,
                         'title' => $item->title,
                         'time' => $item->event_datetime->format('H:i'),
-                        'image' => $item->preview->src,
+                        'image' => $item->image->url,
                         'category' => $category ? [
                             'id' => $category->id,
                             'name' => $category->name,
@@ -180,24 +186,19 @@ class EventsController extends Controller
                     ];
                 })
             ]);
-            
+
         } catch (\Exception $e) {
             \Log::error('Ошибка загрузки событий', [
                 'error' => $e->getMessage(),
                 'file' => $e->getFile(),
                 'line' => $e->getLine()
             ]);
-    
+
             return response()->json([
                 'success' => false,
                 'error' => 'Произошла ошибка.'
             ], 500);
         }
-    }
-    public function list(): View
-    {
-        $list= Events::orderBy('published_at','desc')->get();
-        return view('news.events.admin.list',compact('list'));
     }
 
     public function form(Events $event): string
@@ -246,20 +247,12 @@ class EventsController extends Controller
         return redirect()->back();
     }
 
-    public function all(Request $request): View
-    {
-        $list =  Events::orderBy('published_at', 'desc')
-            ->select('id', 'title', 'short', 'full', 'published_at')
-            ->paginate(13);
-
-        return view('news.events.public.list',compact('list'));
-    }
     public function show(?Events $event): View | RedirectResponse
     {
         if(!$event)
             return  redirect()->route('public:events:list');
 
-        return view('news.events.public.show', compact('event'));
+        return view('events.public.show', compact('event'));
     }
 
 

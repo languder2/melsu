@@ -27,9 +27,9 @@
             @include('cabinet.template.aside-left2')
 
             <div class="flex-1 p-3 pl-0 @container">
-                @hasSection('content-header')
-                    @yield('content-header')
-                @endif
+                @yield('top-menu')
+
+                @yield('content-header')
 
                 @yield('content')
             </div>

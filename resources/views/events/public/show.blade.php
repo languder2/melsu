@@ -8,9 +8,8 @@
 @section('content')
         <section class="container">
             <div class="page-header mb-5">
-
                 <h1 class="text-4xl font-bold block pb-2">
-                    {!! @$event->title !!}
+                    {!! $event->title !!}
                 </h1>
                 <span class="text-[var(--primary-color)]">
                 <i class="bi bi-calendar2-week"></i>
@@ -20,9 +19,8 @@
         </section>
 
         <div class="container">
-            <div class="content-news mb-3 text-section">
-                {!! $event->news !!}
+            <div class="content-news mb-3 codex-editor flex flex-col gap-4">
+                {!! $event->content_html !!}
             </div>
-
         </div>
 @endsection

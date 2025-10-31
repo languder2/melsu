@@ -6,6 +6,7 @@ use App\Models\Gallery\Gallery;
 use App\Models\Gallery\Image;
 use App\Models\Services\Content;
 use App\Models\Users\User;
+use App\Traits\hasAuthor;
 use App\Traits\hasContents;
 use Carbon\Carbon;
 use EditorJS\EditorJS;
@@ -19,7 +20,7 @@ use Illuminate\Support\Collection;
 
 class News extends Model
 {
-    use SoftDeletes, hasContents;
+    use SoftDeletes, hasContents, hasAuthor;
 
     protected $table = 'news';
     public static int $adminPerPage = 10;
@@ -86,11 +87,6 @@ class News extends Model
     protected $casts = [
         'published_at' => 'datetime',
     ];
-
-    public function author():BelongsTo
-    {
-        return $this->belongsTo(User::class, 'author_id');
-    }
 
     public static function getList(?int $cid = null): object
     {

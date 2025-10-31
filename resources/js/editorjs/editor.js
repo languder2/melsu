@@ -27,12 +27,7 @@ const sets = {
                 inlineToolbar: true,
             },
             raw: RawTool,
-            attaches: {
-                class: AttachesTool,
-                config: {
-                    endpoint: 'http://localhost:8008/uploadFile'
-                }
-            }
+            code: CodeTool,
         }
     },
     'full':{
@@ -136,6 +131,12 @@ const sets = {
             table: Table,
             hr: Hr,
             raw: RawTool,
+            attaches: {
+                class: AttachesTool,
+                config: {
+                    endpoint: 'http://localhost:8008/uploadFile'
+                }
+            },
         },
         'tunes': ['backgroundTune']
     }
