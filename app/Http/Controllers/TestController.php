@@ -104,50 +104,9 @@ class TestController extends Controller
 
     public function index(): View
     {
+        $list = collect();
 
-//        $list = Events::all()->keyBy('id');
-//
-//        $list->each(function ($event){
-//
-//            if($event->getRawOriginal('short'))
-//                $event->getContent('short')->firstOrCreate()->fill([
-//                    'type' => 'short',
-//                    'content' =>
-//                        json_encode ((object)['blocks' =>
-//                            [
-//                                (object)[
-//                                    'type' => 'code',
-//                                    'data' => (object)[
-//                                        'code' => saveImagesFromContent($event->getRawOriginal('short')),
-//                                    ]
-//                                ]
-//                            ]
-//                        ])
-//                ])->save();
-//
-//            if($event->getRawOriginal('news'))
-//                $event->getContent('content')->firstOrCreate()->fill([
-//                    'type' => 'content',
-//                    'content' =>
-//                        json_encode ((object)['blocks' =>
-//                            [
-//                                (object)[
-//                                    'type' => 'code',
-//                                    'data' => (object)[
-//                                        'code' => saveImagesFromContent($event->getRawOriginal('news')),
-//                                    ]
-//                                ]
-//                            ]
-//                        ])
-//                ])->save();
-//        });
-//
-//        $event  = $list->get(12);
-//        $news   = News::find(143);
-
-//        dd($event->getRawOriginal('short'), $event->short, $event->content);
-
-        return view('test.index',compact('list', 'event', 'news'));
+        return view('test.index',compact('list'));
     }
 
 

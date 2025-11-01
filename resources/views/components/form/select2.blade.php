@@ -1,11 +1,12 @@
 @props([
-    'id'        => 'form-' . \Illuminate\Support\Str::random(20),
-    'name'      => 'form-' . \Illuminate\Support\Str::random(20),
-    'list'      => collect(),
-    'value'     => null,
-    'label'     => null,
-    'required'  => false,
-
+    'id'            => 'form-' . \Illuminate\Support\Str::random(20),
+    'name'          => 'form-' . \Illuminate\Support\Str::random(20),
+    'list'          => collect(),
+    'value'         => null,
+    'label'         => null,
+    'required'      => false,
+    'disabled'      => false,
+    'null'          => null,
 ])
 @if($label)
     <div class="mt-1 -mb-2 text-xs">
@@ -37,15 +38,13 @@
             {{ $class ?? ''}}
         "
 
-
-    @disabled($disabled ?? null)
-    @required($required ?? null)
+    @required($required || $disabled)
 >
 
-    @if(isset($null))
+    @if($null)
         <option
             value=''
-            @disabled(isset($nullDisabled))
+            @disabled($disabled)
             @selected(empty($value))
         >
             {{$null}}

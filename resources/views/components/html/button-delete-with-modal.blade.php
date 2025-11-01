@@ -11,7 +11,7 @@
 <button
     popovertarget="{{ $target }}"
     class="
-        p-1 rounded-md
+        rounded-md
         cursor-pointer
         outline-0
     "

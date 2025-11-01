@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Division\Division;
 use App\Models\News\EventCategories;
 use App\Models\News\Events;
-use App\Models\News\News;
 use App\Models\Users\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -18,19 +17,26 @@ use Illuminate\View\View;
 
 class CabinetEventsController extends Controller
 {
-    protected Collection $divisions;
-    protected Collection $accessUsers;
     protected int $perPage = 50;
+    protected Collection $allDivisions;
+    protected Collection $divisions;
+    protected Collection $ids;
     public function __construct(){
-        $this->divisions =
-            auth()->user()->isEditor()
-            ? Division::all()
-            : auth()->user()->access->map->relation;
 
-        $this->accessUsers = auth()->user()->isEditor()
-            ? User::orderBy('name')->get()->keyBy('id')
-            : $this->divisions->flatMap(fn($item) => $item->getAccessUsers());
+        $this->allDivisions = Division::all();
 
+        $this->ids = auth()->user()->isEditor() ? collect() : auth()->user()->access->map->relation->pluck('id','id');
+
+        $this->divisions = auth()->user()->isEditor()
+            ? $this->allDivisions
+            : $this->allDivisions->filter(fn($item) => $this->ids->has($item->id))->keyBy('id');
+
+        $this->accessUsers = User::orderBy('name')->get()->keyBy('id');
+
+        if(!auth()->user()->isEditor())
+            $this->accessUsers = $this->divisions
+                ->filter(fn($item) => $this->ids->has($item->id))
+                ->flatMap(fn($item) => $item->getAccessUsers());
     }
     public function list(Request $request): View
     {
@@ -57,13 +63,7 @@ class CabinetEventsController extends Controller
         $list = $list->paginate($this->perPage);
 
         $byFilter = collect([
-            'divisions' => flattenTree($this->divisions)->keyBy('id')
-                ->map(
-                    fn ($item) =>
-                        str_repeat('&nbsp;', $item->level*3)
-                        . ($item->level ? __('common.arrowT2R')  : '' )
-                        . $item->name
-                ),
+            'divisions' => flattenTreeForSelect($this->allDivisions, $this->ids->toArray()),
             'authors' => $this->accessUsers->pluck('name', 'id')
         ]);
 
@@ -97,16 +97,9 @@ class CabinetEventsController extends Controller
         $list = $list->paginate($this->perPage);
 
         $byFilter = collect([
-            'divisions' => flattenTree($this->divisions)->keyBy('id')
-                ->map(
-                    fn ($item) =>
-                        str_repeat('&nbsp;', $item->level*3)
-                        . ($item->level ? __('common.arrowT2R')  : '' )
-                        . $item->name
-                ),
+            'divisions' => flattenTreeForSelect($this->allDivisions, $this->ids->toArray()),
             'authors' => $this->accessUsers->pluck('name', 'id')
         ]);
-
 
         $list= $list->where(fn($item)  => !$item->has_approval || !$item->is_show)->paginate($this->perPage);
 
@@ -128,7 +121,8 @@ class CabinetEventsController extends Controller
 
     public function form(Events $event): View
     {
-        $divisions  = $this->divisions->pluck('name', 'id');
+
+        $divisions  = flattenTreeForSelect($this->allDivisions, $this->ids->toArray());
 
         $categories = EventCategories::all()->pluck('name', 'id');
 
@@ -137,7 +131,6 @@ class CabinetEventsController extends Controller
 
     public function save(Request $request, Events $event): RedirectResponse
     {
-
         $form = $request->validate($event->validateRules(), $event->validateMessages());
 
         $event->fill($form)->save();

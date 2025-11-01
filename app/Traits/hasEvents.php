@@ -13,7 +13,7 @@ trait hasEvents
     public function events(): MorphMany
     {
         return $this->morphMany(Events::class, 'relation')
-            ->orderBy('published_at');
+            ->orderBy('event_datetime', 'desc');
     }
     public function publicEvents(): MorphMany
     {

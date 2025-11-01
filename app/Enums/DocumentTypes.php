@@ -11,6 +11,8 @@ enum DocumentTypes
     case order;
     case regulation;
     case appendix;
+    case plan;
+    case protocol;
     case other;
     public function label(): string
     {

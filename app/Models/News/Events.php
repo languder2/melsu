@@ -141,7 +141,7 @@ class Events extends Model
     /* Relations */
     public function category(): BelongsTo
     {
-        return $this->belongsTo(Category::class, 'category_id');
+        return $this->belongsTo(EventCategories::class, 'category_id');
     }
 
     public function getNewsAttribute($value)

@@ -39,7 +39,7 @@ class EventsController extends Controller
             ->where('is_show',true)
             ->where('has_approval',true)
             ->get();
-        $categories = Category::whereHas('eventsRelation')->orderBy('name')->get();
+        $categories = EventCategories::whereHas('eventsRelation')->orderBy('name')->get();
 
 
         // Событие по дате
@@ -204,7 +204,7 @@ class EventsController extends Controller
     public function form(Events $event): string
     {
         $types = EventType::forSelect();
-        $categories = Category::orderBy('name')->get()->pluck('name', 'id');
+        $categories = EventCategories::orderBy('name')->get()->pluck('name', 'id');
         return view('news.events.admin.form', [
             'event' => $event,
             'types' => $types,

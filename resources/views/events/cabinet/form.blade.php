@@ -74,6 +74,7 @@
                             name="division"
                             value="{{ $event->relation_id }}"
                             null="Выбрать подразделение"
+                            :disabled="true"
                             :list=" $divisions "
                         />
 

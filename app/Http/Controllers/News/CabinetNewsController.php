@@ -19,25 +19,34 @@ use Illuminate\Http\Request;
 class CabinetNewsController extends Controller
 {
 
-    protected Collection $divisions;
-    protected Collection $accessUsers;
     protected int $perPage = 40;
+    protected Collection $allDivisions;
+    protected Collection $divisions;
+    protected Collection $ids;
     public function __construct(){
-        $this->divisions =
-            auth()->user()->isEditor()
-            ? Division::all()
-            : auth()->user()->access->map->relation;
 
-        $this->accessUsers = auth()->user()->isEditor()
-            ? User::orderBy('name')->get()->keyBy('id')
-            : $this->divisions->flatMap(fn($item) => $item->getAccessUsers());
+        $this->allDivisions = Division::all();
 
+        $this->ids = auth()->user()->isEditor() ? collect() : auth()->user()->access->map->relation->pluck('id','id');
+
+        $this->divisions = auth()->user()->isEditor()
+            ? $this->allDivisions
+            : $this->allDivisions->filter(fn($item) => $this->ids->has($item->id))->keyBy('id');
+
+        $this->accessUsers = User::orderBy('name')->get()->keyBy('id');
+
+        if(!auth()->user()->isEditor())
+            $this->accessUsers = $this->divisions
+                ->filter(fn($item) => $this->ids->has($item->id))
+                ->flatMap(fn($item) => $item->getAccessUsers());
     }
     public function list(Request $request): View
     {
         $list = auth()->user()->isEditor()
             ? News::all()->sortByDesc('published_at')
-            : $this->divisions->flatMap(fn($division) => $division->news)->sortByDesc('published_at');
+            : $this->divisions
+                ->flatMap(fn($division) => $division->news)
+                ->sortByDesc('published_at');
 
         $filter = Session::get('cabinetNewsFilters', collect());
 
@@ -48,7 +57,7 @@ class CabinetNewsController extends Controller
             );
 
         if($filter->has('author'))
-            $list= $list->filter(fn($item)  => $item->author_id == $filter->get('author'));
+            $list= $list->where(fn($item)  => $item->author_id == $filter->get('author'));
 
         if($filter->has('division'))
             $list= $list->filter(fn($item)  =>
@@ -58,13 +67,7 @@ class CabinetNewsController extends Controller
         $list = $list->paginate($this->perPage);
 
         $byFilter = collect([
-            'divisions' => flattenTree($this->divisions)->keyBy('id')
-                ->map(
-                    fn ($item) =>
-                        str_repeat('&nbsp;', $item->level*3)
-                        . ($item->level ? __('common.arrowT2R')  : '' )
-                        . $item->name
-                ),
+            'divisions' => flattenTreeForSelect($this->allDivisions, $this->ids->toArray()),
             'authors' => $this->accessUsers->pluck('name', 'id')
         ]);
 
@@ -78,7 +81,9 @@ class CabinetNewsController extends Controller
 
         $list = auth()->user()->isEditor()
             ? News::all()->sortByDesc('published_at')
-            : $this->divisions->flatMap(fn($division) => $division->news)->sortByDesc('published_at');
+            : $this->divisions->filter(fn($item) => $this->ids->has($item->id))
+                ->flatMap(fn($division) => $division->news)
+                ->sortByDesc('published_at');
 
         $filters = $request->session()->get('cabinetNewsFilters', collect());
 
@@ -86,7 +91,7 @@ class CabinetNewsController extends Controller
             $list= $list->where(fn($item)  => $item->relation_id == $filters->get('division') && $item->relation_type == Division::class);
 
         $byFilter = collect([
-            'divisions' => $this->divisions->pluck('name', 'id'),
+            'divisions' => flattenTreeForSelect($this->allDivisions, $this->ids->toArray()),
         ]);
 
         $list= $list->where(fn($item)  => !$item->has_approval)->paginate($this->perPage);
@@ -109,7 +114,7 @@ class CabinetNewsController extends Controller
 
     public function form(News $news): View
     {
-        $divisions  = $this->divisions->pluck('name', 'id');
+        $divisions  = flattenTreeForSelect($this->allDivisions, $this->ids->toArray());
 
         $categories = Category::all()->pluck('name', 'id');
 

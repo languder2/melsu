@@ -13,7 +13,7 @@
                 </h1>
                 <span class="text-[var(--primary-color)]">
                 <i class="bi bi-calendar2-week"></i>
-                    {{$event->PublicDate}}
+                    {{ $event->event_datetime->format('d.m.Y H:i')}}
             </span>
             </div>
         </section>

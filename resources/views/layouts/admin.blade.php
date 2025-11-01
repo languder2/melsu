@@ -1,3 +1,10 @@
+@php
+    if(auth()->user() && !auth()->user()->isAdmin() && !auth()->user()->isSuperAdmin()){
+        header('Location: '.url('cabinet'));
+        exit;
+    }
+@endphp
+
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>

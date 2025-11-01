@@ -54,4 +54,9 @@ class EventCategories extends Model
         return parent::fill($attributes);
     }
 
+    public function eventsRelation()
+    {
+        return $this->hasMany(Events::class, 'category_id');
+    }
+
 }

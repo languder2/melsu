@@ -31,12 +31,22 @@ trait hasImage
 
     public function getImageAttribute(): Image
     {
-        return $this->getImage('image')->firstOrNew(['type' => 'image', 'path' => 'images/placeholder.png']);
+        $image = $this->getImage('image')->firstOrNew();
+
+        if(!$image->exists)
+            $image->fill(['type' => 'image', 'path' => 'images/placeholder.png']);
+
+        return $image;
     }
 
     public function getPreviewAttribute(): Image
     {
-        return $this->getImage('preview')->firstOrNew(['type' => 'preview', 'path' => 'images/placeholder.png']);
+        $image = $this->getImage('preview')->firstOrNew();
+
+        if(!$image->exists)
+            $image->fill(['type' => 'preview', 'path' => 'images/placeholder.png']);
+
+        return $image;
     }
 
 }

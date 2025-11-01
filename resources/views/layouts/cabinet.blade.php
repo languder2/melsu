@@ -17,14 +17,14 @@
 
 @include("cabinet.template.header")
 
-<main class="min-h-full bg-amber" >
+<main class="min-h-full" >
 
     @guest
         @include('cabinet.auth')
     @else
-        <div class="flex gap-4 min-h-full">
+        <div class="flex gap-1 min-h-full">
 
-            @include('cabinet.template.aside-left2')
+            @include('cabinet.template.aside-left')
 
             <div class="flex-1 p-3 pl-0 @container">
                 @yield('top-menu')

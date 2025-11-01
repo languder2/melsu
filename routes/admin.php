@@ -11,8 +11,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Minor\MinorController;
 use App\Http\Controllers\TestController;
 
-
-
 Route::controller(MenuItems::class)
     ->prefix('menu/items')
     ->group(function () {

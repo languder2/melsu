@@ -16,12 +16,14 @@ use Illuminate\View\View;
 class CabinetDivisionsController extends Controller
 {
     protected Collection $divisions;
+    protected Collection $ids;
     public function __construct(){
-        $this->divisions = auth()->user()->isEditor()
-            ? Division::orderBy('name')->get()->keyBy('id')
-            : auth()->user()->access->map(fn($item) => $item->relation)->keyBy('id');
 
-        }
+        $this->divisions = Division::all();
+
+        $this->ids = auth()->user()->isEditor() ? collect() : auth()->user()->access->map->relation->pluck('id','id');
+
+    }
 
     public function list(): View
     {
@@ -29,6 +31,9 @@ class CabinetDivisionsController extends Controller
         $filter = Session::get('divisionCabinetFilter');
 
         $list = flattenTree($this->divisions)->keyBy('id');
+
+        if($this->ids->isNotEmpty())
+            $list = $list->filter(fn($item) => $this->ids->has($item->id));
 
         if($filter && $filter->has('search'))
             $list = $list->filter(fn($item) =>
