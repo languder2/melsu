@@ -24,6 +24,18 @@
             финансовой грамотности для предпринимателей.
         </p>
     </div>
+    <div class="flex flex-col gap-3 my-5">
+        <div class="flex justify-center">
+            <img class="h-full object-cover" src="{{asset('img/rcfg-main.jpg')}}" alt="">
+        </div>
+        <div>
+            <ul class="list-inside list-disc">
+                <li>
+                    <a class="hover:text-[#C10F1A] underline transition duration-300 ease-linear" href="../../../storage/documents/rcfg/rcfg-doc-1.pdf">Приказ №560 О проведении регионального этапа Всероссийского конкурса эссе в рамках Всероссийского праздника «День рубля»</a>
+                </li>
+            </ul>
+        </div>
+    </div>
     <h2 class="text-2xl font-semibold my-6">Структура управления Региональным центром финансовой грамотности</h2>
     <div class="grid lg:grid-cols-[15%_auto] gap-2 mb-6">
         <div class="relative order-2 lg:order-1 flex justify-center">
