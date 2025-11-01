@@ -24,18 +24,6 @@
             финансовой грамотности для предпринимателей.
         </p>
     </div>
-    <div class="flex flex-col gap-3 my-5">
-        <div class="flex justify-center">
-            <img class="h-full object-cover" src="{{asset('img/rcfg-main.jpg')}}" alt="">
-        </div>
-        <div>
-            <ul class="list-inside list-disc">
-                <li>
-                    <a class="hover:text-[#C10F1A] underline transition duration-300 ease-linear" href="../../../storage/documents/rcfg/rcfg-doc-1.pdf">Приказ №560 О проведении регионального этапа Всероссийского конкурса эссе в рамках Всероссийского праздника «День рубля»</a>
-                </li>
-            </ul>
-        </div>
-    </div>
     <h2 class="text-2xl font-semibold my-6">Структура управления Региональным центром финансовой грамотности</h2>
     <div class="grid lg:grid-cols-[15%_auto] gap-2 mb-6">
         <div class="relative order-2 lg:order-1 flex justify-center">
@@ -99,6 +87,28 @@
 финансового просвещения + Эксперты</h3>
             </div>
         </div>
+    </div>
+    <div class="grid grid-cols-[1fr_2fr] gap-5">
+        <div>
+            <button popovertarget="big-photo">
+                <img class="h-full object-cover" src="{{asset('img/rcfg-main.jpg')}}" alt="">
+            </button>
+            
+        </div>
+        <div>
+            <ul class="list-inside list-disc flex flex-col gap-3">
+                <li>
+                    <a class="hover:text-[#C10F1A] underline transition duration-300 ease-linear" href="../../../storage/documents/rcfg/rcfg-doc-1.pdf">Приказ №560 О проведении регионального этапа Всероссийского конкурса эссе в рамках Всероссийского праздника «День рубля»</a>
+                </li>
+                <li>
+                    <a class="hover:text-[#C10F1A] underline transition duration-300 ease-linear" href="../../../storage/documents/rcfg/rcfg-doc-2.pdf">Приказ №562 О проведении регионального этапа Всероссийского конкурса эссе в рамках Всероссийского праздника «День финансиста»</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div popover id="big-photo"
+         class="modal-image transition-discrete starting:open:opacity-0 fixed bg-gray-700 p-8 open:backdrop-brightness-50 w-[95%] sm:w-[97%] md:w-[98%] xl:w-[80%] h-[97%] shadow-md shadow-gray-800 mx-auto">
+            <img class="h-[99%] object-fit mx-auto" src="{{asset('img/rcfg-main.jpg')}}" alt="">
     </div>
 </section>
 <style>
