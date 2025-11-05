@@ -19,7 +19,7 @@ class IsEditor
         if (!auth()->check())
             abort(403, "You are not authorized to access this page.");
 
-        if(auth()->user()->role->level() < UserRoles::Editor->level() )
+        if(!auth()->user()->isEditor())
             abort(403, "Your access level is insufficient");
 
         return $next($request);

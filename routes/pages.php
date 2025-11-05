@@ -1,7 +1,8 @@
 <?php
 
+use App\Http\Controllers\Pages\PagesController;
+use App\Http\Controllers\Pages\PageCabinetController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PagesController;
 
 
 Route::prefix('admin/pages')->group(function () {
@@ -14,3 +15,10 @@ Route::prefix('admin/pages')->group(function () {
 });
 
 Route::get('{alias}', [PagesController::class, 'showPage']);
+
+Route::prefix('cabinet/pages')->middleware('isEditor')->group(function () {
+    Route::get('',              [PageCabinetController::class,'list'])->name('pages.cabinet.list');
+    Route::get('on-approval',   [PageCabinetController::class,'list'])->name('pages.cabinet.on-approval')
+        ->defaults('onApproval', true);
+});
+

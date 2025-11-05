@@ -2,9 +2,7 @@
 
 namespace App\View\Components\News;
 
-use App\Models\News\Events;
-use App\Models\News\News;
-use Carbon\Carbon;
+use App\Models\Division\Division;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Collection;
@@ -13,17 +11,19 @@ use Illuminate\View\Component;
 class IncludeBlock extends Component
 {
     public int $newsCount = 5;
+    public int $onlyNewsCount = 10;
     public int $eventCount = 6;
 
     public Collection $news;
     public Collection $events;
 
-    public function __construct()
+    public function __construct(Division $division)
     {
-        $this->news = News::where('published_at', '<=', Carbon::now())->where('has_approval', true)->where('is_show',true)
-            ->orderBy('published_at', 'desc')->limit($this->newsCount)->get();
+        $this->events   = $division->getFlattenTree()->flatMap(fn($item) => $item->publicEvents)
+            ->sortByDesc('event_datetime')->take($this->eventCount);
 
-        $this->events = Events::orderBy('event_datetime', 'desc')->limit($this->eventCount)->get();
+        $this->news     = $division->getFlattenTree()->flatMap(fn($item) => $item->publicNews)
+            ->sortByDesc('published_at')->take($this->events->isEmpty() ? $this->onlyNewsCount : $this->newsCount);
     }
 
     public function render(): View|Closure|string

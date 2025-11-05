@@ -1,21 +1,20 @@
 <?php
 
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\EditorJS\EditorjsController;
+use App\Http\Controllers\Education\SpecialityController;
 use App\Http\Controllers\Gallery\AdminImageGallery;
+use App\Http\Controllers\Gallery\MediaUploadController;
+use App\Http\Controllers\News\ApiNews;
+use App\Http\Controllers\Sections\CareerController;
+use App\Http\Controllers\Sections\FAQController;
+use App\Http\Controllers\Staffs\ApiStaff;
 use App\Http\Controllers\Staffs\StaffController;
 use App\Models\Division\Division;
 use App\Models\Education\Faculty;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
-use App\Http\Controllers\ContactController;
-
-use App\Http\Controllers\Sections\FAQController;
-use App\Http\Controllers\Sections\CareerController;
-use App\Http\Controllers\News\ApiNews;
-use App\Http\Controllers\Staffs\ApiStaff;
-use App\Http\Controllers\Education\SpecialityController;
-use App\Http\Controllers\Gallery\MediaUploadController;
-use App\Http\Controllers\EditorJS\EditorjsController;
 
 Route::get('departments-by-faculty-shorts/{faculty?}', function (Request $request, $faculty = null) {
     if (is_null($faculty))
@@ -127,7 +126,7 @@ Route::controller(\App\Http\Controllers\Division\DivisionController::class)
 
 
 Route::middleware(['web','auth.api'])
-    ->controller(\App\Http\Controllers\PagesController::class)
+    ->controller(\App\Http\Controllers\Pages\PagesController::class)
     ->prefix('page/contents')
     ->group(function () {
         Route::get('delete/{id?}', 'ApiDeleteSection')->name('api:page:contents:section:delete');
@@ -237,7 +236,7 @@ Route::get('staff/teachers',            [ApiStaff::class,'getTeachersByDepartmen
 Route::get('specialities/list',         [SpecialityController::class,'getListAPI']);
 
 Route::middleware(['web', 'auth.api'])
-    ->controller(\App\Http\Controllers\PagesController::class)
+    ->controller(\App\Http\Controllers\Pages\PagesController::class)
     ->prefix('api/upbringing/sections')
     ->group(function () {
         Route::get('/add', function () {
@@ -251,7 +250,7 @@ Route::middleware(['web', 'auth.api'])
     });
 
 Route::middleware(['web', 'auth.api'])
-    ->controller(\App\Http\Controllers\PagesController::class)
+    ->controller(\App\Http\Controllers\Pages\PagesController::class)
     ->prefix('api/partner/sections')
     ->group(function () {
         Route::get('/add', function () {

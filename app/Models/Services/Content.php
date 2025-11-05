@@ -73,7 +73,7 @@ class Content extends Model
 
         $json = json_decode($this->getDataForEditorJS());
 
-        foreach ($json->blocks as $key=>$block)
+        foreach ($json->blocks ?? [] as $key=>$block)
             $html->push(
                 match ($block->type) {
                     'columns'   => view('components.editorjs.columns', ['data' => $block->data])->render(),
@@ -86,7 +86,7 @@ class Content extends Model
                     'List'      => view('components.editorjs.list.base', compact('block'))->render(),
                     'code'      => Blade::render($block->data->code),
                     'raw'       => Blade::render($block->data->html),
-                    default => $block->type,
+                    default     => $block->type,
                 }
             );
 

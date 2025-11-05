@@ -17,23 +17,23 @@ trait hasSubordination
     {
         return $this->hasMany(self::class, 'parent_id','id');
     }
-    public function tree(?Collection &$collection = null, int $level = 0): Collection
+    public function tree(?Collection &$collectionion = null, int $level = 0): Collection
     {
-        if(is_null($collection)){
+        if(is_null($collectionion)){
             $this->level = $level;
-            $collection = collect([$this]);
+            $collectionion = collect([$this]);
         }
 
-        $this->subs->each(function ($sub) use ($collection, $level) {
+        $this->subs->each(function ($sub) use ($collectionion, $level) {
             $sub->level = $level + 1;
 
-            $collection->push($sub);
+            $collectionion->push($sub);
 
             if($sub->subs->isNotEmpty())
-                $sub->tree($collection, $level + 1);
+                $sub->tree($collectionion, $level + 1);
         });
 
-        return $collection;
+        return $collectionion;
     }
 
     public function subsTree(): Collection
@@ -43,6 +43,20 @@ trait hasSubordination
     public static function fullTree(): Collection
     {
         return flattenTree(self::all())->keyBy('id');
+    }
+
+    public function getFlattenTree(Collection $collection = null, int $level = 0):Collection
+    {
+        if(is_null($collection))
+            $collection = collect();
+
+        $this->level = $level;
+
+        $collection->put($this->id, $this);
+
+        $this->subs->each(fn($item) => $item->getFlattenTree($collection, $level + 1));
+
+        return $collection;
     }
 
 }

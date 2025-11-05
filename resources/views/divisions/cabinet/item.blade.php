@@ -48,8 +48,11 @@
         <form action="{{ route('news.cabinet.set-filter') }}" method="post">
             @csrf
             <input type="hidden" name="setFilter[division]" value="{{ $division->id }}">
-            <label>
+            <label class="flex gap-3">
                 <x-lucide-notepad-text class="w-6 hover:text-amber-500 cursor-pointer"/>
+                {{ $division->publicNews->count() }}
+                |
+                {{ $division->publicEvents->count() }}
                 <input type="submit" class="hidden">
             </label>
         </form>

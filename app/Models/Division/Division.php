@@ -646,6 +646,5 @@ class Division extends Model
     {
         return $this->AccessUsers->unique('user_id')->keyBy('user_id')->map(fn($item) => $item->user);
     }
-
 }
 

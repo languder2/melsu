@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Pages;
 
+use App\Http\Controllers\Controller;
 use App\Models\Menu\Menu;
-use App\Models\Page\Content;
 use App\Models\Page\Content as PageContent;
 use App\Models\Page\Page;
 use App\Models\Partners\Partner;
@@ -84,7 +84,7 @@ class PagesController extends Controller
 
     public function ApiDeleteSection($id = null): JsonResponse
     {
-        $item = Content::find($id);
+        $item = PageContent::find($id);
 
         if($item)
             $item->delete();

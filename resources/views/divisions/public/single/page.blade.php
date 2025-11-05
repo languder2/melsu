@@ -45,8 +45,10 @@
         @endslot
     @endcomponent
 
-    @component('news.public.relations.list', ['list' => $division->publicNews])
+{{--    @component('news.public.relations.list', ['list' => $division->publicNews])--}}
 
-    @endcomponent
+{{--    @endcomponent--}}
+
+    <x-news.include-block :division="$division" />
 
 @endsection

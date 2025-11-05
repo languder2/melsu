@@ -5,7 +5,6 @@
 @endsection
 
 @section('breadcrumbs')
-
     {{Breadcrumbs::view("vendor.breadcrumbs.base",$division->type->value,$division)}}
 @endsection
 
@@ -16,8 +15,6 @@
 @section('content')
 
     <section class="container px-2 pb-8">
-
-
         @switch($section)
             @case('news')
             @break
@@ -63,11 +60,7 @@
             @break
 
             @case('news')
-                @if($division->publicNews->find($op))
-                    @component('news.public.relations.item',['news' => $division->publicNews->find($op)])@endcomponent
-                @else
-                    @component('news.public.relations.for-education',['list' => $division->publicNews])@endcomponent
-                @endif
+                <x-news.include-block :division="$division" />
             @break
 
                 @case('upbringing')
@@ -110,6 +103,7 @@
                 @endif
         @endswitch
     </section>
+
 @endsection
 
 

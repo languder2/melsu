@@ -5,6 +5,11 @@ namespace App\Models\Page;
 use App\Models\Documents\Document;
 use App\Models\Documents\DocumentCategory;
 use App\Models\Page\Content as PageContent;
+use App\Traits\hasContents;
+use App\Traits\hasLinks;
+use App\Traits\hasMeta;
+use App\Traits\MagicGet;
+use App\Traits\resolveRouteBinding;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
@@ -14,9 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 class Page extends Model
 {
-//    use SoftDeletes, HasLinks, HasAdminMenu;
-//    use HasDocumentCategories, HasDocuments;
-    use SoftDeletes;
+    use SoftDeletes, hasMeta, MagicGet, hasLinks, resolveRouteBinding, hasContents;
 
     protected $table = 'pages';
 

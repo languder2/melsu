@@ -43,7 +43,8 @@
             "app/Helpers/transliteration.php",
             "app/Helpers/clearSVG.php",
             "app/Helpers/flattenTree.php",
-            "app/Helpers/saveImagesFromContent.php"
+            "app/Helpers/saveImagesFromContent.php",
+            "app/Helpers/rawTextToEditorJS.php"
         ]
     },
     "autoload-dev": {

@@ -3,6 +3,7 @@
 namespace App\Traits;
 
 use App\Models\Services\Content;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Support\Str;
 trait hasContents
@@ -11,11 +12,11 @@ trait hasContents
         'prefix'    => '_record',
         'fn'        => 'get_content_record',
     ];
-    public function get_content_record($key): ?string
+    public function get_content_record($key): Content
     {
         $type = str_replace('_record', '', $key);
 
-        return $this->getContent($type)->firstOrNew();
+        return $this->getContent($type)->firstOrNew()->fill(['type' => $type]);
     }
     protected array $magicGetForContentHtml = [
         'prefix'    => '_html',
@@ -37,6 +38,12 @@ trait hasContents
 
         return $this->getContent($type)->firstOrNew()->content;
     }
+
+    public function contents(): MorphMany
+    {
+        return $this->morphMany(Content::class, 'relation');
+    }
+
     public function getContent(?string $type):MorphOne
     {
         return $this->MorphOne(Content::class, 'relation')->where('type', $type);

@@ -20,7 +20,7 @@
 
 {{--    <x-events.short-list/>--}}
 
-    <x-news.include-block />
+    <x-news.in-main-page />
 
     <x-sections.melsu-numbers/>
 

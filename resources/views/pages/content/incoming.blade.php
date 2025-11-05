@@ -215,7 +215,7 @@
     </div>
 </section>
 
-<x-news.short-news/>
+{{--<x-news.short-news/>--}}
 
 <section>
     <div class="container custom px-2.5">
