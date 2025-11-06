@@ -79,6 +79,12 @@ class Page extends Model
             'without_bg' => '',
         ];
     }
+
+    protected array $linksGroups = [
+        'cabinet_'  => 'pages.cabinet.',
+        'public_'   => 'pages.public.',
+    ];
+
     public function sections(): MorphMany
     {
         return $this->morphMany(PageContent::class, 'relation')->orderBy('order');
@@ -111,14 +117,10 @@ class Page extends Model
 
     public function getLinkAttribute(): string|null
     {
-
         if (!is_null($this->route) && Route::has($this->route))
             return url($this->route);
-
-        elseif (!is_null($this->alias))
-            return url($this->alias);
-
-        return null;
+        else
+            return route('pages.public.link', $this->code ?? $this->alias);
     }
 
 

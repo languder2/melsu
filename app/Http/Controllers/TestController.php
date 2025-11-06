@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Division\Division;
+use App\Models\News\Events;
+use App\Models\News\News;
 use App\Models\Page\Page;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
 class TestController extends Controller
@@ -29,26 +34,43 @@ class TestController extends Controller
     {
         $list = collect();
 
-        $list = Page::all();
+        News::all()->filter(fn($item) => $item->relation)->each(function ($item){
+            if(!$item->divisions->doesntContain($item->relation))
+                $item->divisions()->attach($item->relation);
+
+        });
 
 
-        $list->each(function ($item) {
-                $view = \Illuminate\Support\Facades\View::exists("pages/content/$item->view")
-                    ? view("pages/content/$item->view")->render() : null;
 
-                $sections = $item->sections->filter(fn($item) => $item->show)
-                    ->sortBy('order')
-                    ->map(fn($item) => ( $item->show_title ? "<h4>$item->title</h4>" : '') . $item->content);
+//        if(auth()->check() && auth()->user()->isAdmin()){
+//            $list = Page::all();
+//
+//            $list->each(function ($item) {
+//                $view = \Illuminate\Support\Facades\View::exists("pages/content/$item->view")
+//                    ? view("pages/content/$item->view")->render() : null;
+//
+//                $sections = $item->sections->filter(fn($item) => $item->show)
+//                    ->sortBy('order')
+//                    ->map(fn($item) => ( $item->show_title ? "<h4>$item->title</h4>" : '') . $item->content);
+//
+//                $content = rawTextToEditorJS(match (true){
+//                    !is_null($view) => $view,
+//                    $sections->IsNotEmpty() => $sections,
+//                    default => $item->getRawOriginal('content'),
+//                });
+//
+//                $item->content_record->fill(['content' => $content])->save();
+//            });
+//        }
 
+        $json = Storage::get('json/get_employee.json');
 
-                $content = rawTextToEditorJS(match (true){
-                        !is_null($view) => $view,
-                        $sections->IsNotEmpty() => $sections,
-                        default => $item->getRawOriginal('content'),
-                });
+        $list = collect(json_decode($json)->employee);
 
-                $item->content_record->fill(['content' => $content])->save();
-            });
+        $list = $list->filter(fn($item) => $item->uid_department === 'fba3b2e9-a348-11f0-b9b6-f61497ae5d0c')
+            ->filter(fn($item) => !$item->dismissed)
+            ->each(fn($item) => $item->date_birth = Carbon::parse($item->date_birth))
+            ->sortBy('surname');
 
         return view('test.index',compact('list'));
     }

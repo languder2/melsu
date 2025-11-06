@@ -7,6 +7,7 @@
     'required'      => false,
     'disabled'      => false,
     'null'          => null,
+    'class'         => null,
 ])
 @if($label)
     <div class="mt-1 -mb-2 text-xs">

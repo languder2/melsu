@@ -23,47 +23,11 @@ class ShortNews extends Component
      */
     public function __construct()
     {
-        $this->news = News
-            ::where('published_at', '<=', Carbon::now())
-            ->where('has_approval', true)
-            ->select(
-                'id',
-                'category',
-                'title',
-                'published_at',
-            )
-            ->orderBy('is_favorite', 'desc')
-            ->orderBy('sort', 'asc')
-            ->orderBy('published_at', 'desc')
-            ->paginate(6);
+        $this->news = News::limit(4)->paginate(1);
 
-//        if(auth()->check()){
-//            dd($this->news->items());
-//        }
+        $this->reports = Events::limit(4)->get();
 
-        $this->reports = Events
-            ::where('published_at', '<=', Carbon::now())
-            ->where('type', 'report')
-            ->select(
-                'id',
-                'title',
-                'published_at',
-            )
-            ->orderBy('published_at', 'desc')
-            ->limit(4)
-            ->get();
-
-        $this->previews = Events
-            ::where('published_at', '<=', Carbon::now())
-            ->where('type', 'preview')
-            ->select(
-                'id',
-                'title',
-                'published_at',
-            )
-            ->orderBy('published_at', 'desc')
-            ->limit(4)
-            ->get();;
+        $this->previews = Events::limit(4)->get();;
     }
 
     /**

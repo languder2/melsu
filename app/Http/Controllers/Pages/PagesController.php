@@ -123,26 +123,17 @@ class PagesController extends Controller
     }
 
 
-    public function showPage(string $alias = null): RedirectResponse|string
+    public function showPage(string $page = null): RedirectResponse|string
     {
-        $page = Page::where('alias', $alias)->where('show',true)->first();
 
-        if (!$page)
-            return redirect()->route('pages:main');
+        $page = Page::where('code', $page)->first();
 
-        $show = true;
-
-        if($page->view && !View::exists("pages.content.{$page->view}"))
-            $show = false;
-
-
-
-        if(!$show)
+        if (!$page || !$page->is_show)
             return redirect()->route('pages:main');
 
         $menu = Menu::where('show',1)->find($page->menu_id);
 
-        return view('public.page.single',compact('page','menu'));
+        return view('pages.public.single',compact('page','menu'));
     }
 
 }

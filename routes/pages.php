@@ -14,11 +14,14 @@ Route::prefix('admin/pages')->group(function () {
 
 });
 
-Route::get('{alias}', [PagesController::class, 'showPage']);
+Route::get('{page}', [PagesController::class, 'showPage'])->name('pages.public.link');
 
 Route::prefix('cabinet/pages')->middleware('isEditor')->group(function () {
     Route::get('',              [PageCabinetController::class,'list'])->name('pages.cabinet.list');
     Route::get('on-approval',   [PageCabinetController::class,'list'])->name('pages.cabinet.on-approval')
         ->defaults('onApproval', true);
+
+    Route::get('form/{page?}',  [PageCabinetController::class,'form'])->name('pages.cabinet.form');
+
 });
 

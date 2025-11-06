@@ -12,24 +12,35 @@ trait hasLinks
     ];
     public function link_get($key): ?string
     {
-        if (property_exists($this, 'links')) {
-            if (Str::endsWith($key, '_link')) {
 
-                $routeKey = Str::before($key, '_link');
+        $params = collect();
+        if ($this->exists)
+            $params->push($this->getRouteKey());
+
+        $routeKey = Str::before($key, '_link');
+
+        if (Str::endsWith($key, '_link')) {
+            if (property_exists($this, 'links')) {
 
                 if (isset($this->links[$routeKey])) {
                     $routeName = $this->links[$routeKey];
 
-                    $params = [];
-                    if ($this->exists)
-                        $params[] = $this->getRouteKey();
-
-                    if (Route::has($routeName)) {
+                    if (Route::has($routeName))
                         return route($routeName, $params);
-                    }
                 }
             }
+            if (property_exists($this, 'linksGroups')) {
+                foreach ($this->linksGroups as $key => $prefix)
+                    if(Str::contains($routeKey, $key)){
+
+                        $routeName = str_replace($key, $prefix, $routeKey);
+
+                        if (Route::has($routeName))
+                            return route($routeName, $params);
+                    }
+            }
         }
+
 
         return null;
     }

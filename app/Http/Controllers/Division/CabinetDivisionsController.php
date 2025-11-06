@@ -16,13 +16,9 @@ use Illuminate\View\View;
 class CabinetDivisionsController extends Controller
 {
     protected Collection $divisions;
-    protected Collection $ids;
     public function __construct(){
-
-        $this->divisions = Division::all();
-
-        $this->ids = auth()->user()->isEditor() ? collect() : auth()->user()->access->map->relation->pluck('id','id');
-
+        $this->divisions = auth()->user()->isEditor() ? Division::all()
+            : auth()->user()->access->flatMap(fn($item) => $item->relation->getFlattenTree())->unique()->keyBy('id');
     }
 
     public function list(): View
@@ -30,10 +26,7 @@ class CabinetDivisionsController extends Controller
 
         $filter = Session::get('divisionCabinetFilter');
 
-        $list = flattenTree($this->divisions)->keyBy('id');
-
-        if($this->ids->isNotEmpty())
-            $list = $list->filter(fn($item) => $this->ids->has($item->id));
+        $list = $this->divisions;
 
         if($filter && $filter->has('search'))
             $list = $list->filter(fn($item) =>

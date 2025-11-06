@@ -20,32 +20,18 @@ class CabinetNewsController extends Controller
 {
 
     protected int $perPage = 40;
-    protected Collection $allDivisions;
     protected Collection $divisions;
-    protected Collection $ids;
     public function __construct(){
+        $this->divisions = auth()->user()->isEditor() ? Division::all()
+            : auth()->user()->access->flatMap(fn($item) => $item->relation->getFlattenTree())->unique()->keyBy('id');
 
-        $this->allDivisions = Division::all();
-
-        $this->ids = auth()->user()->isEditor() ? collect() : auth()->user()->access->map->relation->pluck('id','id');
-
-        $this->divisions = auth()->user()->isEditor()
-            ? $this->allDivisions
-            : $this->allDivisions->filter(fn($item) => $this->ids->has($item->id))->keyBy('id');
-
-        $this->accessUsers = User::orderBy('name')->get()->keyBy('id');
-
-        if(!auth()->user()->isEditor())
-            $this->accessUsers = $this->divisions
-                ->filter(fn($item) => $this->ids->has($item->id))
-                ->flatMap(fn($item) => $item->getAccessUsers());
     }
     public function list(Request $request): View
     {
         $list = auth()->user()->isEditor()
             ? News::all()->sortByDesc('published_at')
             : $this->divisions
-                ->flatMap(fn($division) => $division->news)
+                ->flatMap(fn($division) => $division->newsInRelation)
                 ->sortByDesc('published_at');
 
         $filter = Session::get('cabinetNewsFilters', collect());
@@ -67,8 +53,13 @@ class CabinetNewsController extends Controller
         $list = $list->paginate($this->perPage);
 
         $byFilter = collect([
-            'divisions' => flattenTreeForSelect($this->allDivisions, $this->ids->toArray()),
-            'authors' => $this->accessUsers->pluck('name', 'id')
+            'divisions' => flattenTreeForSelect($this->divisions),
+            'authors'   =>
+                $this->divisions
+                ->flatMap(fn($division) => $division->newsInRelation)
+                ->unique('author_id')
+                ->map(fn($item) => $item->author)
+                ->pluck('name','id')
         ]);
 
         $request->session()->put('cabinet-news-route', Route::current()->uri());
@@ -91,7 +82,7 @@ class CabinetNewsController extends Controller
             $list= $list->where(fn($item)  => $item->relation_id == $filters->get('division') && $item->relation_type == Division::class);
 
         $byFilter = collect([
-            'divisions' => flattenTreeForSelect($this->allDivisions, $this->ids->toArray()),
+            'divisions' => flattenTreeForSelect($this->divisions),
         ]);
 
         $list= $list->where(fn($item)  => !$item->has_approval)->paginate($this->perPage);
@@ -114,7 +105,7 @@ class CabinetNewsController extends Controller
 
     public function form(News $news): View
     {
-        $divisions  = flattenTreeForSelect($this->allDivisions, $this->ids->toArray());
+        $divisions  = flattenTreeForSelect($this->divisions);
 
         $categories = Category::all()->pluck('name', 'id');
 

@@ -71,6 +71,8 @@
                             value="{{ $news->relation_id }}"
                             null="Выбрать подразделение"
                             :list=" $divisions "
+                            multiple
+                            class="min-h-100"
                         />
 
                         <x-form.select2

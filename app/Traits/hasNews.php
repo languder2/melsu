@@ -6,6 +6,7 @@ use App\Enums\DivisionType;
 use App\Models\News\News;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
 trait hasNews
 {
@@ -13,6 +14,17 @@ trait hasNews
     {
         return $this->morphMany(News::class, 'relation')
             ->orderBy('published_at');
+    }
+
+    public function newsInRelation(): MorphToMany
+    {
+        return $this->morphToMany(
+            News::class,
+            'relation',
+            'news_relations',
+            'relation_id',  // Ключ этой модели (Division) в таблице attachments
+            'news_id'       // Ключ целевой модели (News) в таблице attachments
+        );
     }
     public function publicNews(): MorphMany
     {

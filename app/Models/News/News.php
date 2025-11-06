@@ -8,6 +8,7 @@ use App\Models\Services\Content;
 use App\Models\Users\User;
 use App\Traits\hasAuthor;
 use App\Traits\hasContents;
+use App\Traits\hasDivisionRelation;
 use Carbon\Carbon;
 use EditorJS\EditorJS;
 use Illuminate\Database\Eloquent\Builder;
@@ -20,7 +21,7 @@ use Illuminate\Support\Collection;
 
 class News extends Model
 {
-    use SoftDeletes, hasContents, hasAuthor;
+    use SoftDeletes, hasContents, hasAuthor, hasDivisionRelation;
 
     protected $table = 'news';
     public static int $adminPerPage = 10;
@@ -47,7 +48,7 @@ class News extends Model
             'published_at'  => '',
             'has_approval'  => '',
             'is_show'       => '',
-            'image'         => 'nullable|image|mimes:jpeg,png,jpg,gif,svg',
+            'image'         => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp',
             'preview'       => 'nullable|string',
         ];
     }
