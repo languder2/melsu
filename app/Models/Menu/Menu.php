@@ -267,6 +267,10 @@ class Menu extends Model
             'name' => "Партнеры и выпускники",
             'link' => url('partner'),
         ]);
+        $menu->items->push((object)[
+            'name' => "Новости",
+            'link' => route('public:education:division', ['faculty',$division,'news']),
+        ]);
         return $menu;
     }
 

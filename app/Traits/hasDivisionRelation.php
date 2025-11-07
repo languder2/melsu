@@ -3,6 +3,7 @@
 namespace App\Traits;
 
 use App\Models\Division\Division;
+use App\Models\News\Category;
 use App\Models\News\Events;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
@@ -21,10 +22,10 @@ trait hasDivisionRelation
             'relation_id'
         );
     }
-    public function events()
+    public function categories()
     {
         return $this->morphedByMany(
-            Events::class,
+            Category::class,
             'relation',
             'news_relations',
             'news_id',

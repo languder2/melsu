@@ -36,31 +36,12 @@
                 <div>
                     {{ $item->phone }}
                 </div>
-                <div>
-                    {{ $item->phone }}
-                </div>
             </div>
         @empty
             empty
         @endforelse
     </div>
 
-    <table class="w-full">
-    @foreach($list as $item)
-        <tr class="bg-white rounded-sm p-3 mx-2 shadow">
-            <td>
-                {{ $item->position }}
-            </td>
-            <td>
-                {{ $item->surname }}
-                {{ $item->name }}
-                {{ $item->patronymic }}
-            </td>
-            <td>
-                {{ $item->phone }}
-            </td>
-        </tr>
-    @endforeach
-    </table>
+
 @endsection
 

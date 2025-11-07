@@ -132,11 +132,15 @@ class CabinetNewsController extends Controller
         if($request->filled('full'))
             $news->getFullRecord()->fill(['content'=> $request->get('full')])->save();
 
-        if($request->input('division')){
-            $division = Division::find($request->input('division'));
+        if($request->input('divisions'))
+            $news->divisions()->sync(
+                collect(json_decode($request->input('divisions')))
+            );
 
-            $news->fill($form)->relation()->associate($division)->save();
-        }
+        if($request->input('categories'))
+            $news->categories()->sync(
+                collect(json_decode($request->input('categories')))
+            );
 
         if($request->file('image'))
             $news->preview->saveImage($request->file('image'));

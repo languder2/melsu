@@ -101,29 +101,10 @@ enum DivisionType: string
                     (object)[
                         'name'  => "Новости",
                         'link'  => route('public:education:division', ['faculty',$op,'news']),
-                        'hide'  => $division->news->isEmpty(),
+//                        'hide'  => $division->news->isEmpty(),
+                        'hide'  => false,
                     ],
 
-//                    (object)[
-//                        'name' => "Наука",
-//                        'link' => "https://melsu.ru/menu/science",
-//                    ],
-//                    (object)[
-//                        'name' => "Наука",
-//                        'link' => "https://melsu.ru/menu/science",
-//                    ],
-//                    (object)[
-//                        'name' => "История",
-//                        'link' => url('history'),
-//                    ],
-//                    (object)[
-//                        'name' => "Фотогалерея",
-//                        'link' => url('gallery'),
-//                    ],
-//                    (object)[
-//                        'name' => "Партнеры и выпускники",
-//                        'link' => url('partner'),
-//                    ],
                 ],
             ],
             default                     => null,

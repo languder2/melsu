@@ -11,14 +11,18 @@
 
     <title>@yield('title', 'ФГБОУ ВО "МелГУ"')</title>
 
-    @vite(['resources/css/cabinet.css', 'resources/js/cabinet.js', 'resources/js/editorjs/editor.js'])
+    @vite([
+        'resources/css/cabinet.css',
+        'resources/js/cabinet.js',
+        'resources/js/editorjs/editor.js',
+        'resources/js/styled-select-with-search.js'
+    ])
 </head>
 <body class="bg-neutral-100 relative grid grid-rows-[auto_1fr_auto] min-h-screen gap-px">
 
 @include("cabinet.template.header")
 
 <main class="min-h-full" >
-
     @guest
         @include('cabinet.auth')
     @else

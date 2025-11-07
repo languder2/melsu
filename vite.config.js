@@ -18,6 +18,7 @@ export default defineConfig({
                 'resources/js/admin.js',
                 'resources/js/editorjs/editor.js',
                 'resources/js/editorjs/slider.js',
+                'resources/js/styled-select-with-search.js',
             ],
             publicDirectory: 'public_html',
             refresh: true,
