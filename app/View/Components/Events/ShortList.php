@@ -2,8 +2,7 @@
 
 namespace App\View\Components\Events;
 
-use App\Models\News\Events;
-use Carbon\Carbon;
+use App\Models\Events\Events;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Collection;

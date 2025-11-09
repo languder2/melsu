@@ -3,7 +3,7 @@
 namespace App\View\Components\News;
 
 use App\Models\Division\Division;
-use App\Models\News\Events;
+use App\Models\Events\Events;
 use App\Models\News\News;
 use Carbon\Carbon;
 use Closure;

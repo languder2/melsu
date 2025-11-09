@@ -3,8 +3,8 @@
 use App\Models\Division\Division;
 use App\Models\Education\Faculty;
 use App\Models\Education\Speciality;
+use App\Models\Events\Events;
 use App\Models\Menu\Menu;
-use App\Models\News\Events;
 use App\Models\News\News;
 use App\Models\Page\Page;
 use App\Models\Staff\Staff;
@@ -209,16 +209,4 @@ Breadcrumbs::for('education-programs:higher-education', function (BreadcrumbTrai
     $trail->parent('home');
     $trail->push('Образовательная инфраструктура', url('obrazovatelnaya-infrastruktura'));
     $trail->push('Образовательные программы высшего образования', route('education-programs:higher-education'));
-});
-
-Breadcrumbs::for('relation-news', function (BreadcrumbTrail $trail, \App\Models\News\RelationNews $news) {
-    $trail->parent('home');
-
-    if($news->relation)
-        $trail->push($news->relation->name, $news->relation->link);
-
-    $trail->push("Новости");
-
-
-
 });

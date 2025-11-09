@@ -117,7 +117,7 @@ class Image extends Model
             'App\Models\Education\Faculty'      => "images/faculty/",
             'App\Models\Education\Departments'  => "images/departments/",
             'App\Models\Education\Labs'         => "images/labs/",
-            'App\Models\News\News'              => 'images/news/',
+            'App\Models\News\News' => 'images/news/',
             'App\Models\Gallery\Gallery'        => 'images/gallery/',
             'App\Models\Staff\Staff'            => 'images/staffs/',
             'App\Models\Department\Group'       => 'images/department/group/',

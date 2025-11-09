@@ -1,18 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\News;
+namespace App\Http\Controllers\Events;
 
 use App\Enums\EventType;
 use App\Http\Controllers\Controller;
-use App\Models\News\EventCategories;
-use App\Models\News\Events;
-use App\Models\News\News;
+use App\Models\Events\Category;
+use App\Models\Events\Events;
+use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
-use Carbon\Carbon;
-use App\Models\News\Category;
 
 class EventsController extends Controller
 {
@@ -39,7 +37,7 @@ class EventsController extends Controller
             ->where('is_show',true)
             ->where('has_approval',true)
             ->get();
-        $categories = EventCategories::whereHas('eventsRelation')->orderBy('name')->get();
+        $categories = Category::whereHas('eventsRelation')->orderBy('name')->get();
 
 
         // Событие по дате
@@ -155,7 +153,7 @@ class EventsController extends Controller
 
             $categoryIds = $events->pluck('category_id')->filter()->unique();
 
-            $categories = EventCategories::whereIn('id', $categoryIds)
+            $categories = Category::whereIn('id', $categoryIds)
                 ->get()
                 ->keyBy('id');
 
@@ -204,7 +202,7 @@ class EventsController extends Controller
     public function form(Events $event): string
     {
         $types = EventType::forSelect();
-        $categories = EventCategories::orderBy('name')->get()->pluck('name', 'id');
+        $categories = Category::orderBy('name')->get()->pluck('name', 'id');
         return view('news.events.admin.form', [
             'event' => $event,
             'types' => $types,

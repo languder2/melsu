@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Models\News;
+namespace App\Models\Events;
 
 use App\Models\Gallery\Gallery;
 use App\Models\Gallery\Image;
 use App\Traits\hasAuthor;
 use App\Traits\hasContents;
+use App\Traits\hasDivision;
+use App\Traits\hasEventCategories;
 use App\Traits\hasImage;
 use App\Traits\hasLinks;
 use App\Traits\hasMeta;
@@ -16,11 +18,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use App\Models\News\Category;
 
 class Events extends Model
 {
-    use SoftDeletes, MagicGet, hasContents, hasLinks, hasMeta, hasImage, hasAuthor, hasRelations;
+    use SoftDeletes, MagicGet, hasLinks, hasContents, hasMeta, hasImage, hasAuthor, hasRelations,
+        hasDivision, hasEventCategories
+    ;
 
     protected $table = 'events';
 
@@ -40,12 +43,19 @@ class Events extends Model
 
     protected $links = [
         'cabinet_list'          => 'events.cabinet.list',
-        'cabinet_on_approval'   => 'events.cabinet.onApproval',
+        'cabinet_on_approval'   => 'events.cabinet.on-approval',
         'cabinet_set_filter'    => 'events.cabinet.set-filter',
         'cabinet_form'          => 'events.cabinet.form',
         'cabinet_save'          => 'events.cabinet.save',
         'cabinet_delete'        => 'events.cabinet.delete',
         'show'                  => 'public:event:show',
+    ];
+
+    protected array $traitsConfig = [
+        'divisions' => [
+            'table'         => 'events_relations',
+            'foreignKey'    => 'event_id',
+        ]
     ];
 
     public function validateRules(): array
@@ -141,7 +151,7 @@ class Events extends Model
     /* Relations */
     public function category(): BelongsTo
     {
-        return $this->belongsTo(EventCategories::class, 'category_id');
+        return $this->belongsTo(Category::class, 'category_id');
     }
 
     public function getNewsAttribute($value)

@@ -2,25 +2,33 @@
 
 namespace App\Traits;
 
-use App\Enums\DivisionType;
-use App\Models\News\Events;
-use App\Models\News\News;
-use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Relations\MorphMany;
+use App\Models\Events\Events;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
+use Illuminate\Support\Collection;
 
 trait hasEvents
 {
-    public function events(): MorphMany
+    public function events(): MorphToMany
     {
-        return $this->morphMany(Events::class, 'relation')
-            ->orderBy('event_datetime', 'desc');
+        return $this->morphToMany(
+            Events::class,
+            'relation',
+            'events_relations',
+            'relation_id',
+            'event_id'
+        );
     }
-    public function publicEvents(): MorphMany
+    public function publicEvents(): Collection
     {
-        return $this->events()
-            ->where('is_show',1)
-            ->where('has_approval',true)
-            ->orderBy('sort')
-        ;
+        return
+            $this->getFlattenTree()->flatMap(fn($item) => $item->events)->unique('id')->sortByDesc('event_datetime')
+            ->filter(fn($item) => $item->is_show && $item->has_approval);
     }
+
+    public function allEvents(): Collection
+    {
+        return $this->getFlattenTree()->flatMap(fn($item) => $item->events)->unique('id')->sortByDesc('event_datetime');
+    }
+
+
 }

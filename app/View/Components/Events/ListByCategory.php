@@ -2,8 +2,8 @@
 
 namespace App\View\Components\Events;
 
+use App\Models\Events\Events;
 use App\Models\News\Category;
-use App\Models\News\Events;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Collection;

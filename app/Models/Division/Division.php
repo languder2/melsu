@@ -42,7 +42,8 @@ use App\Models\Upbringing\Upbringing;
 class Division extends Model
 {
     use SoftDeletes, resolveRouteBinding, hasSubordination, MagicGet, hasContents,
-        hasLinks, hasMeta, hasNews, hasEvents;
+        hasLinks, hasMeta,
+        hasNews, hasEvents;
 
     protected array $links = [
         'test'  => 'division.cabinet.form',

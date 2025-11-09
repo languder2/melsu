@@ -45,16 +45,21 @@ trait hasSubordination
         return flattenTree(self::all())->keyBy('id');
     }
 
-    public function getFlattenTree(Collection $collection = null, int $level = 0):Collection
+    public function getFlattenTree(bool $nameWithLevel = false ,Collection $collection = null, int $level = 0):Collection
     {
         if(is_null($collection))
             $collection = collect();
 
         $this->level = $level;
 
+        if($nameWithLevel)
+            $this->name = str_repeat('&nbsp;', $level*3)
+            . ($level ? __('common.arrowT2R')  : '' )
+            . $this->name;
+
         $collection->put($this->id, $this);
 
-        $this->subs->each(fn($item) => $item->getFlattenTree($collection, $level + 1));
+        $this->subs->each(fn($item) => $item->getFlattenTree($nameWithLevel, $collection, $level + 1));
 
         return $collection;
     }

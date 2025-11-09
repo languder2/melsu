@@ -10,8 +10,8 @@
     />
 
     <x-html.submit-link
-        link="{{ route('news.cabinet.onApproval') }}"
-        :inline="!Route::is('news.cabinet.onApproval')"
+        link="{{ route('news.cabinet.on-approval') }}"
+        :inline="!Route::is('news.cabinet.on-approval')"
         text="Новости требующие утверждения"
     />
 

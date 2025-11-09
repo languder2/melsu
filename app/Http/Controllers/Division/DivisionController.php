@@ -11,7 +11,6 @@ use App\Models\Documents\DocumentCategory;
 use App\Models\Education\Speciality;
 use App\Models\Gallery\Image;
 use App\Models\Menu\Menu;
-use App\Models\News\RelationNews;
 use App\Models\Page\Content as PageContent;
 use App\Models\Partners\Partner;
 use App\Models\Sections\Contact;
@@ -99,10 +98,6 @@ class DivisionController extends Controller
         if($request->has('contacts'))
             Contact::processing($record,$request->get('contacts'));
 
-        /* add news*/
-        if($request->has('news')){
-            RelationNews::processingForms($record,request()->all('news')['news']);
-        }
 
         /* add content upbringing sections*/
         if ($request->has('upbringing_sections')) {

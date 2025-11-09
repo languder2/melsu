@@ -19,11 +19,9 @@ class IncludeBlock extends Component
 
     public function __construct(Division $division)
     {
-        $this->events   = $division->getFlattenTree()->flatMap(fn($item) => $item->publicEvents)
-            ->sortByDesc('event_datetime')->take($this->eventCount);
+        $this->events   = $division->publicEvents()->take($this->eventCount);
 
-        $this->news     = $division->getFlattenTree()->flatMap(fn($item) => $item->publicNews)
-            ->sortByDesc('published_at')->take($this->events->isEmpty() ? $this->onlyNewsCount : $this->newsCount);
+        $this->news     = $division->publicNews()->take($this->events->isEmpty() ? $this->onlyNewsCount : $this->newsCount);
     }
 
     public function render(): View|Closure|string

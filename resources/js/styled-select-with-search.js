@@ -56,24 +56,26 @@ document.addEventListener(`DOMContentLoaded`, ()=>{
         const block = document.createElement('div')
         const button = document.createElement('div')
 
-        panel.className = 'selectedVariant bg-sky-800 text-white whitespace-nowrap flex items-center'
+        panel.className = 'selectedVariant bg-sky-800 text-white whitespace-nowrap flex items-center select-none'
         panel.setAttribute('data-value', item.dataset.value)
 
         block.className = 'ps-3 pe-2 py-2'
         block.textContent = getStringSSWS(item.innerText)
         panel.appendChild(block)
 
-        button.className = "px-3 py-2 cursor-pointer hover:bg-blue-800"
-        button.textContent = "x"
-        button.addEventListener('click', (event) => deleteSelectedVariant(target, item.dataset.id))
-        panel.appendChild(button)
-
+        if(!item.hasAttribute('disabled')){
+            button.className = "px-3 py-2 cursor-pointer hover:bg-blue-800"
+            button.textContent = "x"
+            button.addEventListener('click', (event) => deleteSelectedVariant(target, item.dataset.id))
+            panel.appendChild(button)
+        }
         container.insertBefore(panel, container.lastElementChild)
 
         getSelectedVariants(target)
     }
 
     const changeSelectedVariantSSWS = (target, item) => {
+
         item.toggleAttribute('open')
 
         item.hasAttribute('open')
@@ -103,7 +105,8 @@ document.addEventListener(`DOMContentLoaded`, ()=>{
 
     variantsSSWS.forEach((item) =>
         item.addEventListener('click', (event) => {
-            changeSelectedVariantSSWS(item.closest('[data-for]').dataset.for, item)
+            if(!item.hasAttribute('disabled'))
+                changeSelectedVariantSSWS(item.closest('[data-for]').dataset.for, item)
         })
     )
 

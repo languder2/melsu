@@ -2,6 +2,8 @@
 
 namespace App\Models\News;
 
+use App\Models\Events\Events;
+use App\Traits\hasNews;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -10,7 +12,7 @@ use Illuminate\Support\Collection;
 
 class Category extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, hasNews;
     public function FormRules():array
     {
         return [

@@ -3,17 +3,13 @@
 namespace App\Http\Controllers\Documents;
 
 use App\Http\Controllers\Controller;
-use App\Models\Division\Division;
 use App\Models\Documents\Document;
 use App\Models\Documents\DocumentCategory;
 use App\Models\Menu\Menu;
-use App\Models\News\RelationNews;
 use App\Models\Services\Log;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\View\View;
-use PhpParser\Comment\Doc;
 
 class
 DocumentsController extends Controller

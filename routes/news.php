@@ -1,12 +1,12 @@
 <?php
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\News\NewsController;
-use App\Http\Controllers\News\EventsController;
-use App\Http\Controllers\News\CategoriesController;
-use App\Http\Controllers\News\RelationNewsController;
+
+use App\Http\Controllers\Events\CabinetEventsController;
+use App\Http\Controllers\Events\EventsController;
 use App\Http\Controllers\News\CabinetNewsController;
-use App\Http\Controllers\News\CabinetEventsController;
+use App\Http\Controllers\News\CategoriesController;
+use App\Http\Controllers\News\NewsController;
 use App\Http\Middleware\AuthCabinet;
+use Illuminate\Support\Facades\Route;
 
 /* News */
 Route::controller(NewsController::class)
@@ -73,27 +73,21 @@ Route::prefix('admin/categories-news')->group(function () {
 });
 /**/
 
-Route::get('relation-news/{news?}', [RelationNewsController::class, 'show'])->name('news.relation.show');
-
-/**/
-
 Route::prefix('cabinet/news')->middleware(AuthCabinet::class)->group(function () {
-    Route::get('',              [CabinetNewsController::class, 'list'])->name('news.cabinet.list');
-    Route::post('set-filter',   [CabinetNewsController::class, 'setFilter'])->name('news.cabinet.set-filter');
-    Route::get('form/{news?}',  [CabinetNewsController::class, 'form'])->name('news.cabinet.form');
-    Route::put('save/{news?}',  [CabinetNewsController::class, 'save'])->name('news.cabinet.save');
-    Route::delete('delete/{news?}',  [CabinetNewsController::class, 'delete'])->name('news.cabinet.delete');
-    Route::get('on-approval', [CabinetNewsController::class, 'onApproval'])->name('news.cabinet.onApproval');
-
+    Route::get('',                      [CabinetNewsController::class, 'list'])         ->name('news.cabinet.list');
+    Route::get('on-approval',           [CabinetNewsController::class, 'list'])         ->name('news.cabinet.on-approval')->defaults('onApproval', true);
+    Route::post('set-filter',           [CabinetNewsController::class, 'setFilter'])    ->name('news.cabinet.set-filter');
+    Route::get('form/{news?}',          [CabinetNewsController::class, 'form'])         ->name('news.cabinet.form');
+    Route::put('save/{news?}',          [CabinetNewsController::class, 'save'])         ->name('news.cabinet.save');
+    Route::delete('delete/{news?}',     [CabinetNewsController::class, 'delete'])       ->name('news.cabinet.delete');
 });
 
 Route::prefix('cabinet/events')->middleware(AuthCabinet::class)->group(function () {
-    Route::get('',              [CabinetEventsController::class, 'list'])->name('events.cabinet.list');
-    Route::post('set-filter',   [CabinetEventsController::class, 'setFilter'])->name('events.cabinet.set-filter');
-    Route::get('form/{event?}',  [CabinetEventsController::class, 'form'])->name('events.cabinet.form');
-    Route::put('save/{event?}',  [CabinetEventsController::class, 'save'])->name('events.cabinet.save');
-    Route::delete('delete/{event?}',  [CabinetEventsController::class, 'delete'])->name('events.cabinet.delete');
-    Route::get('on-approval', [CabinetEventsController::class, 'onApproval'])->name('events.cabinet.onApproval');
-
+    Route::get('',                      [CabinetEventsController::class, 'list'])       ->name('events.cabinet.list');
+    Route::get('on-approval',           [CabinetEventsController::class, 'list'])       ->name('events.cabinet.on-approval')->defaults('onApproval', true);;
+    Route::post('set-filter',           [CabinetEventsController::class, 'setFilter'])  ->name('events.cabinet.set-filter');
+    Route::get('form/{event?}',         [CabinetEventsController::class, 'form'])       ->name('events.cabinet.form');
+    Route::put('save/{event?}',         [CabinetEventsController::class, 'save'])       ->name('events.cabinet.save');
+    Route::delete('delete/{event?}',    [CabinetEventsController::class, 'delete'])     ->name('events.cabinet.delete');
 });
 

@@ -3,11 +3,9 @@
 namespace App\Http\Controllers\News;
 
 use App\Http\Controllers\Controller;
-use Carbon\Carbon;
-use Illuminate\Http\Request;
-use App\Models\News\News;
 use App\Models\News\Category;
-use Illuminate\Support\Collection;
+use App\Models\News\News;
+use Carbon\Carbon;
 
 class ApiNews extends Controller
 {

@@ -1,8 +1,9 @@
 @props([
-    'list'      => [],
     'target'    => 'styled-select-' . \Illuminate\Support\Str::random(20),
     'label'     => "Добавить",
     'name'      => null,
+    'list'      => collect(),
+    'diff'      => collect(),
     'values'    => collect(),
     'open'      => false,
     'required',
@@ -16,7 +17,7 @@
         id="{{ $target }}"
         type="hidden"
         name="{{ $name }}"
-        value="{{ json_encode($values ) }}"
+        value="[]"
         class="w-full"
     >
 
@@ -52,7 +53,19 @@
                             <div data-id="{{ $key }}"
                                  data-for="{{ $target }}"
                                  data-value="{{ $key }}"
-                                 class="variant cursor-pointer p-2 hover:bg-neutral-100 open:bg-sky-100 open:hover:bg-sky-200"
+                                 class="variant cursor-pointer p-2 hover:bg-neutral-100 open:bg-sky-100 open:hover:bg-sky-200 select-none"
+                                 @if($values->contains($key)) open @endif
+                            >
+                                {!! $item !!}
+                            </div>
+                        @endforeach
+
+                        @foreach($diff as $key => $item)
+                            <div data-id="{{ $key }}"
+                                 data-for="{{ $target }}"
+                                 data-value="{{ $key }}"
+                                 disabled
+                                 class="variant p-2 open:bg-gray-500 text-white select-none"
                                  @if($values->contains($key)) open @endif
                             >
                                 {!! $item !!}

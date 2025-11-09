@@ -1,16 +1,14 @@
 <?php
 
-namespace App\Models\News;
+namespace App\Models\Events;
 
-use Carbon\Carbon;
+use App\Traits\hasEvents;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Collection;
 
-class EventCategories extends Model
+class Category extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, hasEvents;
     public function FormRules():array
     {
         return [

@@ -6,14 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Models\Division\Division;
 use App\Models\News\Category;
 use App\Models\News\News;
-use App\Models\Users\User;
-use Illuminate\Support\Facades\Route;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
-use Illuminate\Http\Request;
 
 
 class CabinetNewsController extends Controller
@@ -23,16 +22,17 @@ class CabinetNewsController extends Controller
     protected Collection $divisions;
     public function __construct(){
         $this->divisions = auth()->user()->isEditor() ? Division::all()
-            : auth()->user()->access->flatMap(fn($item) => $item->relation->getFlattenTree())->unique()->keyBy('id');
+            : auth()->user()->access->flatMap(fn($item) => $item->relation->getFlattenTree())->keyBy('id');
 
     }
-    public function list(Request $request): View
+    public function list(bool $onApproval = false): View
     {
         $list = auth()->user()->isEditor()
             ? News::all()->sortByDesc('published_at')
             : $this->divisions
-                ->flatMap(fn($division) => $division->newsInRelation)
+                ->flatMap(fn($division) => $division->news)->unique('id')
                 ->sortByDesc('published_at');
+
 
         $filter = Session::get('cabinetNewsFilters', collect());
 
@@ -50,48 +50,26 @@ class CabinetNewsController extends Controller
                 $item->relation_id == $filter->get('division') && $item->relation_type == Division::class
             );
 
+        if($onApproval)
+            $list = $list->filter(fn($item) => !$item->has_approval);
+
         $list = $list->paginate($this->perPage);
 
         $byFilter = collect([
             'divisions' => flattenTreeForSelect($this->divisions),
             'authors'   =>
                 $this->divisions
-                ->flatMap(fn($division) => $division->newsInRelation)
+                ->flatMap(fn($division) => $division->news)
                 ->unique('author_id')
                 ->map(fn($item) => $item->author)
                 ->pluck('name','id')
         ]);
 
-        $request->session()->put('cabinet-news-route', Route::current()->uri());
+        session()->put('cabinet-news-route', Route::current()->uri());
+
 
         return view('news.cabinet.list', compact('list', 'byFilter'));
     }
-
-    public function onApproval(Request $request): View
-    {
-
-        $list = auth()->user()->isEditor()
-            ? News::all()->sortByDesc('published_at')
-            : $this->divisions->filter(fn($item) => $this->ids->has($item->id))
-                ->flatMap(fn($division) => $division->news)
-                ->sortByDesc('published_at');
-
-        $filters = $request->session()->get('cabinetNewsFilters', collect());
-
-        if($filters->has('division'))
-            $list= $list->where(fn($item)  => $item->relation_id == $filters->get('division') && $item->relation_type == Division::class);
-
-        $byFilter = collect([
-            'divisions' => flattenTreeForSelect($this->divisions),
-        ]);
-
-        $list= $list->where(fn($item)  => !$item->has_approval)->paginate($this->perPage);
-
-        $request->session()->put('cabinet-news-route', Route::current()->uri());
-
-        return view('news.cabinet.list', compact('list', 'filters', 'byFilter'));
-    }
-
 
     public function setFilter(Request $request): RedirectResponse
     {
@@ -114,14 +92,12 @@ class CabinetNewsController extends Controller
 
     public function save(Request $request, News $news): RedirectResponse
     {
-
         $form = $request->validate($news->validateRules(), $news->validateMessage());
 
         $news->fill($form)->save();
 
         if(!$news->exists || !$news->author)
-            $news->author()->associate(auth()->user())->save();
-
+            $news->author()->associate(auth()->user()->id)->save();
 
         if($request->filled('content'))
             $news->getContentRecord()->fill(['content'=> $request->get('content')])->save();

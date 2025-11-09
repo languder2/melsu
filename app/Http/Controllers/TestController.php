@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Division\Division;
-use App\Models\News\Events;
+use App\Models\Events\Events;
+use App\Models\News\Category;
 use App\Models\News\News;
 use App\Models\Page\Page;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\View\View;
 
 class TestController extends Controller
 {
@@ -79,6 +79,15 @@ class TestController extends Controller
             ->sortBy('surname');
 
         return view('test.index',compact('list'));
+    }
+
+    public function test()
+    {
+
+        $division = Division::find(224);
+
+        dd($division->publicEvents());
+
     }
 
 

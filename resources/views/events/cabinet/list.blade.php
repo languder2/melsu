@@ -14,7 +14,7 @@
 
     @include('events.cabinet.filter')
 
-    <div class="grid gap-3 grid-cols-[repeat(8,auto)] mb-3">
+    <div class="grid gap-3 grid-cols-[repeat(3,auto)_1fr_repeat(4,auto)] mb-3">
         <div
             class="border-l-3 grid grid-cols-subgrid col-span-full gap-3 p-4 rounded-sm shadow items-center sticky top-0 text-white border-sky-800 bg-sky-800 text-center"
         >

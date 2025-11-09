@@ -3,13 +3,10 @@
 namespace App\Http\Controllers\News;
 
 use App\Http\Controllers\Controller;
-use Carbon\Carbon;
-use Illuminate\Http\JsonResponse;
-use App\Models\{Gallery\Gallery, News\News, News\Category};
+use App\Models\{News\Category, News\News};
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
-use App\Models\News\RelationNews;
 
 class NewsController extends Controller
 {
@@ -147,21 +144,6 @@ class NewsController extends Controller
 
         return view('news.public.list', compact('list', 'category','categories','search'));
     }
-    public function ApiAddSection():\Illuminate\View\View
-    {
-        $news   = new RelationNews();
-        return view('news.admin.includes.block',compact('news'));
-    }
-    public function ApiDelete (?RelationNews $news): JsonResponse
-    {
-        $news->delete();
-        return response()->json(
-            [
-                'message' => "Новость удалена\n{$news->title}\n Восстановимо до: "
-                    .Carbon::now()->addWeek(2)->format('d.m.Y H:i')
-            ]);
-    }
-
     public function publicSetFilter(Request $request): RedirectResponse
     {
         if($request->get('search'))

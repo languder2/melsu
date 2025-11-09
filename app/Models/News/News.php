@@ -4,13 +4,16 @@ namespace App\Models\News;
 
 use App\Models\Gallery\Gallery;
 use App\Models\Gallery\Image;
-use App\Models\Services\Content;
-use App\Models\Users\User;
 use App\Traits\hasAuthor;
 use App\Traits\hasContents;
-use App\Traits\hasDivisionRelation;
+use App\Traits\hasDivision;
+use App\Traits\hasImage;
+use App\Traits\hasLinks;
+use App\Traits\hasMeta;
+use App\Traits\hasNewsCategories;
+use App\Traits\hasRelations;
+use App\Traits\MagicGet;
 use Carbon\Carbon;
-use EditorJS\EditorJS;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -20,7 +23,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class News extends Model
 {
-    use SoftDeletes, hasContents, hasAuthor, hasDivisionRelation;
+    use SoftDeletes, MagicGet, hasContents, hasLinks, hasAuthor, hasDivision, hasMeta, hasImage, hasNewsCategories, hasRelations;
 
     protected $table = 'news';
     public static int $adminPerPage = 10;
@@ -37,6 +40,14 @@ class News extends Model
         'is_show',
         'sort',
     ];
+
+    protected array $traitsConfig = [
+        'divisions' => [
+            'table'         => 'news_relations',
+            'foreignKey'    => 'news_id',
+        ]
+    ];
+
     public function validateRules(): array
     {
         return [

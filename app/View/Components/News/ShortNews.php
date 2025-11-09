@@ -2,13 +2,12 @@
 
 namespace App\View\Components\News;
 
-use App\Models\News\Events;
+use App\Models\Events\Events;
 use App\Models\News\News;
-use Carbon\Carbon;
 use Closure;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Collection;
-use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\View\Component;
 
 class ShortNews extends Component
