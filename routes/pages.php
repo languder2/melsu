@@ -23,5 +23,7 @@ Route::prefix('cabinet/pages')->middleware('isEditor')->group(function () {
 
     Route::get('form/{page?}',  [PageCabinetController::class,'form'])->name('pages.cabinet.form');
 
+    Route::put('save/{page?}',  [PageCabinetController::class,'save'])->name('pages.cabinet.save');
+
 });
 

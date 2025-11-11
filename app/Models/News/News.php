@@ -23,7 +23,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class News extends Model
 {
-    use SoftDeletes, MagicGet, hasContents, hasLinks, hasAuthor, hasDivision, hasMeta, hasImage, hasNewsCategories, hasRelations;
+    use SoftDeletes, MagicGet, hasContents, hasLinks, hasAuthor, hasDivision, hasMeta, hasImage, hasNewsCategories;
 
     protected $table = 'news';
     public static int $adminPerPage = 10;

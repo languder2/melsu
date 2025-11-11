@@ -3,10 +3,12 @@
 namespace App\Traits;
 
 use App\Enums\DivisionType;
+use App\Models\Division\Division;
 use App\Models\News\News;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
 
 trait hasNews
 {
@@ -29,19 +31,22 @@ trait hasNews
     public function publicNews(): Collection
     {
 
-        return $this->getFlattenTree()->flatMap(fn($item) => $item->news)->unique('id')
-            ->filter(fn($item) => $item->published_at <= Carbon::now() && $item->is_show && $item->has_approval)
-            ->sortByDesc('published_at');
+        $divisionsIDs   = $this->tree()->pluck('id');
 
-//        return $this->news()
-//            ->where('published_at','<=', Carbon::now())
-//            ->where('is_show',1)
-//            ->where('has_approval',true)
-//            ->orderBy('is_favorite', 'desc')
-//            ->orderBy('sort', 'asc')
-//            ->orderBy('published_at', 'desc')
-//            ->get()
-//            ;
+        $newsIDs = DB::table('news_relations')
+            ->whereIn('relation_id', $divisionsIDs)
+            ->where('relation_type', $this::class)
+            ->get()
+            ->pluck('news_id')->unique();
+
+        return News::whereIn('id', $newsIDs)
+            ->where('published_at','<=', Carbon::now())
+            ->where('is_show',1)
+            ->where('has_approval',true)
+            ->orderBy('is_favorite', 'desc')
+            ->orderBy('sort', 'asc')
+            ->orderBy('published_at', 'desc')
+            ->get();
     }
     public function NewsLink(?string $op): string
     {

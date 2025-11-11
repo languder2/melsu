@@ -61,6 +61,21 @@ class Page extends Model
 
         ];
     }
+    public function validateRules(): array
+    {
+        return [
+            'name' => 'required',
+            'code' => "unique:pages,code,$this->id,id,deleted_at,NULL",
+        ];
+    }
+    public function validateMessages(): array
+    {
+        return [
+            'name'          => 'Укажите заголовок',
+            'code.require'  => "Код должен быть указан",
+            'code.unique'   => "Код должен быть уникальным",
+        ];
+    }
     public static function FormRules($id): array
     {
         return [

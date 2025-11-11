@@ -3,11 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Division\Division;
-use App\Models\Events\Events;
-use App\Models\News\Category;
-use App\Models\News\News;
 use App\Models\Page\Page;
-use Illuminate\Support\Carbon;
+use App\Models\Services\Content;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 
 class TestController extends Controller
@@ -55,48 +53,64 @@ class TestController extends Controller
     {
         $list = collect();
 
-        News::all()->each(function ($item){
-            if($item->relation && $item->divisions->doesntContain($item->relation))
-                $item->divisions()->attach($item->relation);
-
-            if($item->category && $item->categories->doesntContain($item->category))
-                $item->categories()->attach($item->category);
-
-        });
-
-        Events::all()->each(function ($item){
-            if($item->relation && $item->divisions->doesntContain($item->relation))
-                $item->divisions()->attach($item->relation);
-
-            if($item->category && $item->categories->doesntContain($item->category))
-                $item->categories()->attach($item->category);
-
-        });
-
-
-//        $json = Storage::get('json/get_employee.json');
+//        News::all()->each(function ($item){
+//            if($item->relation && $item->divisions->doesntContain($item->relation))
+//                $item->divisions()->attach($item->relation);
 //
-//        $list = collect(json_decode($json)->employee);
+//            if($item->category && $item->categories->doesntContain($item->category))
+//                $item->categories()->attach($item->category);
 //
-//        $list = $list->filter(fn($item) =>
-//            $item->uid_department === 'fba3b2e9-a348-11f0-b9b6-f61497ae5d0c'
-//            || $item->surname === 'Болотов'
-//            || $item->surname === 'Петровский'
-//            || $item->surname === 'Артюхов'
-//        )
-//            ->filter(fn($item) => !$item->dismissed)
-//            ->each(fn($item) => $item->date_birth = Carbon::parse($item->date_birth))
-//            ->sortBy('surname');
+//        });
 //
-//        return view('test.index',compact('list'));
+//        Events::all()->each(function ($item){
+//            if($item->relation && $item->divisions->doesntContain($item->relation))
+//                $item->divisions()->attach($item->relation);
+//
+//            if($item->category && $item->categories->doesntContain($item->category))
+//                $item->categories()->attach($item->category);
+//
+//        });
+
+//        Page::all()->each(function($item){
+//            $content = null;
+//
+//            $sections = $item->sections->each(
+//                fn($item) => $item->content =
+//                    $item->show_title ? "<h3>$item->title</h3> $item->content" : $item->content
+//            );
+//
+//            if($sections->isNotEmpty())
+//                $content = rawTextToEditorJS($sections->pluck('content'));
+//
+//            if($content && !$item->content_record->exists){
+//                $item->content_record->fill(['content' => $content])->save();
+//            }
+//
+//        });
+
+        $json = Storage::get('json/get_employee.json');
+
+        $list = collect(json_decode($json)->employee);
+
+        $list = $list->filter(fn($item) =>
+            $item->uid_department === 'fba3b2e9-a348-11f0-b9b6-f61497ae5d0c'
+            || $item->surname === 'Болотов'
+            || $item->surname === 'Петровский'
+            || $item->surname === 'Артюхов'
+        )
+            ->filter(fn($item) => !$item->dismissed)
+            ->each(fn($item) => $item->date_birth = Carbon::parse($item->date_birth))
+            ->sortBy('surname');
+
+        return view('test.index',compact('list'));
     }
 
     public function test()
     {
 
-        $division = Division::find(224);
-
-        dd($division->publicEvents());
+        $division = Division::all()
+//            ->filter(fn($item) => $item->id === 90)
+            ->each(fn($item) => $item->publicNews());
 
     }
 

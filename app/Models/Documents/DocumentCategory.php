@@ -15,8 +15,7 @@ use Illuminate\Database\Eloquent\Builder;
 
 class DocumentCategory extends Model
 {
-    use SoftDeletes, hasRelations, HasLinks;
-//    use SoftDeletes, HasRelations, HasLinks, HasDocumentCategoriesRelationLinks;
+    use SoftDeletes, hasRelations;
 
     protected $table = 'document_categories';
     protected string $entity = 'document-categories';
