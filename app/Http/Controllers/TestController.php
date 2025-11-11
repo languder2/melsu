@@ -55,7 +55,7 @@ class TestController extends Controller
     {
         $list = collect();
 
-        News::all()->filter(fn($item) => $item->relation)->each(function ($item){
+        News::all()->each(function ($item){
             if($item->relation && $item->divisions->doesntContain($item->relation))
                 $item->divisions()->attach($item->relation);
 
@@ -64,21 +64,31 @@ class TestController extends Controller
 
         });
 
-        $json = Storage::get('json/get_employee.json');
+        Events::all()->each(function ($item){
+            if($item->relation && $item->divisions->doesntContain($item->relation))
+                $item->divisions()->attach($item->relation);
 
-        $list = collect(json_decode($json)->employee);
+            if($item->category && $item->categories->doesntContain($item->category))
+                $item->categories()->attach($item->category);
 
-        $list = $list->filter(fn($item) =>
-            $item->uid_department === 'fba3b2e9-a348-11f0-b9b6-f61497ae5d0c'
-            || $item->surname === 'Болотов'
-            || $item->surname === 'Петровский'
-            || $item->surname === 'Артюхов'
-        )
-            ->filter(fn($item) => !$item->dismissed)
-            ->each(fn($item) => $item->date_birth = Carbon::parse($item->date_birth))
-            ->sortBy('surname');
+        });
 
-        return view('test.index',compact('list'));
+
+//        $json = Storage::get('json/get_employee.json');
+//
+//        $list = collect(json_decode($json)->employee);
+//
+//        $list = $list->filter(fn($item) =>
+//            $item->uid_department === 'fba3b2e9-a348-11f0-b9b6-f61497ae5d0c'
+//            || $item->surname === 'Болотов'
+//            || $item->surname === 'Петровский'
+//            || $item->surname === 'Артюхов'
+//        )
+//            ->filter(fn($item) => !$item->dismissed)
+//            ->each(fn($item) => $item->date_birth = Carbon::parse($item->date_birth))
+//            ->sortBy('surname');
+//
+//        return view('test.index',compact('list'));
     }
 
     public function test()

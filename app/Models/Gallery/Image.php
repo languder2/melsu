@@ -332,13 +332,13 @@ class Image extends Model
             return $this->path ? Storage::get($this->path) : null;
     }
 
-    public static function saveUploadFile(UploadedFile $file, $scaleW = 1920, $scaleH = 1080): string
+    public static function saveUploadFile(UploadedFile $file, $quality = 95, $scaleW = 1920, $scaleH = 1080): string
     {
         $manager = new ImageManager(new Driver());
 
         $image = $manager->read($file)
             ->scale($scaleW, $scaleH)
-            ->toWebp(90)
+            ->toWebp($quality)
         ;
 
         $fileName = Str::random(20);
