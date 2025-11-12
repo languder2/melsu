@@ -18,12 +18,11 @@ class CabinetDivisionsController extends Controller
     protected Collection $divisions;
     public function __construct(){
         $this->divisions = auth()->user()->isEditor() ? Division::fullTree()
-            : auth()->user()->divisions->flatMap(fn($item) => $item->getFlattenTree(true));
+            : auth()->user()->divisions->flatMap(fn($item) => $item->getFlattenTree(true))->keyBy('id');
     }
 
     public function list(): View
     {
-
         $list = $this->divisions;
 
         $filter = Session::get('divisionCabinetFilter');
