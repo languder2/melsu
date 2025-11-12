@@ -32,10 +32,6 @@
             </div>
             <div>
             </div>
-            <div>
-            </div>
-            <div>
-            </div>
         </div>
 
         @forelse($list as $item)
