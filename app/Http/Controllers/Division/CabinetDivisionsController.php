@@ -24,9 +24,9 @@ class CabinetDivisionsController extends Controller
     public function list(): View
     {
 
-        $filter = Session::get('divisionCabinetFilter');
-
         $list = $this->divisions;
+
+        $filter = Session::get('divisionCabinetFilter');
 
         if($filter && $filter->has('search'))
             $list = $list->filter(fn($item) =>

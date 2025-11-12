@@ -358,13 +358,6 @@ class Division extends Model
             ->orderBy('sort');
     }
 
-    public function telegrams(): MorphMany
-    {
-        return $this->morphMany(Contact::class, 'relation')
-            ->where('type',ContactType::Telegram)
-            ->orderBy('sort');
-    }
-
     public function images(): MorphMany
     {
         return $this->morphMany(Image::class, 'relation');

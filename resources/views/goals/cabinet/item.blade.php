@@ -1,4 +1,7 @@
 @props([
+    'isFirst'   => false,
+    'isLast'    => false,
+    'item'
 ])
 @php
     /** * @var object $item */
@@ -14,7 +17,6 @@
 >
     <div class="text-center">
         {{ $item->id }}
-        {{ $item->sort }}
     </div>
     <div>
         {!! $item->content_html !!}
@@ -31,12 +33,16 @@
         />
     </div>
     <div class="flex flex-col justify-center gap-6">
-        <x-html.button-change-sort-up
-            :link=" $item->sort_up "
-        />
+        @if(!$isFirst)
+            <x-html.button-change-sort-up
+                :link=" $item->sort_up "
+            />
+        @endif
 
-        <x-html.button-change-sort-down
-            :link=" $item->sort_down "
-        />
+        @if(!$isLast)
+            <x-html.button-change-sort-down
+                :link=" $item->sort_down "
+            />
+        @endif
     </div>
 </div>

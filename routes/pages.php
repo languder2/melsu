@@ -16,7 +16,7 @@ Route::prefix('admin/pages')->group(function () {
 
 Route::get('{page}', [PagesController::class, 'showPage'])->name('pages.public.link');
 
-Route::prefix('cabinet/pages')->middleware('isEditor')->group(function () {
+Route::prefix('cabinet/pages')->middleware(\App\Http\Middleware\AuthCabinet::class)->group(function () {
     Route::get('',              [PageCabinetController::class,'list'])->name('pages.cabinet.list');
     Route::get('on-approval',   [PageCabinetController::class,'list'])->name('pages.cabinet.on-approval')
         ->defaults('onApproval', true);

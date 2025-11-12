@@ -5,9 +5,9 @@ namespace App\Models\Users;
 use App\Enums\UserRoles;
 use App\Models\Division\Division;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -56,13 +56,12 @@ class User extends Authenticatable
         return $this->role->level() >= UserRoles::Editor->level();
     }
 
-    public function FormRules(): array
+    public function validateRules(): array
     {
         return [
 //            'test'              => 'required',
             'id'                => "nullable|required_without:new_password",
-            'name'              => "required|required|unique:users,name,{$this->id},id,deleted_at,NULL",
-            'role'              => 'required',
+            'role'              => '',
             'email'             => "email|required|unique:users,email,{$this->id},id,deleted_at,NULL",
             'lastname'          => 'required',
             'firstname'         => 'required',
@@ -72,8 +71,7 @@ class User extends Authenticatable
         ];
 
     }
-
-    public function FormMessage():array
+    public function validateMessages():array
     {
         return [
             'name.required'         => 'Заполните обязательные поля',
@@ -103,8 +101,37 @@ class User extends Authenticatable
         );
     }
 
-    public function roles(): HasMany
+    protected static function roleOrders(): Builder
     {
-        return $this->hasMany(Role::class);
+        return self::orderByRaw("FIELD(role, 'super', 'admin', 'editor', 'user')");
     }
+
+    protected static function cabinetList(): string
+    {
+        return route('users.cabinet.list');
+    }
+    protected static function cabinetSetFilter(): string
+    {
+        return route('users.cabinet.set-filter');
+    }
+    protected function getSaveAttribute(): string
+    {
+        return route('users.cabinet.save', $this);
+    }
+    protected function getFormAttribute(): string
+    {
+        return route('users.cabinet.form', $this);
+    }
+    protected function getDeleteAttribute(): string
+    {
+        return route('users.cabinet.delete', $this);
+    }
+
+    protected function getFioAttribute(): string
+    {
+        return trim($this->firstname . ' ' . $this->middlename . ' ' . $this->lastname);
+    }
+
+
+
 }

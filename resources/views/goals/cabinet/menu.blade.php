@@ -2,7 +2,7 @@
     'hideAddButton' => true
 ])
 
-<div class="mb-3 p-3 bg-white flex flex-col lg:flex-row gap-3 justify-between">
+<div class="mb-3 p-3 bg-white flex flex-col lg:flex-row gap-3 justify-between shadow">
 
     <x-html.submit-link
         link="{{ $instance->goals_cabinet_list }}"

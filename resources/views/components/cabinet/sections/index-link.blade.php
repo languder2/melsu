@@ -7,7 +7,7 @@
 ])
 
 <a href="{{ $link }}" {{ $attributes }}
-   class="text-center border py-4 px-6 flex flex-col gap-2 items-center w-40"
+   class="text-center py-4 px-6 flex flex-col gap-2 items-center w-40 bg-white shadow duration-300 hover:mb-1 hover:-mt-1"
 >
     @if($lucide)
         <x-dynamic-component

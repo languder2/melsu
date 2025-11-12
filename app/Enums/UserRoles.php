@@ -26,13 +26,13 @@ enum UserRoles: string
     {
         return self::LEVELS[$this->value];
     }
-    public function getName(): string
+    public function label(): string
     {
-        return __(self::NAMES[$this->value]);
+        return __("user-roles.{$this->value}");
     }
     public function getListBySet(): Collection
     {
-        return collect(self::cases())->filter(fn ($case) => $case->level() <= $this->level());
+        return collect(self::cases())->filter(fn ($case) => $case->level() < $this->level());
     }
 
     public function forSelect():array
@@ -40,7 +40,7 @@ enum UserRoles: string
         $result = [];
 
         foreach ($this->getListBySet() as $case)
-            $result[$case->value] = $case->getName();
+            $result[$case->value] = $case->label();
 
         return $result;
 
