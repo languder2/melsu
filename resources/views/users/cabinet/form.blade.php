@@ -86,6 +86,7 @@
 
             <div class="flex-1">
                 <x-form.input
+                    id="form_new_password"
                     type="password"
                     name="new_password"
                     label="Новый пароль"
@@ -95,6 +96,7 @@
 
             <div class="flex-1">
                 <x-form.input
+                    id="form_new_password"
                     type="password"
                     name="retry_password"
                     label="Повторить пароль"
@@ -132,10 +134,13 @@
             </div>
         </div>
 
-        @component('users.cabinet.divisions', [
-            'divisions' => $divisions,
-            'currents'  => $user->divisions->pluck('id')
-        ])@endcomponent
+        <input type="hidden" id="divisionsSDA" name="divisions" value="{{ $user->divisions->pluck('id') }}">
     </form>
+
+@component('users.cabinet.divisions', [
+    'divisions' => $divisions,
+    'currents'  => $user->divisions->pluck('id')
+])@endcomponent
+
 
 @endsection

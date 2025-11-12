@@ -18,7 +18,7 @@ class CabinetDivisionsController extends Controller
     protected Collection $divisions;
     public function __construct(){
         $this->divisions = auth()->user()->isEditor() ? Division::fullTree()
-            : auth()->user()->divisions->flatMap(fn($item) => $item->getFlattenTree())->keyBy('id');
+            : auth()->user()->divisions->flatMap(fn($item) => $item->getFlattenTree(true));
     }
 
     public function list(): View

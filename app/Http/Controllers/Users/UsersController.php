@@ -73,7 +73,8 @@ class UsersController extends Controller
 
         $user->fill($form)->save();
 
-        $user->divisions()->sync($request->input('divisions'));
+        if($request->input('divisions'))
+            $user->divisions()->sync(json_decode($request->input('divisions')));
 
         return redirect()->to(User::cabinetList());
     }

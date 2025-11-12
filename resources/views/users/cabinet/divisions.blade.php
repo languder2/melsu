@@ -24,22 +24,29 @@
     document.addEventListener('DOMContentLoaded', ()=>{
         const blockSDA   = document.getElementById(`blockSetDivisionAccess`);
         const listSDA    = blockSDA.querySelectorAll(`[type='checkbox']`);
-        const checkedSDA = blockSDA.querySelectorAll(`[type='checkbox']:checked`);
         const labelsSDA  = blockSDA.querySelectorAll(`label:not([for='searchSDA'])`);
+        const divisionsSDA  = document.getElementById(`divisionsSDA`);
+
+        const summaryCheckedSDA = () => {
+            let checkedSDA = blockSDA.querySelectorAll(`[type='checkbox']:checked`);
+
+            let result = [];
+
+            checkedSDA.forEach((el) => result.push(el.value))
+
+            divisionsSDA.value = JSON.stringify(result)
+        }
 
         listSDA.forEach((el) => {
             el.addEventListener('change', () => {
                 listSDA.forEach(
                     (sub)=> JSON.parse(sub.dataset.parents).includes(parseInt(el.value)) ? sub.checked = el.checked : null
                 )
+
+                summaryCheckedSDA()
             })
         });
 
-        // checkedSDA.forEach((el) => {
-        //     listSDA.forEach(
-        //         (sub)=> JSON.parse(sub.dataset.parents).includes(parseInt(el.value)) ? sub.checked = el.checked : null
-        //     )
-        // });
 
 
         const searchSDA = document.getElementById('searchSDA');
@@ -53,7 +60,5 @@
                 )
             })
         })
-
-
     })
 </script>
