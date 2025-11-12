@@ -37,6 +37,18 @@ enum Entities: string
             self::cluster       => Cluster::class,
         };
     }
+
+    public static function getEntityByModel(string $model): self
+    {
+        return match ($model) {
+            Page::class         => self::page,
+            Division::class     => self::division,
+            Speciality::class   => self::speciality,
+            Staff::class        => self::staff,
+            Cluster::class      => self::cluster,
+        };
+
+    }
     public static function instance($type, $id)
     {
         $entity = self::tryFrom($type);

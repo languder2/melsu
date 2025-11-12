@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\UserRoles;
 use App\Models\Division\Division;
 use App\Models\Page\Page;
 use App\Models\Services\Content;
+use App\Models\Users\Role;
+use App\Models\Users\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 
@@ -88,6 +91,7 @@ class TestController extends Controller
 //
 //        });
 
+
         $json = Storage::get('json/get_employee.json');
 
         $list = collect(json_decode($json)->employee);
@@ -108,10 +112,16 @@ class TestController extends Controller
     public function test()
     {
 
-        $division = Division::all()
-//            ->filter(fn($item) => $item->id === 90)
-            ->each(fn($item) => $item->publicNews());
 
+        $role = new Role(['user_id'=> auth()->id()]);
+
+        $role->fill(['role' => UserRoles::User->value]);
+        dd($role);
+
+        dd(auth()->user()->roles->first()->role);
+
+        dd(Division::find(3)->users);
+        dd(User::find(9)->divisions);
     }
 
 

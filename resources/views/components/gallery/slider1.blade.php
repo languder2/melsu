@@ -9,12 +9,6 @@
 @endphp
 
 @if ($slides->isNotEmpty())
-    @if($title)
-        <h3 class="font-semibold text-xl">
-            {!! $title !!}
-        </h3>
-    @endif
-
     <div class="editor-slider">
         <div class="slides w-full aspect-video relative">
             @foreach($slides as $i=>$slide)

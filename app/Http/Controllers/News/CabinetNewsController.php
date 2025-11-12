@@ -17,12 +17,11 @@ use Illuminate\View\View;
 
 class CabinetNewsController extends Controller
 {
-
     protected int $perPage = 40;
     protected Collection $divisions;
     public function __construct(){
-        $this->divisions = auth()->user()->isEditor() ? Division::all()
-            : auth()->user()->access->flatMap(fn($item) => $item->relation->getFlattenTree())->keyBy('id');
+        $this->divisions = auth()->user()->isEditor() ? Division::fullTree()
+            : auth()->user()->divisions->flatMap(fn($item) => $item->getFlattenTree())->keyBy('id');
 
     }
     public function list(bool $onApproval = false): View

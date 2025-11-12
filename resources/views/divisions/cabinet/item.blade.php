@@ -32,18 +32,14 @@
         {!! $division->name !!}
     </div>
 
-    <div class="flex gap-3 items-center">
+    <div class="flex gap-5 items-center flex-wrap w-30 2xl:w-auto ">
         <a href="{{ $division->link }}" target="_blank" class="flex-end hover:text-green-700">
             <x-lucide-square-arrow-out-up-right class="w-6"/>
         </a>
-    </div>
 
-    <div class="flex gap-6 px-4">
-        <div class="flex items-center justify-center">
-            <a href="{{ $division->cabinet_form }}" class="hover:text-amber-500">
-                <x-lucide-square-pen class="w-6" />
-            </a>
-        </div>
+        <a href="{{ $division->cabinet_form }}" class="hover:text-amber-500">
+            <x-lucide-square-pen class="w-6" />
+        </a>
 
         <form action="{{ route('news.cabinet.set-filter') }}" method="post">
             @csrf
@@ -53,5 +49,18 @@
                 <input type="submit" class="hidden">
             </label>
         </form>
+
+        <a href="{{ $division->goals_cabinet_list }}" class="flex-end hover:text-green-700">
+            <x-lucide-goal class="w-6"/>
+        </a>
+
+        <a href="{{ $division->cabinet_partners_link }}" class="flex-end hover:text-green-700">
+            <x-lucide-handshake class="w-6"/>
+        </a>
+
+        <a href="{{ $division->cabinet_history_link }}" class="flex-end hover:text-green-700">
+            <x-lucide-file-clock class="w-6"/>
+        </a>
     </div>
+
 </div>

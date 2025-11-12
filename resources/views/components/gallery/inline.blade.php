@@ -9,12 +9,6 @@
 @endphp
 
 @if ($slides->isNotEmpty())
-    @if($title)
-        <h3 class="font-semibold text-xl">
-            {!! $title !!}
-        </h3>
-    @endif
-
     <div class="flex flex-col lg:flex-row gap-3 justify-center-safe">
         @foreach($slides as $i=>$image)
             <x-html.modal.image

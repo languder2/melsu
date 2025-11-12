@@ -8,6 +8,11 @@ return [
     'Pages'         => 'Страницы',
     'New page'      => 'Новая страница',
 
+    'Goal'                  => 'Цель',
+    'Goals'                 => 'Цели',
+    'Goals on approval'     => 'Цели требующие утверждения',
+    'Add goal'              => 'Добавить цель',
+
     'arrowR'        => ' → ',
     'arrowL'        => ' ← ',
     'arrowT'        => ' ↑ ',

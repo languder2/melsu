@@ -6,7 +6,7 @@ use App\Http\Controllers\Handbook\HandbookController;
 use App\Http\Controllers\Menu\{ItemsController as MenuItems, MenuController};
 use App\Http\Controllers\Schedule\ScheduleController;
 use App\Http\Controllers\Staffs\StaffController;
-use App\Http\Controllers\Users\UserController;
+use App\Http\Controllers\Users\UsersController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Minor\MinorController;
 use App\Http\Controllers\TestController;
@@ -55,11 +55,11 @@ Route::controller(StaffController::class)
     });
 
 Route::prefix('users')->group(function () {
-    Route::get('',              [UserController::class,'list'])->name('admin:users:list');
-    Route::get('add',           [UserController::class,'form'])->name('admin:users:add');
-    Route::get('edit/{user}',   [UserController::class,'form'])->name('admin:users:edit');
-    Route::post('save',         [UserController::class,'save'])->name('admin:users:save');
-    Route::get('delete/{user}', [UserController::class,'delete'])->name('admin:users:delete');
+    Route::get('',              [UsersController::class,'list'])->name('admin:users:list');
+    Route::get('add',           [UsersController::class,'form'])->name('admin:users:add');
+    Route::get('edit/{user}',   [UsersController::class,'form'])->name('admin:users:edit');
+    Route::post('save',         [UsersController::class,'save'])->name('admin:users:save');
+    Route::get('delete/{user}', [UsersController::class,'delete'])->name('admin:users:delete');
 });
 
 Route::controller(FacultyController::class)

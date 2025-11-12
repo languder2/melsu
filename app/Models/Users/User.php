@@ -2,14 +2,14 @@
 
 namespace App\Models\Users;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Enums\UserRoles;
+use App\Models\Division\Division;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Collection;
 
 /**
  * @property mixed $lastname
@@ -92,12 +92,19 @@ class User extends Authenticatable
         return "{$this->firstname} {$this->middlename}";
     }
 
-    public function getAccess(): HasMany
+    public function divisions(): MorphToMany
     {
-        return $this->hasMany(UserAccess::class);
+        return $this->morphedByMany(
+            Division::class,
+            'relation',
+            'user_access',
+            'user_id',
+            'relation_id'
+        );
     }
-    public function getAccessAttribute(): Collection
+
+    public function roles(): HasMany
     {
-        return $this->getAccess ?? collect();
+        return $this->hasMany(Role::class);
     }
 }

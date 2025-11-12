@@ -122,6 +122,8 @@ require __DIR__.'/projects.php';
 require __DIR__.'/partners.php';
 require __DIR__.'/education.php';
 require __DIR__.'/gallery.php';
+require __DIR__.'/goals.php';
+require __DIR__.'/users.php';
 
 require __DIR__.'/system.php';
 require __DIR__.'/pages.php';

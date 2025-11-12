@@ -6,7 +6,7 @@
 
     @include('divisions.cabinet.filter')
 
-    <div class="grid grid-cols-[auto_auto_1fr_auto_auto] gap-3">
+    <div class="grid grid-cols-[auto_auto_1fr_repeat(1,auto)] gap-3">
         <div class="grid grid-cols-subgrid col-span-full bg-sky-800 sticky top-0 text-white rounded-sm shadow border-l-3 border-sky-800 px-4 py-1">
             <div class="p-3 text-center">
                 {{ __('common.arrowT2R') }}
@@ -17,7 +17,6 @@
             <div class="p-3">
                 Подразделение
             </div>
-            <div class="p-3"></div>
             <div class="p-3"></div>
         </div>
 

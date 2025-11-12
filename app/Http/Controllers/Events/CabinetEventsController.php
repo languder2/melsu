@@ -21,14 +21,9 @@ class CabinetEventsController extends Controller
     protected Collection $divisions;
     public function __construct(){
 
-        $this->divisions = auth()->user()->isEditor() ? Division::all()
-            : auth()->user()->access->flatMap(fn($item) => $item->relation->getFlattenTree(true))
-                ->unique()->keyBy('id');
+        $this->divisions = auth()->user()->isEditor() ? Division::fullTree()
+            : auth()->user()->divisions->flatMap(fn($item) => $item->getFlattenTree(true))->unique()->keyBy('id');
 
-        $this->accessUsers = User::orderBy('name')->get()->keyBy('id');
-
-        if(!auth()->user()->isEditor())
-            $this->accessUsers = $this->divisions->flatMap(fn($item) => $item->getAccessUsers());
     }
 
     public function list(bool $onApproval = false): View
@@ -60,7 +55,7 @@ class CabinetEventsController extends Controller
         $list = $list->paginate($this->perPage);
 
         $byFilter = collect([
-            'divisions' => $this->divisions->pluck('name','id'),
+            'divisions' => flattenTreeForSelect($this->divisions),
             'authors'   =>
                 $this->divisions
                     ->flatMap(fn($division) => $division->events)

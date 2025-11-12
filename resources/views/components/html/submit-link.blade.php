@@ -20,7 +20,8 @@
             'cursor-pointer',
             'hover:mb-0.5 hover:-mt-0.5 duration-300',
             'hover:shadow-md hover:shadow-gray-400',
-            'flex items-center'
+            'flex items-center',
+            'select-none',
         ])
     }}
 

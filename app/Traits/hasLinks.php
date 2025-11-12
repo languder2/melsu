@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
 trait hasLinks
 {
+    use MagicGet;
     protected array $magicGetForLinks = [
         'prefix'    => '_link',
         'fn'        => 'link_get',

@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\View\View;
 
-class UserController extends Controller
+class UsersController extends Controller
 {
     public function list():View
     {

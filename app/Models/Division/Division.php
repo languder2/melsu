@@ -16,15 +16,14 @@ use App\Models\Partners\Partner;
 use App\Models\Sections\Contact;
 use App\Models\Staff\Affiliation;
 use App\Models\Staff\Staff;
-use App\Models\Users\User;
-use App\Models\Users\UserAccess;
 use App\Traits\hasContents;
 use App\Traits\hasEvents;
+use App\Traits\hasGoals;
 use App\Traits\hasLinks;
 use App\Traits\hasMeta;
 use App\Traits\hasNews;
 use App\Traits\hasSubordination;
-use App\Traits\MagicGet;
+use App\Traits\hasUsers;
 use App\Traits\resolveRouteBinding;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
@@ -41,13 +40,19 @@ use App\Models\Upbringing\Upbringing;
  */
 class Division extends Model
 {
-    use SoftDeletes, resolveRouteBinding, hasSubordination, MagicGet, hasContents,
+    use SoftDeletes, resolveRouteBinding, hasSubordination, hasContents,
         hasLinks, hasMeta,
-        hasNews, hasEvents;
+        hasNews, hasEvents, hasGoals, hasUsers;
 
     protected array $links = [
         'test'  => 'division.cabinet.form',
     ];
+
+    protected array $linksGroups = [
+        'cabinet_'  => 'divisions.cabinet.',
+        'public_'   => 'divisions.public.',
+    ];
+
 
     protected $table = 'divisions';
 
@@ -627,25 +632,5 @@ class Division extends Model
         return self::where('type',DivisionType::Department)->get();
     }
 
-
-    public function getAccess(User $user):void
-    {
-        if(!UserAccess::where('user_id',$user->id)->where('relation_id',$this->id)->exists()){
-            $access = new UserAccess();
-            $access->user()->associate($user)->relation()->associate($this)->save();
-        }
-
-        foreach ($this->subs as $sub)
-            $sub->getAccess($user);
-
-    }
-    public function AccessUsers(): MorphMany
-    {
-        return $this->morphMany(UserAccess::class, 'relation');
-    }
-    public function getAccessUsers(): Collection
-    {
-        return $this->AccessUsers->unique('user_id')->keyBy('user_id')->map(fn($item) => $item->user);
-    }
 }
 
