@@ -1,32 +1,22 @@
 <div style="background: #f0f0f0; padding: 20px;">
     <div style="background: white; max-width: 800px; margin: auto; padding: 20px; border-radius: 15px">
         <h3 style="margin-top: 0">
-            Здравствуйте, {{$data->user->firstname}} {{$data->user->middlename}}.
+            Здравствуйте, {{$data->user->contact_name}}.
         </h3>
         <hr>
         <section style="font-size: 16px">
             <p>
-                Нам нашем <a href="{{url(route("home"))}}">портале</a> на Ваш E-mail создан аккаунт.
+                Создан аккаунт на сайте <a href="{{url('cabinet')}}"> melsu.ru </a>.
             </p>
 
-            @if($data->pass !== null)
-                <p>
-                    Пароль был сгенерирован автоматически: <b>{{$data->pass}}</b>
-                </p>
-            @endif
+            <p style="font-weight: bolder"> Данные для входа: </p>
+
             <p>
-                Для завершения регистрации перейдите по
-                <a href="{{url(route("account.verified",["token"=>$data->token]))}}">
-                    ссылке.
-                </a>
-                <br>
-                Ссылка действительна до {{$data->date}}
+                Email: {{$data->user->email}}
             </p>
+
             <p>
-                Если у Вас возникли вопросы или проблемы, пожалуйста, свяжитесь с нами:
-                <a href="mailto:helpdo.ed@mgu-mlt.ru">
-                    helpdo.ed@mgu-mlt.ru
-                </a>
+                Пароль: {{$data->password}}
             </p>
             <hr>
             <p style="text-align: center">

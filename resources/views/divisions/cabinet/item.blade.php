@@ -12,10 +12,6 @@
 >
 
     <div class=" flex items-center justify-center">
-        {!! $division->level + 1 !!}
-    </div>
-
-    <div class=" flex items-center justify-center">
         {!! $division->id !!}
     </div>
 
@@ -54,7 +50,7 @@
             <x-lucide-goal class="w-6"/>
         </a>
 
-        <a href="{{ $division->cabinet_partners_link }}" class="flex-end hover:text-green-700">
+        <a href="{{ $division->partnersCabinetList() }}" class="flex-end hover:text-green-700">
             <x-lucide-handshake class="w-6"/>
         </a>
 

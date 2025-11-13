@@ -16,6 +16,9 @@ return [
     'Users'                 => 'Пользователи',
     'Add user'              => 'Добавить пользователя',
 
+    'Partners'              => 'Партнеры',
+    'Add partner category'  => 'Добавить категорию партнеров',
+
     'arrowR'        => ' → ',
     'arrowL'        => ' ← ',
     'arrowT'        => ' ↑ ',

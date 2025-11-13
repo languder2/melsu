@@ -43,6 +43,16 @@ class User extends Authenticatable
             'role'              => UserRoles::class
         ];
     }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($user) {
+        });
+    }
+
+
     public function isAdmin(): bool
     {
         return $this->role->level() >= UserRoles::Admin->level();
@@ -60,7 +70,7 @@ class User extends Authenticatable
     {
         return [
 //            'test'              => 'required',
-            'id'                => "nullable|required_without:new_password",
+            'id'                => "nullable",
             'role'              => '',
             'email'             => "email|required|unique:users,email,{$this->id},id,deleted_at,NULL",
             'lastname'          => 'required',
@@ -78,7 +88,6 @@ class User extends Authenticatable
             'email.unique'          => 'Email должен быть уникальным',
             'name.unique'           => 'Login должен быть уникальным',
             'some'                  => "Пароль и повторение не совпадают",
-            'id.required_without'   => "Для новых пользователей пароль обязателен к указанию",
         ];
     }
     public function getFullNameAttribute(): string

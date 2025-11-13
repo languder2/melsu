@@ -60,14 +60,32 @@ class UsersController extends Controller
 
         $form['name'] = $form['email'];
 
-        if(array_key_exists('new_password',$form) && $form['new_password']){
-            $user->password = bcrypt($form['new_password']);
+        $user->fill($form);
 
+        if($form['new_password']){
+            $user->password = bcrypt($form['new_password']);
+            $pass = $form['new_password'];
+
+            if($user->exists)
+                SendEmailJob::dispatch((object)[
+                    "template"      => "emails.account.password-change",
+                    "subject"       => "Пароль сменен",
+                    "user"          => $user,
+                    "password"      => $pass
+                ]);
+        }
+
+        if(!$user->exists && empty($form['new_password'])) {
+            $pass = (string)Str::uuid();
+            $user->password = bcrypt($user->new_pass);
+        }
+
+        if(!$user->exists) {
             SendEmailJob::dispatch((object)[
-                "template"      => "emails.account.password-change",
-                "subject"       => "Пароль сменен",
+                "template"      => "emails.account.registration",
+                "subject"       => "Аккаунт создан",
                 "user"          => $user,
-                "password"      => $form['new_password']
+                "password"      => $pass
             ]);
         }
 
@@ -76,7 +94,8 @@ class UsersController extends Controller
         if($request->input('divisions'))
             $user->divisions()->sync(json_decode($request->input('divisions')));
 
-        return redirect()->to(User::cabinetList());
+
+        return redirect()->to( $request->has('save-close') ? User::cabinetList() : $user->form);
     }
 
     public function delete(User $user):RedirectResponse

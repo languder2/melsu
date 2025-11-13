@@ -3,13 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Enums\UserRoles;
+use App\Jobs\SendEmailJob;
 use App\Models\Division\Division;
+use App\Models\News\News;
 use App\Models\Page\Page;
 use App\Models\Services\Content;
 use App\Models\Users\Role;
 use App\Models\Users\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class TestController extends Controller
 {
@@ -112,16 +115,17 @@ class TestController extends Controller
     public function test()
     {
 
+        $division   = Division::find(3);
 
-        $role = new Role(['user_id'=> auth()->id()]);
+        dd($division->partnerCategories);
 
-        $role->fill(['role' => UserRoles::User->value]);
-        dd($role);
 
-        dd(auth()->user()->roles->first()->role);
+    }
 
-        dd(Division::find(3)->users);
-        dd(User::find(9)->divisions);
+    public function pass():void
+    {
+        echo Str::uuid();
+
     }
 
 

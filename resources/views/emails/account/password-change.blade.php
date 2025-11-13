@@ -6,18 +6,17 @@
         <hr>
         <section style="font-size: 16px">
             <p>
-                Нам нашем <a href="{{url(route("pages:main"))}}">сайте</a> у Вашего аккаунта сменился <b>пароль</b>.
+                Изменен пароль на сайте <a href="{{url('cabinet')}}"> melsu.ru </a>.
+            </p>
+
+            <p style="font-weight: bolder"> Данные для входа: </p>
+
+            <p>
+                Email: {{$data->user->email}}
             </p>
 
             <p>
-                Ваш пароль: {{$data->password}}
-            </p>
-
-            <p>
-                Если у Вас возникли вопросы или проблемы, пожалуйста, свяжитесь с нами:
-                <a href="mailto:helpdo.ed@mgu-mlt.ru">
-                    helpdo.ed@mgu-mlt.ru
-                </a>
+                Пароль: {{$data->password}}
             </p>
             <hr>
             <p style="text-align: center">

@@ -2,7 +2,10 @@
 
 namespace App\Traits;
 
+use App\Enums\Entities;
+use App\Models\Partners\Category as PartnerCategory;
 use App\Models\Partners\Partner;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 trait hasPartners
 {
@@ -10,17 +13,39 @@ trait hasPartners
         return $this->morphMany(Partner::class, 'relation');
     }
 
-    public function getAdminPartnersAttribute(): string
+    public function publicPartners(): morphMany
     {
-        return route('partners.relation.list', [$this->getTable(), $this->id]);
+        return $this->partners()->where('is_show', true)->orderBy('sort', 'desc');
     }
-    public function getAddPartnerAttribute(): string
+
+    public function partnerCategories(){
+        return $this->morphMany(PartnerCategory::class, 'relation')->orderBy('sort');
+    }
+
+    /* Links */
+
+    public function partnersCabinetList(): string
     {
-        return route('partners.relation.form', [$this->getTable(), $this->id]);
+        return route('partners.cabinet.list',[
+            'entity' => Entities::getEntityByModel($this::class)->value,
+            'entity_id' => $this->id
+        ]);
     }
-    public function getSavePartnerAttribute(): string
+    public function partnerCategoryAdd(): string
     {
-        return route('partners.relation.save', [$this->getTable(), $this->id]);
+        return route('partner-categories.cabinet.form',[
+            'entity' => Entities::getEntityByModel($this::class)->value,
+            'entity_id' => $this->id
+        ]);
     }
+    public function partnerCategoriesCabinetAdd(): string
+    {
+        return route('partner-categories.cabinet.form',[
+            'entity' => Entities::getEntityByModel($this::class)->value,
+            'entity_id' => $this->id
+        ]);
+    }
+
+
 
 }

@@ -7,4 +7,5 @@ Route::get('test/php-info',     [TestController::class, 'phpinfo']);
 Route::get('test/view',         [TestController::class,'view']);
 Route::get('test/index',        [TestController::class,'index']);
 Route::get('test/test',         [TestController::class,'test']);
+Route::get('test/pass',         [TestController::class,'pass']);
 

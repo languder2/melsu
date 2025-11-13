@@ -42,9 +42,17 @@ class Partner extends Model
 
     protected $dates = ['deleted_at'];
 
-    public function getSaveAttribute(): string
+    protected static function boot()
     {
-        return route('clusters.save', $this->exists ? $this->id : null);
+        parent::boot();
+
+        static::saving(function ($item) {
+            if(!$item->sort || (int)$item->sort < 0)
+                $item->sort = $item->relation->goals()->max('sort') + 100;
+        });
+
+        static::deleting(function ($item) {});
     }
+
 
 }

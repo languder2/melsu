@@ -22,6 +22,7 @@ use App\Traits\hasGoals;
 use App\Traits\hasLinks;
 use App\Traits\hasMeta;
 use App\Traits\hasNews;
+use App\Traits\hasPartners;
 use App\Traits\hasSubordination;
 use App\Traits\hasUsers;
 use App\Traits\resolveRouteBinding;
@@ -42,7 +43,7 @@ class Division extends Model
 {
     use SoftDeletes, resolveRouteBinding, hasSubordination, hasContents,
         hasLinks, hasMeta,
-        hasNews, hasEvents, hasGoals, hasUsers;
+        hasNews, hasEvents, hasPartners, hasGoals, hasUsers;
 
     protected array $links = [
         'test'  => 'division.cabinet.form',
