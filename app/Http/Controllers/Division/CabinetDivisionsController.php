@@ -98,4 +98,17 @@ class CabinetDivisionsController extends Controller
         return redirect()->back();
     }
 
+    public function historyForm(Division $division): view|RedirectResponse
+    {
+        $history = $division->history->content;
+        return view('divisions.cabinet.history-form', compact('division', 'history'));
+    }
+
+    public function historySave(Request $request, Division $division): view|RedirectResponse
+    {
+        $division->history->fill($request->all())->save();
+
+        return redirect()->to( $request->has('save-close') ? $division->cabinet_list : $division->historyForm());
+    }
+
 }

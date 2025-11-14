@@ -54,7 +54,7 @@
             <x-lucide-handshake class="w-6"/>
         </a>
 
-        <a href="{{ $division->cabinet_history_link }}" class="flex-end hover:text-green-700">
+        <a href="{{ $division->historyForm() }}" class="flex-end hover:text-green-700">
             <x-lucide-file-clock class="w-6"/>
         </a>
     </div>

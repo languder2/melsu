@@ -19,6 +19,8 @@ return [
     'Partners'              => 'Партнеры',
     'Add partner category'  => 'Добавить категорию партнеров',
 
+    'History'               => 'История',
+
     'arrowR'        => ' → ',
     'arrowL'        => ' ← ',
     'arrowT'        => ' ↑ ',

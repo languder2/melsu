@@ -39,5 +39,9 @@ Route::prefix('cabinet/divisions')->middleware(AuthCabinet::class)->group(functi
     Route::get('form/{division?}',  [CabinetDivisionsController::class, 'form'])->name('division.cabinet.form');
     Route::put('save/{division?}',  [CabinetDivisionsController::class, 'save'])->name('division.cabinet.save');
     Route::post('set-filter',       [CabinetDivisionsController::class, 'setFilter'])->name('divisions.cabinet.set-filter');
+
+    Route::get('history/form/{division?}',  [CabinetDivisionsController::class, 'historyForm'])->name('division.history.form');
+    Route::put('history/save/{division?}',  [CabinetDivisionsController::class, 'historySave'])->name('division.history.save');
+
 });
 

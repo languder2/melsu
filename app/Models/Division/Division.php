@@ -626,5 +626,14 @@ class Division extends Model
         return self::where('type',DivisionType::Department)->get();
     }
 
+    public function historyForm(): string
+    {
+        return route('division.history.form', $this);
+    }
+    public function historySave(): string
+    {
+        return route('division.history.save', $this);
+    }
+
 }
 
