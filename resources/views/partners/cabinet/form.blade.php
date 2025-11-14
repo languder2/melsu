@@ -3,11 +3,11 @@
 @section(
     'title',
     __('common.Cabinet') ." → ". $instance->name ." → "
-    .($goal->exists ? __("common.Goal") ."#$goal->id" : __("common.Add goal"))
+    .($partner->exists ? $partner->name : __("common.Add partner"))
 )
 
 @section('content-header')
-    @include('goals.cabinet.menu')
+    @include('partners.cabinet.menu')
 @endsection
 
 @section('top-menu')
@@ -15,14 +15,15 @@
 @endsection
 
 @section('content')
-    <form action="{{ $goal->cabinet_save }}" method="POST" class="flex flex-col gap-3" enctype="multipart/form-data">
+    <form action="{{ $partner->cabinet_save }}" method="POST" class="flex flex-col gap-3" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 
         <x-form.errors/>
-        <div class="flex gap3 bg-white p-3 justify-between sticky top-0 z-50 shadow">
+
+        <div class="flex gap-3 bg-white p-3 justify-between sticky top-0 z-50 shadow">
             <div class="flex items-center">
-                {!! $goal->exists ? __('common.Goal')." #$goal->id" : __('common.Add goal') !!}
+                {!! $partner->exists ? $partner->name : __('common.Add partner') !!}
             </div>
 
             <div class="flex items-center gap-3">
@@ -59,12 +60,37 @@
             </div>
         </div>
 
-        <div class="flex flex-col gap-3 ">
-            <div class="bg-white p-3 shadow flex gap-3">
+
+        <div class="flex flex-col gap-3 bg-white p-3 shadow">
+            <x-form.select2
+                name="category_id"
+                value="{{ old('category_id', $partner->category_id) }}"
+                null="Категория"
+                class="flex-1"
+                :list=" $categories->pluck('name', 'id') "
+            />
+
+            <x-form.input
+                name="name"
+                label="Название"
+                value="{!! old('name', $partner->name) !!}"
+                block="flex-1"
+                required
+            />
+
+            <x-form.input
+                name="link"
+                label="Ссылка"
+                value="{!! old('link', $partner->link) !!}"
+                block="flex-1"
+            />
+
+            <div class="flex gap-3">
                 <x-form.input
                     name="sort"
+                    type="number"
                     label="Порядок вывода (Убывающий порядок)"
-                    value="{!! old('sort', $goal->sort) !!}"
+                    value="{!! old('sort', $partner->sort) !!}"
                     block="flex-1"
                 />
 
@@ -74,33 +100,44 @@
                     :default="0"
                     :value="1"
                     label="Опубликовать"
-                    :checked=" old('is_show', $goal->exists ? $goal->is_show : true)"
+                    :checked=" old('is_show', $partner->exists ? $partner->is_show : true)"
                     block="pe-2"
                 />
 
                 @if(auth()->user()->isEditor())
-
                     <x-form.checkbox.block
                         id="is_approved"
                         name="is_approved"
                         :default="0"
                         :value="1"
                         label="Утвердить"
-                        :checked=" old('is_approved', $goal->exists ? $goal->is_approved : true)"
+                        :checked=" old('is_approved', $partner->exists ? $partner->is_approved : true)"
                         block="pe-2"
                     />
                 @else
                     <input type="hidden" name="has_approval" value="0">
                 @endif
             </div>
-
-            <x-editorjs.editor
-                set="short"
-                heading="Текст"
-                name="content"
-                :initialContent=" $goal->content "
+        </div>
+        <div class="flex gap-3 bg-white p-3 shadow">
+            <div>
+                <img src="{{$partner->image->url}}" alt="" class="h-14">
+            </div>
+            <x-form.file
+                id="form_image"
+                label="Установить / сменить изображение"
+                name="image"
+                block="flex-1"
             />
         </div>
+
+
+        <x-editorjs.editor
+            set="content"
+            heading="Текст"
+            name="content"
+            :initialContent=" $partner->content "
+        />
     </form>
 
 @endsection

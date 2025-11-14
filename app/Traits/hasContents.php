@@ -49,6 +49,15 @@ trait hasContents
         return $this->MorphOne(Content::class, 'relation')->where('type', $type);
     }
 
+    public function content(?string $type): Content
+    {
+        return $this->MorphOne(Content::class, 'relation')
+            ->where('type', $type)
+            ->first()
+            ?? (new Content(['type' => 'content']))->relation()->associate($this);
+    }
+
+
     public function getContentRecord():Content
     {
         return $this->getContent('content')->first()

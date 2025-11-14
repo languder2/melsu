@@ -16,6 +16,7 @@ use App\Models\Partners\Partner;
 use App\Models\Sections\Contact;
 use App\Models\Staff\Affiliation;
 use App\Models\Staff\Staff;
+use App\Traits\Documents\hasDocuments;
 use App\Traits\hasContents;
 use App\Traits\hasEvents;
 use App\Traits\hasGoals;
@@ -43,7 +44,10 @@ class Division extends Model
 {
     use SoftDeletes, resolveRouteBinding, hasSubordination, hasContents,
         hasLinks, hasMeta,
-        hasNews, hasEvents, hasPartners, hasGoals, hasUsers;
+        hasNews, hasEvents, hasPartners, hasGoals, hasUsers, hasDocuments
+
+
+        ;
 
     protected array $links = [
         'test'  => 'division.cabinet.form',

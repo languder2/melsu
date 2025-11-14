@@ -7,23 +7,8 @@ use App\Traits\GenerateLinks;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Support\Collection;
 
-trait HasDocumentCategories
+trait hasDocumentCategories
 {
-    use GenerateLinks;
-
-    protected static function bootHasDocumentCategories():void
-    {
-        static::retrieved(function ($model) {
-            $model->generate(
-                [
-                    'documentCategoriesAdd'     => 'relation:document:categories:admin:form',
-                    'documentsAdmin'            => 'relation:documents:admin',
-                ],
-                [$model->getTable(), $model->id]
-            );
-        });
-    }
-
     public function documentCategories():MorphMany
     {
         return $this->morphMany(DocumentCategory::class, 'relation')

@@ -13,19 +13,9 @@
 @endphp
 
 <div
-    class="border-l-3 grid grid-cols-subgrid col-span-full gap-3 p-4 rounded-sm shadow items-center select-none {{ $classes }}"
+    class="grid grid-cols-subgrid col-span-full gap-3"
 >
-    <div class="text-center">
-        {{ $item->id }}
-    </div>
-    <div>
-        {!! $item->sort !!}
-        {!! $item->name !!}
-    </div>
-    <div class="flex flex-col justify-center gap-6">
-        <a href="{{ $item->cabinetForm() }}" class="flex-end hover:text-green-700">
-            <x-lucide-square-pen class="w-6"/>
-        </a>
+    <div class="flex justify-center gap-4 bg-white rounded-sm items-center p-3 shadow">
         <x-html.button-delete-with-modal
             question="Удалить цель"
             :text=" $item->name "
@@ -33,7 +23,18 @@
             icoClass='hover:text-amber-700'
         />
     </div>
-    <div class="flex flex-col justify-center gap-6">
+    <div class="bg-white rounded-sm p-3 shadow">
+        {{ $item->sort }}
+        {{ $item->name }}
+    </div>
+
+    <div class="flex justify-center gap-4 bg-white rounded-sm items-center p-3 shadow">
+        <a href="{{ $item->form }}" class="flex-end hover:text-green-700">
+            <x-lucide-square-pen class="w-6"/>
+        </a>
+    </div>
+
+    <div class="flex justify-center gap-2 items-center bg-white rounded-sm p-3 shadow">
         @if(!$isFirst)
             <x-html.button-change-sort-up
                 :link=" $item->sort_up "

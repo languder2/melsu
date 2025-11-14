@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Partners;
 
 use App\Enums\Entities;
 use App\Http\Controllers\Controller;
-use App\Models\Minor\Goals;
 use App\Models\Partners\Category;
 use App\Models\Partners\Partner;
 use Illuminate\Http\RedirectResponse;
@@ -32,22 +31,6 @@ class CabinetPartnerController extends Controller
         return view('partners.cabinet.category-form', compact('instance', 'category') );
     }
 
-    public function form(Partner $partner, $entity = null,  $entity_id = null): View
-    {
-        $instance   = Entities::instance($entity, $entity_id);
-        $entity     = Entities::tryFrom($entity);
-
-        $title = collect([
-            __('admin.Admin panel'),
-            $instance ? $instance->name : null,
-            __('partners.Partners'),
-        ])
-            ->filter(fn($item) => $item)
-            ->implode(__('common.arrowR'));
-
-        return view('partners.admin.form', compact('title', 'entity', 'instance', 'partner') );
-    }
-
     public function categorySave(Request $request, $entity,  $entity_id, Category $category): RedirectResponse
     {
         $instance   = Entities::instance($entity, $entity_id);
@@ -66,11 +49,66 @@ class CabinetPartnerController extends Controller
         );
     }
 
+    public function categoryDelete($entity,  $entity_id, Category $category): RedirectResponse
+    {
+        $category->delete();
+
+        return redirect()->back();
+    }
+
     public function categoryChangeSort(string $entity, int $entity_id, Category $category, $direction): RedirectResponse
     {
         $instance   = Entities::instance($entity, $entity_id);
 
         flipSort($instance->partnerCategories, $category, $direction);
+
+        return redirect()->back();
+    }
+
+    public function form(Request $request, $entity,  $entity_id, Partner $partner): View
+    {
+        $instance = Entities::instance($entity, $entity_id);
+
+        if(!$partner->exists){
+            $partner->relation()->associate($instance);
+            $partner->category_id = $request->input('category');
+        }
+
+        $categories = $instance->partnerCategories;
+
+        return view('partners.cabinet.form', compact('instance', 'partner', 'categories') );
+    }
+    public function save(Request $request, $entity,  $entity_id, Partner $partner): RedirectResponse
+    {
+        $instance   = Entities::instance($entity, $entity_id);
+
+        if(!$partner->exists)
+            $partner->relation()->associate($instance);
+
+        $form = $request->validate($partner->validateRules(), $partner->validateMessages());
+
+        $partner->fill($form)->save();
+
+        if($request->file('image'))
+            $partner->image->saveImage($request->file('image'));
+
+        if($request->input('content'))
+            $partner->content('content')->fill($form)->save();
+
+
+
+        return redirect()->to(
+            $request->has('save-close')
+                ? $instance->partnersCabinetList()
+                : $partner->form
+        );
+    }
+
+    public function changeSort(string $entity, int $entity_id, Partner $partner, $direction): RedirectResponse
+    {
+        $instance   = Entities::instance($entity, $entity_id);
+
+        flipSort( $partner->category ? $partner->category->partners : $instance->partners, $partner, $direction);
 
         return redirect()->back();
     }

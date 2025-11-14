@@ -1,5 +1,5 @@
 <section class="px-2.5 h-[500px] lg:p-0 relative bg-no-repeat bg-center lg:bg-top bg-cover flex"
-style="background-image: url({{asset('img/faculty/faculty-8.png')}})">
+style="background-image: url(https://melsu/img/faculties-headers/Faculty-of-Agricultural-Technology.webp)">
         <div class="bg-[rgba(40,13,13,0.6)] min-h-full min-w-full pointer-events-none absolute top-0 left-0">
         </div>
         <div class="container flex flex-row pt-25 lg:pt-0 justify-start items-end relative z-5 pb-5 lg:pb-10">
@@ -189,12 +189,12 @@ style="background-image: url({{asset('img/faculty/faculty-8.png')}})">
                                         value=""
                                         class="input-hidden hidden"
                                     >
-                                    
-                                    <input 
+
+                                    <input
                                         class="chosen-value relative top-0 left-0 w-full min-h-[50px] max-h-[50px] text-lg py-3 px-[18px] bg-white transition duration-300 ease-in-out placeholder:text-[black] focus:border-b-[2px] outline-0 z-20"
-                                        type="text" 
-                                        value="Все" 
-                                        data-placeholder="Уровень образования" 
+                                        type="text"
+                                        value="Все"
+                                        data-placeholder="Уровень образования"
                                         placeholder="Уровень образования"
                                         readonly
                                     >
@@ -531,46 +531,46 @@ style="background-image: url({{asset('img/faculty/faculty-8.png')}})">
         function initLevelDropdown() {
             const dropdown = document.querySelector('.select-wrapper');
             if (!dropdown) return;
-            
+
             const listItems = dropdown.querySelectorAll('.drop-li');
             const chosenValue = dropdown.querySelector('.chosen-value');
-        
+
             if (chosenValue && filtersSelectBox) {
                 chosenValue.addEventListener('click', function() {
                     filtersSelectBox.style.minHeight = '270px';
                 });
             }
-            
+
             listItems.forEach(item => {
                 const originalClick = item.onclick;
-                
+
                 item.addEventListener('click', function(e) {
                     setTimeout(() => {
                         const value = this.getAttribute('data-value') || this.getAttribute('data-id');
                         const radio = document.querySelector(`input[name="level"][type="radio"][value="${value}"]`);
-                        
+
                         if (radio) {
                             radio.checked = true;
-                            const event = new Event('change', { 
+                            const event = new Event('change', {
                                 bubbles: true,
-                                cancelable: true 
+                                cancelable: true
                             });
                             radio.dispatchEvent(event);
                         }
-                        
+
                         if (filtersSelectBox) {
                             setTimeout(() => {
                                 filtersSelectBox.style.minHeight = '';
                             }, 300);
                         }
                     }, 50);
-                    
+
                     if (originalClick) {
                         originalClick.call(this, e);
                     }
                 });
             });
-            
+
             document.addEventListener('click', function(e) {
                 if (!dropdown.contains(e.target) && filtersSelectBox) {
                     setTimeout(() => {
@@ -578,7 +578,7 @@ style="background-image: url({{asset('img/faculty/faculty-8.png')}})">
                     }, 300);
                 }
             });
-            
+
             document.querySelectorAll('input[name="level"][type="radio"]').forEach(radio => {
                 radio.addEventListener('change', function() {
                     if (this.checked) {
@@ -590,7 +590,7 @@ style="background-image: url({{asset('img/faculty/faculty-8.png')}})">
                     }
                 });
             });
-            
+
             const initialRadio = document.querySelector('input[name="level"][type="radio"]:checked');
             if (initialRadio) {
                 const selectedText = initialRadio.parentElement.textContent.trim();
@@ -600,7 +600,7 @@ style="background-image: url({{asset('img/faculty/faculty-8.png')}})">
                 }
             }
         }
-        
+
         setTimeout(initLevelDropdown, 100);
     });
 </script>

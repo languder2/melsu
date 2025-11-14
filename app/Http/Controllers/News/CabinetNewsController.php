@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
 
@@ -72,6 +73,7 @@ class CabinetNewsController extends Controller
 
     public function setFilter(Request $request): RedirectResponse
     {
+
         if($request->has('clear'))
             Session::remove('cabinetNewsFilters');
         else

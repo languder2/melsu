@@ -1,5 +1,5 @@
 <section class="h-[400px] lg:h-[calc(100vh-160px)] 2xl:h-[900px] px-2.5 lg:p-0 relative bg-no-repeat bg-center lg:bg-top bg-cover flex"
-style="background-image: url({{asset('img/faculty/faculty-1.png')}})">
+style="background-image: url(https://melsu/img/faculties-headers/Faculty-of-Agricultural-Technology.webp)">
         <div class="bg-[rgba(40,13,13,0.6)] min-h-full min-w-full pointer-events-none absolute top-0 left-0">
         </div>
         <div class="container flex flex-row pt-25 lg:pt-0 justify-start items-end relative z-5 pb-5 lg:pb-10">
@@ -599,10 +599,10 @@ style="background-image: url({{asset('img/faculty/faculty-1.png')}})">
     document.addEventListener('DOMContentLoaded',()=>{
         let goalsBtn = document.querySelector('#goalsBtn');
         let directionBtn = document.querySelector('#directionBtn');
-        
+
         let goalsBox = document.querySelector('#goals-faculty');
         let directionBox = document.querySelector('#areas-training');
-        
+
         const activeClasses = ['text-white', 'bg-[#C10F1A]'];
 
         function setActiveTab(activeBtn, activeBox, inactiveBtn, inactiveBox) {

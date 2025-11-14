@@ -11,29 +11,17 @@
 @endsection
 
 @section('content')
-    <div class="grid gap-3 grid-cols-[auto_1fr_auto_auto] mb-3">
-        <div
-            class="border-l-3 grid grid-cols-subgrid col-span-full gap-3 p-4 rounded-sm shadow items-center sticky top-0 text-white border-sky-800 bg-sky-800 text-center"
-        >
-            <div>
-                id
-            </div>
-            <div class="text-left">
-                Цель
-            </div>
-            <div>
-            </div>
-        </div>
-
+    <div class="grid gap-3 grid-cols-[auto_1fr_auto_auto]">
         @forelse($list as $item)
-            @component('partners.cabinet.item',[
+            @component('partners.cabinet.category',[
                 'item'      => $item,
                 'isFirst'   => $loop->first,
                 'isLast'    => $loop->last,
             ])@endcomponent
         @empty
-
+            <div class="p-3 bg-white shadow col-span-full text-center">
+                Нет активных категорий
+            </div>
         @endforelse
     </div>
-
 @endsection

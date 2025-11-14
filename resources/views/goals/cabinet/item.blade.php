@@ -6,25 +6,28 @@
 @php
     /** * @var object $item */
     $classes = match(true){
-            !$item->is_approved     => 'border-red-700 bg-white',
-            !$item->is_show         => 'border-orange-400 bg-white',
-            default                 => 'border-white bg-white'
+            !$item->is_approved     => 'bg-red-700 text-white',
+            !$item->is_show         => 'bg-amber-600 text-white',
+            default                 => 'bg-white'
         };
 @endphp
 
 <div
-    class="border-l-3 grid grid-cols-subgrid col-span-full gap-3 p-4 rounded-sm shadow items-center select-none {{ $classes }}"
+    class="grid grid-cols-subgrid col-span-full gap-3"
 >
-    <div class="text-center">
+    <div class="text-center p-3 px-5 rounded-sm shadow items-center select-none {{ $classes }}">
         {{ $item->id }}
     </div>
-    <div>
+    <div class="p-3 bg-white rounded-sm shadow items-center">
         {!! $item->content_html !!}
     </div>
-    <div class="flex flex-col justify-center gap-6">
+
+    <div class="flex flex-col lg:flex-row justify-center gap-6 lg:gap-4 p-3 bg-white rounded-sm shadow items-center">
+
         <a href="{{ $item->cabinet_form }}" class="flex-end hover:text-green-700">
             <x-lucide-square-pen class="w-6"/>
         </a>
+
         <x-html.button-delete-with-modal
             question="Удалить цель"
             :text=" $item->content_html "
@@ -32,7 +35,8 @@
             icoClass='hover:text-amber-700'
         />
     </div>
-    <div class="flex flex-col justify-center gap-6">
+    <div class="flex flex-col lg:flex-row justify-center gap-6 lg:gap-4 p-3 bg-white rounded-sm shadow items-center">
+
         @if(!$isFirst)
             <x-html.button-change-sort-up
                 :link=" $item->sort_up "

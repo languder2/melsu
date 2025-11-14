@@ -9,7 +9,7 @@
 {{--@endsection--}}
 
 @section('additional-header')
-    @component('divisions.education.public.sections.header-short', [
+    @component('divisions.education.public.sections.header', [
         'name'  => $division->name,
         'image' => "img/faculties-headers/$division->code.webp"
     ]) @endcomponent
@@ -23,10 +23,18 @@
 
 @section('content')
 
-    @component('divisions.education.public.sections.about', compact('division')) @endcomponent
+    <div class="grid lg:grid-cols-[2fr_1fr] xl:grid-cols-[75%_auto] gap-5 px-2.5 2xl:px-0">
+        <div class="order-2 lg:order-1 flex flex-col gap-7">
+            @component('divisions.education.public.sections.about', compact('division')) @endcomponent
+            @component('divisions.education.public.sections.goals-and-specialities', compact('division')) @endcomponent
+        </div>
+        <div class="order-1 lg:order-2 flex flex-col gap-5">
+            @component('divisions.education.public.sections.menu', compact('division')) @endcomponent
+        </div>
+    </div>
 
 
-    <section class="container px-2 pb-8">
+    <section class="container px-2 pb-8 hidden">
         @switch($section)
             @case('news')
                 @break

@@ -3,10 +3,10 @@
 namespace App\Models\Partners;
 
 use App\Enums\Entities;
-use App\Traits\hasDivision;
 use App\Traits\hasRelations;
 use App\Traits\hasSubordination;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Category extends Model
@@ -77,6 +77,28 @@ class Category extends Model
             $this->id,
             'down'
         ]);
+    }
+
+    public function getPartnerAddAttribute(): string
+    {
+        return route('partners.cabinet.form',[
+            'entity'        => Entities::getEntityByModel($this->relation::class)->value,
+            'entity_id'     => $this->relation->id,
+            'category'      => $this->id
+        ]);
+    }
+    public function getDeleteAttribute(): string
+    {
+        return route('partner-categories.cabinet.delete',[
+            'entity'        => Entities::getEntityByModel($this->relation::class)->value,
+            'entity_id'     => $this->relation->id,
+            $this->id
+        ]);
+    }
+
+    public function partners(): HasMany
+    {
+        return $this->hasMany(Partner::class)->orderBy('sort', 'desc');
     }
 
 

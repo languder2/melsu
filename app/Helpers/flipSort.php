@@ -7,12 +7,16 @@ if (!function_exists('flipSort')) {
 
         $key        = $collection->search(fn($item) => $item->id === $current->id);
 
-        $flip       = ($direction === 'up') ? $collection->get($key - 1) : $collection->get($key + 1);
+        $secondKey  = $key + ($direction === 'up' ? - 1 : 1);
+
+        $flip       =  $collection->get( $secondKey );
 
         $current->sort = $flip->sort;
+
         $flip->sort = $current->getRawOriginal('sort');
 
         $current->save();
+
         $flip->save();
     }
 }
