@@ -11,7 +11,7 @@ new isvek.Bvi()
 import './accordion-script.js';
 import './classie.js';
 import './counter-script.js';
-import './news-section-main-page.js';
+import './public-faculties.js';
 // import './search-in-box.js';
 import './uisearch.js';
 

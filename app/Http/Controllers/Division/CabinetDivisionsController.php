@@ -100,7 +100,8 @@ class CabinetDivisionsController extends Controller
 
     public function historyForm(Division $division): view|RedirectResponse
     {
-        $history = $division->history->content;
+        $history = $division->content('history')->content;
+
         return view('divisions.cabinet.history-form', compact('division', 'history'));
     }
 

@@ -51,7 +51,10 @@ class CabinetPartnerController extends Controller
 
     public function categoryDelete($entity,  $entity_id, Category $category): RedirectResponse
     {
-        $category->delete();
+        $instance   = Entities::instance($entity, $entity_id);
+
+        if($category->relation == $instance)
+            $category->delete();
 
         return redirect()->back();
     }
@@ -92,10 +95,9 @@ class CabinetPartnerController extends Controller
         if($request->file('image'))
             $partner->image->saveImage($request->file('image'));
 
-        if($request->input('content'))
-            $partner->content('content')->fill($form)->save();
-
-
+        $content = json_decode($request->input('content'));
+        if(is_object($content) && isset($content->blocks) && count($content->blocks))
+            $partner->content('content')->fill(['content' => $request->input('content')])->save();
 
         return redirect()->to(
             $request->has('save-close')
@@ -109,6 +111,16 @@ class CabinetPartnerController extends Controller
         $instance   = Entities::instance($entity, $entity_id);
 
         flipSort( $partner->category ? $partner->category->partners : $instance->partners, $partner, $direction);
+
+        return redirect()->back();
+    }
+
+    public function delete(string $entity, int $entity_id, Partner $partner): RedirectResponse
+    {
+        $instance   = Entities::instance($entity, $entity_id);
+
+        if($partner->relation == $instance)
+            $partner->delete();
 
         return redirect()->back();
     }

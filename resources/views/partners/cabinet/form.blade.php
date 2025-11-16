@@ -7,6 +7,7 @@
 )
 
 @section('content-header')
+    @component('divisions.cabinet.item', ['division' => $instance, 'has_menu' => true])@endcomponent
     @include('partners.cabinet.menu')
 @endsection
 
@@ -86,13 +87,13 @@
             />
 
             <div class="flex gap-3">
-                <x-form.input
-                    name="sort"
-                    type="number"
-                    label="Порядок вывода (Убывающий порядок)"
-                    value="{!! old('sort', $partner->sort) !!}"
-                    block="flex-1"
-                />
+{{--                <x-form.input--}}
+{{--                    name="sort"--}}
+{{--                    type="number"--}}
+{{--                    label="Порядок вывода (Убывающий порядок)"--}}
+{{--                    value="{!! old('sort', $partner->sort) !!}"--}}
+{{--                    block="flex-1"--}}
+{{--                />--}}
 
                 <x-form.checkbox.block
                     id="is_show"
@@ -119,6 +120,7 @@
                 @endif
             </div>
         </div>
+
         <div class="flex gap-3 bg-white p-3 shadow">
             <div>
                 <img src="{{$partner->image->url}}" alt="" class="h-14">

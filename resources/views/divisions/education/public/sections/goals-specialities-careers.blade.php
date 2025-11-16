@@ -1,21 +1,39 @@
 @props([
     'division' => New \App\Models\Division\Division()
 ])
+@dump($division->publicGoals)
+@dump($division->publicCareers)
+@dump($division->specialities->groupBy('level'))
+
 <div class="flex flex-col gap-7">
 
-    <div class="flex flex-col gap-7">
-        <div class="flex">
-            <button id="goalsBtn" class="py-2.5 px-7.5 cursor-pointer font-bold text-[#C10F1A] border border-[#C10F1A] transition duration-300 ease-linear
-                                    hover:text-white hover:bg-[#C10F1A]
-                                    text-white bg-[#C10F1A]">
+    <div class="flex">
+        @if($division->publicGoals->isNotEmpty())
+            <button
+                data-for=""
+                class="
+                        py-2.5 px-7.5 cursor-pointer font-bold text-red-700 border border-red-700 transition
+                        duration-300 ease-linear hover:text-white hover:bg-red-700 text-white bg-red-700"
+            >
                 Цели и задачи
             </button>
+        @endif
 
-            <button id="directionBtn" class="py-2.5 px-7.5 cursor-pointer font-bold text-[#C10F1A] border-l-0 border border-[#C10F1A] transition duration-300 ease-linear
-                                    hover:text-white hover:bg-[#C10F1A]">
+        @if($division->publicCareers->isNotEmpty())
+            <button
+                id="directionBtn"
+                class="
+                        py-2.5 px-7.5 cursor-pointer font-bold text-red-700 border-l-0 border border-red-700
+                        transition duration-300 ease-linear hover:text-white hover:bg-red-700
+                        "
+            >
                 Направления подготовки
             </button>
-        </div>
+        @endif
+
+        @if($division->specialities->isNotEmpty())
+        @endif
+
     </div>
     <div id="goals-faculty" class="flex flex-col gap-5">
         <h2 class="font-bold">Основными задачами факультета являются:</h2>
@@ -206,7 +224,7 @@
         let goalsBox = document.querySelector('#goals-faculty');
         let directionBox = document.querySelector('#areas-training');
 
-        const activeClasses = ['text-white', 'bg-[#C10F1A]'];
+        const activeClasses = ['text-white', 'bg-red-700'];
 
         function setActiveTab(activeBtn, activeBox, inactiveBtn, inactiveBox) {
             const isActive = activeBtn.classList.contains(activeClasses[0]) &&

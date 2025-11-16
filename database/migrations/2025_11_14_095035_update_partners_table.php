@@ -19,6 +19,12 @@ return new class extends Migration
                 $table->unsignedTinyInteger('is_approved')->default(0)->after('is_show');
             });
         }
+
+        if(!Schema::hasColumn('partners', 'category_id')) {
+            Schema::table('partners', function (Blueprint $table) {
+                $table->unsignedBigInteger('category_id')->nullable()->after('name');
+            });
+        }
     }
 
     public function down(): void
@@ -29,9 +35,15 @@ return new class extends Migration
             });
         }
 
-        if(!Schema::hasColumn('partners', 'is_approved')) {
+        if(Schema::hasColumn('partners', 'is_approved')) {
             Schema::table('partners', function (Blueprint $table) {
                 $table->dropColumn('is_approved');
+            });
+        }
+
+        if(Schema::hasColumn('partners', 'category_id')) {
+            Schema::table('partners', function (Blueprint $table) {
+                $table->dropColumn('category_id');
             });
         }
     }

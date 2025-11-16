@@ -43,7 +43,9 @@ class GoalsController extends Controller
 
         $goal->fill($form)->save();
 
-        $goal->content_record->fill(['content' => $form['content']])->save();
+        $content = json_decode($request->input('content'));
+        if(is_object($content) && isset($content->blocks) && count($content->blocks))
+            $goal->content('content')->fill(['content' => $request->input('content')])->save();
 
         return redirect()->to($request->has('save-close') ? $instance->goals_cabinet_list : $goal->cabinet_form);
     }

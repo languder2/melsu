@@ -3,11 +3,8 @@
 @section('title', __('common.Cabinet').' → '.$instance->name.' → '.__('common.Goals') )
 
 @section('content-header')
+    @component('divisions.cabinet.item', ['division' => $instance, 'has_menu' => true ])@endcomponent
     @include('goals.cabinet.menu')
-@endsection
-
-@section('top-menu')
-
 @endsection
 
 @section('content')

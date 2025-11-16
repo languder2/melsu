@@ -8,6 +8,7 @@
 )
 
 @section('content-header')
+    @component('divisions.cabinet.item', ['division' => $instance, 'has_menu' => true])@endcomponent
     @include('partners.cabinet.menu')
 @endsection
 
@@ -67,12 +68,12 @@
                 block="flex-1"
             />
 
-            <x-form.input
-                name="sort"
-                label="Порядок вывода (Убывающий порядок)"
-                value="{!! old('sort', $category->sort) !!}"
-                block="flex-1"
-            />
+{{--            <x-form.input--}}
+{{--                name="sort"--}}
+{{--                label="Порядок вывода (Убывающий порядок)"--}}
+{{--                value="{!! old('sort', $category->sort) !!}"--}}
+{{--                block="flex-1"--}}
+{{--            />--}}
 
         </div>
     </form>

@@ -49,12 +49,12 @@ trait hasContents
         return $this->MorphOne(Content::class, 'relation')->where('type', $type);
     }
 
-    public function content(?string $type): Content
+    public function content(string $type = 'content'): Content
     {
         return $this->MorphOne(Content::class, 'relation')
             ->where('type', $type)
             ->first()
-            ?? (new Content(['type' => 'content']))->relation()->associate($this);
+            ?? (new Content(['type' => $type]))->relation()->associate($this);
     }
 
 
@@ -101,6 +101,9 @@ trait hasContents
     {
         return $this->historyRecord()->render();
     }
+
+
+
 
 
 

@@ -7,6 +7,7 @@
 )
 
 @section('content-header')
+    @component('divisions.cabinet.item', ['division' => $instance, 'has_menu' => true ])@endcomponent
     @include('goals.cabinet.menu')
 @endsection
 
@@ -61,12 +62,6 @@
 
         <div class="flex flex-col gap-3 ">
             <div class="bg-white p-3 shadow flex gap-3">
-                <x-form.input
-                    name="sort"
-                    label="Порядок вывода (Убывающий порядок)"
-                    value="{!! old('sort', $goal->sort) !!}"
-                    block="flex-1"
-                />
 
                 <x-form.checkbox.block
                     id="is_show"

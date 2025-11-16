@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'Name'          => 'Название',
+
     'Cabinet'       => 'Кабинет',
     'Divisions'     => 'Подразделения',
     'New'           => 'Форма добавления',
@@ -20,6 +22,23 @@ return [
     'Add partner category'  => 'Добавить категорию партнеров',
 
     'History'               => 'История',
+    'Documents'             => 'Документы',
+
+    'Career'                => 'Карьера',
+    'Careers'               => 'Карьеры',
+    'Careers on approval'   => 'Карьеры требующие утверждения',
+    'Add career'            => 'Добавить карьеру',
+    'Salary from'           => 'Оклад от',
+    'Salary to'             => 'Оклад до',
+
+    'Graduations'               => 'Выпускники',
+    'Graduation'                => 'Выпускник',
+    'Graduations on approval'   => 'Выпускники требующие утверждения',
+    'Add graduation'            => 'Добавить выпускника',
+
+    'Science'               => 'Наука',
+    'Science on approval'   => 'Наука требующая утверждения',
+    'Add science'           => 'Добавить науку',
 
     'arrowR'        => ' → ',
     'arrowL'        => ' ← ',
@@ -27,8 +46,25 @@ return [
     'arrowD'        => ' ↓ ',
     'arrowT2R'      => ' ⤷ ',
 
+    'currencyRub'   => '₽',
+
+
     'melsu'         => 'ФГБОУ ВО "МелГУ"',
 
     'office'        => 'Кабинет',
+
+    'from'          => 'от',
+    'to'            => 'до',
+    'link'          => 'ссылка',
+
+    'GSC bachelor'      => 'Бакалавриат',
+    'GSC master'        => 'Магистратура',
+    'GSC postgraduate'  => 'Аспирантура',
+
+    'GSC goals'         => 'Цели и задачи',
+    'GSC specialities'  => 'Направления подготовки',
+    'GSC careers'       => 'Карьеры',
+
+
 
 ];

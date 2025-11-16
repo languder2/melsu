@@ -24,7 +24,6 @@
         />
     </div>
     <div class="bg-white rounded-sm p-3 shadow">
-        {{ $item->sort }}
         {{ $item->name }}
     </div>
 

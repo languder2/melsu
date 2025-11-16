@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Goals extends Model
 {
-    use SoftDeletes, MagicGet, hasLinks, hasRelations, hasContents;
+    use SoftDeletes, hasRelations, hasContents;
 
     protected $table = 'goals';
 
@@ -42,11 +42,16 @@ class Goals extends Model
         parent::boot();
 
         static::saving(function ($item) {
-            if(!$item->sort || (int)$item->sort < 0)
-                $item->sort = $item->relation->goals()->max('sort') + 100;
+            if(empty($item->sort))
+                $item->sort = ($item->relation
+                        ? self::where('relation_type', $item->relation::class)->where('relation_id', $item->relation->id)
+                        : self::whereNull('relation_type')
+                    )->max('sort') + 100;
         });
 
-        static::deleting(function ($item) {});
+        static::deleting(function ($item) {
+            $item->contents()->delete();
+        });
     }
     public function getCabinetSaveAttribute(): string
     {

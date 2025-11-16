@@ -108,6 +108,14 @@ class Partner extends Model
             'down'
         ]);
     }
+    public function getDeleteAttribute(): string
+    {
+        return route('partners.cabinet.delete', [
+            Entities::getEntityByModel($this->relation::class)->value,
+            $this->relation->id,
+            $this->id,
+        ]);
+    }
 
     protected function category(): BelongsTo
     {

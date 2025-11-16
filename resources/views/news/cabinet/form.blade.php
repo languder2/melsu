@@ -72,15 +72,6 @@
 
 
         <div class="flex-1 bg-white p-3 shadow">
-
-            <x-form.select2
-                id="form_category"
-                name="category"
-                value="{{ $news->category }}"
-                null="Выбрать категорию"
-                :list=" $categories "
-            />
-
             <x-form.input
                 id="title"
                 name="title"

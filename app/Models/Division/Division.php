@@ -17,13 +17,16 @@ use App\Models\Sections\Contact;
 use App\Models\Staff\Affiliation;
 use App\Models\Staff\Staff;
 use App\Traits\Documents\hasDocuments;
+use App\Traits\hasCareers;
 use App\Traits\hasContents;
 use App\Traits\hasEvents;
 use App\Traits\hasGoals;
+use App\Traits\hasGraduations;
 use App\Traits\hasLinks;
 use App\Traits\hasMeta;
 use App\Traits\hasNews;
 use App\Traits\hasPartners;
+use App\Traits\hasScience;
 use App\Traits\hasSubordination;
 use App\Traits\hasUsers;
 use App\Traits\resolveRouteBinding;
@@ -44,10 +47,10 @@ class Division extends Model
 {
     use SoftDeletes, resolveRouteBinding, hasSubordination, hasContents,
         hasLinks, hasMeta,
-        hasNews, hasEvents, hasPartners, hasGoals, hasUsers, hasDocuments
-
-
-        ;
+        hasNews, hasEvents,
+        hasPartners, hasGoals, hasCareers, hasScience, hasGraduations,
+        hasUsers, hasDocuments
+    ;
 
     protected array $links = [
         'test'  => 'division.cabinet.form',
@@ -195,13 +198,18 @@ class Division extends Model
     }
     public function specialities($all = null): HasMany
     {
-
         $hasMany = $this->hasMany(Speciality::class, $this->type->getField(),'id');
 
         if(!$all)
             $hasMany->where('show',true);
 
         return $hasMany->orderBy('sort')->orderByRaw(EducationLevel::getOrder())
+            ->orderBy('spec_code')->orderBy('name');
+    }
+    public function publicSpecialities(): HasMany
+    {
+        return $this->hasMany(Speciality::class, $this->type->getField(),'id')
+            ->orderBy('sort')->orderByRaw(EducationLevel::getOrder())
             ->orderBy('spec_code')->orderBy('name');
     }
 
@@ -630,7 +638,7 @@ class Division extends Model
         return self::where('type',DivisionType::Department)->get();
     }
 
-    public function historyForm(): string
+    public function getHistoryFormAttribute(): string
     {
         return route('division.history.form', $this);
     }
