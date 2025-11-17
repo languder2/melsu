@@ -48,7 +48,7 @@
                                 <a href="{{ $item->link }}" class="grid grid-cols-[180px_auto] gap-5 group">
                                     @if($item->preview)
                                         <div class="mb-2">
-                                            <img src="{{ $item->preview->thumbnail }}" alt="{{ $item->title }}" class="w-full object-cover rounded">
+                                            <img src="{{ $item->preview->thumbnail }}" alt="{{ $item->title }}" class="w-full h-[120px] object-cover rounded">
                                         </div>
                                     @endif
                                     <div>
