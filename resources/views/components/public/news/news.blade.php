@@ -21,7 +21,7 @@
     </section>
     <div class="hidden aspect-video"></div>
     <div class="container custom">
-        <div class="grid sm:grid-cols-[2fr_1fr] gap-10">
+        <div class="grid sm:grid-cols-[2fr_1fr] gap-10 mb-5">
             <div class="content-news mb-3 codex-editor flex flex-col gap-4 text-justify">
                 {!! $news->content_html !!}
             </div>
@@ -29,7 +29,7 @@
                 @if($relatedNews && $relatedNews->isNotEmpty())
                 <div class="flex items-center justify-between pr-5 gap-5 border-b w-full pb-2">
                     <h3 class="text-lg font-semibold">Еще новости</h3>
-                    <div class="flex flex-col gap-[1px]">
+                    <div class="flex items-center gap-[1px]">
                         <button id="scroll-prev" class="bg-white border group hover:bg-[#C10F1A] transition duration-300 ease-linear cursor-pointer p-1">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-chevron-up text-gray-700 group-hover:text-white transition duration-300 ease-linear" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708z"/>
