@@ -3,12 +3,12 @@
     'image'     => null
 ])
 @php
-    if(!file_exists($image))
-        $image = "img/faculties-headers/faculty-of-technical-sciences.webp";
+    if(is_null($image))
+        $image = asset("img/faculties-headers/faculty-of-technical-sciences.webp");
 @endphp
 <section
     class="h-100 lg:h-150 px-3 lg:p-0 relative bg-no-repeat lg:bg-top bg-cover flex"
-    style="background-image: url({{asset($image)}}); background-position: center center;"
+    style="background-image: url( {{ $image }} ); background-position: center center;"
 >
     <div class="bg-[rgba(40,13,13,0.6)] min-h-full min-w-full pointer-events-none absolute top-0 left-0">
     </div>

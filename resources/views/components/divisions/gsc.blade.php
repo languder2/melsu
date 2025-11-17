@@ -25,7 +25,7 @@
             <div class="hidden group has-[:checked]:block">
                 <input type="radio" name="gsc" id="division-gsc-{{ $key }}" class="peer gsc hidden" @checked($loop->first)>
                 <div id="goals-faculty" class="flex flex-col gap-5">
-                    <h2 class="font-bold mb-3">Основными задачами факультета являются:</h2>
+                    <h2 class="font-bold mb-3 hidden">Основными задачами факультета являются:</h2>
                     <div class="grid md:grid-cols-2 gap-6">
                         @foreach($items as $level => $item)
                             @if($key === 'specialities')

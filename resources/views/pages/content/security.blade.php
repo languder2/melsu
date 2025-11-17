@@ -8,7 +8,7 @@
         <ul class="flex flex-col gap-3 list-disc ml-4 ">
             <li>
                 <a
-                    href="{{ Storage::url('documents/department-of-internal-control-and-access-control/The position of the pass-through and the internal object MelSU.pdf') }}"
+                    href="/storage/documents/department-of-internal-control-and-access-control/The position of the pass-through and the internal object MelSU.pdf"
                     target="_blank"
                     class="underline hover:text-red-base"
                 >
@@ -17,7 +17,7 @@
             </li>
             <li>
                 <a
-                    href="{{ Storage::url('documents/security-and-regime-management/order-102.pdf') }}"
+                    href="/storage/documents/security-and-regime-management/order-102.pdf"
                     target="_blank"
                     class="underline hover:text-red-base"
                 >
@@ -26,7 +26,7 @@
             </li>
             <li>
                 <a
-                    href="{{ Storage::url('documents/security-and-regime-management/Instructions on the procedure of actions during evacuation in case of terrorist threat, armed attack and other emergency situations of students, teachers, employees, visitors of the Federal State budgetary edu.pdf') }}"
+                    href="/storage/documents/security-and-regime-management/Instructions on the procedure of actions during evacuation in case of terrorist threat, armed attack and other emergency situations of students, teachers, employees, visitors of the Federal State budgetary edu.pdf"
                     target="_blank"
                     class="underline hover:text-red-base"
                 >
@@ -35,7 +35,7 @@
             </li>
             <li>
                 <a
-                    href="{{ Storage::url('documents/security-and-regime-management/Instructions (algorithms) for actions in case of emergencies.pdf') }}"
+                    href="/storage/documents/security-and-regime-management/Instructions (algorithms) for actions in case of emergencies.pdf"
                     target="_blank"
                     class="underline hover:text-red-base"
                 >
@@ -44,7 +44,7 @@
             </li>
             <li>
                 <a
-                    href="{{ Storage::url('documents/security-and-regime-management/instructions_for_857.pdf') }}"
+                    href="/storage/documents/security-and-regime-management/instructions_for_857.pdf"
                     target="_blank"
                     class="underline hover:text-red-base"
                 >
@@ -53,7 +53,7 @@
             </li>
             <li>
                 <a
-                    href="{{ Storage::url('documents/security-and-regime-management/standard_model_for_857.pdf') }}"
+                    href="/storage/documents/security-and-regime-management/standard_model_for_857.pdf"
                     target="_blank"
                     class="underline hover:text-red-base"
                 >
@@ -62,7 +62,7 @@
             </li>
             <li>
                 <a
-                    href="{{ Storage::url('documents/security-and-regime-management/order-9-r.pdf') }}"
+                    href="/storage/documents/security-and-regime-management/order-9-r.pdf"
                     target="_blank"
                     class="underline hover:text-red-base"
                 >
@@ -71,7 +71,7 @@
             </li>
             <li>
                 <a
-                    href="{{ Storage::url('documents/security-and-regime-management/order-10-r.pdf') }}"
+                    href="/storage/documents/security-and-regime-management/order-10-r.pdf"
                     target="_blank"
                     class="underline hover:text-red-base"
                 >
@@ -80,7 +80,7 @@
             </li>
             <li>
                 <a
-                    href="{{ Storage::url('documents/security-and-regime-management/order-11-r.pdf') }}"
+                    href="/storage/documents/security-and-regime-management/order-11-r.pdf"
                     target="_blank"
                     class="underline hover:text-red-base"
                 >
@@ -89,7 +89,7 @@
             </li>
             <li>
                 <a
-                    href="{{ Storage::url('documents/custom/1759384756/Rasporyazhenie_Rektora_№_29___R/R_ot_29.09.2025._O_provedenii_shtabnoy_trenirovki_po_grazhdanskoy_.pdf') }}"
+                    href="/storage/documents/custom/1759384756/Rasporyazhenie_Rektora_№_29___R/R_ot_29.09.2025._O_provedenii_shtabnoy_trenirovki_po_grazhdanskoy_.pdf"
                     target="_blank"
                     class="underline hover:text-red-base"
                 >
@@ -98,16 +98,6 @@
             </li>
         </ul>
     </div>
-
-    <div></div>
-
-    <x-events.list-by-category
-        category="security"
-    />
-
-    <div></div>
-
-    <x-security.iatz />
 
 </section>
 

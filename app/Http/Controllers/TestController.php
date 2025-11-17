@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Enums\UserRoles;
 use App\Jobs\SendEmailJob;
 use App\Models\Division\Division;
+use App\Models\Events\Category;
 use App\Models\News\News;
 use App\Models\Page\Page;
 use App\Models\Services\Content;
@@ -115,10 +116,11 @@ class TestController extends Controller
     public function test()
     {
 
-        $division   = Division::find(3);
+        $category = Category::where('code', 'security')->first();
 
-        dd($division->partnerCategories);
+        $list = $category->events()->where('is_show',true)->where('has_approval',true)->get();
 
+        return view('test.test');
 
     }
 

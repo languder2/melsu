@@ -16,8 +16,6 @@
             <div>
                 id
             </div>
-            <div>
-            </div>
             <div class="text-left">
                 {{ __('common.Career') }}
             </div>

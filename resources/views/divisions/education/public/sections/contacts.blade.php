@@ -2,11 +2,31 @@
     'contacts' => collect()
 ])
 @php
-    $contacts = $contacts->groupBy('type')
+
+    $addresses  = $contacts->filter(fn($item) => $item->type->value === 'address');
+
+    $other      = $contacts->filter(fn($item) => $item->type->value !== 'address');
+
+    $contacts   = $contacts->groupBy('type');
+    $count      = $contacts->get('address')->count();
 @endphp
+
 <div class="bg-white mb-8">
     <section class="container px-2">
-        <div class="grid grid-cols-1 2xl:grid-cols-[repeat(8,auto)] py-7 px-2.5 2xl:px-0 gap-5">
+        <div class="flex py-7 px-2.5 2xl:px-0 gap-5 flex-col 2xl:flex-row">
+            <div>
+
+            </div>
+
+        </div>
+
+
+
+
+
+
+
+        <div class="grid grid-cols-1 2xl:grid-cols-[auto_1fr] py-7 px-2.5 2xl:px-0 gap-5">
             <div class="flex flex-col gap-5">
                 <h3 class="font-bold text-xl">Контакты</h3>
                 <div class="flex flex-col gap-4">

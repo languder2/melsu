@@ -2,6 +2,10 @@
 
 @section('title', __('common.Cabinet') . __('common.arrowR') . __('common.Divisions') . __('common.arrowR') . ( $division->exists ? $division->name : __('common.New') )  )
 
+@section('content-header')
+    @component('divisions.cabinet.item', ['division' => $division, 'has_menu' => true])@endcomponent
+@endsection
+
 @section('content')
     <form action="{{ $division->cabinet_save }}" method="POST" class="flex flex-col gap-3" enctype="multipart/form-data">
         @csrf
@@ -54,79 +58,96 @@
         <x-form.errors setTheme="2"/>
 
         <div class="flex flex-col gap-3 ">
-            <div class="grid grid-cols-[auto_1fr] gap-3">
-                <div class="max-h-88 bg-red-700/20">
-                    <img src="{{$division->preview->thumbnail}}" alt="1"
-                         class="h-full drop-shadow-md"
-                    />
-                </div>
-                <div class="flex-1 bg-white p-3 shadow">
-                    <x-form.select2
-                        id="form_parent_id"
-                        name="parent_id"
-                        value="{{ old('name', $division->parent_id) }}"
-                        null="Родительское подразделение"
-                        :list=" $divisions ?? [] "
-                    />
+            <div class="flex-1 bg-white p-3 shadow">
+                <x-form.select2
+                    id="form_parent_id"
+                    name="parent_id"
+                    value="{{ old('name', $division->parent_id) }}"
+                    null="Родительское подразделение"
+                    :list=" $divisions ?? [] "
+                />
 
-                    <x-form.select2
-                        id="form_type"
-                        name="type"
-                        value="{{ old('name', $division->type) }}"
-                        null="Выбрать тип подразделения"
-                        :list=" $types "
+                <x-form.select2
+                    id="form_type"
+                    name="type"
+                    value="{{ old('name', $division->type) }}"
+                    null="Выбрать тип подразделения"
+                    :list=" $types "
+                />
+
+                <x-form.input
+                    name="name"
+                    label="Название"
+                    value="{!! old('name', $division->name) !!}"
+                    required
+                />
+
+                <div class="flex flex-col md:flex-row gap-3">
+                    <x-form.input
+                        name="acronym"
+                        label="Акроним"
+                        value="{!! old('acronym', $division->acronym) !!}"
+                        block="w-24"
                     />
 
                     <x-form.input
-                        name="name"
-                        label="Название"
-                        value="{!! old('name', $division->name) !!}"
-                        required
+                        name="alt_name"
+                        label="Сокращенное название"
+                        value="{!! old('alt_name', $division->alt_name) !!}"
+                        block="flex-1"
                     />
-
-                    <div class="flex flex-col md:flex-row gap-3">
-                        <x-form.input
-                            name="acronym"
-                            label="Акроним"
-                            value="{!! old('acronym', $division->acronym) !!}"
-                            block="w-24"
-                        />
-
-                        <x-form.input
-                            name="alt_name"
-                            label="Сокращенное название"
-                            value="{!! old('alt_name', $division->alt_name) !!}"
-                            block="flex-1"
-                        />
-
-                    </div>
-
-                    <x-form.input
-                        name="code"
-                        label="Code / Alias"
-                        value="{!! old('code', $division->code) !!}"
-                    />
-
-                    <div class="flex gap-3 justify-between items-center">
-                        <x-form.file
-                            id="form_image"
-                            label="Установить / сменить изображение"
-                            name="image"
-                            block="flex-1"
-                        />
-
-                        <x-form.checkbox.block
-                            id="is_show"
-                            name="is_show"
-                            :default="0"
-                            :value="1"
-                            label="Опубликовать"
-                            :checked=" old('show', $division->exists ? $division->show : true)"
-                            block="pe-2"
-                        />
-                    </div>
 
                 </div>
+
+                <x-form.input
+                    name="code"
+                    label="Code / Alias"
+                    value="{!! old('code', $division->code) !!}"
+                />
+
+                <div class="flex gap-3 justify-between items-center">
+
+                    <x-form.checkbox.block
+                        id="is_show"
+                        name="is_show"
+                        :default="0"
+                        :value="1"
+                        label="Опубликовать"
+                        :checked=" old('show', $division->exists ? $division->show : true)"
+                        block="pe-2"
+                    />
+                </div>
+
+            </div>
+
+            <div class="flex gap-3 bg-white p-3 shadow">
+                <div>
+                    <x-html.image-with-modal
+                        :url="$division->image->url"
+                        object="max-h-14"
+                    />
+                </div>
+
+                <x-form.file
+                    label="Установить / сменить изображение для шапки раздела"
+                    name="image"
+                    block="flex-1"
+                />
+            </div>
+
+            <div class="flex gap-3 bg-white p-3 shadow">
+                <div>
+                    <x-html.image-with-modal
+                        :url="$division->preview->src"
+                        object="max-h-14"
+                    />
+                </div>
+
+                <x-form.file
+                    label="Установить / сменить изображение для списка"
+                    name="preview"
+                    block="flex-1"
+                />
             </div>
 
             <x-common.meta-form

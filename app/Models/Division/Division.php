@@ -22,6 +22,7 @@ use App\Traits\hasContents;
 use App\Traits\hasEvents;
 use App\Traits\hasGoals;
 use App\Traits\hasGraduations;
+use App\Traits\hasImage;
 use App\Traits\hasLinks;
 use App\Traits\hasMeta;
 use App\Traits\hasNews;
@@ -49,7 +50,7 @@ class Division extends Model
         hasLinks, hasMeta,
         hasNews, hasEvents,
         hasPartners, hasGoals, hasCareers, hasScience, hasGraduations,
-        hasUsers, hasDocuments
+        hasUsers, hasDocuments, hasImage
     ;
 
     protected array $links = [

@@ -71,19 +71,26 @@ class CabinetDivisionsController extends Controller
     }
 
 
-    public function save(Request $request, ?Division $division): RedirectResponse
+    public function save(Request $request, Division $division): RedirectResponse
     {
 
         $form = $request->validate($division->validateRules(), $division->validateMessage());
 
         $division->fill($form)->save();
 
-        $division->getContentRecord()->fill(['content' => $request->get('content')])->save();
+        $division->content()->fill(['content' => $request->get('content')])->save();
+
+        if($request->file('image'))
+            $division->image->saveImage($request->file('image'));
 
         if($request->get('meta'))
             $division->metaSave($request->get('meta'), $request->file('meta.image'));
 
-        return redirect()->to( $request->has('save-close') ? $division->cabinet_list : $division->cabinet_form);
+        return redirect()->to(
+            $request->has('save-close')
+                ? $division->cabinet_list
+                : $division->cabinet_form
+        );
     }
 
     public function setFilter(Request $request): RedirectResponse

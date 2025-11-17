@@ -11,7 +11,7 @@
 @section('additional-header')
     @component('divisions.education.public.sections.header', [
         'name'  => $division->name,
-        'image' => "img/faculties-headers/$division->code.webp"
+        'image' => $division->image->src
     ]) @endcomponent
 @endsection
 

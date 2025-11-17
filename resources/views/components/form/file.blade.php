@@ -1,3 +1,15 @@
+@props([
+    'id'            => 'form-' . \Illuminate\Support\Str::random(20),
+    'name'          => null,
+    'value'         => null,
+    'label'         => null,
+    'class'         => null,
+    'block'         => null,
+    'placeholder'   => null,
+    'multiple',
+    'required'      => false,
+])
+
 <div class="block relative mt-2 {{ $block ?? "" }}">
     <input
         type="file"
@@ -21,14 +33,14 @@
             focus:text-blue-700
             focus:border-blue-700
 
-            {{@$class}}
+            {{ $class }}
         "
         @isset($multiple)
             multiple
         @endisset
 
-        @required(@$required)
-        placeholder=""
+        @required($required)
+        placeholder="{{ $placeholder }}"
     >
 
     @if(isset($label) && isset($id))
@@ -51,9 +63,7 @@
                 peer-autofill:top-0
             "
         >
-            {{$label}}@if(isset($required))
-                *
-            @endif
+            {{ $label . ( $required ? '*' : '' ) }}
         </label>
     @endif
 </div>
