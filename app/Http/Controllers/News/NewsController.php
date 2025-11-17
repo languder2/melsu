@@ -103,26 +103,54 @@ class NewsController extends Controller
 
     public function show($id): string|RedirectResponse
     {
-        $news = News::find((int)$id);
+        $news = News::with('tag')->find((int)$id);
 
-        if (is_null($news))
+        if (!$news || (!($news->has_approval && $news->is_show) && !auth()->check())) {
             return redirect()->route('pages:main');
+        }
 
-        if( !($news->has_approval && $news->is_show) && !auth()->check() )
-            return redirect()->route('pages:main');
+        $allPublicIds = News::getPublicList()
+            ->pluck('id')
+            ->values();
 
+        $position = $allPublicIds->search($news->id);
+        $relatedNews = collect();
 
-        $previousNews = News::where('id', '<', $news->id)->orderBy('id', 'desc')->first();
+        if ($position !== false && $position < 6) {
+            $total = $allPublicIds->count();
+            $beforeCount = $position;
+            $afterCount = min(6 - $beforeCount, $total - $position - 1);
 
-        $nextNews = News::where('id', '>', $news->id)->orderBy('id', 'asc')->first();
+            $beforeIds = $allPublicIds->slice(0, $position)->all();
+            $afterIds = $allPublicIds->slice($position + 1, $afterCount)->all();
+
+            $relatedIds = array_merge($beforeIds, $afterIds);
+            $relatedIds = array_slice($relatedIds, 0, 6);
+
+        } else {
+            $relatedIds = News::getPublicList()
+                ->where('id', '!=', $news->id)
+                ->limit(6)
+                ->pluck('id')
+                ->all();
+        }
+
+        if (!empty($relatedIds)) {
+            $newsMap = News::find($relatedIds)->keyBy('id');
+            $relatedNews = collect();
+            foreach ($relatedIds as $id) {
+                if ($newsMap->has($id)) {
+                    $relatedNews->push($newsMap->get($id));
+                }
+            }
+        }
 
         return view('pages.page', [
             'title' => 'ФГБОУ ВО "МелГУ": ' . $news->title,
             'contents' => [
                 View::make('components.public.news.news')->with([
                     'news' => $news,
-                    'previousNews' => $previousNews,
-                    'nextNews' => $nextNews,
+                    'relatedNews' => $relatedNews,
                 ])->render(),
             ]
         ]);
