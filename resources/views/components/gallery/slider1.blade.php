@@ -17,7 +17,7 @@
                     :id=" 'modal-img-slider-' . $prefix . '-slide-' . $i"
                     :open="!$i"
                     data-slide="{{ $i }}"
-                    class="slide w-full h-full absolute inset-0 opacity-0 open:z-10 open:opacity-100 bg-gray-200 p-1 duration-1000 rounded-md shadow cursor pointer cursor-pointer focus:outline-none"
+                    class="slide w-full h-full absolute inset-0 opacity-0 open:z-10 open:opacity-100 bg-gray-200 p-1 duration-1000 shadow cursor pointer cursor-pointer focus:outline-none"
                 />
 
             @endforeach
@@ -34,7 +34,6 @@
                         border border-white
                         hover:-mt-1 hover:mb-1 duration-300 transition-[margin]
                         shadow-md shadow-indigo-500 open:shadow-red-800 hover:shadow-red-800
-                        rounded-md
                         object-contain h-20 lg:h-32
                         cursor-pointer
 
