@@ -75,7 +75,7 @@
     </div>
 @endsection
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('DOMContentLoaded', async function () {
         const container = document.getElementById('related-events-container');
         const prevBtn = document.getElementById('scroll-prev');
         const nextBtn = document.getElementById('scroll-next');
@@ -87,20 +87,23 @@
 
         const totalItems = container.children.length;
         let currentIndex = 0;
-        let visibleCount = 0;
+        let visibleCount = 1;
+
+        const minHeight = 157;
 
         function syncHeight() {
             const mainHeight = mainContent.offsetHeight;
-            container.style.maxHeight = mainHeight + 'px';
+            container.style.maxHeight = Math.max(mainHeight, minHeight) + 'px';
         }
 
         function calculateVisibleCount() {
             const firstItem = container.children[0];
             if (!firstItem) return 1;
 
-            const itemHeight = firstItem.offsetHeight || 157;
-            const containerHeight = container.clientHeight;
-            return itemHeight > 0 ? Math.floor(containerHeight / itemHeight) : 1;
+            const itemHeight = firstItem.offsetHeight || minHeight;
+            const containerHeight = container.clientHeight || minHeight;
+            const count = Math.floor(containerHeight / itemHeight);
+            return Math.max(1, count);
         }
 
         function scrollToIndex(index) {
@@ -130,16 +133,32 @@
                 nextBtn.disabled = currentIndex + visibleCount >= totalItems;
             }
         }
+        function imagesLoaded(container) {
+            const images = container.querySelectorAll('img');
+            if (images.length === 0) return Promise.resolve();
+            return Promise.all(
+                Array.from(images).map(img => {
+                    if (img.complete && img.naturalHeight !== 0) {
+                        return Promise.resolve();
+                    }
+                    return new Promise(resolve => {
+                        img.addEventListener('load', resolve, { once: true });
+                        img.addEventListener('error', resolve, { once: true });
+                    });
+                })
+            );
+        }
 
-        function init() {
+        async function init() {
             syncHeight();
-            setTimeout(() => {
-                visibleCount = calculateVisibleCount();
-                updateButtons();
-                if (visibleCount < totalItems) {
-                    scrollToIndex(0);
-                }
-            }, 50);
+            await imagesLoaded(container);
+            syncHeight();
+            visibleCount = calculateVisibleCount();
+            updateButtons();
+            
+            if (container.scrollHeight > container.clientHeight) {
+                scrollToIndex(0);
+            }
         }
 
         prevBtn.addEventListener('click', () => {

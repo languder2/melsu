@@ -41,7 +41,7 @@
                             </button>
                         </div>
                     </div>
-                    <div id="related-news-container" class="hide-scrollbar overflow-y-auto pr-2">
+                    <div id="related-news-container" class="hide-scrollbar overflow-y-auto pr-2 min-h-[169px]">
                         @foreach($relatedNews as $index => $item)
                             <div id="related-item-{{ $index }}" class="border-b py-5 last:border-b-0">
                                 <a href="{{ $item->link }}" class="grid grid-cols-[180px_auto] gap-5 group">
@@ -74,7 +74,7 @@
 </section>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('DOMContentLoaded', async function () {
         const container = document.getElementById('related-news-container');
         const prevBtn = document.getElementById('scroll-prev');
         const nextBtn = document.getElementById('scroll-next');
@@ -86,11 +86,12 @@
 
         const totalItems = container.children.length;
         let currentIndex = 0;
-        let visibleCount = 0;
+        let visibleCount = 1;
 
         function syncHeight() {
             const mainHeight = mainContent.offsetHeight;
-            container.style.maxHeight = mainHeight + 'px';
+            const minHeight = 169;
+            container.style.maxHeight = Math.max(mainHeight, minHeight) + 'px';
         }
 
         function calculateVisibleCount() {
@@ -98,8 +99,9 @@
             if (!firstItem) return 1;
 
             const itemHeight = firstItem.offsetHeight || 169;
-            const containerHeight = container.clientHeight;
-            return itemHeight > 0 ? Math.floor(containerHeight / itemHeight) : 1;
+            const containerHeight = container.clientHeight || 169;
+            const count = Math.floor(containerHeight / itemHeight);
+            return Math.max(1, count);
         }
 
         function scrollToIndex(index) {
@@ -130,15 +132,19 @@
             }
         }
 
-        function init() {
+        async function init() {
             syncHeight();
-            setTimeout(() => {
-                visibleCount = calculateVisibleCount();
-                updateButtons();
-                if (visibleCount < totalItems) {
-                    scrollToIndex(0);
-                }
-            }, 50);
+
+            await imagesLoaded(container);
+
+            syncHeight();
+
+            visibleCount = calculateVisibleCount();
+            updateButtons();
+
+            if (container.scrollHeight > container.clientHeight) {
+                scrollToIndex(0);
+            }
         }
 
         prevBtn.addEventListener('click', () => {
@@ -150,6 +156,22 @@
             const newIndex = Math.min(totalItems - 1, currentIndex + visibleCount);
             scrollToIndex(newIndex);
         });
+
+        function imagesLoaded(container) {
+            const images = container.querySelectorAll('img');
+            if (images.length === 0) return Promise.resolve();
+            return Promise.all(
+                Array.from(images).map(img => {
+                    if (img.complete && img.naturalHeight !== 0) {
+                        return Promise.resolve();
+                    }
+                    return new Promise((resolve) => {
+                        img.addEventListener('load', resolve, { once: true });
+                        img.addEventListener('error', resolve, { once: true });
+                    });
+                })
+            );
+        }
 
         init();
         window.addEventListener('load', init);
