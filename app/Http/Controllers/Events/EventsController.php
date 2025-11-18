@@ -245,12 +245,56 @@ class EventsController extends Controller
         return redirect()->back();
     }
 
-    public function show(?Events $event): View | RedirectResponse
+    public function show(?Events $event): View|RedirectResponse
     {
-        if(!$event)
-            return  redirect()->route('public:events:list');
+        if (!$event) {
+            return redirect()->route('public:events:list');
+        }
 
-        return view('events.public.show', compact('event'));
+        $event->load('category');
+
+        $allPublicIds = Events::where('has_approval', true)
+            ->where('is_show', true)
+            ->where('event_datetime', '<=', now())
+            ->orderBy('event_datetime', 'desc')
+            ->pluck('id')
+            ->values();
+
+        $position = $allPublicIds->search($event->id);
+        $relatedEvents = collect();
+
+        if ($position !== false && $position < 6) {
+            $total = $allPublicIds->count();
+            $beforeCount = $position;
+            $afterCount = min(6 - $beforeCount, $total - $position - 1);
+
+            $beforeIds = $allPublicIds->slice(0, $position)->all();
+            $afterIds = $allPublicIds->slice($position + 1, $afterCount)->all();
+
+            $relatedIds = array_merge($beforeIds, $afterIds);
+            $relatedIds = array_slice($relatedIds, 0, 6);
+        } else {
+            $relatedIds = Events::where('has_approval', true)
+                ->where('is_show', true)
+                ->where('event_datetime', '<=', now())
+                ->where('id', '!=', $event->id)
+                ->orderBy('event_datetime', 'desc')
+                ->limit(6)
+                ->pluck('id')
+                ->all();
+        }
+
+        if (!empty($relatedIds)) {
+            $eventsMap = Events::find($relatedIds)->keyBy('id');
+            $relatedEvents = collect();
+            foreach ($relatedIds as $id) {
+                if ($eventsMap->has($id)) {
+                    $relatedEvents->push($eventsMap->get($id));
+                }
+            }
+        }
+
+        return view('events.public.show', compact('event', 'relatedEvents'));
     }
 
 
