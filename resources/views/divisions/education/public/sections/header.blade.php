@@ -1,6 +1,7 @@
 @props([
     'name'      => null,
-    'image'     => null
+    'image'     => null,
+    'contacts'  => collect()
 ])
 @php
     if(is_null($image))
@@ -18,5 +19,12 @@
                 {{ $name }}
             </h2>
         </div>
+        @if($contacts->isNotEmpty())
+            <div class="text-white">
+
+
+
+            </div>
+        @endif
     </div>
 </section>

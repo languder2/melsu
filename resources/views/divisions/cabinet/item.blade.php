@@ -38,10 +38,14 @@
         </a>
     </div>
 
-    <div class="flex gap-5 items-center justify-center flex-wrap w-46 2xl:w-auto bg-white p-3 rounded-sm shadow ">
+    <div class="flex gap-5 items-center justify-center flex-wrap w-56 2xl:w-auto bg-white p-3 rounded-sm shadow ">
 
         <a href="{{ $division->documentsCabinetList() }}" class="flex-end hover:text-green-700" title="{{ __('common.Documents') }}">
-            <x-lucide-file class="w-6"/>
+            <x-lucide-files class="w-6"/>
+        </a>
+
+        <a href="{{ $division->contacts_cabinet_list }}" class="flex-end hover:text-green-700" title="{{ __('common.Contacts') }}">
+            <x-lucide-phone class="w-6"/>
         </a>
 
         {{--        <form action="{{ route('news.cabinet.set-filter') }}" method="post">--}}
@@ -69,11 +73,20 @@
             <x-lucide-graduation-cap class="w-6"/>
         </a>
 
+        <a href="{{ $division->science_cabinet_list }}" class="flex-end hover:text-green-700" title="{{ __('common.Science') }}">
+            <x-lucide-microscope class="w-6"/>
+        </a>
+
         <a href="{{ $division->history_form }}" class="flex-end hover:text-green-700" title="{{ __('common.History') }}">
             <x-lucide-file-clock class="w-6"/>
         </a>
-        <a href="{{ $division->science_cabinet_list }}" class="flex-end hover:text-green-700" title="{{ __('common.Science') }}">
-            <x-lucide-microscope class="w-6"/>
+
+        <a href="{{ $division->achievements_form }}" class="flex-end hover:text-green-700" title="{{ __('common.Achievements') }}">
+            <x-lucide-file-badge class="w-6"/>
+        </a>
+
+        <a href="{{ $division->gallery_form }}" class="flex-end hover:text-green-700" title="{{ __('common.gallery') }}">
+            <x-lucide-images class="w-6"/>
         </a>
     </div>
 

@@ -25,9 +25,9 @@ class FAQ extends Model
     public static function FormRules($id): array
     {
         return [
-            'question' => 'required',
-            'answer' => 'required',
-            'show' => 'boolean',
+            'question'      => 'required',
+            'answer'        => 'required',
+            'show'          => 'boolean',
             'order' => 'nullable|numeric',
         ];
     }

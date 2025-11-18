@@ -48,7 +48,7 @@
             @disabled($disabled)
             @selected(empty($value))
         >
-            {{$null}}
+            {{ $null . ($required ? '*' : '') }}
         </option>
     @endif
 

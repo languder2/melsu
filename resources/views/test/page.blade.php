@@ -10,14 +10,14 @@
                 {{ $loop->index }}
             </div>
             <div>
-                @if($item instanceof \App\Models\Sections\Contact)
+                @if($item instanceof \App\Models\Minor\Contact)
                     Контакт
                 @else
                     Секция: {!! $item->title ?? null !!}
                 @endif
             </div>
             <div>
-                @if($item instanceof \App\Models\Sections\Contact)
+                @if($item instanceof \App\Models\Minor\Contact)
                     {{ $item->content ?? null }}
                 @else
 

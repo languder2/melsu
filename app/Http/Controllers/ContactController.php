@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Sections\Contact;
+use App\Models\Minor\Contact;
 use App\View\Components\Admin\Contact\Form;
 use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;

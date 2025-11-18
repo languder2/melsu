@@ -6,7 +6,10 @@
     'set'               => 'full',
     'placeholder'       => 'Контент',
 ])
-
+@php
+    if($set === 'gallery' && $initialContent === json_encode(['blocks' => []]))
+        $initialContent = json_encode(['blocks' => [(object)['type' => 'gallery']]])
+@endphp
 <div>
 
     @if($heading)

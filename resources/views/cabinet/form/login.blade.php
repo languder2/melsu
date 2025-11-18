@@ -24,7 +24,7 @@
         Password:
     @endcomponent
 
-    <div class="text-right">
+    <div class="text-right hidden">
         <a href="#" class="underline">
             Забыли пароль?
         </a>

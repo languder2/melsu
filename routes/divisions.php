@@ -35,13 +35,36 @@ Route::middleware('isAdmin')
     });
 
 Route::prefix('cabinet/divisions')->middleware(AuthCabinet::class)->group(function () {
-    Route::get('',                  [CabinetDivisionsController::class, 'list'])->name('divisions.cabinet.list');
-    Route::get('form/{division?}',  [CabinetDivisionsController::class, 'form'])->name('division.cabinet.form');
-    Route::put('save/{division?}',  [CabinetDivisionsController::class, 'save'])->name('division.cabinet.save');
-    Route::post('set-filter',       [CabinetDivisionsController::class, 'setFilter'])->name('divisions.cabinet.set-filter');
 
-    Route::get('history/form/{division?}',  [CabinetDivisionsController::class, 'historyForm'])->name('division.history.form');
-    Route::put('history/save/{division?}',  [CabinetDivisionsController::class, 'historySave'])->name('division.history.save');
+    Route::get('',                                  [CabinetDivisionsController::class, 'list'])
+                                                        ->name('divisions.cabinet.list');
+
+    Route::get('form/{division?}',                  [CabinetDivisionsController::class, 'form'])
+                                                        ->name('division.cabinet.form');
+
+    Route::put('save/{division?}',                  [CabinetDivisionsController::class, 'save'])
+                                                        ->name('division.cabinet.save');
+
+    Route::post('set-filter',                       [CabinetDivisionsController::class, 'setFilter'])
+                                                        ->name('divisions.cabinet.set-filter');
+
+    Route::get('history/form/{division?}',          [CabinetDivisionsController::class, 'historyForm'])
+                                                        ->name('division.history.form');
+
+    Route::put('history/save/{division?}',          [CabinetDivisionsController::class, 'historySave'])
+                                                        ->name('division.history.save');
+
+    Route::get('achievements/form/{division?}',     [CabinetDivisionsController::class, 'achievementsForm'])
+                                                        ->name('division.achievements.form');
+
+    Route::put('achievements/save/{division?}',     [CabinetDivisionsController::class, 'achievementsSave'])
+                                                        ->name('division.achievements.save');
+
+    Route::get('gallery/form/{division?}',          [CabinetDivisionsController::class, 'galleryForm'])
+                                                        ->name('division.gallery.form');
+
+    Route::put('gallery/save/{division?}',          [CabinetDivisionsController::class, 'gallerySave'])
+                                                        ->name('division.gallery.save');
 
 });
 

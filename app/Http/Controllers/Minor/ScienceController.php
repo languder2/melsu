@@ -67,7 +67,7 @@ class ScienceController extends Controller
         if($instance == $science->relation)
             $science->delete();
 
-        return redirect()->to($instance->careers_cabinet_list);
+        return redirect()->to($instance->science_cabinet_list);
     }
 
     public function changeSort(string $entity, int $entity_id, Science $science, $direction): RedirectResponse

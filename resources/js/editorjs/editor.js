@@ -30,6 +30,20 @@ const sets = {
             code: CodeTool,
         }
     },
+    'gallery': {
+        'tools': {
+            gallery: {
+                class: ImageGallery,
+                config: {
+                    sortableJs: Sortable,
+                    endpoints: {
+                        byFile: '/api/upload-image',
+                    },
+                    maxElementCount: 1000,
+                },
+            },
+        }
+    },
     'full':{
         'tools':         {
             paragraph: {
@@ -170,9 +184,27 @@ document.addEventListener('DOMContentLoaded', ()=>{
                     .catch((error) => {
                         console.error('Ошибка сохранения:', error);
                     });
-            }
+            },
+        });
+
+        editor.on('change', () => {
+            const totalBlocks = editor.blocks.getBlocksCount();
+
+            console.log(set)
+
+            // if (totalBlocks > MAX_BLOCKS) {
+            //     // Находим и удаляем последний добавленный блок по его индексу
+            //     const lastIndex = totalBlocks - 1;
+            //     editor.blocks.delete(lastIndex);
+            //
+            //     // Опционально: вывести уведомление пользователю
+            //     console.warn(`Достигнут лимит в ${MAX_BLOCKS} блоков.`);
+            // }
         });
 
     });
+
+
+
 
 })

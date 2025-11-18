@@ -3,10 +3,9 @@
 namespace App\Http\Controllers\Services;
 
 use App\Http\Controllers\Controller;
+use App\Models\Minor\Contact;
 use App\Models\Page\Content;
-use App\Models\Sections\Contact;
 use App\Models\Staff\Affiliation;
-use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class ControlController extends Controller

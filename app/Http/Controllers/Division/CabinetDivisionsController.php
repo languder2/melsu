@@ -119,4 +119,32 @@ class CabinetDivisionsController extends Controller
         return redirect()->to( $request->has('save-close') ? $division->cabinet_list : $division->historyForm());
     }
 
+    public function achievementsForm(Division $division): view|RedirectResponse
+    {
+        $content = $division->content('achievements')->content;
+
+        return view('divisions.cabinet.achievements-form', compact('division', 'content'));
+    }
+
+    public function achievementsSave(Request $request, Division $division): view|RedirectResponse
+    {
+        $division->content('achievements')->fill($request->all())->save();
+
+        return $request->has('save-close') ? redirect()->to($division->cabinet_list) : redirect()->back();
+    }
+
+    public function galleryForm(Division $division): view|RedirectResponse
+    {
+        $content = $division->content('gallery')->content;
+
+        return view('divisions.cabinet.gallery-form', compact('division', 'content'));
+    }
+
+    public function gallerySave(Request $request, Division $division): view|RedirectResponse
+    {
+        $division->content('gallery')->fill($request->all())->save();
+
+        return $request->has('save-close') ? redirect()->to($division->cabinet_list) : redirect()->back();
+    }
+
 }

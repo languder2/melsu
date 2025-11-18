@@ -3,7 +3,7 @@
 namespace App\View\Components\Admin\Contact;
 
 use App\Enums\ContactType;
-use App\Models\Sections\Contact;
+use App\Models\Minor\Contact;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;

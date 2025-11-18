@@ -10,8 +10,9 @@
 
 @section('additional-header')
     @component('divisions.education.public.sections.header', [
-        'name'  => $division->name,
-        'image' => $division->image->src
+        'name'          => $division->name,
+        'image'         => $division->image->src,
+        'contacts'      => $division->contacts
     ]) @endcomponent
 @endsection
 

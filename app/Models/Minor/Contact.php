@@ -2,42 +2,49 @@
 
 namespace App\Models\Minor;
 
+use App\Enums\ContactType;
 use App\Enums\Entities;
-use App\Traits\hasContents;
-use App\Traits\hasImage;
 use App\Traits\hasRelations;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Science extends Model
+class Contact extends Model
 {
-    use SoftDeletes, hasRelations, hasContents, hasImage;
-
-    protected $table = 'sciences';
+    use softDeletes, hasRelations;
+    protected $table = 'contacts';
 
     protected $fillable = [
-        'name',
-        'sort',
+        'id',
+        'title',
+        'content',
+        'type',
         'is_show',
-        'is_approved'
+        'sort',
     ];
 
-    protected $dates = ['deleted_at'];
     public function validateRules(): array
     {
         return [
-            "name"              => "required|string",
-            'sort'              => '',
-            'is_show'           => '',
-            'is_approved'       => '',
+            'title'     => "",
+            'content'   => 'required',
+            'type'      => "required",
+            'is_show'   => '',
         ];
     }
+
     public function validateMessages(): array
     {
         return [
-            'name'              => 'Укажите название'
+            'content'   => 'Укажите значение',
+            'type'      => "Укажите тип",
         ];
     }
+
+    protected $casts = [
+        'is_show'   => 'boolean',
+        'type'      => ContactType::class,
+    ];
+
     protected static function boot()
     {
         parent::boot();
@@ -51,14 +58,12 @@ class Science extends Model
         });
 
         static::deleting(function ($item) {
-            $item->images()->delete();
-            $item->contents()->delete();
         });
     }
 
     public function getCabinetSaveAttribute(): string
     {
-        return route('science.cabinet.save', [
+        return route('contacts.cabinet.save', [
             Entities::getEntityByModel($this->relation::class)->value,
             $this->relation->id,
             $this->id
@@ -67,7 +72,7 @@ class Science extends Model
 
     public function getCabinetFormAttribute(): string
     {
-        return route('science.cabinet.form', [
+        return route('contacts.cabinet.form', [
             Entities::getEntityByModel($this->relation::class)->value,
             $this->relation->id,
             $this->id
@@ -75,7 +80,7 @@ class Science extends Model
     }
     public function getDeleteAttribute(): string
     {
-        return route('science.cabinet.delete', [
+        return route('contacts.cabinet.delete', [
             Entities::getEntityByModel($this->relation::class)->value,
             $this->relation->id,
             $this->id
@@ -83,7 +88,7 @@ class Science extends Model
     }
     public function getSortUpAttribute(): string
     {
-        return route('science.cabinet.change-sort', [
+        return route('contacts.cabinet.change-sort', [
             Entities::getEntityByModel($this->relation::class)->value,
             $this->relation->id,
             $this->id,
@@ -92,11 +97,12 @@ class Science extends Model
     }
     public function getSortDownAttribute(): string
     {
-        return route('science.cabinet.change-sort', [
+        return route('contacts.cabinet.change-sort', [
             Entities::getEntityByModel($this->relation::class)->value,
             $this->relation->id,
             $this->id,
             'down'
         ]);
     }
+
 }

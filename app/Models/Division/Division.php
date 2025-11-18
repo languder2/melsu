@@ -2,7 +2,6 @@
 
 namespace App\Models\Division;
 
-use App\Enums\ContactType;
 use App\Enums\DivisionType;
 use App\Enums\EducationLevel;
 use App\Models\Documents\Document;
@@ -13,11 +12,12 @@ use App\Models\Global\Options;
 use App\Models\Menu\Menu;
 use App\Models\Page\Content as PageContent;
 use App\Models\Partners\Partner;
-use App\Models\Sections\Contact;
 use App\Models\Staff\Affiliation;
 use App\Models\Staff\Staff;
+use App\Models\Upbringing\Upbringing;
 use App\Traits\Documents\hasDocuments;
 use App\Traits\hasCareers;
+use App\Traits\hasContacts;
 use App\Traits\hasContents;
 use App\Traits\hasEvents;
 use App\Traits\hasGoals;
@@ -39,7 +39,6 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Collection;
-use App\Models\Upbringing\Upbringing;
 
 /**
  * @property ?DivisionType $type
@@ -50,7 +49,7 @@ class Division extends Model
         hasLinks, hasMeta,
         hasNews, hasEvents,
         hasPartners, hasGoals, hasCareers, hasScience, hasGraduations,
-        hasUsers, hasDocuments, hasImage
+        hasUsers, hasDocuments, hasImage, hasContacts
     ;
 
     protected array $links = [
@@ -347,30 +346,6 @@ class Division extends Model
     {
         return $this->publicSections()->count();
     }
-    public function contacts(): MorphMany
-    {
-        $query = $this->morphMany(Contact::class, 'relation');
-        return $query->orderBy('type')->orderBy('sort');
-    }
-
-    public function phones(): MorphMany
-    {
-        return $this->morphMany(Contact::class, 'relation')
-            ->where('type',ContactType::Phone)
-            ->orderBy('sort');
-    }
-    public function emails(): MorphMany
-    {
-        return $this->morphMany(Contact::class, 'relation')
-            ->where('type',ContactType::Email)
-            ->orderBy('sort');
-    }
-    public function addresses(): MorphMany
-    {
-        return $this->morphMany(Contact::class, 'relation')
-            ->where('type',ContactType::Address)
-            ->orderBy('sort');
-    }
 
     public function images(): MorphMany
     {
@@ -643,9 +618,27 @@ class Division extends Model
     {
         return route('division.history.form', $this);
     }
-    public function historySave(): string
+    public function getHistorySaveAttribute(): string
     {
         return route('division.history.save', $this);
+    }
+
+    public function getAchievementsFormAttribute(): string
+    {
+        return route('division.achievements.form', $this);
+    }
+    public function getAchievementsSaveAttribute(): string
+    {
+        return route('division.achievements.save', $this);
+    }
+
+    public function getGalleryFormAttribute(): string
+    {
+        return route('division.gallery.form', $this);
+    }
+    public function getGallerySaveAttribute(): string
+    {
+        return route('division.gallery.save', $this);
     }
 
 }

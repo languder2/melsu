@@ -125,6 +125,7 @@ require __DIR__.'/gallery.php';
 require __DIR__.'/goals.php';
 require __DIR__.'/careers.php';
 require __DIR__.'/science.php';
+require __DIR__.'/contacts.php';
 require __DIR__.'/graduations.php';
 require __DIR__.'/users.php';
 
