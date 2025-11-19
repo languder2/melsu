@@ -20,6 +20,9 @@ class Contact extends Model
         'type',
         'is_show',
         'sort',
+        'relation_id',
+        'relation_type',
+
     ];
 
     public function validateRules(): array

@@ -1,5 +1,5 @@
-<h{{$data->level}}>
-    {!! $data->text !!}
-</h{{$data->level}}>
-
-
+@if($data->text)
+    <h{{$data->level}}>
+        {!! $data->text !!}
+    </h{{$data->level}}>
+@endif

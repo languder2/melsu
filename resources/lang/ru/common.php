@@ -66,6 +66,7 @@ return [
     'link'                      => 'ссылка',
 
     'GSC bachelor'              => 'Бакалавриат',
+    'GSC specialist'            => 'Специалитет',
     'GSC master'                => 'Магистратура',
     'GSC postgraduate'          => 'Аспирантура',
 

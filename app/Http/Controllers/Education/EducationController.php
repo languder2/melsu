@@ -46,7 +46,7 @@ class EducationController extends Controller
         if(!$division)
             return redirect()->to(route('public:education:faculties'));
 
-        if($type === "faculty")
+        if($type === "faculty" || $type === "department")
             return view('divisions.education.public.single',compact('division','section','type','op'));
 
         return view('public.education.page',compact('division','section','type','op'));

@@ -21,7 +21,9 @@ class Career extends Model
         'salary_to',
         'sort',
         'is_show',
-        'is_approved'
+        'is_approved',
+        'relation_id',
+        'relation_type',
     ];
 
     protected $dates = ['deleted_at'];

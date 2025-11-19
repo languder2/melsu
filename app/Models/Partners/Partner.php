@@ -23,7 +23,9 @@ class Partner extends Model
         'category_id',
         'is_show',
         'is_approved',
-        'sort'
+        'sort',
+        'relation_id',
+        'relation_type',
     ];
 
     protected $casts = [

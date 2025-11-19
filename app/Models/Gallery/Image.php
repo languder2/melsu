@@ -3,6 +3,7 @@
 namespace App\Models\Gallery;
 
 use App\Models\Services\Log;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
@@ -35,6 +36,19 @@ class Image extends Model
     protected $casts    = [
         'show'  => 'boolean',
     ];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::saving(function ($item) {
+            if(empty($item->name))
+                $item->name = now()->format('d-m-Y H-i-s');
+        });
+
+        static::deleting(function ($item) {
+        });
+    }
     public static function FormRules($id): array
     {
         return [

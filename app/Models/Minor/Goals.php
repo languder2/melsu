@@ -20,7 +20,9 @@ class Goals extends Model
         'content',
         'sort',
         'is_show',
-        'is_approved'
+        'is_approved',
+        'relation_id',
+        'relation_type',
     ];
 
     public function validateRules(): array
@@ -47,6 +49,7 @@ class Goals extends Model
                         ? self::where('relation_type', $item->relation::class)->where('relation_id', $item->relation->id)
                         : self::whereNull('relation_type')
                     )->max('sort') + 100;
+
         });
 
         static::deleting(function ($item) {

@@ -160,6 +160,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
     const editors = document.querySelectorAll('.editorJS');
 
+    console.log(editors.length)
+
     editors.forEach((block) => {
 
         const initialData = JSON.parse(block.dataset.initialContent) ?? { blocks: [] };
@@ -185,21 +187,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
                         console.error('Ошибка сохранения:', error);
                     });
             },
-        });
-
-        editor.on('change', () => {
-            const totalBlocks = editor.blocks.getBlocksCount();
-
-            console.log(set)
-
-            // if (totalBlocks > MAX_BLOCKS) {
-            //     // Находим и удаляем последний добавленный блок по его индексу
-            //     const lastIndex = totalBlocks - 1;
-            //     editor.blocks.delete(lastIndex);
-            //
-            //     // Опционально: вывести уведомление пользователю
-            //     console.warn(`Достигнут лимит в ${MAX_BLOCKS} блоков.`);
-            // }
         });
 
     });

@@ -1,4 +1,4 @@
-@if($block->data->caption)
+@if($block->data->caption && $block->data->caption != '<br>')
     <h3>
         {!! $block->data->caption !!}
     </h3>

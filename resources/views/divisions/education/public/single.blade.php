@@ -16,12 +16,6 @@
     ]) @endcomponent
 @endsection
 
-@section('contacts')
-    @component('divisions.education.public.sections.contacts', [
-        'contacts'  => $division->contacts,
-    ]) @endcomponent
-@endsection
-
 @section('content')
 
     <div class="grid lg:grid-cols-[2fr_1fr] xl:grid-cols-[75%_auto] gap-5 px-2.5 2xl:px-0 mb-6">

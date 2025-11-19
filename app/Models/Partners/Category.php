@@ -17,7 +17,9 @@ class Category extends Model
 
     protected $fillable = [
         'name',
-        'sort'
+        'sort',
+        'relation_id',
+        'relation_type',
     ];
 
     public function validateRules(): array

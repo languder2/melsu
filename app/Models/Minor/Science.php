@@ -19,7 +19,9 @@ class Science extends Model
         'name',
         'sort',
         'is_show',
-        'is_approved'
+        'is_approved',
+        'relation_id',
+        'relation_type',
     ];
 
     protected $dates = ['deleted_at'];
