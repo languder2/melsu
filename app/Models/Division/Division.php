@@ -19,6 +19,8 @@ use App\Traits\Documents\hasDocuments;
 use App\Traits\hasCareers;
 use App\Traits\hasContacts;
 use App\Traits\hasContents;
+use App\Traits\hasDivision;
+use App\Traits\hasDivisionMenu;
 use App\Traits\hasEvents;
 use App\Traits\hasGoals;
 use App\Traits\hasGraduations;
@@ -49,7 +51,8 @@ class Division extends Model
         hasLinks, hasMeta,
         hasNews, hasEvents,
         hasPartners, hasGoals, hasCareers, hasScience, hasGraduations,
-        hasUsers, hasDocuments, hasImage, hasContacts
+        hasUsers, hasDocuments, hasImage, hasContacts,
+        hasDivisionMenu
     ;
 
     protected array $links = [
@@ -639,6 +642,29 @@ class Division extends Model
     public function getGallerySaveAttribute(): string
     {
         return route('division.gallery.save', $this);
+    }
+
+    public function getDeanOfficeLinkAttribute(): ?string
+    {
+        return route('division.education.dean-office',[
+            $this->type->value,
+            $this->id
+        ]);
+    }
+
+    public function getTeachingStaffLinkAttribute(): ?string
+    {
+        return route('division.education.teaching-staff',[
+            $this->type->value,
+            $this->id
+        ]);
+    }
+    public function getDepartmentsLinkAttribute(): ?string
+    {
+        return route('division.education.departments',[
+            $this->type->value,
+            $this->id
+        ]);
     }
 
 }

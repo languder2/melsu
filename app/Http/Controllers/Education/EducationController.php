@@ -52,6 +52,30 @@ class EducationController extends Controller
         return view('public.education.page',compact('division','section','type','op'));
     }
 
+    public function deanOffice(string $type, Division $division = null )
+    {
+        if(!$division || $division->type !== DivisionType::Faculty)
+            return redirect()->route('public:education:faculties');
+
+        return view('divisions.education.public.dean-office',compact('division'));
+    }
+
+    public function teachingStaff(string $type, Division $division )
+    {
+        if(!$division->exists || ($division->type !== DivisionType::Faculty && $division->type !== DivisionType::Department))
+            return redirect()->route('public:education:faculties');
+
+        return view('divisions.education.public.teaching-staff',compact('division'));
+    }
+
+    public function departments(string $type, Division $division )
+    {
+        if(!$division->exists || ($division->type !== DivisionType::Faculty && $division->type !== DivisionType::Department))
+            return redirect()->route('public:education:faculties');
+
+        return view('divisions.education.public.departments',compact('division'));
+    }
+
 
     public function showAllDepartments(): string
     {

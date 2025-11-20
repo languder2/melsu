@@ -2,15 +2,14 @@
 
 namespace App\Models\Education;
 
-use App\Enums\EducationBasis;
 use App\Enums\EducationLevel;
 use App\Models\Division\Division;
 use App\Models\Documents\Document;
 use App\Models\Gallery\Image;
 use App\Models\Global\Options;
 use App\Models\Info\Info;
+use App\Models\Minor\Career;
 use App\Models\Page\Content as PageContent;
-use App\Models\Sections\Career;
 use App\Models\Sections\FAQ;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -150,9 +149,9 @@ class Speciality extends Model
         $result = $this->morphMany(Career::class, 'relation');
 
         if($public)
-            $result->where('active', true);
+            $result->where('is_show', true);
 
-        return $result->orderBy('sort');
+        return $result->orderBy('sort', 'desc');
     }
 
     public function profiles(): HasMany

@@ -72,7 +72,7 @@ return [
 
     'GSC goals'                 => 'Цели и задачи',
     'GSC specialities'          => 'Направления подготовки',
-    'GSC careers'               => 'Карьеры',
+    'GSC careers'               => 'Карьера',
 
     'phone'                     => 'Телефон',
     'email'                     => 'Электронная почта',

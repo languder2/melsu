@@ -9,7 +9,7 @@
 
     <title>@yield('title', 'ФГБОУ ВО «Мелитопольский государственный университет»')</title>
 
-@yield('meta')
+    @yield('meta')
 
     <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 

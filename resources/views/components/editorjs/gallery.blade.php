@@ -16,4 +16,4 @@
     />
 @endif
 
-
+@componentfirst('components.gallery.inline') @endcomponentfirst

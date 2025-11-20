@@ -1,8 +1,6 @@
 <?php
 
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\Division\DivisionController;
-use App\Http\Controllers\Education\EducationController;
 use App\Http\Controllers\Gallery\PublicGallery;
 use App\Http\Controllers\Handbook\HandbookController;
 use App\Http\Controllers\History\HistoryController;
@@ -34,31 +32,6 @@ Route::prefix('cabinet')->group(function () { require __DIR__.'/cabinet.php'; })
 Route::prefix('nomix')->group(function () { require __DIR__.'/nomix.php'; });
 
 
-
-/* Faculties */
-
-Route::get('institutes', [EducationController::class, 'institutes'])->name('public:education:institutes');
-
-Route::get('faculties', [EducationController::class, 'faculties'])->name('public:education:faculties');
-
-Route::get('{type}/{division}/{section?}/{item?}',[EducationController::class, 'division'])
-    ->whereIn('type', ['institute','faculty', 'department','lab','branch'])
-    ->name('public:education:division');
-
-Route::get('departments', [EducationController::class, 'showAllDepartments'])
-        ->name('public:education:departments:list');
-
-Route::get('branches', [EducationController::class, 'showAllBranch'])
-        ->name('public:education:branch:list');
-
-Route::get('labs', [EducationController::class, 'showAllLabs'])
-        ->name('public:labs:list');
-
-/* Divisions: public */
-
-Route::get('divisions', [DivisionController::class,'publicList'])->name('public:division:list');
-Route::get('division/{division?}',[DivisionController::class,'show'])->name('public:division:show');
-Route::get('rectorate',[DivisionController::class,'show'])->setDefaults(['division'=>'rectorate']);
 
 /* Staffs: public */
 

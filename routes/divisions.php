@@ -3,6 +3,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Division\DivisionController;
 use App\Http\Controllers\Division\CabinetDivisionsController;
 use App\Http\Middleware\AuthCabinet;
+use App\Http\Controllers\Education\EducationController;
 
 Route::prefix('admin/divisions')->group(function () {
     Route::get('form/{current?}',  [DivisionController::class, 'form'])->name('division:admin:form');
@@ -65,6 +66,45 @@ Route::prefix('cabinet/divisions')->middleware(AuthCabinet::class)->group(functi
 
     Route::put('gallery/save/{division?}',          [CabinetDivisionsController::class, 'gallerySave'])
                                                         ->name('division.gallery.save');
-
 });
+
+
+Route::get('institutes', [EducationController::class, 'institutes'])->name('public:education:institutes');
+
+Route::get('faculties', [EducationController::class, 'faculties'])->name('public:education:faculties');
+
+
+Route::get('{type}/{division}/dean-office',             [EducationController::class, 'deanOffice'])
+                                                            ->whereIn('type', ['faculty'])
+                                                            ->name('division.education.dean-office');
+
+Route::get('{type}/{division}/teaching-staff',          [EducationController::class, 'teachingStaff'])
+                                                            ->whereIn('type', ['faculty','department'])
+                                                            ->name('division.education.teaching-staff');
+
+Route::get('{type}/{division}/departments',             [EducationController::class, 'departments'])
+                                                            ->whereIn('type', ['faculty','department'])
+                                                            ->name('division.education.departments');
+
+Route::get('{type}/{division}/{section?}/{item?}',[EducationController::class, 'division'])
+    ->whereIn('type', ['institute','faculty', 'department','lab','branch'])
+    ->name('public:education:division');
+
+
+Route::get('departments', [EducationController::class, 'showAllDepartments'])
+    ->name('public:education:departments:list');
+
+Route::get('branches', [EducationController::class, 'showAllBranch'])
+    ->name('public:education:branch:list');
+
+Route::get('labs', [EducationController::class, 'showAllLabs'])
+    ->name('public:labs:list');
+
+/* Divisions: public */
+
+Route::get('divisions', [DivisionController::class,'publicList'])->name('public:division:list');
+Route::get('division/{division?}',[DivisionController::class,'show'])->name('public:division:show');
+Route::get('rectorate',[DivisionController::class,'show'])->setDefaults(['division'=>'rectorate']);
+
+
 

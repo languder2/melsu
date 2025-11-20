@@ -19,22 +19,19 @@ class Gsc extends Component
 
         $this->list = collect();
 
-        if($division->publicGoals->isNotEmpty())
-            $this->list->put(
-                'goals', $division->publicGoals->map(fn($item) => $item->content()->render())->toArray()
-            );
+        $this->list->put(
+            'goals', $division->publicGoals->map(fn($item) => $item->content()->render())->toArray()
+        );
 
-        if($division->publicSpecialities->isNotEmpty())
-            $this->list->put(
-                'specialities', $division->publicSpecialities->groupBy('level')
-                    ->map(fn($level) => $level->map( fn($item) => "$item->spec_code $item->name")->toArray())
-                    ->toArray()
-            );
+        $this->list->put(
+            'specialities', $division->publicSpecialities->groupBy('level')
+            ->map(fn($level) => $level->map( fn($item) => "$item->spec_code $item->name")->toArray())
+            ->toArray()
+        );
 
-        if($division->publicCareers->isNotEmpty())
-            $this->list->put(
-                'careers', $division->publicCareers->pluck('name')->toArray()
-            );
+        $this->list->put(
+            'careers', $division->publicCareers->pluck('name')->toArray()
+        );
     }
 
     public function render(): View|Closure|string

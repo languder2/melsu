@@ -5,7 +5,7 @@
 
 @if($list->isNotEmpty())
     <div class="flex flex-col gap-7">
-        <div class="flex">
+        <div class="flex flex-col 2xl:flex-row ">
             @foreach($list as $key => $group)
                 <label
                     for="division-gsc-{{ $key }}"

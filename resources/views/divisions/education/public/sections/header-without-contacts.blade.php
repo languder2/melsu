@@ -1,5 +1,5 @@
 @props([
-    '$division'      => new \App\Models\Division\Division(),
+    'division'      => new \App\Models\Division\Division(),
 ])
 <div class="pb-5">
     <section
@@ -9,20 +9,12 @@
         <div class="bg-[rgba(40,13,13,0.6)] min-h-full min-w-full pointer-events-none absolute top-0 left-0">
         </div>
         <div class="container flex flex-col lg:flex-row pt-10 lg:pt-0 justify-start relative z-5 pb-5 lg:pb-10 gap-6 lg:items-end">
-            <div class="flex-1">
+            <div>
                 <h2 class="text-white font-bold text-2xl md:text-4xl 2xl:text-6xl ">
                     {{ $division->name }}
                 </h2>
                 {{ Breadcrumbs::view("vendor.breadcrumbs.education",$division->type->value,$division) }}
             </div>
-            @component('divisions.education.public.sections.contacts', [
-                'contacts'  => $division->contacts,
-            ]) @endcomponent
         </div>
     </section>
-    {{--    <section class="container block 2xl:hidden">--}}
-    {{--        @component('divisions.education.public.sections.contacts', [--}}
-    {{--            'contacts'  => $contacts,--}}
-    {{--        ]) @endcomponent--}}
-    {{--    </section>--}}
 </div>

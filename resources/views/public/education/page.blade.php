@@ -20,7 +20,6 @@
             @break
 
             @default @include('public.staffs.division.chief')
-
         @endswitch
 
 

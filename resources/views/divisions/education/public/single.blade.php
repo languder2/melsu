@@ -4,16 +4,8 @@
     {{ $division->meta['title'] ?? "ФГБОУ ВО «МелГУ»: $division->name" }}
 @endsection
 
-{{--@section('breadcrumbs')--}}
-{{--    {{Breadcrumbs::view("vendor.breadcrumbs.base",$division->type->value,$division)}}--}}
-{{--@endsection--}}
-
 @section('additional-header')
-    @component('divisions.education.public.sections.header', [
-        'name'          => $division->name,
-        'image'         => $division->image->src,
-        'contacts'      => $division->contacts
-    ]) @endcomponent
+    @component('divisions.education.public.sections.header', compact('division')) @endcomponent
 @endsection
 
 @section('content')
