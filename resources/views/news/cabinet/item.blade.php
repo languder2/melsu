@@ -7,17 +7,6 @@
             absolute inset-3 flex flex-col gap-3
         "
     >
-        <div class="
-            p-3 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm border border-gray-100
-            {{ $item->has_approval ? "bg-indigo-200/55" : "bg-red-700/55 text-white" }}
-        "
-        >
-            @if($item->relation)
-                {!! $item->relation->name !!}
-            @elseif($item->category)
-                {!! $item->tag->name !!}
-            @endif
-        </div>
 
         <div class="flex-grow"></div>
 

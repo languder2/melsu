@@ -19,7 +19,6 @@ use App\Traits\Documents\hasDocuments;
 use App\Traits\hasCareers;
 use App\Traits\hasContacts;
 use App\Traits\hasContents;
-use App\Traits\hasDivision;
 use App\Traits\hasDivisionMenu;
 use App\Traits\hasEvents;
 use App\Traits\hasGoals;
@@ -662,6 +661,14 @@ class Division extends Model
     public function getDepartmentsLinkAttribute(): ?string
     {
         return route('division.education.departments',[
+            $this->type->value,
+            $this->id
+        ]);
+    }
+
+    public function getSpecialitiesLinkAttribute(): ?string
+    {
+        return route('division.education.specialities',[
             $this->type->value,
             $this->id
         ]);

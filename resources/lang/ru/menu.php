@@ -2,6 +2,7 @@
 
 return [
     'faculty about'                     => 'О факультете',
+    'department about'                  => 'О кафедре',
     'dean office'                       => 'Деканат',
     'teaching staff'                    => 'Педагогический состав',
     'departments and labs'              => 'Кафедры и лаборатории',
@@ -14,4 +15,5 @@ return [
 
     'navigation for'                    => 'Навигация',
     'navigation for faculty'            => 'Навигация по факультету',
+    'navigation for department'         => 'Навигация по кафедре',
 ];

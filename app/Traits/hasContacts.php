@@ -11,10 +11,15 @@ use Illuminate\Support\Facades\Route;
 trait
 hasContacts
 {
-    public function contacts(): morphMany
+    public function contacts($type = null): morphMany
     {
-        return $this->morphMany(Contact::class, 'relation')
+        $builder = $this->morphMany(Contact::class, 'relation')
             ->orderby('sort','desc');
+
+        if($type)
+            $builder->where('type', $type);
+
+        return $builder;
     }
     public function publicContacts(): morphMany
     {

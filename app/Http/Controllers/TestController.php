@@ -20,6 +20,7 @@ use App\Models\Services\Content;
 use App\Models\Users\Role;
 use App\Models\Users\User;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -124,185 +125,15 @@ class TestController extends Controller
 
     public function test()
     {
-        /* Divisions */
-//        Schema::disableForeignKeyConstraints();
-//        $test = new Division();
-//
-//        $list = $test->setConnection('mirror')->where('type', DivisionType::Department)->get();
-//
-//        $list->each(function ($donor) {
-//            $item = Division::where('id',$donor->id)->first();
-//
-//            if($item)
-//
-//                $item->fill($donor->toArray())->save();
-//
-//                $item->content('content')->fill($donor->content('content')->toArray())->save();
-//
-//                if($donor->content('history')->exists)
-//                    $item->content('history')->fill($donor->content('history')->toArray())->save();
-//
-//                if($donor->content('gallery')->exists)
-//                    $item->content('gallery')->fill($donor->content('gallery')->toArray())->save();
-//
-//                if($donor->content('achievements')->exists)
-//                    $item->content('achievements')->fill($donor->content('achievements')->toArray())->save();
-//        });
-//
-//
-//        /* Contacts */
-//
-//        $test = new Contact();
-//
-//        $list = $test->setConnection('mirror')->get();
-//
-//        Contact::truncate();
-//
-//        $list->each(function ($donor) {
-//
-//            $item = Contact::where('id',$donor->id)->firstOrNew([
-//                'id'                => $donor->id,
-//                'relation_id'       => $donor->relation_id,
-//                'relation_type'     => $donor->relation_type,
-//            ]);
-//
-//            $item->fill($donor->toArray())->save();
-//
-//        });
-//
-//        /* Goals */
-//
-//        Goals::truncate();
-//
-//        $test = new Goals();
-//
-//        $list = $test->setConnection('mirror')->get();
-//
-//        $list->each(function ($donor) {
-//
-//            $item = Goals::where('id',$donor->id)->firstOrNew([
-//                'id'                => $donor->id,
-//                'relation_id'       => $donor->relation_id,
-//                'relation_type'     => $donor->relation_type,
-//            ]);
-//
-//            $item->fill($donor->toArray())->save();
-//
-//            $item->content('content')->fill($donor->content('content')->toArray())->save();
-//
-//        });
-//
-//
-//        /* Science */
-//
-//        $test = new Science();
-//
-//        $list = $test->setConnection('mirror')->get();
-//
-//        Science::truncate();
-//
-//        $list->each(function ($donor) {
-//
-//            $item = Science::where('id',$donor->id)->firstOrNew([
-//                'id'                => $donor->id,
-//                'relation_id'       => $donor->relation_id,
-//                'relation_type'     => $donor->relation_type,
-//            ]);
-//
-//            $item->fill($donor->toArray())->save();
-//
-//            $item->content('short')->fill($donor->content('short')->toArray())->save();
-//            $item->content('content')->fill($donor->content('content')->toArray())->save();
-//
-//        });
-//
-//        /* Partners Category */
-//
-//        $test = new \App\Models\Partners\Category();
-//
-//        $list = $test->setConnection('mirror')->get();
-//
-//        \App\Models\Partners\Category::truncate();
-//
-//        $list->each(function ($donor) {
-//
-//            $item =  \App\Models\Partners\Category::where('id',$donor->id)->firstOrNew([
-//                'id'                => $donor->id,
-//                'relation_id'       => $donor->relation_id,
-//                'relation_type'     => $donor->relation_type,
-//            ]);
-//
-//            $item->fill($donor->toArray())->save();
-//
-//        });
-//
-//        /* Partners */
-//
-//        $test = new Partner();
-//
-//        $list = $test->setConnection('mirror')->get();
-//
-//        Partner::truncate();
-//
-//        $list->each(function ($donor) {
-//
-//            $item = Partner::where('id',$donor->id)->firstOrNew([
-//                'id'                => $donor->id,
-//                'relation_id'       => $donor->relation_id,
-//                'relation_type'     => $donor->relation_type,
-//            ]);
-//
-//            $item->fill($donor->toArray())->save();
-//
-////            $item->image->fill($donor->image->toArray())->save();
-//
-//            $item->content('content')->fill($donor->content('content')->toArray())->save();
-//        });
-//
-//        /* Careers */
-//
-//        $test = new Career();
-//
-//        $list = $test->setConnection('mirror')->get();
-//
-//        Career::truncate();
-//
-//        $list->each(function ($donor) {
-//
-//            $item = Career::where('id',$donor->id)->firstOrNew([
-//                'id'                => $donor->id,
-//                'relation_id'       => $donor->relation_id,
-//                'relation_type'     => $donor->relation_type,
-//            ]);
-//
-//            $item->fill($donor->toArray())->save();
-//
-//            $item->content('short')->fill($donor->content('short')->toArray())->save();
-//            $item->content('content')->fill($donor->content('content')->toArray())->save();
-//        });
-//
-//        /* Graduations */
-//
-//        $test = new Graduation();
-//
-//        $list = $test->setConnection('mirror')->get();
-//
-//        Graduation::truncate();
-//
-//        $list->each(function ($donor) {
-//
-//            $item = Graduation::where('id',$donor->id)->firstOrNew([
-//                'id'                => $donor->id,
-//                'relation_id'       => $donor->relation_id,
-//                'relation_type'     => $donor->relation_type,
-//            ]);
-//
-//            $item->fill($donor->toArray())->save();
-//
-//            $item->content('content')->fill($donor->content('content')->toArray())->save();
-//        });
-//
-//        Schema::enableForeignKeyConstraints();
+
+        \App\Models\News\Category::onlyTrashed()->get()->each(function ($category) {
+            DB::table('news_relations')
+                ->where('relation_id', $category->id)
+                ->where('relation_type', $category::class)
+                ->delete();
+
+        });
+
 
     }
 

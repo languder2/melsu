@@ -13,9 +13,14 @@ trait hasSubordination
         return $this->belongsTo(self::class, 'parent_id','id');
     }
 
-    public function subs(): HasMany
+    public function subs($type = null): HasMany
     {
-        return $this->hasMany(self::class, 'parent_id','id');
+        $builder = $this->hasMany(self::class, 'parent_id','id');
+
+        if($type)
+            $builder->where('type', $type);
+
+        return $builder;
     }
     public function tree(?Collection &$collectionion = null, int $level = 0): Collection
     {

@@ -22,20 +22,24 @@
                 @endif
 
             </div>
-            <div class="bg-[#252525] p-5 flex flex-col gap-4">
-                <h3 class="font-bold text-xl text-white">
-                    {{ $division->chief->card->full_name }}
-                </h3>
-                <span class="text-white">
+            <div class="bg-[#252525] p-5 ">
+                <div class="flex flex-col gap-4 items-top">
+                    <h3 class="font-bold text-xl text-white">
+                        {{ $division->chief->card->full_name }}
+                    </h3>
+                    <span class="text-white">
                     {{ $division->chief->post }}
                 </span>
+                </div>
             </div>
         </div>
     @endif
     <div class="bg-white p-5 flex flex-col gap-7">
-        @component('divisions.education.public.sections.contacts', [
-            'contacts'  => $division->contacts,
-            'color'     => 'text-black'
-        ]) @endcomponent
+        <div>
+            @component('divisions.education.public.sections.contacts', [
+                'contacts'  => $division->contacts,
+                'color'     => 'text-black'
+            ]) @endcomponent
+        </div>
     </div>
 </div>

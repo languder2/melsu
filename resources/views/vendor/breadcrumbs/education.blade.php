@@ -1,15 +1,15 @@
-<div class="container pt-6 z-5 relative text-gray-100">
+<div class="container pt-6 z-5 relative text-gray-100 flex  gap-3 flex-wrap">
     @foreach ($breadcrumbs as $breadcrumb)
         @if ($breadcrumb->url && !($loop->last && $loop->count>2) )
-            @unless($loop->first)
-                <span class="px-1"> → </span>
-            @endif
+            <div class="hover:underline duration-300 flex gap-3">
+                @unless($loop->first)
+                    <span class=""> → </span>
+                @endif
 
-            <span class="hover:underline duration-300">
-                <a href="{{ $breadcrumb->url }}" class="font-xs">
+                <a href="{{ $breadcrumb->url }}" class="font-xs text-nowrap">
                     {!! $breadcrumb->title !!}
                 </a>
-            </span>
+            </div>
 
         @endif
 

@@ -18,6 +18,14 @@ enum EducationForm: string
             self::Hybrid       => 'Очно-заочная',
         };
     }
+    public function label(): string
+    {
+        return match ($this) {
+            self::Full         => 'Очная',
+            self::Part         => 'Заочная',
+            self::Hybrid       => 'Очно-заочная',
+        };
+    }
     public function getFullName(): string
     {
         return match ($this) {

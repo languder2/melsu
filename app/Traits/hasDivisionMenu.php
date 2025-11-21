@@ -13,7 +13,8 @@ trait hasDivisionMenu
     {
         return match($this->type){
                 default => null,
-                DivisionType::Faculty     => $this->getFacultyMenu(),
+                DivisionType::Faculty       => $this->getFacultyMenu(),
+                DivisionType::Department    => $this->getDepartmentMenu(),
             };
     }
 
@@ -44,6 +45,62 @@ trait hasDivisionMenu
 
         $menu->put('departments',(object)[
             'name'      => __("menu.departments and labs"),
+            'ico'       => Blade::render('<x-lucide-list-collapse class="w-5" />'),
+            'link'      => $this->departmentslink,
+            'is_link'   => true
+        ]);
+
+        $menu->put('specialities',(object)[
+            'name'      => __("menu.specialities"),
+            'ico'       => Blade::render('<x-lucide-move class="w-5" />'),
+            'link'      => $this->specialitieslink,
+            'is_link'   => true
+        ]);
+
+        $menu->put('sciences',(object)[
+            'name'      => __("menu.sciences"),
+            'ico'       => Blade::render('<x-lucide-microscope class="w-5" />'),
+            'link'      => $this->sciencesLink,
+            'is_link'   => false
+        ]);
+
+        $menu->put('partners',(object)[
+            'name'      => __("menu.partners and graduations"),
+            'ico'       => Blade::render('<x-lucide-handshake class="w-5" />'),
+            'link'      => $this->partnersLink,
+            'is_link'   => false
+        ]);
+
+        $menu->put('incomingStudents',(object)[
+            'name'      => __("menu.for incoming students"),
+            'ico'       => Blade::render('<x-lucide-door-open class="w-5" />'),
+            'link'      => 'https://abiturient.mgu-mlt.ru/',
+            'is_link'   => true
+        ]);
+
+        return $menu;
+    }
+
+    public function getDepartmentMenu(): Collection
+    {
+        $menu = collect();
+
+        $menu->put('about',(object)[
+            'name'      => __("menu.{$this->type->value} about"),
+            'ico'       => Blade::render('<x-lucide-graduation-cap class="w-5" />'),
+            'link'      => $this->link,
+            'is_link'   => true
+        ]);
+
+        $menu->put('employees',(object)[
+            'name'      => __("menu.teaching staff"),
+            'ico'       => Blade::render('<x-lucide-users class="w-5" />'),
+            'link'      => $this->TeachingStaffLink,
+            'is_link'   => true
+        ]);
+
+        $menu->put('labs',(object)[
+            'name'      => __("menu.labs"),
             'ico'       => Blade::render('<x-lucide-list-collapse class="w-5" />'),
             'link'      => $this->departmentslink,
             'is_link'   => true

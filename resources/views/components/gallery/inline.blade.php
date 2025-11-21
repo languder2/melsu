@@ -22,6 +22,3 @@
         @endforeach
     </div>
 @endif
-
-
-__('common.Science')

@@ -5,19 +5,14 @@ namespace App\Http\Controllers\Education;
 use App\Enums\DivisionType;
 use App\Http\Controllers\Controller;
 use App\Models\Division\Division;
-use App\Models\Education\Department;
-use App\Models\Education\Faculty;
-use App\Models\Education\Lab;
-use App\Models\Education\Speciality;
 use App\Models\Menu\Menu;
 use App\View\Components\Specialities\{AllSpeciality, Single as SingleSpeciality};
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\View;
-use Illuminate\Support\Facades\Route;
+use Illuminate\View\View;
 
 class EducationController extends Controller
 {
-    public function institutes(): \Illuminate\View\View
+    public function institutes(): View
     {
         $list = Division::where('show',true)
             ->where('type',DivisionType::Institute)
@@ -68,12 +63,20 @@ class EducationController extends Controller
         return view('divisions.education.public.teaching-staff',compact('division'));
     }
 
-    public function departments(string $type, Division $division )
+    public function departments(string $type, Division $division ): View|RedirectResponse
     {
         if(!$division->exists || ($division->type !== DivisionType::Faculty && $division->type !== DivisionType::Department))
             return redirect()->route('public:education:faculties');
 
         return view('divisions.education.public.departments',compact('division'));
+    }
+
+    public function specialities(string $type, Division $division ): View|RedirectResponse
+    {
+        if(!$division->exists || ($division->type !== DivisionType::Faculty && $division->type !== DivisionType::Department))
+            return redirect()->route('public:education:faculties');
+
+        return view('divisions.education.public.specialities',compact('division'));
     }
 
 
@@ -108,17 +111,6 @@ class EducationController extends Controller
 
         return view('public.education.departments.about',compact('division','menu'));
     }
-
-    public function specialities($code = null): string|RedirectResponse
-    {
-        $division = Division::where('code', $code)->orWhere('id',$code)->first();
-
-        if ($division === null)
-            return redirect()->to(route('public:education:faculties'));
-
-        return view('public.education.faculty.specialities',compact('division'));
-    }
-
 
     public function showAllBranch(): string
     {
