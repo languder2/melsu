@@ -15,7 +15,7 @@
                 data-basis="{{ $place->exists ? $place->type : 'all' }}"
                 data-level="{{ $profile->speciality->level->value }}"
                 class="hidden education-profile profile-check"
-                value="{{ $profile->speciality->spec_code }} {{ $profile->speciality->name }}
+                value="{{ $profile->speciality->spec_code }} {{ $profile->speciality->name }}"
                 @checked(
                     ($place->type === 'budget' || !$place->exists) && $profile->form === \App\Enums\EducationForm::Full
                 )

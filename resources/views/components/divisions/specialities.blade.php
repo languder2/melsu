@@ -12,12 +12,13 @@
         <div>
             <input
                 type="text"
-                name="search"
+                name="profiles-search"
                 class="w-full p-3 bg-transparent border border-[#FFFFFF] outline-0 text-[#FFFFFF] h-[48px] specialities_filter"
                 data-group=".education-profile"
                 value=""
                 placeholder="Поиск"
                 data-filter-type="search"
+                onkeyup="specialitiesSearch()"
             >
         </div>
         <div>

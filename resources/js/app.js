@@ -46,7 +46,8 @@ window.Filters = Filters;
 import * as Scrolls from './service/scrolls.js';
 window.Scrolls = Scrolls;
 
-import {specialitiesFilter} from './public/specialitiesFilter.js';
+import {specialitiesFilter, specialitiesSearch} from './public/specialitiesFilter.js';
 window.specialitiesFilter = specialitiesFilter;
+window.specialitiesSearch = specialitiesSearch;
 
 import './public/regiments.js';
