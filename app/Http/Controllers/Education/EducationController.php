@@ -35,7 +35,9 @@ class EducationController extends Controller
         return view('public.education.faculties.list', compact('list'));
     }
 
-    public function division(string $type,?Division $division = null,?string $section = null, ?string $op = null )
+
+    
+    public function division(string $type,?Division $division,?string $section = null, ?string $op = null )
     {
 
         if(!$division)

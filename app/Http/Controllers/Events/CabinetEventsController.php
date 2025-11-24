@@ -21,8 +21,12 @@ class CabinetEventsController extends Controller
     protected Collection $divisions;
     public function __construct(){
 
-        $this->divisions = auth()->user()->isEditor() ? Division::fullTree()
-            : auth()->user()->divisions->flatMap(fn($item) => $item->getFlattenTree(true))->unique()->keyBy('id');
+        $this->divisions = Division::fullTree();
+
+        if(!auth()->user()->isEditor()){
+            $ids = auth()->user()->divisions->pluck('id')->unique()->toArray();
+            $this->divisions = $this->divisions->filter(fn($item) => in_array($item->id, $ids));
+        }
 
     }
 

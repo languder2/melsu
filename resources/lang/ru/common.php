@@ -49,6 +49,10 @@ return [
     'Contact'                   => 'Контакт',
     'Add contact'               => 'Добавить контакт',
 
+    'divisions'                  => 'подразделения',
+    'division'                   => 'подразделение',
+    'add division'               => 'добавить подразделение',
+
     'arrowR'                    => ' → ',
     'arrowL'                    => ' ← ',
     'arrowT'                    => ' ↑ ',

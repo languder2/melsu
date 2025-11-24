@@ -128,24 +128,20 @@ class DivisionController extends Controller
         return redirect()->to($request->has('save') ? $record->edit : $record->admin);
     }
 
-    public function delete(int $id)
+    public function delete(Division $division)
     {
-        $record = Division::find($id);
+        $division->subs->each(fn($item)=> $item->fill(['parent_id' => null])->save());
 
-        if (!is_null($record))
-            $record->delete();
+        $division->delete();
 
-        $list = Division::where('parent_id',$id)->get();
-
-        foreach ($list as $item)
-            $item->fill(['parent_id' => null])->save();
-
-        return redirect()->route('admin:division:list');
+        return redirect()->back();
     }
 
     /* Public */
     public function publicList():View
     {
+        $coordinatorIDs = Division::whereNotNull('coordinator_id')->get('coordinator_id')->unique('coordinator_id')->pluck('coordinator_id');
+
         $division   = Division::where('code', 'rectorate')->first();
         $menu       = Menu::where('code','university')->first();
         $depth      = 0;

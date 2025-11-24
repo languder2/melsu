@@ -16,6 +16,7 @@ enum DivisionType: string
     case Administration = 'administration';
     case Division       = 'division';
     case Office         = 'office';
+    case NotStructureDivision   = 'NotStructureDivision';
     case Other          = 'other';
     public function getName():string
     {

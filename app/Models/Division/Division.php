@@ -68,6 +68,7 @@ class Division extends Model
 
     protected $fillable = [
         'id',
+        'uuid',
         'acronym',
         'name',
         'alt_name',
@@ -110,6 +111,7 @@ class Division extends Model
         return [
             'acronym'           => "",
             'name'              => "required",
+            'uuid'              => "",
             'alt_name'          => "",
             'code'              => "nullable|unique:divisions,code,{$this->id},id,deleted_at,NULL",
             'type'              => "",
@@ -491,7 +493,7 @@ class Division extends Model
     }
     public function getDeleteAttribute():?string
     {
-        return route('admin:division:delete',$this);
+        return route('divisions.delete',$this);
     }
     public function getToggleShowAttribute():?string
     {
@@ -673,6 +675,12 @@ class Division extends Model
             $this->id
         ]);
     }
+
+    public static function cabinetAddForm(): string
+    {
+        return route('division.cabinet.form');
+    }
+
 
 }
 

@@ -28,7 +28,7 @@ trait hasDocuments
         return $this->documents()->onlyTrashed()->get();
     }
 
-    public function documentsCabinetList(): string
+    public function getDocumentsCabinetListAttribute(): string
     {
         return route('documents.cabinet.list',[
             'entity' => Entities::getEntityByModel($this::class)->value,

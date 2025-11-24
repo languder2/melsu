@@ -105,6 +105,14 @@
                     value="{!! old('code', $division->code) !!}"
                 />
 
+                @if(auth()->user()->isAdmin())
+                    <x-form.input
+                        name="uuid"
+                        label="UUID"
+                        value="{!! old('uuid', $division->uuid) !!}"
+                    />
+                @endif
+
                 <div class="flex gap-3 justify-between items-center">
 
                     <x-form.checkbox.block

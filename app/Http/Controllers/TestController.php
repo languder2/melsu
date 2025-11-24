@@ -126,14 +126,7 @@ class TestController extends Controller
     public function test()
     {
 
-        \App\Models\News\Category::onlyTrashed()->get()->each(function ($category) {
-            DB::table('news_relations')
-                ->where('relation_id', $category->id)
-                ->where('relation_type', $category::class)
-                ->delete();
-
-        });
-
+        return view('test.test');
 
     }
 

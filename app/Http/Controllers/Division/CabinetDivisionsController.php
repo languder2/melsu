@@ -16,10 +16,11 @@ class CabinetDivisionsController extends Controller
 {
     protected Collection $divisions;
     public function __construct(){
+
         $this->divisions = Division::fullTree();
 
         if(!auth()->user()->isEditor()){
-            $ids = auth()->user()->divisions->flatMap(fn($item) => $item->getFlattenTree(true))->pluck('id')->unique()->toArray();
+            $ids = auth()->user()->divisions->pluck('id')->unique()->toArray();
             $this->divisions = $this->divisions->filter(fn($item) => in_array($item->id, $ids));
         }
     }
@@ -42,30 +43,12 @@ class CabinetDivisionsController extends Controller
         return view('divisions.cabinet.list', compact('list'));
     }
 
-    public function form(?Division $division): View
+    public function form(Division $division): View
     {
 
         $divisions = $this->divisions->pluck('name', 'id');
 
         $types = DivisionType::labels();
-
-//        if(!$division->content && $division->sections->count()){
-//
-//            $data = (object)['blocks' => []];
-//
-//            $division->sections->filter(fn($item) => $item->show)->each(function($item) use (&$data){
-//                $data->blocks[] = (object)[
-//                    'type' => 'code',
-//                    'data' => (object)[
-//                        'code' => ( $item->show_title ? "<h4>$item->title</h4>" : '' ) . $item->content,
-//                    ]
-//                ];
-//            });
-//
-//            $division->getContentRecord()->fill(['content' => json_encode($data)])->save();
-//        }
-
-
 
         return view('divisions.cabinet.form', compact('division', 'divisions', 'types'));
     }

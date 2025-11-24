@@ -17,7 +17,9 @@ Route::middleware('isAdmin')
         Route::get('add',                                               [DivisionController::class, 'form'])            ->name('admin:division:add');
         Route::get('edit/{id?}',                                        [DivisionController::class, 'form'])            ->name('admin:division:edit');
         Route::post('save',                                             [DivisionController::class, 'save'])            ->name('admin:division:save');
-        Route::get('delete/{id}',                                       [DivisionController::class, 'delete'])          ->name('admin:division:delete');
+
+        Route::delete('delete/{division}',                              [DivisionController::class, 'delete'])
+                                                                            ->name('divisions.delete');
 
         Route::get('{division}/staffs',                                 [DivisionController::class, 'staffsAdmin'])     ->name('division:admin:staffs:list');
         Route::get('{division}/staffs/{type}/form/{staff?}',            [DivisionController::class, 'staffsForm'])      ->name('division:admin:staffs:form');

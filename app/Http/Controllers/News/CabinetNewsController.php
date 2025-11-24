@@ -21,8 +21,12 @@ class CabinetNewsController extends Controller
     protected int $perPage = 40;
     protected Collection $divisions;
     public function __construct(){
-        $this->divisions = auth()->user()->isEditor() ? Division::fullTree()
-            : auth()->user()->divisions->flatMap(fn($item) => $item->getFlattenTree())->keyBy('id');
+        $this->divisions = Division::fullTree();
+
+        if(!auth()->user()->isEditor()){
+            $ids = auth()->user()->divisions->pluck('id')->unique()->toArray();
+            $this->divisions = $this->divisions->filter(fn($item) => in_array($item->id, $ids));
+        }
 
     }
     public function list(bool $onApproval = false): View
