@@ -11,6 +11,7 @@ return new class extends Migration
         if(!Schema::hasColumn('divisions', 'uuid')){
             Schema::table('divisions', function (Blueprint $table) {
                $table->string('uuid')->nullable()->after('name');
+               $table->string('parent_uuid')->nullable()->after('uuid')->nullable();
             });
         }
     }
@@ -20,6 +21,7 @@ return new class extends Migration
         if(Schema::hasColumn('divisions', 'uuid')){
             Schema::table('divisions', function (Blueprint $table) {
                 $table->dropColumn('uuid');
+                $table->dropColumn('parent_uuid');
             });
         }
     }

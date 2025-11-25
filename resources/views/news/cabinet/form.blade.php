@@ -104,6 +104,15 @@
 
 
             <div class="flex gap-3">
+                @if($news->preview->exists)
+                    <div>
+                        <x-html.image-with-modal
+                            :url="$news->preview->url"
+                            object="max-h-14"
+                        />
+                    </div>
+                @endif
+
                 <x-form.file
                     id="form_image"
                     label="Установить / сменить изображение"

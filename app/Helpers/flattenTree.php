@@ -29,6 +29,8 @@ if (!function_exists('flattenTree')) {
 
         foreach ($items as $item) {
             $item->level = $level;
+            $item->prefix = str_repeat('&nbsp;', $item->level*3). ($item->level ? __('common.arrowT2R')  : '' );
+            $item->nameWithLevel = "$item->prefix $item->name";
             $result->push($item);
 
             $nested = flattenTree(

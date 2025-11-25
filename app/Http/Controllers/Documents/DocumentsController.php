@@ -61,16 +61,12 @@ DocumentsController extends Controller
 
         $document->fill($form)->save();
 
-        Log::withOrigin($document->category, $document);
-
         return redirect()->route('documents:admin:list');
     }
     public function delete(Document $document):RedirectResponse
     {
 
         $document->delete();
-
-        Log::withOrigin($document->category,$document,'delete');
 
         return redirect()->back();
     }
@@ -105,8 +101,6 @@ DocumentsController extends Controller
     public function ApiDelete(?Document $item): JsonResponse
     {
         $item->delete();
-
-        Log::withOrigin($item->relation,$item,'delete');
 
         return response()->json(
             [

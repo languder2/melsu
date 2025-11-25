@@ -150,10 +150,6 @@ class Document extends Model
 
         $item->fill($form)->relation()->associate($model)->save();
 
-        $origin ? Log::withOrigin($origin, $item) : Log::add($item);
-
-
-
         if(array_key_exists('form',$form) && $form['form'])
             $item->getSpecialityForm()->fill(['property' => $form['form']])->save();
 

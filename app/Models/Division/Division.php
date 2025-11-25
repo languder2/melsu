@@ -4,14 +4,13 @@ namespace App\Models\Division;
 
 use App\Enums\DivisionType;
 use App\Enums\EducationLevel;
-use App\Models\Documents\Document;
-use App\Models\Documents\DocumentCategory;
 use App\Models\Education\Speciality;
 use App\Models\Gallery\Image;
 use App\Models\Global\Options;
 use App\Models\Menu\Menu;
 use App\Models\Page\Content as PageContent;
 use App\Models\Partners\Partner;
+use App\Models\Services\Log;
 use App\Models\Staff\Affiliation;
 use App\Models\Staff\Staff;
 use App\Models\Upbringing\Upbringing;
@@ -32,7 +31,6 @@ use App\Traits\hasScience;
 use App\Traits\hasSubordination;
 use App\Traits\hasUsers;
 use App\Traits\resolveRouteBinding;
-use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -104,6 +102,10 @@ class Division extends Model
             $division->ico()->delete();
             $division->preview()->delete();
         });
+
+        static::saved(function ($division) {
+            Log::add($division);
+        });
     }
 
     public function validateRules(): array
@@ -116,7 +118,7 @@ class Division extends Model
             'code'              => "nullable|unique:divisions,code,{$this->id},id,deleted_at,NULL",
             'type'              => "",
             'sort'             => '',
-            'parent_id'         => '',
+            'parent_id'         => "different:$this->id",
             'sections'          => '',
             'chief'             => '',
             'description'       => '',
@@ -128,8 +130,9 @@ class Division extends Model
     public function validateMessage(): array
     {
         return [
-            'name.required' => 'Укажите название',
-            'name.unique' => 'Название уже занято',
+            'name.required'             => 'Укажите название',
+            'name.unique'               => 'Название уже занято',
+            'parent_id'                 => 'Родительское подразделение не может быть текущим',
         ];
     }
     public static function FormRules($id): array
@@ -550,69 +553,6 @@ class Division extends Model
     }
     /* end Staff Links*/
 
-    /* Documents */
-    public function DocumentCategories():MorphMany
-    {
-        return $this->morphMany(DocumentCategory::class, 'relation')
-            ->whereNull('parent_id')
-            ->orderBy('sort')
-            ->orderBy('name')
-            ;
-    }
-    public function getNewDocumentCategorySortAttribute():int
-    {
-        return ($this->DocumentCategories->sortByDesc('sort')->first()->sort ?? 0) + 10;
-    }
-    public function getPublicDocumentCategoriesAttribute(): Collection
-    {
-        return $this->DocumentCategories->where('is_show',true);
-    }
-
-    public function getDocuments():MorphMany
-    {
-        return $this->morphMany(Document::class, 'relation')
-            ->whereNull('parent_id')
-            ->orderBy('sort', 'desc')
-            ->orderBy('name')
-            ;
-    }
-    public function getDocumentsAttribute():Collection
-    {
-        return $this->documents;
-    }
-
-    public function getDocumentsAdminListAttribute():?string
-    {
-        return route('division:admin:documents:list',$this);
-    }
-    public function getDocumentAddAttribute():?string
-    {
-        return route('division:admin:documents:form', $this);
-    }
-    public function getDocumentCategoryFormAttribute():?string
-    {
-        return route('division:admin:document-categories:form', $this);
-    }
-
-    protected function test(): Attribute
-    {
-        return Attribute::make(get: fn () => $this->id);
-    }
-    /* end Documents */
-
-    public function AllDocumentCategories(): Collection
-    {
-        $result = collect();
-
-        foreach ($this->DocumentCategories as $category){
-            $result->put($category->id, $category->name_with_parents);
-
-            foreach($category->subs as $sub)
-                $result->put($sub->id, $sub->name_with_parents);
-        }
-
-        return $result;
-    }
     public static function educationDepartments(): Collection
     {
         return self::where('type',DivisionType::Department)->get();

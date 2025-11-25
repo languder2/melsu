@@ -10,9 +10,9 @@
     @component('admin.components.content-header')
         Подразделения
 
-        @slot('link')
-            {{ route('admin:division:add') }}
-        @endslot
+{{--        @slot('link')--}}
+{{--            {{ route('admin:division:add') }}--}}
+{{--        @endslot--}}
     @endcomponent
 @endsection
 
@@ -48,4 +48,3 @@
     @endforeach
 
 @endsection
-<div class="bg-neutral-200"></div>

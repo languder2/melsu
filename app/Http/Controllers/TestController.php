@@ -6,6 +6,7 @@ use App\Enums\DivisionType;
 use App\Enums\UserRoles;
 use App\Jobs\SendEmailJob;
 use App\Models\Division\Division;
+use App\Models\Documents\DocumentCategory;
 use App\Models\Events\Category;
 use App\Models\Gallery\Image;
 use App\Models\Minor\Career;
@@ -24,6 +25,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Illuminate\View\View;
 
 class TestController extends Controller
 {
@@ -125,7 +127,7 @@ class TestController extends Controller
 
     public function test()
     {
-
+        dd(DocumentCategory::whereNull('relation_type')->inRandomOrder()->first()->documents);
         return view('test.test');
 
     }
@@ -134,6 +136,15 @@ class TestController extends Controller
     {
         echo Str::uuid();
 
+    }
+
+    public function structure(): View
+    {
+        $json = Storage::get('json/get_departments.json');
+
+        $list = collect(json_decode($json)->employee);
+
+        return view('test.index',compact('list'));
     }
 
 

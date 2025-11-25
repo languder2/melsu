@@ -45,8 +45,9 @@ class CabinetDivisionsController extends Controller
 
     public function form(Division $division): View
     {
-
-        $divisions = $this->divisions->pluck('name', 'id');
+        $divisions = $this->divisions
+            ->reject(fn($item) => $item->id === $division->id)
+            ->pluck('nameWithLevel', 'id');
 
         $types = DivisionType::labels();
 
@@ -99,7 +100,7 @@ class CabinetDivisionsController extends Controller
     {
         $division->history->fill($request->all())->save();
 
-        return redirect()->to( $request->has('save-close') ? $division->cabinet_list : $division->historyForm());
+        return redirect()->to( $request->has('save-close') ? $division->cabinet_list : $division->history_form);
     }
 
     public function achievementsForm(Division $division): view|RedirectResponse

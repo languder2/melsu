@@ -4,6 +4,7 @@ namespace App\Models\News;
 
 use App\Models\Gallery\Gallery;
 use App\Models\Gallery\Image;
+use App\Models\Services\Log;
 use App\Traits\hasAuthor;
 use App\Traits\hasContents;
 use App\Traits\hasDivision;
@@ -70,26 +71,6 @@ class News extends Model
         ];
     }
 
-    public function relation():MorphTo
-    {
-        return $this->morphTo();
-    }
-
-
-    public static $month = [
-        'Янв',
-        'Фев',
-        'Мар',
-        'Апр',
-        'Май',
-        'Июн',
-        'Июл',
-        'Авг',
-        'Сен',
-        'Окт',
-        'Ноя',
-        'Дек'
-    ];
     protected $dates = [
         'published_at',
         'deleted_at'
@@ -121,12 +102,6 @@ class News extends Model
             $list->where('news.category', $cid);
 
         return $list->paginate(self::$adminPerPage);
-    }
-
-    public function getPublicationAtAttribute($value)
-    {
-        return self::$month[Carbon::createFromDate($value)->format('n') - 1]
-            . Carbon::createFromDate($value)->format(' j, Y');
     }
 
     public function getPhotoAttribute()
@@ -165,6 +140,14 @@ class News extends Model
     }
 
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::saved(function ($item) {
+            Log::add($item);
+        });
+    }
     public function fill(array $attributes):?self
     {
         if(!empty($attributes)){

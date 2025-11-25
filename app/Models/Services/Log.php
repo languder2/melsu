@@ -12,38 +12,26 @@ class Log extends Model
     protected $fillable = [
         'user_id',
         'action',
-        'comment'
+        'comment',
+        'dataOld',
+        'dataNew',
     ];
     public function relation():MorphTo
     {
         return $this->morphTo();
     }
-    public function origin():MorphTo
+    public static function add($object, ?string $action = null, ?string $comment = null): void
     {
-        return $this->morphTo();
-    }
-
-    public static function add($object, ?string $action = null, ?string $comment = null): ?self
-    {
-        if(!$object->wasChanged() && !$object->wasRecentlyCreated && !$action)
-            return null;
+        if(empty($object->getDirty())) return;
 
         $record = new self([
             'user_id'   => auth()->id(),
             'action'    => $action ?? ($object->wasRecentlyCreated ? 'create' : 'update'),
+            'dataOld'   => json_encode($object->getOriginal()),
+            'dataNew'   => json_encode($object->getDirty()),
             'comment'   => $comment,
         ]);
 
         $record->relation()->associate($object)->save();
-
-        return $record;
-    }
-
-    public static function withOrigin(?Model $origin, ?Model $object, ?string $action = null, ?string $comment = null):void
-    {
-        $record = self::add($object, $action, $comment);
-
-        if($record)
-            $record->origin()->associate($origin)->save();
     }
 }

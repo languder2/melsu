@@ -2,10 +2,7 @@
 
 namespace App\Models\Documents;
 
-use App\Traits\Documents\HasDocumentCategoriesRelationLinks;
-use App\Traits\HasLinks;
 use App\Traits\hasRelations;
-use App\Traits\Test;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -26,8 +23,6 @@ class DocumentCategory extends Model
         'parent_id',
         'is_show',
         'sort',
-        'relation_type',
-        'relation_id',
     ];
 
     protected $casts = [
@@ -35,20 +30,17 @@ class DocumentCategory extends Model
         'sort' => 'integer',
     ];
 
-    public static function FormRules(): array
+    public static function validationRules(): array
     {
         return [
-//            'test'              => "required",
             'name'          => "required",
             'parent_id'     => '',
             'sort'          => '',
             'is_show'       => '',
-            'relation_type' => 'nullable',
-            'relation_id'   => 'nullable',
         ];
     }
 
-    public static function FormMessage(): array
+    public static function validationMessages(): array
     {
         return [
             'name' => 'Укажите названию категории',
@@ -74,12 +66,6 @@ class DocumentCategory extends Model
             $item->subs()->delete();
         });
     }
-
-    protected array $routes = [
-        'categoryAdd'   => 'relation:document:categories:admin:form',
-        'admin'         => 'relation:documents:admin',
-    ];
-
 
     public function documents(): HasMany
     {

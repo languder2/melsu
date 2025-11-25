@@ -2,7 +2,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Documents\DocumentCategoriesController;
 use App\Http\Controllers\Documents\DocumentsController;
-use App\Http\Controllers\Documents\RelationDocumentsController;
+use App\Http\Controllers\Documents\CabinetDocumentsController;
 use App\Http\Middleware\AuthCabinet;
 
 Route::prefix('admin/document-categories')->group(function(){
@@ -37,18 +37,26 @@ Route::middleware(['web','auth.api'])->prefix('api/documents')->group(function (
 });
 
 
-Route::get('admin/documents/relation/{model}/{id}/category/form/{category?}',   [RelationDocumentsController::class, 'formCategory'])->name('relation:document:categories:admin:form');
-Route::get('admin/documents/relation/{model}/{id}/',                            [RelationDocumentsController::class, 'admin'])->name('relation:documents:admin');
+Route::get('admin/documents/relation/{model}/{id}/category/form/{category?}',   [CabinetDocumentsController::class, 'formCategory'])->name('relation:document:categories:admin:form');
+Route::get('admin/documents/relation/{model}/{id}/',                            [CabinetDocumentsController::class, 'admin'])->name('relation:documents:admin');
 
 Route::put('admin/document-categories/save/{category?}',      [DocumentCategoriesController::class,'save'])->name('document_categories:save');
 
 
 Route::prefix('cabinet/documents/{entity}/{entity_id}/')->middleware(AuthCabinet::class)->group(function () {
-    Route::get('/',                         [RelationDocumentsController::class, 'cabinet'])->name('documents.cabinet.list');
+    Route::get('/',                                         [CabinetDocumentsController::class, 'list'])
+                                                                ->name('document-categories.cabinet.list');
 
-//    Route::get('form/{document?}',              [RelationDocumentsController::class, 'form'])->name('goals.cabinet.form');
-//    Route::put('save/{goal?}',              [GoalsController::class, 'save'])->name('goals.cabinet.save');
-//    Route::delete('delete/{goal?}',         [GoalsController::class, 'delete'])->name('goals.cabinet.delete');
-//    Route::get('change-sort/{goal?}/{direction?}',
-//        [GoalsController::class, 'changeSort'])->name('goals.cabinet.change-sort')->defaults('direction', 'down');
+    Route::get('form/{category?}',                          [CabinetDocumentsController::class, 'categoryForm'])
+        ->name('partner-categories.cabinet.form');
+
+    Route::put('save/{category?}',                          [CabinetDocumentsController::class, 'categorySave'])
+        ->name('partner-categories.cabinet.save');
+
+    Route::delete('delete/{category?}',                     [CabinetDocumentsController::class, 'categoryDelete'])
+        ->name('partner-categories.cabinet.delete');
+
+    Route::get('change-sort/{category}/{direction}',        [CabinetDocumentsController::class, 'categoryChangeSort'])
+        ->name('partner-categories.cabinet.change-sort')->defaults('direction', 'down');
 });
+

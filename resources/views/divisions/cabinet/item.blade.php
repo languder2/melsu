@@ -58,31 +58,52 @@
                 <x-lucide-phone class="w-6"/>
             </a>
 
-            <a href="{{ $division->goals_cabinet_list }}" class="flex-end hover:text-green-700" title="{{ __('common.Goals') }}">
-                <x-lucide-goal class="w-6"/>
+            @php $status = $division->goals()->count() && $division->goals()->where('is_approved',false)->count() > 0 @endphp
+            <a href="{{ $division->goals_cabinet_list }}" class="flex-end hover:text-green-700 relative" title="{{ __('common.Goals') . ($status ? '. На модерации' : '')  }}">
+                <x-lucide-goal class="w-6 {{ $status ? 'text-red-700' : null }}"/>
+
+                @if($status)
+                    <x-lucide-triangle-alert class="w-4 absolute -bottom-0.5 -right-1 text-red-700 bg-white" />
+                @endif
             </a>
 
-            <a href="{{ $division->partnersCabinetList() }}" class="flex-end hover:text-green-700" title="{{ __('common.Partners') }}">
-                <x-lucide-handshake class="w-6"/>
+            @php $status = $division->partners()->count() && $division->partners()->where('is_approved',false)->count() > 0 @endphp
+            <a href="{{ $division->partnersCabinetList() }}" class="flex-end hover:text-green-700 relative" title="{{ __('common.Partners') . ($status ? '. На модерации' : '') }}">
+                <x-lucide-handshake class="w-6 {{ $status ? 'text-red-700' : null }}"/>
+                @if($status)
+                    <x-lucide-triangle-alert class="w-4 absolute -bottom-0.5 -right-1 text-red-700 bg-white" />
+                @endif
             </a>
 
-            <a href="{{ $division->careers_cabinet_list }}" class="flex-end hover:text-green-700" title="{{ __('common.Careers') }}">
-                <x-lucide-id-card-lanyard class="w-6"/>
+            @php $status = $division->careers()->count() && $division->careers()->where('is_approved',false)->count() > 0 @endphp
+            <a href="{{ $division->careers_cabinet_list }}" class="flex-end hover:text-green-700 relative" title="{{ __('common.Careers') . ($status ? '. На модерации' : '') }}">
+                <x-lucide-id-card-lanyard class="w-6 {{ $status ? 'text-red-700' : null }}"/>
+                @if($status)
+                    <x-lucide-triangle-alert class="w-4 absolute -bottom-0.5 -right-1 text-red-700 bg-white" />
+                @endif
             </a>
 
-            <a href="{{ $division->graduations_cabinet_list }}" class="flex-end hover:text-green-700" title="{{ __('common.Graduations') }}">
-                <x-lucide-graduation-cap class="w-6"/>
+            @php $status = $division->graduations()->count() && $division->graduations()->where('is_approved',false)->count() > 0 @endphp
+            <a href="{{ $division->graduations_cabinet_list }}" class="flex-end hover:text-green-700 relative" title="{{ __('common.Graduations') . ($status ? '. На модерации' : '') }}">
+                <x-lucide-graduation-cap class="w-6 {{ $status ? 'text-red-700' : null }}"/>
+                @if($status)
+                    <x-lucide-triangle-alert class="w-4 absolute -bottom-0.5 -right-1 text-red-700 bg-white" />
+                @endif
             </a>
 
-            <a href="{{ $division->science_cabinet_list }}" class="flex-end hover:text-green-700" title="{{ __('common.Science') }}">
-                <x-lucide-microscope class="w-6"/>
+            @php $status = $division->science()->count() && $division->science()->where('is_approved',false)->count() > 0 @endphp
+            <a href="{{ $division->science_cabinet_list }}" class="flex-end hover:text-green-700 relative" title="{{ __('common.Science') . ($status ? '. На модерации' : '') }}">
+                <x-lucide-microscope class="w-6 {{ $status ? 'text-red-700' : null }}"/>
+                @if($status)
+                    <x-lucide-triangle-alert class="w-4 absolute -bottom-0.5 -right-1 text-red-700 bg-white" />
+                @endif
             </a>
 
             <a href="{{ $division->history_form }}" class="flex-end hover:text-green-700" title="{{ __('common.History') }}">
                 <x-lucide-file-clock class="w-6"/>
             </a>
 
-            <a href="{{ $division->achievements_form }}" class="flex-end hover:text-green-700" title="{{ __('common.Achievements') }}">
+            <a href="{{ $division->achievements_form }}" class="flex-end hover:text-green-700 relative" title="{{ __('common.Achievements') }}">
                 <x-lucide-file-badge class="w-6"/>
             </a>
 

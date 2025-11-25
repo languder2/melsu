@@ -27,7 +27,6 @@ class CabinetNewsController extends Controller
             $ids = auth()->user()->divisions->pluck('id')->unique()->toArray();
             $this->divisions = $this->divisions->filter(fn($item) => in_array($item->id, $ids));
         }
-
     }
     public function list(bool $onApproval = false): View
     {
@@ -60,7 +59,7 @@ class CabinetNewsController extends Controller
         $list = $list->paginate($this->perPage);
 
         $byFilter = collect([
-            'divisions' => flattenTreeForSelect($this->divisions),
+            'divisions' => $this->divisions->pluck('nameWithLevel', 'id'),
             'authors'   =>
                 $this->divisions
                 ->flatMap(fn($division) => $division->news)
@@ -88,7 +87,7 @@ class CabinetNewsController extends Controller
 
     public function form(News $news): View
     {
-        $divisions  = flattenTreeForSelect($this->divisions);
+        $divisions  = $this->divisions->pluck('nameWithLevel', 'id');
 
         $categories = Category::all()->pluck('name', 'id');
 

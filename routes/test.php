@@ -8,4 +8,5 @@ Route::get('test/view',         [TestController::class,'view']);
 Route::get('test/index',        [TestController::class,'index']);
 Route::get('test/test',         [TestController::class,'test']);
 Route::get('test/pass',         [TestController::class,'pass']);
+Route::get('test/structure',    [TestController::class,'structure']);
 

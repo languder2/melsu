@@ -275,16 +275,12 @@ class Image extends Model
 
         if($image){
             $this->saveImage($image);
-            Log::withOrigin($this->relation,$this);
         }
         elseif($preview){
             $this->getReferenceID($preview);
-            Log::withOrigin($this->relation,$this);
         }
         else{
             $this->delete();
-            if($this->exists)
-                Log::add($this,'delete');
         }
     }
 

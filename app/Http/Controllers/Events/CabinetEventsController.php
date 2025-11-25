@@ -59,7 +59,7 @@ class CabinetEventsController extends Controller
         $list = $list->paginate($this->perPage);
 
         $byFilter = collect([
-            'divisions' => flattenTreeForSelect($this->divisions),
+            'divisions' => $this->divisions->pluck('nameWithLevel', 'id'),
             'authors'   =>
                 $this->divisions
                     ->flatMap(fn($division) => $division->events)
@@ -86,9 +86,9 @@ class CabinetEventsController extends Controller
     public function form(Events $event): View
     {
 
-        $divisions = $this->divisions->pluck('name','id');
+        $divisions = $this->divisions->pluck('nameWithLevel','id');
 
-        $divisionsDiff = $event->divisions->diff($this->divisions)->pluck('name','id');
+        $divisionsDiff = $event->divisions->diff($this->divisions)->pluck('nameWithLevel','id');
 
         $categories = Category::all()->pluck('name', 'id');
 

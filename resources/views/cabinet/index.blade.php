@@ -35,6 +35,15 @@
                     :link=" route('divisions.cabinet.list') "
                 />
             @endif
+
+            @if(auth()->user()->isEditor())
+                <x-cabinet.sections.index-link
+                    lucide="triangle-alert"
+                    color="text-red-800"
+                    text="Требует утверждения"
+                    :link=" route('divisions.cabinet.list') "
+                />
+            @endif
         </div>
     @endauth
 @endsection

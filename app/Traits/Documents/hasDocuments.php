@@ -4,7 +4,6 @@ namespace App\Traits\Documents;
 
 use App\Enums\Entities;
 use App\Models\Documents\Document;
-use App\Models\Documents\DocumentCategory;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Support\Collection;
 
@@ -21,7 +20,7 @@ trait hasDocuments
     }
     public function publicDocuments(): Collection
     {
-        return $this->documents()->public()->get();
+        return $this->documents()->where('is_show',true)->get();
     }
     public function trashedDocuments(): Collection
     {
@@ -30,7 +29,7 @@ trait hasDocuments
 
     public function getDocumentsCabinetListAttribute(): string
     {
-        return route('documents.cabinet.list',[
+        return route('document-categories.cabinet.list',[
             'entity' => Entities::getEntityByModel($this::class)->value,
             'entity_id' => $this->id
         ]);

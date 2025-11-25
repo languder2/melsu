@@ -4,7 +4,9 @@
 ])
 @if(!empty($division->history->render()))
     <div class="flex flex-col gap-6">
-        <h2 class="font-bold text-xl md:text-3xl">История факультета</h2>
+        <h2 class="font-bold text-xl md:text-3xl first-letter:uppercase">
+            {{ __("common.{$division->type->value} history") }}
+        </h2>
 
         <div id="{{ $id }}" class="flex flex-col gap-3 overflow-hidden duration-300 ease-linear max-h-80"
         >

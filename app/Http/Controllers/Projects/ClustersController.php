@@ -33,10 +33,10 @@ class ClustersController extends Controller
         Log::add($current);
 
         if($request->has('short'))
-            $current->getContent('short')->updateWithLog($request->get('short'));
+            $current->getContent('short')->fill(['content' => $request->get('short')])->save();
 
         if($request->has('full'))
-            $current->getContent('full')->updateWithLog($request->get('full'));
+            $current->getContent('full')->fill(['content' => $request->get('full')])->save();
 
         $current->preview->includeSave($request->file('image'),$request->get('preview'));
 

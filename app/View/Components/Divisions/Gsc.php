@@ -25,8 +25,11 @@ class Gsc extends Component
 
         $this->list->put(
             'specialities', $division->publicSpecialities->groupBy('level')
-            ->map(fn($level) => $level->map( fn($item) => "$item->spec_code $item->name")->toArray())
-            ->toArray()
+            ->map(fn($level) => $level->map(
+                fn($item) =>
+                    "$item->spec_code $item->name" . ( $item->name_profile ? "($item->name_profile)" : null)
+                )->toArray()
+            )->toArray()
         );
 
         $this->list->put(

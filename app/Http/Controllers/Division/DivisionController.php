@@ -321,8 +321,6 @@ class DivisionController extends Controller
 
         $document->fill($form)->relation()->associate($division)->save();
 
-        Log::withOrigin($document->category, $document);
-
         return redirect()->to( $document->category->relation_admin );
     }
     /* end Documents */

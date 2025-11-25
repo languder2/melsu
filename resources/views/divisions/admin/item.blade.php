@@ -71,17 +71,17 @@
             </a>
         </div>
         <div class="flex-none w-14 text-white ms-10">
-            <a
-                href="{{route('admin:division:delete',$record->id)}}"
-                class="
-                    py-2 px-4 rounded-md
-                    bg-red-950
-                    hover:bg-red-700
-                    active:bg-gray-700
-                "
-            >
-                <i class="fas fa-trash w-4 h-4"></i>
-            </a>
+{{--            <a--}}
+{{--                href="{{route('admin:division:delete',$record->id)}}"--}}
+{{--                class="--}}
+{{--                    py-2 px-4 rounded-md--}}
+{{--                    bg-red-950--}}
+{{--                    hover:bg-red-700--}}
+{{--                    active:bg-gray-700--}}
+{{--                "--}}
+{{--            >--}}
+{{--                <i class="fas fa-trash w-4 h-4"></i>--}}
+{{--            </a>--}}
         </div>
     </div>
 </div>
