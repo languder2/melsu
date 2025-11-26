@@ -57,10 +57,11 @@ class CabinetDivisionsController extends Controller
 
     public function save(Request $request, Division $division): RedirectResponse
     {
+        if(auth()->user()->isEditor()){
+            $form = $request->validate($division->validateRules(), $division->validateMessage());
 
-        $form = $request->validate($division->validateRules(), $division->validateMessage());
-
-        $division->fill($form)->save();
+            $division->fill($form)->save();
+        }
 
         $division->content()->fill(['content' => $request->get('content')])->save();
 
@@ -91,28 +92,32 @@ class CabinetDivisionsController extends Controller
 
     public function historyForm(Division $division): view|RedirectResponse
     {
-        $history = $division->content('history')->content;
-
-        return view('divisions.cabinet.history-form', compact('division', 'history'));
+        return view('divisions.cabinet.history-form', compact('division'));
     }
 
     public function historySave(Request $request, Division $division): view|RedirectResponse
     {
         $division->history->fill($request->all())->save();
 
+        $division->option('has_history_in_moderation')
+            ->fill(['property' => $request->input('is_approved')])
+            ->save();
+
         return redirect()->to( $request->has('save-close') ? $division->cabinet_list : $division->history_form);
     }
 
     public function achievementsForm(Division $division): view|RedirectResponse
     {
-        $content = $division->content('achievements')->content;
-
-        return view('divisions.cabinet.achievements-form', compact('division', 'content'));
+        return view('divisions.cabinet.achievements-form', compact('division'));
     }
 
     public function achievementsSave(Request $request, Division $division): view|RedirectResponse
     {
         $division->content('achievements')->fill($request->all())->save();
+
+        $division->option('has_achievements_in_moderation')
+            ->fill(['property' => $request->input('is_approved')])
+            ->save();
 
         return $request->has('save-close') ? redirect()->to($division->cabinet_list) : redirect()->back();
     }
@@ -127,6 +132,10 @@ class CabinetDivisionsController extends Controller
     public function gallerySave(Request $request, Division $division): view|RedirectResponse
     {
         $division->content('gallery')->fill($request->all())->save();
+
+        $division->option('has_gallery_in_moderation')
+            ->fill(['property' => $request->input('is_approved')])
+            ->save();
 
         return $request->has('save-close') ? redirect()->to($division->cabinet_list) : redirect()->back();
     }

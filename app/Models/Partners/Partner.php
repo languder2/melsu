@@ -3,6 +3,7 @@
 namespace App\Models\Partners;
 
 use App\Enums\Entities;
+use App\Models\Services\Log;
 use App\Traits\hasContents;
 use App\Traits\hasImage;
 use App\Traits\hasRelations;
@@ -49,6 +50,18 @@ class Partner extends Model
                         : $item->relation->partners()->max('sort')
                     )
                 ;
+        });
+
+        static::saved(function ($item) {
+            if($item->relation)
+                $item->relation
+                    ->option('has_partners_in_moderation')
+                    ->fill(['property' =>
+                            $item->relation->partners()->count() === 0
+                            || $item->relation->partners()->where('is_approved',false)->count() === 0]
+                    )->save();
+
+            Log::add($item);
         });
 
         static::deleting(function ($item) {});

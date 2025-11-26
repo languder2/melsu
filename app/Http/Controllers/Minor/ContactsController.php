@@ -38,7 +38,6 @@ class ContactsController extends Controller
         if(!$contact->exists)
             $contact->relation()->associate($instance);
 
-
         $form = $request->validate($contact->validateRules(), $contact->validateMessages());
 
         $contact->fill($form)->save();

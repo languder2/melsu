@@ -88,7 +88,6 @@
                     required
                 />
 
-
                 <x-form.checkbox.block
                     id="is_show"
                     name="is_show"
@@ -99,6 +98,9 @@
                     block="pe-2"
                 />
 
+                <x-cabinet.elements.is-approved
+                    :object=" $contact "
+                />
             </div>
          </div>
     </form>

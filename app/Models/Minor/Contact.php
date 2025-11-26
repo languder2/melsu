@@ -4,6 +4,7 @@ namespace App\Models\Minor;
 
 use App\Enums\ContactType;
 use App\Enums\Entities;
+use App\Models\Services\Log;
 use App\Traits\hasRelations;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -19,6 +20,7 @@ class Contact extends Model
         'content',
         'type',
         'is_show',
+        'is_approved',
         'sort',
         'relation_id',
         'relation_type',
@@ -28,18 +30,19 @@ class Contact extends Model
     public function validateRules(): array
     {
         return [
-            'title'     => "",
-            'content'   => 'required',
-            'type'      => "required",
-            'is_show'   => '',
+            'title'         => "",
+            'content'       => 'required',
+            'type'          => "required",
+            'is_show'       => '',
+            'is_approved'   => '',
         ];
     }
 
     public function validateMessages(): array
     {
         return [
-            'content'   => 'Укажите значение',
-            'type'      => "Укажите тип",
+            'content'       => 'Укажите значение',
+            'type'          => "Укажите тип",
         ];
     }
 
@@ -57,7 +60,19 @@ class Contact extends Model
                 $item->sort = ($item->relation
                         ? self::where('relation_type', $item->relation::class)->where('relation_id', $item->relation->id)
                         : self::whereNull('relation_type')
-                    )->max('sort') + 100;
+                   )->max('sort') + 100;
+        });
+
+        static::saved(function ($item) {
+            if($item->relation)
+                $item->relation
+                    ->option('has_contacts_in_moderation')
+                    ->fill(['property' =>
+                        $item->relation->contacts()->count() === 0
+                        || $item->relation->contacts()->where('is_approved',false)->count() === 0]
+                    )->save();
+
+            Log::add($item);
         });
 
         static::deleting(function ($item) {

@@ -16,6 +16,7 @@ class Content extends Model
         'type',
         'editor',
         'content',
+        'is_approved',
     ];
 
     protected static function boot()
@@ -23,13 +24,16 @@ class Content extends Model
         parent::boot();
 
         static::saving(function ($item) {
-            if($item instanceof Content && $item->exists) {
+            if($item instanceof Content && $item->exists && $item->getOriginal('is_approved') === $item->is_approved) {
                 $old = json_encode(json_decode($item->getOriginal('content'))->blocks ?? []);
                 $new = json_encode(json_decode($item->content)->blocks);
 
                 if($old === $new)
                     return false;
             }
+
+            if($item->relation && !auth()->user()->isEditor())
+                $item->relation->fill(['is_approved' => false])->save();
 
             return true;
         });

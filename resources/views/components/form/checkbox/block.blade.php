@@ -33,7 +33,7 @@
         @endisset
 
         @class([
-            'ms-2 text-gray-900 cursor-pointer',
+            'ms-2 cursor-pointer',
             $class ?? null
         ])
     >

@@ -26,6 +26,7 @@ use App\Traits\hasImage;
 use App\Traits\hasLinks;
 use App\Traits\hasMeta;
 use App\Traits\hasNews;
+use App\Traits\hasOptions;
 use App\Traits\hasPartners;
 use App\Traits\hasScience;
 use App\Traits\hasSubordination;
@@ -49,7 +50,7 @@ class Division extends Model
         hasNews, hasEvents,
         hasPartners, hasGoals, hasCareers, hasScience, hasGraduations,
         hasUsers, hasDocuments, hasImage, hasContacts,
-        hasDivisionMenu
+        hasDivisionMenu, hasOptions
     ;
 
     protected array $links = [
@@ -76,7 +77,8 @@ class Division extends Model
         'description',
         'code',
         'sort',
-        'show',
+        'is_show',
+        'is_approved',
     ];
 
     protected $visible = [
@@ -86,7 +88,8 @@ class Division extends Model
         'code',
         'parent_id',
         'coordinator_id',
-        'show'
+        'is_show',
+        'is_approved'
     ];
     protected $casts = [
         'type'  => DivisionType::class,
@@ -124,7 +127,8 @@ class Division extends Model
             'description'       => '',
             'image'             => '',
             'preview'           => '',
-            'show'              => '',
+            'is_show'           => '',
+            'is_approved'       => '',
         ];
     }
     public function validateMessage(): array

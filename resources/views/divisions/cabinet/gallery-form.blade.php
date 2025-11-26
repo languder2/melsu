@@ -51,11 +51,17 @@
 
         <x-form.errors setTheme="2"/>
 
+        <div class="bg-white p-3 shadow flex gap-3">
+            <x-cabinet.elements.is-approved
+                :object=" $division->content('gallery') "
+            />
+        </div>
+
         <div class="flex flex-col gap-3 ">
             <x-editorjs.editor
                 set="gallery"
                 name="content"
-                :initialContent=" $content "
+                :initialContent=" $division->content('gallery')->content "
             />
         </div>
 

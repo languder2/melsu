@@ -3,6 +3,7 @@
 namespace App\Models\Minor;
 
 use App\Enums\Entities;
+use App\Models\Services\Log;
 use App\Traits\hasContents;
 use App\Traits\hasLinks;
 use App\Traits\hasRelations;
@@ -50,6 +51,18 @@ class Goals extends Model
                         : self::whereNull('relation_type')
                     )->max('sort') + 100;
 
+        });
+
+        static::saved(function ($item) {
+            if($item->relation)
+                $item->relation
+                    ->option('has_goals_in_moderation')
+                    ->fill(['property' =>
+                            $item->relation->goals()->count() === 0
+                            || $item->relation->goals()->where('is_approved',false)->count() === 0]
+                    )->save();
+
+            Log::add($item);
         });
 
         static::deleting(function ($item) {

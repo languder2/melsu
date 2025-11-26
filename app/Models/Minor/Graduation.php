@@ -3,6 +3,7 @@
 namespace App\Models\Minor;
 
 use App\Enums\Entities;
+use App\Models\Services\Log;
 use App\Traits\hasContents;
 use App\Traits\hasImage;
 use App\Traits\hasRelations;
@@ -52,6 +53,18 @@ class Graduation extends Model
                         ? self::where('relation_type', $item->relation::class)->where('relation_id', $item->relation->id)
                         : self::whereNull('relation_type')
                     )->max('sort') + 100;
+        });
+
+        static::saved(function ($item) {
+            if($item->relation)
+                $item->relation
+                    ->option('has_graduations_in_moderation')
+                    ->fill(['property' =>
+                            $item->relation->graduations()->count() === 0
+                            || $item->relation->graduations()->where('is_approved',false)->count() === 0]
+                    )->save();
+
+            Log::add($item);
         });
 
         static::deleting(function ($item) {

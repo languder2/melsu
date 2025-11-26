@@ -58,75 +58,81 @@
         <x-form.errors setTheme="2"/>
 
         <div class="flex flex-col gap-3 ">
-            <div class="flex-1 bg-white p-3 shadow">
-                <x-form.select2
-                    id="form_parent_id"
-                    name="parent_id"
-                    value="{{ old('name', $division->parent_id) }}"
-                    null="Родительское подразделение"
-                    :list=" $divisions ?? [] "
-                />
+            @if(auth()->user()->isEditor())
+                <div class="flex-1 bg-white p-3 shadow">
+                    <x-form.select2
+                        id="form_parent_id"
+                        name="parent_id"
+                        value="{{ old('name', $division->parent_id) }}"
+                        null="Родительское подразделение"
+                        :list=" $divisions ?? [] "
+                    />
 
-                <x-form.select2
-                    id="form_type"
-                    name="type"
-                    value="{{ old('name', $division->type) }}"
-                    null="Выбрать тип подразделения"
-                    :list=" $types "
-                />
-
-                <x-form.input
-                    name="name"
-                    label="Название"
-                    value="{!! old('name', $division->name) !!}"
-                    required
-                />
-
-                <div class="flex flex-col md:flex-row gap-3">
-                    <x-form.input
-                        name="acronym"
-                        label="Акроним"
-                        value="{!! old('acronym', $division->acronym) !!}"
-                        block="w-24"
+                    <x-form.select2
+                        id="form_type"
+                        name="type"
+                        value="{{ old('name', $division->type) }}"
+                        null="Выбрать тип подразделения"
+                        :list=" $types "
                     />
 
                     <x-form.input
-                        name="alt_name"
-                        label="Сокращенное название"
-                        value="{!! old('alt_name', $division->alt_name) !!}"
-                        block="flex-1"
+                        name="name"
+                        label="Название"
+                        value="{!! old('name', $division->name) !!}"
+                        required
                     />
 
+                    <div class="flex flex-col md:flex-row gap-3">
+                        <x-form.input
+                            name="acronym"
+                            label="Акроним"
+                            value="{!! old('acronym', $division->acronym) !!}"
+                            block="w-24"
+                        />
+
+                        <x-form.input
+                            name="alt_name"
+                            label="Сокращенное название"
+                            value="{!! old('alt_name', $division->alt_name) !!}"
+                            block="flex-1"
+                        />
+
+                    </div>
+
+                    <x-form.input
+                        name="code"
+                        label="Code / Alias"
+                        value="{!! old('code', $division->code) !!}"
+                    />
+
+                    @if(auth()->user()->isAdmin())
+                        <x-form.input
+                            name="uuid"
+                            label="UUID"
+                            value="{!! old('uuid', $division->uuid) !!}"
+                        />
+                    @endif
+
+                    <div class="flex gap-3 items-center">
+
+                        <x-form.checkbox.block
+                            id="is_show"
+                            name="is_show"
+                            :default="0"
+                            :value="1"
+                            label="Опубликовать"
+                            :checked=" old('is_show', $division->exists ? $division->is_show : true)"
+                            block="pe-2"
+                        />
+
+                        <x-cabinet.elements.is-approved
+                            :object=" $division "
+                        />
+                    </div>
                 </div>
+            @endif
 
-                <x-form.input
-                    name="code"
-                    label="Code / Alias"
-                    value="{!! old('code', $division->code) !!}"
-                />
-
-                @if(auth()->user()->isAdmin())
-                    <x-form.input
-                        name="uuid"
-                        label="UUID"
-                        value="{!! old('uuid', $division->uuid) !!}"
-                    />
-                @endif
-
-                <div class="flex gap-3 justify-between items-center">
-
-                    <x-form.checkbox.block
-                        id="is_show"
-                        name="is_show"
-                        :default="0"
-                        :value="1"
-                        label="Опубликовать"
-                        :checked=" old('show', $division->exists ? $division->show : true)"
-                        block="pe-2"
-                    />
-                </div>
-
-            </div>
 
             <div class="flex gap-3 bg-white p-3 shadow">
                 <div>
