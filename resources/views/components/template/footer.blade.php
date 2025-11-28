@@ -66,7 +66,7 @@
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-white">
                 <div class="grid grid-cols-1">
-                    <a href="{{url('sved')}}" class="text-md mb-4 hover:opacity-80 hover:text-red-200 w-fit transition duration-300 ease-linear">Сведения об образовательной организации</a>
+                    <a href="{{url('sveden/common')}}" class="text-md mb-4 hover:opacity-80 hover:text-red-200 w-fit transition duration-300 ease-linear">Сведения об образовательной организации</a>
                     <a href="{{url('history')}}" class="text-md mb-4 hover:opacity-80 hover:text-red-200 w-fit transition duration-300 ease-linear">История МелГУ</a>
                     <a href="{{url('rectorate')}}" class="text-md mb-4 hover:opacity-80 hover:text-red-200 w-fit transition duration-300 ease-linear">Ректорат</a>
                     <a href="{{url('divisions')}}" class="text-md mb-4 hover:opacity-80 hover:text-red-200 w-fit transition duration-300 ease-linear">Структура Университета</a>

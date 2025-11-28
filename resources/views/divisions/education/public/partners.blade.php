@@ -16,47 +16,13 @@
                 {{ __('menu.partners and graduations') }}
             </h2>
 
-            @if($division->partnerCategories->count() > 1)
-                <div class="flex gap-3 border-b border-gray-200">
-                    @foreach($division->partnerCategories as $category)
-                        <a
-                            href="#"
-                            data-category="{{ $category->id }}"
-                            class=""
-                        >
-                            {{ $category->name }}
-                        </a>
-                    @endforeach
-                </div>
-            @endif
-            @foreach($division->partnerCategories as $category)
-                <div
-                    data-category="{{ $category->id }}"
-                    class="partnerList grid grid-cols-1 lg:grid-cols-2 gap-3 @if(!$loop->first) overflow-hidden max-h-0 @endif"
-                >
-                    @foreach($category->partners as $partner)
-                        <a
-                            href="{{ $partner->link ?? '#' }}"
-                            class="flex shadow hover:-mt-1 hover:mb-1 duration-300 transition-all"
-                            @empty($partner->link)
-                                onclick="return false"
-                            @endempty
-                            target="_blank"
-                        >
-                            <img
-                                src="{{ $partner->image->src }}"
-                                alt="{{ $partner->name }}"
-                                class="aspect-square object-contain max-h-20 bg-gray-200 p-1"
-                            />
-                            <div class="p-3 bg-white flex items-center flex-1 font-semibold">
-                                {{ $partner->name }}
-                            </div>
-                        </a>
-                    @endforeach
-                </div>
-            @endforeach
 
-            <x-news.include-block :division="$division"/>
+            <x-divisions.partners :categories="$division->partnerCategories" />
+            <x-divisions.graduations :list="$division->publicGraduations">
+                Выпускники
+            </x-divisions.graduations>
+
+            <x-news.include-block :division="$division" />
         </div>
 
         <div class="order-1 lg:order-2 flex flex-col gap-5">

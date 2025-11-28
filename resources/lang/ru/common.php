@@ -23,6 +23,7 @@ return [
 
     'Partners'                  => 'Партнеры',
     'Add partner category'      => 'Добавить категорию партнеров',
+    'Add partner'               => 'Добавить партнера',
 
     'History'                   => 'История',
     'Achievements'              => 'Достижения',
@@ -82,6 +83,7 @@ return [
     'email'                     => 'Электронная почта',
     'address'                   => 'Адрес',
 
+    'In moderation'             => 'На модерации',
 
 
     'department'                => 'Кафедры',

@@ -1,30 +1,31 @@
 document.addEventListener('DOMContentLoaded', () => {
-    $.js = function (el) {
-        return $('[data-js=' + el + ']')
-    };
-
-    function carousel() {
-        $.js('timeline-carousel').slick({
-            infinite: false,
-            arrows: true,
-            dots: true,
-            autoplay: false,
-            speed: 1100,
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            draggable: false,
-            responsive: [
-                {
-                    breakpoint: 520,
-                    settings: {
-                        slidesToShow: 1,
-                        slidesToScroll: 1
-                    }
-                }]
-        });
-    }
 
     jQuery(document).ready(function ($) {
+        $.js = function (el) {
+            return $('[data-js=' + el + ']')
+        };
+
+        function carousel() {
+            $.js('timeline-carousel').slick({
+                infinite: false,
+                arrows: true,
+                dots: true,
+                autoplay: false,
+                speed: 1100,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                draggable: false,
+                responsive: [
+                    {
+                        breakpoint: 520,
+                        settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1
+                        }
+                    }]
+            });
+        }
+
         var timelines = $('.cd-horizontal-timeline'),
             eventsMinDistance = 70;
 
