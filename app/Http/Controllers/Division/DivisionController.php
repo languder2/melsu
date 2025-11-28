@@ -151,7 +151,7 @@ class DivisionController extends Controller
 
     public function show(?Division $division):View|RedirectResponse
     {
-        if (!$division->exists || !$division->show)
+        if (!$division->exists || !$division->is_show)
             return redirect()->route('public:division:list');
 
         $menu = Menu::where('code','university')->first();

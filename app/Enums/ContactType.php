@@ -10,7 +10,7 @@ enum ContactType: string
     case Phone          = 'phone';
     case Email          = 'email';
     case Address        = 'address';
-    case Telegram       = 'telegram';
+//    case Telegram       = 'telegram';
 
     public function label(): string
     {

@@ -1,5 +1,6 @@
 @if($events->isNotEmpty() && $news->isNotEmpty())
-    <div class="@container mt-6">
+    <div class="@container mt-6 relative">
+        <div id="NewsIncludeBlock" class="absolute -mt-40"></div>
         <div class="grid mx-2 2xl:mx-auto grid-cols-1 @min-[1100px]:grid-cols-[auto_500px] gap-5 max-w-base-container mb-4">
             <div class="flex flex-col gap-7 @container">
                 <div class="flex items-center gap-7">
@@ -82,7 +83,8 @@
         </div>
     </div>
 @elseif($news->isNotEmpty())
-    <div class="flex items-center gap-7 mt-6 mb-2 justify-between">
+    <div class="flex items-center gap-7 mt-6 mb-2 justify-between relative">
+        <div id="NewsIncludeBlock" class="absolute -mt-40"></div>
         <h2 class="text-normal 2xl:text-xl font-bold">Новости</h2>
         <a href="{{ url('news') }}" class="text-[#CCCCCC] group flex items-center gap-2 hover:text-[#C10F1A] transition duration-300 ease-linear">
             Все новости
@@ -128,7 +130,8 @@
         @endforeach
     </div>
 @elseif($events->isNotEmpty())
-    <div class="flex items-center gap-7 mt-6 justify-between">
+    <div class="flex items-center gap-7 mt-6 justify-between relative">
+        <div id="NewsIncludeBlock" class="absolute -mt-40"></div>
         <h2 class="text-normal 2xl:text-xl font-bold">Мероприятия</h2>
         <a href="{{ url('events') }}" class="text-[#CCCCCC] group flex 2xl:text-normal items-center gap-2 hover:text-[#C10F1A] transition duration-300 ease-linear">
             Все мероприятия

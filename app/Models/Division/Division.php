@@ -184,7 +184,7 @@ class Division extends Model
     {
         return $this->hasMany(self::class, 'parent_id','id')
             ->where('type', DivisionType::Faculty)
-            ->where('show',true)
+            ->where('is_show',true)
             ->orderBy('sort')
             ->orderBy('name')
             ;
@@ -193,7 +193,7 @@ class Division extends Model
     {
         return $this->hasMany(self::class, 'parent_id','id')
             ->where('type', DivisionType::Department)
-            ->where('show',true)
+            ->where('is_show',true)
             ->orderBy('sort')
             ->orderBy('name')
             ;
@@ -202,7 +202,7 @@ class Division extends Model
     {
         return $this->hasMany(self::class, 'parent_id','id')
             ->where('type', DivisionType::Lab)
-            ->where('show',true)
+            ->where('is_show',true)
             ->orderBy('sort')
             ->orderBy('name')
             ;
@@ -615,6 +615,14 @@ class Division extends Model
     public function getSpecialitiesLinkAttribute(): ?string
     {
         return route('division.education.specialities',[
+            $this->type->value,
+            $this->id
+        ]);
+    }
+
+    public function getPartnersLinkAttribute(): ?string
+    {
+        return route('division.education.partners',[
             $this->type->value,
             $this->id
         ]);

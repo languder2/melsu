@@ -9,7 +9,10 @@
 <div class="flex flex-col">
     @foreach($division->menu() as $item)
         @if($item->is_link)
-            <a href="{{ $item->link ?? '#' }}" class="flex items-center gap-2.5 group hover:bg-[#EEEEEE] py-3 px-2.5 transition duration-300 ease-linear select-none">
+            <a
+                href="{{ $item->link ?? '#' }}" class="flex items-center gap-2.5 group hover:bg-[#EEEEEE] py-3 px-2.5 transition duration-300 ease-linear select-none"
+                onclick="{{ $item->onclick ?? null }}"
+            >
                 <span>
                     {!! $item->ico !!}
                 </span>
@@ -27,6 +30,8 @@
                 </span>
             </span>
         @endif
+
     @endforeach
+
 
 </div>

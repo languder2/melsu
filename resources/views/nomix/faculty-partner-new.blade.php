@@ -257,7 +257,7 @@ style="background-image: url({{asset('img/faculty/faculty-7.png')}})">
     document.addEventListener('DOMContentLoaded',()=>{
         const partnerBtns = document.querySelectorAll('.point-partner');
         const partnerCards = document.querySelectorAll('.card-partner');
-        
+
         partnerBtns.forEach((btn, index) => {
             btn.addEventListener('click', () =>{
                 partnerBtns.forEach(btn => {

@@ -56,7 +56,7 @@ class ContactsController extends Controller
         if($instance == $contact->relation)
             $contact->delete();
 
-        return redirect()->to($instance->careers_cabinet_list);
+        return redirect()->back();
     }
 
     public function changeSort(string $entity, int $entity_id, Contact $contact, $direction): RedirectResponse

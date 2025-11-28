@@ -68,7 +68,15 @@ trait hasDivisionMenu
             'name'      => __("menu.partners and graduations"),
             'ico'       => Blade::render('<x-lucide-handshake class="w-5" />'),
             'link'      => $this->partnersLink,
-            'is_link'   => false
+            'is_link'   => true
+        ]);
+
+        $menu->put('news',(object)[
+            'name'      => __("menu.news"),
+            'ico'       => Blade::render('<x-lucide-notebook-text class="w-5" />'),
+            'link'      => '',
+            'is_link'   => true,
+            'onclick'   => "scrollToBlock('NewsIncludeBlock'); return false;"
         ]);
 
         $menu->put('incomingStudents',(object)[
@@ -126,6 +134,15 @@ trait hasDivisionMenu
             'link'      => $this->partnersLink,
             'is_link'   => false
         ]);
+
+        $menu->put('news',(object)[
+            'name'      => __("menu.news"),
+            'ico'       => Blade::render('<x-lucide-notebook-text class="w-5" />'),
+            'link'      => '#',
+            'is_link'   => true,
+            'onclick'   => "scrollToBlock('NewsIncludeBlock');  return false;"
+        ]);
+
 
         $menu->put('incomingStudents',(object)[
             'name'      => __("menu.for incoming students"),

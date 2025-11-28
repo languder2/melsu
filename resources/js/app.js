@@ -50,4 +50,7 @@ import {specialitiesFilter, specialitiesSearch} from './public/specialitiesFilte
 window.specialitiesFilter = specialitiesFilter;
 window.specialitiesSearch = specialitiesSearch;
 
+import {scrollToBlock} from './scroll-to-block.js';
+window.scrollToBlock = scrollToBlock;
+
 import './public/regiments.js';

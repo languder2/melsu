@@ -3,6 +3,7 @@
 return [
     'faculty about'                     => 'О факультете',
     'department about'                  => 'О кафедре',
+    'news'                              => 'Новости и мероприятия',
     'dean office'                       => 'Деканат',
     'teaching staff'                    => 'Педагогический состав',
     'departments and labs'              => 'Кафедры и лаборатории',

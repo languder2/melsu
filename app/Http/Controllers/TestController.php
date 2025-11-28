@@ -115,6 +115,7 @@ class TestController extends Controller
         $list = $list->filter(fn($item) =>
             $item->uid_department === 'fba3b2e9-a348-11f0-b9b6-f61497ae5d0c'
             || $item->surname === 'Болотов'
+            || $item->surname === 'Слета'
             || $item->surname === 'Петровский'
             || $item->surname === 'Артюхов'
         )

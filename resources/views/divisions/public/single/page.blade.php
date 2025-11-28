@@ -30,7 +30,7 @@
         </div>
     @endif
 
-    @component('divisions.public.includes.documents',['categories' => $division->public_document_categories]) @endcomponent
+{{--    @component('divisions.public.includes.documents',['categories' => $division->public_document_categories]) @endcomponent--}}
 
     @component('public.staffs.division.staffs',[
         'staffs'    => $division->staffs(true)->get(),

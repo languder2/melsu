@@ -22,3 +22,4 @@ document.addEventListener('DOMContentLoaded',()=>{
 
     scrollToTopBtn.addEventListener("click", scrollToTop);
 })
+

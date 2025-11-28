@@ -14,7 +14,7 @@ class EducationController extends Controller
 {
     public function institutes(): View
     {
-        $list = Division::where('show',true)
+        $list = Division::where('is_show',true)
             ->where('type',DivisionType::Institute)
             ->orderBy('sort')
             ->orderBy('name')
@@ -25,7 +25,7 @@ class EducationController extends Controller
     }
     public function faculties(): \Illuminate\View\View
     {
-        $list = Division::where('show',1)
+        $list = Division::where('is_show',1)
             ->where('type',DivisionType::Faculty)
             ->orderBy('sort')
             ->orderBy('name')
@@ -36,7 +36,7 @@ class EducationController extends Controller
     }
 
 
-    
+
     public function division(string $type,?Division $division,?string $section = null, ?string $op = null )
     {
 
@@ -81,17 +81,25 @@ class EducationController extends Controller
         return view('divisions.education.public.specialities',compact('division'));
     }
 
+    public function partners(string $type, Division $division ): View|RedirectResponse
+    {
+        if(!$division->exists || ($division->type !== DivisionType::Faculty && $division->type !== DivisionType::Department))
+            return redirect()->route('public:education:faculties');
+
+        return view('divisions.education.public.partners',compact('division'));
+    }
+
 
     public function showAllDepartments(): string
     {
-        $list = Division::where('show',1)->where('type',DivisionType::Department)
+        $list = Division::where('is_show',1)->where('type',DivisionType::Department)
             ->orderBy('name')->get()
             ->groupBy(function ($item) {
                 return strtoupper(mb_substr($item->alt_name, 0, 1, 'UTF-8'));
             });
 
         $filter     = json_decode(session()->get('public.education.departments.search'));
-        $faculties  = Division::where('show',1)
+        $faculties  = Division::where('is_show',1)
             ->where('type',DivisionType::Faculty)
             ->orderBy('sort')
             ->orderBy('name')
@@ -117,7 +125,7 @@ class EducationController extends Controller
     public function showAllBranch(): string
     {
 
-        $list = Division::where('show',1)->where('type',DivisionType::Branch)
+        $list = Division::where('is_show',1)->where('type',DivisionType::Branch)
             ->orderBy('sort')->orderBy('name')
             ->get()
         ;
@@ -138,7 +146,7 @@ class EducationController extends Controller
             'contents' => [
                 view("public.education.tabs.list",['active' => 'labs']),
                 view("public.education.labs.list",[
-                    'list'  => Division::where('type',DivisionType::Lab)->where('show',1)->orderBy('sort')->orderBy('name')->get(),
+                    'list'  => Division::where('type',DivisionType::Lab)->where('is_show',1)->orderBy('sort')->orderBy('name')->get(),
                 ]),
             ]
         ]);
