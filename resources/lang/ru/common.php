@@ -93,6 +93,6 @@ return [
     'faculty history'           => "история факультета",
     'department history'        => "история кафедры",
     'lab history'               => "история лаборатории",
-
+    'scientific research work'  => 'научно-исследовательская работа',
 
 ];

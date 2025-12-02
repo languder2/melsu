@@ -619,10 +619,16 @@ class Division extends Model
             $this->id
         ]);
     }
-
     public function getPartnersLinkAttribute(): ?string
     {
         return route('division.education.partners',[
+            $this->type->value,
+            $this->id
+        ]);
+    }
+    public function getSciencesLinkAttribute(): ?string
+    {
+        return route('division.education.sciences',[
             $this->type->value,
             $this->id
         ]);

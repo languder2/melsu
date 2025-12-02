@@ -13,68 +13,94 @@ Route::middleware('isAdmin')
     ->prefix('admin/divisions')
     ->group(function () {
 
-        Route::get('',                                                  [DivisionController::class, 'admin'])           ->name('admin:division:list');
-        Route::get('add',                                               [DivisionController::class, 'form'])            ->name('admin:division:add');
-        Route::get('edit/{id?}',                                        [DivisionController::class, 'form'])            ->name('admin:division:edit');
-        Route::post('save',                                             [DivisionController::class, 'save'])            ->name('admin:division:save');
+        Route::get('',                                                  [DivisionController::class, 'admin'])
+                                                                            ->name('admin:division:list');
+
+        Route::get('add',                                               [DivisionController::class, 'form'])
+                                                                            ->name('admin:division:add');
+
+        Route::get('edit/{id?}',                                        [DivisionController::class, 'form'])
+                                                                            ->name('admin:division:edit');
+
+        Route::post('save',                                             [DivisionController::class, 'save'])
+                                                                            ->name('admin:division:save');
 
         Route::delete('delete/{division}',                              [DivisionController::class, 'delete'])
                                                                             ->name('divisions.delete');
 
-        Route::get('{division}/staffs',                                 [DivisionController::class, 'staffsAdmin'])     ->name('division:admin:staffs:list');
-        Route::get('{division}/staffs/{type}/form/{staff?}',            [DivisionController::class, 'staffsForm'])      ->name('division:admin:staffs:form');
-        Route::put ('{division}/staffs/{type}/save/{staff?}',           [DivisionController::class, 'staffsSave'])      ->name('division:admin:staffs:save');
-        Route::delete('staffs/delete/{staff?}',                         [DivisionController::class, 'staffsDelete'])    ->name('division:admin:staffs:delete');
+        Route::get('{division}/staffs',                                 [DivisionController::class, 'staffsAdmin'])
+                                                                            ->name('division:admin:staffs:list');
 
-        Route::get('{division}/documents',                              [DivisionController::class, 'documentsAdmin'])  ->name('division:admin:documents:list');
-        Route::get('{division}/documents/form/{category?}/{document?}', [DivisionController::class, 'documentsForm'])   ->name('division:admin:documents:form');
-        Route::put ('{division}/documents/save/{document?}',            [DivisionController::class, 'documentsSave'])   ->name('division:admin:documents:save');
-        Route::delete('documents/delete/{documents?}',                  [DivisionController::class, 'documentsDelete']) ->name('division:admin:documents:delete');
+        Route::get('{division}/staffs/{type}/form/{staff?}',            [DivisionController::class, 'staffsForm'])
+                                                                            ->name('division:admin:staffs:form');
 
-        Route::get('{division}/document-categories/form/{category?}',   [DivisionController::class, 'documentCategoryForm'])    ->name('division:admin:document-categories:form');
-        Route::put ('{division}/document-categories/save/{category?}',  [DivisionController::class, 'documentCategorySave'])    ->name('division:admin:document-categories:save');
-        Route::delete('document-categories/delete/{category?}',         [DivisionController::class, 'documentCategoryDelete'])  ->name('division:admin:document-categories:delete');
+        Route::put ('{division}/staffs/{type}/save/{staff?}',           [DivisionController::class, 'staffsSave'])
+                                                                            ->name('division:admin:staffs:save');
 
+        Route::delete('staffs/delete/{staff?}',                         [DivisionController::class, 'staffsDelete'])
+                                                                            ->name('division:admin:staffs:delete');
+
+        Route::get('{division}/documents',                              [DivisionController::class, 'documentsAdmin'])
+                                                                            ->name('division:admin:documents:list');
+
+        Route::get('{division}/documents/form/{category?}/{document?}', [DivisionController::class, 'documentsForm'])
+                                                                            ->name('division:admin:documents:form');
+
+        Route::put ('{division}/documents/save/{document?}',            [DivisionController::class, 'documentsSave'])
+                                                                            ->name('division:admin:documents:save');
+
+        Route::delete('documents/delete/{documents?}',                  [DivisionController::class, 'documentsDelete'])
+                                                                            ->name('division:admin:documents:delete');
+
+        Route::get('{division}/document-categories/form/{category?}',   [DivisionController::class, 'documentCategoryForm'])
+                                                                            ->name('division:admin:document-categories:form');
+
+        Route::put ('{division}/document-categories/save/{category?}',  [DivisionController::class, 'documentCategorySave'])
+                                                                            ->name('division:admin:document-categories:save');
+
+        Route::delete('document-categories/delete/{category?}',         [DivisionController::class, 'documentCategoryDelete'])
+                                                                            ->name('division:admin:document-categories:delete');
     });
 
 Route::prefix('cabinet/divisions')->middleware(AuthCabinet::class)->group(function () {
 
-    Route::get('',                                  [CabinetDivisionsController::class, 'list'])
-                                                        ->name('divisions.cabinet.list');
+    Route::get('',                                      [CabinetDivisionsController::class, 'list'])
+                                                            ->name('divisions.cabinet.list');
 
-    Route::get('form/{division?}',                  [CabinetDivisionsController::class, 'form'])
-                                                        ->name('division.cabinet.form');
+    Route::get('form/{division?}',                      [CabinetDivisionsController::class, 'form'])
+                                                            ->name('division.cabinet.form');
 
-    Route::put('save/{division?}',                  [CabinetDivisionsController::class, 'save'])
-                                                        ->name('division.cabinet.save');
+    Route::put('save/{division?}',                      [CabinetDivisionsController::class, 'save'])
+                                                            ->name('division.cabinet.save');
 
-    Route::post('set-filter',                       [CabinetDivisionsController::class, 'setFilter'])
-                                                        ->name('divisions.cabinet.set-filter');
+    Route::post('set-filter',                           [CabinetDivisionsController::class, 'setFilter'])
+                                                            ->name('divisions.cabinet.set-filter');
 
-    Route::get('history/form/{division?}',          [CabinetDivisionsController::class, 'historyForm'])
-                                                        ->name('division.history.form');
+    Route::get('history/form/{division?}',              [CabinetDivisionsController::class, 'historyForm'])
+                                                            ->name('division.history.form');
 
-    Route::put('history/save/{division?}',          [CabinetDivisionsController::class, 'historySave'])
-                                                        ->name('division.history.save');
+    Route::put('history/save/{division?}',              [CabinetDivisionsController::class, 'historySave'])
+                                                            ->name('division.history.save');
 
-    Route::get('achievements/form/{division?}',     [CabinetDivisionsController::class, 'achievementsForm'])
-                                                        ->name('division.achievements.form');
+    Route::get('achievements/form/{division?}',         [CabinetDivisionsController::class, 'achievementsForm'])
+                                                            ->name('division.achievements.form');
 
-    Route::put('achievements/save/{division?}',     [CabinetDivisionsController::class, 'achievementsSave'])
-                                                        ->name('division.achievements.save');
+    Route::put('achievements/save/{division?}',         [CabinetDivisionsController::class, 'achievementsSave'])
+                                                            ->name('division.achievements.save');
 
-    Route::get('gallery/form/{division?}',          [CabinetDivisionsController::class, 'galleryForm'])
-                                                        ->name('division.gallery.form');
+    Route::get('gallery/form/{division?}',              [CabinetDivisionsController::class, 'galleryForm'])
+                                                            ->name('division.gallery.form');
 
-    Route::put('gallery/save/{division?}',          [CabinetDivisionsController::class, 'gallerySave'])
-                                                        ->name('division.gallery.save');
+    Route::put('gallery/save/{division?}',              [CabinetDivisionsController::class, 'gallerySave'])
+                                                            ->name('division.gallery.save');
 });
 
 
-Route::get('institutes', [EducationController::class, 'institutes'])->name('public:education:institutes');
+Route::get('institutes',                                [EducationController::class, 'institutes'])
+                                                            ->name('public:education:institutes');
 
-Route::get('faculties', [EducationController::class, 'faculties'])->name('public:education:faculties');
-
+Route::get('faculties',                                 [EducationController::class, 'faculties'])
+                                                            ->name('public:education:faculties');
 
 Route::get('{type}/{division}/dean-office',             [EducationController::class, 'deanOffice'])
                                                             ->whereIn('type', ['faculty'])
@@ -96,25 +122,38 @@ Route::get('{type}/{division}/partners',                [EducationController::cl
                                                             ->whereIn('type', ['faculty','department'])
                                                             ->name('division.education.partners');
 
-Route::get('{type}/{division}/{section?}/{item?}',[EducationController::class, 'division'])
-    ->whereIn('type', ['institute','faculty', 'department','lab','branch'])
-    ->name('public:education:division');
+Route::get('{type}/{division}/sciences',                [EducationController::class, 'sciences'])
+                                                            ->whereIn('type', ['faculty','department'])
+                                                            ->name('division.education.sciences');
 
+Route::get('{type}/{division}/{section?}/{item?}',      [EducationController::class, 'division'])
+                                                            ->whereIn('type', [
+                                                                'institute',
+                                                                'faculty',
+                                                                'department',
+                                                                'lab',
+                                                                'branch'
+                                                            ])
+                                                            ->name('public:education:division');
 
-Route::get('departments', [EducationController::class, 'showAllDepartments'])
-    ->name('public:education:departments:list');
+Route::get('departments',                               [EducationController::class, 'showAllDepartments'])
+                                                            ->name('public:education:departments:list');
 
-Route::get('branches', [EducationController::class, 'showAllBranch'])
-    ->name('public:education:branch:list');
+Route::get('branches',                                  [EducationController::class, 'showAllBranch'])
+                                                            ->name('public:education:branch:list');
 
-Route::get('labs', [EducationController::class, 'showAllLabs'])
-    ->name('public:labs:list');
+Route::get('labs',                                      [EducationController::class, 'showAllLabs'])
+                                                            ->name('public:labs:list');
 
 /* Divisions: public */
 
-Route::get('divisions', [DivisionController::class,'publicList'])->name('public:division:list');
-Route::get('division/{division?}',[DivisionController::class,'show'])->name('public:division:show');
-Route::get('rectorate',[DivisionController::class,'show'])->setDefaults(['division'=>'rectorate']);
+Route::get('divisions',                                 [DivisionController::class,'publicList'])
+                                                            ->name('public:division:list');
+Route::get('division/{division?}',                      [DivisionController::class,'show'])
+                                                            ->name('public:division:show');
+
+Route::get('rectorate',                                 [DivisionController::class,'show'])
+                                                            ->setDefaults(['division'=>'rectorate']);
 
 
 

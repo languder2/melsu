@@ -80,7 +80,6 @@ class EducationController extends Controller
 
         return view('divisions.education.public.specialities',compact('division'));
     }
-
     public function partners(string $type, Division $division ): View|RedirectResponse
     {
         if(!$division->exists || ($division->type !== DivisionType::Faculty && $division->type !== DivisionType::Department))
@@ -88,8 +87,13 @@ class EducationController extends Controller
 
         return view('divisions.education.public.partners',compact('division'));
     }
+    public function sciences(string $type, Division $division): View|RedirectResponse
+    {
+        if(!$division->exists || ($division->type !== DivisionType::Faculty && $division->type !== DivisionType::Department))
+            return redirect()->route('public:education:faculties');
 
-
+        return view('divisions.education.public.sciences',compact('division'));
+    }
     public function showAllDepartments(): string
     {
         $list = Division::where('is_show',1)->where('type',DivisionType::Department)

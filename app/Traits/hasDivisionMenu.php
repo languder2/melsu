@@ -61,7 +61,7 @@ trait hasDivisionMenu
             'name'      => __("menu.sciences"),
             'ico'       => Blade::render('<x-lucide-microscope class="w-5" />'),
             'link'      => $this->sciencesLink,
-            'is_link'   => false
+            'is_link'   => true
         ]);
 
         $menu->put('partners',(object)[
@@ -125,7 +125,7 @@ trait hasDivisionMenu
             'name'      => __("menu.sciences"),
             'ico'       => Blade::render('<x-lucide-microscope class="w-5" />'),
             'link'      => $this->sciencesLink,
-            'is_link'   => false
+            'is_link'   => true
         ]);
 
         $menu->put('partners',(object)[
