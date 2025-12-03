@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         $.each($slides, function (index) {
-            var $button = $('<a class="slide_btn">' + (index + 1) + '</a>');
+            var $button = $('<a class="slide_btn"></a>');
 
             if (index === currentIndex) {
                 $button.addClass('active');

@@ -6,12 +6,12 @@
                     <i class="bi bi-chevron-left"></i>
                 </div>
                 <div class="slide_group sldr">
-                    <div class="slide">
+                   {{-- <div class="slide">
                         <a href="https://abiturient.mgu-mlt.ru/" class="slide-link cursor-pointer">
                             <img src="{{asset('img/slider/Platnoe.webp')}}" alt="" class="hidden sm:block w-max">
                             <img src="{{asset('img/slider/Platnoe_mob.webp')}}" alt="" class="block sm:hidden">
                         </a>
-                    </div>
+                    </div>--}}
                     <div class="slide">
                         <a href="https://max.ru/id9001010985_biz" class="slide-link cursor-pointer" target="_blank">
                             <img src="{{asset('img/slider/MAX.jpg')}}" alt="" class="hidden sm:block w-max">
