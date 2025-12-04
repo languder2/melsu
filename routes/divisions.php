@@ -93,6 +93,9 @@ Route::prefix('cabinet/divisions')->middleware(AuthCabinet::class)->group(functi
 
     Route::put('gallery/save/{division?}',              [CabinetDivisionsController::class, 'gallerySave'])
                                                             ->name('division.gallery.save');
+
+    Route::get('statuses',                              [CabinetDivisionsController::class, 'statuses'])
+                                                            ->name('divisions.cabinet.statuses');
 });
 
 

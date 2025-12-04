@@ -140,4 +140,29 @@ class CabinetDivisionsController extends Controller
         return $request->has('save-close') ? redirect()->to($division->cabinet_list) : redirect()->back();
     }
 
+    public function statuses(): view|RedirectResponse
+    {
+
+        $list = $this->divisions
+            ->filter(fn($item) => in_array($item->type, [DivisionType::Faculty,DivisionType::Department,DivisionType::Institute]))
+            ->each(function ($item) {
+                $item->hasBG                = $item->image->exists;
+                $item->hasAbout             = $item->content('content')->exists ? strlen(trim(strip_tags($item->content('content')->render()))) : 0;
+                $item->hasHistory           = $item->content('history')->exists ? strlen(trim(strip_tags($item->content('history')->render()))) : 0;
+                $item->hasGallery           = $item->content('history')->exists ? strlen(trim(strip_tags($item->content('gallery')->render(), '<img>'))) : 0;
+                $item->hasSpecialities      = $item->specialities->count();
+                $item->countGoals           = $item->goals->count();
+                $item->countCareers         = $item->careers->count();
+                $item->countPartners        = $item->partners->count();
+                $item->countPartnersLinks   = $item->partners->filter(fn($item) => $item->link)->count();
+                $item->countPartnersLogo    = $item->partners->filter(fn($item) => $item->image->exists)->count();
+                $item->countScience         = $item->science->count();
+            })
+        ;
+
+
+        return view('divisions.cabinet.statuses', compact('list'));
+    }
+
+
 }

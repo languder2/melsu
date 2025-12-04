@@ -1,6 +1,25 @@
 <aside class="left w-70 relative">
     <div class="inset-0 overflow-y-scroll flex flex-col gap-2 py-2 sticky top-0">
         <a
+            href="{{ route('cabinet:index') }}"
+
+            {{ Route::is('cabinet:index') ? "open" : "" }}
+
+            class="
+                cursor-pointer block p-3
+                mx-2 rounded-sm
+                bg-white shadow
+                hover:bg-blue-700 hover:text-white
+                hover:-mt-0.5 hover:mb-0.5
+                duration-300
+                open:text-white open:bg-sky-800
+                open:hover:text-white open:hover:bg-blue-700
+            "
+        >
+            {{ __('common.Cabinet')}}
+        </a>
+
+        <a
             href="{{ route('news.cabinet.list') }}"
 
             {{ Route::is('news.cabinet.*') ? "open" : "" }}
