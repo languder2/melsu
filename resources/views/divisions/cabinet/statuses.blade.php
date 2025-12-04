@@ -10,7 +10,6 @@
     <div class="grid grid-cols-[auto_auto_1fr_repeat(11,auto)] gap-2">
         <div class="grid grid-cols-subgrid col-span-full sticky top-0 z-10 text-white">
             <div class="p-3 bg-sky-800 rounded-sm shadow text-center">
-                btns
             </div>
 
             <div class="p-3 bg-sky-800 rounded-sm shadow">
@@ -22,37 +21,37 @@
             </div>
 
             <div class="p-3 bg-sky-800 rounded-sm shadow text-center">
-                hasBG
+                Фон
             </div>
             <div class="p-3 bg-sky-800 rounded-sm shadow text-center">
-                hasAbout
+                Описание
             </div>
             <div class="p-3 bg-sky-800 rounded-sm shadow text-center">
-                hasHistory
+                История
             </div>
             <div class="p-3 bg-sky-800 rounded-sm shadow text-center">
-                hasGallery
+                Галерея
             </div>
             <div class="p-3 bg-sky-800 rounded-sm shadow text-center">
-                hasSpecialities
+                Направления подготовки
             </div>
             <div class="p-3 bg-sky-800 rounded-sm shadow text-center">
-                countGoals
+                Цели
             </div>
             <div class="p-3 bg-sky-800 rounded-sm shadow text-center">
-                countCareers
+                Карьеры
             </div>
             <div class="p-3 bg-sky-800 rounded-sm shadow text-center">
-                countPartners
+                Партнеров
             </div>
             <div class="p-3 bg-sky-800 rounded-sm shadow text-center">
-                countPartnersLinks
+                Ссылки партнеров
             </div>
             <div class="p-3 bg-sky-800 rounded-sm shadow text-center">
-                countPartnersLogo
+                Логотипы партнеров
             </div>
             <div class="p-3 bg-sky-800 rounded-sm shadow text-center">
-                countScience
+                Наука
             </div>
         </div>
 
@@ -68,7 +67,7 @@
                     </a>
                 </div>
 
-                <div class="p-3 bg-white shadow text-center rounded-sm">
+                <div class="p-3 bg-white shadow text-center rounded-sm flex items-center justify-center">
                     {{ $item->id }}
                 </div>
 
@@ -76,14 +75,14 @@
                     {!! $item->nameWithLevel !!}
                 </div>
 
-                <div class="p-3 text-center rounded-sm shadow @unless($item->hasBG) bg-red-700 text-white @else bg-white @endunless">
-                    {!! $item->hasBG ? 'inset' : 'unset' !!}
+                <div class="p-3 text-center rounded-sm shadow @unless($item->hasBG) bg-red-700 text-white @else bg-white @endunless flex items-center justify-center">
+                    {!! $item->hasBG ? "✓" : "x" !!}
                 </div>
                 <div @class([
-                    "p-3 text-center rounded-sm shadow",
+                    "p-3 text-center rounded-sm shadow flex items-center justify-center",
                     match(true){
-                        $item->hasAbout === 0 => 'bg-red-700 text-white',
-                        $item->hasAbout <= 500 => 'bg-amber-400',
+                        $item->hasAbout == 0 => 'bg-red-700 text-white',
+                        $item->hasAbout > 0 && $item->hasAbout <= 500 => 'bg-amber-400',
                         default => 'bg-white',
                     }
 
@@ -91,10 +90,10 @@
                     {!! $item->hasAbout !!}
                 </div>
                 <div @class([
-                    "p-3 text-center rounded-sm shadow",
+                    "p-3 text-center rounded-sm shadow flex items-center justify-center",
                     match(true){
-                        $item->hasHistory === 0 => 'bg-red-700 text-white',
-                        $item->hasHistory <= 500 => 'bg-amber-400',
+                        $item->hasHistory == 0 => 'bg-red-700 text-white',
+                        $item->hasHistory > 0 && $item->hasHistory <= 500 => 'bg-amber-400',
                         default => 'bg-white',
                     }
 
@@ -102,16 +101,16 @@
                     {!! $item->hasHistory !!}
                 </div>
                 <div @class([
-                    "p-3 text-center rounded-sm shadow",
+                    "p-3 text-center rounded-sm shadow flex items-center justify-center",
                     match(true){
                         $item->hasGallery === 0 => 'bg-red-700 text-white',
                         default => 'bg-white',
                     }
                 ])>
-                    {!! $item->hasGallery ? "✓" : "✖" !!}
+                    {!! $item->hasGallery ? "✓" : "x" !!}
                 </div>
                 <div @class([
-                    "p-3 text-center rounded-sm shadow",
+                    "p-3 text-center rounded-sm shadow flex items-center justify-center",
                     match(true){
                         $item->hasSpecialities === 0 => 'bg-red-700 text-white',
                         default => 'bg-white',
@@ -120,7 +119,7 @@
                     {!! $item->hasSpecialities !!}
                 </div>
                 <div @class([
-                    "p-3 text-center rounded-sm shadow",
+                    "p-3 text-center rounded-sm shadow flex items-center justify-center",
                     match(true){
                         $item->countGoals === 0 => 'bg-red-700 text-white',
                         default => 'bg-white',
@@ -129,7 +128,7 @@
                     {!! $item->countGoals !!}
                 </div>
                 <div @class([
-                    "p-3 text-center rounded-sm shadow",
+                    "p-3 text-center rounded-sm shadow flex items-center justify-center",
                     match(true){
                         $item->countCareers === 0 => 'bg-red-700 text-white',
                         default => 'bg-white',
@@ -138,7 +137,7 @@
                     {!! $item->countCareers !!}
                 </div>
                 <div @class([
-                    "p-3 text-center rounded-sm shadow",
+                    "p-3 text-center rounded-sm shadow flex items-center justify-center",
                     match(true){
                         $item->countPartners === 0 => 'bg-red-700 text-white',
                         default => 'bg-white',
@@ -147,7 +146,7 @@
                     {!! $item->countPartners !!}
                 </div>
                 <div @class([
-                    "p-3 text-center rounded-sm shadow",
+                    "p-3 text-center rounded-sm shadow flex items-center justify-center",
                     match(true){
                         $item->countPartners != $item->countPartnersLinks => 'bg-red-700 text-white',
                         default => 'bg-white',
@@ -156,7 +155,7 @@
                     {!! $item->countPartnersLinks !!}
                 </div>
                 <div @class([
-                    "p-3 text-center rounded-sm shadow",
+                    "p-3 text-center rounded-sm shadow flex items-center justify-center",
                     match(true){
                         $item->countPartners != $item->countPartnersLogo => 'bg-red-700 text-white',
                         default => 'bg-white',
@@ -165,7 +164,7 @@
                     {!! $item->countPartnersLogo !!}
                 </div>
                 <div @class([
-                    "p-3 text-center rounded-sm shadow",
+                    "p-3 text-center rounded-sm shadow flex items-center justify-center",
                     match(true){
                         $item->countScience === 0 => 'bg-red-700 text-white',
                         default => 'bg-white',
