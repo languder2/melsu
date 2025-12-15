@@ -30,11 +30,13 @@ trait hasNews
 
     public function publicNews(): Collection
     {
+        $IDs = [$this->id];
 
-        $divisionsIDs   = $this->tree()->pluck('id');
+        if($this instanceof Division)
+            $IDs   = $this->tree()->pluck('id');
 
         $newsIDs = DB::table('news_relations')
-            ->whereIn('relation_id', $divisionsIDs)
+            ->whereIn('relation_id', $IDs)
             ->where('relation_type', $this::class)
             ->get()
             ->pluck('news_id')->unique();

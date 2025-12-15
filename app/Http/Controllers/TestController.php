@@ -128,8 +128,9 @@ class TestController extends Controller
 
     public function test()
     {
-        dd(DocumentCategory::whereNull('relation_type')->inRandomOrder()->first()->documents);
-        return view('test.test');
+        $item = Division::find(3)->content();
+
+        return view('test.test', compact('item'));
 
     }
 

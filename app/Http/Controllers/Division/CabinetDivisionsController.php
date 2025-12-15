@@ -147,8 +147,8 @@ class CabinetDivisionsController extends Controller
             ->filter(fn($item) => in_array($item->type, [DivisionType::Faculty,DivisionType::Department,DivisionType::Institute]))
             ->each(function ($item) {
                 $item->hasBG                = $item->image->exists;
-                $item->hasAbout             = $item->content('content')->exists ? round(strlen(trim(strip_tags($item->content('content')->render())))/2) : 0;
-                $item->hasHistory           = $item->content('history')->exists ? round(strlen(trim(strip_tags($item->content('history')->render())))/2) : 0;
+                $item->hasAbout             = $item->content('content')->exists ? mb_strlen(trim(strip_tags($item->content('content')->render()))) : 0;
+                $item->hasHistory           = $item->content('history')->exists ? mb_strlen(trim(strip_tags($item->content('history')->render()))) : 0;
                 $item->hasGallery           = $item->content('history')->exists ? strlen(trim(strip_tags($item->content('gallery')->render(), '<img>'))) : 0;
                 $item->hasSpecialities      = $item->specialities->count();
                 $item->countGoals           = $item->goals->count();
@@ -157,6 +157,7 @@ class CabinetDivisionsController extends Controller
                 $item->countPartnersLinks   = $item->partners->filter(fn($item) => $item->link)->count();
                 $item->countPartnersLogo    = $item->partners->filter(fn($item) => $item->image->exists)->count();
                 $item->countScience         = $item->science->count();
+                $item->countGraduations     = $item->graduations->count();
             })
         ;
 

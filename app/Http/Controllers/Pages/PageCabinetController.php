@@ -36,4 +36,10 @@ class PageCabinetController extends Controller
         return redirect()->to( $request->has('save-close') ? $page->cabinet_list_link : $page->cabinet_form_link );
     }
 
+    public function delete(Page $page): RedirectResponse
+    {
+        $page->delete();
+
+        return redirect()->back();
+    }
 }

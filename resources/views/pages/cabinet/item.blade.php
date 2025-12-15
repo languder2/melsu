@@ -28,7 +28,7 @@
     </div>
     <div class="px-2 flex justify-center">
         <x-html.button-delete-with-modal
-            question="Удалить мероприятие"
+            question="Удалить страницу"
             :text=" $item->title "
             :action=" $item->cabinet_delete_link "
             icoClass='hover:text-amber-700'

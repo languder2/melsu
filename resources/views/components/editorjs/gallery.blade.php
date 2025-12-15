@@ -1,4 +1,5 @@
 @isset($block->data)
+
     @if($block->data->caption && $block->data->caption != '<br>')
         <h3>
             {!! $block->data->caption !!}
@@ -11,9 +12,16 @@
             :slides="$block->data->files"
         />
     @else
-        <x-gallery.slider1
-            :title="$block->data->caption"
-            :slides="$block->data->files"
-        />
+        @if($block->data->style === 'fit')
+            <x-gallery.gallery
+                :title="$block->data->caption"
+                :slides="$block->data->files"
+            />
+        @else
+            <x-gallery.slider1
+                :title="$block->data->caption"
+                :slides="$block->data->files"
+            />
+        @endif
     @endif
 @endisset

@@ -42,6 +42,10 @@ class Category extends Model
             if(!$item->sort || (int)$item->sort < 0)
                 $item->sort = $item->relation->partnerCategories()->max('sort') + 100;
         });
+
+        static::deleting(function ($item) {
+            $item->partners()->delete();
+        });
     }
 
     public function cabinetForm(): string

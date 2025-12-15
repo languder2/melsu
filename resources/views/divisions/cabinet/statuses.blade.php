@@ -1,13 +1,13 @@
 @extends("layouts.cabinet")
 
-@section('title', 'Новости')
+@section('title', 'Состояние заполнения')
 
 @section('content-header')
-{{--    @include('divisions.cabinet.menu')--}}
+    {{--    @include('divisions.cabinet.menu')--}}
 @endsection
 
 @section('content')
-    <div class="grid grid-cols-[auto_auto_1fr_repeat(11,auto)] gap-2">
+    <div class="grid grid-cols-[auto_auto_1fr_repeat(12,auto)] gap-2">
         <div class="grid grid-cols-subgrid col-span-full sticky top-0 z-10 text-white">
             <div class="p-3 bg-sky-800 rounded-sm shadow text-center">
             </div>
@@ -53,6 +53,9 @@
             <div class="p-3 bg-sky-800 rounded-sm shadow text-center">
                 Наука
             </div>
+            <div class="p-3 bg-sky-800 rounded-sm shadow text-center">
+                Выпускники
+            </div>
         </div>
 
         @forelse($list as $item)
@@ -75,103 +78,173 @@
                     {!! $item->nameWithLevel !!}
                 </div>
 
-                <div class="p-3 text-center rounded-sm shadow @unless($item->hasBG) bg-red-700 text-white @else bg-white @endunless flex items-center justify-center">
+                <a
+                    href="{{ $item->cabinet_form }}"
+                    title="{!! $item->hasBG ? "Фон заголовка установлен" : "Фон заголовка не установлен" !!}"
+                    class="
+                        p-3 text-center rounded-sm shadow
+                        @unless($item->hasBG) bg-red-700 text-white @else bg-white @endunless
+                        flex items-center justify-center
+                        hover:bg-sky-700 hover:text-white cursor-pointer
+                    "
+                >
                     {!! $item->hasBG ? "✓" : "x" !!}
-                </div>
-                <div @class([
-                    "p-3 text-center rounded-sm shadow flex items-center justify-center",
-                    match(true){
-                        $item->hasAbout == 0 => 'bg-red-700 text-white',
-                        $item->hasAbout > 0 && $item->hasAbout <= 500 => 'bg-amber-400',
-                        default => 'bg-white',
-                    }
-
-                ])>
-                    {!! $item->hasAbout !!}
-                </div>
-                <div @class([
-                    "p-3 text-center rounded-sm shadow flex items-center justify-center",
-                    match(true){
-                        $item->hasHistory == 0 => 'bg-red-700 text-white',
-                        $item->hasHistory > 0 && $item->hasHistory <= 500 => 'bg-amber-400',
-                        default => 'bg-white',
-                    }
-
-                ])>
+                </a>
+                <a
+                    href="{{ $item->cabinet_form }}"
+                    title="Количество символов в описании"
+                    @class([
+                        "p-3 text-center rounded-sm shadow flex items-center justify-center",
+                        'hover:bg-sky-700 hover:text-white cursor-pointer',
+                        match(true){
+                            $item->hasAbout == 0 => 'bg-red-700 text-white',
+                            $item->hasAbout > 0 && $item->hasAbout <= 500 => 'bg-amber-400',
+                            default => 'bg-white',
+                        }
+                    ])
+                >
+                        {!! $item->hasAbout !!}
+                </a>
+                <a
+                    href="{{ $item->history_form }}"
+                    title="Количество символов в истории"
+                    @class([
+                        "p-3 text-center rounded-sm shadow flex items-center justify-center",
+                        'hover:bg-sky-700 hover:text-white cursor-pointer',
+                        match(true){
+                            $item->hasHistory == 0 => 'bg-red-700 text-white',
+                            $item->hasHistory > 0 && $item->hasHistory <= 500 => 'bg-amber-400',
+                            default => 'bg-white',
+                        }
+                    ])
+                >
                     {!! $item->hasHistory !!}
-                </div>
-                <div @class([
-                    "p-3 text-center rounded-sm shadow flex items-center justify-center",
-                    match(true){
-                        $item->hasGallery === 0 => 'bg-red-700 text-white',
-                        default => 'bg-white',
-                    }
-                ])>
+                </a>
+                <a
+                    href="{{ $item->gallery_form }}"
+                    title="Заполнена ли галерея"
+                    @class([
+                        "p-3 text-center rounded-sm shadow flex items-center justify-center",
+                        'hover:bg-sky-700 hover:text-white cursor-pointer',
+                        match(true){
+                            $item->hasGallery === 0 => 'bg-red-700 text-white',
+                            default => 'bg-white',
+                        }
+                    ])
+                >
                     {!! $item->hasGallery ? "✓" : "x" !!}
-                </div>
-                <div @class([
-                    "p-3 text-center rounded-sm shadow flex items-center justify-center",
-                    match(true){
-                        $item->hasSpecialities === 0 => 'bg-red-700 text-white',
-                        default => 'bg-white',
-                    }
-                ])>
+                </a>
+                <span
+                    title="Количество направлений подготовки (без учета профилей)"
+                    @class([
+                        "p-3 text-center rounded-sm shadow flex items-center justify-center",
+//                        'hover:bg-sky-700 hover:text-white cursor-pointer',
+                        match(true){
+                            $item->hasSpecialities === 0 => 'bg-red-700 text-white',
+                            default => 'bg-white',
+                        }
+                    ])
+                >
                     {!! $item->hasSpecialities !!}
-                </div>
-                <div @class([
-                    "p-3 text-center rounded-sm shadow flex items-center justify-center",
-                    match(true){
-                        $item->countGoals === 0 => 'bg-red-700 text-white',
-                        default => 'bg-white',
-                    }
-                ])>
+                </span>
+                <a
+                    href="{{ $item->goals_cabinet_list }}"
+                    title="Количество указанных целей и задач"
+                    @class([
+                        "p-3 text-center rounded-sm shadow flex items-center justify-center",
+                        'hover:bg-sky-700 hover:text-white cursor-pointer',
+                        match(true){
+                            $item->countGoals === 0 => 'bg-red-700 text-white',
+                            default => 'bg-white',
+                        }
+                    ])
+                >
                     {!! $item->countGoals !!}
-                </div>
-                <div @class([
-                    "p-3 text-center rounded-sm shadow flex items-center justify-center",
-                    match(true){
-                        $item->countCareers === 0 => 'bg-red-700 text-white',
-                        default => 'bg-white',
-                    }
-                ])>
+                </a>
+                <a
+                    href="{{ $item->careers_cabinet_list }}"
+                    title="Количество указанных карьер"
+                    @class([
+                        "p-3 text-center rounded-sm shadow flex items-center justify-center",
+                        'hover:bg-sky-700 hover:text-white cursor-pointer',
+                        match(true){
+                            $item->countCareers === 0 => 'bg-red-700 text-white',
+                            default => 'bg-white',
+                        }
+                    ])
+                >
                     {!! $item->countCareers !!}
-                </div>
-                <div @class([
-                    "p-3 text-center rounded-sm shadow flex items-center justify-center",
-                    match(true){
-                        $item->countPartners === 0 => 'bg-red-700 text-white',
-                        default => 'bg-white',
-                    }
-                ])>
+                </a>
+                <a
+                    href="{{ $item->partnersCabinetList() }}"
+                    title="Количество указанных партнеров"
+                    @class([
+                        "p-3 text-center rounded-sm shadow flex items-center justify-center",
+                        'hover:bg-sky-700 hover:text-white cursor-pointer',
+                        match(true){
+                            $item->countPartners === 0 => 'bg-red-700 text-white',
+                            default => 'bg-white',
+                        }
+                    ])
+                >
                     {!! $item->countPartners !!}
-                </div>
-                <div @class([
-                    "p-3 text-center rounded-sm shadow flex items-center justify-center",
-                    match(true){
-                        $item->countPartners != $item->countPartnersLinks => 'bg-red-700 text-white',
-                        default => 'bg-white',
-                    }
-                ])>
+                </a>
+                <a
+                    href="{{ $item->partnersCabinetList() }}"
+                    title="Количество ссылок у указанных партнеров"
+                    @class([
+                        "p-3 text-center rounded-sm shadow flex items-center justify-center",
+                        'hover:bg-sky-700 hover:text-white cursor-pointer',
+                        match(true){
+                            $item->countPartners != $item->countPartnersLinks => 'bg-red-700 text-white',
+                            default => 'bg-white',
+                        }
+                    ])
+                >
                     {!! $item->countPartnersLinks !!}
-                </div>
-                <div @class([
-                    "p-3 text-center rounded-sm shadow flex items-center justify-center",
-                    match(true){
-                        $item->countPartners != $item->countPartnersLogo => 'bg-red-700 text-white',
-                        default => 'bg-white',
-                    }
-                ])>
+                </a>
+                <a
+                    href="{{ $item->partnersCabinetList() }}"
+                    title="Количество установленных логотипов у указанных партнеров"
+                    @class([
+                        "p-3 text-center rounded-sm shadow flex items-center justify-center",
+                        'hover:bg-sky-700 hover:text-white cursor-pointer',
+                        match(true){
+                            $item->countPartners != $item->countPartnersLogo => 'bg-red-700 text-white',
+                            default => 'bg-white',
+                        }
+                    ])
+                >
                     {!! $item->countPartnersLogo !!}
-                </div>
-                <div @class([
-                    "p-3 text-center rounded-sm shadow flex items-center justify-center",
-                    match(true){
-                        $item->countScience === 0 => 'bg-red-700 text-white',
-                        default => 'bg-white',
-                    }
-                ])>
+                </a>
+                <a
+                    href="{{ $item->science_cabinet_list }}"
+                    title="Количество пунктов в разделе наука"
+                    @class([
+                        "p-3 text-center rounded-sm shadow flex items-center justify-center",
+                        'hover:bg-sky-700 hover:text-white cursor-pointer',
+                        match(true){
+                            $item->countScience === 0 => 'bg-red-700 text-white',
+                            default => 'bg-white',
+                        }
+                    ])
+                >
                     {!! $item->countScience !!}
-                </div>
+                </a>
+                <a
+                    href="{{ $item->graduations_cabinet_list }}"
+                    title="Количество указанных выпускников"
+                    @class([
+                        "p-3 text-center rounded-sm shadow flex items-center justify-center",
+                        'hover:bg-sky-700 hover:text-white cursor-pointer',
+                        match(true){
+                            $item->countGraduations === 0 => 'bg-red-700 text-white',
+                            default => 'bg-white',
+                        }
+                    ])
+                >
+                    {!! $item->countGraduations !!}
+                </a>
 
             </div>
         @empty

@@ -45,14 +45,12 @@
                 />
             @endif
 
-            @if(auth()->user()->isEditor())
-                <x-cabinet.sections.index-link
-                    lucide="chart-bar-stacked"
-                    color="text-red-800"
-                    text="Состояние заполнения"
-                    :link=" route('divisions.cabinet.statuses') "
-                />
-            @endif
+            <x-cabinet.sections.index-link
+                lucide="chart-bar-stacked"
+                color="text-red-800"
+                text="Состояние заполнения"
+                :link=" route('divisions.cabinet.statuses') "
+            />
         </div>
     @endauth
 @endsection

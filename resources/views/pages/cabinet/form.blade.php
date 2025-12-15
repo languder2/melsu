@@ -68,6 +68,7 @@
                     name="code"
                     label="Code / Alias"
                     value="{!! old('code', $page->code) !!}"
+                    required
                 />
 
                 <div class="flex gap-3 justify-between items-center">

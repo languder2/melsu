@@ -28,20 +28,16 @@ class Page extends Model
     protected $fillable = [
         'id',
         'name',
-        'alias',
+        'code',
         'route',
         'comment',
-
         'parent_id',
-
         'title',
         'keywords',
         'description',
-
         'menu_id',
         'view',
         'content',
-
         'without_bg'
 
     ];
@@ -80,7 +76,7 @@ class Page extends Model
     {
         return [
             'name' => 'required',
-            'alias' => "nullable|unique:pages,alias,{$id},id,deleted_at,NULL|required_without:route",
+            'code' => "nullable|unique:pages,code,{$id},id,deleted_at,NULL|required_without:route",
             'comment' => '',
             'route' => 'required_without:alias',
             'parent_id' => '',
@@ -175,5 +171,10 @@ class Page extends Model
             ->orderBy('sort', 'desc')
             ->orderBy('name')
             ;
+    }
+
+    public function getCabinetDeleteLinkAttribute(): string
+    {
+        return route('pages.cabinet.delete');
     }
 }

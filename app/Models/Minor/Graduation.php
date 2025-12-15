@@ -68,7 +68,7 @@ class Graduation extends Model
         });
 
         static::deleting(function ($item) {
-            $item->image()->delete();
+            $item->images()->delete();
             $item->contents()->delete();
         });
     }

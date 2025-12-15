@@ -130,7 +130,7 @@ const sets = {
                     endpoints: {
                         byFile: '/api/upload-image',
                     },
-                    maxElementCount: 20,
+                    maxElementCount: 50,
                 },
             },
             embed: Embed,

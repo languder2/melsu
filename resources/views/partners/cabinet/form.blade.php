@@ -67,7 +67,10 @@
                 name="category_id"
                 value="{{ old('category_id', $partner->category_id) }}"
                 null="Категория"
+                label="Выберите категорию"
                 class="flex-1"
+                disabled
+                required
                 :list=" $categories->pluck('name', 'id') "
             />
 

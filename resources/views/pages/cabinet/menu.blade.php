@@ -18,7 +18,7 @@
     <div class="hidden lg:block flex-1"></div>
 
     <x-html.submit-link
-        link="{{ route('events.cabinet.form') }}"
+        link="{{ route('pages.cabinet.form') }}"
         text="Добавить страницу"
     />
 </div>
