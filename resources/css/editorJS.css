@@ -50,8 +50,8 @@
   transform: scaleX(1);
   transform-origin: left;
 }
-.codex-editor ul,
-.codex-editor ol {
+.codex-editor ul:not(.bg-none),
+.codex-editor ol:not(.bg-none) {
     @apply bg-white p-3 ps-6
 }
 

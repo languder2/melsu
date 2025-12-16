@@ -45,11 +45,15 @@ use Illuminate\Support\Collection;
  */
 class Division extends Model
 {
-    use SoftDeletes, resolveRouteBinding, hasSubordination, hasContents,
+    use
+        SoftDeletes, resolveRouteBinding, hasSubordination, hasContents,
         hasLinks, hasMeta,
         hasNews, hasEvents,
         hasPartners, hasGoals, hasCareers, hasScience, hasGraduations,
-        hasUsers, hasDocuments, hasImage, hasContacts,
+        hasUsers,
+        hasDocuments,
+        hasImage,
+        hasContacts,
         hasDivisionMenu, hasOptions
     ;
 

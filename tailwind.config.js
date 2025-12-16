@@ -4,6 +4,7 @@ const defaultTheme = require('tailwindcss/defaultTheme');
 module.exports = {
     content: ['./**/*.blade.php'],
     safelist: [
+        'bg-none',
         'top-13',
         'top-1/2',
         'w-1/2',
