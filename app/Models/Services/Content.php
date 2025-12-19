@@ -2,6 +2,7 @@
 
 namespace App\Models\Services;
 
+use App\Models\Division\Division;
 use App\Traits\hasRelations;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -37,8 +38,13 @@ class Content extends Model
 
             return true;
         });
+
         static::saved(function ($item) {
             Log::add($item);
+
+            if($item->relation instanceof Division) {
+                $item->relation->saveCacheCabinetItem();
+            }
         });
     }
 

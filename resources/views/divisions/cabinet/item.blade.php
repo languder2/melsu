@@ -30,17 +30,7 @@
 
         <div class="flex gap-3 items-center bg-white p-3 rounded-sm shadow">
             <div class="flex-1 flex gap-3 items-center">
-                @if(!$has_menu)
-                    @for($i=1; $i <= $division->level; $i++)
-                        <span class="px-1"></span>
-                    @endfor
-
-                    @if($division->level)
-                        <x-lucide-corner-down-right class="w-4" />
-                    @endif
-                @endif
-
-                {!! $division->name !!}
+                {!! $has_menu ?  $division->name : $division->prefixLevel() . $division->name !!}
             </div>
             @if(!$division->is_approved)
                 <div>

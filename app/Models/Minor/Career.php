@@ -3,11 +3,13 @@
 namespace App\Models\Minor;
 
 use App\Enums\Entities;
+use App\Models\Division\Division;
 use App\Models\Services\Log;
 use App\Traits\hasContents;
 use App\Traits\hasImage;
 use App\Traits\hasRelations;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Career extends Model
@@ -59,14 +61,16 @@ class Career extends Model
         });
 
         static::saved(function ($item) {
-            if($item->relation)
+            if($item->relation instanceof Division) {
                 $item->relation
                     ->option('has_careers_in_moderation')
                     ->fill(['property' =>
                             $item->relation->careers()->count() === 0
-                            || $item->relation->careers()->where('is_approved',false)->count() === 0]
+                            || $item->relation->careers()->where('is_approved', false)->count() === 0]
                     )->save();
 
+                $item->relation->saveCacheCabinetItem();
+            }
             Log::add($item);
         });
 

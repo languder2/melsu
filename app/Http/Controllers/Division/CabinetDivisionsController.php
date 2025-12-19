@@ -142,7 +142,6 @@ class CabinetDivisionsController extends Controller
 
     public function statuses(): view|RedirectResponse
     {
-
         $list = $this->divisions
             ->filter(fn($item) => in_array($item->type, [DivisionType::Faculty,DivisionType::Department,DivisionType::Institute]))
             ->each(function ($item) {
@@ -160,7 +159,6 @@ class CabinetDivisionsController extends Controller
                 $item->countGraduations     = $item->graduations->count();
             })
         ;
-
 
         return view('divisions.cabinet.statuses', compact('list'));
     }

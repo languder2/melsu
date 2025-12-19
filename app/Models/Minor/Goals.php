@@ -54,13 +54,16 @@ class Goals extends Model
         });
 
         static::saved(function ($item) {
-            if($item->relation)
+            if($item->relation) {
                 $item->relation
                     ->option('has_goals_in_moderation')
                     ->fill(['property' =>
                             $item->relation->goals()->count() === 0
-                            || $item->relation->goals()->where('is_approved',false)->count() === 0]
+                            || $item->relation->goals()->where('is_approved', false)->count() === 0]
                     )->save();
+
+                $item->relation->saveCacheCabinetItem();
+            }
 
             Log::add($item);
         });

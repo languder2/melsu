@@ -39,6 +39,7 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Cache;
 
 /**
  * @property ?DivisionType $type
@@ -112,6 +113,7 @@ class Division extends Model
 
         static::saved(function ($division) {
             Log::add($division);
+            $division->saveCacheCabinetItem();
         });
     }
 
@@ -641,6 +643,22 @@ class Division extends Model
     public static function cabinetAddForm(): string
     {
         return route('division.cabinet.form');
+    }
+
+    public function saveCacheCabinetItem(): void
+    {
+        Cache::forever(
+            "division-cabinet-item-$this->id",
+            view('divisions.cabinet.item', ['division' => $this])->render()
+        );
+    }
+    public function getCacheCabinetItem(): ?string
+    {
+        return Cache::get("division-cabinet-item-$this->id");
+    }
+    public function hasCacheCabinetItem(): bool
+    {
+        return Cache::has("division-cabinet-item-$this->id");
     }
 
 

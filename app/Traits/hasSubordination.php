@@ -69,5 +69,26 @@ trait hasSubordination
         return $collection;
     }
 
+    public function getLevel(): int
+    {
+        $level = 0;
+
+        if($this->parent)
+            $level = $this->parent->getLevel() + 1;
+
+        if($level>10)
+            dd($this);
+
+        return $level;
+    }
+
+    public function prefixLevel(): string
+    {
+        return str_repeat('&nbsp;', $this->getLevel()*3)
+            . ($this->getLevel() ? __('common.arrowT2R')  : '' )
+            . '&nbsp;';
+    }
+
+
 }
 

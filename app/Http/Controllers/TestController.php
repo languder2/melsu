@@ -21,6 +21,7 @@ use App\Models\Services\Content;
 use App\Models\Users\Role;
 use App\Models\Users\User;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Storage;
@@ -44,26 +45,32 @@ class TestController extends Controller
     {
         $list = collect();
 
-        if(auth()->check() && auth()->user()->isAdmin()){
-            $list = Page::all();
+//        if(auth()->check() && auth()->user()->isAdmin()){
+//            $list = Page::all();
+//
+//            $list->each(function ($item) {
+//                $view = \Illuminate\Support\Facades\View::exists("pages/content/$item->view")
+//                    ? view("pages/content/$item->view")->render() : null;
+//
+//                $sections = $item->sections->filter(fn($item) => $item->show)
+//                    ->sortBy('order')
+//                    ->map(fn($item) => ( $item->show_title ? "<h4>$item->title</h4>" : '') . $item->content);
+//
+//                $content = rawTextToEditorJS(match (true){
+//                    !is_null($view) => $view,
+//                    $sections->IsNotEmpty() => $sections,
+//                    default => $item->getRawOriginal('content'),
+//                });
+//
+//                $item->content_record->fill(['content' => $content])->save();
+//            });
+//        }
 
-            $list->each(function ($item) {
-                $view = \Illuminate\Support\Facades\View::exists("pages/content/$item->view")
-                    ? view("pages/content/$item->view")->render() : null;
 
-                $sections = $item->sections->filter(fn($item) => $item->show)
-                    ->sortBy('order')
-                    ->map(fn($item) => ( $item->show_title ? "<h4>$item->title</h4>" : '') . $item->content);
+        Division::limit(500)->get()->each(fn($division) =>
+            $division->saveCacheCabinetItem()
+        );
 
-                $content = rawTextToEditorJS(match (true){
-                    !is_null($view) => $view,
-                    $sections->IsNotEmpty() => $sections,
-                    default => $item->getRawOriginal('content'),
-                });
-
-                $item->content_record->fill(['content' => $content])->save();
-            });
-        }
 
         return view('test.view',compact('list'));
     }

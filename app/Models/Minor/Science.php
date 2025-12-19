@@ -54,13 +54,15 @@ class Science extends Model
         });
 
         static::saved(function ($item) {
-            if($item->relation)
+            if($item->relation){
                 $item->relation
                     ->option('has_science_in_moderation')
                     ->fill(['property' =>
                             $item->relation->science()->count() === 0
                             || $item->relation->science()->where('is_approved',false)->count() === 0]
                     )->save();
+                $item->relation->saveCacheCabinetItem();
+            }
 
             Log::add($item);
         });

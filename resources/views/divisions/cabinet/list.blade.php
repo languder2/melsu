@@ -22,7 +22,7 @@
         </div>
 
         @forelse($list as $division)
-            {{ view('divisions.cabinet.item', compact('division')) }}
+            {!! $division->hasCacheCabinetItem() ? $division->getCacheCabinetItem() : view('divisions.cabinet.item', compact('division')) !!}
         @empty
             <div class="col-span-full text-center font-semibold p-3 text-red-800">
                 Нет доступных Вам подразделений.

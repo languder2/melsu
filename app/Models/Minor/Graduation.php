@@ -56,13 +56,15 @@ class Graduation extends Model
         });
 
         static::saved(function ($item) {
-            if($item->relation)
+            if($item->relation){
                 $item->relation
                     ->option('has_graduations_in_moderation')
                     ->fill(['property' =>
                             $item->relation->graduations()->count() === 0
                             || $item->relation->graduations()->where('is_approved',false)->count() === 0]
                     )->save();
+                $item->relation->saveCacheCabinetItem();
+            }
 
             Log::add($item);
         });

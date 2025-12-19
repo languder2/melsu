@@ -64,13 +64,16 @@ class Contact extends Model
         });
 
         static::saved(function ($item) {
-            if($item->relation)
+            if($item->relation){
                 $item->relation
                     ->option('has_contacts_in_moderation')
                     ->fill(['property' =>
                         $item->relation->contacts()->count() === 0
                         || $item->relation->contacts()->where('is_approved',false)->count() === 0]
                     )->save();
+
+                $item->relation->saveCacheCabinetItem();
+            }
 
             Log::add($item);
         });
