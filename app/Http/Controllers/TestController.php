@@ -114,6 +114,15 @@ class TestController extends Controller
 //
 //        });
 
+//        \App\Models\Partners\Category::onlyTrashed()->get()->each(function ($category){
+//            dump($category->partners()->delete());
+//        });
+
+        Division::all()->each(fn($division) =>
+            $division->saveCacheCabinetItem()
+        );
+
+        dd();
 
         $json = Storage::get('json/get_employee.json');
 
