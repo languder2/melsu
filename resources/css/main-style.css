@@ -917,6 +917,9 @@ header{
         display: flex;
         flex: 0 0 auto;
         width: 33.333%;
+        position: relative;
+        border-right: 1px;
+        z-index: 1;
         .under-info{
             cursor: pointer;
             position: relative;
@@ -943,14 +946,43 @@ header{
             opacity: 0.9;
         }
     }
+    .box-info-under-slider::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 1px;
+        background-color: white;
+        z-index: 1;
+    }
 }
 .slider-container {
-    border-left: 0.5px solid white;
-    border-right: 0.5px solid white;
+   
     width: 100%;
     max-width: 1158px;
     overflow: hidden;
     white-space: nowrap;
+    position: relative;
+}
+.slider-container::before,
+.slider-container::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background-color: white;
+    z-index: 10;
+    pointer-events: none;
+}
+.slider-container::before {
+    left: 0;
+}
+
+
+.slider-container::after {
+    right: 0;
 }
 
 .slider-wrapper {
