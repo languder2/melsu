@@ -920,6 +920,7 @@ header{
         position: relative;
         border-right: 1px;
         z-index: 1;
+        margin-right: 0.1px;
         .under-info{
             cursor: pointer;
             position: relative;
