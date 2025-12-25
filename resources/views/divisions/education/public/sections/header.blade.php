@@ -16,7 +16,7 @@
                 {{ Breadcrumbs::view("vendor.breadcrumbs.education",$division->type->value,$division) }}
             </div>
             @component('divisions.education.public.sections.contacts', [
-                'contacts'  => $division->contacts,
+                'contacts'  => $division->publicContacts,
             ]) @endcomponent
         </div>
     </section>

@@ -23,7 +23,7 @@ hasContacts
     }
     public function publicContacts(): morphMany
     {
-        return $this->contacts()->where('is_show', true);
+        return $this->contacts()->where('is_show', true)->where('is_approved', true);
     }
 
     public function getContactsCabinetListAttribute():string
