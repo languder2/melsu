@@ -901,11 +901,14 @@ header{
 /*Info under slider style*/
 .info-under-slider{
     border-top: 1px solid white;
-    height: 190px;
+    height: auto;
+    max-height: 190px;
+    min-height: 140px;
     z-index: 2;
     position: absolute;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    gap: 3%;
     bottom: 0;
     background: transparent;
     padding-right: 0;
@@ -916,6 +919,7 @@ header{
         width: 33.333%;
         .under-info{
             cursor: pointer;
+            position: relative;
             width: 100%;
             padding: 12px;
             height: 100%;
@@ -941,8 +945,8 @@ header{
     }
 }
 .slider-container {
-    border-left: 1px solid white;
-    border-right: 1px solid white;
+    border-left: 0.5px solid white;
+    border-right: 0.5px solid white;
     width: 100%;
     max-width: 1158px;
     overflow: hidden;
@@ -1167,6 +1171,7 @@ header{
         max-height: 580px;
         .info-under-slider{
             height: 140px;
+            min-height: auto;
         }
         .box-info-under-slider{
             .under-info{

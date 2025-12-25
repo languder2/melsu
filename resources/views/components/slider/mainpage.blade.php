@@ -73,7 +73,7 @@
         <div class="slide_buttons sldr">
         </div>
     </div>
-    <div class="info-under-slider card-glass border-t-2 border-l-0 border-r-0 border-b-0 border-white" style="backdrop-filter: blur(5px) saturate(100%) !important;">
+    <div class="info-under-slider card-black-glass border-t border-l-0 border-r-0 border-b-0 border-white" style="backdrop-filter: blur(5px) saturate(100%) !important;">
         <div class="previous_btn group flex items-center cursor-pointer" title="Previous">
             <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M49 25C49 11.7452 38.2548 1 25 0.999999C11.7452 0.999998 1.00001 11.7452 1 25C1 38.2548 11.7452 49 25 49C38.2548 49 49 38.2548 49 25Z" stroke="#EEEEEE" class="group-hover:stroke-[#EEEEEE] transition duration-300 ease-linear" stroke-width="2"/>
@@ -82,81 +82,81 @@
             </svg>
         </div>
         <div class="slider-container">
-        <div class="slider-wrapper">
-            <div class="box-info-under-slider">
-                <a href="https://melsu.ru/rcfg" class="under-info border-[#FFFFFF] border-r border-t-0 border-b-0 border-l flex flex-col gap-2 justify-between">
-                    <span class="text-under-info font-semibold">Региональный центр финансовой грамотности "Запорожье"</span>
-                    <div class="ico-link flex justify-end absolute right-3 bottom-3">
-                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M3.66667 1H17M17 1V14.3333M17 1L1 17" stroke="white" stroke-width="2"/>
-                        </svg>
-                    </div>
-                </a>
+            <div class="slider-wrapper">
+                <div class="box-info-under-slider">
+                    <a href="https://melsu.ru/rcfg" class="under-info group border-[#FFFFFF] border-r-[0.5px] border-t-0 border-b-0 border-l-[0.5px] flex flex-col gap-2 justify-between">
+                        <span class="text-under-info font-semibold">Региональный центр финансовой грамотности "Запорожье"</span>
+                        <div class="ico-link flex justify-end absolute right-2.5 bottom-2.5 2xl:right-5 2xl:bottom-5 group-hover:-translate-y-1 transform duration-300 ease-linear">
+                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3.66667 1H17M17 1V14.3333M17 1L1 17" stroke="white" class="stroke-1 2xl:stroke-2"/>
+                            </svg>
+                        </div>
+                    </a>
+                </div>
+                <div class="box-info-under-slider">
+                    <a href="https://melsu.ru/conference-of-workers-and-students-2025" class="under-info group border-[#FFFFFF] border-r-[0.5px] border-t-0 border-b-0 border-l-[0.5px] flex flex-col gap-2 justify-between">
+                        <span class="text-under-info font-semibold">Конференция работников и обучающихся 2025</span>
+                        <div class="ico-link flex justify-end absolute right-2.5 bottom-2.5 2xl:right-5 2xl:bottom-5 group-hover:-translate-y-1 transform duration-300 ease-linear">
+                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3.66667 1H17M17 1V14.3333M17 1L1 17" stroke="white" class="stroke-1 2xl:stroke-2"/>
+                            </svg>
+                        </div>
+                    </a>
+                </div>
+            {{-- <div class="box-info-under-slider">
+                    <a href="https://abiturient.mgu-mlt.ru/documents" class="under-info group border-[#FFFFFF] border-r border-t-0 border-b-0 border-l-0 flex flex-col gap-2 justify-between">
+                        <span class="text-under-info font-semibold">Приказы о зачислении</span>
+                        <div class="ico-link flex justify-end absolute right-2.5 bottom-2.5 2xl:right-5 2xl:bottom-5 group-hover:-translate-y-1 transform duration-300 ease-linear">
+                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3.66667 1H17M17 1V14.3333M17 1L1 17" stroke="white" class="stroke-1 2xl:stroke-2"/>
+                            </svg>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="box-info-under-slider">
+                    <a href="https://abiturient.mgu-mlt.ru/competition-lists" class="under-info group border-[#FFFFFF] border-r border-t-0 border-b-0 border-l-0 flex flex-col gap-2 justify-between">
+                        <span class="text-under-info font-semibold">Конкурсные списки поступающих</span>
+                        <div class="ico-link flex justify-end absolute right-2.5 bottom-2.5 2xl:right-5 2xl:bottom-5 group-hover:-translate-y-1 transform duration-300 ease-linear">
+                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3.66667 1H17M17 1V14.3333M17 1L1 17" stroke="white" class="stroke-1 2xl:stroke-2"/>
+                            </svg>
+                        </div>
+                    </a>
+                </div> --}}
+                <div class="box-info-under-slider">
+                    <a href="{{url('programma-razvitiya-melsu')}}" class="under-info group border-[#FFFFFF] border-r-[0.5px] border-t-0 border-b-0 border-l-[0.5px] flex flex-col gap-2 justify-between">
+                        <span class="text-under-info font-semibold">Программа развития МелГУ на 2023-2028 годы</span>
+                        <div class="ico-link flex justify-end absolute right-2.5 bottom-2.5 2xl:right-5 2xl:bottom-5 group-hover:-translate-y-1 transform duration-300 ease-linear">
+                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3.66667 1H17M17 1V14.3333M17 1L1 17" stroke="white" class="stroke-1 2xl:stroke-2"/>
+                            </svg>
+                        </div>
+                    </a>
+                </div>
+                <div class="box-info-under-slider">
+                    <a href="{{ route('clusters.list') }}" class="under-info group border-[#FFFFFF] border-r-[0.5px] border-t-0 border-b-0 border-l-[0.5px] flex flex-col gap-2 justify-between">
+                        <span class="text-under-info font-semibold">Флагманские проекты</span>
+                        <div class="ico-link flex justify-end absolute right-2.5 bottom-2.5 2xl:right-5 2xl:bottom-5 group-hover:-translate-y-1 transform duration-300 ease-linear">
+                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3.66667 1H17M17 1V14.3333M17 1L1 17" stroke="white" class="stroke-1 2xl:stroke-2"/>
+                            </svg>
+                        </div>
+                    </a>
+                </div>
+                <div class="box-info-under-slider">
+                    <a href="{{ url('selekcionno-semenovodcheskij-centr-vysokotekhnologichnyj-selekcionno-pitomnikovodcheskij-kompleks-plodovyh-kultur-novorossii') }}" class="under-info group border-[#FFFFFF] border-r-[0.5px] border-t-0 border-b-0 border-l-[0.5px] flex flex-col gap-2 justify-between">
+                        <span class="text-under-info font-semibold text-wrap">Селекционно-семеноводческий центр</span>
+                        <div class="ico-link flex justify-end absolute right-2.5 bottom-2.5 2xl:right-5 2xl:bottom-5 group-hover:-translate-y-1 transform duration-300 ease-linear">
+                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3.66667 1H17M17 1V14.3333M17 1L1 17" stroke="white" class="stroke-1 2xl:stroke-2"/>
+                            </svg>
+                        </div>
+                    </a>
+                </div>
+                
             </div>
-            <div class="box-info-under-slider">
-                <a href="https://melsu.ru/conference-of-workers-and-students-2025" class="under-info border-[#FFFFFF] border-r border-t-0 border-b-0 border-l flex flex-col gap-2 justify-between">
-                    <span class="text-under-info font-semibold">Конференция работников и обучающихся 2025</span>
-                    <div class="ico-link flex justify-end absolute right-3 bottom-3">
-                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M3.66667 1H17M17 1V14.3333M17 1L1 17" stroke="white" stroke-width="2"/>
-                        </svg>
-                    </div>
-                </a>
-            </div>
-            <div class="box-info-under-slider">
-                <a href="https://abiturient.mgu-mlt.ru/documents" class="under-info border-[#FFFFFF] border-r border-t-0 border-b-0 border-l flex flex-col gap-2 justify-between">
-                    <span class="text-under-info font-semibold">Приказы о зачислении</span>
-                    <div class="ico-link flex justify-end absolute right-3 bottom-3">
-                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M3.66667 1H17M17 1V14.3333M17 1L1 17" stroke="white" stroke-width="2"/>
-                        </svg>
-                    </div>
-                </a>
-            </div>
-            
-            <div class="box-info-under-slider">
-                <a href="https://abiturient.mgu-mlt.ru/competition-lists" class="under-info border-[#FFFFFF] border-r border-t-0 border-b-0 border-l flex flex-col gap-2 justify-between">
-                    <span class="text-under-info font-semibold">Конкурсные списки поступающих</span>
-                    <div class="ico-link flex justify-end absolute right-3 bottom-3">
-                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M3.66667 1H17M17 1V14.3333M17 1L1 17" stroke="white" stroke-width="2"/>
-                        </svg>
-                    </div>
-                </a>
-            </div>
-            <div class="box-info-under-slider">
-                <a href="{{url('programma-razvitiya-melsu')}}" class="under-info border-[#FFFFFF] border-r border-t-0 border-b-0 border-l flex flex-col gap-2 justify-between">
-                    <span class="text-under-info font-semibold">Программа развития МелГУ на 2023-2028 годы</span>
-                    <div class="ico-link flex justify-end absolute right-3 bottom-3">
-                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M3.66667 1H17M17 1V14.3333M17 1L1 17" stroke="white" stroke-width="2"/>
-                        </svg>
-                    </div>
-                </a>
-            </div>
-            <div class="box-info-under-slider">
-                <a href="{{ route('clusters.list') }}" class="under-info border-[#FFFFFF] border-r border-t-0 border-b-0 border-l flex flex-col gap-2 justify-between">
-                    <span class="text-under-info font-semibold">Флагманские проекты</span>
-                    <div class="ico-link flex justify-end absolute right-3 bottom-3">
-                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M3.66667 1H17M17 1V14.3333M17 1L1 17" stroke="white" stroke-width="2"/>
-                        </svg>
-                    </div>
-                </a>
-            </div>
-            <div class="box-info-under-slider">
-                <a href="{{ url('selekcionno-semenovodcheskij-centr-vysokotekhnologichnyj-selekcionno-pitomnikovodcheskij-kompleks-plodovyh-kultur-novorossii') }}" class="under-info border-[#FFFFFF] border-r border-t-0 border-b-0 border-l flex flex-col gap-2 justify-between">
-                    <span class="text-under-info font-semibold text-wrap">Селекционно-семеноводческий центр</span>
-                    <div class="ico-link flex justify-end absolute right-3 bottom-3">
-                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M3.66667 1H17M17 1V14.3333M17 1L1 17" stroke="white" stroke-width="2"/>
-                        </svg>
-                    </div>
-                </a>
-            </div>
-            
         </div>
-    </div>
         <div class="next_btn group flex items-center cursor-pointer" title="Next">
             <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M1 25C1 11.7452 11.7452 1 25 0.999999C38.2548 0.999998 49 11.7452 49 25C49 38.2548 38.2548 49 25 49C11.7452 49 1 38.2548 1 25Z" stroke="#EEEEEE" class="group-hover:stroke-[#EEEEEE] transition duration-300 ease-linear" stroke-width="2"/>
@@ -196,7 +196,8 @@
             dragOffset: 0,
             slideInterval: null,
             allSlides: null,
-            visibleSlides: 3 
+            visibleSlides: 3,
+            isScrolling: false
         };
 
         function updateVisibleSlides() {
@@ -312,6 +313,10 @@
 
         function handleDragStart(e) {
             if (state.isAnimating) return;
+            state.isScrolling = false;
+            if (e.type === 'mousedown') {
+                e.preventDefault(); 
+            }
             state.isDragging = true;
             state.startX = e.clientX || e.touches[0].clientX;
             state.currentX = state.startX;
@@ -322,6 +327,14 @@
 
         function handleDragMove(e) {
             if (!state.isDragging) return;
+
+            const x = e.clientX || e.touches[0].clientX;
+            const walk = x - state.startX;
+
+            if (Math.abs(walk) > 5) {
+                state.isScrolling = true;
+            }
+            
             state.currentX = e.clientX || e.touches[0].clientX;
             state.dragOffset = state.currentX - state.startX;
             
@@ -378,6 +391,15 @@
                 goToSlide(state.currentIndex + 1);
                 resetAutoSlide();
             });*/
+
+            const links = sliderWrapper.querySelectorAll('a');
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    if (state.isScrolling) {
+                        e.preventDefault();
+                    }
+                });
+            });
 
             sliderWrapper.addEventListener('mouseenter', stopAutoSlide);
             sliderWrapper.addEventListener('mouseleave', startAutoSlide);
