@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => { 
     var timeout;
     $('.slider').each(function () {
         var $this = $(this);
@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }, time);
         }
 
-        $('.next_btn').on('click', function () {
+        $('.slider-button.next').on('click', function () {
             if (currentIndex < ($slides.length - 1)) {
                 move(currentIndex + 1);
             } else {
@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        $('.previous_btn').on('click', function () {
+        $('.slider-button.prev').on('click', function () {
             if (currentIndex !== 0) {
                 move(currentIndex - 1);
             } else {
@@ -97,6 +97,6 @@ document.addEventListener('DOMContentLoaded', () => {
             bulletArray.push($button);
         });
 
-        advance();
+       advance();
     });
 });

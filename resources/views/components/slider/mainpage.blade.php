@@ -1,5 +1,11 @@
 <section class="slider-section">
     <div class="box-slider sldr">
+        <div class="slider-button prev" title="Previous">
+            <i class="bi bi-chevron-left"></i>
+        </div>
+        <div class="slider-button next" title="Next">
+            <i class="bi bi-chevron-right"></i>
+        </div>
         <div class="slider sldr">
             <div class="slide_viewer sldr">
                 
@@ -163,12 +169,6 @@
                 <path d="M37 4.21539C40.6485 6.32183 43.6782 9.35154 45.7846 13C47.8911 16.6485 49 20.7871 49 25C49 29.2129 47.8911 33.3515 45.7846 37C43.6782 40.6485 40.6485 43.6782 37 45.7846" stroke="#252422" class="group-hover:stroke-[#EEEEEE] transition duration-300 ease-linear" stroke-width="2"/>
                 <path d="M20.5 34.5L29.6875 25L20.5 15.5" stroke="#EEEEEE" class="group-hover:stroke-[#EEEEEE] transition duration-300 ease-linear" stroke-width="2"/>
             </svg>
-        </div>
-        <div class="slider-button prev hidden" title="Previous">
-            <i class="bi bi-chevron-left"></i>
-        </div>
-        <div class="slider-button next hidden" title="Next">
-            <i class="bi bi-chevron-right"></i>
         </div>
     </div>
 </section>
@@ -382,7 +382,7 @@
             document.addEventListener('touchend', handleDragEnd);
 
             // Кнопки
-           /* prevBtn.addEventListener('click', function() {
+           prevBtn.addEventListener('click', function() {
                 goToSlide(state.currentIndex - 1);
                 resetAutoSlide();
             });
@@ -390,7 +390,7 @@
             nextBtn.addEventListener('click', function() {
                 goToSlide(state.currentIndex + 1);
                 resetAutoSlide();
-            });*/
+            });
 
             const links = sliderWrapper.querySelectorAll('a');
             links.forEach(link => {
