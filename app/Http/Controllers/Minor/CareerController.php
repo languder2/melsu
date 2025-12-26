@@ -81,4 +81,19 @@ class CareerController extends Controller
         return redirect()->back();
     }
 
+    public function changeApproved(string $entity, int $entity_id, string $range, string $action): RedirectResponse
+    {
+        $instance   = Entities::instance($entity, $entity_id);
+
+        if($range === "all"){
+            $instance->careers->each(fn($item) =>
+            $item->update([
+                'is_show'       => $action === "set",
+                'is_approved'   => $action === "set"
+            ])
+            );
+        }
+
+        return redirect()->back();
+    }
 }

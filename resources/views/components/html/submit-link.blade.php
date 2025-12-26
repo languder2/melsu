@@ -1,6 +1,7 @@
 @props([
     'text'          => null,
     'link'          => null,
+    'title'         => null,
     'inline'        => false,
     'target'        => '_self',
     'textStyles'    => null,
@@ -27,8 +28,12 @@
     }}
 
     {{ $attributes->except('open') }}
+
+    @if($title)
+        title="{{ $title }}"
+    @endif
 >
     <span class="first-letter:uppercase {{ $textStyles }}">
-        {{ $text }}
+        {!! $text !!}
     </span>
 </a>

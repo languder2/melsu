@@ -52,5 +52,15 @@ hasCareers
             'entity_id' => $this->id
         ]);
     }
+    public function careersCabinetChangeApproved(string $action = 'set', string $range = 'all'):string
+    {
+        return route('careers.cabinet.change-approved', [
+            'entity' => Entities::getEntityByModel($this::class)->value,
+            'entity_id' => $this->id,
+            $range,
+            $action
+        ]);
+    }
+
 
 }

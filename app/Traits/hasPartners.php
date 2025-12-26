@@ -15,7 +15,10 @@ trait hasPartners
 
     public function publicPartners(): morphMany
     {
-        return $this->partners()->where('is_show', true)->orderBy('sort', 'desc');
+        return $this->partners()
+            ->where('is_show', true)
+            ->where('is_approved', true)
+            ->orderBy('sort', 'desc');
     }
 
     public function partnerCategories(){

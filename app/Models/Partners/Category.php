@@ -107,5 +107,13 @@ class Category extends Model
         return $this->hasMany(Partner::class)->orderBy('sort', 'desc');
     }
 
+    public function publicPartners(): HasMany
+    {
+        return $this->hasMany(Partner::class)
+            ->where('is_show', true)
+            ->where('is_approved', true)
+            ->orderBy('sort', 'desc');
+    }
+
 
 }

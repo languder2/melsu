@@ -15,7 +15,6 @@ class GoalsController extends Controller
     public function list(string $entity, int $entity_id, bool $onApproval = false): View
     {
         $instance   = Entities::instance($entity, $entity_id);
-
         $list       = $onApproval ? $instance->onApprovalGoals : $instance->goals;
 
         return view('goals.cabinet.list', compact('list', 'instance'));
@@ -78,6 +77,22 @@ class GoalsController extends Controller
         $flip->save();
 
         return redirect()->to($instance->goals_cabinet_list);
+    }
+
+    public function changeApproved(string $entity, int $entity_id, string $range, string $action): RedirectResponse
+    {
+        $instance   = Entities::instance($entity, $entity_id);
+
+        if($range === "all"){
+            $instance->goals->each(fn($item) =>
+                $item->update([
+                    'is_show'       => $action === "set",
+                    'is_approved'   => $action === "set"
+                ])
+            );
+        }
+
+        return redirect()->back();
     }
 
 }

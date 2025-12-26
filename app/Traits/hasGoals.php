@@ -53,4 +53,14 @@ hasGoals
         ]);
     }
 
+    public function goalsCabinetChangeApproved(string $action = 'set', string $range = 'all'):string
+    {
+        return route('goals.cabinet.change-approved', [
+            'entity' => Entities::getEntityByModel($this::class)->value,
+            'entity_id' => $this->id,
+            $range,
+            $action
+        ]);
+    }
+
 }

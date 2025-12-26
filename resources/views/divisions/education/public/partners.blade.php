@@ -16,8 +16,10 @@
                 {{ __('menu.partners and graduations') }}
             </h2>
 
+            @if($division->publicPartners->isNotEmpty())
+                <x-divisions.partners :categories="$division->partnerCategories" />
+            @endif
 
-            <x-divisions.partners :categories="$division->partnerCategories" />
             <x-divisions.graduations :list="$division->publicGraduations">
                 Выпускники
             </x-divisions.graduations>

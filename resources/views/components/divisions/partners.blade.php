@@ -6,7 +6,7 @@
     @if($categories->count() > 1)
         <div class="tabs flex gap-3 border-b border-gray-200">
             @foreach($categories as $category)
-                @continue($category->partners->isEmpty())
+                @continue($category->publicPartners->isEmpty())
                 <div
                     @if($loop->first) open @endif
                 data-tab="{{ $category->id }}"
@@ -25,8 +25,8 @@
             class="tabContent overflow-hidden @if(!$loop->first) max-h-0 @endif duration-500 transition-all"
         >
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-3 py-2 px-1">
-                @foreach($category->partners as $partner)
-                    @continue($category->partners->isEmpty())
+                @foreach($category->publicPartners as $partner)
+                    @continue($category->publicPartners->isEmpty())
                     <a
                         href="{{ $partner->link ?? '#' }}"
                         class="flex shadow hover:-mt-1 hover:mb-1 duration-300 transition-all"

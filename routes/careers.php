@@ -25,4 +25,10 @@ Route::prefix('cabinet/careers/{entity}/{entity_id}/')
         Route::get('change-sort/{career?}/{direction?}',    [CareerController::class, 'changeSort'])
                                                                 ->name('careers.cabinet.change-sort')
                                                                 ->defaults('direction', 'down');
-});
+
+        Route::get('change-approved/{range?}/{action?}',    [CareerController::class, 'changeApproved'])
+                                                                ->name('careers.cabinet.change-approved')
+                                                                ->defaults('range', 'all')
+                                                                ->defaults('action', 'set');
+
+    });
