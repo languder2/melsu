@@ -16,8 +16,7 @@ class MediaUploadController extends Controller
 {
     public function upload(Request $request): JsonResponse
     {
-        $maxWidth = 1920;
-        $maxHeight = 1080;
+        $maxWidth = 1920;        $maxHeight = 1080;
 
         $request->validate([
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:20480', // 2MB max
@@ -39,5 +38,32 @@ class MediaUploadController extends Controller
             'success' => 0,
             'message' => 'File upload failed.'
         ], 400);
+    }
+
+    public function uploadAttachments(Request $request): JsonResponse
+    {
+        $form = $request->validate([
+            'file' => 'required|file|max:102400',
+            'type' => 'nullable|string'
+        ]);
+
+
+        if ($request->hasFile('file')) {
+            $file = $request->file('file');
+
+            $path = $file->store('uploads/documents', 'public');
+
+            return response()->json([
+                'success' => 1,
+                'file' => [
+                    'url'       => Storage::url($path),
+                    'name'      => $file->getClientOriginalName(),
+                    'size'      => $file->getSize(),
+                    'extension' => $file->getClientOriginalExtension(),
+                ]
+            ]);
+        }
+
+        return response()->json(['success' => 0], 400);
     }
 }

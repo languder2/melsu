@@ -148,7 +148,11 @@ const sets = {
             attaches: {
                 class: AttachesTool,
                 config: {
-                    endpoint: 'http://localhost:8008/uploadFile'
+                    endpoint: '/api/upload-attachments',
+                    additionalRequestData: {
+                        app_type: 'document',
+                        category: 'legal'
+                    }
                 }
             },
         },

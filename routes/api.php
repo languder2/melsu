@@ -274,6 +274,9 @@ Route::prefix('news')->group(function (){
 
 
 
-Route::post('/upload-image', [MediaUploadController::class, 'upload'])->name('editorjs.upload');
-Route::post('/upload-video', [MediaUploadController::class, 'uploadVideo'])->name('editorjs.upload');
-Route::get('/fetchUrl', [EditorjsController::class, 'fetchLinkMeta'])->name('editorjs.fetch.url');
+Route::post('/upload-image',                                [MediaUploadController::class, 'upload']);
+
+Route::post('/upload-attachments',                          [MediaUploadController::class, 'uploadAttachments']);
+
+Route::get('/fetchUrl',                                     [EditorjsController::class, 'fetchLinkMeta'])
+                                                                ->name('editorjs.fetch.url');

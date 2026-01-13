@@ -42,7 +42,7 @@
     <div class="flex w-full gap-4 items-center">
         <div class="flex-none text-white">
             <a
-                href="{{ $record->documents_admin_list }}"
+                href="{{ route('division:admin:documents:list', $record) }}"
                 class="
                     py-2 px-4 rounded-md
                     bg-blue-950

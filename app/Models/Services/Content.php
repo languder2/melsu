@@ -103,6 +103,7 @@ class Content extends Model
                     'table'     => view('components.editorjs.table', compact('block'))->render(),
                     'quote'     => view('components.editorjs.quote', compact('block'))->render(),
                     'List'      => view('components.editorjs.list.base', compact('block'))->render(),
+                    'attaches'  => view('components.editorjs.attaches', compact('block'))->render(),
                     'code'      => Blade::render($block->data->code),
                     'raw'       => Blade::render($block->data->html),
                     default     => $block->type,
