@@ -8,6 +8,7 @@ use App\Models\Page\Content as PageContent;
 use App\Traits\hasContents;
 use App\Traits\hasLinks;
 use App\Traits\hasMeta;
+use App\Traits\hasUsers;
 use App\Traits\MagicGet;
 use App\Traits\resolveRouteBinding;
 use Illuminate\Database\Eloquent\Model;
@@ -19,7 +20,9 @@ use Illuminate\Support\Facades\Route;
 
 class Page extends Model
 {
-    use SoftDeletes, hasMeta, MagicGet, hasLinks, resolveRouteBinding, hasContents;
+    use SoftDeletes, hasMeta, MagicGet, hasLinks, resolveRouteBinding, hasContents,
+    hasUsers
+        ;
 
     protected $table = 'pages';
 

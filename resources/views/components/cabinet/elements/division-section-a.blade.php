@@ -13,7 +13,7 @@
 <a
     href="{{ $link }}"
     class="flex-end hover:text-green-700 relative"
-    title="{{ $title. ($isApproved ? null :  '. ' . __('common.In moderation'))  }}">
+    title="{{ mb_ucfirst($title) . ($isApproved ? null :  '. ' . __('common.In moderation'))  }}">
 
     {!! \Illuminate\Support\Facades\Blade::render("<x-lucide-$lucide class='w-6 " .($isApproved ? null : 'text-red-700'). "'/>") !!}
 

@@ -46,6 +46,18 @@
             <a href="{{ $division->cabinet_form }}" class="hover:text-amber-500" title="Редактировать">
                 <x-lucide-square-pen class="w-6" />
             </a>
+
+
+            @if(auth()->user()->isAdmin())
+                <x-cabinet.elements.division-section-a
+                    :link=" $division->user_access_cabinet_list "
+                    lucide="user-round-cog"
+                    :title=" __('common.allowed users') "
+                    :options="$options"
+                    option="has_gallery_in_moderation"
+                />
+            @endif
+
         </div>
 
 

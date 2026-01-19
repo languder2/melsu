@@ -79,6 +79,13 @@ class TestController extends Controller
     {
         $list = collect();
 
+
+        $division = Page::find(3);
+
+        $division->users()->sync([8]);
+
+        dd($division->users);
+
 //        News::all()->each(function ($item){
 //            if($item->relation && $item->divisions->doesntContain($item->relation))
 //                $item->divisions()->attach($item->relation);
