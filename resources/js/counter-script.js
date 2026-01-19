@@ -54,7 +54,7 @@ if (document.querySelector('.box-number')) {
         const intervalIdKaf = createCounter('countKaf', 46, 10, 1);
     }
     if (document.querySelector('#countStud')) {
-        const intervalIdStud = createCounter('countStud', 15000, 1, 100);
+        const intervalIdStud = createCounter('countStud', 19000, 1, 100);
     }
     if (document.querySelector('#countObl')) {
         const intervalIdObl = createCounterDecay('countObl', 100, 1, 1);
