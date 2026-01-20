@@ -3,8 +3,8 @@
 @php
     /** * @var object $item */
     $classes = match(true){
-            !$item->has_approval    => 'border-red-700 bg-white',
-            !$item->show            => 'border-orange-400 bg-white',
+//            !$item->has_approval    => 'border-red-700 bg-white',
+            !$item->is_show         => 'border-orange-400 bg-white',
             default                 => 'border-white bg-white'
         };
 @endphp
@@ -26,12 +26,22 @@
     <div>
         {{ $item->name }}
     </div>
-    <div class="px-2 flex justify-center">
-        <x-html.button-delete-with-modal
-            question="Удалить страницу"
-            :text=" $item->title "
-            :action=" $item->cabinet_delete_link "
-            icoClass='hover:text-amber-700'
+    <div class="px-2 flex justify-center gap-5">
+        <x-cabinet.elements.division-section-a
+            :link=" $item->user_access_cabinet_list "
+            lucide="user-round-cog"
+            :title=" __('common.allowed users') "
+            :isApproved="true"
+            option="has_gallery_in_moderation"
         />
+
+        @if(auth()->user()->isEditor())
+            <x-html.button-delete-with-modal
+                question="Удалить страницу"
+                :text=" $item->title "
+                :action=" $item->cabinet_delete_link "
+                icoClass='hover:text-amber-700'
+            />
+        @endif
     </div>
 </div>

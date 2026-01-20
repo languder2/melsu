@@ -34,6 +34,7 @@ return [
     'Careers'                   => 'Карьеры',
     'Careers on approval'       => 'Карьеры требующие утверждения',
     'Add career'                => 'Добавить карьеру',
+    'add division'              => 'Добавить подразделение',
     'Salary from'               => 'Оклад от',
     'Salary to'                 => 'Оклад до',
 

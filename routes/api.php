@@ -280,3 +280,10 @@ Route::post('/upload-attachments',                          [MediaUploadControll
 
 Route::get('/fetchUrl',                                     [EditorjsController::class, 'fetchLinkMeta'])
                                                                 ->name('editorjs.fetch.url');
+
+
+Route::get('refresh-divisions-cabinet-item-line', function(){
+    Division::all()->each(fn($item) => $item->saveCacheCabinetItem());
+
+    return 'success';
+});

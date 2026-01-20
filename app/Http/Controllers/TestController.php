@@ -30,17 +30,6 @@ use Illuminate\View\View;
 
 class TestController extends Controller
 {
-//    public function token()
-//    {
-//        dump(session()->token());
-//    }
-//
-//    public function phpinfo():void
-//    {
-
-//        phpinfo();
-//    }
-
     public function view()
     {
         $list = collect();
@@ -85,51 +74,6 @@ class TestController extends Controller
         $division->users()->sync([8]);
 
         dd($division->users);
-
-//        News::all()->each(function ($item){
-//            if($item->relation && $item->divisions->doesntContain($item->relation))
-//                $item->divisions()->attach($item->relation);
-//
-//            if($item->category && $item->categories->doesntContain($item->category))
-//                $item->categories()->attach($item->category);
-//
-//        });
-//
-//        Events::all()->each(function ($item){
-//            if($item->relation && $item->divisions->doesntContain($item->relation))
-//                $item->divisions()->attach($item->relation);
-//
-//            if($item->category && $item->categories->doesntContain($item->category))
-//                $item->categories()->attach($item->category);
-//
-//        });
-
-//        Page::all()->each(function($item){
-//            $content = null;
-//
-//            $sections = $item->sections->each(
-//                fn($item) => $item->content =
-//                    $item->show_title ? "<h3>$item->title</h3> $item->content" : $item->content
-//            );
-//
-//            if($sections->isNotEmpty())
-//                $content = rawTextToEditorJS($sections->pluck('content'));
-//
-//            if($content && !$item->content_record->exists){
-//                $item->content_record->fill(['content' => $content])->save();
-//            }
-//
-//        });
-
-//        \App\Models\Partners\Category::onlyTrashed()->get()->each(function ($category){
-//            dump($category->partners()->delete());
-//        });
-
-        Division::all()->each(fn($division) =>
-            $division->saveCacheCabinetItem()
-        );
-
-        dd();
 
         $json = Storage::get('json/get_employee.json');
 

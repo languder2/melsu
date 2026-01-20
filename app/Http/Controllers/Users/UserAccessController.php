@@ -10,6 +10,7 @@ use App\Models\Division\Division;
 use App\Models\Users\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
@@ -20,6 +21,8 @@ class UserAccessController extends Controller
     public function list(string $entity, int $entity_id): View
     {
         $instance   = Entities::instance($entity, $entity_id);
+
+        Gate::authorize('access-instance', $instance);
 
         $list       = $instance->users;
 

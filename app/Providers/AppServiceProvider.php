@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Page\Page;
 use App\Models\Users\User;
 use App\Policies\UserPolicy;
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -26,6 +27,14 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Gate::policy(User::class, UserPolicy::class);
+
+        Gate::define('access-page', fn (User $user, Page $page) =>
+            $user->isEditor() || $user->pages()->where('pages.id', $page->id)->exists()
+        );
+
+        Gate::define('access-instance', fn (User $user, $instance) =>
+            $user->isEditor() || $instance->users()->find($user)
+        );
 
         Blade::directive('relInc', function ($args) {
             $args = Blade::stripParentheses($args);

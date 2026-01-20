@@ -4,12 +4,6 @@
 
     <x-form.errors/>
 
-
-    @props([
-    'divisions' => collect(),
-    'currents'  => collect(),
-])
-
     <div id="blockSetDivisionAccess" class="flex flex-col gap-3 mt-4">
 
         <div class="flex gap-3 justify-between items-center">

@@ -14,7 +14,7 @@
     <div
         class="{{ $class }}"
     >
-        @if(auth()->user()->isAdmin())
+        @if(auth()->id() && auth()->user()->isAdmin())
             <div class="flex items-center justify-center p-3 rounded-sm shadow bg-white">
                 <x-html.button-delete-with-modal
                     question="Удалить подразделение"
@@ -24,7 +24,7 @@
                 />
             </div>
         @endif
-        <div class=" flex items-center justify-center p-3 rounded-sm shadow bg-white {{ auth()->user()->isAdmin() ? '' : 'col-span-2' }}">
+        <div class=" flex items-center justify-center p-3 rounded-sm shadow bg-white {{ auth()->id() && auth()->user()->isAdmin() ? '' : 'col-span-2' }}">
             {!! $division->id !!}
         </div>
 
@@ -47,16 +47,13 @@
                 <x-lucide-square-pen class="w-6" />
             </a>
 
-
-            @if(auth()->user()->isAdmin())
-                <x-cabinet.elements.division-section-a
-                    :link=" $division->user_access_cabinet_list "
-                    lucide="user-round-cog"
-                    :title=" __('common.allowed users') "
-                    :options="$options"
-                    option="has_gallery_in_moderation"
-                />
-            @endif
+            <x-cabinet.elements.division-section-a
+                :link=" $division->user_access_cabinet_list "
+                lucide="user-round-cog"
+                :title=" __('common.allowed users') "
+                :options="$options"
+                option="has_gallery_in_moderation"
+            />
 
         </div>
 

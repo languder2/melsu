@@ -85,7 +85,7 @@
                         :default="0"
                         :value="1"
                         label="Опубликовать"
-                        :checked=" old('show', $page->exists ? $page->show : true)"
+                        :checked=" old('show', $page->exists ? $page->is_show : true)"
                         block="pe-2"
                     />
                 </div>

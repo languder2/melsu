@@ -41,8 +41,8 @@ class Page extends Model
         'menu_id',
         'view',
         'content',
-        'without_bg'
-
+        'without_bg',
+        'is_show',
     ];
     protected static function boot()
     {
@@ -63,8 +63,9 @@ class Page extends Model
     public function validateRules(): array
     {
         return [
-            'name' => 'required',
-            'code' => "unique:pages,code,$this->id,id,deleted_at,NULL",
+            'name'      => 'required',
+            'code'      => "unique:pages,code,$this->id,id,deleted_at,NULL",
+            'is_show'   => '',
         ];
     }
     public function validateMessages(): array

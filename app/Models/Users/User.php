@@ -4,6 +4,7 @@ namespace App\Models\Users;
 
 use App\Enums\UserRoles;
 use App\Models\Division\Division;
+use App\Models\Page\Page;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -103,6 +104,16 @@ class User extends Authenticatable
     {
         return $this->morphedByMany(
             Division::class,
+            'relation',
+            'user_access',
+            'user_id',
+            'relation_id'
+        );
+    }
+    public function pages(): MorphToMany
+    {
+        return $this->morphedByMany(
+            Page::class,
             'relation',
             'user_access',
             'user_id',

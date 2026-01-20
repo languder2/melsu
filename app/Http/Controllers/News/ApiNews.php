@@ -20,6 +20,7 @@ class ApiNews extends Controller
     {
         $list = News::whereNotNull('published_at')->orderBy('published_at', 'desc')->skip($offset)->take($count)->get()
             ->map(function ($item) {
+
                 return [
                     'id'            => $item->id,
                     'getNewsLink'   => route('api:news:get', $item),
@@ -27,8 +28,8 @@ class ApiNews extends Controller
                     'title'         => $item->title,
                     'published_at'  => $item->published_at,
                     'image'         => asset($item->preview->src),
-                    'category_id'   => $item->category,
-                    'category_name' => $item->tag->name,
+                    'divisions'     => $item->divisions->map(fn($item) => ['id' => $item->id, 'name' => $item->name, 'link' => $item->link]),
+                    'categories'    => $item->categories->map(fn($item) => ['id' => $item->id, 'name' => $item->name, 'link' => $item->link]),
                     'short'         => $item->full,
                 ];
             });
@@ -47,8 +48,8 @@ class ApiNews extends Controller
                     'title'         => $item->title,
                     'published_at'  => $item->published_at,
                     'image'         => asset($item->preview->src),
-                    'category_id'   => $item->category,
-                    'category_name' => $item->tag->name,
+                    'divisions'     => $item->divisions->map(fn($item) => ['id' => $item->id, 'name' => $item->name, 'link' => $item->link]),
+                    'categories'    => $item->categories->map(fn($item) => ['id' => $item->id, 'name' => $item->name, 'link' => $item->link]),
                     'short'         => $item->full,
                 ];
             });
@@ -66,14 +67,15 @@ class ApiNews extends Controller
                 'title'         => $item->title,
                 'published_at'  => $item->published_at,
                 'image'         => asset($item->preview->src),
-                'category_id'   => $item->category,
-                'category_name' => $item->tag->name,
+                'divisions'     => $item->divisions->map(fn($item) => ['id' => $item->id, 'name' => $item->name, 'link' => $item->link]),
+                'categories'    => $item->categories->map(fn($item) => ['id' => $item->id, 'name' => $item->name, 'link' => $item->link]),
                 'short'         => $item->full,
                 'content'       => $item->news,
             ];
     }
     public function getListByDate($date = null)
     {
+
         $date = $date ? Carbon::parse($date) : Carbon::now();
 
         $result = collect([]);
@@ -89,8 +91,8 @@ class ApiNews extends Controller
                 'link'          => $item->link,
                 'published_at'  => $item->published_at,
                 'preview'       => asset($item->preview->src),
-                'category_id'   => $item->category,
-                'category_name' => $item->tag->name,
+                'divisions'     => $item->divisions->map(fn($item) => ['id' => $item->id, 'name' => $item->name, 'link' => $item->link]),
+                'categories'    => $item->categories->map(fn($item) => ['id' => $item->id, 'name' => $item->name, 'link' => $item->link]),
                 'short'         => $item->full,
             ]);
         }

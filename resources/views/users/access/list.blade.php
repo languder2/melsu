@@ -43,7 +43,7 @@
         @endforelse
     </div>
 
-
-    @include('users.access.form')
-
+    @if(auth()->user()->isAdmin())
+        @include('users.access.form')
+   @endif
 @endsection

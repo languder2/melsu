@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Pages;
 
 use App\Http\Controllers\Controller;
 use App\Models\Page\Page;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -12,18 +13,22 @@ class PageCabinetController extends Controller
 {
     public function list(bool $onApproval = false): View
     {
-        $list = Page::all();
+        $list = auth()->user()->isEditor() ? Page::all() : auth()->user()->pages;
 
         return view('pages.cabinet.list', compact('onApproval', 'list'));
     }
 
     public function form(Page $page): View
     {
+        Gate::authorize('access-page', $page);
+
         return view('pages.cabinet.form', compact('page'));
     }
 
     public function save(Request $request, Page $page): RedirectResponse
     {
+        Gate::authorize('access-page', $page);
+
         $form = $request->validate($page->validateRules(), $page->validateMessages());
 
         $page->fill($form)->save();
@@ -38,6 +43,8 @@ class PageCabinetController extends Controller
 
     public function delete(Page $page): RedirectResponse
     {
+        Gate::authorize('access-page', $page);
+
         $page->delete();
 
         return redirect()->back();

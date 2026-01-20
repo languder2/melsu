@@ -76,7 +76,7 @@
             Подразделения
         </a>
 
-        @if(auth()->user()->isEditor())
+        @if(auth()->user()->isEditor() || auth()->user()->pages->isNotEmpty())
             <a
                 href="{{ route('pages.cabinet.list') }}"
 
@@ -118,5 +118,6 @@
             </a>
         @endif
     </div>
+
 </aside>
 
