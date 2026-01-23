@@ -55,6 +55,7 @@ return [
     'division'                  => 'подразделение',
 
     'allowed users'             => 'разрешенные пользователи',
+    'allowed access'            => 'разрешенные доступы',
 
     'arrowR'                    => ' → ',
     'arrowL'                    => ' ← ',

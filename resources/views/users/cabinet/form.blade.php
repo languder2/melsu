@@ -137,10 +137,12 @@
         <input type="hidden" id="divisionsSDA" name="divisions" value="{{ $user->divisions->pluck('id') }}">
     </form>
 
-@component('users.cabinet.divisions', [
-    'divisions' => $divisions,
-    'currents'  => $user->divisions->pluck('id')
-])@endcomponent
+    @component('users.cabinet.access-divisions', [
+        'list'     => $user->divisions,
+    ])@endcomponent
 
+    @component('users.cabinet.access-pages', [
+        'list'     => $user->pages,
+    ])@endcomponent
 
 @endsection

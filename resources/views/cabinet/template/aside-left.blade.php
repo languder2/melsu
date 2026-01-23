@@ -57,12 +57,13 @@
             Мероприятия
         </a>
 
-        <a
-            href="{{ route('divisions.cabinet.list') }}"
+        @if(auth()->user()->isEditor() || auth()->user()->divisions->isNotEmpty())
+            <a
+                href="{{ route('divisions.cabinet.list') }}"
 
-            {{ Route::is('division*.cabinet.*') ? "open" : "" }}
+                {{ Route::is('division*.cabinet.*') ? "open" : "" }}
 
-            class="
+                class="
                 cursor-pointer block p-3
                 mx-2 rounded-sm
                 bg-white shadow
@@ -72,9 +73,10 @@
                 open:text-white open:bg-sky-800
                 open:hover:text-white open:hover:bg-blue-700
             "
-        >
-            Подразделения
-        </a>
+            >
+                Подразделения
+            </a>
+        @endif
 
         @if(auth()->user()->isEditor() || auth()->user()->pages->isNotEmpty())
             <a

@@ -651,14 +651,22 @@ class Division extends Model
             "division-cabinet-item-$this->id",
             view('divisions.cabinet.item', ['division' => $this])->render()
         );
+        Cache::forever(
+            "admin.division-cabinet-item-$this->id",
+            view('divisions.cabinet.item', ['division' => $this, 'isAdmin' => true])->render()
+        );
     }
     public function getCacheCabinetItem(): ?string
     {
-        return Cache::get("division-cabinet-item-$this->id");
+        return auth()->user()->isAdmin()
+            ? Cache::get("admin.division-cabinet-item-$this->id")
+            : Cache::get("division-cabinet-item-$this->id");
     }
     public function hasCacheCabinetItem(): bool
     {
-        return Cache::has("division-cabinet-item-$this->id");
+        return auth()->user()->isAdmin()
+            ? Cache::has("admin.division-cabinet-item-$this->id")
+            : Cache::has("division-cabinet-item-$this->id");
     }
 
 

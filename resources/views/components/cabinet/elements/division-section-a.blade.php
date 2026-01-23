@@ -3,7 +3,7 @@
     'lucide'        => null,
     'title'         => null,
     'isApproved'    => false,
-    'options'       => null,
+    'options'       => collect(),
     'option'        => null,
 ])
 @php

@@ -1,15 +1,32 @@
 <?php
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\AuthCabinet;
+use App\Http\Middleware\IsEditor;
 use App\Http\Controllers\Users\UsersController;
 use App\Http\Controllers\Users\UserAccessController;
 
-Route::prefix('cabinet/users')->middleware(AuthCabinet::class)->group(function (){
-    Route::get('/',                     [UsersController::class, 'list'])->name('users.cabinet.list');
-    Route::get('form/{user?}',          [UsersController::class, 'form'])->name('users.cabinet.form');
-    Route::put('save/{user?}',          [UsersController::class, 'save'])->name('users.cabinet.save');
-    Route::delete('delete/{user?}',     [UsersController::class, 'delete'])->name('users.cabinet.delete');
-    Route::post('set-filter',           [UsersController::class, 'setFilter'])->name('users.cabinet.set-filter');
+Route::prefix('cabinet/users')->middleware([AuthCabinet::class, IsEditor::class])->group(function (){
+    Route::get('/',                                         [UsersController::class, 'list'])
+                                                                ->name('users.cabinet.list');
+
+    Route::get('form/{user?}',                              [UsersController::class, 'form'])
+                                                                ->name('users.cabinet.form');
+
+    Route::put('save/{user?}',                              [UsersController::class, 'save'])
+                                                                ->name('users.cabinet.save');
+
+    Route::get('access/{user?}',                            [UsersController::class, 'access'])
+                                                                ->name('users.cabinet.access');
+
+    Route::put('change-access/{user?}',                     [UsersController::class, 'changeAccess'])
+                                                                ->name('users.cabinet.change-access');
+
+    Route::delete('delete/{user?}',                         [UsersController::class, 'delete'])
+                                                                ->name('users.cabinet.delete');
+
+    Route::post('set-filter',                               [UsersController::class, 'setFilter'])
+                                                                ->name('users.cabinet.set-filter');
+
 
 });
 

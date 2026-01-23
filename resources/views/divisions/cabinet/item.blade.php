@@ -1,6 +1,7 @@
 @props([
     'has_menu'      => false,
     'division'      => new \App\Models\Division\Division(),
+    'isAdmin'       => false
 ])
 @php
     $class = $has_menu
@@ -14,7 +15,7 @@
     <div
         class="{{ $class }}"
     >
-        @if(auth()->id() && auth()->user()->isAdmin())
+        @if($isAdmin)
             <div class="flex items-center justify-center p-3 rounded-sm shadow bg-white">
                 <x-html.button-delete-with-modal
                     question="Удалить подразделение"
@@ -24,7 +25,7 @@
                 />
             </div>
         @endif
-        <div class=" flex items-center justify-center p-3 rounded-sm shadow bg-white {{ auth()->id() && auth()->user()->isAdmin() ? '' : 'col-span-2' }}">
+        <div class=" flex items-center justify-center p-3 rounded-sm shadow bg-white {{ $isAdmin ? '' : 'col-span-2' }}">
             {!! $division->id !!}
         </div>
 
@@ -51,8 +52,7 @@
                 :link=" $division->user_access_cabinet_list "
                 lucide="user-round-cog"
                 :title=" __('common.allowed users') "
-                :options="$options"
-                option="has_gallery_in_moderation"
+                :isApproved="true"
             />
 
         </div>

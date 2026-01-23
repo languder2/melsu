@@ -88,7 +88,5 @@ trait hasSubordination
             . ($this->getLevel() ? __('common.arrowT2R')  : '' )
             . '&nbsp;';
     }
-
-
 }
 

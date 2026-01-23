@@ -43,9 +43,11 @@ class UsersController extends Controller
 
         $roles      = auth()->user()->role->forSelect();
 
-        $divisions  = Division::whereNull('parent_id')->orderBy('name')->get();
-
-        return view('users.cabinet.form',compact('user','roles', 'divisions'));
+        return view('users.cabinet.form',compact('user','roles'));
+    }
+    public function access(User $user): View|RedirectResponse
+    {
+        return view('users.cabinet.access',compact('user'));
     }
 
     public function save(Request $request, User $user):RedirectResponse
@@ -91,11 +93,21 @@ class UsersController extends Controller
 
         $user->fill($form)->save();
 
-        if($request->input('divisions'))
-            $user->divisions()->sync(json_decode($request->input('divisions')));
-
-
         return redirect()->to( $request->has('save-close') ? User::cabinetList() : $user->form);
+    }
+    public function changeAccess(Request $request, User $user):RedirectResponse
+    {
+        if(!$user->exists)
+            $user->role = UserRoles::User;
+
+        if(!(auth()->user()->role->level() > $user->role->level() || auth()->id() === $user->id))
+            return redirect()->to( $user::cabinetList() );
+
+        $user->divisions()->sync($request->input('divisions'));
+
+        $user->pages()->sync($request->input('pages'));
+
+        return $request->has('save-close') ? redirect()->to(User::cabinetList()) : redirect()->back();
     }
 
     public function delete(User $user):RedirectResponse

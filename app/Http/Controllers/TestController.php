@@ -8,6 +8,7 @@ use App\Jobs\SendEmailJob;
 use App\Models\Division\Division;
 use App\Models\Documents\DocumentCategory;
 use App\Models\Events\Category;
+use App\Models\Events\Events;
 use App\Models\Gallery\Image;
 use App\Models\Minor\Career;
 use App\Models\Minor\Contact;
@@ -57,7 +58,7 @@ class TestController extends Controller
 
 
         Division::limit(500)->get()->each(fn($division) =>
-            $division->saveCacheCabinetItem()
+        $division->saveCacheCabinetItem()
         );
 
 
@@ -68,12 +69,30 @@ class TestController extends Controller
     {
         $list = collect();
 
+        $events = Events::orderBy('event_datetime', 'asc')
+            ->where('event_datetime', '>', Carbon::today())
+            ->where('event_datetime', '<=', Carbon::tomorrow())
+            ->where('has_approval', true)
+            ->where('is_show',true)
+            ->limit(6)->get();
 
-        $division = Page::find(3);
+        if($events->count() < 6)
+            $events = $events->merge(
+                Events::orderBy('event_datetime', 'asc')
+                    ->where('event_datetime', '>=', Carbon::tomorrow())
+                    ->where('has_approval', true)
+                    ->where('is_show',true)
+                    ->limit(5 - $events->count())->get()
+            );
 
-        $division->users()->sync([8]);
+        if($events->count() < 6)
+            $events = Events::orderBy('event_datetime', 'desc')
+                ->where('event_datetime', '<', Carbon::today())
+                ->where('has_approval', true)
+                ->where('is_show',true)
+                ->limit(6 - $events->count())->get()->merge($events);
 
-        dd($division->users);
+        dd($events->pluck('event_datetime')->map(fn($item)=> $item->format('d.m.Y H:i:s'))->toArray());
 
         $json = Storage::get('json/get_employee.json');
 

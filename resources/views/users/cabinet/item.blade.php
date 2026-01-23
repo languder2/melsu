@@ -15,11 +15,21 @@
     <div>
         {!! $item->role->label() !!}
     </div>
-    <div class="flex justify-center gap-6">
+    <div class="grid grid-cols-3 justify-center gap-6">
         @if(auth()->user()->role->level() > $item->role->level() || auth()->id() === $item->id)
             <a href="{{ $item->form }}" class="flex-end hover:text-green-700">
                 <x-lucide-square-pen class="w-6"/>
             </a>
+        @endif
+
+        @if(auth()->user()->role->level() > $item->role->level() || auth()->id() === $item->id)
+
+            <x-cabinet.elements.division-section-a
+                :link=" route('users.cabinet.access', $item)"
+                lucide="user-round-cog"
+                :title=" __('common.allowed access') "
+                :isApproved="true"
+            />
         @endif
 
         @if(auth()->user()->role->level() > $item->role->level())
@@ -30,5 +40,6 @@
                 icoClass='hover:text-amber-700'
             />
         @endif
+
     </div>
 </div>

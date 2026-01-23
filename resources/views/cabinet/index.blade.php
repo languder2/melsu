@@ -13,34 +13,21 @@
                 :link=" route('news.cabinet.list') "
             />
 
-            <x-cabinet.sections.index-link
-                lucide="notebook-text"
-                color="text-red-950"
-                text="Новости на утверждении"
-                :link=" route('news.cabinet.on-approval') "
-            />
 
-            <x-cabinet.sections.index-link
-                lucide="university"
-                color="text-blue-950"
-                text="Подразделения"
-                :link=" route('divisions.cabinet.list') "
-            />
-
-            @if(auth()->user()->isEditor())
+            @if(auth()->user()->isEditor() || auth()->user()->divisions->isNotEmpty())
                 <x-cabinet.sections.index-link
-                    lucide="panels-top-left"
+                    lucide="university"
                     color="text-blue-950"
-                    text="Страницы"
+                    text="Подразделения"
                     :link=" route('divisions.cabinet.list') "
                 />
             @endif
 
-            @if(auth()->user()->isEditor())
+            @if(auth()->user()->isEditor() || auth()->user()->pages->isNotEmpty())
                 <x-cabinet.sections.index-link
-                    lucide="triangle-alert"
-                    color="text-red-800"
-                    text="Требует утверждения"
+                    lucide="panels-top-left"
+                    color="text-blue-950"
+                    text="Страницы"
                     :link=" route('divisions.cabinet.list') "
                 />
             @endif

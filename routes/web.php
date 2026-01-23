@@ -26,12 +26,9 @@ Route::get('exit', function () {
 
 })->name('admin:logout');
 
-
 Route::prefix('admin')->group(function () { require __DIR__.'/admin.php'; });
 Route::prefix('cabinet')->group(function () { require __DIR__.'/cabinet.php'; });
 Route::prefix('nomix')->group(function () { require __DIR__.'/nomix.php'; });
-
-
 
 /* Staffs: public */
 
@@ -53,13 +50,11 @@ Route::controller(PublicGallery::class)
 
     });
 
-
 /* Menu Page */
     Route::get('menu/projects',fn() => redirect()->route('clusters.list'));
 
     Route::get('menu/{code?}', [MenuController::class,'show'])
         ->name('public:menu:show');
-
 
 /*Schedule*/
 
@@ -74,16 +69,13 @@ Route::controller(ScheduleController::class)
 /*handbook*/
 Route::get('/handbooks/{collectionId}', [HandbookController::class, 'show'])->name('public.handbooks.show');
 
-
 Route::get('control/sections',  [ControlController::class,'sections']);
 Route::get('control/contacts',  [ControlController::class,'contacts']);
 Route::get('control/staffs',    [ControlController::class,'staffs']);
 
-
 /* Pages */
 
 Route::get('/history', [HistoryController::class, 'indexPage'])->name('public.history.index');
-
 
 require __DIR__.'/test.php';
 require __DIR__.'/info.php';

@@ -282,8 +282,7 @@ Route::get('/fetchUrl',                                     [EditorjsController:
                                                                 ->name('editorjs.fetch.url');
 
 
-Route::get('refresh-divisions-cabinet-item-line', function(){
+Route::middleware(['web', 'auth.api'])->get('refresh-divisions-cabinet-item-line', function(){
     Division::all()->each(fn($item) => $item->saveCacheCabinetItem());
-
     return 'success';
 });
