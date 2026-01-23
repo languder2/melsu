@@ -30,7 +30,6 @@ class InMainPage extends Component
             ->get();
 
 
-
         $this->events = Events::orderBy('event_datetime', 'asc')
             ->where('event_datetime', '>', Carbon::today())
             ->where('event_datetime', '<=', Carbon::tomorrow())
