@@ -69,31 +69,6 @@ class TestController extends Controller
     {
         $list = collect();
 
-        $events = Events::orderBy('event_datetime', 'asc')
-            ->where('event_datetime', '>', Carbon::today())
-            ->where('event_datetime', '<=', Carbon::tomorrow())
-            ->where('has_approval', true)
-            ->where('is_show',true)
-            ->limit(6)->get();
-
-        if($events->count() < 6)
-            $events = $events->merge(
-                Events::orderBy('event_datetime', 'asc')
-                    ->where('event_datetime', '>=', Carbon::tomorrow())
-                    ->where('has_approval', true)
-                    ->where('is_show',true)
-                    ->limit(5 - $events->count())->get()
-            );
-
-        if($events->count() < 6)
-            $events = Events::orderBy('event_datetime', 'desc')
-                ->where('event_datetime', '<', Carbon::today())
-                ->where('has_approval', true)
-                ->where('is_show',true)
-                ->limit(6 - $events->count())->get()->merge($events);
-
-        dd($events->pluck('event_datetime')->map(fn($item)=> $item->format('d.m.Y H:i:s'))->toArray());
-
         $json = Storage::get('json/get_employee.json');
 
         $list = collect(json_decode($json)->employee);
@@ -114,8 +89,9 @@ class TestController extends Controller
 
     public function test()
     {
-        $item = Division::find(3)->content();
+        $category = \App\Models\News\Category::Find(11);
 
+        dd($category->publicNews());
         return view('test.test', compact('item'));
 
     }

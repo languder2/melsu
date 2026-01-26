@@ -159,7 +159,7 @@ class NewsController extends Controller
     public function showAll(?Category $category): \Illuminate\View\View
     {
 
-        $list = $category->exists ? $category->news() : News::getPublicList();
+        $list = $category->exists ? $category->publicNews() : News::getPublicList();
 
         $search = session('newsPublicSearch');
 

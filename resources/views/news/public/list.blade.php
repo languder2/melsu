@@ -16,9 +16,9 @@
 
 @section('content')
     @component('components.news.all',[
-        'list' => $list,
+        'list'          => $list,
         'categories'    => $categories,
         'category'      => $category,
-        'search'      => $search
+        'search'        => $search
     ])@endcomponent
 @endsection

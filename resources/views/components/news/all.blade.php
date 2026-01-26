@@ -4,13 +4,15 @@ style="background-image: url({{asset('img/news-block-header.png')}})">
         </div>
 </section>
 <div class="container pb-10">
+
     @component('components.news.filter', compact("categories",'category','search')) @endcomponent
+
     <div
         class="news-wrapper grid grid-cols-1 lg:grid-cols-3 gap-0 gap-y-2.5 lg:gap-5">
         @foreach($list as $key=>$news)
             @component('components.news.second', compact('news'))@endcomponent
         @endforeach
     </div>
-    <br>
+
     {!! $list->links() !!}
 </div>
