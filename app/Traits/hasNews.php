@@ -28,11 +28,11 @@ trait hasNews
         return $this->getFlattenTree()->flatMap(fn($item) => $item->news)->unique('id')->sortByDesc('event_datetime');
     }
 
-    public function publicNews(): Collection
+    public function publicNews($withTree = true ): Collection
     {
         $IDs = [$this->id];
 
-        if($this instanceof Division)
+        if($this instanceof Division && $withTree)
             $IDs   = $this->tree()->pluck('id');
 
         $newsIDs = DB::table('news_relations')

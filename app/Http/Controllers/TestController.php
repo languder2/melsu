@@ -89,9 +89,22 @@ class TestController extends Controller
 
     public function test()
     {
-        $category = \App\Models\News\Category::Find(11);
 
-        dd($category->publicNews());
+        $divisions      = Division::whereHas('news', function ($query) {
+            $query->where('has_approval', true)->where('is_show', true);
+        })->get();
+
+        dump($divisions->count());
+        dump($divisions->pluck('id')->toArray());
+
+        $divisions      = Division::has('news')->get();
+
+        dump($divisions->count());
+        dump($divisions->pluck('id')->toArray());
+
+
+        dd();
+        dd($divisions, $categories);
         return view('test.test', compact('item'));
 
     }
