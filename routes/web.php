@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Services\ControlController;
 
+Route::get('dissertaczionnyj-sovet', fn()=> redirect()->to('https://melsu.ru/storage/uploads/documents/jf6WAsu4bbeJU4nR8INsfV9EcDuYK04ew3oENorp.pdf'));
+
 Route::get('/', function () {
     return view('pages.main');
 })->name('pages:main');
