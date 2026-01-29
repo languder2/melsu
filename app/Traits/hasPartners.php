@@ -24,7 +24,6 @@ trait hasPartners
     public function partnerCategories(){
         return $this->morphMany(PartnerCategory::class, 'relation')->orderBy('sort');
     }
-
     /* Links */
 
     public function partnersCabinetList(): string

@@ -1,128 +1,145 @@
-@extends("layouts.admin")
+@extends("layouts.cabinet")
 
-@section('title', 'Админ панель: Структура университета')
-
-@section('top-menu')
-    @include('divisions.admin.menu')
-@endsection
+@section(
+    'title',
+    __('common.Cabinet') ." → ". $instance->name ." → "
+    .($partner->exists ? $partner->name : __("common.Add partner"))
+)
 
 @section('content-header')
-    @component('admin.components.content-header')
-        <div class="flex flex-col gap-2 justify-between">
-            <div class="flex gap-4">
-                <a href="{{ $division->link }}" class="underline hover:text-red" target="_blank">
-                    {{ $division->name }}
-                </a>
-                <div>
-                    →
-                </div>
-                <div>
-                    <a
-                        href="{{ $division->documents_admin_list }}"
-                        class="underline"
-                    >
-                        {{ __('documents.Documents') }}
-                    </a>
-                </div>
-            </div>
-            <div>
-                {!! $document->exists ? "{$document->title}" : __('documents.New') !!}
-            </div>
-        </div>
-    @endcomponent
+    @component('divisions.cabinet.item', ['division' => $instance, 'has_menu' => true])@endcomponent
+    @include('partners.cabinet.menu')
+@endsection
+
+@section('top-menu')
+
 @endsection
 
 @section('content')
-    <x-head.tinymce-config/>
-    <form
-        action="{{ $document->relation_save }}"
-        method="POST"
-        enctype="multipart/form-data"
-        class="flex flex-col gap-4 max-w-1200"
-    >
+    <form action="{{ $partner->cabinet_save }}" method="POST" class="flex flex-col gap-3" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 
-        <x-form.errors setTheme="2"/>
+        <x-form.errors/>
 
-        <div class="flex flex-col gap-4 p-4 bg-white">
-            <x-form.select2
-                id="category_id"
-                name="category_id"
-                :value=" old('category_id', $document->category_id) "
-                null="Категория"
-                :list="$categories"
-            />
+        <div class="flex gap-3 bg-white p-3 justify-between sticky top-0 z-50 shadow">
+            <div class="flex items-center">
+                {!! $partner->exists ? $partner->name : __('common.Add partner') !!}
+            </div>
 
-            <x-form.select2
-                id="form-type"
-                name="type"
-                :value=" old('type', $document->type->name ?? null )"
-                null="Тип документа"
-                :list="$types"
-            />
+            <div class="flex items-center gap-3">
+                <input
+                    type="submit"
+                    value="Сохранить"
+                    class="
+                        bg-sky-800
+                        px-4 py-2
+                        text-white
+                        rounded-md
+                        hover:bg-blue-700
 
-
-            <x-form.input
-                id="title"
-                name="title"
-                label="Название файла"
-                value="{{ old('title', $document->title) }}"
-                required
-            />
-
-            <div class="flex flex-row gap-4 items-center">
-                <div class="flex flex-col flex-1">
-                    <x-form.input
-                        id="form_sort"
-                        type="number"
-                        step="1"
-                        name="sort"
-                        label="Порядок вывода"
-                        :value=" old('sort', $document->sort) "
-                    />
-                </div>
-                <x-form.radio.on-off
-                    name="is_show"
-                    :value=" old('is_show', $document->exists ? $document->is_show : true) "
-                />
+                        active:bg-gray-700
+                        cursor-pointer
+                        uppercase
+                    "
+                >
+                <input
+                    type="submit"
+                    name="save-close"
+                    value="Сохранить и закрыть"
+                    class="
+                        uppercase
+                        bg-sky-800
+                        px-4 py-2
+                        text-white
+                        rounded-md
+                        hover:bg-blue-700
+                        active:bg-gray-700
+                        cursor-pointer
+                    "
+                >
             </div>
         </div>
 
-        <div class="flex flex-col gap-4 p-4 bg-white">
 
-            @component('components.form.file',[
-                'id'        => 'file',
-                'label'     => 'Document',
-                'name'      => 'file',
-            ])
-                @unless($document->exists)
-                    @slot('required')
-                        true
-                    @endslot
-                @endunless
-            @endcomponent
+        <div class="flex flex-col gap-3 bg-white p-3 shadow">
+            <x-form.select2
+                name="category_id"
+                value="{{ old('category_id', $partner->category_id) }}"
+                null="Категория"
+                class="flex-1"
+                :list=" $categories->pluck('name', 'id') "
+            />
 
-            @if($document->filetype)
-                <a
-                    href="{{ Storage::url($document->filename) }}"
-                    target="_blank"
-                    class="flex gap-4"
-                >
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20px" fill="currentColor" class="bi bi-filetype-pdf"
-                         viewBox="0 0 16 16">
-                        <path fill-rule="evenodd"
-                              d="M14 4.5V14a2 2 0 0 1-2 2h-1v-1h1a1 1 0 0 0 1-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v9H2V2a2 2 0 0 1 2-2h5.5zM1.6 11.85H0v3.999h.791v-1.342h.803q.43 0 .732-.173.305-.175.463-.474a1.4 1.4 0 0 0 .161-.677q0-.375-.158-.677a1.2 1.2 0 0 0-.46-.477q-.3-.18-.732-.179m.545 1.333a.8.8 0 0 1-.085.38.57.57 0 0 1-.238.241.8.8 0 0 1-.375.082H.788V12.48h.66q.327 0 .512.181.185.183.185.522m1.217-1.333v3.999h1.46q.602 0 .998-.237a1.45 1.45 0 0 0 .595-.689q.196-.45.196-1.084 0-.63-.196-1.075a1.43 1.43 0 0 0-.589-.68q-.396-.234-1.005-.234zm.791.645h.563q.371 0 .609.152a.9.9 0 0 1 .354.454q.118.302.118.753a2.3 2.3 0 0 1-.068.592 1.1 1.1 0 0 1-.196.422.8.8 0 0 1-.334.252 1.3 1.3 0 0 1-.483.082h-.563zm3.743 1.763v1.591h-.79V11.85h2.548v.653H7.896v1.117h1.606v.638z"/>
-                    </svg>
+            <x-form.input
+                name="name"
+                label="Название"
+                value="{!! old('name', $partner->name) !!}"
+                block="flex-1"
+                required
+            />
 
-                    {{ $document->filename }}
-                </a>
-            @endif
+            <x-form.input
+                name="link"
+                label="Ссылка"
+                value="{!! old('link', $partner->link) !!}"
+                block="flex-1"
+            />
+
+            <div class="flex gap-3">
+{{--                <x-form.input--}}
+{{--                    name="sort"--}}
+{{--                    type="number"--}}
+{{--                    label="Порядок вывода (Убывающий порядок)"--}}
+{{--                    value="{!! old('sort', $partner->sort) !!}"--}}
+{{--                    block="flex-1"--}}
+{{--                />--}}
+
+                <x-form.checkbox.block
+                    id="is_show"
+                    name="is_show"
+                    :default="0"
+                    :value="1"
+                    label="Опубликовать"
+                    :checked=" old('is_show', $partner->exists ? $partner->is_show : true)"
+                    block="pe-2"
+                />
+
+                @if(auth()->user()->isEditor())
+                    <x-form.checkbox.block
+                        id="is_approved"
+                        name="is_approved"
+                        :default="0"
+                        :value="1"
+                        label="Утвердить"
+                        :checked=" old('is_approved', $partner->exists ? $partner->is_approved : true)"
+                        block="pe-2"
+                    />
+                @else
+                    <input type="hidden" name="has_approval" value="0">
+                @endif
+            </div>
         </div>
 
-        <x-form.submit
-            class="uppercase"
-            value="сохранить"
+        <div class="flex gap-3 bg-white p-3 shadow">
+            <div>
+                <img src="{{$partner->image->url}}" alt="" class="h-14">
+            </div>
+            <x-form.file
+                id="form_image"
+                label="Установить / сменить изображение"
+                name="image"
+                block="flex-1"
+            />
+        </div>
+
+
+        <x-editorjs.editor
+            set="content"
+            heading="Текст"
+            name="content"
+            :initialContent=" $partner->content "
         />
     </form>
+
 @endsection

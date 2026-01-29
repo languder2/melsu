@@ -30,6 +30,22 @@ class DocumentCategory extends Model
         'sort' => 'integer',
     ];
 
+    public static function validateRules(): array
+    {
+        return [
+            'name'          => "required",
+            'parent_id'     => '',
+            'sort'          => '',
+            'is_show'       => '',
+        ];
+    }
+
+    public static function validateMessages(): array
+    {
+        return [
+            'name' => 'Укажите названию категории',
+        ];
+    }
     public static function validationRules(): array
     {
         return [

@@ -43,20 +43,25 @@ Route::get('admin/documents/relation/{model}/{id}/',                            
 Route::put('admin/document-categories/save/{category?}',      [DocumentCategoriesController::class,'save'])->name('document_categories:save');
 
 
+
+
 Route::prefix('cabinet/documents/{entity}/{entity_id}/')->middleware(AuthCabinet::class)->group(function () {
-    Route::get('/',                                         [CabinetDocumentsController::class, 'list'])
-                                                                ->name('document-categories.cabinet.list');
+    Route::get('',                                         [CabinetDocumentsController::class, 'relationList'])
+                                                                ->name('documents.relation.list');
 
-    Route::get('form/{category?}',                          [CabinetDocumentsController::class, 'categoryForm'])
-        ->name('partner-categories.cabinet.form');
+    Route::get('on-approval',                               [CabinetDocumentsController::class, 'relationListOnApproval'])
+                                                                ->name('documents.relation.on-approval');
 
-    Route::put('save/{category?}',                          [CabinetDocumentsController::class, 'categorySave'])
-        ->name('partner-categories.cabinet.save');
+    Route::get('form/{category?}',                          [CabinetDocumentsController::class, 'relationCategoryForm'])
+                                                                ->name('documents-category.relation.form');
 
-    Route::delete('delete/{category?}',                     [CabinetDocumentsController::class, 'categoryDelete'])
-        ->name('partner-categories.cabinet.delete');
-
-    Route::get('change-sort/{category}/{direction}',        [CabinetDocumentsController::class, 'categoryChangeSort'])
-        ->name('partner-categories.cabinet.change-sort')->defaults('direction', 'down');
+    Route::put('save/{category?}',                          [CabinetDocumentsController::class, 'relationCategorySave'])
+                                                                ->name('documents-category.relation.save');
+//
+//    Route::delete('delete/{category?}',                     [CabinetDocumentsController::class, 'categoryDelete'])
+//                                                                ->name('documents.categories.cabinet.delete');
+//
+//    Route::get('change-sort/{category}/{direction}',        [CabinetDocumentsController::class, 'categoryChangeSort'])
+//                                                                ->name('partner-categories.cabinet.change-sort')->defaults('direction', 'down');
 });
 

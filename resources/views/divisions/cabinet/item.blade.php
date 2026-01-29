@@ -54,12 +54,11 @@
                 :title=" __('common.allowed users') "
                 :isApproved="true"
             />
-
         </div>
 
 
         <div class="flex gap-5 items-center justify-center flex-wrap w-56 2xl:w-auto bg-white p-3 rounded-sm shadow ">
-            <a href="{{ $division->documents_cabinet_list }}" class="flex-end hover:text-green-700" title="{{ __('common.Documents') }}">
+            <a href="{{ route('documents.relation.list', [$division->getTable(), $division->id]) }}" class="flex-end hover:text-green-700" title="{{ __('common.Documents') }}">
                 <x-lucide-files class="w-6"/>
             </a>
 

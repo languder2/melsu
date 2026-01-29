@@ -29,6 +29,10 @@ return [
     'Achievements'              => 'Достижения',
     'Gallery'                   => 'Галерея',
     'Documents'                 => 'Документы',
+    'Documents on approval'     => 'Документы требующие утверждения',
+    'Add documents category'    => 'Добавить категорию документов',
+    'Add documents'             => 'Добавить документ',
+
 
     'Career'                    => 'Карьера',
     'Careers'                   => 'Карьеры',

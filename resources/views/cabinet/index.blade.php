@@ -28,7 +28,7 @@
                     lucide="panels-top-left"
                     color="text-blue-950"
                     text="Страницы"
-                    :link=" route('divisions.cabinet.list') "
+                    :link=" route('pages.cabinet.list') "
                 />
             @endif
 

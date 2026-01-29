@@ -1,87 +1,82 @@
-@extends("layouts.admin")
+@extends("layouts.cabinet")
 
-@section('title', "Админ панель: $relation->name: ".__('documents.Documents'))
+@section(
+    'title',
+    __('common.Cabinet') ." → ". $instance->name ." → ". __('common.Documents')
+    ." → ". ($category->exists ? $category->name : __('common.Add documents category'))
 
-@if($relation->adminMenu())
-    @section('top-menu')
-        @include($relation->adminMenu())
-    @endsection
-@endif
+)
 
 @section('content-header')
-    @component('admin.components.content-header')
-        <div class="flex flex-col gap-2 justify-between">
-            <div class="flex gap-4">
-                <a href="{{ $relation->link }}" class="underline hover:text-red" target="_blank">
-                    {{ $relation->name }}
-                </a>
-                <div>
-                    →
-                </div>
-                <div>
-                    <a
-                        href="{{ $relation->links['admin'] }}"
-                        class="underline"
-                    >
-                        {{ __('documents.Documents') }}
-                    </a>
-                </div>
-            </div>
-            <div>
-                {!! $category->exists ? "$category->name" : __('documents.NewCategory') !!}
-            </div>
-        </div>
-    @endcomponent
+    @component('divisions.cabinet.item', ['division' => $instance, 'has_menu' => true])@endcomponent
+    @include('documents.relation.menu')
 @endsection
 
 @section('content')
-    <x-head.tinymce-config/>
-    <form
-        action="{{ $category->links['save'] }}"
-        method="POST"
-        enctype="multipart/form-data"
-        class="flex flex-col gap-4 max-w-1200"
-    >
+
+    <form action="{{ route('documents-category.relation.save', [$instance->getTable(), $instance->id, $category]) }}" method="POST" class="flex flex-col gap-3" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 
-        <x-form.errors setTheme/>
+        <x-form.errors/>
+        <div class="flex gap3 bg-white p-3 justify-between sticky top-0 z-50 shadow">
+            <div class="flex items-center">
+                {{ $instance->name }}
+                →
+                {!! $category->exists ? $category->name : __('common.Add documents category') !!}
+            </div>
 
-        <input type="hidden" name="relation_type"   value="{{ $relation ? $relation::class : null }}">
-        <input type="hidden" name="relation_id"     value="{{ $relation ? $relation->id : null }}">
+            <div class="flex items-center gap-3">
+                <input
+                    type="submit"
+                    value="Сохранить"
+                    class="
+                        bg-sky-800
+                        px-4 py-2
+                        text-white
+                        rounded-md
+                        hover:bg-blue-700
 
-        <div class="p-4 bg-white flex flex-col gap-4">
-            <x-form.input
-                id="name"
-                name="name"
-                label="Название категории"
-                value="{{ old('name', $category->name) }}"
-                required
-            />
-            <div class="flex flex-row gap-4 items-center">
-                <div class="flex-1">
-                    <x-form.input
-                        id="form_sort"
-                        type="number"
-                        step="1"
-                        name="sort"
-                        label="Порядок вывода"
-                        :value="old('sort', $category->sort ?? $sort)"
-                    />
-                </div>
-                <x-form.radio.on-off
-                    name="is_show"
-                    :value="old('is_show', $category->id ? $category->is_show : true)"
-                />
+                        active:bg-gray-700
+                        cursor-pointer
+                        uppercase
+                    "
+                >
+                <input
+                    type="submit"
+                    name="save-close"
+                    value="Сохранить и закрыть"
+                    class="
+                        uppercase
+                        bg-sky-800
+                        px-4 py-2
+                        text-white
+                        rounded-md
+                        hover:bg-blue-700
+                        active:bg-gray-700
+                        cursor-pointer
+                    "
+                >
             </div>
         </div>
 
-        <x-form.submit
-            class="uppercase"
-            value="сохранить"
-        />
-    </form>
+        <div class="flex flex-col gap-3 bg-white p-3 shadow">
 
-    @dump($category->links)
+            <x-form.input
+                name="name"
+                label="Название"
+                value="{!! old('name', $category->name) !!}"
+                block="flex-1"
+            />
+
+            <x-form.input
+                name="sort"
+                label="Порядок вывода (Убывающий порядок)"
+                value="{!! old('sort', $category->sort) !!}"
+                block="flex-1"
+            />
+
+        </div>
+    </form>
 
 @endsection
