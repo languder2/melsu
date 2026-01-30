@@ -3,6 +3,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Documents\DocumentCategoriesController;
 use App\Http\Controllers\Documents\DocumentsController;
 use App\Http\Controllers\Documents\RelationCategoriesController;
+use App\Http\Controllers\Documents\RelationDocumentsController;
 use App\Http\Middleware\AuthCabinet;
 
 Route::prefix('admin/document-categories')->group(function(){
@@ -38,23 +39,42 @@ Route::middleware(['web','auth.api'])->prefix('api/documents')->group(function (
 
 /* Relation Documents Categories*/
 
-Route::prefix('cabinet/documents/{entity}/{entity_id}/')->middleware(AuthCabinet::class)->group(function () {
-    Route::get('',                                         [RelationCategoriesController::class, 'list'])
+Route::prefix('cabinet/documents-categories/{entity}/{entity_id}/')
+    ->middleware(AuthCabinet::class)->group(function () {
+        Route::get('',                                      [RelationCategoriesController::class, 'list'])
                                                                 ->name('documents.relation.list');
 
-    Route::get('on-approval',                               [RelationCategoriesController::class, 'onApproval'])
+        Route::get('on-approval',                           [RelationCategoriesController::class, 'onApproval'])
                                                                 ->name('documents-category.relation.on-approval');
 
-    Route::get('form/{category?}',                          [RelationCategoriesController::class, 'form'])
+        Route::get('form/{category?}',                      [RelationCategoriesController::class, 'form'])
                                                                 ->name('documents-category.relation.form');
 
-    Route::put('save/{category?}',                          [RelationCategoriesController::class, 'save'])
+        Route::put('save/{category?}',                      [RelationCategoriesController::class, 'save'])
                                                                 ->name('documents-category.relation.save');
 
-    Route::delete('delete/{category?}',                     [RelationCategoriesController::class, 'delete'])
+        Route::delete('delete/{category?}',                 [RelationCategoriesController::class, 'delete'])
                                                                 ->name('documents-category.relation.delete');
 
-    Route::get('change-sort/{category}/{direction}',        [RelationCategoriesController::class, 'changeSort'])
+        Route::get('change-sort/{category}/{direction}',    [RelationCategoriesController::class, 'changeSort'])
+                                                                ->name('documents-categories.cabinet.change-sort')
+                                                                ->defaults('direction', 'down');
+});
+
+/* Relation Documents */
+
+Route::prefix('cabinet/documents/{entity}/{entity_id}/')->middleware(AuthCabinet::class)->group(function () {
+
+    Route::get('form/{category?}',                          [RelationDocumentsController::class, 'form'])
+                                                                ->name('documents-category.relation.form');
+
+    Route::put('save/{category?}',                          [RelationDocumentsController::class, 'save'])
+                                                                ->name('documents-category.relation.save');
+
+    Route::delete('delete/{category?}',                     [RelationDocumentsController::class, 'delete'])
+                                                                ->name('documents-category.relation.delete');
+
+    Route::get('change-sort/{category}/{direction}',        [RelationDocumentsController::class, 'changeSort'])
                                                                 ->name('documents-categories.cabinet.change-sort')
                                                                 ->defaults('direction', 'down');
 });
