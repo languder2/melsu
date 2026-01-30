@@ -56,7 +56,7 @@
     <div class="flex justify-center gap-2 bg-white rounded-sm items-center p-3 shadow">
         @if(!$isFirst)
             <x-html.button-change-sort-up
-                :link=" route('documents-categories.cabinet.change-sort', [
+                :link=" route('documents-categories.relation.change-sort', [
                     \App\Enums\Entities::getEntityByModel($item->relation::class)->value,
                     $item->relation->id,
                     $item->id,
@@ -67,7 +67,7 @@
 
         @if(!$isLast)
             <x-html.button-change-sort-down
-                :link=" route('documents-categories.cabinet.change-sort', [
+                :link=" route('documents-categories.relation.change-sort', [
                     \App\Enums\Entities::getEntityByModel($item->relation::class)->value,
                     $item->relation->id,
                     $item->id,

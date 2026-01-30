@@ -57,25 +57,26 @@ Route::prefix('cabinet/documents-categories/{entity}/{entity_id}/')
                                                                 ->name('documents-category.relation.delete');
 
         Route::get('change-sort/{category}/{direction}',    [RelationCategoriesController::class, 'changeSort'])
-                                                                ->name('documents-categories.cabinet.change-sort')
+                                                                ->name('documents-categories.relation.change-sort')
                                                                 ->defaults('direction', 'down');
 });
 
 /* Relation Documents */
 
-Route::prefix('cabinet/documents/{entity}/{entity_id}/')->middleware(AuthCabinet::class)->group(function () {
+Route::prefix('cabinet/documents/{entity}/{entity_id}/{category}')->middleware(AuthCabinet::class)
+    ->group(function () {
 
-    Route::get('form/{category?}',                          [RelationDocumentsController::class, 'form'])
-                                                                ->name('documents-category.relation.form');
+        Route::get('form/{document?}',                      [RelationDocumentsController::class, 'form'])
+                                                                ->name('documents.relation.form');
 
-    Route::put('save/{category?}',                          [RelationDocumentsController::class, 'save'])
-                                                                ->name('documents-category.relation.save');
+        Route::put('save/{document?}',                      [RelationDocumentsController::class, 'save'])
+                                                                ->name('documents.relation.save');
 
-    Route::delete('delete/{category?}',                     [RelationDocumentsController::class, 'delete'])
-                                                                ->name('documents-category.relation.delete');
+        Route::delete('delete/{document?}',                 [RelationDocumentsController::class, 'delete'])
+                                                                ->name('documents.relation.delete');
 
-    Route::get('change-sort/{category}/{direction}',        [RelationDocumentsController::class, 'changeSort'])
-                                                                ->name('documents-categories.cabinet.change-sort')
+        Route::get('change-sort/{document}/{direction}',    [RelationDocumentsController::class, 'changeSort'])
+                                                                ->name('documents.relation.change-sort')
                                                                 ->defaults('direction', 'down');
 });
 
