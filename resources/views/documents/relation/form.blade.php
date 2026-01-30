@@ -87,14 +87,6 @@
             />
 
             <div class="flex gap-3">
-{{--                <x-form.input--}}
-{{--                    name="sort"--}}
-{{--                    type="number"--}}
-{{--                    label="Порядок вывода (Убывающий порядок)"--}}
-{{--                    value="{!! old('sort', $partner->sort) !!}"--}}
-{{--                    block="flex-1"--}}
-{{--                />--}}
-
                 <x-form.checkbox.block
                     id="is_show"
                     name="is_show"

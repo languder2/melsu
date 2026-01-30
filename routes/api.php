@@ -235,7 +235,7 @@ Route::get('staff/teachers',            [ApiStaff::class,'getTeachersByDepartmen
 
 Route::get('specialities/list',         [SpecialityController::class,'getListAPI']);
 
-Route::middleware(['web', 'auth.api'])
+    Route::middleware(['web', 'auth.api'])
     ->controller(\App\Http\Controllers\Pages\PagesController::class)
     ->prefix('api/upbringing/sections')
     ->group(function () {

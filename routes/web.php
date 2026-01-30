@@ -79,6 +79,7 @@ Route::get('control/staffs',    [ControlController::class,'staffs']);
 
 Route::get('/history', [HistoryController::class, 'indexPage'])->name('public.history.index');
 
+require __DIR__.'/fix.php';
 require __DIR__.'/test.php';
 require __DIR__.'/info.php';
 require __DIR__.'/regiment.php';

@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\View\View;
 
-class CabinetDocumentsController extends Controller
+class RelationDocumentsController extends Controller
 {
     public function relationList($entity, $entity_id): View
     {
@@ -28,7 +28,7 @@ class CabinetDocumentsController extends Controller
 
         $list = $instance->documentCategories;
 
-        Session::put('documents-category.after-save-route', 'documents.relation.on-approval');
+        Session::put('documents-category.after-save-route', 'documents-category.relation.on-approval');
 
         return view('documents.relation.list', compact('list', 'instance') );
     }
@@ -66,26 +66,28 @@ class CabinetDocumentsController extends Controller
             ;
 
     }
-//
-//    public function categoryDelete($entity,  $entity_id, Category $category): RedirectResponse
-//    {
-//        $instance   = Entities::instance($entity, $entity_id);
-//
-//        if($category->relation == $instance)
-//            $category->delete();
-//
-//        return redirect()->back();
-//    }
-//
-//    public function categoryChangeSort(string $entity, int $entity_id, Category $category, $direction): RedirectResponse
-//    {
-//        $instance   = Entities::instance($entity, $entity_id);
-//
-//        flipSort($instance->partnerCategories, $category, $direction);
-//
-//        return redirect()->back();
-//    }
-//
+
+    public function relationCategoryDelete($entity,  $entity_id, DocumentCategory $category): RedirectResponse
+    {
+        $instance   = Entities::instance($entity, $entity_id);
+
+        $user = auth()->user();
+
+        if($category->relation->is($instance)&& ($instance->users->contains($user) || $user->isEditor()))
+            $category->delete();
+
+        return redirect()->back();
+    }
+
+    public function relationCategoryChangeSort(string $entity, int $entity_id, DocumentCategory $category, $direction): RedirectResponse
+    {
+        $instance   = Entities::instance($entity, $entity_id);
+
+        flipSort($instance->partnerCategories, $category, $direction);
+
+        return redirect()->back();
+    }
+
 //    public function form(Request $request, $entity,  $entity_id, Partner $partner): View
 //    {
 //        $instance = Entities::instance($entity, $entity_id);

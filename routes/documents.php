@@ -2,7 +2,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Documents\DocumentCategoriesController;
 use App\Http\Controllers\Documents\DocumentsController;
-use App\Http\Controllers\Documents\CabinetDocumentsController;
+use App\Http\Controllers\Documents\RelationCategoriesController;
 use App\Http\Middleware\AuthCabinet;
 
 Route::prefix('admin/document-categories')->group(function(){
@@ -36,32 +36,26 @@ Route::middleware(['web','auth.api'])->prefix('api/documents')->group(function (
     Route::get('delete/{item?}', [DocumentsController::class,'ApiDelete'])->name('documents:api:delete');
 });
 
-
-Route::get('admin/documents/relation/{model}/{id}/category/form/{category?}',   [CabinetDocumentsController::class, 'formCategory'])->name('relation:document:categories:admin:form');
-Route::get('admin/documents/relation/{model}/{id}/',                            [CabinetDocumentsController::class, 'admin'])->name('relation:documents:admin');
-
-Route::put('admin/document-categories/save/{category?}',      [DocumentCategoriesController::class,'save'])->name('document_categories:save');
-
-
-
+/* Relation Documents Categories*/
 
 Route::prefix('cabinet/documents/{entity}/{entity_id}/')->middleware(AuthCabinet::class)->group(function () {
-    Route::get('',                                         [CabinetDocumentsController::class, 'relationList'])
+    Route::get('',                                         [RelationCategoriesController::class, 'list'])
                                                                 ->name('documents.relation.list');
 
-    Route::get('on-approval',                               [CabinetDocumentsController::class, 'relationListOnApproval'])
-                                                                ->name('documents.relation.on-approval');
+    Route::get('on-approval',                               [RelationCategoriesController::class, 'onApproval'])
+                                                                ->name('documents-category.relation.on-approval');
 
-    Route::get('form/{category?}',                          [CabinetDocumentsController::class, 'relationCategoryForm'])
+    Route::get('form/{category?}',                          [RelationCategoriesController::class, 'form'])
                                                                 ->name('documents-category.relation.form');
 
-    Route::put('save/{category?}',                          [CabinetDocumentsController::class, 'relationCategorySave'])
+    Route::put('save/{category?}',                          [RelationCategoriesController::class, 'save'])
                                                                 ->name('documents-category.relation.save');
-//
-//    Route::delete('delete/{category?}',                     [CabinetDocumentsController::class, 'categoryDelete'])
-//                                                                ->name('documents.categories.cabinet.delete');
-//
-//    Route::get('change-sort/{category}/{direction}',        [CabinetDocumentsController::class, 'categoryChangeSort'])
-//                                                                ->name('partner-categories.cabinet.change-sort')->defaults('direction', 'down');
+
+    Route::delete('delete/{category?}',                     [RelationCategoriesController::class, 'delete'])
+                                                                ->name('documents-category.relation.delete');
+
+    Route::get('change-sort/{category}/{direction}',        [RelationCategoriesController::class, 'changeSort'])
+                                                                ->name('documents-categories.cabinet.change-sort')
+                                                                ->defaults('direction', 'down');
 });
 

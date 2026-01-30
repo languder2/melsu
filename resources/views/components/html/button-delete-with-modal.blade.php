@@ -33,7 +33,7 @@
     "
 >
         <h3 class="p-4 font-semibold">
-            {{ $question }}
+            {{ mb_ucfirst($question) }}
         </h3>
         <hr>
         <div class="p-4 flex flex-col gap-3">

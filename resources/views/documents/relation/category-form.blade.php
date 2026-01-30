@@ -62,19 +62,41 @@
 
         <div class="flex flex-col gap-3 bg-white p-3 shadow">
 
-            <x-form.input
-                name="name"
-                label="Название"
-                value="{!! old('name', $category->name) !!}"
-                block="flex-1"
-            />
 
-            <x-form.input
-                name="sort"
-                label="Порядок вывода (Убывающий порядок)"
-                value="{!! old('sort', $category->sort) !!}"
-                block="flex-1"
-            />
+            <div class="flex gap-3">
+                <x-form.input
+                    name="name"
+                    label="Название"
+                    value="{!! old('name', $category->name) !!}"
+                    block="flex-1"
+                />
+
+                <x-form.checkbox.block
+                    id="is_show"
+                    name="is_show"
+                    :default="0"
+                    :value="1"
+                    label="Опубликовать"
+                    :checked=" old('is_show', $category->exists ? $category->is_show : true)"
+                    block="pe-2"
+                />
+
+                @if(auth()->user()->isEditor())
+                    <x-form.checkbox.block
+                        id="is_approved"
+                        name="is_approved"
+                        :default="0"
+                        :value="1"
+                        label="Утвердить"
+                        :checked=" old('is_approved', $category->exists ? $category->is_approved : true)"
+                        block="pe-2"
+                    />
+                @else
+                    <input type="hidden" name="has_approval" value="0">
+                @endif
+            </div>
+        </div>
+
 
         </div>
     </form>

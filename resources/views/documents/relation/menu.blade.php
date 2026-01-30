@@ -11,8 +11,8 @@
     />
 
     <x-html.submit-link
-        link="{{ route('documents.relation.on-approval', [$instance->getTable(), $instance->id]) }}"
-        :inline="!Route::is('documents.relation.on-approval')"
+        link="{{ route('documents-category.relation.on-approval', [$instance->getTable(), $instance->id]) }}"
+        :inline="!Route::is('documents-category.relation.on-approval')"
         :text="__('common.Documents on approval')"
     />
 

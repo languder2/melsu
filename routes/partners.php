@@ -43,15 +43,17 @@ Route::prefix('cabinet/partners/{entity}/{entity_id}/')
     });
 
 Route::prefix('cabinet/partner-categories/{entity}/{entity_id}/')->middleware(AuthCabinet::class)->group(function () {
+
     Route::get('form/{category?}',                          [CabinetPartnerController::class, 'categoryForm'])
-        ->name('partner-categories.cabinet.form');
+                                                                ->name('partner-categories.cabinet.form');
 
     Route::put('save/{category?}',                          [CabinetPartnerController::class, 'categorySave'])
-        ->name('partner-categories.cabinet.save');
+                                                                ->name('partner-categories.cabinet.save');
 
     Route::delete('delete/{category?}',                     [CabinetPartnerController::class, 'categoryDelete'])
-        ->name('partner-categories.cabinet.delete');
+                                                                ->name('partner-categories.cabinet.delete');
 
     Route::get('change-sort/{category}/{direction}',        [CabinetPartnerController::class, 'categoryChangeSort'])
-        ->name('partner-categories.cabinet.change-sort')->defaults('direction', 'down');
+                                                                ->name('partner-categories.cabinet.change-sort')
+                                                                ->defaults('direction', 'down');
 });

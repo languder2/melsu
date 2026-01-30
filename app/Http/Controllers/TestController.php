@@ -90,21 +90,9 @@ class TestController extends Controller
     public function test()
     {
 
-        $divisions      = Division::whereHas('news', function ($query) {
-            $query->where('has_approval', true)->where('is_show', true);
-        })->get();
+        $divisions      = Division::find(3);
 
-        dump($divisions->count());
-        dump($divisions->pluck('id')->toArray());
-
-        $divisions      = Division::has('news')->get();
-
-        dump($divisions->count());
-        dump($divisions->pluck('id')->toArray());
-
-
-        dd();
-        dd($divisions, $categories);
+        dd(auth()->check());
         return view('test.test', compact('item'));
 
     }

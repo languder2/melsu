@@ -81,6 +81,11 @@ class DocumentCategory extends Model
             $item->documents()->delete();
             $item->subs()->delete();
         });
+
+        static::saving(function ($item) {
+            if(!$item->sort || (int)$item->sort < 0)
+                $item->sort = $item->relation->documentCategories()->max('sort') + 100;
+        });
     }
 
     public function documents(): HasMany
@@ -104,16 +109,6 @@ class DocumentCategory extends Model
             ->get();
     }
 
-
-    public function fill(array $attributes): ?self
-    {
-        if (!empty($attributes)) {
-            $attributes['is_show'] = array_key_exists('is_show', $attributes);
-            $attributes['sort'] = $attributes['sort'] ?? 1000;
-        }
-
-        return parent::fill($attributes);
-    }
 
     public function parent(): BelongsTo
     {

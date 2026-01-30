@@ -102,4 +102,7 @@ return [
     'lab history'               => "история лаборатории",
     'scientific research work'  => 'научно-исследовательская работа',
 
+
+    'remove category'           => 'удалить категорию'
+
 ];
