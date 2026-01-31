@@ -1,5 +1,5 @@
 <section class="px-2.5 h-[500px] lg:p-0 relative bg-no-repeat bg-center lg:bg-bottom bg-cover flex"
-style="background-image: url({{asset('img/univer-subbot/subbot-1.jpg')}})">
+style="background-image: url({{asset('img/univer-subbot-new/subbot-1.jpg')}})">
         <div class="bg-[rgba(40,13,13,0.6)] min-h-full min-w-full pointer-events-none absolute top-0 left-0">
         </div>
         <div class="container flex flex-col gap-5 pt-25 lg:pt-0 justify-end relative z-5 pb-5 lg:pb-10 px-2.5 2xl:px-0">
@@ -54,12 +54,12 @@ style="background-image: url({{asset('img/univer-subbot/subbot-1.jpg')}})">
                     <section id="general-information">
                         <h2 class="font-bold text-xl md:text-3xl mb-5 lg:mb-7">Сегодня — выбор. Завтра — твоё будущее.</h2>
 
-                        <div class="grid xl:grid-cols-[1fr_2fr] gap-5">
+                        <div class="grid 2xl:grid-cols-[1fr_2fr] gap-5">
                             <div class="relative">
-                                <div class="xl:absolute right-0 xl:w-max xl:h-full">
-                                    <img class="object-fit h-full w-full xl:h-auto xl:w-auto" src="{{asset('img/univer-subbot/subbot-2.jpg')}}" alt="">
+                                <div class="2xl:absolute right-0 2xl:w-max 2xl:h-full">
+                                    <img class="object-fit h-full  w-full 2xl:h-auto 2xl:w-auto" src="{{asset('img/univer-subbot-new/subbot-2.jpg')}}" alt="">
                                 </div>
-                                <div class="h-full absolute bottom-0 xl:relative flex flex-col justify-end">
+                                <div class="h-full absolute bottom-0 2xl:relative flex flex-col justify-end">
                                     <div class="liquid-glass w-full group">
                                         <div class="liquid-glass--bend"></div>
                                         <div class="liquid-glass--face"></div>

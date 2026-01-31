@@ -1,5 +1,5 @@
 <section class="px-2.5 h-[500px] lg:p-0 relative bg-no-repeat bg-center lg:bg-bottom bg-cover flex"
-style="background-image: url({{asset('img/univer-subbot/subbot-1.jpg')}})">
+style="background-image: url({{asset('img/univer-subbot-new/subbot-1.jpg')}})">
         <div class="bg-[rgba(40,13,13,0.6)] min-h-full min-w-full pointer-events-none absolute top-0 left-0">
         </div>
         <div class="container flex flex-col gap-5 pt-25 lg:pt-0 justify-end relative z-5 pb-5 lg:pb-10 px-2.5 2xl:px-0">
@@ -155,7 +155,7 @@ style="background-image: url({{asset('img/univer-subbot/subbot-1.jpg')}})">
                         </div>
                     </section>
                     <section id='sign-up-for-event'>
-                        <div class="p-5 relative">
+                        <div class="p-5 relative mb-5">
                             <div class="absolute left-0 top-0 w-full h-full bg-right bg-cover bg-no-repeat flex" style="background-image: url({{asset('img/bg-section-13.jpg')}})">
                             </div>
                             <div class="bg-[rgba(0,0,0,0.6)] h-full flex left-0 top-0 w-full absolute pointer-events-none">
