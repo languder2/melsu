@@ -49,7 +49,7 @@
         {{--        <a href="{{ $item->cabinetForm() }}" class="flex-end hover:text-green-700">--}}
         {{--            <x-lucide-list-tree class="w-6"/>--}}
         {{--        </a>--}}
-        <a href="{{ $item->partnerAdd }}" class="flex-end hover:text-green-700">
+        <a href="{{ route('documents.relation.form', [$item->relation->getTable(), $item->relation, $item]) }}" class="flex-end hover:text-green-700">
             <x-lucide-square-plus class="w-6"/>
         </a>
     </div>

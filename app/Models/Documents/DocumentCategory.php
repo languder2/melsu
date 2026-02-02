@@ -17,17 +17,18 @@ class DocumentCategory extends Model
     protected $table = 'document_categories';
     protected string $entity = 'document-categories';
 
-
     protected $fillable = [
         'name',
         'parent_id',
         'is_show',
+        'is_approved',
         'sort',
     ];
 
     protected $casts = [
-        'is_show' => 'boolean',
-        'sort' => 'integer',
+        'is_show'       => 'boolean',
+        'is_approved'   => 'boolean',
+        'sort'          => 'integer',
     ];
 
     public static function validateRules(): array
@@ -37,6 +38,7 @@ class DocumentCategory extends Model
             'parent_id'     => '',
             'sort'          => '',
             'is_show'       => '',
+            'is_approved'   => '',
         ];
     }
 
@@ -53,6 +55,7 @@ class DocumentCategory extends Model
             'parent_id'     => '',
             'sort'          => '',
             'is_show'       => '',
+            'is_approved'   => '',
         ];
     }
 
