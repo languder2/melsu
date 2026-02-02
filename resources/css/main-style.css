@@ -959,7 +959,7 @@ header{
     }
 }
 .slider-container {
-   
+
     width: 100%;
     max-width: 1158px;
     overflow: hidden;
@@ -1405,7 +1405,7 @@ header{
         }
     }
     .previous_btn, .next_btn{
-        display: none !important; 
+        display: none !important;
         position: absolute;
         top: -200%;
     }
@@ -7460,4 +7460,12 @@ height: 10px;
 .point-partner.active{
     border-color: #C10F1A !important;
     font-weight: bold;
+}
+
+ol{
+    margin-left: 18px;
+    list-style: decimal;
+}
+ol li{
+    @apply py-1 ps-3
 }
