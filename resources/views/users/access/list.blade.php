@@ -15,7 +15,6 @@
 @endsection
 
 @section('content')
-
     <div class="grid gap-3 grid-cols-[auto_1fr_1fr_1fr_auto] mb-3">
         <div
             class="border-l-3 grid grid-cols-subgrid col-span-full gap-3 p-4 rounded-sm shadow items-center sticky top-0 text-white border-sky-800 bg-sky-800 text-center"

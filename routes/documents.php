@@ -5,6 +5,7 @@ use App\Http\Controllers\Documents\DocumentsController;
 use App\Http\Controllers\Documents\RelationCategoriesController;
 use App\Http\Controllers\Documents\RelationDocumentsController;
 use App\Http\Middleware\AuthCabinet;
+use App\Http\Middleware\InstanceAccess;
 
 Route::prefix('admin/document-categories')->group(function(){
     Route::get('form/{category?}',      [DocumentCategoriesController::class,'form'])->name('document-categories:admin:form');
@@ -40,7 +41,7 @@ Route::middleware(['web','auth.api'])->prefix('api/documents')->group(function (
 /* Relation Documents Categories*/
 
 Route::prefix('cabinet/documents-categories/{entity}/{entity_id}/')
-    ->middleware(AuthCabinet::class)->group(function () {
+    ->middleware([AuthCabinet::class, InstanceAccess::class])->group(function () {
         Route::get('',                                      [RelationCategoriesController::class, 'list'])
                                                                 ->name('documents.relation.list');
 
@@ -63,7 +64,7 @@ Route::prefix('cabinet/documents-categories/{entity}/{entity_id}/')
 
 /* Relation Documents */
 
-Route::prefix('cabinet/documents/{entity}/{entity_id}/{category}')->middleware(AuthCabinet::class)
+Route::prefix('cabinet/documents/{entity}/{entity_id}/')->middleware([AuthCabinet::class, InstanceAccess::class])
     ->group(function () {
 
         Route::get('form/{document?}',                      [RelationDocumentsController::class, 'form'])

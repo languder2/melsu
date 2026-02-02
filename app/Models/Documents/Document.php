@@ -4,7 +4,6 @@ namespace App\Models\Documents;
 
 use App\Enums\DocumentTypes;
 use App\Models\Global\Options;
-use App\Models\Services\Log;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -27,9 +26,31 @@ class Document extends Model
         'filename',
         'filetype',
         'is_show',
+        'is_approved',
         'sort',
     ];
 
+    public function validateRules(): array
+    {
+        return [
+//            'test'          => "required",
+            'title'         => 'required',
+            'type'          => '',
+            'file'          => '',
+            'parent_id'     => '',
+            'category_id'   => '',
+            'is_show'       => '',
+            'is_approved'   => '',
+            'sort'          => '',
+        ];
+    }
+    public function validateMessage(): array
+    {
+        return [
+            'title'         => 'Укажите заголовок файла',
+            'file'          => 'Загрузите файл',
+        ];
+    }
     public static function FormRules(): array
     {
         return [

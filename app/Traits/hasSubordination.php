@@ -22,6 +22,11 @@ trait hasSubordination
 
         return $builder;
     }
+
+    public function allSubs()
+    {
+        return $this->subs()->with('allSubs');
+    }
     public function tree(?Collection &$collectionion = null, int $level = 0): Collection
     {
         if(is_null($collectionion)){

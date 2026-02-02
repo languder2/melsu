@@ -5,7 +5,7 @@
 @if($list->isNotEmpty())
     <div id="blockSetDivisionAccess" class="flex flex-col gap-3 mt-4">
         <h3 class="font-semibold text-xl">
-            Имеющийся доступ к страницам
+            Имеющийся доступ к подразделениям
         </h3>
 
         <div class="flex flex-col gap-3">

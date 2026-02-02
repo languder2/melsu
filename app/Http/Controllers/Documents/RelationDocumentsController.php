@@ -5,18 +5,48 @@ namespace App\Http\Controllers\Documents;
 use App\Enums\Entities;
 use App\Http\Controllers\Controller;
 use App\Models\Documents\Document;
-use App\Models\Documents\DocumentCategory;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Illuminate\View\View;
 
 class RelationDocumentsController extends Controller
 {
 
-    public function form($entity, $entity_id, DocumentCategory $category, Document $document): View|RedirectResponse
+    public function form(Request $request, $entity, $entity_id, Document $document): View|RedirectResponse
     {
         $instance = Entities::instance($entity, $entity_id);
 
-        dd(123);
+        $category_id    = $request->integer('category') ?: null;
+        $parent_id      = $request->integer('parent');
+        $categories     = $instance->documentCategories;
+
+        return view('documents.relation.form',
+            compact('instance', 'document', 'categories', 'category_id', 'parent_id')
+        );
     }
 
+    public function save(Request $request, $entity, $entity_id, Document $document): View|RedirectResponse
+    {
+        $instance = Entities::instance($entity, $entity_id);
+
+        $form = request()->validate($document->validateRules(),$document->validateMessage());
+
+        if(request()->file('file'))
+            Document::FileSave($form);
+
+        $document->relation()->associate($instance);
+
+        $document->fill($form)->save();
+
+        return $request->has('save-close')
+            ? redirect()->route(
+                Session::has('documents-category.after-save-route')
+                    ? Session::get('documents-category.after-save-route')
+                    : 'documents.relation.list',
+                [$instance->getTable(), $instance, $document]
+            )
+            : redirect()->route('documents.relation.form', [$instance->getTable(), $instance, $document]);
+
+    }
 }

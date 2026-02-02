@@ -93,7 +93,13 @@ class DocumentCategory extends Model
 
     public function documents(): HasMany
     {
-        return $this->hasMany(Document::class, 'category_id', 'id');
+        return $this->hasMany(Document::class, 'category_id', 'id')
+            ->whereNull('parent_id');
+    }
+
+    public function allDocuments(): HasMany
+    {
+        return $this->documents()->with('subs');
     }
 
     public function publicDocuments(): Collection

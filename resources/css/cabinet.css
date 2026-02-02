@@ -3,6 +3,7 @@
 @import '@fortawesome/fontawesome-free/css/all.css' layer(base);
 
 @import 'editorjs.css';
+@import 'select2/dist/css/select2.min.css';
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 
@@ -24,7 +25,7 @@
     --list-style-type-square: square;
     --list-style-type-roman: upper-roman;
 
-    --bg-cabinet-header: url('../../public_html/img/cabinet/bg-header.png');
+    /*--bg-cabinet-header: url('../../public_html/img/cabinet/bg-header.png');*/
     --bg-sveden-header: url('../../public_html/img/sveden/bg-sved.jpg');
     --bg-panel-1: url('../../public_html/img/cabinet/bg-panel.jpg');
 }
@@ -103,4 +104,17 @@ select:-webkit-autofill:focus {
 
 .ce-editorjsColumns_col{
     border: solid 1px #e5e5e5;
+}
+
+.select2-selection--single{
+    padding: 6px;
+    height: auto !important;
+}
+.select2-selection__arrow{
+    height: 40px !important;
+    right: 5px !important;
+}
+.select2-results__options {
+    max-height: 500px !important;
+    overflow-y: auto !important;
 }

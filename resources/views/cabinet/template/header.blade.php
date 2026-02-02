@@ -1,5 +1,5 @@
 <header
-    class="py-1 text-white bg-cover bg-[image:var(--bg-cabinet-header)]"
+    class="py-1 text-white bg-cover" style="background-image: url('/img/cabinet/bg-header.png')"
 >
     <nav class="px-2 flex items-center gap-4 :bg-red-300">
         <a href="{{route('pages:main')}}" target="_blank" class="focus:outline-0">

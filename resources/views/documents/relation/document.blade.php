@@ -18,17 +18,17 @@
     <div class="flex justify-center gap-4 bg-white rounded-sm items-center p-3 shadow">
         <x-html.button-delete-with-modal
             question="Удалить цель"
-            :text=" $item->name "
+            :text=" $item->title "
             :action=" $item->delete "
             icoClass='hover:text-amber-700'
         />
     </div>
     <div class="bg-white rounded-sm p-3 shadow">
-        {{ $item->name }}
+        {{ $item->title }}
     </div>
 
     <div class="flex justify-center gap-4 bg-white rounded-sm items-center p-3 shadow">
-        <a href="{{ $item->form }}" class="flex-end hover:text-green-700">
+        <a href="{{ route('documents.relation.form', [$item->relation->getTable(), $item->relation, $item]) }}" class="flex-end hover:text-green-700">
             <x-lucide-square-pen class="w-6"/>
         </a>
     </div>

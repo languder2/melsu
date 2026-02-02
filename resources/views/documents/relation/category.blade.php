@@ -46,10 +46,7 @@
             <x-lucide-square-pen class="w-6"/>
         </a>
 
-        {{--        <a href="{{ $item->cabinetForm() }}" class="flex-end hover:text-green-700">--}}
-        {{--            <x-lucide-list-tree class="w-6"/>--}}
-        {{--        </a>--}}
-        <a href="{{ route('documents.relation.form', [$item->relation->getTable(), $item->relation, $item]) }}" class="flex-end hover:text-green-700">
+        <a href="{{ route('documents.relation.form', [$item->relation->getTable(), $item->relation,'category' => $item]) }}" class="flex-end hover:text-green-700">
             <x-lucide-square-plus class="w-6"/>
         </a>
     </div>
@@ -77,18 +74,19 @@
         @endif
     </div>
 </div>
-<div class="col-span-full grid grid-cols-[auto_1fr_auto_auto] gap-3">
 
-    {{--    @forelse($item->partners as $partner)--}}
-    {{--        @component('partners.cabinet.partner',[--}}
-    {{--            'item'      => $partner,--}}
-    {{--            'isFirst'   => $loop->first,--}}
-    {{--            'isLast'    => $loop->last,--}}
-    {{--        ])@endcomponent--}}
-    {{--    @empty--}}
-    {{--        <div class="p-3 bg-white shadow col-span-full text-center">--}}
-    {{--            Нет партнеров--}}
-    {{--        </div>--}}
-    {{--    @endforelse--}}
+<div class="col-span-full grid grid-cols-[auto_1fr_auto_auto] gap-3">
+        @dump($item->allDocuments)
+        @forelse($item->documents->filter(fn($document) => $item->relation->is($document->relation)) as $document)
+            @component('documents.relation.document',[
+                'item'      => $document,
+                'isFirst'   => $loop->first,
+                'isLast'    => $loop->last,
+            ])@endcomponent
+        @empty
+            <div class="p-3 bg-white shadow col-span-full text-center">
+                Нет документов
+            </div>
+        @endforelse
 </div>
 <hr class="col-span-full last:hidden my-2">

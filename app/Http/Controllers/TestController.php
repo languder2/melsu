@@ -90,9 +90,9 @@ class TestController extends Controller
     public function test()
     {
 
-        $divisions      = Division::find(3);
+        $division   = Division::find(135);
 
-        dd(auth()->check());
+        dd($division->documentCategories);
         return view('test.test', compact('item'));
 
     }

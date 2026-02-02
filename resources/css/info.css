@@ -30,7 +30,7 @@
     --list-style-type-square: square;
     --list-style-type-roman: upper-roman;
 
-    --bg-cabinet-header: url('../../public_html/img/cabinet/bg-header.png');
+    /*--bg-cabinet-header: url('../../public_html/img/cabinet/bg-header.png');*/
     --bg-sveden-header: url('../../public_html/img/sveden/bg-sved.jpg');
     --bg-panel-1: url('../../public_html/img/cabinet/bg-panel.jpg');
 
