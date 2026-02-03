@@ -5,6 +5,7 @@ namespace App\Traits;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Schema;
 
 trait hasSubordination
 {
@@ -17,8 +18,24 @@ trait hasSubordination
     {
         $builder = $this->hasMany(self::class, 'parent_id','id');
 
+        if(Schema::hasColumn($this->getTable(), 'sort'))
+            $builder->orderBy('sort');
+
         if($type)
             $builder->where('type', $type);
+
+        return $builder;
+    }
+
+    public function publicSubs(): HasMany
+    {
+        $builder = $this->hasMany(self::class, 'parent_id','id')
+            ->where('is_show', true)
+            ->where('is_approved', true)
+        ;
+
+        if(Schema::hasColumn($this->getTable(), 'sort'))
+            $builder->orderBy('sort');
 
         return $builder;
     }
@@ -93,5 +110,14 @@ trait hasSubordination
             . ($this->getLevel() ? __('common.arrowT2R')  : '' )
             . '&nbsp;';
     }
+
+
+
+
+
+
+
+
+
 }
 

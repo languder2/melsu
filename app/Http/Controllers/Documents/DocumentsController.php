@@ -75,7 +75,7 @@ DocumentsController extends Controller
 
     public function public():View
     {
-        $categories = DocumentCategory::getPublic();
+        $categories = DocumentCategory::publicCustom();
 
         $menu       = Menu::where('code','university')->first();
 

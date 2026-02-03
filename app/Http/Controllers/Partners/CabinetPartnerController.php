@@ -96,7 +96,7 @@ class CabinetPartnerController extends Controller
             $partner->image->saveImage($request->file('image'));
 
         $content = json_decode($request->input('content'));
-        if(is_object($content) && isset($content->blocks) && count($content->blocks))
+        if(is_object($content) && isset($content->blocks))
             $partner->content('content')->fill(['content' => $request->input('content')])->save();
 
         return redirect()->to(

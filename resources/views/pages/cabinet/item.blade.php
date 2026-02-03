@@ -43,5 +43,9 @@
                 icoClass='hover:text-amber-700'
             />
         @endif
+        <a href="{{ route('documents.relation.list', [$item->getTable(), $item->id]) }}" class="flex-end hover:text-green-700" title="{{ __('common.Documents') }}">
+            <x-lucide-files class="w-6"/>
+        </a>
+
     </div>
 </div>

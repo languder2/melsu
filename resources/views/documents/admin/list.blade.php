@@ -30,7 +30,7 @@
 
         @foreach($list as $category)
             @component('documents.admin.category',[
-                'documents'     => $category->customDocuments()->orderBy($field,$direction)->get(),
+                'documents'     => $category->documents()->orderBy($field,$direction)->get(),
                 'name'          => $category->name,
                 'field'         => $field,
                 'category'      => $category,
@@ -39,7 +39,7 @@
 
             @foreach($category->subs as $sub)
                     @component('documents.admin.category',[
-                        'documents'     => $sub->customDocuments()->orderBy($field,$direction)->get(),
+                        'documents'     => $sub->$documents()->orderBy($field,$direction)->get(),
                         'name'          => "{$category->name}: {$sub->name}",
                         'field'         => $field,
                         'category'      => $sub,

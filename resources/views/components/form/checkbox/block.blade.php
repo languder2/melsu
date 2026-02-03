@@ -1,6 +1,18 @@
+@props([
+    'block'         => null,
+    'name'          => null,
+    'default'       => null,
+    'id'                => 'form-' . \Illuminate\Support\Str::random(20),
+    'value'         => null,
+    'checked'       => null,
+    'class'         => null,
+    'label'         => null,
+    'checkbox'      => null,
+])
+
 <div @class([
     "flex items-center pt-4",
-    $block ?? null
+    $block
 
 ])>
 
@@ -24,6 +36,8 @@
             active:ring-blue-700
             cursor-pointer
             outline-0
+
+            {{ $checkbox }}
         "
             @checked( $checked ?? null )
     >
@@ -33,7 +47,7 @@
         @endisset
 
         @class([
-            'ms-2 cursor-pointer',
+            'ms-2 cursor-pointer select-none',
             $class ?? null
         ])
     >

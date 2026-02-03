@@ -15,7 +15,7 @@
 @endsection
 
 @section('content')
-
+<div class="flex flex-col gap-4">
     @if(!in_array($division->code,['academic-council']))
         @include('public.staffs.division.chief')
     @endif
@@ -30,8 +30,9 @@
         </div>
     @endif
 
+{{--    @component('divisions.public.includes.documents',['categories' => $division->documentCategories]) @endcomponent--}}
 
-    {{--    @component('divisions.public.includes.documents',['categories' => $division->public_document_categories]) @endcomponent--}}
+    @component('documents.public.includes.categories',['categories' => $division->publicDocumentCategories]) @endcomponent
 
     @component('public.staffs.division.staffs',[
         'staffs'    => $division->staffs(true)->get(),
@@ -51,5 +52,5 @@
 {{--    @endcomponent--}}
 
     <x-news.include-block :division="$division" />
-
+</div>
 @endsection

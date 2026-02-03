@@ -8,7 +8,10 @@
 )
 
 @section('content-header')
-    @component('divisions.cabinet.item', ['division' => $instance, 'has_menu' => true])@endcomponent
+    @if($instance instanceof \App\Models\Division\Division)
+        @component('divisions.cabinet.item', ['division' => $instance, 'has_menu' => true])@endcomponent
+    @endif
+
     @include('documents.relation.menu')
 @endsection
 
@@ -61,8 +64,6 @@
         </div>
 
         <div class="flex flex-col gap-3 bg-white p-3 shadow">
-
-
             <div class="flex gap-3">
                 <x-form.input
                     name="name"
@@ -98,7 +99,45 @@
         </div>
 
 
+        <div class="flex flex-col gap-3 bg-white p-3 shadow">
+            <x-form.checkbox.block
+                name="show_documents"
+                :default="0"
+                :value="1"
+                label="По умолчанию категория развернута"
+                :checked=" old('show_documents', $category->option('show_documents')->exists ? $category->option('show_documents')->property : true)"
+                block="pe-2"
+                class="py-2"
+            />
         </div>
+
+        <div class="group bg-white p-3 shadow flex gap-3">
+            <div>
+                <x-form.checkbox.block
+                    id="inAccordion"
+                    name="in_accordion"
+                    :default="0"
+                    :value="1"
+                    label="Состоит в группе аккордеона"
+                    :checked=" old('in_accordion', $category->option('in_accordion')->exists ?: false) "
+                    block="pe-2"
+                    class="py-2"
+                />
+            </div>
+
+            <x-form.input
+                id="accordionPrefix"
+                name="accordion_prefix"
+                label="Префикс группы аккордеона"
+                value="{!! old('accordion_prefix', $category->option('accordion_prefix')->property) !!}"
+                block="flex-1"
+                :disabled=" !$category->option('in_accordion')->exists ?: false "
+                required
+            />
+        </div>
+
+
+
     </form>
 
 @endsection

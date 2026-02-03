@@ -26,7 +26,7 @@
             <div class="flex items-center">
                 {{ $instance->name }}
                 →
-                {!! $document->exists ? $document->name : __('common.Add documents category') !!}
+                {!! $document->exists ? $document->title : __('common.Add documents') !!}
             </div>
 
             <div class="flex items-center gap-3">
@@ -94,7 +94,11 @@
 
         <div class="flex flex-col gap-2 p-4 bg-white">
             <p>Категория</p>
-            <select class="jq-select2" name="category_id" required>
+            <select
+                class="jq-select2"
+                name="category_id"
+                required
+            >
                 <option value="">Категория не выбрана</option>
                 @foreach($categories as $category)
                     <option
@@ -109,12 +113,17 @@
 
         <div class="flex flex-col gap-2 p-4 bg-white">
             <p>Приложить к документу</p>
-            <select class="jq-select2" name="parent_id">
+            <select
+                class="jq-select2"
+                name="parent_id"
+                data-current="{{ $document->parent_id ?: $parent_id }}"
+            >
                 <option value="">Документ не выбран</option>
                 @foreach($categories as $category)
                     @continue($category->documents->isEmpty())
                     <optgroup data-category="{{ $category->id }}" label="{{ $category->name }}">
                         @foreach($category->documents as $parent)
+                            @continue($parent->id === $document->id)
                             <option
                                 value="{{ $parent->id }}"
                                 @selected($document->exists ? $document->parent_id === $parent->id : $parent_id === $parent->id )

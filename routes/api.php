@@ -15,6 +15,7 @@ use App\Models\Education\Faculty;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Session;
 
 Route::get('departments-by-faculty-shorts/{faculty?}', function (Request $request, $faculty = null) {
     if (is_null($faculty))
@@ -285,4 +286,11 @@ Route::get('/fetchUrl',                                     [EditorjsController:
 Route::middleware(['web', 'auth.api'])->get('refresh-divisions-cabinet-item-line', function(){
     Division::all()->each(fn($item) => $item->saveCacheCabinetItem());
     return 'success';
+});
+
+Route::middleware(['web', 'auth.api'])->get('cabinetDocumentCategoryChangeShowList', function(Request $request){
+    if($request->input('status') === 'true')
+        Session::push($request->input('value'), true);
+    else
+        Session::remove($request->input('value'));
 });

@@ -7,9 +7,10 @@
     'label'             => null,
     'value'             => '',
     'required'          => false,
+    'disabled'          => null
 ])
 
-<div class="block relative mt-2 {{ $attributes->get('block') }}">
+<div class="block relative mt-2 {{ $attributes->get('block') }} group-has-disabled:opacity-30 duration-200 ">
     <input
         type="{{ $type }}"
         id="{{ $id }}"
@@ -21,6 +22,8 @@
             border-b border-dashed bg-none outline-0 w-full py-2 mt-2 peer autofill:text-pink-800 focus:text-blue-700 focus:border-blue-700
             {{ $attributes->get('class') }}
         "
+
+        @disabled( $disabled )
 
         {{ $attributes->except(['class','block', 'labelClass']) }}
 

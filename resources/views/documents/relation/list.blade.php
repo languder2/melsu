@@ -4,7 +4,9 @@
 
 @section('content-header')
 
-    @component('divisions.cabinet.item', ['division' => $instance, 'has_menu' => true])@endcomponent
+    @if($instance instanceof \App\Models\Division\Division)
+            @component('divisions.cabinet.item', ['division' => $instance, 'has_menu' => true])@endcomponent
+    @endif
 
     @include('documents.relation.menu')
 
@@ -12,7 +14,7 @@
 
 @section('content')
 
-    <div class="grid gap-3 grid-cols-[auto_1fr_auto_auto]">
+    <div class="grid gap-3 grid-cols-[auto_auto_1fr_auto_auto_auto]">
         @forelse($list as $item)
             @component('documents.relation.category',[
                 'item'      => $item,

@@ -18,5 +18,7 @@
     <div class="flex flex-col gap-4 codex-editor">
         {!! $page->content_html !!}
     </div>
+
     @component('divisions.public.includes.documents',['categories' => $page->public_document_categories]) @endcomponent
+
 @endsection

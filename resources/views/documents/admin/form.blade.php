@@ -67,9 +67,14 @@
                             :value="old('_token') ? old('sort') : $document->sort ?? $sort "
                     />
                 </div>
-                <x-form.radio.on-off
-                        name="is_show"
-                        :value="old('_token') ? old('is_show') : ($document->exists ? $document->is_show : true)"
+                <x-form.checkbox.block
+                    id="is_show"
+                    name="is_show"
+                    :default="0"
+                    :value="1"
+                    label="Опубликовать"
+                    :checked=" old('is_show', $document->exists ? $document->is_show : true)"
+                    block="pe-2"
                 />
             </div>
         </div>

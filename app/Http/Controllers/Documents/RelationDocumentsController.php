@@ -49,4 +49,28 @@ class RelationDocumentsController extends Controller
             : redirect()->route('documents.relation.form', [$instance->getTable(), $instance, $document]);
 
     }
+
+    public function delete(Document $document): RedirectResponse
+    {
+        $document->delete();
+
+        return redirect()->back();
+    }
+
+    public function changeSort(Document $document, $direction): RedirectResponse
+    {
+        if($document->parent)
+            $list = $document->parent->subs;
+
+        elseif($document->category)
+            $list = $document->category->documents;
+        else
+            $list = $document->relation->documents;
+
+        flipSort($list, $document, $direction);
+
+        return redirect()->back();
+    }
+
+
 }

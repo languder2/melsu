@@ -4,9 +4,9 @@ namespace App\Models\Documents;
 
 use App\Enums\DocumentTypes;
 use App\Models\Global\Options;
+use App\Traits\hasSubordination;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Storage;
 
 class Document extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, hasSubordination;
 
     protected $table        = 'documents';
 
@@ -84,20 +84,30 @@ class Document extends Model
 //        $this->id = now()->format('Uv');
     }
 
-    public function save(array $options = []): void
+    protected static function boot()
     {
-        if(!$this->exists)
-            $this->id = null;
+        parent::boot();
 
-        parent::save($options);
-    }
-    public function fill(array $attributes):self
-    {
-        if(!empty($attributes)){
-            $attributes['is_show']      = (int) array_key_exists('is_show', $attributes);
-            $attributes['sort']         = $attributes['sort'] ?? 1000;
-        }
-        return parent::fill($attributes);
+        static::deleting(function ($item) {
+            $item->subs()->delete();
+        });
+
+        static::saving(function ($item) {
+            if(is_null($item->sort)){
+
+                if($item->parent)
+                    $list = $item->parent->subs();
+
+                elseif($item->category)
+                    $list = $item->category->documents();
+
+                else
+                    $list = $item->relation->documents();
+
+
+                $item->sort = $list->max('sort') + 100;
+            }
+        });
     }
 
     public function relation():MorphTo
@@ -134,16 +144,6 @@ class Document extends Model
     public function getLinkAttribute():?string
     {
         return $this->filename ? Storage::url($this->filename) : null;
-    }
-    public function subs():HasMany
-    {
-        return $this->hasMany(self::class,'parent_id');
-    }
-    public function publicSubs():HasMany
-    {
-        return $this->hasMany(self::class,'parent_id')
-            ->where('is_show',true)
-            ->orderBy('sort')->orderBy('title');
     }
 
     public static function processingForms(?Model $model, ?array $forms, ?Model $origin = null):void

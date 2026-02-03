@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Documents;
 
 use App\Enums\Entities;
 use App\Http\Controllers\Controller;
-use App\Models\Documents\Document;
 use App\Models\Documents\DocumentCategory;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -56,6 +55,24 @@ class RelationCategoriesController extends Controller
         $form = $request->validate($category::validateRules(), $category->validateMessages());
 
         $category->fill($form)->save();
+
+        $category->option('show_documents')->fill(['property' => $request->input('show_documents')])->save();
+
+        if($request->input('in_accordion') && $request->input('accordion_prefix')){
+            $category
+                ->option('in_accordion')
+                ->fill(['property' => $request->input('show_documents')])
+                ->save();
+
+            $category
+                ->option('accordion_prefix')
+                ->fill(['property' => $request->input('accordion_prefix')])
+                ->save();
+        }
+        else{
+            $category->option('in_accordion')->delete();
+            $category->option('accordion_prefix')->delete();
+        }
 
         return $request->has('save-close')
             ? redirect()->route(

@@ -72,6 +72,10 @@ Route::prefix('cabinet/documents/{entity}/{entity_id}/')->middleware([AuthCabine
 
         Route::put('save/{document?}',                      [RelationDocumentsController::class, 'save'])
                                                                 ->name('documents.relation.save');
+});
+
+Route::prefix('cabinet/documents/')->middleware([AuthCabinet::class, InstanceAccess::class])
+    ->group(function () {
 
         Route::delete('delete/{document?}',                 [RelationDocumentsController::class, 'delete'])
                                                                 ->name('documents.relation.delete');

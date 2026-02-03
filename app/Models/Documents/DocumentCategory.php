@@ -2,7 +2,9 @@
 
 namespace App\Models\Documents;
 
+use App\Traits\hasOptions;
 use App\Traits\hasRelations;
+use App\Traits\hasSubordination;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -12,7 +14,7 @@ use Illuminate\Database\Eloquent\Builder;
 
 class DocumentCategory extends Model
 {
-    use SoftDeletes, hasRelations;
+    use SoftDeletes, hasRelations, hasOptions, hasSubordination;
 
     protected $table = 'document_categories';
     protected string $entity = 'document-categories';
@@ -94,7 +96,9 @@ class DocumentCategory extends Model
     public function documents(): HasMany
     {
         return $this->hasMany(Document::class, 'category_id', 'id')
-            ->whereNull('parent_id');
+            ->whereNull('parent_id')
+            ->orderBy('sort')
+            ;
     }
 
     public function allDocuments(): HasMany
@@ -104,20 +108,13 @@ class DocumentCategory extends Model
 
     public function publicDocuments(): Collection
     {
-        return $this->documents()->where('is_show', true)
-            ->whereNull('relation_id')->whereNull('parent_id')->orderBy('sort')
-            ->get();
-    }
-
-    public function getDocuments(): Collection
-    {
         return $this->documents()
             ->where('is_show', true)
+            ->where('is_approved', true)
             ->whereNull('parent_id')
             ->orderBy('sort')
             ->get();
     }
-
 
     public function parent(): BelongsTo
     {
@@ -129,46 +126,15 @@ class DocumentCategory extends Model
         return $this->hasMany(self::class, 'parent_id', 'id');
     }
 
-    public function customDocuments(): HasMany
+    public static function publicCustom(): Collection
     {
-        return $this->hasMany(Document::class, 'category_id', 'id')
-            ->whereNull('relation_id')->whereNull('parent_id');
+        return self::whereNull('relation_id')
+            ->whereNull('parent_id')
+            ->orderBy('sort')
+            ->orderBy('name')
+            ->get();
     }
 
-    public static function getPublic(): Collection
-    {
-        return self::where('is_show', true)->whereNull('relation_id')->orderBy('sort')->orderBy('name')->get();
-    }
-    public function getSaveAttribute():string
-    {
-        return route('document-categories:save', $this);
-    }
-    public function getRelationDocumentCategorySaveAttribute():?string
-    {
-        return route('division:admin:document-categories:save', [$this->relation->id ?? null, $this]);
-    }
-    public function getNameWithParentsAttribute():?string
-    {
-        return $this->parent_id ? "{$this->parent->name_with_parents} → {$this->name}" : $this->name;
-    }
-
-    public function getRelationDocumentAddAttribute():string
-    {
-        return route('division:admin:documents:form', [$this->relation->id ?? null, $this]);
-    }
-
-    public function getRelationAdminAttribute():?string
-    {
-        return route('division:admin:documents:list', $this->relation);
-    }
-    public function getRelationFormAttribute():?string
-    {
-        return route('division:admin:document-categories:form', [$this->relation->id ?? null, $this]);
-    }
-    public function getRelationDeleteAttribute():?string
-    {
-        return route('division:admin:document-categories:delete', $this);
-    }
 
 
 }
