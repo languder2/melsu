@@ -62,7 +62,7 @@ style="background-image: url({{asset('img/preparatory-courses/courses-12.jpg')}}
                     <section id="course-programs">
                         <div class="flex flex-col sm:flex-row justify-between sm:items-center mb-5 lg:mb-7 lg:mt-5 gap-3 sm:gap-0">
                             <h2 class="font-bold text-2xl 2xl:text-3xl">Программы курсов</h2>
-                            <span class="text-[#808080]">Вы можете выбрать обучение по одному или нескольким предметам</span>
+                            <span class="text-[#808080]"><span class="font-semibold text-black">Вы можете</span> выбрать обучение по одному или нескольким предметам</span>
                         </div>
                         <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
                             <div class="border-t border-[#DDDDDD] flex flex-col py-5 h-[220px] justify-between">
@@ -253,7 +253,7 @@ style="background-image: url({{asset('img/preparatory-courses/courses-12.jpg')}}
                                         <span class="font-bold">
                                             (02)
                                         </span>
-                                        Поддерживать активность слушателей на занятиях
+                                        Обеспечивать постоянный контакт с преподавателями
                                     </p>
                                 </div>
                                 <div class="2xl:h-[350px]">
@@ -269,7 +269,7 @@ style="background-image: url({{asset('img/preparatory-courses/courses-12.jpg')}}
                                         <span class="font-bold">
                                             (03)
                                         </span>
-                                        Поддерживать активность слушателей на занятиях
+                                        Использовать многолетний опыт ведущих вузовских преподавателей
                                     </p>
                                 </div>
                             </div>
@@ -279,7 +279,7 @@ style="background-image: url({{asset('img/preparatory-courses/courses-12.jpg')}}
                                         <span class="font-bold">
                                             (04)
                                         </span>
-                                        Поддерживать активность слушателей на занятиях
+                                        Ликвидировать пробелы в знаниях и повысить готовность к поступлению
                                     </p>
                                 </div>
                                 <div class="2xl:h-[350px]">
@@ -297,8 +297,8 @@ style="background-image: url({{asset('img/preparatory-courses/courses-12.jpg')}}
                                 <h2 class="font-bold text-2xl 2xl:text-3xl">Подход к обучению</h2>
                             </div>
                             <div class="sm:px-5 sm:py-2.5">
-                                <p>
-                                    Участники могут выбрать обучение по одному или нескольким предметам. Это позволяет
+                                <p class="text-[#808080]">
+                                    <span class="font-semibold text-black">Участники могут выбрать обучение по одному или нескольким предметам.</span> Это позволяет
                                     гибко строить индивидуальную траекторию подготовки в зависимости от уровня подготовки и
                                     целевых требований к поступлению.
                                 </p>
@@ -343,72 +343,33 @@ style="background-image: url({{asset('img/preparatory-courses/courses-12.jpg')}}
                                 <div class="flex flex-col gap-4 justify-between">
                                     <div class="flex flex-col gap-4">
                                         <h3 class="text-xl font-bold">Определитесь с предметами </h3>
-                                        <p class="text-[#CCCCCC]">
+                                        <p class="text-[#808080]">
                                             по которым хотите пройти подготовку
                                         </p>
                                     </div>
                                     
-                                    <ul class="list-inside list-disc flex flex-col gap-3">
-                                        <a href="#" class="flex items-center gap-3">
-                                            <span>
-                                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <rect width="20" height="20" rx="10" class="fill-[#820000] group:fill-[#C10F1A]"/>
-                                                    <path d="M7 7H13M13 7V13M13 7L7 13" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
-                                                </svg>
-                                            </span>
-                                            <span>
-                                                Link web page editors
-                                            </span>
-                                        </a>
-                                    </ul>
                                 </div>
                                 <div class="flex flex-col gap-4 justify-between">
                                     <div class="flex flex-col gap-4">
                                         <h3 class="text-xl font-bold">Договор заполняют родители</h3>
-                                        <p class="text-[#CCCCCC]">
+                                        <p class="text-[#808080]">
                                             С собой брать паспорт (родителей или законных представителей, паспорт школьника)
                                         </p>
                                     </div>
                                     
-                                    <ul class="list-inside list-disc flex flex-col gap-3">
-                                        <a href="#" class="flex items-center gap-3">
-                                            <span>
-                                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <rect width="20" height="20" rx="10" class="fill-[#820000] group:fill-[#C10F1A]"/>
-                                                    <path d="M7 7H13M13 7V13M13 7L7 13" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
-                                                </svg>
-                                            </span>
-                                            <span>
-                                                Link web page editors
-                                            </span>
-                                        </a>
-                                    </ul>
                                 </div>
                                 <div class="flex flex-col gap-4 justify-between">
                                     <div class="flex flex-col gap-4">
                                         <h3 class="text-xl font-bold">Посетите центр по адресу:</h3>
-                                        <p class="text-[#CCCCCC]">
+                                        <p class="text-[#808080]">
                                             г. Мелитополь, ул. Бейбулатова, 2, корпус 15, аудитория 208
                                         </p>
                                     </div>
-                                    <ul class="list-inside list-disc flex flex-col gap-3">
-                                        <a href="#" class="flex items-center gap-3">
-                                            <span>
-                                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <rect width="20" height="20" rx="10" class="fill-[#820000] group:fill-[#C10F1A]"/>
-                                                    <path d="M7 7H13M13 7V13M13 7L7 13" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
-                                                </svg>
-                                            </span>
-                                            <span>
-                                                Link web page editors
-                                            </span>
-                                        </a>
-                                    </ul>
                                 </div>
                             </div>
                         </div>
                     </section>
-                    <section id="contacts" class="relative xl:h-[385px] pr-12">
+                    <section id="contacts" class="relative xl:h-[385px] pr-12 mb-5">
                         <div class="absolute bg-cover bg-center h-full w-[150%] -left-[50%] top-0"
                             style="background-image: url({{asset('img/first-year/abst-1.jpg')}})">
 
@@ -636,22 +597,6 @@ style="background-image: url({{asset('img/preparatory-courses/courses-12.jpg')}}
                             </div>
                         </div>
                     </section>
-                    <section id="advertising-material">
-                        <h2 class="font-bold text-xl md:text-3xl mb-5 lg:mb-7">Рекламный материал</h2>
-                        <div class="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-5">
-                            <div class="grid grid-cols-1 gap-5">
-                                <div>
-                                    <img class="h-full w-full" src="{{asset('img/preparatory-courses/courses-9.jpg')}}" alt="">
-                                </div>
-                                <div>
-                                    <img class="h-full w-full" src="{{asset('img/preparatory-courses/courses-10.jpg')}}" alt="">
-                                </div>
-                            </div>
-                            <div>
-                                <img class="h-full" src="{{asset('img/preparatory-courses/courses-11.jpg')}}" alt="">
-                            </div>
-                        </div>
-                    </section>
                 </div>
             </div>
             <!--Боковое меню-->
@@ -757,16 +702,6 @@ style="background-image: url({{asset('img/preparatory-courses/courses-12.jpg')}}
                                 </span>
                                 <span class="flex transition-all duration-300 ease-linear [font-variation-settings:'wght'_400] group-hover:[font-variation-settings:'wght'_700]">
                                     Контакты
-                                </span>
-                            </a>
-                            <a href="javascript:window.Scrolls.scrollToElementWithOffset(document.getElementById('advertising-material'),180);" class="flex items-center gap-2.5 group hover:bg-[#EEEEEE] py-3 px-2.5 transition duration-300 ease-linear">
-                                <span>
-                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path class="stroke-[1px] group-hover:stroke-[2px] transition-all duration-300 ease-linear" d="M9.60404 1.91274C9.64056 1.83895 9.69697 1.77685 9.76692 1.73342C9.83686 1.69 9.91755 1.66699 9.99987 1.66699C10.0822 1.66699 10.1629 1.69 10.2328 1.73342C10.3028 1.77685 10.3592 1.83895 10.3957 1.91274L12.3207 5.8119C12.4475 6.06854 12.6347 6.29058 12.8662 6.45895C13.0977 6.62732 13.3666 6.737 13.6499 6.77857L17.9549 7.40857C18.0364 7.42039 18.1131 7.4548 18.1761 7.5079C18.2391 7.56101 18.2861 7.63069 18.3116 7.70908C18.337 7.78746 18.3401 7.87141 18.3204 7.95143C18.3006 8.03146 18.2589 8.10436 18.1999 8.1619L15.0865 11.1936C14.8812 11.3937 14.7276 11.6406 14.6389 11.9133C14.5502 12.1859 14.5291 12.476 14.5774 12.7586L15.3124 17.0419C15.3268 17.1234 15.318 17.2074 15.287 17.2841C15.2559 17.3609 15.204 17.4274 15.137 17.4761C15.07 17.5247 14.9907 17.5536 14.9081 17.5593C14.8255 17.5651 14.743 17.5475 14.6699 17.5086L10.8215 15.4852C10.568 15.3521 10.2859 15.2825 9.99946 15.2825C9.71306 15.2825 9.43094 15.3521 9.17737 15.4852L5.32987 17.5086C5.25681 17.5472 5.17437 17.5646 5.09191 17.5588C5.00946 17.5529 4.9303 17.524 4.86345 17.4754C4.7966 17.4268 4.74473 17.3604 4.71375 17.2838C4.68277 17.2071 4.67392 17.1233 4.68821 17.0419L5.42237 12.7594C5.47087 12.4767 5.44986 12.1864 5.36115 11.9136C5.27245 11.6408 5.11871 11.3937 4.91321 11.1936L1.79987 8.16274C1.74037 8.10526 1.6982 8.03223 1.67817 7.95197C1.65815 7.8717 1.66107 7.78742 1.6866 7.70873C1.71214 7.63004 1.75926 7.5601 1.8226 7.50689C1.88594 7.45367 1.96296 7.41932 2.04487 7.40774L6.34904 6.77857C6.63259 6.73732 6.90186 6.62778 7.13369 6.45939C7.36552 6.291 7.55296 6.0688 7.67987 5.8119L9.60404 1.91274Z" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
-                                </span>
-                                <span class="line-clamp-1 flex transition-all duration-300 ease-linear [font-variation-settings:'wght'_400] group-hover:[font-variation-settings:'wght'_700]">
-                                    Рекламный материал
                                 </span>
                             </a>
                         </div>
