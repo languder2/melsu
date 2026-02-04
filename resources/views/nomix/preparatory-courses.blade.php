@@ -47,7 +47,7 @@ style="background-image: url({{asset('img/preparatory-courses/courses-12.jpg')}}
                                     <div class="liquid-glass__content h-full">
                                         <div class="flex flex-col items-start justify-between gap-5 h-full">
                                             <p class="text-white">
-                                                ФГБОУ ВО Мелитопольский государственный университет приглашает школьников 10–11
+                                                ФГБОУ ВО «Мелитопольский государственный университет» приглашает школьников 10–11
                                                 классов принять участие в подготовительных курсах, направленных на поступление в
                                                 университет. Программы рассчитаны на системное повторениеи закрепление ключевых
                                                 знаний по важным предметам, необходимых как для внутренне вузовских испытаний,так и
@@ -72,7 +72,7 @@ style="background-image: url({{asset('img/preparatory-courses/courses-12.jpg')}}
                                 </div>
                                 <div>
                                     <p>
-                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard 
+                                        Подготовка к вступительным испытаниям и экзаменам, развитие грамотной устной и письменной речи.
                                     </p>
                                 </div>
                             </div>
@@ -83,7 +83,7 @@ style="background-image: url({{asset('img/preparatory-courses/courses-12.jpg')}}
                                 </div>
                                 <div>
                                     <p>
-                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard 
+                                        Систематизация базовых знаний и отработка типовых заданий, необходимых для успешного поступления.
                                     </p>
                                 </div>
                             </div>
@@ -94,7 +94,7 @@ style="background-image: url({{asset('img/preparatory-courses/courses-12.jpg')}}
                                 </div>
                                 <div>
                                     <p>
-                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard 
+                                        Повторение ключевых исторических периодов и формирование навыков анализа исторических событий.
                                     </p>
                                 </div>
                             </div>
@@ -105,7 +105,7 @@ style="background-image: url({{asset('img/preparatory-courses/courses-12.jpg')}}
                                 </div>
                                 <div>
                                     <p>
-                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard 
+                                        Разбор основных тем курса и решение задач, встречающихся на вступительных испытаниях.
                                     </p>
                                 </div>
                             </div>
@@ -116,7 +116,7 @@ style="background-image: url({{asset('img/preparatory-courses/courses-12.jpg')}}
                                 </div>
                                 <div>
                                     <p>
-                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard 
+                                        Освоение базовых понятий и закономерностей общественного развития в формате, удобном для подготовки к экзаменам.
                                     </p>
                                 </div>
                             </div>
@@ -131,10 +131,10 @@ style="background-image: url({{asset('img/preparatory-courses/courses-12.jpg')}}
                                     </div>
                                     <div class="flex flex-col gap-3">
                                         <h3 class="text-[#C10F1A] font-bold text-6xl">85%</h3>
-                                        <span class="text-[#808080] text-xl">слушателей прошедших наши подготовительные курсы,</span>
+                                        <span class="text-[#808080] 2xl:text-xl">слушателей прошедших наши подготовительные курсы,</span>
                                     </div>
                                     <div>
-                                        <h4 class="text-2xl font-bold">Успешно поступили в МелГУ на бюджетные места!</h4>
+                                        <h4 class="text-xl 2xl:text-2xl font-bold">Успешно поступили в МелГУ на бюджетные места!</h4>
                                     </div>
                                 </div>
                                 <div class="flex flex-col gap-2.5">
@@ -198,22 +198,22 @@ style="background-image: url({{asset('img/preparatory-courses/courses-12.jpg')}}
                                 <div class="p-5 h-[240px] md:h-[370px] flex flex-col justify-between bg-no-repeat bg-cover"
                                     style="background-image: url({{asset('img/preparatory-courses/courses-2.jpg')}})">
                                     <div class="bg-[#C10F1A] p-2.5 w-fit">
-                                        <span class="text-xl font-bold text-white">+3 балла</span>
+                                        <span class="text-xl font-bold text-white">+3 балла / предмет</span>
                                     </div>
                                     <div class="pb-10">
                                         <p class="font-semibold">
-                                            За успешное окончание подготовительных курсов по одному предмету
+                                            +3 балла за успешное окончание подготовительных курсов по каждому предмету
                                         </p>
                                     </div>
                                 </div>
-                                <div class="p-5 h-[240px] md:h-[370px] flex flex-col justify-between bg-no-repeat bg-cover"
+                                <div class="p-5 h-[240px] md:h-[370px] flex flex-col justify-between bg-no-repeat bg-white bg-top-right"
                                     style="background-image: url({{asset('img/preparatory-courses/courses-3.jpg')}})">
                                     <div class="bg-[#C10F1A] p-2.5 w-fit">
                                         <span class="text-xl font-bold text-white">36 часов</span>
                                     </div>
                                     <div class="pb-10">
                                         <p class="font-semibold">
-                                            Продолжительность подготовительного курса
+                                            Продолжительность подготовительного курса (очная форма, по субботам)
                                         </p>
                                     </div>
                                 </div>
@@ -232,7 +232,7 @@ style="background-image: url({{asset('img/preparatory-courses/courses-12.jpg')}}
                         </div>
                     </section>
                     <section id="programs">
-                        <h2 class="font-bold text-xl md:text-3xl mb-5 lg:mb-7">Программа ориентирована на сочетание теоретических материалов и большого блока практических занятий</h2>
+                        <h2 class="font-bold text-xl mb-5 lg:mb-7 xl:w-[67%]">Программа ориентирована на сочетание теоретических материалов и большого блока практических занятий, это позволяет:</h2>
                         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5">
                             <div class="flex flex-col gap-5">
                                 <div class="2xl:h-[350px] order-2 sm:order-1">
@@ -371,7 +371,7 @@ style="background-image: url({{asset('img/preparatory-courses/courses-12.jpg')}}
                     </section>
                     <section id="contacts" class="relative xl:h-[385px] pr-12 mb-5">
                         <div class="absolute bg-cover bg-center h-full w-[150%] -left-[50%] top-0"
-                            style="background-image: url({{asset('img/first-year/abst-1.jpg')}})">
+                            style="background-image: url({{asset('img/preparatory-courses/abst-1.jpg')}})">
 
                         </div>
                         <div class="bg-[rgba(0,0,0,0.7)] min-h-full min-w-full w-[150%] pointer-events-none absolute top-0 -left-[50%]">
