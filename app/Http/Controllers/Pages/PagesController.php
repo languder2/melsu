@@ -123,9 +123,8 @@ class PagesController extends Controller
     }
 
 
-    public function showPage(string $page = null): RedirectResponse|string
+    public function showPage(string $page = null): RedirectResponse| \Illuminate\View\View
     {
-
         $page = Page::where('code', $page)->first();
 
         if (!$page || !$page->is_show)

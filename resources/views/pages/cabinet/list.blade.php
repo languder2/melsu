@@ -14,18 +14,16 @@
 
     {{--    @include('events.cabinet.filter')--}}
 
-    <div class="grid gap-3 grid-cols-[auto_auto_1fr_auto] mb-3">
+    <div class="grid gap-3 grid-cols-[auto_1fr_auto_auto_auto] mb-3">
         <div
-            class="border-l-3 grid grid-cols-subgrid col-span-full gap-3 p-4 rounded-sm shadow items-center sticky top-0 text-white border-sky-800 bg-sky-800 text-center"
+            class="grid grid-cols-subgrid col-span-full gap-3 items-center sticky top-0 text-white text-center"
         >
-            <div>
+            <div class="p-3 rounded-sm shadow bg-sky-800">
                 id
             </div>
-            <div></div>
-            <div>
+            <div class="p-3 rounded-sm shadow bg-sky-800 col-span-4 text-left">
                 Страница
             </div>
-            <div></div>
         </div>
 
         @forelse($list as $item)

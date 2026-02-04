@@ -5,7 +5,9 @@
 @section('content-header')
 
     @if($instance instanceof \App\Models\Division\Division)
-            @component('divisions.cabinet.item', ['division' => $instance, 'has_menu' => true])@endcomponent
+        @component('divisions.cabinet.item', ['division' => $instance, 'has_menu' => true])@endcomponent
+    @elseif($instance instanceof \App\Models\Page\Page)
+        @component('pages.cabinet.item', ['item' => $instance, 'has_menu' => true])@endcomponent
     @endif
 
     @include('documents.relation.menu')

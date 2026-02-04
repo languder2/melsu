@@ -6,6 +6,7 @@ use App\Models\Documents\Document;
 use App\Models\Documents\DocumentCategory;
 use App\Models\Page\Content as PageContent;
 use App\Traits\hasContents;
+use App\Traits\hasImage;
 use App\Traits\hasLinks;
 use App\Traits\hasMeta;
 use App\Traits\hasUsers;
@@ -21,8 +22,7 @@ use Illuminate\Support\Facades\Route;
 class Page extends Model
 {
     use SoftDeletes, hasMeta, MagicGet, hasLinks, resolveRouteBinding, hasContents,
-    hasUsers
-        ;
+    hasUsers, hasImage;
 
     protected $table = 'pages';
 

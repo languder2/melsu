@@ -35,6 +35,9 @@ class PageCabinetController extends Controller
 
         $page->getContentRecord()->fill(['content' => $request->get('content')])->save();
 
+        if($request->file('image'))
+            $page->image->saveImage($request->file('image'));
+
         if($request->get('meta'))
             $page->metaSave($request->get('meta'), $request->file('meta.image'));
 

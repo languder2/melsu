@@ -72,13 +72,6 @@
                 />
 
                 <div class="flex gap-3 justify-between items-center">
-                    <x-form.file
-                        id="form_image"
-                        label="Установить / сменить изображение"
-                        name="image"
-                        block="flex-1"
-                    />
-
                     <x-form.checkbox.block
                         id="is_show"
                         name="is_show"
@@ -90,6 +83,21 @@
                     />
                 </div>
 
+            </div>
+
+            <div class="flex gap-3 bg-white p-3 shadow">
+                <div>
+                    <x-html.image-with-modal
+                        :url="$page->image->url"
+                        object="max-h-14"
+                    />
+                </div>
+
+                <x-form.file
+                    label="Установить / сменить изображение для шапки раздела"
+                    name="image"
+                    block="flex-1"
+                />
             </div>
 
             <x-common.meta-form

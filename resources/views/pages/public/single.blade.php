@@ -9,7 +9,6 @@
 @if($menu)
     @section('aside')
         @component('public.menu.aside-tree',compact('menu'))@endcomponent
-    {{--    {{view('public.menu.aside-tree',['menu' => $menu ?? null ])}}--}}
     @endsection
 @endif
 
@@ -19,6 +18,6 @@
         {!! $page->content_html !!}
     </div>
 
-    @component('divisions.public.includes.documents',['categories' => $page->public_document_categories]) @endcomponent
-
+    @include('documents.public.includes.categories',['categories' => $page->publicDocumentCategories])
+{{----}}
 @endsection
