@@ -84,7 +84,7 @@ class Document extends Model
 //        $this->id = now()->format('Uv');
     }
 
-    protected static function boot()
+    protected static function boot(): void
     {
         parent::boot();
 
@@ -103,7 +103,6 @@ class Document extends Model
 
                 else
                     $list = $item->relation->documents();
-
 
                 $item->sort = $list->max('sort') + 100;
             }

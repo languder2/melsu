@@ -67,11 +67,11 @@
         <label for="category{{ $item->id }}" class="cursor-pointer p-3 font-semibold bg-white rounded-sm">
             <x-lucide-list-chevrons-down-up
                 title="{{ __('messages.Show documents') }}"
-                class="w-6 block group-has-checked:hidden hover:text-green-700"
+                class="w-6 hidden group-has-checked:block hover:text-green-700"
             />
             <x-lucide-list-chevrons-up-down
                 title="{{ __('messages.Hide documents') }}"
-                class="w-6 hidden group-has-checked:block hover:text-green-700"
+                class="w-6 block group-has-checked:hidden hover:text-green-700"
             />
         </label>
 

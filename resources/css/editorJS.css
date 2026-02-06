@@ -52,7 +52,7 @@
 }
 .codex-editor ul:not(.bg-none),
 .codex-editor ol:not(.bg-none) {
-    @apply bg-white p-3 ps-6
+    @apply bg-white p-3
 }
 
 @tailwind utilities;

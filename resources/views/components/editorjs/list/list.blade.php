@@ -1,4 +1,4 @@
-<ol start="{{ $start }}" class="ps-3 list-inside list-{{ $isCheklist ? 'none' : $type }}">
+<ol start="{{ $start }}" class="ms-0 ps-0 list-inside list-{{ $isCheklist ? 'none' : $type }}">
     @foreach($items as $item)
         <li class="py-1 last:pb-0">
                 @if($isCheklist)

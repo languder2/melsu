@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Str;
 
 /**
  * @property mixed $lastname
@@ -150,6 +151,10 @@ class User extends Authenticatable
     protected function getFioAttribute(): string
     {
         return trim($this->firstname . ' ' . $this->middlename . ' ' . $this->lastname);
+    }
+    protected function getFioShortAttribute(): string
+    {
+        return trim($this->lastname . ' ' . Str::substr($this->firstname, 0, 1) . '.' . Str::substr($this->middlename, 0, 1).'.');
     }
 
 

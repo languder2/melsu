@@ -2,36 +2,51 @@
     'document' => null
 ])
 
+@use('\App\Enums\Documents\FileType')
+@use('\Illuminate\Support\Facades\Storage')
+
 @if($document)
     @php
         $file = $document->filename;
         $title = $document->title ?? 'Скачать файл';
-        $size = isset($file->size) ? round($file->size / 1024 / 1024, 2) . ' MB' : null;
+        $size = Storage::has($document->filename) ? Storage::size($document->filename) : 0;
+        $size = isset($size) ? round($size / 1024 / 1024, 2) . ' MB' : null;
         $extension = pathinfo($document->filename, PATHINFO_EXTENSION);
+
+        $icon = optional(FileType::tryFrom($extension))->icon();
+
     @endphp
 
-    <div class="attachment-block border rounded-lg px-4 py-2 flex items-center justify-between bg-gray-50">
-        <div class="grid grid-cols-[6ch_1fr_auto] items-center gap-3">
-            <div class="bg-blue-100 p-3 rounded text-blue-600 font-bold uppercase text-xs text-center">
-                {{ $extension }}
-            </div>
+    {{--    {{ $extension }}--}}
 
-            <div class="flex gap-2">
-                @if($document->parent_id)
-                    <div class="ps-4">⤷</div>
-                @endif
-                <p class="font-medium my-0 text-gray-900 leading-tight">{!! $title !!}</p>
-                @if($size)
-                    <span class="text-sm text-gray-500">{{ $size }}</span>
-                @endif
+    <div class="flex flex-col md:grid md:grid-cols-[1fr_20ch] items-center gap-3 p-3 px-7 bg-white shadow-sm">
+        <div class="flex gap-3">
+            @if($document->parent_id)
+                <div class="w-6 flex items-center">
+                    <x-lucide-corner-down-right class="w-6 text-base-red"/>
+                </div>
+            @endif
+            <div class="font-medium my-0 text-gray-900 leading-tight">
+                {{ $title }}
             </div>
         </div>
-
         <a href="{{ $document->link }}"
            {{--       download--}}
            target="_blank"
-           class="bg-white border px-4 py-2 rounded-md shadow-sm text-sm hover:bg-gray-100 transition">
-            Открыть
+           class="
+                hover:text-base-red duration-150 transition-all font-semibold text-center gap-3 items-center group
+                grid grid-cols-[3ch_1fr_6ch] select-none
+           "
+        >
+            <div>
+                {!! $icon !!}
+            </div>
+
+            <div class="text-sm text-gray-500 group-hover:text-base-red duration-150 transition-all">{{ $size }}</div>
+
+            <div>
+                Открыть
+            </div>
         </a>
     </div>
 @endif

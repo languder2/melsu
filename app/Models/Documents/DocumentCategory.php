@@ -78,7 +78,7 @@ class DocumentCategory extends Model
     {
         $query->where('is_show', true);
     }
-    protected static function boot()
+    protected static function boot(): void
     {
         parent::boot();
 
@@ -88,7 +88,7 @@ class DocumentCategory extends Model
         });
 
         static::saving(function ($item) {
-            if(!$item->sort || (int)$item->sort < 0)
+            if(!$item->exists || (int)$item->sort < 0)
                 $item->sort = $item->relation->documentCategories()->max('sort') + 100;
         });
     }
@@ -102,7 +102,7 @@ class DocumentCategory extends Model
     }
 
     public function allDocuments(): HasMany
-    {
+        {
         return $this->documents()->with('subs');
     }
 

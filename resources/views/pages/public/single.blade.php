@@ -18,6 +18,6 @@
         {!! $page->content_html !!}
     </div>
 
-    @include('documents.public.includes.categories',['categories' => $page->publicDocumentCategories])
-{{----}}
+    @include('documents.public.categories',['categories' => $page->publicDocumentCategories])
+    {{----}}
 @endsection

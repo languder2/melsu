@@ -11,8 +11,7 @@
 @endsection
 
 @section('content')
-<div class="flex flex-col gap-4 ul-correct">
-    @each('documents.public.category',$categories,'category')
-</div>
+
+    @component('documents.public.categories', ['categories' => $categories]) @endcomponent
 
 @endsection

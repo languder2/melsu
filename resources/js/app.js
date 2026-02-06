@@ -55,3 +55,6 @@ window.scrollToBlock = scrollToBlock;
 
 import './public/regiments.js';
 import './public/tabs.js';
+
+import './public/documents.js';
+

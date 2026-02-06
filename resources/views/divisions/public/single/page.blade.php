@@ -15,42 +15,42 @@
 @endsection
 
 @section('content')
-<div class="flex flex-col gap-4">
-    @if(!in_array($division->code,['academic-council']))
-        @include('public.staffs.division.chief')
-    @endif
+    <div class="flex flex-col gap-4">
+        @if(!in_array($division->code,['academic-council']))
+            @include('public.staffs.division.chief')
+        @endif
 
-    @if($division->content)
-        <div class="content-news mb-3 codex-editor flex flex-col gap-4">
-            {!! $division->contentHTML !!}
-        </div>
-    @elseif($division->publicSections->count())
-        <div class="flex flex-col gap-3">
-            @each('public.page.content-section',$division->publicSections,'section')
-        </div>
-    @endif
+        @if($division->content)
+            <div class="content-news mb-3 codex-editor flex flex-col gap-4">
+                {!! $division->contentHTML !!}
+            </div>
+        @elseif($division->publicSections->count())
+            <div class="flex flex-col gap-3">
+                @each('public.page.content-section',$division->publicSections,'section')
+            </div>
+        @endif
 
-{{--    @component('divisions.public.includes.documents',['categories' => $division->documentCategories]) @endcomponent--}}
+        {{--    @component('divisions.public.includes.documents',['categories' => $division->documentCategories]) @endcomponent--}}
 
-    @component('documents.public.includes.categories',['categories' => $division->publicDocumentCategories]) @endcomponent
+        @component('documents.public.categories',['categories' => $division->publicDocumentCategories]) @endcomponent
 
-    @component('public.staffs.division.staffs',[
-        'staffs'    => $division->staffs(true)->get(),
-        'full_post' => in_array($division->code,['academic-council'])
-    ])
-        @slot('title')
-            @if($division->code === 'academic-council')
-                Состав ученого совета
-            @else
-                Сотрудники
-            @endif
-        @endslot
-    @endcomponent
+        @component('public.staffs.division.staffs',[
+            'staffs'    => $division->staffs(true)->get(),
+            'full_post' => in_array($division->code,['academic-council'])
+        ])
+            @slot('title')
+                @if($division->code === 'academic-council')
+                    Состав ученого совета
+                @else
+                    Сотрудники
+                @endif
+            @endslot
+        @endcomponent
 
-{{--    @component('news.public.relations.list', ['list' => $division->publicNews])--}}
+        {{--    @component('news.public.relations.list', ['list' => $division->publicNews])--}}
 
-{{--    @endcomponent--}}
+        {{--    @endcomponent--}}
 
-    <x-news.include-block :division="$division" />
-</div>
+        <x-news.include-block :division="$division"/>
+    </div>
 @endsection
