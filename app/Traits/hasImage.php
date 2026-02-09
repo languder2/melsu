@@ -24,6 +24,14 @@ trait hasImage
         return $this->morphOne(Image::class, 'relation')->where('type', $type);
     }
 
+    public function image($type = 'logo'): Image
+    {
+        return
+            $this->getImage($type)->first()
+            ?? (new Image(['type' => $type]))->relation()->associate($this)
+        ;
+    }
+
     public function getLogoAttribute(): Image
     {
         return $this->getImage()->firstOrNew();

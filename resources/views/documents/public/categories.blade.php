@@ -2,8 +2,6 @@
     'categories'  => collect()
 ])
 
-
-
 @if($categories->map(fn($item) => $item->publicDocuments()->count())->sum())
 
     @component('documents.public.search') @endcomponent
@@ -98,6 +96,12 @@
             <div class="flex items-center bg-white shadow-sm text-base-red justify-center font-semibold p-3">
                 {{ __('messages.search documents not result') }}
             </div>
+        </div>
+    </div>
+@else
+    <div class="message-not-results-categories">
+        <div class="flex items-center bg-white shadow-sm text-base-red justify-center font-semibold p-3">
+            {{ __('messages.no documents') }}
         </div>
     </div>
 @endif

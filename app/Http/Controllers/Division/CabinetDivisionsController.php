@@ -45,6 +45,7 @@ class CabinetDivisionsController extends Controller
 
     public function form(Division $division): View
     {
+
         $divisions = $this->divisions
             ->reject(fn($item) => $item->id === $division->id)
             ->pluck('nameWithLevel', 'id');
@@ -65,8 +66,16 @@ class CabinetDivisionsController extends Controller
 
         $division->content()->fill(['content' => $request->get('content')])->save();
 
+        $division->content('description')->fill(['content' => $request->get('description')])->save();
+
         if($request->file('image'))
             $division->image->saveImage($request->file('image'));
+
+        if($request->file('compilation-image'))
+            $division->image('compilation')->saveImage($request->file('compilation-image'));
+
+        if($request->file('preview'))
+            $division->image('preview')->saveImage($request->file('preview'));
 
         if($request->get('meta'))
             $division->metaSave($request->get('meta'), $request->file('meta.image'));

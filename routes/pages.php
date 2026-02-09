@@ -32,5 +32,8 @@ Route::prefix('cabinet/pages')->middleware(\App\Http\Middleware\AuthCabinet::cla
 
     Route::delete('delete/{page?}',         [PageCabinetController::class,'delete'])
                                                 ->name('pages.cabinet.delete');
+
+    Route::post('set-filter',               [PageCabinetController::class, 'setFilter'])
+                                                ->name('pages.cabinet.set-filter');
 });
 

@@ -152,13 +152,28 @@
             <div class="flex gap-3 bg-white p-3 shadow">
                 <div>
                     <x-html.image-with-modal
+                        :url="$division->image('compilation')->src"
+                        object="max-h-14"
+                    />
+                </div>
+
+                <x-form.file
+                    label="Установить / сменить изображение для компиляций (на ширину блока)"
+                    name="compilation-image"
+                    block="flex-1"
+                />
+            </div>
+
+            <div class="flex gap-3 bg-white p-3 shadow">
+                <div>
+                    <x-html.image-with-modal
                         :url="$division->preview->src"
                         object="max-h-14"
                     />
                 </div>
 
                 <x-form.file
-                    label="Установить / сменить изображение для списка"
+                    label="Установить / сменить изображение для списка (боковая фоновая) (для Образовательной структуры)"
                     name="preview"
                     block="flex-1"
                 />
@@ -169,10 +184,24 @@
                 header="Метатеги"
             />
 
+
+            <h3 class="font-semibold text-xl lg:col-span-2 my-2">
+                Контент
+            </h3>
             <x-editorjs.editor
                 set="content"
                 name="content"
                 :initialContent=" $division->content "
+            />
+
+
+            <h3 class="font-semibold text-xl lg:col-span-2 my-2">
+                Краткое описание для компиляций
+            </h3>
+            <x-editorjs.editor
+                set="short"
+                name="description"
+                :initialContent=" $division->content('description')->content "
             />
         </div>
     </form>

@@ -2,6 +2,7 @@
 
 namespace App\View\Components\Divisions;
 
+use App\Enums\DivisionType;
 use App\Models\Division\Division;
 use Closure;
 use Illuminate\Contracts\View\View;
@@ -19,22 +20,25 @@ class Gsc extends Component
 
         $this->list = collect();
 
+
         $this->list->put(
             'goals', $division->publicGoals->map(fn($item) => $item->content()->render())->toArray()
         );
 
-        $this->list->put(
-            'specialities', $division->publicSpecialities->groupBy('level')
-            ->map(fn($level) => $level->map(
-                fn($item) =>
-                    "$item->spec_code $item->name" . ( $item->name_profile ? "($item->name_profile)" : null)
+        if(in_array($division->type,[DivisionType::Institute, DivisionType::Faculty,  DivisionType::Department]))
+            $this->list->put(
+                'specialities', $division->publicSpecialities->groupBy('level')
+                ->map(fn($level) => $level->map(
+                    fn($item) =>
+                        "$item->spec_code $item->name" . ( $item->name_profile ? "($item->name_profile)" : null)
+                    )->toArray()
                 )->toArray()
-            )->toArray()
-        );
+            );
 
-        $this->list->put(
-            'careers', $division->publicCareers->pluck('name')->toArray()
-        );
+        if(in_array($division->type,[DivisionType::Institute, DivisionType::Faculty,  DivisionType::Department, ]))
+            $this->list->put(
+                'careers', $division->publicCareers->pluck('name')->toArray()
+            );
     }
 
     public function render(): View|Closure|string

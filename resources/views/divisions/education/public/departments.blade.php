@@ -13,6 +13,12 @@
     <div class="grid lg:grid-cols-[2fr_1fr] xl:grid-cols-[75%_auto] gap-5 px-2.5 2xl:px-0 mb-6">
         <div class="order-2 lg:order-1 flex flex-col gap-7">
             <x-divisions.list-in-blocks
+                :list="$division->faculties"
+            >
+                {{ __('common.faculties') }}
+            </x-divisions.list-in-blocks>
+
+            <x-divisions.list-in-blocks
                 :list="$division->subsTree()->filter(fn($item) => $item->type === \App\Enums\DivisionType::Department)"
             >
                 {{ __('common.department') }}
@@ -22,6 +28,12 @@
                 :list="$division->subsTree()->filter(fn($item) => $item->type === \App\Enums\DivisionType::Lab)"
             >
                 {{ __('common.labs') }}
+            </x-divisions.list-in-blocks>
+
+            <x-divisions.list-in-blocks
+                :list="$division->subsTree()->filter(fn($item) => $item->type === \App\Enums\DivisionType::EducationLab)"
+            >
+                {{ __('common.education-labs') }}
             </x-divisions.list-in-blocks>
 
 {{--            <div>--}}

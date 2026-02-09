@@ -13,6 +13,7 @@ enum DivisionType: string
     case Faculty        = 'faculty';
     case Department     = 'department';
     case Lab            = 'lab';
+    case EducationLab   = 'education-lab';
     case Administration = 'administration';
     case Division       = 'division';
     case Office         = 'office';
@@ -57,12 +58,13 @@ enum DivisionType: string
 
     }
 
-    public function getField():string
+    public function getField(): ?string
     {
         return match ($this) {
             DivisionType::Faculty       => 'faculty_id',
             DivisionType::Department    => 'department_id',
             DivisionType::Institute     => 'institute_id',
+            default                     => null,
         };
     }
 

@@ -42,9 +42,7 @@ class InfoEmployees extends Info
             'prop'              => Employees::teachingStaff->name,
             'captions'          => self::Fields,
             'list'              =>
-                Employee::all()->mapWithKeys(function ($item) {
-
-
+                Employee::all()->filter(fn($item) => $item->staff)->mapWithKeys(function ($item) {
                     $item->fio  = $item->staff->full_name;
                     $item->post = $item->staff->AffiliationPosts()->implode('; ');
                     return [$item->staff->full_name => $item];

@@ -30,8 +30,6 @@
             </div>
         @endif
 
-        {{--    @component('divisions.public.includes.documents',['categories' => $division->documentCategories]) @endcomponent--}}
-
         @component('documents.public.categories',['categories' => $division->publicDocumentCategories]) @endcomponent
 
         @component('public.staffs.division.staffs',[

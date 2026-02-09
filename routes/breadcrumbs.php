@@ -74,11 +74,21 @@ Breadcrumbs::for('branches', function (BreadcrumbTrail $trail) {
     $trail->push('Филиалы', route('public:education:branch:list'));
 });
 
-Breadcrumbs::for('labs', function (BreadcrumbTrail $trail) {
+Breadcrumbs::for('science-labs', function (BreadcrumbTrail $trail) {
     $trail->parent('menu',Menu::where('code','university')->first());
-
     $trail->push('Факультеты и филиалы', route('public:education:faculties'));
-    $trail->push('Лаборатории', route('public:labs:list'));
+    $trail->push('Научные лаборатории', route('public.science-labs.list'));
+});
+
+Breadcrumbs::for('education-labs', function (BreadcrumbTrail $trail) {
+    $trail->parent('menu',Menu::where('code','university')->first());
+    $trail->push('Факультеты и филиалы', route('public:education:faculties'));
+    $trail->push('Образовательные лаборатории', route('public.education-labs.list'));
+});
+
+Breadcrumbs::for('education-lab', function (BreadcrumbTrail $trail, ?Division $division) {
+    $trail->parent('faculties');
+    $trail->push($division->name, $division->link);
 });
 
 Breadcrumbs::for('faculty', function (BreadcrumbTrail $trail, ?Division $division) {

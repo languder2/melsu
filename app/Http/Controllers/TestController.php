@@ -90,6 +90,10 @@ class TestController extends Controller
     public function test()
     {
 
+        Division::whereNotNull('description')->get()->each(fn ($item)=> $item->content('description')->fill(['content' => rawTextToEditorJS($item->description)])->save());
+
+        dd();
+
         $division   = Division::find(135);
 
         dd($division->documentCategories);

@@ -15,8 +15,24 @@ return [
     'type.institute'                => 'Институт',
     'type.faculty'                  => 'Факультет',
     'type.department'               => 'Кафедра',
-    'type.lab'                      => 'Лаборатория',
+    'type.lab'                      => 'Научная лаборатория',
+    'type.education-lab'            => 'Образовательная лаборатория',
     'type.NotStructureDivision'     => 'Не структурное подразделения',
 
-    'type.other'            => 'Иное',
+    'type.Institutes'               => 'Институты',
+    'type.Faculties'                => 'Факультеты',
+    'type.Departments'              => 'Кафедры',
+    'type.Science labs'             => 'Научные лаборатории',
+    'type.Education labs'           => 'Образовательные лаборатории',
+    'type.Branches'                 => 'Филиалы',
+
+    'type.other'                    => 'Иное',
+
+
+
+
+
+
+
+
 ];

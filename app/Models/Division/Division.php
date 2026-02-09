@@ -315,7 +315,23 @@ class Division extends Model
     {
         $result = collect([]);
 
-        if($this->type === DivisionType::Faculty)
+        if($this->type === DivisionType::Institute)
+            foreach ($this->faculties as $faculty)
+                foreach ($faculty->departments as $department)
+                    foreach ($department->staffs as $staff){
+
+                        if(!$result->has($staff->staff_id))
+                            $result->put($staff->staff_id,(object)[
+                                'full_name' => $staff->card->full_name,
+                                'link'      => $staff->card->link,
+                                'avatar'    => $staff->avatar,
+                                'posts'     => collect([$staff->post]) ,
+                            ]);
+
+                        elseif($result[$staff->staff_id]->posts->doesntContain($staff->post))
+                            $result[$staff->staff_id]->posts->push($staff->post);
+                    }
+        elseif($this->type === DivisionType::Faculty)
             foreach ($this->departments as $department)
                 foreach ($department->staffs as $staff){
 
@@ -392,9 +408,19 @@ class Division extends Model
 
         return match($this->type){
             default                     => route('public:division:show',        $code),
-            DivisionType::Faculty, DivisionType::Department, DivisionType::Lab, DivisionType::Branch, DivisionType::Institute
+            DivisionType::Faculty, DivisionType::Department, DivisionType::Lab, DivisionType::Branch, DivisionType::Institute, DivisionType::EducationLab
             => route('public:education:division',   [$this->type, $code]),
         };
+    }
+    public function getDocumentsLinkAttribute(): string
+    {
+        $code = $this->alias ?? $this->code ?? $this->id;
+
+        return route('division.education.documents',[
+            $this->type->value,
+            $code
+        ]);
+
     }
     public static function search(&$division,$search): void
     {

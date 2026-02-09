@@ -50,7 +50,7 @@
         <x-html.button-delete-with-modal
             question="Удалить новость"
             :text=" $item->title "
-            :action=" $item->cabinet_delete_link "
+            :action=" route('news.cabinet.delete', $item)"
             icoClass='hover:text-amber-700'
         />
     </div>

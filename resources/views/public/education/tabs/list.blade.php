@@ -22,9 +22,16 @@
         }}
         {{
             view("public.education.tabs.item",[
-                'text'  => 'Лаборатории',
-                'href'      => route('public:labs:list'),
-                'active'    => ($active == 'labs')
+                'text'  => 'Научные лаборатории',
+                'href'      => route('public.science-labs.list'),
+                'active'    => ($active == 'science-labs')
+            ])
+        }}
+        {{
+            view("public.education.tabs.item",[
+                'text'  => 'Образовательные лаборатории',
+                'href'      => route('public.education-labs.list'),
+                'active'    => ($active == 'education-labs')
             ])
         }}
         {{

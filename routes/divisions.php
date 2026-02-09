@@ -4,6 +4,7 @@ use App\Http\Controllers\Division\DivisionController;
 use App\Http\Controllers\Division\CabinetDivisionsController;
 use App\Http\Middleware\AuthCabinet;
 use App\Http\Controllers\Education\EducationController;
+use App\Http\Controllers\Division\DivisionCompilationController;
 
 Route::prefix('admin/divisions')->group(function () {
     Route::get('form/{current?}',  [DivisionController::class, 'form'])->name('division:admin:form');
@@ -110,24 +111,60 @@ Route::get('{type}/{division}/dean-office',             [EducationController::cl
                                                             ->name('division.education.dean-office');
 
 Route::get('{type}/{division}/teaching-staff',          [EducationController::class, 'teachingStaff'])
-                                                            ->whereIn('type', ['faculty','department'])
+                                                            ->whereIn('type', [
+                                                                'institute',
+                                                                'faculty',
+                                                                'department',
+                                                                'lab',
+                                                                'science-lab',
+                                                                'education-lab',
+                                                                'branch'
+                                                            ])
                                                             ->name('division.education.teaching-staff');
 
 Route::get('{type}/{division}/departments',             [EducationController::class, 'departments'])
-                                                            ->whereIn('type', ['faculty','department'])
+                                                            ->whereIn('type', ['institute','faculty','department'])
                                                             ->name('division.education.departments');
 
 Route::get('{type}/{division}/specialities',            [EducationController::class, 'specialities'])
-                                                            ->whereIn('type', ['faculty','department'])
+                                                            ->whereIn('type', ['institute','faculty','department'])
                                                             ->name('division.education.specialities');
 
 Route::get('{type}/{division}/partners',                [EducationController::class, 'partners'])
-                                                            ->whereIn('type', ['faculty','department'])
+                                                            ->whereIn('type', [
+                                                                'institute',
+                                                                'faculty',
+                                                                'department',
+                                                                'lab',
+                                                                'science-lab',
+                                                                'education-lab',
+                                                                'branch'
+                                                            ])
                                                             ->name('division.education.partners');
 
 Route::get('{type}/{division}/sciences',                [EducationController::class, 'sciences'])
-                                                            ->whereIn('type', ['faculty','department'])
+                                                            ->whereIn('type', [
+                                                                'institute',
+                                                                'faculty',
+                                                                'department',
+                                                                'lab',
+                                                                'science-lab',
+                                                                'education-lab',
+                                                                'branch'
+                                                            ])
                                                             ->name('division.education.sciences');
+
+Route::get('{type}/{division}/documents',               [EducationController::class, 'documents'])
+                                                            ->whereIn('type', [
+                                                                'institute',
+                                                                'faculty',
+                                                                'department',
+                                                                'lab',
+                                                                'science-lab',
+                                                                'education-lab',
+                                                                'branch'
+                                                            ])
+                                                            ->name('division.education.documents');
 
 Route::get('{type}/{division}/{section?}/{item?}',      [EducationController::class, 'division'])
                                                             ->whereIn('type', [
@@ -135,6 +172,8 @@ Route::get('{type}/{division}/{section?}/{item?}',      [EducationController::cl
                                                                 'faculty',
                                                                 'department',
                                                                 'lab',
+                                                                'science-lab',
+                                                                'education-lab',
                                                                 'branch'
                                                             ])
                                                             ->name('public:education:division');
@@ -145,13 +184,12 @@ Route::get('departments',                               [EducationController::cl
 Route::get('branches',                                  [EducationController::class, 'showAllBranch'])
                                                             ->name('public:education:branch:list');
 
-Route::get('labs',                                      [EducationController::class, 'showAllLabs'])
-                                                            ->name('public:labs:list');
 
 /* Divisions: public */
 
 Route::get('divisions',                                 [DivisionController::class,'publicList'])
                                                             ->name('public:division:list');
+
 Route::get('division/{division?}',                      [DivisionController::class,'show'])
                                                             ->name('public:division:show');
 
@@ -159,4 +197,13 @@ Route::get('rectorate',                                 [DivisionController::cla
                                                             ->setDefaults(['division'=>'rectorate']);
 
 
+/* Compilation */
+
+Route::get('science-labs',                              [DivisionCompilationController::class, 'scienceLabs'])
+                                                            ->name('public.science-labs.list');
+
+Route::get('education-labs',                            [DivisionCompilationController::class, 'educationLabs'])
+                                                            ->name('public.education-labs.list');
+
+Route::get('educational-infrastructure',                [DivisionCompilationController::class, 'educationalInfrastructure']);
 

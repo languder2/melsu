@@ -12,6 +12,7 @@
 
     <div class="grid lg:grid-cols-[2fr_1fr] xl:grid-cols-[75%_auto] gap-5 px-2.5 2xl:px-0 mb-6">
         <div class="order-2 lg:order-1 flex flex-col gap-7">
+
             @component('divisions.education.public.sections.about', compact('division')) @endcomponent
 
             @component('divisions.education.public.sections.history', compact('division')) @endcomponent

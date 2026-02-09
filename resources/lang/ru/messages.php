@@ -6,5 +6,6 @@ return [
     'Hide documents'                => 'Скрыть документы',
     'Hide all categories'           => 'Свернуть все категории',
     'Show all categories'           => 'Развернуть все категории',
-    'search documents not result'   => 'Документы, соответствующие вашему запросу, отсутствуют'
+    'search documents not result'   => 'Документы, соответствующие вашему запросу, отсутствуют',
+    'no documents'                  => 'Нет загруженных документов'
 ];

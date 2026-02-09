@@ -47,32 +47,7 @@ Route::middleware(['web','auth.api'])->group(function () {
 Route::get('event/{event?}', [EventsController::class,'show'])->name('public:event:show');
 
 
-Route::controller(EventsController::class)
-    ->prefix('admin/events')
-    ->group(function () {
-
-        Route::get('', 'list')->name('admin:events');
-        Route::get('add', 'form')->name('admin:events:add');
-        Route::get('edit/{event?}', 'form')->name('admin:events:edit');
-        Route::post('save/{event?}', 'save')->name('admin:events:save');
-        Route::get('delete/{event?}', 'delete')->name('admin:events:delete');
-
-    });
-
-    Route::get('/events', [EventsController::class, 'calendar'])->name('public:events:calendar');
-    Route::get('/events/day/{date}', [EventsController::class, 'getDayEvents']);
-/**/
-
 /* Categories */
-
-Route::prefix('admin/categories-news')->group(function () {
-    Route::get('', [CategoriesController::class,'admin'])->name('news-categories:admin:list');
-    Route::get('form/{category?}',  [CategoriesController::class,'form'])->name('news-categories:admin:form');
-    Route::post('save/{category?}', [CategoriesController::class,'save'])->name('news-categories:save');
-    Route::get('delete/{category?}',[CategoriesController::class,'delete'])->name('news-categories:delete');
-});
-/**/
-
 Route::prefix('cabinet/news')->middleware(AuthCabinet::class)->group(function () {
     Route::get('',                      [CabinetNewsController::class, 'list'])         ->name('news.cabinet.list');
     Route::get('on-approval',           [CabinetNewsController::class, 'list'])         ->name('news.cabinet.on-approval')->defaults('onApproval', true);

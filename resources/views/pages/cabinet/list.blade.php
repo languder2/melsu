@@ -7,10 +7,10 @@
 @endsection
 
 @section('top-menu')
-
 @endsection
 
 @section('content')
+    @include('pages.cabinet.filter')
 
     {{--    @include('events.cabinet.filter')--}}
 

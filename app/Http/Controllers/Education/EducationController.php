@@ -36,17 +36,27 @@ class EducationController extends Controller
     }
 
 
-
     public function division(string $type,?Division $division,?string $section = null, ?string $op = null )
     {
 
         if(!$division)
             return redirect()->to(route('public:education:faculties'));
 
-        if($type === "faculty" || $type === "department")
+        if(in_array($type, [
+            DivisionType::Institute->value,
+            DivisionType::Faculty->value,
+            DivisionType::Department->value,
+            DivisionType::Lab->value,
+            DivisionType::EducationLab->value,
+        ]))
             return view('divisions.education.public.single',compact('division','section','type','op'));
 
         return view('public.education.page',compact('division','section','type','op'));
+    }
+
+    public function documents(string $type, ?Division $division )
+    {
+        return view('divisions.education.public.documents',compact('division'));
     }
 
     public function deanOffice(string $type, Division $division = null )
@@ -59,7 +69,13 @@ class EducationController extends Controller
 
     public function teachingStaff(string $type, Division $division )
     {
-        if(!$division->exists || ($division->type !== DivisionType::Faculty && $division->type !== DivisionType::Department))
+        if(!$division->exists || !in_array($division->type, [
+            DivisionType::Institute,
+            DivisionType::Faculty,
+            DivisionType::Department,
+            DivisionType::Lab,
+            DivisionType::EducationLab,
+        ]))
             return redirect()->route('public:education:faculties');
 
         return view('divisions.education.public.teaching-staff',compact('division'));
@@ -67,7 +83,7 @@ class EducationController extends Controller
 
     public function departments(string $type, Division $division ): View|RedirectResponse
     {
-        if(!$division->exists || ($division->type !== DivisionType::Faculty && $division->type !== DivisionType::Department))
+        if(!$division->exists)
             return redirect()->route('public:education:faculties');
 
         return view('divisions.education.public.departments',compact('division'));
@@ -75,21 +91,21 @@ class EducationController extends Controller
 
     public function specialities(string $type, Division $division ): View|RedirectResponse
     {
-        if(!$division->exists || ($division->type !== DivisionType::Faculty && $division->type !== DivisionType::Department))
+        if(!$division->exists)
             return redirect()->route('public:education:faculties');
 
         return view('divisions.education.public.specialities',compact('division'));
     }
     public function partners(string $type, Division $division ): View|RedirectResponse
     {
-        if(!$division->exists || ($division->type !== DivisionType::Faculty && $division->type !== DivisionType::Department))
+        if(!$division->exists)
             return redirect()->route('public:education:faculties');
 
         return view('divisions.education.public.partners',compact('division'));
     }
     public function sciences(string $type, Division $division): View|RedirectResponse
     {
-        if(!$division->exists || ($division->type !== DivisionType::Faculty && $division->type !== DivisionType::Department))
+        if(!$division->exists)
             return redirect()->route('public:education:faculties');
 
         return view('divisions.education.public.sciences',compact('division'));
@@ -137,23 +153,5 @@ class EducationController extends Controller
         return view('public.education.branch.list', compact('list'));
     }
 
-    public function showAllLabs(): string
-    {
-
-        return view('pages.page', [
-            'breadcrumbs' => (object)[
-                'view'      => null,
-                'route'     => 'labs',
-                'element'   => null,
-            ],
-
-            'contents' => [
-                view("public.education.tabs.list",['active' => 'labs']),
-                view("public.education.labs.list",[
-                    'list'  => Division::where('type',DivisionType::Lab)->where('is_show',1)->orderBy('sort')->orderBy('name')->get(),
-                ]),
-            ]
-        ]);
-    }
 
 }
