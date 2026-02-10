@@ -39,6 +39,7 @@ trait hasContents
         return $this->getContent($type)->firstOrNew()->content;
     }
 
+
     public function contents(): MorphMany
     {
         return $this->morphMany(Content::class, 'relation');
@@ -56,7 +57,6 @@ trait hasContents
             ->first()
             ?? (new Content(['type' => $type]))->relation()->associate($this);
     }
-
 
     public function getContentRecord():Content
     {

@@ -73,8 +73,10 @@
                         </div>
                     </div>
 
-                    @if($category->content('short')->exists)
-                        {!! $category->content('short')->render() !!}
+                    @if($category->content('short')->strlen())
+                        <div class="p-3 px-7 bg-white shadow-sm">
+                            {!! $category->content('short')->html() !!}
+                        </div>
                     @endif
 
                     @foreach($category->publicDocuments() as $document)

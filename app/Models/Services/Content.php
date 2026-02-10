@@ -133,4 +133,15 @@ class Content extends Model
         ]);
     }
 
+    public function strlen(): string
+    {
+        return mb_strlen($this->render());
+    }
+
+    public function html(): string
+    {
+        return $this->render();
+    }
+
+
 }
