@@ -422,6 +422,16 @@ class Division extends Model
         ]);
 
     }
+    public function getGalleryLinkAttribute(): string
+    {
+        $code = $this->alias ?? $this->code ?? $this->id;
+
+        return route('division.education.gallery',[
+            $this->type->value,
+            $code
+        ]);
+
+    }
     public static function search(&$division,$search): void
     {
         $list = self::where('name', 'LIKE', "%$search%")->get();
@@ -677,6 +687,7 @@ class Division extends Model
             "division-cabinet-item-$this->id",
             view('divisions.cabinet.item', ['division' => $this])->render()
         );
+
         Cache::forever(
             "admin.division-cabinet-item-$this->id",
             view('divisions.cabinet.item', ['division' => $this, 'isAdmin' => true])->render()

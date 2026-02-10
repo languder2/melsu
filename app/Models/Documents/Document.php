@@ -4,17 +4,20 @@ namespace App\Models\Documents;
 
 use App\Enums\DocumentTypes;
 use App\Models\Global\Options;
+use App\Traits\hasContents;
+use App\Traits\hasOptions;
 use App\Traits\hasSubordination;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
 
 class Document extends Model
 {
-    use SoftDeletes, hasSubordination;
+    use SoftDeletes, hasSubordination, hasContents, hasOptions;
 
     protected $table        = 'documents';
 
@@ -107,6 +110,11 @@ class Document extends Model
                 $item->sort = $list->max('sort') + 100;
             }
         });
+
+        static::saved(fn($item) => Cache::forever(
+            "documents-category-{$item->category->id}",
+            view('documents.public.category', ['category' => $item->category])->render()
+        ));
     }
 
     public function relation():MorphTo
@@ -177,12 +185,7 @@ class Document extends Model
             $item->getType()->fill(['property' => $form['type']])->save();
     }
 
-    public function options():MorphOne
-    {
-        return $this->morphOne( Options::class, 'relation');
-    }
-
-    public function getOption($option):Options
+    public function getOptionOld($option):Options
     {
         return $this->options()->where('code',$option)->first()
             ?? (new Options(['code' => $option]))->relation()->associate($this);
@@ -190,23 +193,23 @@ class Document extends Model
 
     public function getType():Options
     {
-        return $this->getOption('type');
+        return $this->getOptionOld('type');
     }
-    public function getOptionTypeAttribute($value):?string
+    public function getOptionOldTypeAttribute($value):?string
     {
         return $this->getType()->property;
     }
     public function getCodeAttribute():?string
     {
-        return $this->getOption('code')->property ?? null;
+        return $this->getOptionOld('code')->property ?? null;
     }
     public function getYearAttribute():?string
     {
-        return $this->getOption('year')->property ?? null;
+        return $this->getOptionOld('year')->property ?? null;
     }
     public function getSpecialityForm():Options
     {
-        return $this->getOption('form');
+        return $this->getOptionOld('form');
     }
     public function getSpecialityFormAttribute():?string
     {

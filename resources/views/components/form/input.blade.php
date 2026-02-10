@@ -50,6 +50,7 @@
                 peer-placeholder-shown:text-base
                 peer-autofill:text-xs
                 peer-autofill:top-0
+                peer-disabled:opacity-50
                 {{ $attributes->get('labelBlock') }}
             "
         >

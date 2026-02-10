@@ -21,5 +21,17 @@ trait hasOptions
             ->first()
             ?? (new Options(['code' => $code]))->relation()->associate($this);
     }
+    public function setOption(string $code = 'content', ?string $value = null): void
+    {
+        if(is_null($value))
+            $this->option($code)->forceDelete();
+
+        else
+            $this->option($code)->fill(['property' => $value])->save();
+    }
+    public function getOption(string $code = 'content'): ?string
+    {
+        return $this->option($code)->property;
+    }
 
 }

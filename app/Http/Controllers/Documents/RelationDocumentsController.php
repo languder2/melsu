@@ -39,6 +39,12 @@ class RelationDocumentsController extends Controller
 
         $document->fill($form)->save();
 
+        $document->setOption('link',$request->get('link'));
+
+        $document->setContent('before',$request->get('before'));
+
+        $document->setContent('after',$request->get('after'));
+
         return $request->has('save-close')
             ? redirect()->route(
                 Session::has('documents-category.after-save-route')

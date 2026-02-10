@@ -12,7 +12,6 @@
         };
 @endphp
 
-
 <div
     class="grid grid-cols-subgrid col-span-full gap-3 group"
 >
@@ -43,8 +42,11 @@
             <div>
                 {{ $item->name }}
             </div>
+            <div class="flex-1"></div>
+            <div>
+                {{ __('common.Documents').": ". $item->allPublicDocuments()->count() . " / " . $item->allDocuments->count() }}
+            </div>
             @if($item->option('in_accordion')->exists)
-                <div class="flex-1"></div>
                 <div class="flex gap-4 items-center">
                     <x-lucide-layers class="w-6"/>
                     {{ $item->option('accordion_prefix')->property }}

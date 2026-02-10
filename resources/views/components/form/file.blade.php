@@ -8,6 +8,7 @@
     'placeholder'   => null,
     'multiple',
     'required'      => false,
+    'disabled'      => false,
 ])
 
 <div class="block relative mt-2 {{ $block ?? "" }}">
@@ -32,6 +33,7 @@
             autofill:text-pink-800
             focus:text-blue-700
             focus:border-blue-700
+            disabled:opacity-50
 
             {{ $class }}
         "
@@ -40,6 +42,9 @@
         @endisset
 
         @required($required)
+
+        @disabled($disabled)
+
         placeholder="{{ $placeholder }}"
     >
 
@@ -61,6 +66,7 @@
                 peer-placeholder-shown:text-base
                 peer-autofill:text-xs
                 peer-autofill:top-0
+                peer-disabled:opacity-50
             "
         >
             {{ $label . ( $required ? '*' : '' ) }}

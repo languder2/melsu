@@ -96,6 +96,13 @@ trait hasDivisionMenu
             'is_link'   => true,
         ]);
 
+        $menu->put('gallery',(object)[
+            'name'      => __("menu.gallery"),
+            'ico'       => Blade::render('<x-lucide-images class="w-5" />'),
+            'link'      => $this->galleryLink,
+            'is_link'   => true,
+        ]);
+
         return $menu;
     }
     public function getFacultyMenu(): Collection
@@ -166,10 +173,17 @@ trait hasDivisionMenu
             'is_link'   => true
         ]);
 
-        $menu->put('news',(object)[
+        $menu->put('documents',(object)[
             'name'      => __("menu.documents"),
             'ico'       => Blade::render('<x-lucide-file-text class="w-5" />'),
             'link'      => $this->documentsLink,
+            'is_link'   => true,
+        ]);
+
+        $menu->put('gallery',(object)[
+            'name'      => __("menu.gallery"),
+            'ico'       => Blade::render('<x-lucide-images class="w-5" />'),
+            'link'      => $this->galleryLink,
             'is_link'   => true,
         ]);
 
@@ -244,6 +258,13 @@ trait hasDivisionMenu
             'is_link'   => true
         ]);
 
+        $menu->put('gallery',(object)[
+            'name'      => __("menu.gallery"),
+            'ico'       => Blade::render('<x-lucide-images class="w-5" />'),
+            'link'      => $this->galleryLink,
+            'is_link'   => true,
+        ]);
+
         return $menu;
     }
     public function getLabMenu(): Collection
@@ -290,6 +311,13 @@ trait hasDivisionMenu
             'name'      => __("menu.documents"),
             'ico'       => Blade::render('<x-lucide-file-text class="w-5" />'),
             'link'      => $this->documentsLink,
+            'is_link'   => true,
+        ]);
+
+        $menu->put('gallery',(object)[
+            'name'      => __("menu.gallery"),
+            'ico'       => Blade::render('<x-lucide-images class="w-5" />'),
+            'link'      => $this->galleryLink,
             'is_link'   => true,
         ]);
 

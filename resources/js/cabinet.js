@@ -3,6 +3,7 @@ import './bootstrap';
 import select2 from 'select2';
 select2();
 $(document).ready(function() {
+
     if ($.fn.select2) {
         $('.jq-select2').select2({
             width: '100%',
@@ -49,8 +50,23 @@ $(document).ready(function() {
         $('#accordionPrefix').prop('disabled', !$(this).is(':checked'))
     });
 
+    let inputChangeTimeOut
 
+    $('.document-external-link').change(function (){
+        let value       = $(this).val()
+        let form        = $(this).parents(`form`)
+        let file        = $(form).find(`[name="file"]`)
+        let filetype    = $(form).find(`[name="filetype"]`).val()
 
+        file.prop('required', !value.length && !filetype)
+        file.prop('disabled', value.length)
+
+        console.log(filetype, value.length, !value.length && !filetype)
+    }).keyup(function (){
+        clearTimeout(inputChangeTimeOut)
+
+        inputChangeTimeOut = setTimeout($(this).change(), 300)
+    })
 
 });
 

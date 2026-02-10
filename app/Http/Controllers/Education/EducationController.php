@@ -58,6 +58,10 @@ class EducationController extends Controller
     {
         return view('divisions.education.public.documents',compact('division'));
     }
+    public function gallery(string $type, ?Division $division )
+    {
+        return view('divisions.education.public.gallery',compact('division'));
+    }
 
     public function deanOffice(string $type, Division $division = null )
     {

@@ -166,6 +166,18 @@ Route::get('{type}/{division}/documents',               [EducationController::cl
                                                             ])
                                                             ->name('division.education.documents');
 
+Route::get('{type}/{division}/gallery',               [EducationController::class, 'gallery'])
+                                                            ->whereIn('type', [
+                                                                'institute',
+                                                                'faculty',
+                                                                'department',
+                                                                'lab',
+                                                                'science-lab',
+                                                                'education-lab',
+                                                                'branch'
+                                                            ])
+                                                            ->name('division.education.gallery');
+
 Route::get('{type}/{division}/{section?}/{item?}',      [EducationController::class, 'division'])
                                                             ->whereIn('type', [
                                                                 'institute',

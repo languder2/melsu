@@ -90,6 +90,13 @@ class TestController extends Controller
     public function test()
     {
 
+        DocumentCategory::all()->each(fn($item) => Cache::forever(
+            "documents-category-{$item->id}",
+            view('documents.public.category', ['category' => $item])->render()
+        ));
+
+        dd();
+
         Division::whereNotNull('description')->get()->each(fn ($item)=> $item->content('description')->fill(['content' => rawTextToEditorJS($item->description)])->save());
 
         dd();

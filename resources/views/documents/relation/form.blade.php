@@ -25,6 +25,8 @@
     <form action="{{ route('documents.relation.save', [$instance->getTable(), $instance->id, $document]) }}" method="POST" class="flex flex-col gap-3" enctype="multipart/form-data">
         @csrf
         @method('PUT')
+        <input type="text" name="filetype" value="{{ $document->filetype }}">
+
 
         <x-form.errors/>
         <div class="flex gap3 bg-white p-3 justify-between sticky top-0 z-50 shadow">
@@ -152,17 +154,14 @@
         </div>
 
         <div class="flex flex-col gap-4 p-4 bg-white">
-            @component('components.form.file',[
-                'id'        => 'file',
-                'label'     => 'Document',
-                'name'      => 'file',
-            ])
-                @unless($document->exists)
-                    @slot('required')
-                        true
-                    @endslot
-                @endunless
-            @endcomponent
+            <x-form.file
+                id="file"
+                :label="__('common.Document')"
+                name="file"
+                :disabled="(bool)$document->getOption('link')"
+                :required="!$document->exists && !(bool)old('link', $document->getOption('link'))"
+            >
+            </x-form.file>
 
             @if($document->filetype)
                 <a
@@ -180,5 +179,34 @@
                 </a>
             @endif
         </div>
+
+        <div class="p-4 bg-white">
+            <x-form.input
+                name="link"
+                label="Ссылка на страницу или внешний ресурс"
+                value="{!! old('link', $document->getOption('link')) !!}"
+                block="flex-1"
+                class="document-external-link"
+            />
+        </div>
+
+        <h3 class="font-semibold text-xl lg:col-span-2 my-2">
+            Описание до
+        </h3>
+        <x-editorjs.editor
+            set="short"
+            name="before"
+            :initialContent=" $document->content('before')->content "
+        />
+
+        <h3 class="font-semibold text-xl lg:col-span-2 my-2">
+            Описание после
+        </h3>
+        <x-editorjs.editor
+            set="short"
+            name="after"
+            :initialContent=" $document->content('after')->content "
+        />
+
     </form>
 @endsection

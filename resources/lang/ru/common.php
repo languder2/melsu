@@ -28,6 +28,7 @@ return [
     'History'                   => 'История',
     'Achievements'              => 'Достижения',
     'Gallery'                   => 'Галерея',
+    'Document'                  => 'Документ',
     'Documents'                 => 'Документы',
     'Documents on approval'     => 'Документы требующие утверждения',
     'Add documents category'    => 'Добавить категорию документов',

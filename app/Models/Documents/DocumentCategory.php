@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Cache;
 
 class DocumentCategory extends Model
 {
@@ -92,6 +93,12 @@ class DocumentCategory extends Model
             if(!$item->exists || (int)$item->sort < 0)
                 $item->sort = $item->relation->documentCategories()->max('sort') + 100;
         });
+
+        static::saved(fn($item) => Cache::forever(
+            "documents-category-{$item->id}",
+            view('documents.public.category', ['category' => $item])->render()
+        ));
+
     }
 
     public function documents(): HasMany
@@ -103,13 +110,22 @@ class DocumentCategory extends Model
     }
 
     public function allDocuments(): HasMany
-        {
-        return $this->documents()->with('subs');
+    {
+        return $this->hasMany(Document::class, 'category_id', 'id');
     }
 
     public function publicDocuments(): Collection
     {
         return $this->documents()
+            ->where('is_show', true)
+            ->where('is_approved', true)
+            ->whereNull('parent_id')
+            ->orderBy('sort')
+            ->get();
+    }
+    public function allPublicDocuments(): Collection
+    {
+        return $this->allDocuments()
             ->where('is_show', true)
             ->where('is_approved', true)
             ->whereNull('parent_id')

@@ -58,6 +58,20 @@ trait hasContents
             ?? (new Content(['type' => $type]))->relation()->associate($this);
     }
 
+    public function html(string $type = 'content'): string
+    {
+        return $this->content($type)->html();
+    }
+    public function length(string $type = 'content'): int
+    {
+        return mb_strlen(strip_tags($this->content($type)->html()));
+    }
+
+    public function setContent(string $type = 'content', ?string $value = null): void
+    {
+        $this->content($type)->fill(['content' => $value])->save();
+    }
+
     public function getContentRecord():Content
     {
         return $this->getContent('content')->first()

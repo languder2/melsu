@@ -26,8 +26,18 @@
                     <x-lucide-corner-down-right class="w-6 text-base-red"/>
                 </div>
             @endif
-            <div class="font-medium my-0 text-gray-900 leading-tight">
-                {{ $title }}
+            <div class="font-medium my-0 text-gray-900 leading-tight flex flex-col gap-3">
+                <div>
+                    {!! $document->html('before') !!}
+                </div>
+
+                <div class="{{ ($document->length('before') + $document->length('after')) ? "font-semibold text-base-red" : '' }}">
+                    {{ $document->title }}
+                </div>
+
+                <div>
+                    {!! $document->html('after') !!}
+                </div>
             </div>
         </div>
         <a href="{{ $document->link }}"
@@ -35,7 +45,7 @@
            target="_blank"
            class="
                 hover:text-base-red duration-150 transition-all font-semibold text-center gap-3 items-center group
-                grid grid-cols-[3ch_1fr_6ch] select-none
+                grid grid-cols-[3ch_1fr_7ch] select-none
            "
         >
             <div>

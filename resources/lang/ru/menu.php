@@ -8,6 +8,7 @@ return [
     'education-lab about'               => 'О лаборатории',
     'news'                              => 'Новости и мероприятия',
     'documents'                         => 'Документы',
+    'gallery'                           => 'Фотогалерея',
     'dean office'                       => 'Деканат',
     'teaching staff'                    => 'Педагогический состав',
     'departments and labs'              => 'Кафедры и лаборатории',
