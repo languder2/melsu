@@ -2,6 +2,7 @@
 
 namespace App\Models\Documents;
 
+use App\Traits\hasContents;
 use App\Traits\hasOptions;
 use App\Traits\hasRelations;
 use App\Traits\hasSubordination;
@@ -14,7 +15,7 @@ use Illuminate\Database\Eloquent\Builder;
 
 class DocumentCategory extends Model
 {
-    use SoftDeletes, hasRelations, hasOptions, hasSubordination;
+    use SoftDeletes, hasRelations, hasOptions, hasSubordination, hasContents;
 
     protected $table = 'document_categories';
     protected string $entity = 'document-categories';

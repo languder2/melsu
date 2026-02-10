@@ -56,6 +56,8 @@ class RelationCategoriesController extends Controller
 
         $category->fill($form)->save();
 
+        $category->content('short')->fill(['content' => $request->get('short')])->save();
+
         $category->option('show_documents')->fill(['property' => $request->input('show_documents')])->save();
 
         if($request->input('in_accordion') && $request->input('accordion_prefix')){

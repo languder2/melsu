@@ -138,7 +138,14 @@
             />
         </div>
 
-
+        <h3 class="font-semibold text-xl lg:col-span-2 my-2">
+            Краткое описание
+        </h3>
+        <x-editorjs.editor
+            set="short"
+            name="short"
+            :initialContent=" $category->content('short')->content "
+        />
 
     </form>
 

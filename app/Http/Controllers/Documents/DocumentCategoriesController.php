@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Documents\Document;
 use App\Models\Documents\DocumentCategory;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\View\View;
 use PhpParser\Comment\Doc;
 
@@ -36,12 +37,14 @@ class DocumentCategoriesController extends Controller
 
         return view('documents.categories.admin.form', compact('category', 'sort', 'list'));
     }
-    public function save(DocumentCategory $category):RedirectResponse
+    public function save(Request $request, DocumentCategory $category):RedirectResponse
     {
 
-        $form = request()->validate(DocumentCategory::FormRules(),DocumentCategory::FormMessage());
+        $form = $request->validate(DocumentCategory::FormRules(),DocumentCategory::FormMessage());
 
         $category->fill($form)->save();
+
+        $category->content('short')->fill(['content' => $request->get('short')])->save();
 
         return redirect()->to(
             $category->relation

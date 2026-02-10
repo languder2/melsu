@@ -26,5 +26,10 @@ trait hasDocuments
         return $this->morphMany(DocumentCategory::class, 'relation')->orderBy('sort');
     }
 
+    public function publicDocuments(): MorphMany
+    {
+        return $this->documents()->where('is_show', 1)->where('is_approved', 1);
+    }
+
 
 }

@@ -62,6 +62,8 @@ Route::prefix('cabinet/documents-categories/{entity}/{entity_id}/')
                                                                 ->defaults('direction', 'down');
 });
 
+
+
 /* Relation Documents */
 
 Route::prefix('cabinet/documents/{entity}/{entity_id}/')->middleware([AuthCabinet::class, InstanceAccess::class])

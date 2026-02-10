@@ -15,8 +15,15 @@
                 {{ __('menu.documents') }}
             </h2>
 
-
-            @component('documents.public.categories',['categories' => $division->publicDocumentCategories]) @endcomponent
+            @if($division->publicDocuments->isNotEmpty())
+                @component('documents.public.categories',['categories' => $division->publicDocumentCategories]) @endcomponent
+            @else
+                <div class="message-not-results-categories">
+                    <div class="flex items-center bg-white shadow-sm text-base-red justify-center font-semibold p-3">
+                        {{ __('messages.no documents') }}
+                    </div>
+                </div>
+            @endif
         </div>
 
         <div class="order-1 lg:order-2 flex flex-col gap-5">

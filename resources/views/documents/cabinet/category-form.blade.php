@@ -68,14 +68,17 @@
                 block="flex-1"
             />
 
-{{--            <x-form.input--}}
-{{--                name="sort"--}}
-{{--                label="Порядок вывода (Убывающий порядок)"--}}
-{{--                value="{!! old('sort', $category->sort) !!}"--}}
-{{--                block="flex-1"--}}
-{{--            />--}}
-
         </div>
+
+        <h3 class="font-semibold text-xl lg:col-span-2 my-2">
+            Краткое описание для компиляций
+        </h3>
+        <x-editorjs.editor
+            set="short"
+            name="short"
+            :initialContent=" $division->content('short')->content "
+        />
+
     </form>
 
 @endsection
