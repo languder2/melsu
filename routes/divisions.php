@@ -5,6 +5,7 @@ use App\Http\Controllers\Division\CabinetDivisionsController;
 use App\Http\Middleware\AuthCabinet;
 use App\Http\Controllers\Education\EducationController;
 use App\Http\Controllers\Division\DivisionCompilationController;
+use App\Http\Middleware\InstanceAccess;
 
 Route::prefix('admin/divisions')->group(function () {
     Route::get('form/{current?}',  [DivisionController::class, 'form'])->name('division:admin:form');
@@ -25,9 +26,6 @@ Route::middleware('isAdmin')
 
         Route::post('save',                                             [DivisionController::class, 'save'])
                                                                             ->name('admin:division:save');
-
-        Route::delete('delete/{division}',                              [DivisionController::class, 'delete'])
-                                                                            ->name('divisions.delete');
 
         Route::get('{division}/staffs',                                 [DivisionController::class, 'staffsAdmin'])
                                                                             ->name('division:admin:staffs:list');
@@ -63,7 +61,10 @@ Route::middleware('isAdmin')
                                                                             ->name('division:admin:document-categories:delete');
     });
 
-Route::prefix('cabinet/divisions')->middleware(AuthCabinet::class)->group(function () {
+Route::prefix('cabinet/divisions')
+//    ->middleware([AuthCabinet::class, InstanceAccess::class])
+    ->middleware([AuthCabinet::class])
+    ->group(function () {
 
     Route::get('',                                      [CabinetDivisionsController::class, 'list'])
                                                             ->name('divisions.cabinet.list');
@@ -73,6 +74,9 @@ Route::prefix('cabinet/divisions')->middleware(AuthCabinet::class)->group(functi
 
     Route::put('save/{division?}',                      [CabinetDivisionsController::class, 'save'])
                                                             ->name('division.cabinet.save');
+
+    Route::delete('delete/{division}',                  [CabinetDivisionsController::class, 'delete'])
+                                                            ->name('divisions.delete');
 
     Route::post('set-filter',                           [CabinetDivisionsController::class, 'setFilter'])
                                                             ->name('divisions.cabinet.set-filter');

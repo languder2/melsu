@@ -25,7 +25,7 @@
     <form action="{{ route('documents.relation.save', [$instance->getTable(), $instance->id, $document]) }}" method="POST" class="flex flex-col gap-3" enctype="multipart/form-data">
         @csrf
         @method('PUT')
-        <input type="text" name="filetype" value="{{ $document->filetype }}">
+        <input type="hidden" name="filetype" value="{{ $document->filetype }}">
 
 
         <x-form.errors/>

@@ -172,5 +172,14 @@ class CabinetDivisionsController extends Controller
         return view('divisions.cabinet.statuses', compact('list'));
     }
 
+    public function delete(Division $division): RedirectResponse
+    {
+        $division->subs->each(fn($item)=> $item->fill(['parent_id' => null])->save());
+
+        $division->delete();
+
+        return redirect()->back();
+    }
+
 
 }

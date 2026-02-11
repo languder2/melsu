@@ -16,7 +16,6 @@ class InstanceAccess
      */
     public function handle(Request $request, Closure $next): Response
     {
-
         if(auth()->user()->isEditor())
             return $next($request);
 

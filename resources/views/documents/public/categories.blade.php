@@ -1,5 +1,7 @@
 @props([
-    'categories'  => collect()
+    'categories'            => collect(),
+    'noDocumentsMessage'    => false,
+
 ])
 
 @if($categories->map(fn($item) => $item->publicDocuments()->count())->sum())
@@ -21,7 +23,7 @@
             </div>
         </div>
     </div>
-@else
+@elseif($noDocumentsMessage)
     <div class="message-not-results-categories">
         <div class="flex items-center bg-white shadow-sm text-base-red justify-center font-semibold p-3">
             {{ __('messages.no documents') }}

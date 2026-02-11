@@ -18,7 +18,7 @@ class ApiNews extends Controller
 
     public function getList(int $count = 10, int $offset = 0)
     {
-        $list = News::whereNotNull('published_at')->orderBy('published_at', 'desc')->skip($offset)->take($count)->get()
+        $list = News::getPublicList()->skip($offset)->take($count)->get()
             ->map(function ($item) {
 
                 return [
@@ -38,8 +38,8 @@ class ApiNews extends Controller
     }
     public function getCategory(int $category, int $count = 10, int $offset = 0)
     {
-        $list = News::where('category',$category)
-            ->whereNotNull('published_at')->orderBy('published_at', 'desc')->skip($offset)->take($count)->get()
+        $list = News::getPublicList()->where('category',$category)
+            ->skip($offset)->take($count)->get()
             ->map(function ($item) {
                 return [
                     'id'            => $item->id,
@@ -80,7 +80,7 @@ class ApiNews extends Controller
 
         $result = collect([]);
 
-        $list = News::whereNotNull('published_at')->orderBy('published_at', 'desc')
+        $list = News::getPublicList()
             ->whereDate('published_at', $date)
             ->get();
 

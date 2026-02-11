@@ -12,6 +12,6 @@
 
 @section('content')
 
-    @component('documents.public.categories', ['categories' => $categories]) @endcomponent
+    @component('documents.public.categories', ['categories' => $categories, 'noDocumentsMessage' => true]) @endcomponent
 
 @endsection
