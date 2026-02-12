@@ -17,6 +17,11 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Session;
 
+Route::get('test123', function (){
+    return phpinfo();
+});
+
+
 Route::get('departments-by-faculty-shorts/{faculty?}', function (Request $request, $faculty = null) {
     if (is_null($faculty))
         return Division::orderBy('name')->get()->pluck('name', 'code')->toJson(JSON_UNESCAPED_UNICODE);

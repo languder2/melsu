@@ -2,6 +2,11 @@ import './bootstrap';
 
 import select2 from 'select2';
 select2();
+
+import './matches/search.js';
+import './matches/divisionUUID.js';
+
+
 $(document).ready(function() {
 
     if ($.fn.select2) {
@@ -67,6 +72,16 @@ $(document).ready(function() {
 
         inputChangeTimeOut = setTimeout($(this).change(), 300)
     })
+
+    $(`a[href="#copy"]`).click(function(){
+        navigator.clipboard.writeText($(this).data('copy'));
+
+        return false;
+
+    })
+
+
+
 
 });
 

@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Services\ControlController;
 
+
+
 Route::get('dissertaczionnyj-sovet', fn()=> redirect()->to('https://melsu.ru/storage/uploads/documents/jf6WAsu4bbeJU4nR8INsfV9EcDuYK04ew3oENorp.pdf'));
 
 Route::get('/', function () {
@@ -99,3 +101,6 @@ require __DIR__.'/users.php';
 
 require __DIR__.'/system.php';
 require __DIR__.'/pages.php';
+
+
+

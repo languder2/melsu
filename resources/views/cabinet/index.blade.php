@@ -38,6 +38,16 @@
                 text="Состояние заполнения"
                 :link=" route('divisions.cabinet.statuses') "
             />
+
+            @if(auth()->user()->isAdmin())
+                <x-cabinet.sections.index-link
+                    lucide="list-todo"
+                    color="text-blue-950"
+                    text="Подразделения. Соответствия UUID"
+                    :link=" route('division.matching.uuid') "
+                />
+            @endif
+
         </div>
     @endauth
 @endsection

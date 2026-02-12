@@ -7,7 +7,8 @@
     'label'             => null,
     'value'             => '',
     'required'          => false,
-    'disabled'          => null
+    'disabled'          => null,
+    'data'              => []
 ])
 
 <div class="block relative mt-2 {{ $attributes->get('block') }} group-has-disabled:opacity-30 duration-200 ">
@@ -26,6 +27,10 @@
         @disabled( $disabled )
 
         {{ $attributes->except(['class','block', 'labelClass']) }}
+
+        @foreach($data as $key=>$item)
+            data-{{$key}}="{{ $item }}"
+        @endforeach
 
         @required( $required )
 

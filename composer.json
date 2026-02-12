@@ -46,7 +46,8 @@
             "app/Helpers/flattenTree.php",
             "app/Helpers/saveImagesFromContent.php",
             "app/Helpers/rawTextToEditorJS.php",
-            "app/Helpers/flipSort.php"
+            "app/Helpers/flipSort.php",
+            "app/Helpers/flattenList.php"
         ]
     },
     "autoload-dev": {
