@@ -4,8 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const video = document.getElementById('intro-video');
         const videoWrapper = document.querySelector('.wrapper-video');
         const screenWidth = window.innerWidth;
-
-        if (video === null) return false;
+        if (!video || !videoWrapper) return;
 
         if (screenWidth >= 1367) {
             video.addEventListener('play', function () {
