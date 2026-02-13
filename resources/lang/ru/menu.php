@@ -11,6 +11,7 @@ return [
     'gallery'                           => 'Фотогалерея',
     'dean office'                       => 'Деканат',
     'teaching staff'                    => 'Педагогический состав',
+    'employees'                         => 'Сотрудники',
     'departments and labs'              => 'Кафедры и лаборатории',
     'labs'                              => 'Лаборатории',
     'specialities'                      => 'Направления подготовки',

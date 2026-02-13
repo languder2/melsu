@@ -85,6 +85,11 @@ class EducationController extends Controller
         return view('divisions.education.public.teaching-staff',compact('division'));
     }
 
+    public function employees(string $type, Division $division ): View
+    {
+        return view('divisions.education.public.employees',compact('division'));
+    }
+
     public function departments(string $type, Division $division ): View|RedirectResponse
     {
         if(!$division->exists)

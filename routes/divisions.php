@@ -117,6 +117,9 @@ Route::prefix('cabinet/divisions')->middleware([AuthCabinet::class, IsAdmin::cla
     Route::put('{division}/change-uuid/',               [DivisionMatchingController::class, 'changeUUID'])
                                                             ->name('division.change.uuid');
 
+    Route::post('matching-uuid/filter',                 [DivisionMatchingController::class, 'filter'])
+                                                            ->name('division.matching.uuid.filter');
+
 
 });
 
@@ -141,6 +144,15 @@ Route::get('{type}/{division}/teaching-staff',          [EducationController::cl
                                                                 'branch'
                                                             ])
                                                             ->name('division.education.teaching-staff');
+
+
+Route::get('{type}/{division}/employees',          [EducationController::class, 'employees'])
+                                                            ->whereIn('type', [
+                                                                'lab',
+                                                                'science-lab',
+                                                                'education-lab',
+                                                            ])
+                                                            ->name('division.education.employees');
 
 
 Route::get('{type}/{division}/departments',             [EducationController::class, 'departments'])

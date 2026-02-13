@@ -1,11 +1,12 @@
 @extends("layouts.education-division")
 
 @section('title')
-    {{ $division->meta['title'] ?? "ФГБОУ ВО «МелГУ»: $division->name:" .__('menu.gallery') }}
+    {{ $division->meta['title'] ?? "ФГБОУ ВО «МелГУ»: $division->name:" .__('menu.teaching staff') }}
 @endsection
 
+
 @section('additional-header')
-    @component('divisions.education.public.sections.header-without-contacts', compact('division')) @endcomponent
+    @component('divisions.education.public.sections.header', compact('division')) @endcomponent
 @endsection
 
 @section('content')
@@ -13,10 +14,14 @@
     <div class="grid lg:grid-cols-[2fr_1fr] xl:grid-cols-[75%_auto] gap-5 px-2.5 2xl:px-0 mb-6">
         <div class="flex flex-col gap-7">
             <h2 class="font-bold text-xl md:text-3xl">
-                {{ __('menu.gallery') }}
+                {{ __('menu.employees') }}
             </h2>
 
-            {!! $division->html('gallery') !!}
+            @component('divisions.education.public.sections.employees',[
+                'staffs'    => $division->teachingStaff,
+            ])@endcomponent
+
+            <x-news.include-block :division="$division"/>
 
         </div>
 

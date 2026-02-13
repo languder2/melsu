@@ -279,9 +279,9 @@ trait hasDivisionMenu
         ]);
 
         $menu->put('employees',(object)[
-            'name'      => __("menu.teaching staff"),
+            'name'      => __("menu.employees"),
             'ico'       => Blade::render('<x-lucide-users class="w-5" />'),
-            'link'      => $this->TeachingStaffLink,
+            'link'      => route('division.education.employees', [$this->type->value, $this]),
             'is_link'   => true
         ]);
 
