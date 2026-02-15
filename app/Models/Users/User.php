@@ -68,6 +68,15 @@ class User extends Authenticatable
         return $this->role->level() >= UserRoles::Editor->level();
     }
 
+    public function isFinance(): bool
+    {
+        return in_array($this->role, [
+            UserRoles::Finance,
+            UserRoles::Admin,
+            UserRoles::Super,
+        ]);
+    }
+
     public function validateRules(): array
     {
         return [

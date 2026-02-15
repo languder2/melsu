@@ -7,17 +7,13 @@ use Illuminate\Support\Collection;
 enum UserRoles: string
 {
     case User           = 'user';
+    case Finance        = 'finance';
     case Editor         = 'editor';
     case Admin          = 'admin';
     case Super          = 'super';
-    private const NAMES = [
-        'user'          => 'user-roles.user',
-        'editor'        => 'user-roles.editor',
-        'admin'         => 'user-roles.admin',
-        'super'         => 'user-roles.super',
-    ];
     private const LEVELS = [
         'user'          => 0,
+        'finance'       => 2,
         'editor'        => 5,
         'admin'         => 9,
         'super'         => 10,
@@ -43,7 +39,6 @@ enum UserRoles: string
             $result[$case->value] = $case->label();
 
         return $result;
-
     }
 
 }

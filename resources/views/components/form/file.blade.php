@@ -9,6 +9,7 @@
     'multiple',
     'required'      => false,
     'disabled'      => false,
+    'accept'        => null
 ])
 
 <div class="block relative mt-2 {{ $block ?? "" }}">
@@ -46,6 +47,9 @@
         @disabled($disabled)
 
         placeholder="{{ $placeholder }}"
+        @if($accept)
+        accept='{{ $accept }}'
+        @endif
     >
 
     @if(isset($label) && isset($id))

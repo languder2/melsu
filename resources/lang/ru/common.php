@@ -108,6 +108,9 @@ return [
     'scientific research work'  => 'научно-исследовательская работа',
 
 
-    'remove category'           => 'удалить категорию'
+    'remove category'           => 'удалить категорию',
+
+    'Finance'                   => 'Финансы',
+    'Compilation of the code'   => 'Компиляция свода'
 
 ];

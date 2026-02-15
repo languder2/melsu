@@ -48,6 +48,15 @@
                 />
             @endif
 
+            @if(auth()->user()->isFinance())
+                <x-cabinet.sections.index-link
+                    lucide="receipt-russian-ruble"
+                    color="text-blue-950"
+                    text="Бухгалтерия. Компиляция свода."
+                    :link=" route('finance.compilation.index') "
+                />
+            @endif
+
         </div>
     @endauth
 @endsection

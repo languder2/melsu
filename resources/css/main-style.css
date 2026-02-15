@@ -1,7 +1,7 @@
 @import "root-style.css";
 @import "font-import.css";
-@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import 'bootstrap-icons/font/bootstrap-icons.css';
+@import "@fontsource/bebas-neue";
 
 *{
     margin: 0;

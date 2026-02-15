@@ -86,4 +86,3 @@ Route::prefix('cabinet/documents/')->middleware([AuthCabinet::class, InstanceAcc
                                                                 ->name('documents.relation.change-sort')
                                                                 ->defaults('direction', 'down');
 });
-
