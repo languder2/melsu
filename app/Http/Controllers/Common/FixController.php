@@ -43,18 +43,12 @@ class FixController extends Controller
 
         $employees = collect($file->employee)
             ->each(fn($item) => $item->fio = $item->surname . " " . $item->name . " " . $item->patronymic)
-            ->keyBy('fio')
+            ->keyBy('uid_employee')
         ;
 
-        $grouped = $employees->filter(fn($item) => $item->surname === "Артюхов");
+        $grouped = $employees->filter(fn($item) => $item->patronymic === "Викторовна" && $item->head_of_division)->groupBy('fio');
 
         dd($grouped);
-
-
-
-
-
-
 
         dd($employees, $test, $test->first());
 

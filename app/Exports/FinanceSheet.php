@@ -11,7 +11,6 @@ use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
 
 class FinanceSheet implements FromCollection, WithColumnFormatting, ShouldAutoSize, WithColumnWidths, WithTitle
 {
-
     protected Collection $accounts;
     protected string $type;
     protected string $title;

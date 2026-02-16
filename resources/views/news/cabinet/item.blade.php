@@ -30,7 +30,7 @@
         {{ $item->title }}
     </div>
     <div class="text-center p-3 rounded-sm shadow bg-white flex items-center">
-        {{ $item->author->fio_short ?? null }}
+        {{ $item->author?->lastname ? $item->author->fio_short : $item->author?->email }}
     </div>
 {{--    <div class="text-center flex-col p-3 rounded-sm shadow bg-white flex items-center">--}}
 {{--        @foreach($item->categories as $category)--}}

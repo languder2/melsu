@@ -19,19 +19,22 @@
         @include('finance.cabinet.form')
 
         @if($pages->isNotEmpty())
+            <div class="font-semibold text-xl flex gap-3 justify-between">
+                <div>
+                    Файл обработан
+                </div>
+                <div>
+                    {{ \Carbon\Carbon::now()->format('d.m.Y H:i:s')  }}
+                </div>
+            </div>
+
             <x-common.private-attaches
                 :size="$size"
                 :extension="$extension"
                 :link="route('finance.compilation.download')"
             >
-                Файл обработан и доступен для скачивания
+                Общая компиляция
             </x-common.private-attaches>
-        @endif
-
-        @if($pages->isNotEmpty())
-
-            123
-
 
         @endif
     </div>

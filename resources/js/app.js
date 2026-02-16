@@ -3,6 +3,7 @@ import './bootstrap';
 import './menu.js';
 import './load.js';
 import './scroll-to-top.js';
+import 'bootstrap-icons/font/bootstrap-icons.css';
 
 import * as isvek from "bvi"
 

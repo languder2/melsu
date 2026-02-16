@@ -69,6 +69,18 @@ class TestController extends Controller
     {
         $list = collect();
 
+        Division::whereNotNull('description')->get()->each(function($item){
+            if($item->content('description')->exists) return;
+
+            $json = json_decode($item->description);
+
+            $content = is_null($json) ? rawTextToEditorJS($item->description) : $item->description;
+
+            $item->setContent('description', $content);
+        });
+
+        dd();
+
         $json = Storage::get('json/get_employee.json');
 
         $list = collect(json_decode($json)->employee);

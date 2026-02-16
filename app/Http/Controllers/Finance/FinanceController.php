@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Finance;
 
 use App\Exports\FinanceBook;
+use App\Exports\FinanceSheet;
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
@@ -11,6 +12,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
+use Maatwebsite\Excel\Excel as ExcelFormat;
 use Maatwebsite\Excel\Facades\Excel;
 
 class FinanceController extends Controller
@@ -56,6 +58,7 @@ class FinanceController extends Controller
 
         $mir        = $correct->filter(fn($item) =>  Str::startsWith($item[0], '4081'));
 
+
         $psb        = $mir->filter(fn($item) =>  is_null($item[6]));
 
         $psbAccounts = $psb->groupBy(0)->map(function ($group) {
@@ -76,8 +79,8 @@ class FinanceController extends Controller
             ]);
         });
 
-
-        $sbr        = $mir->filter(fn($item) =>  Str::lower($item[6]) == 'сбербанк');
+        $sbr = $mir->diffKeys($psb)
+            ->filter(fn($item) => trim(Str::lower($item[6])) == 'сбербанк' || trim(Str::lower($item[6])) == 'сбер');
 
         $sbrAccounts = $sbr->groupBy(0)->map(function ($group) {
             $row    = $group->first();
@@ -92,9 +95,7 @@ class FinanceController extends Controller
             ]);
         });
 
-        $noMir      = $correct->filter(fn($item) => !Str::startsWith($item[0], '4081'));
-
-        $cash       = $noMir->filter(fn($item) => is_null($item[0]))
+        $cash       = $correct->filter(fn($item) => is_null($item[0]))
                         ->each(fn($item) => $item->ident = $item[3]."-".$item[4]."-".$item[5]."-".$item[7]);
 
         $cashAccounts = $cash->groupBy('ident')->map(function ($group) {
@@ -108,10 +109,10 @@ class FinanceController extends Controller
             ]);
         });
 
-        $other      = $noMir->filter(fn($item) => !is_null($item[0]))
+        $other      = $correct->diffKeys($psb)->diffKeys($sbr)->diffKeys($cash)
                         ->each(fn($item) => $item->ident = $item[3]."-".$item[4]."-".$item[5]."-".$item[7]);
 
-        $otherAccounts = $other->groupBy('ident')->map(function ($group) {
+       $otherAccounts = $other->groupBy('ident')->map(function ($group) {
             $row    = $group->first();
 
             return collect([
@@ -132,12 +133,12 @@ class FinanceController extends Controller
         ]);
 
         $compilation = collect([
-            (object)[
+            'psb' => (object)[
                 'type'      => 'psb',
                 'name'      => 'ПСБ',
                 'accounts'  => $psbAccounts,
             ],
-            (object)[
+            'sbr' => (object)[
                 'type'      => 'sbr',
                 'name'      => 'Сбербанк',
                 'accounts'  => $sbrAccounts,
@@ -168,14 +169,17 @@ class FinanceController extends Controller
         $path       = "finance-compilation/" . Carbon::now()->format('Y/m/d');
         $importName = $time . $file->getClientOriginalName();
         $resultName = $time . 'compilation_for_'.
-            Str::replace('.'.$file->getClientOriginalExtension(),'',$file->getClientOriginalName())
-            .'.xlsx';
+            Str::replace('.'.$file->getClientOriginalExtension(),'',$file->getClientOriginalName());
 
-        Excel::store(new FinanceBook($compilation), "{$path}/{$resultName}", 'private');
+        Excel::store(new FinanceBook($compilation), "{$path}/{$resultName}".'.xlsx', 'private');
+
+//        Excel::store(
+//            new FinanceSheet($psbAccounts, 'psb', 'psb'),
+//            "{$path}/{$resultName}".'.xlsx', 'private', ExcelFormat::CSV);
 
         Storage::disk('private')->putFileAs($path, $file, $importName  );
 
-        session()->put('financeCompilationResult', $path . '/' . $resultName);
+        session()->put('financeCompilationResult', $path . '/' . $resultName .'.xlsx');
 
         return redirect()->route('finance.compilation.results');
     }

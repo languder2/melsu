@@ -16,7 +16,7 @@ class isFinance
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(!auth()->user()->isFinance())
+        if(!auth()->user()->isFinance() && !auth()->user()->isSuper())
             abort(403, "Your access level is insufficient");
 
         return $next($request);

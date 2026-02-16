@@ -6,6 +6,9 @@ select2();
 import './matches/search.js';
 import './matches/divisionUUID.js';
 
+import 'bootstrap-icons/font/bootstrap-icons.css';
+
+
 
 $(document).ready(function() {
 

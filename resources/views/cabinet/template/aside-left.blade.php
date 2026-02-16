@@ -119,6 +119,27 @@
                 Пользователи
             </a>
         @endif
+
+        @if(auth()->user()->isFinance() || auth()->user()->isSuper())
+            <a
+                href="{{ route('finance.compilation.index') }}"
+
+                {{ Route::is('finance.compilation.*') ? "open" : "" }}
+
+                class="
+                cursor-pointer block p-3
+                mx-2 rounded-sm
+                bg-white shadow
+                hover:bg-blue-700 hover:text-white
+                hover:-mt-0.5 hover:mb-0.5
+                duration-300
+                open:text-white open:bg-sky-800
+                open:hover:text-white open:hover:bg-blue-700
+            "
+            >
+                Компиляция свода.
+            </a>
+        @endif
     </div>
 
 </aside>

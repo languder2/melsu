@@ -71,7 +71,7 @@
                         <hr class="bg-white/40 h-2px ml-4">
 
                         <div class="my-2 ml-4 line-clamp-8">
-                            {!! $item->description ?? null !!}
+                            {!! $item->html('description') !!}
                         </div>
 
                     </div>

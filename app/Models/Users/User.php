@@ -55,6 +55,10 @@ class User extends Authenticatable
     }
 
 
+    public function isSuper(): bool
+    {
+        return $this->role ===  UserRoles::Super;
+    }
     public function isAdmin(): bool
     {
         return $this->role->level() >= UserRoles::Admin->level();
@@ -70,11 +74,7 @@ class User extends Authenticatable
 
     public function isFinance(): bool
     {
-        return in_array($this->role, [
-            UserRoles::Finance,
-            UserRoles::Admin,
-            UserRoles::Super,
-        ]);
+        return $this->role ===  UserRoles::Finance;
     }
 
     public function validateRules(): array

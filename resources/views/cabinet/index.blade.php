@@ -13,7 +13,6 @@
                 :link=" route('news.cabinet.list') "
             />
 
-
             @if(auth()->user()->isEditor() || auth()->user()->divisions->isNotEmpty())
                 <x-cabinet.sections.index-link
                     lucide="university"
@@ -48,12 +47,12 @@
                 />
             @endif
 
-            @if(auth()->user()->isFinance())
+            @if(auth()->user()->isFinance() || auth()->user()->isSuper())
                 <x-cabinet.sections.index-link
                     lucide="receipt-russian-ruble"
                     color="text-blue-950"
-                    text="Бухгалтерия. Компиляция свода."
-                    :link=" route('finance.compilation.index') "
+                    text="Компиляция свода."
+                    :link=" route('finance.compilation.index')"
                 />
             @endif
 

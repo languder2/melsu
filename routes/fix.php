@@ -3,9 +3,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Common\FixController;
 
 Route::middleware(['auth.api'])->prefix('fix')->group(function () {
-    Route::get('document-categories-sort', [FixController::class, 'documentCategoriesSort']);
+    Route::get('document-categories-sort',      [FixController::class, 'documentCategoriesSort']);
 });
 
 Route::middleware(['auth.api'])->prefix('fix/employees')->group(function () {
-    Route::get('uuid', [FixController::class, 'employeesUuid']);
+    Route::get('uuid',                          [FixController::class, 'employeesUuid']);
 });

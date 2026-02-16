@@ -19,7 +19,12 @@ class InstanceAccess
         if(auth()->user()->isEditor())
             return $next($request);
 
-        $instance = Entities::instance($request->route('entity'), $request->route('entity_id'));
+
+        if($request->route()->hasParameter('division'))
+            $instance = $request->route()->parameter('division');
+        elseif($request->route()->hasParameter('entity'))
+            $instance = Entities::instance($request->route('entity'), $request->route('entity_id'));
+
 
         if(!$instance->users->contains(auth()->id()))
             abort(403, __('messages.403'));

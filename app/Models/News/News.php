@@ -12,14 +12,12 @@ use App\Traits\hasImage;
 use App\Traits\hasLinks;
 use App\Traits\hasMeta;
 use App\Traits\hasNewsCategories;
-use App\Traits\hasRelations;
 use App\Traits\MagicGet;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
-use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class News extends Model
