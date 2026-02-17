@@ -137,7 +137,7 @@
                 open:hover:text-white open:hover:bg-blue-700
             "
             >
-                Компиляция свода.
+                Компиляция свода
             </a>
         @endif
     </div>

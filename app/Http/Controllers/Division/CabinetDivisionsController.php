@@ -15,14 +15,17 @@ use Illuminate\View\View;
 class CabinetDivisionsController extends Controller
 {
     protected Collection $divisions;
+    protected array $divisionIDS;
     public function __construct(){
 
-        $this->divisions = Division::fullTree();
+        if(auth()->user()->isEditor())
+            $query = Division::query();
+        else
+            $query = auth()->user()->divisions();
 
-        if(!auth()->user()->isEditor()){
-            $ids = auth()->user()->divisions->pluck('id')->unique()->toArray();
-            $this->divisions = $this->divisions->filter(fn($item) => in_array($item->id, $ids));
-        }
+        $this->divisions = flattenList($query->orderBy('name')->get());
+
+        $this->divisionIDS = $this->divisions->pluck('id')->toArray();
     }
 
     public function list(): View
@@ -45,7 +48,6 @@ class CabinetDivisionsController extends Controller
 
     public function form(Division $division): View
     {
-
         $divisions = $this->divisions
             ->reject(fn($item) => $item->id === $division->id)
             ->pluck('nameWithLevel', 'id');

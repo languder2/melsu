@@ -17,6 +17,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -229,5 +230,9 @@ class News extends Model
         return $this->getShortRecord()->getDataForEditorJS();
     }
 
+    public function relations(): MorphMany
+    {
+        return $this->MorphMany();
+    }
 
 }

@@ -60,12 +60,13 @@
         <div class="flex flex-col gap-3 ">
             @if(auth()->user()->isEditor())
                 <div class="flex-1 bg-white p-3 shadow">
-                    <x-form.select2
-                        id="form_parent_id"
+
+                    <x-form.combobox
                         name="parent_id"
-                        value="{{ old('name', $division->parent_id) }}"
-                        null="Родительское подразделение"
-                        :list=" $divisions ?? [] "
+                        :list=" $divisions "
+                        :value=" $division->parent_id "
+                        default="Корневое подразделение"
+                        block="w-full"
                     />
 
                     <x-form.select2

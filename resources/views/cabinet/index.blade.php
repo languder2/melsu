@@ -51,7 +51,7 @@
                 <x-cabinet.sections.index-link
                     lucide="receipt-russian-ruble"
                     color="text-blue-950"
-                    text="Компиляция свода."
+                    text="Компиляция свода"
                     :link=" route('finance.compilation.index')"
                 />
             @endif

@@ -63,6 +63,34 @@
         <div class="p-3 bg-white flex gap-3 flex-col">
             <div class="flex-1">
                 <x-form.input
+                    name="lastname"
+                    label="Фамилия"
+                    :value=" old('lastname', $user->lastname)"
+                    required
+                />
+            </div>
+
+            <div class="flex-1">
+                <x-form.input
+                    name="firstname"
+                    label="Имя"
+                    :value=" old('firstname', $user->firstname)"
+                    required
+                />
+            </div>
+
+            <div class="flex-1">
+                <x-form.input
+                    name="middlename"
+                    label="Отчество"
+                    :value=" old('middlename', $user->middlename)"
+                />
+            </div>
+        </div>
+
+        <div class="p-3 bg-white flex gap-3 flex-col">
+            <div class="flex-1">
+                <x-form.input
                     type="email"
                     name="email"
                     label="Email"
@@ -104,34 +132,6 @@
                 />
             </div>
 
-        </div>
-
-        <div class="p-3 bg-white flex gap-3 flex-col">
-            <div class="flex-1">
-                <x-form.input
-                    name="lastname"
-                    label="Фамилия"
-                    :value=" old('lastname', $user->lastname)"
-                    required
-                />
-            </div>
-
-            <div class="flex-1">
-                <x-form.input
-                    name="firstname"
-                    label="Имя"
-                    :value=" old('firstname', $user->firstname)"
-                    required
-                />
-            </div>
-
-            <div class="flex-1">
-                <x-form.input
-                    name="middlename"
-                    label="Отчество"
-                    :value=" old('middlename', $user->middlename)"
-                />
-            </div>
         </div>
 
         <input type="hidden" id="divisionsSDA" name="divisions" value="{{ $user->divisions->pluck('id') }}">

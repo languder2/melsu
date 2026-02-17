@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Division\Division;
 use App\Models\News\Category;
 use App\Models\News\News;
+use App\Models\Users\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
@@ -20,56 +21,79 @@ class CabinetNewsController extends Controller
 {
     protected int $perPage = 40;
     protected Collection $divisions;
+    protected array $divisionIDS;
     public function __construct(){
-        $this->divisions = Division::fullTree();
 
-        if(!auth()->user()->isEditor()){
-            $ids = auth()->user()->divisions->pluck('id')->unique()->toArray();
-            $this->divisions = $this->divisions->filter(fn($item) => in_array($item->id, $ids));
-        }
+        if(auth()->user()->isEditor())
+            $query = Division::query();
+        else
+            $query = auth()->user()->divisions();
+
+        $this->divisions = flattenList($query->orderBy('name')->get());
+
+        $this->divisionIDS = $this->divisions->pluck('id')->toArray();
     }
     public function list(bool $onApproval = false): View
     {
-        $list = auth()->user()->isEditor()
-            ? News::all()->sortByDesc('published_at')
-            : $this->divisions
-                ->flatMap(fn($division) => $division->news)->unique('id')
-                ->sortByDesc('published_at');
-
-
         $filter = Session::get('cabinetNewsFilters', collect());
 
-        if($filter->has('search'))
-            $list= $list->filter(fn($item)  =>
-                $item->id == $filter->get('search') ||
-                Str::is('*'.mb_strtolower($filter->get('search')).'*', mb_strtolower($item->title))
+        $query = News::query();
+
+        if(!auth()->user()->isEditor() || $filter->has('division'))
+            $query->whereIn('id', fn($query) =>
+                $query->select('news_id')
+                    ->from('news_relations')
+                    ->where('relation_type', Division::class)
+                    ->whereIn('relation_id',
+                        $filter->has('division') ? [(int)$filter->get('division')] : $this->divisionIDS
+                    )
+            );
+
+        if($filter->has('category'))
+            $query->whereIn('id', fn($query) =>
+                $query->select('news_id')
+                    ->from('news_relations')
+                    ->where('relation_type', Category::class)
+                    ->where('relation_id', $filter->get('category'))
             );
 
         if($filter->has('author'))
-            $list= $list->where(fn($item)  => $item->author_id == $filter->get('author'));
+            $query->where('author_id', $filter->get('author'));
 
-        if($filter->has('division'))
-            $list= $list->filter(fn($item)  =>
-                $item->relation_id == $filter->get('division') && $item->relation_type == Division::class
+        if($filter->has('search'))
+            $query->where(fn($query) =>
+                $query->where('id', $filter->get('search'))
+                ->orWhere('title', 'like', '%'.Str::lower($filter->get('search')).'%')
             );
 
         if($onApproval)
-            $list = $list->filter(fn($item) => !$item->has_approval);
+            $query->where('has_approval', false);
 
-        $list = $list->paginate($this->perPage);
+        $query->orderBy('published_at', 'desc')->orderBy('id', 'desc');
+
+        $list = $query->paginate($this->perPage);
+
+        $authors = User::query();
+
+        if(!auth()->user()->isEditor())
+            $authors->whereIn('id', fn($query) =>
+            $query->select('user_id')
+                ->from('user_access')
+                ->where('relation_type', Division::class)
+                ->whereIn('relation_id', $this->divisionIDS)
+            );
+
+        $authors = $authors->orderBy('lastname')->orderBy('firstname')->orderBy('middlename')
+            ->get()->each(fn($item) => $item->line = $item->fio . " ( $item->email )")
+            ->pluck("line","id");
 
         $byFilter = collect([
-            'divisions' => $this->divisions->pluck('nameWithLevel', 'id'),
-            'authors'   =>
-                $this->divisions
-                ->flatMap(fn($division) => $division->news)
-                ->unique('author_id')
-                ->map(fn($item) => $item->author)
-                ->pluck('name','id')
+            'divisions'     => $this->divisions->pluck('nameWithLevel', 'id'),
+            'categories'    => Category::orderBy('name')->get()->pluck('name', 'id'),
+            'authors'       => $authors,
         ]);
 
         session()->put('cabinet-news-route', Route::current()->uri());
-
 
         return view('news.cabinet.list', compact('list', 'byFilter'));
     }

@@ -159,7 +159,7 @@ class User extends Authenticatable
 
     protected function getFioAttribute(): string
     {
-        return trim($this->firstname . ' ' . $this->middlename . ' ' . $this->lastname);
+        return trim($this->lastname . " " . $this->firstname . ' ' . $this->middlename);
     }
     protected function getFioShortAttribute(): string
     {

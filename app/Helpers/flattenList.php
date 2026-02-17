@@ -16,7 +16,9 @@ if (!function_exists('flattenList')){
 
         $flatten = function ($items, $depth = 0) use (&$flatten, $grouped, &$result, $fieldID, $fieldParentID) {
             foreach ($items as $item) {
-                $item->depth = $depth;
+                $item->depth            = $depth;
+                $item->nameWithLevel    = str_repeat('&nbsp;', $depth*3) .
+                    ($depth ? __('common.arrowT2R')  : '' ) . $item->name;
 
                 $result->push($item);
 
