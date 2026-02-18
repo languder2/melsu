@@ -22,6 +22,7 @@
         </div>
 
         @forelse($list as $division)
+            @component('divisions.')
             {!! $division->hasCacheCabinetItem() ? $division->getCacheCabinetItem() : view('divisions.cabinet.item', compact('division')) !!}
         @empty
             <div class="col-span-full text-center font-semibold p-3 text-red-800">
