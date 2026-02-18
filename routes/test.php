@@ -2,6 +2,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
 
+Route::get('test/uuid',        [TestController::class, 'uuid']);
 Route::get('test/token',        [TestController::class, 'token']);
 Route::get('test/php-info',     [TestController::class, 'phpinfo']);
 Route::get('test/view',         [TestController::class,'view']);

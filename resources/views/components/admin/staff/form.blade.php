@@ -23,8 +23,6 @@
 
     <x-form.errors/>
 
-
-
     <div class="flex gap-4 mt-2">
         @if($current)
             <div>
@@ -104,6 +102,13 @@
         name="education"
         label="Образование"
         value="{{ old('education', $current->education ?? null) }}"
+    />
+
+    <x-form.editor
+        id="retraining"
+        name="retraining"
+        label="Переподготовка"
+        value="{{ old('retraining', $current->retraining ?? null) }}"
     />
 
     <x-form.input
@@ -221,7 +226,7 @@
     <div class="py-3 mt-2 border-y border-dashed">
 
         <div class="grid grid-cols-[auto_3fr_1fr]">
-            @forelse($current->affiliations as $affiliation)
+            @forelse($current->affiliations ?? [] as $affiliation)
                 @if($affiliation->relation)
                     <div class="{{ $loop->index % 2 ? 'bg-sky-100/30' : '' }}"></div>
                     <div class="col-span-2 {{ $loop->index % 2 ? 'bg-sky-100/30' : '' }}">

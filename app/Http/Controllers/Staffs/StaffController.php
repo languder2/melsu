@@ -73,7 +73,7 @@ class StaffController extends Controller
 
         $record->save();
 
-        foreach ($request->get('affiliations') as $aID=>$aForm){
+        foreach ($request->get('affiliations') ?? [] as $aID=>$aForm){
             $affiliation = Affiliation::find($aID);
 
             if($affiliation->exists)

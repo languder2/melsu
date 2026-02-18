@@ -2,29 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Enums\DivisionType;
-use App\Enums\UserRoles;
-use App\Jobs\SendEmailJob;
 use App\Models\Division\Division;
 use App\Models\Documents\DocumentCategory;
-use App\Models\Events\Category;
-use App\Models\Events\Events;
-use App\Models\Gallery\Image;
-use App\Models\Minor\Career;
-use App\Models\Minor\Contact;
-use App\Models\Minor\Goals;
-use App\Models\Minor\Graduation;
-use App\Models\Minor\Science;
-use App\Models\News\News;
-use App\Models\Page\Page;
-use App\Models\Partners\Partner;
-use App\Models\Services\Content;
-use App\Models\Users\Role;
-use App\Models\Users\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
@@ -120,6 +101,32 @@ class TestController extends Controller
 
     }
 
+    public function uuid():void
+    {
+
+        $json = Storage::disk('private')->json('json/employee.json');
+
+        if(is_null($json) || !array_key_exists('employee', $json))
+            abort(404);
+
+        $employees = collect($json['employee']);
+
+        $grouped = $employees->groupBy('snils');
+        $grouped2 = $employees->groupBy('uid_person');
+        $grouped3 = $employees->groupBy('tab_number');
+
+        dd(
+            'EMPLOYEES',
+            $employees,
+            'SNILS',
+            $grouped,
+            'PERSONS',
+            $grouped2,
+            'TAB NUMBERS',
+            $grouped3,
+        );
+
+    }
     public function pass():void
     {
         echo Str::uuid();

@@ -3,13 +3,22 @@
 namespace App\Http\Controllers\Common;
 
 use App\Http\Controllers\Controller;
+use App\Models\Division\Division;
 use App\Models\Documents\DocumentCategory;
+use App\Models\Staff\Staff;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class FixController extends Controller
 {
+    public function divisionsCabinetLines():JsonResponse
+    {
+
+        Division::all()->each(fn($item) => $item->saveCacheCabinetItem());
+
+        return response()->json(['success']);
+    }
     public function documentCategoriesSort():JsonResponse
     {
 
@@ -25,40 +34,70 @@ class FixController extends Controller
         return response()->json(['success']);
     }
 
-
-    public function employeesUUID():JsonResponse
+    public function employeesSetUUID():JsonResponse
     {
 
-        if(!Storage::disk('private')->exists('json/employee.json'))
-            abort(404, "Not found json file");
+        $json = Storage::disk('private')->json('json/employee.json');
+
+        if(is_null($json) || !array_key_exists('employee', $json))
+            abort(404);
 
 
-        $file = json_decode(Storage::disk('private')->get('json/employee.json'));
+        $employees = collect($json['employee']);
 
-        if(is_null($file))
-            abort(400, 'Not json file');
+        $grouped = $employees->groupBy('uid_person');
 
-        if(is_null($file->employee))
-            abort(400, 'Not employees in json file');
+        $grouped->each(function ($group) {
+            $item = $group->first();
 
-        $employees = collect($file->employee)
-            ->each(fn($item) => $item->fio = $item->surname . " " . $item->name . " " . $item->patronymic)
-            ->keyBy('uid_employee')
-        ;
+            $fio = [
+                'lastname'      => $item['surname'],
+                'firstname'     => $item['name'],
+                'middle_name'   => $item['patronymic'],
 
-        $grouped = $employees->filter(fn($item) => $item->patronymic === "Викторовна" && $item->head_of_division)->groupBy('fio');
+            ];
+
+            $staff = Staff::where($fio)->firstOrNew($fio);
+
+            $staff->fill(['uuid' => 123])->save();
+
+            dd($staff);
+
+
+            Staff::updateOrCreate([
+                'lastname'      => $item['surname'],
+                'firstname'     => $item['name'],
+                'middle_name'   => $item['patronymic'],
+
+            ],[
+                'uuid'           => $item['uid_person'],
+            ]);
+
+
+            dd($item['surname'], $item['uid_person']);
+        });
 
         dd($grouped);
 
-        dd($employees, $test, $test->first());
+        return response()->json(['success']);
+    }
+
+    public function employeesDesmissedUUID():JsonResponse
+    {
+
+        $json = Storage::disk('private')->json('json/employee.json');
+
+        if(is_null($json) || !array_key_exists('employee', $json))
+            abort(404);
 
 
+        $employees = collect($json['employee']);
 
-//        $dismissal = $employees->groupBy('date_dismissal');
-//
-//        dd($dismissal);
-//
+        $grouped = $employees->groupBy('uid_person');
 
+        $grouped = $grouped->filter(fn($group) => $group->every('dismissed', true));
+
+        dd($grouped);
 
         return response()->json(['success']);
     }

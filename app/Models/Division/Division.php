@@ -143,45 +143,6 @@ class Division extends Model
             'parent_id'                 => 'Родительское подразделение не может быть текущим',
         ];
     }
-    public static function FormRules($id): array
-    {
-        return [
-//            'test'              => "required",
-            'acronym'           => "",
-            'name'              => "required",
-            'alt_name'          => "",
-            'code'              => "nullable|unique:divisions,code,{$id},id,deleted_at,NULL",
-            'type'              => "",
-            'sort'             => '',
-            'parent_id'         => '',
-            'sections'          => '',
-            'chief'             => '',
-            'image'             => '',
-            'preview'           => '',
-            'show'              => '',
-        ];
-    }
-    public static function FormMessage(): array
-    {
-        return [
-            'name.required' => 'Укажите название',
-            'name.unique' => 'Название уже занято',
-        ];
-    }
-    public function getSortAttribute($sort): int|null
-    {
-        return ($sort > 0 && $sort < 1000) ? $sort :  null ;
-    }
-
-    public function setSortAttribute($sort): void
-    {
-        $this->attributes['sort'] = $sort ?? 1000;
-    }
-
-    public function options(): MorphMany
-    {
-        return $this->morphMany(Options::class, 'relation');
-    }
 
     public function faculties(): HasMany
     {
@@ -682,25 +643,16 @@ class Division extends Model
     {
         Cache::forever(
             "division-cabinet-item-$this->id",
-            view('divisions.cabinet.item', ['division' => $this])->render()
-        );
-
-        Cache::forever(
-            "admin.division-cabinet-item-$this->id",
-            view('divisions.cabinet.item', ['division' => $this, 'isAdmin' => true])->render()
+            view('divisions.cabinet.item-line', ['division' => $this])->render()
         );
     }
     public function getCacheCabinetItem(): ?string
     {
-        return auth()->user()->isAdmin()
-            ? Cache::get("admin.division-cabinet-item-$this->id")
-            : Cache::get("division-cabinet-item-$this->id");
+        return Cache::get("division-cabinet-item-$this->id");
     }
     public function hasCacheCabinetItem(): bool
     {
-        return auth()->user()->isAdmin()
-            ? Cache::has("admin.division-cabinet-item-$this->id")
-            : Cache::has("division-cabinet-item-$this->id");
+        return Cache::has("division-cabinet-item-$this->id");
     }
 
 

@@ -37,6 +37,8 @@ class Post extends Model
 
         if($this->dismissal)
             $years .= Carbon::parse($this->dismissal)->format('Y');
+        else
+            $years .= ' по наст. вр. ';
 
         return $years;
     }

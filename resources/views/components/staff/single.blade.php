@@ -115,6 +115,14 @@
             </div>
             </div>
         @endif
+        @if($staff->education)
+            <div class="text-[var(--secondary-color)] text-md font-bold">Переподготовка:</div>
+            <div class="flex items-center">
+                <div class="text-[#4C4C4C] text-md pt-3 sm:ps-3 sm:pt-0 ul-correct">
+                    {!! $staff->retraining !!}
+                </div>
+            </div>
+        @endif
 
         @if($staff->awards)
             <span class="text-[var(--secondary-color)] text-md font-bold">Награды, поощрение:</span>
@@ -140,8 +148,8 @@
 @if($staff->posts->count())
     <div class="work-experience">
         <h2 class="font-bold text-3xl my-6">Трудовая деятельность</h2>
-        <div class="work-experience-box grid grid-cols-1 lg:grid-cols-[150px_minmax(70%,_1fr)] gap-1">
-            @foreach($staff->posts as $post)
+        <div class="work-experience-box grid grid-cols-1 lg:grid-cols-[200px_minmax(70%,_1fr)] gap-1">
+            @foreach($staff->posts()->orderBy('order')->get() as $post)
                 <div class="bg-white p-2.5 flex items-center text-center font-semibold">
                 <span class="w-full">
                     {{$post->years}}
