@@ -163,12 +163,19 @@ class News extends Model
 
     public static function getPublicList(): Builder
     {
-        return News::
-        where('published_at', '<=', Carbon::now())
+        return News::where('published_at', '<=', Carbon::now())
             ->where('has_approval', true)
             ->where('is_show', true)
             ->orderBy('is_favorite', 'desc')
-            ->orderBy('sort')
+            ->orderBy('published_at', 'desc')
+            ;
+
+    }
+    public static function getPublicListWithExcludingFavorites(): Builder
+    {
+        return News::where('published_at', '<=', Carbon::now())
+            ->where('has_approval', true)
+            ->where('is_show', true)
             ->orderBy('published_at', 'desc')
             ;
 

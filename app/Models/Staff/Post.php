@@ -20,6 +20,12 @@ class Post extends Model
         'dismissal',
     ];
 
+    protected $dates = [
+        'employment' => Carbon::class,
+        'dismissal' => Carbon::class,
+    ];
+
+
     public function relation(): MorphTo
     {
         return $this->morphTo();

@@ -25,6 +25,7 @@ class InMainPage extends Component
         $this->news = News::where('published_at', '<=', Carbon::now())
             ->where('has_approval', true)
             ->where('is_show',true)
+            ->orderBy('is_favorite', 'desc')
             ->orderBy('published_at', 'desc')
             ->limit($this->newsCount)
             ->get();

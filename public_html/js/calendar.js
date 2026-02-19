@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     initCalendarHandlers();
-    
+
     initMonthNavigation();
 
     initCategoryFilters();
@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
 function initCategoryFilters() {
     const allRadio = document.querySelector('.all-categories-radio');
     const categoryCheckboxes = document.querySelectorAll('.category-checkbox');
-    
+
     // Обработчик Все
     allRadio.addEventListener('change', function() {
         if (this.checked) {
@@ -17,15 +17,15 @@ function initCategoryFilters() {
             applyCategoryFilter(['all']);
         }
     });
-    
+
     // Обработчики чекбоксов
     categoryCheckboxes.forEach(checkbox => {
         checkbox.addEventListener('change', function() {
             // если выбран "Все" снимается
             allRadio.checked = false;
-            
+
             const selectedCategories = getSelectedCategories();
-            
+
             // Если все чекбоксы не выбраны включается радио кнопка
             if (selectedCategories.length === 0) {
                 allRadio.checked = true;
@@ -49,21 +49,21 @@ function getSelectedCategories() {
 function applyCategoryFilter(selectedCategories) {
     const url = new URL(window.location.href);
     const params = new URLSearchParams();
-    
+
     params.set('month', url.searchParams.get('month') || new Date().getMonth() + 1);
     params.set('year', url.searchParams.get('year') || new Date().getFullYear());
-    
+
     // Добавляются категории если не выбранно все
     if (!selectedCategories.includes('all')) {
         selectedCategories.forEach(cat => params.append('categories[]', cat));
     }
-    
+
     window.location.href = `${url.pathname}?${params.toString()}`;
 }
 
 function initCalendarHandlers() {
     const eventsContainer = document.getElementById('day-events-container');
-    
+
     document.querySelectorAll('.calendar-day').forEach(day => {
         day.addEventListener('click', async function() {
             document.querySelectorAll('.calendar-day').forEach(el => {
@@ -80,11 +80,11 @@ function initCalendarHandlers() {
 
 function handleAdjacentMonthClick(dayElement) {
     if (!dayElement.dataset.date) return;
-    
+
     const date = new Date(dayElement.dataset.date);
     const month = date.getMonth() + 1;
     const year = date.getFullYear();
-    
+
     // Переход на выбранный месяц
     window.location.href = `/events/calendar?month=${month}&year=${year}`;
 }
@@ -94,17 +94,18 @@ async function loadDayEvents(date, container) {
         container.innerHTML = '<div class="p-4">Загрузка...</div>';
 
         const selectedCategories = getSelectedCategories();
-        
+
         // Добавление фильтрации к запросу
         const url = new URL(`/events/day/${date}`, window.location.origin);
+
         selectedCategories.forEach(cat => url.searchParams.append('categories[]', cat));
-        
+
         const response = await fetch(url.toString());
-        
+
         if (!response.ok) throw new Error('Ошибка загрузки событий');
-        
+
         const {dayNum, month, year, weekDay, events = []} = await response.json();
-        
+
         // Динамическая отрисовка событий
         container.innerHTML = events.length ? `
             <div class="p-5 bg-[#C10F1A] text-white flex justify-between mb-5 xl:mb-8">
@@ -157,23 +158,23 @@ function initMonthNavigation() {
         link.addEventListener('click', async function(e) {
             e.preventDefault();
             const selectedCategories = getSelectedCategories();
-            
+
             try {
                 // Добавление фильтров в сылку
                 const url = new URL(this.href);
                 selectedCategories.forEach(cat => {
                     url.searchParams.append('categories[]', cat);
                 });
-                
+
                 const response = await fetch(url.toString());
                 const html = await response.text();
-                
+
                 // Обнавление календаря
                 const calendarContainer = document.querySelector('.events-calendar-container');
                 const newCalendar = new DOMParser()
                     .parseFromString(html, 'text/html')
                     .querySelector('.events-calendar-container');
-                
+
                 if (newCalendar) {
                     calendarContainer.innerHTML = newCalendar.innerHTML;
                     initCalendarHandlers();

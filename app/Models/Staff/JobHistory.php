@@ -14,7 +14,7 @@ use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Collection;
 
-class StaffJobHistory extends Model
+class JobHistory extends Model
 {
     use SoftDeletes;
 
@@ -26,7 +26,9 @@ class StaffJobHistory extends Model
         'company',
         'post',
         'employment_year',
-        'dismissal_year'
+        'dismissal_year',
+        'is_show',
+        'is_approved'
 
 
     ];

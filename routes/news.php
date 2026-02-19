@@ -43,7 +43,10 @@ Route::middleware(['web','auth.api'])->group(function () {
 
 /* Events */
 
-//Route::get('events', [EventsController::class,'all'])->name('public:events:list');
+Route::get('events', [EventsController::class,'calendar'])->name('public:events:calendar');
+
+Route::get('events/day/{date}', [EventsController::class,'getDayEvents']);
+
 Route::get('event/{event?}', [EventsController::class,'show'])->name('public:event:show');
 
 

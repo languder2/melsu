@@ -64,6 +64,7 @@ class Document extends Model
             'parent_id'     => '',
             'category_id'   => '',
             'is_show'       => '',
+            'is_approved'   => '',
             'sort'          => '',
         ];
     }

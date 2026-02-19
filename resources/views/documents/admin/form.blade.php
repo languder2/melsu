@@ -67,6 +67,7 @@
                             :value="old('_token') ? old('sort') : $document->sort ?? $sort "
                     />
                 </div>
+
                 <x-form.checkbox.block
                     id="is_show"
                     name="is_show"
@@ -76,6 +77,21 @@
                     :checked=" old('is_show', $document->exists ? $document->is_show : true)"
                     block="pe-2"
                 />
+
+                @if(auth()->user()->isEditor())
+                    <x-form.checkbox.block
+                        id="is_approved"
+                        name="is_approved"
+                        :default="0"
+                        :value="1"
+                        label="Утвердить"
+                        :checked=" old('is_approved', $document->exists ? $document->is_approved : true)"
+                        block="pe-2"
+                    />
+                @else
+                    <input type="hidden" name="has_approval" value="0">
+                @endif
+
             </div>
         </div>
 
