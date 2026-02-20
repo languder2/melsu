@@ -8,7 +8,7 @@
         </div>
         <div class="slider sldr">
             <div class="slide_viewer sldr">
-                
+
                 <div class="slide_group sldr">
                    {{-- <div class="slide">
                         <a href="https://abiturient.mgu-mlt.ru/" class="slide-link cursor-pointer">
@@ -126,7 +126,7 @@
                         </div>
                     </a>
                 </div>
-                
+
                 <div class="box-info-under-slider">
                     <a href="https://abiturient.mgu-mlt.ru/competition-lists" class="under-info group border-[#FFFFFF] border-r border-t-0 border-b-0 border-l-0 flex flex-col gap-2 justify-between">
                         <span class="text-under-info font-semibold">Конкурсные списки поступающих</span>
@@ -167,7 +167,7 @@
                         </div>
                     </a>
                 </div>
-                
+
             </div>
         </div>
         <div class="next_btn group flex items-center cursor-pointer" title="Next">
@@ -183,7 +183,7 @@
     document.addEventListener('DOMContentLoaded', function() {
         const sliderWrapper = document.querySelector('.slider-wrapper');
         const slides = document.querySelectorAll('.box-info-under-slider');
-        const prevBtn = document.querySelector('.previous_btn'); 
+        const prevBtn = document.querySelector('.previous_btn');
         const nextBtn = document.querySelector('.next_btn');
 
         const settings = {
@@ -210,10 +210,10 @@
         function updateVisibleSlides() {
             state.visibleSlides = window.innerWidth > 640 ? 3 : 1;
         }
-        
+
         function initSlider() {
             document.querySelectorAll('.clone').forEach(clone => clone.remove());
-            
+
             updateVisibleSlides();
 
             const originalSlides = Array.from(document.querySelectorAll('.box-info-under-slider:not(.clone)'));
@@ -222,10 +222,10 @@
             for (let i = 0; i < state.visibleSlides; i++) {
                 const firstClone = originalSlides[i].cloneNode(true);
                 const lastClone = originalSlides[slideCount - 1 - i].cloneNode(true);
-                
+
                 firstClone.classList.add('clone');
                 lastClone.classList.add('clone');
-                
+
                 sliderWrapper.appendChild(firstClone);
                 sliderWrapper.insertBefore(lastClone, originalSlides[0]);
             }
@@ -242,7 +242,7 @@
         function setSlidePosition(index, animate = true) {
             sliderWrapper.style.transition = animate ?
                 `transform ${settings.slideDuration}ms ease-in-out` : 'none';
-            
+
             const slideWidthPercent = 100 / state.visibleSlides;
             sliderWrapper.style.transform = `translateX(${-index * slideWidthPercent}%)`;
         }
@@ -250,7 +250,7 @@
         function goToSlide(index, animate = true) {
             if (state.isAnimating) return;
 
-            const slideCount = state.allSlides.length - 2 * state.visibleSlides; 
+            const slideCount = state.allSlides.length - 2 * state.visibleSlides;
             const maxIndex = slideCount + state.visibleSlides;
 
             let newIndex = index;
@@ -268,7 +268,7 @@
                 } else {
                     state.currentIndex = newIndex;
                 }
-                
+
                 if (newIndex === 0) {
                     state.currentIndex = slideCount;
                     setSlidePosition(state.currentIndex, false);
@@ -276,13 +276,13 @@
                      state.currentIndex = 1;
                      setSlidePosition(state.currentIndex, false);
                 }
-                
+
                 if (state.currentIndex < state.visibleSlides) {
                     state.currentIndex = state.visibleSlides;
                 } else if (state.currentIndex > slideCount + state.visibleSlides - 1) {
                     state.currentIndex = state.visibleSlides;
                 }
-                
+
                 setTimeout(function() {
                     state.isAnimating = false;
                 }, 20);
@@ -307,12 +307,12 @@
             stopAutoSlide();
             setTimeout(startAutoSlide, settings.slideDuration + 100);
         }
-        
+
         function handleResize() {
             const newVisibleSlides = window.innerWidth > 640 ? 3 : 1;
-            
+
             if (newVisibleSlides !== state.visibleSlides) {
-                initSlider(); 
+                initSlider();
             } else {
                 setSlidePosition(state.currentIndex, false);
             }
@@ -322,7 +322,7 @@
             if (state.isAnimating) return;
             state.isScrolling = false;
             if (e.type === 'mousedown') {
-                e.preventDefault(); 
+                e.preventDefault();
             }
             state.isDragging = true;
             state.startX = e.clientX || e.touches[0].clientX;
@@ -341,13 +341,13 @@
             if (Math.abs(walk) > 5) {
                 state.isScrolling = true;
             }
-            
+
             state.currentX = e.clientX || e.touches[0].clientX;
             state.dragOffset = state.currentX - state.startX;
-            
+
             const slideWidthPercent = 100 / state.visibleSlides;
             const currentPosition = -state.currentIndex * slideWidthPercent;
-            
+
             const limitedOffset = state.dragOffset * 0.7;
             const dragPercent = limitedOffset / sliderWrapper.offsetWidth * 100;
             const position = currentPosition + dragPercent;
@@ -362,7 +362,7 @@
 
             const swipeDistance = Math.abs(state.dragOffset);
             const slideWidth = sliderWrapper.offsetWidth / state.visibleSlides;
-            
+
             if (swipeDistance > slideWidth * settings.swipeThreshold) {
                 let slidesToMove = Math.round(swipeDistance / slideWidth);
                 slidesToMove = Math.min(slidesToMove, settings.maxDragSlides);
@@ -410,7 +410,7 @@
 
             sliderWrapper.addEventListener('mouseenter', stopAutoSlide);
             sliderWrapper.addEventListener('mouseleave', startAutoSlide);
-            
+
             window.addEventListener('resize', handleResize);
         }
 

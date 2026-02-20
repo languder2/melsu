@@ -9,7 +9,6 @@ use App\Models\Global\Options;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -114,10 +113,19 @@ class Staff extends Model
         return $image;
     }
 
-    public function posts():MorphMany
+    public function jobs(): HasMany
     {
-        return $this->MorphMany(Post::class, 'relation');
+        return $this->hasMany(JobHistory::class,'staff_id', 'id');
     }
+    public function sortedJobs(): HasMany
+    {
+        return $this->jobs()
+            ->orderBy('employment_year', 'desc')
+            ->orderByRaw('dismissal_year IS NULL DESC')
+            ->orderBy('dismissal_year', 'desc')
+            ->orderBy('sort');
+    }
+
     public function divisions():HasMany
     {
         return $this->hasMany(Division::class,'coordinator_id', 'id')

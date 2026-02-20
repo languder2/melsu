@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Division\Division;
 use App\Models\Documents\DocumentCategory;
+use App\Models\Staff\Staff;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
@@ -82,6 +83,10 @@ class TestController extends Controller
 
     public function test()
     {
+
+        $staff = Staff::find(1980);
+
+        dd($staff->jobsSorted->toArray());
 
         DocumentCategory::all()->each(fn($item) => Cache::forever(
             "documents-category-{$item->id}",

@@ -110,9 +110,9 @@
         @if($staff->education)
             <span class="text-[var(--secondary-color)] text-md font-bold">Образование:</span>
             <div class="flex items-center">
-            <div class="text-[#4C4C4C] text-md pt-3 sm:ps-3 sm:pt-0 ul-correct">
-                {!! $staff->education !!}
-            </div>
+                <div class="text-[#4C4C4C] text-md pt-3 sm:ps-3 sm:pt-0 ul-correct">
+                    {!! $staff->education !!}
+                </div>
             </div>
         @endif
         @if($staff->education)
@@ -144,21 +144,43 @@
     </div>
 </div>
 
+{{--@if($staff->awards)--}}
+{{--    <h2 class="font-bold text-3xl my-6">Трудовая деятельность</h2>--}}
+{{--    <div class="bg-white p-3 flex flex-col gap-3">--}}
+{{--        {!! $staff->awards !!}--}}
+{{--    </div>--}}
+{{--@endif--}}
 
-@if($staff->posts->count())
+@if($staff->jobs->isNotEmpty())
     <div class="work-experience">
         <h2 class="font-bold text-3xl my-6">Трудовая деятельность</h2>
         <div class="work-experience-box grid grid-cols-1 lg:grid-cols-[200px_minmax(70%,_1fr)] gap-1">
-            @foreach($staff->posts()->orderBy('order')->get() as $post)
-                <div class="bg-white p-2.5 flex items-center text-center font-semibold">
-                <span class="w-full">
-                    {{$post->years}}
-                </span>
+            @foreach($staff->sortedJobs as $job)
+                <div class="bg-white p-3 flex items-center justify-center font-semibold">
+                    @if($job->employment_year)
+                        c {{$job->employment_year}}
+                    @endif
+
+                    @if($job->dismissal_year)
+                        по {{ $job->dismissal_year }}
+                    @else
+                        по наст. вр.
+                    @endif
                 </div>
-                <div class="bg-white p-2.5 flex items-center">
-                <span class="ps-3 lg:ps-0">
-                    {{$post->post}}
-                </span>
+                <div class="bg-white p-3 flex flex-col gap-3">
+                    @if($job->company)
+                        <div class="font-semibold">
+                            {!! $job->company !!}
+                        </div>
+                    @endif
+
+                    @if($job->post)
+                        @foreach(explode('<br>', $job->post) as $post)
+                            <div>
+                                {!! $post !!}
+                            </div>
+                        @endforeach
+                    @endif
                 </div>
             @endforeach
         </div>

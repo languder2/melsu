@@ -198,28 +198,6 @@
 
     <hr>
 
-    <div id="posts">
-        @if(is_array(old('posts')))
-            @foreach(old('posts') as $key=>$post)
-                @if($post->post)
-                    <x-admin.staff.post :i="$loop->index" :post="$post"/>
-                @endif
-            @endforeach
-
-            @if(count(old('posts')) === 0)
-                <x-admin.staff.post :i="0" :post="null"/>
-            @endif
-
-        @elseif($current && count($current->posts))
-            @foreach($current->posts as $key=>$post)
-                <x-admin.staff.post :i="$loop->index" :post="$post"/>
-            @endforeach
-
-        @else
-            <x-admin.staff.post :i="0" :post="null"/>
-        @endif
-    </div>
-
     <h2 class="flex-1 text-xl font-semibold mt-4">
         Должности
     </h2>

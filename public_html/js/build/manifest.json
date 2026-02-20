@@ -1,0 +1,184 @@
+{
+  "_fetch-CIinFdni.js": {
+    "file": "assets/fetch-CIinFdni.js",
+    "name": "fetch"
+  },
+  "public_html/img/bg-map.png": {
+    "file": "assets/bg-map-_MI7dOr-.png",
+    "src": "public_html/img/bg-map.png"
+  },
+  "public_html/img/bg-with-logo.png": {
+    "file": "assets/bg-with-logo-BIjjRpKx.png",
+    "src": "public_html/img/bg-with-logo.png"
+  },
+  "public_html/img/book.png": {
+    "file": "assets/book-051inJDp.png",
+    "src": "public_html/img/book.png"
+  },
+  "public_html/img/bpla.png": {
+    "file": "assets/bpla-CD5YQrrr.png",
+    "src": "public_html/img/bpla.png"
+  },
+  "public_html/img/cabinet/bg-header.png": {
+    "file": "assets/bg-header-QaUT72G8.png",
+    "src": "public_html/img/cabinet/bg-header.png"
+  },
+  "public_html/img/cabinet/bg-panel.jpg": {
+    "file": "assets/bg-panel-v90WLpHW.jpg",
+    "src": "public_html/img/cabinet/bg-panel.jpg"
+  },
+  "public_html/img/calc.png": {
+    "file": "assets/calc-BOHshExI.png",
+    "src": "public_html/img/calc.png"
+  },
+  "public_html/img/hex-bg.png": {
+    "file": "assets/hex-bg-sE8VX6pe.png",
+    "src": "public_html/img/hex-bg.png"
+  },
+  "public_html/img/honeycombs1.png": {
+    "file": "assets/honeycombs1-CPdL7dPm.png",
+    "src": "public_html/img/honeycombs1.png"
+  },
+  "public_html/img/lines-vector-map.jpg": {
+    "file": "assets/lines-vector-map-FAeUJzyq.jpg",
+    "src": "public_html/img/lines-vector-map.jpg"
+  },
+  "public_html/img/melsu-unv.jpg": {
+    "file": "assets/melsu-unv-Cc2Z5tpR.jpg",
+    "src": "public_html/img/melsu-unv.jpg"
+  },
+  "public_html/img/microscope.png": {
+    "file": "assets/microscope-CglPIgJH.png",
+    "src": "public_html/img/microscope.png"
+  },
+  "public_html/img/palatka.png": {
+    "file": "assets/palatka-CVbNobjJ.png",
+    "src": "public_html/img/palatka.png"
+  },
+  "public_html/img/static-bg.jpg": {
+    "file": "assets/static-bg-GvhJmoz4.jpg",
+    "src": "public_html/img/static-bg.jpg"
+  },
+  "public_html/img/sveden/bg-sved.jpg": {
+    "file": "assets/bg-sved-BdEKVKXw.jpg",
+    "src": "public_html/img/sveden/bg-sved.jpg"
+  },
+  "public_html/img/themida.png": {
+    "file": "assets/themida-DuDad1p8.png",
+    "src": "public_html/img/themida.png"
+  },
+  "public_html/img/traktor.png": {
+    "file": "assets/traktor-BX6WZ-i1.png",
+    "src": "public_html/img/traktor.png"
+  },
+  "resources/css/admin.css": {
+    "file": "assets/admin-C2oRRLzj.css",
+    "src": "resources/css/admin.css",
+    "isEntry": true
+  },
+  "resources/css/app.css": {
+    "file": "assets/app-Dphc5sOT.css",
+    "src": "resources/css/app.css",
+    "isEntry": true
+  },
+  "resources/css/cabinet.css": {
+    "file": "assets/cabinet--ZB5FKmz.css",
+    "src": "resources/css/cabinet.css",
+    "isEntry": true
+  },
+  "resources/css/info.css": {
+    "file": "assets/info-ChB4MrIU.css",
+    "src": "resources/css/info.css",
+    "isEntry": true
+  },
+  "resources/js/admin.js": {
+    "file": "assets/admin-DKPvvfkM.js",
+    "name": "admin",
+    "src": "resources/js/admin.js",
+    "isEntry": true,
+    "imports": [
+      "_fetch-CIinFdni.js"
+    ]
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-wzpSx1Eq.js",
+    "name": "app",
+    "src": "resources/js/app.js",
+    "isEntry": true,
+    "imports": [
+      "_fetch-CIinFdni.js"
+    ]
+  },
+  "resources/js/cabinet.js": {
+    "file": "assets/cabinet-DAlJTgTr.js",
+    "name": "cabinet",
+    "src": "resources/js/cabinet.js",
+    "isEntry": true
+  },
+  "resources/js/info.js": {
+    "file": "assets/info-D3SVoVTg.js",
+    "name": "info",
+    "src": "resources/js/info.js",
+    "isEntry": true
+  },
+  "resources/webfonts/fa-brands-400.eot": {
+    "file": "assets/fa-brands-400-DnkPfk3o.eot",
+    "src": "resources/webfonts/fa-brands-400.eot"
+  },
+  "resources/webfonts/fa-brands-400.svg": {
+    "file": "assets/fa-brands-400-C-bUkyWb.svg",
+    "src": "resources/webfonts/fa-brands-400.svg"
+  },
+  "resources/webfonts/fa-brands-400.ttf": {
+    "file": "assets/fa-brands-400-CSYNqBb_.ttf",
+    "src": "resources/webfonts/fa-brands-400.ttf"
+  },
+  "resources/webfonts/fa-brands-400.woff": {
+    "file": "assets/fa-brands-400-CEJbCg16.woff",
+    "src": "resources/webfonts/fa-brands-400.woff"
+  },
+  "resources/webfonts/fa-brands-400.woff2": {
+    "file": "assets/fa-brands-400-UxlILjvJ.woff2",
+    "src": "resources/webfonts/fa-brands-400.woff2"
+  },
+  "resources/webfonts/fa-regular-400.eot": {
+    "file": "assets/fa-regular-400-BhTwtT8w.eot",
+    "src": "resources/webfonts/fa-regular-400.eot"
+  },
+  "resources/webfonts/fa-regular-400.svg": {
+    "file": "assets/fa-regular-400-B_uHu7Sb.svg",
+    "src": "resources/webfonts/fa-regular-400.svg"
+  },
+  "resources/webfonts/fa-regular-400.ttf": {
+    "file": "assets/fa-regular-400-D1vz6WBx.ttf",
+    "src": "resources/webfonts/fa-regular-400.ttf"
+  },
+  "resources/webfonts/fa-regular-400.woff": {
+    "file": "assets/fa-regular-400-DFnMcJPd.woff",
+    "src": "resources/webfonts/fa-regular-400.woff"
+  },
+  "resources/webfonts/fa-regular-400.woff2": {
+    "file": "assets/fa-regular-400-DGzu1beS.woff2",
+    "src": "resources/webfonts/fa-regular-400.woff2"
+  },
+  "resources/webfonts/fa-solid-900.eot": {
+    "file": "assets/fa-solid-900-B6Axprfb.eot",
+    "src": "resources/webfonts/fa-solid-900.eot"
+  },
+  "resources/webfonts/fa-solid-900.svg": {
+    "file": "assets/fa-solid-900-BrgFiT51.svg",
+    "src": "resources/webfonts/fa-solid-900.svg"
+  },
+  "resources/webfonts/fa-solid-900.ttf": {
+    "file": "assets/fa-solid-900-mxuxnBEa.ttf",
+    "src": "resources/webfonts/fa-solid-900.ttf"
+  },
+  "resources/webfonts/fa-solid-900.woff": {
+    "file": "assets/fa-solid-900-DOXgCApm.woff",
+    "src": "resources/webfonts/fa-solid-900.woff"
+  },
+  "resources/webfonts/fa-solid-900.woff2": {
+    "file": "assets/fa-solid-900-BUswJgRo.woff2",
+    "src": "resources/webfonts/fa-solid-900.woff2"
+  }
+}
