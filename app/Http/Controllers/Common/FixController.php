@@ -40,11 +40,6 @@ class FixController extends Controller
     public function employeesSetUUID():JsonResponse
     {
 
-
-
-        dd(JobHistory::all());
-
-
         $json = Storage::disk('private')->json('json/employee.json');
 
         if(is_null($json) || !array_key_exists('employee', $json))
@@ -53,19 +48,49 @@ class FixController extends Controller
 
         $employees = collect($json['employee']);
 
+        $employees = $employees->filter(fn($item) => !$item['dismissed'] && !$item['deleted']);
+
         $grouped = $employees->groupBy('uid_person');
 
-        $grouped->each(function ($group) {
-            $item = $group->first();
+//        $grouped->each(function ($group) {
+//            $item = $group->first();
+//
+//            $fio = [
+//                'lastname'      => $item['surname'],
+//                'firstname'     => $item['name'],
+//                'middle_name'   => $item['patronymic'],
+//
+//            ];
+//
+//            Staff::updateOrCreate($fio,['uuid' => $item['uid_person']]);
+//        });
 
-            $fio = [
-                'lastname'      => $item['surname'],
-                'firstname'     => $item['name'],
-                'middle_name'   => $item['patronymic'],
 
-            ];
+        $grouped->each(function ($group, $uuid) {
 
-            Staff::updateOrCreate($fio,['uuid' => $item['uid_person']]);
+            $staff = Staff::where('uuid', $uuid)->first();
+
+            if(is_null($staff)) return;
+
+            if($uuid === 'b9db47f0-a154-11ed-91bf-0cc47a919af8')
+                dd($group);
+
+            foreach ($group as $post) {
+
+                $division = Division::where('uuid', $post['uid_department'])->first();
+
+                if(Post::where('uuid',$post['uid_employee'])->count() || is_null($division))
+                    continue;
+
+                Post::createOrRestore([
+                    'uuid'                  => $post['uid_employee'],
+                    'staff_id'              => $staff->id,
+                    'division_id'           => $division->id,
+                    'post'                  => $post['position'],
+                    'is_head_of_division'   => $post['head_of_division'],
+                    'is_show'               => true
+                ]);
+            }
         });
 
         dd($grouped);

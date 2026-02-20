@@ -15,38 +15,16 @@ class Post extends Model
     protected $table = 'staff_posts';
 
     protected $fillable = [
+        'uuid',
+        'division_id',
+        'staff_id',
         'post',
-        'employment',
-        'dismissal',
+        'full_post',
+        'is_head_of_division',
+        'is_teacher',
+        'is_show',
+        'sort',
+        'post_weight',
     ];
-
-    protected $dates = [
-        'employment' => Carbon::class,
-        'dismissal' => Carbon::class,
-    ];
-
-
-    public function relation(): MorphTo
-    {
-        return $this->morphTo();
-    }
-
-    public function getYearsAttribute(): string
-    {
-
-        if($this->employment)
-            $years = Carbon::parse($this->employment)->format('Y');
-
-        if($this->dismissal && $this->employment)
-            $years .= ' - ';
-
-
-        if($this->dismissal)
-            $years .= Carbon::parse($this->dismissal)->format('Y');
-        else
-            $years .= ' по наст. вр. ';
-
-        return $years;
-    }
 
 }

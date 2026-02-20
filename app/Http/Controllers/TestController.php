@@ -84,6 +84,10 @@ class TestController extends Controller
     public function test()
     {
 
+
+
+        dd();
+
         $staff = Staff::find(1980);
 
         dd($staff->jobsSorted->toArray());

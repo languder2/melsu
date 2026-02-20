@@ -6,8 +6,28 @@ use App\Http\Controllers\Documents\RelationDocumentsController;
 use App\Http\Middleware\AuthCabinet;
 use App\Http\Middleware\InstanceAccess;
 use App\Http\Controllers\Documents\CabinetCategoriesController;
+use App\Http\Controllers\Documents\DocumentCategoriesController;
 
 Route::get('documents',                 [DocumentsController::class,'public'])  ->name('documents:public:list');
+
+Route::prefix('admin/document-categories')->group(function(){
+    Route::get('form/{category?}',      [DocumentCategoriesController::class,'form'])->name('document-categories:admin:form');
+    Route::put('save/{category?}',      [DocumentCategoriesController::class,'save'])->name('document-categories:save');
+
+    Route::get('delete/{category?}',    [DocumentCategoriesController::class,'delete'])->name('document-categories:delete');
+
+    Route::get('{field?}/{direction?}', [DocumentCategoriesController::class,'admin'])->setDefaults(['field' => 'sort', 'direction' => 'asc'])->name('document-categories:admin:list');
+});
+
+Route::prefix('admin/documents')->group(function(){
+    Route::get('form/{document?}',      [DocumentsController::class,'form'])    ->name('documents:admin:form');
+    Route::post('save/{document?}',     [DocumentsController::class,'save'])    ->name('documents:admin:save');
+    Route::get('delete/{document?}',    [DocumentsController::class,'delete'])  ->name('documents:delete');
+    Route::get('{field?}/{direction?}', [DocumentsController::class,'admin'])
+        ->setDefaults(['field' => 'sort', 'direction' => 'asc'])
+        ->name('documents:admin:list');
+});
+
 
 /* Relation Documents Categories*/
 
