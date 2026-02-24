@@ -56,6 +56,15 @@
                 />
             @endif
 
+            @if(auth()->user()->isEditor() || auth()->user()->isAdmin() || auth()->user()->isSuper())
+                <x-cabinet.sections.index-link
+                    lucide="files"
+                    color="text-blue-950"
+                    :text=" __('common.Documents') "
+                    :link=" route('documents-categories.cabinet.list')"
+                />
+            @endif
+
         </div>
     @endauth
 @endsection

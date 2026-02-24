@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\View\View;
 
-class RelationDocumentsController extends Controller
+class CabinetDocumentsController extends Controller
 {
 
     public function form(Request $request, $entity, $entity_id, Document $document): View|RedirectResponse

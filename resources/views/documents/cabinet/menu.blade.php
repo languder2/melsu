@@ -5,15 +5,21 @@
 <div class="mb-3 p-3 bg-white flex flex-col lg:flex-row gap-3 justify-between shadow">
 
     <x-html.submit-link
-        link="{{ $instance->partnersCabinetList() }}"
-        :inline="!Route::is('partners.cabinet.list')"
-        :text="__('common.Partners')"
+        link="{{ route('documents.cabinet.list') }}"
+        :inline="!Route::is('documents.cabinet.list')"
+        :text="__('common.Documents')"
+    />
+
+    <x-html.submit-link
+        link="{{ route('documents.cabinet.on-approval') }}"
+        :inline="!Route::is('documents.cabinet.on-approval')"
+        :text="__('common.Documents on approval')"
     />
 
     <div class="hidden lg:block flex-1"></div>
 
     <x-html.submit-link
-        link="{{ $instance->partnerCategoryAdd() }}"
-        :text="__('common.Add partner category')"
+        link="{{ route('documents.cabinet.category.form') }}"
+        :text="__('common.Add documents category')"
     />
 </div>

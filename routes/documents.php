@@ -2,11 +2,12 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Documents\DocumentsController;
 use App\Http\Controllers\Documents\RelationCategoriesController;
-use App\Http\Controllers\Documents\RelationDocumentsController;
+use App\Http\Controllers\Documents\CabinetDocumentsController;
 use App\Http\Middleware\AuthCabinet;
 use App\Http\Middleware\InstanceAccess;
 use App\Http\Controllers\Documents\CabinetCategoriesController;
 use App\Http\Controllers\Documents\DocumentCategoriesController;
+use App\Http\Middleware\IsEditor;
 
 Route::get('documents',                 [DocumentsController::class,'public'])  ->name('documents:public:list');
 
@@ -58,24 +59,40 @@ Route::prefix('cabinet/documents-categories/{entity}/{entity_id}/')
 Route::prefix('cabinet/documents/{entity}/{entity_id}/')->middleware([AuthCabinet::class, InstanceAccess::class])
     ->group(function () {
 
-        Route::get('form/{document?}',                      [RelationDocumentsController::class, 'form'])
+        Route::get('form/{document?}',                      [CabinetDocumentsController::class, 'form'])
                                                                 ->name('documents.relation.form');
 
-        Route::put('save/{document?}',                      [RelationDocumentsController::class, 'save'])
+        Route::put('save/{document?}',                      [CabinetDocumentsController::class, 'save'])
                                                                 ->name('documents.relation.save');
 });
 
-Route::prefix('cabinet/documents/')->middleware([AuthCabinet::class, InstanceAccess::class])
+Route::prefix('cabinet/documents/')->middleware([AuthCabinet::class, IsEditor::class])
     ->group(function () {
+        Route::get('',                                      [CabinetCategoriesController::class, 'list'])
+                                                                ->name('documents.cabinet.list');
 
-        Route::delete('delete/{document?}',                 [RelationDocumentsController::class, 'delete'])
-                                                                ->name('documents.relation.delete');
+        Route::get('on-approval',                           [CabinetCategoriesController::class, 'list'])
+                                                                ->defaults('onApproval', true)
+                                                                ->name('documents.cabinet.on-approval');
 
-        Route::get('change-sort/{document}/{direction}',    [RelationDocumentsController::class, 'changeSort'])
-                                                                ->name('documents.relation.change-sort')
+        Route::get('category/form/{current?}',              [CabinetCategoriesController::class, 'form'])
+                                                                ->name('documents.cabinet.category.form');
+
+        Route::get('category/delete/{current}',             [CabinetCategoriesController::class, 'delete'])
+                                                                ->name('documents.cabinet.category.delete');
+
+        Route::get('category/change-sort/{current}/{direction}',
+                                                                [CabinetCategoriesController::class, 'changeSort'])
+                                                                ->name('documents.cabinet.category.change-sort')
                                                                 ->defaults('direction', 'down');
 
-        Route::get('',                                      [CabinetCategoriesController::class, 'list'])
-                                                                ->name('documents-categories.cabinet.list');
+        Route::get('form/{current?}',                       [CabinetDocumentsController::class, 'form'])
+                                                                ->name('documents.cabinet.form');
 
+        Route::get('delete/{current}',                      [CabinetDocumentsController::class, 'delete'])
+                                                                ->name('documents.cabinet.delete');
+
+        Route::get('change-sort/{current}/{direction}',     [CabinetDocumentsController::class, 'changeSort'])
+                                                                ->name('documents.cabinet.change-sort')
+                                                                ->defaults('direction', 'down');
     });

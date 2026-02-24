@@ -12,15 +12,11 @@ use Illuminate\View\View;
 
 class CabinetCategoriesController extends Controller
 {
-    public function list(): View
+    public function list(bool $onApproval = false): View
     {
         $list = DocumentCategory::whereNull('relation_id')->get();
 
-        dd($list);
-
-        Session::put('documents-category.after-save-route', 'documents.relation.list');
-
-        return view('documents.relation.list', compact('list'));
+        return view('documents.cabinet.list', compact('list'));
     }
 
 

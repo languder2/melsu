@@ -16,13 +16,13 @@
                             <img src="{{asset('img/slider/Platnoe_mob.webp')}}" alt="" class="block sm:hidden">
                         </a>
                     </div>--}}
-                    <div class="slide">
-                        <a href="https://melsu.ru/podgotovitelnye-kursy" class="slide-link cursor-pointer" target="_blank">
-                            <img src="{{asset('img/slider/Podgot-2k.png')}}" alt="" class="hidden object-cover min-[1921px]:block w-max">
-                            <img src="{{asset('img/slider/Podgot-1920.png')}}" alt="" class="hidden sm:block">
-                            <img src="{{asset('img/slider/Podgot-mob.png')}}" alt="" class="block sm:hidden">
-                        </a>
-                    </div>
+{{--                    <div class="slide">--}}
+{{--                        <a href="https://melsu.ru/podgotovitelnye-kursy" class="slide-link cursor-pointer" target="_blank">--}}
+{{--                            <img src="{{asset('img/slider/Podgot-2k.png')}}" alt="" class="hidden object-cover min-[1921px]:block w-max">--}}
+{{--                            <img src="{{asset('img/slider/Podgot-1920.png')}}" alt="" class="hidden sm:block">--}}
+{{--                            <img src="{{asset('img/slider/Podgot-mob.png')}}" alt="" class="block sm:hidden">--}}
+{{--                        </a>--}}
+{{--                    </div>--}}
                     <div class="slide">
                         <a href="https://max.ru/id9001010985_biz" class="slide-link cursor-pointer" target="_blank">
                             <img src="{{asset('img/slider/MAX_2K.jpg')}}" alt="" class="hidden object-cover min-[1921px]:block w-max">

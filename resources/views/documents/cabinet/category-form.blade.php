@@ -2,27 +2,33 @@
 
 @section(
     'title',
-    __('common.Cabinet') ." → ". $instance->name ." → ". __('common.Partners')
-    ." → ". ($category->exists ? $category->name : __('common.Add partner category'))
+    __('common.Cabinet') ." → ". $instance->name ." → ". __('common.Documents')
+    ." → ". ($category->exists ? $category->name : __('common.Add documents category'))
 
 )
 
 @section('content-header')
-    @component('divisions.cabinet.item', ['division' => $instance, 'has_menu' => true])@endcomponent
-    @include('partners.cabinet.menu')
+    @if($instance instanceof \App\Models\Division\Division)
+        @component('divisions.cabinet.item', ['division' => $instance, 'has_menu' => true])@endcomponent
+    @elseif($instance instanceof \App\Models\Page\Page)
+        @component('pages.cabinet.item', ['item' => $instance, 'has_menu' => true])@endcomponent
+    @endif
+
+    @include('documents.relation.menu')
 @endsection
 
-@section('top-menu')@endsection
-
 @section('content')
-    <form action="{{ $category->cabinetSave() }}" method="POST" class="flex flex-col gap-3" enctype="multipart/form-data">
+
+    <form action="{{ route('documents-category.relation.save', [$instance->getTable(), $instance->id, $category]) }}" method="POST" class="flex flex-col gap-3" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 
         <x-form.errors/>
         <div class="flex gap3 bg-white p-3 justify-between sticky top-0 z-50 shadow">
             <div class="flex items-center">
-                {!! $category->exists ? $category->name : __('common.Add partner category') !!}
+                {{ $instance->name }}
+                →
+                {!! $category->exists ? $category->name : __('common.Add documents category') !!}
             </div>
 
             <div class="flex items-center gap-3">
@@ -60,23 +66,85 @@
         </div>
 
         <div class="flex flex-col gap-3 bg-white p-3 shadow">
+            <div class="flex gap-3">
+                <x-form.input
+                    name="name"
+                    label="Название"
+                    value="{!! old('name', $category->name) !!}"
+                    block="flex-1"
+                />
+
+                <x-form.checkbox.block
+                    id="is_show"
+                    name="is_show"
+                    :default="0"
+                    :value="1"
+                    label="Опубликовать"
+                    :checked=" old('is_show', $category->exists ? $category->is_show : true)"
+                    block="pe-2"
+                />
+
+                @if(auth()->user()->isEditor())
+                    <x-form.checkbox.block
+                        id="is_approved"
+                        name="is_approved"
+                        :default="0"
+                        :value="1"
+                        label="Утвердить"
+                        :checked=" old('is_approved', $category->exists ? $category->is_approved : true)"
+                        block="pe-2"
+                    />
+                @else
+                    <input type="hidden" name="has_approval" value="0">
+                @endif
+            </div>
+        </div>
+
+
+        <div class="flex flex-col gap-3 bg-white p-3 shadow">
+            <x-form.checkbox.block
+                name="show_documents"
+                :default="0"
+                :value="1"
+                label="По умолчанию категория развернута"
+                :checked=" old('show_documents', $category->option('show_documents')->exists ? $category->option('show_documents')->property : true)"
+                block="pe-2"
+                class="py-2"
+            />
+        </div>
+
+        <div class="group bg-white p-3 shadow flex gap-3">
+            <div>
+                <x-form.checkbox.block
+                    id="inAccordion"
+                    name="in_accordion"
+                    :default="0"
+                    :value="1"
+                    label="Состоит в группе аккордеона"
+                    :checked=" old('in_accordion', $category->option('in_accordion')->exists ?: false) "
+                    block="pe-2"
+                    class="py-2"
+                />
+            </div>
 
             <x-form.input
-                name="name"
-                label="Название"
-                value="{!! old('name', $category->name) !!}"
+                id="accordionPrefix"
+                name="accordion_prefix"
+                label="Префикс группы аккордеона"
+                value="{!! old('accordion_prefix', $category->option('accordion_prefix')->property) !!}"
                 block="flex-1"
+                :disabled=" !$category->option('in_accordion')->exists ?: false "
+                required
             />
-
         </div>
 
         <h3 class="font-semibold text-xl lg:col-span-2 my-2">
-            Краткое описание для компиляций
+            Краткое описание
         </h3>
         <x-editorjs.editor
             set="short"
             name="short"
-            :initialContent=" $division->content('short')->content "
+            :initialContent=" $category->content('short')->content "
         />
 
     </form>
