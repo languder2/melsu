@@ -10,7 +10,7 @@
 
 @section('content')
 
-    <div class="grid gap-3 grid-cols-[auto_auto_1fr_auto_auto_auto]">
+    <div class="grid gap-x-3 grid-cols-[auto_auto_1fr_auto_auto_auto]">
         @forelse($list as $category)
             @component('documents.cabinet.category',[
                 'current'   => $category,

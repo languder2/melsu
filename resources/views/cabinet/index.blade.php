@@ -61,7 +61,7 @@
                     lucide="files"
                     color="text-blue-950"
                     :text=" __('common.Documents') "
-                    :link=" route('documents-categories.cabinet.list')"
+                    :link=" route('documents.cabinet.list')"
                 />
             @endif
 

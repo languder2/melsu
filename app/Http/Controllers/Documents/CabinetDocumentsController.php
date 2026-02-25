@@ -5,75 +5,68 @@ namespace App\Http\Controllers\Documents;
 use App\Enums\Entities;
 use App\Http\Controllers\Controller;
 use App\Models\Documents\Document;
+use App\Models\Documents\DocumentCategory;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Session;
 use Illuminate\View\View;
 
 class CabinetDocumentsController extends Controller
 {
 
-    public function form(Request $request, $entity, $entity_id, Document $document): View|RedirectResponse
+    public function form(Request $request, Document $current): View|RedirectResponse
     {
-        $instance = Entities::instance($entity, $entity_id);
 
         $category_id    = $request->integer('category') ?: null;
         $parent_id      = $request->integer('parent');
-        $categories     = $instance->documentCategories;
+        $categories     = DocumentCategory::publicCustom();
 
-        return view('documents.relation.form',
-            compact('instance', 'document', 'categories', 'category_id', 'parent_id')
-        );
+        return view('documents.cabinet.form',compact('current', 'categories', 'category_id', 'parent_id'));
     }
 
-    public function save(Request $request, $entity, $entity_id, Document $document): View|RedirectResponse
+    public function save(Request $request, Document $current): View|RedirectResponse
     {
-        $instance = Entities::instance($entity, $entity_id);
-
-        $form = request()->validate($document->validateRules(),$document->validateMessage());
+        $form = request()->validate($current->validateRules(), $current->validateMessage());
 
         if(request()->file('file'))
             Document::FileSave($form);
 
-        $document->relation()->associate($instance);
+        $current->fill($form)->save();
 
-        $document->fill($form)->save();
+        $current->setOption('link',$request->get('link'));
 
-        $document->setOption('link',$request->get('link'));
+        $current->setContent('before',$request->get('before'));
 
-        $document->setContent('before',$request->get('before'));
+        $current->setContent('after',$request->get('after'));
 
-        $document->setContent('after',$request->get('after'));
+        $close      = $request->has('save-close');
 
-        return $request->has('save-close')
-            ? redirect()->route(
-                Session::has('documents-category.after-save-route')
-                    ? Session::get('documents-category.after-save-route')
-                    : 'documents.relation.list',
-                [$instance->getTable(), $instance, $document]
-            )
-            : redirect()->route('documents.relation.form', [$instance->getTable(), $instance, $document]);
+        $onApproval = Cache::get('documents.onApproval', false);
 
+        return $close
+            ? redirect()->route( $onApproval ? 'documents.cabinet.on-approval' : 'documents.cabinet.list')
+            : redirect()->route( 'documents.cabinet.form', $current);
     }
 
-    public function delete(Document $document): RedirectResponse
+    public function delete(Document $current): RedirectResponse
     {
-        $document->delete();
+        $current->delete();
 
         return redirect()->back();
     }
 
-    public function changeSort(Document $document, $direction): RedirectResponse
+    public function changeSort(Document $current, $direction): RedirectResponse
     {
-        if($document->parent)
-            $list = $document->parent->subs;
+        if($current->parent)
+            $list = $current->parent->subs;
 
-        elseif($document->category)
-            $list = $document->category->documents;
+        elseif($current->category)
+            $list = $current->category->documents;
         else
-            $list = $document->relation->documents;
+            $list = $current->relation->documents;
 
-        flipSort($list, $document, $direction);
+        flipSort($list, $current, $direction);
 
         return redirect()->back();
     }

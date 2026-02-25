@@ -3,9 +3,7 @@
 namespace App\Traits;
 
 use App\Models\Global\Options;
-use App\Models\Services\Content;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
-use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 trait hasOptions
 {
@@ -33,5 +31,23 @@ trait hasOptions
     {
         return $this->option($code)->property;
     }
+
+    public function setOptions(array $props = []): void
+    {
+        foreach ($props as $code => $value)
+            $this->setOption($code, $value);
+    }
+
+    public function getOptions(array $codes = []): MorphMany
+    {
+        return $this->options()->whereIn('code', $codes);
+    }
+
+    public function removeOptions(array $codes = []): void
+    {
+        $this->options()->whereIn('code', $codes)->delete();
+    }
+
+
 
 }

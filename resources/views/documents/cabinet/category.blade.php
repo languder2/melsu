@@ -13,11 +13,10 @@
 @endphp
 
 <div
-    class="grid grid-cols-subgrid col-span-full gap-3 group"
+    class="grid grid-cols-subgrid col-span-full gap-x-3 group"
 >
-
     <div
-        class="grid grid-cols-subgrid col-span-full gap-3"
+        class="grid grid-cols-subgrid col-span-full gap-3 sticky top-16 bg-neutral-100 py-2 z-30 "
     >
         <input
             id="category{{ $current->id }}"

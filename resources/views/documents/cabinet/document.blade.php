@@ -27,7 +27,7 @@
     <div class="bg-white rounded-sm p-3 shadow flex items-center justify-center">
         {{ $current->id }}
     </div>
-    <div class="bg-white rounded-sm p-3 shadow flex gap-3">
+    <div class="bg-white rounded-sm p-3 shadow flex gap-3 items-center">
         @if($current->parent_id) <div class="ps-3">⤷</div> @endif
         <div>
             {{ $current->title }}
@@ -70,12 +70,10 @@
     </div>
 </div>
 
-@if(!$current->parent_id)
-    @foreach($current->subs as $document)
-        @component('documents.cabinet.document',[
-            'current'   => $document,
-            'isFirst'   => $loop->first,
-            'isLast'    => $loop->last,
-        ])@endcomponent
-    @endforeach
-@endif
+@foreach($current->subs as $document)
+    @component('documents.cabinet.document',[
+        'current'   => $document,
+        'isFirst'   => $loop->first,
+        'isLast'    => $loop->last,
+    ])@endcomponent
+@endforeach

@@ -52,34 +52,6 @@ class DocumentCategory extends Model
             'name' => 'Укажите названию категории',
         ];
     }
-    public static function validationRules(): array
-    {
-        return [
-            'name'          => "required",
-            'parent_id'     => '',
-            'sort'          => '',
-            'is_show'       => '',
-            'is_approved'   => '',
-        ];
-    }
-
-    public static function validationMessages(): array
-    {
-        return [
-            'name' => 'Укажите названию категории',
-        ];
-    }
-
-    /**
-     * Scope a query to include only publicly visible document categories.
-     *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
-     * @return void
-     */
-    public function scopePublic(Builder $query): void
-    {
-        $query->where('is_show', true);
-    }
     protected static function boot(): void
     {
         parent::boot();
@@ -90,8 +62,16 @@ class DocumentCategory extends Model
         });
 
         static::saving(function ($item) {
-            if(!$item->exists || (int)$item->sort < 0)
-                $item->sort = $item->relation->documentCategories()->max('sort') + 100;
+            if(!$item->exists || (int)$item->sort < 0){
+
+                if($item->relation)
+                    $item->sort = $item->relation->documentCategories()->max('sort') + 100;
+                else
+                    $item->sort = DocumentCategory::where('parent_id', $item->parent_id)
+                            ->whereNull('relation_id')->max('sort') + 100;
+
+                $item->sort = round($item->sort, -2);
+            }
         });
 
         static::saved(fn($item) => Cache::forever(
@@ -99,6 +79,11 @@ class DocumentCategory extends Model
             view('documents.public.category', ['category' => $item])->render()
         ));
 
+    }
+
+    public function scopePublic(Builder $query): void
+    {
+        $query->where('is_show', true);
     }
 
     public function documents(): HasMany
@@ -151,7 +136,5 @@ class DocumentCategory extends Model
             ->orderBy('name')
             ->get();
     }
-
-
 
 }

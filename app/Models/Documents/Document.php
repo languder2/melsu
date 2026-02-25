@@ -97,8 +97,16 @@ class Document extends Model
         });
 
         static::saving(function ($item) {
-            if(is_null($item->sort)){
 
+            if($item->isDirty('parent_id') && $item->parent_id)
+                $item->category_id = $item->parent->category_id;
+
+            if($item->isDirty('category_id') && $item->subs->isNotEmpty()){
+                $item->sort = round($item->category->documents()->max('sort') + 100, -2);
+                $item->subs()->update(['category_id' => $item->category_id]);
+            }
+
+            if(is_null($item->sort)){
                 if($item->parent)
                     $list = $item->parent->subs();
 

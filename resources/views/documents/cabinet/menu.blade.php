@@ -2,7 +2,7 @@
     'hideAddButton' => true
 ])
 
-<div class="mb-3 p-3 bg-white flex flex-col lg:flex-row gap-3 justify-between shadow">
+<div class="mb-3 p-3 bg-white flex flex-col lg:flex-row gap-3 justify-between shadow sticky top-0 z-50">
 
     <x-html.submit-link
         link="{{ route('documents.cabinet.list') }}"

@@ -2,33 +2,30 @@
 
 @section(
     'title',
-    __('common.Cabinet') ." → ". $instance->name ." → ". __('common.Documents')
-    ." → ". ($category->exists ? $category->name : __('common.Add documents category'))
+    __('common.Cabinet') ." → ". __('common.Documents')
+    ." → ". ($current->exists ? $current->name : __('common.Add documents category'))
 
 )
 
 @section('content-header')
-    @if($instance instanceof \App\Models\Division\Division)
-        @component('divisions.cabinet.item', ['division' => $instance, 'has_menu' => true])@endcomponent
-    @elseif($instance instanceof \App\Models\Page\Page)
-        @component('pages.cabinet.item', ['item' => $instance, 'has_menu' => true])@endcomponent
-    @endif
-
-    @include('documents.relation.menu')
+    @include('documents.cabinet.menu')
 @endsection
 
 @section('content')
 
-    <form action="{{ route('documents-category.relation.save', [$instance->getTable(), $instance->id, $category]) }}" method="POST" class="flex flex-col gap-3" enctype="multipart/form-data">
+    <form action="{{ route('documents.cabinet.category.save', compact('current')) }}"
+          method="POST"
+          class="flex flex-col gap-3"
+          enctype="multipart/form-data"
+    >
         @csrf
         @method('PUT')
 
         <x-form.errors/>
+
         <div class="flex gap3 bg-white p-3 justify-between sticky top-0 z-50 shadow">
             <div class="flex items-center">
-                {{ $instance->name }}
-                →
-                {!! $category->exists ? $category->name : __('common.Add documents category') !!}
+                {!! $current->exists ? $current->name : __('common.Add documents category') !!}
             </div>
 
             <div class="flex items-center gap-3">
@@ -70,7 +67,7 @@
                 <x-form.input
                     name="name"
                     label="Название"
-                    value="{!! old('name', $category->name) !!}"
+                    value="{!! old('name', $current->name) !!}"
                     block="flex-1"
                 />
 
@@ -80,7 +77,7 @@
                     :default="0"
                     :value="1"
                     label="Опубликовать"
-                    :checked=" old('is_show', $category->exists ? $category->is_show : true)"
+                    :checked=" old('is_show', $current->exists ? $current->is_show : true)"
                     block="pe-2"
                 />
 
@@ -91,7 +88,7 @@
                         :default="0"
                         :value="1"
                         label="Утвердить"
-                        :checked=" old('is_approved', $category->exists ? $category->is_approved : true)"
+                        :checked=" old('is_approved', $current->exists ? $current->is_approved : true)"
                         block="pe-2"
                     />
                 @else
@@ -107,7 +104,7 @@
                 :default="0"
                 :value="1"
                 label="По умолчанию категория развернута"
-                :checked=" old('show_documents', $category->option('show_documents')->exists ? $category->option('show_documents')->property : true)"
+                :checked=" old('show_documents', $current->option('show_documents')->exists ? $current->option('show_documents')->property : true)"
                 block="pe-2"
                 class="py-2"
             />
@@ -121,7 +118,7 @@
                     :default="0"
                     :value="1"
                     label="Состоит в группе аккордеона"
-                    :checked=" old('in_accordion', $category->option('in_accordion')->exists ?: false) "
+                    :checked=" old('in_accordion', $current->option('in_accordion')->exists ?: false) "
                     block="pe-2"
                     class="py-2"
                 />
@@ -131,9 +128,9 @@
                 id="accordionPrefix"
                 name="accordion_prefix"
                 label="Префикс группы аккордеона"
-                value="{!! old('accordion_prefix', $category->option('accordion_prefix')->property) !!}"
+                value="{!! old('accordion_prefix', $current->option('accordion_prefix')->property) !!}"
                 block="flex-1"
-                :disabled=" !$category->option('in_accordion')->exists ?: false "
+                :disabled=" !$current->option('in_accordion')->exists ?: false "
                 required
             />
         </div>
@@ -144,7 +141,7 @@
         <x-editorjs.editor
             set="short"
             name="short"
-            :initialContent=" $category->content('short')->content "
+            :initialContent=" $current->content('short')->content "
         />
 
     </form>
