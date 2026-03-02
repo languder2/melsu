@@ -22,9 +22,6 @@ class ControlController extends Controller
     }
     public function staffs():View
     {
-
-
-
         $list = Affiliation::where('show',true)->whereNotNull('staff_id')->orderBy('full_name')->get()
             ->mapWithKeys(fn ($item) => [
                 $item->id => (object)[

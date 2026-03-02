@@ -1,3 +1,8 @@
+@props([
+    'division'      => new \App\Models\Division\Division(),
+    'menu'          => null,
+])
+
 @extends("layouts.page")
 
 @section('title', 'ФГБОУ ВО "МелГУ"')
@@ -8,13 +13,13 @@
 
 
 @section('aside')
-    {!!view('public.menu.aside-tree',['menu' => $menu ?? null ])!!}
+    @component('public.menu.aside-tree', compact('menu'))@endcomponent
 @endsection
 
 
 @section('content')
 
-    @include('divisions.public.rectorate.staff',['staff'=>$division->chief->card])
+    @include('divisions.public.rectorate.staff', ['staff'=> $division->leader])
 
     @foreach($division->staffs as $staff)
         @include('divisions.public.rectorate.staff',['staff'=>$staff->card,'post'=>$staff->post])

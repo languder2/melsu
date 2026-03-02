@@ -1,14 +1,22 @@
+@props([
+    'staff' => new \App\Models\Staff\Staff()
+])
+
+@php
+    $avatar = $staff->image('avatar')
+@endphp
+
 <div class="bg-white p-6 sm:min-h-[257px] flex flex-col justify-between">
     <div class="grid grid-cols-1 lg:grid-cols-[auto_1fr] gap-5 min-h-[209px]">
         <div class="mx-auto">
-            <img src="{{$staff->avatar->thumbnail}}" alt="{{$staff->avatar->name}}" class="max-h-60">
+            <img src="{{$avatar->thumbnail}}" alt="{{$avatar->name}}" class="max-h-60">
         </div>
         <div class="flex flex-col justify-evenly">
             <div class="mb-7 lg:mb-0 sm:flex-row">
                 <div class="mb-2">
                     <div class="text-red-700 text-md font-bold">Должность:</div>
                     <div>
-                        @foreach($staff->AffiliationPosts() as $post)
+                        @foreach($staff->posts->pluck('post') as $post)
                             <span class="lg:text-nowrap">
                                 {{ $post }}@if(!$loop->last && $loop->count>1),@endif
                             </span>

@@ -6,13 +6,10 @@ use App\Enums\DivisionType;
 use App\Enums\EducationLevel;
 use App\Models\Education\Speciality;
 use App\Models\Gallery\Image;
-use App\Models\Global\Options;
 use App\Models\Menu\Menu;
 use App\Models\Page\Content as PageContent;
 use App\Models\Partners\Partner;
 use App\Models\Services\Log;
-use App\Models\Staff\Affiliation;
-use App\Models\Staff\Staff;
 use App\Models\Upbringing\Upbringing;
 use App\Traits\Documents\hasDocuments;
 use App\Traits\hasCareers;
@@ -29,11 +26,11 @@ use App\Traits\hasNews;
 use App\Traits\hasOptions;
 use App\Traits\hasPartners;
 use App\Traits\hasScience;
+use App\Traits\hasStaffs;
 use App\Traits\hasSubordination;
 use App\Traits\hasUsers;
 use App\Traits\resolveRouteBinding;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
@@ -55,7 +52,8 @@ class Division extends Model
         hasDocuments,
         hasImage,
         hasContacts,
-        hasDivisionMenu, hasOptions
+        hasDivisionMenu, hasOptions,
+        hasStaffs
     ;
 
     protected array $links = [
@@ -218,55 +216,6 @@ class Division extends Model
                 if($department->labs->isNotEmpty())
                     $result= $result->merge($department->labs);
         return $result;
-    }
-
-
-    public function coordinator(): BelongsTo
-    {
-        return $this->belongsTo(Staff::class, 'Coordinator_id','id');
-    }
-
-    public function getChief(): MorphOne
-    {
-        return $this->MorphOne(Affiliation::class, 'relation')->where('type','chief');
-    }
-
-    public function getChiefAttribute(): Affiliation
-    {
-        $staff = (new Affiliation())->fill(['type'=>'chief'])->relation()->associate($this);
-
-        return $this->getChief ?? $staff;
-    }
-
-    public function staffs($all= false): MorphMany
-    {
-
-        $response = $this->morphMany(Affiliation::class, 'relation')->orderBy('order');
-
-        if(!$all)
-            $response->where('type','staff');
-
-        $response->where('show',1);
-
-
-        return $response;
-    }
-    public function staffsAll(): MorphMany
-    {
-        return $this->morphMany(Affiliation::class, 'relation')
-            ->orderBy('order')
-            ->where('show',1)
-            ;
-    }
-
-    public function allStaff(): MorphMany
-    {
-        return $this->morphMany(Affiliation::class, 'relation')
-            ->where('type','staff')
-            ->orderBy('order')
-            ->orderBy('full_name')
-
-            ;
     }
 
     public function getTeachingStaffAttribute(): Collection

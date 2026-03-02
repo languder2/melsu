@@ -27,4 +27,10 @@ class Post extends Model
         'post_weight',
     ];
 
+    public function staff(): BelongsTo
+    {
+        return $this->belongsTo(Staff::class);
+    }
+
+
 }

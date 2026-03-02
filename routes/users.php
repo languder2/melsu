@@ -4,6 +4,8 @@ use App\Http\Middleware\AuthCabinet;
 use App\Http\Middleware\IsEditor;
 use App\Http\Controllers\Users\UsersController;
 use App\Http\Controllers\Users\UserAccessController;
+use App\Http\Middleware\InstanceAccess;
+use App\Http\Controllers\Staffs\CabinetController;
 
 Route::prefix('cabinet/users')->middleware([AuthCabinet::class, IsEditor::class])->group(function (){
     Route::get('/',                                         [UsersController::class, 'list'])
@@ -41,3 +43,11 @@ Route::prefix('cabinet/users/{entity}/{entity_id}/')
                                                                 ->name('user-access.cabinet.save');
 
     });
+
+Route::prefix('cabinet/staffs/{division?}/')
+    ->middleware([AuthCabinet::class, InstanceAccess::class])
+    ->group(function () {
+        Route::get('/',                                     [CabinetController::class, 'list'])
+                                                                ->name('division.staff.cabinet.list');
+
+});

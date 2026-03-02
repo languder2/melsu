@@ -27,6 +27,7 @@ return new class extends Migration
             $table->boolean('is_head_of_division')->default(false);
             $table->boolean('is_teacher')->default(false);
             $table->boolean('is_show')->default(false);
+            $table->boolean('is_approved')->default(false);
             $table->unsignedInteger('sort')->default(0);
             $table->unsignedInteger('post_weight')->default(0);
 

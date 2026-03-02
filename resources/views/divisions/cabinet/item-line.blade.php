@@ -109,4 +109,12 @@
         :options="$options"
         option="has_gallery_in_moderation"
     />
+
+    <x-cabinet.elements.division-section-a
+        :link=" route('division.staff.cabinet.list', compact('division')) "
+        lucide="users"
+        :title=" __('common.users') "
+        :options="$options"
+        option="has_users_in_moderation"
+    />
 </div>

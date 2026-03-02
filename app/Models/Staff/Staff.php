@@ -6,6 +6,10 @@ use App\Models\Division\Division;
 use App\Models\Employees\Employee;
 use App\Models\Gallery\Image;
 use App\Models\Global\Options;
+use App\Models\Services\Log;
+use App\Traits\hasImage;
+use App\Traits\hasOptions;
+use App\Traits\hasPosts;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -18,7 +22,7 @@ use PhpOption\Option;
 
 class Staff extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, hasPosts, hasOptions, hasImage;
 
     protected $table = 'staffs';
 
@@ -47,7 +51,7 @@ class Staff extends Model
         'alias',
     ];
 
-    public static function FormRules($id): array
+    public static function validateRules($id): array
     {
         return [
             'lastname' => 'required',
@@ -71,7 +75,7 @@ class Staff extends Model
         ];
     }
 
-    public static function FormMessage(): array
+    public static function validateMessage(): array
     {
         return [
             'post' => 'Укажите должность',
@@ -79,6 +83,21 @@ class Staff extends Model
             'firstname' => 'Укажите имя',
         ];
     }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($staff) {
+            $staff->posts()->delete();
+            $staff->images()->delete();
+        });
+
+        static::saved(function ($staff) {
+            Log::add($staff);
+        });
+    }
+
     public function employee(): BelongsTo
     {
         return $this->belongsTo(Employee::class, 'id','staff_id');
@@ -89,28 +108,9 @@ class Staff extends Model
         return url("staffs/" . ($this->alias ?? $this->id));
     }
 
-    public function getWorksAttribute($value): array
-    {
-
-        return $value?json_decode($value):[];
-    }
-
     public function getFullNameAttribute(): string
     {
         return trim("{$this->lastname} {$this->firstname} {$this->middle_name}");
-    }
-
-    public function avatar(): MorphOne
-    {
-        $image = $this->MorphOne(Image::class, 'relation')->where('type', 'avatar');
-
-        if(!$image->count())
-            $image->create([
-                'type'      => 'avatar',
-                'name'      => 'avatar',
-            ])->save();
-
-        return $image;
     }
 
     public function jobs(): HasMany
@@ -131,47 +131,6 @@ class Staff extends Model
         return $this->hasMany(Division::class,'coordinator_id', 'id')
             ->orderBy('sort')
             ->orderBy('name');
-    }
-
-
-    public static function getOrCreate($id,$full_name):?Staff
-    {
-        $staff = Staff::find($id);
-
-        if(!$staff && !$full_name) return null;
-
-        $fullName = explode(' ',$full_name);
-
-        $staff = Staff::firstOrCreate(
-            [
-                'lastname'          => $fullName[0] ?? null,
-                'firstname'         => $fullName[1] ?? null,
-                'middle_name'       => $fullName[2] ?? null,
-            ],
-        );
-
-        return $staff;
-    }
-
-    public function Affiliations(): HasMany
-    {
-        return $this->hasMany(Affiliation::class,'staff_id', 'id');
-    }
-
-    public function AffiliationPosts(): Collection
-    {
-        return $this->Affiliations->sortByDesc('post_weight')->where('show', true)
-            ->mapWithKeys( fn($item) => [$item->id => $item->post_alt ?? $item->post] )
-            ->unique();
-    }
-
-    public function options():MorphMany
-    {
-        return $this->morphMany(Options::class,'relation');
-    }
-    public function option(string $code):Options
-    {
-        return $this->options->where('code',$code)->first() ?? $this->options()->create(['code' => 'is_teacher']);
     }
 
     public function getFormAttribute(): string

@@ -40,6 +40,29 @@ class FixController extends Controller
     public function employeesSetUUID():JsonResponse
     {
 
+        $heads = [
+            'Декан факультета',
+            'Директор',
+            'Директор департамента',
+            'Директор филиала',
+            'Заведующий',
+            'Заведующий лабораторией',
+            'Заведующий общежитием',
+            'Заведующий отделом',
+            'Заведующий учебно-производственным комплексом',
+            'Заведующий учебным корпусом',
+            'Заведующий хозяйством',
+            'Начальник',
+            'Начальник комплекса апробации',
+            'Начальник управления',
+            'Ректор',
+            'Руководитель',
+            'Руководитель вокально-инструментального ансамбля',
+            'Руководитель вокального коллектива',
+            'Руководитель хореографического коллектива',
+        ];
+
+
         $json = Storage::disk('private')->json('json/employee.json');
 
         if(is_null($json) || !array_key_exists('employee', $json))
@@ -52,48 +75,46 @@ class FixController extends Controller
 
         $grouped = $employees->groupBy('uid_person');
 
-//        $grouped->each(function ($group) {
-//            $item = $group->first();
-//
-//            $fio = [
-//                'lastname'      => $item['surname'],
-//                'firstname'     => $item['name'],
-//                'middle_name'   => $item['patronymic'],
-//
-//            ];
-//
-//            Staff::updateOrCreate($fio,['uuid' => $item['uid_person']]);
-//        });
+        $grouped->each(function ($group) {
+            $item = $group->first();
 
+            $fio = [
+                'lastname'      => trim($item['surname']),
+                'firstname'     => trim($item['name']),
+                'middle_name'   => trim($item['patronymic']),
 
-        $grouped->each(function ($group, $uuid) {
+            ];
+
+            Staff::updateOrCreate($fio,['uuid' => $item['uid_person']]);
+        });
+
+        $grouped->each(function ($group, $uuid) use ($heads) {
 
             $staff = Staff::where('uuid', $uuid)->first();
 
             if(is_null($staff)) return;
 
-            if($uuid === 'b9db47f0-a154-11ed-91bf-0cc47a919af8')
-                dd($group);
-
             foreach ($group as $post) {
 
                 $division = Division::where('uuid', $post['uid_department'])->first();
 
-                if(Post::where('uuid',$post['uid_employee'])->count() || is_null($division))
-                    continue;
+                if(is_null($division)) continue;
+
+                if(Post::where('uuid', $post['uid_employee'])->count()) continue;
+
+                $position = trim($post['position']);
 
                 Post::createOrRestore([
                     'uuid'                  => $post['uid_employee'],
                     'staff_id'              => $staff->id,
                     'division_id'           => $division->id,
-                    'post'                  => $post['position'],
-                    'is_head_of_division'   => $post['head_of_division'],
+                    'post'                  => $position,
+//                    'is_head_of_division'   => $post['head_of_division'] || in_array($position, $heads),
+                    'is_head_of_division'   => in_array($position, $heads),
                     'is_show'               => true
                 ]);
             }
         });
-
-        dd($grouped);
 
         return response()->json(['success']);
     }

@@ -20,12 +20,13 @@
     @endif
 </div>
 <div class="break-words sm:break-normal text-sm sm:text-base">
-    @if($division->chief)
+    @dump($division->leader->id)
+    @if($division->leader->exists)
         <a
-            href="{!! $division->chief->card->link!!}"
+            href="{!! $division->leader->link!!}"
             class="hover:underline hover:text-base-red"
         >
-            {!! $division->chief->card->full_name!!}
+            {!! $division->leader->full_name!!}
         </a>
     @else
         -
@@ -37,3 +38,5 @@
         @component("divisions.public.list.division",['division' => $sub,'depth' => $depth+1])@endcomponent
     @endforeach
 @endif
+
+
