@@ -22,7 +22,7 @@
     @include('divisions.public.rectorate.staff', ['staff'=> $division->leader])
 
     @foreach($division->staffs as $staff)
-        @include('divisions.public.rectorate.staff',['staff'=>$staff->card,'post'=>$staff->post])
+        @include('divisions.public.rectorate.staff',['staff'=>$staff,'post'=>$staff->post])
     @endforeach
 
 @endsection

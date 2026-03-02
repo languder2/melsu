@@ -11,12 +11,12 @@ class CabinetController extends Controller
     public function list(Division $division): View
     {
 
+        dd($division->leader);
 
-        dd($division->staffs->first()->post);
 
-        $list = $division->staffs;
+        $list = collect([$division->leader])->merge($division->staffs);
 
-        dd($list->first()->staff);
+        dd($list);
 
         return view('staffs.cabinet.list', []);
     }

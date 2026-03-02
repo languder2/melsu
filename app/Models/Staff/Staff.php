@@ -137,5 +137,6 @@ class Staff extends Model
     {
         return route('admin:staff:edit', $this);
     }
-
 }
+
+

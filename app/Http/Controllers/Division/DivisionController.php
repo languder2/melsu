@@ -140,11 +140,7 @@ class DivisionController extends Controller
     /* Public */
     public function publicList():View
     {
-
-
         $coordinatorIDs = Division::whereNotNull('coordinator_id')->get('coordinator_id')->unique('coordinator_id')->pluck('coordinator_id');
-
-        dd($coordinatorIDs);
 
         $division   = Division::where('code', 'rectorate')->first();
         $menu       = Menu::where('code','university')->first();

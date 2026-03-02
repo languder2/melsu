@@ -238,8 +238,7 @@ Route::get('division/{division?}',                      [DivisionController::cla
                                                             ->name('public:division:show');
 
 Route::get('rectorate',                                 [DivisionController::class,'show'])
-                                                            ->setDefaults(['division'=>'rectorate']);
-
+                                                            ->defaults('division','rectorate');
 /* Compilation */
 
 Route::get('science-labs',                              [DivisionCompilationController::class, 'scienceLabs'])

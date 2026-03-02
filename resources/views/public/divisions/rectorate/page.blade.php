@@ -14,10 +14,10 @@
 
 @section('content')
 
-    @include('public.divisions.rectorate.staff',['staff'=>$division->chief->card])
+{{--    @include('public.divisions.rectorate.staff',['staff'=>$division->chief->card])--}}
 
-    @foreach($division->staffs as $staff)
-        @include('public.divisions.rectorate.staff',['staff'=>$staff->card,'post'=>$staff->post])
-    @endforeach
+{{--    @foreach($division->staffs as $staff)--}}
+{{--        @include('public.divisions.rectorate.staff',['staff'=>$staff->card,'post'=>$staff->post])--}}
+{{--    @endforeach--}}
 
 @endsection

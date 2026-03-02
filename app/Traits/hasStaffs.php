@@ -21,28 +21,26 @@ trait hasStaffs
         return $this->hasMany(Post::class, 'division_id')->with('staff')->orderBy('sort');
     }
 
-    public function staffs(): BelongsToMany
+    public function allStaff(): BelongsToMany
     {
         return $this->belongsToMany(Staff::class, 'staff_posts', 'division_id', 'staff_id')
-            ->withPivot('post', 'full_post', 'sort')
+            ->withPivot('post', 'full_post', 'sort', 'is_head_of_division', 'is_show', 'is_approved')
+            ->orderByPivot('is_head_of_division', 'desc')
             ->orderByPivot('sort');
     }
-
-    public function leader(bool $forPublic = true): ?Staff
+    public function staffs(): BelongsToMany
     {
-        $builder = $this->belongsToMany(Staff::class, 'staff_posts', 'division_id', 'staff_id')
-            ->wherePivot('is_head_of_division', 1)
-            ->withPivot('post', 'full_post', 'sort', 'is_head_of_division','is_show', 'is_approved');
+        return $this->allStaff()->wherePivot('is_head_of_division', false);
+    }
 
-        if($forPublic)
-            $builder->wherePivot('is_show', true)->wherePivot('is_approved', true);
-
-        return $builder->get()->first() ?? new Staff(['is_head_of_division' => 1, 'division_id' => $this->id]);
+    public function leaders(): BelongsToMany
+    {
+        return $this->allStaff()->wherePivot('is_head_of_division', true);
     }
 
     public function getLeaderAttribute(): Staff
     {
-        return $this->leader();
+        return $this->leaders()->where(['is_show' => true, 'is_approved' => true])->first() ?? new Staff();
     }
 
     public function publicStaffs(): HasMany
