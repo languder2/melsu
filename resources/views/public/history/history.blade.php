@@ -3,167 +3,123 @@
 @section('title', 'ФГБОУ ВО "Мелитопольский государственный университет"')
 
 @section('content')
-
-    <section class="h--timeline js-h--timeline relative">
-        <div class="md:hidden absolute z-10 right-5 top-5">
-            <button class="dropdown-btn text-[#820000] hover:text-[#C10F1A] cursor-pointer transition duration-300 ease-linear">
-                <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor" class="bi bi-calendar3" viewBox="0 0 16 16">
-                    <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2M1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857z"/>
-                    <path d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2"/>
-                </svg>
-            </button>
-            <div class="absolute w-full h-full">
-                <div class="dropdown-date gap-3 bg-white min-w-[130px] max-w-[130px]  z-50 relative p-5 h-max max-h-[200px] overflow-scroll hidden border border-[#C10F1A] left-[-102px] rounded"
-                style="column-count: 2; gap: 12px;">
-                    @foreach ($histories as $history)
-                        <a data-date="01/01/{{$history->year}}" class="h--timeline-date cursor-pointer @if($loop->first) h--timeline-date--selected @endif">
-                            {{$history->year}}
+    <div class="grid sm:grid-cols-[90px_auto] lg:grid-cols-[110px_auto]">
+        <div class="bg-[#909194] sm:p-4 relative">
+            <div class="sticky top-30 lg:top-50 flex flex-col gap-5">
+                <div class="hidden sm:flex flex-col">
+                    @foreach ($groupedHistories as $groupName => $group)
+                        @php
+                            $lastItem = $group->sortByDesc('year')->first();
+                        @endphp
+                        <a href="javascript:scrollToBlock('block-{{ $lastItem->id }}')"
+                        class="group-link text-gray-200 lg:text-xl relative transition duration-300 ease-linear font-bold block mb-2 px-3 py-2 rounded-lg hover:text-white"
+                        data-group="{{ $groupName }}">
+                            {{$groupName}}
                         </a>
                     @endforeach
                 </div>
-            </div>
-        </div>
-        <div class="flex w-full absolute top-[60%]">
-            <div id="prevtBtn" class="md:hidden absolute right-[20px] transform rotate-[90deg] z-10 bg-[#C10F1A]/[.6] rounded-full cursor-pointer p-2 transition duration-300 ease-linear hover:bg-[#C10F1A]">
-            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" class="bi bi-chevron-compact-up fill-white transition duration-300 ease-linear" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M7.776 5.553a.5.5 0 0 1 .448 0l6 3a.5.5 0 1 1-.448.894L8 6.56 2.224 9.447a.5.5 0 1 1-.448-.894l6-3z"/>
-            </svg>
-        </div>
-        <div id="nextBtn" class="md:hidden absolute right-[20px] top-[86px] transform rotate-[270deg] z-10 bg-[#C10F1A]/[.6] rounded-full cursor-pointer p-2 transition duration-300 ease-linear hover:bg-[#C10F1A]">
-            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" class="bi bi-chevron-compact-down fill-white transition duration-300 ease-linear" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67z"/>
-            </svg>
-        </div>
-        </div>
-    <div class="h--timeline-container">
-            <div class="h--timeline-dates">
-                <div class="h--timeline-line">
-                    <ol>
-                        @foreach ($histories as $history)
-                            <li>
-                                <a data-date="01/01/{{$history->year}}" class="h--timeline-date cursor-pointer @if($loop->first) h--timeline-date--selected @endif">
-                                    {{$history->year}}
-                                </a>
-                            </li>
-                        @endforeach
-                    </ol>
-
-                    <span class="h--timeline-filling-line" aria-hidden="true"></span>
+                <div class="flex justify-center">
+                    <button id="open-popover-btn" popovertarget="all-years" class="cursor-pointer fixed top-25 left-2 sm:relative sm:top-0 sm:left-0 p-2 text-white bg-gray-400 transition duration-300 ease-linear sm:hover:bg-transparent">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-list-columns-reverse" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M0 .5A.5.5 0 0 1 .5 0h2a.5.5 0 0 1 0 1h-2A.5.5 0 0 1 0 .5m4 0a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1h-10A.5.5 0 0 1 4 .5m-4 2A.5.5 0 0 1 .5 2h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5m4 0a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m-4 2A.5.5 0 0 1 .5 4h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5m4 0a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5m-4 2A.5.5 0 0 1 .5 6h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5m4 0a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 0 1h-8a.5.5 0 0 1-.5-.5m-4 2A.5.5 0 0 1 .5 8h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5m4 0a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 0 1h-8a.5.5 0 0 1-.5-.5m-4 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5m4 0a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1h-10a.5.5 0 0 1-.5-.5m-4 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5m4 0a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5m-4 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5m4 0a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5"/>
+                        </svg>
+                    </button>
                 </div>
             </div>
-            <div class="absolute right-2.5 bottom-0">
-                <button class="dropdown-btn relative top-[3px] rounded-full text-[#820000] hover:text-[#C10F1A] cursor-pointer transition duration-300 ease-linear">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor" class="bi bi-calendar3" viewBox="0 0 16 16">
-                        <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2M1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857z"/>
-                        <path d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2"/>
+            <div class="absolute right-[-50vw] sm:right-[-85vw] md:right-[-75vw] lg:right-[-80vw] 2xl:right-[-85vw] h-[90%]">
+                <div class="sticky top-[55%] hidden sm:flex flex-col gap-5">
+                    <button onclick="scrollToPrevious()" class="right-20 top-1/2 transform -translate-y-1/2 text-white cursor-pointer bg-[#820000] hover:bg-[#C10F1A] rounded-full p-3 transition-all duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="currentColor" class="bi bi-chevron-up" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708z"/>
                     </svg>
-                </button>
-                <div class="absolute w-full h-full">
-                    <div class="dropdown-date bg-white min-w-[170px] max-w-[170px] z-50 relative p-5 h-max max-h-[200px] overflow-scroll hidden"
-                        style="column-count: 2; column-gap: 12px;">
-                        @foreach ($histories->sortBy('year') as $history)
-                            <a data-date="01/01/{{$history->year}}"
-                            class="h--timeline-date cursor-pointer text-center block mb-2 @if($loop->first) h--timeline-date--selected @endif">
-                                {{$history->year}}
-                            </a>
-                        @endforeach
-                    </div>
+                    </button>
+                    
+                    <button onclick="scrollToNext()" class="right-4 top-1/2 transform -translate-y-1/2 text-white cursor-pointer bg-[#820000] hover:bg-[#C10F1A] rounded-full p-3 transition-all duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
+                        </svg>
+                    </button>
                 </div>
             </div>
-            <nav class="h--timeline-navigation-container">
-                <ul>
-                    <li><a href="#0" class="text-replace h--timeline-navigation h--timeline-navigation--prev flex items-center">
-                            <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M13 7L7 1L1 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </a>
-                    </li>
-                    <li><a href="#0" class="text-replace h--timeline-navigation h--timeline-navigation--next flex items-center">
-                            <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M1 1L7 7L13 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-        <div class="h--timeline-events">
-            <ol>
-                @foreach ($histories as $history)
-                    <li class="h--timeline-event text-component bg-white history-slide overflow-hidden @if($loop->first) h--timeline-event--selected @endif">
-                        <div class="h--timeline-event-content">
-                            <div class="height-date z-5">
-                                <div class="relative">
-                                    <span class="date-overlay">{{ $history->year }}</span>
-                                    <span class="under-date" style="background-image: url('{{ Storage::url($history->image) }}');">
-                                        {{ $history->year }}
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="h--timeline-event-description z-5">
-                                <div class="font-semibold text-md md:text-lg xl:text-xl line-clamp-6 lg:line-clamp-none flex flex-col gap-3">
-                                    {!! $history->description !!}
-                                </div>
-                                @if($history->content)
-                                <div class="btn-more-box flex items-center">
-                                    <button class="btn-more flex items-center cursor-pointer" style="font-size: 16px;" popovertarget="modal-{{$history->id}}">
-                                        Подробнее
-                                        <i class="bi bi-arrow-right-circle-fill"></i>
-                                    </button>
-                                </div>
-                                @endif
-                            </div>
-                        </div>
-                        <div class="w-full full-img-history">
-                            <img src="../../../storage/images/history/history-img.jpg" class="object-cover h-full w-full" loading="lazy" alt="">
-                        </div>
-                    </li>
-                @endforeach
-            </ol>
         </div>
 
-</section>
-    @foreach ($histories as $history)
-        @if($history->content)
-            <div popover="manual" id="modal-{{$history->id}}"
-                class="modal-image transition-discrete starting:open:opacity-0 fixed bg-gray-700 p-8 open:backdrop-brightness-50 w-[95%] sm:w-[97%] md:w-[98%] max-w-[90%] max-h-[80%] lg:w-fit min-w-[40%] h-fit shadow-md shadow-gray-800 z-40 mx-auto">
-                <div class="wrapp-modal-video relative text-white">
-                    <span class="close-modal absolute border border-[#820000] right-[-20px] top-[-20px] bg-[#820000] rounded-full text-white py-[2px] px-[8px] cursor-pointer transition duration-300 ease-linear hover:bg-white hover:text-[#820000] z-20">X</span>
-                    <div class="flex flex-col gap-6">
-                        {!! $history->content !!}
+        <div>
+            @foreach ($histories as $item)
+                <div id="block-{{$item->id}}" class="parallax-bg" style="background-image: url('{{ Storage::url($item->image) }}');">
+                    <div class="flex flex-col gap-3 relative">
+                        <div class="height-date z-5 relative">
+                            <div class="relative left-[-10%]">
+                                <span class="date-overlay">{{ $item->year }}</span>
+                                <span class="under-date" style="background-image: url('{{ Storage::url($item->image) }}');">
+                                    {{ $item->year }}
+                                </span>
+                            </div>
+                        </div>
+                        <h1 class="text-white text-3xl font-bold drop-shadow-lg" style="text-shadow: 3px 2px 8px rgba(0, 0, 0, 1);">{!! $item->description !!}</h1>
+                        <a href="{{ route('public.history.show', $item->id) }}" class="text-white flex border border-[#C10F1A] bg-[#C10F1A] w-fit p-2 hover:opacity-80 transition duration-300 ease-linear z-10">Подробнее</a>
                     </div>
                 </div>
-            </div>
-        @endif
-    @endforeach
-<script src="{{asset('js/history-slider.js')}}"></script>
-<script>
-    document.querySelector('.my-6').classList.add('hidden');
-    const modalContent = document.querySelectorAll('.modal-image');
-    const closeBtn = document.querySelectorAll('.close-modal');
+            @endforeach
+        </div>
+    </div>
+    <div popover id="all-years"
+        class="modal-image transition-discrete starting:open:opacity-0 fixed open:backdrop-brightness-50 overflow-y-scroll overflow-x-hidden w-[80%] mx-auto max-h-[80%] border-2 border-white shadow-md shadow-white">
+        <div class="flex flex-col gap-5 p-5">
+            @foreach ($histories as $item)
+                <a href="javascript:void(0)" 
+                onclick="scrollToYearAndClose({{ $item->id }})"
+                class="grid grid-cols-[10%_auto] md:grid-cols-[5%_auto] gap-5 items-center hover:bg-gray-100 p-2 rounded transition-colors">
+                    <div class="font-semibold">
+                        {{$item->year}}
+                    </div>
+                    <div>
+                        {!! $item->description !!}
+                    </div>
+                </a>
+            @endforeach
+        </div>
+    </div>
+    <style>
+        .parallax-bg {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: calc(100vh - 150px);
+            display: flex;
+            align-items: center;
+            padding: 0 10%;
+            min-width: 80%;
+        }
 
-    closeBtn.forEach((item,index) => {
-        item.addEventListener('click', () =>  {
-            modalContent[index].hidePopover();
-        });
-    })
+        .group-link.active {
+            color: white !important;
+        }
 
-    document.addEventListener('click', (event) => {
-
-        modalContent.forEach((item, index) =>{
-            if (item.matches(':popover-open')) {
-                const clickInsideModal = event.composedPath().includes(item);
-                if (!clickInsideModal) {
-                    item.hidePopover();
-                }
+        .group-link::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 0;
+            background: #C10F1A;
+            border-radius: 2px;
+            transition: height 0.3s ease;
+        }
+        .group-link.active::before {
+            height: 80%;
+        }
+        body:has(#all-years[popover]:open) {
+            overflow: hidden;
+        }
+        @media screen and (max-width: 1023px){
+            .parallax-bg{
+                height: calc(100vh - 90px);
             }
-        })
+        }
+    </style>
 
-    });
-</script>
-<style>
-    .flex.gap-4.mb-6{
-        background-color: white !important;
-    }
-</style>
+    <script src="{{asset('js/new-history.js')}}"></script>
 @endsection

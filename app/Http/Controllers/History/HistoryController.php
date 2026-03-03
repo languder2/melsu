@@ -19,17 +19,23 @@ class HistoryController extends Controller
     }
     public function indexPage()
     {
-        $histories = History::orderBy('year', 'asc')->orderBy('order', 'asc')->get()->groupBy('year')
-        ->map(function ($items) {
-            $first = $items->first();
-//            $first->description  = $items->pluck('description')->map(fn($item)=> "<div>$item</div>")->implode('');
-//            $first->content      = $items->pluck('content')->map(fn($item)=> "<div>$item</div>")->implode('');
-            return $first;
-        })
-        ->take(100)
-        ;
+        $histories = History::orderBy('year', 'desc')->orderBy('order', 'asc')->get();
+        
+        $groupedHistories = $histories->groupBy(function ($item) {
+            $year = $item->year;
+            $currentYear = date('Y');
+            if ($year >= 2001) return $currentYear;
+            if ($year >= 1951) return '2000';
+            if ($year >= 1901) return '1950';
+            if ($year >= 1851) return '1900';
+            if ($year >= 1801) return '1850';
+            if ($year >= 1751) return '1800';
+            if ($year >= 1701) return '1750';
+            
+            return 'До 1750';
+        });
 
-        return view('public.history.history', compact('histories'));
+        return view('public.history.history', compact('groupedHistories', 'histories'));
     }
     /**
      * Show the form for creating a new resource.
@@ -65,9 +71,14 @@ class HistoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(History $history)
+    public function show($id)
     {
-
+        $history = History::findOrFail($id);
+        
+        $previous = History::where('id', '<', $id)->orderBy('id', 'desc')->first();
+        $next = History::where('id', '>', $id)->orderBy('id', 'asc')->first();
+        
+        return view('public.history.show', compact('history', 'previous', 'next'));
     }
 
     /**
