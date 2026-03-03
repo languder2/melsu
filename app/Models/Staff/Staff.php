@@ -4,8 +4,6 @@ namespace App\Models\Staff;
 
 use App\Models\Division\Division;
 use App\Models\Employees\Employee;
-use App\Models\Gallery\Image;
-use App\Models\Global\Options;
 use App\Models\Services\Log;
 use App\Traits\hasImage;
 use App\Traits\hasOptions;
@@ -13,12 +11,7 @@ use App\Traits\hasPosts;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\MorphMany;
-use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use App\Models\Staff\Post;
-use Illuminate\Support\Collection;
-use PhpOption\Option;
 
 class Staff extends Model
 {
@@ -89,7 +82,9 @@ class Staff extends Model
         parent::boot();
 
         static::deleting(function ($staff) {
-            $staff->posts()->delete();
+            if($staff->posts->isNotEmpty())
+                $staff->posts()->delete();
+
             $staff->images()->delete();
         });
 
@@ -136,6 +131,11 @@ class Staff extends Model
     public function getFormAttribute(): string
     {
         return route('admin:staff:edit', $this);
+    }
+
+    public function scopeOrderByFullName($query)
+    {
+        return $query->orderBy('lastname')->orderBy('firstname')->orderBy('middle_name');
     }
 }
 

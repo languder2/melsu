@@ -5,7 +5,7 @@ use App\Http\Middleware\IsEditor;
 use App\Http\Controllers\Users\UsersController;
 use App\Http\Controllers\Users\UserAccessController;
 use App\Http\Middleware\InstanceAccess;
-use App\Http\Controllers\Staffs\CabinetController;
+use App\Http\Controllers\Staffs\PostsController;
 
 Route::prefix('cabinet/users')->middleware([AuthCabinet::class, IsEditor::class])->group(function (){
     Route::get('/',                                         [UsersController::class, 'list'])
@@ -44,14 +44,33 @@ Route::prefix('cabinet/users/{entity}/{entity_id}/')
 
     });
 
-Route::prefix('cabinet/staffs/{division?}/')
+Route::prefix('cabinet/posts/{division?}')
     ->middleware([AuthCabinet::class, InstanceAccess::class])
     ->group(function () {
-        Route::get('/',                                     [CabinetController::class, 'list'])
-                                                                ->name('division.staff.cabinet.list');
+        Route::get('/',                                     [PostsController::class, 'list'])
+                                                                ->name('division.posts.cabinet.list');
 
-        Route::get('on-approval',                           [CabinetController::class, 'list'])
+        Route::get('on-approval',                           [PostsController::class, 'list'])
                                                                 ->defaults('onApproval', true)
-                                                                ->name('division.staff.cabinet.on-approval');
+                                                                ->name('division.posts.cabinet.on-approval');
 
-});
+        Route::get('removed',                               [PostsController::class, 'list'])
+                                                                ->defaults('onApproval', false)
+                                                                ->defaults('isRemoved', true)
+                                                                ->name('division.posts.cabinet.removed');
+
+        Route::get('form/{current?}',                       [PostsController::class, 'form'])
+                                                                ->name('division.posts.cabinet.form');
+
+        Route::put('save/{current?}',                       [PostsController::class, 'save'])
+                                                                ->name('division.posts.cabinet.save');
+
+        Route::delete('delete/{current?}',                  [PostsController::class, 'delete'])
+                                                                ->name('division.posts.cabinet.delete');
+
+        Route::put('restore/{current?}',                    [PostsController::class, 'restore'])
+                                                                ->name('division.posts.cabinet.restore');
+
+
+    });
+

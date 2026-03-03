@@ -4,8 +4,7 @@
     'action'    => '#',
     'relation'  => null,
     'text'      => null,
-    'method'    => 'delete',
-    'icoClass'  => 'hover:text-amber-600'
+    'method'    => 'put',
 ])
 
 <button
@@ -16,7 +15,7 @@
         outline-0
     "
 >
-    <x-lucide-trash-2 class="w-6 cursor-pointer {{ $icoClass }}"/>
+    <x-lucide-repeat-2 class="w-6 cursor-pointer hover:text-green-700"/>
 </button>
 
 <div
@@ -55,13 +54,13 @@
                 @csrf
                 @method(mb_strtoupper($method))
                 <input
-                    type="submit" value="удалить"
+                    type="submit" value="Восстановить"
                     class="
                     cursor-pointer
                     inline-block relative
                     py-2 px-4 text-white rounded-md shadow-md
                     shadow-gray-300
-                    bg-red-800 hover:bg-red-700 active:bg-gray-700
+                    bg-green-800 hover:bg-green-700 active:bg-gray-700
                     hover:-mt-px hover:mb-px
                 "
                 >

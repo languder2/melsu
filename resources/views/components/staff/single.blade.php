@@ -16,7 +16,7 @@
                 <div class="mb-2">
                     <div class="text-red-700 text-md font-bold">Должность:</div>
                     <div>
-                        @foreach($staff->posts->pluck('post') as $post)
+                        @foreach($staff->posts->pluck('post')->unique() as $post)
                             <span class="lg:text-nowrap">
                                 {{ $post }}@if(!$loop->last && $loop->count>1),@endif
                             </span>

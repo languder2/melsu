@@ -11,10 +11,13 @@ trait hasPosts
     {
         return $this->hasMany(Post::class, 'staff_id')->with('staff')->orderBy('sort');
     }
-
     public function getPostAttribute(): ?string
     {
         return $this->pivot?->post ?? null;
+    }
+    public function getPostIdAttribute(): ?string
+    {
+        return $this->pivot?->id ?? null;
     }
     public function getFullPostAttribute(): ?string
     {

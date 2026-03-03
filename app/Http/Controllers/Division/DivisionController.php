@@ -14,7 +14,6 @@ use App\Models\Menu\Menu;
 use App\Models\Minor\Contact;
 use App\Models\Page\Content as PageContent;
 use App\Models\Partners\Partner;
-use App\Models\Services\Log;
 use App\Models\Staff\Affiliation;
 use App\Models\Staff\Staff;
 use App\Models\Upbringing\Upbringing;

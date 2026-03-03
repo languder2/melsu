@@ -19,9 +19,9 @@ class InstanceAccess
         if(auth()->user()->isEditor())
             return $next($request);
 
-
         if($request->route()->hasParameter('division'))
             $instance = $request->route()->parameter('division');
+
         elseif($request->route()->hasParameter('entity'))
             $instance = Entities::instance($request->route('entity'), $request->route('entity_id'));
 
