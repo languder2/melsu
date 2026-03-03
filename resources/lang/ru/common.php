@@ -30,7 +30,12 @@ return [
     'Gallery'                   => 'Галерея',
     'Document'                  => 'Документ',
     'Documents'                 => 'Документы',
-    'Documents on approval'     => 'Документы требующие утверждения',
+    'Documents on approval'     => 'Документы, требующие утверждения',
+    'Leader'                    => 'Руководитель',
+    'Leaders'                   => 'Руководители',
+    'Staff'                     => 'Сотрудник',
+    'Staffs'                    => 'Сотрудники',
+    'Staffs on approval'        => 'Сотрудники, требующие утверждения',
     'Add documents category'    => 'Добавить категорию документов',
     'Add documents'             => 'Добавить документ',
 

@@ -42,10 +42,9 @@ trait hasStaffs
     {
         return $this->leaders()->where(['is_show' => true, 'is_approved' => true])->first() ?? new Staff();
     }
-
-    public function publicStaffs(): HasMany
+    public function publicStaffs(): BelongsToMany
     {
-        return $this->hasMany(Post::class, 'division_id')->orderBy('sort');
+        return $this->staffs()->wherePivot('is_show', true)->wherePivot('is_approved', true);
     }
 
 }

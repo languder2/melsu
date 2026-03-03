@@ -50,4 +50,8 @@ Route::prefix('cabinet/staffs/{division?}/')
         Route::get('/',                                     [CabinetController::class, 'list'])
                                                                 ->name('division.staff.cabinet.list');
 
+        Route::get('on-approval',                           [CabinetController::class, 'list'])
+                                                                ->defaults('onApproval', true)
+                                                                ->name('division.staff.cabinet.on-approval');
+
 });

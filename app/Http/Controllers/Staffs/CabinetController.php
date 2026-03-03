@@ -8,17 +8,9 @@ use Illuminate\View\View;
 
 class CabinetController extends Controller
 {
-    public function list(Division $division): View
+    public function list(Division $division, bool $onApproval = false): View
     {
-
-        dd($division->leader);
-
-
-        $list = collect([$division->leader])->merge($division->staffs);
-
-        dd($list);
-
-        return view('staffs.cabinet.list', []);
+        return view('staffs.cabinet.list', compact('division'));
     }
 
 }
