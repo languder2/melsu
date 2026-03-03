@@ -80,6 +80,7 @@ Route::get('control/staffs',    [ControlController::class,'staffs']);
 /* Pages */
 
 Route::get('/history', [HistoryController::class, 'indexPage'])->name('public.history.index');
+Route::get('/history/{id}', [HistoryController::class, 'show'])->name('public.history.show');
 
 require __DIR__.'/fix.php';
 require __DIR__.'/test.php';
