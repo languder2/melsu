@@ -59,5 +59,11 @@ class PostsController extends Controller
         return redirect()->route(Post::cabinetRouteName(), $division);
     }
 
+    public function sortedAZ(Division $division): RedirectResponse
+    {
+        dd($division);
+        return redirect()->route(Post::cabinetRouteName(), $division);
+    }
+
 
 }

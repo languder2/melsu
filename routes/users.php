@@ -71,6 +71,9 @@ Route::prefix('cabinet/posts/{division?}')
         Route::put('restore/{current?}',                    [PostsController::class, 'restore'])
                                                                 ->name('division.posts.cabinet.restore');
 
+        Route::put('sorted/a-z',                            [PostsController::class, 'sortedAZ'])
+                                                                ->name('division.posts.cabinet.sorted-a-z');
+
 
     });
 

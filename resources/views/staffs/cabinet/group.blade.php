@@ -23,7 +23,7 @@
             </div>
             <div class="flex-1"></div>
             <div>
-                counter
+                {{__('common.Cnt') . ': ' . $list->count() }}
             </div>
         </div>
 
@@ -32,6 +32,14 @@
                 <x-lucide-square-plus class="w-6"/>
             </a>
 
+            <x-html.button-with-modal
+                method="put"
+                lucide="arrow-down-a-z"
+                question="Отсортировать список в алфавитном порядке?"
+                text=" Сортировка применится к сотрудникам всего подразделения "
+                :link=" route('division.posts.cabinet.sorted-a-z', $division) "
+                :button=" __('actions.Sorting') "
+            />
         </div>
     </div>
 
