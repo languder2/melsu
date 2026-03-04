@@ -11,7 +11,7 @@
                         @php
                             $lastItem = $group->sortByDesc('year')->first();
                         @endphp
-                        <a href="javascript:scrollToBlock('block-{{ $lastItem->id }}')"
+                        <a href="javascript:scrollToBlockHistory('block-{{ $lastItem->id }}')"
                         class="group-link text-gray-200 lg:text-xl relative transition duration-300 ease-linear font-bold block mb-2 px-3 py-2 rounded-lg hover:text-white"
                         data-group="{{ $groupName }}">
                             {{$groupName}}
@@ -48,7 +48,7 @@
                 <div id="block-{{$item->id}}" class="parallax-bg" style="background-image: url('{{ Storage::url($item->image) }}');">
                     <div class="flex flex-col gap-3 relative">
                         <div class="height-date z-5 relative">
-                            <div class="relative left-[-10%]">
+                            <div class="relative">
                                 <span class="date-overlay">{{ $item->year }}</span>
                                 <span class="under-date" style="background-image: url('{{ Storage::url($item->image) }}');">
                                     {{ $item->year }}

@@ -1,7 +1,6 @@
 function disableBodyScroll() {
     document.body.style.overflow = 'hidden';
     document.body.style.paddingRight = '5px';
-    console.log(document.body)
 }
 
 function enableBodyScroll() {
@@ -16,7 +15,7 @@ function scrollToYearAndClose(itemId) {
     }
     
     setTimeout(() => {
-        scrollToBlock('block-' + itemId);
+        scrollToBlockHistory('block-' + itemId);
     }, 100);
 }
 
@@ -72,7 +71,7 @@ function initScrollObserver() {
     });
 }
 
-function scrollToBlock(blockId) {
+function scrollToBlockHistory(blockId) {
     const element = document.getElementById(blockId);
     if (element) {
         let offset;
@@ -87,7 +86,6 @@ function scrollToBlock(blockId) {
         }
         const elementPosition = element.getBoundingClientRect().top;
         const offsetPosition = elementPosition + window.pageYOffset - offset;
-
         window.scrollTo({
             top: offsetPosition,
             behavior: 'smooth'
@@ -111,7 +109,7 @@ function scrollToNext() {
     });
     
     if (currentIndex < blocks.length - 1) {
-        scrollToBlock(blocks[currentIndex + 1].id);
+        scrollToBlockHistory(blocks[currentIndex + 1].id);
     }
 }
 
@@ -131,7 +129,7 @@ function scrollToPrevious() {
     });
     
     if (currentIndex > 0) {
-        scrollToBlock(blocks[currentIndex - 1].id);
+        scrollToBlockHistory(blocks[currentIndex - 1].id);
     }
 }
 
