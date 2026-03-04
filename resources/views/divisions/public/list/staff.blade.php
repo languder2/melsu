@@ -3,12 +3,12 @@
 ])
 
 @php
-    $avatar = $staff->image('avatar')
+    $avatar = $staff->staff->image('avatar')
 @endphp
 
 <div class="group bg-white p-6 flex flex-col justify-between mb-3 last:mb-0 hover:bg-gray-100">
     <a
-            href="{!! url($staff->link) !!}"
+            href="{!! $staff->staff->link !!}"
             class="grid grid-cols-1 lg:grid-cols-[auto_1fr] gap-4"
     >
         <div class="mx-auto max-h-[250px] sm:max-h-full">
@@ -79,7 +79,7 @@
     </a>
 </div>
 
-@if($staff->divisions->isNotEmpty())
+@if($staff->staff->divisions->isNotEmpty())
     <h3 class="font-semibold text-xl mt-8 mb-6">
         Курируемые структурные подразделения
     </h3>
@@ -91,10 +91,11 @@
             <div class="font-semibold text-sm sm:text-base">
                 Руководитель
             </div>
-            @foreach($staff->divisions as $division)
+            @foreach($staff->staff->divisions as $division)
                 @if(strtolower($division->code) === 'rectorate')
                     @continue
                 @endif
+
                 @component("divisions.public.list.division",['division' => $division,'depth' => 0]) @endcomponent
             @endforeach
         </div>

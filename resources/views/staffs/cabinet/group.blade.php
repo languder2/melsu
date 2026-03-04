@@ -8,7 +8,9 @@
 
 @php
     if($isLeaders)
-        $text = __('common.Leaders')
+        $text = __('common.Leaders');
+
+    $type = $isLeaders ? "leaders" : "staffs";
 @endphp
 
 <div
@@ -28,7 +30,9 @@
         </div>
 
         <div class="flex justify-center gap-4 bg-white rounded-sm items-center p-3 shadow">
-            <a href="{{ route('division.posts.cabinet.form', $division) }}" class="flex-end hover:text-green-700">
+            <a href="{{ route('division.posts.cabinet.form', [$division, 'isLeader' => $isLeaders]) }}"
+                class="flex-end hover:text-green-700"
+            >
                 <x-lucide-square-plus class="w-6"/>
             </a>
 
@@ -37,15 +41,15 @@
                 lucide="arrow-down-a-z"
                 question="Отсортировать список в алфавитном порядке?"
                 text=" Сортировка применится к сотрудникам всего подразделения "
-                :link=" route('division.posts.cabinet.sorted-a-z', $division) "
+                :link=" route('division.posts.cabinet.sorted-a-z', [$division, $type]) "
                 :button=" __('actions.Sorting') "
             />
         </div>
     </div>
 
-    <div class="grid grid-cols-[auto_1fr_1fr_8ch_auto] gap-3">
+    <div class="grid grid-cols-[auto_34ch_auto_1fr_1fr_8ch_auto] gap-3">
         @forelse($list as $staff)
-            <div class="p-3 border-1 col-span-full grid grid-cols-subgrid gap-4 bg-neutral-200 rounded-sm">
+            <div class="p-3 border-1 col-span-full grid grid-cols-subgrid gap-4 bg-neutral-150 rounded-sm">
                 @component('staffs.cabinet.staff',[
                     'division'  => $division,
                     'current'   => $staff,

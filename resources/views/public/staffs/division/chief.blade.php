@@ -1,8 +1,17 @@
+@props([
+    'division' => new \App\Models\Division\Division()
+])
+
+@php
+    $leader = $division->leader;
+    $avatar = $leader->staff->image('avatar');
+@endphp
+
 <div
     class="flex gap-4 mb-4"
 >
-    @if($division->chief->card->exists)
-        @if($division->chief->card->avatar->name === 'avatar')
+    @if($division->leader->staff->exists)
+        @if($division->leader->staff->image('avatar')->name === 'avatar')
             <div class="flex items-center bg-neutral-150 w-72 h-72 justify-center rounded-md">
                 <svg height="150px" viewBox="0 0 128 140" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M26.6455 90.9125C16.8993 96.9333 -8.6546 109.227 6.90945 124.611C14.5124 132.126 22.9801 137.5 33.626 137.5H94.374C105.02 137.5 113.488 132.126 121.091 124.611C136.655 109.227 111.101 96.9333 101.354 90.9125C78.4998 76.7939 49.5002 76.7939 26.6455 90.9125Z" stroke="#C10F1A" stroke-width="4"/>
@@ -11,8 +20,8 @@
             </div>
         @else
             <img
-                src="{{$division->chief->card->avatar->thumbnail}}"
-                alt="{{$division->chief->card->full_name}}"
+                src="{{$avatar->thumbnail}}"
+                alt="{{$leader->full_name}}"
                 class="h-72 hidden xl:block"
             />
         @endif
@@ -27,15 +36,13 @@
     @endif
 
     <div class="flex-1 flex flex-col gap-3 p-4 bg-neutral-100">
-        @isset($division->chief->card)
+        @if($leader->exists)
             <h3 class="font-semibold text-xl">
-                {{$division->chief->card->full_name}}
+                {{$leader->full_name}}
             </h3>
-        @endisset
 
-        @isset($division->chief)
             <h3 class="font-semibold ">
-                {{$division->chief->post}}
+                {{$leader->post}}
             </h3>
         @endisset
 

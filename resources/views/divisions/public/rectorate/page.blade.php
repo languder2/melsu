@@ -19,10 +19,10 @@
 
 @section('content')
 
-    @include('divisions.public.rectorate.staff', ['staff'=> $division->leader])
+    @include('divisions.public.rectorate.staff', ['staff'=> $division->leader->staff])
 
-    @foreach($division->staffs as $staff)
-        @include('divisions.public.rectorate.staff',['staff'=>$staff,'post'=>$staff->post])
+    @foreach($division->publicStaffs as $staff)
+        @include('divisions.public.rectorate.staff', ['staff'=> $staff->staff])
     @endforeach
 
 @endsection

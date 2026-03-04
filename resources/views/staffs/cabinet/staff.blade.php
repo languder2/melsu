@@ -46,14 +46,17 @@
             {{ $current->staff_id }}
         </div>
     </div>
-    <div class="bg-white rounded-sm p-3 shadow flex gap-3 items-center">
+    <div class="bg-white rounded-sm p-3 shadow flex items-center justify-center" title="1C UUID">
+        {{ $current->uuid }}
+    </div>
+    <div class="bg-neutral-200 rounded-sm p-3 shadow flex items-center justify-center" title="WIP">
+        <x-lucide-square-user class="w-6" title="WIP" />
+    </div>
+    <div class="bg-white rounded-sm p-3 shadow flex items-center gap-3 justify-between">
         <div>
             {{ $current->fullname }}
         </div>
-        <div class="flex-1"></div>
-        <div>
-            {{ $current->sort }}
-        </div>
+
     </div>
 
     <div class="bg-white rounded-sm p-3 shadow flex gap-3 items-center @if(!$multi) col-span-2 @endif">
@@ -64,7 +67,7 @@
         <div class="flex justify-center gap-2 items-center bg-white rounded-sm p-3 shadow">
             @if(!$isLast)
                 <x-html.button-change-sort-down
-                    :link=" route('documents.cabinet.change-sort', [$current->id, 'down']) "
+                    :link=" route('division.posts.cabinet.change-sort', [$division, $current, 'down']) "
                 />
             @else
                 <span class="w-6"></span>
@@ -72,7 +75,7 @@
 
             @if(!$isFirst)
                 <x-html.button-change-sort-up
-                    :link=" route('documents.cabinet.change-sort', [$current->id, 'up']) "
+                    :link=" route('division.posts.cabinet.change-sort', [$division, $current, 'up']) "
                 />
             @else
                 <span class="w-6"></span>
@@ -85,7 +88,7 @@
             <x-lucide-square-pen class="w-6"/>
         </a>
 
-        <a href="{{ $current->link }}" target="_blank" class="flex-end hover:text-green-700" title="Перейти на страницу">
+        <a href="{{ $current->staff->link }}" target="_blank" class="flex-end hover:text-green-700" title="Перейти на страницу">
             <x-lucide-square-arrow-out-up-right class="w-6"/>
         </a>
     </div>

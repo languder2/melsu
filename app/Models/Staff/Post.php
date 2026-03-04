@@ -34,6 +34,10 @@ class Post extends Model
     {
         return $this->belongsTo(Staff::class)->withTrashed();
     }
+    public function getStaffAttribute(): Staff
+    {
+        return $this->staff()->get()->first() ?? new Staff();
+    }
     public function division(): BelongsTo
     {
         return $this->belongsTo(Division::class, 'division_id', 'id');
@@ -49,6 +53,12 @@ class Post extends Model
                 $post->staff->delete();
         });
 
+        static::saving(function ($post) {
+            if($post->isDirty('is_head_of_division') || !$post->sort){
+                $list = $post->is_head_of_division ? $post->division->leaders() : $post->division->staffs();
+                $post->sort = $list->max('sort') + 100;
+            }
+        });
         static::saved(function ($post) {
             Log::add($post);
         });

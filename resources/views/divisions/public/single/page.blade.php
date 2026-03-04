@@ -33,7 +33,7 @@
         @component('documents.public.categories',['categories' => $division->publicDocumentCategories]) @endcomponent
 
         @component('public.staffs.division.staffs',[
-            'staffs'    => $division->staffs(true)->get(),
+            'staffs'    => $division->allPublicStaff,
             'full_post' => in_array($division->code,['academic-council'])
         ])
             @slot('title')

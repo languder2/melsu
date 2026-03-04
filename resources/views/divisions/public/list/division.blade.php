@@ -20,7 +20,6 @@
     @endif
 </div>
 <div class="break-words sm:break-normal text-sm sm:text-base">
-    @dump($division->leader->id)
     @if($division->leader->exists)
         <a
             href="{!! $division->leader->link!!}"

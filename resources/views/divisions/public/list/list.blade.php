@@ -1,27 +1,27 @@
 @php $found = false @endphp
 
-@if($division->leader()->exists)
+@if($division->leader->exists)
     @component('divisions.public.list.staff',['staff' => $division->leader]) @endcomponent
 @endif
 
-{{--@if($division->staffs->count())--}}
-{{--    @foreach($division->staffs as $staff)--}}
-{{--        @if($staff->card->divisions->count())--}}
-{{--            @php $found = true @endphp--}}
-{{--            @component('divisions.public.list.staff',['staff' => $staff->card,'post'  => $staff->post])@endcomponent--}}
-{{--        @endif--}}
-{{--    @endforeach--}}
-{{--@endif--}}
+@if($division->staffs->count())
+    @foreach($division->staffs as $staff)
+        @if($staff->staff->divisions->isNotEmpty())
+            @php $found = true @endphp
+            @component('divisions.public.list.staff',['staff' => $staff,'post'  => $staff->post])@endcomponent
+        @endif
+    @endforeach
+@endif
 
-{{--@if(!$found)--}}
-{{--    <div class="bg-white p-4">--}}
-{{--        <div--}}
-{{--                class="--}}
-{{--                border border-l-red-700 border-l-4 p-4 text-base-red--}}
-{{--            "--}}
-{{--        >--}}
-{{--            Результаты не найдены--}}
-{{--        </div>--}}
-{{--    </div>--}}
-{{--@endif--}}
+@if(!$found)
+    <div class="bg-white p-4">
+        <div
+                class="
+                border border-l-red-700 border-l-4 p-4 text-base-red
+            "
+        >
+            Результаты не найдены
+        </div>
+    </div>
+@endif
 

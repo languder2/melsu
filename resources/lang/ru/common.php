@@ -43,8 +43,8 @@ return [
     'Approval staffs posts'     => 'Утвержденные должности',
     'Staffs posts on approval'  => 'Должности, требующие утверждения',
     'Removed staffs posts'      => 'Удаленные должности',
-    'Remove staff post '        => 'Снять сотрудника с должности',
-    'Restore staff post '       => 'Снять сотрудника с должности',
+    'Remove staff post'        => 'Снять сотрудника с должности',
+    'Restore staff post'       => 'Восстановить сотрудника в должности',
     'Add documents category'    => 'Добавить категорию документов',
     'Add documents'             => 'Добавить документ',
 

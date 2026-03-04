@@ -1,14 +1,19 @@
 @props([
-    'staff' => new \App\Models\Staff\Staff()
+    'staff'     => new \App\Models\Staff\Staff(),
+    'division'  => new \App\Models\Division\Division()
 ])
 
 @php
-    $avatar = $staff->image('avatar')
+    $avatar = $staff->image('avatar') ?? new \App\Models\Gallery\Image()
+@endphp
+
+@php
+    $posts = $staff->posts->map(fn($item) => $item->division_id === $division->id ? $item->post : $item->full_post )->unique()
 @endphp
 
 <div class="group bg-white p-6 sm:min-h-[257px] flex flex-col justify-between mb-3 last:mb-0 hover:bg-gray-100">
     <a
-        href="{!! url($staff->link) !!}"
+        href="{!! $staff->link !!}"
         class="grid grid-cols-1 lg:grid-cols-[auto_minmax(70%,_1fr)] gap-5 min-h-[209px]"
     >
         <div class="mx-auto">
@@ -40,10 +45,13 @@
                     {!!$staff->full_name!!}
                 </h3>
 
+
+
+
                 <div class="mb-2">
                     <div class="text-red-700 text-md font-bold">Должность:</div>
                     <div>
-                        @foreach($staff->posts->pluck('post')->unique() as $post)
+                        @foreach($posts as $post)
                             <span class="lg:text-nowrap">
                                     {!! $post !!}@if(!$loop->last && $loop->count>1),@endif
                                 </span>

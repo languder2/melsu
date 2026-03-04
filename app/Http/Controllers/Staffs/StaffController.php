@@ -154,12 +154,20 @@ class StaffController extends Controller
             ]);
     }
 
-    public function list(Request $request):string|RedirectResponse
+    public function list(): \Illuminate\View\View
     {
-        $staffs     = Staff::orderBy('lastname')->orderBy('firstname')->orderBy('middle_name')->paginate(30);
+        $staffs = Staff::query()
+            ->has('publicPosts')
+            ->with('publicPosts')
+            ->orderBy('lastname')
+            ->orderBy('firstname')
+            ->orderBy('middle_name')
+            ->paginate(30)
+        ;
+
         $menu       = Menu::where('code','university')->first();
 
-        return view('public.staffs.staffs.page',compact('staffs','menu'));
+        return view('staffs.public.staffs',compact('staffs','menu'));
 
     }
     public function show(string $code = null)

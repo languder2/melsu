@@ -21,7 +21,12 @@
 
 @section('content')
 
-    <form action="{{ route('division.posts.cabinet.save', [$division,$current]) }}" method="POST" class="flex flex-col gap-3" enctype="multipart/form-data">
+    <form
+        action="{{ route('division.posts.cabinet.save', [$division,$current]) }}"
+        method="POST"
+        class="flex flex-col gap-3"
+        enctype="multipart/form-data"
+    >
         @csrf
         @method('PUT')
 
@@ -73,7 +78,7 @@
                     :default="0"
                     :value="1"
                     label="Является руководителем"
-                    :checked=" old('is_head_of_division', $current->exists ? $current->is_head_of_division : true)"
+                    :checked=" old('is_head_of_division', $current->is_head_of_division)"
                     block="pe-2"
                 />
 
@@ -82,7 +87,7 @@
                     :default="0"
                     :value="1"
                     label="Преподает"
-                    :checked=" old('is_teacher', $current->exists ? $current->is_teacher : true)"
+                    :checked=" old('is_teacher', $current->is_teacher)"
                     block="pe-2"
                 />
 
@@ -115,13 +120,13 @@
         </div>
 
         <div class="flex flex-col gap-2 p-4 bg-white">
-            <p>Категория</p>
+            <p>Сотрудник</p>
             <select
                 class="jq-select2"
                 name="staff_id"
                 required
             >
-                <option value="">Категория не выбрана</option>
+                <option value="">Сотрудник не выбран</option>
                 @foreach($staffs as $staff)
                     <option
                         value="{{ $staff->id }}"

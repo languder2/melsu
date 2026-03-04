@@ -222,50 +222,49 @@ class Division extends Model
     {
         $result = collect([]);
 
-        if($this->type === DivisionType::Institute)
-            foreach ($this->faculties as $faculty)
-                foreach ($faculty->departments as $department)
-                    foreach ($department->staffs as $staff){
-
-                        if(!$result->has($staff->staff_id))
-                            $result->put($staff->staff_id,(object)[
-                                'full_name' => $staff->card->full_name,
-                                'link'      => $staff->card->link,
-                                'avatar'    => $staff->avatar,
-                                'posts'     => collect([$staff->post]) ,
-                            ]);
-
-                        elseif($result[$staff->staff_id]->posts->doesntContain($staff->post))
-                            $result[$staff->staff_id]->posts->push($staff->post);
-                    }
-        elseif($this->type === DivisionType::Faculty)
-            foreach ($this->departments as $department)
-                foreach ($department->staffs as $staff){
-
-                    if(!$result->has($staff->staff_id))
-                        $result->put($staff->staff_id,(object)[
-                            'full_name' => $staff->card->full_name,
-                            'link'      => $staff->card->link,
-                            'avatar'    => $staff->avatar,
-                            'posts'     => collect([$staff->post]) ,
-                        ]);
-
-                    elseif($result[$staff->staff_id]->posts->doesntContain($staff->post))
-                        $result[$staff->staff_id]->posts->push($staff->post);
-                }
-        else
-            foreach ($this->staffs as $staff){
-                if(!$result->has($staff->card->full_name))
-                    $result->put($staff->card->full_name,(object)[
-                        'full_name' => $staff->card->full_name,
-                        'link'      => $staff->card->link,
-                        'avatar'    => $staff->card->avatar,
-                        'posts'     => collect([$staff->post]) ,
-                    ]);
-
-                elseif($result[$staff->card->full_name]->posts->doesntContain($staff->post))
-                    $result[$staff->card->full_name]->posts->push($staff->post);
-            }
+//        if($this->type === DivisionType::Institute)
+//            foreach ($this->faculties as $faculty)
+//                foreach ($faculty->departments as $department)
+//                    foreach ($department->staffs as $staff){
+//
+//                        if(!$result->has($staff->staff_id))
+//                            $result->put($staff->staff_id,(object)[
+//                                'full_name' => $staff->card->full_name,
+//                                'link'      => $staff->card->link,
+//                                'avatar'    => $staff->avatar,
+//                                'posts'     => collect([$staff->post]) ,
+//                            ]);
+//
+//                        elseif($result[$staff->staff_id]->posts->doesntContain($staff->post))
+//                            $result[$staff->staff_id]->posts->push($staff->post);
+//                    }
+//        elseif($this->type === DivisionType::Faculty)
+//            foreach ($this->departments as $department)
+//                foreach ($department->publicStaffs as $staff){
+//                    if(!$result->has($staff->staff_id))
+//                        $result->put($staff->staff_id,(object)[
+//                            'full_name' => $staff->full_name,
+//                            'link'      => $staff->staff->link,
+//                            'avatar'    => $staff->staff->avatar,
+//                            'posts'     => collect([$staff->post]) ,
+//                        ]);
+//
+//                    elseif($result[$staff->staff_id]->posts->doesntContain($staff->post))
+//                        $result[$staff->staff_id]->posts->push($staff->post);
+//                }
+//        else
+//            foreach ($this->staffs as $staff){
+//                if(!$result->has($staff->card->full_name))
+//                    $result->put($staff->card->full_name,(object)[
+//                        'full_name' => $staff->card->full_name,
+//                        'link'      => $staff->card->link,
+//                        'avatar'    => $staff->card->avatar,
+//                        'posts'     => collect([$staff->post]) ,
+//                    ]);
+//
+//                elseif($result[$staff->card->full_name]->posts->doesntContain($staff->post))
+//                    $result[$staff->card->full_name]->posts->push($staff->post);
+//            }
 
 
         return $result->sortBy('full_name');
