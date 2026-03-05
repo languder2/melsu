@@ -43,7 +43,7 @@
             </div>
         </div>
 
-        <div>
+        <div class="overflow-hidden">
             @foreach ($histories as $item)
                 <div id="block-{{$item->id}}" class="parallax-bg" style="background-image: url('{{ Storage::url($item->image) }}');">
                     <div class="flex flex-col gap-3 relative">
