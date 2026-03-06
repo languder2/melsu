@@ -139,4 +139,20 @@ class FixController extends Controller
         return response()->json(['success']);
     }
 
+    public function employeesSetIsTeacher():JsonResponse
+    {
+
+        $posts = [
+            'Доцент',
+            'Профессор',
+            'Преподаватель',
+            'Старший преподаватель',
+        ];
+
+        Post::query()->whereIn('post', $posts)->update(['is_teacher' => true]);
+
+        return response()->json(['success']);
+    }
+
+
 }

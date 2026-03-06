@@ -103,7 +103,7 @@ trait hasStaffs
     public function allPublicTeachers(): Collection
     {
         if($this->type === DivisionType::Department)
-            $list = $this->publicTeachers;
+            $list = $this->publicTeachers->unique('staff_id');
 
         elseif($this->type === DivisionType::Faculty)
             $list = $this->subs()->where('type', DivisionType::Department)->get()

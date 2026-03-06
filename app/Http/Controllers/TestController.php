@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Division\Division;
 use App\Models\Documents\DocumentCategory;
+use App\Models\Services\Log;
 use App\Models\Staff\Staff;
 use Carbon\Carbon;
+use Illuminate\Support\Benchmark;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -49,6 +51,20 @@ class TestController extends Controller
 
     public function index()
     {
+        $division = Division::find(394);
+
+        Benchmark::dd([
+            'refresh'       => fn() => Division::refreshCachesForId($division->id),
+            'branch'        => fn() => $division->flattenBranch(true),
+            'tree'          => fn() => Division::flattenTree(true),
+            'branchCache'   => fn() => $division->flattenBranch(),
+            'treeCache'     => fn() => Division::flattenTree(),
+        ], iterations: 30);
+
+
+        $list = Division::flattenTree(79);
+        dd($list->pluck('id')->toArray());
+
         $list = collect();
 
         Division::whereNotNull('description')->get()->each(function($item){

@@ -4,7 +4,6 @@ namespace App\Models\Division;
 
 use App\Enums\DivisionType;
 use App\Enums\EducationLevel;
-use App\Models\Education\Department;
 use App\Models\Education\Speciality;
 use App\Models\Gallery\Image;
 use App\Models\Menu\Menu;
@@ -66,7 +65,6 @@ class Division extends Model
         'public_'   => 'divisions.public.',
     ];
 
-
     protected $table = 'divisions';
 
     protected $fillable = [
@@ -97,6 +95,8 @@ class Division extends Model
     protected $casts = [
         'type'  => DivisionType::class,
     ];
+
+    public int $rootIdBeforeSave;
     protected static function boot()
     {
         parent::boot();
@@ -109,9 +109,16 @@ class Division extends Model
             $division->preview()->delete();
         });
 
-        static::saved(function ($division) {
-            Log::add($division);
-            $division->saveCacheCabinetItem();
+        static::saving(function ($item) {
+            $item->rootIdBeforeSave = $item->getRootId();
+        });
+
+        static::saved(function ($item) {
+            if ($item->wasChanged())
+                Division::refreshCachesForId($item->rootIdBeforeSave);
+
+            Log::add($item);
+            $item->saveCacheCabinetItem();
         });
     }
 

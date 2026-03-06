@@ -2,9 +2,12 @@
 
 namespace App\Traits;
 
+use App\Models\Division\Division;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 trait hasSubordination
@@ -111,13 +114,61 @@ trait hasSubordination
             . '&nbsp;';
     }
 
+    private static function getTreeData()
+    {
+        return self::select('id', 'parent_id', 'name')->get();
+    }
+    public static function flattenTree(bool $forced = false): Collection
+    {
+        if ($forced)
+            Cache::forget('flattenTree');
 
+        return Cache::rememberForever('flattenTree', function () {
+            return flattenList(self::getTreeData())->keyBy('id');
+        });
+    }
+    public function flattenBranch(bool $forced = false): Collection
+    {
+        $key = 'flattenBranch' . $this->id;
 
+        if ($forced)
+            Cache::forget($key);
 
+        return Cache::rememberForever($key, function () {
+            return flattenList(self::getTreeData(), 'id', 'parent_id', $this->id)->keyBy('id');
+        });
+    }
+    public static function refreshCachesForId($id = null): void
+    {
+        self::flattenTree(forced: true);
 
+        if ($id) {
+            $item = self::find($id);
 
+            if ($item)
+                $item->flattenBranch(forced: true);
+        }
+    }
+    public function getRootId(string $field = 'parent_id', string $key = 'id'): int
+    {
+        if (!$this->{$field})
+            return $this->{$key};
 
+        $tableName = $this->getTable();
 
+        $sql = "
+            WITH RECURSIVE tree_path AS (
+                SELECT $key, $field FROM $tableName WHERE $key = ?
+                UNION ALL
+                SELECT t.$key, t.$field FROM $tableName t
+                INNER JOIN tree_path tp ON t.$key = tp.$field
+            )
+            SELECT $key FROM tree_path WHERE $field IS NULL LIMIT 1
+        ";
 
+        $result = DB::select($sql, [$this->{$key}]);
+
+        return $result[0]->id ?? $this->id;
+    }
 }
 
