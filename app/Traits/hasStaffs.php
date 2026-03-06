@@ -2,10 +2,12 @@
 
 namespace App\Traits;
 
+use App\Enums\DivisionType;
 use App\Models\Staff\Post;
 use App\Models\Staff\Staff;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Collection;
 
 trait hasStaffs
 {
@@ -86,6 +88,28 @@ trait hasStaffs
     public function getLeaderAttribute(): Post
     {
         return $this->leaders->first() ?? new Post();
+    }
+
+    public function teachers(): hasMany
+    {
+        return $this->allStaff()->where('is_teacher', true);
+    }
+
+    public function publicTeachers(): hasMany
+    {
+        return $this->teachers()->public();
+    }
+
+    public function allPublicTeachers(): Collection
+    {
+        if($this->type === DivisionType::Department)
+            $list = $this->publicTeachers;
+
+        elseif($this->type === DivisionType::Faculty)
+            $list = $this->subs()->where('type', DivisionType::Department)->get()
+                ->flatmap(fn($item) => $item->publicTeachers)->unique('staff_id');
+
+        return $list->sortBy('full_name');
     }
 
 

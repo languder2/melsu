@@ -22,14 +22,14 @@
                     </h3>
 
 
-                    @if($item->chief->card->exists)
+                    @if($item->leader->exists)
                         <div class="flex items-center gap-2">
                             <div>
                                 <x-lucide-user class="w-6" />
                             </div>
                             <span class="font-semibold text-sm group-hover:text-white transition duration-300 ease-linear">
-                            {{ $item->chief->card->full_name }}
-                        </span>
+                                {{ $item->leader->full_name }}
+                            </span>
                         </div>
                     @endif
 

@@ -18,7 +18,7 @@
             </h2>
 
             @component('divisions.education.public.sections.employees',[
-                'staffs'    => $division->teachingStaff,
+                'staffs'    => $division->allPublicTeachers(),
             ])@endcomponent
 
             <x-news.include-block :division="$division"/>

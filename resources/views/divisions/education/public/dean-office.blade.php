@@ -19,7 +19,7 @@
             @component('divisions.education.public.sections.chief', compact('division')) @endcomponent
 
             @component('divisions.education.public.sections.employees',[
-                'staffs'    => $division->staffs,
+                'staffs'    => $division->publicStaffs,
                 'title'     => 'Сотрудники'
             ])@endcomponent
 

@@ -2,11 +2,16 @@
     'division'      => new \App\Models\Division\Division(),
 ])
 
+@php
+    $leader = $division->leader;
+    $avatar = $leader->staff->image('avatar');
+@endphp
+
 <div class="flex flex-col xl:flex-row gap-5">
-    @if($division->chief->card->exists)
+    @if($leader->exists)
         <div class="flex flex-col sm:max-w-[240px]">
             <div class="bg-neutral-200 h-full">
-                @if($division->chief->card->avatar->name === 'avatar')
+                @if($avatar->name === 'avatar')
                     <div class="flex items-center h-full w-full justify-center rounded-md">
                         <svg height="150px" viewBox="0 0 128 140" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M26.6455 90.9125C16.8993 96.9333 -8.6546 109.227 6.90945 124.611C14.5124 132.126 22.9801 137.5 33.626 137.5H94.374C105.02 137.5 113.488 132.126 121.091 124.611C136.655 109.227 111.101 96.9333 101.354 90.9125C78.4998 76.7939 49.5002 76.7939 26.6455 90.9125Z" stroke="#C10F1A" stroke-width="4"/>
@@ -15,8 +20,8 @@
                     </div>
                 @else
                     <img
-                        src="{{$division->chief->card->avatar->thumbnail}}"
-                        alt="{{$division->chief->card->full_name}}"
+                        src="{{$avatar->thumbnail}}"
+                        alt="{{$leader->full_name}}"
                         class="object-cover w-full h-full"
                     />
                 @endif
@@ -25,10 +30,10 @@
             <div class="bg-[#252525] p-5 ">
                 <div class="flex flex-col gap-4 items-top">
                     <h3 class="font-bold text-xl text-white">
-                        {{ $division->chief->card->full_name }}
+                        {{ $leader->full_name }}
                     </h3>
                     <span class="text-white">
-                    {{ $division->chief->post }}
+                    {{ $leader->post }}
                 </span>
                 </div>
             </div>
