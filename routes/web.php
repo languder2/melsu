@@ -60,19 +60,6 @@ Route::controller(PublicGallery::class)
     Route::get('menu/{code?}', [MenuController::class,'show'])
         ->name('public:menu:show');
 
-/*Schedule*/
-
-Route::controller(ScheduleController::class)
-    ->prefix('schedule')
-    ->group(function () {
-        Route::get('show',  'index')->name('public.schedule.index');
-        Route::get('get-groups', 'getGroups')->name('public.schedule.getGroups');
-        Route::post('schedule-result', 'updateSchedule')->name('public.schedule.updateSchedule');
-    });
-
-/*handbook*/
-Route::get('/handbooks/{collectionId}', [HandbookController::class, 'show'])->name('public.handbooks.show');
-
 Route::get('control/sections',  [ControlController::class,'sections']);
 Route::get('control/contacts',  [ControlController::class,'contacts']);
 Route::get('control/staffs',    [ControlController::class,'staffs']);
@@ -101,7 +88,6 @@ require __DIR__.'/graduations.php';
 require __DIR__.'/users.php';
 require __DIR__.'/finances.php';
 
-require __DIR__.'/system.php';
 require __DIR__.'/pages.php';
 
 

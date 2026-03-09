@@ -11,14 +11,17 @@ use App\Models\Staff\Staff;
 
 class InfoManagers extends Info
 {
-    public static function manager(?Affiliation $staff = null): array
+    public static function manager($staff = null): array
     {
+        if(!$staff)
+            $staff = Division::where('code', 'rectorate')->first()->leader;
+
         return
             [
                 "fio"       => $staff->full_name ?? __('info.empty'),
                 "post"      => $staff->post ?? __('info.empty'),
-                "telephone" => $staff->card->phones ?? __('info.empty'),
-                "email"     => $staff->card->emails ?? __('info.empty'),
+                "telephone" => $staff->staff->phones ?? __('info.empty'),
+                "email"     => $staff->staff->emails ?? __('info.empty'),
             ];
     }
     public function rectorate(): array

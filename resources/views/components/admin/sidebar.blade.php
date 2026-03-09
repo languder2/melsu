@@ -18,12 +18,6 @@
         />
 
         <x-admin.sidebar-li
-            link="{{route('admin:news')}}"
-            ico="far fa-calendar-check"
-            text="Новости"
-        />
-
-        <x-admin.sidebar-li
             link="{{route('admin:pages')}}"
             ico="fas fa-bars"
             text="Страницы"
@@ -46,28 +40,6 @@
             link="{{route('admin:staff')}}"
             ico="fas fa-users text-lg"
             text="Сотрудники"
-        />
-
-
-        <x-admin.sidebar-li
-            link="{{route('admin:image:list')}}"
-            ico="far fa-images"
-            text="Gallery"
-            class="text-xl"
-        />
-
-        <x-admin.sidebar-li
-            link="{{route('schedule.page')}}"
-            ico="fas fa-calendar-alt fa-lg"
-            text="Расписание"
-            class="text-xl"
-        />
-
-        <x-admin.sidebar-li
-            link="{{route('handbook.collections')}}"
-            ico="fas fa-solid fa-book"
-            text="Справочники"
-            class="text-xl"
         />
 
         <x-admin.sidebar-li

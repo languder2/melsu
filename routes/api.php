@@ -232,11 +232,6 @@ Route::get('correct',function(){
 
 });
 
-Route::get('set-score',[\App\Http\Controllers\ImportController::class,'setScores']);
-
-Route::get('set-score',[\App\Http\Controllers\ImportController::class,'setScores']);
-
-
 Route::get('staff/teachers',            [ApiStaff::class,'getTeachersByDepartments']);
 
 Route::get('specialities/list',         [SpecialityController::class,'getListAPI']);

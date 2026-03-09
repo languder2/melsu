@@ -2,9 +2,7 @@
 
 use App\Http\Controllers\History\HistoryController;
 use App\Http\Controllers\Education\{DepartmentController, FacultyController, LabsController, };
-use App\Http\Controllers\Handbook\HandbookController;
 use App\Http\Controllers\Menu\{ItemsController as MenuItems, MenuController};
-use App\Http\Controllers\Schedule\ScheduleController;
 use App\Http\Controllers\Staffs\StaffController;
 use App\Http\Controllers\Users\UsersController;
 use Illuminate\Support\Facades\Route;
@@ -105,45 +103,6 @@ Route::controller(\App\Http\Controllers\Gallery\AdminVideoGallery::class)
 
 /**/
 
-Route::controller(\App\Http\Controllers\ImportController::class)
-    ->prefix('imports')
-    ->group(function () {
-        Route::get('departments',"DepartmentsGetFile")
-            ->name('imports:departments:get');
-        Route::post('departments/update',"DepartmentsUpdate")
-            ->name('imports:departments:update');
-    });
-
-/*schedule*/
-
-Route::prefix('schedule')
-    ->group(function () {
-
-        Route::get('/', [ScheduleController::class, 'showSchedulePage'])->name('schedule.page');
-        Route::post('/import', [ScheduleController::class, 'importSchedule'])->name('schedule.import');
-    });
-
-/*handbook*/
-
-Route::middleware('auth.check')
-    ->prefix('handbook')
-    ->group(function () {
-        // Коллекции справочников
-        Route::get('/', [HandbookController::class, 'indexCollections'])->name('handbook.collections');
-        Route::get('collections/create', [HandbookController::class, 'createCollection'])->name('handbook.collections.create');
-        Route::post('collections/store', [HandbookController::class, 'storeCollection'])->name('handbook.collections.store');
-        Route::get('collections/edit/{id}', [HandbookController::class, 'editCollection'])->name('handbook.collections.edit');
-        Route::put('collections/update/{id}', [HandbookController::class, 'updateCollection'])->name('handbook.collections.update');
-        Route::get('collections/delete/{id}', [HandbookController::class, 'destroyCollection'])->name('handbook.collections.delete');
-
-        // Справочники внутри коллекции
-        Route::get('{collectionId}', [HandbookController::class, 'index'])->name('handbook.page');
-        Route::get('{collectionId}/add', [HandbookController::class, 'create'])->name('handbook.create');
-        Route::post('{collectionId}/store', [HandbookController::class, 'store'])->name('handbook.store');
-        Route::get('{collectionId}/edit/{id}', [HandbookController::class, 'edit'])->name('handbook.edit');
-        Route::put('{collectionId}/update/{id}', [HandbookController::class, 'update'])->name('handbook.update');
-        Route::get('{collectionId}/delete/{id}', [HandbookController::class, 'destroy'])->name('handbook.delete');
-    });
 
 /* Regiment / Научный и Бессмертный полк */
 Route::get('minors',[MinorController::class,'index'])->name("minors:admin:index");
