@@ -75,8 +75,23 @@ class HistoryController extends Controller
     {
         $history = History::findOrFail($id);
         
-        $previous = History::where('id', '<', $id)->orderBy('id', 'desc')->first();
-        $next = History::where('id', '>', $id)->orderBy('id', 'asc')->first();
+        $previous = History::where('year', '<', $history->year)
+            ->orWhere(function($query) use ($history) {
+                $query->where('year', $history->year)
+                    ->where('id', '<', $history->id);
+            })
+            ->orderBy('year', 'desc')
+            ->orderBy('id', 'desc')
+            ->first();
+
+        $next = History::where('year', '>', $history->year)
+            ->orWhere(function($query) use ($history) {
+                $query->where('year', $history->year)
+                    ->where('id', '>', $history->id);
+            })
+            ->orderBy('year', 'asc')
+            ->orderBy('id', 'asc')
+            ->first();
         
         return view('public.history.show', compact('history', 'previous', 'next'));
     }
