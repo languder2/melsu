@@ -20,7 +20,7 @@ class HistoryController extends Controller
     public function indexPage()
     {
         $histories = History::orderBy('year', 'desc')->orderBy('order', 'asc')->get();
-        
+
         $groupedHistories = $histories->groupBy(function ($item) {
             $year = $item->year;
             $currentYear = date('Y');
@@ -31,7 +31,7 @@ class HistoryController extends Controller
             if ($year >= 1801) return '1850';
             if ($year >= 1751) return '1800';
             if ($year >= 1701) return '1750';
-            
+
             return 'До 1750';
         });
 
@@ -74,7 +74,7 @@ class HistoryController extends Controller
     public function show($id)
     {
         $history = History::findOrFail($id);
-        
+
         $previous = History::where('year', '<', $history->year)
             ->orWhere(function($query) use ($history) {
                 $query->where('year', $history->year)
@@ -92,7 +92,7 @@ class HistoryController extends Controller
             ->orderBy('year', 'asc')
             ->orderBy('id', 'asc')
             ->first();
-        
+
         return view('public.history.show', compact('history', 'previous', 'next'));
     }
 

@@ -30,6 +30,13 @@
                             <img src="{{asset('img/slider/MAX_mob.jpg')}}" alt="" class="block sm:hidden">
                         </a>
                     </div>
+                    <div class="slide">
+                        <a href="{{ url( 'bpla-contract' ) }}" class="slide-link cursor-pointer" target="_blank">
+                            <img src="{{asset('img/slider/base_banner_svo_2560.jpg')}}" alt="" class="hidden object-cover min-[1921px]:block w-max">
+                            <img src="{{asset('img/slider/base_banner_svo_1920.jpg')}}" alt="" class="hidden sm:block">
+                            <img src="{{asset('img/slider/base_banner_svo_360.jpg')}}" alt="" class="block sm:hidden">
+                        </a>
+                    </div>
 {{--                    <div class="slide">--}}
 {{--                        <a href="https://melsu.ru/tselevoe-obuchenie" class="slide-link cursor-pointer">--}}
 {{--                            <img src="{{asset('img/slider/Celevoe_banner.png')}}" alt="" class="hidden sm:block w-max">--}}

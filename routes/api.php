@@ -294,3 +294,24 @@ Route::middleware(['web', 'auth.api'])->get('cabinetDocumentCategoryChangeShowLi
     else
         Session::remove($request->input('value'));
 });
+
+Route::middleware(['web', 'auth.api'])->get('tags', function(Request $request){
+
+    if($request->input('q'))
+        $items = \App\Models\Common\Tags::where('name','like',"%{$request->input('q')}%");
+    else
+        $items = \App\Models\Common\Tags::query();
+
+    return response()->json([
+        'items' => $items->orderBy('name')->limit(100)->get()
+                    ->map(fn($item) => ['id' => $item->id, 'text' => $item->name])
+    ]);
+
+});
+
+Route::middleware(['web', 'auth.api'])->get('tags/create', function(Request $request){
+    $tag = \App\Models\Common\Tags::firstOrCreate(['name' => $request->input('tag')]);
+
+    return response()->json(['id' => $tag->id, 'text' => $tag->name]);
+
+});

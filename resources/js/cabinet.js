@@ -8,39 +8,13 @@ import './matches/divisionUUID.js';
 
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
+import './select2/base.js';
+import './select2/categoryWithParents.js';
+import './select2/tags.js';
+
 
 
 $(document).ready(function() {
-
-    if ($.fn.select2) {
-        $('.jq-select2').select2({
-            width: '100%',
-            placeholder: $(this).data('placeholder'),
-        });
-
-        $('.jq-select2[name="category_id"]').on('select2:select', function (e) {
-
-            let selectedID = e.params.data.id
-
-            let $parent = $(".jq-select2[name='parent_id']")
-
-            let $groups = $parent.find("optgroup")
-
-
-            $groups.prop('disabled', function() {
-                return selectedID != $(this).data('category')
-            });
-
-            $parent.val(null)
-
-            $parent.trigger('change.select2')
-
-        });
-
-    } else {
-        console.error('Select2 function not found!')
-    }
-
 
     $('.showDocumentCategory').change(function(){
         $.ajax({
@@ -78,9 +52,7 @@ $(document).ready(function() {
 
     $(`a[href="#copy"]`).click(function(){
         navigator.clipboard.writeText($(this).data('copy'));
-
         return false;
-
     })
 
 

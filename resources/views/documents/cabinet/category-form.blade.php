@@ -135,6 +135,19 @@
             />
         </div>
 
+        <div class="flex flex-col gap-2 p-4 bg-white">
+            <p>Теги</p>
+            <select
+                class="tags"
+                name="tags"
+                multiple
+            >
+                <option value="">Теги не указаны</option>
+                <option value="2" selected>123</option>
+            </select>
+        </div>
+
+
         <h3 class="font-semibold text-xl lg:col-span-2 my-2">
             Краткое описание
         </h3>

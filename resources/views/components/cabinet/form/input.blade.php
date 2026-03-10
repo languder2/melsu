@@ -1,3 +1,15 @@
+@props([
+    'heading'           => null,
+    'id'                => 'form-' . \Illuminate\Support\Str::random(20),
+    'initialContent'    => json_encode(['blocks' => []]),
+    'type'              => 'text',
+    'name'              => null,
+    'label'             => null,
+    'value'             => '',
+    'required'          => false,
+    'disabled'          => null,
+    'data'              => []
+])
 <div class="group block-input-group @isset($blockClasses) {!! $blockClasses !!} @endisset flex flex-col gap-1">
     @isset($slot)
         <label for="{{ $id ?? null }}">
