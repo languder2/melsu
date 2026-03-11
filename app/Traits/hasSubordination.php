@@ -2,7 +2,6 @@
 
 namespace App\Traits;
 
-use App\Models\Division\Division;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Collection;
@@ -149,7 +148,7 @@ trait hasSubordination
                 $item->flattenBranch(forced: true);
         }
     }
-    public function getRootId(string $field = 'parent_id', string $key = 'id'): int
+    public function getRootId(string $field = 'parent_id', string $key = 'id'): ?int
     {
         if (!$this->{$field})
             return $this->{$key};

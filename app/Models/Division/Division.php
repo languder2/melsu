@@ -37,6 +37,8 @@ use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Str;
+use Kalnoy\Nestedset\NodeTrait;
 
 /**
  * @property ?DivisionType $type
@@ -44,7 +46,7 @@ use Illuminate\Support\Facades\Cache;
 class Division extends Model
 {
     use
-        SoftDeletes, resolveRouteBinding, hasSubordination, hasContents,
+        SoftDeletes, resolveRouteBinding, hasContents,
         hasLinks, hasMeta,
         hasNews, hasEvents,
         hasPartners, hasGoals, hasCareers, hasScience, hasGraduations,
@@ -53,7 +55,7 @@ class Division extends Model
         hasImage,
         hasContacts,
         hasDivisionMenu, hasOptions,
-        hasStaffs
+        hasStaffs, NodeTrait
     ;
 
     protected array $links = [
@@ -96,7 +98,7 @@ class Division extends Model
         'type'  => DivisionType::class,
     ];
 
-    public int $rootIdBeforeSave;
+    public ?int $rootIdBeforeSave;
     protected static function boot()
     {
         parent::boot();
@@ -110,15 +112,15 @@ class Division extends Model
         });
 
         static::saving(function ($item) {
-            $item->rootIdBeforeSave = $item->getRootId();
+//            $item->rootIdBeforeSave = $item->getRootId();
         });
 
         static::saved(function ($item) {
-            if ($item->wasChanged())
-                Division::refreshCachesForId($item->rootIdBeforeSave);
+//            if ($item->wasChanged())
+//                Division::refreshCachesForId($item->rootIdBeforeSave);
 
-            Log::add($item);
-            $item->saveCacheCabinetItem();
+//            Log::add($item);
+//            $item->saveCacheCabinetItem();
         });
     }
 
@@ -573,6 +575,10 @@ class Division extends Model
         return Cache::has("division-cabinet-item-$this->id");
     }
 
+    public function prefixLevel(): ?string
+    {
+        return $this->depth ? Str::repeat('&nbsp', $this->depth*3) . __('common.arrowT2R') : null;
+    }
 
 }
 

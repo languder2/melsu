@@ -161,20 +161,6 @@ class DivisionController extends Controller
             return view('divisions.public.single.page', compact('menu','division'));
     }
 
-    /* API */
-    public function ApiVacatePosition(Request $request,$affiliation_id = null): JsonResponse
-    {
-        $item = Affiliation::find($affiliation_id);
-
-        if($item)
-            $item->delete();
-
-        return response()->json(
-            [
-                'message' => "Вакансия освобождена"
-            ]);
-    }
-
     /* Public search */
 
     public function PublicSearchResult(Request $request)

@@ -22,7 +22,7 @@
 <div class="break-words sm:break-normal text-sm sm:text-base">
     @if($division->leader->exists)
         <a
-            href="{!! $division->leader->link!!}"
+            href="{!! $division->leader->staff->link!!}"
             class="hover:underline hover:text-base-red"
         >
             {!! $division->leader->full_name!!}

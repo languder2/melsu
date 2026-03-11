@@ -13,4 +13,5 @@ Route::prefix('fix')->group(function () {
 Route::prefix('fix/employees')->group(function () {
     Route::get('set-uuid',                          [FixController::class, 'employeesSetUUID']);
     Route::get('set-is-teacher',                    [FixController::class, 'employeesSetIsTeacher']);
+    Route::get('update-posts',                      [FixController::class, 'employeesUpdatePosts']);
 });

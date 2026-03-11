@@ -28,6 +28,7 @@ class Post extends Model
         'is_approved',
         'sort',
         'post_weight',
+        'deleted_at',
     ];
 
     public function staff(): BelongsTo

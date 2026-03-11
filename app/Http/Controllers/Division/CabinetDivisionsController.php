@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Division\Division;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Benchmark;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
@@ -19,29 +20,49 @@ class CabinetDivisionsController extends Controller
     public function __construct(){
 
         if(auth()->user()->isEditor())
-            $query = Division::query();
+            $query = Division::defaultOrder()->withDepth();
         else
-            $query = auth()->user()->divisions();
+            $query = auth()->user()->divisions()->defaultOrder()->withDepth();
 
-        $this->divisions = flattenList($query->orderBy('name')->get());
-
-        $this->divisionIDS = $this->divisions->pluck('id')->toArray();
+        $this->divisions = $query->get();
     }
 
     public function list(): View
     {
+
         $list = $this->divisions;
 
-        $filter = Session::get('divisionCabinetFilter');
 
-        if($filter && $filter->has('search'))
-            $list = $list->filter(fn($item) =>
-                $item->id == $filter->get('search')
-                || Str::is('*'.mb_strtolower($filter->get('search')).'*', mb_strtolower($item->name))
-                || Str::is('*'.mb_strtolower($filter->get('search')).'*', mb_strtolower($item->code))
-                || Str::is('*'.mb_strtolower($filter->get('search')).'*', mb_strtolower($item->acronym))
-                || Str::is('*'.mb_strtolower($filter->get('search')).'*', mb_strtolower($item->alt_name))
-            );
+//        $list = $this->divisions;
+//
+//
+//        $filter = Session::get('divisionCabinetFilter');
+//
+//        if($filter && $filter->has('search'))
+//            $list = $list->filter(fn($item) =>
+//                $item->id == $filter->get('search')
+//                || Str::is('*'.mb_strtolower($filter->get('search')).'*', mb_strtolower($item->name))
+//                || Str::is('*'.mb_strtolower($filter->get('search')).'*', mb_strtolower($item->code))
+//                || Str::is('*'.mb_strtolower($filter->get('search')).'*', mb_strtolower($item->acronym))
+//                || Str::is('*'.mb_strtolower($filter->get('search')).'*', mb_strtolower($item->alt_name))
+//            );
+//
+//        $builder = auth()->user()->isEditor() ? Division::query() : auth()->user()->divisions();
+//
+//        $list = $builder->get();
+//
+//        if($filter && $filter->has('search')){
+//            $list = Division::where(fn($query) =>
+//                $query->where('id', (int) $filter->get('search'))
+//                    ->orWhere('name', 'LIKE', '%'.$filter->get('search').'%')
+//                    ->orWhere('code', 'LIKE', '%'.$filter->get('search').'%')
+//                    ->orWhere('acronym', 'LIKE', '%'.$filter->get('search').'%')
+//                )->get()->flatmap(fn($item) => $item->flattenBranch())->unique('id');
+//        }
+
+//        $list = flattenList($list, 'id', 'parent_id', 67)->keyBy('id');
+
+
 
         return view('divisions.cabinet.list', compact('list'));
     }

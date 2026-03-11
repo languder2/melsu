@@ -29,9 +29,9 @@ class FixController extends Controller
             ->groupBy(fn($item) => $item->parent_id ."_". $item->relation_type . '_' . $item->relation_id);
 
         $list->each(fn($items) =>
-            $items->each(fn($item, $key) =>
-                $item->update(['sort' => ($key+1)*100])
-            )
+        $items->each(fn($item, $key) =>
+        $item->update(['sort' => ($key+1)*100])
+        )
         );
 
         return response()->json(['success']);
@@ -150,6 +150,69 @@ class FixController extends Controller
         ];
 
         Post::query()->whereIn('post', $posts)->update(['is_teacher' => true]);
+
+        return response()->json(['success']);
+    }
+
+    public function employeesUpdatePosts(): JsonResponse
+    {
+        $json = Storage::disk('private')->json('json/employee.json');
+
+        if(is_null($json) || !array_key_exists('employee', $json))
+            abort(404);
+
+
+        $employees = collect($json['employee']);
+
+        $employees = $employees->filter(fn($item) => !$item['deleted']);
+
+        $grouped = $employees->groupBy('uid_person');
+
+        $grouped->each(function ($group) {
+            $item = $group->first();
+
+            $fio = [
+                'lastname'      => trim($item['surname']),
+                'firstname'     => trim($item['name']),
+                'middle_name'   => trim($item['patronymic']),
+
+            ];
+
+            Staff::updateOrCreate($fio,['uuid' => $item['uid_person']]);
+        });
+
+        $grouped->each(function ($group, $uuid){
+
+            $staff = Staff::where('uuid', $uuid)->first();
+
+
+            if(is_null($staff)) return;
+
+            foreach ($group as $post) {
+
+                $division = Division::where('uuid', $post['uid_department'])->first();
+
+                if(is_null($division)) continue;
+
+                $position = trim($post['position']);
+
+                $record = Post::withTrashed()->where('uuid', $post['uid_employee'])->firstOrNew();
+
+                $record->fill([
+                    'uuid'                  => $post['uid_employee'],
+                    'staff_id'              => $staff->id,
+                    'division_id'           => $division->id,
+                    'post'                  => $position,
+                    'is_head_of_division'   => (int) $post['head_of_division'],
+                    'is_show'               => true,
+                    'deleted_at'            => $post['dismissed'] ? Carbon::parse($post['date_dismissal']) : null
+                ])->save();
+
+                if($post['dismissed'])
+                    $record->delete();
+
+            }
+        });
 
         return response()->json(['success']);
     }
