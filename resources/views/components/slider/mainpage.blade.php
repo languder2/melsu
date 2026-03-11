@@ -34,7 +34,7 @@
                         <a href="{{ url( 'bpla-contract' ) }}" class="slide-link cursor-pointer" target="_blank">
                             <img src="{{asset('img/slider/base_banner_svo_2560.jpg')}}" alt="" class="hidden object-cover min-[1921px]:block w-max">
                             <img src="{{asset('img/slider/base_banner_svo_1920.jpg')}}" alt="" class="hidden sm:block">
-                            <img src="{{asset('img/slider/base_banner_svo_360.jpg')}}" alt="" class="block sm:hidden">
+                            <img src="{{asset('img/slider/base_banner_svo_360.jpg')}}" alt="" class="block sm:hidden object-fill">
                         </a>
                     </div>
 {{--                    <div class="slide">--}}
