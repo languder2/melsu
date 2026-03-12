@@ -7,7 +7,7 @@
 @endphp
 <div class="flex gap-3 items-center bg-white p-3 rounded-sm shadow">
     <div class="flex-1 flex gap-3 items-center">
-        {!! $has_menu ?  $division->name : $division->prefixLevel() . $division->name !!}
+        {!! $has_menu ? $division->name : $division->nameWithPrefixLevel !!}
     </div>
     @if(!$division->is_approved)
         <div>

@@ -2,9 +2,13 @@
     'staff' => new \App\Models\Staff\Staff(),
 ])
 
+@use(App\Models\Division\Division)
 @php
-    $avatar = $staff->staff->image('avatar')
+    $avatar = $staff->staff->image('avatar');
+
+    $divisions = $staff->staff->divisions;
 @endphp
+
 
 <div class="group bg-white p-6 flex flex-col justify-between mb-3 last:mb-0 hover:bg-gray-100">
     <a
@@ -79,6 +83,7 @@
     </a>
 </div>
 
+
 @if($staff->staff->divisions->isNotEmpty())
     <h3 class="font-semibold text-xl mt-8 mb-6">
         Курируемые структурные подразделения
@@ -96,7 +101,7 @@
                     @continue
                 @endif
 
-                @component("divisions.public.list.division",['division' => $division,'depth' => 0]) @endcomponent
+                @component("divisions.public.list.division",['division' => $division]) @endcomponent
             @endforeach
         </div>
     </div>

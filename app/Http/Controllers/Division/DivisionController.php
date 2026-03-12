@@ -14,10 +14,8 @@ use App\Models\Menu\Menu;
 use App\Models\Minor\Contact;
 use App\Models\Page\Content as PageContent;
 use App\Models\Partners\Partner;
-use App\Models\Staff\Affiliation;
 use App\Models\Staff\Staff;
 use App\Models\Upbringing\Upbringing;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -139,13 +137,16 @@ class DivisionController extends Controller
     /* Public */
     public function publicList():View
     {
-        $coordinatorIDs = Division::whereNotNull('coordinator_id')->get('coordinator_id')->unique('coordinator_id')->pluck('coordinator_id');
-
-        $division   = Division::where('code', 'rectorate')->first();
         $menu       = Menu::where('code','university')->first();
-        $depth      = 0;
 
-        return view('divisions.public.list.page',compact('division','depth','menu'));
+//        $division   = Division::where('code', 'rectorate')->first();
+//        $depth      = 0;
+//
+//        return view('divisions.public.list.page',compact('division','depth','menu'));
+
+        $list = Division::defaultOrder()->whereIsRoot()->public()->get();
+
+        return view('divisions.public.list',    compact('list','menu'));
     }
 
     public function show(?Division $division):View|RedirectResponse

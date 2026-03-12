@@ -1,23 +1,24 @@
+@props([
+    'division'  => new \App\Models\Division\Division()
+])
+
+@php if (!$division->exists) return; @endphp
+
 <hr class="col-span-2">
 <div class="break-words sm:break-normal text-sm sm:text-base">
-    @for($i=1;$i<$depth;$i++)
+    @for( $i = 1; $i < $division->depth; $i++ )
         <span class="inline-block mx-3"></span>
     @endfor
 
-    @if($depth)
+    @if($division->depth)
         <i class="fas fa-level-up-alt rotate-90 mx-2"></i>
     @endif
-
-    @if($division->PublicSectionsCount)
-        <a
-            href="{!! $division->relation->link ?? $division->link !!}"
-            class="hover:underline hover:text-base-red"
-        >
-            {!! $division->name !!}
-        </a>
-    @else
+    <a
+        href="{!! $division->relation->link ?? $division->link !!}"
+        class="hover:underline hover:text-base-red"
+    >
         {!! $division->name !!}
-    @endif
+    </a>
 </div>
 <div class="break-words sm:break-normal text-sm sm:text-base">
     @if($division->leader->exists)
@@ -32,10 +33,4 @@
     @endif
 </div>
 
-@if($division->subs->count())
-    @foreach($division->subs as $sub)
-        @component("divisions.public.list.division",['division' => $sub,'depth' => $depth+1])@endcomponent
-    @endforeach
-@endif
-
-
+@each('divisions.public.list.division', $division->children()->withDepth()->get(), 'division')

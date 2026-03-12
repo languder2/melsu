@@ -8,77 +8,74 @@ use App\Models\Division\Division;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Benchmark;
-use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Str;
 use Illuminate\View\View;
+use Kalnoy\Nestedset\QueryBuilder;
 
 class CabinetDivisionsController extends Controller
 {
-    protected Collection $divisions;
-    protected array $divisionIDS;
+
+
+    protected QueryBuilder $query;
+    protected array $allowedIDS = [];
     public function __construct(){
+        $this->query = Division::defaultOrder()->withDepth();
 
-        if(auth()->user()->isEditor())
-            $query = Division::defaultOrder()->withDepth();
-        else
-            $query = auth()->user()->divisions()->defaultOrder()->withDepth();
+        if(!auth()->user()->isEditor()){
+            $this->allowedIDS = auth()->user()->divisions->pluck('id')->toArray();
 
-        $this->divisions = $query->get();
+            $this->query->whereIn('id', auth()->user()->divisions->pluck('id'));
+        }
+
+//        $this->query->where(function ($q) use ($allowedIds) {
+//            foreach ($allowedIds as $id) {
+//                $q->orWhere(fn($sub) => $sub->whereDescendantsAndSelf($id));
+//            }
+//        });
+
     }
 
     public function list(): View
     {
+        $filter = Session::get('divisionCabinetFilter', collect());
+        $search = $filter->get('search');
 
-        $list = $this->divisions;
+        $query = clone $this->query;
 
+        if ($search) {
+            $matchedNodes = (clone $query)->where(function($q) use ($search) {
+                $q->where('id', $search)
+                    ->orWhere('name', 'LIKE', "%$search%")
+                    ->orWhere('code', 'LIKE', "%$search%")
+                    ->orWhere('acronym', 'LIKE', "%$search%");
+            })->get();
 
-//        $list = $this->divisions;
-//
-//
-//        $filter = Session::get('divisionCabinetFilter');
-//
-//        if($filter && $filter->has('search'))
-//            $list = $list->filter(fn($item) =>
-//                $item->id == $filter->get('search')
-//                || Str::is('*'.mb_strtolower($filter->get('search')).'*', mb_strtolower($item->name))
-//                || Str::is('*'.mb_strtolower($filter->get('search')).'*', mb_strtolower($item->code))
-//                || Str::is('*'.mb_strtolower($filter->get('search')).'*', mb_strtolower($item->acronym))
-//                || Str::is('*'.mb_strtolower($filter->get('search')).'*', mb_strtolower($item->alt_name))
-//            );
-//
-//        $builder = auth()->user()->isEditor() ? Division::query() : auth()->user()->divisions();
-//
-//        $list = $builder->get();
-//
-//        if($filter && $filter->has('search')){
-//            $list = Division::where(fn($query) =>
-//                $query->where('id', (int) $filter->get('search'))
-//                    ->orWhere('name', 'LIKE', '%'.$filter->get('search').'%')
-//                    ->orWhere('code', 'LIKE', '%'.$filter->get('search').'%')
-//                    ->orWhere('acronym', 'LIKE', '%'.$filter->get('search').'%')
-//                )->get()->flatmap(fn($item) => $item->flattenBranch())->unique('id');
-//        }
+            if ($matchedNodes->isNotEmpty()) {
+                $allIds = $matchedNodes->flatMap(function($node) {
+                    return Division::descendantsAndSelf($node->id)->pluck('id');
+                })->unique();
 
-//        $list = flattenList($list, 'id', 'parent_id', 67)->keyBy('id');
+                $list = $query->whereIn('id', $allIds)->get()->unique('id');
 
-
+            }
+            else
+                $list = collect();
+        }
+        else
+            $list = $query->get()->unique('id');
 
         return view('divisions.cabinet.list', compact('list'));
     }
-
     public function form(Division $division): View
     {
-        $divisions = $this->divisions
+        $divisions = $this->query->get()->unique('id')
             ->reject(fn($item) => $item->id === $division->id)
-            ->pluck('nameWithLevel', 'id');
+            ->pluck('nameWithPrefixLevel', 'id');
 
         $types = DivisionType::labels();
 
         return view('divisions.cabinet.form', compact('division', 'divisions', 'types'));
     }
-
-
     public function save(Request $request, Division $division): RedirectResponse
     {
         if(auth()->user()->isEditor()){

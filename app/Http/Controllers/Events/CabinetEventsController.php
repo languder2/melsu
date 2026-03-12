@@ -21,13 +21,12 @@ class CabinetEventsController extends Controller
     protected Collection $divisions;
     public function __construct(){
 
-        $this->divisions = Division::fullTree();
+        if(auth()->user()->isEditor())
+            $query = Division::defaultOrder()->withDepth();
+        else
+            $query = auth()->user()->divisions()->defaultOrder()->withDepth();
 
-        if(!auth()->user()->isEditor()){
-            $ids = auth()->user()->divisions->pluck('id')->unique()->toArray();
-            $this->divisions = $this->divisions->filter(fn($item) => in_array($item->id, $ids));
-        }
-
+        $this->divisions = $query->get();
     }
 
     public function list(bool $onApproval = false): View

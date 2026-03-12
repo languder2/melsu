@@ -17,14 +17,12 @@ class FixController extends Controller
 {
     public function divisionsCabinetLines():JsonResponse
     {
-
-        Division::all()->each(fn($item) => $item->saveCacheCabinetItem());
+        Division::withDepth()->get()->each(fn($item) => $item->saveCacheCabinetItem());
 
         return response()->json(['success']);
     }
     public function documentCategoriesSort():JsonResponse
     {
-
         $list = DocumentCategory::orderBy('sort')->get()
             ->groupBy(fn($item) => $item->parent_id ."_". $item->relation_type . '_' . $item->relation_id);
 

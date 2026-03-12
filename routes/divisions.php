@@ -87,9 +87,6 @@ Route::prefix('cabinet/divisions')
         Route::delete('delete/{division}',                  [CabinetDivisionsController::class, 'delete'])
             ->name('divisions.delete');
 
-        Route::post('set-filter',                           [CabinetDivisionsController::class, 'setFilter'])
-            ->name('divisions.cabinet.set-filter');
-
         Route::get('history/form/{division?}',              [CabinetDivisionsController::class, 'historyForm'])
             ->name('division.history.form');
 
@@ -108,6 +105,12 @@ Route::prefix('cabinet/divisions')
         Route::put('gallery/save/{division?}',              [CabinetDivisionsController::class, 'gallerySave'])
             ->name('division.gallery.save');
 
+    });
+Route::prefix('cabinet/divisions')
+    ->middleware([AuthCabinet::class])
+    ->group(function () {
+        Route::post('set-filter',                           [CabinetDivisionsController::class, 'setFilter'])
+                                                                ->name('divisions.cabinet.set-filter');
     });
 
 Route::prefix('cabinet/divisions')->middleware([AuthCabinet::class, IsAdmin::class])->group(function () {

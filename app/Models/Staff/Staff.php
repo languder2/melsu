@@ -118,7 +118,8 @@ class Staff extends Model
             ->orderBy('employment_year', 'desc')
             ->orderByRaw('dismissal_year IS NULL DESC')
             ->orderBy('dismissal_year', 'desc')
-            ->orderBy('sort');
+            ->orderBy('sort')
+        ->withDepth();
     }
 
     public function divisions():HasMany

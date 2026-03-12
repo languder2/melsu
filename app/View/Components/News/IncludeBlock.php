@@ -19,7 +19,8 @@ class IncludeBlock extends Component
 
     public function __construct(Division $division)
     {
-        $this->events   = $division->publicEvents()->take($this->eventCount);
+
+        $this->events   = $division->publicEvents2()->take($this->eventCount);
 
         $this->news     = $division->publicNews()->take($this->events->isEmpty() ? $this->onlyNewsCount : $this->newsCount);
     }

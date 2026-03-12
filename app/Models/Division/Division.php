@@ -39,6 +39,7 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Str;
 use Kalnoy\Nestedset\NodeTrait;
+use Kalnoy\Nestedset\QueryBuilder;
 
 /**
  * @property ?DivisionType $type
@@ -577,8 +578,41 @@ class Division extends Model
 
     public function prefixLevel(): ?string
     {
-        return $this->depth ? Str::repeat('&nbsp', $this->depth*3) . __('common.arrowT2R') : null;
+        return $this->depth ? Str::repeat('&nbsp', $this->depth*3) . __('common.arrowT2R') . '&nbsp&nbsp' : null;
     }
+
+    public function getNameWithPrefixLevelAttribute(): ?string
+    {
+        return $this->prefixLevel() .  $this->name;
+    }
+
+    public function getPublicNameWithPrefixLevelAttribute(): ?string
+    {
+        return $this->prefixLevel() .  $this->name;
+    }
+
+
+    public static function fixOrderByName(): void
+    {
+        $roots = Division::whereIsRoot()->orderBy('name')->get();
+
+        $next = null;
+
+        foreach ($roots as $root) {
+            if ($next) {
+                $root->afterNode($next)->save();
+            } else {
+                $root->saveAsRoot();
+            }
+            $next = $root;
+        }
+
+    }
+    public function scopePublic($query): QueryBuilder
+    {
+        return $query->where('is_show', true)->where('is_approved', true);
+    }
+
 
 }
 

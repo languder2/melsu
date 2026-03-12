@@ -1,5 +1,3 @@
-@php $found = false @endphp
-
 @if($division->leader->exists)
     @component('divisions.public.list.staff',['staff' => $division->leader]) @endcomponent
 @endif
@@ -7,7 +5,6 @@
 @if($division->staffs->count())
     @foreach($division->staffs as $staff)
         @if($staff->staff->divisions->isNotEmpty())
-            @php $found = true @endphp
             @component('divisions.public.list.staff',['staff' => $staff,'post'  => $staff->post])@endcomponent
         @endif
     @endforeach

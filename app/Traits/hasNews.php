@@ -33,7 +33,7 @@ trait hasNews
         $IDs = [$this->id];
 
         if($this instanceof Division && $withTree)
-            $IDs   = $this->tree()->pluck('id');
+            $IDs   = Division::descendantsAndSelf($this->id)->pluck('id');
 
         $newsIDs = DB::table('news_relations')
             ->whereIn('relation_id', $IDs)
