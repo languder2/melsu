@@ -8,7 +8,7 @@ class Tags extends Model
 {
     protected $table = 'tags';
 
-    protected $fillable = ['id','name','slug'];
+    protected $fillable = ['id','name','type'];
 
-
+    public $timestamps = false;
 }

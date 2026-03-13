@@ -11,24 +11,23 @@ return new class extends Migration
         if(!Schema::hasTable('tags'))
             Schema::create('tags', function (Blueprint $table) {
                 $table->id();
-                $table->string('name')->unique();
-                $table->string('slug')->nullable();
-                $table->timestamps();
+                $table->string('name');
+                $table->string('type')->index();
+                $table->unique(['name', 'type']);
             });
 
-        if(!Schema::hasTable('tag_relations'))
-            Schema::create('tag_relations', function (Blueprint $table) {
+        if(!Schema::hasTable('tags_relations'))
+            Schema::create('tags_relations', function (Blueprint $table) {
                 $table->id();
                 $table->unsignedBigInteger('tag_id');
                 $table->morphs('relation');
-                $table->timestamps();
-                $table->foreign('tag_id')->references('id')->on('tags')->onDelete('cascade');
+                $table->foreign('tag_id')->references('id')->on('tags')->onDelete('cascade')->onUpdate('cascade');
             });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('tag_relations');
+        Schema::dropIfExists('tags_relations');
         Schema::dropIfExists('tags');
     }
 };

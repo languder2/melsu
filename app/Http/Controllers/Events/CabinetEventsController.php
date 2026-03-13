@@ -6,35 +6,33 @@ use App\Http\Controllers\Controller;
 use App\Models\Division\Division;
 use App\Models\Events\Category;
 use App\Models\Events\Events;
+use App\Models\News\News;
 use App\Models\Users\User;
+use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
+use Kalnoy\Nestedset\QueryBuilder;
 
 class CabinetEventsController extends Controller
 {
     protected int $perPage = 50;
-    protected Collection $divisions;
-    public function __construct(){
-
-        if(auth()->user()->isEditor())
-            $query = Division::defaultOrder()->withDepth();
-        else
-            $query = auth()->user()->divisions()->defaultOrder()->withDepth();
-
-        $this->divisions = $query->get();
-    }
-
     public function list(bool $onApproval = false): View
     {
 
-        $list = auth()->user()->isEditor()
-            ? Events::orderBy('event_datetime', 'desc')->get()
-            : $this->divisions->flatMap(fn($division) => $division->events)->unique('id')->sortByDesc('event_datetime');
+        $divisions = Division::listBasedOnAuthUser();
+
+        $query = Events::orderBy('event_datetime', 'desc');
+
+        if(!auth()->user()->isEditor())
+            $query->forRelations($divisions->pluck('id'), Division::class);
+
+        $list = $query->get();
 
         $filter = Session::get('cabinetNewsFilters', collect());
 
@@ -58,9 +56,9 @@ class CabinetEventsController extends Controller
         $list = $list->paginate($this->perPage);
 
         $byFilter = collect([
-            'divisions' => $this->divisions->pluck('nameWithLevel', 'id'),
+            'divisions' => $divisions->get()->pluck('nameWithPrefixLevel','id'),
             'authors'   =>
-                $this->divisions
+                $divisions->get()
                     ->flatMap(fn($division) => $division->events)
                     ->unique('author_id')
                     ->map(fn($item) => $item->author)
@@ -85,9 +83,11 @@ class CabinetEventsController extends Controller
     public function form(Events $event): View
     {
 
-        $divisions = $this->divisions->pluck('nameWithLevel','id');
+        $dQuery =  Division::listBasedOnAuthUser();
 
-        $divisionsDiff = $event->divisions->diff($this->divisions)->pluck('nameWithLevel','id');
+        $divisions = $dQuery->get()->pluck('nameWithPrefixLevel','id');
+
+        $divisionsDiff = $event->divisions->diff($dQuery->get())->pluck('nameWithPrefixLevel','id');
 
         $categories = Category::all()->pluck('name', 'id');
 

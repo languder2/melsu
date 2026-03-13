@@ -30,6 +30,7 @@ use App\Traits\hasStaffs;
 use App\Traits\hasSubordination;
 use App\Traits\hasUsers;
 use App\Traits\resolveRouteBinding;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
@@ -586,12 +587,6 @@ class Division extends Model
         return $this->prefixLevel() .  $this->name;
     }
 
-    public function getPublicNameWithPrefixLevelAttribute(): ?string
-    {
-        return $this->prefixLevel() .  $this->name;
-    }
-
-
     public static function fixOrderByName(): void
     {
         $roots = Division::whereIsRoot()->orderBy('name')->get();
@@ -608,9 +603,21 @@ class Division extends Model
         }
 
     }
-    public function scopePublic($query): QueryBuilder
+    public function scopePublic($query): Builder
     {
         return $query->where('is_show', true)->where('is_approved', true);
+    }
+
+    public static function listBasedOnAuthUser(): Builder
+    {
+        $query = self::defaultOrder()->withDepth();
+
+        if(!auth()->user()->isEditor()){
+            $dIds= auth()->check() ? auth()->user()->divisions->pluck('id')->toArray() : [];
+            $query->whereIn('id', $dIds);
+        }
+
+        return $query;
     }
 
 

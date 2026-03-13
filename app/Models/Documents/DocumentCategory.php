@@ -6,6 +6,7 @@ use App\Traits\hasContents;
 use App\Traits\hasOptions;
 use App\Traits\hasRelations;
 use App\Traits\hasSubordination;
+use App\Traits\hasTags;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -16,7 +17,7 @@ use Illuminate\Support\Facades\Cache;
 
 class DocumentCategory extends Model
 {
-    use SoftDeletes, hasRelations, hasOptions, hasSubordination, hasContents;
+    use SoftDeletes, hasRelations, hasOptions, hasSubordination, hasContents, hasTags;
 
     protected $table = 'document_categories';
     protected string $entity = 'document-categories';

@@ -2,6 +2,7 @@
 
 namespace App\Models\Events;
 
+use App\Models\Division\Division;
 use App\Models\Gallery\Gallery;
 use App\Models\Gallery\Image;
 use App\Traits\hasAuthor;
@@ -14,10 +15,13 @@ use App\Traits\hasMeta;
 use App\Traits\hasRelations;
 use App\Traits\MagicGet;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
 
 class Events extends Model
 {
@@ -172,6 +176,16 @@ class Events extends Model
         }
         else
             return $value;
+    }
+    public static function scopeForRelations($query, array|Collection $rIds, string $type): Builder
+    {
+        $ids = DB::table('events_relations')
+            ->whereIn('relation_id', $rIds)
+            ->where('relation_type', $type)
+            ->get()
+            ->pluck('event_id')->unique();
+
+        return $query->whereIn('id', $ids);
     }
 
 }

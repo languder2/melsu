@@ -4,6 +4,7 @@ use App\Http\Controllers\Common\FixController;
 
 Route::prefix('fix')->group(function () {
     Route::get('divisions-cabinet-lines',           [FixController::class, 'divisionsCabinetLines']);
+    Route::get('divisions-fix-order',               function (){ \App\Models\Division\Division::fixOrderByName();});
 });
 
 Route::prefix('fix')->group(function () {

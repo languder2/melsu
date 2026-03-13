@@ -24,7 +24,7 @@ class CabinetDivisionsController extends Controller
         if(!auth()->user()->isEditor()){
             $this->allowedIDS = auth()->user()->divisions->pluck('id')->toArray();
 
-            $this->query->whereIn('id', auth()->user()->divisions->pluck('id'));
+            $this->query->whereIn('id', $this->allowedIDS);
         }
 
 //        $this->query->where(function ($q) use ($allowedIds) {

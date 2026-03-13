@@ -47,6 +47,8 @@ class CabinetCategoriesController extends Controller
         else
             $current->removeOptions(['in_accordion','accordion_prefix']);
 
+        $current->tags()->sync($request->input('tags'));
+
         $close      = $request->has('save-close');
 
         $onApproval = Cache::get('documents.onApproval', false);

@@ -16,6 +16,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Session;
+use App\Models\Common\Tags;
 
 Route::get('test123', function (){
     return phpinfo();
@@ -309,8 +310,9 @@ Route::middleware(['web', 'auth.api'])->get('tags', function(Request $request){
 
 });
 
-Route::middleware(['web', 'auth.api'])->get('tags/create', function(Request $request){
-    $tag = \App\Models\Common\Tags::firstOrCreate(['name' => $request->input('tag')]);
+Route::middleware(['web', 'auth.api'])->post('tags/create', function(Request $request){
+
+    $tag = Tags::firstOrCreate(['name' => $request->input('tag'), 'type' => $request->input('type')]);
 
     return response()->json(['id' => $tag->id, 'text' => $tag->name]);
 

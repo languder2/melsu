@@ -1,3 +1,9 @@
+@use(App\Models\Common\Tags)
+
+@props([
+    'tags'  => Tags::orderBy('name')->pluck('name', 'id')
+])
+
 @extends("layouts.cabinet")
 
 @section(
@@ -139,11 +145,14 @@
             <p>Теги</p>
             <select
                 class="tags"
-                name="tags"
+                name="tags[]"
                 multiple
+                size="1"
+                data-type="documentCategory"
             >
-                <option value="">Теги не указаны</option>
-                <option value="2" selected>123</option>
+                @foreach($tags as $tagId => $tag)
+                    <option value="{{ $tagId }}" @selected($current->tags->contains($tagId)) >{{ $tag }}</option>
+                @endforeach
             </select>
         </div>
 
@@ -151,6 +160,7 @@
         <h3 class="font-semibold text-xl lg:col-span-2 my-2">
             Краткое описание
         </h3>
+
         <x-editorjs.editor
             set="short"
             name="short"

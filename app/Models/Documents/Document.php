@@ -7,9 +7,9 @@ use App\Models\Global\Options;
 use App\Traits\hasContents;
 use App\Traits\hasOptions;
 use App\Traits\hasSubordination;
+use App\Traits\hasTags;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Cache;
@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Storage;
 
 class Document extends Model
 {
-    use SoftDeletes, hasSubordination, hasContents, hasOptions;
+    use SoftDeletes, hasSubordination, hasContents, hasOptions, hasTags;
 
     protected $table        = 'documents';
 
