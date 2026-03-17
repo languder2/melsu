@@ -26,7 +26,7 @@ class ShortNews extends Component
 
         $category = Category::find($category);
 
-        $this->news = $category->news()->public()->published()->limit(4)->get();
+        $this->news = $category->news()->orderPublished()->public()->published()->limit(4)->get();
 
         $this->reports = Events::limit(4)->get();
 

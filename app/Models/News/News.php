@@ -246,4 +246,9 @@ class News extends Model
         return $query->where('is_show', true)->where('has_approval', true);
     }
 
+    public function scopeOrderPublished($query): Builder
+    {
+        return $query->orderBy('published_at', 'desc');
+    }
+
 }
