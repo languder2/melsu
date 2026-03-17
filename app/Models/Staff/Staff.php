@@ -119,14 +119,16 @@ class Staff extends Model
             ->orderByRaw('dismissal_year IS NULL DESC')
             ->orderBy('dismissal_year', 'desc')
             ->orderBy('sort')
-        ->withDepth();
+        ;
     }
 
     public function divisions():HasMany
     {
         return $this->hasMany(Division::class,'coordinator_id', 'id')
             ->orderBy('sort')
-            ->orderBy('name');
+            ->orderBy('name')
+            ->withDepth()
+        ;
     }
 
     public function getFormAttribute(): string
