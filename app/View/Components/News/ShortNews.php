@@ -15,8 +15,6 @@ class ShortNews extends Component
 {
     public string $test = '55';
     public Collection $news;
-    public ?Collection $reports;
-    public ?Collection $previews;
 
     /**
      * Create a new component instance.
@@ -27,10 +25,6 @@ class ShortNews extends Component
         $category = Category::find($category);
 
         $this->news = $category->news()->orderPublished()->public()->published()->limit(4)->get();
-
-        $this->reports = Events::limit(4)->get();
-
-        $this->previews = Events::limit(4)->get();;
     }
 
     /**
@@ -40,8 +34,6 @@ class ShortNews extends Component
     {
         return view('components.news.short-news', [
             'news' => $this->news,
-            'previews' => $this->previews,
-            'reports' => $this->reports,
         ]);
     }
 }
