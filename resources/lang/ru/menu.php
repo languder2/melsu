@@ -14,6 +14,7 @@ return [
     'employees'                         => 'Сотрудники',
     'departments and labs'              => 'Кафедры и лаборатории',
     'labs'                              => 'Лаборатории',
+    'magazine'                          => 'Газета',
     'specialities'                      => 'Направления подготовки',
     'sciences'                          => 'Наука',
     'partners'                          => 'Партнеры',

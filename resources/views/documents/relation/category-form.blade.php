@@ -1,3 +1,10 @@
+@use(App\Models\Common\Tags)
+
+@props([
+    'tags'  => Tags::where('type', 'documentCategory')->orderBy('name')->limit(1000)->pluck('name', 'id')
+])
+
+
 @extends("layouts.cabinet")
 
 @section(
@@ -137,6 +144,13 @@
                 required
             />
         </div>
+
+
+        <x-html.select.tags
+            type="documentCategory"
+            :selected=" $category->tags "
+            multiple
+        />
 
         <h3 class="font-semibold text-xl lg:col-span-2 my-2">
             Краткое описание

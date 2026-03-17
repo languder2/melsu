@@ -9,7 +9,6 @@ use App\Models\Gallery\Image;
 use App\Models\Menu\Menu;
 use App\Models\Page\Content as PageContent;
 use App\Models\Partners\Partner;
-use App\Models\Services\Log;
 use App\Models\Upbringing\Upbringing;
 use App\Traits\Documents\hasDocuments;
 use App\Traits\hasCareers;
@@ -27,7 +26,6 @@ use App\Traits\hasOptions;
 use App\Traits\hasPartners;
 use App\Traits\hasScience;
 use App\Traits\hasStaffs;
-use App\Traits\hasSubordination;
 use App\Traits\hasUsers;
 use App\Traits\resolveRouteBinding;
 use Illuminate\Database\Eloquent\Builder;
@@ -300,8 +298,14 @@ class Division extends Model
             $this->type->value,
             $code
         ]);
-
     }
+
+    public function getOperandAttribute(): string
+    {
+        return $this->alias ?? $this->code ?? $this->id;
+    }
+
+
     public function getGalleryLinkAttribute(): string
     {
         $code = $this->alias ?? $this->code ?? $this->id;

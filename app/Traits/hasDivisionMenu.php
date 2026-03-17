@@ -74,7 +74,7 @@ trait hasDivisionMenu
             'is_link'   => true
         ]);
 
-        $menu->put('news',(object)[
+         $menu->put('news',(object)[
             'name'      => __("menu.news"),
             'ico'       => Blade::render('<x-lucide-notebook-text class="w-5" />'),
             'link'      => '',
@@ -82,18 +82,26 @@ trait hasDivisionMenu
             'onclick'   => "scrollToBlock('NewsIncludeBlock'); return false;"
         ]);
 
+        $menu->put('documents',(object)[
+            'name'      => __("menu.documents"),
+            'ico'       => Blade::render('<x-lucide-file-text class="w-5" />'),
+            'link'      => $this->documentsLink,
+            'is_link'   => true,
+        ]);
+
+        if($this->documentCategories()->whereHas('tags', fn($query) => $query->where('name', "Газета"))->count())
+            $menu->put('magazine',(object)[
+                'name'      => __("menu.magazine"),
+                'ico'       => Blade::render('<x-lucide-newspaper class="w-5" />'),
+                'link'      => route('division.education.magazine',[$this->type->value, $this->operand]),
+                'is_link'   => true,
+            ]);
+
         $menu->put('incomingStudents',(object)[
             'name'      => __("menu.for incoming students"),
             'ico'       => Blade::render('<x-lucide-door-open class="w-5" />'),
             'link'      => 'https://abiturient.mgu-mlt.ru/',
             'is_link'   => true
-        ]);
-
-        $menu->put('news',(object)[
-            'name'      => __("menu.documents"),
-            'ico'       => Blade::render('<x-lucide-file-text class="w-5" />'),
-            'link'      => $this->documentsLink,
-            'is_link'   => true,
         ]);
 
         $menu->put('gallery',(object)[

@@ -20,6 +20,7 @@ class DocumentCategory extends Model
     use SoftDeletes, hasRelations, hasOptions, hasSubordination, hasContents, hasTags;
 
     protected $table = 'document_categories';
+
     protected string $entity = 'document-categories';
 
     protected $fillable = [

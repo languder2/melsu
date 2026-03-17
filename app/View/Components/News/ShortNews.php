@@ -3,6 +3,7 @@
 namespace App\View\Components\News;
 
 use App\Models\Events\Events;
+use App\Models\News\Category;
 use App\Models\News\News;
 use Closure;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
@@ -22,11 +23,10 @@ class ShortNews extends Component
      */
     public function __construct($category = null)
     {
-        $this->news = News::query()
-        ->orderBy('published_at', 'desc') 
-        ->when($category, fn($q) => $q->where('category', $category))
-        ->limit(4)
-        ->get();
+
+        $category = Category::find($category);
+
+        $this->news = $category->news()->public()->published()->limit(4)->get();
 
         $this->reports = Events::limit(4)->get();
 

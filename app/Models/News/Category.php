@@ -2,13 +2,16 @@
 
 namespace App\Models\News;
 
+use App\Models\Common\Tags;
 use App\Models\Events\Events;
 use App\Traits\hasNews;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
 
 class Category extends Model
 {
@@ -60,14 +63,15 @@ class Category extends Model
         return $this->where('code', $value)->first() ??  $this->where('id', $value)->first();
     }
 
-    public function news(): HasMany
+    public function news(): MorphToMany
     {
-        return $this->hasMany(News::class, 'category', 'id')
-            ->where('published_at', '<=', Carbon::now())
-            ->orderBy('is_favorite', 'desc')
-            ->orderBy('sort')
-            ->orderBy('published_at', 'desc')
-            ;
+        return $this->morphToMany(
+            News::class,
+            'relation',
+            'news_relations',
+            'relation_id',
+            'news_id'
+        );
     }
 
     public function getIdAttribute($value):int

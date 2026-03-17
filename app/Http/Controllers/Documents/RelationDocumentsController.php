@@ -45,6 +45,11 @@ class RelationDocumentsController extends Controller
 
         $document->setContent('after',$request->get('after'));
 
+        $document->tags()->sync($request->get('tags'));
+
+        if($request->file('image'))
+            $document->image->saveImage($request->file('image'));
+
         return $request->has('save-close')
             ? redirect()->route(
                 Session::has('documents-category.after-save-route')

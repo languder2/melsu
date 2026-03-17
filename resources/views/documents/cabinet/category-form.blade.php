@@ -1,7 +1,7 @@
 @use(App\Models\Common\Tags)
 
 @props([
-    'tags'  => Tags::orderBy('name')->pluck('name', 'id')
+    'tags'  => Tags::where('type', 'documentCategory')->orderBy('name')->limit(1000)->pluck('name', 'id')
 ])
 
 @extends("layouts.cabinet")
@@ -141,21 +141,11 @@
             />
         </div>
 
-        <div class="flex flex-col gap-2 p-4 bg-white">
-            <p>Теги</p>
-            <select
-                class="tags"
-                name="tags[]"
-                multiple
-                size="1"
-                data-type="documentCategory"
-            >
-                @foreach($tags as $tagId => $tag)
-                    <option value="{{ $tagId }}" @selected($current->tags->contains($tagId)) >{{ $tag }}</option>
-                @endforeach
-            </select>
-        </div>
-
+        <x-html.select.tags
+            type="documentCategory"
+            :selected=" $current->tags "
+            multiple
+        />
 
         <h3 class="font-semibold text-xl lg:col-span-2 my-2">
             Краткое описание

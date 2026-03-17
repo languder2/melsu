@@ -42,7 +42,7 @@ class TestController extends Controller
 
 
         Division::limit(500)->get()->each(fn($division) =>
-        $division->saveCacheCabinetItem()
+            $division->saveCacheCabinetItem()
         );
 
 
@@ -51,6 +51,16 @@ class TestController extends Controller
 
     public function index()
     {
+
+
+        $division = Division::find(395);
+
+        $documents = $division->documentCategories()->whereHas('tags', function($query){
+            $query->where('name', "Газета");
+        })->count();
+
+        dd($documents);
+
         $division = Division::find(394);
 
         Benchmark::dd([

@@ -171,6 +171,27 @@
             @endif
         </div>
 
+        <x-html.select.tags
+            type="document"
+            :selected=" $document->tags "
+            multiple
+        />
+
+        <div class="flex gap-3 bg-white p-3 shadow">
+            <div>
+                <x-html.image-with-modal
+                    :url="$document->image->url"
+                    object="max-h-14"
+                />
+            </div>
+
+            <x-form.file
+                label="Установить / сменить изображение"
+                name="image"
+                block="flex-1"
+            />
+        </div>
+
         <div class="p-4 bg-white">
             <x-form.input
                 name="link"

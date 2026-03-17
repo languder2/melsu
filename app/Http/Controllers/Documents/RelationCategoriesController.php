@@ -76,6 +76,8 @@ class RelationCategoriesController extends Controller
             $category->option('accordion_prefix')->delete();
         }
 
+        $category->tags()->sync($request->input('tags'));
+
         return $request->has('save-close')
             ? redirect()->route(
                 Session::has('documents-category.after-save-route')

@@ -58,6 +58,14 @@ class EducationController extends Controller
     {
         return view('divisions.education.public.documents',compact('division'));
     }
+    public function magazine(string $type, ?Division $division )
+    {
+        $list = $division->documents()->whereHas('tags', function($query){
+            $query->where('name', "Газета");
+        })->get();
+
+        return view('divisions.education.public.magazine',compact('division', 'list'));
+    }
     public function gallery(string $type, ?Division $division )
     {
         return view('divisions.education.public.gallery',compact('division'));

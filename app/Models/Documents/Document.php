@@ -5,6 +5,7 @@ namespace App\Models\Documents;
 use App\Enums\DocumentTypes;
 use App\Models\Global\Options;
 use App\Traits\hasContents;
+use App\Traits\hasImage;
 use App\Traits\hasOptions;
 use App\Traits\hasSubordination;
 use App\Traits\hasTags;
@@ -17,7 +18,7 @@ use Illuminate\Support\Facades\Storage;
 
 class Document extends Model
 {
-    use SoftDeletes, hasSubordination, hasContents, hasOptions, hasTags;
+    use SoftDeletes, hasSubordination, hasContents, hasOptions, hasTags, hasImage;
 
     protected $table        = 'documents';
 
@@ -239,6 +240,11 @@ class Document extends Model
     public function getRelationDeleteAttribute(): string
     {
         return route('division:admin:documents:delete', [$this->relation, $this ]);
+    }
+
+    public function getNameAttribute(): string
+    {
+        return $this->title;
     }
 
 }

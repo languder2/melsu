@@ -237,9 +237,13 @@ class News extends Model
         return $this->getShortRecord()->getDataForEditorJS();
     }
 
-    public function relations(): MorphMany
+    public function scopePublished($query): Builder
     {
-        return $this->MorphMany();
+        return $query->where('published_at', '<=', Carbon::now());
+    }
+    public function scopePublic($query): Builder
+    {
+        return $query->where('is_show', true)->where('has_approval', true);
     }
 
 }

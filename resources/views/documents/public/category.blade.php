@@ -1,5 +1,5 @@
 @props([
-    'category'  => null
+    'category'  => null,
 ])
 
 @if($category)

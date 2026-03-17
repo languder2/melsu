@@ -190,6 +190,27 @@
             />
         </div>
 
+        <x-html.select.tags
+            type="document"
+            :selected=" $document->tags "
+            multiple
+        />
+
+        <div class="flex gap-3 bg-white p-3 shadow">
+            <div>
+                <x-html.image-with-modal
+                    :url="$document->image->url"
+                    object="max-h-14"
+                />
+            </div>
+
+            <x-form.file
+                label="Установить / сменить изображение"
+                name="image"
+                block="flex-1"
+            />
+        </div>
+
         <h3 class="font-semibold text-xl lg:col-span-2 my-2">
             Описание до
         </h3>
