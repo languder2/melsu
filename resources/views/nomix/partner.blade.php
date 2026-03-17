@@ -3,7 +3,7 @@ style="background-image: url({{asset('img/partners/part-1.jpg')}})">
         <div class="bg-[rgba(40,13,13,0.45)] min-h-full min-w-full pointer-events-none absolute top-0 left-0">
         </div>
         <div class="container flex-col flex lg:flex-row justify-between lg:items-end relative z-5 pb-5 py-25 lg:py-10 px-2.5 2xl:px-0">
-            <h2 class="text-white font-bold text-6xl">Партнерам</h2>
+            <h2 class="text-white font-bold text-6xl select-none">Партнерам</h2>
             <div class="liquid-glass lg:w-1/3">
                 <div class="liquid-glass--bend"></div>
                 <div class="liquid-glass--face"></div>
@@ -33,7 +33,7 @@ style="background-image: url({{asset('img/partners/part-1.jpg')}})">
                     <div class="liquid-glass--edge"></div>
                     <div class="liquid-glass__menus"></div>
                     <div class="liquid-glass__content">
-                        <h3 class="text-white text-xl 2xl:text-2xl font-bold">Научно-исследовательские проекты</h3>
+                        <h3 class="text-white text-xl 2xl:text-2xl font-bold select-none">Научно-исследовательские проекты</h3>
                     </div>
                 </div>
                 <div class="order-1 2xl:order-2 flex justify-end 2xl:justify-start">
@@ -57,7 +57,7 @@ style="background-image: url({{asset('img/partners/part-1.jpg')}})">
                         <div class="liquid-glass--edge"></div>
                         <div class="liquid-glass__menus"></div>
                         <div class="liquid-glass__content">
-                            <h3 class="text-white text-xl xl:text-2xl font-bold">Академический обмен</h3>
+                            <h3 class="text-white text-xl xl:text-2xl font-bold select-none">Академический обмен</h3>
                         </div>
                     </div>
                     <div class="order-1 2xl:order-2 flex justify-end 2xl:justify-start">
@@ -80,7 +80,7 @@ style="background-image: url({{asset('img/partners/part-1.jpg')}})">
                         <div class="liquid-glass--edge"></div>
                         <div class="liquid-glass__menus"></div>
                         <div class="liquid-glass__content">
-                            <h3 class="text-white text-xl xl:text-2xl font-bold">Технологическое предпринимательство</h3>
+                            <h3 class="text-white text-xl xl:text-2xl font-bold select-none">Технологическое предпринимательство</h3>
                         </div>
                     </div>
                     <div class="order-1 2xl:order-2 flex justify-end 2xl:justify-start">
@@ -111,7 +111,7 @@ style="background-image: url({{asset('img/partners/part-1.jpg')}})">
                     <div class="liquid-glass--edge"></div>
                     <div class="liquid-glass__menus"></div>
                     <div class="liquid-glass__content">
-                        <h3 class="text-white text-xl xl:text-2xl font-bold lg:text-end">Международное сотрудничество</h3>
+                        <h3 class="text-white text-xl xl:text-2xl font-bold lg:text-end select-none">Международное сотрудничество</h3>
                     </div>
                 </div>
             </div>
