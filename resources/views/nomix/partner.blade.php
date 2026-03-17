@@ -1,4 +1,4 @@
-<section class="h-[750px] px-2.5 lg:p-0 relative bg-[80%] sm:bg-right xl:bg-center lg:bg-0 bg-cover flex"
+<section class="h-[500px] 2xl:h-[750px] px-2.5 lg:p-0 relative bg-[80%] sm:bg-right xl:bg-center lg:bg-0 bg-cover flex"
 style="background-image: url({{asset('img/partners/part-1.jpg')}})">
         <div class="bg-[rgba(40,13,13,0.45)] min-h-full min-w-full pointer-events-none absolute top-0 left-0">
         </div>
