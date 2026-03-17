@@ -7401,6 +7401,12 @@ li.h--timeline-event.h--timeline-event--selected.text-component {
     backdrop-filter: blur(4.4px);
     -webkit-backdrop-filter: blur(4.4px);
     }
+    .card-white-glass{
+        background: rgb(41 40 40 / 8%);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(4.4px);
+        -webkit-backdrop-filter: blur(4.4px);
+    }
     .liquid-glass {
         position: relative;
         padding: 20px;
