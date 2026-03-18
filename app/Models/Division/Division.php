@@ -30,6 +30,7 @@ use App\Traits\hasUsers;
 use App\Traits\resolveRouteBinding;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
@@ -151,12 +152,11 @@ class Division extends Model
             'parent_id'                 => 'Родительское подразделение не может быть текущим',
         ];
     }
-
     public function faculties(): HasMany
     {
-        return $this->hasMany(self::class, 'parent_id','id')
+        return $this->children()
             ->where('type', DivisionType::Faculty)
-            ->where('is_show',true)
+            ->public()
             ->orderBy('sort')
             ->orderBy('name')
             ;
@@ -165,20 +165,31 @@ class Division extends Model
     {
         return $this->hasMany(self::class, 'parent_id','id')
             ->where('type', DivisionType::Department)
-            ->where('is_show',true)
+            ->public()
             ->orderBy('sort')
             ->orderBy('name')
-            ;
+        ;
     }
     public function labs(): HasMany
     {
         return $this->hasMany(self::class, 'parent_id','id')
             ->where('type', DivisionType::Lab)
-            ->where('is_show',true)
+            ->public()
             ->orderBy('sort')
             ->orderBy('name')
-            ;
+        ;
     }
+
+    public function descendantsByType(): Collection
+    {
+        return $this->descendants()->get()->groupBy('type');
+    }
+    public function publicDescendantsByType(): Collection
+    {
+        return $this->descendants()->public()->get()->groupBy('type');
+    }
+
+
     public function specialities($all = null): HasMany
     {
         $hasMany = $this->hasMany(Speciality::class, $this->type->getField(),'id');
@@ -304,7 +315,6 @@ class Division extends Model
     {
         return $this->alias ?? $this->code ?? $this->id;
     }
-
 
     public function getGalleryLinkAttribute(): string
     {

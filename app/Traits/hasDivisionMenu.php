@@ -200,6 +200,7 @@ trait hasDivisionMenu
 
     public function getDepartmentMenu(): Collection
     {
+
         $menu = collect();
 
         $menu->put('about',(object)[
@@ -216,12 +217,14 @@ trait hasDivisionMenu
             'is_link'   => true
         ]);
 
-        $menu->put('labs',(object)[
-            'name'      => __("menu.labs"),
-            'ico'       => Blade::render('<x-lucide-list-collapse class="w-5" />'),
-            'link'      => $this->departmentslink,
-            'is_link'   => true
-        ]);
+
+        if($this->departments()->count())
+            $menu->put('labs',(object)[
+                'name'      => __("menu.labs"),
+                'ico'       => Blade::render('<x-lucide-list-collapse class="w-5" />'),
+                'link'      => $this->departmentslink,
+                'is_link'   => true
+            ]);
 
         $menu->put('specialities',(object)[
             'name'      => __("menu.specialities"),

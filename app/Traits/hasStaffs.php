@@ -102,16 +102,10 @@ trait hasStaffs
 
     public function allPublicTeachers(): Collection
     {
-        if($this->type === DivisionType::Department)
-            $list = $this->publicTeachers->unique('staff_id');
+        $ids    = self::descendantsAndSelf($this)->pluck('id')->toArray();
 
-        elseif($this->type === DivisionType::Faculty)
-            $list = $this->subs()->where('type', DivisionType::Department)->get()
-                ->flatmap(fn($item) => $item->publicTeachers)->unique('staff_id');
+        $posts  = Post::whereIn('division_id', $ids)->where('is_teacher', true)->get();
 
-        return $list->sortBy('full_name');
+        return $posts->unique(fn($item) => $item->staff_id.$item->post)->sortBy('full_name');
     }
-
-
-
 }

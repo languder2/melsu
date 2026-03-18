@@ -107,12 +107,13 @@ class FixController extends Controller
                     'staff_id'              => $staff->id,
                     'division_id'           => $division->id,
                     'post'                  => $position,
-//                    'is_head_of_division'   => $post['head_of_division'] || in_array($position, $heads),
-                    'is_head_of_division'   => in_array($position, $heads),
-                    'is_show'               => true
+                    'is_head_of_division'   => $post['head_of_division'],
+                    'is_show'               => true,
                 ]);
             }
         });
+
+        self::employeesSetIsTeacher();
 
         return response()->json(['success']);
     }
@@ -203,6 +204,7 @@ class FixController extends Controller
                     'post'                  => $position,
                     'is_head_of_division'   => (int) $post['head_of_division'],
                     'is_show'               => true,
+                    'is_approved'           => true,
                     'deleted_at'            => $post['dismissed'] ? Carbon::parse($post['date_dismissal']) : null
                 ])->save();
 
@@ -211,6 +213,8 @@ class FixController extends Controller
 
             }
         });
+
+        self::employeesSetIsTeacher();
 
         return response()->json(['success']);
     }
