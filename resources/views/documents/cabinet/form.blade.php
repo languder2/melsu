@@ -173,14 +173,14 @@
 
         <x-html.select.tags
             type="document"
-            :selected=" $document->tags "
+            :selected=" $current->tags "
             multiple
         />
 
         <div class="flex gap-3 bg-white p-3 shadow">
             <div>
                 <x-html.image-with-modal
-                    :url="$document->image->url"
+                    :url="$current->image->url"
                     object="max-h-14"
                 />
             </div>

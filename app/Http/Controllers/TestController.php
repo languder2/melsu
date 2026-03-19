@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Documents\CabinetDocumentsController;
 use App\Models\Division\Division;
 use App\Models\Documents\DocumentCategory;
 use App\Models\Services\Log;
@@ -51,7 +52,6 @@ class TestController extends Controller
 
     public function index()
     {
-
 
         $division = Division::find(395);
 
