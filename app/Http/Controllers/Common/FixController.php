@@ -203,8 +203,6 @@ class FixController extends Controller
                     'division_id'           => $division->id,
                     'post'                  => $position,
                     'is_head_of_division'   => (int) $post['head_of_division'],
-                    'is_show'               => true,
-                    'is_approved'           => true,
                     'deleted_at'            => $post['dismissed'] ? Carbon::parse($post['date_dismissal']) : null
                 ])->save();
 

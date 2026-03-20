@@ -73,28 +73,10 @@ class StaffController extends Controller
 
         $record->save();
 
-        foreach ($request->get('affiliations') ?? [] as $aID=>$aForm){
-            $affiliation = Affiliation::find($aID);
+        if($form['jobs'])
+            dd($form['jobs']);
 
-            if($affiliation->exists)
-                $affiliation->fill($aForm)->save();
-        }
 
-        if($form['posts'])
-            foreach($form['posts'] as $postData){
-                if(!$postData['post']) continue;
-
-                $post = $record->posts()->find($postData['id']);
-
-                if(!$post)
-                    $post = $record->posts()->create($postData);
-
-                $post->fill($postData);
-
-                $post->show =  array_key_exists('show', $postData);;
-
-                $post->save();
-            }
 
         if($request->file('photo')){
 

@@ -19,16 +19,21 @@ class FinanceSheet implements FromCollection, WithColumnFormatting, ShouldAutoSi
             'A' => 22,
             'B' => 4,
             'C' => 10,
-            'G' => 1,
+            'G' => 3,
             'H' => 12,
             'I' => 1,
             'J' => 1,
             'K' => 2,
         ],
-        'sbr'   => [
+        'other'   => [
             'A' => 22,
-            'E' => 10,
-            'F' => 2,
+            'B' => 4,
+            'C' => 10,
+            'G' => 3,
+            'H' => 12,
+            'I' => 1,
+            'J' => 1,
+            'K' => 2,
         ],
     ];
     protected array $columnFormats = [
@@ -45,13 +50,18 @@ class FinanceSheet implements FromCollection, WithColumnFormatting, ShouldAutoSi
             'J' => NumberFormat::FORMAT_TEXT,
             'K' => NumberFormat::FORMAT_TEXT,
         ],
-        'sbr'   => [
+        'other'   => [
             'A' => NumberFormat::FORMAT_TEXT,
             'B' => NumberFormat::FORMAT_TEXT,
             'C' => NumberFormat::FORMAT_TEXT,
             'D' => NumberFormat::FORMAT_TEXT,
             'E' => NumberFormat::FORMAT_TEXT,
             'F' => NumberFormat::FORMAT_TEXT,
+            'G' => NumberFormat::FORMAT_TEXT,
+            'H' => NumberFormat::FORMAT_TEXT,
+            'I' => NumberFormat::FORMAT_TEXT,
+            'J' => NumberFormat::FORMAT_TEXT,
+            'K' => NumberFormat::FORMAT_TEXT,
         ],
         'errors'   => [
             'A' => NumberFormat::FORMAT_TEXT,

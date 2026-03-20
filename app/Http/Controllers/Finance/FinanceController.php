@@ -71,27 +71,33 @@ class FinanceController extends Controller
                 'lastname'      => $row[3],
                 'firstname'     => $row[4],
                 'middle_name'   => $row[5],
-                'indent'        => null,
+                'document-code' => 21,
                 'passport'      => $row[7],
                 'indent2'       => null,
                 'indent3'       => null,
-                'income_code'   => 1
+                'income_code'   => 1,
+//                'bic'           => $row[10]
             ]);
         });
 
-        $sbr = $mir->diffKeys($psb)
-            ->filter(fn($item) => trim(Str::lower($item[6])) == 'сбербанк' || trim(Str::lower($item[6])) == 'сбер');
+        $other = $mir->diffKeys($psb)->filter(fn($item) => trim(Str::lower($item[6])) != '');
 
-        $sbrAccounts = $sbr->groupBy(0)->map(function ($group) {
+        $otherAccounts = $other->groupBy(0)->map(function ($group) {
             $row    = $group->first();
 
             return collect([
                 'account'       => $row[0],
+                'code'          => 810,
+                'sum'           => $group->sum(2),
                 'lastname'      => $row[3],
                 'firstname'     => $row[4],
                 'middle_name'   => $row[5],
-                'sum'           => $group->sum(2),
-                'income_code'   => 0
+                'document-code' => 21,
+                'passport'      => $row[7],
+                'indent2'       => null,
+                'indent3'       => null,
+                'income_code'   => 1,
+                'bic'           => $row[10]
             ]);
         });
 
@@ -109,25 +115,9 @@ class FinanceController extends Controller
             ]);
         });
 
-        $other      = $correct->diffKeys($psb)->diffKeys($sbr)->diffKeys($cash)
-                        ->each(fn($item) => $item->ident = $item[3]."-".$item[4]."-".$item[5]."-".$item[7]);
-
-       $otherAccounts = $other->groupBy('ident')->map(function ($group) {
-            $row    = $group->first();
-
-            return collect([
-                'account'       => $row[0],
-                'sum'           => $group->sum(2),
-                'lastname'      => $row[3],
-                'firstname'     => $row[4],
-                'middle_name'   => $row[5],
-            ]);
-        });
-
         $totals = collect([
             ['ПСБ',     $psbAccounts->count(), $psbAccounts->sum('sum')],
-            ['Сбер',    $sbrAccounts->count(), $sbrAccounts->sum('sum')],
-            ['Другое',  $otherAccounts->count(), $otherAccounts->sum('sum')],
+            ['Другие',  $otherAccounts->count(), $otherAccounts->sum('sum')],
             ['Касса',   $cashAccounts->count(), $cashAccounts->sum('sum')],
             ['Errors',  $errors->count()],
         ]);
@@ -137,11 +127,6 @@ class FinanceController extends Controller
                 'type'      => 'psb',
                 'name'      => 'ПСБ',
                 'accounts'  => $psbAccounts,
-            ],
-            'sbr' => (object)[
-                'type'      => 'sbr',
-                'name'      => 'Сбербанк',
-                'accounts'  => $sbrAccounts,
             ],
             (object)[
                 'type'      => 'other',
