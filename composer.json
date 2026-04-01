@@ -20,6 +20,8 @@
         "laravel/framework": "^11.31",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
+        "livewire/livewire": "^4.2",
+        "livewire/volt": "^1.10",
         "maatwebsite/excel": "^3.1",
         "mallardduck/blade-lucide-icons": "^1.23",
         "tinymce/tinymce": "^7.6",
