@@ -141,14 +141,6 @@
             </div>
         @endif
 
-        @if($staff->affiliation)
-            <span class="text-[var(--secondary-color)] text-md font-bold">Партийная принадлежность:</span>
-            <div class="flex items-center">
-                <span class="text-[#4C4C4C] text-md pt-3 sm:ps-3 sm:pt-0">
-                    {{$staff->affiliation}}
-                </span>
-            </div>
-        @endif
     </div>
 </div>
 
@@ -165,14 +157,19 @@
         <div class="work-experience-box grid grid-cols-1 lg:grid-cols-[200px_minmax(70%,_1fr)] gap-1">
             @foreach($staff->sortedJobs as $job)
                 <div class="bg-white p-3 flex items-center justify-center font-semibold">
-                    @if($job->employment_year)
-                        c {{$job->employment_year}}
-                    @endif
 
-                    @if($job->dismissal_year)
-                        по {{ $job->dismissal_year }}
+                    @if($job->employment_year === $job->dismissal_year)
+                        {{$job->employment_year}}
                     @else
-                        по наст. вр.
+                        @if($job->employment_year)
+                            c {{$job->employment_year}}
+                        @endif
+
+                        @if($job->dismissal_year)
+                            по {{ $job->dismissal_year }}
+                        @else
+                            по наст. вр.
+                        @endif
                     @endif
                 </div>
                 <div class="bg-white p-3 flex flex-col gap-3">
