@@ -24,6 +24,13 @@
 {{--                        </a>--}}
 {{--                    </div>--}}
                     <div class="slide">
+                        <a href="#" class="slide-link cursor-pointer" target="_blank">
+                            <img src="{{asset('img/slider/s080426.webp')}}" alt="" class="hidden object-cover min-[1921px]:block w-max">
+                            <img src="{{asset('img/slider/s080426-1920.webp')}}" alt="" class="hidden sm:block">
+                            <img src="{{asset('img/slider/s080426-m.webp')}}" alt="" class="block sm:hidden">
+                        </a>
+                    </div>
+                    <div class="slide">
                         <a href="https://max.ru/id9001010985_biz" class="slide-link cursor-pointer" target="_blank">
                             <img src="{{asset('img/slider/MAX_2K.jpg')}}" alt="" class="hidden object-cover min-[1921px]:block w-max">
                             <img src="{{asset('img/slider/MAX_1920.jpg')}}" alt="" class="hidden sm:block">
