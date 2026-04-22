@@ -45,6 +45,7 @@ style="background-image: url({{asset('img/partners/part-1.jpg')}})">
 <div class="grid lg:grid-cols-[2fr_1fr] xl:grid-cols-[75%_auto] gap-5 px-2.5 2xl:px-0 mt-7">
     <div class="order-2 lg:order-1 flex flex-col gap-7">
         <div class="flex flex-col">
+            <!--Цитата-->
             <div class="relative flex justify-end bg-left bg-no-repeat py-6" style="background-image: url({{asset('img/partners/quote-1.jpg')}})">
                 <div class="bg-[rgba(40,13,13,0.65)] min-h-full pointer-events-none absolute w-full top-0 left-0">
                 </div>
@@ -55,8 +56,8 @@ style="background-image: url({{asset('img/partners/part-1.jpg')}})">
             </div>
             <!--Почему МелГУ — Ваш Партнер?-->
             <section>
-                <h2 class="font-bold text-xl md:text-3xl mb-8">Почему МелГУ — Ваш Партнер?</h2>
-                <div class="grid grid-cols-[2fr_1fr] gap-5 mb-8">
+                <h2 class="font-bold text-xl md:text-3xl mb-8 mt-15">Почему МелГУ — Ваш Партнер?</h2>
+                <div class="grid grid-cols-[2fr_1fr] gap-5">
                     <div class="flex flex-col gap-3 p-6">
                         <p>
                             МелГУ открыт для сотрудничества с компаниями, государственными структурами и общественными организациями. Мы предлагаем взаимовыгодное партнерство в сфере образования, науки и инноваций, а также готовы к реализации совместных проектов, способствующих повышению квалификации студентов и сотрудников, развитию их практических навыков и адаптации к требованиям современного рынка труда.
@@ -298,47 +299,50 @@ style="background-image: url({{asset('img/partners/part-1.jpg')}})">
                 </div>
             </section>
             <!--Присоединяйтесь к нам!-->
-            <section class="relative flex justify-end bg-[#820000] bg-left bg-no-repeat xl:bg-size-[55%_100%]" style="background-image: url({{asset('img/partners/part-6.jpg')}})">
-                <div class="bg-[rgba(40,13,13,0.65)] min-h-full pointer-events-none absolute w-full xl:w-[55%] top-0 left-0">
-                </div>
-                <div class="container">
-                    <div class="grid xl:grid-cols-[56%_auto]">
-                        <div class="flex justify-end mr-14 mt-8">
-                            <div class="liquid-glass xl:w-3/4 h-fit">
-                            <div class="liquid-glass--bend"></div>
-                            <div class="liquid-glass--face"></div>
-                            <div class="liquid-glass--edge"></div>
-                            <div class="liquid-glass__menus"></div>
-                            <div class="liquid-glass__content">
-                                    <div class="flex flex-col gap-6 text-white">
-                                        <p>
-                                            В МелГУ наработана успешная практика разработки и реализации совместных основных и дополнительных образовательных программ, максимально учитывающих интересы партнеров при подготовке высококвалифицированных специалистов.
-                                        </p>
-                                        <p>
-                                            Предлагаем объединить интеллектуальный потенциал, материально-технические, корпоративные ресурсы и установить долгосрочные стратегические партнерские отношения!
-                                        </p>
+            <section>
+                <h2 class="font-bold text-xl md:text-3xl mb-8 mt-15">Присоединяйтесь к нам!</h2>
+                <div class="relative flex justify-end bg-[#820000] bg-left bg-no-repeat xl:bg-size-[55%_100%]" style="background-image: url({{asset('img/partners/part-6.jpg')}})">
+                    <div class="bg-[rgba(40,13,13,0.65)] min-h-full pointer-events-none absolute w-full xl:w-[55%] top-0 left-0">
+                    </div>
+                    <div class="container">
+                        <div class="grid xl:grid-cols-[56%_auto]">
+                            <div class="flex justify-end mr-14 mt-8">
+                                <div class="liquid-glass xl:w-3/4 h-fit">
+                                <div class="liquid-glass--bend"></div>
+                                <div class="liquid-glass--face"></div>
+                                <div class="liquid-glass--edge"></div>
+                                <div class="liquid-glass__menus"></div>
+                                <div class="liquid-glass__content">
+                                        <div class="flex flex-col gap-6 text-white">
+                                            <p>
+                                                В МелГУ наработана успешная практика разработки и реализации совместных основных и дополнительных образовательных программ, максимально учитывающих интересы партнеров при подготовке высококвалифицированных специалистов.
+                                            </p>
+                                            <p>
+                                                Предлагаем объединить интеллектуальный потенциал, материально-технические, корпоративные ресурсы и установить долгосрочные стратегические партнерские отношения!
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="p-5 xl:p-8 relative z-10 bg-[#820000] xl:bg-transparent">
-                            <form class="flex flex-col gap-8" action="">
-                                <input class="text-white outline-0 border-b px-5 py-2.5 text-xl font-medium border-white w-full" type="text" name="name" placeholder="Как вас зовут?">
-                                <input class="text-white outline-0 border-b px-5 py-2.5 text-xl font-medium border-white w-full" type="text" name="contact" placeholder="Номер телефона / Почта (для связи)">
-                                <input class="text-white outline-0 border-b px-5 py-2.5 text-xl font-medium border-white w-full" type="text" name="name_org" placeholder="Название организации">
-                                <input class="text-white outline-0 border-b px-5 py-2.5 text-xl font-medium border-white w-full" type="text" name="message" placeholder="Сообщение">
-                                <p class="text-[#FFFFFF]">
-                                    Нажимая на кнопку «Отправить», вы подтверждаете, что даете согласие на обработку персональных данных согласно федерального закона РФ от 27 июля 2006 г. № 152-ФЗ «О персональных данных» и ознакомлены с политикой конфиденциальности
-                                </p>
-                                <button type="submit" class="flex cursor-pointer items-center font-medium text-white text-xl gap-6 group">
-                                    Отправить
-                                    <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path class="opacity-30 group-hover:opacity-100 transition duration-300 ease-linear" d="M0.999999 25C0.999999 11.7452 11.7452 1 25 0.999999C38.2548 0.999998 49 11.7452 49 25C49 38.2548 38.2548 49 25 49C11.7452 49 0.999999 38.2548 0.999999 25Z" stroke="white" stroke-width="2"/>
-                                        <path d="M37 4.21539C40.6485 6.32183 43.6782 9.35154 45.7846 13C47.8911 16.6485 49 20.7871 49 25C49 29.2129 47.8911 33.3515 45.7846 37C43.6782 40.6485 40.6485 43.6782 37 45.7846" stroke="white" stroke-width="2"/>
-                                        <path class="opacity-30 group-hover:opacity-100 transition duration-300 ease-linear" d="M20.5 34.5L29.6875 25L20.5 15.5" stroke="white" stroke-width="2"/>
-                                    </svg>
-                                </button>
-                            </form>
+                            <div class="p-5 xl:p-8 relative z-10 bg-[#820000] xl:bg-transparent">
+                                <form class="flex flex-col gap-8" action="">
+                                    <input class="text-white outline-0 border-b px-5 py-2.5 text-xl font-medium border-white w-full" type="text" name="name" placeholder="Как вас зовут?">
+                                    <input class="text-white outline-0 border-b px-5 py-2.5 text-xl font-medium border-white w-full" type="text" name="contact" placeholder="Номер телефона / Почта (для связи)">
+                                    <input class="text-white outline-0 border-b px-5 py-2.5 text-xl font-medium border-white w-full" type="text" name="name_org" placeholder="Название организации">
+                                    <input class="text-white outline-0 border-b px-5 py-2.5 text-xl font-medium border-white w-full" type="text" name="message" placeholder="Сообщение">
+                                    <p class="text-[#FFFFFF]">
+                                        Нажимая на кнопку «Отправить», вы подтверждаете, что даете согласие на обработку персональных данных согласно федерального закона РФ от 27 июля 2006 г. № 152-ФЗ «О персональных данных» и ознакомлены с политикой конфиденциальности
+                                    </p>
+                                    <button type="submit" class="flex cursor-pointer items-center font-medium text-white text-xl gap-6 group">
+                                        Отправить
+                                        <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path class="opacity-30 group-hover:opacity-100 transition duration-300 ease-linear" d="M0.999999 25C0.999999 11.7452 11.7452 1 25 0.999999C38.2548 0.999998 49 11.7452 49 25C49 38.2548 38.2548 49 25 49C11.7452 49 0.999999 38.2548 0.999999 25Z" stroke="white" stroke-width="2"/>
+                                            <path d="M37 4.21539C40.6485 6.32183 43.6782 9.35154 45.7846 13C47.8911 16.6485 49 20.7871 49 25C49 29.2129 47.8911 33.3515 45.7846 37C43.6782 40.6485 40.6485 43.6782 37 45.7846" stroke="white" stroke-width="2"/>
+                                            <path class="opacity-30 group-hover:opacity-100 transition duration-300 ease-linear" d="M20.5 34.5L29.6875 25L20.5 15.5" stroke="white" stroke-width="2"/>
+                                        </svg>
+                                    </button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -350,21 +354,42 @@ style="background-image: url({{asset('img/partners/part-1.jpg')}})">
             <!--Наши партнеры-->
             <section class="container">
                 <h2 class="font-bold text-xl md:text-3xl mb-8 mt-15">Наши партнеры</h2>
-                <div class="overflow-x-scroll">
-                    <div class="flex border-b relative mb-6">
-                        <div class="point-partner pb-5 px-5 border-b border-transparent relative bottom-[-1px] cursor-pointer group active">
-                            <h3 class="w-max transition duration-300 ease-linear group-hover:text-[#C10F1A]">Организации</h3>
-                        </div>
-                        <div class="point-partner pb-5 px-5 border-b border-transparent relative bottom-[-1px] cursor-pointer group">
-                            <h3 class="w-max transition duration-300 ease-linear group-hover:text-[#C10F1A]">Общества</h3>
-                        </div>
-                        <div class="point-partner pb-5 px-5 border-b border-transparent relative bottom-[-1px] cursor-pointer group">
-                            <h3 class="w-max transition duration-300 ease-linear group-hover:text-[#C10F1A]">Фонды</h3>
-                        </div>
-                        <div class="point-partner pb-5 px-5 border-b border-transparent relative bottom-[-1px] cursor-pointer group">
-                            <h3 class="w-max transition duration-300 ease-linear group-hover:text-[#C10F1A]">Образовательные учреждения</h3>
+                <div class="relative flex items-center">
+                    <button id="scrollLeft" class="absolute p-2 left-0 top-0 cursor-pointer hover:opacity-60 transition duration-300 ease-linear">
+                        <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7 13L1 7L7 1" stroke="#252525" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+
+                    <div id="partnerTabs" class="overflow-x-scroll border-b scroll-smooth no-scrollbar pb-5 mx-7 w-full" style="scrollbar-width: none; -ms-overflow-style: none;">
+                        <div class="flex relative min-w-max">
+                            <div class="point-partner active px-5 relative bottom-[-1px] cursor-pointer group">
+                                <h3 class="w-max transition duration-300 ease-linear group-hover:text-[#C10F1A]">Образовательные организации</h3>
+                            </div>
+                            <div class="point-partner px-5 relative bottom-[-1px] cursor-pointer group">
+                                <h3 class="w-max transition duration-300 ease-linear group-hover:text-[#C10F1A]">Министерства</h3>
+                            </div>
+                            <div class="point-partner px-5 relative bottom-[-1px] cursor-pointer group">
+                                <h3 class="w-max transition duration-300 ease-linear group-hover:text-[#C10F1A]">Институты</h3>
+                            </div>
+                            <div class="point-partner px-5 relative bottom-[-1px] cursor-pointer group">
+                                <h3 class="w-max transition duration-300 ease-linear group-hover:text-[#C10F1A]">Предприятия</h3>
+                            </div>
+                            <div class="point-partner px-5 relative bottom-[-1px] cursor-pointer group">
+                                <h3 class="w-max transition duration-300 ease-linear group-hover:text-[#C10F1A]">Фонды</h3>
+                            </div>
+                            <div class="point-partner px-5 relative bottom-[-1px] cursor-pointer group">
+                                <h3 class="w-max transition duration-300 ease-linear group-hover:text-[#C10F1A]">Ассоциации, центры</h3>
+                            </div>
+
                         </div>
                     </div>
+
+                    <button id="scrollRight" class="absolute p-2 right-0 top-0 cursor-pointer hover:opacity-60 transition duration-300 ease-linear">
+                        <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 13L7 7L1 1" stroke="#252525" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
                 </div>
                 <div class="box-partner mb-5">
                     <div class="card-partner">
@@ -442,6 +467,30 @@ style="background-image: url({{asset('img/partners/part-1.jpg')}})">
                                         Федеральное государственное бюджетное образовательное учреждение высшего
                                         образования «Алтайский государственный университет» (АлтГУ)
                                     </h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-partner hidden">
+                        <div class="grid xl:grid-cols-2 gap-5">
+                            <div class="bg-white flex flex-col sm:flex-row">
+                                <div class="h-full flex items-center justify-center w-full lg:max-h-[202px] lg:min-w-[247px] max-h-[220px] sm:max-w-[247px] box-border p-2.5">
+                                    <img class="h-full w-full object-cover" src="{{asset('img/partners/partn-1.jpg')}}" alt="">
+                                </div>
+                                <div class="p-5">
+                                    <h3 class="text-lg 2xl:text-xl font-bold">Федеральное государственное бюджетное образовательное учреждение высшего образования  «Ивановский государственный химико-технологический университет»</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-partner hidden">
+                        <div class="grid xl:grid-cols-2 gap-5">
+                            <div class="bg-white flex flex-col sm:flex-row">
+                                <div class="h-full flex items-center justify-center w-full lg:max-h-[202px] lg:min-w-[247px] max-h-[220px] sm:max-w-[247px] box-border p-2.5">
+                                    <img class="h-full w-full object-cover" src="{{asset('img/partners/partn-1.jpg')}}" alt="">
+                                </div>
+                                <div class="p-5">
+                                    <h3 class="text-lg 2xl:text-xl font-bold">Федеральное государственное бюджетное образовательное учреждение высшего образования  «Ивановский государственный химико-технологический университет»</h3>
                                 </div>
                             </div>
                         </div>
@@ -837,26 +886,43 @@ style="background-image: url({{asset('img/partners/part-1.jpg')}})">
     .container.block{
         display: none;
     }
+    #partnerTabs::-webkit-scrollbar {
+        display: none;
+    }
 </style>
 
 <script>
-    document.addEventListener('DOMContentLoaded',()=>{
-        const partnerBtns = document.querySelectorAll('.point-partner');
-        const partnerCards = document.querySelectorAll('.card-partner');
-        
-        partnerBtns.forEach((btn, index) => {
-            btn.addEventListener('click', () =>{
-                partnerBtns.forEach(btn => {
-                    btn.classList.remove('active');
-                })
-                partnerCards.forEach((card) => {
-                    card.classList.add('hidden');
-                })
+    document.addEventListener('DOMContentLoaded', () => {
+    const partnerBtns = document.querySelectorAll('.point-partner');
+    const partnerCards = document.querySelectorAll('.card-partner');
+    const scrollContainer = document.getElementById('partnerTabs');
+    const btnLeft = document.getElementById('scrollLeft');
+    const btnRight = document.getElementById('scrollRight');
 
-                btn.classList.add('active');
+    partnerBtns.forEach((btn, index) => {
+        btn.addEventListener('click', () => {
+            partnerBtns.forEach(b => b.classList.remove('active'));
+            partnerCards.forEach(card => card.classList.add('hidden'));
 
+            btn.classList.add('active');
+            if (partnerCards[index]) {
                 partnerCards[index].classList.remove('hidden');
-            });
+            }
         });
-    })
+    });
+
+    const scrollStep = 200;
+
+    btnLeft.addEventListener('click', () => {
+        scrollContainer.scrollBy({ left: -scrollStep, behavior: 'smooth' });
+    });
+
+    btnRight.addEventListener('click', () => {
+        scrollContainer.scrollBy({ left: scrollStep, behavior: 'smooth' });
+    });
+
+    scrollContainer.addEventListener('scroll', toggleArrows);
+    window.addEventListener('resize', toggleArrows);
+    toggleArrows();
+});
 </script>
