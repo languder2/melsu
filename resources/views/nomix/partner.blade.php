@@ -53,6 +53,38 @@ style="background-image: url({{asset('img/partners/part-1.jpg')}})">
                     <span class="text-2xl relative text-white">Сэмюэл Джонсон</span>
                 </div>
             </div>
+
+            <section>
+                <h2 class="font-bold text-xl md:text-3xl">Почему МелГУ — Ваш Партнер?</h2>
+                <div class="grid grid-cols-[2fr_1fr] gap-5">
+                    <div class="flex flex-col gap-3 p-6">
+                        <p>
+                            МелГУ открыт для сотрудничества с компаниями, государственными структурами и общественными организациями. Мы предлагаем взаимовыгодное партнерство в сфере образования, науки и инноваций, а также готовы к реализации совместных проектов, способствующих повышению квалификации студентов и сотрудников, развитию их практических навыков и адаптации к требованиям современного рынка труда.
+                        </p>
+                        <p>
+                            Мы рассматриваем партнёрство не как разовую сделку, а как стратегическое, взаимообогащающее сотрудничество, в рамках которого университет выступает катализатором инноваций, предоставляя доступ к научному потенциалу, передовым технологиям и высококвалифицированным кадрам.
+                        </p>
+                    </div>
+                    <div>
+                        <img class="h-full w-full object-cover" src="{{asset('img/partners/partner-1.jpg')}}" alt="">
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="font-bold text-xl md:text-3xl">Наш подход основан на трёх принципах</h2>
+                <div class="grid grid-cols-3 gap-5">
+                    <div>
+                        <div class="flex">
+                            <span>1.</span>
+                            <p>
+                                Практическая направленность – превращение научных открытий и образовательных программ в измеримые результаты, которые напрямую влияют на экономическое и социальное развитие региональных партнеров.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <section class="relative flex justify-end bg-[#820000] bg-left bg-no-repeat xl:bg-size-[55%_100%]" style="background-image: url({{asset('img/partners/part-6.jpg')}})">
                 <div class="bg-[rgba(40,13,13,0.65)] min-h-full pointer-events-none absolute w-full xl:w-[55%] top-0 left-0">
                 </div>
@@ -98,207 +130,207 @@ style="background-image: url({{asset('img/partners/part-1.jpg')}})">
                     </div>
                 </div>
             </section>
-        <!--Новости-->
-        <x-news.short-news category="4"/>
-        <!--Наши партнеры-->
-        <section class="container">
-            <h2 class="heading-title-h2 mb-3 px-2.5 2xl:px-0 text-3xl">
-                Наши партнеры
-            </h2>
-            <div class="overflow-x-scroll">
-                <div class="flex border-b relative mb-6">
-                    <div class="point-partner pb-5 px-5 border-b border-transparent relative bottom-[-1px] cursor-pointer group active">
-                        <h3 class="w-max transition duration-300 ease-linear group-hover:text-[#C10F1A]">Организации</h3>
+            <!--Новости-->
+            <x-news.short-news category="4"/>
+            <!--Наши партнеры-->
+            <section class="container">
+                <h2 class="heading-title-h2 mb-3 px-2.5 2xl:px-0 text-3xl">
+                    Наши партнеры
+                </h2>
+                <div class="overflow-x-scroll">
+                    <div class="flex border-b relative mb-6">
+                        <div class="point-partner pb-5 px-5 border-b border-transparent relative bottom-[-1px] cursor-pointer group active">
+                            <h3 class="w-max transition duration-300 ease-linear group-hover:text-[#C10F1A]">Организации</h3>
+                        </div>
+                        <div class="point-partner pb-5 px-5 border-b border-transparent relative bottom-[-1px] cursor-pointer group">
+                            <h3 class="w-max transition duration-300 ease-linear group-hover:text-[#C10F1A]">Общества</h3>
+                        </div>
+                        <div class="point-partner pb-5 px-5 border-b border-transparent relative bottom-[-1px] cursor-pointer group">
+                            <h3 class="w-max transition duration-300 ease-linear group-hover:text-[#C10F1A]">Фонды</h3>
+                        </div>
+                        <div class="point-partner pb-5 px-5 border-b border-transparent relative bottom-[-1px] cursor-pointer group">
+                            <h3 class="w-max transition duration-300 ease-linear group-hover:text-[#C10F1A]">Образовательные учреждения</h3>
+                        </div>
                     </div>
-                    <div class="point-partner pb-5 px-5 border-b border-transparent relative bottom-[-1px] cursor-pointer group">
-                        <h3 class="w-max transition duration-300 ease-linear group-hover:text-[#C10F1A]">Общества</h3>
+                </div>
+                <div class="box-partner mb-5">
+                    <div class="card-partner">
+                        <div class="grid xl:grid-cols-2 gap-5">
+                            <div class="bg-white flex flex-col sm:flex-row">
+                                <div class="h-full flex items-center justify-center w-full lg:max-h-[202px] lg:min-w-[247px] max-h-[220px] sm:max-w-[247px] box-border p-2.5">
+                                    <img class="h-full w-full object-cover" src="{{asset('img/partners/partn-1.jpg')}}" alt="">
+                                </div>
+                                <div class="p-5">
+                                    <h3 class="text-lg 2xl:text-xl font-bold">Мелитопольская городская общественная организация инвалидов</h3>
+                                </div>
+                            </div>
+                            <div class="bg-white flex flex-col sm:flex-row">
+                                <div class="h-full flex items-center justify-center w-full lg:max-h-[202px] lg:min-w-[247px] max-h-[220px] sm:max-w-[247px] box-border p-2.5">
+                                    <img class="h-full w-full object-cover" src="{{asset('img/partners/partn-2.jpg')}}" alt="">
+                                </div>
+                                <div class="p-5">
+                                    <h3 class="text-lg 2xl:text-xl font-bold">Религиозная организация – духовная образовательная организация высшего образования «Санкт-Петербургская Духовная Академия Русской Православной Церкви»</h3>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="point-partner pb-5 px-5 border-b border-transparent relative bottom-[-1px] cursor-pointer group">
-                        <h3 class="w-max transition duration-300 ease-linear group-hover:text-[#C10F1A]">Фонды</h3>
+                    <div class="card-partner hidden">
+                        <div class="grid xl:grid-cols-2 gap-5">
+                            <div class="bg-white flex flex-col sm:flex-row">
+                                <div class="h-full flex items-center justify-center w-full lg:max-h-[202px] lg:min-w-[247px] max-h-[220px] sm:max-w-[247px] box-border p-2.5">
+                                    <img class="h-full w-full object-cover" src="{{asset('img/partners/partn-1.jpg')}}" alt="">
+                                </div>
+                                <div class="p-5">
+                                    <h3 class="text-lg 2xl:text-xl font-bold">Акционерное общество «Племзавод «Степной»</h3>
+                                </div>
+                            </div>
+                            <div class="bg-white flex flex-col sm:flex-row">
+                                <div class="h-full flex items-center justify-center w-full lg:max-h-[202px] lg:min-w-[247px] max-h-[220px] sm:max-w-[247px] box-border p-2.5">
+                                    <img class="h-full w-full object-cover" src="{{asset('img/partners/partn-2.jpg')}}" alt="">
+                                </div>
+                                <div class="p-5">
+                                    <h3 class="text-lg 2xl:text-xl font-bold">Общество с ограниченной ответственностью «БЛЕКСИ ФРУТ КОМПАНИ»</h3>
+                                </div>
+                            </div>
+                            <div class="bg-white flex flex-col sm:flex-row">
+                                <div class="h-full flex items-center justify-center w-full lg:max-h-[202px] lg:min-w-[247px] max-h-[220px] sm:max-w-[247px] box-border p-2.5">
+                                    <img class="h-full w-full object-cover" src="{{asset('img/partners/partn-1.jpg')}}" alt="">
+                                </div>
+                                <div class="p-5">
+                                    <h3 class="text-lg 2xl:text-xl font-bold">Общество с ограниченной ответственностью «Мелитопольский завод пищевого оборудования»</h3>
+                                </div>
+                            </div>
+                            <div class="bg-white flex flex-col sm:flex-row">
+                                <div class="h-full flex items-center justify-center w-full lg:max-h-[202px] lg:min-w-[247px] max-h-[220px] sm:max-w-[247px] box-border p-2.5">
+                                    <img class="h-full w-full object-cover" src="{{asset('img/partners/partn-2.jpg')}}" alt="">
+                                </div>
+                                <div class="p-5">
+                                    <h3 class="text-lg 2xl:text-xl font-bold">Общество с ограниченной ответственностью «Царь Хлеб»</h3>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="point-partner pb-5 px-5 border-b border-transparent relative bottom-[-1px] cursor-pointer group">
-                        <h3 class="w-max transition duration-300 ease-linear group-hover:text-[#C10F1A]">Образовательные учреждения</h3>
+                    <div class="card-partner hidden">
+                        <div class="grid xl:grid-cols-2 gap-5">
+                            <div class="bg-white flex flex-col sm:flex-row">
+                                <div class="h-full flex items-center justify-center w-full lg:max-h-[202px] lg:min-w-[247px] max-h-[220px] sm:max-w-[247px] box-border p-2.5">
+                                    <img class="h-full w-full object-cover" src="{{asset('img/partners/partn-1.jpg')}}" alt="">
+                                </div>
+                                <div class="p-5">
+                                    <h3 class="text-lg 2xl:text-xl font-bold">Отделение Фонд пенсионного и социального страхования Российской Федерации по Запорожская области</h3>
+                                </div>
+                            </div>
+                            <div class="bg-white flex flex-col sm:flex-row">
+                                <div class="h-full flex items-center justify-center w-full lg:max-h-[202px] lg:min-w-[247px] max-h-[220px] sm:max-w-[247px] box-border p-2.5">
+                                    <img class="h-full w-full object-cover" src="{{asset('img/partners/partn-2.jpg')}}" alt="">
+                                </div>
+                                <div class="p-5">
+                                    <h3 class="text-lg 2xl:text-xl font-bold">
+                                        Федеральное государственное бюджетное образовательное учреждение высшего
+                                        образования «Алтайский государственный университет» (АлтГУ)
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                    <div class="card-partner hidden">
+                        <div class="grid xl:grid-cols-2 gap-5">
+                            <div class="bg-white flex flex-col sm:flex-row">
+                                <div class="h-full flex items-center justify-center w-full lg:max-h-[202px] lg:min-w-[247px] max-h-[220px] sm:max-w-[247px] box-border p-2.5">
+                                    <img class="h-full w-full object-cover" src="{{asset('img/partners/partn-1.jpg')}}" alt="">
+                                </div>
+                                <div class="p-5">
+                                    <h3 class="text-lg 2xl:text-xl font-bold">Федеральное государственное бюджетное образовательное учреждение высшего образования  «Ивановский государственный химико-технологический университет»</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--Контакты-->   
+            <h2 class="font-bold text-xl md:text-3xl">Контакты</h2>
+            <div class="flex flex-col sm:flex-row sm:items-center gap-5">
+                <div class="flex items-center gap-2">
+                    <span>
+                        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <foreignObject x="-8.26397" y="-5.26397" width="52.5279" height="37.5279"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(5.13px);clip-path:url(#bgblur_0_5075_26333_clip_path);height:100%;width:100%"></div></foreignObject><path data-figma-bg-blur-radius="10.264" d="M2 11.8938C2 9.84068 2 8.81413 2.30794 7.99758C2.77239 6.76599 3.72147 5.79236 4.92201 5.3159C5.71797 5 6.71865 5 8.72 5H27.28C29.2814 5 30.282 5 31.078 5.3159C32.2785 5.79236 33.2276 6.76599 33.6921 7.99758C34 8.81413 34 9.84068 34 11.8938V22H2V11.8938Z" fill="url(#paint0_linear_5075_26333)"/>
+                            <foreignObject x="-4.26397" y="-9.26397" width="27.5279" height="28.5279"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(5.13px);clip-path:url(#bgblur_1_5075_26333_clip_path);height:100%;width:100%"></div></foreignObject><rect data-figma-bg-blur-radius="10.264" x="6.23601" y="1.23601" width="6.52797" height="7.52797" rx="3.26399" fill="#FFB7B5" fill-opacity="0.6" stroke="url(#paint1_linear_5075_26333)" stroke-width="0.472029"/>
+                            <foreignObject x="11.736" y="-9.26397" width="28.5279" height="28.5279"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(5.13px);clip-path:url(#bgblur_2_5075_26333_clip_path);height:100%;width:100%"></div></foreignObject><rect data-figma-bg-blur-radius="10.264" x="22.236" y="1.23601" width="7.52797" height="7.52797" rx="3.76399" fill="#FFB7B5" fill-opacity="0.6" stroke="url(#paint2_linear_5075_26333)" stroke-width="0.472029"/>
+                            <foreignObject x="-8.26397" y="1.73603" width="52.5279" height="42.5279"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(5.13px);clip-path:url(#bgblur_3_5075_26333_clip_path);height:100%;width:100%"></div></foreignObject><path data-figma-bg-blur-radius="10.264" d="M15.8838 13H20.1162C23.5515 13 25.0613 13.01 26.2695 13.3535C29.3563 14.2312 31.7688 16.6437 32.6465 19.7305C32.99 20.9387 33 22.4485 33 25.8838C33 27.9201 32.9905 28.7306 32.8096 29.3672C32.3359 31.0333 31.0333 32.3359 29.3672 32.8096C28.7306 32.9905 27.9201 33 25.8838 33H10.1162C8.07986 33 7.26937 32.9905 6.63281 32.8096C4.9667 32.3359 3.66412 31.0333 3.19043 29.3672C3.00949 28.7306 3 27.9201 3 25.8838C3 22.4485 3.01 20.9387 3.35352 19.7305C4.23118 16.6437 6.64366 14.2312 9.73047 13.3535C10.6368 13.0959 11.7127 13.0256 13.6436 13.0068L15.8838 13Z" fill="#FFB7B5" fill-opacity="0.6" stroke="url(#paint3_linear_5075_26333)" stroke-width="2"/>
+                            <foreignObject x="0.736032" y="7.73603" width="34.5279" height="23.5279"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(5.13px);clip-path:url(#bgblur_4_5075_26333_clip_path);height:100%;width:100%"></div></foreignObject><rect data-figma-bg-blur-radius="10.264" x="24.8112" y="18.1888" width="2.62238" height="13.6224" rx="1.31119" transform="rotate(90 24.8112 18.1888)" fill="white" fill-opacity="0.9" stroke="url(#paint4_linear_5075_26333)" stroke-width="0.377623"/>
+                            <foreignObject x="0.736032" y="14.736" width="34.5279" height="23.5279"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(5.13px);clip-path:url(#bgblur_5_5075_26333_clip_path);height:100%;width:100%"></div></foreignObject><rect data-figma-bg-blur-radius="10.264" x="24.8112" y="25.1888" width="2.62238" height="13.6224" rx="1.31119" transform="rotate(90 24.8112 25.1888)" fill="url(#paint5_linear_5075_26333)" fill-opacity="0.9" stroke="url(#paint6_linear_5075_26333)" stroke-width="0.377623"/>
+                            <defs>
+                            <clipPath id="bgblur_0_5075_26333_clip_path" transform="translate(8.26397 5.26397)"><path d="M2 11.8938C2 9.84068 2 8.81413 2.30794 7.99758C2.77239 6.76599 3.72147 5.79236 4.92201 5.3159C5.71797 5 6.71865 5 8.72 5H27.28C29.2814 5 30.282 5 31.078 5.3159C32.2785 5.79236 33.2276 6.76599 33.6921 7.99758C34 8.81413 34 9.84068 34 11.8938V22H2V11.8938Z"/>
+                            </clipPath><clipPath id="bgblur_1_5075_26333_clip_path" transform="translate(4.26397 9.26397)"><rect x="6.23601" y="1.23601" width="6.52797" height="7.52797" rx="3.26399"/>
+                            </clipPath><clipPath id="bgblur_2_5075_26333_clip_path" transform="translate(-11.736 9.26397)"><rect x="22.236" y="1.23601" width="7.52797" height="7.52797" rx="3.76399"/>
+                            </clipPath><clipPath id="bgblur_3_5075_26333_clip_path" transform="translate(8.26397 -1.73603)"><path d="M15.8838 13H20.1162C23.5515 13 25.0613 13.01 26.2695 13.3535C29.3563 14.2312 31.7688 16.6437 32.6465 19.7305C32.99 20.9387 33 22.4485 33 25.8838C33 27.9201 32.9905 28.7306 32.8096 29.3672C32.3359 31.0333 31.0333 32.3359 29.3672 32.8096C28.7306 32.9905 27.9201 33 25.8838 33H10.1162C8.07986 33 7.26937 32.9905 6.63281 32.8096C4.9667 32.3359 3.66412 31.0333 3.19043 29.3672C3.00949 28.7306 3 27.9201 3 25.8838C3 22.4485 3.01 20.9387 3.35352 19.7305C4.23118 16.6437 6.64366 14.2312 9.73047 13.3535C10.6368 13.0959 11.7127 13.0256 13.6436 13.0068L15.8838 13Z"/>
+                            </clipPath><clipPath id="bgblur_4_5075_26333_clip_path" transform="translate(-0.736032 -7.73603)"><rect x="24.8112" y="18.1888" width="2.62238" height="13.6224" rx="1.31119" transform="rotate(90 24.8112 18.1888)"/>
+                            </clipPath><clipPath id="bgblur_5_5075_26333_clip_path" transform="translate(-0.736032 -14.736)"><rect x="24.8112" y="25.1888" width="2.62238" height="13.6224" rx="1.31119" transform="rotate(90 24.8112 25.1888)"/>
+                            </clipPath><linearGradient id="paint0_linear_5075_26333" x1="32.5" y1="5" x2="2.81519" y2="13.8466" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#FF6161"/>
+                            <stop offset="1" stop-color="#F52828"/>
+                            </linearGradient>
+                            <linearGradient id="paint1_linear_5075_26333" x1="5.65" y1="1.57143" x2="11.7033" y2="9.66081" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="white"/>
+                            <stop offset="0.765625" stop-color="white" stop-opacity="0"/>
+                            </linearGradient>
+                            <linearGradient id="paint2_linear_5075_26333" x1="21.6" y1="1.57143" x2="27.3832" y2="10.4039" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="white"/>
+                            <stop offset="0.765625" stop-color="white" stop-opacity="0"/>
+                            </linearGradient>
+                            <linearGradient id="paint3_linear_5075_26333" x1="0.4" y1="13.5714" x2="13.3892" y2="42.4267" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="white"/>
+                            <stop offset="0.765625" stop-color="white" stop-opacity="0"/>
+                            </linearGradient>
+                            <linearGradient id="paint4_linear_5075_26333" x1="26.5" y1="18" x2="26.5" y2="32" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="white" stop-opacity="0"/>
+                            <stop offset="1" stop-color="white"/>
+                            </linearGradient>
+                            <linearGradient id="paint5_linear_5075_26333" x1="28.9751" y1="24.8499" x2="27.2821" y2="36.1694" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="white" stop-opacity="0"/>
+                            <stop offset="0.979167" stop-color="white"/>
+                            </linearGradient>
+                            <linearGradient id="paint6_linear_5075_26333" x1="26.5" y1="25" x2="26.5" y2="39" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="white" stop-opacity="0"/>
+                            <stop offset="1" stop-color="white"/>
+                            </linearGradient>
+                            </defs>
+                        </svg>
+                    </span>
+                    <span class="sm:text-lg">
+                        Понедельник - Пятница
+                    </span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span>
+                        <svg width="36" height="32" viewBox="0 0 36 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M28.4382 15.3491C32.6142 15.3491 35.9995 11.9638 35.9995 7.78784C35.9995 3.61186 32.6142 0.226562 28.4382 0.226562C24.2623 0.226562 20.877 3.61186 20.877 7.78784C20.877 11.9638 24.2623 15.3491 28.4382 15.3491Z" fill="url(#paint0_linear_5075_26351)"/>
+                            <path d="M8.03003 15.3491C12.206 15.3491 15.5913 11.9638 15.5913 7.78784C15.5913 3.61186 12.206 0.226562 8.03003 0.226562C3.85405 0.226562 0.46875 3.61186 0.46875 7.78784C0.46875 11.9638 3.85405 15.3491 8.03003 15.3491Z" fill="url(#paint1_linear_5075_26351)"/>
+                            <foreignObject x="-13.4062" y="-15.293" width="63.2715" height="65.2949"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(9px);clip-path:url(#bgblur_0_5075_26351_clip_path);height:100%;width:100%"></div></foreignObject><path data-figma-bg-blur-radius="18" d="M18.2295 3.70703C25.2087 3.70703 30.8652 9.36357 30.8652 16.3428C30.8652 19.7703 29.4997 22.8771 27.2832 25.1543L26.7969 25.6543L27.0977 26.2832L28.4707 29.1562V29.1572C28.7782 29.8024 28.5054 30.5696 27.8662 30.875C27.2213 31.1818 26.4548 30.9092 26.1494 30.2705L26.1484 30.2695L25.1377 28.1562L24.7021 27.2441L23.7949 27.6895C22.1147 28.5158 20.228 28.9814 18.2295 28.9814C16.2311 28.9814 14.3452 28.5158 12.665 27.6895L11.7578 27.2441L11.3213 28.1562L10.3105 30.2695C10.0014 30.9114 9.23254 31.1807 8.59277 30.875C7.95163 30.5655 7.68195 29.7976 7.9873 29.1582L9.36133 26.2832L9.66211 25.6543L9.17578 25.1543C6.95926 22.8771 5.59375 19.7703 5.59375 16.3428C5.59382 9.36362 11.2503 3.7071 18.2295 3.70703Z" fill="#FFB7B5" fill-opacity="0.6" stroke="url(#paint2_linear_5075_26351)" stroke-width="2"/>
+                            <path d="M19.3437 8.06933C19.3437 7.44532 18.8379 6.93945 18.2139 6.93945C17.5898 6.93945 17.084 7.44532 17.084 8.06933V16.5643C17.084 17.1883 17.5898 17.6941 18.2139 17.6941C18.8379 17.6941 19.3437 17.1883 19.3437 16.5643V8.06933Z" fill="white"/>
+                            <path d="M23.4658 17.6973C24.0898 17.6973 24.5957 17.1914 24.5957 16.5674C24.5957 15.9434 24.0898 15.4375 23.4658 15.4375H18.2178C17.5938 15.4375 17.0879 15.9434 17.0879 16.5674C17.0879 17.1914 17.5938 17.6973 18.2178 17.6973H23.4658Z" fill="white"/>
+                            <defs>
+                            <clipPath id="bgblur_0_5075_26351_clip_path" transform="translate(13.4062 15.293)"><path d="M18.2295 3.70703C25.2087 3.70703 30.8652 9.36357 30.8652 16.3428C30.8652 19.7703 29.4997 22.8771 27.2832 25.1543L26.7969 25.6543L27.0977 26.2832L28.4707 29.1562V29.1572C28.7782 29.8024 28.5054 30.5696 27.8662 30.875C27.2213 31.1818 26.4548 30.9092 26.1494 30.2705L26.1484 30.2695L25.1377 28.1562L24.7021 27.2441L23.7949 27.6895C22.1147 28.5158 20.228 28.9814 18.2295 28.9814C16.2311 28.9814 14.3452 28.5158 12.665 27.6895L11.7578 27.2441L11.3213 28.1562L10.3105 30.2695C10.0014 30.9114 9.23254 31.1807 8.59277 30.875C7.95163 30.5655 7.68195 29.7976 7.9873 29.1582L9.36133 26.2832L9.66211 25.6543L9.17578 25.1543C6.95926 22.8771 5.59375 19.7703 5.59375 16.3428C5.59382 9.36362 11.2503 3.7071 18.2295 3.70703Z"/>
+                            </clipPath><linearGradient id="paint0_linear_5075_26351" x1="33.999" y1="3.50098" x2="30.637" y2="12.9702" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#FF6161"/>
+                            <stop offset="1" stop-color="#F52828"/>
+                            </linearGradient>
+                            <linearGradient id="paint1_linear_5075_26351" x1="12.499" y1="2.00098" x2="7.95517" y2="14.4866" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#FF6161"/>
+                            <stop offset="1" stop-color="#F52828"/>
+                            </linearGradient>
+                            <linearGradient id="paint2_linear_5075_26351" x1="31.998" y1="12.5015" x2="16.6993" y2="31.3681" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#FF6161"/>
+                            <stop offset="1" stop-color="#F52828"/>
+                            </linearGradient>
+                            </defs>
+                        </svg>
+                    </span>
+                    <span class="sm:text-lg">
+                        08:00 - 16:30
+                    </span>
                 </div>
             </div>
-            <div class="box-partner mb-5">
-                <div class="card-partner">
-                    <div class="grid xl:grid-cols-2 gap-5">
-                        <div class="bg-white flex flex-col sm:flex-row">
-                            <div class="h-full flex items-center justify-center w-full lg:max-h-[202px] lg:min-w-[247px] max-h-[220px] sm:max-w-[247px] box-border p-2.5">
-                                <img class="h-full w-full object-cover" src="{{asset('img/partners/partn-1.jpg')}}" alt="">
-                            </div>
-                            <div class="p-5">
-                                <h3 class="text-lg 2xl:text-xl font-bold">Мелитопольская городская общественная организация инвалидов</h3>
-                            </div>
-                        </div>
-                        <div class="bg-white flex flex-col sm:flex-row">
-                            <div class="h-full flex items-center justify-center w-full lg:max-h-[202px] lg:min-w-[247px] max-h-[220px] sm:max-w-[247px] box-border p-2.5">
-                                <img class="h-full w-full object-cover" src="{{asset('img/partners/partn-2.jpg')}}" alt="">
-                            </div>
-                            <div class="p-5">
-                                <h3 class="text-lg 2xl:text-xl font-bold">Религиозная организация – духовная образовательная организация высшего образования «Санкт-Петербургская Духовная Академия Русской Православной Церкви»</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-partner hidden">
-                    <div class="grid xl:grid-cols-2 gap-5">
-                        <div class="bg-white flex flex-col sm:flex-row">
-                            <div class="h-full flex items-center justify-center w-full lg:max-h-[202px] lg:min-w-[247px] max-h-[220px] sm:max-w-[247px] box-border p-2.5">
-                                <img class="h-full w-full object-cover" src="{{asset('img/partners/partn-1.jpg')}}" alt="">
-                            </div>
-                            <div class="p-5">
-                                <h3 class="text-lg 2xl:text-xl font-bold">Акционерное общество «Племзавод «Степной»</h3>
-                            </div>
-                        </div>
-                        <div class="bg-white flex flex-col sm:flex-row">
-                            <div class="h-full flex items-center justify-center w-full lg:max-h-[202px] lg:min-w-[247px] max-h-[220px] sm:max-w-[247px] box-border p-2.5">
-                                <img class="h-full w-full object-cover" src="{{asset('img/partners/partn-2.jpg')}}" alt="">
-                            </div>
-                            <div class="p-5">
-                                <h3 class="text-lg 2xl:text-xl font-bold">Общество с ограниченной ответственностью «БЛЕКСИ ФРУТ КОМПАНИ»</h3>
-                            </div>
-                        </div>
-                        <div class="bg-white flex flex-col sm:flex-row">
-                            <div class="h-full flex items-center justify-center w-full lg:max-h-[202px] lg:min-w-[247px] max-h-[220px] sm:max-w-[247px] box-border p-2.5">
-                                <img class="h-full w-full object-cover" src="{{asset('img/partners/partn-1.jpg')}}" alt="">
-                            </div>
-                            <div class="p-5">
-                                <h3 class="text-lg 2xl:text-xl font-bold">Общество с ограниченной ответственностью «Мелитопольский завод пищевого оборудования»</h3>
-                            </div>
-                        </div>
-                        <div class="bg-white flex flex-col sm:flex-row">
-                            <div class="h-full flex items-center justify-center w-full lg:max-h-[202px] lg:min-w-[247px] max-h-[220px] sm:max-w-[247px] box-border p-2.5">
-                                <img class="h-full w-full object-cover" src="{{asset('img/partners/partn-2.jpg')}}" alt="">
-                            </div>
-                            <div class="p-5">
-                                <h3 class="text-lg 2xl:text-xl font-bold">Общество с ограниченной ответственностью «Царь Хлеб»</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-partner hidden">
-                    <div class="grid xl:grid-cols-2 gap-5">
-                        <div class="bg-white flex flex-col sm:flex-row">
-                            <div class="h-full flex items-center justify-center w-full lg:max-h-[202px] lg:min-w-[247px] max-h-[220px] sm:max-w-[247px] box-border p-2.5">
-                                <img class="h-full w-full object-cover" src="{{asset('img/partners/partn-1.jpg')}}" alt="">
-                            </div>
-                            <div class="p-5">
-                                <h3 class="text-lg 2xl:text-xl font-bold">Отделение Фонд пенсионного и социального страхования Российской Федерации по Запорожская области</h3>
-                            </div>
-                        </div>
-                        <div class="bg-white flex flex-col sm:flex-row">
-                            <div class="h-full flex items-center justify-center w-full lg:max-h-[202px] lg:min-w-[247px] max-h-[220px] sm:max-w-[247px] box-border p-2.5">
-                                <img class="h-full w-full object-cover" src="{{asset('img/partners/partn-2.jpg')}}" alt="">
-                            </div>
-                            <div class="p-5">
-                                <h3 class="text-lg 2xl:text-xl font-bold">
-                                    Федеральное государственное бюджетное образовательное учреждение высшего
-                                    образования «Алтайский государственный университет» (АлтГУ)
-                                </h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-partner hidden">
-                    <div class="grid xl:grid-cols-2 gap-5">
-                        <div class="bg-white flex flex-col sm:flex-row">
-                            <div class="h-full flex items-center justify-center w-full lg:max-h-[202px] lg:min-w-[247px] max-h-[220px] sm:max-w-[247px] box-border p-2.5">
-                                <img class="h-full w-full object-cover" src="{{asset('img/partners/partn-1.jpg')}}" alt="">
-                            </div>
-                            <div class="p-5">
-                                <h3 class="text-lg 2xl:text-xl font-bold">Федеральное государственное бюджетное образовательное учреждение высшего образования  «Ивановский государственный химико-технологический университет»</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--Контакты-->   
-        <h2 class="font-bold text-xl md:text-3xl">Контакты</h2>
-        <div class="flex flex-col sm:flex-row sm:items-center gap-5">
-            <div class="flex items-center gap-2">
-                <span>
-                    <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <foreignObject x="-8.26397" y="-5.26397" width="52.5279" height="37.5279"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(5.13px);clip-path:url(#bgblur_0_5075_26333_clip_path);height:100%;width:100%"></div></foreignObject><path data-figma-bg-blur-radius="10.264" d="M2 11.8938C2 9.84068 2 8.81413 2.30794 7.99758C2.77239 6.76599 3.72147 5.79236 4.92201 5.3159C5.71797 5 6.71865 5 8.72 5H27.28C29.2814 5 30.282 5 31.078 5.3159C32.2785 5.79236 33.2276 6.76599 33.6921 7.99758C34 8.81413 34 9.84068 34 11.8938V22H2V11.8938Z" fill="url(#paint0_linear_5075_26333)"/>
-                        <foreignObject x="-4.26397" y="-9.26397" width="27.5279" height="28.5279"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(5.13px);clip-path:url(#bgblur_1_5075_26333_clip_path);height:100%;width:100%"></div></foreignObject><rect data-figma-bg-blur-radius="10.264" x="6.23601" y="1.23601" width="6.52797" height="7.52797" rx="3.26399" fill="#FFB7B5" fill-opacity="0.6" stroke="url(#paint1_linear_5075_26333)" stroke-width="0.472029"/>
-                        <foreignObject x="11.736" y="-9.26397" width="28.5279" height="28.5279"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(5.13px);clip-path:url(#bgblur_2_5075_26333_clip_path);height:100%;width:100%"></div></foreignObject><rect data-figma-bg-blur-radius="10.264" x="22.236" y="1.23601" width="7.52797" height="7.52797" rx="3.76399" fill="#FFB7B5" fill-opacity="0.6" stroke="url(#paint2_linear_5075_26333)" stroke-width="0.472029"/>
-                        <foreignObject x="-8.26397" y="1.73603" width="52.5279" height="42.5279"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(5.13px);clip-path:url(#bgblur_3_5075_26333_clip_path);height:100%;width:100%"></div></foreignObject><path data-figma-bg-blur-radius="10.264" d="M15.8838 13H20.1162C23.5515 13 25.0613 13.01 26.2695 13.3535C29.3563 14.2312 31.7688 16.6437 32.6465 19.7305C32.99 20.9387 33 22.4485 33 25.8838C33 27.9201 32.9905 28.7306 32.8096 29.3672C32.3359 31.0333 31.0333 32.3359 29.3672 32.8096C28.7306 32.9905 27.9201 33 25.8838 33H10.1162C8.07986 33 7.26937 32.9905 6.63281 32.8096C4.9667 32.3359 3.66412 31.0333 3.19043 29.3672C3.00949 28.7306 3 27.9201 3 25.8838C3 22.4485 3.01 20.9387 3.35352 19.7305C4.23118 16.6437 6.64366 14.2312 9.73047 13.3535C10.6368 13.0959 11.7127 13.0256 13.6436 13.0068L15.8838 13Z" fill="#FFB7B5" fill-opacity="0.6" stroke="url(#paint3_linear_5075_26333)" stroke-width="2"/>
-                        <foreignObject x="0.736032" y="7.73603" width="34.5279" height="23.5279"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(5.13px);clip-path:url(#bgblur_4_5075_26333_clip_path);height:100%;width:100%"></div></foreignObject><rect data-figma-bg-blur-radius="10.264" x="24.8112" y="18.1888" width="2.62238" height="13.6224" rx="1.31119" transform="rotate(90 24.8112 18.1888)" fill="white" fill-opacity="0.9" stroke="url(#paint4_linear_5075_26333)" stroke-width="0.377623"/>
-                        <foreignObject x="0.736032" y="14.736" width="34.5279" height="23.5279"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(5.13px);clip-path:url(#bgblur_5_5075_26333_clip_path);height:100%;width:100%"></div></foreignObject><rect data-figma-bg-blur-radius="10.264" x="24.8112" y="25.1888" width="2.62238" height="13.6224" rx="1.31119" transform="rotate(90 24.8112 25.1888)" fill="url(#paint5_linear_5075_26333)" fill-opacity="0.9" stroke="url(#paint6_linear_5075_26333)" stroke-width="0.377623"/>
-                        <defs>
-                        <clipPath id="bgblur_0_5075_26333_clip_path" transform="translate(8.26397 5.26397)"><path d="M2 11.8938C2 9.84068 2 8.81413 2.30794 7.99758C2.77239 6.76599 3.72147 5.79236 4.92201 5.3159C5.71797 5 6.71865 5 8.72 5H27.28C29.2814 5 30.282 5 31.078 5.3159C32.2785 5.79236 33.2276 6.76599 33.6921 7.99758C34 8.81413 34 9.84068 34 11.8938V22H2V11.8938Z"/>
-                        </clipPath><clipPath id="bgblur_1_5075_26333_clip_path" transform="translate(4.26397 9.26397)"><rect x="6.23601" y="1.23601" width="6.52797" height="7.52797" rx="3.26399"/>
-                        </clipPath><clipPath id="bgblur_2_5075_26333_clip_path" transform="translate(-11.736 9.26397)"><rect x="22.236" y="1.23601" width="7.52797" height="7.52797" rx="3.76399"/>
-                        </clipPath><clipPath id="bgblur_3_5075_26333_clip_path" transform="translate(8.26397 -1.73603)"><path d="M15.8838 13H20.1162C23.5515 13 25.0613 13.01 26.2695 13.3535C29.3563 14.2312 31.7688 16.6437 32.6465 19.7305C32.99 20.9387 33 22.4485 33 25.8838C33 27.9201 32.9905 28.7306 32.8096 29.3672C32.3359 31.0333 31.0333 32.3359 29.3672 32.8096C28.7306 32.9905 27.9201 33 25.8838 33H10.1162C8.07986 33 7.26937 32.9905 6.63281 32.8096C4.9667 32.3359 3.66412 31.0333 3.19043 29.3672C3.00949 28.7306 3 27.9201 3 25.8838C3 22.4485 3.01 20.9387 3.35352 19.7305C4.23118 16.6437 6.64366 14.2312 9.73047 13.3535C10.6368 13.0959 11.7127 13.0256 13.6436 13.0068L15.8838 13Z"/>
-                        </clipPath><clipPath id="bgblur_4_5075_26333_clip_path" transform="translate(-0.736032 -7.73603)"><rect x="24.8112" y="18.1888" width="2.62238" height="13.6224" rx="1.31119" transform="rotate(90 24.8112 18.1888)"/>
-                        </clipPath><clipPath id="bgblur_5_5075_26333_clip_path" transform="translate(-0.736032 -14.736)"><rect x="24.8112" y="25.1888" width="2.62238" height="13.6224" rx="1.31119" transform="rotate(90 24.8112 25.1888)"/>
-                        </clipPath><linearGradient id="paint0_linear_5075_26333" x1="32.5" y1="5" x2="2.81519" y2="13.8466" gradientUnits="userSpaceOnUse">
-                        <stop stop-color="#FF6161"/>
-                        <stop offset="1" stop-color="#F52828"/>
-                        </linearGradient>
-                        <linearGradient id="paint1_linear_5075_26333" x1="5.65" y1="1.57143" x2="11.7033" y2="9.66081" gradientUnits="userSpaceOnUse">
-                        <stop stop-color="white"/>
-                        <stop offset="0.765625" stop-color="white" stop-opacity="0"/>
-                        </linearGradient>
-                        <linearGradient id="paint2_linear_5075_26333" x1="21.6" y1="1.57143" x2="27.3832" y2="10.4039" gradientUnits="userSpaceOnUse">
-                        <stop stop-color="white"/>
-                        <stop offset="0.765625" stop-color="white" stop-opacity="0"/>
-                        </linearGradient>
-                        <linearGradient id="paint3_linear_5075_26333" x1="0.4" y1="13.5714" x2="13.3892" y2="42.4267" gradientUnits="userSpaceOnUse">
-                        <stop stop-color="white"/>
-                        <stop offset="0.765625" stop-color="white" stop-opacity="0"/>
-                        </linearGradient>
-                        <linearGradient id="paint4_linear_5075_26333" x1="26.5" y1="18" x2="26.5" y2="32" gradientUnits="userSpaceOnUse">
-                        <stop stop-color="white" stop-opacity="0"/>
-                        <stop offset="1" stop-color="white"/>
-                        </linearGradient>
-                        <linearGradient id="paint5_linear_5075_26333" x1="28.9751" y1="24.8499" x2="27.2821" y2="36.1694" gradientUnits="userSpaceOnUse">
-                        <stop stop-color="white" stop-opacity="0"/>
-                        <stop offset="0.979167" stop-color="white"/>
-                        </linearGradient>
-                        <linearGradient id="paint6_linear_5075_26333" x1="26.5" y1="25" x2="26.5" y2="39" gradientUnits="userSpaceOnUse">
-                        <stop stop-color="white" stop-opacity="0"/>
-                        <stop offset="1" stop-color="white"/>
-                        </linearGradient>
-                        </defs>
-                    </svg>
-                </span>
-                <span class="sm:text-lg">
-                    Понедельник - Пятница
-                </span>
-            </div>
-            <div class="flex items-center gap-2">
-                <span>
-                    <svg width="36" height="32" viewBox="0 0 36 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M28.4382 15.3491C32.6142 15.3491 35.9995 11.9638 35.9995 7.78784C35.9995 3.61186 32.6142 0.226562 28.4382 0.226562C24.2623 0.226562 20.877 3.61186 20.877 7.78784C20.877 11.9638 24.2623 15.3491 28.4382 15.3491Z" fill="url(#paint0_linear_5075_26351)"/>
-                        <path d="M8.03003 15.3491C12.206 15.3491 15.5913 11.9638 15.5913 7.78784C15.5913 3.61186 12.206 0.226562 8.03003 0.226562C3.85405 0.226562 0.46875 3.61186 0.46875 7.78784C0.46875 11.9638 3.85405 15.3491 8.03003 15.3491Z" fill="url(#paint1_linear_5075_26351)"/>
-                        <foreignObject x="-13.4062" y="-15.293" width="63.2715" height="65.2949"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(9px);clip-path:url(#bgblur_0_5075_26351_clip_path);height:100%;width:100%"></div></foreignObject><path data-figma-bg-blur-radius="18" d="M18.2295 3.70703C25.2087 3.70703 30.8652 9.36357 30.8652 16.3428C30.8652 19.7703 29.4997 22.8771 27.2832 25.1543L26.7969 25.6543L27.0977 26.2832L28.4707 29.1562V29.1572C28.7782 29.8024 28.5054 30.5696 27.8662 30.875C27.2213 31.1818 26.4548 30.9092 26.1494 30.2705L26.1484 30.2695L25.1377 28.1562L24.7021 27.2441L23.7949 27.6895C22.1147 28.5158 20.228 28.9814 18.2295 28.9814C16.2311 28.9814 14.3452 28.5158 12.665 27.6895L11.7578 27.2441L11.3213 28.1562L10.3105 30.2695C10.0014 30.9114 9.23254 31.1807 8.59277 30.875C7.95163 30.5655 7.68195 29.7976 7.9873 29.1582L9.36133 26.2832L9.66211 25.6543L9.17578 25.1543C6.95926 22.8771 5.59375 19.7703 5.59375 16.3428C5.59382 9.36362 11.2503 3.7071 18.2295 3.70703Z" fill="#FFB7B5" fill-opacity="0.6" stroke="url(#paint2_linear_5075_26351)" stroke-width="2"/>
-                        <path d="M19.3437 8.06933C19.3437 7.44532 18.8379 6.93945 18.2139 6.93945C17.5898 6.93945 17.084 7.44532 17.084 8.06933V16.5643C17.084 17.1883 17.5898 17.6941 18.2139 17.6941C18.8379 17.6941 19.3437 17.1883 19.3437 16.5643V8.06933Z" fill="white"/>
-                        <path d="M23.4658 17.6973C24.0898 17.6973 24.5957 17.1914 24.5957 16.5674C24.5957 15.9434 24.0898 15.4375 23.4658 15.4375H18.2178C17.5938 15.4375 17.0879 15.9434 17.0879 16.5674C17.0879 17.1914 17.5938 17.6973 18.2178 17.6973H23.4658Z" fill="white"/>
-                        <defs>
-                        <clipPath id="bgblur_0_5075_26351_clip_path" transform="translate(13.4062 15.293)"><path d="M18.2295 3.70703C25.2087 3.70703 30.8652 9.36357 30.8652 16.3428C30.8652 19.7703 29.4997 22.8771 27.2832 25.1543L26.7969 25.6543L27.0977 26.2832L28.4707 29.1562V29.1572C28.7782 29.8024 28.5054 30.5696 27.8662 30.875C27.2213 31.1818 26.4548 30.9092 26.1494 30.2705L26.1484 30.2695L25.1377 28.1562L24.7021 27.2441L23.7949 27.6895C22.1147 28.5158 20.228 28.9814 18.2295 28.9814C16.2311 28.9814 14.3452 28.5158 12.665 27.6895L11.7578 27.2441L11.3213 28.1562L10.3105 30.2695C10.0014 30.9114 9.23254 31.1807 8.59277 30.875C7.95163 30.5655 7.68195 29.7976 7.9873 29.1582L9.36133 26.2832L9.66211 25.6543L9.17578 25.1543C6.95926 22.8771 5.59375 19.7703 5.59375 16.3428C5.59382 9.36362 11.2503 3.7071 18.2295 3.70703Z"/>
-                        </clipPath><linearGradient id="paint0_linear_5075_26351" x1="33.999" y1="3.50098" x2="30.637" y2="12.9702" gradientUnits="userSpaceOnUse">
-                        <stop stop-color="#FF6161"/>
-                        <stop offset="1" stop-color="#F52828"/>
-                        </linearGradient>
-                        <linearGradient id="paint1_linear_5075_26351" x1="12.499" y1="2.00098" x2="7.95517" y2="14.4866" gradientUnits="userSpaceOnUse">
-                        <stop stop-color="#FF6161"/>
-                        <stop offset="1" stop-color="#F52828"/>
-                        </linearGradient>
-                        <linearGradient id="paint2_linear_5075_26351" x1="31.998" y1="12.5015" x2="16.6993" y2="31.3681" gradientUnits="userSpaceOnUse">
-                        <stop stop-color="#FF6161"/>
-                        <stop offset="1" stop-color="#F52828"/>
-                        </linearGradient>
-                        </defs>
-                    </svg>
-                </span>
-                <span class="sm:text-lg">
-                    08:00 - 16:30
-                </span>
-            </div>
-        </div>
         </div>
     </div>
     <div class="order-1 lg:order-2 flex flex-col gap-5">
