@@ -55,7 +55,7 @@ style="background-image: url({{asset('img/partners/part-1.jpg')}})">
                 </div>
             </div>
             <!--Почему МелГУ — Ваш Партнер?-->
-            <section>
+            <section id="whi-melsu">
                 <h2 class="font-bold text-xl md:text-3xl mb-8 mt-15">Почему МелГУ — Ваш Партнер?</h2>
                 <div class="grid grid-cols-[2fr_1fr] gap-5">
                     <div class="flex flex-col gap-3 p-6">
@@ -74,7 +74,7 @@ style="background-image: url({{asset('img/partners/part-1.jpg')}})">
                 </div>
             </section>
              <!--Наш подход основан на трёх принципах-->
-            <section>
+            <section id="our-approach">
                 <h2 class="font-bold text-xl md:text-3xl mb-8 mt-15">Наш подход основан на трёх принципах</h2>
                 <div class="grid grid-cols-3 gap-5">
                     <div class="flex font-semibold gap-1 px-10">
@@ -98,7 +98,7 @@ style="background-image: url({{asset('img/partners/part-1.jpg')}})">
                 </div>
             </section>
             <!--Направления партнерства-->
-            <section>
+            <section id="directions">
                 <h2 class="font-bold text-xl md:text-3xl mb-8 mt-15">Направления партнерства</h2>
                 <div class="flex flex-col gap-3">
                     <div class='accordion-group grid grid-cols-1 gap-1' data-accordion="default-accordion">
@@ -236,7 +236,7 @@ style="background-image: url({{asset('img/partners/part-1.jpg')}})">
                 </div>
             </section>
             <!--Преимущества партнерства-->
-            <section>
+            <section id="advantages">
                 <h2 class="font-bold text-xl md:text-3xl mb-8 mt-15">Преимущества партнерства</h2>
                 <div class="grid grid-cols-2 gap-5">
                     <div>
@@ -279,7 +279,7 @@ style="background-image: url({{asset('img/partners/part-1.jpg')}})">
                 </div>
             </section>
             <!--Как стать партнером-->
-            <section>
+            <section id="how-become-partner">
                 <h2 class="font-bold text-xl md:text-3xl mb-8 mt-15">Как стать партнером</h2>
                 <div class="grid grid-cols-2 gap-5">
                     <div>
@@ -299,7 +299,7 @@ style="background-image: url({{asset('img/partners/part-1.jpg')}})">
                 </div>
             </section>
             <!--Присоединяйтесь к нам!-->
-            <section>
+            <section id="join">
                 <h2 class="font-bold text-xl md:text-3xl mb-8 mt-15">Присоединяйтесь к нам!</h2>
                 <div class="relative flex justify-end bg-[#820000] bg-left bg-no-repeat xl:bg-size-[55%_100%]" style="background-image: url({{asset('img/partners/part-6.jpg')}})">
                     <div class="bg-[rgba(40,13,13,0.65)] min-h-full pointer-events-none absolute w-full xl:w-[55%] top-0 left-0">
@@ -348,11 +348,11 @@ style="background-image: url({{asset('img/partners/part-1.jpg')}})">
                 </div>
             </section>
             <!--Новости-->
-            <section class="mt-15">
+            <section id="news" class="mt-15">
                 <x-news.short-news category="4"/>
             </section>
             <!--Наши партнеры-->
-            <section class="container">
+            <section id="partner" class="container">
                 <h2 class="font-bold text-xl md:text-3xl mb-8 mt-15">Наши партнеры</h2>
                 <div class="relative flex items-center">
                     <button id="scrollLeft" class="absolute p-2 left-0 top-0 cursor-pointer hover:opacity-60 transition duration-300 ease-linear">
@@ -738,129 +738,135 @@ style="background-image: url({{asset('img/partners/part-1.jpg')}})">
             </section>
         </div>
     </div>
-    <div class="order-1 lg:order-2 flex flex-col gap-5">
-        <h2 class="font-bold text-xl">Навигация по кафедре</h2>
-        <div class="flex flex-col">
-            <a href="#" class="flex items-center gap-2.5 group hover:bg-[#EEEEEE] py-3 px-2.5 transition duration-300 ease-linear">
-                <span>
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M17.8503 9.10131C17.9995 9.0355 18.1261 8.92737 18.2144 8.79032C18.3028 8.65326 18.3489 8.49331 18.3473 8.33026C18.3456 8.16722 18.2961 8.00825 18.2049 7.87305C18.1138 7.73785 17.985 7.63236 17.8345 7.56965L10.692 4.31631C10.4749 4.21727 10.239 4.16602 10.0003 4.16602C9.76166 4.16602 9.52579 4.21727 9.30865 4.31631L2.16699 7.56631C2.01863 7.63129 1.89242 7.73809 1.80379 7.87366C1.71517 8.00923 1.66797 8.16768 1.66797 8.32965C1.66797 8.49161 1.71517 8.65007 1.80379 8.78563C1.89242 8.9212 2.01863 9.028 2.16699 9.09298L9.30865 12.3496C9.52579 12.4487 9.76166 12.4999 10.0003 12.4999C10.239 12.4999 10.4749 12.4487 10.692 12.3496L17.8503 9.10131Z" stroke="black" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M18.334 8.33301V13.333" stroke="black" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M5 10.417V13.3337C5 13.9967 5.52678 14.6326 6.46447 15.1014C7.40215 15.5703 8.67392 15.8337 10 15.8337C11.3261 15.8337 12.5979 15.5703 13.5355 15.1014C14.4732 14.6326 15 13.9967 15 13.3337V10.417" stroke="black" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </span>
-                <span class="flex group-hover:text-[#C10F1A] transition duration-300 ease-linear">
-                    О кафедре
-                </span>
-            </a>
-            <a href="#" class="flex items-center gap-2.5 group hover:bg-[#EEEEEE] py-3 px-2.5 transition duration-300 ease-linear">
-                <span>
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M13.3327 17.5V15.8333C13.3327 14.9493 12.9815 14.1014 12.3564 13.4763C11.7313 12.8512 10.8834 12.5 9.99935 12.5H4.99935C4.11529 12.5 3.26745 12.8512 2.64233 13.4763C2.01721 14.1014 1.66602 14.9493 1.66602 15.8333V17.5" stroke="black" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M13.334 2.60645C14.0488 2.79175 14.6818 3.20917 15.1337 3.79316C15.5856 4.37716 15.8308 5.09469 15.8308 5.83311C15.8308 6.57154 15.5856 7.28906 15.1337 7.87306C14.6818 8.45706 14.0488 8.87447 13.334 9.05978" stroke="black" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M18.334 17.5001V15.8334C18.3334 15.0948 18.0876 14.3774 17.6351 13.7937C17.1826 13.2099 16.5491 12.793 15.834 12.6084" stroke="black" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M7.49935 9.16667C9.3403 9.16667 10.8327 7.67428 10.8327 5.83333C10.8327 3.99238 9.3403 2.5 7.49935 2.5C5.6584 2.5 4.16602 3.99238 4.16602 5.83333C4.16602 7.67428 5.6584 9.16667 7.49935 9.16667Z" stroke="black" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </span>
-                <span class="flex group-hover:text-[#C10F1A] transition duration-300 ease-linear">
-                    Педагогический состав
-                </span>
-            </a>
-            <a href="#" class="flex items-center gap-2.5 group hover:bg-[#EEEEEE] py-3 px-2.5 transition duration-300 ease-linear">
-                <span>
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M8.33398 4.16699H17.5007" stroke="black" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M8.33398 10H17.5007" stroke="black" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M8.33398 15.833H17.5007" stroke="black" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M2.5 8.33301L5 5.83301L2.5 3.33301" stroke="black" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M2.5 16.667L5 14.167L2.5 11.667" stroke="black" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </span>
-                <span class="flex group-hover:text-[#C10F1A] transition duration-300 ease-linear">
-                    Лаборатории
-                </span>
-            </a>
-            <a href="#" class="flex items-center gap-2.5 group hover:bg-[#EEEEEE] py-3 px-2.5 transition duration-300 ease-linear">
-                <span>
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M10 1.66699V18.3337" stroke="black" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M12.5 15.833L10 18.333L7.5 15.833" stroke="black" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M15.834 7.5L18.334 10L15.834 12.5" stroke="black" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M1.66602 10H18.3327" stroke="black" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M4.16602 7.5L1.66602 10L4.16602 12.5" stroke="black" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M7.5 4.16699L10 1.66699L12.5 4.16699" stroke="black" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </span>
-                <span class="flex group-hover:text-[#C10F1A] transition duration-300 ease-linear">
-                    Направления подготовки
-                </span>
-            </a>
-            <a href="#" class="flex items-center gap-2.5 group hover:bg-[#EEEEEE] py-3 px-2.5 transition duration-300 ease-linear">
-                <span>
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M9.16602 16.667H1.66602" stroke="black" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M9.16602 3.80118V17.2653C9.16605 17.3919 9.19492 17.5168 9.25044 17.6306C9.30595 17.7444 9.38665 17.844 9.48642 17.9219C9.58618 17.9998 9.70238 18.054 9.8262 18.0803C9.95001 18.1066 10.0782 18.1043 10.201 18.0737L15.8327 16.6662V4.63451C15.8326 4.26285 15.7083 3.90188 15.4796 3.60896C15.2508 3.31603 14.9307 3.10797 14.5702 3.01785L11.2368 2.18451C10.9912 2.12312 10.7348 2.11849 10.4872 2.17098C10.2395 2.22346 10.007 2.33169 9.8074 2.48744C9.60779 2.64319 9.44629 2.84237 9.33516 3.06986C9.22402 3.29735 9.16618 3.548 9.16602 3.80118Z" stroke="black" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M9.16667 3.33301H6.66667C6.22464 3.33301 5.80072 3.5086 5.48816 3.82116C5.17559 4.13372 5 4.55765 5 4.99967V16.6663" stroke="black" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M11.666 10H11.6743" stroke="black" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M18.334 16.667H15.834" stroke="black" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </span>
-                <span class="flex group-hover:text-[#C10F1A] transition duration-300 ease-linear">
-                    Поступающим
-                </span>
-            </a>
-            <a href="#" class="flex items-center gap-2.5 group hover:bg-[#EEEEEE] py-3 px-2.5 transition duration-300 ease-linear">
-                <span>
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M5 15H11.6667" stroke="black" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M2.5 18.333H17.5" stroke="black" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M11.6673 18.3337C13.2144 18.3337 14.6981 17.7191 15.7921 16.6251C16.8861 15.5312 17.5007 14.0474 17.5007 12.5003C17.5007 10.9532 16.8861 9.4695 15.7921 8.37554C14.6981 7.28157 13.2144 6.66699 11.6673 6.66699H10.834" stroke="black" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M7.5 11.667H9.16667" stroke="black" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M7.50065 10C7.05862 10 6.6347 9.8244 6.32214 9.51184C6.00958 9.19928 5.83398 8.77536 5.83398 8.33333V5H10.834V8.33333C10.834 8.77536 10.6584 9.19928 10.3458 9.51184C10.0333 9.8244 9.60934 10 9.16732 10H7.50065Z" stroke="black" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M9.99935 5.00033V2.50033C9.99935 2.27931 9.91155 2.06735 9.75527 1.91107C9.59899 1.75479 9.38703 1.66699 9.16602 1.66699H7.49935C7.27834 1.66699 7.06637 1.75479 6.91009 1.91107C6.75381 2.06735 6.66602 2.27931 6.66602 2.50033V5.00033" stroke="black" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </span>
-                <span class="flex group-hover:text-[#C10F1A] transition duration-300 ease-linear">
-                    Наука
-                </span>
-            </a>
-            <a href="#" class="flex items-center gap-2.5 group hover:bg-[#EEEEEE] py-3 px-2.5 transition duration-300 ease-linear">
-                <span>
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M8.33398 1.66602V8.33268L10.834 5.83268L13.334 8.33268V1.66602" stroke="black" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M3.33398 16.2493V3.74935C3.33398 3.19681 3.55348 2.66691 3.94418 2.27621C4.33488 1.88551 4.86478 1.66602 5.41732 1.66602H15.834C16.055 1.66602 16.267 1.75381 16.4232 1.91009C16.5795 2.06637 16.6673 2.27834 16.6673 2.49935V17.4993C16.6673 17.7204 16.5795 17.9323 16.4232 18.0886C16.267 18.2449 16.055 18.3327 15.834 18.3327H5.41732C4.86478 18.3327 4.33488 18.1132 3.94418 17.7225C3.55348 17.3318 3.33398 16.8019 3.33398 16.2493ZM3.33398 16.2493C3.33398 15.6968 3.55348 15.1669 3.94418 14.7762C4.33488 14.3855 4.86478 14.166 5.41732 14.166H16.6673" stroke="black" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </span>
-                <span class="flex group-hover:text-[#C10F1A] transition duration-300 ease-linear">
-                    История
-                </span>
-            </a>
-            <a href="#" class="flex items-center gap-2.5 group hover:bg-[#EEEEEE] py-3 px-2.5 transition duration-300 ease-linear">
-                <span>
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M5.83398 1.66602H14.1673" stroke="black" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M4.16602 5H15.8327" stroke="black" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M15.8333 8.33398H4.16667C3.24619 8.33398 2.5 9.08018 2.5 10.0007V16.6673C2.5 17.5878 3.24619 18.334 4.16667 18.334H15.8333C16.7538 18.334 17.5 17.5878 17.5 16.6673V10.0007C17.5 9.08018 16.7538 8.33398 15.8333 8.33398Z" stroke="black" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </span>
-                <span class="flex group-hover:text-[#C10F1A] transition duration-300 ease-linear">
-                    Фотогаллерея
-                </span>
-            </a>
-            <a href="#" class="flex items-center gap-2.5 group hover:bg-[#EEEEEE] py-3 px-2.5 transition duration-300 ease-linear">
-                <span>
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M9.16602 14.1663L10.8327 15.833C10.9968 15.9972 11.1917 16.1274 11.4062 16.2162C11.6207 16.3051 11.8505 16.3508 12.0827 16.3508C12.3148 16.3508 12.5447 16.3051 12.7592 16.2162C12.9737 16.1274 13.1685 15.9972 13.3327 15.833C13.4968 15.6689 13.627 15.474 13.7159 15.2595C13.8047 15.045 13.8504 14.8152 13.8504 14.583C13.8504 14.3509 13.8047 14.121 13.7159 13.9065C13.627 13.692 13.4968 13.4972 13.3327 13.333" stroke="black" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M11.6669 11.6671L13.7502 13.7504C14.0817 14.0819 14.5313 14.2682 15.0002 14.2682C15.469 14.2682 15.9187 14.0819 16.2502 13.7504C16.5817 13.4189 16.768 12.9693 16.768 12.5004C16.768 12.0316 16.5817 11.5819 16.2502 11.2504L13.0169 8.01709C12.5481 7.54892 11.9127 7.28595 11.2502 7.28595C10.5877 7.28595 9.95227 7.54892 9.48352 8.01709L8.75019 8.75042C8.41867 9.08194 7.96903 9.26819 7.50019 9.26819C7.03135 9.26819 6.58171 9.08194 6.25019 8.75042C5.91867 8.4189 5.73242 7.96926 5.73242 7.50042C5.73242 7.03158 5.91867 6.58194 6.25019 6.25042L8.59186 3.90875C9.35206 3.15054 10.3434 2.66755 11.4091 2.53623C12.4747 2.40491 13.5537 2.63278 14.4752 3.18375L14.8669 3.41709C15.2217 3.63124 15.6436 3.70552 16.0502 3.62542L17.5002 3.33375" stroke="black" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M17.4993 2.5L18.3327 11.6667H16.666" stroke="black" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M2.49935 2.5L1.66602 11.6667L7.08268 17.0833C7.4142 17.4149 7.86384 17.6011 8.33268 17.6011C8.80152 17.6011 9.25116 17.4149 9.58268 17.0833C9.9142 16.7518 10.1004 16.3022 10.1004 15.8333C10.1004 15.3645 9.9142 14.9149 9.58268 14.5833" stroke="black" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M2.5 3.33301H9.16667" stroke="black" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </span>
-                <span class="flex group-hover:text-[#C10F1A] transition duration-300 ease-linear">
-                    Партнеры и выпускники
-                </span>
-            </a>
+    <div class="order-1 lg:order-2">
+        <div class="flex flex-col gap-5 grow sticky top-[180px] h-fit">
+            <h2 class="font-bold text-xl">Навигация по Партнерам</h2>
+            <div class="flex flex-col">
+                <a href="javascript:window.Scrolls.scrollToElementWithOffset(document.getElementById('whi-melsu'),180);" class="flex items-center gap-2.5 group hover:bg-[#EEEEEE] py-3 px-2.5 transition duration-300 ease-linear">
+                    <span>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M17.8503 9.10131C17.9995 9.0355 18.1261 8.92737 18.2144 8.79032C18.3028 8.65326 18.3489 8.49331 18.3473 8.33026C18.3456 8.16722 18.2961 8.00825 18.2049 7.87305C18.1138 7.73785 17.985 7.63236 17.8345 7.56965L10.692 4.31631C10.4749 4.21727 10.239 4.16602 10.0003 4.16602C9.76166 4.16602 9.52579 4.21727 9.30865 4.31631L2.16699 7.56631C2.01863 7.63129 1.89242 7.73809 1.80379 7.87366C1.71517 8.00923 1.66797 8.16768 1.66797 8.32965C1.66797 8.49161 1.71517 8.65007 1.80379 8.78563C1.89242 8.9212 2.01863 9.028 2.16699 9.09298L9.30865 12.3496C9.52579 12.4487 9.76166 12.4999 10.0003 12.4999C10.239 12.4999 10.4749 12.4487 10.692 12.3496L17.8503 9.10131Z" stroke="#252525" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M18.334 8.33301V13.333" stroke="#252525" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M5 10.417V13.3337C5 13.9967 5.52678 14.6326 6.46447 15.1014C7.40215 15.5703 8.67392 15.8337 10 15.8337C11.3261 15.8337 12.5979 15.5703 13.5355 15.1014C14.4732 14.6326 15 13.9967 15 13.3337V10.417" stroke="#252525" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                    <span class="flex group-hover:text-[#C10F1A] transition duration-300 ease-linear">
+                        Почему МелГу - Ваш Партнер
+                    </span>
+                </a>
+                <a href="javascript:window.Scrolls.scrollToElementWithOffset(document.getElementById('our-approach'),180);" class="flex items-center gap-2.5 group hover:bg-[#EEEEEE] py-3 px-2.5 transition duration-300 ease-linear">
+                    <span>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12.4987 15H8.33203" stroke="#252525" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M14.9987 11.666H8.33203" stroke="#252525" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M3.33464 18.3327H16.668C17.11 18.3327 17.5339 18.1571 17.8465 17.8445C18.159 17.532 18.3346 17.108 18.3346 16.666V3.33268C18.3346 2.89065 18.159 2.46673 17.8465 2.15417C17.5339 1.84161 17.11 1.66602 16.668 1.66602H6.66797C6.22594 1.66602 5.80202 1.84161 5.48946 2.15417C5.1769 2.46673 5.0013 2.89065 5.0013 3.33268V16.666C5.0013 17.108 4.82571 17.532 4.51315 17.8445C4.20059 18.1571 3.77666 18.3327 3.33464 18.3327ZM3.33464 18.3327C2.89261 18.3327 2.46868 18.1571 2.15612 17.8445C1.84356 17.532 1.66797 17.108 1.66797 16.666V9.16602C1.66797 8.72399 1.84356 8.30007 2.15612 7.9875C2.46868 7.67494 2.89261 7.49935 3.33464 7.49935H5.0013" stroke="#252525" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M14.1654 5H9.16536C8.70513 5 8.33203 5.3731 8.33203 5.83333V7.5C8.33203 7.96024 8.70513 8.33333 9.16536 8.33333H14.1654C14.6256 8.33333 14.9987 7.96024 14.9987 7.5V5.83333C14.9987 5.3731 14.6256 5 14.1654 5Z" stroke="#252525" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+
+                    </span>
+                    <span class="flex group-hover:text-[#C10F1A] transition duration-300 ease-linear">
+                        Наш подход
+                    </span>
+                </a>
+                <a href="javascript:window.Scrolls.scrollToElementWithOffset(document.getElementById('directions'),180);" class="flex items-center gap-2.5 group hover:bg-[#EEEEEE] py-3 px-2.5 transition duration-300 ease-linear">
+                    <span>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10 1.66602V18.3327" stroke="#252525" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12.5 15.834L10 18.334L7.5 15.834" stroke="#252525" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M15.832 7.5L18.332 10L15.832 12.5" stroke="#252525" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M1.66797 10H18.3346" stroke="#252525" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M4.16797 7.5L1.66797 10L4.16797 12.5" stroke="#252525" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M7.5 4.16602L10 1.66602L12.5 4.16602" stroke="#252525" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+
+                    </span>
+                    <span class="flex group-hover:text-[#C10F1A] transition duration-300 ease-linear">
+                        Направления партнерства
+                    </span>
+                </a>
+                <a href="javascript:window.Scrolls.scrollToElementWithOffset(document.getElementById('advantages'),180);" class="flex items-center gap-2.5 group hover:bg-[#EEEEEE] py-3 px-2.5 transition duration-300 ease-linear">
+                    <span>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10 6.66602L15 4.16602L10 1.66602V9.99935" stroke="#252525" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M6.66595 9.99219L2.08261 12.6089C1.95436 12.6815 1.84769 12.7869 1.77348 12.9143C1.69926 13.0417 1.66016 13.1864 1.66016 13.3339C1.66016 13.4813 1.69926 13.626 1.77348 13.7534C1.84769 13.8808 1.95436 13.9862 2.08261 14.0589L9.16595 18.1089C9.41931 18.2551 9.70672 18.3321 9.99928 18.3321C10.2918 18.3321 10.5792 18.2551 10.8326 18.1089L17.9159 14.0589C18.0442 13.9862 18.1509 13.8808 18.2251 13.7534C18.2993 13.626 18.3384 13.4813 18.3384 13.3339C18.3384 13.1864 18.2993 13.0417 18.2251 12.9143C18.1509 12.7869 18.0442 12.6815 17.9159 12.6089L13.3326 10.0005" stroke="#252525" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M5.41016 10.707L14.5935 15.957" stroke="#252525" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M14.593 10.707L5.41797 15.957" stroke="#252525" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+
+                    </span>
+                    <span class="flex group-hover:text-[#C10F1A] transition duration-300 ease-linear">
+                        Преимущества партнерства
+                    </span>
+                </a>
+                <a href="javascript:window.Scrolls.scrollToElementWithOffset(document.getElementById('how-become-partner'),180);" class="flex items-center gap-2.5 group hover:bg-[#EEEEEE] py-3 px-2.5 transition duration-300 ease-linear">
+                    <span>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12.5 1.66602C12.942 1.66611 13.3658 1.84177 13.6783 2.15435L17.0117 5.48768C17.3242 5.80017 17.4999 6.22402 17.5 6.66602V12.4993C17.5 12.9414 17.3244 13.3653 17.0118 13.6779C16.6993 13.9904 16.2754 14.166 15.8333 14.166H9.16667C8.72464 14.166 8.30072 13.9904 7.98816 13.6779C7.6756 13.3653 7.5 12.9414 7.5 12.4993V3.33268C7.5 2.89065 7.6756 2.46673 7.98816 2.15417C8.30072 1.84161 8.72464 1.66602 9.16667 1.66602H12.5Z" stroke="#252525" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12.5 1.66602V4.99935C12.5 5.44138 12.6756 5.8653 12.9882 6.17786C13.3007 6.49042 13.7246 6.66602 14.1667 6.66602H17.5" stroke="#252525" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M4.16667 5.83398C3.72464 5.83398 3.30072 6.00958 2.98816 6.32214C2.67559 6.6347 2.5 7.05862 2.5 7.50065V16.6673C2.5 17.1093 2.67559 17.5333 2.98816 17.8458C3.30072 18.1584 3.72464 18.334 4.16667 18.334H10.8333C11.1259 18.334 11.4133 18.257 11.6666 18.1107C11.92 17.9644 12.1304 17.754 12.2767 17.5007" stroke="#252525" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+
+                    </span>
+                    <span class="flex group-hover:text-[#C10F1A] transition duration-300 ease-linear">
+                        Как стать партнером
+                    </span>
+                </a>
+                <a href="javascript:window.Scrolls.scrollToElementWithOffset(document.getElementById('join'),180);" class="flex items-center gap-2.5 group hover:bg-[#EEEEEE] py-3 px-2.5 transition duration-300 ease-linear">
+                    <span>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9.60306 1.91176C9.63958 1.83798 9.696 1.77587 9.76594 1.73245C9.83588 1.68903 9.91657 1.66602 9.9989 1.66602C10.0812 1.66602 10.1619 1.68903 10.2319 1.73245C10.3018 1.77587 10.3582 1.83798 10.3947 1.91176L12.3197 5.81093C12.4465 6.06757 12.6337 6.2896 12.8653 6.45797C13.0968 6.62634 13.3657 6.73602 13.6489 6.77759L17.9539 7.40759C18.0355 7.41941 18.1121 7.45382 18.1751 7.50693C18.2382 7.56003 18.2851 7.62972 18.3106 7.7081C18.3361 7.78648 18.3391 7.87043 18.3194 7.95046C18.2996 8.03048 18.2579 8.10339 18.1989 8.16093L15.0856 11.1926C14.8802 11.3927 14.7266 11.6397 14.6379 11.9123C14.5492 12.1849 14.5281 12.475 14.5764 12.7576L15.3114 17.0409C15.3258 17.1225 15.317 17.2064 15.286 17.2832C15.255 17.3599 15.203 17.4264 15.136 17.4751C15.069 17.5237 14.9897 17.5526 14.9071 17.5583C14.8245 17.5641 14.742 17.5465 14.6689 17.5076L10.8206 15.4843C10.567 15.3511 10.2849 15.2816 9.99848 15.2816C9.71208 15.2816 9.42996 15.3511 9.1764 15.4843L5.3289 17.5076C5.25584 17.5463 5.17339 17.5637 5.09094 17.5578C5.00848 17.5519 4.92933 17.5231 4.86247 17.4744C4.79562 17.4258 4.74376 17.3594 4.71278 17.2828C4.6818 17.2061 4.67294 17.1223 4.68723 17.0409L5.4214 12.7584C5.46989 12.4757 5.44888 12.1854 5.36018 11.9126C5.27147 11.6398 5.11774 11.3927 4.91223 11.1926L1.7989 8.16176C1.73939 8.10429 1.69722 8.03126 1.6772 7.95099C1.65717 7.87072 1.66009 7.78644 1.68563 7.70775C1.71116 7.62906 1.75828 7.55913 1.82163 7.50591C1.88497 7.4527 1.96198 7.41834 2.0439 7.40676L6.34806 6.77759C6.63161 6.73634 6.90089 6.62681 7.13272 6.45842C7.36455 6.29002 7.55198 6.06782 7.6789 5.81093L9.60306 1.91176Z" stroke="#252525" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                    <span class="flex group-hover:text-[#C10F1A] transition duration-300 ease-linear">
+                        Присоединяйтесь к нам
+                    </span>
+                </a>
+                <a href="javascript:window.Scrolls.scrollToElementWithOffset(document.getElementById('news'),180);" class="flex items-center gap-2.5 group hover:bg-[#EEEEEE] py-3 px-2.5 transition duration-300 ease-linear">
+                    <span>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12.4987 15H8.33203" stroke="#252525" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M14.9987 11.666H8.33203" stroke="#252525" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M3.33464 18.3327H16.668C17.11 18.3327 17.5339 18.1571 17.8465 17.8445C18.159 17.532 18.3346 17.108 18.3346 16.666V3.33268C18.3346 2.89065 18.159 2.46673 17.8465 2.15417C17.5339 1.84161 17.11 1.66602 16.668 1.66602H6.66797C6.22594 1.66602 5.80202 1.84161 5.48946 2.15417C5.1769 2.46673 5.0013 2.89065 5.0013 3.33268V16.666C5.0013 17.108 4.82571 17.532 4.51315 17.8445C4.20059 18.1571 3.77666 18.3327 3.33464 18.3327ZM3.33464 18.3327C2.89261 18.3327 2.46868 18.1571 2.15612 17.8445C1.84356 17.532 1.66797 17.108 1.66797 16.666V9.16602C1.66797 8.72399 1.84356 8.30007 2.15612 7.9875C2.46868 7.67494 2.89261 7.49935 3.33464 7.49935H5.0013" stroke="#252525" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M14.1654 5H9.16536C8.70513 5 8.33203 5.3731 8.33203 5.83333V7.5C8.33203 7.96024 8.70513 8.33333 9.16536 8.33333H14.1654C14.6256 8.33333 14.9987 7.96024 14.9987 7.5V5.83333C14.9987 5.3731 14.6256 5 14.1654 5Z" stroke="#252525" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                    <span class="flex group-hover:text-[#C10F1A] transition duration-300 ease-linear">
+                        Новости
+                    </span>
+                </a>
+                <a href="javascript:window.Scrolls.scrollToElementWithOffset(document.getElementById('partner'),180);" class="flex items-center gap-2.5 group hover:bg-[#EEEEEE] py-3 px-2.5 transition duration-300 ease-linear">
+                    <span>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9.16797 14.1673L10.8346 15.834C10.9988 15.9981 11.1937 16.1283 11.4081 16.2172C11.6226 16.306 11.8525 16.3518 12.0846 16.3518C12.3168 16.3518 12.5467 16.306 12.7611 16.2172C12.9756 16.1283 13.1705 15.9981 13.3346 15.834C13.4988 15.6698 13.629 15.475 13.7178 15.2605C13.8067 15.046 13.8524 14.8161 13.8524 14.584C13.8524 14.3518 13.8067 14.122 13.7178 13.9075C13.629 13.693 13.4988 13.4981 13.3346 13.334" stroke="#252525" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M11.6688 11.6671L13.7521 13.7504C14.0837 14.0819 14.5333 14.2682 15.0021 14.2682C15.471 14.2682 15.9206 14.0819 16.2521 13.7504C16.5837 13.4189 16.7699 12.9693 16.7699 12.5004C16.7699 12.0316 16.5837 11.5819 16.2521 11.2504L13.0188 8.01709C12.5501 7.54892 11.9146 7.28595 11.2521 7.28595C10.5896 7.28595 9.95423 7.54892 9.48548 8.01709L8.75214 8.75042C8.42062 9.08194 7.97098 9.26819 7.50214 9.26819C7.0333 9.26819 6.58366 9.08194 6.25214 8.75042C5.92062 8.4189 5.73438 7.96926 5.73438 7.50042C5.73438 7.03158 5.92062 6.58194 6.25214 6.25042L8.59381 3.90875C9.35401 3.15054 10.3454 2.66755 11.411 2.53623C12.4766 2.40491 13.5556 2.63278 14.4771 3.18375L14.8688 3.41709C15.2236 3.63124 15.6455 3.70552 16.0521 3.62542L17.5021 3.33375" stroke="#252525" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M17.5013 2.5L18.3346 11.6667H16.668" stroke="#252525" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M2.5013 2.5L1.66797 11.6667L7.08464 17.0833C7.41616 17.4149 7.86579 17.6011 8.33464 17.6011C8.80348 17.6011 9.25311 17.4149 9.58464 17.0833C9.91616 16.7518 10.1024 16.3022 10.1024 15.8333C10.1024 15.3645 9.91616 14.9149 9.58464 14.5833" stroke="#252525" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M2.5 3.33398H9.16667" stroke="#252525" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                    <span class="flex group-hover:text-[#C10F1A] transition duration-300 ease-linear">
+                        Наши партнеры
+                    </span>
+                </a>
+                <a href="javascript:window.Scrolls.scrollToElementWithOffset(document.getElementById('contacts'),180);" class="flex items-center gap-2.5 group hover:bg-[#EEEEEE] py-3 px-2.5 transition duration-300 ease-linear">
+                    <span>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1.66797 5H5.0013" stroke="#252525" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M1.66797 8.33398H5.0013" stroke="#252525" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M1.66797 11.666H5.0013" stroke="#252525" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M1.66797 15H5.0013" stroke="#252525" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M14.9987 1.66602H4.9987C4.07822 1.66602 3.33203 2.41221 3.33203 3.33268V16.666C3.33203 17.5865 4.07822 18.3327 4.9987 18.3327H14.9987C15.9192 18.3327 16.6654 17.5865 16.6654 16.666V3.33268C16.6654 2.41221 15.9192 1.66602 14.9987 1.66602Z" stroke="#252525" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12.5 1.66602V18.3327" stroke="#252525" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12.5 5.83398H16.6667" stroke="#252525" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12.5 10H16.6667" stroke="#252525" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12.5 14.166H16.6667" stroke="#252525" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                    <span class="flex group-hover:text-[#C10F1A] transition duration-300 ease-linear">
+                        Контакты
+                    </span>
+                </a>
+            </div>
         </div>
     </div>
 </div>
@@ -898,6 +904,30 @@ style="background-image: url({{asset('img/partners/part-1.jpg')}})">
     const scrollContainer = document.getElementById('partnerTabs');
     const btnLeft = document.getElementById('scrollLeft');
     const btnRight = document.getElementById('scrollRight');
+
+    const navLinks = document.querySelectorAll('.sticky a');
+
+    const setActive = (id) => {
+        navLinks.forEach(link => {
+            const isActive = link.href.includes(`'${id}'`);
+            link.classList.toggle('bg-[#EEEEEE]', isActive);
+            link.classList.toggle('text-[#C10F1A]', isActive);
+        });
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                setActive(entry.target.id);
+            }
+        });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+
+    navLinks.forEach(link => {
+        const id = link.href.match(/'([^']+)'/)?.[1];
+        const section = document.getElementById(id);
+        if (section) observer.observe(section);
+    });
 
     partnerBtns.forEach((btn, index) => {
         btn.addEventListener('click', () => {
