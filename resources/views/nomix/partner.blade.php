@@ -45,7 +45,7 @@ style="background-image: url({{asset('img/partners/part-1.jpg')}})">
 <div class="grid lg:grid-cols-[2fr_1fr] xl:grid-cols-[75%_auto] gap-5 px-2.5 2xl:px-0 mt-7">
     <div class="order-2 lg:order-1 flex flex-col gap-7">
         <div class="flex flex-col gap-7">
-            <div class="relative flex justify-end bg-left bg-no-repeat py-6" style="background-image: url({{asset('img/partners/quote-1.jpg')}})">
+            <div class="relative flex justify-end bg-left bg-no-repeat py-6 mb-15" style="background-image: url({{asset('img/partners/quote-1.jpg')}})">
                 <div class="bg-[rgba(40,13,13,0.65)] min-h-full pointer-events-none absolute w-full top-0 left-0">
                 </div>
                 <div class="flex flex-col gap-5 items-end px-40">
@@ -53,10 +53,10 @@ style="background-image: url({{asset('img/partners/part-1.jpg')}})">
                     <span class="text-2xl relative text-white">Сэмюэл Джонсон</span>
                 </div>
             </div>
-
+            <!--Почему МелГУ — Ваш Партнер?-->
             <section>
-                <h2 class="font-bold text-xl md:text-3xl">Почему МелГУ — Ваш Партнер?</h2>
-                <div class="grid grid-cols-[2fr_1fr] gap-5">
+                <h2 class="font-bold text-xl md:text-3xl mb-8">Почему МелГУ — Ваш Партнер?</h2>
+                <div class="grid grid-cols-[2fr_1fr] gap-5 mb-8">
                     <div class="flex flex-col gap-3 p-6">
                         <p>
                             МелГУ открыт для сотрудничества с компаниями, государственными структурами и общественными организациями. Мы предлагаем взаимовыгодное партнерство в сфере образования, науки и инноваций, а также готовы к реализации совместных проектов, способствующих повышению квалификации студентов и сотрудников, развитию их практических навыков и адаптации к требованиям современного рынка труда.
@@ -70,21 +70,177 @@ style="background-image: url({{asset('img/partners/part-1.jpg')}})">
                     </div>
                 </div>
             </section>
-
+             <!--Наш подход основан на трёх принципах-->
             <section>
-                <h2 class="font-bold text-xl md:text-3xl">Наш подход основан на трёх принципах</h2>
+                <h2 class="font-bold text-xl md:text-3xl mb-8">Наш подход основан на трёх принципах</h2>
                 <div class="grid grid-cols-3 gap-5">
-                    <div>
-                        <div class="flex">
-                            <span>1.</span>
-                            <p>
-                                Практическая направленность – превращение научных открытий и образовательных программ в измеримые результаты, которые напрямую влияют на экономическое и социальное развитие региональных партнеров.
-                            </p>
+                    <div class="flex font-semibold gap-1 px-10">
+                        <span>1.</span>
+                        <p>
+                            Практическая направленность – превращение научных открытий и образовательных программ в измеримые результаты, которые напрямую влияют на экономическое и социальное развитие региональных партнеров.
+                        </p>
+                    </div>
+                    <div class="flex font-semibold gap-1 px-10">
+                        <span>2.</span>
+                        <p>
+                            Открытость и взаимное обогащение – готовность к совместному формированию образовательных траекторий и исследовательских проектов.
+                        </p>
+                    </div>
+                    <div class="flex font-semibold gap-1 px-10">
+                        <span>3.</span>
+                        <p>
+                            Долгосрочная ответственность – мы стремимся не просто решать текущие задачи, но и совместно формировать устойчивую базу для будущего — воспитывать кадры нового поколения и создавать прорывные технологии.
+                        </p>
+                    </div>
+                </div>
+            </section>
+            <!--Направления партнерства-->
+            <section>
+                <h2 class="font-bold text-xl md:text-3xl mb-8">Направления партнерства</h2>
+                <div class="flex flex-col gap-3">
+                    <div class='accordion-group grid grid-cols-1 gap-1' data-accordion="default-accordion">
+                        <div class='accordion-box accordion' style="height: 73px;">
+                            <button
+                                class='accordion-toggle cursor-pointer group accordion-active:text-indigo-600 px-6 py-3 inline-flex items-center justify-between text-white bg-[#820000] w-full transition duration-500'
+                                aria-controls='basic-collapse-one-default'>
+                                <h5 class="font-[600] text-lg">Образовательные программы и практики</h5>
+                                <svg
+                                    class='text-white transition duration-500'
+                                    width='22' height='22' viewBox='0 0 22 22' fill='none' xmlns='http://www.w3.org/2000/svg'>
+                                    <path
+                                        d='M16.5 8.25L12.4142 12.3358C11.7475 13.0025 11.4142 13.3358 11 13.3358C10.5858 13.3358 10.2525 13.0025 9.58579 12.3358L5.5 8.25'
+                                        stroke='currentColor' stroke-width='1.6' stroke-linecap='round'
+                                        stroke-linejoin='round'></path>
+                                </svg>
+                            </button>
+                            <div class='accordion-content-box accordion-content px-0 overflow-hidden max-w-[930px] w-[100%]'
+                                aria-labelledby='basic-heading-one-default'>
+                                <div class="accordion-text py-3">
+                                    <ul class="">
+                                        <li class="px-6 py-3">
+                                            – Организация практик и стажировок для студентов.
+                                        </li>
+                                        <li class="px-6 py-3">
+                                            – Проведение совместных образовательных программ, курсов и мастер-классов.
+                                        </li>
+                                        <li class="px-6 py-3">
+                                            – Разработка учебных планов с учетом требований рынка.
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='accordion-group grid grid-cols-1 gap-1' data-accordion="default-accordion">
+                        <div class='accordion-box accordion' style="height: 73px;">
+                            <button
+                                class='accordion-toggle cursor-pointer group accordion-active:text-indigo-600 px-6 py-3 inline-flex items-center justify-between text-white bg-[#820000] w-full transition duration-500'
+                                aria-controls='basic-collapse-one-default'>
+                                <h5 class="font-[600] text-lg">Научные исследования и инновации</h5>
+                                <svg
+                                    class='text-white transition duration-500'
+                                    width='22' height='22' viewBox='0 0 22 22' fill='none' xmlns='http://www.w3.org/2000/svg'>
+                                    <path
+                                        d='M16.5 8.25L12.4142 12.3358C11.7475 13.0025 11.4142 13.3358 11 13.3358C10.5858 13.3358 10.2525 13.0025 9.58579 12.3358L5.5 8.25'
+                                        stroke='currentColor' stroke-width='1.6' stroke-linecap='round'
+                                        stroke-linejoin='round'></path>
+                                </svg>
+                            </button>
+                            <div class='accordion-content-box accordion-content px-0 overflow-hidden max-w-[930px] w-[100%]'
+                                aria-labelledby='basic-heading-one-default'>
+                                <div class="accordion-text py-3">
+                                    <ul class="">
+                                        <li class="px-6 py-3">
+                                            – Совместные исследования и технологические разработки.
+                                        </li>
+                                        <li class="px-6 py-3">
+                                            – Участие в грантовых и исследовательских проектах.
+                                        </li>
+                                        <li class="px-6 py-3">
+                                            – Создание лабораторий и исследовательских центров.
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='accordion-group grid grid-cols-1 gap-1' data-accordion="default-accordion">
+                        <div class='accordion-box accordion' style="height: 73px;">
+                            <button
+                                class='accordion-toggle cursor-pointer group accordion-active:text-indigo-600 px-6 py-3 inline-flex items-center justify-between text-white bg-[#820000] w-full transition duration-500'
+                                aria-controls='basic-collapse-one-default'>
+                                <h5 class="font-[600] text-lg">Информационная и PR-поддержка</h5>
+                                <svg
+                                    class='text-white transition duration-500'
+                                    width='22' height='22' viewBox='0 0 22 22' fill='none' xmlns='http://www.w3.org/2000/svg'>
+                                    <path
+                                        d='M16.5 8.25L12.4142 12.3358C11.7475 13.0025 11.4142 13.3358 11 13.3358C10.5858 13.3358 10.2525 13.0025 9.58579 12.3358L5.5 8.25'
+                                        stroke='currentColor' stroke-width='1.6' stroke-linecap='round'
+                                        stroke-linejoin='round'></path>
+                                </svg>
+                            </button>
+                            <div class='accordion-content-box accordion-content px-0 overflow-hidden max-w-[930px] w-[100%]'
+                                aria-labelledby='basic-heading-one-default'>
+                                <div class="accordion-text py-3">
+                                    <ul class="">
+                                        <li class="px-6 py-3">
+                                            – Совместные исследования и технологические разработки.
+                                        </li>
+                                        <li class="px-6 py-3">
+                                            – Участие в грантовых и исследовательских проектах.
+                                        </li>
+                                        <li class="px-6 py-3">
+                                            – Создание лабораторий и исследовательских центров.
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='accordion-group grid grid-cols-1 gap-1' data-accordion="default-accordion">
+                        <div class='accordion-box accordion' style="height: 73px;">
+                            <button
+                                class='accordion-toggle cursor-pointer group accordion-active:text-indigo-600 px-6 py-3 inline-flex items-center justify-between text-white bg-[#820000] w-full transition duration-500'
+                                aria-controls='basic-collapse-one-default'>
+                                <h5 class="font-[600] text-lg">Инфраструктурное партнёрство</h5>
+                                <svg
+                                    class='text-white transition duration-500'
+                                    width='22' height='22' viewBox='0 0 22 22' fill='none' xmlns='http://www.w3.org/2000/svg'>
+                                    <path
+                                        d='M16.5 8.25L12.4142 12.3358C11.7475 13.0025 11.4142 13.3358 11 13.3358C10.5858 13.3358 10.2525 13.0025 9.58579 12.3358L5.5 8.25'
+                                        stroke='currentColor' stroke-width='1.6' stroke-linecap='round'
+                                        stroke-linejoin='round'></path>
+                                </svg>
+                            </button>
+                            <div class='accordion-content-box accordion-content px-0 overflow-hidden max-w-[930px] w-[100%]'
+                                aria-labelledby='basic-heading-one-default'>
+                                <div class="accordion-text py-3">
+                                    <ul class="">
+                                        <li class="px-6 py-3">
+                                            – Совместные исследования и технологические разработки.
+                                        </li>
+                                        <li class="px-6 py-3">
+                                            – Участие в грантовых и исследовательских проектах.
+                                        </li>
+                                        <li class="px-6 py-3">
+                                            – Создание лабораторий и исследовательских центров.
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
+            <!--Преимущества партнерства-->
+            <section>
+                <div class="grid grid-cols-2 gap-5">
+                    <div>
 
+                    </div>
+                </div>
+            </section>
+            <!--Присоединяйтесь к нам!-->
             <section class="relative flex justify-end bg-[#820000] bg-left bg-no-repeat xl:bg-size-[55%_100%]" style="background-image: url({{asset('img/partners/part-6.jpg')}})">
                 <div class="bg-[rgba(40,13,13,0.65)] min-h-full pointer-events-none absolute w-full xl:w-[55%] top-0 left-0">
                 </div>
@@ -247,7 +403,7 @@ style="background-image: url({{asset('img/partners/part-1.jpg')}})">
                     </div>
                 </div>
             </section>
-            <!--Контакты-->   
+            <!--Контакты-->
             <h2 class="font-bold text-xl md:text-3xl">Контакты</h2>
             <div class="flex flex-col sm:flex-row sm:items-center gap-5">
                 <div class="flex items-center gap-2">
