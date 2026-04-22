@@ -1,19 +1,13 @@
-<section class="h-[500px] 2xl:h-[750px] px-2.5 lg:p-0 relative bg-[80%] sm:bg-right xl:bg-center lg:bg-0 bg-cover flex"
+<section class="h-[500px] px-2.5 lg:p-0 relative bg-[80%] bg-center bg-cover flex"
 style="background-image: url({{asset('img/partners/part-1.jpg')}})">
-        <div class="bg-[rgba(40,13,13,0.45)] min-h-full min-w-full pointer-events-none absolute top-0 left-0">
+        <div class="bg-[rgba(40,13,13,0.65)] min-h-full min-w-full pointer-events-none absolute top-0 left-0">
         </div>
         <div class="container flex-col flex lg:flex-row justify-between lg:items-end relative z-5 pb-5 py-25 lg:py-10 px-2.5 2xl:px-0">
-            <h2 class="text-white font-bold text-6xl select-none">Партнерам</h2>
-            <div class="liquid-glass lg:w-1/3">
-                <div class="liquid-glass--bend"></div>
-                <div class="liquid-glass--face"></div>
-                <div class="liquid-glass--edge"></div>
-                <div class="liquid-glass__menus"></div>
-                <div class="liquid-glass__content">
-                    <p class="text-white">
-                        В МелГУ наработана успешная практика разработки и реализации совместных основных и дополнительных образовательных программ, максимально учитывающих интересы партнеров университета при подготовке высококвалифицированных специалистов.
-                    </p>
-                </div>
+            <div class="flex flex-col gap-4">
+                <h2 class="text-white font-bold text-6xl select-none">Партнеры</h2>
+            </div>
+            <div>
+
             </div>
         </div>
 </section>
