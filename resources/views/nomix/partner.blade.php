@@ -65,8 +65,10 @@ style="background-image: url({{asset('img/partners/part-1.jpg')}})">
                             Мы рассматриваем партнёрство не как разовую сделку, а как стратегическое, взаимообогащающее сотрудничество, в рамках которого университет выступает катализатором инноваций, предоставляя доступ к научному потенциалу, передовым технологиям и высококвалифицированным кадрам.
                         </p>
                     </div>
-                    <div>
+                    <div class="relative">
                         <img class="h-full w-full object-cover" src="{{asset('img/partners/partner-1.jpg')}}" alt="">
+                        <div class="bg-[rgba(40,13,13,0.30)] min-h-full pointer-events-none absolute w-full top-0 left-0">
+                        </div>
                     </div>
                 </div>
             </section>
@@ -234,9 +236,64 @@ style="background-image: url({{asset('img/partners/part-1.jpg')}})">
             </section>
             <!--Преимущества партнерства-->
             <section>
+                <h2 class="font-bold text-xl md:text-3xl mb-8">Преимущества партнерства</h2>
                 <div class="grid grid-cols-2 gap-5">
                     <div>
-
+                        <img class="h-full w-full object-cover" src="{{asset('img/partners/partner-2.jpg')}}" alt="">
+                    </div>
+                    <div class="grid grid-cols-2 gap-5">
+                        <div class="flex items-center justify-center">
+                            <div class="flex font-semibold gap-1 px-10">
+                                <span>1.</span>
+                                <p>
+                                    Доступ к талантливым и мотивированным студентам.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-center">
+                            <div class="flex font-semibold gap-1 px-10">
+                                <span>3.</span>
+                                <p>
+                                    Возможность влиять на подготовку специалистов для отрасли.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-center">
+                            <div class="flex font-semibold gap-1 px-10">
+                                <span>2.</span>
+                                <p>
+                                    Участие в передовых научных исследованиях.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-center">
+                            <div class="flex font-semibold gap-1 px-10">
+                                <span>4.</span>
+                                <p>
+                                    Расширение деловой сети и повышение узнаваемости бренда.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--Как стать партнером-->
+            <section>
+                <h2 class="font-bold text-xl md:text-3xl mb-8">Как стать партнером</h2>
+                <div class="grid grid-cols-2 gap-5">
+                    <div>
+                        <ul class="list-decimal list-inside">
+                            <li class="px-6 py-3">Ознакомьтесь с направлениями сотрудничества.</li>
+                            <li class="px-6 py-3">Свяжитесь с нами (контактные данные).</li>
+                            <li class="px-6 py-3">Обсудите детали взаимодействия.</li>
+                            <li class="px-6 py-3">Подпишите соглашение о партнерстве.</li>
+                            <li class="px-6 py-3">Реализуйте совместные проекты.</li>
+                        </ul>
+                    </div>
+                    <div class="relative">
+                        <img class="h-full w-full object-cover" src="{{asset('img/partners/partner-3.jpg')}}" alt="">
+                        <div class="bg-[rgba(40,13,13,0.30)] min-h-full pointer-events-none absolute w-full top-0 left-0">
+                        </div>
                     </div>
                 </div>
             </section>
