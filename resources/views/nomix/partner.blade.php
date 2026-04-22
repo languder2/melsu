@@ -1,4 +1,4 @@
-<section class="h-[500px] px-2.5 lg:p-0 relative bg-[80%] bg-center bg-cover flex"
+<section class="h-[500px] px-2.5 lg:p-0 relative bg-[80%] bg-center bg-cover flex mb-15"
 style="background-image: url({{asset('img/partners/part-1.jpg')}})">
         <div class="bg-[rgba(40,13,13,0.65)] min-h-full min-w-full pointer-events-none absolute top-0 left-0">
         </div>
@@ -42,12 +42,16 @@ style="background-image: url({{asset('img/partners/part-1.jpg')}})">
             </div>
         </div>
 </section>
-<div class="grid lg:grid-cols-[2fr_1fr] xl:grid-cols-[75%_auto] gap-5 px-2.5 2xl:px-0 mt-7">
+<div class="grid lg:grid-cols-[2fr_1fr] xl:grid-cols-[75%_auto] gap-5 px-2.5 2xl:px-0 container">
     <div class="order-2 lg:order-1 flex flex-col gap-7">
         <div class="flex flex-col">
             <!--Цитата-->
-            <div class="relative flex justify-end bg-left bg-no-repeat py-6" style="background-image: url({{asset('img/partners/quote-1.jpg')}})">
-                <div class="bg-[rgba(40,13,13,0.65)] min-h-full pointer-events-none absolute w-full top-0 left-0">
+            <div class="relative flex justify-end py-6">
+                <div class="absolute bg-cover bg-center h-full w-[150%] -left-[50%] top-0"
+                    style="background-image: url({{asset('img/partners/quote-1.jpg')}})">
+
+                </div>
+                <div class="bg-[rgba(40,13,13,0.65)] min-h-full pointer-events-none absolute w-[150%] top-0 left-[-50%]">
                 </div>
                 <div class="flex flex-col gap-5 items-end px-40">
                     <h2 class="font-bold text-2xl text-white relative">«Великие дела совершаются не силой, а упорством и объединением усилий.»</h2>
@@ -742,16 +746,23 @@ style="background-image: url({{asset('img/partners/part-1.jpg')}})">
         <div class="flex flex-col gap-5 grow sticky top-[180px] h-fit">
             <h2 class="font-bold text-xl">Навигация по Партнерам</h2>
             <div class="flex flex-col">
-                <a href="javascript:window.Scrolls.scrollToElementWithOffset(document.getElementById('whi-melsu'),180);" class="flex items-center gap-2.5 group hover:bg-[#EEEEEE] py-3 px-2.5 transition duration-300 ease-linear">
+                <a href="javascript:window.Scrolls.scrollToElementWithOffset(document.getElementById('whi-melsu'),180);" class="flex items-center justify-between gap-2.5 group hover:bg-[#EEEEEE] py-3 px-2.5 transition duration-300 ease-linear">
+                    <div class="flex items-center gap-2.5">
+                        <span>
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M17.8503 9.10131C17.9995 9.0355 18.1261 8.92737 18.2144 8.79032C18.3028 8.65326 18.3489 8.49331 18.3473 8.33026C18.3456 8.16722 18.2961 8.00825 18.2049 7.87305C18.1138 7.73785 17.985 7.63236 17.8345 7.56965L10.692 4.31631C10.4749 4.21727 10.239 4.16602 10.0003 4.16602C9.76166 4.16602 9.52579 4.21727 9.30865 4.31631L2.16699 7.56631C2.01863 7.63129 1.89242 7.73809 1.80379 7.87366C1.71517 8.00923 1.66797 8.16768 1.66797 8.32965C1.66797 8.49161 1.71517 8.65007 1.80379 8.78563C1.89242 8.9212 2.01863 9.028 2.16699 9.09298L9.30865 12.3496C9.52579 12.4487 9.76166 12.4999 10.0003 12.4999C10.239 12.4999 10.4749 12.4487 10.692 12.3496L17.8503 9.10131Z" stroke="#252525" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M18.334 8.33301V13.333" stroke="#252525" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M5 10.417V13.3337C5 13.9967 5.52678 14.6326 6.46447 15.1014C7.40215 15.5703 8.67392 15.8337 10 15.8337C11.3261 15.8337 12.5979 15.5703 13.5355 15.1014C14.4732 14.6326 15 13.9967 15 13.3337V10.417" stroke="#252525" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <span class="flex group-hover:text-[#C10F1A] transition duration-300 ease-linear">
+                            Почему МелГу - Ваш Партнер
+                        </span>
+                    </div>
                     <span>
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M17.8503 9.10131C17.9995 9.0355 18.1261 8.92737 18.2144 8.79032C18.3028 8.65326 18.3489 8.49331 18.3473 8.33026C18.3456 8.16722 18.2961 8.00825 18.2049 7.87305C18.1138 7.73785 17.985 7.63236 17.8345 7.56965L10.692 4.31631C10.4749 4.21727 10.239 4.16602 10.0003 4.16602C9.76166 4.16602 9.52579 4.21727 9.30865 4.31631L2.16699 7.56631C2.01863 7.63129 1.89242 7.73809 1.80379 7.87366C1.71517 8.00923 1.66797 8.16768 1.66797 8.32965C1.66797 8.49161 1.71517 8.65007 1.80379 8.78563C1.89242 8.9212 2.01863 9.028 2.16699 9.09298L9.30865 12.3496C9.52579 12.4487 9.76166 12.4999 10.0003 12.4999C10.239 12.4999 10.4749 12.4487 10.692 12.3496L17.8503 9.10131Z" stroke="#252525" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M18.334 8.33301V13.333" stroke="#252525" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M5 10.417V13.3337C5 13.9967 5.52678 14.6326 6.46447 15.1014C7.40215 15.5703 8.67392 15.8337 10 15.8337C11.3261 15.8337 12.5979 15.5703 13.5355 15.1014C14.4732 14.6326 15 13.9967 15 13.3337V10.417" stroke="#252525" class="group-hover:stroke-[#C10F1A] transition duration-300 ease-linear" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+                        <svg width="11" height="6" viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0.5 0.5L5.5 5.5L10.5 0.5" stroke="#252525" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
-                    </span>
-                    <span class="flex group-hover:text-[#C10F1A] transition duration-300 ease-linear">
-                        Почему МелГу - Ваш Партнер
                     </span>
                 </a>
                 <a href="javascript:window.Scrolls.scrollToElementWithOffset(document.getElementById('our-approach'),180);" class="flex items-center gap-2.5 group hover:bg-[#EEEEEE] py-3 px-2.5 transition duration-300 ease-linear">
@@ -895,6 +906,13 @@ style="background-image: url({{asset('img/partners/part-1.jpg')}})">
     #partnerTabs::-webkit-scrollbar {
         display: none;
     }
+    .active-link {
+        background-color: #EEEEEE !important;
+        color: #C10F1A !important;
+    }
+    .active-link svg path {
+        stroke: #C10F1A !important;
+    }
 </style>
 
 <script>
@@ -918,10 +936,17 @@ style="background-image: url({{asset('img/partners/part-1.jpg')}})">
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                setActive(entry.target.id);
+                const id = entry.target.id;
+                
+                navLinks.forEach(link => {
+                    const isActive = link.href.includes(`'${id}'`);
+                    link.classList.toggle('active-link', isActive);
+                });
             }
         });
-    }, { rootMargin: '-20% 0px -70% 0px' });
+    }, { 
+        rootMargin: '-200px 0px -70% 0px' 
+    });
 
     navLinks.forEach(link => {
         const id = link.href.match(/'([^']+)'/)?.[1];
