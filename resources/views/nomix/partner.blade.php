@@ -1,8 +1,8 @@
-<section class="h-[500px] px-2.5 lg:p-0 relative bg-[80%] bg-center bg-cover flex mb-15"
+<section class="h-[350px] xl:h-[500px] px-2.5 lg:p-0 relative bg-position-[10%] sm:bg-position-[40%] md:bg-position-[30%] lg:bg-center bg-cover flex mb-15"
 style="background-image: url({{asset('img/partners/part-1.jpg')}})">
         <div class="bg-[rgba(40,13,13,0.65)] min-h-full min-w-full pointer-events-none absolute top-0 left-0">
         </div>
-        <div class="container flex-col flex lg:flex-row justify-between lg:items-end relative z-5 pb-5 py-25 lg:py-10 px-2.5 2xl:px-0">
+        <div class="container flex-col flex lg:flex-row justify-between lg:items-end relative z-5 pb-5 py-5 lg:py-25 lg:py-10 px-2.5 2xl:px-0">
             <div class="flex flex-col gap-4">
                 <h2 class="text-white font-bold text-6xl select-none">Партнеры</h2>
                 <div class="flex gap-2 items-center">
@@ -19,7 +19,7 @@ style="background-image: url({{asset('img/partners/part-1.jpg')}})">
             </div>
             <div class="flex flex-col gap-5">
                 <span class="font-bold text-white">Контакты</span>
-                <div class="grid grid-cols-2 gap-5">
+                <div class="grid xl:grid-cols-2 gap-5">
                     <a href="tel:+79901469279" class="flex items-center gap-2 text-white text-sm">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M13.832 16.568C14.0385 16.6628 14.2712 16.6845 14.4917 16.6294C14.7122 16.5744 14.9073 16.4458 15.045 16.265L15.4 15.8C15.5863 15.5516 15.8279 15.35 16.1056 15.2111C16.3833 15.0723 16.6895 15 17 15H20C20.5304 15 21.0391 15.2107 21.4142 15.5858C21.7893 15.9609 22 16.4696 22 17V20C22 20.5304 21.7893 21.0391 21.4142 21.4142C21.0391 21.7893 20.5304 22 20 22C15.2261 22 10.6477 20.1036 7.27208 16.7279C3.89642 13.3523 2 8.7739 2 4C2 3.46957 2.21071 2.96086 2.58579 2.58579C2.96086 2.21071 3.46957 2 4 2H7C7.53043 2 8.03914 2.21071 8.41421 2.58579C8.78929 2.96086 9 3.46957 9 4V7C9 7.31049 8.92771 7.61672 8.78885 7.89443C8.65 8.17214 8.44839 8.41371 8.2 8.6L7.732 8.951C7.54842 9.09118 7.41902 9.29059 7.36579 9.51535C7.31256 9.74012 7.33878 9.97638 7.44 10.184C8.80668 12.9599 11.0544 15.2048 13.832 16.568Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -42,18 +42,18 @@ style="background-image: url({{asset('img/partners/part-1.jpg')}})">
             </div>
         </div>
 </section>
-<div class="grid lg:grid-cols-[2fr_1fr] xl:grid-cols-[75%_auto] gap-5 px-2.5 2xl:px-0 container">
+<div class="grid grid-cols-1 xl:grid-cols-[75%_auto] gap-5 px-2.5 2xl:px-0 container">
     <div class="order-2 lg:order-1 flex flex-col gap-7">
         <div class="flex flex-col">
             <!--Цитата-->
             <div class="relative flex justify-end py-6">
-                <div class="absolute bg-cover bg-center h-full w-[150%] -left-[50%] top-0"
+                <div class="absolute bg-cover bg-center h-full w-full md:w-[150%] left-0 md:-left-[50%] top-0"
                     style="background-image: url({{asset('img/partners/quote-1.jpg')}})">
 
                 </div>
-                <div class="bg-[rgba(40,13,13,0.65)] min-h-full pointer-events-none absolute w-[150%] top-0 left-[-50%]">
+                <div class="bg-[rgba(40,13,13,0.65)] min-h-full pointer-events-none absolute w-full md:w-[150%] top-0 left-0 md:left-[-50%]">
                 </div>
-                <div class="flex flex-col gap-5 items-end px-40">
+                <div class="flex flex-col gap-5 items-end px-5 2xl:px-40">
                     <h2 class="font-bold text-2xl text-white relative">«Великие дела совершаются не силой, а упорством и объединением усилий.»</h2>
                     <span class="text-2xl relative text-white">Сэмюэл Джонсон</span>
                 </div>
@@ -61,7 +61,7 @@ style="background-image: url({{asset('img/partners/part-1.jpg')}})">
             <!--Почему МелГУ — Ваш Партнер?-->
             <section id="whi-melsu">
                 <h2 class="font-bold text-xl md:text-3xl mb-8 mt-15">Почему МелГУ — Ваш Партнер?</h2>
-                <div class="grid grid-cols-[2fr_1fr] gap-5">
+                <div class="grid lg:grid-cols-2 2xl:grid-cols-[2fr_1fr] gap-5">
                     <div class="flex flex-col gap-3 p-6">
                         <p>
                             МелГУ открыт для сотрудничества с компаниями, государственными структурами и общественными организациями. Мы предлагаем взаимовыгодное партнерство в сфере образования, науки и инноваций, а также готовы к реализации совместных проектов, способствующих повышению квалификации студентов и сотрудников, развитию их практических навыков и адаптации к требованиям современного рынка труда.
@@ -80,20 +80,20 @@ style="background-image: url({{asset('img/partners/part-1.jpg')}})">
              <!--Наш подход основан на трёх принципах-->
             <section id="our-approach">
                 <h2 class="font-bold text-xl md:text-3xl mb-8 mt-15">Наш подход основан на трёх принципах</h2>
-                <div class="grid grid-cols-3 gap-5">
-                    <div class="flex font-semibold gap-1 px-10">
+                <div class="grid lg:grid-cols-3 gap-5">
+                    <div class="flex font-semibold gap-1 2xl:px-10">
                         <span>1.</span>
                         <p>
                             Практическая направленность – превращение научных открытий и образовательных программ в измеримые результаты, которые напрямую влияют на экономическое и социальное развитие региональных партнеров.
                         </p>
                     </div>
-                    <div class="flex font-semibold gap-1 px-10">
+                    <div class="flex font-semibold gap-1 2xl:px-10">
                         <span>2.</span>
                         <p>
                             Открытость и взаимное обогащение – готовность к совместному формированию образовательных траекторий и исследовательских проектов.
                         </p>
                     </div>
-                    <div class="flex font-semibold gap-1 px-10">
+                    <div class="flex font-semibold gap-1 2xl:px-10">
                         <span>3.</span>
                         <p>
                             Долгосрочная ответственность – мы стремимся не просто решать текущие задачи, но и совместно формировать устойчивую базу для будущего — воспитывать кадры нового поколения и создавать прорывные технологии.
@@ -242,37 +242,37 @@ style="background-image: url({{asset('img/partners/part-1.jpg')}})">
             <!--Преимущества партнерства-->
             <section id="advantages">
                 <h2 class="font-bold text-xl md:text-3xl mb-8 mt-15">Преимущества партнерства</h2>
-                <div class="grid grid-cols-2 gap-5">
+                <div class="grid lg:grid-cols-2 gap-5">
                     <div>
                         <img class="h-full w-full object-cover" src="{{asset('img/partners/partner-2.jpg')}}" alt="">
                     </div>
-                    <div class="grid grid-cols-2 gap-5">
-                        <div class="flex items-center justify-center">
-                            <div class="flex font-semibold gap-1 px-10">
+                    <div class="grid md:grid-cols-2 gap-5">
+                        <div class="flex items-center md:justify-center order-1">
+                            <div class="flex font-semibold gap-1 2xl:px-10">
                                 <span>1.</span>
                                 <p>
                                     Доступ к талантливым и мотивированным студентам.
                                 </p>
                             </div>
                         </div>
-                        <div class="flex items-center justify-center">
-                            <div class="flex font-semibold gap-1 px-10">
+                        <div class="flex items-center md:justify-center order-3 md:order-2">
+                            <div class="flex font-semibold gap-1 2xl:px-10">
                                 <span>3.</span>
                                 <p>
                                     Возможность влиять на подготовку специалистов для отрасли.
                                 </p>
                             </div>
                         </div>
-                        <div class="flex items-center justify-center">
-                            <div class="flex font-semibold gap-1 px-10">
+                        <div class="flex items-center md:justify-center order-2 md:order-3">
+                            <div class="flex font-semibold gap-1 2xl:px-10">
                                 <span>2.</span>
                                 <p>
                                     Участие в передовых научных исследованиях.
                                 </p>
                             </div>
                         </div>
-                        <div class="flex items-center justify-center">
-                            <div class="flex font-semibold gap-1 px-10">
+                        <div class="flex items-center md:justify-center order-4 md:order-4">
+                            <div class="flex font-semibold gap-1 2xl:px-10">
                                 <span>4.</span>
                                 <p>
                                     Расширение деловой сети и повышение узнаваемости бренда.
@@ -285,7 +285,7 @@ style="background-image: url({{asset('img/partners/part-1.jpg')}})">
             <!--Как стать партнером-->
             <section id="how-become-partner">
                 <h2 class="font-bold text-xl md:text-3xl mb-8 mt-15">Как стать партнером</h2>
-                <div class="grid grid-cols-2 gap-5">
+                <div class="grid lg:grid-cols-2 gap-5">
                     <div>
                         <ul class="list-decimal list-inside">
                             <li class="px-6 py-3">Ознакомьтесь с направлениями сотрудничества.</li>
@@ -305,12 +305,12 @@ style="background-image: url({{asset('img/partners/part-1.jpg')}})">
             <!--Присоединяйтесь к нам!-->
             <section id="join">
                 <h2 class="font-bold text-xl md:text-3xl mb-8 mt-15">Присоединяйтесь к нам!</h2>
-                <div class="relative flex justify-end bg-[#820000] bg-left bg-no-repeat xl:bg-size-[55%_100%]" style="background-image: url({{asset('img/partners/part-6.jpg')}})">
-                    <div class="bg-[rgba(40,13,13,0.65)] min-h-full pointer-events-none absolute w-full xl:w-[55%] top-0 left-0">
+                <div class="relative flex justify-end bg-[#820000] bg-left bg-no-repeat bg-size-[150%,100%] 2xl:bg-size-[55%_100%]" style="background-image: url({{asset('img/partners/part-6.jpg')}})">
+                    <div class="bg-[rgba(40,13,13,0.65)] min-h-full pointer-events-none absolute w-full 2xl:w-[55%] top-0 left-0">
                     </div>
                     <div class="container">
-                        <div class="grid xl:grid-cols-[56%_auto]">
-                            <div class="flex justify-end mr-14 mt-8">
+                        <div class="grid 2xl:grid-cols-[56%_auto]">
+                            <div class="flex justify-center 2xl:justify-end 2xl:mr-14 mt-5 2xL:mt-8 mx-5 xl:mx-0">
                                 <div class="liquid-glass xl:w-3/4 h-fit">
                                 <div class="liquid-glass--bend"></div>
                                 <div class="liquid-glass--face"></div>
@@ -328,7 +328,7 @@ style="background-image: url({{asset('img/partners/part-1.jpg')}})">
                                     </div>
                                 </div>
                             </div>
-                            <div class="p-5 xl:p-8 relative z-10 bg-[#820000] xl:bg-transparent">
+                            <div class="p-5 xl:p-8 relative z-10 bg-transparent">
                                 <form class="flex flex-col gap-8" action="">
                                     <input class="text-white outline-0 border-b px-5 py-2.5 text-xl font-medium border-white w-full" type="text" name="name" placeholder="Как вас зовут?">
                                     <input class="text-white outline-0 border-b px-5 py-2.5 text-xl font-medium border-white w-full" type="text" name="contact" placeholder="Номер телефона / Почта (для связи)">
@@ -397,7 +397,7 @@ style="background-image: url({{asset('img/partners/part-1.jpg')}})">
                 </div>
                 <div class="box-partner mb-5">
                     <div class="card-partner">
-                        <div class="grid xl:grid-cols-2 gap-5">
+                        <div class="grid 2xl:grid-cols-2 gap-5">
                             <div class="bg-white flex flex-col sm:flex-row">
                                 <div class="h-full flex items-center justify-center w-full lg:max-h-[202px] lg:min-w-[247px] max-h-[220px] sm:max-w-[247px] box-border p-2.5">
                                     <img class="h-full w-full object-cover" src="{{asset('img/partners/partn-1.jpg')}}" alt="">
@@ -417,7 +417,7 @@ style="background-image: url({{asset('img/partners/part-1.jpg')}})">
                         </div>
                     </div>
                     <div class="card-partner hidden">
-                        <div class="grid xl:grid-cols-2 gap-5">
+                        <div class="grid 2xl:grid-cols-2 gap-5">
                             <div class="bg-white flex flex-col sm:flex-row">
                                 <div class="h-full flex items-center justify-center w-full lg:max-h-[202px] lg:min-w-[247px] max-h-[220px] sm:max-w-[247px] box-border p-2.5">
                                     <img class="h-full w-full object-cover" src="{{asset('img/partners/partn-1.jpg')}}" alt="">
@@ -453,7 +453,7 @@ style="background-image: url({{asset('img/partners/part-1.jpg')}})">
                         </div>
                     </div>
                     <div class="card-partner hidden">
-                        <div class="grid xl:grid-cols-2 gap-5">
+                        <div class="grid 2xl:grid-cols-2 gap-5">
                             <div class="bg-white flex flex-col sm:flex-row">
                                 <div class="h-full flex items-center justify-center w-full lg:max-h-[202px] lg:min-w-[247px] max-h-[220px] sm:max-w-[247px] box-border p-2.5">
                                     <img class="h-full w-full object-cover" src="{{asset('img/partners/partn-1.jpg')}}" alt="">
@@ -476,7 +476,7 @@ style="background-image: url({{asset('img/partners/part-1.jpg')}})">
                         </div>
                     </div>
                     <div class="card-partner hidden">
-                        <div class="grid xl:grid-cols-2 gap-5">
+                        <div class="grid 2xl:grid-cols-2 gap-5">
                             <div class="bg-white flex flex-col sm:flex-row">
                                 <div class="h-full flex items-center justify-center w-full lg:max-h-[202px] lg:min-w-[247px] max-h-[220px] sm:max-w-[247px] box-border p-2.5">
                                     <img class="h-full w-full object-cover" src="{{asset('img/partners/partn-1.jpg')}}" alt="">
@@ -488,7 +488,7 @@ style="background-image: url({{asset('img/partners/part-1.jpg')}})">
                         </div>
                     </div>
                     <div class="card-partner hidden">
-                        <div class="grid xl:grid-cols-2 gap-5">
+                        <div class="grid 2xl:grid-cols-2 gap-5">
                             <div class="bg-white flex flex-col sm:flex-row">
                                 <div class="h-full flex items-center justify-center w-full lg:max-h-[202px] lg:min-w-[247px] max-h-[220px] sm:max-w-[247px] box-border p-2.5">
                                     <img class="h-full w-full object-cover" src="{{asset('img/partners/partn-1.jpg')}}" alt="">
@@ -500,7 +500,7 @@ style="background-image: url({{asset('img/partners/part-1.jpg')}})">
                         </div>
                     </div>
                     <div class="card-partner hidden">
-                        <div class="grid xl:grid-cols-2 gap-5">
+                        <div class="grid 2xl:grid-cols-2 gap-5">
                             <div class="bg-white flex flex-col sm:flex-row">
                                 <div class="h-full flex items-center justify-center w-full lg:max-h-[202px] lg:min-w-[247px] max-h-[220px] sm:max-w-[247px] box-border p-2.5">
                                     <img class="h-full w-full object-cover" src="{{asset('img/partners/partn-1.jpg')}}" alt="">
@@ -517,11 +517,11 @@ style="background-image: url({{asset('img/partners/part-1.jpg')}})">
             <section id="contacts">
                 <h2 class="font-bold text-xl md:text-3xl mb-8 mt-15">Контакты</h2>
                 <div class="relative xl:h-[385px] pr-12 mb-5">
-                    <div class="absolute bg-cover bg-center h-full w-[150%] -left-[50%] top-0"
+                    <div class="absolute bg-cover bg-center h-full w-full md:w-[150%] left-0 md:-left-[50%] top-0"
                         style="background-image: url({{asset('img/preparatory-courses/abst-1.jpg')}})">
 
                     </div>
-                    <div class="bg-[rgba(0,0,0,0.7)] min-h-full min-w-full w-[150%] pointer-events-none absolute top-0 -left-[50%]">
+                    <div class="bg-[rgba(0,0,0,0.7)] min-h-full min-w-full w-full md:w-[150%] pointer-events-none absolute top-0 left-0 md:-left-[50%]">
                     </div>
                     <div class="flex flex-col xl:flex-row gap-5 xl:justify-between h-full">
                         <div class="p-5 card-news-glass flex flex-col gap-7 w-full xl:max-w-[370px] mt-[1px]">
@@ -742,7 +742,7 @@ style="background-image: url({{asset('img/partners/part-1.jpg')}})">
             </section>
         </div>
     </div>
-    <div class="order-1 lg:order-2">
+    <div class="order-2 hidden xl:flex">
         <div class="flex flex-col gap-5 grow sticky top-[180px] h-fit">
             <h2 class="font-bold text-xl">Навигация по Партнерам</h2>
             <div class="flex flex-col">
