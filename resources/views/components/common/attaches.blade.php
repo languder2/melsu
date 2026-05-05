@@ -2,10 +2,11 @@
     'document' => null
 ])
 
+
 @use('\App\Enums\Documents\FileType')
 @use('\Illuminate\Support\Facades\Storage')
 
-@if($document)
+@if($document && !is_null($document->filename))
     @php
         $file = $document->filename;
         $title = $document->title ?? 'Скачать файл';
@@ -59,4 +60,6 @@
             </div>
         </a>
     </div>
+{{--@else--}}
+{{--    @dump($document)--}}
 @endif

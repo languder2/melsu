@@ -53,6 +53,8 @@ class TestController extends Controller
     public function index()
     {
 
+        return view('test.index');
+
         $division = Division::find(395);
 
         $documents = $division->documentCategories()->whereHas('tags', function($query){
