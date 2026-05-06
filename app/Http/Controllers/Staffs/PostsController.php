@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Staffs;
 
 use App\Http\Controllers\Controller;
 use App\Models\Division\Division;
-use App\Models\Documents\Document;
 use App\Models\Staff\Post;
 use App\Models\Staff\Staff;
 use Illuminate\Http\RedirectResponse;
@@ -31,7 +30,10 @@ class PostsController extends Controller
 
     public function form(Division $division, Post $current): View
     {
-        $staffs = Staff::orderByFullName()->get();
+        $staffs     = Staff::orderByFullName()->whereNull('deleted_at')
+                    ->orWhere('id', $current->staff_id)
+                    ->withTrashed()
+                    ->get();
 
         if(!$current->exists)
             $current->fill(['is_head_of_division' => request('isLeader')]);

@@ -7,5 +7,10 @@ return [
     'Hide all categories'           => 'Свернуть все категории',
     'Show all categories'           => 'Развернуть все категории',
     'search documents not result'   => 'Документы, соответствующие вашему запросу, отсутствуют',
-    'no documents'                  => 'Нет загруженных документов'
+    'no documents'                  => 'Нет загруженных документов',
+
+    'Info changes'                  => 'Данные изменены',
+    'Password changed'              => 'Пароль изменен',
+    'Delete success'                => 'Пользователь удален',
+
 ];

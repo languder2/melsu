@@ -81,7 +81,6 @@ class User extends Authenticatable
     {
         return [
 //            'test'              => 'required',
-            'id'                => "nullable",
             'role'              => '',
             'email'             => "email|required|unique:users,email,{$this->id},id,deleted_at,NULL",
             'lastname'          => 'required',
@@ -98,7 +97,7 @@ class User extends Authenticatable
             'name.required'         => 'Заполните обязательные поля',
             'email.unique'          => 'Email должен быть уникальным',
             'name.unique'           => 'Login должен быть уникальным',
-            'some'                  => "Пароль и повторение не совпадают",
+            'same'                  => "Пароль и повторение не совпадают",
         ];
     }
     public function getFullNameAttribute(): string

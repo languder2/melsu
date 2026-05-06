@@ -58,15 +58,23 @@ class UsersController extends Controller
         if(!(auth()->user()->role->level() > $user->role->level() || auth()->id() === $user->id))
             return redirect()->to( $user::cabinetList() );
 
+
+        $message = collect();
+
         $form = $request->validate($user->validateRules(),$user->validateMessages());
 
         $form['name'] = $form['email'];
 
         $user->fill($form);
 
+        if($user->isDirty())
+            $message->push(__('messages.Info changes'));
+
         if($form['new_password']){
             $user->password = bcrypt($form['new_password']);
             $pass = $form['new_password'];
+
+            $message->push(__('messages.Password changed'));
 
             if($user->exists)
                 SendEmailJob::dispatch((object)[
@@ -93,7 +101,14 @@ class UsersController extends Controller
 
         $user->fill($form)->save();
 
-        return redirect()->to( $request->has('save-close') ? User::cabinetList() : $user->form);
+        dd($request->input('divisions'));
+
+        return redirect()->to( $request->has('save-close') ? User::cabinetList() : $user->form)
+            ->with([
+                'message' => $message,
+                'forUser' => "#$user->id | $user->email"
+            ]);
+
     }
     public function changeAccess(Request $request, User $user):RedirectResponse
     {
@@ -117,7 +132,11 @@ class UsersController extends Controller
 
         $user->delete();
 
-        return redirect()->back();
+        return redirect()->back()
+            ->with([
+                'message' => __('messages.Delete success'),
+                'forUser' => "#$user->id | $user->email"
+            ]);
     }
 
     public function setFilter(Request $request): RedirectResponse

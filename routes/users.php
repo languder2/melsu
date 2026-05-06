@@ -60,7 +60,9 @@ Route::prefix('cabinet/posts/{division?}')
                                                                 ->name('division.posts.cabinet.removed');
 
         Route::get('form/{current?}',                       [PostsController::class, 'form'])
-                                                                ->name('division.posts.cabinet.form');
+                                                                ->withTrashed()
+                                                                ->name('division.posts.cabinet.form')
+        ;
 
         Route::put('save/{current?}',                       [PostsController::class, 'save'])
                                                                 ->name('division.posts.cabinet.save');
