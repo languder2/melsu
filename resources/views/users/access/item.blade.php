@@ -15,4 +15,4 @@
     <div>
         {!! $item->role->label() !!}
     </div>
-    </div>
+</div>

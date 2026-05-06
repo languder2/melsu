@@ -33,7 +33,11 @@
         <x-form.errors/>
 
         <div class="flex gap3 bg-white p-3 justify-between sticky top-0 z-50 shadow">
-            <div class="flex items-center"></div>
+            <div class="flex items-center">
+                @if($current->exists())
+                    {{ $current->post }}: {{ $current->staff->full_name }}
+                @endif
+            </div>
 
             <div class="flex items-center gap-3">
                 <input

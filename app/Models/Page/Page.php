@@ -18,11 +18,13 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Str;
+use Kalnoy\Nestedset\NodeTrait;
 
 class Page extends Model
 {
     use SoftDeletes, hasMeta, MagicGet, hasLinks, resolveRouteBinding, hasContents,
-    hasUsers, hasImage;
+    hasUsers, hasImage, NodeTrait;
 
     protected $table = 'pages';
 
@@ -150,10 +152,20 @@ class Page extends Model
         ];
 
     }
-    public function parent(): BelongsTo
+
+    public function prefixLevel(): ?string
     {
-        return $this->belongsTo(Page::class, 'parent_id', 'id');
+        return $this->depth ? Str::repeat('&nbsp', $this->depth*3) . __('common.arrowT2R') . '&nbsp&nbsp' : null;
     }
+    public function getNameWithPrefixLevelAttribute(): ?string
+    {
+        return $this->prefixLevel() .  $this->name;
+    }
+
+//    public function parent(): BelongsTo
+//    {
+//        return $this->belongsTo(Page::class, 'parent_id', 'id');
+//    }
 
     public function DocumentCategories():MorphMany
     {

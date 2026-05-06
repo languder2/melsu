@@ -19,6 +19,7 @@
 
         <x-form.errors/>
 
+
         <div class="flex gap3 bg-white p-3 justify-between sticky top-0 z-50 shadow">
             <div class="flex items-center">
                 {!! $user->exists ? "$user->email ($user->fio)" : __('common.Add user') !!}
@@ -57,6 +58,8 @@
                 >
             </div>
         </div>
+
+        <livewire:form.messages />
 
         <input type="hidden" name="id" value="{{ $user->id }}">
 
@@ -134,15 +137,20 @@
 
         </div>
 
-        <input type="hidden" id="divisionsSDA" name="divisions" value="{{ $user->divisions->pluck('id') }}">
+        <livewire:selects.s2-pages :current1="[123,312]" :multiple="true" :withPrefix="true" :withBg="true" />
+
     </form>
 
-    @component('users.cabinet.access-divisions', [
-        'list'     => $user->divisions,
-    ])@endcomponent
+{{--    <livewire:selects.s2-divisions :multiple="true" />--}}
 
-    @component('users.cabinet.access-pages', [
-        'list'     => $user->pages,
-    ])@endcomponent
+
+
+{{--    @component('users.cabinet.access-divisions', [--}}
+{{--        'list'     => $user->divisions,--}}
+{{--    ])@endcomponent--}}
+
+{{--    @component('users.cabinet.access-pages', [--}}
+{{--        'list'     => $user->pages,--}}
+{{--    ])@endcomponent--}}
 
 @endsection
