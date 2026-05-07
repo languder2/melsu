@@ -1,6 +1,6 @@
 <?php
 
-use function Livewire\Volt\{state};
+use function Livewire\Volt\{state, mount};
 use App\Models\Division\Division;
 
 state([
@@ -8,19 +8,33 @@ state([
     'name'          => fn() => $this->multiple ? 'divisions[]' : 'division',
     'list'          => fn() => Division::withDepth()->defaultOrder()->get(),
     'required'      => false,
-    'current'       => fn() => collect($this->current),
-    'withPrefix'    => false
+    'current'       => null,
+    'withPrefix'    => false,
+    'withBg'        => false,
+    'title'         => null,
+    'showTitle'     => true,
 ]);
 
+mount(function ($current = null) {
+    $this->current = collect($current);
+
+    $this->title   =  $this->title ?: ($this->multiple ? 'Выбрать подразделения' : 'Выбрать подразделение');
+
+});
+
 ?>
-<div>
+<div class="flex flex-col gap-1 @if($withBg) px-3 py-2 bg-white shadow-sm @endif">
+    @if($showTitle)
+        <div class="font-mono">
+            {{ $title }}:
+        </div>
+    @endif
     <select
         class="jq-select2-withID"
         name="{{ $name }}"
         @required($required)
         @if($multiple) multiple @endif
     >
-        <option value="">Подразделение не выбрано</option>
         @foreach($list as $item)
             <option
                 value="{{ $item->id }}"

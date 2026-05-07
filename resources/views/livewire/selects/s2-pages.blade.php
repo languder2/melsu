@@ -10,18 +10,25 @@ state([
     'required'      => false,
     'current'       => null,
     'withPrefix'    => false,
-    'withBg'        => false
+    'withBg'        => false,
+    'title'         => null,
+    'showTitle'     => true,
 ]);
 
 mount(function ($current = null) {
     $this->current = collect($current);
+
+    $this->title   =  $this->title ?: ($this->multiple ? 'Выбрать страницы' : 'Выбрать страницу');
+
 });
 
 ?>
-<div class="flex flex-col gap-1 @if($withBg) px-3 py-2 bg-white shadow-sm @endif font-mono">
-    <div>
-        Выбрать страницы
-    </div>
+<div class="flex flex-col gap-1 @if($withBg) px-3 py-2 bg-white shadow-sm @endif">
+    @if($showTitle)
+        <div class="font-mono">
+            {{ $title }}:
+        </div>
+    @endif
     <select
         class="jq-select2-withID"
         name="{{ $name }}"

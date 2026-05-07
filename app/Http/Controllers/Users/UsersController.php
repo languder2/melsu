@@ -101,7 +101,13 @@ class UsersController extends Controller
 
         $user->fill($form)->save();
 
-        dd($request->input('divisions'));
+        if($request->has('divisions'))
+            if(array_filter($user->divisions()->sync($request->divisions)))
+                $message->push(__('messages.Access to divisions changed'));
+
+        if($request->has('pages'))
+            if(array_filter($user->pages()->sync($request->pages)))
+                $message->push(__('messages.Access to pages changed'));
 
         return redirect()->to( $request->has('save-close') ? User::cabinetList() : $user->form)
             ->with([

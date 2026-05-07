@@ -137,7 +137,21 @@
 
         </div>
 
-        <livewire:selects.s2-pages :current1="[123,312]" :multiple="true" :withPrefix="true" :withBg="true" />
+        <livewire:selects.s2-divisions
+            :current="$user->divisions->pluck('id')"
+            :multiple="true"
+            :withPrefix="true"
+            :withBg="true"
+            title="Дать доступ к подразделениям"
+        />
+
+        <livewire:selects.s2-pages
+            :current="$user->pages->pluck('id')"
+            :multiple="true"
+            :withPrefix="true"
+            :withBg="true"
+            title="Дать доступ к страницам"
+        />
 
     </form>
 

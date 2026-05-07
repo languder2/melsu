@@ -40,6 +40,9 @@ class CabinetDocumentsController extends Controller
 
         $current->setContent('after',$request->get('after'));
 
+        if($request->has('tags'))
+            $current->tags()->sync($request->tags);
+
         $close      = $request->has('save-close');
 
         $onApproval = Cache::get('documents.onApproval', false);

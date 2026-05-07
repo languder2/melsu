@@ -27,15 +27,25 @@
     <div class="bg-white rounded-sm p-3 shadow flex items-center justify-center">
         {{ $current->id }}
     </div>
-    <div class="bg-white rounded-sm p-3 shadow flex gap-3 items-center">
-        @if($current->parent_id) <div class="ps-3">⤷</div> @endif
-        <div>
-            {{ $current->title }}
+    <div class="bg-white rounded-sm p-3 shadow space-y-1">
+        <div class="flex gap-3 items-center">
+            @if($current->parent_id) <div class="ps-3">⤷</div> @endif
+            <div>
+                {{ $current->title }}
+            </div>
+            <div class="flex-1"></div>
+            <div>
+                {{ $current->sort }}
+            </div>
         </div>
-        <div class="flex-1"></div>
-        <div>
-            {{ $current->sort }}
-        </div>
+
+        @if($current->tags->isNotEmpty())
+            <div class="font-mono text-xs text-gray-700 space-x-2">
+                @foreach($current->tags->pluck('name') as $tag)
+                    <span>#{{ $tag }}</span>
+                @endforeach
+            </div>
+        @endif
     </div>
 
     <div class="flex justify-center gap-4 bg-white rounded-sm items-center p-3 shadow">

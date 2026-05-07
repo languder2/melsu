@@ -22,6 +22,8 @@ class Document extends Model
 
     protected $table        = 'documents';
 
+    protected $appends      = ['link', 'tag_names'];
+
     protected $fillable     = [
         'title',
         'parent_id',

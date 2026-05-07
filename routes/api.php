@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Session;
 use App\Models\Common\Tags;
+use App\Models\Documents\DocumentCategory;
 
 Route::get('test123', function (){
     return phpinfo();
@@ -44,8 +45,6 @@ Route::get('link-correct', function (Request $request) {
         $item->link = str_replace($from, $to, $item->link);
         $item->save();
     }
-
-
 });
 
 Route::get('division/toggle-show/{division}', function(?Division $division){
@@ -299,9 +298,9 @@ Route::middleware(['web', 'auth.api'])->get('cabinetDocumentCategoryChangeShowLi
 Route::middleware(['web', 'auth.api'])->get('tags', function(Request $request){
 
     if($request->input('q'))
-        $items = \App\Models\Common\Tags::where('name','like',"%{$request->input('q')}%");
+        $items = Tags::where('name','like',"%{$request->input('q')}%");
     else
-        $items = \App\Models\Common\Tags::query();
+        $items = Tags::query();
 
     return response()->json([
         'items' => $items->orderBy('name')->limit(100)->get()
@@ -315,5 +314,39 @@ Route::middleware(['web', 'auth.api'])->post('tags/create', function(Request $re
     $tag = Tags::firstOrCreate(['name' => $request->input('tag'), 'type' => $request->input('type')]);
 
     return response()->json(['id' => $tag->id, 'text' => $tag->name]);
+
+});
+
+Route::middleware(['web'])->get('documentsByCategory/{category}/', function(DocumentCategory $category){
+    $documents = $category->documents()
+        ->with('tags')
+        ->get()
+        ->map(function ($item) {
+            $tags = $item->tags->pluck('name');
+
+            return [
+                'title'     => $item->title,
+                'link'      => $item->filename ? asset(Storage::url($item->filename)) : null,
+                'group'     => match (true) {
+                    $tags->contains('бакалавриат'),
+                    $tags->contains('специалитет')  => 'Бакалавриат / Специалитет',
+                    $tags->contains('СПО')          => 'СПО',
+                    $tags->contains('магистратура') => 'Магистратура',
+                    $tags->contains('аспирантура')  => 'Аспирантура',
+                },
+            ];
+        })
+        ->groupBy('group')
+        ->map(function ($group) {
+            return $group->sortBy('title')->values();
+        });
+
+    return response()->json($documents);
+});
+
+Route::middleware(['web'])->get('documentsByCategoryName/{categoryName}/', function(string $categoryName){
+    $category = DocumentCategory::where('name', $categoryName)->first();
+
+    return response()->json([ optional($category)->documents()->with('tags')->get()]);
 
 });

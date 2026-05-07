@@ -13,4 +13,7 @@ return [
     'Password changed'              => 'Пароль изменен',
     'Delete success'                => 'Пользователь удален',
 
+    'Access to divisions changed'   => 'Доступ к подразделениям изменен',
+    'Access to pages changed'       => 'Доступ к страницам изменен',
+
 ];
