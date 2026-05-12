@@ -24,4 +24,14 @@ export default defineConfig({
             refresh: true,
         }),
     ],
+    server: {
+        cors: true, // Разрешает CORS для всех
+        // Или более строгий вариант:
+        // cors: {
+        //     origin: 'https://melsu.local'
+        // },
+        hmr: {
+            host: '127.0.0.1',
+        },
+    },
 });
