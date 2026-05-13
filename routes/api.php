@@ -322,7 +322,7 @@ Route::middleware(['web'])->get('documentsByCategory/{category}/', function(Docu
         ->with('tags')
         ->get()
         ->map(function ($item) {
-            $tags = $item->tags->pluck('name');
+            $tags = $item->tags->pluck('name')->map(fn($tag) => Str::lower($tag));
 
             return [
                 'title'     => $item->title,
@@ -330,9 +330,10 @@ Route::middleware(['web'])->get('documentsByCategory/{category}/', function(Docu
                 'group'     => match (true) {
                     $tags->contains('бакалавриат'),
                     $tags->contains('специалитет')  => 'Бакалавриат / Специалитет',
-                    $tags->contains('СПО')          => 'СПО',
+                    $tags->contains('спо')          => 'СПО',
                     $tags->contains('магистратура') => 'Магистратура',
-                    $tags->contains('аспирантура')  => 'Аспирантура',
+                    $tags->contains('аспирантура') => 'Аспирантура',
+                    default => 'other'
                 },
             ];
         })

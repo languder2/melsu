@@ -19,6 +19,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <script type="text/javascript" src="{{asset('js/timeline-slider.js')}}"></script>
 
+    @livewireStyles
     @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/editorjs/slider.js'])
 </head>
 <body>
@@ -35,6 +36,7 @@
     <x-template.footer/>
 
     <x-template.left-side-offset/>
+    @livewireScripts
 </div>
 </body>
 </html>

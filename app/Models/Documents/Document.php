@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class Document extends Model
 {
@@ -149,6 +150,7 @@ class Document extends Model
         $folder = "documents/".($model && $model::Path ? $model::Path : 'custom')."/".time();
 
         $filename = transliterate($form['title']);
+        $filename = Str::slug($filename, '_');
 
         if(strlen($filename)>100)
             $filename = substr($filename, 0, 100);

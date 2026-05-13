@@ -52,61 +52,7 @@ class TestController extends Controller
 
     public function index()
     {
-
         return view('test.index');
-
-        $division = Division::find(395);
-
-        $documents = $division->documentCategories()->whereHas('tags', function($query){
-            $query->where('name', "Газета");
-        })->count();
-
-        dd($documents);
-
-        $division = Division::find(394);
-
-        Benchmark::dd([
-            'refresh'       => fn() => Division::refreshCachesForId($division->id),
-            'branch'        => fn() => $division->flattenBranch(true),
-            'tree'          => fn() => Division::flattenTree(true),
-            'branchCache'   => fn() => $division->flattenBranch(),
-            'treeCache'     => fn() => Division::flattenTree(),
-        ], iterations: 30);
-
-
-        $list = Division::flattenTree(79);
-        dd($list->pluck('id')->toArray());
-
-        $list = collect();
-
-        Division::whereNotNull('description')->get()->each(function($item){
-            if($item->content('description')->exists) return;
-
-            $json = json_decode($item->description);
-
-            $content = is_null($json) ? rawTextToEditorJS($item->description) : $item->description;
-
-            $item->setContent('description', $content);
-        });
-
-        dd();
-
-        $json = Storage::get('json/get_employee.json');
-
-        $list = collect(json_decode($json)->employee);
-
-        $list = $list->filter(fn($item) =>
-            $item->uid_department === 'fba3b2e9-a348-11f0-b9b6-f61497ae5d0c'
-            || $item->surname === 'Болотов'
-            || $item->surname === 'Слета'
-            || $item->surname === 'Петровский'
-            || $item->surname === 'Артюхов'
-        )
-            ->filter(fn($item) => !$item->dismissed)
-            ->each(fn($item) => $item->date_birth = Carbon::parse($item->date_birth))
-            ->sortBy('surname');
-
-        return view('test.index',compact('list'));
     }
 
     public function test()

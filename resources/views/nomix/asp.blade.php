@@ -184,8 +184,8 @@
             <li class="leading-[1.8rem] pb-3">
                 <a target="_blank"  class="flex items-center"><i
                         class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>Расписание вступительных испытаний</a>
-{{--                <a target="_blank" href="../../../storage/documents/board-of-trustees/VI-aspirant.pdf" class="flex items-center"><i--}}
-{{--                        class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>Расписание вступительных испытаний</a>--}}
+                {{--                <a target="_blank" href="../../../storage/documents/board-of-trustees/VI-aspirant.pdf" class="flex items-center"><i--}}
+                {{--                        class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>Расписание вступительных испытаний</a>--}}
             </li>
         </ul>
         <p class="text-[#4C4C4C] mb-2">
@@ -234,103 +234,7 @@
                     class="bi bi-lightbulb text-[var(--secondary-color)] me-2"></i>Обратите внимание</span>
         </div>
         <div class='accordion-group grid grid-cols-1 gap-1' data-accordion="default-accordion">
-            <div class='accordion-box accordion p-6' style="height: 73px;">
-                <button
-                    class='accordion-toggle cursor-pointer group accordion-active:text-indigo-600 inline-flex items-center justify-between text-[var(--primary-color)] w-full transition duration-500 hover:text-[var(--secondary-color)] active:text-[var(--secondary-color)]'
-                    aria-controls='basic-collapse-one-default'>
-                    <h5 class="font-[600] text-lg">Вступительные экзамены</h5>
-                    <svg
-                        class='text-[var(--primary-color)] transition duration-500 group-hover:text-[var(--secondary-color)]'
-                        width='22' height='22' viewBox='0 0 22 22' fill='none' xmlns='http://www.w3.org/2000/svg'>
-                        <path
-                            d='M16.5 8.25L12.4142 12.3358C11.7475 13.0025 11.4142 13.3358 11 13.3358C10.5858 13.3358 10.2525 13.0025 9.58579 12.3358L5.5 8.25'
-                            stroke='currentColor' stroke-width='1.6' stroke-linecap='round'
-                            stroke-linejoin='round'></path>
-                    </svg>
-                </button>
-                <div class='accordion-content-box accordion-content px-0 overflow-hidden max-w-[930px] w-[100%]'
-                     aria-labelledby='basic-heading-one-default'>
-                    <div class="accordion-text py-3">
-                        <ul class="list-disc list-inside marker:text-[var(--secondary-color)] text-[var(--main-color)]">
-                            <li class="leading-[1.8rem]">
-                                <a href="../../../storage/documents/aspirant/philosophy.pdf" target="_blank" class="hover:text-[#C10F1A] transition duration-300 ease-linear">
-                                    Философия
-                                </a>
-                            </li>
-                            <li class="leading-[1.8rem]">
-                                <a href="../../../storage/documents/aspirant/foreign_language.pdf" target="_blank" class="hover:text-[#C10F1A] transition duration-300 ease-linear">
-                                    Иностранный язык
-                                </a>
-                            </li>
-                            <li class="leading-[1.8rem]">
-                                <a href="../../../storage/documents/aspirant/agriculture_and_plant_growing.pdf" target="_blank" class="hover:text-[#C10F1A] transition duration-300 ease-linear">
-                                    4.1.1. Общее земледелие и растениеводство
-                                </a>
-                            </li>
-                            <li class="leading-[1.8rem]">
-                                <a href="../../../storage/documents/aspirant/pedagogy.pdf" target="_blank" class="hover:text-[#C10F1A] transition duration-300 ease-linear">
-                                    5.8.1 Общая педагогика, история педагогики и образования
-                                </a>
-                            </li>
-                            <li class="leading-[1.8rem]">
-                                <a href="../../../storage/documents/aspirant/pedagogy.pdf" target="_blank" class="hover:text-[#C10F1A] transition duration-300 ease-linear">
-                                    5.8.2 Теория и методика обучения и воспитания (по областям и уровням образования)
-                                </a>
-                            </li>
-                            <li class="leading-[1.8rem]">
-                                <a href="../../../storage/documents/aspirant/pedagogy.pdf" target="_blank" class="hover:text-[#C10F1A] transition duration-300 ease-linear">
-                                    5.8.3 Коррекционная педагогика
-                                </a>
-                            </li>
-                            <li class="leading-[1.8rem]">
-                                <a href="../../../storage/documents/aspirant/pedagogy.pdf" target="_blank" class="hover:text-[#C10F1A] transition duration-300 ease-linear">
-                                    5.8.7 Методология и технология профессионального образования
-                                </a>
-                            </li>
-                            <li class="leading-[1.8rem]">
-                                <a href="../../../storage/documents/aspirant/history.pdf" target="_blank" class="hover:text-[#C10F1A] transition duration-300 ease-linear">
-                                    5.6.1 Отечественная история
-                                </a>
-                            </li>
-                            <li class="leading-[1.8rem]">
-                                <a href="../../../storage/documents/aspirant/electrotechnology.pdf" target="_blank" class="hover:text-[#C10F1A] transition duration-300 ease-linear">
-                                    2.4.4 Электротехнология и электрофизика
-                                </a>
-                            </li>
-                            <li class="leading-[1.8rem]">
-                                <a href="../../../storage/documents/aspirant/economy.pdf" target="_blank" class="hover:text-[#C10F1A] transition duration-300 ease-linear">
-                                    5.2.3 Региональная и отраслевая экономика
-                                </a>
-                            </li>
-                            <li class="leading-[1.8rem]">
-                                <a href="../../../storage/documents/aspirant/economy.pdf" target="_blank" class="hover:text-[#C10F1A] transition duration-300 ease-linear">
-                                    5.2.4 Финансы
-                                </a>
-                            </li>
-                            <li class="leading-[1.8rem]">
-                                <a href="../../../storage/documents/aspirant/jurisprudence.pdf" target="_blank" class="hover:text-[#C10F1A] transition duration-300 ease-linear">
-                                    5.1.2 Публично-правовые (государственно-правовые) науки
-                                </a>
-                            </li>
-                            <li class="leading-[1.8rem]">
-                                <a href="../../../storage/documents/aspirant/jurisprudence.pdf" target="_blank" class="hover:text-[#C10F1A] transition duration-300 ease-linear">
-                                    5.1.1 Теоретико-исторические правовые науки
-                                </a>
-                            </li>
-                            <li class="leading-[1.8rem]">
-                                <a href="../../../storage/documents/aspirant/jurisprudence.pdf" target="_blank" class="hover:text-[#C10F1A] transition duration-300 ease-linear">
-                                    5.1.3 Частно-правовые (цивилистические) науки
-                                </a>
-                            </li>
-                            <li class="leading-[1.8rem]">
-                                <a href="../../../storage/documents/aspirant/jurisprudence.pdf" target="_blank" class="hover:text-[#C10F1A] transition duration-300 ease-linear">
-                                    5.1.4 Уголовно-правовые науки
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+            <livewire:aspitantura.list-of-entrance-test-programs />
         </div>
     </div>
 </section>
@@ -354,93 +258,8 @@
 </div>
 <section class="container custom1">
     <div class="bg-white p-6 mb-5">
-        <ul class="doc-list list-none list-inside marker:text-[var(--secondary-color)] text-[var(--main-color)]">
-            <li class="leading-[1.8rem] pb-3">
-                <a target="_blank" href="../../../storage/documents/board-of-trustees/programma-kandidatskogo-ekzamena-5.8.2-Teoriya-i-metodika-obucheniya-i-vospitaniya-(pedagogicheskie-nauki).pdf" class="flex items-center"><i
-                        class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>
-                    программа кандидатского экзамена  5.8.2 Теория и методика обучения и воспитания  (педагогические науки)</a>
-            </li>
-            <li class="leading-[1.8rem] pb-3">
-                <a target="_blank" href="../../../storage/documents/board-of-trustees/Programma-kandidatskogo-ekzamena-po-istorii-i-filosofii-nauki.pdf" class="flex items-center"><i
-                        class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>
-                    Программа кандидатского экзамена по истории и философии науки</a>
-            </li>
-            <li class="leading-[1.8rem] pb-3">
-                <a target="_blank" href="../../../storage/documents/board-of-trustees/Programma-kandidatskogo-ekzamena-po-specialnoj-discipline-2.5.21.pdf" class="flex items-center"><i
-                        class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>
-                    Программа кандидатского экзамена по специальной дисциплине 2.5.21</a>
-            </li>
-            <li class="leading-[1.8rem] pb-3">
-                <a target="_blank" href="../../../storage/documents/board-of-trustees/Programma-kandidatskogo-ekzamena-po-specialnoj-discipline-4.1.1.pdf" class="flex items-center"><i
-                        class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>
-                    Программа кандидатского экзамена по специальной дисциплине 4.1.1</a>
-            </li>
-            <li class="leading-[1.8rem] pb-3">
-                <a target="_blank" href="../../../storage/documents/board-of-trustees/Programma-kandidatskogo-ekzamena-po-specialnoj-discipline-po-nauchnoj-specialnosti-5.2.3.pdf" class="flex items-center"><i
-                        class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>
-                    Программа кандидатского экзамена по специальной дисциплине по научной специальности 5.2.3</a>
-            </li>
-            <li class="leading-[1.8rem] pb-3">
-                <a target="_blank" href="../../../storage/documents/board-of-trustees/Programma-kandidatskogo-ekzamena-po-inostrannomu-yazyku-biologicheskie-nauki.pdf" class="flex items-center"><i
-                        class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>
-                    Программа кандидатского экзамена по иностранному языку биологические науки</a>
-            </li>
-            <li class="leading-[1.8rem] pb-3">
-                <a target="_blank" href="../../../storage/documents/board-of-trustees/Programma_kandidatskogo_ekzamena_po_inostrannomu_yazyku_istoricheskie_nauki.pdf" class="flex items-center"><i
-                        class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>
-                    Программа кандидатского экзамена по иностранному языку исторические науки</a>
-            </li>
-            <li class="leading-[1.8rem] pb-3">
-                <a target="_blank" href="../../../storage/documents/board-of-trustees/Programma_kandidatskogo_ekzamena_po_inostrannomu_yazyku_pedagogicheskie_nauki.pdf" class="flex items-center"><i
-                        class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>
-                    Программа кандидатского экзамена по иностранному языку педагогические науки</a>
-            </li>
-            <li class="leading-[1.8rem] pb-3">
-                <a target="_blank" href="../../../storage/documents/board-of-trustees/Programma_kandidatskogo_ekzamena_po_inostrannomu_yazyku_tekhnicheskie_nauki_(mekhanika).pdf" class="flex items-center"><i
-                        class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>
-                    Программа кандидатского экзамена по иностранному языку технические науки (механика)</a>
-            </li>
-            <li class="leading-[1.8rem] pb-3">
-                <a target="_blank" href="../../../storage/documents/board-of-trustees/Programma_kandidatskogo_ekzamena_po_inostrannomu_yazyku_tekhnicheskie_nauki_(energetika).pdf" class="flex items-center"><i
-                        class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>
-                    Программа кандидатского экзамена по иностранному языку технические науки (энергетика)</a>
-            </li>
-            <li class="leading-[1.8rem] pb-3">
-                <a target="_blank" href="../../../storage/documents/board-of-trustees/Programma_kandidatskogo_ekzamena_po_inostrannomu_yazyku_ekonomicheskie_nauki.pdf" class="flex items-center"><i
-                        class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>
-                    Программа кандидатского экзамена по иностранному языку экономические науки</a>
-            </li>
-            <li class="leading-[1.8rem] pb-3">
-                <a target="_blank" href="../../../storage/documents/board-of-trustees/Programma_kandidatskogo_ekzamena_po_inostrannomu_yazyku_yuridicheskie_nauki.pdf" class="flex items-center"><i
-                        class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>
-                    Программа кандидатского экзамена по иностранному языку юридические науки</a>
-            </li>
-            <li class="leading-[1.8rem] pb-3">
-                <a target="_blank" href="../../../storage/documents/board-of-trustees/Programma_kandidatskogo_ekzamena_po_specialnoj_discipline_4_3_3.pdf" class="flex items-center"><i
-                        class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>
-                    Программа кандидатского экзамена по специальной дисциплине 4.3.3</a>
-            </li>
-            <li class="leading-[1.8rem] pb-3">
-                <a target="_blank" href="../../../storage/documents/board-of-trustees/Programma_kandidatskogo_ekzamena_po_specialnoj_discipline_5_1_4.pdf" class="flex items-center"><i
-                        class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>
-                    Программа кандидатского экзамена по специальной дисциплине 5.1.4</a>
-            </li>
-            <li class="leading-[1.8rem] pb-3">
-                <a target="_blank" href="../../../storage/documents/board-of-trustees/Programma_kandidatskogo_ekzamena_po_specialnoj_discipline_5_6_5.pdf" class="flex items-center"><i
-                        class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>
-                    Программа кандидатского экзамена по специальной дисциплине 5.6.5</a>
-            </li>
-            <li class="leading-[1.8rem] pb-3">
-                <a target="_blank" href="../../../storage/documents/board-of-trustees/Programma_kandidatskogo_ekzamena_po_specialnoj_discipline_5_8_2 matematika.pdf" class="flex items-center"><i
-                        class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>
-                    Программа кандидатского экзамена по специальной дисциплине 5.8.2 (математика)</a>
-            </li>
-            <li class="leading-[1.8rem] pb-3">
-                <a target="_blank" href="../../../storage/documents/board-of-trustees/Programma_kandidatskogo_ekzamena_po_specialnoj_discipline_5_8_2 fizika.pdf" class="flex items-center"><i
-                        class="bi bi-file-earmark-pdf-fill text-[var(--secondary-color)] text-[30px] me-3"></i>
-                    Программа кандидатского экзамена по специальной дисциплине 5.8.2 (физика)</a>
-            </li>
-        </ul>
+        <livewire:aspitantura.list-of-candidate-examination-programs />
+
     </div>
 </section>
 
