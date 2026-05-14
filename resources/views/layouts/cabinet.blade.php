@@ -36,6 +36,10 @@
                 @yield('content-header')
 
                 @yield('content')
+
+                @isset($slot)
+                    {{ $slot }}
+                @endcanany
             </div>
 
 {{--            @include('cabinet.template.aside-right')--}}

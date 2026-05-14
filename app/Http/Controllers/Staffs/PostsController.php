@@ -25,7 +25,7 @@ class PostsController extends Controller
         $staffs     = $isRemoved ? $division->trashedStaffs :
                     ($onApproval ? $division->onApprovalStaffs : $division->publicStaffs);
 
-        return view('staffs.cabinet.list', compact('division', 'leaders', 'staffs'));
+        return view('divisions.cabinet.staffs.list', compact('division', 'leaders', 'staffs'));
     }
 
     public function form(Division $division, Post $current): View
@@ -38,7 +38,7 @@ class PostsController extends Controller
         if(!$current->exists)
             $current->fill(['is_head_of_division' => request('isLeader')]);
 
-        return view('staffs.cabinet.form', compact('division','current', 'staffs'));
+        return view('divisions.cabinet.staffs.form', compact('division','current', 'staffs'));
     }
     public function save(Request $request, Division $division, Post $current): RedirectResponse
     {

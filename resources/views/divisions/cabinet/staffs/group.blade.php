@@ -50,7 +50,7 @@
     <div class="grid grid-cols-[auto_34ch_auto_1fr_1fr_8ch_auto] gap-3">
         @forelse($list as $staff)
             <div class="p-3 border-1 col-span-full grid grid-cols-subgrid gap-4 bg-neutral-150 rounded-sm">
-                @component('staffs.cabinet.staff',[
+                @component('divisions.cabinet.staffs.staff',[
                     'division'  => $division,
                     'current'   => $staff,
                     'isFirst'   => $loop->first,

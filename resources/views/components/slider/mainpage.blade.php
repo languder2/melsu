@@ -23,11 +23,18 @@
 {{--                            <img src="{{asset('img/slider/Podgot-mob.png')}}" alt="" class="block sm:hidden">--}}
 {{--                        </a>--}}
 {{--                    </div>--}}
+{{--                    <div class="slide">--}}
+{{--                        <a href="#" class="slide-link cursor-pointer" target="_blank">--}}
+{{--                            <img src="{{asset('img/slider/s080426.webp')}}" alt="" class="hidden object-cover min-[1921px]:block w-max">--}}
+{{--                            <img src="{{asset('img/slider/s080426-1920.webp')}}" alt="" class="hidden sm:block">--}}
+{{--                            <img src="{{asset('img/slider/s080426-m.webp')}}" alt="" class="block sm:hidden">--}}
+{{--                        </a>--}}
+{{--                    </div>--}}
                     <div class="slide">
-                        <a href="#" class="slide-link cursor-pointer" target="_blank">
-                            <img src="{{asset('img/slider/s080426.webp')}}" alt="" class="hidden object-cover min-[1921px]:block w-max">
-                            <img src="{{asset('img/slider/s080426-1920.webp')}}" alt="" class="hidden sm:block">
-                            <img src="{{asset('img/slider/s080426-m.webp')}}" alt="" class="block sm:hidden">
+                        <a href="#" class="slide-link cursor-pointer">
+                            <img src="{{asset('img/slider/81_2k.jpg')}}" alt="" class="hidden object-cover min-[1921px]:block w-max">
+                            <img src="{{asset('img/slider/81_fhd.jpg')}}" alt="" class="hidden sm:block">
+                            <img src="{{asset('img/slider/81_mob.jpg')}}" alt="" class="block sm:hidden">
                         </a>
                     </div>
                     <div class="slide">
@@ -56,21 +63,21 @@
 {{--                            <img src="{{asset('img/Banner_priom_mob.png')}}" alt="" class="block sm:hidden">--}}
 {{--                        </a>--}}
 {{--                    </div>--}}
-                    <div class="slide">
-                        <a href="{{ route('regiment:public:list') }} " class="slide-link cursor-pointer">
-                            <img src="{{asset('img/slider/WINNER_2K.jpg')}}" alt="" class="hidden min-[1921px]:block w-max">
-                            <img src="{{asset('img/slider/WINNER_1920.jpg')}}" alt="" class="hidden sm:block">
-                            <img src="{{asset('img/slider/WINNER_mob.jpg')}}" alt="" class="block sm:hidden">
-                        </a>
-                    </div>
+{{--                    <div class="slide">--}}
+{{--                        <a href="{{ route('regiment:public:list') }} " class="slide-link cursor-pointer">--}}
+{{--                            <img src="{{asset('img/slider/WINNER_2K.jpg')}}" alt="" class="hidden min-[1921px]:block w-max">--}}
+{{--                            <img src="{{asset('img/slider/WINNER_1920.jpg')}}" alt="" class="hidden sm:block">--}}
+{{--                            <img src="{{asset('img/slider/WINNER_mob.jpg')}}" alt="" class="block sm:hidden">--}}
+{{--                        </a>--}}
+{{--                    </div>--}}
 
-                    <div class="slide">
-                        <a class="slide-link cursor-pointer">
-                            <img src="{{asset('img/slider/YEAR_2K.png')}}" alt="" class="hidden min-[1921px]:block w-max">
-                            <img src="{{asset('img/slider/YEAR_1920.png')}}" alt="" class="hidden sm:block">
-                            <img src="{{asset('img/slider/YEAR_mob.png')}}" alt="" class="block sm:hidden">
-                        </a>
-                    </div>
+{{--                    <div class="slide">--}}
+{{--                        <a class="slide-link cursor-pointer">--}}
+{{--                            <img src="{{asset('img/slider/YEAR_2K.png')}}" alt="" class="hidden min-[1921px]:block w-max">--}}
+{{--                            <img src="{{asset('img/slider/YEAR_1920.png')}}" alt="" class="hidden sm:block">--}}
+{{--                            <img src="{{asset('img/slider/YEAR_mob.png')}}" alt="" class="block sm:hidden">--}}
+{{--                        </a>--}}
+{{--                    </div>--}}
 
                    {{-- <div class="slide">
                         <img src="{{asset('img/Slide.jpg')}}" alt="">

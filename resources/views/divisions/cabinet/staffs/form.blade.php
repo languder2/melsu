@@ -12,7 +12,7 @@
 @section('content-header')
     @component('divisions.cabinet.item', ['division' => $division, 'has_menu' => true])@endcomponent
 
-    @include('staffs.cabinet.menu')
+    @include('divisions.cabinet.staffs.menu')
 @endsection
 
 @section('top-menu')

@@ -2,10 +2,8 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Gallery\PublicGallery;
-use App\Http\Controllers\Handbook\HandbookController;
 use App\Http\Controllers\History\HistoryController;
 use App\Http\Controllers\Menu\MenuController;
-use App\Http\Controllers\Schedule\ScheduleController;
 use App\Http\Controllers\Staffs\StaffController;
 use Illuminate\Support\Facades\Route;
 
@@ -87,6 +85,7 @@ require __DIR__.'/contacts.php';
 require __DIR__.'/graduations.php';
 require __DIR__.'/users.php';
 require __DIR__.'/finances.php';
+require __DIR__.'/cabinet/staffs.php';
 
 require __DIR__.'/pages.php';
 
