@@ -6,10 +6,14 @@ use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use Maatwebsite\Excel\Concerns\WithColumnFormatting;
 use Maatwebsite\Excel\Concerns\WithColumnWidths;
+use Maatwebsite\Excel\Concerns\WithDefaultStyles;
+use Maatwebsite\Excel\Concerns\WithStyles;
 use Maatwebsite\Excel\Concerns\WithTitle;
 use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
+use PhpOffice\PhpSpreadsheet\Style\Style;
+use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
-class FinanceSheet implements FromCollection, WithColumnFormatting, ShouldAutoSize, WithColumnWidths, WithTitle
+class FinanceSheet implements FromCollection, WithDefaultStyles, ShouldAutoSize, WithColumnWidths, WithTitle, WithStyles
 {
     protected Collection $accounts;
     protected string $type;
@@ -25,6 +29,11 @@ class FinanceSheet implements FromCollection, WithColumnFormatting, ShouldAutoSi
             'J' => 1,
             'K' => 2,
         ],
+        'sber'   => [
+            'A' => 22,
+            'E' => 10,
+            'F' => 4,
+        ],
         'other'   => [
             'A' => 22,
             'B' => 4,
@@ -36,43 +45,6 @@ class FinanceSheet implements FromCollection, WithColumnFormatting, ShouldAutoSi
             'K' => 2,
         ],
     ];
-    protected array $columnFormats = [
-        'psb'   => [
-            'A' => NumberFormat::FORMAT_TEXT,
-            'B' => NumberFormat::FORMAT_TEXT,
-            'C' => NumberFormat::FORMAT_TEXT,
-            'D' => NumberFormat::FORMAT_TEXT,
-            'E' => NumberFormat::FORMAT_TEXT,
-            'F' => NumberFormat::FORMAT_TEXT,
-            'G' => NumberFormat::FORMAT_TEXT,
-            'H' => NumberFormat::FORMAT_TEXT,
-            'I' => NumberFormat::FORMAT_TEXT,
-            'J' => NumberFormat::FORMAT_TEXT,
-            'K' => NumberFormat::FORMAT_TEXT,
-        ],
-        'other'   => [
-            'A' => NumberFormat::FORMAT_TEXT,
-            'B' => NumberFormat::FORMAT_TEXT,
-            'C' => NumberFormat::FORMAT_TEXT,
-            'D' => NumberFormat::FORMAT_TEXT,
-            'E' => NumberFormat::FORMAT_TEXT,
-            'F' => NumberFormat::FORMAT_TEXT,
-            'G' => NumberFormat::FORMAT_TEXT,
-            'H' => NumberFormat::FORMAT_TEXT,
-            'I' => NumberFormat::FORMAT_TEXT,
-            'J' => NumberFormat::FORMAT_TEXT,
-            'K' => NumberFormat::FORMAT_TEXT,
-        ],
-        'errors'   => [
-            'A' => NumberFormat::FORMAT_TEXT,
-            'B' => NumberFormat::FORMAT_TEXT,
-            'C' => NumberFormat::FORMAT_TEXT,
-            'D' => NumberFormat::FORMAT_TEXT,
-            'E' => NumberFormat::FORMAT_TEXT,
-            'F' => NumberFormat::FORMAT_TEXT,
-        ],
-    ];
-
     public function __construct($accounts, $type, $title)
     {
         $this->accounts = $accounts;
@@ -85,11 +57,14 @@ class FinanceSheet implements FromCollection, WithColumnFormatting, ShouldAutoSi
         return collect($this->accounts);
     }
 
-    public function columnFormats(): array
+    public function defaultStyles(Style $defaultStyle):array
     {
-        return $this->columnFormats[$this->type] ?? [];
+        return [
+            'numberFormat' => [
+                'formatCode' => NumberFormat::FORMAT_TEXT
+            ]
+        ];
     }
-
 
     public function columnWidths(): array
     {
@@ -99,5 +74,14 @@ class FinanceSheet implements FromCollection, WithColumnFormatting, ShouldAutoSi
     public function title(): string
     {
         return $this->title;
+    }
+
+    public function styles(Worksheet $sheet): array
+    {
+        if ($this->type === 'totals') {
+            $sheet->getStyle('5')->getFont()->setBold(true);
+            $sheet->getStyle('8')->getFont()->setBold(true);
+        }
+        return [];
     }
 }

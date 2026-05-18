@@ -45,19 +45,16 @@ class FinanceController extends Controller
             return redirect()->route('finance.compilation.index')
                 ->with(["error" => "Проверьте шаблон данных на указанной странице"]);
 
-        $page = $page->filter(fn($item) => $item[9] == 1);
-
         if($page->isEmpty())
             return redirect()->route('finance.compilation.index')
                 ->with(["error" => "На указанной странице не найдено записей для обработки (колонке J = 1)"]);
 
 
-        $errors     = $page->filter(fn($item) => (float)$item[2] <= 0)->each(fn($item) => $item[2] = $item[2] ?: '0');
+        $correct    = $page->filter(fn($item) => (float)$item[2] > 0 && $item[9] == 1);
 
-        $correct    = $page->filter(fn($item) => (float)$item[2] > 0);
+        $errors = $page->diffKeys($correct)->each(fn($item) => $item[2] = $item[2] ?: '0');
 
         $mir        = $correct->filter(fn($item) =>  Str::startsWith($item[0], '4081'));
-
 
         $psb        = $mir->filter(fn($item) =>  is_null($item[6]));
 
@@ -80,7 +77,22 @@ class FinanceController extends Controller
             ]);
         });
 
-        $other = $mir->diffKeys($psb)->filter(fn($item) => trim(Str::lower($item[6])) != '');
+        $sber = $mir->filter(fn($item) =>  Str::contains($item[6], ['Сбербанк', 'сбербанк']));
+
+        $sberAccounts = $sber->groupBy(0)->map(function ($group) {
+            $row    = $group->first();
+
+            return collect([
+                'account'       => $row[0],
+                'lastname'      => $row[3],
+                'firstname'     => $row[4],
+                'middle_name'   => $row[5],
+                'sum'           => $group->sum(2),
+                'income_code'   => '0',
+            ]);
+        });
+
+        $other = $mir->diffKeys($psb)->diffKeys($sber)->filter(fn($item) => trim(Str::lower($item[6])) != '');
 
         $otherAccounts = $other->groupBy(0)->map(function ($group) {
             $row    = $group->first();
@@ -115,11 +127,23 @@ class FinanceController extends Controller
             ]);
         });
 
+        $errors = $errors->merge($correct->diffKeys($mir)->diffKeys($cash));
+
         $totals = collect([
-            ['ПСБ',     $psbAccounts->count(), $psbAccounts->sum('sum')],
-            ['Другие',  $otherAccounts->count(), $otherAccounts->sum('sum')],
-            ['Касса',   $cashAccounts->count(), $cashAccounts->sum('sum')],
-            ['Errors',  $errors->count()],
+            ['ПСБ',         $psbAccounts->count(), $psbAccounts->sum('sum')],
+            ['Сбербанк',    $sberAccounts->count(), $sberAccounts->sum('sum')],
+            ['Другие',      $otherAccounts->count(), $otherAccounts->sum('sum')],
+            ['Касса',       $cashAccounts->count(), $cashAccounts->sum('sum')],
+            ['Totals',
+                $psbAccounts->count() + $sberAccounts->count() + $otherAccounts->count() + $cashAccounts->count(),
+                $cashAccounts->sum('sum') + $psbAccounts->sum('sum') + $sberAccounts->sum('sum') +  $otherAccounts->sum('sum'),
+            ],
+            ['',            ''],
+            ['Errors',      $errors->count(), $errors->map(fn($item) =>  (int)$item['2'])->sum()],
+            ['Totals with Errors',
+                $errors->count() + $psbAccounts->count() + $sberAccounts->count() + $otherAccounts->count() + $cashAccounts->count(),
+                $errors->map(fn($item) =>  (int)$item['2'])->sum() + $cashAccounts->sum('sum') + $psbAccounts->sum('sum') + $sberAccounts->sum('sum') +  $otherAccounts->sum('sum'),
+            ],
         ]);
 
         $compilation = collect([
@@ -127,6 +151,11 @@ class FinanceController extends Controller
                 'type'      => 'psb',
                 'name'      => 'ПСБ',
                 'accounts'  => $psbAccounts,
+            ],
+            (object)[
+                'type'      => 'sber',
+                'name'      => 'Сбербанк',
+                'accounts'  => $sberAccounts,
             ],
             (object)[
                 'type'      => 'other',
