@@ -9,7 +9,7 @@ trait hasPosts
 {
     public function posts(): hasMany
     {
-        return $this->hasMany(Post::class, 'staff_id')->orderBy('sort');
+        return $this->hasMany(Post::class, 'staff_id')->with('division')->orderBy('sort');
     }
     public function publicPosts(): hasMany
     {

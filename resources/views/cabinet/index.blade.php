@@ -65,6 +65,15 @@
                 />
             @endif
 
+            @if(auth()->user()->isEditor() || auth()->user()->isAdmin() || auth()->user()->isSuper())
+                <x-cabinet.sections.index-link
+                    lucide="users-round"
+                    color="text-blue-950"
+                    :text=" __('common.Staffs') "
+                    :link=" route('staffs.cabinet.list')"
+                />
+            @endif
+
         </div>
     @endauth
 @endsection
