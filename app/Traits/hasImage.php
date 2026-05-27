@@ -46,6 +46,13 @@ trait hasImage
 
         return $image;
     }
+    public function setImage()
+    {
+        dd($this);
+
+
+
+    }
 
     public function getPreviewAttribute(): Image
     {

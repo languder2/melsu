@@ -144,6 +144,9 @@ class Image extends Model
     }
     public function getSrcAttribute():string|null
     {
+        if($this->path && Storage::disk('public')->exists($this->path))
+            return Storage::disk('public')->url($this->path);
+
         $record = $this->reference??$this;
 
         $path = self::getPath($record->relation_type);
@@ -167,6 +170,11 @@ class Image extends Model
 
     public function getThumbnailAttribute():string|null
     {
+//        dump($this->path);
+
+        if($this->path && Storage::disk('public')->exists($this->path))
+            return Storage::disk('public')->url($this->path);
+
 
         $record = $this->reference ?? $this;
 
@@ -182,6 +190,8 @@ class Image extends Model
 
     public function getPreviewAttribute():string|null
     {
+        if($this->path && Storage::disk('public')->exists($this->path))
+            return Storage::disk('public')->url($this->path);
 
         $record = $this->reference??$this;
 
@@ -371,9 +381,5 @@ class Image extends Model
             'path'  => str_replace(url('storage') . '/', '', $path),
             'name'  => '',
         ])->save();
-    }
-    public function getUrlAttribute(): string
-    {
-        return Storage::disk('public')->url($this->path);
     }
 }

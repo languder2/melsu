@@ -1,10 +1,13 @@
 <?php
 
+use Illuminate\Http\Request;
 use Livewire\Volt\Component;
 use App\Models\Staff\Staff;
 use Livewire\Attributes\On;
 use Livewire\WithFileUploads;
-use Illuminate\Support\Facades\Storage; // Обязательно импортируем
+use Illuminate\Support\Facades\Storage;
+
+// Обязательно импортируем
 
 new class extends Component {
     use WithFileUploads;
@@ -12,7 +15,6 @@ new class extends Component {
     public ?Staff $staff = null;
     public bool $isOpen = false;
 
-    // Свойства для вкладки "Общие"
     public string $lastname = '';
     public string $firstname = '';
     public string $middle_name = '';
@@ -33,9 +35,8 @@ new class extends Component {
     public string $retraining = '';
     public string $awards = '';
 
-    // ИСПРАВЛЕНИЕ: photoFile должен вмещать объект временного файла, photo - путь из БД
-    public $photoFile = null;
-    public ?string $photo = null;
+    public ?\Illuminate\Http\UploadedFile $photoFile = null;
+    public ?string $avatar = null;
 
     protected function rules()
     {
@@ -55,8 +56,7 @@ new class extends Component {
             'education' => 'nullable|string',
             'retraining' => 'nullable|string',
             'awards' => 'nullable|string',
-            // ДОБАВЛЕНО: Валидация для загружаемого фото
-            'photoFile' => 'nullable|image|max:5120', // макс 5MB (5120 КБ)
+            'photoFile' => 'nullable|image|max:5120',
         ];
     }
 
@@ -76,14 +76,11 @@ new class extends Component {
         $this->address = $this->staff->address ?? '';
         $this->reception_time = $this->staff->reception_time ?? '';
         $this->alias = $this->staff->alias ?? '';
-        $this->link = $this->staff->link ?? '';
 
         $this->education = $this->staff->education ?? '';
         $this->retraining = $this->staff->retraining ?? '';
         $this->awards = $this->staff->awards ?? '';
-
-        // ДОБАВЛЕНО: Подгружаем текущий путь к фото из модели
-        $this->photo = $this->staff->photo ?? null;
+        $this->avatar =  $this->staff->image('avatar')->path;
 
         $this->isOpen = true;
     }
@@ -96,56 +93,36 @@ new class extends Component {
             'lastname', 'firstname', 'middle_name', 'birthday', 'birthplace', 'residence',
             'family_status', 'affiliation', 'address', 'reception_time', 'alias', 'link',
             'phones', 'emails', 'education', 'retraining', 'awards', 'staff',
-            'photoFile', 'photo' // Очищаем свойства фото
+            'photoFile', 'avatar'
         ]);
 
         $this->resetValidation();
     }
 
-    // ДОБАВЛЕНО: Метод удаления фото (как временного, так и уже сохраненного)
     public function deletePhoto(): void
     {
-        // Если была загружена только временная картинка, просто сбрасываем ее
         if ($this->photoFile) {
             $this->photoFile = null;
             return;
         }
 
-        // Если удаляем уже существующее фото из БД и с диска
-        if ($this->photo) {
-            if (Storage::disk('public')->exists($this->photo)) {
-                Storage::disk('public')->delete($this->photo);
-            }
+        if ($this->avatar) {
+            if (Storage::disk('public')->exists($this->avatar))
+                Storage::disk('public')->delete($this->avatar);
 
-            if ($this->staff) {
-                $this->staff->update(['photo' => null]);
-            }
+            if ($this->staff)
+                $this->staff->image('avatar')->forceDelete();
 
-            $this->photo = null;
+            $this->avatar = null;
         }
     }
 
     public function save(): void
     {
-        $this->validate();
+        $form = $this->validate();
 
         $phonesArray = array_filter(array_map('trim', explode(',', $this->phones)));
         $emailsArray = array_filter(array_map('trim', explode(',', $this->emails)));
-
-        dd($this->staff->avatar);
-
-
-
-
-
-
-        if ($this->photoFile) {
-            if ($this->photo && Storage::disk('public')->exists($this->photo))
-                Storage::disk('public')->delete($this->photo);
-
-            $this->photo = $this->photoFile->store('staff-photos', 'public');
-
-        }
 
         $this->staff->update([
             'lastname' => $this->lastname,
@@ -165,6 +142,27 @@ new class extends Component {
             'awards' => $this->awards ?: null,
         ]);
 
+
+        if($this->photoFile){
+            if ($this->avatar && Storage::disk('public')->exists($this->avatar)) {
+                Storage::disk('public')->delete($this->avatar);
+            }
+
+            $directory = "images/staffs/{$this->staff->id}";
+            $filename = Str::random(40) . '.webp';
+            $fullPath = "{$directory}/{$filename}";
+
+            $manager = new \Intervention\Image\ImageManager(new \Intervention\Image\Drivers\Gd\Driver());
+            $image = $manager->read($this->photoFile->getRealPath())->toWebp(80);
+
+            Storage::disk('public')->put($fullPath, (string) $image);
+
+            $this->staff->image('avatar')->fill([
+                'path' => $fullPath
+            ])->save();
+        }
+
+
         $this->dispatch('staff-updated');
 
         $this->closeModal();
@@ -179,15 +177,18 @@ new class extends Component {
             @keydown.escape.window="$wire.closeModal()"
             class="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-black/60 p-4 backdrop-blur-xs"
         >
-            <div class="relative w-full max-w-7xl rounded-lg bg-white shadow-2xl flex flex-col lg:h-[85vh]" wire:click.away="closeModal">
+            <div class="relative w-full max-w-7xl rounded-lg bg-white shadow-2xl flex flex-col lg:h-[85vh]"
+                 wire:click.away="closeModal">
 
-                <!-- Шапка -->
                 <div class="px-6 py-4 border-b border-gray-100 flex justify-between items-center">
                     <h3 class="text-lg font-bold text-gray-900">
                         Редактирование сотрудника: {{ $lastname }} {{ $firstname }} (#{{ $staff?->id }})
                     </h3>
                     <button type="button" wire:click="closeModal" class="text-gray-400 hover:text-gray-600 transition">
-                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="M6 18L18 6M6 6l12 12"/>
+                        </svg>
                     </button>
                 </div>
 
@@ -199,6 +200,14 @@ new class extends Component {
                         class="py-3 px-4 border-b-2 text-sm transition focus:outline-none"
                     >
                         Общие сведения
+                    </button>
+                    <button
+                        type="button"
+                        @click="activeTab = 'photo'"
+                        :class="activeTab === 'photo' ? 'border-blue-600 text-blue-600 font-semibold' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'"
+                        class="py-3 px-4 border-b-2 text-sm transition focus:outline-none"
+                    >
+                        Фото
                     </button>
                     <button
                         type="button"
@@ -214,23 +223,27 @@ new class extends Component {
 
                     <div class="p-6 overflow-y-auto flex-1 max-h-[calc(90vh-180px)]">
 
-                        <div x-show="activeTab === 'general'" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            @include('livewire.staffs.cabinet.form-modal-general')
-                            @include('livewire.staffs.cabinet.form-modal-photo')
-                        </div>
+                        @include('livewire.staffs.cabinet.form-modal-general')
+
+                        @include('livewire.staffs.cabinet.form-modal-photo')
 
                         <div x-show="activeTab === 'education'" class="flex flex-col gap-2">
                             <label class="block text-xs font-semibold text-gray-700">Сведения об образовании</label>
-                            <textarea wire:model="education" rows="8" class="w-full rounded border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 outline-none" placeholder="Опишите полученное образование..."></textarea>
-                            @error('education') <span class="text-xs text-red-500 mt-1 block">{{ $message }}</span> @enderror
+                            <textarea wire:model="education" rows="8"
+                                      class="w-full rounded border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 outline-none"
+                                      placeholder="Опишите полученное образование..."></textarea>
+                            @error('education') <span
+                                class="text-xs text-red-500 mt-1 block">{{ $message }}</span> @enderror
                         </div>
                     </div>
 
                     <div class="px-6 py-4 border-t border-gray-100 bg-gray-50 flex justify-end gap-2">
-                        <button type="button" wire:click="closeModal" class="px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-200 transition rounded-md">
+                        <button type="button" wire:click="closeModal"
+                                class="px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-200 transition rounded-md">
                             Отмена
                         </button>
-                        <button type="submit" class="px-5 py-2 text-sm font-semibold bg-blue-600 hover:bg-blue-700 text-white transition rounded-md shadow-sm">
+                        <button type="submit"
+                                class="px-5 py-2 text-sm font-semibold bg-blue-600 hover:bg-blue-700 text-white transition rounded-md shadow-sm">
                             Сохранить изменения
                         </button>
                     </div>

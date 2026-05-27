@@ -105,8 +105,15 @@ new class extends Component {
                     <div class="col-span-full flex gap-2 flex-wrap mt-1 pl-8">
                         @foreach($staff->posts as $post)
                             <a href="{{ route('division.posts.cabinet.list', $post->division)  }}" class="inline-flex items-center gap-1 text-xs bg-gray-100 text-gray-700 px-2 py-0.5 rounded-sm">
-                                <span class="font-medium">{{ $post->post }}</span>
+                                <span class="font-medium">
                                     <span class="text-gray-400">
+                                        #{{ $post->id }}
+                                        #{{ $post->post_id }}
+                                    </span>
+
+                                    {{ $post->post }}
+                                </span>
+                                <span class="text-gray-400">
                                     (#{{ $post->division->id }} {{ $post->division->name }})
                                 </span>
                             </a>
