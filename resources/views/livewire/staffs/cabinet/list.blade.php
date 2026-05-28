@@ -95,9 +95,9 @@ new class extends Component {
                     <button
                         type="button"
                         wire:click="$dispatch('open-edit-modal', { id: {{ $staff->id }} })"
-                        class="text-blue-600 hover:text-blue-800 text-sm font-medium"
+                        class="text-sky-950 hover:text-sky-700 text-sm font-medium cursor-pointer"
                     >
-                        Редактировать
+                        <x-lucide-clipboard-edit class="w-6" />
                     </button>
                 </div>
 

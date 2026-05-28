@@ -6,8 +6,7 @@ use App\Models\Staff\Staff;
 use Livewire\Attributes\On;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Storage;
-
-// Обязательно импортируем
+use Illuminate\Http\UploadedFile;
 
 new class extends Component {
     use WithFileUploads;
@@ -35,7 +34,7 @@ new class extends Component {
     public string $retraining = '';
     public string $awards = '';
 
-    public ?\Illuminate\Http\UploadedFile $photoFile = null;
+    public ?UploadedFile $photoFile = null;
     public ?string $avatar = null;
 
     protected function rules()
@@ -89,12 +88,7 @@ new class extends Component {
     {
         $this->isOpen = false;
 
-        $this->reset([
-            'lastname', 'firstname', 'middle_name', 'birthday', 'birthplace', 'residence',
-            'family_status', 'affiliation', 'address', 'reception_time', 'alias', 'link',
-            'phones', 'emails', 'education', 'retraining', 'awards', 'staff',
-            'photoFile', 'avatar'
-        ]);
+        $this->reset();
 
         $this->resetValidation();
     }
@@ -103,20 +97,24 @@ new class extends Component {
     {
         if ($this->photoFile) {
             $this->photoFile = null;
+            $this->dispatch('notify', message: 'Выбор файла отменен');
             return;
         }
 
-        if ($this->avatar) {
-            if (Storage::disk('public')->exists($this->avatar))
-                Storage::disk('public')->delete($this->avatar);
+        if (is_null($this->avatar)) return;
 
-            if ($this->staff)
-                $this->staff->image('avatar')->forceDelete();
+        if (Storage::disk('public')->exists($this->avatar))
+            Storage::disk('public')->delete($this->avatar);
 
-            $this->avatar = null;
-        }
+        if ($this->staff)
+            $this->staff->image('avatar')->forceDelete();
+
+        $this->avatar = null;
+
+        $this->dispatch('notify', message: 'Фото удалено');
+
+        $this->dispatch('staff-updated');
     }
-
     public function save(): void
     {
         $form = $this->validate();
@@ -162,10 +160,10 @@ new class extends Component {
             ])->save();
         }
 
-
+        $this->dispatch('notify', message: 'Изменения успешно сохранены!');
         $this->dispatch('staff-updated');
 
-        $this->closeModal();
+        //        $this->closeModal();
     }
 };
 ?>
@@ -227,17 +225,42 @@ new class extends Component {
 
                         @include('livewire.staffs.cabinet.form-modal-photo')
 
-                        <div x-show="activeTab === 'education'" class="flex flex-col gap-2">
-                            <label class="block text-xs font-semibold text-gray-700">Сведения об образовании</label>
-                            <textarea wire:model="education" rows="8"
-                                      class="w-full rounded border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 outline-none"
-                                      placeholder="Опишите полученное образование..."></textarea>
-                            @error('education') <span
-                                class="text-xs text-red-500 mt-1 block">{{ $message }}</span> @enderror
+                        <div x-show="activeTab === 'education'" class="flex flex-col h-full max-h-full min-h-0 w-full">
+
+                            <livewire:staffs.cabinet.form-modal-education />
+
+                            <livewire:staffs.cabinet.form-modal-retraining />
                         </div>
+
                     </div>
 
-                    <div class="px-6 py-4 border-t border-gray-100 bg-gray-50 flex justify-end gap-2">
+                    <div class="px-6 py-4 border-t border-gray-100 bg-gray-50 flex gap-2">
+
+                        <div class="flex-1 flex items-center">
+                            <div
+                                x-data="{ show: false, message: '', timer: null }"
+                                @notify.window="
+                                    clearTimeout(timer);
+                                    message = $event.detail.message;
+                                    show = true;
+                                    timer = setTimeout(() => show = false, 4000);
+                                "
+                                x-show="show"
+                                x-transition:enter="transition ease-out duration-300"
+                                x-transition:enter-start="opacity-0 transform -translate-x-2"
+                                x-transition:enter-end="opacity-100 transform translate-x-0"
+                                x-transition:leave="transition ease-in duration-200"
+                                x-transition:leave-start="opacity-100"
+                                x-transition:leave-end="opacity-0"
+                                class="flex items-center gap-2 text-sm font-medium text-green-600 bg-green-50 px-3 py-1.5 rounded-md border border-green-200"
+                                x-cloak
+                            >
+                                <svg class="h-4 w-4 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                <span x-text="message"></span>
+                            </div>
+                        </div>
                         <button type="button" wire:click="closeModal"
                                 class="px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-200 transition rounded-md">
                             Отмена

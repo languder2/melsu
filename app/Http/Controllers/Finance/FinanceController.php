@@ -14,6 +14,7 @@ use Illuminate\Support\Str;
 use Illuminate\View\View;
 use Maatwebsite\Excel\Excel as ExcelFormat;
 use Maatwebsite\Excel\Facades\Excel;
+use mysql_xdevapi\Exception;
 
 class FinanceController extends Controller
 {
@@ -49,10 +50,13 @@ class FinanceController extends Controller
             return redirect()->route('finance.compilation.index')
                 ->with(["error" => "На указанной странице не найдено записей для обработки (колонке J = 1)"]);
 
+        $correct    = $page->filter(fn($item) => (float)$item[2] > 0 && $item[9] == 1)
+            ->map(function($item){
+                $item[2] = (float)(Str::replace(',','.',$item[2]));
+                return $item;
+            });
 
-        $correct    = $page->filter(fn($item) => (float)$item[2] > 0 && $item[9] == 1);
-
-        $errors = $page->diffKeys($correct)->each(fn($item) => $item[2] = $item[2] ?: '0');
+        $errors     = $page->diffKeys($correct)->each(fn($item) => $item[2] = $item[2] ?: '0');
 
         $mir        = $correct->filter(fn($item) =>  Str::startsWith($item[0], '4081'));
 
@@ -60,6 +64,14 @@ class FinanceController extends Controller
 
         $psbAccounts = $psb->groupBy(0)->map(function ($group) {
             $row    = $group->first();
+
+            try {
+                $group->sum(2);
+            }catch (\Exception $exception){
+                foreach ($group as $item)
+                    dump($item->toArray());
+                dd();
+            }
 
             return collect([
                 'account'       => $row[0],

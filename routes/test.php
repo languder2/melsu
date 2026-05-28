@@ -1,13 +1,8 @@
 <?php
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\TestController;
 
-Route::get('test/uuid',        [TestController::class, 'uuid']);
-Route::get('test/token',        [TestController::class, 'token']);
-Route::get('test/php-info',     [TestController::class, 'phpinfo']);
-Route::get('test/view',         [TestController::class,'view']);
-Route::get('test/index',        [TestController::class,'index']);
-Route::get('test/test',         [TestController::class,'test']);
-Route::get('test/pass',         [TestController::class,'pass']);
-Route::get('test/structure',    [TestController::class,'structure']);
+use Illuminate\Support\Facades\Route;
+
+Route::get('test/index', function(){
+    return view('test.index');
+});
 
