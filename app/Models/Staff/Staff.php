@@ -140,6 +140,11 @@ class Staff extends Model
     {
         return $query->orderBy('lastname')->orderBy('firstname')->orderBy('middle_name');
     }
+
+    public function educations(): HasMany
+    {
+        return $this->hasMany(Education::class,'staff_id', 'id');
+    }
 }
 
 

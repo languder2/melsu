@@ -11,6 +11,8 @@ use Illuminate\Http\UploadedFile;
 new class extends Component {
     use WithFileUploads;
 
+    public string $currentTab = 'general';
+
     public ?Staff $staff = null;
     public bool $isOpen = false;
 
@@ -87,6 +89,8 @@ new class extends Component {
     public function closeModal(): void
     {
         $this->isOpen = false;
+
+        $this->currentTab = 'general';
 
         $this->reset();
 
@@ -165,13 +169,27 @@ new class extends Component {
 
         //        $this->closeModal();
     }
+
+    #[On('staff-updated')]
+    public function handleStaffUpdated(): void
+    {
+        if ($this->staff)
+            $this->staff->refresh();
+
+    }
+
+    #[On('notify')]
+    public function handleNotify($message): void
+    {
+        $this->js("alert('{$message}')");
+    }
 };
 ?>
 
 <div>
     @if($isOpen)
         <div
-            x-data="{ activeTab: 'general' }"
+            x-data="{ activeTab: $wire.$entangle('currentTab', true) }"
             @keydown.escape.window="$wire.closeModal()"
             class="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-black/60 p-4 backdrop-blur-xs"
         >
@@ -217,61 +235,36 @@ new class extends Component {
                     </button>
                 </div>
 
-                <form wire:submit="save" class="flex flex-col flex-1 overflow-hidden">
+                <div class="p-6 overflow-y-auto flex-1 max-h-[calc(90vh-180px)]">
 
-                    <div class="p-6 overflow-y-auto flex-1 max-h-[calc(90vh-180px)]">
-
+                    <form id="mainStaffForm" wire:submit="save" x-show="activeTab === 'general' || activeTab === 'photo'">
                         @include('livewire.staffs.cabinet.form-modal-general')
-
                         @include('livewire.staffs.cabinet.form-modal-photo')
+                    </form>
 
-                        <div x-show="activeTab === 'education'" class="flex flex-col h-full max-h-full min-h-0 w-full">
-
-                            <livewire:staffs.cabinet.form-modal-education />
-
-                            <livewire:staffs.cabinet.form-modal-retraining />
-                        </div>
-
-                    </div>
-
-                    <div class="px-6 py-4 border-t border-gray-100 bg-gray-50 flex gap-2">
-
-                        <div class="flex-1 flex items-center">
-                            <div
-                                x-data="{ show: false, message: '', timer: null }"
-                                @notify.window="
-                                    clearTimeout(timer);
-                                    message = $event.detail.message;
-                                    show = true;
-                                    timer = setTimeout(() => show = false, 4000);
-                                "
-                                x-show="show"
-                                x-transition:enter="transition ease-out duration-300"
-                                x-transition:enter-start="opacity-0 transform -translate-x-2"
-                                x-transition:enter-end="opacity-100 transform translate-x-0"
-                                x-transition:leave="transition ease-in duration-200"
-                                x-transition:leave-start="opacity-100"
-                                x-transition:leave-end="opacity-0"
-                                class="flex items-center gap-2 text-sm font-medium text-green-600 bg-green-50 px-3 py-1.5 rounded-md border border-green-200"
-                                x-cloak
-                            >
-                                <svg class="h-4 w-4 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>
-                                <span x-text="message"></span>
+                    <div x-show="activeTab === 'education'" class="flex flex-col h-full max-h-full min-h-0 w-full">
+                        @if($staff?->id)
+                            <div x-if="activeTab === 'education'">
+                                <livewire:staffs.cabinet.form-modal-education :staff="$staff" wire:key="edu-tab-{{ $staff->id }}" />
                             </div>
-                        </div>
-                        <button type="button" wire:click="closeModal"
-                                class="px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-200 transition rounded-md">
-                            Отмена
-                        </button>
-                        <button type="submit"
-                                class="px-5 py-2 text-sm font-semibold bg-blue-600 hover:bg-blue-700 text-white transition rounded-md shadow-sm">
-                            Сохранить изменения
-                        </button>
+                        @endif
+                    </div>
+                </div>
+
+                <div class="px-6 py-4 border-t border-gray-100 bg-gray-50 flex gap-2">
+                    <div class="flex-1 flex items-center">
                     </div>
 
-                </form>
+                    <button type="button" wire:click="closeModal"
+                            class="px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-200 transition rounded-md">
+                        Отмена
+                    </button>
+
+                    <button type="submit" form="mainStaffForm" x-show="activeTab === 'general' || activeTab === 'photo'"
+                            class="px-5 py-2 text-sm font-semibold bg-blue-600 hover:bg-blue-700 text-white transition rounded-md shadow-sm">
+                        Сохранить изменения
+                    </button>
+                </div>
             </div>
         </div>
     @endif

@@ -3,11 +3,7 @@
 @section('title', 'ФГБОУ ВО "МелГУ"')
 
 @section('content')
-    <select>
-        @foreach(\App\Enums\Staff\EducationType::Education->cases() as $case)
-           <option value="{{ $case->name }}">{{ $case->label() }}</option>
-        @endforeach
-    </select>
 
+    \Carbon\Carbon::now()->format('Y')
 @endsection
 
