@@ -86,34 +86,34 @@
 </div>
 <div class="bg-white p-6 flex flex-col justify-between mt-5">
     <div class="grid grid-cols-1 lg:grid-cols-[25%_minmax(70%,_1fr)] mb-7 lg:mb-0 gap-y-5 gap-x-1">
-        @if($staff->birthday_formated)
-            <span class="text-[var(--secondary-color)] text-md font-bold">
-            Дата рождения:
-        </span>
-            <div class="flex items-center ">
-            <span class="text-[#4C4C4C] text-md pt-3 sm:ps-3 sm:pt-0">
-                {{$staff->birthday_formated}}
-            </span>
-            </div>
-        @endif
+{{--        @if($staff->birthday_formated)--}}
+{{--            <span class="text-[var(--secondary-color)] text-md font-bold">--}}
+{{--            Дата рождения:--}}
+{{--        </span>--}}
+{{--            <div class="flex items-center ">--}}
+{{--            <span class="text-[#4C4C4C] text-md pt-3 sm:ps-3 sm:pt-0">--}}
+{{--                {{$staff->birthday_formated}}--}}
+{{--            </span>--}}
+{{--            </div>--}}
+{{--        @endif--}}
 
-        @if($staff->birthplace)
-            <span class="text-[var(--secondary-color)] text-md font-bold">Место рождения:</span>
-            <div class="flex items-center">
-            <span class="text-[#4C4C4C] text-md pt-3 sm:ps-3 sm:pt-0">
-                {{$staff->birthplace}}
-            </span>
-            </div>
-        @endif
+{{--        @if($staff->birthplace)--}}
+{{--            <span class="text-[var(--secondary-color)] text-md font-bold">Место рождения:</span>--}}
+{{--            <div class="flex items-center">--}}
+{{--            <span class="text-[#4C4C4C] text-md pt-3 sm:ps-3 sm:pt-0">--}}
+{{--                {{$staff->birthplace}}--}}
+{{--            </span>--}}
+{{--            </div>--}}
+{{--        @endif--}}
 
-        @if($staff->residence)
-            <span class="text-[var(--secondary-color)] text-md font-bold">Место жительства:</span>
-            <div class="flex items-center">
-            <span class="text-[#4C4C4C] text-md pt-3 sm:ps-3 sm:pt-0">
-                {{$staff->residence}}
-            </span>
-            </div>
-        @endif
+{{--        @if($staff->residence)--}}
+{{--            <span class="text-[var(--secondary-color)] text-md font-bold">Место жительства:</span>--}}
+{{--            <div class="flex items-center">--}}
+{{--            <span class="text-[#4C4C4C] text-md pt-3 sm:ps-3 sm:pt-0">--}}
+{{--                {{$staff->residence}}--}}
+{{--            </span>--}}
+{{--            </div>--}}
+{{--        @endif--}}
 
         @if($staff->education)
             <span class="text-[var(--secondary-color)] text-md font-bold">Образование:</span>

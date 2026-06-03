@@ -86,9 +86,9 @@
         @endif
 
 
-        @component('documents.public.includes.block',['list'=> $speciality->publicDocuments()])
-            Документы
-        @endcomponent
+{{--        @component('documents.public.includes.block',['list'=> $speciality->publicDocuments()])--}}
+{{--            Документы--}}
+{{--        @endcomponent--}}
 
         @component('public.faq.section',['list'=>$speciality->faq(true)->get()])
             Вопросы о программе

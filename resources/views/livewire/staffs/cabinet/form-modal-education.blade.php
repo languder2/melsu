@@ -4,6 +4,7 @@ use Livewire\Volt\Component;
 use App\Models\Staff\Staff;
 use App\Models\Staff\Education;
 use Illuminate\Support\Str;
+use Livewire\Attributes\On;
 
 new class extends Component {
     public Staff $staff;
@@ -131,7 +132,7 @@ new class extends Component {
             else
                 $newArray[$k] = $value;
 
-            $this->educations = $newArray;
+        $this->educations = $newArray;
     }
 
     protected function updateOrder(): void
@@ -143,6 +144,7 @@ new class extends Component {
         }
     }
 
+    #[On('trigger-education-save')]
     public function save(): void
     {
         $this->validate();
@@ -155,12 +157,12 @@ new class extends Component {
         foreach ($this->educations as $data) {
             $updateData = [
                 'university' => $data['university'] ?: null,
-                'year'       => $data['year'] ?: null,
-                'type'       => 'Education',
-                'level'      => $data['level'] ?: null,
+                'year' => $data['year'] ?: null,
+                'type' => 'Education',
+                'level' => $data['level'] ?: null,
                 'speciality' => $data['speciality'] ?: null,
-                'is_show'    => (bool) $data['is_show'],
-                'order'      => (int) $data['order'],
+                'is_show' => (bool)$data['is_show'],
+                'order' => (int)$data['order'],
             ];
 
             if (!empty($data['id']))
@@ -171,17 +173,12 @@ new class extends Component {
         }
 
         $this->loadEducations();
-
-        $this->dispatch('notify', message: 'Сведения об образовании успешно сохранены!');
-
-        $this->dispatch('staff-updated');
     }
 }
 ?>
 
-<div class="flex flex-col flex-1 overflow-hidden h-full">
-    <div class="flex-1 overflow-y-auto space-y-4 pr-1 mb-4">
-
+<div class="flex flex-col h-full justify-between">
+    <div class="flex-1 overflow-y-auto space-y-4 pr-1 min-h-0 pb-4">
         @php $iterator = 0; @endphp
         @foreach($educations as $key => $education)
             <div
@@ -196,7 +193,9 @@ new class extends Component {
                         class="p-1 rounded hover:bg-white border border-transparent hover:border-gray-200 text-gray-400 hover:text-gray-600 disabled:opacity-30 disabled:hover:bg-transparent"
                         title="Переместить выше"
                     >
-                        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"/></svg>
+                        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"/>
+                        </svg>
                     </button>
                     <button
                         type="button"
@@ -205,13 +204,13 @@ new class extends Component {
                         class="p-1 rounded hover:bg-white border border-transparent hover:border-gray-200 text-gray-400 hover:text-gray-600 disabled:opacity-30 disabled:hover:bg-transparent"
                         title="Переместить ниже"
                     >
-                        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
                     </button>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-3 flex-1">
-
-                    {{-- ВАЖНО: Вместо $index теперь везде используется оригинальный строковый $key --}}
                     <div class="md:col-span-9 flex flex-col gap-1">
                         <label class="text-xs font-semibold text-gray-600">Учебное заведение</label>
                         <input
@@ -220,7 +219,8 @@ new class extends Component {
                             class="w-full rounded border border-gray-300 px-3 py-1.5 text-sm focus:border-blue-500 outline-none bg-white"
                             placeholder="Например, ФГБОУ ВО «МелГУ»"
                         >
-                        @error("educations.{$key}.university") <span class="text-xs text-red-500">{{ $message }}</span> @enderror
+                        @error("educations.$key.university") <span
+                            class="text-xs text-red-500">{{ $message }}</span> @enderror
                     </div>
 
                     <div class="md:col-span-3 flex flex-col gap-1">
@@ -241,7 +241,8 @@ new class extends Component {
                             class="w-full rounded border border-gray-300 px-3 py-1.5 text-sm focus:border-blue-500 outline-none bg-white"
                             placeholder="Например, Информационные системы"
                         >
-                        @error("educations.{$key}.speciality") <span class="text-xs text-red-500">{{ $message }}</span> @enderror
+                        @error("educations.$key.speciality") <span
+                            class="text-xs text-red-500">{{ $message }}</span> @enderror
                     </div>
 
                     <div class="md:col-span-2 flex flex-col gap-1">
@@ -252,7 +253,8 @@ new class extends Component {
                             class="w-full rounded border border-gray-300 px-3 py-1.5 text-sm focus:border-blue-500 outline-none bg-white"
                             placeholder="ГГГГ"
                         >
-                        @error("educations.{$key}.year") <span class="text-xs text-red-500">{{ $message }}</span> @enderror
+                        @error("educations.$key.year") <span
+                            class="text-xs text-red-500">{{ $message }}</span> @enderror
                     </div>
 
                     <div class="md:col-span-1 flex items-center gap-2 pt-5">
@@ -262,9 +264,9 @@ new class extends Component {
                             wire:model="educations.{{ $key }}.is_show"
                             class="rounded border-gray-300 text-blue-600 focus:ring-blue-500 h-4 w-4"
                         >
-                        <label for="show-{{ $key }}" class="text-xs font-medium text-gray-700 cursor-pointer select-none">Показывать</label>
+                        <label for="show-{{ $key }}"
+                               class="text-xs font-medium text-gray-700 cursor-pointer select-none">Показывать</label>
                     </div>
-
                 </div>
 
                 <button
@@ -274,34 +276,25 @@ new class extends Component {
                     title="Удалить эту запись"
                 >
                     <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m4 0V4a1 1 0 00-1-1H10a1 1 0 00-1 1v3M4 7h16" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m4 0V4a1 1 0 00-1-1H10a1 1 0 00-1 1v3M4 7h16"/>
                     </svg>
                 </button>
-
             </div>
             @php $iterator++; @endphp
         @endforeach
-
     </div>
 
-    <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+    <div class="pt-3 border-t border-gray-100 bg-white shrink-0">
         <button
             type="button"
             wire:click="addEducation"
-            class="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-600 hover:text-blue-700 transition"
+            class="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-600 hover:text-blue-700 transition py-1"
         >
             <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
             </svg>
             Добавить еще одно образование
-        </button>
-
-        <button
-            type="button"
-            wire:click="save"
-            class="px-4 py-1.5 text-xs font-semibold bg-sky-950 hover:bg-sky-800 cursor-pointer text-white transition rounded-md shadow-sm"
-        >
-            Применить список
         </button>
     </div>
 </div>

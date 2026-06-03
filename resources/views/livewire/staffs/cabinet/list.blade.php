@@ -132,5 +132,5 @@ new class extends Component {
         {{ $staffs->links() }}
     </div>
 
-    <livewire:staffs.cabinet.form-modal />
+    <livewire:staffs.cabinet.form-modal wire:key="global-staff-edit-modal" />
 </div>

@@ -145,6 +145,11 @@ class Staff extends Model
     {
         return $this->hasMany(Education::class,'staff_id', 'id');
     }
+
+    public function awards(): HasMany
+    {
+        return $this->hasMany(Award::class,'staff_id', 'id');
+    }
 }
 
 
