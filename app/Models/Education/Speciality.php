@@ -26,6 +26,8 @@ class Speciality extends Model
 
     protected $table = 'education_specialities';
 
+    protected $with = ['department', 'faculty', 'institute'];
+
     protected $fillable = [
         'name',
         'name_profile',
@@ -108,6 +110,14 @@ class Speciality extends Model
         return $value ?? now()->format('Uv');
     }
 
+    public function divisions(): Collection
+    {
+        return collect([
+            $this->institute,
+            $this->faculty,
+            $this->department,
+        ])->filter()->values();
+    }
     public function department(): BelongsTo
     {
         return $this->belongsTo(Division::class, 'department_id', 'id');
@@ -116,6 +126,11 @@ class Speciality extends Model
     public function faculty(): BelongsTo
     {
         return $this->belongsTo(Division::class, 'faculty_id', 'id');
+    }
+
+    public function institute(): BelongsTo
+    {
+        return $this->belongsTo(Division::class, 'institute_id', 'id');
     }
 
     public function ico(): MorphOne

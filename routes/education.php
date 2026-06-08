@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Education\SpecialityController;
 use App\Http\Controllers\Education\InstituteController;
 use App\Http\Controllers\Division\DivisionController;
+use App\Http\Middleware\AuthCabinet;
+use Livewire\Volt\Volt;
+
 
 Route::prefix('admin/specialities')
     ->middleware('isAdmin')
@@ -70,5 +73,9 @@ Route::middleware('isAdmin')->prefix('admin')->group(function () {
 });
 
 /* */
+
+Route::middleware(AuthCabinet::class)->prefix('cabinet/specialities')->group(function () {
+    Volt::route('', 'specialities.cabinet.list')->name('specialities.cabinet');
+});
 
 

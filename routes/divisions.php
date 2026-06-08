@@ -8,6 +8,7 @@ use App\Http\Controllers\Division\DivisionCompilationController;
 use App\Http\Middleware\InstanceAccess;
 use App\Http\Middleware\IsAdmin;
 use App\Http\Controllers\Division\DivisionMatchingController;
+use Livewire\Volt\Volt;
 
 Route::prefix('admin/divisions')->group(function () {
     Route::get('form/{current?}',  [DivisionController::class, 'form'])->name('division:admin:form');
@@ -80,6 +81,9 @@ Route::prefix('cabinet/divisions')
 
         Route::get('form/{division?}',                      [CabinetDivisionsController::class, 'form'])
             ->name('division.cabinet.form');
+
+        Volt::route('form/{division?}/specialities',         'specialities.cabinet.list')
+                                                                ->name('division.cabinet.specialities');
 
         Route::put('save/{division?}',                      [CabinetDivisionsController::class, 'save'])
             ->name('division.cabinet.save');
