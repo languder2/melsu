@@ -12,7 +12,7 @@ new class extends Component {
     #[On('open-delete-modal')]
     public function openModal(int $id): void
     {
-        $this->speciality = Speciality::findOrFail($id);
+        $this->speciality = Speciality::withTrashed()->findOrFail($id);
 
         $this->isOpen = true;
     }
@@ -32,6 +32,19 @@ new class extends Component {
             $this->speciality->delete();
 
             $this->dispatch('notify', "Направление подготовки успешно удалено.<br>#{$this->speciality->id} {$this->speciality->spec_code} {$this->speciality->name}.<br>{$this->speciality->name_profile}");
+
+            $this->closeModal();
+
+            $this->dispatch('refresh-specialities');
+        }
+    }
+
+    public function restore(): void
+    {
+        if($this->speciality){
+            $this->speciality->restore();
+
+            $this->dispatch('notify', "Направление подготовки восстановлено.<br>#{$this->speciality->id} {$this->speciality->spec_code} {$this->speciality->name}.<br>{$this->speciality->name_profile}");
 
             $this->closeModal();
 
@@ -96,10 +109,17 @@ new class extends Component {
                         Отмена
                     </button>
 
-                    <button type="button" wire:click="delete"
-                            class="px-5 py-2 text-sm font-semibold bg-red-600 hover:bg-red-700 text-white transition rounded-md shadow-sm cursor-pointer">
-                        Удалить направление подготовки
-                    </button>
+                    @if($speciality->trashed())
+                        <button type="button" wire:click="restore"
+                                class="px-5 py-2 text-sm font-semibold bg-green-600 hover:bg-green-700 text-white transition rounded-md shadow-sm cursor-pointer">
+                            Восстановить направление подготовки
+                        </button>
+                    @else
+                        <button type="button" wire:click="delete"
+                                class="px-5 py-2 text-sm font-semibold bg-red-600 hover:bg-red-700 text-white transition rounded-md shadow-sm cursor-pointer">
+                            Удалить направление подготовки
+                        </button>
+                    @endif
                 </div>
             </div>
         </div>

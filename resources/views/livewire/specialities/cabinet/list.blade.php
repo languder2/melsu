@@ -5,7 +5,6 @@ use Livewire\Attributes\On;
 use Livewire\Attributes\Url;
 use App\Models\Education\Speciality;
 use App\Models\Division\Division;
-use App\Enums\EducationLevel;
 
 new class extends Component {
 
@@ -17,6 +16,12 @@ new class extends Component {
     #[Url]
     public string $level = '';
 
+    #[Url]
+    public string $form = '';
+
+    #[Url]
+    public ?int $is_show = null;
+
     public function rendering(\Illuminate\View\View $view): void
     {
         $view->layout('layouts.cabinet');
@@ -26,7 +31,7 @@ new class extends Component {
     {
         $searchString = trim($this->search);
 
-        $query = $this->division ? $this->division->specialities() : Speciality::query();
+        $query = $this->division ? $this->division->allSpecialities() : Speciality::query();
 
         $specialities = $query->orderBy('name')
             ->when($searchString, function ($query) use ($searchString) {
@@ -40,11 +45,21 @@ new class extends Component {
             ->when($this->level, function ($query) {
                 $query->where('level', $this->level);
             })
+            ->when($this->form, function ($query) {
+                $query->whereHas('recruitmentProfiles', function ($subQuery) {
+                    $subQuery->where('form', $this->form);
+                });
+            })
+            ->when(!is_null($this->is_show), function ($query) {
+                if($this->is_show === 3)
+                    $query->onlyTrashed();
+                else
+                    $query->where('show',$this->is_show);
+            })
             ->get();
 
         return [
             'specialities' => $specialities,
-            'educationLevels' => EducationLevel::cases(),
         ];
     }
 
@@ -54,54 +69,46 @@ new class extends Component {
 };
 ?>
 
-<div class="flex flex-col gap-3" x-data="{ notification: null }" @notify.window="notification = $event.detail; setTimeout(() => notification = null, 3000)">
+<div class="flex flex-col gap-3"
+     x-data="{ notification: null }"
+     @notify.window="notification = $event.detail; setTimeout(() => notification = null, 3000)"
+>
+
+    @include('livewire.cabinet.modal.notification')
+
     @if($division)
         <div class="-mb-3">
             @component('divisions.cabinet.item', ['division' => $division, 'has_menu' => true])@endcomponent
         </div>
     @else
-        <div class="p-3 rounded-sm shadow bg-white font-medium text-2xl">
-            Направления подготовки
+        <div class="p-3 flex justify-between items-center rounded-sm shadow bg-white">
+            <h3 class="font-medium text-2xl">
+                Направления подготовки
+            </h3>
+            <div>
+                <button type="button"
+                        wire:click="$dispatch('open-edit-modal', { id: null })"
+                        class="text-sky-950 hover:text-sky-700 text-sm font-medium cursor-pointer"
+                >
+                    <x-lucide-plus-square class="w-6" />
+                </button>
+
+            </div>
         </div>
     @endif
 
-    <div x-show="notification"
-         x-transition
-         class="fixed bottom-5 right-5 z-50 bg-green-600 text-white px-4 py-3 rounded shadow-lg flex items-center gap-2"
-         style="display: none;">
-        <span x-html="notification"></span>
-    </div>
-
-    <div class="bg-white shadow px-3 pt-1 pb-2 rounded-sm flex gap-4 items-end">
-        <div class="flex-1">
-            <x-form.input
-                wire:key="search-field"
-                wire:model.live.debounce.300ms="search"
-                label="Поиск по имени..."
-            />
-        </div>
-
-        @if(!empty($educationLevels))
-            <div class="w-64">
-                <label for="level-filter" class="block text-sm font-medium text-gray-700 mb-1">Уровень образования</label>
-                <select
-                    id="level-filter"
-                    wire:model.live="level"
-                    class="w-full rounded-sm border border-gray-300 bg-white px-3 py-2 text-sm shadow-xs focus:border-sky-500 focus:outline-hidden focus:ring-1 focus:ring-sky-500"
-                >
-                    <option value="">Все уровни</option>
-                    @foreach($educationLevels as $enumOption)
-                        <option value="{{ $enumOption->value }}">{{ $enumOption->label() }}</option>
-                    @endforeach
-                </select>
-            </div>
-        @endif
-    </div>
+    @include('livewire.specialities.cabinet.filter')
 
     <div class="grid grid-cols-[auto_1fr_auto_auto] gap-x-4 gap-y-3 bg-white p-4 shadow rounded-sm">
         @forelse($specialities as $speciality)
-            <div wire:key="staff-row-{{ $speciality->id }}" class="grid grid-cols-subgrid col-span-full border-b border-gray-100 pb-2 last:border-0">
-                <div class="text-center font-mono text-gray-400">
+            <div wire:key="staff-row-{{ $speciality->id }}"
+                 class="grid grid-cols-subgrid col-span-full border-b border-gray-100 pb-2 last:border-0"
+            >
+                <div class="col-span-full flex gap-2 flex-wrap mt-1 pl-8">
+                </div>
+
+
+                <div class="text-center font-mono {{ $speciality->show ? 'text-gray-400' : 'text-red-700' }}">
                     #{{ $speciality->id }}
                 </div>
 
@@ -120,32 +127,36 @@ new class extends Component {
                 </div>
 
                 <div class="justify-self-end">
-                    <button type="button" wire:click="$dispatch('open-edit-modal', { id: {{ $speciality->id }} })" class="text-sky-950 hover:text-sky-700 text-sm font-medium cursor-pointer">
+                    <button type="button"
+                            wire:click="$dispatch('open-edit-modal', { id: {{ $speciality->id }} })"
+                            class="text-sky-950 hover:text-sky-700 text-sm font-medium cursor-pointer"
+                    >
                         <x-lucide-clipboard-edit class="w-6" />
                     </button>
                 </div>
 
-                <div class="justify-self-end">
-                    <button type="button" wire:click="$dispatch('open-delete-modal', { id: {{ $speciality->id }} })" class="text-red-950 hover:text-red-700 text-sm font-medium cursor-pointer outline-none">
-                        <x-lucide-trash-2 class="w-6" />
-                    </button>
-                </div>
+                @if($speciality->trashed())
+                    <div class="justify-self-end">
+                        <button type="button"
+                                wire:click="$dispatch('open-delete-modal', { id: {{ $speciality->id }} })"
+                                class="text-red-950 hover:text-red-700 text-sm font-medium cursor-pointer outline-none"
+                        >
+                            <x-lucide-rotate-ccw-square class="w-6" />
+                        </button>
+                    </div>
+                @else
+                    <div class="justify-self-end">
+                        <button type="button"
+                                wire:click="$dispatch('open-delete-modal', { id: {{ $speciality->id }} })"
+                                class="text-red-950 hover:text-red-700 text-sm font-medium cursor-pointer outline-none"
+                        >
+                            <x-lucide-trash-2 class="w-6" />
+                        </button>
+                    </div>
+                @endif
 
-                <div class="col-span-full flex gap-2 flex-wrap mt-1 pl-8">
-                    @foreach($speciality->divisions() as $item)
-                        <a href="{{ route('division.cabinet.specialities', $item) }}" class="inline-flex items-center gap-1 text-xs {{ $division->id === $item->id ? 'bg-sky-600 text-white' : 'bg-gray-100 text-gray-800 hover:bg-gray-200' }} px-2 py-0.5 rounded-sm">
-                            #{{ $item->id }} {{ $item->name }}
-                        </a>
-                    @endforeach
+                @include('livewire.specialities.cabinet.tags')
 
-                    <button
-                        type="button"
-                        wire:click="$set('level', '{{ $speciality->level->value }}')"
-                        class="cursor-pointer inline-flex items-center gap-1 text-xs px-2 py-0.5 rounded-sm transition {{ $this->level === $speciality->level->value ? 'bg-sky-600 text-white' : 'bg-gray-100 text-gray-800 hover:bg-gray-200' }}"
-                    >
-                        {{ $speciality->level->label() }}
-                    </button>
-                </div>
             </div>
         @empty
             <div class="col-span-full text-center text-gray-400 py-4">
@@ -155,5 +166,5 @@ new class extends Component {
     </div>
 
     <livewire:cabinet.modal.delete />
-    <livewire:staffs.cabinet.form-modal wire:key="global-staff-edit-modal" />
+    <livewire:specialities.cabinet.form-modal wire:key="speciality-edit-modal" />
 </div>

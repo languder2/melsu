@@ -182,11 +182,11 @@
             </a>
         @endif
 
-        @if(auth()->user()->isFinance() || auth()->user()->isSuper())
+        @if(auth()->user()->isEditor())
             <a
-                href="{{ route('specialities.cabinet') }}"
+                href="{{ route('specialities.cabinet.list') }}"
 
-                {{ Route::is('specialities.cabinet') ? "open" : "" }}
+                {{ Route::is('specialities.cabinet.*') ? "open" : "" }}
 
                 class="
                 cursor-pointer block p-3

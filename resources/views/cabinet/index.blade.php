@@ -74,6 +74,15 @@
                 />
             @endif
 
+            @if(auth()->user()->isEditor() || auth()->user()->isAdmin() || auth()->user()->isSuper())
+                <x-cabinet.sections.index-link
+                    lucide="layout-list"
+                    color="text-blue-950"
+                    text="Направления подготовки"
+                    :link=" route('specialities.cabinet.list')"
+                />
+            @endif
+
         </div>
     @endauth
 @endsection

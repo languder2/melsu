@@ -35,6 +35,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Query\Builder as QueryBuilder1;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Str;
@@ -92,6 +93,7 @@ class Division extends Model
         'code',
         'parent_id',
         'coordinator_id',
+        'type',
         'is_show',
         'is_approved'
     ];
@@ -100,7 +102,7 @@ class Division extends Model
     ];
 
     public ?int $rootIdBeforeSave;
-    protected static function boot()
+    protected static function boot(): void
     {
         parent::boot();
 
@@ -113,6 +115,7 @@ class Division extends Model
         });
 
         static::saving(function ($item) {
+
 //            $item->rootIdBeforeSave = $item->getRootId();
         });
 
@@ -200,9 +203,15 @@ class Division extends Model
         return $hasMany->orderBy('sort')->orderByRaw(EducationLevel::getOrder())
             ->orderBy('spec_code')->orderBy('name');
     }
+
+    public function allSpecialities(): HasMany
+    {
+        return $this->hasMany(Speciality::class, $this->type->getField(),'id');
+    }
     public function publicSpecialities(): HasMany
     {
         return $this->hasMany(Speciality::class, $this->type->getField(),'id')
+            ->where('show', true)
             ->orderBy('sort')->orderByRaw(EducationLevel::getOrder())
             ->orderBy('spec_code')->orderBy('name');
     }
@@ -493,9 +502,14 @@ class Division extends Model
     }
     /* end Staff Links*/
 
-    public static function educationDepartments(): Collection
+    public function scopeEducationalUnits(Builder $query): Builder
     {
-        return self::where('type',DivisionType::Department)->get();
+        return $query->whereIn('type',[DivisionType::Faculty,DivisionType::Institute, DivisionType::Department]);
+    }
+
+    public function scopeEducationalDepartments(Builder $query): Builder
+    {
+        return $query->where('type',DivisionType::Department);
     }
 
     public function getHistoryFormAttribute(): string

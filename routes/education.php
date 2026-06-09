@@ -75,7 +75,7 @@ Route::middleware('isAdmin')->prefix('admin')->group(function () {
 /* */
 
 Route::middleware(AuthCabinet::class)->prefix('cabinet/specialities')->group(function () {
-    Volt::route('', 'specialities.cabinet.list')->name('specialities.cabinet');
+    Volt::route('', 'specialities.cabinet.list')->name('specialities.cabinet.list');
 });
 
 

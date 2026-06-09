@@ -26,7 +26,7 @@ class Speciality extends Model
 
     protected $table = 'education_specialities';
 
-    protected $with = ['department', 'faculty', 'institute'];
+    protected $with = ['department', 'faculty', 'institute', 'profiles', 'recruitmentProfiles'];
 
     protected $fillable = [
         'name',
@@ -56,58 +56,53 @@ class Speciality extends Model
         return $this->where('code', $value)->first() ??  $this->where('id', $value)->first();
     }
 
-    public static function FormRules($id): array
+    protected static function boot(): void
     {
-        return [
-//            'test'              => 'required',
-            'name'              => 'required',
-            'name_profile'      => '',
-            'code'              => "required|unique:education_specialities,code,$id,id,deleted_at,NULL",
-            'spec_code'         => "required",
-            'faculty_id'        => '',
-            'department_id'     => '',
-            'level'             => 'required',
-            'favorite'          => '',
-            'description'       => '',
-            'sort'              => 'nullable|numeric',
-            'show'              => '',
-            'is_recruitment'    => 'boolean|nullable',
-        ];
-    }
+        parent::boot();
 
-    public static function FormMessage(): array
-    {
-        return [
-            'name' => 'Укажите заголовок',
-            'code.required' => 'Код должен быть указан',
-            'code.unique' => 'Код должен быть уникальным',
-            'spec_code' => "Код специальности должен быть указан",
-            'level' => 'Укажите уровень',
-        ];
-    }
+        static::deleting(function ($item) {
+        });
 
-    public function fill(array $attributes):?self
-    {
-        if(!empty($attributes)){
+        static::saving(function ($item) {
+            if ($item->isDirty('department_id')) {
+                if (empty($item->department_id)) {
+                    $item->faculty_id = null;
+                    $item->institute_id = null;
+                    return;
+                }
 
-            if(array_key_exists('is_recruitment', $attributes))
-                $attributes['is_recruitment'] = (bool) $attributes['is_recruitment'];
+                $department = Division::find($item->department_id);
 
-            if(array_key_exists('show', $attributes))
-                $attributes['show'] = (bool) $attributes['show'];
-        }
+                if ($department) {
+                    $ancestors = $department->ancestors()
+                        ->select('id', 'type')
+                        ->get()
+                        ->mapWithKeys(function ($division) {
+                            return [
+                                $division->getRawOriginal('type') => $division->id
+                            ];
+                        });
 
-        return parent::fill($attributes);
+                    $item->faculty_id = $ancestors->get('faculty');
+                    $item->institute_id = $ancestors->get('institute');
+                }
+            }
+
+            if($item->isDirty('is_recruitment'))
+                $item->is_recruitment = (bool) $item->is_recruitment;
+
+            if($item->isDirty('show'))
+                $item->is_recruitment = (bool) $item->show;
+
+        });
+
+        static::saved(function ($item) {
+        });
     }
 
     public function relation():MorphTo
     {
         return $this->morphTo();
-    }
-
-    public function getIdAttribute($value):int
-    {
-        return $value ?? now()->format('Uv');
     }
 
     public function divisions(): Collection
@@ -172,6 +167,14 @@ class Speciality extends Model
     public function profiles(): HasMany
     {
         return $this->hasMany(Profile::class, 'speciality_id', 'id');
+    }
+    public function profilesByType(): Collection
+    {
+        return $this->profiles->keyBy(fn($item) => $item->form->name);
+    }
+    public function recruitmentProfiles(): HasMany
+    {
+        return $this->profiles()->where('is_recruitment', true);
     }
     public function getPublicProfilesAttribute(): Collection
     {
