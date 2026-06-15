@@ -28,45 +28,17 @@
                 {!! $item->speciality->level->getAltName() !!}
             </td>
             <td class="p-4 border-b" itemprop="eduForm">
-                {!! $item->profile->form->getName() !!}
+                {!! $item->form->getName() !!}
             </td>
 
-            <td class="p-4 border-b">
-                <x-info.education.show-documents
-                    :documents="$item->documents"
-                    code="opMain"
-                />
-            </td>
-            <td class="p-4 border-b">
-                <x-info.education.show-documents
-                    :documents="$item->documents"
-                    code="educationPlan"
-                />
-            </td>
-            <td class="p-4 border-b">
-                <x-info.education.show-documents
-                    :documents="$item->documents"
-                    code="educationRpd"
-                />
-            </td>
-            <td class="p-4 border-b">
-                <x-info.education.show-documents
-                    :documents="$item->documents"
-                    code="educationShedule"
-                />
-            </td>
-            <td class="p-4 border-b">
-                <x-info.education.show-documents
-                    :documents="$item->documents"
-                    code="eduPr"
-                />
-            </td>
-            <td class="p-4 border-b">
-                <x-info.education.show-documents
-                    :documents="$item->documents"
-                    code="methodology"
-                />
-            </td>
+
+            @foreach(['opMain', 'educationPlan', 'educationRpd', 'educationShedule', 'eduPr', 'methodology'] as $code)
+                <td class="p-4 border-b">
+                    <x-info.education.show-documents
+                        :documents="$item->getDocuments()->whereHas('options', fn($query) => $query->where('property', $code))->with('options')->get()"
+                    />
+                </td>
+            @endforeach
         </tr>
     @empty
         <tr class="bg-white text-center" itemprop="{{ $prop }}">

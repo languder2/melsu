@@ -27,21 +27,19 @@
                 {!! $item->speciality->level->getAltName() !!}
             </td>
             <td class="p-4 border-b" itemprop="eduForm">
-                {!! $item->profile->form->getName() !!}
+                {!! $item->form->getName() !!}
             </td>
             <td class="p-4 border-b" itemprop="learningTerm">
-                {!! $item->profile->formatedDuration()  !!}
+                {!! $item->formatedDuration()  !!}
             </td>
             <td class="p-4 border-b">
                 <x-info.education.show-documents
-                    :documents="$item->documents"
-                    code="eduPred"
+                    :documents="$item->getDocuments()->whereHas('options', fn($query) => $query->where('property', 'eduPred'))->with('options')->get()"
                 />
             </td>
             <td class="p-4 border-b">
                 <x-info.education.show-documents
-                    :documents="$item->documents"
-                    code="eduPrac"
+                    :documents="$item->getDocuments()->whereHas('options', fn($query) => $query->where('property', 'eduPrac'))->with('options')"
                 />
             </td>
         </tr>

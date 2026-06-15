@@ -3,11 +3,13 @@
 use Livewire\Volt\Component;
 use Livewire\Attributes\On;
 use Livewire\Attributes\Url;
+use Livewire\Attributes\Locked;
 use App\Models\Education\Speciality;
 use App\Models\Division\Division;
 
 new class extends Component {
 
+    #[Locked]
     public ?Division $division = null;
 
     #[Url]

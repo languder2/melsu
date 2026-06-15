@@ -49,7 +49,6 @@ class InfoController extends Controller
 
     public function education(InfoBase $info, InfoEducation $education):View
     {
-
         return view('info.education', compact('info', 'education'));
     }
     public function educationSummary(InfoBase $info, InfoEducation $education):View

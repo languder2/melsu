@@ -1,3 +1,6 @@
+@props([
+    'info'  => new \App\Models\Info\InfoBase()
+])
 <div class="flex flex-col py-1">
     @foreach($info->getMenu() as $item)
         <a

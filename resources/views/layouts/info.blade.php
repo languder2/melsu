@@ -32,8 +32,10 @@
                     @yield('content-header')
                 </div>
             @endif
+
             <div class="flex flex-col gap-4 relative h-full">
                 @yield('content')
+                {{ $slot ?? null }}
             </div>
         </div>
     </div>

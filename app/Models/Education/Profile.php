@@ -7,8 +7,9 @@ use App\Enums\EducationBasis;
 use App\Enums\EducationForm;
 use App\Enums\Info\Types;
 use App\Enums\Info\Vacant;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use App\Models\{Global\Options, Info\Info, Link, Sections\FAQ, Staff\Affiliation};
+use App\Models\{Global\Options, Info\Info, Link, Sections\FAQ};
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -24,6 +25,8 @@ use App\Models\Documents\Document;
     public const string Path = 'documents/education/profile';
 
     protected $table = 'education_profiles';
+
+    protected $with = ['getDocuments.options'];
 
     protected $fillable = [
         'id',
@@ -105,21 +108,30 @@ use App\Models\Documents\Document;
         return $this->belongsTo(Speciality::class, 'speciality_id', 'id');
     }
 
-    public function getDocuments(): MorphMany
-    {
-        return $this->morphMany(Document::class, 'relation');
-    }
+
     public function documents(): Collection
     {
         return $this->getDocuments;
     }
 
+    public function getDocuments(): MorphMany
+    {
+        return $this->morphMany(Document::class, 'relation')->with('options');
+    }
+    public function documentsWithOptionValue(string $value): array
+    {
+        return $this->getDocuments
+            ->filter(fn($doc) => $doc->options->contains('property', $value))
+            ->map(fn($doc) => ['link' => $doc->link, 'title' => $doc->title])
+            ->values()->all();
+    }
     public function documentsByCodes():Collection
     {
         return $this->getDocuments
-            ->filter(fn(Document $document) => $document->code)
+            ->whereNotNull('code')
+            ->where('code', '!==', '')
             ->groupBy('code')
-            ->map(fn(Collection $documents) => $documents->keyBy('id'));
+            ->map(fn(Collection $group) => $group->keyBy('id'));
     }
 
     public function faq($all = null, $trashed = null): MorphMany
@@ -161,8 +173,7 @@ use App\Models\Documents\Document;
 //        return $record ? $result : $result->duration ?? null;
 //    }
 
-    public function years($type = null): ?int
-    {
+    public function years($type = null): ?int    {
         return intdiv($this->duration($type),12);
     }
     public function months($type = null): ?int
@@ -424,6 +435,12 @@ use App\Models\Documents\Document;
         return $this->options()->where('code',$option)->first()
             ?? (new Options(['code' => $option]))->relation()->associate($this);
     }
+
+    public function scopePublic(Builder $query): Builder
+    {
+        return $query->where('show', true);
+    }
+
 
 
 }

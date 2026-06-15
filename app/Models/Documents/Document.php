@@ -16,14 +16,18 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Kalnoy\Nestedset\NodeTrait;
 
 class Document extends Model
 {
     use SoftDeletes, hasSubordination, hasContents, hasOptions, hasTags, hasImage;
+    use NodeTrait;
 
     protected $table        = 'documents';
 
     protected $appends      = ['link', 'tag_names'];
+
+    protected $with      = ['options'];
 
     protected $fillable     = [
         'title',
@@ -124,10 +128,10 @@ class Document extends Model
             }
         });
 
-        static::saved(fn($item) => Cache::forever(
-            "documents-category-{$item->category->id}",
-            view('documents.public.category', ['category' => $item->category])->render()
-        ));
+//        static::saved(fn($item) => Cache::forever(
+//            "documents-category-{$item->category->id}",
+//            view('documents.public.category', ['category' => $item->category])->render()
+//        ));
     }
 
     public function relation():MorphTo

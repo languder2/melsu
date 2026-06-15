@@ -33,11 +33,6 @@ use Illuminate\Support\Collection;
         "type"  => Types::class,
     ];
 
-    public function __construct(array $attributes = [])
-    {
-        parent::__construct($attributes);
-        $this->id = now()->format('Uv');
-    }
     protected static function boot()
     {
         parent::boot();
