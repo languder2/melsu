@@ -74,18 +74,18 @@ select:-webkit-autofill:focus {
 
 
 
-::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
-}
-::-webkit-scrollbar-track {
-    background: transparent;
+/*::-webkit-scrollbar {*/
+/*    width: 10px;*/
+/*    height: 10px;*/
+/*}*/
+/*::-webkit-scrollbar-track {*/
+/*    background: transparent;*/
 
-}
-::-webkit-scrollbar-thumb {
-    border-radius: 20px;
-    border: 1px solid var(--color-blue-hover);
-}
+/*}*/
+/*::-webkit-scrollbar-thumb {*/
+/*    border-radius: 20px;*/
+/*    border: 1px solid var(--color-blue-hover);*/
+/*}*/
 /*aside.right > .wrapper{*/
 /*    direction: rtl;*/
 /*}*/

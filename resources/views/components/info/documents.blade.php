@@ -1,4 +1,4 @@
-<div class="flex flex-col gap-3">
+<div class="flex flex-col gap-3" id="{{ $prop }}">
     <h4 class="font-semibold mt-4 -mb-2 flex gap-2 justify-between items-center">
         {!! $label !!}
 

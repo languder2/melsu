@@ -4,6 +4,7 @@ namespace App\Traits;
 
 use App\Models\Global\Options;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 trait hasOptions
 {
@@ -14,11 +15,10 @@ trait hasOptions
 
     public function option(string $code = 'content'): Options
     {
-        return $this->MorphOne(Options::class, 'relation')
-            ->where('code', $code)
-            ->first()
-            ?? (new Options(['code' => $code]))->relation()->associate($this);
+        return $this->morphOne(Options::class, 'relation')
+            ->firstOrNew(['code' => $code]);
     }
+
     public function setOption(string $code = 'content', ?string $value = null): void
     {
         if(is_null($value))
@@ -26,6 +26,7 @@ trait hasOptions
 
         else
             $this->option($code)->fill(['property' => $value])->save();
+
     }
     public function getOption(string $code = 'content'): ?string
     {
@@ -45,7 +46,8 @@ trait hasOptions
 
     public function removeOptions(array $codes = []): void
     {
-        $this->options()->whereIn('code', $codes)->delete();
+        if(count($codes))
+            $this->options()->whereIn('code', $codes)->delete();
     }
 
 

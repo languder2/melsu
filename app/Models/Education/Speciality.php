@@ -11,6 +11,9 @@ use App\Models\Info\Info;
 use App\Models\Minor\Career;
 use App\Models\Page\Content as PageContent;
 use App\Models\Sections\FAQ;
+use App\Traits\hasInfos;
+use App\Traits\hasOptions;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -22,7 +25,7 @@ use Illuminate\Support\Collection;
 
 class Speciality extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, hasOptions, hasInfos;
 
     protected $table = 'education_specialities';
 
@@ -280,33 +283,42 @@ class Speciality extends Model
 
         return $this->is_recruitment;
     }
-
-    public function options(): MorphMany
+    public function scopeIsShow(Builder $query): Builder
     {
-        return $this->morphMany(Options::class, 'relation');
-    }
-    public function option(string $code): Options
-    {
-        return $this->options()->where('code',$code)->first()
-            ?? (new Options(['code' => $code]))->relation()->associate($this);
-    }
-    public function optionValue(string $code): ?string
-    {
-        return $this->option($code)->property;
+        return $query->where('show',true);
     }
 
-    public function infos(): MorphMany
+    public static function eduNir(): Collection
     {
-        return $this->morphMany(Info::class, 'relation');
-    }
-    public function info(): MorphMany
-    {
-        return $this->morphMany(Info::class,'relation');
+        return self::with('infos')->isShow()->get()
+            ->map(fn($item) => [
+                'id'                => $item->id,
+                'spec_code'         => $item->spec_code,
+                'spec_name'         => $item->name,
+                'spec_profile'      => $item->name_profile,
+                'level_name'        => $item->level->fullName(),
+
+                'perechenNir'       => $item->getInfoValueByCode('perechenNir'),
+                'napravNir'         => $item->getInfoValueByCode('napravNir'),
+                'resultNir'         => $item->getInfoValueByCode('resultNir'),
+                'baseNir'           => $item->getInfoValueByCode('baseNir'),
+            ]
+        );
     }
 
-    public function getInfoByCode($code): ?Info
+    public static function graduateJob(): Collection
     {
-        return $this->info->where('code',$code)->first() ?? (new Info(['code' => $code]))->relation()->associate($this);
+        return self::with('infos')->isShow()->get()
+            ->map(fn($item) => [
+                'id'                => $item->id,
+                'spec_code'         => $item->spec_code,
+                'spec_name'         => $item->name,
+                'spec_profile'      => $item->name_profile,
+
+                'v1'                => $item->getInfoValueByCode('v1'),
+                't1'                => $item->getInfoValueByCode('t1'),
+            ]
+        );
     }
 
 }

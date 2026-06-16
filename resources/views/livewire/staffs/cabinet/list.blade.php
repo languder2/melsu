@@ -5,8 +5,9 @@ use Livewire\WithPagination;
 use Livewire\Attributes\Url;
 use App\Models\Staff\Staff;
 use Livewire\Attributes\On;
+use Livewire\Attributes\Layout;
 
-new class extends Component {
+new #[Layout('layouts.cabinet')] class extends Component {
     use WithPagination;
 
     #[Url]
@@ -14,11 +15,6 @@ new class extends Component {
 
     #[Url]
     public int $countOnPage = 20;
-
-    public function rendering($view): void
-    {
-        $view->layout('layouts.cabinet');
-    }
 
     public function updatingSearch(): void
     {

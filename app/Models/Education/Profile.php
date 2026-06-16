@@ -7,6 +7,7 @@ use App\Enums\EducationBasis;
 use App\Enums\EducationForm;
 use App\Enums\Info\Types;
 use App\Enums\Info\Vacant;
+use App\Traits\hasOptions;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use App\Models\{Global\Options, Info\Info, Link, Sections\FAQ};
@@ -21,7 +22,7 @@ use App\Models\Documents\Document;
  */
 #[\AllowDynamicProperties] class Profile extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, hasOptions;
     public const string Path = 'documents/education/profile';
 
     protected $table = 'education_profiles';
@@ -392,23 +393,19 @@ use App\Models\Documents\Document;
 
     public function getInfoByCode($code): ?Info
     {
-        return $this->info->where('code',$code)->first() ?? (new Info(['code' => $code]))->relation()->associate($this);
-    }
-    public function getInfoByTypeCode($type,$code): ?Info
-    {
-        return $this->info->where('code',$code)->first();
+        return $this->info()->firstOrNew(['code' => $code]);
     }
     public function getInfos(): Collection
     {
-        return $this->info->get()->keyBy('code');
+        return $this->info->keyBy('code');
     }
     public function getInfosByType($type): Collection
     {
-        return $this->info->where('type',$type)->get()->keyBy('code');
+        return $this->info()->where('type',$type)->get()->keyBy('code');
     }
-    public function getInfoContent($code): string|int|null
+    public function getInfoContent($code): ?string
     {
-        return $this->info->where('code',$code)->first()->content ?? null;
+        return $this->info()->firstOrNew(['code' => $code])->content;
     }
 
     public function getCourses($type, $code, int $course): Collection
@@ -439,6 +436,57 @@ use App\Models\Documents\Document;
     public function scopePublic(Builder $query): Builder
     {
         return $query->where('show', true);
+    }
+
+    public static function eduOp(): Collection
+    {
+        return self::with([
+            'speciality',
+            'getDocuments',
+            'getDocuments.options'
+        ])
+            ->whereHas('speciality')
+            ->public()
+            ->get()
+            ->map(function ($profile) {
+                return [
+                    'spec_code'             => $profile->speciality->spec_code,
+                    'spec_name'             => $profile->speciality->name,
+                    'spec_profile'          => $profile->speciality->name_profile,
+                    'level_alt_name'        => $profile->speciality->level?->getAltName() ?? '',
+                    'form_name'             => $profile->form?->getName() ?? '',
+                    'duration'              => $profile->formatedDuration(),
+                    'opMain'                => $profile->documentsWithOptionValue('opMain'),
+                    'educationPlan'         => $profile->documentsWithOptionValue('educationPlan'),
+                    'educationRpd'          => $profile->documentsWithOptionValue('educationRpd'),
+                    'educationShedule'      => $profile->documentsWithOptionValue('educationShedule'),
+                    'eduPr'                 => $profile->documentsWithOptionValue('eduPr'),
+                    'methodology'           => $profile->documentsWithOptionValue('methodology'),
+                ];
+            });
+    }
+
+    public static function eduAccred(): Collection
+    {
+        return self::with([
+            'speciality',
+            'getDocuments',
+            'getDocuments.options'
+        ])
+            ->whereHas('speciality')
+            ->public()
+            ->get()
+            ->map(fn($profile) => [
+                    'spec_code'         => $profile->speciality->spec_code,
+                    'spec_name'         => $profile->speciality->name,
+                    'spec_profile'      => $profile->speciality->name_profile,
+                    'level_alt_name'    => $profile->speciality->level?->getAltName() ?? '',
+                    'form_name'         => $profile->form?->getName() ?? '',
+                    'duration'          => $profile->formatedDuration(),
+                    'eduPredDocs'       => $profile->documentsWithOptionValue('eduPred'),
+                    'eduPracDocs'       => $profile->documentsWithOptionValue('eduPrac')
+                ]
+            );
     }
 
 

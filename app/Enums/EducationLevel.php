@@ -42,6 +42,16 @@ enum EducationLevel: string
             self::Postgraduate  => __('education-levels.Postgraduate'),
         };
     }
+    public function fullName(): string
+    {
+        return match ($this) {
+            self::Bachelor      => __('education-levels.Bachelor'),
+            self::Specialist    => __('education-levels.Specialist'),
+            self::Master        => __('education-levels.Master'),
+            self::Colleges      => __('education-levels.SPO'),
+            self::Postgraduate  => __('education-levels.Postgraduate'),
+        };
+    }
     public function getAltName(): string
     {
         return match ($this) {
