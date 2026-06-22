@@ -7,6 +7,7 @@ use Livewire\Attributes\On;
 use App\Models\Division\Division;
 use App\Http\Requests\Education\SpecialityRequest;
 use Illuminate\Validation\Rule;
+use App\Enums\EducationForm;
 
 new class extends Component {
     use WithFileUploads;
@@ -15,7 +16,7 @@ new class extends Component {
     public bool $isOpen = false;
     public ?Speciality $speciality = null;
 
-    public string $code = '';
+    public ?string $code = null;
     public string $spec_code = '';
     public string $name = '';
     public string $name_profile = '';
@@ -50,6 +51,7 @@ new class extends Component {
             'nullable',
             'string',
             'max:255',
+
             Rule::unique('education_specialities', 'code')->ignore($this->speciality?->id),
         ];
 
@@ -70,11 +72,11 @@ new class extends Component {
 
         $this->speciality = Speciality::with('profiles')->withTrashed()->findOrNew($id);
 
-        $this->code             = $this->speciality->code ?? '';
+        $this->code             = $this->speciality->code ?? null;
         $this->spec_code        = $this->speciality->spec_code ?? '';
         $this->name             = $this->speciality->name ?? '';
         $this->name_profile     = $this->speciality->name_profile ?? '';
-        $this->level            = $this->speciality->level->value ?? '';
+        $this->level            = $this->speciality->level->value ?? 'bachelor';
         $this->courses          = $this->speciality->courses;
         $this->favorite         = $this->speciality->favorite ?? 0;
 
@@ -89,36 +91,23 @@ new class extends Component {
 
     public function save(): void
     {
-        try {
-            $validated = $this->validate();
-        } catch (\Illuminate\Validation\ValidationException $e) {
-            // Получаем весь массив ошибок: ['field_name' => ['Error message']]
-            $errors = $e->validator->errors()->toArray();
-
-            // Дампим в консоль/экран для отладки
-            dd($errors);
-
-            // Или логируем: info($errors);
-
-            throw $e; // Обязательно пробрасываем дальше, чтобы Livewire вывел их во фронтенд
-        }
-
         $validated = $this->validate();
-
-        dd(2);
 
         $this->speciality->fill($validated);
 
-        $hasChanges = $this->speciality->isDirty();
+        if ($this->speciality->isDirty()) {
 
-        $this->speciality->save();
+            $this->speciality->save();
 
-        if ($hasChanges) {
-            $this->dispatch('notify', "Изменения сохранены.<br>#{$this->speciality->id} {$this->speciality->spec_code}<br>{$this->speciality->name}.<br>{$this->speciality->name_profile}");
+            $message = $this->speciality->wasRecentlyCreated ? 'Направление подготовки создано' : 'Изменения сохранены';
+            $message .= ":<br>#{$this->speciality->id} {$this->speciality->spec_code}<br>{$this->speciality->name}.<br>{$this->speciality->name_profile}";
+
+            $this->dispatch('notify', $message);
+
             $this->dispatch('refresh-specialities');
         }
 
-//        $this->dispatch('save-profile', speciality: $this->speciality );
+        $this->dispatch('save-profile', specialityId: $this->speciality->id);
 
     }
 
@@ -172,17 +161,17 @@ new class extends Component {
                     @include('livewire.specialities.cabinet.form-modal-general')
 
                     <livewire:specialities.cabinet.form-modal-profile
-                        type="Hybrid"
+                        :form="EducationForm::Full"
                         :speciality="$speciality"
                     />
 
                     <livewire:specialities.cabinet.form-modal-profile
-                        type="Full"
+                        :form="EducationForm::Hybrid"
                         :speciality="$speciality"
                     />
 
                     <livewire:specialities.cabinet.form-modal-profile
-                        type="Part"
+                        :form="EducationForm::Part"
                         :speciality="$speciality"
                     />
 

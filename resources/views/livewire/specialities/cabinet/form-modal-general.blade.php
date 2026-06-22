@@ -17,7 +17,7 @@
 
     <div>
         <label class="block text-xs font-semibold text-gray-700 mb-1">
-            Профиль<span class="text-red-500">*</span>
+            Профиль подготовки
         </label>
         <input type="text" wire:model="name_profile" class="w-full rounded border border-gray-300 px-3 py-1.5 text-sm focus:border-blue-500 outline-none">
         @error('name_profile') <span class="text-xs text-red-500 mt-1 block">{{ $message }}</span> @enderror
@@ -65,18 +65,18 @@
         </label>
         <select
             wire:model="level"
-            id="form_level"
+            id="level"
             class="w-full p-3 rounded-sm border border-gray-400"
         >
             @foreach(\App\Enums\EducationLevel::getList() as $id=>$value)
-                <option value="{{ $id }}" selected>{{ $value }}</option>
+                <option value="{{ $id }}">{{ $value }}</option>
             @endforeach
         </select>
     </div>
 
     <div>
         <label class="block text-xs font-semibold text-gray-700 mb-1">
-            Alias (Code)<span class="text-red-500">*</span>
+            Alias (Code)
         </label>
         <input type="text" wire:model="code" class="w-full rounded border border-gray-300 px-3 py-1.5 text-sm focus:border-blue-500 outline-none" required>
         @error('code') <span class="text-xs text-red-500 mt-1 block">{{ $message }}</span> @enderror

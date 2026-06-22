@@ -116,14 +116,14 @@ new class extends Component {
 
                 <div class="font-medium text-gray-900">
                     <a href="{{ $speciality->link }}" target="_blank" class="hover:underline hover:underline-offset-2">
-                        {{ $speciality->spec_code }} {{ $speciality->name }}.
+                        {{ $speciality->spec_code }} {{ $speciality->name }}
                     </a>
 
                     @if($speciality->name_profile)
                         <br>
                         <a href="{{ $speciality->link }}" target="_blank" class="hover:underline hover:underline-offset-2">
                             <span class="font-mono text-gray-400">Профиль:</span>
-                            {{ $speciality->name_profile }}.
+                            {{ $speciality->name_profile }}
                         </a>
                     @endif
                 </div>

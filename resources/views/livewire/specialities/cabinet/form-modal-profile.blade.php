@@ -4,48 +4,45 @@ use Livewire\Volt\Component;
 use Livewire\Attributes\On;
 use App\Models\Education\Profile;
 use App\Models\Education\Speciality;
+use App\Enums\EducationForm;
 
 new class extends Component {
 
-    public ?Profile $profile;
-    public ?Speciality $speciality;
+    public ?Profile $profile = null;
+    public ?Speciality $speciality = null;
+    public EducationForm $form;
 
-    public ?string $type = null;
-
-    public ?int $specialityID = null;
-
-//    public function mount($profile): void
-//    {
-//        if(is_null($profile)){
-//            $this->profile = new Profile();
-//            $this->profile->speciality_id = 154;
-//        }
-//
-//    }
-//
-//    public function with(): array
-//    {
-//
-//        return [
-//
-//        ];
-//    }
-//
-    #[On('save-profile')]
-    public function saveProfile(): void
+    public function mount(Speciality $speciality, EducationForm $form): void
     {
-        $this->js('alert(1)');
+        $this->form = $form;
+        $this->speciality = $speciality;
 
-        dd($this->specialityID);
-        dump(1);
+        $this->profile = $this->speciality->profiles()->firstOrNew([
+            'form' => $this->form->value ?? $this->form
+        ]);
+    }
+
+    #[On('save-profile')]
+    public function saveProfile($specialityId =  null): void
+    {
+
+        $speciality = Speciality::find($specialityId);
+
+        $profile = $speciality->profiles()->firstOrNew([
+            'form' => $this->form->value ?? $this->form
+        ]);
+
+        $output = json_encode($profile);
+
+        $this->js("console.log({$output})");
+
+        $this->dispatch('test');
     }
 };
 
-
-
 ?>
 
-<div x-show="activeTab === '{{ $type }}'">
-    @dump($type)
-    @dump($speciality)
+<div x-show="activeTab === '{{ $form->name }}'">
+    @dump($form)
+    @dump($profile)
 </div>
