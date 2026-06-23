@@ -164,8 +164,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
     const editors = document.querySelectorAll('.editorJS');
 
-    console.log(editors.length)
-
     editors.forEach((block) => {
 
         const initialData = JSON.parse(block.dataset.initialContent) ?? { blocks: [] };

@@ -26,7 +26,6 @@ use Illuminate\Support\Collection;
 class Speciality extends Model
 {
     use SoftDeletes, hasOptions, hasInfos;
-
     protected $table = 'education_specialities';
 
     protected $with = ['department', 'faculty', 'institute', 'profiles', 'recruitmentProfiles'];
@@ -64,6 +63,7 @@ class Speciality extends Model
         parent::boot();
 
         static::deleting(function ($item) {
+            $item->profiles->each(fn($item) => $item->delete());
         });
 
         static::saving(function ($item) {
