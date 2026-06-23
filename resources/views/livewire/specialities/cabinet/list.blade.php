@@ -38,9 +38,9 @@ new class extends Component {
         $specialities = $query->orderBy('name')
             ->when($searchString, function ($query) use ($searchString) {
                 $query->where(function ($subQuery) use ($searchString) {
-                    $subQuery->where('spec_code', 'like', '%' . $searchString . '%')
-                        ->orWhere('name', 'like', '%' . $searchString . '%')
+                    $subQuery->where('name', 'like', '%' . $searchString . '%')
                         ->orWhere('name_profile', 'like', '%' . $searchString . '%')
+                        ->orWhere('spec_code', $searchString)
                         ->orWhere('id', $searchString);
                 });
             })

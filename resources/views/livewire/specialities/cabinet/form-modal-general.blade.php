@@ -61,12 +61,12 @@
 
     <div>
         <label class="block text-xs font-semibold text-gray-700 mb-1">
-            Уровень обучения<span class="text-red-500">*</span>
+            Уровень обучения
         </label>
         <select
             wire:model="level"
             id="level"
-            class="w-full p-3 rounded-sm border border-gray-400"
+            class="w-full p-3 rounded-sm border border-gray-400 cursor-pointer outline-none"
         >
             @foreach(\App\Enums\EducationLevel::getList() as $id=>$value)
                 <option value="{{ $id }}">{{ $value }}</option>

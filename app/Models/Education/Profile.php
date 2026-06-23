@@ -2,7 +2,6 @@
 
 namespace App\Models\Education;
 
-use App\Enums\DurationType;
 use App\Enums\EducationBasis;
 use App\Enums\EducationForm;
 use App\Enums\Info\Types;
@@ -12,6 +11,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use App\Models\{Global\Options, Info\Info, Link, Sections\FAQ};
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Collection;
@@ -27,88 +27,40 @@ use App\Models\Documents\Document;
 
     protected $table = 'education_profiles';
 
-    protected $with = ['getDocuments.options'];
+    protected $with = ['getDocuments.options','places'];
 
     protected $fillable = [
         'id',
-        'alias',
         'speciality_id',
-        'speciality_code',
         'form',
         'duration',
-        'total_places',
         'director',
         'address',
-        'afc',
+        'afc', // Прием иностранных граждан
         'price',
         'show',
-        'is_recruitment',
-        'created_at',
-        'updated_at',
-        'deleted_at',
+        'is_recruitment', // ведется прием на данный профиль
     ];
     protected $casts = [
-        'form' => EducationForm::class,
+        'form'              => EducationForm::class,
+        'show'              => 'boolean',
+        'is_recruitment'    => 'boolean',
+        'afc'               => 'boolean',
     ];
 
-    public static function FormRules($id): array
+    protected static function boot(): void
     {
-        return [
-            'alias'             => "required|unique:education_profiles,alias,{$id},id,deleted_at,NULL",
-            'description'       => '',
-            'speciality_id'     => '',
-            'speciality_code'   => '',
-            'form'              => '',
-            'duration'          => '',
-            'years'             => 'nullable|numeric',
-            'months'            => 'nullable|numeric',
-            'director'          => '',
-            'address'           => '',
-            'afc'               => 'boolean',
-            'show'              => 'boolean',
-            'is_recruitment'    => 'boolean',
-            'price'             => 'nullable|numeric',
-        ];
+        parent::boot();
+
+        static::deleting(function ($item) {
+            $item->places->each(fn($item) => $item->delete());
+        });
     }
-    public static function FormMessage(): array
-    {
-        return [
-            'name' => 'Укажите заголовок',
-            'alias.required' => 'Alias должен быть указан',
-            'alias.unique' => 'Alias должен быть уникальным',
-            'places' => 'Кол-во мест должно быть цифровым значением',
-            'scores' => 'Кол-во баллов должно быть цифровым значением',
-            'price' => 'Цена должна быть цифровым значением',
-            'afc' => 'AFC must be boolean',
-        ];
-    }
-
-    public function fill(array $attributes):?self
-    {
-        if(!empty($attributes)){
-
-            if(array_key_exists('is_recruitment', $attributes))
-                $attributes['is_recruitment']   = (bool) $attributes['is_recruitment'];
-
-            if(array_key_exists('show', $attributes))
-                $attributes['show']             = (bool) $attributes['show'];
-
-            if(array_key_exists('duration', $attributes))
-                $attributes['duration'] = $attributes['duration'] === 0 ? null : $attributes['duration'];
-
-            if(array_key_exists('afc', $attributes))
-                $attributes['afc']              = (bool) ($attributes['afc']);
-        }
-
-        return parent::fill($attributes);
-    }
-
 
     public function speciality(): BelongsTo
     {
         return $this->belongsTo(Speciality::class, 'speciality_id', 'id');
     }
-
 
     public function documents(): Collection
     {
@@ -160,19 +112,6 @@ use App\Models\Documents\Document;
 
         return $object;
     }
-
-//    public function duration($type = null, bool $record = false): MorphMany|Duration|int|null
-//    {
-//        if (!$type)
-//            return $this->morphMany(Duration::class, 'relation');
-//
-//        if (!$type instanceof DurationType)
-//            $type = DurationType::tryFrom($type);
-//
-//        $result = $this->morphMany(Duration::class, 'relation')->where('type', $type)->first();
-//
-//        return $record ? $result : $result->duration ?? null;
-//    }
 
     public function years($type = null): ?int    {
         return intdiv($this->duration($type),12);
@@ -270,14 +209,14 @@ use App\Models\Documents\Document;
             ->get();
     }
 
-    public function places(): MorphMany
+    public function places(): HasMany
     {
-        return $this->morphMany(Place::class, 'relation');
+        return $this->hasMany(Place::class, 'profile_id');
     }
 
-    public function placesByType($code): ?int
+    public function placesByType($type): Place
     {
-        return $this->places()->where('type', $code)->first()->count ?? null;
+        return $this->places()->firstOrNew(['type' => $type]);
     }
 
     public function budgetPlaces(): ?Place
@@ -318,19 +257,12 @@ use App\Models\Documents\Document;
 
         foreach ($list as $educationForm => $form) {
 
-
             $form['show']   = array_key_exists('show', $form);
 
-            $profile = self::firstOrCreate(
-                [
-                    'speciality_id'     => $object->id,
-                    'speciality_code'   => $object->code,
-                    'form' => $form['form']
-                ],
-                [
-                    'alias' => "{$object->code}-{$form['form']}",
-                ]
-            );
+            $profile = self::firstOrNew([
+                'speciality_id'     => $object->id,
+                'form' => $form['form']
+            ]);
 
             $form['duration'] = (int) $form['years'] * 12 + (int) $form['months'];
 
@@ -414,23 +346,16 @@ use App\Models\Documents\Document;
     }
     public function getCourse(int $course): ?Info
     {
-        return
-            $this->info
-                ->where('type',Types::vacant)
-                ->where('code',Vacant::eduCourse)
-                ->where('content',$course)
-                ->first()
-        ?? new Info([
-            'type'      => Types::vacant,
-            'code'      => Vacant::eduCourse,
-            'content'   => $course
+        return $this->info->firstOrNew([
+                'type'      => Types::vacant,
+                'code'      => Vacant::eduCourse,
+                'content'   => $course
         ]);
     }
 
-    public function getOption($option):Options
+    public function getOption($code):Options
     {
-        return $this->options()->where('code',$option)->first()
-            ?? (new Options(['code' => $option]))->relation()->associate($this);
+        return $this->options()->firstOrNew(['code' => $code]);
     }
 
     public function scopePublic(Builder $query): Builder
@@ -489,6 +414,22 @@ use App\Models\Documents\Document;
             );
     }
 
+    public function setPlaces(string $type, ?int $count = null): void
+    {
+        $places = $this->placesByType($type);
+
+        if(is_null($count) || $count === 0)
+            $places->delete();
+
+        else
+            $places->fill(['count' => $count])->save();
+    }
+
+    public function setAllPlaces(array $places): void
+    {
+        foreach ($places as $type => $count)
+            $this->setPlaces($type, (int)$count);
+    }
 
 
 }

@@ -2,17 +2,9 @@
 
 namespace App\Models\Info;
 
-use App\Enums\DurationType;
 use App\Enums\EducationLevel;
-use App\Enums\Info\Documents;
 use App\Enums\Info\Education;
-use App\Enums\Info\Grants;
-use App\Enums\Info\Objects;
 use App\Enums\Info\Types;
-use App\Enums\Info\Managers;
-use App\Enums\Info\Standards;
-use App\Enums\Info\Vacant;
-use App\Models\Education\Profile;
 use App\Models\Education\Speciality;
 use Illuminate\Support\Collection;
 

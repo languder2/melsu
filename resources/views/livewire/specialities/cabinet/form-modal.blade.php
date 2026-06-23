@@ -29,6 +29,8 @@ new class extends Component {
     public ?int $faculty_id = null;
     public ?int $department_id = null;
 
+    public bool $shouldClose = false;
+
     public function with(): array
     {
         return [
@@ -100,20 +102,34 @@ new class extends Component {
             $this->speciality->save();
 
             $message = $this->speciality->wasRecentlyCreated ? 'Направление подготовки создано' : 'Изменения сохранены';
-            $message .= ":<br>#{$this->speciality->id} {$this->speciality->spec_code}<br>{$this->speciality->name}.<br>{$this->speciality->name_profile}";
+            $message .= ":<br>#{$this->speciality->id} {$this->speciality->spec_code}";
+            $message .= "<br>{$this->speciality->name}.<br>{$this->speciality->name_profile}";
 
             $this->dispatch('notify', $message);
-
-            $this->dispatch('refresh-specialities');
         }
 
         $this->dispatch('save-profile', specialityId: $this->speciality->id);
 
+        $this->dispatch('refresh-specialities');
+    }
+
+    public function saveClose(): void
+    {
+        $this->shouldClose = true;
+        $this->save();
+    }
+
+    #[On('profile-saved')]
+    public function onProfileSaved(): void
+    {
+        if ($this->shouldClose)
+            $this->closeModal();
     }
 
     public function closeModal(): void
     {
         $this->isOpen = false;
+        $this->shouldClose = false;
         $this->currentTab = 'general';
 
         $this->reset([
@@ -133,6 +149,7 @@ new class extends Component {
         <div
             x-data="{ activeTab: $wire.$entangle('currentTab', true) }"
             @keydown.escape.window="$wire.closeModal()"
+            @keydown.enter="$wire.saveClose()"
             class="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-black/60 p-4 backdrop-blur-xs"
         >
             <div
@@ -143,7 +160,15 @@ new class extends Component {
                 <div class="px-6 py-4 border-b border-gray-100 flex justify-between items-center">
                     <h3 class="text-lg font-bold text-gray-900">
                         @if($speciality->exists)
-                            #{{ $speciality->id }} {{ $speciality->spec_code }}
+                            #{{ $speciality->id }}
+
+                            @if($speciality->name)
+                                | {{ $speciality->spec_code }} {{ $speciality->name }}
+                            @endif
+
+                            @if($speciality->name_profile)
+                                | {{ $speciality->name_profile }}
+                            @endif
                         @else
                             Новая специальность
                         @endif
@@ -180,6 +205,9 @@ new class extends Component {
                 <div class="border-t p-4 flex justify-end space-x-2 bg-gray-50 rounded-b-lg">
                     <button type="button" wire:click="closeModal" class="px-4 py-2 bg-gray-300 rounded text-sm hover:bg-gray-400 transition cursor-pointer">
                         Отмена
+                    </button>
+                    <button type="button" wire:click="saveClose" class="px-4 py-2 bg-blue-600 text-white rounded text-sm hover:bg-blue-700 transition cursor-pointer">
+                        Сохранить и закрыть
                     </button>
                     <button type="button" wire:click="save" class="px-4 py-2 bg-blue-600 text-white rounded text-sm hover:bg-blue-700 transition cursor-pointer">
                         Сохранить
