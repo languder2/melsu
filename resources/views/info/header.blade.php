@@ -2,7 +2,6 @@
     class="
         w-full py-4 text-white bg-cover
 {{--        bg-[image:var({{ auth()->check() ? "--bg-cabinet-header" : "--bg-sveden-header" }})]--}}
-        sticky top-0 left-0
     "
     style="background-image: url({{ auth()->check() ? asset("img/cabinet/bg-header.png") : asset("img/sveden/bg-sved.jpg") }})"
 >

@@ -53,8 +53,6 @@ new #[Layout('layouts.cabinet')] class extends Component {
 ?>
 
 <div class="flex flex-col gap-3">
-    {{ $slot }}
-
     <div class="bg-white shadow px-3 pt-1 pb-2 rounded-sm flex gap-4 items-end">
         <div class="flex-1">
             <x-form.input

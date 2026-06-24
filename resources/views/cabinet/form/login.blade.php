@@ -1,4 +1,4 @@
-<form name="auth" method="post" action="{{route('cabinet:auth')}}" class="flex flex-col gap-4 h-full">
+<form method="POST" action="{{route('cabinet:auth')}}" class="flex flex-col gap-4 h-full">
     @csrf
     <h3
         class="font-semibold uppercase text-center"
@@ -30,7 +30,7 @@
         </a>
     </div>
 
-    <div class="flex-grow"></div>
+    <div class="grow"></div>
 
     @component('components.cabinet.form.submit')
         Войти

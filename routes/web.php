@@ -88,6 +88,39 @@ require __DIR__.'/users.php';
 require __DIR__.'/finances.php';
 require __DIR__.'/cabinet/staffs.php';
 
+Route::get('session-put', function() {
+    auth()->loginUsingId(1);
+
+    session()->save();
+
+    Log::info('PUT: ID сессии = ' . session()->getId() . ' | Юзер = ' . auth()->id());
+    return 'Авторизировался. ID сессии записан в лог.';
+});
+
+Route::get('session-get', function() {
+    Log::info('GET: ID сессии = ' . session()->getId() . ' | Юзер = ' . auth()->id());
+    return 'Ваш ID: ' . auth()->id() . ' (Проверьте storage/logs/laravel.log)';
+});
+
+Route::get('clear-cache', function() {
+    Artisan::call('config:clear');
+    Artisan::call('cache:clear');
+    Artisan::call('package:discover');
+    Artisan::call('clear-compiled');
+    return 'Кэш очищен!';
+});
+
+Route::get('/session-test', function () {
+    // Добавьте это:
+    if (!app('session')->isStarted()) {
+        return "Сессия НЕ запущена!";
+    }
+
+    $count = session('test_counter', 0) + 1;
+    session(['test_counter' => $count]);
+    return "Счетчик: $count";
+});
+
 require __DIR__.'/pages.php';
 
 

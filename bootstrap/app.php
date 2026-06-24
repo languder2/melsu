@@ -21,6 +21,9 @@ return Application::configure(basePath: dirname(__DIR__))
             "isAuth"        => \App\Http\Middleware\AuthCheck::class,
         ]);
     })
+    ->withMiddleware(function (Middleware $middleware) {
+        $middleware->trustProxies(at: '*');
+    })
     ->withExceptions(function (Exceptions $exceptions) {
         //
     })->create();

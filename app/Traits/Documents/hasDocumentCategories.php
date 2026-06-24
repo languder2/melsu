@@ -7,7 +7,7 @@ use App\Traits\GenerateLinks;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Support\Collection;
 
-trait HasDocumentCategories
+trait hasDocumentCategories
 {
     use GenerateLinks;
 

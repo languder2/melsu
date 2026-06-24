@@ -9,23 +9,22 @@
     ],
     "license": "MIT",
     "require": {
-        "php": "^8.3",
+        "php": "^8.4",
         "ext-dom": "*",
         "ext-iconv": "*",
         "ext-libxml": "*",
         "codex-team/editor.js": "^2.0",
-        "diglactic/laravel-breadcrumbs": "^9.0",
         "intervention/image": "^3.9",
         "kalnoy/nestedset": "^6.0",
-        "laravel/framework": "^11.31",
+        "laravel/framework": "^12.0",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
-        "livewire/livewire": "^4.2",
-        "livewire/volt": "^1.10",
+        "livewire/livewire": "^3.5",
+        "livewire/volt": "^1.0",
         "maatwebsite/excel": "^3.1",
         "mallardduck/blade-lucide-icons": "^1.23",
-        "tinymce/tinymce": "^7.6",
-        "unisharp/laravel-filemanager": "^2.11"
+        "predis/predis": "^3.5",
+        "tinymce/tinymce": "^7.6"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^4.2",
@@ -34,7 +33,7 @@
         "laravel/pint": "^1.13",
         "laravel/sail": "^1.26",
         "mockery/mockery": "^1.6",
-        "nunomaduro/collision": "^8.1",
+        "nunomaduro/collision": "^8.5",
         "phpunit/phpunit": "^11.0.1"
     },
     "autoload": {
@@ -84,8 +83,7 @@
         "laravel": {
             "dont-discover": []
         }
-    },
-    "config": {
+    },    "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
         "sort-packages": true,

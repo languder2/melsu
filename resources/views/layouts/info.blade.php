@@ -36,11 +36,11 @@
             </div>
         </div>
     </div>
-{{--    <footer class="flex items-center justify-center bg-white mt-auto">--}}
-{{--        @include("info.footer")--}}
-{{--    </footer>--}}
+    <footer class="flex items-center justify-center bg-white mt-auto">
+        @include("info.footer")
+    </footer>
 </div>
 
-@include("info.modal")
+{{--@include("info.modal")--}}
 </body>
 </html>

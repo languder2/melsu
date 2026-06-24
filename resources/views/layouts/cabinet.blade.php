@@ -39,10 +39,9 @@
 
                 @isset($slot)
                     {{ $slot }}
-                @endcanany
+                @endisset
             </div>
 
-{{--            @include('cabinet.template.aside-right')--}}
         </div>
     @endguest
 </main>

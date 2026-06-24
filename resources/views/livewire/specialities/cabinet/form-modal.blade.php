@@ -21,7 +21,7 @@ new class extends Component {
     public string $spec_code = '';
     public string $name = '';
     public string $name_profile = '';
-    public string $level = '';
+    public string $level = 'bachelor';
     public ?int $courses = null;
     public int $favorite = 0;
     public bool $show = true;

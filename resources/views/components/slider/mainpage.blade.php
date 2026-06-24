@@ -38,6 +38,11 @@
                         </a>
                     </div>
                     <div class="slide">
+                        <a href="https://abiturient.mgu-mlt.ru/" class="slide-link cursor-pointer flex justify-center w-full">
+                            <img src="{{asset('img/slider/IMG_8105.JPG')}}" alt="" class="w-max content-center">
+                        </a>
+                    </div>
+                    <div class="slide">
                         <a href="#" class="slide-link cursor-pointer">
                             <img src="{{asset('img/slider/81_2k.jpg')}}" alt="" class="hidden object-cover min-[1921px]:block w-max">
                             <img src="{{asset('img/slider/81_fhd.jpg')}}" alt="" class="hidden sm:block">

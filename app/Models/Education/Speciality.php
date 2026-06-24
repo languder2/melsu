@@ -4,17 +4,14 @@ namespace App\Models\Education;
 
 use App\Enums\EducationLevel;
 use App\Models\Division\Division;
-use App\Models\Documents\Document;
 use App\Models\Gallery\Image;
 use App\Models\Minor\Career;
 use App\Models\Page\Content as PageContent;
 use App\Models\Sections\FAQ;
-use App\Traits\Documents\hasDocuments;
 use App\Traits\hasInfos;
 use App\Traits\hasOptions;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
@@ -22,6 +19,7 @@ use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Collection;
+use App\Traits\Documents\hasDocuments;
 
 class Speciality extends Model
 {
@@ -50,12 +48,26 @@ class Speciality extends Model
     public const Path = 'specialities';
 
     protected $casts = [
-        'level' => EducationLevel::class
+        'level' => EducationLevel::class,
     ];
 
-    public function resolveRouteBinding($value, $field = null): ?Speciality
+    /**
+     * @param  mixed  $value
+     * @param  string|null  $field
+     * @return Model|null
+     */
+    public function resolveRouteBinding($value, $field = null): ?Model
     {
-        return $this->where('code', $value)->first() ??  $this->where('id', $value)->first();
+        if ($field) {
+            return $this->where($field, $value)->first();
+        }
+
+        if (is_numeric($value)) {
+            return $this->where('id', $value)->first()
+                ?? $this->where('code', $value)->first();
+        }
+
+        return $this->where('code', $value)->first();
     }
 
     protected static function boot(): void

@@ -16,9 +16,11 @@ class CabinetController extends Controller
 
     public function login(Request $request):RedirectResponse
     {
+
         $user = User::where("name", $request->get('username'))
             ->orWhere("email", $request->get('email'))
             ->first();
+
 
         if (is_null($user))
             return redirect()->back()->withErrors('Пользователь не найден');
