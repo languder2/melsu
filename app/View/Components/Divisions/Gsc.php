@@ -27,7 +27,7 @@ class Gsc extends Component
 
         if(in_array($division->type,[DivisionType::Institute, DivisionType::Faculty,  DivisionType::Department]))
             $this->list->put(
-                'specialities', $division->publicSpecialities->groupBy('level')
+                'specialities', $division->specialities()->isShow()->get()->groupBy('level')
                 ->map(fn($level) => $level->map(
                     fn($item) =>
                         "$item->spec_code $item->name" . ( $item->name_profile ? "($item->name_profile)" : null)
