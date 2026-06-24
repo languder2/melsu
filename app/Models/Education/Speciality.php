@@ -6,16 +6,16 @@ use App\Enums\EducationLevel;
 use App\Models\Division\Division;
 use App\Models\Documents\Document;
 use App\Models\Gallery\Image;
-use App\Models\Global\Options;
-use App\Models\Info\Info;
 use App\Models\Minor\Career;
 use App\Models\Page\Content as PageContent;
 use App\Models\Sections\FAQ;
+use App\Traits\Documents\hasDocuments;
 use App\Traits\hasInfos;
 use App\Traits\hasOptions;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
@@ -25,10 +25,10 @@ use Illuminate\Support\Collection;
 
 class Speciality extends Model
 {
-    use SoftDeletes, hasOptions, hasInfos;
+    use SoftDeletes, hasOptions, hasInfos, hasDocuments;
     protected $table = 'education_specialities';
 
-    protected $with = ['department', 'faculty', 'institute', 'profiles', 'recruitmentProfiles'];
+    protected $with = ['divisions', 'profiles', 'recruitmentProfiles'];
 
     protected $fillable = [
         'name',
@@ -108,27 +108,9 @@ class Speciality extends Model
         return $this->morphTo();
     }
 
-    public function divisions(): Collection
+    public function divisions():BelongsToMany
     {
-        return collect([
-            $this->institute,
-            $this->faculty,
-            $this->department,
-        ])->filter()->values();
-    }
-    public function department(): BelongsTo
-    {
-        return $this->belongsTo(Division::class, 'department_id', 'id');
-    }
-
-    public function faculty(): BelongsTo
-    {
-        return $this->belongsTo(Division::class, 'faculty_id', 'id');
-    }
-
-    public function institute(): BelongsTo
-    {
-        return $this->belongsTo(Division::class, 'institute_id', 'id');
+        return  $this->belongsToMany(Division::class, 'edu_speciality_division_links', 'speciality_id', 'division_id');
     }
 
     public function ico(): MorphOne
@@ -220,16 +202,6 @@ class Speciality extends Model
         return $this->name_profile ? "{$this->name} ($this->name_profile)" : $this->name;
     }
 
-    public function documents():MorphMany
-    {
-        return $this->morphMany(Document::class,'relation')->orderBy('sort')->whereNull('parent_id');
-    }
-
-    public function publicDocuments():Collection
-    {
-        return $this->documents()->where('is_show',true)->get();
-    }
-
     public function curriculum(?string $form = null, bool $public = false):Collection
     {
         $query = $this->documents()->orderBy('sort');
@@ -250,24 +222,6 @@ class Speciality extends Model
 
         return $list;
     }
-
-    /* Links */
-
-    public function getAdminAttribute():string
-    {
-        return  route('admin:speciality:list');
-    }
-
-    public function getFormAttribute():string
-    {
-        return  route('speciality:admin:form',$this->exists ? $this->id : null);
-    }
-    public function getSaveAttribute():string
-    {
-        return  route('speciality:save',$this->exists ? $this->id : null);
-    }
-
-    /* end Links */
 
     public function postSaveMaintenance():void
     {

@@ -1,6 +1,7 @@
 <?php
 
 use Livewire\Volt\Component;
+use Livewire\WithPagination;
 use Livewire\Attributes\On;
 use Livewire\Attributes\Url;
 use Livewire\Attributes\Locked;
@@ -8,6 +9,7 @@ use App\Models\Education\Speciality;
 use App\Models\Division\Division;
 
 new class extends Component {
+    use WithPagination;
 
     #[Locked]
     public ?Division $division = null;
@@ -22,7 +24,14 @@ new class extends Component {
     public string $form = '';
 
     #[Url]
-    public ?int $is_show = null;
+    public mixed $is_show = '';
+
+    public function updating($property): void
+    {
+        if (in_array($property, ['search', 'level', 'form', 'is_show'])) {
+            $this->resetPage();
+        }
+    }
 
     public function rendering(\Illuminate\View\View $view): void
     {
@@ -33,33 +42,30 @@ new class extends Component {
     {
         $searchString = trim($this->search);
 
-        $query = $this->division ? $this->division->allSpecialities() : Speciality::query();
+        $query = $this->division ? $this->division->specialities() : Speciality::query();
 
-        $specialities = $query->orderBy('name')
-            ->when($searchString, function ($query) use ($searchString) {
-                $query->where(function ($subQuery) use ($searchString) {
-                    $subQuery->where('spec_code', $searchString)
-                        ->orWhere('name', 'like', '%' . $searchString . '%')
-                        ->orWhere('name_profile', 'like', '%' . $searchString . '%')
-                        ->orWhere('id', $searchString)
-                    ;
-                });
-            })
-            ->when($this->level, function ($query) {
-                $query->where('level', $this->level);
-            })
-            ->when($this->form, function ($query) {
-                $query->whereHas('recruitmentProfiles', function ($subQuery) {
-                    $subQuery->where('form', $this->form);
-                });
-            })
-            ->when(!is_null($this->is_show), function ($query) {
-                if($this->is_show === 3)
-                    $query->onlyTrashed();
-                else
-                    $query->where('show',$this->is_show);
-            })
-            ->get();
+        $specialities = $query
+            ->select(['id', 'spec_code', 'name', 'name_profile', 'level', 'show', 'deleted_at'])
+            ->with(['recruitmentProfiles:id,form,speciality_id'])
+            ->orderBy('name')
+            ->when($searchString, fn ($query) =>
+            $query->where(fn ($subQuery) =>
+            $subQuery->where('spec_code', 'like', '%' . $searchString . '%')
+                ->orWhere('name', 'like', '%' . $searchString . '%')
+                ->orWhere('name_profile', 'like', '%' . $searchString . '%')
+                ->when(ctype_digit($searchString), fn ($q) =>
+                $q->orWhere('id', 'like', '%' . $searchString . '%')
+                )
+            )
+            )
+            ->when($this->level, fn ($query) => $query->where('level', $this->level))
+            ->when($this->form, fn ($query) =>
+            $query->whereHas('recruitmentProfiles', fn($subQuery) => $subQuery->where('form', $this->form))
+            )
+            ->when($this->is_show !== '' && !is_null($this->is_show),
+                fn ($query) => (int)$this->is_show === 3 ? $query->onlyTrashed() : $query->where('show', $this->is_show)
+            )
+            ->paginate(15);
 
         return [
             'specialities' => $specialities,
@@ -68,7 +74,6 @@ new class extends Component {
 
     #[On('refresh-specialities')]
     public function refreshSpecialities(): void{}
-
 };
 ?>
 
@@ -166,6 +171,10 @@ new class extends Component {
                 Направления подготовки не найдены
             </div>
         @endforelse
+    </div>
+
+    <div class="mt-4">
+        {{ $specialities->links() }}
     </div>
 
     <livewire:cabinet.modal.delete />

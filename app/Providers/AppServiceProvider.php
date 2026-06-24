@@ -9,6 +9,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -26,6 +27,17 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+
+        try {
+            if (config('cache.default') === 'redis') {
+                app('redis')->connection()->ping();
+            }
+        } catch (\Exception $e) {
+            Log::error('Redis недоступен, переключение на file');
+            config(['cache.default' => 'file']);
+            config(['session.driver' => 'file']);
+        }
+
         Gate::policy(User::class, UserPolicy::class);
 
         Gate::define('access-page', fn (User $user, Page $page) =>
@@ -36,27 +48,13 @@ class AppServiceProvider extends ServiceProvider
             $user->isEditor() || $instance->users()->find($user)
         );
 
-        Blade::directive('relInc', function ($args) {
-            $args = Blade::stripParentheses($args);
-            $viewBasePath = Blade::getPath();
-            foreach ($this->app['config']['view.paths'] as $path) {
-                if (substr($viewBasePath,0,strlen($path)) === $path) {
-                    $viewBasePath = substr($viewBasePath,strlen($path));
-                    break;
-                }
-            }
-            $viewBasePath = dirname(trim($viewBasePath,'\/'));
-            $args = substr_replace($args, $viewBasePath.'.', 1, 0);
-            return "<?php echo \$__env->make({$args}, \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>";
-        });
-
         if (!Collection::hasMacro('paginate')) {
             Collection::macro('paginate', function ($perPage = 15, $page = null, $options = []) {
                 $page = $page ?: (LengthAwarePaginator::resolveCurrentPage() ?: 1);
 
                 return new LengthAwarePaginator(
-                    $this->forPage($page, $perPage)->values(), // Items for the current page
-                    $this->count(), // Total count
+                    $this->forPage($page, $perPage)->values(),
+                    $this->count(),
                     $perPage,
                     $page,
                     [

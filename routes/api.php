@@ -18,6 +18,8 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Session;
 use App\Models\Common\Tags;
 use App\Models\Documents\DocumentCategory;
+use App\Models\Education\Speciality;
+use Illuminate\Support\Facades\DB;
 
 Route::get('test123', function (){
     return phpinfo();
@@ -350,4 +352,17 @@ Route::middleware(['web'])->get('documentsByCategoryName/{categoryName}/', funct
 
     return response()->json([ optional($category)->documents()->with('tags')->get()]);
 
+});
+
+
+Route::get('drop-null-places', function(){
+    \App\Models\Education\Place::whereNull('count')->delete();
+});
+
+Route::get('sets-edu-spec-devisions-links', function(){
+    DB::table('edu_speciality_division_links')->truncate();
+
+    Speciality::all()->each(fn($spec) =>
+        $spec->divisions()->sync(array_filter([$spec->institute_id, $spec->faculty_id, $spec->department_id, $spec->relation_id]))
+    );
 });

@@ -19,7 +19,7 @@
                                   fill="#C10F1A"/>
                         </svg>
                         <a
-                            href="{{route('public:education:speciality',$speciality->code)}}"
+                            href="{{ $speciality->link }}"
                             class="p-4"
                         >
 

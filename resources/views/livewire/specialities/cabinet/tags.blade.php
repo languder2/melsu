@@ -22,7 +22,7 @@
         </button>
     @endforeach
 
-    @foreach($speciality->divisions() as $item)
+    @foreach($speciality->divisions as $item)
         <a href="{{ $division?->id === $item->id ? route('specialities.cabinet.list') : route('division.cabinet.specialities', $item) }}"
            class="inline-flex items-center gap-1 text-xs px-2 py-1s rounded-sm text-white
             {{ $division?->id === $item->id ? 'bg-sky-600' : 'bg-red-800 hover:bg-amber-600' }}"

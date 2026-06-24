@@ -192,28 +192,9 @@ class Division extends Model
         return $this->descendants()->public()->get()->groupBy('type');
     }
 
-
-    public function specialities($all = null): HasMany
+    public function specialities(): belongsToMany
     {
-        $hasMany = $this->hasMany(Speciality::class, $this->type->getField(),'id');
-
-        if(!$all)
-            $hasMany->where('show',true);
-
-        return $hasMany->orderBy('sort')->orderByRaw(EducationLevel::getOrder())
-            ->orderBy('spec_code')->orderBy('name');
-    }
-
-    public function allSpecialities(): HasMany
-    {
-        return $this->hasMany(Speciality::class, $this->type->getField(),'id');
-    }
-    public function publicSpecialities(): HasMany
-    {
-        return $this->hasMany(Speciality::class, $this->type->getField(),'id')
-            ->where('show', true)
-            ->orderBy('sort')->orderByRaw(EducationLevel::getOrder())
-            ->orderBy('spec_code')->orderBy('name');
+        return $this->belongsToMany(Speciality::class, 'edu_speciality_division_links', 'division_id', 'speciality_id');
     }
 
     public function getFacultyLabsAttribute(): Collection
@@ -510,6 +491,10 @@ class Division extends Model
     public function scopeEducationalDepartments(Builder $query): Builder
     {
         return $query->where('type',DivisionType::Department);
+    }
+    public function scopeBranches(Builder $query): Builder
+    {
+        return $query->where('type',DivisionType::Branch);
     }
 
     public function getHistoryFormAttribute(): string

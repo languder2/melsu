@@ -8,6 +8,7 @@ use App\Models\Division\Division;
 use App\Http\Requests\Education\SpecialityRequest;
 use Illuminate\Validation\Rule;
 use App\Enums\EducationForm;
+use App\Enums\DivisionType;
 
 new class extends Component {
     use WithFileUploads;
@@ -20,14 +21,11 @@ new class extends Component {
     public string $spec_code = '';
     public string $name = '';
     public string $name_profile = '';
-    public string $department = '';
     public string $level = '';
     public ?int $courses = null;
     public int $favorite = 0;
     public bool $show = true;
-    public ?int $institute_id = null;
-    public ?int $faculty_id = null;
-    public ?int $department_id = null;
+    public ?int $division_id = null;
 
     public bool $shouldClose = false;
 
@@ -36,6 +34,7 @@ new class extends Component {
         return [
             'levels' => \App\Enums\EducationLevel::cases(),
             'divisions' => Division::educationalDepartments()->orderBy('name')->pluck('name', 'id'),
+            'branches' => Division::branches()->orderBy('name')->pluck('name', 'id'),
         ];
     }
 
@@ -84,9 +83,7 @@ new class extends Component {
 
         $this->show             = !isset($this->speciality->show) || (bool)$this->speciality->show;
 
-        $this->institute_id     = $this->speciality->institute_id ?? null;
-        $this->faculty_id       = $this->speciality->faculty_id ?? null;
-        $this->department_id    = $this->speciality->department_id ?? null;
+        $this->division_id      = $this->speciality->divisions()->whereIn('type',[DivisionType::Department, DivisionType::Branch])->first()->id ?? null;
 
         $this->isOpen = true;
     }
@@ -95,18 +92,23 @@ new class extends Component {
     {
         $validated = $this->validate();
 
+        $division = Division::find($validated['divisio_id'])->acce;
+
+
+        dd();
+
         $this->speciality->fill($validated);
 
-        if ($this->speciality->isDirty()) {
+        $this->speciality->save();
 
-            $this->speciality->save();
+        $message = $this->speciality->wasRecentlyCreated ? 'Направление подготовки создано' : 'Изменения сохранены';
+        $message .= ":<br>#{$this->speciality->id} {$this->speciality->spec_code}";
+        $message .= "<br>{$this->speciality->name}.<br>{$this->speciality->name_profile}";
 
-            $message = $this->speciality->wasRecentlyCreated ? 'Направление подготовки создано' : 'Изменения сохранены';
-            $message .= ":<br>#{$this->speciality->id} {$this->speciality->spec_code}";
-            $message .= "<br>{$this->speciality->name}.<br>{$this->speciality->name_profile}";
 
-            $this->dispatch('notify', $message);
-        }
+
+
+        $this->dispatch('notify', $message);
 
         $this->dispatch('save-profile', specialityId: $this->speciality->id);
 

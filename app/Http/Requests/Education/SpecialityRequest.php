@@ -30,7 +30,7 @@ class SpecialityRequest extends FormRequest
             'courses'       => 'nullable|integer|min:1|max:6',
             'favorite'      => 'int',
             'show'          => 'int',
-            'department_id' => 'int|nullable',
+            'division_id'   => 'int|nullable',
         ];
     }
 

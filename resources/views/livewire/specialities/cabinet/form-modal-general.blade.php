@@ -25,39 +25,52 @@
 
     <div
         wire:ignore
-        x-data="{ currentDeptId: @entangle('department_id') }"
+        x-data="{ currentDeptId: @entangle('division_id') }"
         x-init="
-                            $( $refs.select2Elem ).select2({
-                                placeholder: 'Выбрать кафедру',
-                                allowClear: true
-                            }).on('change', function (e) {
-                                let val = e.target.value;
-                                currentDeptId = val === '' ? null : parseInt(val);
-                            });
+            $( $refs.select2Elem ).select2({
+                placeholder: 'Выбрать кафедру или филиал',
+                allowClear: true
+            })
+            .on('change', function (e) {
+                let val = e.target.value;
+                currentDeptId = val === '' ? null : parseInt(val);
+            });
 
-                            $watch('currentDeptId', value => {
-                                $( $refs.select2Elem ).val(value === null ? '' : value).trigger('change.select2');
-                            });
-                        "
+            $watch('currentDeptId', value => {
+                $( $refs.select2Elem ).val(value === null ? '' : value).trigger('change.select2');
+            });
+        "
     >
         <label class="block text-xs font-semibold text-gray-700 mb-1">Кафедра</label>
         <select
             x-ref="select2Elem"
             class="jq-select2"
-            name="department_id"
+            name="division_id"
             style="width: 100%"
         >
             <option value=""></option>
-            <option value="null" @selected($department_id === null)>Без привязки к кафедре</option>
+            <option value="null">Без привязки к кафедре</option>
 
-            @foreach($divisions as $id => $division)
-                <option value="{{ $id }}" @selected($department_id === $id)>
-                    #{{ $id }} {!! $division !!}
-                </option>
-            @endforeach
+            <optgroup label="Кафедры">
+                @foreach($divisions as $id => $division)
+                    <option value="{{ $id }}" @selected($division_id === $id)>
+                        #{{ $id }} {!! $division !!}
+                    </option>
+                @endforeach
+            </optgroup>
+
+            <optgroup label="Филиалы">
+                @foreach($branches as $id => $division)
+                    <option value="{{ $id }}" @selected($division_id === $id)>
+                        #{{ $id }} {!! $division !!}
+                    </option>
+                @endforeach
+            </optgroup>
+
         </select>
-        @error('department_id') <span class="text-xs text-red-500 mt-1 block">{{ $message }}</span> @enderror
+        @error('division_id') <span class="text-xs text-red-500 mt-1 block">{{ $message }}</span> @enderror
     </div>
+
 
     <div>
         <label class="block text-xs font-semibold text-gray-700 mb-1">

@@ -6,7 +6,7 @@ use App\Enums\EducationForm;
     <div class="flex-1">
         <x-form.input
             wire:key="search-field"
-            wire:model.live.debounce.300ms="search"
+            wire:model.live.debounce.100ms="search"
             label="Поиск по имени..."
         />
     </div>
