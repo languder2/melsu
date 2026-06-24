@@ -92,21 +92,15 @@ new class extends Component {
     {
         $validated = $this->validate();
 
-        $division = Division::find($validated['divisio_id'])->acce;
-
-
-        dd();
-
         $this->speciality->fill($validated);
 
         $this->speciality->save();
 
+        $this->speciality->divisions()->sync(Division::ancestorsAndSelf($validated['division_id'])->pluck('id'));
+
         $message = $this->speciality->wasRecentlyCreated ? 'Направление подготовки создано' : 'Изменения сохранены';
         $message .= ":<br>#{$this->speciality->id} {$this->speciality->spec_code}";
         $message .= "<br>{$this->speciality->name}.<br>{$this->speciality->name_profile}";
-
-
-
 
         $this->dispatch('notify', $message);
 
@@ -135,9 +129,7 @@ new class extends Component {
         $this->currentTab = 'general';
 
         $this->reset([
-            'speciality', 'code', 'spec_code', 'name',
-            'name_profile', 'level', 'courses', 'favorite',
-            'institute_id', 'faculty_id', 'department_id'
+            'speciality', 'code', 'spec_code', 'name', 'name_profile', 'level', 'courses', 'favorite', 'division_id',
         ]);
 
         $this->show = true;

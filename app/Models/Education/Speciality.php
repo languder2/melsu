@@ -242,6 +242,11 @@ class Speciality extends Model
         return $query->where('show',true);
     }
 
+    public function scopeOrderByLevel(Builder $query): Builder
+    {
+        return $query->orderByRaw(EducationLevel::getOrder());
+    }
+
     public static function eduNir(): Collection
     {
         return self::with('infos')->isShow()->get()

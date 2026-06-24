@@ -16,7 +16,7 @@ new class extends Component {
     public ?int $months = null;
     public ?string $address = null;
 
-    public bool $show = true;
+    public bool $show = false;
     public bool $is_recruitment = false;
     public bool $afc = false;
 
@@ -41,7 +41,7 @@ new class extends Component {
 
         $this->price            = $this->profile->price;
 
-        $this->show             = $this->profile->show ?? true;
+        $this->show             = $this->profile->show ?? false;
         $this->is_recruitment   = $this->profile->is_recruitment ?? false;
         $this->afc              = $this->profile->afc ?? false;
 

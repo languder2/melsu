@@ -39,13 +39,13 @@ class AllSpeciality extends Component
      * Get the view / contents that represent the component.
      */
 
-    public function short(): AllSpeciality
+    public function short(): self
     {
         $this->short = true;
         return $this;
     }
 
-    public function showHeader(): AllSpeciality
+    public function showHeader(): self
     {
         $this->showHeader = true;
         return $this;
@@ -53,21 +53,23 @@ class AllSpeciality extends Component
 
     public function render(): View|Closure|string
     {
-        $specialities = Speciality::where('show',true)->where('is_recruitment',true);
 
-        if ($this->division->type === DivisionType::Faculty)
-            $specialities->where('faculty_id', $this->division->id);
-
-        if ($this->division->type === DivisionType::Department)
-            $specialities->where('department_id', $this->division->id);
+        $query = $this->division->exists ? $this->division->specialities() : Speciality::query();
 
         if ($this->short)
-            $specialities->limit(9);
+            $query->limit(9);
 
-        $specialities->orderByRaw(EducationLevel::getOrder())->orderBy('spec_code')->orderBy('name');
+        $specialities = $query
+            ->isShow()
+            ->orderByLevel()
+            ->orderBy('spec_code')
+            ->orderBy('name')
+            ->whereHas('profiles', fn($query) => $query->isShow())
+            ->get()
+        ;
 
         return view('components.specialities.all-speciality', [
-            'specialities'  => $specialities->get(),
+            'specialities'  => $specialities,
             'is_short'      => $this->short,
             'show'          => $this->showHeader,
             'division'      => $this->division,

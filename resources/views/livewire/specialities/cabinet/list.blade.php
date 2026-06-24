@@ -45,7 +45,6 @@ new class extends Component {
         $query = $this->division ? $this->division->specialities() : Speciality::query();
 
         $specialities = $query
-            ->select(['id', 'spec_code', 'name', 'name_profile', 'level', 'show', 'deleted_at'])
             ->with(['recruitmentProfiles:id,form,speciality_id'])
             ->orderBy('name')
             ->when($searchString, fn ($query) =>

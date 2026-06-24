@@ -358,9 +358,9 @@ use App\Models\Documents\Document;
         return $this->options()->firstOrNew(['code' => $code]);
     }
 
-    public function scopePublic(Builder $query): Builder
+    public function scopeIsShow(Builder $query): Builder
     {
-        return $query->where('show', true);
+        return $query->where('show',true);
     }
 
     public static function eduOp(): Collection
