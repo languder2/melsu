@@ -30,18 +30,23 @@
 {{--                            <img src="{{asset('img/slider/s080426-m.webp')}}" alt="" class="block sm:hidden">--}}
 {{--                        </a>--}}
 {{--                    </div>--}}
+{{--                    <div class="slide">--}}
+{{--                        <a href="https://abiturient.mgu-mlt.ru/" class="slide-link cursor-pointer">--}}
+{{--                            <img src="{{asset('img/slider/priem_2k.jpg')}}" alt="" class="hidden object-cover min-[1921px]:block w-max">--}}
+{{--                            <img src="{{asset('img/slider/priem_fhd.jpg')}}" alt="" class="hidden sm:block">--}}
+{{--                            <img src="{{asset('img/slider/priem_mob.jpg')}}" alt="" class="block sm:hidden">--}}
+{{--                        </a>--}}
+{{--                    </div>--}}
                     <div class="slide">
                         <a href="https://abiturient.mgu-mlt.ru/" class="slide-link cursor-pointer">
-                            <img src="{{asset('img/slider/priem_2k.jpg')}}" alt="" class="hidden object-cover min-[1921px]:block w-max">
-                            <img src="{{asset('img/slider/priem_fhd.jpg')}}" alt="" class="hidden sm:block">
-                            <img src="{{asset('img/slider/priem_mob.jpg')}}" alt="" class="block sm:hidden">
+                            <img src="{{asset('img/slider/slide_07_01.webp')}}" alt="" class="object-contain w-full object-center">
                         </a>
                     </div>
-                    <div class="slide">
-                        <a href="https://abiturient.mgu-mlt.ru/" class="slide-link cursor-pointer flex justify-center w-full">
-                            <img src="{{asset('img/slider/IMG_8105.JPG')}}" alt="" class="w-max content-center">
-                        </a>
-                    </div>
+{{--                    <div class="slide">--}}
+{{--                        <a href="https://abiturient.mgu-mlt.ru/" class="slide-link cursor-pointer flex justify-center w-full">--}}
+{{--                            <img src="{{asset('img/slider/IMG_8105.JPG')}}" alt="" class="w-max content-center">--}}
+{{--                        </a>--}}
+{{--                    </div>--}}
                     <div class="slide">
                         <a href="#" class="slide-link cursor-pointer">
                             <img src="{{asset('img/slider/81_2k.jpg')}}" alt="" class="hidden object-cover min-[1921px]:block w-max">
